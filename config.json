@@ -1,0 +1,28 @@
+{
+  "project_name": "水生态环境知识库",
+  "project_en": "WaterEco",
+  "description": "面向水生态环境领域研究与管理人员的知识中台：自动采集、跟踪、整理国内外水生态环境政策法规标准、研究文献、领导讲话、技术产品、实践案例、专家团队与机构企业，按区域与质量分级呈现，支持全文检索、知识图谱与 RAG 智能问答。",
+  "public_url": "https://tiger-hz.github.io/WaterEco/",
+  "public_url_type": "github-pages(固定链接，永不停机)",
+  "feedback_url": "https://wj.qq.com/s2/00000000/0000",
+  "owner_email": "your-email@hz.gov.cn",
+  "scope": {
+    "domestic": "国内为主，覆盖国家部委、浙江省、杭州市及各地先进实践",
+    "international": "国外仅收录高度相关且具借鉴价值的动态（流域治理、水源保护、水生态修复）",
+    "key_regions": ["浙江", "杭州", "长三角", "钱塘江流域", "苕溪流域", "运河流域"],
+    "daily_target": 30
+  },
+  "update_note": "每日自动采集更新；站点托管于 GitHub Pages 固定链接 https://tiger-hz.github.io/WaterEco/ ，由 .github/workflows/pages.yml 在推送 main 时自动部署。优化需求须经负责人确认后实施。",
+  "quality_levels": {
+    "A": "重点/高质量：国家部委或省市政府权威发布、国家级规划法律、重大管理实践、核心研究文献",
+    "B": "中等：厅局级/行业权威发布、地方实践、一般技术文献",
+    "C": "一般：行业资讯、公众号文章、动态简讯"
+  },
+  "weixin_filter": {
+    "note": "微信公众号内容按阅读量与公众号关注人数评估重要性，避免低效低质信息入库",
+    "min_follower": 5000,
+    "min_read": 2000,
+    "high_value_read": 10000,
+    "rule": "关注人数≥min_follower 或 阅读量≥min_read 且水相关度≥0.6 才入库；阅读量≥high_value_read 自动提级"
+  }
+}

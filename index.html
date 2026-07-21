@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>水生态环境知识库 · 知识中台</title>
+<style>
+  :root{
+    --bg:#eef3f6; --card:#ffffff; --ink:#16242c; --sub:#5c6f78; --line:#d8e3e9;
+    --teal:#0e7490; --teal-d:#0c5e76; --blue:#1d4ed8; --cyan:#0891b2;
+    --amber:#b45309; --purple:#7c3aed; --pink:#db2777; --slate:#475569;
+    --chip:#e6f1f5; --shadow:0 1px 3px rgba(13,60,80,.10); --shadow-l:0 8px 30px rgba(13,60,80,.16);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+       background:var(--bg);color:var(--ink);line-height:1.62;font-size:14px}
+  a{color:var(--blue);text-decoration:none}
+  a:hover{text-decoration:underline}
+  /* header */
+  header.top{background:linear-gradient(125deg,#0c5e76 0%,#0e7490 50%,#0891b2 100%);color:#fff;
+             padding:22px 22px 0;position:relative;overflow:hidden}
+  header.top::after{content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;
+             background:radial-gradient(circle,rgba(255,255,255,.16),transparent 70%);border-radius:50%}
+  header .inner{max-width:1240px;margin:0 auto;display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap;position:relative;z-index:1}
+  header h1{margin:0;font-size:22px;font-weight:800;letter-spacing:.5px}
+  header .en{font-size:12px;opacity:.8;font-weight:600;letter-spacing:1px}
+  header p{margin:6px 0 0;font-size:13px;opacity:.92;max-width:760px}
+  .acct{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .pill-mode{font-size:11.5px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.32);
+             padding:4px 12px;border-radius:20px}
+  .acct .who{font-size:12px;background:rgba(255,255,255,.14);padding:5px 12px;border-radius:20px}
+  .tabs{display:flex;gap:4px;max-width:1240px;margin:16px auto 0;flex-wrap:wrap;padding:0 22px}
+  .tab{padding:10px 18px;cursor:pointer;color:rgba(255,255,255,.82);font-size:14px;font-weight:600;
+       border-radius:11px 11px 0 0;user-select:none}
+  .tab.on{background:var(--bg);color:var(--teal)}
+  .wrap{max-width:1240px;margin:0 auto;padding:18px 22px 60px}
+  .view{display:none}
+  .view.on{display:block}
+  /* statbar & chips */
+  .statbar{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:14px}
+  .chip{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:6px 14px;
+        font-size:12.8px;color:var(--sub);box-shadow:var(--shadow)}
+  .chip b{color:var(--teal);font-size:15px}
+  .chip.hl{border-color:var(--teal);background:#eaf6fa}
+  .toolbar{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:13px 15px;
+           box-shadow:var(--shadow);margin-bottom:14px}
+  input[type=text],select,textarea{padding:9px 11px;border:1px solid var(--line);border-radius:9px;
+        font-size:13.5px;outline:none;background:#fff;font-family:inherit;color:var(--ink)}
+  input[type=text]:focus,select:focus{border-color:var(--teal)}
+  .grow{flex:1;min-width:220px}
+  button{cursor:pointer;border:none;border-radius:9px;padding:9px 16px;font-size:13.5px;font-weight:600;
+         background:var(--teal);color:#fff}
+  button.ghost{background:#fff;color:var(--teal);border:1px solid var(--teal)}
+  button.mini{padding:5px 11px;font-size:12px}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:9px;overflow:hidden;flex-wrap:wrap}
+  .seg button{background:#fff;color:var(--sub);border-radius:0;padding:7px 12px;font-size:12.5px}
+  .seg button.on{background:var(--teal);color:#fff}
+  .pills{display:flex;gap:7px;flex-wrap:wrap}
+  .pill{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 13px;font-size:12.8px;cursor:pointer;color:#334}
+  .pill.on{background:var(--teal);color:#fff;border-color:var(--teal)}
+  .row2{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:11px}
+  /* cards */
+  .count{font-size:13px;color:var(--sub);margin:2px 2px 10px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 15px;
+        box-shadow:var(--shadow);transition:transform .12s,box-shadow .12s;display:flex;flex-direction:column}
+  .card:hover{transform:translateY(-3px);box-shadow:var(--shadow-l)}
+  .card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:6px;flex-wrap:wrap}
+  .badge{color:#fff;border-radius:8px;padding:3px 10px;font-size:11.5px;font-weight:700}
+  .q{font-size:11px;padding:2px 8px;border-radius:6px;font-weight:700}
+  .q-A{background:#dcfce7;color:#166534}.q-B{background:#fef9c3;color:#854d0e}.q-C{background:#e5e7eb;color:#4b5563}
+  .vis{font-size:10.5px;padding:1px 7px;border-radius:5px;font-weight:600;background:#eef4f8;color:#3a5a6a}
+  .full{font-size:10.5px;padding:1px 7px;border-radius:5px;font-weight:600}
+  .full.yes{background:#e6f6ee;color:#0c5e76}.full.no{background:#f1f5f4;color:#8a978f}
+  .metric{font-size:10.5px;padding:1px 7px;border-radius:5px;font-weight:600;background:#fff1e6;color:#9a3412}
+  .card-title{margin:0 0 6px;font-size:15.5px;line-height:1.45}
+  .card-title a{color:#0c2b35}
+  .meta{font-size:12px;color:var(--sub);margin-bottom:7px}
+  .dept{background:#e6f1f5;color:#0c5e76;border-radius:5px;padding:1px 7px}
+  .region{background:#eef2ff;color:#1d4ed8;border-radius:5px;padding:1px 7px;font-weight:600}
+  .region.hot{background:#fef3c7;color:#92400e}
+  .summary{font-size:13.5px;color:#37424a;margin:0 0 9px;flex:1}
+  .tags{display:flex;gap:5px;flex-wrap:wrap}
+  .tag{background:#eef4f6;color:#3c5963;border-radius:5px;padding:1px 7px;font-size:11.5px;cursor:pointer}
+  .tag:hover{background:#dcebf0}
+  .empty{text-align:center;color:var(--sub);padding:40px;font-size:14px}
+  /* history nav */
+  .pushnav{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 4px}
+  .pday{border:1px solid var(--line);background:#fff;border-radius:8px;padding:7px 12px;font-size:12.8px;cursor:pointer;color:#334;text-decoration:none}
+  .pday:hover{background:#eaf6fa;border-color:var(--teal)}
+  .pday.cur{background:var(--teal);color:#fff;border-color:var(--teal)}
+  .note{background:#eaf6fa;border:1px solid #cfe7ef;color:#0c5e76;border-radius:10px;padding:9px 13px;font-size:12.8px;margin:10px 0}
+  /* graph */
+  .gwrap{display:grid;grid-template-columns:1.4fr 1fr;gap:16px}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow)}
+  .panel h3{margin:0 0 10px;font-size:15px;color:var(--teal-d)}
+  .legend{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--sub);margin-top:8px}
+  .legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:4px;vertical-align:middle}
+  .entlist{display:flex;flex-direction:column;gap:6px;max-height:560px;overflow:auto}
+  .ent{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--line);
+        border-radius:8px;cursor:pointer;font-size:13px}
+  .ent:hover{background:#eaf6fa;border-color:var(--teal)}
+  .ent b{color:var(--teal)}
+  .ent .bar{height:6px;border-radius:4px;background:linear-gradient(90deg,var(--teal),var(--cyan));flex:1;margin:0 8px;min-width:30px}
+  canvas{display:block;max-width:100%}
+  footer{margin-top:36px;border-top:1px solid var(--line);padding-top:16px;color:var(--sub);font-size:12.5px;text-align:center}
+  footer a{color:var(--teal)}
+  .about p{font-size:14px;color:#30404a}
+  .about li{margin:4px 0}
+  .kbd{background:#eef4f6;padding:1px 6px;border-radius:4px;font-size:12px}
+  .fab{position:fixed;right:20px;bottom:20px;z-index:50;background:var(--teal);color:#fff;border:none;border-radius:999px;
+       padding:12px 17px;font-size:13.5px;font-weight:700;cursor:pointer;box-shadow:var(--shadow-l)}
+  .fab:hover{background:var(--teal-d)}
+  #loader{text-align:center;padding:60px;color:var(--sub)}
+  .err{background:#fff4f4;border:1px solid #f3c2c2;color:#9b2c2c;border-radius:10px;padding:12px 14px;font-size:13px;margin:10px 0}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="inner">
+    <div>
+      <div class="en">WATERECO KNOWLEDGE PLATFORM</div>
+      <h1>水生态环境知识库</h1>
+      <p id="subtitle">面向水生态环境领域研究与管理人员 · 自动采集政策法规标准 / 研究文献 / 领导讲话 / 技术产品 / 实践案例 / 专家机构，按区域与质量分级，支持知识图谱与 RAG 智能检索。</p>
+    </div>
+    <div class="acct">
+      <span class="pill-mode" id="upd">更新于 —</span>
+      <span class="who">固定入口 <b>tiger-hz.github.io/WaterEco</b></span>
+    </div>
+  </div>
+  <div class="tabs">
+    <div class="tab on" data-v="home">📋 知识门户</div>
+    <div class="tab" data-v="graph">🕸 知识图谱</div>
+    <div class="tab" data-v="rag">🧠 RAG 智能检索</div>
+    <div class="tab" data-v="about">ℹ 关于 / 建设方案</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <!-- 知识门户 -->
+  <div class="view on" id="v-home">
+    <div class="statbar" id="statbar"></div>
+    <div class="toolbar">
+      <div class="row2" style="margin-top:0">
+        <input type="text" id="search" class="grow" placeholder="搜索标题 / 摘要 / 标签 / 来源 / 部门 / 实体…">
+      </div>
+      <div class="pills" id="catpills" style="margin-top:11px"></div>
+      <div class="row2">
+        <div class="seg" id="winseg"></div>
+        <select id="fregion"><option value="">全部区域</option></select>
+        <select id="fquality"><option value="">全部质量</option><option value="A">A 重点</option><option value="B">B 中等</option><option value="C">C 一般</option></select>
+        <select id="fctype"><option value="">全部类型</option></select>
+        <input type="hidden" id="fcat" value="">
+      </div>
+    </div>
+    <div class="count" id="count"></div>
+    <div class="grid" id="grid"></div>
+    <div class="note" id="histnote">📅 <b>历史回看</b>：点击下方任意日期，查看当日新增/入库的知识（今天也能看昨天的推送）；或点击上方时段按钮按"由近及远"筛选。</div>
+    <div class="phead" style="margin:14px 0 6px;font-weight:700;color:var(--teal-d)">历史推送（按入库日）</div>
+    <div class="pushnav" id="pushnav"></div>
+  </div>
+
+  <!-- 知识图谱 -->
+  <div class="view" id="v-graph">
+    <div class="gwrap">
+      <div class="panel">
+        <h3>知识实体关系网络（点击实体可筛选门户）</h3>
+        <canvas id="bubble" width="720" height="520"></canvas>
+        <div class="legend" id="legend"></div>
+      </div>
+      <div class="panel">
+        <h3>高频知识实体 TOP（点击筛选）</h3>
+        <div class="entlist" id="entlist"></div>
+      </div>
+    </div>
+    <div class="gwrap" style="margin-top:16px">
+      <div class="panel">
+        <h3>分类分布</h3>
+        <canvas id="donut" width="420" height="260"></canvas>
+      </div>
+      <div class="panel">
+        <h3>区域分布（浙江 / 杭州高亮）</h3>
+        <canvas id="regionbar" width="420" height="260"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- RAG -->
+  <div class="view" id="v-rag">
+    <div class="panel" style="padding:0;overflow:hidden">
+      <iframe src="rag.html" style="width:100%;height:78vh;border:0"></iframe>
+    </div>
+  </div>
+
+  <!-- 关于 -->
+  <div class="view about" id="v-about">
+    <div class="panel">
+      <h3>项目说明</h3>
+      <p>本知识库面向<strong>水生态环境领域研究人员（专家）与管理人员（领导）</strong>，自动采集、跟踪、整理国内外水生态环境相关知识，并做结构化分类、元数据标注、知识图谱实体抽取与向量化，最终结合大模型/RAG 提供检索与问答能力。</p>
+      <ul>
+        <li><b>固定访问入口</b>：<span class="kbd">https://tiger-hz.github.io/WaterEco/</span>（GitHub Pages，永不停机，可收藏）</li>
+        <li><b>每日推送</b>：每天自动采集更新，门户按分类 + 时段（近7天→更早）组织；可回看任意历史日期</li>
+        <li><b>分类</b>：政策法规与顶层设计 / 标准与技术规范 / 流域治理与工程实践 / 管理实践与制度创新 / 技术产品与监测装备 / 研究文献与调查评估 / 国际与区域动态</li>
+        <li><b>质量分级</b>：A 重点 · B 中等 · C 一般；微信公众号内容按阅读量/关注人数过滤低质噪声</li>
+        <li><b>区域优先级</b>：浙江 / 杭州最高，其次长三角与重点流域，国外仅收录高度相关且可借鉴内容</li>
+        <li><b>智能检索</b>：向量（TF-IDF）+ 关键词（BM25）+ 元数据融合（RRF），支持抽取式问答与主题报告；可外接大模型升级为生成式问答</li>
+      </ul>
+      <h3 style="margin-top:14px">流水线</h3>
+      <p style="font-size:13px">采集（政府/微信/学术）→ 归一化去重 → 合并入库 → 质量&水相关度&知识图谱富集 → 静态渲染（门户/推送/档案）→ RAG 检索 → GitHub Pages 自动部署。详细方案见 <a href="docs/知识库建设方案.md">docs/知识库建设方案.md</a>。</p>
+    </div>
+  </div>
+
+  <div id="loader">正在加载知识库 kb/kb.json …</div>
+  <footer>
+    水生态环境知识库 · 自动采集更新（内容入库，支持 <a href="#" onclick="switchTab('rag');return false;">RAG 智能检索</a> / 知识图谱）｜
+    固定入口 <a href="https://tiger-hz.github.io/WaterEco/">tiger-hz.github.io/WaterEco</a> ｜ 团队反馈邮箱 <span id="ownermail">your-email@hz.gov.cn</span>
+  </footer>
+</div>
+
+<button class="fab" onclick="switchTab('rag')">🧠 RAG 检索</button>
+
+<script>
+/* ============ 配置（与 render.py / config.json 对齐） ============ */
+const CATS = [
+  ["policy","政策法规与顶层设计","#0e7490"],
+  ["standard","标准与技术规范","#0f766e"],
+  ["basin_eng","流域治理与工程实践","#1d4ed8"],
+  ["management","管理实践与制度创新","#7c3aed"],
+  ["tech","技术、产品与监测装备","#0891b2"],
+  ["literature","研究文献与调查评估","#db2777"],
+  ["intl_region","国际与区域动态","#475569"],
+];
+const CATNAME={}, CATCOLOR={}; CATS.forEach(c=>{CATNAME[c[0]]=c[1];CATCOLOR[c[0]]=c[2];});
+const QUALNAME={A:"高",B:"中",C:"一般"};
+const WINDOWS=[["all","全部"],["7","近7天"],["30","近1月"],["90","近3月"],["180","近半年"],
+  ["2026","本年度(2026)"],["2025","去年(2025)"],["2024","前年(2024)"],["2023","大前年(2023)"],
+  ["3y","近3年(2023-26)"],["older","更早(≤2022)"]];
+const HOT_REGIONS=new Set(["浙江","杭州","长三角"]);
+
+let KB=[], DAYS=[];
+const $=id=>document.getElementById(id);
+
+/* ============ 工具 ============ */
+function esc(s){return (s==null?"":String(s)).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+function daysBetween(d){const t=new Date();const y=new Date(d);return (t-y)/86400000;}
+function inWindow(d,win){
+  if(win==="all")return true;
+  const dt=new Date(d); if(isNaN(dt))return false;
+  if(win==="7")return daysBetween(d)<=7;
+  if(win==="30")return daysBetween(d)<=30;
+  if(win==="90")return daysBetween(d)<=90;
+  if(win==="180")return daysBetween(d)<=180;
+  if(win==="3y")return daysBetween(d)<=365*3;
+  if(win==="older")return dt.getFullYear()<2023;
+  return dt.getFullYear()===parseInt(win);
+}
+
+/* ============ 卡片 ============ */
+function card(it){
+  const cat=it.category||"", q=it.quality||"C";
+  const col=CATCOLOR[cat]||"#475569", cn=CATNAME[cat]||cat;
+  const reg=it.region||"";
+  const hot=HOT_REGIONS.has(reg)?" hot":"";
+  const tags=(it.tags||[]).slice(0,6).map(t=>'<span class="tag" data-t="'+esc(t)+'">'+esc(t)+'</span>').join("");
+  const full=it.content_fetched?'<span class="full yes">全文入库</span>':'<span class="full no">摘要</span>';
+  const vis=it.visibility?'<span class="vis">'+esc(it.visibility)+'</span>':'';
+  let met='';
+  if(it.metrics&&it.metrics.read){met='<span class="metric">👁 '+(it.metrics.read>=10000?(it.metrics.read/10000).toFixed(1)+'万':it.metrics.read)+'阅读</span>';}
+  const text=(it.title+" "+(it.summary||"")+" "+(it.source||"")+" "+reg+" "+((it.tags||[]).join(" "))+" "+((it.kg_terms||[]).join(" "))).toLowerCase();
+  return '<article class="card" data-cat="'+esc(cat)+'" data-region="'+esc(reg)+'" data-qual="'+q+
+    '" data-ctype="'+esc(it.content_type||"")+'" data-date="'+esc(it.added_at||it.date||"")+'" data-text="'+esc(text)+'">'
+    +'<div class="card-top"><span class="badge" style="background:'+col+'">'+esc(cn)+'</span>'
+    +'<span class="q q-'+q+'">质量 '+q+'</span></div>'
+    +'<h3 class="card-title"><a href="'+esc(it.url||"#")+'" target="_blank" rel="noopener">'+esc(it.title)+'</a></h3>'
+    +'<div class="meta">'+esc(it.source||"")+' · '+(it.date||"")+' · <span class="dept">'+esc(it.department||"")+'</span> · <span class="region'+hot+'">'+esc(reg)+'</span> · '+full+vis+met+'</div>'
+    +'<p class="summary">'+esc(it.summary||"")+'</p>'
+    +'<div class="tags">'+tags+'</div></article>';
+}
+
+/* ============ 渲染门户 ============ */
+function applyFilter(){
+  const q=($("search").value||"").toLowerCase().trim();
+  const cat=$("fcat").value, region=$("fregion").value, qual=$("fquality").value, ctype=$("fctype").value;
+  const win=document.querySelector('#winseg button.on').dataset.win;
+  let n=0;
+  document.querySelectorAll('#grid .card').forEach(c=>{
+    let ok=true;
+    if(q && c.dataset.text.indexOf(q)===-1) ok=false;
+    if(cat && c.dataset.cat!==cat) ok=false;
+    if(region && c.dataset.region!==region) ok=false;
+    if(qual && c.dataset.qual!==qual) ok=false;
+    if(ctype && c.dataset.ctype!==ctype) ok=false;
+    if(ok && win!=="all" && !inWindow(c.dataset.date,win)) ok=false;
+    c.style.display=ok?'':'none'; if(ok)n++;
+  });
+  $("count").textContent='当前显示 '+n+' 条';
+}
+function renderHome(){
+  // 统计条
+  const fulln=KB.filter(i=>i.content_fetched).length;
+  const an=KB.filter(i=>i.quality==="A").length;
+  const today=new Date().toISOString().slice(0,10);
+  const todayN=KB.filter(i=>(i.added_at||i.date||"" )===today).length;
+  $("statbar").innerHTML=
+    '<span class="chip hl">知识总量 <b>'+KB.length+'</b></span>'
+    +'<span class="chip">全文入库 <b>'+fulln+'</b></span>'
+    +'<span class="chip">A 重点 <b>'+an+'</b></span>'
+    +'<span class="chip">分类 <b>'+CATS.length+'</b> 类</span>'
+    +'<span class="chip">今日新增 <b>'+todayN+'</b></span>';
+  // 分类 pills
+  $("catpills").innerHTML='<span class="pill on" data-cat="">全部分类</span>'+
+    CATS.map(c=>'<span class="pill" data-cat="'+c[0]+'">'+c[1]+'</span>').join("");
+  $("catpills").querySelectorAll('.pill').forEach(p=>p.onclick=()=>{
+    $("catpills").querySelectorAll('.pill').forEach(x=>x.classList.remove('on'));
+    p.classList.add('on'); $("fcat").value=p.dataset.cat; applyFilter();
+  });
+  // 时段
+  $("winseg").innerHTML=WINDOWS.map(w=>'<button data-win="'+w[0]+'">'+w[1]+'</button>').join("");
+  $("winseg").querySelectorAll('button').forEach(b=>b.onclick=()=>{
+    $("winseg").querySelectorAll('button').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on'); applyFilter();
+  });
+  $("winseg").querySelector('button').classList.add('on');
+  // 区域 / 类型 选项
+  const regions=[...new Set(KB.map(i=>i.region||"").filter(Boolean))].sort();
+  $("fregion").innerHTML='<option value="">全部区域</option>'+regions.map(r=>'<option value="'+esc(r)+'">'+esc(r)+'</option>').join("");
+  const ctypes=[...new Set(KB.map(i=>i.content_type||"").filter(Boolean))].sort();
+  $("fctype").innerHTML='<option value="">全部类型</option>'+ctypes.map(t=>'<option value="'+esc(t)+'">'+esc(t)+'</option>').join("");
+  // 卡片（按 importance 降序）
+  const sorted=[...KB].sort((a,b)=>(b.importance||0)-(a.importance||0));
+  $("grid").innerHTML=sorted.map(card).join("");
+  // 标签点击筛选
+  document.querySelectorAll('#grid .tag').forEach(t=>t.onclick=()=>{
+    $("search").value=t.dataset.t; applyFilter();
+  });
+  // 历史推送导航（按入库日分组，近180天出单日页）
+  const byDay={}; KB.forEach(i=>{const d=i.added_at||i.date; if(d)byDay[d]=(byDay[d]||0)+1;});
+  DAYS=Object.keys(byDay).sort().reverse();
+  $("pushnav").innerHTML=DAYS.slice(0,40).map(d=>{
+    const f="push-"+d+".html";
+    return '<a class="pday" href="'+f+'" title="'+d+' 新增 '+byDay[d]+' 条">'+d+' <b>'+byDay[d]+'</b></a>';
+  }).join("");
+  $("search").oninput=applyFilter;
+  ["fregion","fquality","fctype"].forEach(id=>$(id).onchange=applyFilter);
+  applyFilter();
+}
+
+/* ============ 知识图谱 ============ */
+function buildGraph(){
+  // 实体计数 + 主导分类
+  const ent={};
+  KB.forEach(i=>{(i.kg_terms||[]).forEach(t=>{
+    if(!ent[t])ent[t]={n:0,cat:{}}; ent[t].n++;
+    const c=i.category||""; ent[t].cat[c]=(ent[t].cat[c]||0)+1;
+  });});
+  const top=Object.entries(ent).sort((a,b)=>b[1].n-a[1].n).slice(0,40);
+  // 侧栏列表
+  const maxn=top.length?top[0][1].n:1;
+  $("entlist").innerHTML=top.map(([t,o])=>{
+    const dom=Object.entries(o.cat).sort((a,b)=>b[1]-a[1])[0];
+    const col=dom?CATCOLOR[dom[0]]:'#475569';
+    return '<div class="ent" data-t="'+esc(t)+'"><span>'+esc(t)+'</span>'
+      +'<span class="bar" style="max-width:'+Math.max(20,o.n/maxn*120)+'px"></span>'
+      +'<b>'+o.n+'</b></div>';
+  }).join("");
+  $("entlist").querySelectorAll('.ent').forEach(e=>e.onclick=()=>{switchTab('home');$("search").value=e.dataset.t;applyFilter();$("v-home").scrollIntoView();});
+  // 气泡图（螺旋布局）
+  const cv=$("bubble"), ctx=cv.getContext("2d");
+  const W=cv.width,H=cv.height,cx=W/2,cy=H/2;
+  ctx.clearRect(0,0,W,H);
+  const maxR=Math.min(W,H)/2-30;
+  top.slice(0,26).forEach(([t,o],i)=>{
+    const ang=i*2.399963; // golden angle
+    const rad=(1-Math.sqrt((i+1)/27))*maxR;
+    const x=cx+rad*Math.cos(ang), y=cy+rad*Math.sin(ang);
+    const dom=Object.entries(o.cat).sort((a,b)=>b[1]-a[1])[0];
+    const col=dom?CATCOLOR[dom[0]]:'#475569';
+    const r=8+Math.sqrt(o.n)*5;
+    ctx.beginPath();ctx.arc(x,y,r,0,7);ctx.fillStyle=col;ctx.globalAlpha=.82;ctx.fill();
+    ctx.globalAlpha=1;ctx.fillStyle="#fff";ctx.font='bold 11px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText(t.length>5?t.slice(0,5):t,x,y);
+  });
+  // 图例
+  $("legend").innerHTML=CATS.map(c=>'<span><i style="background:'+c[2]+'"></i>'+c[1]+'</span>').join("");
+  // 分类甜甜圈
+  drawDonut(); drawRegion();
+}
+function drawDonut(){
+  const cv=$("donut"),ctx=cv.getContext("2d");const W=cv.width,H=cv.height,cx=W/2,cy=H/2,R=95,r0=52;
+  ctx.clearRect(0,0,W,H);
+  const cnt={}; CATS.forEach(c=>cnt[c[0]]=0); KB.forEach(i=>{if(cnt[i.category]!=null)cnt[i.category]++;});
+  const total=KB.length||1; let a0=-Math.PI/2;
+  CATS.forEach(c=>{const v=cnt[c[0]];if(!v)return;const a1=a0+v/total*Math.PI*2;
+    ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,R,a0,a1);ctx.closePath();ctx.fillStyle=c[2];ctx.fill();
+    const mid=(a0+a1)/2;const lx=cx+(R+r0)/2*Math.cos(mid),ly=cy+(R+r0)/2*Math.sin(mid);
+    ctx.fillStyle="#334";ctx.font='11px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
+    if(v/total>0.05)ctx.fillText(v,lx,ly);
+    a0=a1;});
+  ctx.beginPath();ctx.arc(cx,cy,r0,0,7);ctx.fillStyle="#fff";ctx.fill();
+  ctx.fillStyle="#0c5e76";ctx.font='bold 15px sans-serif';ctx.fillText(KB.length,cx,cy-6);
+  ctx.font='10px sans-serif';ctx.fillStyle="#5c6f78";ctx.fillText("条",cx,cy+10);
+}
+function drawRegion(){
+  const cv=$("regionbar"),ctx=cv.getContext("2d");const W=cv.width,H=cv.height;
+  ctx.clearRect(0,0,W,H);
+  const cnt={}; KB.forEach(i=>{const r=i.region||"其他";cnt[r]=(cnt[r]||0)+1;});
+  const items=Object.entries(cnt).sort((a,b)=>b[1]-a[1]).slice(0,7);
+  const max=items.length?items[0][1]:1; const bw=W-90, x0=14, y0=24, gap=(H-y0-10)/items.length;
+  ctx.font='12px sans-serif';ctx.textBaseline='middle';
+  items.forEach(([r,n],i)=>{const y=y0+i*gap+gap/2;const w=bw*n/max;
+    ctx.fillStyle=HOT_REGIONS.has(r)?'#b45309':'#0e7490';
+    roundRect(ctx,x0,y-gap/2+4,w,gap-8,4);ctx.fill();
+    ctx.fillStyle='#16242c';ctx.textAlign='right';ctx.fillText(r,x0-4,y);
+    ctx.fillStyle='#16242c';ctx.textAlign='left';ctx.fillText(n,x0+w+6,y);
+  });
+}
+function roundRect(c,x,y,w,h,r){if(w<1)w=1;c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath();}
+
+/* ============ Tab 切换 ============ */
+function switchTab(v){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t.dataset.v===v));
+  document.querySelectorAll('.view').forEach(vw=>vw.classList.toggle('on',vw.id==='v-'+v));
+  if(v==='graph') buildGraph();
+  if(v==='rag'){const f=$("v-rag").querySelector('iframe');if(f&&!f.dataset.loaded){f.dataset.loaded="1";}}
+  window.scrollTo(0,0);
+}
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>switchTab(t.dataset.v));
+
+/* ============ 加载 ============ */
+function loadKB(obj){
+  KB=obj; $("loader").style.display='none';
+  const dates=KB.map(i=>i.added_at||i.date).filter(Boolean).sort().reverse();
+  $("upd").textContent='更新于 '+dates[0];
+  renderHome();
+  // owner email
+  if(window.__OWNER)$("ownermail").textContent=window.__OWNER;
+}
+function fetchKB(){
+  fetch('kb/kb.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json();})
+    .then(loadKB).catch(()=>{
+      $("loader").innerHTML='<div class="err">无法自动加载 <code>kb/kb.json</code>（若以 file:// 本地打开，请通过下方按钮选择文件；部署到 GitHub Pages 后可正常加载）。</div>'
+        +'<input type="file" id="picker" accept=".json">';
+      $("picker").onchange=e=>{const f=e.target.files[0];if(!f)return;const rd=new FileReader();
+        rd.onload=()=>{try{loadKB(JSON.parse(rd.result));}catch(err){alert('解析失败');}};rd.readAsText(f);};
+    });
+}
+// 读取 config 中的 owner（可选）
+fetch('config.json',{cache:'no-store'}).then(r=>r.json()).then(c=>{window.__OWNER=c.owner_email;if($("ownermail")&&c.owner_email)$("ownermail").textContent=c.owner_email;}).catch(()=>{});
+fetchKB();
+</script>
+</body>
+</html>

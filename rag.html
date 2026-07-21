@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>水生态环境知识库 · RAG 智能检索</title>
+<style>
+  :root{
+    --bg:#eef3f6; --card:#ffffff; --ink:#16242c; --sub:#5c6f78;
+    --line:#d8e3e9; --teal:#0e7490; --blue:#1d4ed8; --amber:#b45309;
+    --chip:#e6f1f5; --shadow:0 1px 3px rgba(13,60,80,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+       background:var(--bg);color:var(--ink);line-height:1.6}
+  header{background:linear-gradient(120deg,#0c5e76,#0e7490);color:#fff;padding:18px 22px}
+  header h1{margin:0;font-size:19px;font-weight:700}
+  header p{margin:4px 0 0;font-size:12.8px;opacity:.92}
+  .wrap{max-width:1000px;margin:0 auto;padding:18px}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:12px;
+         padding:16px;box-shadow:var(--shadow);margin-bottom:16px}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  input[type=text]{flex:1;min-width:240px;padding:11px 13px;border:1px solid var(--line);
+         border-radius:9px;font-size:14px;outline:none}
+  input[type=text]:focus{border-color:var(--teal)}
+  button{cursor:pointer;border:none;border-radius:9px;padding:11px 18px;font-size:14px;
+         font-weight:600;background:var(--teal);color:#fff}
+  button.ghost{background:#fff;color:var(--teal);border:1px solid var(--teal)}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:9px;overflow:hidden}
+  .seg button{background:#fff;color:var(--sub);border-radius:0;padding:9px 14px}
+  .seg button.on{background:var(--teal);color:#fff}
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+  select{padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:13px;background:#fff}
+  label.chk{display:inline-flex;gap:6px;align-items:center;font-size:13px;color:var(--sub)}
+  .meta{font-size:12px;color:var(--sub);margin:6px 0 0}
+  .result{border:1px solid var(--line);border-radius:10px;padding:13px 15px;margin-bottom:11px;background:#fff}
+  .result h3{margin:0 0 4px;font-size:15px}
+  .result .tags{font-size:11.5px;color:var(--sub);margin-bottom:6px}
+  .badge{display:inline-block;padding:1px 8px;border-radius:20px;background:var(--chip);
+         color:var(--teal);font-size:11px;margin-right:5px}
+  .b-dept{background:#e6f1f5;color:#0c5e76}
+  .b-cat{background:#eef2ff;color:#1d4ed8}
+  .b-q{background:#fef3e2;color:#b45309}
+  .b-reg{background:#eafaf0;color:#166534}
+  .chunk{font-size:13.5px;color:var(--ink);margin:6px 0;max-height:120px;overflow:hidden;position:relative}
+  .chunk.open{max-height:none}
+  .chunk em{background:#fff3bf;font-style:normal;border-radius:3px;padding:0 1px}
+  .more{font-size:12px;color:var(--blue);cursor:pointer;user-select:none}
+  a{color:var(--blue);text-decoration:none;font-size:12.8px}
+  a:hover{text-decoration:underline}
+  .empty{color:var(--sub);text-align:center;padding:30px}
+  #report{white-space:pre-wrap;font-size:13px;background:#fafbfb;border:1px solid var(--line);
+          border-radius:9px;padding:14px;max-height:560px;overflow:auto;display:none}
+  .stat{font-size:12.8px;color:var(--sub);margin-bottom:8px}
+  .note{font-size:12px;color:var(--sub);margin-top:10px}
+  code{background:#eef2f0;padding:1px 5px;border-radius:4px;font-size:12px}
+</style>
+</head>
+<body>
+<header>
+  <h1>水生态环境知识库 · 混合检索 RAG</h1>
+  <p>向量匹配（TF-IDF 余弦） + BM25 关键词 + 元数据过滤 + RRF 融合 ｜ 纯前端运行，数据不出浏览器</p>
+</header>
+<div class="wrap">
+  <div class="panel">
+    <div class="row">
+      <input type="text" id="q" placeholder="输入查询，如：入河排污口 监督管理 / 千岛湖 水源保护 / 黑臭水体 整治" />
+      <div class="seg" id="mode">
+        <button data-m="search" class="on">检索</button>
+        <button data-m="ask">问答</button>
+        <button data-m="report">报告</button>
+      </div>
+      <button id="go">检索</button>
+    </div>
+    <div class="filters">
+      <select id="f-dept"><option value="">部门：全部</option>
+        <option>生态环境</option><option>水利</option><option>住建</option>
+        <option>发改</option><option>农业农村</option><option>其他</option></select>
+      <select id="f-cat"><option value="">分类：全部</option>
+        <option value="policy">政策法规与顶层设计</option><option value="standard">标准与技术规范</option>
+        <option value="basin_eng">流域治理与工程实践</option><option value="management">管理实践与制度创新</option>
+        <option value="tech">技术、产品与监测装备</option><option value="literature">研究文献与调查评估</option>
+        <option value="intl_region">国际与区域动态</option></select>
+      <select id="f-q"><option value="">质量：全部</option><option value="A">A 重点</option>
+        <option value="B">B 中等</option><option value="C">C 一般</option></select>
+      <select id="f-region"><option value="">区域：全部</option>
+        <option>全国(部委)</option><option>浙江</option><option>杭州</option><option>长三角</option>
+        <option>其他省市</option><option>国际</option></select>
+      <input type="text" id="f-from" placeholder="起始 2025-01-01" style="min-width:120px;flex:0">
+      <input type="text" id="f-to" placeholder="截止 2026-12-31" style="min-width:120px;flex:0">
+      <label class="chk"><input type="checkbox" id="f-eco" checked> 优先生态环境条线</label>
+    </div>
+    <div class="stat" id="stat"></div>
+  </div>
+
+  <div class="panel">
+    <div id="results"><div class="empty">输入查询后点击「检索」。首次加载会从同目录 <code>kb/kb.json</code> 构建索引（约 1–2 秒）。</div></div>
+    <pre id="report"></pre>
+    <div class="note">若本地打开（file://）无法读取 kb.json，可点击下方按钮手动选择知识库文件：
+      <input type="file" id="picker" accept=".json" style="margin-left:6px"></div>
+  </div>
+</div>
+
+<script>
+/* ---------- 中文分词：CJK 二元组 + 拉丁/数字词 ---------- */
+function tokenize(text){
+  if(!text) return [];
+  text = text.toLowerCase();
+  let toks = [];
+  const lat = text.match(/[a-z0-9]+/g) || [];
+  lat.forEach(w=>toks.push(w));
+  const runs = text.match(/[一-鿿]+/g) || [];
+  runs.forEach(run=>{
+    if(run.length===1) toks.push(run);
+    else for(let i=0;i<run.length-1;i++) toks.push(run.substr(i,2));
+  });
+  return toks;
+}
+function splitSents(t){
+  t = t.replace(/\s+/g,'');
+  const parts = t.split(/(?<=[。！？；\n])/);
+  return parts.filter(p=>p.length>=4);
+}
+function chunkText(t, maxc=320){
+  const sents = splitSents(t); if(!sents.length) return t? [t]:[];
+  let chunks=[],cur=[],len=0;
+  for(const s of sents){
+    if(len+s.length>maxc && cur.length){ chunks.push(cur.join('')); cur=[]; len=0; }
+    cur.push(s); len+=s.length;
+  }
+  if(cur.length) chunks.push(cur.join(''));
+  return chunks.length?chunks:[t];
+}
+/* ---------- 向量化 / BM25 ---------- */
+let RECORDS=[], CHUNKS=[], VEC=[], DFV={}, DFB={}, AVGDL=0, N=0;
+const DEPT_PRI = [["生态","环境"],["水利"],["住建"],["发改"],["农业农村"],[]];
+function deptPri(d){ d=d||""; for(let i=0;i<DEPT_PRI.length;i++){ if(DEPT_PRI[i].some(k=>d.includes(k))) return i;} return 5; }
+const CATNAME={"policy":"政策法规","standard":"标准规范","basin_eng":"流域工程","management":"管理实践","tech":"技术产品","literature":"研究文献","intl_region":"国际区域"};
+function tf(toks){ const m={}; toks.forEach(t=>m[t]=(m[t]||0)+1); return m; }
+function build(){
+  N = CHUNKS.length;
+  AVGDL = CHUNKS.reduce((a,c)=>a+c.text.length,0)/(N||1);
+  CHUNKS.forEach(c=>{
+    c.tf = tf(tokenize(c.text));
+    Object.keys(c.tf).forEach(t=> DFB[t]=(DFB[t]||0)+1);
+  });
+  Object.keys(DFB).forEach(t=> DFV[t]=DFB[t]);
+  VEC = CHUNKS.map(c=>{
+    const v={}; for(const t in c.tf){ const df=DFV[t]||0;
+      const idf=Math.log((N-df+0.5)/(df+0.5)+1); const w=(1+Math.log(c.tf[t]))*idf; v[t]=w; }
+    let n=Math.sqrt(Object.values(v).reduce((a,x)=>a+x*x,0))||1;
+    for(const t in v) v[t]/=n; return v;
+  });
+}
+function vecSearch(qt, top=200){
+  const qtf=tf(qt); const qv={};
+  for(const t in qtf){ const df=DFV[t]||0; if(!df) continue;
+    const idf=Math.log((N-df+0.5)/(df+0.5)+1); qv[t]=(1+Math.log(qtf[t]))*idf; }
+  let n=Math.sqrt(Object.values(qv).reduce((a,x)=>a+x*x,0))||1;
+  for(const t in qv) qv[t]/=n;
+  const sc=[];
+  VEC.forEach((v,i)=>{ let dot=0; for(const t in qv){ if(v[t]) dot+=qv[t]*v[t]; }
+    if(dot>0) sc.push([dot,i]); });
+  sc.sort((a,b)=>b[0]-a[0]); return sc.slice(0,top);
+}
+function bm25Search(qt, top=200, k1=1.5, b=0.75){
+  const sc=[]; const qset=[...new Set(qt)];
+  CHUNKS.forEach((c,i)=>{ let s=0; const dl=c.text.length||1;
+    qset.forEach(t=>{ const df=DFB[t]||0; if(!df) return; const f=c.tf[t]||0; if(!f) return;
+      const idf=Math.log((N-df+0.5)/(df+0.5)+1);
+      s+= idf*(f*(k1+1))/(f+k1*(1-b+b*dl/AVGDL)); });
+    if(s>0) sc.push([s,i]); });
+  sc.sort((a,b)=>b[0]-a[0]); return sc.slice(0,top);
+}
+function passFilter(c,f){
+  if(f.dept && !(c.dept||"").includes(f.dept)) return false;
+  if(f.cat && c.cat!==f.cat) return false;
+  if(f.region && (c.region||"")!==f.region) return false;
+  if(f.q){ const o={A:3,B:2,C:1}; if((o[c.quality]||0)<(o[f.q]||0)) return false; }
+  if(f.from && (c.date||"")<f.from) return false;
+  if(f.to && (c.date||"")>f.to) return false;
+  return true;
+}
+function search(query, topk=8, f={}, preferEco=true){
+  const qt=tokenize(query);
+  const vs=vecSearch(qt), bs=bm25Search(qt);
+  const rrf={};
+  vs.forEach(([s,i],r)=> rrf[i]=(rrf[i]||0)+1/(60+r+1));
+  bs.forEach(([s,i],r)=> rrf[i]=(rrf[i]||0)+1/(60+r+1));
+  let cand=[];
+  for(const i in rrf){ const c=CHUNKS[i];
+    if(!passFilter(c,f)) continue;
+    let boost=1; if(preferEco && deptPri(c.dept)===0) boost=1.6;
+    cand.push([rrf[i]*boost, i]);
+  }
+  cand.sort((a,b)=>b[0]-a[0]);
+  return cand.slice(0,topk).map(([s,i])=>{
+    const c=CHUNKS[i], r=RECORDS[c.rid];
+    return {title:c.title,url:c.url,date:c.date,dept:c.dept,cat:c.cat,
+            quality:c.quality,region:c.region,chunk:c.text,score:+s.toFixed(4),
+            summary:r.summary};
+  });
+}
+function ask(q, topk=6, preferEco=true){
+  const hits=search(q, topk, {}, preferEco);
+  if(!hits.length) return {answer:"未在知识库中检索到相关内容。",citations:[]};
+  const qset=new Set(tokenize(q)); let best=[];
+  hits.forEach(h=> splitSents(h.chunk).forEach(s=>{
+    const ov=[...new Set(tokenize(s))].filter(x=>qset.has(x)).length;
+    if(ov>0) best.push([ov,s,h]); }));
+  best.sort((a,b)=> b[0]-a[0] || b[1].length-a[1].length);
+  const seen=new Set(); const picked=[];
+  best.forEach(([ov,s,h])=>{ const k=s.substr(0,20); if(seen.has(k))return; seen.add(k);
+    picked.push(s); if(picked.length>=5) return; });
+  const answer = picked.length? picked.join('。')+'。' : hits[0].chunk;
+  return {answer, citations:hits.slice(0,8)};
+}
+function report(topic, topk=12, preferEco=true){
+  const hits=search(topic, topk, {}, preferEco);
+  if(!hits.length) return "# 报告\n\n未检索到与「"+topic+"」相关的内容。";
+  const L=["# 水生态环境情报 · 主题检索报告："+topic,"",
+    "> 检索命中 "+hits.length+" 个知识片段（向量 + BM25 + 元数据融合），按相关度排序。",""];
+  const dc={}; hits.forEach(h=> dc[h.dept]=(dc[h.dept]||0)+1);
+  L.push("## 一、命中分布（部门）");
+  Object.entries(dc).sort((a,b)=>b[1]-a[1]).forEach(([d,n])=> L.push("- "+(d||"其他")+"："+n+" 条"));
+  L.push("","## 二、核心要点（抽取）");
+  const qset=new Set(tokenize(topic));
+  let shown=0;
+  for(const h of hits){
+    let sents=splitSents(h.chunk).filter(s=>[...new Set(tokenize(s))].filter(x=>qset.has(x)).length>0);
+    if(!sents.length) sents=[h.chunk.substr(0,160)];
+    L.push("","### "+h.title+" 〔"+(h.dept)+" · "+h.date+" · "+h.quality+"〕");
+    sents.slice(0,3).forEach(s=> L.push("- "+s));
+    L.push("  来源："+h.url);
+    if(++shown>=10) break;
+  }
+  L.push("","## 三、参考文件清单");
+  hits.slice(0,12).forEach((h,i)=> L.push((i+1)+". ["+h.title+"]("+h.url+") — "+h.dept+" / "+h.date));
+  return L.join("\n");
+}
+/* ---------- UI ---------- */
+let MODE="search";
+document.querySelectorAll('#mode button').forEach(b=> b.onclick=()=>{
+  document.querySelectorAll('#mode button').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on'); MODE=b.dataset.m;
+  document.getElementById('go').textContent = MODE==='search'?'检索':(MODE==='ask'?'问答':'生成报告');
+  document.getElementById('report').style.display='none';
+  document.getElementById('results').style.display='block';
+});
+document.getElementById('go').onclick=run;
+document.getElementById('q').addEventListener('keydown',e=>{ if(e.key==='Enter') run(); });
+
+function hl(text,q){
+  const qt=[...new Set(tokenize(q))].filter(t=>t.length>=2 || /[a-z0-9]+/.test(t));
+  let s=text; qt.forEach(t=>{ try{ s=s.replace(new RegExp(t,'g'),'<em>'+t+'</em>'); }catch(e){} });
+  return s;
+}
+function run(){
+  const q=document.getElementById('q').value.trim(); if(!q){ return; }
+  if(!CHUNKS.length){ document.getElementById('results').innerHTML=
+    '<div class="empty">知识库尚未加载，请稍候或手动选择 kb.json。</div>'; return; }
+  const f={ dept:document.getElementById('f-dept').value, cat:document.getElementById('f-cat').value,
+            q:document.getElementById('f-q').value, region:document.getElementById('f-region').value,
+            from:document.getElementById('f-from').value, to:document.getElementById('f-to').value };
+  const eco=document.getElementById('f-eco').checked;
+  const t0=performance.now();
+  if(MODE==='report'){
+    const md=report(q,12,eco);
+    document.getElementById('results').style.display='none';
+    const r=document.getElementById('report'); r.style.display='block'; r.textContent=md;
+    document.getElementById('stat').textContent='报告生成完成，耗时 '+Math.round(performance.now()-t0)+' ms';
+    return;
+  }
+  const hits = MODE==='ask'? ask(q,6,eco) : {citations:search(q,8,f,eco),answer:null};
+  const list = MODE==='ask'? hits.citations : hits;
+  if(MODE==='ask'){
+    const box=document.getElementById('results');
+    let h='<div class="result"><h3>【回答】</h3><div class="chunk open">'+hl(hits.answer,q)+'</div>'
+      +'<div class="tags">引用来源 '+list.length+' 条：</div>';
+    list.forEach(c=> h+= citeRow(c,q));
+    box.innerHTML=h+'</div>';
+    document.getElementById('stat').textContent='问答完成，命中 '+list.length+' 条，耗时 '+Math.round(performance.now()-t0)+' ms';
+    return;
+  }
+  let h='';
+  if(!list.length) h='<div class="empty">未命中。试试更换关键词或放宽筛选条件。</div>';
+  list.forEach(it=>{ h+= resRow(it,q); });
+  document.getElementById('results').innerHTML=h;
+  document.getElementById('stat').textContent='命中 '+list.length+' 个片段，耗时 '+Math.round(performance.now()-t0)+' ms';
+}
+function citeRow(c,q){
+  return '<div class="tags"><span class="badge b-dept">'+(c.dept||'')+'</span>'
+    +'<span class="badge b-cat">'+(CATNAME[c.cat]||c.cat)+'</span>'
+    +'<span class="badge b-q">'+(c.quality||'')+'</span>'
+    +'<span class="badge b-reg">'+(c.region||'')+'</span> <a href="'+c.url+'" target="_blank">'+c.title+'</a></div>';
+}
+function resRow(it,q){
+  const d='<div class="result"><h3>'+it.title+'</h3>'
+    +'<div class="tags"><span class="badge b-dept">'+it.dept+'</span>'
+    +'<span class="badge b-cat">'+(CATNAME[it.cat]||it.cat)+'</span>'
+    +'<span class="badge b-q">质量'+it.quality+'</span>'
+    +'<span class="badge b-reg">'+it.region+'</span></div>'
+    +'<div class="meta">相关度 '+it.score+' ｜ '+it.date+' ｜ 内容类型：'+(it.summary? '':'')+'</div>'
+    +'<div class="chunk" id="c_'+Math.random().toString(36).slice(2)+'">'+hl(it.chunk,q)+'</div>'
+    +'<span class="more">展开/收起</span> ｜ <a href="'+it.url+'" target="_blank">查看原文 ↗</a></div>';
+  return d;
+}
+document.addEventListener('click',e=>{ if(e.target.classList.contains('more')){
+  const ch=e.target.previousElementSibling; if(ch) ch.classList.toggle('open'); }});
+
+/* ---------- 加载知识库 ---------- */
+function loadKB(obj){
+  RECORDS=obj; CHUNKS=[];
+  RECORDS.forEach((r,rid)=>{
+    const body=r.content||r.summary||''; if(!body) return;
+    chunkText(body).forEach(t=> CHUNKS.push({rid,text:t,dept:r.department,
+      cat:r.category,date:r.date,quality:r.quality,region:r.region,
+      title:r.title,url:r.url}));
+  });
+  build();
+  document.getElementById('stat').textContent='已构建索引：'+RECORDS.length+' 篇文献 / '+CHUNKS.length+' 个检索片段（纯前端 TF-IDF+BM25）。输入查询即可检索。';
+}
+function fetchKB(){
+  fetch('kb/kb.json',{cache:'no-store'}).then(r=>{ if(!r.ok) throw 0; return r.json(); })
+    .then(loadKB).catch(()=>{
+      document.getElementById('stat').textContent='无法自动加载 kb/kb.json（可能是本地 file:// 打开）。请点击上方「选择知识库文件」手动加载。';
+    });
+}
+document.getElementById('picker').onchange=e=>{ const f=e.target.files[0]; if(!f) return;
+  const rd=new FileReader(); rd.onload=()=>{ try{ loadKB(JSON.parse(rd.result)); }catch(err){ alert('解析失败'); } }; rd.readAsText(f); };
+fetchKB();
+</script>
+</body>
+</html>
