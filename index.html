@@ -987,7 +987,7 @@ function loadDetailStatic(idx){
     </div>
     <p class="muted" style="font-size:12.5px">来源：${esc(r.source||'')} · 发布 ${esc(r.date||'')} · 入库 ${esc(r.added_at||'')} ${r.url?`· <a href="${esc(r.url)}" target="_blank" rel="noopener">原文↗</a>`:''}</p>
     <div class="ggrid" style="grid-template-columns:1fr 280px">
-      <div><h3 style="font-size:14px;margin:10px 0 4px">正文</h3><div class="content md" id="fullBody-${idx}">${mdToHtml((r.summary||'（无正文）').slice(0,2000))}${r.content_fetched?`<p class="muted" id="fullLoad-${idx}">⏳ 正在加载全文…</p>`:''}</div>
+      <div><h3 style="font-size:14px;margin:10px 0 4px">正文</h3><div class="content md" id="fullBody-${idx}">${r.content?mdToHtml(String(r.content).slice(0,8000)):(r.content_fetched?`<p class="muted" id="fullLoad-${idx}">⏳ 正在加载原文全文…</p>`:mdToHtml((r.summary||'（无正文）').slice(0,2000)))}</div>
         ${r.images && r.images.length ? `<div class="gal" style="margin:10px 0">${r.images.map(src=>`<img class="gimg" src="${esc(src)}" loading="lazy" onclick="openImg('${esc(src)}')" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph',textContent:'图片不可预览'}))">`).join('')}</div><p class="muted" style="font-size:11.5px;margin:2px 0 0">🖼️ 正文配图 ${r.images.length} 张（点击放大；部分站点防盗链可能不可预览）</p>` : ''}
       </div>
       <div>
@@ -1000,7 +1000,7 @@ function loadDetailStatic(idx){
     <div class="mmap-card"><h3 style="font-size:13.5px;margin:0 0 8px">思维导图 · 实体与关系</h3>${buildMindMapHtml(r)}</div>`;
   $('#mask').classList.add('on');
   GraphViz.mount('localCanvas', localNodes, localEdges);
-  if(r.content_fetched && r.cid){ loadFullText(r.cid, 'fullBody-'+idx, 'fullLoad-'+idx); }
+  if(r.content_fetched && r.cid && !r.content){ loadFullText(r.cid, 'fullBody-'+idx, 'fullLoad-'+idx); }
 }
 /* 懒加载全文：kb/full/<cid>.txt（轻量 kb.json 不含长正文，按需获取） */
 async function loadFullText(cid, elId, loadId){
@@ -1355,7 +1355,7 @@ async function webSearch(q){
 async function callDeepSeek(q, mode){
   const key=getDsKey(); if(!key) return null;
   const rows=staticSearch(q, mode==='ask'?8:18);
-  // 懒加载 top 检索结果全文（kb/full/<cid>.txt），显著提升 RAG 上下文质量
+  // 懒加载 top 检索结果原文全文（kb/full/<cid>.txt），显著提升 RAG 上下文质量与完整性
   await Promise.all(rows.map(async r=>{
     if(r.content_fetched && r.cid && !r._full){ try{ r._full=await (await fetch(SITE_BASE+'kb/full/'+r.cid+'.txt',{cache:'no-store'})).text(); }catch(e){ r._full=''; } }
   }));
@@ -1451,12 +1451,13 @@ function staticSearch(q,k){
 }
 async function staticAI(q,mode){
   const rows=staticSearch(q, mode==='ask'?6:12);
+  // 懒加载 top 检索结果原文全文（kb/full/<cid>.txt），离线摘要也基于完整原文
   await Promise.all(rows.slice(0,6).map(async r=>{ if(r.content_fetched && r.cid && !r._full){ try{ r._full=await (await fetch(SITE_BASE+'kb/full/'+r.cid+'.txt',{cache:'no-store'})).text(); }catch(e){ r._full=''; } } }));
   if(mode==='ask'){
     let text='## 关于「'+q+'」的检索结果\n\n> 以下为知识库检索到的相关内容（静态只读模式，离线汇总）。\n\n### 一、要点速览\n';
     rows.slice(0,5).forEach((r,i)=>{ text+=(i+1)+'. **'+r.title+'**（'+(r.department||'')+' · '+(r.region||'')+' · 质量'+(r.quality||'')+'）— '+String(r.summary||'').slice(0,120)+'\n'; });
     text+='\n### 二、相关原文摘录\n';
-    rows.slice(0,3).forEach(r=>{ text+='\n**'+r.title+'**\n\n> '+String(r._full||r.content||r.summary||'').slice(0,400).replace(/\n/g,' ')+'\n\n来源：'+(r.url||'本地知识库')+'\n'; });
+    rows.slice(0,3).forEach(r=>{ text+='\n**'+r.title+'**\n\n> '+String(r._full||r.summary||'').slice(0,400).replace(/\n/g,' ')+'\n\n来源：'+(r.url||'本地知识库')+'\n'; });
     text+='\n### 三、建议\n\n- 部署后端并配置 AI 密钥后，可获取更深入的分析式回答。';
     return {text, sources: rows.map(r=>({title:r.title,url:r.url,department:r.department,quality:r.quality}))};
   } else {

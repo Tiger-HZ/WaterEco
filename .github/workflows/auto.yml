@@ -1,12 +1,12 @@
 # 水生态环境知识库 · 自动采集与部署
-# 每小时 / 每日自动采集水生态环境知识，去重入库并部署到 GitHub Pages 固定链接。
+# 每 3 小时 / 每日自动采集水生态环境知识，去重入库并部署到 GitHub Pages 固定链接。
 # 说明：用 GITHUB_TOKEN 推送不会触发 pages.yml（GitHub 默认防止令牌推送自触发工作流），
 #       因此本工作流自带 Pages 部署步骤，采集入库后直接发布。
 name: 自动采集与部署
 
 on:
   schedule:
-    - cron: '17 * * * *'        # 每小时第 17 分钟（UTC）常规采集
+    - cron: '17 */3 * * *'      # 每 3 小时第 17 分钟（UTC）常规采集
     - cron: '23 8 * * *'        # 每日 08:23（UTC）深度采集
   workflow_dispatch:
     inputs:
@@ -45,25 +45,34 @@ jobs:
       - name: 安装依赖
         run: pip install --quiet requests
 
-      # —— 每小时 / 手动常规采集 ——
-      - name: 常规采集（每小时）
-        if: ${{ github.event.schedule == '17 * * * *' || (github.event_name == 'workflow_dispatch' && inputs.intensity != 'daily') }}
+      # —— 每 3 小时 / 手动常规采集 ——
+      # 多源并行覆盖：政府政策库(gov, 抓全文) + 学术(OpenAlex) + 微信(weixin) + 开放学术(Crossref/EuropePMC)
+      # 各爬虫带“回溯游标(kb/cursor.json)”：每次抓取比上一次更旧的批次，单调增长、零重复，
+      # 可经每 3 小时 cron 持续累积至几十万级。inbox 采用 append 安全追加，顺序执行避免互相覆盖。
+      - name: 常规采集（每 3 小时）
+        if: ${{ github.event.schedule == '17 */3 * * *' || (github.event_name == 'workflow_dispatch' && inputs.intensity != 'daily') }}
         env:
           PAGES: '2'
+          OA_MAIL: 'water-eco-bot@users.noreply.github.com'
         run: |
           python3 crawl_gov.py
           python3 crawl_academic.py
           python3 crawl_weixin.py
+          PAGES=1 python3 crawl_crossref.py
+          PAGES=1 python3 crawl_europepmc.py
 
       # —— 每日深度采集（更多翻页、覆盖更全） ——
       - name: 深度采集（每日）
         if: ${{ github.event.schedule == '23 8 * * *' || (github.event_name == 'workflow_dispatch' && inputs.intensity == 'daily') }}
         env:
           PAGES: '6'
+          OA_MAIL: 'water-eco-bot@users.noreply.github.com'
         run: |
           python3 crawl_gov.py
           python3 crawl_academic.py
           python3 crawl_weixin.py
+          PAGES=4 python3 crawl_crossref.py
+          PAGES=4 python3 crawl_europepmc.py
 
       - name: 合并 / 归一化 / 富化 / 渲染
         run: python3 update.py

@@ -5,6 +5,8 @@
 用法：python crawl_weixin.py [额外关键词 ...]   环境变量 PAGES 控制每词翻页数(默认3)
 """
 import os, sys, json, time, ssl, urllib.request, urllib.parse, re, datetime
+from bs4 import BeautifulSoup
+import crawl_common as C
 BASE = os.path.dirname(os.path.abspath(__file__))
 INBOX = os.path.join(BASE, "kb", "inbox.json")
 CTX = ssl.create_default_context(); CTX.check_hostname = False; CTX.verify_mode = ssl.CERT_NONE
@@ -50,11 +52,8 @@ def water_rel(text):
 
 
 def classify_cat(title, summary):
-    h = (title or "") + " " + (summary or "")
-    for keys, cat in WX_CAT:
-        if any(k in h for k in keys):
-            return cat
-    return "policy"
+    # 复用 crawl_common 的政策感知分类（意见/批复/通知/规划/方案→政策；仅明确标准/规范→标准）
+    return C.classify_cat(title, summary, False)
 
 def get(u, to=20):
     req = urllib.request.Request(u, headers=UA)
@@ -75,6 +74,26 @@ def resolve(url):
             return r.geturl()
     except Exception:
         return url
+
+def fetch_weixin_full(url):
+    """尽力抓取微信公众号原文正文（#js_content）。反爬可能失败，返回空串则回退摘要。"""
+    if not url or "mp.weixin.qq.com" not in url:
+        return ""
+    try:
+        req = urllib.request.Request(url, headers=UA)
+        with urllib.request.urlopen(req, timeout=20, context=CTX) as r:
+            html = r.read().decode("utf-8", "ignore")
+        soup = BeautifulSoup(html, "html.parser")
+        el = soup.select_one("#js_content") or soup.select_one(".rich_media_content")
+        if el:
+            txt = el.get_text("\n")
+            txt = re.sub(r"\n{2,}", "\n", txt)
+            txt = "\n".join(l.strip() for l in txt.split("\n") if l.strip())
+            if len(txt) > 150:
+                return txt
+    except Exception:
+        return ""
+    return ""
 
 def main():
     # 微信阅读量/关注数过滤配置（来自 config.json → weixin_filter）
@@ -162,6 +181,15 @@ def main():
                 quality = "A" if is_auth else ("B" if rel >= 0.9 else "C")
                 if is_auth and m and (rec_metrics_cache.get(url) or {}).get("read", 0) >= (m.get("high_value_read", 10**9) or 10**9):
                     quality = "A"
+                # 官方权威号尽力抓取微信原文正文（反爬可能失败则回退摘要）
+                full_content = summary
+                full_ok = False
+                if is_auth and "mp.weixin.qq.com" in url:
+                    fc = fetch_weixin_full(url)
+                    if fc:
+                        full_content = fc
+                        full_ok = True
+                        time.sleep(0.3)
                 rec = {
                     "title": title,
                     "url": url,
@@ -175,8 +203,8 @@ def main():
                     "visibility": "自媒" if not is_auth else "官方权威",
                     "summary": summary[:240],
                     "tags": [q] + ([w for w in WX_REL if w in (title + summary)]),
-                    "content": summary,
-                    "content_fetched": False,
+                    "content": full_content,
+                    "content_fetched": full_ok,
                     "added_at": date or datetime.date.today().isoformat(),
                 }
                 if url in rec_metrics_cache and rec_metrics_cache[url]:

@@ -14,9 +14,11 @@
   python crawl_gov.py 千岛湖 水源    # 仅指定关键词
 """
 import json, os, re, ssl, sys, time, urllib.parse, urllib.request
+from bs4 import BeautifulSoup
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from merge import norm_url, event_key  # 复用去重逻辑
+import crawl_common as C  # 复用政策感知分类
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 INBOX = os.path.join(BASE, "kb", "inbox.json")
@@ -94,6 +96,29 @@ def clean(s):
     return re.sub(r"\s+", " ", s).strip()
 
 
+def fetch_full(url):
+    """抓取政策详情页全文（中国政府网 zhengce/政库页正文位于 #UCAP-CONTENT）。
+    返回清洗后的纯文本；失败返回空串（调用方回退到摘要片段）。"""
+    if not url:
+        return ""
+    try:
+        req = urllib.request.Request(url, headers=UA)
+        with urllib.request.urlopen(req, timeout=25, context=ctx) as r:
+            html = r.read().decode("utf-8", "replace")
+        soup = BeautifulSoup(html, "html.parser")
+        for sel in ["#UCAP-CONTENT", ".pages_content", "#p_content", "div.article", "#content"]:
+            el = soup.select_one(sel)
+            if el:
+                txt = el.get_text("\n")
+                txt = re.sub(r"\n{2,}", "\n", txt)
+                txt = "\n".join(l.strip() for l in txt.split("\n") if l.strip())
+                if len(txt) > 200:
+                    return txt
+    except Exception:
+        return ""
+    return ""
+
+
 def to_date(it):
     ds = it.get("pubtimeStr") or ""
     m = re.search(r"(\d{4})[.\-/](\d{1,2})[.\-/](\d{1,2})", ds)
@@ -116,13 +141,8 @@ def classify_dept(title, puborg):
 
 
 def classify_cat(title, summary, is_lit):
-    if is_lit:
-        return "literature"
-    hay = (title or "") + " " + (summary or "")
-    for keys, cat in CAT_RULES:
-        if any(k in hay for k in keys):
-            return cat
-    return "policy"
+    # 复用 crawl_common 的政策感知分类（意见/批复/通知/规划/方案→政策；仅明确标准/规范→标准）
+    return C.classify_cat(title, summary, is_lit)
 
 
 def is_relevant(title, summary):
@@ -169,6 +189,10 @@ def build_record(it, is_lit):
     if puborg:
         tags.append(puborg)
     ev = ("ev:" + pcode.lower()) if pcode else event_key(title)
+    # 抓取政策详情页全文（而非仅搜索摘要片段），确保拿到原文全部内容
+    full = fetch_full(url)
+    time.sleep(0.3)
+    content = full if full else summary
     rec = {
         "title": title,
         "url": url,
@@ -180,8 +204,8 @@ def build_record(it, is_lit):
         "quality": qual,
         "summary": summary,
         "tags": tags,
-        "content": summary,
-        "content_fetched": False,
+        "content": content,
+        "content_fetched": bool(full),
         "added_at": date or "",   # 用发布日期归档，历史条目分布到各自时间轴
         "_ev": ev,
     }

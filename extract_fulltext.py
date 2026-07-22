@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
-"""水生态环境知识库 · 全文抽取（支撑海量条目）。
+"""水生态环境知识库 · 全文抽取（支撑海量条目、确保原文完整）。
 把 kb.json 中体积大的长正文(content) 抽到独立文件 kb/full/<cid>.txt，
-kb.json 仅保留元数据 + summary（轻量，前端一次性加载无压力）。
-详情/问答需要时由门户按需懒加载 kb/full/<cid>.txt。
+kb.json / 分片仅保留元数据 + summary（轻量，门户一次性/分页并行加载无压力）。
+详情/问答需要时由门户按需懒加载 kb/full/<cid>.txt，确保每条知识呈现的是原文全部，
+而非仅摘录前几句。
 幂等：已存在且非空的 full 文件不覆盖；kb 记录 content 置空，标记 content_fetched。
-用法：python extract_fulltext.py   （update.py 自动调用，位于 enrich_kg 之后、render 之前）
+用法：python extract_fulltext.py   （update.py 自动调用，位于 enrich_kg 之后、shard 之前）
 """
 import json, os, hashlib
 
@@ -49,10 +50,10 @@ def main():
             r["content_fetched"] = True
         else:
             r["content_fetched"] = bool(os.path.exists(fpath) and os.path.getsize(fpath) > 0)
-        # 轻量化：kb.json 不再保存长正文
+        # 轻量化：kb.json / 分片不再保存长正文，门户按需懒加载 kb/full/<cid>.txt
         if "content" in r:
             del r["content"]
-        # 确保 summary 存在（详情回退）
+        # 确保 summary 存在（详情/检索回退）
         if not r.get("summary"):
             r["summary"] = (r.get("title") or "")[:200]
     json.dump(kb, open(KB, "w", encoding="utf-8"), ensure_ascii=False, indent=1)

@@ -4,6 +4,7 @@ OpenAlex 为完全开放的学术图谱 API（无需密钥），可按关键词/
 用法：python crawl_academic.py [额外关键词 ...]   环境变量 PAGES 控制每词翻页数(默认6)
 """
 import os, sys, json, time, ssl, urllib.request, urllib.parse, re, datetime
+import crawl_common as C
 BASE = os.path.dirname(os.path.abspath(__file__))
 INBOX = os.path.join(BASE, "kb", "inbox.json")
 CTX = ssl.create_default_context(); CTX.check_hostname = False; CTX.verify_mode = ssl.CERT_NONE
@@ -96,12 +97,8 @@ def abstract_text(inv):
     return " ".join(w for _, w in words)
 
 def classify(title, abstract):
-    t = (title + " " + abstract).lower()
-    if re.search(r"standard|规范|guideline|指南|method", t): return "standard"
-    if re.search(r"technology|technolog|技术|material|monitor|监测|equipment|装备|wetland|生态修复", t): return "tech"
-    if re.search(r"management|governance|管理|policy|政策|补偿|institution", t): return "management"
-    if re.search(r"basin|river|lake|流域|湖|河|watershed", t): return "basin_eng"
-    return "literature"
+    # 学术文献分类（收紧）：默认 literature；仅明确讨论标准(含代号)才归 standard
+    return C.classify_academic(title, abstract)
 
 def main():
     existing = set()
@@ -117,15 +114,19 @@ def main():
     extra = sys.argv[1:]
     queries = QUERIES + extra
     added = 0
+    # 回溯游标：每次抓取比上一次“更旧”的批次，单调增长、零重复
+    cur = C.load_cursor()
+    until = (cur.get("openalex") or {}).get("until") or datetime.date.today().isoformat()
+    min_date = until
     for q in queries:
         for pg in range(1, PAGES + 1):
-            # 时间窗放宽至 2000 年起，配合更大 per_page 以覆盖海量水生态文献（支撑数十万级条目）
+            # 时间窗：2000 起 ~ until（游标上界），配合更大 per_page 覆盖海量水生态文献
             # SORT 可配置：desc=最新优先(小时级定时用)，asc=最旧优先(批量回填历史文献用)
             fdate = os.environ.get("FROM_DATE", "2000-01-01")
             sort = os.environ.get("SORT", "publication_date:desc")
             url = ("https://api.openalex.org/works?search=%s&per-page=200&page=%d"
-                   "&filter=from_publication_date:%s,has_abstract:true"
-                   "&sort=%s") % (urllib.parse.quote(q), pg, fdate, sort)
+                   "&filter=from_publication_date:%s,to_publication_date:%s,has_abstract:true"
+                   "&sort=%s") % (urllib.parse.quote(q), pg, fdate, until, sort)
             d = get_json(url)
             if not d or not d.get("results"): break
             for w in d["results"]:
@@ -137,6 +138,8 @@ def main():
                 if link and norm_url(link) in existing: continue
                 # 保留真实发表年（含未来预发表年份，如 2027）；统计时间由前端按 effDate 回退到入库日
                 date = w.get("publication_date") or ""
+                if date and date > until: continue
+                if date and date < min_date: min_date = date
                 abs = abstract_text(w.get("abstract_inverted_index"))
                 concepts = [c["display_name"] for c in (w.get("concepts") or [])[:6] if c.get("display_name")]
                 # 机构国家 → 地域
@@ -170,8 +173,12 @@ def main():
                 added += 1
             time.sleep(0.5)
         print("q=%s done, cumulative added=%d" % (q, added))
-    json.dump(inbox, open(INBOX, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-    print("crawl_academic: added=%d, inbox_total=%d" % (added, len(inbox)))
+    if min_date < until:
+        cur["openalex"] = {"until": min_date}
+        C.save_cursor(cur)
+        print("openalex 游标推进 -> %s" % min_date)
+    total = C.append_inbox(inbox)
+    print("crawl_academic: added=%d, inbox_total=%d" % (added, total))
 
 if __name__ == "__main__":
     main()
