@@ -55,11 +55,11 @@ jobs:
           PAGES: '2'
           OA_MAIL: 'water-eco-bot@users.noreply.github.com'
         run: |
-          python3 crawl_gov.py
-          python3 crawl_academic.py
-          python3 crawl_weixin.py
-          PAGES=1 python3 crawl_crossref.py
-          PAGES=1 python3 crawl_europepmc.py
+          python3 crawl_gov.py || echo "crawl_gov failed, skip"
+          python3 crawl_academic.py || echo "crawl_academic failed, skip"
+          python3 crawl_weixin.py || echo "crawl_weixin failed, skip"
+          PAGES=1 python3 crawl_crossref.py || echo "crawl_crossref failed, skip"
+          PAGES=1 python3 crawl_europepmc.py || echo "crawl_europepmc failed, skip"
 
       # —— 每日深度采集（更多翻页、覆盖更全） ——
       - name: 深度采集（每日）
@@ -68,11 +68,11 @@ jobs:
           PAGES: '6'
           OA_MAIL: 'water-eco-bot@users.noreply.github.com'
         run: |
-          python3 crawl_gov.py
-          python3 crawl_academic.py
-          python3 crawl_weixin.py
-          PAGES=4 python3 crawl_crossref.py
-          PAGES=4 python3 crawl_europepmc.py
+          python3 crawl_gov.py || echo "crawl_gov failed, skip"
+          python3 crawl_academic.py || echo "crawl_academic failed, skip"
+          python3 crawl_weixin.py || echo "crawl_weixin failed, skip"
+          PAGES=4 python3 crawl_crossref.py || echo "crawl_crossref failed, skip"
+          PAGES=4 python3 crawl_europepmc.py || echo "crawl_europepmc failed, skip"
 
       - name: 合并 / 归一化 / 富化 / 渲染
         run: python3 update.py
