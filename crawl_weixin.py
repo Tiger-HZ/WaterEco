@@ -7,6 +7,9 @@
 import os, sys, json, time, ssl, urllib.request, urllib.parse, re, datetime
 from bs4 import BeautifulSoup
 import crawl_common as C
+import media  # 微信文章配图入库
+
+FETCH_IMAGES = os.environ.get("FETCH_IMAGES", "1") == "1"
 BASE = os.path.dirname(os.path.abspath(__file__))
 INBOX = os.path.join(BASE, "kb", "inbox.json")
 CTX = ssl.create_default_context(); CTX.check_hostname = False; CTX.verify_mode = ssl.CERT_NONE
@@ -76,9 +79,10 @@ def resolve(url):
         return url
 
 def fetch_weixin_full(url):
-    """尽力抓取微信公众号原文正文（#js_content）。反爬可能失败，返回空串则回退摘要。"""
+    """尽力抓取微信公众号原文正文（#js_content）。反爬可能失败，返回 (空串, None, None) 则回退摘要。
+    返回 (清洗纯文本, 正文容器soup, 整页soup)；容器用于抽取正文配图，整页作为配图回退源。"""
     if not url or "mp.weixin.qq.com" not in url:
-        return ""
+        return "", None, None
     try:
         req = urllib.request.Request(url, headers=UA)
         with urllib.request.urlopen(req, timeout=20, context=CTX) as r:
@@ -90,10 +94,10 @@ def fetch_weixin_full(url):
             txt = re.sub(r"\n{2,}", "\n", txt)
             txt = "\n".join(l.strip() for l in txt.split("\n") if l.strip())
             if len(txt) > 150:
-                return txt
+                return txt, el, soup
     except Exception:
-        return ""
-    return ""
+        return "", None, None
+    return "", None, None
 
 def main():
     # 微信阅读量/关注数过滤配置（来自 config.json → weixin_filter）
@@ -184,12 +188,19 @@ def main():
                 # 官方权威号尽力抓取微信原文正文（反爬可能失败则回退摘要）
                 full_content = summary
                 full_ok = False
+                images = []
                 if is_auth and "mp.weixin.qq.com" in url:
-                    fc = fetch_weixin_full(url)
+                    fc, container, wsoup = fetch_weixin_full(url)
                     if fc:
                         full_content = fc
                         full_ok = True
                         time.sleep(0.3)
+                    # 抽取正文配图（政策/研究类配图含关键信息，用户要求一并入库）
+                    if FETCH_IMAGES and container:
+                        cid = C.make_cid({"url": url, "title": title, "date": date})
+                        images = media.fetch_images(url, container, cid)
+                        if not images and wsoup:
+                            images = media.fetch_images(url, wsoup, cid, skip_decorative=True)
                 rec = {
                     "title": title,
                     "url": url,
@@ -205,6 +216,8 @@ def main():
                     "tags": [q] + ([w for w in WX_REL if w in (title + summary)]),
                     "content": full_content,
                     "content_fetched": full_ok,
+                    "images": images,
+                    "cid": C.make_cid({"url": url, "title": title, "date": date}),
                     "added_at": date or datetime.date.today().isoformat(),
                 }
                 if url in rec_metrics_cache and rec_metrics_cache[url]:

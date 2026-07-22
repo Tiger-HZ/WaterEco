@@ -6,10 +6,29 @@
 """
 import os, sys, json, re, datetime, urllib.parse
 import crawl_common as C
+import media  # 学术 OA 全文 PDF 入库
 
 MAIL = os.environ.get("OA_MAIL", "water-eco-bot@users.noreply.github.com")
 PAGES = int(os.environ.get("PAGES", "2"))
 ROWS = 200
+FETCH_PDF = os.environ.get("FETCH_PDF", "1") == "1"
+
+
+def find_pdf_url(it):
+    """从 Crossref item 中定位开放获取(OA)全文 PDF 链接。"""
+    # 1) link 列表里 content-type 为 application/pdf 的（优先 OA 版）
+    for lk in (it.get("link") or []):
+        if not isinstance(lk, dict):
+            continue
+        ct = (lk.get("content-type") or "").lower()
+        u = lk.get("URL") or ""
+        if ("pdf" in ct or u.lower().endswith(".pdf")) and u:
+            return u
+    # 2) open_access.url（可能是 PDF 或落地页，交给 media 校验下载）
+    oa = (it.get("open_access") or {}).get("url") or ""
+    if oa and ("pdf" in oa.lower() or "download" in oa.lower()):
+        return oa
+    return None
 QUERIES = [
     "water quality", "surface water quality", "groundwater quality", "drinking water source",
     "water quality standards", "nutrient pollution", "eutrophication", "cyanobacteria bloom",
@@ -117,6 +136,12 @@ def main():
                 cat = C.classify_academic(title, abstract)
                 quality = "A" if abstract else "B"
                 cited = int(it.get("is-referenced-by-count") or 0)
+                cid = C.make_cid({"url": it.get("URL") or ("https://doi.org/" + doi), "title": title, "date": d})
+                pdf = None
+                if FETCH_PDF:
+                    pu = find_pdf_url(it)
+                    if pu:
+                        pdf = media.fetch_pdf(pu, cid)
                 recs.append({
                     "title": title.strip(),
                     "url": it.get("URL") or ("https://doi.org/" + doi),
@@ -130,6 +155,8 @@ def main():
                     "tags": [],
                     "content": abstract[:800] if abstract else "",
                     "content_fetched": bool(abstract),
+                    "pdf": pdf,
+                    "cid": cid,
                     "importance": min(5, 1 + cited // 50),
                     "added_at": C.today(),
                 })

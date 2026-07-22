@@ -7,9 +7,27 @@
 """
 import os, sys, json, re, datetime, urllib.parse
 import crawl_common as C
+import media  # 学术 OA 全文 PDF 入库
 
 PAGES = int(os.environ.get("PAGES", "2"))
 ROWS = 200
+FETCH_PDF = os.environ.get("FETCH_PDF", "1") == "1"
+
+
+def find_pdf_url(it):
+    """从 Europe PMC item 中定位 OA 全文 PDF：优先 fullTextUrlList 中
+    documentStyle=pdf 且 availability=Open Access 的条目。"""
+    for ft in (it.get("fullTextUrlList") or {}).get("fullTextUrl") or []:
+        if not isinstance(ft, dict):
+            continue
+        if (ft.get("documentStyle") == "pdf" or (ft.get("url") or "").lower().endswith(".pdf")) \
+           and ft.get("availability") == "Open Access":
+            return ft.get("url")
+    # 回退：任一 pdf 样式链接
+    for ft in (it.get("fullTextUrlList") or {}).get("fullTextUrl") or []:
+        if isinstance(ft, dict) and ft.get("documentStyle") == "pdf" and ft.get("url"):
+            return ft.get("url")
+    return None
 BASE_URL = "https://www.ebi.ac.uk/europepmc/webservices/rest/search"
 MIN_YEAR = 2000
 QUERIES = [
@@ -89,9 +107,16 @@ def main():
                 cat = C.classify_academic(title, abstract)
                 quality = "A" if abstract else "B"
                 cited = int(it.get("citedByCount") or 0)
+                final_url = key_url or ("https://europepmc.org/article/%s/%s" % (it.get("source", "MED"), it.get("id", "")))
+                cid = C.make_cid({"url": final_url, "title": title, "date": d or ("%d-01-01" % year)})
+                pdf = None
+                if FETCH_PDF:
+                    pu = find_pdf_url(it)
+                    if pu:
+                        pdf = media.fetch_pdf(pu, cid)
                 recs.append({
                     "title": title.strip(),
-                    "url": key_url or ("https://europepmc.org/article/%s/%s" % (it.get("source", "MED"), it.get("id", ""))),
+                    "url": final_url,
                     "source": (it.get("journalInfo") or {}).get("journal", {}).get("title") or "Europe PMC 学术文献",
                     "date": d or ("%d-01-01" % year),
                     "category": cat,
@@ -102,6 +127,8 @@ def main():
                     "tags": [],
                     "content": abstract[:800] if abstract else "",
                     "content_fetched": bool(abstract),
+                    "pdf": pdf,
+                    "cid": cid,
                     "importance": min(5, 1 + cited // 50),
                     "added_at": C.today(),
                 })

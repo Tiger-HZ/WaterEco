@@ -7,18 +7,16 @@ kb.json / 分片仅保留元数据 + summary（轻量，门户一次性/分页�
 幂等：已存在且非空的 full 文件不覆盖；kb 记录 content 置空，标记 content_fetched。
 用法：python extract_fulltext.py   （update.py 自动调用，位于 enrich_kg 之后、shard 之前）
 """
-import json, os, hashlib
+import json, os
+import crawl_common as C
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 KB = os.path.join(BASE, "kb", "kb.json")
 FULL_DIR = os.path.join(BASE, "kb", "full")
 
 def make_cid(r):
-    key = (r.get("url") or "").strip().lower()
-    if not key:
-        key = (r.get("title") or "") + "|" + (r.get("date") or "")
-    h = hashlib.sha1(key.encode("utf-8")).hexdigest()[:16]
-    return h
+    # 与爬虫共用同一函数，保证媒体/全文文件命名一致
+    return C.make_cid(r)
 
 def load(p):
     if os.path.exists(p):

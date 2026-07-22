@@ -5,6 +5,9 @@ OpenAlex 为完全开放的学术图谱 API（无需密钥），可按关键词/
 """
 import os, sys, json, time, ssl, urllib.request, urllib.parse, re, datetime
 import crawl_common as C
+import media  # 学术 OA 全文 PDF 入库
+
+FETCH_PDF = os.environ.get("FETCH_PDF", "1") == "1"
 BASE = os.path.dirname(os.path.abspath(__file__))
 INBOX = os.path.join(BASE, "kb", "inbox.json")
 CTX = ssl.create_default_context(); CTX.check_hostname = False; CTX.verify_mode = ssl.CERT_NONE
@@ -153,6 +156,12 @@ def main():
                 dept = "科技"
                 cat = classify(title, abs)
                 summary = abs[:240] if abs else (title)
+                cid = C.make_cid({"url": link, "title": title, "date": date})
+                pdf = None
+                if FETCH_PDF:
+                    pu = (w.get("open_access") or {}).get("pdf_url") or ""
+                    if pu:
+                        pdf = media.fetch_pdf(pu, cid)
                 rec = {
                     "title": title.strip(),
                     "url": link,
@@ -166,6 +175,8 @@ def main():
                     "tags": concepts[:5],
                     "content": abs[:3000] if abs else "",
                     "content_fetched": bool(abs),
+                    "pdf": pdf,
+                    "cid": cid,
                     "added_at": datetime.date.today().isoformat(),
                 }
                 inbox.append(rec); existing.add(title.strip().lower())

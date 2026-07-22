@@ -5,7 +5,7 @@
  - 回溯游标（kb/cursor.json）让每次运行抓取比上一次“更旧”的批次，单调增长、零重复；
  - 多爬虫可安全向同一 inbox 追加，不会互相覆盖。
 """
-import os, json, time, ssl, urllib.request, urllib.parse, re, datetime
+import os, json, time, ssl, urllib.request, urllib.parse, re, datetime, hashlib
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 INBOX = os.path.join(BASE, "kb", "inbox.json")
@@ -163,3 +163,14 @@ def append_inbox(records):
 
 def today():
     return datetime.date.today().isoformat()
+
+
+# ——— 内容 ID（用于媒体/全文文件命名，爬虫与 extract_fulltext 必须共用，保证一致）———
+def make_cid(r):
+    """基于 url(优先) 或 title|date 的 sha1 前 16 位，作为 kb/full/<cid>.txt /
+    kb/img/<cid>_N.* / kb/pdf/<cid>.pdf 的稳定文件名。爬虫在抓媒体时即按此命名，
+    extract_fulltext 复用同一函数得到相同 cid，确保门户能正确定位媒体/全文文件。"""
+    key = (r.get("url") or "").strip().lower()
+    if not key:
+        key = (r.get("title") or "") + "|" + (r.get("date") or "")
+    return hashlib.sha1(key.encode("utf-8")).hexdigest()[:16]

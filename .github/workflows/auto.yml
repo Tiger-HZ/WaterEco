@@ -1,13 +1,14 @@
 # 水生态环境知识库 · 自动采集与部署
-# 每 3 小时 / 每日自动采集水生态环境知识，去重入库并部署到 GitHub Pages 固定链接。
+# 每小时 / 每日自动采集水生态环境知识：抓取原文全文 + 政策/研究配图 + 学术开放获取PDF，
+# 去重入库并部署到 GitHub Pages 固定链接（实时更新）。
 # 说明：用 GITHUB_TOKEN 推送不会触发 pages.yml（GitHub 默认防止令牌推送自触发工作流），
 #       因此本工作流自带 Pages 部署步骤，采集入库后直接发布。
 name: 自动采集与部署
 
 on:
   schedule:
-    - cron: '17 */3 * * *'      # 每 3 小时第 17 分钟（UTC）常规采集
-    - cron: '23 8 * * *'        # 每日 08:23（UTC）深度采集
+    - cron: '17 * * * *'        # 每小时第 17 分钟（UTC）常规采集（批量调大）
+    - cron: '23 8 * * *'        # 每日 08:23（UTC）深度采集（更大批量 + 抓 PDF）
   workflow_dispatch:
     inputs:
       intensity:
@@ -45,27 +46,17 @@ jobs:
       - name: 安装依赖
         run: pip install --quiet requests
 
-      # —— 每 3 小时 / 手动常规采集 ——
-      # 多源并行覆盖：政府政策库(gov, 抓全文) + 学术(OpenAlex) + 微信(weixin) + 开放学术(Crossref/EuropePMC)
+      # —— 每小时 / 手动常规采集（批量调大：开源文献 PAGES=4）——
+      # 多源：政府政策库(gov, 抓全文+配图) + 学术(OpenAlex) + 微信(weixin) + 开放学术(Crossref/EuropePMC, 抓文摘+OA-PDF)
       # 各爬虫带“回溯游标(kb/cursor.json)”：每次抓取比上一次更旧的批次，单调增长、零重复，
-      # 可经每 3 小时 cron 持续累积至几十万级。inbox 采用 append 安全追加，顺序执行避免互相覆盖。
-      - name: 常规采集（每 3 小时）
-        if: ${{ github.event.schedule == '17 */3 * * *' || (github.event_name == 'workflow_dispatch' && inputs.intensity != 'daily') }}
+      # 可经每小时 cron 持续累积至几十万级。inbox 采用 append 安全追加，顺序执行避免互相覆盖。
+      - name: 常规采集（每小时）
+        if: ${{ github.event.schedule == '17 * * * *' || (github.event_name == 'workflow_dispatch' && inputs.intensity != 'daily') }}
         env:
-          PAGES: '2'
-          OA_MAIL: 'water-eco-bot@users.noreply.github.com'
-        run: |
-          python3 crawl_gov.py || echo "crawl_gov failed, skip"
-          python3 crawl_academic.py || echo "crawl_academic failed, skip"
-          python3 crawl_weixin.py || echo "crawl_weixin failed, skip"
-          PAGES=1 python3 crawl_crossref.py || echo "crawl_crossref failed, skip"
-          PAGES=1 python3 crawl_europepmc.py || echo "crawl_europepmc failed, skip"
-
-      # —— 每日深度采集（更多翻页、覆盖更全） ——
-      - name: 深度采集（每日）
-        if: ${{ github.event.schedule == '23 8 * * *' || (github.event_name == 'workflow_dispatch' && inputs.intensity == 'daily') }}
-        env:
-          PAGES: '6'
+          PAGES: '4'
+          GOV_PAGES: '3'
+          FETCH_IMAGES: '1'
+          FETCH_PDF: '1'
           OA_MAIL: 'water-eco-bot@users.noreply.github.com'
         run: |
           python3 crawl_gov.py || echo "crawl_gov failed, skip"
@@ -73,6 +64,32 @@ jobs:
           python3 crawl_weixin.py || echo "crawl_weixin failed, skip"
           PAGES=4 python3 crawl_crossref.py || echo "crawl_crossref failed, skip"
           PAGES=4 python3 crawl_europepmc.py || echo "crawl_europepmc failed, skip"
+
+      # —— 每日深度采集（更大批量 + 抓 PDF）——
+      - name: 深度采集（每日）
+        if: ${{ github.event.schedule == '23 8 * * *' || (github.event_name == 'workflow_dispatch' && inputs.intensity == 'daily') }}
+        env:
+          PAGES: '12'
+          GOV_PAGES: '6'
+          FETCH_IMAGES: '1'
+          FETCH_PDF: '1'
+          OA_MAIL: 'water-eco-bot@users.noreply.github.com'
+        run: |
+          python3 crawl_gov.py || echo "crawl_gov failed, skip"
+          python3 crawl_academic.py || echo "crawl_academic failed, skip"
+          python3 crawl_weixin.py || echo "crawl_weixin failed, skip"
+          PAGES=12 python3 crawl_crossref.py || echo "crawl_crossref failed, skip"
+          PAGES=12 python3 crawl_europepmc.py || echo "crawl_europepmc failed, skip"
+
+      # —— 存量媒体回填：对“已有知识”补抓政策/研究配图 + 学术 OA 全文 PDF（分批推进，消化历史存量）——
+      - name: 存量媒体回填（每日）
+        if: ${{ github.event.schedule == '23 8 * * *' || (github.event_name == 'workflow_dispatch' && inputs.intensity == 'daily') }}
+        env:
+          BATCH: '400'
+          FETCH_IMAGES: '1'
+          FETCH_PDF: '1'
+          OA_MAIL: 'water-eco-bot@users.noreply.github.com'
+        run: python3 refetch_media.py || echo "refetch_media failed, skip"
 
       - name: 合并 / 归一化 / 富化 / 渲染
         run: python3 update.py

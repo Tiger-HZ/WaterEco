@@ -221,6 +221,9 @@
   .gal img{width:100%;height:90px;object-fit:cover;border-radius:8px;border:1px solid var(--line);cursor:pointer}
   .gal .ph{height:90px;border-radius:8px;background:#eef2f0;display:flex;align-items:center;justify-content:center;
            color:var(--sub);font-size:11.5px;border:1px dashed var(--line)}
+  .pdfbtn{display:inline-block;background:linear-gradient(135deg,#0c7c5a,#0a9e7a);color:#fff;font-weight:600;
+          text-decoration:none;padding:8px 14px;border-radius:9px;font-size:13px;box-shadow:0 2px 8px rgba(12,124,90,.25)}
+  .pdfbtn:hover{filter:brightness(1.06);text-decoration:none;color:#fff}
   .ann{background:#f8faf9;border:1px solid var(--line);border-radius:9px;padding:9px 12px;margin:8px 0;font-size:13px}
   .ann .meta{font-size:11.5px;color:var(--sub);margin-top:4px;display:flex;justify-content:space-between;gap:8px}
   .ann .del{color:#dc2626;cursor:pointer;font-size:11.5px}
@@ -885,9 +888,12 @@ async function loadDetailBackend(id){
   const kg = (rec.kg_terms||[]).map(t=>`<span class="kw concept">${esc(t)}</span>`).join('');
   const tags = (rec.tags||[]).map(t=>`<span class="kw">${esc(t)}</span>`).join('');
   const imgs = (rec.images||[]);
-  const gal = imgs.length? '<div class="gal">'+imgs.map(src=> src&&/^https?:/.test(src)
-      ? `<img src="${esc(src)}" onclick="openImg('${esc(src)}')" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph',textContent:'图片不可预览'}))">`
-      : `<div class="ph">非公开图片</div>`).join('')+'</div>' : '<p class="muted">本条无图片。</p>';
+  const gal = imgs.length? '<div class="gal">'+imgs.map(src=>{
+      if(!src) return '<div class="ph">图片缺失</div>';
+      const isHttp = /^https?:/i.test(src);
+      const show = isHttp ? esc(src) : (SITE_BASE + esc(src));
+      return `<img class="gimg" src="${show}" loading="lazy" onclick="openImg('${show}')" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph',textContent:'图片不可预览'}))">`;
+    }).join('')+'</div>' : '<p class="muted">本条无图片。</p>';
   const flags = rec.flags||{};
   const flagHtml = (flags.dup? '<span class="badge b-q">疑似重复'+(flags.dup_of?' → #'+flags.dup_of:'')+'</span>':'')+(flags.lowq?'<span class="badge b-none">低质待复核</span>':'');
   // 本地小图谱
@@ -931,6 +937,7 @@ async function loadDetailBackend(id){
     <div class="sub-card" style="margin-top:14px">
       <h3 style="font-size:14px;margin:0 0 6px">图片画廊</h3>${gal}
     </div>
+    ${rec.pdf?`<div class="sub-card" style="margin-top:14px"><h3 style="font-size:14px;margin:0 0 6px">📄 全文 PDF</h3><a class="pdfbtn" href="${/^https?:/i.test(rec.pdf)?esc(rec.pdf):(SITE_BASE+esc(rec.pdf))}" target="_blank" rel="noopener">⬇ 下载 / 在线阅读全文 PDF</a><p class="muted" style="font-size:11.5px;margin:4px 0 0">学术文献原文 PDF（开放获取），已一并入库</p></div>`:''}
     <div class="sub-card" style="margin-top:14px">
       <h3 style="font-size:14px;margin:0 0 6px">批注 / 分析记录 ${(rec.annotations||[]).length?('('+(rec.annotations||[]).length+')'):''}</h3>
       <div id="annList">${annHtml||'<p class="muted">暂无批注。</p>'}</div>
@@ -997,6 +1004,7 @@ function loadDetailStatic(idx){
           <p class="muted" style="font-size:11.5px;margin:6px 0 0">滚轮缩放 · 拖拽平移 · 点击节点查看</p></div>
       </div>
     </div>
+    ${r.pdf?`<div class="sub-card" style="margin-top:14px"><h3 style="font-size:14px;margin:0 0 6px">📄 全文 PDF</h3><a class="pdfbtn" href="${/^https?:/i.test(r.pdf)?esc(r.pdf):(SITE_BASE+esc(r.pdf))}" target="_blank" rel="noopener">⬇ 下载 / 在线阅读全文 PDF</a><p class="muted" style="font-size:11.5px;margin:4px 0 0">学术文献原文 PDF（开放获取），已一并入库</p></div>`:''}
     <div class="mmap-card"><h3 style="font-size:13.5px;margin:0 0 8px">思维导图 · 实体与关系</h3>${buildMindMapHtml(r)}</div>`;
   $('#mask').classList.add('on');
   GraphViz.mount('localCanvas', localNodes, localEdges);

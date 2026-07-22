@@ -18,7 +18,10 @@ from bs4 import BeautifulSoup
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from merge import norm_url, event_key  # 复用去重逻辑
-import crawl_common as C  # 复用政策感知分类
+import crawl_common as C  # 复用政策感知分类 + 共享 make_cid
+import media  # 政策/研究配图入库
+
+FETCH_IMAGES = os.environ.get("FETCH_IMAGES", "1") == "1"
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 INBOX = os.path.join(BASE, "kb", "inbox.json")
@@ -98,9 +101,10 @@ def clean(s):
 
 def fetch_full(url):
     """抓取政策详情页全文（中国政府网 zhengce/政库页正文位于 #UCAP-CONTENT）。
-    返回清洗后的纯文本；失败返回空串（调用方回退到摘要片段）。"""
+    返回 (清洗后纯文本, 正文容器soup, 整页soup)；任一失败对应位置返回空串/None
+    （调用方回退到摘要片段；容器用于抽取正文配图，整页作为配图回退源）。"""
     if not url:
-        return ""
+        return "", None, None
     try:
         req = urllib.request.Request(url, headers=UA)
         with urllib.request.urlopen(req, timeout=25, context=ctx) as r:
@@ -113,10 +117,10 @@ def fetch_full(url):
                 txt = re.sub(r"\n{2,}", "\n", txt)
                 txt = "\n".join(l.strip() for l in txt.split("\n") if l.strip())
                 if len(txt) > 200:
-                    return txt
+                    return txt, el, soup
     except Exception:
-        return ""
-    return ""
+        return "", None, None
+    return "", None, None
 
 
 def to_date(it):
@@ -190,9 +194,17 @@ def build_record(it, is_lit):
         tags.append(puborg)
     ev = ("ev:" + pcode.lower()) if pcode else event_key(title)
     # 抓取政策详情页全文（而非仅搜索摘要片段），确保拿到原文全部内容
-    full = fetch_full(url)
+    full, container, soup = fetch_full(url)
     time.sleep(0.3)
     content = full if full else summary
+    cid = C.make_cid({"url": url, "title": title, "date": date})
+    # 抽取正文配图入库（政策规划类/研究类配图常含关键信息，用户要求一并收集）
+    images = []
+    if FETCH_IMAGES and container:
+        images = media.fetch_images(url, container, cid)
+        # 正文容器无图时，回退到整页（过滤 logo/二维码等装饰图）
+        if not images and soup:
+            images = media.fetch_images(url, soup, cid, skip_decorative=True)
     rec = {
         "title": title,
         "url": url,
@@ -206,6 +218,8 @@ def build_record(it, is_lit):
         "tags": tags,
         "content": content,
         "content_fetched": bool(full),
+        "images": images,
+        "cid": cid,
         "added_at": date or "",   # 用发布日期归档，历史条目分布到各自时间轴
         "_ev": ev,
     }
