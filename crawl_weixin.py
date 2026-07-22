@@ -141,7 +141,7 @@ def main():
                 elif "浙江" in rhay or "长三角" in rhay:
                     region = "浙江" if "浙江" in rhay else "长三角"
                 else:
-                    region = "全国(部委)"
+                    region = "全国"
                 # 质量与相关性
                 rel = water_rel(title + " " + summary)
                 is_auth = any(a in account for a in AUTH_ACCOUNTS)

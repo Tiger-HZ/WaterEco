@@ -162,7 +162,7 @@ def build_record(it, is_lit):
     elif "浙江" in rhay or "长三角" in rhay:
         region = "浙江" if "浙江" in rhay else "长三角"
     else:
-        region = "全国(部委)"
+        region = "全国"
     tags = ["水生态环境", "国家政策"]
     if pcode:
         tags.append(pcode)

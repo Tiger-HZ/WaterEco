@@ -1,0 +1,93 @@
+# 水生态环境知识库 · 自动采集与部署
+# 每小时 / 每日自动采集水生态环境知识，去重入库并部署到 GitHub Pages 固定链接。
+# 说明：用 GITHUB_TOKEN 推送不会触发 pages.yml（GitHub 默认防止令牌推送自触发工作流），
+#       因此本工作流自带 Pages 部署步骤，采集入库后直接发布。
+name: 自动采集与部署
+
+on:
+  schedule:
+    - cron: '17 * * * *'        # 每小时第 17 分钟（UTC）常规采集
+    - cron: '23 8 * * *'        # 每日 08:23（UTC）深度采集
+  workflow_dispatch:
+    inputs:
+      intensity:
+        description: '采集强度: hourly(常规) / daily(深度)'
+        required: false
+        default: 'hourly'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 安装依赖
+        run: pip install --quiet requests
+
+      # —— 每小时 / 手动常规采集 ——
+      - name: 常规采集（每小时）
+        if: ${{ github.event.schedule == '17 * * * *' || (github.event_name == 'workflow_dispatch' && inputs.intensity != 'daily') }}
+        env:
+          PAGES: '2'
+        run: |
+          python3 crawl_gov.py
+          python3 crawl_academic.py
+          python3 crawl_weixin.py
+
+      # —— 每日深度采集（更多翻页、覆盖更全） ——
+      - name: 深度采集（每日）
+        if: ${{ github.event.schedule == '23 8 * * *' || (github.event_name == 'workflow_dispatch' && inputs.intensity == 'daily') }}
+        env:
+          PAGES: '6'
+        run: |
+          python3 crawl_gov.py
+          python3 crawl_academic.py
+          python3 crawl_weixin.py
+
+      - name: 合并 / 归一化 / 富化 / 渲染
+        run: python3 update.py
+
+      - name: 提交入库数据
+        run: |
+          git config user.email "bot@water-eco.local"
+          git config user.name "WaterEco Bot"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "无新增知识，跳过提交"
+          else
+            git commit -m "auto: 自动采集 $(date +%F-%H:%M) UTC"
+            git push
+          fi
+
+      - name: 配置 Pages
+        uses: actions/configure-pages@v5
+
+      - name: 上传站点产物
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: 部署到 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
