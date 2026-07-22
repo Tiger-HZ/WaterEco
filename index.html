@@ -987,7 +987,7 @@ function loadDetailStatic(idx){
     </div>
     <p class="muted" style="font-size:12.5px">来源：${esc(r.source||'')} · 发布 ${esc(r.date||'')} · 入库 ${esc(r.added_at||'')} ${r.url?`· <a href="${esc(r.url)}" target="_blank" rel="noopener">原文↗</a>`:''}</p>
     <div class="ggrid" style="grid-template-columns:1fr 280px">
-      <div><h3 style="font-size:14px;margin:10px 0 4px">正文</h3><div class="content md">${mdToHtml((r.content||r.summary||'（无正文）').slice(0,6000))}</div>
+      <div><h3 style="font-size:14px;margin:10px 0 4px">正文</h3><div class="content md" id="fullBody-${idx}">${mdToHtml((r.summary||'（无正文）').slice(0,2000))}${r.content_fetched?`<p class="muted" id="fullLoad-${idx}">⏳ 正在加载全文…</p>`:''}</div>
         ${r.images && r.images.length ? `<div class="gal" style="margin:10px 0">${r.images.map(src=>`<img class="gimg" src="${esc(src)}" loading="lazy" onclick="openImg('${esc(src)}')" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph',textContent:'图片不可预览'}))">`).join('')}</div><p class="muted" style="font-size:11.5px;margin:2px 0 0">🖼️ 正文配图 ${r.images.length} 张（点击放大；部分站点防盗链可能不可预览）</p>` : ''}
       </div>
       <div>
@@ -1000,8 +1000,19 @@ function loadDetailStatic(idx){
     <div class="mmap-card"><h3 style="font-size:13.5px;margin:0 0 8px">思维导图 · 实体与关系</h3>${buildMindMapHtml(r)}</div>`;
   $('#mask').classList.add('on');
   GraphViz.mount('localCanvas', localNodes, localEdges);
+  if(r.content_fetched && r.cid){ loadFullText(r.cid, 'fullBody-'+idx, 'fullLoad-'+idx); }
 }
-/* 把正文切成句子（用于思维导图内容提炼） */
+/* 懒加载全文：kb/full/<cid>.txt（轻量 kb.json 不含长正文，按需获取） */
+async function loadFullText(cid, elId, loadId){
+  try{
+    const res = await fetch(SITE_BASE+'kb/full/'+cid+'.txt', {cache:'no-store'});
+    if(!res.ok) return;
+    const txt = await res.text();
+    const el = document.getElementById(elId);
+    if(el) el.innerHTML = mdToHtml(txt.slice(0,8000));
+    const ld = loadId && document.getElementById(loadId); if(ld) ld.remove();
+  }catch(e){ /* 加载失败时保留 summary 回退 */ }
+}
 function _sentences(text){
   return String(text||'').replace(/\s+/g,' ')
     .split(/[。！？；;!?]+|\n+/).map(s=>s.trim())
@@ -1344,7 +1355,11 @@ async function webSearch(q){
 async function callDeepSeek(q, mode){
   const key=getDsKey(); if(!key) return null;
   const rows=staticSearch(q, mode==='ask'?8:18);
-  let ctx=rows.map((r,i)=>`[${i+1}] 《${r.title}》（${r.department||''}·${r.region||''}·${r.quality||''}）\n摘要：${String(r.summary||'').slice(0,280)}\n要点：${String(r.content||r.content_fetched||'').slice(0,520).replace(/\n/g,' ')}`).join('\n\n');
+  // 懒加载 top 检索结果全文（kb/full/<cid>.txt），显著提升 RAG 上下文质量
+  await Promise.all(rows.map(async r=>{
+    if(r.content_fetched && r.cid && !r._full){ try{ r._full=await (await fetch(SITE_BASE+'kb/full/'+r.cid+'.txt',{cache:'no-store'})).text(); }catch(e){ r._full=''; } }
+  }));
+  let ctx=rows.map((r,i)=>`[${i+1}] 《${r.title}》（${r.department||''}·${r.region||''}·${r.quality||''}）\n摘要：${String(r.summary||'').slice(0,280)}\n全文：${String(r._full||'').slice(0,1500).replace(/\n/g,' ')}`).join('\n\n');
   let web='';
   if($('#dsWeb') && $('#dsWeb').checked){ const ws=await webSearch(q); if(ws.length) web='\n\n【联网检索补充（来自公开网络）】\n'+ws.map((x,i)=>`(${i+1}) ${x.title} — ${String(x.snippet||'').slice(0,180)} ${x.url||''}`).join('\n'); }
   const sys=('你是一位兼具水生态环境专业素养与人工智能视野的资深专家顾问，长期跟踪中国生态环境、水利、住房城乡建设、发展改革、农业农村、自然资源等政策体系，以及欧盟水框架指令（WFD）、美国清洁水法（CWA）等国际水治理进展。\n'
@@ -1410,11 +1425,11 @@ async function runAI(){
         const cors = /cors|failed to fetch|networkerror|blocked/i.test(e.message||'');
         const tip = cors?'（提示：浏览器直连被跨域/CORS 拦截，可部署本项目 FastAPI 后端走服务端生成，或在支持 CORS 的环境使用。）':'';
         $('#aiOut').innerHTML='<div class="empty">AI 生成失败：'+esc(e.message)+tip+' 已回退离线汇总。</div>';
-        const res=staticAI(q, curAiMode());
+        const res=await staticAI(q, curAiMode());
         $('#aiOut').innerHTML += `<div class="result" style="margin-top:10px"><div class="md">${mdToHtml(res.text)}</div>${renderSources(res.sources,'offline')}</div>`;
       }
     } else {
-      const res = staticAI(q, curAiMode());
+      const res = await staticAI(q, curAiMode());
       $('#aiOut').innerHTML = `<div class="result"><div class="md">${mdToHtml(res.text)}</div>${renderSources(res.sources,'offline')}</div>`;
     }
   }catch(e){ $('#aiOut').innerHTML='<div class="empty">生成失败：'+esc(e.message)+'</div>'; }
@@ -1434,21 +1449,23 @@ function staticSearch(q,k){
     let sc=0; qt.forEach(t=>{ if(blob.includes(t)) sc++; }); return {r,sc}; })
     .filter(x=>x.sc>0).sort((a,b)=>b.sc-a.sc).slice(0,k).map(x=>x.r);
 }
-function staticAI(q,mode){
+async function staticAI(q,mode){
   const rows=staticSearch(q, mode==='ask'?6:12);
+  await Promise.all(rows.slice(0,6).map(async r=>{ if(r.content_fetched && r.cid && !r._full){ try{ r._full=await (await fetch(SITE_BASE+'kb/full/'+r.cid+'.txt',{cache:'no-store'})).text(); }catch(e){ r._full=''; } } }));
   if(mode==='ask'){
     let text='## 关于「'+q+'」的检索结果\n\n> 以下为知识库检索到的相关内容（静态只读模式，离线汇总）。\n\n### 一、要点速览\n';
     rows.slice(0,5).forEach((r,i)=>{ text+=(i+1)+'. **'+r.title+'**（'+(r.department||'')+' · '+(r.region||'')+' · 质量'+(r.quality||'')+'）— '+String(r.summary||'').slice(0,120)+'\n'; });
     text+='\n### 二、相关原文摘录\n';
-    rows.slice(0,3).forEach(r=>{ text+='\n**'+r.title+'**\n\n> '+String(r.content||r.summary||'').slice(0,300).replace(/\n/g,' ')+'\n\n来源：'+(r.url||'本地知识库')+'\n'; });
+    rows.slice(0,3).forEach(r=>{ text+='\n**'+r.title+'**\n\n> '+String(r._full||r.content||r.summary||'').slice(0,400).replace(/\n/g,' ')+'\n\n来源：'+(r.url||'本地知识库')+'\n'; });
     text+='\n### 三、建议\n\n- 部署后端并配置 AI 密钥后，可获取更深入的分析式回答。';
     return {text, sources: rows.map(r=>({title:r.title,url:r.url,department:r.department,quality:r.quality}))};
   } else {
     let overview=rows.slice(0,6).map((r,i)=>(i+1)+'. **'+r.title+'** — '+String(r.summary||'').slice(0,90)).join('\n');
-    let text='# 水生态环境知识简报：'+q+'\n\n> 基于本地知识库检索到 '+rows.length+' 条相关记录（静态离线版，未接入 AI 模型）。\n\n## 0. 综合研判\n'+(overview||'_（暂无相关记录）_')+'\n\n## 1. 政策规划\n'+joinCat(rows,'policy')+
-      '\n\n## 2. 碳市场\n'+joinCat(rows,'carbon_market')+'\n\n## 3. 减污降碳协同\n'+joinCat(rows,'synergy')+
-      '\n\n## 4. 行业低碳\n'+joinCat(rows,'industry')+'\n\n## 5. 技术创研\n'+joinCat(rows,'tech')+
-      '\n\n## 6. 参考来源\n'+rows.slice(0,10).map(r=>'- ['+r.title+']('+(r.url||'#')+') — '+(r.department||'')).join('\n');
+    let text='# 水生态环境知识简报：'+q+'\n\n> 基于本地知识库检索到 '+rows.length+' 条相关记录（静态离线版，未接入 AI 模型）。\n\n## 0. 综合研判\n'+(overview||'_（暂无相关记录）_')+'\n\n## 1. 政策法规与顶层设计\n'+joinCat(rows,'policy')+
+      '\n\n## 2. 标准与技术规范\n'+joinCat(rows,'standard')+'\n\n## 3. 流域治理与工程实践\n'+joinCat(rows,'basin_eng')+
+      '\n\n## 4. 管理实践与制度创新\n'+joinCat(rows,'management')+'\n\n## 5. 技术、产品与监测装备\n'+joinCat(rows,'tech')+
+      '\n\n## 6. 研究文献与调查评估\n'+joinCat(rows,'literature')+'\n\n## 7. 国际与区域动态\n'+joinCat(rows,'intl_region')+
+      '\n\n## 8. 参考来源\n'+rows.slice(0,10).map(r=>'- ['+r.title+']('+(r.url||'#')+') — '+(r.department||'')).join('\n');
     return {text, sources: rows.map(r=>({title:r.title}))};
   }
 }
@@ -1759,6 +1776,27 @@ function switchTab(t){
   else if(t==='ingest') updateAuthUI();
 }
 
+/* ===================== 数据加载（分片优先） ===================== */
+async function loadKBData(){
+  // 分片模式（百万级）：meta.json + kb/shards/* 并行小文件加载，避免单大文件瓶颈
+  try{
+    const meta = await (await fetch(SITE_BASE+'kb/meta.json',{cache:'no-store'})).json();
+    if(meta && meta.shards && meta.shards.length){
+      App.meta = meta; App.sharded = true;
+      const files = meta.shards.map(s=>SITE_BASE+'kb/shards/'+s.file);
+      const chunks = await Promise.all(files.map(f=>fetch(f,{cache:'no-store'}).then(r=>r.json().catch(()=>[]))));
+      const kb=[];
+      chunks.forEach((arr,idx)=>{ const base=(meta.shards[idx].i)*(meta.shard_size||2000); (arr||[]).forEach((r,j)=>{ r.id=base+j; kb.push(r); }); });
+      App.kb=kb;
+      if(App.bannerSet) return;
+      return;
+    }
+  }catch(e){ console.warn('meta.json 不可用，回退 kb.json', e); }
+  // 回退：单文件 kb.json
+  App.kb = await (await fetch(SITE_BASE+'kb/kb.json',{cache:'no-store'})).json();
+  App.kb.forEach((r,i)=>r.id=i);
+}
+
 /* ===================== 启动 ===================== */
 async function boot(){
   // 下拉填充
@@ -1774,7 +1812,7 @@ async function boot(){
   if(App.token){ try{ App.user=await api('/api/auth/me'); }catch(e){ App.token=''; localStorage.removeItem('dc_token'); } }
 
   // 静态回退数据
-  if(App.mode==='static'){ try{ App.kb=await (await fetch(SITE_BASE+'kb/kb.json',{cache:'no-store'})).json(); App.kb.forEach((r,i)=>r.id=i); }catch(e){ App.kb=[]; console.warn('kb.json 加载失败', e); } }
+  if(App.mode==='static'){ try{ await loadKBData(); }catch(e){ App.kb=[]; console.warn('kb 数据加载失败', e); } }
 
   // 顶部模式 & 横幅
   const mp=$('#modePill');

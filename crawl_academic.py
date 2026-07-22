@@ -8,18 +8,75 @@ BASE = os.path.dirname(os.path.abspath(__file__))
 INBOX = os.path.join(BASE, "kb", "inbox.json")
 CTX = ssl.create_default_context(); CTX.check_hostname = False; CTX.verify_mode = ssl.CERT_NONE
 UA = {"User-Agent": "Mozilla/5.0", "Accept": "application/json"}
-QUERIES = ["water environment", "surface water quality", "river basin management", "eutrophication",
-           "cyanobacteria bloom", "drinking water source", "wastewater treatment", "water ecological restoration",
-           "non-point source pollution", "constructed wetland", "water reuse", "lake restoration"]
+QUERIES = [
+    # 基础水环境 / 水质
+    "water environment", "surface water quality", "groundwater quality", "drinking water source",
+    "water quality standards", "nutrient pollution", "total nitrogen total phosphorus",
+    # 富营养化 / 蓝藻
+    "eutrophication", "cyanobacteria bloom", "harmful algal bloom", "lake trophic status",
+    "cyanotoxin microcystin", "algae control",
+    # 流域 / 河川管理
+    "river basin management", "watershed management", "river restoration", "lake restoration",
+    "stream ecological restoration", "riparian buffer", "river connectivity", "environmental flow",
+    "ecological flow", "hydrological alteration",
+    # 城市水 / 污水 / 再生水
+    "wastewater treatment", "municipal wastewater", "wastewater reuse", "water reuse",
+    "reclaimed water", "sewage treatment plant", "combined sewer overflow", "sponge city",
+    # 非点源 / 农业面源
+    "non-point source pollution", "agricultural runoff", "diffuse pollution", "best management practices",
+    # 修复 / 湿地
+    "water ecological restoration", "constructed wetland", "riverine wetland", "aquatic vegetation restoration",
+    "benthic macroinvertebrate", "bioindicator water",
+    # 黑臭 / 内源
+    "black odorous water", "urban black water", "sediment remediation", "internal phosphorus loading",
+    # 水源 / 饮用水安全
+    "drinking water safety", "source water protection", "drinking water treatment", "disinfection byproduct",
+    # 水生态 / 生物多样性
+    "aquatic ecosystem", "fish assemblage", "macroinvertebrate community", "aquatic biodiversity",
+    "water ecological integrity", "ecological health assessment",
+    # 监测 / 模型
+    "water quality monitoring", "remote sensing water", "water quality model", "machine learning water quality",
+    "sensor network water",
+    # 治理机制 / 政策
+    "water governance", "water pollution prevention", "pollutant discharge permit", "total maximum daily load",
+    "water ecological compensation", "payment for ecosystem services water", "transboundary water",
+    # 国际 / 区域
+    "EU water framework directive", "clean water act", "water framework directive implementation",
+    "lake taihu eutrophication", "lake chao eutrophication",
+]
 PAGES = int(os.environ.get("PAGES", "6"))
 DCC = {"生态环境": "生态环境", "水利": "水利", "科技": "科技", "环境": "生态环境"}
 
+# OpenAlex 礼貌池标识（提升配额、降低被限流概率）
+OA_MAIL = os.environ.get("OA_MAIL", "water-eco-bot@users.noreply.github.com")
+_last_req = [0.0]
+def _ratelimit(min_gap=0.25):
+    # 全局最小请求间隔，避免触发限流
+    while True:
+        now = time.time()
+        left = _last_req[0] + min_gap - now
+        if left <= 0:
+            _last_req[0] = now
+            return
+        time.sleep(min(left, 0.5))
+
 def get_json(u):
-    for _ in range(4):
+    # OpenAlex 礼貌池：附 mailto 提升配额；遇 429 指数退避重试
+    if 'openalex.org' in u and 'mailto=' not in u:
+        u = u + ('&' if '?' in u else '?') + 'mailto=' + urllib.parse.quote(OA_MAIL)
+    backoff = 5
+    for attempt in range(8):
+        _ratelimit()
         try:
             req = urllib.request.Request(u, headers=UA)
-            with urllib.request.urlopen(req, timeout=25, context=CTX) as r:
+            with urllib.request.urlopen(req, timeout=30, context=CTX) as r:
+                if r.status == 429:
+                    time.sleep(backoff); backoff = min(backoff * 2, 90); continue
                 return json.load(r)
+        except urllib.error.HTTPError as e:
+            if e.code == 429:
+                time.sleep(backoff); backoff = min(backoff * 2, 90); continue
+            time.sleep(2)
         except Exception as e:
             time.sleep(2)
     return None
@@ -62,9 +119,13 @@ def main():
     added = 0
     for q in queries:
         for pg in range(1, PAGES + 1):
-            url = ("https://api.openalex.org/works?search=%s&per-page=50&page=%d"
-                   "&filter=from_publication_date:2018-01-01,has_abstract:true"
-                   "&sort=publication_date:desc") % (urllib.parse.quote(q), pg)
+            # 时间窗放宽至 2000 年起，配合更大 per_page 以覆盖海量水生态文献（支撑数十万级条目）
+            # SORT 可配置：desc=最新优先(小时级定时用)，asc=最旧优先(批量回填历史文献用)
+            fdate = os.environ.get("FROM_DATE", "2000-01-01")
+            sort = os.environ.get("SORT", "publication_date:desc")
+            url = ("https://api.openalex.org/works?search=%s&per-page=200&page=%d"
+                   "&filter=from_publication_date:%s,has_abstract:true"
+                   "&sort=%s") % (urllib.parse.quote(q), pg, fdate, sort)
             d = get_json(url)
             if not d or not d.get("results"): break
             for w in d["results"]:

@@ -57,14 +57,18 @@ WaterEco/
 │   └── seed_items.py     # 种子数据生成器
 ├── crawl_gov.py          # 政府政策库采集（含水相关度过滤）
 ├── crawl_weixin.py       # 微信公众号采集（含阅读量/关注数过滤）
-├── crawl_academic.py     # 开源学术库（OpenAlex）采集
+├── crawl_academic.py     # 开源学术库（OpenAlex）采集（已扩展至 ~47 个水生态关键词）
 ├── normalize.py          # region/department 受控词表归一化（幂等）
 ├── merge.py              # 去重合并 inbox → kb
 ├── enrich_importance.py  # 质量 / 水相关度 / 重要性
 ├── enrich_kg.py          # 知识图谱实体抽取
+├── extract_fulltext.py   # 长正文抽取到 kb/full/<cid>.txt，kb.json 仅留轻量元数据（支撑海量条目）
 ├── render.py             # 静态站点渲染
-├── update.py             # 一键更新入口（normalize→merge→enrich→render）
+├── update.py             # 一键更新入口（normalize→merge→enrich→extract_fulltext→render）
 ├── gh_deploy.py          # GitHub API 兜底部署
+├── kb/
+│   ├── kb.json           # 单一数据源（轻量：元数据 + summary，仅增不删）
+│   └── full/             # 长正文库：<cid>.txt，门户详情/问答按需懒加载
 ├── .github/workflows/pages.yml  # 代码推送时 GitHub Pages 部署
 ├── .github/workflows/auto.yml   # 每小时/每日自动采集 + 部署（schedule cron）
 └── docs/知识库建设方案.md
