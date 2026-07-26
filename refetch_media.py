@@ -57,6 +57,11 @@ def oa_pdf_for_doi(doi):
     return None
 
 
+def save_kb(kb):
+    """增量落盘：超时/被杀也能保留已处理的进度（下次运行靠幂等跳过，自然续跑）。"""
+    json.dump(kb, open(KB, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+
+
 def main():
     kb = json.load(open(KB, encoding="utf-8"))
     n_img = n_pdf = 0
@@ -86,6 +91,9 @@ def main():
                     changed = True
             time.sleep(0.3)
             processed += 1
+            if processed % 25 == 0:
+                save_kb(kb)
+                print("[refetch_media] 进度 %d/%d 已落盘" % (processed, BATCH))
 
         # —— PDF 回填（学术 doi 文献）——
         if FETCH_PDF and not r.get("pdf") and "doi.org" in url:
@@ -101,8 +109,11 @@ def main():
                         changed = True
                 time.sleep(0.3)
                 processed += 1
+                if processed % 25 == 0:
+                    save_kb(kb)
+                    print("[refetch_media] 进度 %d/%d 已落盘" % (processed, BATCH))
 
-    json.dump(kb, open(KB, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    save_kb(kb)
     print("[refetch_media] 处理上限=%d 新增配图=%d 新增PDF=%d" % (BATCH, n_img, n_pdf))
 
 
