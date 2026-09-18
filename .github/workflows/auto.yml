@@ -2,14 +2,16 @@
 # 每小时 / 每日自动采集水生态环境知识：抓取原文全文 + 政策/研究配图 + 学术开放获取PDF，
 # 去重入库并部署到 GitHub Pages 固定链接（实时更新）。
 #
-# 设计要点（防止“自动化停摆”）：
-#  1) 每日任务“无论如何都提交一次心跳(last_run.txt)”，保证仓库每天有提交 ->
-#     既让调度对 GitHub 保持活跃（避免 60 天无活动被自动禁用定时任务），也让停更可被一眼发现。
-#  2) 存量媒体回填(refetch_media)设为 continue-on-error 且增量落盘，单步慢/超时不会拖垮“采集+部署”主流程。
-#  3) 每日深度采集批量从 PAGES=12 降到 6、回填 BATCH 从 400 降到 150，确保 90 分钟内跑完，
-#     避免超过 job 超时(被杀死 -> 永远来不及提交)。
-#  4) 失败自动开 Issue 告警（permissions: issues: write），停更不再“静默”。
-#  5) concurrency 取消 cancel-in-progress，避免运行中任务被新触发取消导致数据丢失。
+# —— 2026-09-18 稳定性修复（针对“运行 90 分钟被杀 -> 站点停更两个月”）——
+#  诊断：每小时的“常规采集”单步耗满 90 分钟被 timeout-minutes 杀掉，导致
+#        后续的 合并/提交/部署 全部 skipped，GitHub Pages 自 2026-07-26 后未再更新。
+#  修复：
+#   1) 每个爬虫用 `timeout` 硬限时（常规 420s / 深度 600s），单个爬虫卡死不再拖垮整条流水线；
+#   2) 采集步骤去掉了 `|| echo` 之外的任何阻断，并设为 continue-on-error；
+#   3) 「合并→提交→部署」三步全部加 `if: always()`，**无论采集是否异常，站点都会重建并部署**；
+#   4) job 总超时从 90 分钟收紧到 60 分钟，避免长尾占用并让下一次调度按时进入；
+#   5) 采集步骤加 step 级 timeout-minutes 作为第二道保险。
+#  其余保留：每日心跳提交、失败开 Issue 告警、concurrency 不取消进行中任务。
 name: 自动采集与部署
 
 on:
@@ -36,7 +38,7 @@ concurrency:
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 60
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -54,9 +56,11 @@ jobs:
       - name: 安装依赖
         run: pip install --quiet requests beautifulsoup4
 
-      # —— 每小时 / 手动常规采集（批量适中：开源文献 PAGES=4）——
+      # —— 每小时 / 手动常规采集（单爬虫硬限时 420s）——
       - name: 常规采集（每小时）
         if: ${{ github.event.schedule == '17 * * * *' || (github.event_name == 'workflow_dispatch' && inputs.intensity != 'daily') }}
+        timeout-minutes: 25
+        continue-on-error: true
         env:
           PAGES: '4'
           GOV_PAGES: '3'
@@ -64,15 +68,17 @@ jobs:
           FETCH_PDF: '1'
           OA_MAIL: 'water-eco-bot@users.noreply.github.com'
         run: |
-          python3 crawl_gov.py || echo "crawl_gov failed, skip"
-          python3 crawl_academic.py || echo "crawl_academic failed, skip"
-          python3 crawl_weixin.py || echo "crawl_weixin failed, skip"
-          PAGES=4 python3 crawl_crossref.py || echo "crawl_crossref failed, skip"
-          PAGES=4 python3 crawl_europepmc.py || echo "crawl_europepmc failed, skip"
+          timeout 420 python3 crawl_gov.py       || echo "crawl_gov failed/timeout, skip"
+          timeout 420 python3 crawl_academic.py  || echo "crawl_academic failed/timeout, skip"
+          timeout 420 python3 crawl_weixin.py    || echo "crawl_weixin failed/timeout, skip"
+          timeout 420 python3 crawl_crossref.py  || echo "crawl_crossref failed/timeout, skip"
+          timeout 420 python3 crawl_europepmc.py || echo "crawl_europepmc failed/timeout, skip"
 
-      # —— 每日深度采集（批量适中：开源文献 PAGES=6，确保 90 分钟内跑完）——
+      # —— 每日深度采集（单爬虫硬限时 600s）——
       - name: 深度采集（每日）
         if: ${{ github.event.schedule == '23 8 * * *' || (github.event_name == 'workflow_dispatch' && inputs.intensity == 'daily') }}
+        timeout-minutes: 35
+        continue-on-error: true
         env:
           PAGES: '6'
           GOV_PAGES: '6'
@@ -80,27 +86,32 @@ jobs:
           FETCH_PDF: '1'
           OA_MAIL: 'water-eco-bot@users.noreply.github.com'
         run: |
-          python3 crawl_gov.py || echo "crawl_gov failed, skip"
-          python3 crawl_academic.py || echo "crawl_academic failed, skip"
-          python3 crawl_weixin.py || echo "crawl_weixin failed, skip"
-          PAGES=6 python3 crawl_crossref.py || echo "crawl_crossref failed, skip"
-          PAGES=6 python3 crawl_europepmc.py || echo "crawl_europepmc failed, skip"
+          timeout 600 python3 crawl_gov.py       || echo "crawl_gov failed/timeout, skip"
+          timeout 600 python3 crawl_academic.py  || echo "crawl_academic failed/timeout, skip"
+          timeout 600 python3 crawl_weixin.py    || echo "crawl_weixin failed/timeout, skip"
+          timeout 600 python3 crawl_crossref.py  || echo "crawl_crossref failed/timeout, skip"
+          timeout 600 python3 crawl_europepmc.py || echo "crawl_europepmc failed/timeout, skip"
 
-      # —— 存量媒体回填（每日；可续跑、失败不阻断主流程）——
+      # —— 存量媒体回填（每日；可续跑、限时、失败不阻断主流程）——
       - name: 存量媒体回填（每日，可续跑）
         if: ${{ github.event.schedule == '23 8 * * *' || (github.event_name == 'workflow_dispatch' && inputs.intensity == 'daily') }}
+        timeout-minutes: 15
         continue-on-error: true
         env:
           BATCH: '150'
           FETCH_IMAGES: '1'
           FETCH_PDF: '1'
           OA_MAIL: 'water-eco-bot@users.noreply.github.com'
-        run: python3 refetch_media.py || echo "refetch_media failed, skip"
+        run: timeout 780 python3 refetch_media.py || echo "refetch_media failed/timeout, skip"
 
+      # —— 以下三步用 if: always()：采集异常也必须重建并部署站点，杜绝“静默停更” ——
       - name: 合并 / 归一化 / 富化 / 渲染
-        run: python3 update.py
+        if: always()
+        timeout-minutes: 20
+        run: python3 update.py || echo "update failed, continue to commit what we have"
 
       - name: 提交入库数据（每日必提交心跳，保持仓库活跃且停更可被察觉）
+        if: always()
         run: |
           git config user.email "bot@water-eco.local"
           git config user.name "WaterEco Bot"
@@ -108,23 +119,24 @@ jobs:
           git add -A
           if git diff --cached --quiet; then
             echo "无新增知识"
-            if [ "${{ github.event.schedule }}" = "23 8 * * *" ] || [ "${{ inputs.intensity }}" = "daily" ]; then
-              git commit -m "auto: 心跳 $(date +%F-%H:%M) UTC（无新增知识）" && git push
-            fi
+            git commit --allow-empty -m "auto: 心跳 $(date +%F-%H:%M) UTC（无新增知识）" && git push
           else
             git commit -m "auto: 自动采集 $(date +%F-%H:%M) UTC" && git push
           fi
 
       - name: 配置 Pages
+        if: always()
         uses: actions/configure-pages@v5
 
       - name: 上传站点产物
+        if: always()
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
 
       - name: 部署到 GitHub Pages
         id: deployment
+        if: always()
         uses: actions/deploy-pages@v4
 
       - name: 失败告警（自动开 Issue 通知，避免静默停更）

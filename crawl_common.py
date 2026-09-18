@@ -18,6 +18,16 @@ UA = {
     "Accept": "application/json",
 }
 
+# ——— 全局运行时限（防止单个爬虫把 job 耗尽被 timeout 杀掉）———
+_RUN_DEADLINE = [float(os.environ.get("CRAWL_DEADLINE", "0")) or 0.0]
+if not _RUN_DEADLINE[0]:
+    _RUN_DEADLINE[0] = time.time() + float(os.environ.get("MAX_RUNTIME", "900"))
+
+
+def over_deadline():
+    return time.time() > _RUN_DEADLINE[0]
+
+
 # ——— 限流 GET（礼貌池 + 429 退避）———
 _rl_state = [0.0]
 
@@ -32,24 +42,27 @@ def _ratelimit(min_gap=0.3):
         time.sleep(min(left, 0.5))
 
 
-def safe_get(url, mail=None, min_gap=0.3, timeout=30, max_retries=8):
+def safe_get(url, mail=None, min_gap=0.3, timeout=20, max_retries=3):
     if mail and "mailto=" not in url and ("crossref.org" in url or "openalex.org" in url):
         url = url + ("&" if "?" in url else "?") + "mailto=" + urllib.parse.quote(mail)
-    backoff = 4
+    backoff = 3
     for _ in range(max_retries):
+        if over_deadline():
+            print("[crawl_common] 已达运行时限，跳过:", url[:120])
+            return None
         _ratelimit(min_gap)
         try:
             req = urllib.request.Request(url, headers=UA)
             with urllib.request.urlopen(req, timeout=timeout, context=CTX) as r:
                 if r.status == 429:
                     time.sleep(backoff)
-                    backoff = min(backoff * 2, 90)
+                    backoff = min(backoff * 2, 20)
                     continue
                 return json.loads(r.read().decode("utf-8"))
         except urllib.error.HTTPError as e:
             if e.code == 429:
                 time.sleep(backoff)
-                backoff = min(backoff * 2, 90)
+                backoff = min(backoff * 2, 20)
                 continue
             time.sleep(2)
         except Exception:
@@ -157,7 +170,10 @@ def append_inbox(records):
     inbox = json.load(open(INBOX, encoding="utf-8")) if os.path.exists(INBOX) else []
     inbox.extend(records)
     os.makedirs(os.path.dirname(INBOX), exist_ok=True)
-    json.dump(inbox, open(INBOX, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    tmp = INBOX + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(inbox, f, ensure_ascii=False, indent=1)
+    os.replace(tmp, INBOX)
     return len(inbox)
 
 

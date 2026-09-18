@@ -316,6 +316,29 @@
   .hist-pill:hover{border-color:var(--green);color:var(--green)}
   .hist-pill b{color:var(--green)}
   @media print{header,.tabs,.toolbar,#briefHistory,footer,#briefNote{display:none!important}}
+  /* ⭐ 必知必会 */
+  .must-hero{background:linear-gradient(120deg,#0f766e,#1a7f5a);color:#fff;border-radius:14px;
+            padding:18px 20px;margin-bottom:14px;box-shadow:var(--shadow)}
+  .must-hero h2{margin:0 0 7px;font-size:18px}
+  .must-hero p{margin:0;font-size:12.8px;opacity:.93;line-height:1.75}
+  .must-group{margin:22px 0 9px;font-size:15px;font-weight:700;color:var(--green-d);
+              display:flex;align-items:center;gap:9px;padding-bottom:6px;border-bottom:2px solid var(--line)}
+  .must-group .n{font-size:12px;font-weight:400;color:var(--sub)}
+  .must-list{display:flex;flex-direction:column;gap:9px}
+  .must-item{display:flex;gap:13px;background:var(--card);border:1px solid var(--line);border-radius:12px;
+             padding:13px 15px;box-shadow:var(--shadow);cursor:pointer;transition:.15s}
+  .must-item:hover{box-shadow:var(--shadow-l);transform:translateY(-1px)}
+  .must-rank{flex:0 0 34px;height:34px;border-radius:9px;background:var(--chip);color:var(--green-d);
+             font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center}
+  .must-item.top1 .must-rank{background:#b45309;color:#fff}
+  .must-item.top2 .must-rank{background:#0f766e;color:#fff}
+  .must-item.top3 .must-rank{background:#1a7f5a;color:#fff}
+  .must-body{flex:1;min-width:0}
+  .must-body h3{margin:0 0 5px;font-size:14.5px;line-height:1.45}
+  .must-body h3 a{color:var(--ink)}
+  .must-meta{font-size:12px;color:var(--sub);margin-bottom:5px;display:flex;gap:9px;flex-wrap:wrap;align-items:center}
+  .must-sum{font-size:12.9px;color:var(--sub);line-height:1.68}
+  .must-note{font-size:11.5px;color:var(--amber);margin-top:4px}
 </style>
 </head>
 <body>
@@ -332,6 +355,7 @@
   </div>
   <div class="tabs" id="tabs">
     <div class="tab on" data-t="brief">📡 今日情报</div>
+    <div class="tab" data-t="must">⭐ 必知必会</div>
     <div class="tab" data-t="kb">📚 知识库</div>
     <div class="tab" data-t="graph">🕸️ 关系图谱</div>
     <div class="tab" data-t="viz">📊 智能分析</div>
@@ -342,6 +366,35 @@
 
 <div class="wrap">
   <div id="bannerHost"></div>
+
+  <!-- ⭐ 必知必会 -->
+  <section class="view" id="v-must">
+    <div class="must-hero">
+      <h2>⭐ 必知必会</h2>
+      <p>水生态环境条线<strong>必读</strong>的法律、行政法规、国家重大政策与规划、部门规章、
+      国家标准与行业标准、浙江省及杭州市地方性法规规章、权威公报报告。
+      按重要性由高到低排列：<strong>「核心必知」</strong>为经逐条核实并人工核定层级的清单，
+      其后<strong>「高分补充」</strong>由系统按质量等级与重要性评分自动并入。</p>
+    </div>
+    <div class="toolbar">
+      <input type="text" id="mustQ" class="grow" placeholder="在必知必会中检索…" onkeydown="if(event.key==='Enter')mustFilter()">
+      <select id="mustRegion" onchange="mustFilter()">
+        <option value="">全部地域</option>
+        <option value="全国">全国</option>
+        <option value="浙江">浙江</option>
+        <option value="杭州">杭州</option>
+      </select>
+      <select id="mustKind" onchange="mustFilter()"><option value="">全部类别</option></select>
+      <span class="seg" id="mustTier">
+        <button class="on" data-m="all" onclick="mustPickTier(this)">全部</button>
+        <button data-m="core" onclick="mustPickTier(this)">核心必知</button>
+        <button data-m="auto" onclick="mustPickTier(this)">高分补充</button>
+      </span>
+      <button onclick="mustFilter()">筛选</button>
+    </div>
+    <div class="statbar" id="mustStat"></div>
+    <div id="mustGrid"><div class="empty">加载中…</div></div>
+  </section>
 
   <!-- 知识库（信息流已合并至此） -->
   <section class="view" id="v-kb">
@@ -1791,6 +1844,101 @@ function applyBriefHash(){
   loadBrief(key); return true;
 }
 
+/* ===================== ⭐ 必知必会 ===================== */
+App.mustTier='all'; App.mustQ=''; App.mustRegion=''; App.mustKind=''; App.mustReady=false;
+const MUST_RANK_LABEL = [
+  [101,199,'一、法律（水生态环境条线根本依据）'],
+  [200,299,'二、行政法规'],
+  [300,399,'三、国家重大政策与规划'],
+  [400,499,'四、部门规章'],
+  [500,599,'五、国家标准（GB）'],
+  [600,699,'六、行业标准（HJ / SL/T）'],
+  [700,799,'七、部门规范性文件与专项行动'],
+  [800,849,'八、浙江省地方性法规'],
+  [850,899,'九、浙江省政府规章 · 省级规划 · 地方标准'],
+  [900,949,'十、杭州市地方性法规'],
+  [950,999,'十一、杭州市政府规章 · 市级规划 · 公报报告'],
+];
+function mustRankLabel(n){ n=Number(n)||999; for(const [a,b,l] of MUST_RANK_LABEL){ if(n>=a&&n<=b) return l; } return '十二、其他'; }
+/* 入选规则：核心=数据中带 must_know 标记；高分补充=A级政策/标准类且水相关度高、重要性达标 */
+function mustMatch(r){
+  if(r.must_know) return 'core';
+  const cat=r.category||'';
+  const rel=Number(r.water_rel)||0, imp=Number(r.importance)||0;
+  if(r.quality==='A' && (cat==='policy'||cat==='standard') && rel>=0.9 && imp>=7.0) return 'auto';
+  return null;
+}
+async function loadMust(){
+  if(!App.kb || !App.kb.length){ try{ await loadKBData(); }catch(e){} }
+  if(!App.mustReady){
+    const kinds=[]; (App.kb||[]).forEach(r=>{ if(mustMatch(r) && r.content_type && kinds.indexOf(r.content_type)<0) kinds.push(r.content_type); });
+    const sel=$('#mustKind'); if(sel){ kinds.forEach(k=>{ const o=document.createElement('option'); o.value=k; o.textContent=k; sel.appendChild(o); }); }
+    App.mustReady=true;
+  }
+  mustRender();
+}
+function mustPickTier(btn){ App.mustTier=btn.dataset.m; document.querySelectorAll('#mustTier button').forEach(b=>b.classList.toggle('on', b===btn)); mustRender(); }
+function mustFilter(){ App.mustQ=($('#mustQ').value||'').trim().toLowerCase(); App.mustRegion=$('#mustRegion').value; App.mustKind=$('#mustKind').value; mustRender(); }
+function mustCard(r, idx){
+  const pos = idx<3 ? ' top'+(idx+1) : '';
+  const meta=[];
+  if(r.source) meta.push(esc(r.source));
+  if(r.date) meta.push(esc(String(r.date).slice(0,10)));
+  if(r.doc_no) meta.push('文号 '+esc(r.doc_no));
+  if(r.status) meta.push(esc(r.status));
+  if(r.importance) meta.push('★'+Number(r.importance).toFixed(1));
+  const note = (r.note && String(r.note).indexOf('待补')>=0) ? '<div class="must-note">⚠ 原文链接待补，当前为官方栏目页</div>' : '';
+  const url = r.url||'';
+  return '<div class="must-item'+pos+'" onclick="openDetail('+JSON.stringify(typeof r.id==='number'?r.id:r.id)+')">'
+    + '<div class="must-rank">'+(idx+1)+'</div>'
+    + '<div class="must-body">'
+    +   '<h3>'+(url?'<a href="'+esc(url)+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">'+esc(r.title)+'</a>':esc(r.title))+'</h3>'
+    +   '<div class="must-meta">'+(r.content_type?'<span class="badge b-cat">'+esc(r.content_type)+'</span>':'')
+    +     (r.region?'<span class="badge b-region">'+esc(r.region)+'</span>':'')
+    +     '<span>'+meta.join(' · ')+'</span></div>'
+    +   '<div class="must-sum">'+esc(r.summary||'')+'</div>'
+    +   note
+    + '</div></div>';
+}
+function mustRender(){
+  const host=$('#mustGrid'); if(!host) return;
+  const q=App.mustQ, reg=App.mustRegion, kind=App.mustKind, tier=App.mustTier;
+  const core=[], auto=[];
+  (App.kb||[]).forEach(r=>{
+    const t=mustMatch(r); if(!t) return;
+    if(q && (((r.title||'')+' '+(r.summary||'')).toLowerCase().indexOf(q)<0)) return;
+    if(reg && r.region!==reg) return;
+    if(kind && (r.content_type||'')!==kind) return;
+    (t==='core'?core:auto).push(r);
+  });
+  core.sort((a,b)=> (Number(a.must_rank)||999)-(Number(b.must_rank)||999)
+        || (Number(b.importance)||0)-(Number(a.importance)||0)
+        || effDate(b).localeCompare(effDate(a)));
+  auto.sort((a,b)=> (Number(b.importance)||0)-(Number(a.importance)||0) || effDate(b).localeCompare(effDate(a)));
+  $('#mustStat').innerHTML='<span class="chip">核心必知 <b>'+core.length+'</b> 条</span>'
+    +'<span class="chip">高分补充 <b>'+auto.length+'</b> 条</span>'
+    +'<span class="chip">数据来源：政府/部委官网 · 人大法规库 · 标准平台，逐条核实</span>';
+  let html='', rank=0;
+  const showCore = (tier==='all'||tier==='core'), showAuto=(tier==='all'||tier==='auto');
+  if(showCore && core.length){
+    let cur=null, buf=[];
+    const flush=()=>{ if(!buf.length) return;
+      html+='<div class="must-group">'+esc(mustRankLabel(cur))+' <span class="n">'+buf.length+' 条</span></div>';
+      html+='<div class="must-list">'+buf.map(r=>mustCard(r, rank++)).join('')+'</div>';
+      buf=[]; };
+    core.forEach(r=>{ const k=Number(r.must_rank)||999;
+      if(cur==null) cur=k;
+      if(k!==cur){ flush(); cur=k; }
+      buf.push(r); });
+    flush();
+  }
+  if(showAuto && auto.length){
+    html+='<div class="must-group">高分补充（系统按质量与重要性自动并入） <span class="n">'+auto.length+' 条</span></div>';
+    html+='<div class="must-list">'+auto.map(r=>mustCard(r, rank++)).join('')+'</div>';
+  }
+  host.innerHTML = html || '<div class="empty">暂无匹配条目</div>';
+}
+
 /* ===================== 通用 ===================== */
 function closeMask(){ $('#mask').classList.remove('on'); if(GraphViz.canvas && GraphViz.canvas.id==='localCanvas'){ cancelAnimationFrame(GraphViz.raf); } }
 function openImg(src){ $('#imgBig').src=src; $('#imgMask').classList.add('on'); }
@@ -1798,6 +1946,7 @@ function switchTab(t){
   document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on', x.dataset.t===t));
   document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on', v.id==='v-'+t));
   if(t==='kb') loadKB();
+  else if(t==='must') loadMust();
   else if(t==='graph') loadGraph();
   else if(t==='viz') loadViz();
   else if(t==='ai') {/* 等待用户输入 */}
