@@ -137,7 +137,7 @@ def main():
                 if not title or len(title) < 8: continue
                 if title.strip().lower() in existing: continue
                 doi = w.get("doi") or ""
-                link = ("https://doi.org/" + doi) if doi else (w.get("id") or "")
+                link = (C.doi_url(doi) if doi else "") or (w.get("id") or "")
                 if link and norm_url(link) in existing: continue
                 # 保留真实发表年（含未来预发表年份，如 2027）；统计时间由前端按 effDate 回退到入库日
                 date = w.get("publication_date") or ""

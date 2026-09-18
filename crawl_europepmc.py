@@ -95,7 +95,7 @@ def main():
                 d = (it.get("firstPublicationDate") or "")[:10]
                 doi = it.get("doi") or ""
                 key_title = title.strip().lower()
-                key_url = ("https://doi.org/" + doi) if doi else ""
+                key_url = C.doi_url(doi) if doi else ""
                 if key_title in existing:
                     continue
                 if key_url and key_url in existing:

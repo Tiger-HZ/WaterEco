@@ -1,0 +1,150 @@
+# 水生态环境知识库 · 全库原文回填（refill_all）
+#
+# 目的：把知识库里**每一条能拿到原文的条目**都补上正文/PDF；拿不到全文的至少补权威摘要。
+# 背景（2026-09-18 排查）：全库此前 content_fetched=0%、pdf=0，一条原文都没有；
+#   且 2308 条 doi.org 链接全部是 "https://doi.org/10..." 的双重前缀，
+#   导致 Crossref 查询全部 404 —— 已由 normalize.py 幂等修复 + crawl_academic 源头修复。
+#
+# 分级策略（见 refill_all.py）：
+#   学术(doi/openalex)：Unpaywall OA PDF -> Crossref link[pdf] -> OpenAlex pdf_url
+#                        -> 摘要走 Crossref -> OpenAlex -> DataCite
+#   政府/标准(gov.cn/mee/mwr/openstd/zjrd/hangzhou…)：PDF 附件优先，其次 HTML 正文
+#   微信：crawl_weixin.fetch_weixin_full
+#
+# 多轮 + 每轮落盘提交：单轮超时也不会丢进度，幂等续跑。
+name: 全库原文回填
+
+on:
+  workflow_dispatch:
+    inputs:
+      batch:
+        description: '单轮处理条数上限（BATCH）'
+        required: false
+        default: '1200'
+      rounds:
+        description: '轮数（每轮处理 batch 条并提交一次）'
+        required: false
+        default: '2'
+  schedule:
+    - cron: '37 */3 * * *'    # 每 3 小时自动推一轮，持续消化存量
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+  issues: write
+
+concurrency:
+  group: water-eco-collect
+  cancel-in-progress: false
+
+jobs:
+  refill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 安装依赖
+        run: pip install --quiet requests beautifulsoup4 pypdf
+
+      - name: 校验存量原文（把错误页/风控页/太短/标题不符的标记为待重取）
+        if: always()
+        timeout-minutes: 20
+        continue-on-error: true
+        run: |
+          python3 verify_content.py || echo "verify failed, continue"
+          git config user.email "bot@water-eco.local"
+          git config user.name "WaterEco Bot"
+          git add -A
+          git diff --cached --quiet || git commit -m "verify: 原文内容校验 $(date +%F-%H:%M) UTC"
+          git push || echo "push skipped"
+
+      - name: 第 1 轮回填并提交
+        if: always()
+        timeout-minutes: 120
+        continue-on-error: true
+        env:
+          BATCH: ${{ github.event.inputs.batch || '1200' }}
+          SAVE_EVERY: '25'
+          MIN_TEXT: '150'
+          OA_MAIL: 'water-eco-bot@users.noreply.github.com'
+        run: |
+          timeout 6900 python3 refill_all.py || echo "round1 failed/timeout, continue"
+          git config user.email "bot@water-eco.local"
+          git config user.name "WaterEco Bot"
+          git add -A
+          git diff --cached --quiet || git commit -m "refill: 原文回填第 1 轮 $(date +%F-%H:%M) UTC"
+          git push || echo "push skipped"
+
+      - name: 第 2 轮回填并提交
+        if: ${{ (github.event.inputs.rounds || '2') != '1' }}
+        timeout-minutes: 120
+        continue-on-error: true
+        env:
+          BATCH: ${{ github.event.inputs.batch || '1200' }}
+          SAVE_EVERY: '25'
+          MIN_TEXT: '150'
+          OA_MAIL: 'water-eco-bot@users.noreply.github.com'
+        run: |
+          timeout 6900 python3 refill_all.py || echo "round2 failed/timeout, continue"
+          git add -A
+          git diff --cached --quiet || git commit -m "refill: 原文回填第 2 轮 $(date +%F-%H:%M) UTC"
+          git push || echo "push skipped"
+
+      - name: 整理入库（抽全文 / 分片 / 渲染）
+        if: always()
+        timeout-minutes: 45
+        run: python3 update.py || echo "update failed, continue"
+
+      - name: 提交并推送
+        if: always()
+        run: |
+          git config user.email "bot@water-eco.local"
+          git config user.name "WaterEco Bot"
+          date +%FT%T%z > last_run.txt
+          git add -A
+          git diff --cached --quiet && git commit --allow-empty -m "refill: 无变更 $(date +%F-%H:%M) UTC" || git commit -m "refill: 原文回填收尾 $(date +%F-%H:%M) UTC"
+          git push || echo "push skipped"
+
+      - name: 配置 Pages
+        if: always()
+        uses: actions/configure-pages@v5
+
+      - name: 上传站点产物
+        if: always()
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: 部署到 GitHub Pages
+        id: deployment
+        if: always()
+        uses: actions/deploy-pages@v4
+
+      - name: 失败告警
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = '⚠️ WaterEco 原文回填工作流失败';
+            const body = '原文回填在 ' + new Date().toISOString() + ' (UTC) 失败，请检查日志。';
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo, state: 'open', per_page: 30
+            });
+            if (!issues.data.find(i => i.title === title)) {
+              await github.rest.issues.create({
+                owner: context.repo.owner, repo: context.repo.repo, title, body
+              });
+            }

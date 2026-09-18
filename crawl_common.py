@@ -18,6 +18,24 @@ UA = {
     "Accept": "application/json",
 }
 
+# ——— DOI 规范化（修复 "https://doi.org/https://doi.org/10.x" 双重前缀）———
+_DOI_PREFIX = re.compile(r"^(?:https?://(?:dx\.)?doi\.org/)+", re.I)
+
+
+def normalize_doi(d):
+    """把各种写法统一成裸 DOI，如 10.1234/abc。"""
+    d = (d or "").strip()
+    d = re.sub(r"^doi://s*", "", d, flags=re.I)
+    d = _DOI_PREFIX.sub("", d)
+    return d.strip()
+
+
+def doi_url(d):
+    """统一构造 doi.org 链接，绝不产生双重前缀。"""
+    d = normalize_doi(d)
+    return ("https://doi.org/" + d) if d else ""
+
+
 # ——— 全局运行时限（防止单个爬虫把 job 耗尽被 timeout 杀掉）———
 _RUN_DEADLINE = [float(os.environ.get("CRAWL_DEADLINE", "0")) or 0.0]
 if not _RUN_DEADLINE[0]:
