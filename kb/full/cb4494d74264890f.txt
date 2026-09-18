@@ -1,0 +1,295 @@
+Article in Press
+SCIENTIFIC DATA | _#####################_ | https://doi.org/10.1038/s41597-026-08310-z
+www.nature.com/scientificdata
+Article in Press
+A Reference Dataset of 66 High-
+Quality Plastid Genomes across 
+Three Algal Phyla
+Jieqiong Wang, Kexin Liu, Xiaolei Wang, Zhengjie Yu, Chaoyong Wu, Shenglong Kan 
+& Wei Zhang ✉
+Algae represent a diverse group of photosynthetic organisms, and their plastid genomes provide 
+valuable molecular resources for investigating plastid evolution, photosynthetic adaptation, and 
+phylogenetic relationships. However, algal plastomes exhibit remarkable evolutionary diversity, with 
+substantial variation in genome structure and organization across different lineages. Currently, high-
+quality algal plastid genomes and a standardized and reliable workflow for generating high-quality 
+algal plastid genomes is still lacking. To address these challenges, we successfully assembled 66 high-
+quality, complete algal plastid genomes, including 7 green, 19 brown, and 40 red algal genomes. 
+During this process, we developed and established a standardized workflow for plastid genome 
+assembly and quality assessment. Notably, these newly assembled genomes enrich existing NCBI 
+resources by contributing 29 species, 13 genera, four families, and one order for the first time, offering 
+both expanded taxonomic coverage and a standardized foundation for subsequent comparative and 
+evolutionary analyses.
+Background & Summary
+Algae represent a major component of global primary production and play fundamental roles in marine carbon 
+cycling and ecosystem functioning1. Cyanobacteria are considered the common ancestor of extant green plant 
+plastids, having formed distinct plastid structures in green and red algae through primary endosymbiosis 2. In 
+contrast, brown algae underwent more complex secondary endosymbiotic events 3,4. The diverse evolutionary 
+origins of plastids across algal lineages, together with their complex endosymbiotic histories, have shaped exten-
+sive variation in plastid genome structure, genome size, and gene content, thereby increasing the challenges of 
+comparative analyses of plastid genome evolution across lineages5–10. Currently, most algal plastid genomes have 
+been generated through independent studies, resulting in heterogeneous assembly and annotation strategies and 
+consequently variable data quality 11. Common issues include inconsistent genome annotations 12, unresolved 
+structural errors, and inaccurate identification of inverted repeat (IR) regions, all of which reduce the consist-
+ency and reliability of available plastome resources.
+Advances in sequencing technology have greatly accelerated research on plant chloroplast genomes. 
+Although the numbers of algal plastid genomes have also increased, their expansion remains relatively limited 
+compared with that of land plants. For instance, over 74,101 complete chloroplast genomes from Embryophyta 
+have been publicly released. In comparison, the number of algal plastomes remains limited, with only 2,878 
+entries recorded as of November 2025, covering merely about 2% of algal species diversity13. Therefore, expand-
+ing high-quality algal plastid genome resources is essential for addressing the current gaps in available algal 
+plastome data.
+To address this gap, this study assembled 90 plastoms (66 complete circular genomes and 24 linear drafts) 
+from 110 samples species, with 20 datasets excluded due to unresolved assembly graphs (Fig. 1A). These newly 
+generated datasets add 29 species, 13 genera, four families, and one order previously absent from NCBI to the 
+public repository (Fig. 1B). Together, these data establish an expanded plastome resource for downstream com-
+parative genomic and evolutionary studies of algae.
+Marine College, Shandong University, Weihai, 264209, China. ✉e-mail: wzhang@sdu.edu.cn
+DATA DESCRIPTOR
+OPENOPEN
+Article in Press
+SCIENTIFIC DATA | _#####################_ | https://doi.org/10.1038/s41597-026-08310-z
+www.nature.com/scientificdatawww.nature.com/scientificdata/
+Methods
+Data Sources. Raw sequencing reads were sourced from publicly available macroalgal genome datasets 
+deposited in the NCBI Sequence Read Archive (SRA), including whole-genome sequencing data from 110 algal 
+individuals and additional datasets reported in previous studies 14–18. These datasets correspond to BioProject 
+accessions PRJNA924561, PRJDB15746, PRJEB39309, PRJNA32771, and PRJEB21674. Detailed information 
+on species, source publications, BioProject accessions, and sequencing-run accessions is provided in Figshare 
+repository at https://doi.org/10.6084/m9.figshare.32983835.v819. To perform plastome assembly, annotation, and 
+comparative analysis, we downloaded the publicly available Illumina short-read data for all taxa.
+Plastomes Assembly and Annotation. Raw sequencing reads were quality-checked using FastQC v0.12.1 
+1 (https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) with default analytical settings and trimmed 
+with Trimmomatic v0.3920 to remove low-quality bases and adapter sequences with the following parameters: 
+-phred33, ILLUMINACLIP:TruSeq. 3-PE.fa:2:30:10, HEADCROP:10, LEADING:20, TRAILING:24, CROP:140, 
+SLIDINGWINDOW:4:15, AVGQUAL:28, MINLEN:36, and TOPHRED64. Cleaned reads were assembled 
+with GetOrganelle v1.7.7.1 with -F other_pt, -R 10, and an appropriate plastid genome seed sequence specified 
+using -s; other assembly parameters were left at their default settings. Assembly graphs were visualized using 
+Bandage v0.8.121 to inspect contig connectivity, coverage depth, and circularity, and were manually simplified 
+based on depth and connectivity. Datasets were excluded when their assembly graphs could not be resolved into 
+either a single uninterrupted circular plastome or a characteristic dumbbell-shaped structure associated with 
+inverted repeats. Assembly quality was evaluated by remapping reads to the assembled plastomes using the eval-
+uate_assembly_using_mapping.py script from GetOrganelle, which assesses per-site coverage, mismatch rates, 
+Fig. 1 Overview of algal genome assembly. (A) Schematic of the chloroplast genome assembly pipeline 
+employing GetOrganelle. Key steps incorporating the three quality standards introduced in this study are 
+annotated. (B) Taxonomic representation of the 66 high-quality assembled algal individuals. Taxonomic 
+composition of the 66 algal individuals with high-quality genome assemblies. (C) Comparative analysis of 
+genome size, structure, and gene content across investigated algae. Genome size is visualized as concentric 
+rings: the outermost red ring corresponds to Rhodophyta, the middle brown ring to Ochrophyta, and the 
+innermost green ring to Chlorophyta.
+Article in Press
+SCIENTIFIC DATA | _#####################_ | https://doi.org/10.1038/s41597-026-08310-z
+www.nature.com/scientificdatawww.nature.com/scientificdata/
+and indel patterns (Figure S1). The script was run using the corresponding paired-end reads (-1 and − 2) and 
+assembled plastome (-f), with mapping plots generated using–draw; other analytical parameters were left at their 
+default settings.
+Plastomes were annotated with MFannot v1.3.6 (https://megasun.bch.umontreal.ca/apps/mfannot/) 
+using the bacterial/plastid genetic code (code 11) 22. The resulting annotations in ASN format were converted 
+to GenBank format using asn2gb from the NCBI toolkit 23. Annotations were manually curated, and circular 
+genome maps were generated using OGDRAW v1.3.124 with default settings. In addition, key genomic features 
+were manually compiled for 90 species.
+Comparative plastomes analysis. Inverted repeat (IR) region loss, contraction, expansion, and bound-
+ary shifts were analyzed using IRplus 25 (irscope.shinyapps.io/IRplus/) with default settings and CPGView 26,27 
+(http://47.96.249.172:16085/cpgview/home) with default settings (Figures S2–S4). Protein-coding genes were 
+categorized by functional groups based on phylogenetic relationships, and their presence/absence patterns was 
+recorded, with ORF-classified genes excluded from the analysis28,29.
+Phylogenetic Analyses. A maximum likelihood (ML) phylogenetic tree of algae was constructed using 
+IQ-TREE multicore version 2.4.0 30 under the LG + F + I + G4 model, with Synechocystis sp. (CP007542) and 
+Prochlorococcus marinus (BX548175) as outgroups. The procedure was as follows: (a) For all 92 species span-
+ning three algal phyla, the nucleotide and corresponding protein sequences of every protein-coding gene were 
+retrieved using the script extract_all_genes_from_gb.py. A set of 117 protein-coding genes present in at least 
+80% of species was selected and concatenated for tree construction. (b) Protein sequences of these genes were 
+aligned using MAFFT31 with default parameters. (c) Unreliable alignment regions were removed using Gblocks 
+with default parameters in PhyloSuite v1.2.332. (d) PhyloSuite v1.2.3 was used to concatenate the 117 single-gene 
+alignments into a supermatrix with default parameters. (e) IQ-TREE was applied to construct the ML tree under 
+the LG + F + I + G4 model with 1,000 bootstrap replicates. (f) The tree was visualized and annotated using iTOL 
+(https://itol.embl.de/)33.
+Data Records
+The 66 assembled plastid genomes and their functional annotations are available under BioProject PRJEB121163 
+in DDBJ/ENA/GenBank databases, with individual listed in Table S2, and also provided via database links 34 
+and figshare (https://doi.org/10.6084/m9.figshare.30943982.v4) 35. Detailed plastid genome features, genome 
+alignments, phylogenetic trees, and quality-control (QC) data are available at figshare: https://doi.org/10.6084/
+m9.figshare.32983835.v8 (2026)19.
+Data Overview
+For chloroplast genome assembly, we obtained 66 complete plastomes and 24 linear draft assemblies, with cir-
+cular maps of the complete genomes presented in Fig. 1C. The canonical quadripartite structure was displayed 
+in all Ochrophyta plastid genomes, whereas it was observed only in a subset of Chlorophyta and Rhodophyta 
+plastid genomes. In Rhodophyta, the repeat regions consisted of either inverted repeats or direct repeats (Fig. 2).
+Among the Chlorophyta plastid genomes, large single-copy (LSC), small single-copy (SSC), and inverted 
+repeat (IR) regions lengths ranged from 53,789–88,291 bp, 10,447–23,760 bp, and 316–5,266 bp, respectively. In 
+contrast, Ochrophyta and Rhodophyta plastomes exhibited relatively conserved structural partitions within each 
+lineage, with average LSC, SSC, and IR/repeat region lengths of 78.87/42.92/11.70 kb and 152.60/31.12/9.60 kb, 
+respectively (Fig.  3A). The complete plastome length ranged from 81,997 to 113,888 bp in Chlorophyta and 
+from 124,224 to 143,684 bp in Ochrophyta and from 164,327 to 194,981 bp in Rhodophyta (Fig. 3B). The aver-
+age GC content varied among the three algal lineages, with mean values of 28.31% in Chlorophyta, 30.81% in 
+Ochrophyta, and 29.98% in Rhodophyta (Fig.  3C). Correlation analysis showed that LSC length was signifi -
+cantly correlated with genome size (Fig.  3D), whereas SSC and IR lengths showed no significant correlations 
+(Fig. 3E,F). Among the functional partitions, the protein-coding region (CDS) exhibited the strongest corre -
+lation with genome size, while tRNA and intergenic regions showed moderate correlations. In contrast, rRNA, 
+introns, and pseudogenes showed little or no correlation (Fig. 3G–L).
+Protein-coding gene numbers differed among the major algal lineages, averaging approximately 99 in 
+Chlorophyta, 142 in Ochrophyta, and 186 in Rhodophyta. Compared with Ochrophyta and Rhodophyta, 
+Chlorophyta exhibited reduced gene numbers across all functional categories, whereas the differences between 
+Ochrophyta and Rhodophyta were primarily associated with genes involved in carbon assimilation and biosyn-
+thesis, transcription and translation, and light harvesting and chlorophyll biosynthesis (Fig. 4).
+Technical Validation
+Raw Data Quality Control. To ensure technical reliability, raw sequencing reads underwent quality control 
+and trimming. All samples retained high Q30 scores, low error rates, and stable sequence quality.
+Validation Criteria. Standard 1–Assembly Contiguity . Assembly graphs were visualized and evaluated 
+using Bandage to assess their contiguity and circularity. A plastome was considered complete only when the 
+final resolved graph formed one or more fully closed circular structures without gaps. Specifically, the graph was 
+required to be continuous and fully resolved, without unconnected terminal nodes, dangling ends, open-ended 
+paths, or fragmented structures with ambiguous connectivity.
+Standard 2–Assembly Accuracy. Reads were remapped to the assembled plastomes to evaluate coverage. The 
+sequencing-depth profile showed no abrupt or unexplained interruptions. Uniform depth distribution without 
+significant fluctuations indicated correct and stable assembly.
+Article in Press
+SCIENTIFIC DATA | _#####################_ | https://doi.org/10.1038/s41597-026-08310-z
+www.nature.com/scientificdatawww.nature.com/scientificdata/
+Standard 3–Core Gene Set Completeness. Core gene set completeness was evaluated separately for Chlorophyta, 
+Ochrophyta, and Rhodophyta, with the reference gene sets for each phylum detailed in Table S1. Plastome 
+annotations retaining ≥80% of the lineage-specific core genes were considered to have acceptable annotation 
+completeness. Following automated annotation, all identified protein-coding genes, rRNAs, and tRNAs were 
+manually curated against reference sequences from closely related species in GenBank.
+Fig. 2 The three primary chloroplast genome structures (inverted repeat, direct repeat, and single copy) and 
+their distribution across 90 algal phylogeny.
+Article in Press
+SCIENTIFIC DATA | _#####################_ | https://doi.org/10.1038/s41597-026-08310-z
+www.nature.com/scientificdatawww.nature.com/scientificdata/
+Fig. 3 Analysis of component sizes in algal chloroplast genomes and their correlation with genome size. (A) 
+Summary statistics of plastid genome components across 90 algal phylogeny. The following components were 
+quantified: (a) coding sequence (CDS) length, (b) ribosomal RNA (rRNA), (c) transfer RNA (tRNA), (d) 
+introns, (e) pseudogenes, (f) intergenic regions (IGRs), (g) large single-copy (LSC) region, (h) small single-copy 
+(SSC) region, (i) repeat regions, and (j) total genome size. In the radial plot, each ring corresponds to the mean 
+value for a component. Values below the mean are indicated by inward-pointing bars, and values above the 
+mean by outward-pointing bars. The bar height reflects the absolute deviation from the mean. (B, C) Boxplots 
+comparing the distribution of total chloroplast genome size (B) and GC content (C) among the three algal 
+phyla: Chlorophyta, Ochrophyta, and Rhodophyta. (D–J) Scatter plots depicting the correlations between total 
+chloroplast genome size and the length of each major component: LSC (D), SSC (E), repeat regions (F), CDS 
+(G), rRNA (H), tRNA (I), intron (J), pseudogene (K) and IGR (L).
+Article in Press
+SCIENTIFIC DATA | _#####################_ | https://doi.org/10.1038/s41597-026-08310-z
+www.nature.com/scientificdatawww.nature.com/scientificdata/
+Data availability
+The 66 assembled plastid genomes and their functional annotations have been submitted to DDBJ/ENA/
+GenBank34 and figshare (https://doi.org/10.6084/m9.figshare.30943982.v4) 35. All detailed plastome features, 
+associated sequence data, including both raw and trimmed alignments, as well as the tree file are publicly available 
+on figshare (https://doi.org/10.6084/m9.figshare.32983835.v8)19.
+Code availability
+The custom Python script extract_all_genes_from_gb.py used in this study is publicly available in figshare 
+(https://doi.org/10.6084/m9.figshare.30943982.v4)35 together with the plastid genome assemblies and annotation 
+files.
+Received: 25 December 2025; Accepted: 9 September 2026;
+Published: xx xx xxxx
+References
+ 1. Falkowski, P . G. et al. The evolution of modern eukaryotic phytoplankton. Science 305(5682), 354–360 https://doi.org/10.1126/
+science.1095964 (2004).
+Fig. 4 Distribution of plastid-encoded protein-coding genes across major algal lineages. A presence/absence 
+matrix for 90 representative species from Chlorophyta, Ochrophyta, and Rhodophyta. Colored ticks denote the 
+presence of a gene in a given lineage.
+Article in Press
+SCIENTIFIC DATA | _#####################_ | https://doi.org/10.1038/s41597-026-08310-z
+www.nature.com/scientificdatawww.nature.com/scientificdata/
+ 2. Archibald, J. M. Genomic perspectives on the birth and spread of plastids. Proc Natl Acad Sci USA 112(33), 10147–10153 https://doi.
+org/10.1073/pnas.1421374112 (2015).
+ 3. Oh, Z. G., Askey, B. & Gunn, L. H. Red Rubiscos and opportunities for engineering green plants. J Exp Bot 74(2), 520–542 https://
+doi.org/10.1093/jxb/erac349 (2023).
+ 4. Janouškovec, J., Horák, A., Oborník, M., Lukeš, J. & Keeling, P . J. A common red algal origin of the apicomplexan, dinoflagellate, and 
+heterokont plastids. Proc Natl Acad Sci USA 107(24), 10949–10954 https://doi.org/10.1073/pnas.1003335107 (2010).
+ 5. Watanabe, S., Fučíková, K., Lewis, L. A. & Lewis, P . O. Hiding in plain sight: Koshicola spirodelophila gen. et sp. nov. 
+(Chaetopeltidales, Chlorophyceae), a novel green alga associated with the aquatic angiosperm Spirodela polyrhiza. Am J Bot 103(5), 
+865–875 https://doi.org/10.3732/ajb.1500481 (2016).
+ 6. Del Cortona, A. et al. The plastid genome in Cladophorales green algae is encoded by hairpin chromosomes. Curr Biol 27(24), 
+3771–3782.e6 https://doi.org/10.1016/j.cub.2017.11.004 (2017).
+ 7. Turmel, M., Otis, C. & Lemieux, C. Dynamic evolution of the chloroplast genome in the green algal classes Pedinophyceae and 
+Trebouxiophyceae. Genome Biol Evol 7(7), 2062–2082 https://doi.org/10.1093/gbe/evv130 (2015).
+ 8. De Cambiaire, J. C., Otis, C., Turmel, M. & Lemieux, C. The chloroplast genome sequence of the green alga Leptosira terrestris: 
+multiple losses of the inverted repeat and extensive genome rearrangements within the Trebouxiophyceae. BMC Genomics 8, 213 
+https://doi.org/10.1186/1471-2164-8-213 (2007).
+ 9. Lee, J. et al. Parallel evolution of highly conserved plastid genome architecture in red seaweeds and seed plants. BMC Biol 14, 75 
+https://doi.org/10.1186/s12915-016-0299-5 (2016).
+ 10. De Cambiaire, J. C., Otis, C., Lemieux, C. & Turmel, M. The complete chloroplast genome sequence of the chlorophycean green alga 
+Scenedesmus obliquus reveals a compact gene organization and a biased distribution of genes on the two DNA strands. BMC Evol 
+Biol 6, 37 https://doi.org/10.1186/1471-2148-6-37 (2006).
+ 11. Gallaher, S. D. et al. High‐throughput sequencing of the chloroplast and mitochondrion of Chlamydomonas reinhardtii to generate 
+improved de novo assemblies, analyze expression patterns and transcript speciation, and evaluate diversity among laboratory strains 
+and wild isolates. Plant J 93(3), 545–565 https://doi.org/10.1111/tpj.13788 (2018).
+ 12. Qu, X. J., Zou, D., Zhang, R. Y ., Stull, G. W . & Yi, T. S. Progress, challenge and prospect of plant plastome annotation. Front Plant Sci 
+14, 1166140 https://doi.org/10.3389/fpls.2023.1166140 (2023).
+ 13. Guiry, M. D. How many species of algae are there? J Phycol 48(5), 1057–1063 https://doi.org/10.1111/j.1529-8817.2012.01222.x 
+(2012).
+ 14. Nelson, D. R. et al. Macroalgal deep genomics illuminate multiple paths to aquatic, photosynthetic multicellularity. Mol Plant 17, 
+747–771 (2024).
+ 15. Ochiai, K. K. et al. Genome sequence and cell biological toolbox of the highly regenerative, coenocytic green feather alga Bryopsis. 
+Plant J 119, 1091–1111 (2024).
+ 16. One Thousand Plant Transcriptomes Initiative. One thousand plant transcriptomes and the phylogenomics of green plants. Nature 
+574, 679–685 https://doi.org/10.1038/s41586-019-1693-2 (2019).
+ 17. Iha, C. et al. Genomic adaptations to an endolithic lifestyle in the coral-associated alga Ostreobium. Curr Biol 31, 1393–1402.e1395 
+(2021).
+ 18. Polle, J. E. W . et al. Draft nuclear genome sequence of the halophilic and beta-carotene-accumulating green alga Dunaliella salina 
+strain CCAP19/18. Genome Announc 5(43), e01105-17 https://doi.org/10.1128/genomeA.01105-17 (2017).
+ 19. Jieqiong, W . et al. Genome alignments, phylogenies, and QC data for 66 complete algal plastome assemblies and annotations. 
+figshare https://doi.org/10.6084/m9.figshare.32983835.v8 (2026).
+ 20. Bolger, A. M., Lohse, M. & Usadel, B. Trimmomatic: a flexible trimmer for Illumina sequence data. Bioinformatics 30(15), 2114–2120 
+https://doi.org/10.1093/bioinformatics/btu170 (2014).
+ 21. Wick, R. R., Schultz, M. B., Zobel, J. & Holt, K. E. Bandage: interactive visualization of de novo genome assemblies. Bioinformatics 
+31(20), 3350–3352 https://doi.org/10.1093/bioinformatics/btv383 (2015).
+ 22. Lang, B. F. et al . Mitochondrial genome annotation with MFannot: a critical analysis of gene identification and gene model 
+prediction. Front Plant Sci 14, 1222186 https://doi.org/10.3389/fpls.2023.1222186 (2023).
+ 23. Jamy, M. et al. New deep-branching environmental plastid genomes on the algal tree of life. Evolutionary Biology. Preprint posted 
+online January 18, 2025. https://doi.org/10.1101/2025.01.16.633336
+ 24. Greiner, S., Lehwark, P . & Bock, R. OrganellarGenomeDRAW (OGDRAW) version 1.3.1: expanded toolkit for the graphical 
+visualization of organellar genomes. Nucleic Acids Res 47(W1), W59–W64 https://doi.org/10.1093/nar/gkz238 (2019).
+ 25. Amiryousefi, A., Hyvönen, J. & Poczai, P . IRscope: an online program to visualize the junction sites of chloroplast genomes. 
+Bioinformatics 34(17), 3030–3031 https://doi.org/10.1093/bioinformatics/bty220 (2018).
+ 26. Liu, S. et al. CPGVIEW: a package for visualizing detailed chloroplast genome structures. Mol Ecol Resour 23(3), 694–704 https://
+doi.org/10.1111/1755-0998.13729 (2023).
+ 27. Shi, L. et al. CPGAV AS2, an integrated plastome sequence annotator and analyzer. Nucleic Acids Res 47(W1), W65–W73 https://doi.
+org/10.1093/nar/gkz345 (2019).
+ 28. Allen, J. F ., De Paula, W . B. M., Puthiyaveetil, S. & Nield, J. A structural phylogenetic map for chloroplast photosynthesis. Trends 
+Plant Sci 16(12), 645–655 https://doi.org/10.1016/j.tplants.2011.10.004 (2011).
+ 29. De Vries, J., Stanton, A., Archibald, J. M. & Gould, S. B. Streptophyte terrestrialization in light of plastid evolution. Trends Plant Sci 
+21(6), 466–476 https://doi.org/10.1016/j.tplants.2016.01.021 (2016).
+ 30. Nguyen, L. T., Schmidt, H. A., Von Haeseler, A. & Minh, B. Q. IQ-TREE: a fast and effective stochastic algorithm for estimating 
+maximum-likelihood phylogenies. Mol Biol Evol 32(1), 268–274 https://doi.org/10.1093/molbev/msu300 (2015).
+ 31. Nakamura, T., Y amada, K. D., Tomii, K. & Katoh, K. Parallelization of MAFFT for large-scale multiple sequence alignments. 
+Bioinformatics 34(14), 2490–2492 https://doi.org/10.1093/bioinformatics/bty121 (2018).
+ 32. Xiang, C. et al. Using PhyloSuite for molecular phylogeny and tree‐based analyses. iMeta 2(1), e87 https://doi.org/10.1002/imt2.87 
+(2023).
+ 33. Letunic, I. & Bork, P . Interactive Tree Of Life (iTOL) v5: an online tool for phylogenetic tree display and annotation. Nucleic Acids 
+Res 49(W1), W293–W296 https://doi.org/10.1093/nar/gkab301 (2021).
+ 34. European Nucleotide Archive https://identifiers.org/bioproject:PRJEB121163 (2026).
+ 35. Jieqiong, W . et al. A reference dataset of 66 high-quality plastid genomes spanning diverse algal lineages. figshare https://doi.
+org/10.6084/m9.figshare.30943982.v4 (2026).
+Author contributions
+Jieqiong Wang: Data curation, Formal analysis, Methodology, Writing-original draft, Visualization. Kexin Liu: 
+Data curation, Methodology. Xiaolei Wang: Conceptualization, Methodology. Zhengjie Yu: Data curation, 
+Formal analysis. Chaoyong Wu: Conceptualization, Data curation. Shenglong Kan: Data curation, Methodology. 
+Wei Zhang: Conceptualization, Data curation, Formal analysis, Methodology, Writing-review & editing.
+Article in Press
+SCIENTIFIC DATA | _#####################_ | https://doi.org/10.1038/s41597-026-08310-z
+www.nature.com/scientificdatawww.nature.com/scientificdata/
+Funding
+This work was supported by the National Natural Science Foundation of China (Grant No. 82173936).
+Competing interests
+The authors declare no competing interests.
+Additional information
+Supplementary information The online version contains supplementary material available at https://doi.
+org/10.1038/s41597-026-08310-z.
+Correspondence and requests for materials should be addressed to W .Z.
+Reprints and permissions information is available at www.nature.com/reprints.
+Publisher’s note Springer Nature remains neutral with regard to jurisdictional claims in published maps and 
+institutional affiliations.
+Open Access This article is licensed under a Creative Commons Attribution-NonCommercial-NoD-
+erivatives 4.0 International License, which permits any non-commercial use, sharing, distribution 
+and reproduction in any medium or format, as long as you give appropriate credit to the original author(s) and 
+the source, provide a link to the Creative Commons licence, and indicate if you modified the licensed material. 
+You do not have permission under this licence to share adapted material derived from this article or parts of it. 
+The images or other third party material in this article are included in the article's Creative Commons licence, 
+unless indicated otherwise in a credit line to the material. If material is not included in the article's Creative Com-
+mons licence and your intended use is not permitted by statutory regulation or exceeds the permitted use, you 
+will need to obtain permission directly from the copyright holder. To view a copy of this licence, visit http://cre-
+ativecommons.org/licenses/by-nc-nd/4.0/.
+ 
+© The Author(s) 2026
+This Article in Press is shared early to give you faster access to new research. It is citable and carries a permanent 
+DOI. The final edited version will replace it automatically.

@@ -1,0 +1,1026 @@
+Quality of Life Research (2026) 35:285 
+https://doi.org/10.1007/s11136-026-04383-w
+Neil E. Martin and Chengbo Zeng have contributed equally to this 
+work.
+ Jason B. Liu
+jbliu@mdanderson.org
+1 Patient-Reported Outcomes, Value, and Experience 
+(PROVE) Center, Mass General Brigham, Boston, MA, USA
+2 Department of Surgical Oncology, The University of Texas 
+MD Anderson Cancer Center, Houston, TX, USA
+3 Department of Health Services Research, The University of 
+Texas MD Anderson Cancer Center, TXHouston, USA
+4 Center for Surgery and Public Health, Mass General 
+Brigham, Boston, MA, USA
+5 RAND Corporation, Boston, MA, USA
+6 Harvard Medical School, Boston, MA, USA
+7 Department of Plastic and Reconstructive Surgery, Mass 
+General Brigham, Boston, MA, USA
+8 Department of Radiation Oncology, Mass General Brigham, 
+Boston, MA, USA
+Abstract
+Purpose Nonresponse to routinely collected patient-reported outcome measures (PROMs) threatens the representativeness 
+of aggregated data. We characterized patient-, provider-, and clinic-level factors associated with PROMIS Global-10 nonre-
+sponse in routine radiation oncology care.
+Methods In this retrospective cohort study, all adults seen at five Mass General Brigham radiation oncology clinics over 
+one year were included. The primary outcome was patient-level nonresponse, defined as never completing the portal-admin-
+istered Global-10 versus completing it at least once. Using iterative mixed-effects logistic regression, we modeled patient-, 
+provider-, and clinic-level factors.
+Results Among 12,214 patients, 71 providers, and five clinics, patient- and appointment-level response rates were 35.4% 
+and 31.7%, with patient-level response ranging nearly fivefold across clinics (12.8% to 66.2%). In Model 1, male sex, lower 
+education, not working, and recent surgery had higher odds of nonresponse, and longer time since diagnosis lower odds. 
+After provider- and clinic-level factors were added, patient sex, education, and employment became nonsignificant, whereas 
+recent surgery (adjusted odds ratio [aOR] 1.97) and longer time since diagnosis (aOR 0.46 for > 12 months) persisted. A 
+provider’s historical collection rate was protective but attenuated at the clinic level. There, a later program launch (aOR 0.29) 
+and higher historical collection rate (aOR 0.79) correlated with lower nonresponse, whereas academic versus community 
+setting did not.
+Conclusions Nonresponse to routinely collected PROMs is a multilevel phenomenon driven substantially by clinic-level 
+implementation factors, not patient characteristics alone. Because response rate is only a proxy for representativeness, 
+PROMs programs and PRO-based performance measures should prioritize representative collection over volume.
+Keywords Response rate · Nonresponse bias · Implementation science · Health equity
+Received: 6 July 2026 / Accepted: 1 September 2026
+© The Author(s) 2026
+Multilevel factors associated with nonresponse to patient-reported 
+outcome measures in routine radiation oncology care
+Jason B. Liu1,2,3  · Yu-Jen Chen4 · Maria O. Edelen1,5 · Andrea L. Pusic1,6,7 · Neil E. Martin6,8 · Chengbo Zeng1,6
+1 3
+ 285 Page 2 of 12
+Quality of Life Research (2026) 35:285 
+Introduction
+Patient-reported outcome measures (PROMs) are increas -
+ingly embedded in routine clinical care to foster patient-
+centeredness, quality and performance improvement, and 
+value-based care transformation. [ 1–5] As health systems 
+scale PROMs collection through the electronic health 
+record (EHR), these data are also being used to generate 
+real-world evidence and support population-level efforts. 
+Using PROMs data in the aggregate places a premium 
+on data quality that extends beyond the individual patient 
+encounter. [6].
+A core threat to the utility of aggregated PROMs data 
+is nonresponse. [7,8] When data are systematically incom -
+plete, analyses based on observed responses may not rep -
+resent the underlying patient population, leading to biased 
+estimates that can mask or amplify disparities. [9,10] In rou-
+tine clinical workflows, nonresponse can arise from patient-
+level barriers, such as language discordance or limited 
+digital access, but it can also reflect clinic- and provider-
+level variation in how PROMs are operationalized, moni -
+tored, and incorporated into care. [ 8,11–13] Most efforts to 
+address nonresponse focus on raising overall response rates 
+(aka completion rates), but this alone does not necessarily 
+improve data representativeness, because the strategies that 
+increase responses may not preferentially reach the patients 
+most likely to be missing. [ 14,15] Improving representa -
+tiveness therefore requires first understanding where in the 
+care delivery system nonresponse concentrates and which 
+patients are disproportionately absent from the resulting 
+data.
+Implementation science offers an organizing framework 
+for understanding why PROMs initiatives succeed or fail in 
+routine care and for designing strategies to address the bar -
+riers involved. [16] Prior work shows that the determinants 
+of these initiatives span multiple domains and levels, from 
+individual patients to providers and the broader care deliv -
+ery system, [18] and emphasizes implementation outcomes 
+such as adoption, fidelity, and sustainment. [ 19] Viewed 
+through implementation science theory, missing PROMs 
+data are less a statistical nuisance than a modifiable imple -
+mentation outcome that reflects the underlying system’s 
+design and workflow performance. Characterizing nonre -
+sponse as a multilevel phenomenon is therefore central to 
+ensuring the representativeness of aggregated PROMs data.
+Mass General Brigham (MGB) radiation oncology clin -
+ics routinely collect the Patient-Reported Outcomes Mea -
+surement Information System (PROMIS ®) Global-10 
+across all cancer types. [20] Every patient scheduled to see a 
+physician or advanced practice provider (APP) is electroni-
+cally administered the Global-10 before each visit, creating 
+an opportunity to study nonresponse in a real-world setting. 
+Drawing on established multilevel implementation science 
+frameworks, [2122] We characterized patterns of Global-10 
+nonresponse across the clinic, provider, and patient levels. 
+By identifying factors at each level, we sought to delineate 
+whether nonresponse is shaped not only by patient charac -
+teristics but also by the providers and clinics responsible for 
+collection. We posit that such data can strengthen the case 
+for making data representativeness, rather than response 
+volume alone, a core quality target for evidence generated 
+from routinely collected PROMs.
+Methods
+Study design, setting, and participants
+All adults seen at five radiation oncology clinics within the 
+MGB health system between October 2023 and September 
+2024 were included in this retrospective cohort study. Data 
+were obtained from the EHR and other readily available 
+institutional administrative data sources (e.g., credentialing 
+information). This study was approved by the Dana-Farber/
+Harvard Cancer Center Institutional Review Board (24–
+225) and exempted from oversight.
+As part of routine care, the PROMIS Global-10 version 
+1.0/1.1 was electronically administered to all patients via 
+the EHR’s patient portal seven days before any visit with 
+a provider (i.e., physician or APP). [ 20,23] Patients could 
+complete the Global-10 at any point within the 7-day win -
+dow and those who did not complete the Global-10 in 
+advance were provided electronic tablets (i.e., iPads) at 
+the time of check-in while waiting for their appointment. 
+Patients were required to complete all 10 Global-10 items, 
+thus there is no item-level missingness. Per institutional pol-
+icy, the Global-10 was made available in English, Spanish, 
+Portuguese, Haitian Creole, traditional Chinese, Russian, 
+and Arabic. [ 11] Responses and scores were immediately 
+available in the EHR for provider use.
+Definition of nonresponse
+The primary outcome for this analysis was patient-level 
+nonresponse, defined as whether the patient completed the 
+Global-10 one or more times during the study period (respon-
+dent) versus none (nonrespondent). Because a patient could 
+have one or more appointments during the study period and 
+therefore could be administered the Global-10 more than 
+once, we also calculated appointment-level response rates 
+as secondary outcomes.
+1 3
+Page 3 of 12 285 
+Quality of Life Research (2026) 35:285 
+Multilevel factors: clinics, providers, and 
+patients
+Following published multilevel implementation frame -
+works, we conceptualized potential clinic, provider, and 
+patient factors that might contribute to nonresponse using 
+readily available data. [ 16,19,21,22,24] Supplemental 
+Table 1 outlines the factors in detail along with correspond-
+ing implementation domains. Briefly, clinic-level factors 
+included: clinic type, year in which PROMs collection was 
+implemented, weekly patient volume, and weekly response 
+rates. Provider-level factors included: sex, years since grad-
+uation from their terminal clinical degree, and role. Weekly 
+patient volume and weekly responses rates were also cal -
+culated by provider. Patient-level demographic character -
+istics included: age, sex, race/ethnicity, highest level of 
+education attainment, insurance type, employment status, 
+preferred language, comorbidities based on the NCI version 
+of the Charlson comorbidity index (CCI), [ 25] cancer type, 
+months since cancer diagnosis, and whether the patient had 
+a surgical procedure within the previous six months.
+Statistical analysis
+Clinic-, provider-, and patient-level characteristics were 
+summarized using medians and interquartile range (IQRs) 
+for continuous variables and frequencies and percentages 
+for categorical variables. We calculated both patient- and 
+appointment-level response rates for each clinic during the 
+study period. Differences in clinic-, provider-, and patient-
+level characteristics between nonrespondents and respon -
+dents were assessed, and effect sizes (ES), as quantified with 
+Cramér’s V or Cohen’s d. We considered ES of 0.2, 0.5, and 
+0.8 to reflect small, medium, and large effects. [26].
+We used an iterative modeling approach to identify 
+clinic-, provider-, and patient-level factors associated with 
+nonresponse. To ensure model convergence and robustness, 
+we excluded four providers with fewer than 20 patients, 
+which we did not expect to differ substantially from those 
+included in the analysis. First, we fit a mixed-effects logistic 
+regression model to examine associations between patient-
+level characteristics and nonresponse (Model 1). Based on 
+the magnitude of differences between nonrespondents and 
+respondents, we included age, sex, race/ethnicity, educa -
+tion, insurance type, employment status, CCI, time since 
+diagnosis, and receipt of surgery in the previous six months 
+as fixed effects, with cancer type as a random effect. Second, 
+patient-level fixed factors that were significant in Model 1 
+were retained, and provider-level fixed factors (sex, years 
+since graduation, role, weekly collection rate, and patient 
+volume) were added to the model, with provider as a ran -
+dom effect (Model 2). Finally, clinic-level fixed factors 
+(hospital type, year of Global-10 implementation, and 
+weekly collection rate) were further incorporated alongside 
+significant patient- and provider-level fixed factors, with 
+clinic as a random effect (Model 3). Results are reported 
+as odds ratios (ORs) with 95% confidence intervals (CIs), 
+wherein OR > 1.0 represents higher odds of nonresponse. 
+All analyses were conducted using SAS v9.4. Tests of sig -
+nificance were two-sided.
+Results
+Overview
+Five clinics, 71 providers, and 12,214 unique patients were 
+included (Fig. 1). Over the 12-month study period, the 
+Global-10 was assigned to 12,214 patients encompassing 
+39,510 appointments (Table 1). There were 4,325 patients 
+who responded to one or more Global-10 administrations, 
+yielding an overall patient-level response rate of 35.4%. Of 
+the 39,510 appointments with an accompanying Global-10 
+assignment, 12,521 responses were obtained, yielding an 
+appointment-level response rate of 31.7%.
+As expected, response rates varied across the clinics at 
+both the patient and appointment levels (Table 1). Patient-
+level response rates ranged from 12.8 to 66.2% and appoint-
+ment-level response rates ranged from 10.6 to 56.1%.
+Two clinics were located within academic medical centers 
+and three in community settings (Table 2). Clinics located 
+at academic sites had higher response rates than community 
+ones (patient level: 37.4 vs. 32.9%; appointment level: 33.6 
+vs. 22.9%). Three clinics began collecting PROMs in 2015. 
+Weekly patient volume across clinics ranged from 23 to 161 
+patients. Weekly PROMs response rate ranged from 38.9 to 
+85.7%.
+Among the 71 providers, 51.4% were female and 78.9% 
+were physicians (Table 3). The median time since gradua -
+tion from corresponding professional schools was 12 years 
+(IQR 8–20). Providers saw a median of 7 patients per week 
+(IQR 4–10). The median weekly PROMs response rate was 
+50.0% (IQR 31.0–58.0%).
+Table 4 depicts the characteristics of the 12,214 unique 
+patients included. Overall, patients had a median age of 68 
+years (IQR 60–75) and slightly more were female (51.2%). 
+Commensurate with MGB’s usual patient population, 
+78.8% were non-Hispanic White and 60.3% attained a col -
+lege level education or higher. More than 50% of the cohort 
+had breast or prostate cancer. 17.4% of patients had surgical 
+procedures within the previous six months.
+1 3
+ 285 Page 4 of 12
+Quality of Life Research (2026) 35:285 
+Differences between nonrespondents and 
+respondents
+Table 4 depicts the differences between nonrespondents and 
+respondents at the three levels. There was a higher propor -
+tion of respondents in clinics that began collecting PROMs 
+in 2016 or later as compared to those in 2015 (48.6% vs. 
+29.3%; ES = 0.191). Clinics with a weekly response rate 
+of at least 51.9% in the year prior to the study period (the 
+median rate across the five clinics) had a higher proportion 
+of respondents (59.7% vs. 40.2%; ES = 0.187).
+Differences in provider characteristics between nonre -
+spondents and respondents were generally small, with the 
+exception that more responses were obtained from providers 
+whose weekly response rate was at least 50.0% in the year 
+preceding the study period (69.2% vs. 50.6%; ES = 0.179).
+Among the 12,214 patients, larger differences between 
+nonrespondents and respondents were observed for sex, can-
+cer type, surgery in the previous six months, and time since 
+diagnosis. For example, we observed more female respon -
+dents than male ones (57.4% vs. 42.6%; ES = 0.093). Com-
+pared with nonrespondents, respondents included a higher 
+Table 1 PROMIS Global-10 assignments and completions at the patient and appointment levels
+Clinics Assignments Completions Response rate
+at patient level (%)†
+Response rate
+at appointment level (%)*Patients‖
+(P)
+Appointments (E) Patients‖
+(p)
+Appointments (e)
+Academic sites 6,522 19,449 2,438 6,531 37.4 33.6
+ Site 1 4,502 12,613 1,568 4,105 34.8 32.5
+ Site 2 2,325 6,836 962 2,426 41.4 35.5
+Community sites 5,916 20,061 1,948 5,990 32.9 29.9
+ Site 3 1,881 6,233 241 663 12.8 10.6
+ Site 4 1,007 3,736 667 2,097 66.2 56.1
+ Site 5 3,082 10,092 1,060 3,230 34.4 32.0
+Total 12,214 39,510 4,325 12,521 35.4 31.7
+* Response rate at appointment level = e/E * 100%; †: Response rate at patient level = p/P * 100%. ‖: Numbers do not sum to the total because 
+patients were allowed to receive care across sites
+Fig. 1 Study cohort selection. FY: fiscal year
+ 
+1 3
+Page 5 of 12 285 
+Quality of Life Research (2026) 35:285 
+proportion of patients with breast cancer (32.7% vs. 23.4%) 
+and lower proportions of patients with prostate (20.7% 
+vs. 27.7%) and lung cancer (7.5% vs. 11.7%; ES = 0.126). 
+Among respondents, there was a lower proportion of 
+patients who had surgery in the previous six months (14.3% 
+vs. 19.0%; ES = 0.060). In addition, respondents had a 
+longer duration since cancer diagnosis than nonrespondents 
+(17.9 vs. 11.8 months; ES = 0.146).
+Iterative modeling results: clinic-, provider-, 
+and patient-level factors associated with 
+nonresponse
+Iterative modeling began at the patient level and built 
+upwards (Table 5). Results from Model 1, which included 
+only patient-level factors, showed that patients who were 
+male (adjusted odds ratio [aOR] 1.20; 95% CI 1.07–1.34), 
+were unemployed, retired, or disabled (aOR 1.12; 95% CI 
+1.02–1.23), attained a high school education or less (aOR 
+1.14; 95% CI 1.04–1.26), or had surgery in the previous six 
+months (aOR 1.54; 95% CI 1.37–1.71) had higher odds of 
+being nonrespondents compared with their respective coun-
+terparts. In contrast, patients who were diagnosed between 6 
+and 12 months ago (aOR 0.80; 95% CI, 0.71–0.91) or more 
+than 12 months ago (aOR 0.50; 95% CI, 0.45–0.56) had 
+lower odds of being nonrespondents than those diagnosed 
+within six months.–
+Results from Model 2 showed that after adding provider-
+level factors, patient-level sex, education, and employment 
+status were no longer significantly associated with nonre -
+sponse (Table 5). Having had surgery in the previous six 
+months (aOR 1.68, 95% CI 1.49–1.89) and a longer duration 
+of time since diagnosis (e.g., > 12 months vs. 0–6 months; 
+aOR 0.47, 95% CI 0.42–0.53) remained significantly asso -
+ciated with nonresponse. Notably, among the provider-level 
+factors examined, only weekly collection rate was signifi -
+cantly associated with, and protective against, nonresponse 
+(aOR 0.75; 95% CI 0.63–0.89).
+After adding clinic-level factors (Model 3), the asso -
+ciation between provider-level weekly collection rate and 
+nonresponse was attenuated and no longer statistically 
+significant (aOR 0.89, 95% CI 0.76–1.06; Table 5). Hav -
+ing had surgery in the previous six months (aOR 1.97, 95% 
+CI 1.65–2.11) and a longer duration of time since diagnosis 
+(e.g., > 12 months vs. 0–6 months; aOR 0.46, 95% CI 0.41–
+0.52) remained significantly associated with nonresponse. 
+Clinic type was not significantly associated with nonre -
+sponse (aOR 0.81; 95% CI 0.31–2.14). Consistent with the 
+bivariate analyses, patients from clinics that began PROMs 
+collection in or after 2016 had lower odds of nonresponse 
+compared with those from clinics that began collecting 
+PROMs in 2015 (aOR 0.29; 95% CI 0.12–0.70). In addition, 
+clinic-level weekly collection rate was significantly associ -
+ated with, and protective against, nonresponse (aOR 0.79; 
+95% CI 0.68–0.92).
+Table 2 Clinic characteristics (N = 5 )
+Clinic 
+setting
+Site 1 Site 2 Site 3 Site 5 Site 6
+Academic Academic Community Community Community
+Weekly 
+patient 
+volume
+161 58 41 23 49
+Global-10 
+collection 
+since
+2015 2016 2015 2017 2015
+No. of 
+patients 
+assigned 
+weekly‡
+105 44 36 21 33
+No. of 
+patients 
+responded 
+weekly
+54 31 14 18 14
+Weekly 
+response 
+rate (%)†
+51.4 70.5 38.9 85.7 42.4
+‡: not all appointment types were accompanied with a Global-10 admin -
+istration. †: Weekly response rate = No. of patients responded weekly / 
+No. of patients assigned weekly
+Table 3 Provider characteristics (N = 7 1 )
+N (%)
+Sex
+ Female 36 (51.4)
+ Male 34 (48.6)
+Years since graduation (Median, IQR) 12 (8–20)
+ 1–8 23 (32.4)
+ 9–12 13 (18.3)
+ 13–20 18 (25.4)
+ ≥ 21 17 (23.9)
+Role
+ Physician 56 (78.9)
+ Advanced practice provider 15 (21.1)
+Weekly patient volume (Median, IQR) 7 (4–10)
+ 0–5 34 (47.9)
+ 6–9 21 (29.6)
+ 10–12 8 (11.3)
+ ≥ 13 8 (11.3)
+No. of patients assigned weekly (Median, IQR) 5 (3–8)
+No. of patients responded weekly (Median, IQR) 2 (1–4)
+Weekly response rate† (Median, IQR) 0.50 (0.31–0.58)
+†: Weekly response rate = No. of patients responded weekly / No. of 
+patients assigned weekly
+1 3
+ 285 Page 6 of 12
+Quality of Life Research (2026) 35:285 
+All (N = 12,214) Nonrespondents
+N = 7,889 (64.6%)
+Respondents
+N = 4,325 (35.4%)
+Absolute effect size*
+Clinic level factors
+Clinic setting 0.047
+ Academic 6,429 (52.6%) 4,016 (50.9%) 2,413 (55.8%)
+ Community 5,785 (47.4%) 3,873 (49.1%) 1,912 (44.2%)
+PROMs program since 0.191
+ 2015 7,798 (63.8%) 5,574 (70.7%) 2,224 (51.4%)
+ 2016 & 2017 4,416 (36.2%) 2,315 (29.3%) 2,101 (48.6%)
+Weekly PROMs collection rate from patients 0.187
+ < 51.9% 6,460 (52.9%) 4,719 (59.8%) 1,741 (40.3%)
+ ≥ 51.9% 5,754 (47.1%) 3,170 (40.2%) 2,584 (59.7%)
+Weekly patient volume 0.047
+ < 50 5,785 (47.4%) 3,873 (49.1%) 1,912 (44.2%)
+ ≥ 50 6,429 (52.6%) 4,016 (50.9%) 2,413 (55.8%)
+Provider level factors
+Sex 0.082
+ Female 6,555 (53.7%) 4,026 (51.1%) 2,529 (58.5%)
+ Male 5,500 (45.0%) 3,781 (47.9%) 1,719 (39.8%)
+ Declined/Unknown 159 (1.3%) 82 (1.0%) 77 (1.7%)
+Role 0.024
+ Physician 10,804 (88.5v) 6,933 (87.9%) 3,871 (89.5%)
+ Advanced practice provider 1,410 (11.5%) 956 (12.1%) 454 (10.5%)
+Years since graduation 0.028
+ 1–8 3,033 (24.8%) 1,940 (24.6%) 1,093 (25.2%)
+ 9–12 2,505 (20.5%) 1,672 (21.2%) 833 (19.3%)
+ 13–20 3,599 (29.5%) 2,272 (28.8%) 1,327 (30.7%)
+ ≥ 21 3,077 (25.2%) 2,005 (25.4%) 1,072 (24.8%)
+Weekly PROMs collection rate from patients 0.179
+ < 50% 5,232 (42.8%) 3,898 (49.4%) 1,334 (30.8%)
+ ≥ 50% 6,982 (57.2%) 3,991 (50.6%) 2,991 (69.2%)
+Weekly patient volume 0.042
+ 0–5 2,646 (21.7%) 1,690 (21.4%) 956 (22.1%)
+ 6–9 3,054 (25.0%) 1,879 (23.8%) 1,175 (27.2%)
+ 10–12 3,155 (25.8%) 2,098 (26.6%) 1,057 (24.4%)
+ ≥ 13 3,359 (27.5%) 2,222 (28.2%) 1,137 (26.3%)
+Patient level factors
+Age (Year [Median, IQR]) 68 (60–75) 68 (60–76) 68 (59–75) 0.085
+Age group, year 0.028
+ ≤ 64 4,595 (37.6%) 2,888 (36.6%) 1,707 (39.5%)
+ > 64 7,619 (62.4%) 5,001 (63.4%) 2,618 (60.5%)
+Sex† 0.093
+ Male 5,963 (48.8%) 4,122 (52.3%) 1,841 (42.6%)
+ Female 6,250 (51.2%) 3,766 (47.7%) 2,484 (57.4%)
+Race/ethnicity 0.016
+ Non-Hispanic White 9,629 (78.8%) 6,241 (79.1%) 3,388 (78.3%)
+ Other 1,406 (11.5%) 879 (11.1%) 527 (12.2%)
+ Unknown 1,179 (9.7%) 769 (9.8%) 410 (9.5%)
+Education 0.038
+ High school or less 2,882 (23.6%) 1,929 (24.5%) 953 (22.0%)
+ College or above 7,361 (60.3%) 4,645 (58.9%) 2,716 (62.8%)
+ Unknown 1,971 (16.1%) 1,315 (16.7%) 656 (15.2%)
+Insurance types 0.015
+ Federal‡ 5,054 (41.4%) 3,286 (41.7%) 1,768 (40.9%)
+ Commercial 7,006 (57.4%) 4,505 (57.1%) 2,501 (57.8%)
+ Others 111 (0.9%) 67 (0.9%) 44 (1.0%)
+Table 4 Clinic, provider, and patient characteristics by response
+1 3
+Page 7 of 12 285 
+Quality of Life Research (2026) 35:285 
+Discussion
+In this study, among 12,214 patients assigned the PROMIS 
+Global-10 across five radiation oncology clinics over a year, 
+about one in three responded at least once (35.4%). Patient-
+level response varied nearly fivefold across clinics, from 
+12.8% to 66.2%. When nonresponse was modeled itera -
+tively from the patient level upward, several patient charac-
+teristics that appeared influential in isolation, including male 
+sex, lower educational attainment, and being unemployed, 
+retired, or disabled, lost statistical significance once pro -
+vider- and clinic-level factors were introduced. Two patient-
+level signals, however, persisted across every model. Recent 
+surgery within six months was associated with higher odds 
+of nonresponse (aOR 1.97), and longer time since diagno -
+sis with lower odds (aOR 0.46 for > 12 months versus ≤ 6 
+months). At higher levels, a provider’s historical collection 
+rate was protective until clinic-level factors were added, 
+after which clinic attributes, namely an earlier collection 
+launch year and a higher historical collection rate, emerged 
+as the dominant correlates of nonresponse. Academic versus 
+community setting was not.
+The central implication of these results is that nonresponse 
+to routinely collected PROMs is not primarily a patient-
+level phenomenon but a property of the measurement sys -
+tem as a whole. The attenuation of patient-level associations 
+once provider and clinic factors were modeled supports this 
+notion. Male sex, for example, was significantly associated 
+with nonresponse only when patient characteristics were 
+considered but became nonsignificant once provider factors 
+entered the model, and education and employment followed 
+the same pattern. Much of what might be read as patient 
+unwillingness or inability to respond might be absorbed by 
+where a patient is seen and by how consistently that setting 
+collects the PROMs. Framed through implementation sci -
+ence, missing PROMs data behave less like a fixed patient 
+trait and more like a modifiable implementation outcome, 
+an expression of adoption, fidelity, and sustainment at the 
+clinic and provider levels rather than only a simple accu -
+mulation of individual barriers. [ 16,21,22] Prior efforts to 
+increase response rates have often emphasized the mode and 
+delivery of administration, yet the evidence that mode alone 
+closes the gap is mixed. [ 8,27,28] Prior studies generally 
+find electronic and paper administration to be comparable, 
+even as the specific channel and contact strategy can shift 
+completion at the margins. Mode is thus one lever among 
+many. Consistent with earlier analyses showing that non -
+response to routinely collected PROMs tracks both patient 
+and organizational characteristics, our findings argue that 
+durable gains will come from attending to the full multilevel 
+system in which the PROMs are embedded. [12,13] .
+Two patient-level findings nonetheless were robust to 
+adjustment and warrant clinical interpretation. Patients who 
+had undergone surgery in the prior six months and those ear-
+lier in their disease course were more often nonrespondents. 
+The association with recent surgery was not only stable but 
+Patient level factors
+ Unknown 43 (0.4%) 31 (0.3%) 12 (0.3%)
+Employment 0.033
+ Employed or student 4,902 (40.1%) 3,072 (38.9%) 1,830 (42.3%)
+ Unemployed, retired, or disabled 6,247 (51.1%) 4,124 (52.3%) 2,123 (49.1%)
+ Unknown 1,065 (8.7%) 693 (8.8%) 372 (8.6%)
+Language 0.015
+ English 11,637 (95.3%) 7,510 (95.2%) 4,127 (95.4%)
+ Non-English 515 (4.2%) 344 (4.4%) 171 (4.0%)
+ Unknown 62 (0.5%) 35 (0.4%) 27 (0.6%)
+CCI 0.006
+ 0,1 11,539 (94.5%) 7,445 (94.4%) 4,094 (94.7%)
+ ≥ 2 675 (5.5%) 444 (5.6%) 231 (5.3%)
+Cancer type 0.126
+ Breast cancer 3,261 (26.7%) 1,847 (23.4%) 1,414 (32.7%)
+ Prostate cancer 3,075 (25.2%) 2,182 (27.7%) 893 (20.7%)
+ Lung cancer 1,248 (10.2%) 922 (11.7%) 326 (7.5%)
+ Others 4,630 (37.9%) 2,938 (37.2%) 1,692 (39.1%)
+Receipt of surgery in the last six months 0.060
+ No 10,093 (82.6%) 6,387 (81.0%) 3,706 (85.7%)
+ Yes 2,121 (17.4%) 1,502 (19.0%) 619 (14.3%)
+Time since diagnosis (Month [Median, IQR]) 13.5 (7.0–34.7) 11.8 (6.3–32.8) 17.9 (8.6–37.5) 0.146
+* Absolute value of the Cramer’s V or Cohen’s d, where appropriate. †: one patient was excluded due to missingness in sex. ‡: Medicare or 
+Medicaid
+Table 4 (continued) 
+1 3
+ 285 Page 8 of 12
+Quality of Life Research (2026) 35:285 
+Table 5 Multilevel factors associated with nonresponse. Iterative multivariable modeling results
+Variables Model 1 Model 2 Model 3
+Clinic level
+Community hospitals 0.81 (0.31–2.14)
+Academic hospitals Reference
+PROM collection since 2016 0.29 (0.12–0.70)*
+2015 Reference
+Weekly collection rate ≥ 51.9% 0.79 (0.68–0.92)*
+< 51.9% Reference
+Provider level
+Male 1.09 (0.76–1.56) –
+Unknown sex 0.69 (0.18–2.67) –
+Female Reference
+Advanced practice providers 1.30 (0.81–2.10) –
+Physicians Reference
+9–12 years since graduation 1.10 (0.84–1.44) –
+13–20 years since graduation 1.23 (0.89–1.70) –
+Longer than 21 years since graduation 1.11 (0.77–1.61) –
+1–8 years Reference
+Weekly collection rate ≥ 50% 0.75 (0.63–0.89)* 0.89 (0.76–1.06)
+< 50% Reference Reference
+6–9 patients per week 0.80 (0.63–1.01) –
+10–12 patients per week 0.84 (0.63–1.11) –
+More than 13 patients per week 0.89 (0.62–1.27) –
+0–5 patients Reference
+Patient level
+Age > 64 years 0.97 (0.87–1.07) – –
+≤ 64 years Reference
+Male 1.20 (1.07–1.34)* 1.05 (0.92–1.19) –
+Female Reference Reference
+Racial/ethnic minority 0.90 (0.79–1.01) – –
+Unknown race/ethnicity 0.99 (0.85–1.15) – –
+Non-Hispanic White Reference
+High school or less 1.14 (1.04–1.26)* 1.10 (0.99–1.21) –
+Unknown education 1.20 (1.06–1.36)* 1.09 (0.95–1.24) –
+College or above Reference Reference
+Federal insurance 0.98 (0.90–1.08) – –
+Other insurance 0.85 (0.57–1.26) – –
+Unknown insurance 1.55 (0.76–3.15) – –
+Commercial insurance Reference
+Unemployed, retired, or disabled 1.12 (1.02–1.23)* 1.07 (0.98–1.17) –
+Unknown employment 1.00 (0.84–1.19) 0.92 (0.77–1.09) –
+Employed, student Reference Reference
+CCI ≥ 2 0.96 (0.81–1.14) – –
+CCI ≤ 1 Reference
+Received surgery in the last six months 1.54 (1.37–1.71)* 1.68 (1.49–1.89)* 1.87 (1.65–2.11)*
+No Reference Reference Reference
+6–12 months since diagnosis 0.80 (0.71–0.91)* 0.83 (0.73–0.94)* 0.83 (0.73–0.94)*
+Longer than 12 months since diagnosis 0.50 (0.45–0.56)* 0.47 (0.42–0.53)* 0.46 (0.41–0.52)*
+0–6 months Reference Reference Reference
+Model fit statistics
+AIC 14782.89 13938.50 13886.71
+BIC 14772.45 13896.50 13864.71
+*: p < 0.05; AIC: Akaike information criterion; BIC: Bayesian information criterion
+1 3
+Page 9 of 12 285 
+Quality of Life Research (2026) 35:285 
+strengthened as higher-level factors were added, and respon-
+dents had a longer median time since diagnosis than nonre-
+spondents. A potential explanation is that completion may 
+be lowest during the most acute and disruptive phases of 
+cancer care, around diagnosis and the perioperative period, 
+and rises as patients settle into other treatment phases with 
+different touchpoint frequencies. Our data cannot confirm 
+this directly. Because nonresponse was defined at the patient 
+level, as completing the Global-10 at least once versus 
+never, and we did not capture where in a patient’s treatment 
+course a given response fell, we could not observe whether 
+completion rose within individual patients as their care pro-
+gressed. It is also conceivable that patients were prompted 
+to respond to other PROMs or repeated Global-10 admin -
+istrations by other members of the cancer care team during 
+these time periods, which may have decreased their will -
+ingness to respond during the observed study period. [ 29] 
+If completion does follow the care trajectory in this way, 
+nonresponse is partly a function of that trajectory itself, with 
+implications for when and how the PROM is administered, 
+not simply whether it is.
+None of the provider characteristics we examined, includ-
+ing sex, role, years since graduation, and weekly patient vol-
+ume, was associated with nonresponse. Only the provider’s 
+own historical collection rate was protective, and it lost sig-
+nificance once clinic factors were added. This attenuation is 
+itself informative. Rather than indicating that providers do 
+not matter, it suggests that provider-level collection could 
+be embedded in the norms, leadership, and resourcing of 
+the clinic in which a provider works, consistent with evi -
+dence that staff engagement with PROMs tracks the orga -
+nizational support surrounding it. [13,23] The determinants 
+that implementation science most often emphasizes at this 
+level, including provider familiarity, perceived value, and a 
+sense of ownership over PROMs, are attitudinal rather than 
+concrete provider characteristics, and our administrative 
+data could not capture them. [ 24] Disentangling provider 
+conviction from clinic culture is a question these data leave 
+open and that future study using robust qualitative inquiry is 
+positioned to answer.
+At the clinic level, the two strongest correlates, year of 
+program launch and historical collection rate, suggest pro -
+gram maturity and sustainment as plausible determinants. 
+That academic and community settings did not differ after 
+adjustment suggests setting type is a poor proxy for the 
+underlying determinants of nonresponse. [ 20] Indeed, the 
+two community clinics had response rates at the opposite 
+extremes of the entire cohort, a more than fivefold gap 
+between sites of the same type. What distinguishes high- 
+from low-collecting clinics is how robustly and consistently 
+the program has been operationalized over time. The find -
+ing that more recently launched clinics had lower odds of 
+nonresponse than the earliest adopters supports this. It may 
+reflect cohort or workflow differences, but it is also con -
+sistent with the possibility that collection effort decays as 
+programs age, such as the loss of a champion or workforce 
+turnover. Either way, this temporal phenomenon reflects 
+an erosion of sustainment that any single cross-sectional 
+response rate would obscure. These patterns reinforce the 
+need to better identify determinants of sustainability and 
+sustainment. [19,30].
+Finally, these findings bear on how the quality of aggre -
+gated PROMs data should be judged. The quantity of inter-
+est is the representativeness of the responding sample, for 
+which the response rate is only a proxy. Survey method -
+ology has long established that nonresponse bias depends 
+on two terms: the response rate and the difference between 
+respondents and nonrespondents on the quantity of inter -
+est. Expectedly, respondents and nonrespondents differed in 
+this study using routinely collected EHR data. For instance, 
+breast cancer patients were overrepresented among respon -
+dents and prostate and lung cancer patients underrepre -
+sented, a skew the overall response rate of 35.4% gave no 
+indication of. To the extent that quality of life measured 
+by the Global-10 differs across these cancer types, as is 
+clinically expected, a group-level score drawn from respon-
+dents would reflect those who responded more than the full 
+assigned population, and raising completion without regard 
+to who is added would not necessarily close that gap. This 
+is the same selection problem encountered in retrospective 
+cohort and other observational designs, where inclusion is 
+conditioned on a non-random mechanism even though no 
+“response rate” is reported. [ 31,32] If PROMs data are to 
+be considered equivalent to other clinical data (e.g., labora-
+tory values, vital signs, etc.), then concerns about response 
+rates should eventually vanish. For now, PROMs research 
+actually offers an advantage to the selection bias encoun -
+tered in these research designs. Because every assigned 
+patient is known, the sampling frame is observed rather than 
+inferred, which allows PROMs researchers to characterize 
+how respondents differed from nonrespondents directly and 
+makes the resulting bias not only describable but, in prin -
+ciple, addressable. When random sampling is impractical or 
+impossible, the survey literature has formalized this reorien-
+tation into practical tools, including representativeness indi-
+cators (R-indicators) and adaptive and responsive designs 
+that steer collection toward underrepresented groups rather 
+than raw completion. [33,34].
+This study has limitations. First, many of the factors 
+examined are indirect or proxy measures of the implemen -
+tation domains they are meant to represent. [ 24] Historical 
+collection rate, for instance, stands in for fidelity and sus -
+tainment but does not directly capture workflow, staffing, or 
+local collection behavior. We used the measures available in 
+1 3
+ 285 Page 10 of 12
+Quality of Life Research (2026) 35:285 
+the EHR and administrative data because direct implemen -
+tation metrics were not prospectively captured, a limitation 
+that is itself instructive. It illustrates why PROMs programs 
+should be planned from the outset to track implementation 
+outcomes such as adoption, fidelity, and sustainment, both 
+to manage collection and to make representativeness assess-
+able. Second, the study included five clinics within a single 
+health system over one fiscal year, which limits generaliz -
+ability and precludes characterization of temporal trends 
+within the study window. With only five clinics, precision 
+and causal inference at the clinic level are constrained. 
+Third, the analysis relied on retrospective EHR and admin -
+istrative data, so unmeasured determinants of nonresponse, 
+such as patient digital access, portal enrollment, and health 
+literacy, could not be captured directly, and residual con -
+founding is present. [11] Similarly, we could not account for 
+individual clinician practice patterns, specifically whether 
+an APP was seeing patients in tandem with a physician or 
+independently at separate clinic visits. Fourth, we charac -
+terized the selection mechanism, that is, who completed 
+the PROM, but not its downstream effect on aggregated 
+Global-10 scores as this was not the study intent. Finally, 
+excluding providers with fewer than 20 patients to ensure 
+model stability may have removed lower-volume providers 
+whose collection patterns differ.
+Taken together, these findings argue for a shift in how 
+health systems frame missing PROMs data, away from 
+maximizing the response rate and toward the representa -
+tiveness of aggregated data as the operative quality target. 
+Because the determinants of nonresponse span patient, pro-
+vider, and clinic levels, interventions confined to any one 
+level, such as patient-facing nudges (e.g., text message 
+reminders) or changes in administration mode, are unlikely 
+to suffice. [27,35] The stakes are concrete in the US, where 
+payers increasingly operationalize the response rate as a 
+compliance requirement. [2,36,37] The most contemporary 
+example is the Centers for Medicare & Medicaid Services’ 
+risk-standardized PRO-based performance measure (PRO-
+PM) for elective primary total hip or knee arthroplasty, 
+which requires matched preoperative and 12-month post -
+operative PROs for at least 50% of eligible patients, with 
+public reporting and payment consequences for hospitals 
+that fall short. Such a threshold certifies the volume of data 
+collected, not whether the responding sample resembles the 
+eligible population, so a hospital can satisfy the requirement 
+while computing its performance estimate on a systemati -
+cally selected subsample. [ 14,15] The supporting PROMs 
+are well validated, so the concern is not whether they cap -
+ture pain and function but who completes them. The more 
+than fivefold variation in clinic-level response observed in 
+this study shows how much an aggregate completion figure 
+can conceal. The resulting risk-standardized improvement 
+rate may then reflect who responded as much as how well 
+the hospital performed, and could obscure rather than sur -
+face disparities. While this specific arthroplasty PRO-PM 
+does account for nonresponse bias, tying payment to a 
+response rate threshold may unintentionally reward easy-
+to-reach responses over balanced representation. [37] PRO-
+PM design, and routine PROMs programs more broadly, 
+would therefore benefit from explicit representativeness 
+safeguards, including monitoring of representativeness indi-
+cators and subgroup completion, weighting or adjustment 
+for nonresponse, or targeting of collection toward underrep-
+resented patients, alongside continuous tracking of sustain -
+ment rather than volume alone. [12,15,38,39] Our multilevel 
+results suggest returning subgroup completion rates to indi-
+vidual clinics and providers rather than issuing uniform 
+systemwide reminders, and concentrating assistance on the 
+patients and points in the care trajectory where nonresponse 
+is greatest, including staff-supported or in-language support 
+for groups that monitoring identifies as underrepresented, 
+and additional attempts during the perioperative period.
+In conclusion, as routinely collected PROMs are increas-
+ingly aggregated to generate real-world evidence, drive 
+quality improvement, and underpin value-based and out -
+comes-based policy, ensuring that these aggregated data 
+represent the patients they are meant to describe is foun -
+dational to their value. Achieving that representativeness, 
+however, requires optimizing the PROM measurement sys-
+tem as a whole, across all of its levels. 
+Supplementary Information The online version contains 
+supplementary material available at h t t p s : / / d o i . o r g / 1 0 . 1 0 0 7 / s 1 1 1 3 6 - 0 
+2 6 - 0 4 3 8 3 - w . 
+Acknowledgements This work was supported by the National Cancer 
+Institute (NCI) under R03CA292987. Unrelated to this work, MOE, 
+ALP, and CZ are supported by NCI R01CA280619. The authors are 
+deeply grateful for the tireless efforts of the entire MGB Radiation 
+Oncology staff who stood up these efforts, especially Ms. Colleen M. 
+Whitehouse, RN.
+Author contributions Jason B. Liu contributed to conceptualization, 
+methodology, formal analysis, and funding acquisition, and wrote the 
+original draft. Yu-Jen Chen contributed to data curation and formal 
+analysis. Maria O. Edelen contributed to conceptualization and meth -
+odology. Andrea L. Pusic contributed to conceptualization, provided 
+resources, and supervised the work. Neil E. Martin contributed to con-
+ceptualization, provided resources, and supervised and administered 
+the project. Chengbo Zeng contributed to conceptualization, method -
+ology, and formal analysis, supervised and administered the project, 
+and contributed to funding acquisition. All authors reviewed and ed -
+ited the manuscript and approved the final version.
+Funding This work was supported by the National Cancer Institute 
+under R03CA292987.
+Data availability Data are available upon reasonable request from the 
+corresponding author. Note that data used herein are protected health 
+1 3
+Page 11 of 12 285 
+Quality of Life Research (2026) 35:285 
+information and may be subject to Mass General Brigham policies and 
+regulations.
+Declarations
+Conflict of interest The authors declare no conflicts of interest, finan -
+cial or otherwise related to this work. JBL and MOE are members of 
+the PROMIS Health Organization, which had no role in the conduct of 
+this research. Unrelated to this work, Dr. Pusic is co-developer of the 
+Q Portfolio measures and receives royalties when used for commercial 
+purposes.The Authors declares no conflict of interest.
+Open Access This article is licensed under a Creative Commons 
+Attribution-NonCommercial-NoDerivatives 4.0 International License, 
+which permits any non-commercial use, sharing, distribution and 
+reproduction in any medium or format, as long as you give appropri -
+ate credit to the original author(s) and the source, provide a link to the 
+Creative Commons licence, and indicate if you modified the licensed 
+material. You do not have permission under this licence to share 
+adapted material derived from this article or parts of it. The images or 
+other third party material in this article are included in the article’s Cre-
+ative Commons licence, unless indicated otherwise in a credit line to 
+the material. If material is not included in the article’s Creative Com -
+mons licence and your intended use is not permitted by statutory regu-
+lation or exceeds the permitted use, you will need to obtain permission 
+directly from the copyright holder. To view a copy of this licence, visit 
+http:// creativ ecommon s.org /licenses/by-nc-nd/4.0/.
+References
+1. Berlin, N. L., Tandon, V . J., Qi, J., et al. (2019). Hospital Varia-
+tions in Clinical Complications and Patient-reported Outcomes at 
+2 Years After Immediate Breast Reconstruction. Annals Of Sur -
+gery, 269(5), 959–965. h t t p s : / / d o i . o r g / 1 0 . 1 0 9 7 / S L A . 0 0 0 0 0 0 0 0 0 0 
+0 0 2 7 1 1 
+2. Hanmer, J., Cizik, A. M., Gulek, B. G., et al. (2022). A scoping 
+review of US insurers’ use of patient-reported outcomes. The 
+American Journal Of Managed Care, 28(6), e232–e238. h t t p s : / / d 
+o i . o r g / 1 0 . 3 7 7 6 5 / a j m c . 2 0 2 2 . 8 9 1 6 2 
+3. Cruz Rivera, S., Liu, X., Hughes, S. E., et al. (2023). Embedding 
+patient-reported outcomes at the heart of artificial intelligence 
+health-care technologies. Lancet Digit Health , 5(3), e168–e173. 
+https:/ /doi.or g/10.10 16/S2 589-7500(22)00252-7
+4. Rose, A. J., Bayliss, E., Baseman, L., Butcher, E., Huang, W., & 
+Edelen, M. O. (2019). Feasibility of Distinguishing Performance 
+Among Provider Groups Using Patient-reported Outcome Mea -
+sures in Older Adults With Multiple Chronic Conditions. Medical 
+Care, 57(3), 180–186. h t t p s : / / d o i . o r g / 1 0 . 1 0 9 7 / M L R . 0 0 0 0 0 0 0 0 0 0 
+0 0 1 0 1 3 
+5. Van Der Wees, P. J., Nijhuis-Van Der Sanden, M. W. g., Ayanian, 
+J. Z., Black, N., Westert, G. P., & Schneider, E. C. (2014). Inte -
+grating the Use of Patient-Reported Outcomes for Both Clinical 
+Practice and Performance Measurement: Views of Experts from 3 
+Countries. Milbank Q. ;92(4):754–775. h t t p s : / / d o i . o r g / 1 0 . 1 1 1 1 / 1 
+4 6 8 - 0 0 0 9 . 1 2 0 9 1 
+6. Zeng, C., Martin, N. E., Pusic, A. L., Edelen, M. O., & Liu, J. 
+B. (2024). Enhancing representativeness of patient-reported out -
+comes in routine radiation oncology care: a quality improvement 
+protocol to address non-response. British Medical Journal Open, 
+14(12), e097127. https:/ /doi.or g/10.11 36/bm jopen-2024-097127
+7. Meterko, M., Restuccia, J. D., Stolzmann, K., et al. (2015). 
+Response Rates, Nonresponse Bias, and Data Quality. Public 
+Opin Q, 79(1), 130–144. https:/ /doi.or g/10.10 93/po q/nfu052
+8. Peters, S. T., Rutten, J., Van Kooij, Y . E., et al. (2026). Factors 
+associated with response to patient-reported outcome measures: a 
+systematic review of systematic and scoping reviews, and meta-
+analyses. Quality Of Life Research, 35(8), 213. h t t p s : / / d o i . o r g / 1 0 
+. 1 0 0 7 / s 1 1 1 3 6 - 0 2 6 - 0 4 3 1 4 - 9 
+9. Groves, R. M., & Peytcheva, E. (2008). The Impact of Nonre -
+sponse Rates on Nonresponse Bias: A Meta-Analysis. Public 
+Opin Q, 72(2), 167–189. https:/ /doi.or g/10.10 93/po q/nfn011
+10. Anhang Price, R., Quigley, D. D., Hargraves, J. L., et al. (2022). A 
+Systematic Review of Strategies to Enhance Response Rates and 
+Representativeness of Patient Experience Surveys. Medical Care, 
+60(12), 910–918. h t t p s : / / d o i . o r g / 1 0 . 1 0 9 7 / M L R . 0 0 0 0 0 0 0 0 0 0 0 0 1 7 
+8 4 
+11. Liu, J. B., Dacier, B. M., Dragonetti, B. M., et al. (2026). Lan -
+guage concordance in the digital collection of patient-reported 
+outcome measures. JAMIA Open, 9(1), ooaf180. h t t p s : / / d o i . o r g / 
+1 0 . 1 0 9 3 / j a m i a o p e n / o o a f 1 8 0 
+12. Hutchings, A., Neuburger, J., Grosse Frie, K., Black, N., & van 
+der Meulen, J. (2012). Factors associated with non-response in 
+routine use of patient reported outcome measures after elective 
+surgery in England. Health And Quality Of Life Outcomes, 10, 34. 
+https:/ /doi.or g/10.11 86/14 77-7525-10-34
+13. Sisodia, R. C., Dankers, C., Orav, J., et al. (2020). Factors Asso -
+ciated With Increased Collection of Patient-Reported Outcomes 
+Within a Large Health Care System. JAMA Netw Open , 3(4), 
+e202764. https:/ /doi.or g/10.10 01/ja manetworkopen.2020.2764
+14. Pronk, Y ., van der Weegen, W., V os, R., Brinkman, J. M., van 
+Heerwaarden, R. J., & Pilot, P. (2020). What is the minimum 
+response rate on patient-reported outcome measures needed to 
+adequately evaluate total hip arthroplasties? Health And Quality 
+Of Life Outcomes, 18(1), 379. h t t p s : / / d o i . o r g / 1 0 . 1 1 8 6 / s 1 2 9 5 5 - 0 2 
+0 - 0 1 6 2 8 - 1 
+15. Saunders, C. L., Elliott, M. N., Lyratzopoulos, G., & Abel, G. 
+A. (2016). Do Differential Response Rates to Patient Surveys 
+Between Organizations Lead to Unfair Performance Compari -
+sons? Evidence From the English Cancer Patient Experience Sur-
+vey. Medical Care, 54(1), 45–54. h t t p s : / / d o i . o r g / 1 0 . 1 0 9 7 / M L R . 0 
+0 0 0 0 0 0 0 0 0 0 0 0 4 5 7 
+16. Stover, A. M., Haverman, L., van Oers, H. A., et al. (2021). Using 
+an implementation science approach to implement and evaluate 
+patient-reported outcome measures (PROM) initiatives in rou -
+tine care settings. Quality Of Life Research, 30(11), 3015–3033. 
+https:/ /doi.or g/10.10 07/s1 1136-020-02564-9
+17. Al Sayah, F., Lahtinen, M., Bonsel, G. J., Ohinmaa, A., & John -
+son, J. A. (2021). A multi-level approach for the use of routinely 
+collected patient-reported outcome measures (PROMs) data in 
+healthcare systems. J Patient-Rep Outcomes , 5(Suppl 2), 98. 
+https:/ /doi.or g/10.11 86/s4 1687-021-00375-1
+18. Roberts, N. A., Janda, M., Stover, A. M., et al. (2021). The utility 
+of the implementation science framework Integrated Promoting 
+Action on Research Implementation in Health Services (i-PAR -
+IHS) and the facilitator role for introducing patient-reported 
+outcome measures (PROMs) in a medical oncology outpatient 
+department. Qual Life Res Int J Qual Life Asp Treat Care Rehabil, 
+30(11), 3063–3071. https:/ /doi.or g/10.10 07/s1 1136-020-02669-1
+19. Damschroder, L. J., Reardon, C. M., Opra Widerquist, M. A., & 
+Lowery, J. (2022). Conceptualizing outcomes for use with the 
+Consolidated Framework for Implementation Research (CFIR): 
+the CFIR Outcomes Addendum. Implement Sci, 17(1), 7. h t t p s : / / 
+d o i . o r g / 1 0 . 1 1 8 6 / s 1 3 0 1 2 - 0 2 1 - 0 1 1 8 1 - 5 
+20. Zeng, C., Martin, N. E., Meyers, P. M., et al. (2025). Towards 
+enhancing the representativeness of patient-reported outcomes 
+collection at community cancer centers. Adv Patient-Rep Out -
+comes, 1(4), 100301. https:/ /doi.or g/10.10 16/j. apro.2025.100301
+21. Damschroder, L. J., Aron, D. C., Keith, R. E., Kirsh, S. R., Alex-
+ander, J. A., & Lowery, J. C. (2009). Fostering implementation 
+1 3
+ 285 Page 12 of 12
+Quality of Life Research (2026) 35:285 
+of health services research findings into practice: a consolidated 
+framework for advancing implementation science. Implement Sci 
+IS, 4, 50. https:/ /doi.or g/10.11 86/17 48-5908-4-50
+22. Damschroder, L. J., Reardon, C. M., Widerquist, M. A. O., & 
+Lowery, J. (2022). The updated Consolidated Framework for 
+Implementation Research based on user feedback. Implement Sci 
+IS, 17(1), 75. https:/ /doi.or g/10.11 86/s1 3012-022-01245-0
+23. Liu, J. B., Kaplan, R. S., Bates, D. W., Edelen, M. O., Sisodia, 
+R. C., & Pusic, A. L. (2024). Mass General Brigham’s Patient-
+Reported Outcomes Measurement System: A Decade of Learn -
+ings. NEJM Catal, 5(7). https:/ /doi.or g/10.10 56/CA T.23.0397
+24. Lyu, J., Zhang, H., Wang, H., et al. (2024). Facilitators and barri-
+ers to implementing patient-reported outcomes in clinical oncol -
+ogy practice: a systematic review based on the consolidated 
+framework for implementation research. Implement Sci Commun, 
+5(1), 120. https:/ /doi.or g/10.11 86/s4 3058-024-00654-0
+25. NCI Comorbidity Index Overview. Accessed January 3 (2026). h 
+t t p s : / / h e a l t h c a r e d e l i v e r y . c a n c e r . g o v / s e e r m e d i c a r e / c o n s i d e r a t i o n s 
+/ c o m o r b i d i t y . h t m l 
+26. Serdar, C. C., Cihan, M., Yücel, D., & Serdar, M. A. (2021). Sam-
+ple size, power and effect size revisited: simplified and practical 
+approaches in pre-clinical, clinical and laboratory studies. Bio-
+chem Medica, 31(1), 010502. h t t p s : / / d o i . o r g / 1 0 . 1 1 6 1 3 / B M . 2 0 2 1 . 
+0 1 0 5 0 2 
+27. Elliott, M. N., Brown, J. A., Hambarsoomian, K., et al. (2024). 
+Survey Protocols, Response Rates, and Representation of Under-
+served Patients: A Randomized Clinical Trial. JAMA Health 
+Forum, 5(1), e234929. h t t p s : / / d o i . o r g / 1 0 . 1 0 0 1 / j a m a h e a l t h f o r u m 
+. 2 0 2 3 . 4 9 2 9 
+28. Muehlhausen, W., Doll, H., Quadri, N., et al. (2015). Equivalence 
+of electronic and paper administration of patient-reported out -
+come measures: a systematic review and meta-analysis of studies 
+conducted between 2007 and 2013. Health And Quality Of Life 
+Outcomes, 13, 167. https:/ /doi.or g/10.11 86/s1 2955-015-0362-x
+29. Gibbons, C., Baas, C., & Chung, C. (2024). Emergence of Digital 
+Toxicity and the Need for an Integrated, Patient-Centric Approach 
+to the Development, Evaluation, and Use of Digital Health Tools 
+for Oncology. JCO Clin Cancer Inform, (8), e2300105. h t t p s : / / d o 
+i . o r g / 1 0 . 1 2 0 0 / C C I . 2 3 . 0 0 1 0 5 
+30. Shelton, R. C., Cooper, B. R., & Stirman, S. W. (2024). The 
+Sustainability of Evidence-Based Interventions and Practices in 
+Public Health and Health Care. Annual Review Of Public Health, 
+39(1), 55–76. h t t p s : / / d o i . o r g / 1 0 . 1 1 4 6 / a n n u r e v - p u b l h e a l t h - 0 4 0 6 1 
+7 - 0 1 4 7 3 1 
+31. de Beurs, E., Warmerdam, L., & Twisk, J. (2019). Bias through 
+selective inclusion and attrition: Representativeness when com -
+paring provider performance with routine outcome monitoring 
+data. Clinical Psychology & Psychotherapy , 26(4), 430–439. 
+https:/ /doi.or g/10.10 02/cp p.2364
+32. Jarada, T. N., O’Sullivan, D. E., Brenner, D. R., Cheung, W. Y ., & 
+Boyne, D. J. (2023). Selection Bias in Real-World Data Studies 
+Used to Support Health Technology Assessments: A Case Study 
+in Metastatic Cancer. Current Oncology (Toronto, Ont.) , 30(2), 
+1945–1953. https:/ /doi.or g/10.33 90/cu rroncol30020151
+33. Nishimura, R., Wagner, J., & Elliott, M. (2016). Alternative Indi-
+cators for the Risk of Non-response Bias: A Simulation Study. 
+International Statistical Review, 84(1), 43–62. h t t p s : / / d o i . o r g / 1 0 . 
+1 1 1 1 / i n s r . 1 2 1 0 0 
+34. Schouten, B., Bethlehem, J., Beullens, K., et al. (2012). Evaluat -
+ing, Comparing, Monitoring, and Improving Representativeness 
+of Survey Response Through R-Indicators and Partial R‐Indica -
+tors. International Statistical Review, 80(3), 382–399. h t t p s : / / d o i . 
+o r g / 1 0 . 1 1 1 1 / j . 1 7 5 1 - 5 8 2 3 . 2 0 1 2 . 0 0 1 8 9 . x 
+35. Palmer, M. J., Mercieca-Bebber, R., King, M., Calvert, M., Rich-
+ardson, H., & Brundage, M. (2018). A systematic review and 
+development of a classification framework for factors associated 
+with missing patient-reported outcome data. Clinical Trials (Lon-
+don, England), 15(1), 95–106. h t t p s : / / d o i . o r g / 1 0 . 1 1 7 7 / 1 7 4 0 7 7 4 5 
+1 7 7 4 1 1 1 3 
+36. Berlin, N. L., Chopra, Z., Thirukumaran, C., et al. (2025). Low 
+participation in voluntary period for patient-reported outcome 
+performance measures for hip and knee replacement. Health Aff 
+Sch, 3(6), qxaf111. https:/ /doi.or g/10.10 93/ha schl/qxaf111
+37. THA/TKA PRO-PM Overview. Accessed January 25 (2024). 
+https:/ /qualit ynet.cm s.gov /inpatient/measures/THA_TKA
+38. Liu, J. B., Pusic, A. L., Temple, L. K., Moturu, A., Hall, B. L., 
+& Ko, C. Y . (2025). Evaluating Patient-Centered Surgical Care 
+Quality Using Patient-Reported Measures of Shared Decision-
+Making. Journal Of The American College Of Surgeons, 241(3), 
+426–436. https:/ /doi.or g/10.10 97/XC S.0000000000001402
+39. Qaseem, A., Tierney, S., Barrett, E. D., et al. (2021). Recommend-
+ing Caution in Patient-Reported Outcome-Based Performance 
+Measurement. Annals Of Internal Medicine , 174(8), 1161–1162. 
+https: //d oi. or g/10 .73 26/M19-3603
+Publisher’s note Springer Nature remains neutral with regard to juris-
+dictional claims in published maps and institutional affiliations.

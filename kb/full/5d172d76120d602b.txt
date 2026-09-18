@@ -1,0 +1,840 @@
+ARTICLE | Article in Press
+Scientific Reports https://doi.org/10.1038/s41598-026-71853-z
+Scientific Reports
+This Article in Press is shared early to give you faster access to new research. It is citable and carries a permanent DOI. 
+The final edited version will replace it automatically.
+Long-term ecological quality dynamics and spatial 
+associations in arid and semi-arid Northwest China 
+using an adaptive PRSEI
+Jiangmin Wu · Bin Lian · Qirui Zhang · Zhen Yan · Wei Zhao · Jiacheng Ya · Zaixin Chen · 
+Yuxiang Lan
+Received: 29 May 2026 / Accepted: 11 September 2026
+© The Author(s) 2026
+Abstract
+Long-term ecological monitoring in arid and semi-arid regions requires indices that capture region-specific 
+stressors while remaining comparable through time. We developed an adaptive particular remote-sensing eco -
+logical index (PRSEI) for Gansu Province, China, using growing-season kNDVI, wetness (WET), land surface 
+temperature (LST), sandification index (SI), and a PM10-based particulate indicator (TI) from 2000 to 2024. 
+A unified principal component analysis (PCA) with common scaling defined the primary time series, while 
+annual PCA and fixed weights were used for sensitivity testing. Unified PC1 explained 79.12% of total vari -
+ance, and mean PRSEI increased from 0.343 to 0.419 (slope = 0.00432 yr⁻¹; R² = 0.778). Unified PCA and 
+fixed weights agreed on 99.90% of pixel-level trend directions, whereas annual and unified PCA agreed on 
+only 39.73%, indicating strong methodological sensitivity. Adaptive PRSEI was highly correlated with original 
+PRSEI (r = 0.991) and traditional RSEI ( r = 0.975), showing the strongest consistency with mapped restoration 
+transitions (81.47%) but weaker consistency with degradation transitions (34.22%). Precipitation, soil type, 
+and land use/land cover were the most stable spatial explanatory factors. Overall, ecological quality improved 
+broadly but heterogeneously, supporting adaptive PRSEI as a complementary multi-stressor index for drylands 
+rather than a universal replacement for RSEI.
+Keywords Adaptive PRSEI · Ecological environment quality · Arid and semi-arid ecosystems · Gansu 
+Province · Hurst exponent · Optimal-parameter geographical detector
+Introduction
+Ecological and environmental quality reflects multiple dimensions of ecosystem condition, including vegeta -
+tion growth, surface moisture, thermal stress, land degradation, and human disturbance. Long-term ecological 
+monitoring is particularly important in arid and semi-arid regions, where limited precipitation, high evaporative 
+demand, sparse vegetation, and extensive bare ground increase ecosystem sensitivity to climatic variability and 
+land-use change1,2. Gansu Province, located in inland north-western China, spans the Qinghai–Tibet Plateau, 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-71853-z
+the Inner Mongolian Plateau, and the Loess Plateau. Within a single administrative unit, it encompasses diverse 
+landscapes, including desert–Gobi systems, irrigated oases, loess hills, alpine ecosystems, and the humid Qinba 
+Mountains3. This pronounced environmental gradient provides a representative setting for examining spatial dif-
+ferences in ecological quality across contrasting dryland and mountain environments.
+Remote-sensing ecological assessment has increasingly relied on composite indices that integrate multiple 
+land-surface properties. The remote sensing ecological index (RSEI) uses principal component analysis (PCA) to 
+combine greenness, wetness, heat, and dryness, thereby reducing reliance on subjectively assigned weights4–9. Its 
+broad application across different regions has demonstrated its effectiveness in characterising spatial variations in 
+ecological quality. However, the conventional four-component framework may not fully capture several stressors 
+that are particularly relevant in arid environments, including weak vegetation signals, extensive bare-ground 
+exposure, sandification, and atmospheric particulate loading10–14.
+Accordingly, a growing body of research has sought to adapt ecological indices to arid environments by 
+modifying vegetation metrics or incorporating components that better reflect dryland-specific stressors 15–19. In 
+this study, the kernel normalised difference vegetation index (kNDVI) was used to capture nonlinear green -
+ness responses, while the sandification index (SI) and a PM10-based turbidity indicator (TI) were introduced to 
+represent additional surface and atmospheric environmental pressures. Importantly, the inclusion of additional 
+components or a high contribution from the first principal component (PC1) does not, by itself, demonstrate 
+superior ecological performance. A more robust evaluation therefore requires direct comparison with traditional 
+RSEI and the original PRSEI configuration under identical years, pixels, masks, and preprocessing procedures, 
+together with external ecological evidence to clarify where the adaptive formulation provides added information 
+and where its limitations remain.
+Long-term ecological assessments also face a fundamental challenge of temporal comparability. Analyses 
+based on representative years provide an efficient means of comparing broad ecological differences among peri-
+ods, but they may overlook interannual responses to drought, ecological restoration, irrigation, and land-cover 
+change. By contrast, annual PCA retains year-specific information, yet the centring of variables, principal-compo-
+nent loadings, and score ranges may vary from year to year. Apparent temporal changes may therefore reflect not 
+only genuine ecological variation but also changes in the index construction itself. Despite this potential source 
+of uncertainty, few studies have directly compared annual PCA, unified PCA, and fixed-weight approaches using 
+the same underlying dataset, leaving the sensitivity of long-term ecological trends to PCA construction insuf -
+ficiently quantified.
+A third methodological issue concerns the interpretation of ecological change and its explanatory factors. The 
+Theil–Sen estimator and Mann–Kendall test are commonly used to characterise monotonic trends, the Hurst 
+exponent describes tendencies toward persistence or reversal, and geographical detectors quantify spatial strati -
+fication20–24. These methods address complementary but fundamentally different questions, and none can inde -
+pendently establish causal effects. In particular, the q statistic derived from OPGD measures the extent to which 
+factor stratification accounts for spatial variation in ecological quality; it does not demonstrate that a given factor 
+caused the observed changes. Robust inference therefore requires a clear distinction among descriptive patterns, 
+temporal trends, external consistency evidence, and spatial explanatory associations.
+Three research gaps emerge from the limitations outlined above. First, the extent to which a dryland-adapted 
+PRSEI provides additional ecological information beyond the traditional RSEI has not been sufficiently evaluated 
+under a strictly comparable framework. Second, the sensitivity of long-term PRSEI trends to different PCA con-
+struction strategies remains inadequately quantified. Third, province-wide ecological changes need to be linked 
+to eco-regional contrasts and the robustness of spatial explanatory factors without overstating causal relation -
+ships. To address these gaps, this study constructs a temporally comparable 25-year PRSEI series using a unified 
+PCA loading vector and common scaling, and directly compares traditional RSEI, original-configuration PRSEI, 
+and adaptive PRSEI across identical years and common pixels. External consistency is further assessed using 
+transition information from the China Land Cover Dataset (CLCD), while the robustness of OPGD results is 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-71853-z
+examined with respect to sampling and soil-classification schemes. Together, these analyses define the principal 
+methodological, empirical, and interpretive contributions of this study.
+Accordingly, this study aims to: (1) construct a temporally comparable adaptive PRSEI for 2000–2024; (2) 
+quantify the sensitivity of long-term ecological trends to annual PCA, unified PCA, and fixed-weight approaches; 
+(3) compare traditional RSEI, original-configuration PRSEI, and adaptive PRSEI in terms of spatial patterns, 
+trend responses, and consistency with external land-cover evidence; (4) characterise ecological dynamics, class 
+transitions, and persistence tendencies at both provincial and eco-regional scales; and (5) evaluate the stability 
+and interaction structure of climatic, topographic, soil, land-cover, and socio-economic explanatory factors using 
+OPGD. Throughout the analysis, CLCD transitions are treated as external categorical consistency evidence rather 
+than as field-validated ground truth, while OPGD results are interpreted as spatial explanatory associations rather 
+than causal mechanisms.
+Materials and methods
+Overview of the study area
+Gansu Province is located in inland north-western China (32°11′–42°57′ N, 92°13′–108°46′ E) and covers 
+approximately 425,800 km². The province extends across the Qinghai–Tibet Plateau, the Inner Mongolian Pla -
+teau, and the Loess Plateau, encompassing diverse landscapes such as alpine mountains, loess hills, irrigated 
+oases, desert–Gobi systems, and mountain forests. Precipitation generally decreases from the south-east to the 
+north-west, whereas evaporative demand and aridity increase along the same gradient. This produces a pro -
+nounced environmental transition from relatively humid mountain ecosystems in the south-east to arid oasis and 
+desert environments in the north-west Fig. 1.
+To examine regional variation in ecological quality across contrasting environmental settings, Gansu Province 
+was divided into five eco-regions: the Hexi Desert–Gobi, Hexi Oasis–Corridor Agricultural, Longzhong–Long -
+dong Loess Hilly, Gannan Alpine Mountain, and Longnan–Tianshui Qinba Humid Mountain regions. The region-
+alisation considered climatic gradients, geomorphology, land-cover patterns, ecosystem characteristics, and the 
+spatial continuity of administrative units. These eco-region boundaries were subsequently used as consistent 
+spatial statistical units for comparing annual PRSEI values, trend classes, and persistence tendencies Fig. 2.
+Data and preprocessing
+The study covered the period from 2000 to 2024. PRSEI components were derived from the MODIS/Terra 
+MOD09A1 Version 6.1 surface reflectance product (500 m) for calculating kNDVI, WET, and SI; the MODIS/
+Terra MOD11A2 Version 6.1 land surface temperature product (1 km, converted from Kelvin to °C) for LST; and 
+the Long-term Gap-free High-resolution Air Pollutants (LGHAP) v2 PM10 product (1 km, µg m⁻³) for construct-
+ing TI25–28. June–September growing-season composites were used to reduce the influence of snow cover, veg -
+etation senescence, and seasonal variation in bare-ground conditions. All continuous variables were converted 
+to their specified physical units before spatial resampling to ensure consistency among datasets. Because the 
+publicly available documentation for LGHAP v2 covers 2000–2021, the archived TI rasters for 2022–2024 used 
+in this study extend beyond the documented period and are therefore explicitly acknowledged as a limitation of 
+the data source Fig. 3.
+The explanatory variables comprised annual precipitation (PRE; mm yr⁻¹), annual mean temperature (TEM; 
+°C), potential evapotranspiration (PET; mm yr⁻¹), population density (PD; persons km⁻²), night-time lights (NTL; 
+nW cm⁻² sr⁻¹), and annual land use/land cover (LULC), together with static layers of the digital elevation model 
+(DEM; m), slope (SLO; °), and soil type (ST; categorical)29–39. Fractional vegetation cover (FVC) was excluded 
+from the main model because no independent annual archive was available and kNDVI was already included as 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-71853-z
+a component of PRSEI. Including both variables would introduce substantial information redundancy and could 
+lead to circular interpretation between the response index and its explanatory factors.
+All rasters were clipped to the boundary of Gansu Province, projected to the CGCS2000 3-degree Gauss–
+Krüger Zone 35 coordinate system (EPSG:4523), and aligned to a common grid with a spatial resolution of 
+474.751 m. Continuous variables were resampled using bilinear interpolation, whereas categorical variables were 
+resampled using the nearest-neighbour method. A pixel-year observation was included in the PCA only when all 
+required component values were finite and exceeded the NoData threshold (− 9998). The primary 25-year trend 
+and persistence analyses were conducted using a common intersection mask comprising 1,906,388 pixels. The 
+strict three-index comparison was restricted to 24 common years (2000–2008 and 2010–2024) and 1,906,376 
+common pixels. The year 2009 was excluded because the data required for the three-index comparison were 
+unavailable and was not interpolated.
+Adaptive PRSEI construction
+The adaptive PRSEI integrates five components: kNDVI, WET, LST, SI, and TI. Among these, kNDVI was 
+derived from NDVI using the following nonlinear kernel transformation:
+ 𝑁𝑁𝑁𝑁𝑁𝑁𝑁𝑁 𝑁 𝑁𝑁𝑁𝑁𝑁𝑁 𝑁 𝑁𝑁𝑁𝑁𝑁𝑁
+𝑁𝑁𝑁𝑁𝑁𝑁 𝑁 𝑁𝑁𝑁𝑁𝑁𝑁 (1)
+Fig. 1 Location and topographic setting of Gansu Province, China. The main map shows the provincial boundary, adminis-
+trative divisions, major settlements, and elevation derived from the digital elevation model (DEM); the inset indicates the 
+location of Gansu Province within China. Elevation is expressed in metres above sea level.
+ 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-71853-z
+ 𝑘𝑘𝑘𝑘𝑘𝑘𝑘𝑘𝑘𝑘 𝑘 tanh (𝑘𝑘𝑘𝑘𝑘𝑘𝑘𝑘 2) (2)
+WET was calculated using the MODIS Tasseled Cap transformation coefficients40:
+ 𝑊𝑊𝑊𝑊𝑊𝑊 𝑊 𝑊𝑊𝑊𝑊𝑊𝑊𝑊𝑊𝑊 𝑊 𝑊𝑊𝑊𝑊𝑊𝑊𝑊𝑊𝑊 𝑊 𝑊𝑊𝑊𝑊𝑊𝑊𝑊𝑊𝑊 𝑊 𝑊𝑊𝑊𝑊𝑊𝑊𝑊𝑊𝑊 𝑊 𝑊𝑊𝑊𝑊𝑊𝑊𝑊𝑊𝑊 𝑊 𝑊𝑊𝑊𝑊𝑊𝑊𝑊𝑊𝑊 𝑊 𝑊𝑊𝑊𝑊𝑊𝑊𝑊𝑊𝑊 (3)
+where B1-B7 denote the corresponding MODIS surface reflectance bands. LST was derived from the MOD11A2 
+product using the product-specific scale factor and subsequently converted from Kelvin to degrees Celsius (°C):
+ 𝐿𝐿𝐿𝐿𝐿𝐿 (∘ 𝐶𝐶) = 𝐷𝐷𝐷𝐷 𝐷 𝐷𝐷𝐷𝐷 𝐷 𝐷𝐷𝐷𝐷𝐷𝐷 (4)
+SI was used to characterise bare-soil exposure and surface conditions associated with sandification:
+ 
+𝑆𝑆𝑆𝑆 𝑆 (𝑆𝑆𝑆𝑆𝑆𝑆𝑆𝑆𝑆 𝑆 𝑆𝑆𝑆𝑆𝑆𝑆 ) − (𝑁𝑁𝑆𝑆𝑆𝑆 𝑆 𝑁𝑁𝑁𝑁𝑁𝑁𝑆𝑆 )
+(𝑆𝑆𝑆𝑆𝑆𝑆𝑆𝑆𝑆 𝑆 𝑆𝑆𝑆𝑆𝑆𝑆 ) 𝑆 (𝑁𝑁𝑆𝑆𝑆𝑆 𝑆 𝑁𝑁𝑁𝑁𝑁𝑁𝑆𝑆 ) (5)
+TI was derived from the mean PM10 concentration during the June–September growing season using the LGHAP 
+v2 dataset. Because elevated particulate matter concentrations may reduce atmospheric transparency, alter sur -
+face radiative conditions, and increase particulate deposition on vegetation surfaces, higher PM10 values were 
+assigned a negative ecological orientation in the PRSEI framework. However, PM10 should not be interpreted 
+as a direct measure of mineral dust or sandification, as its concentration may also be influenced by combustion 
+sources, industrial and traffic emissions, and regional atmospheric transport. Accordingly, TI is interpreted here 
+Fig. 2 Ecological regionalisation of Gansu Province used in this study. The five eco-regions are the Hexi Desert–Gobi Region, 
+Hexi Oasis–Corridor Agricultural Region, Longzhong–Longdong Loess Hilly Region, Gannan Alpine Mountain Region, 
+and Longnan–Tianshui Qinba Humid Mountain Region. The same boundaries were used for all eco-regional statistics.
+ 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-71853-z
+Fig. 3 Technical workflow for adaptive PRSEI construction, temporal robustness assessment, and spatial explanatory asso -
+ciation analysis. The workflow includes data acquisition and preprocessing, unified-PCA PRSEI construction with common 
+scaling, annual-PCA and fixed-weight sensitivity analyses, ecological-quality classification, Theil–Sen/Mann–Kendall trend 
+analysis, Hurst-based persistence analysis, inter-index comparison, TI ablation analysis, and OPGD assessment of spatial 
+explanatory associations.
+ 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-71853-z
+as a proxy for overall particulate matter pressure rather than a dust-specific indicator, and its association with 
+ecological quality is not regarded as evidence of a direct causal effect.
+All components were normalised to 0–1 before PCA. Positive indicators were normalised as:
+ 
+𝑁𝑁 𝑖𝑖 = 𝑋𝑋𝑖𝑖 −𝑋𝑋 𝑚𝑚𝑖𝑖𝑚𝑚
+𝑋𝑋𝑚𝑚𝑚𝑚𝑚𝑚 −𝑋𝑋 𝑚𝑚𝑖𝑖𝑚𝑚
+(𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝 𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝 ) (6)
+Negative indicators were normalised as:
+ 
+𝑁𝑁 𝑖𝑖 = 𝑋𝑋𝑚𝑚𝑚𝑚𝑚𝑚 −𝑋𝑋 𝑖𝑖
+𝑋𝑋𝑚𝑚𝑚𝑚𝑚𝑚 −𝑋𝑋 𝑚𝑚𝑖𝑖𝑚𝑚
+(𝑛𝑛𝑛𝑛𝑛𝑛𝑛𝑛𝑛𝑛𝑛𝑛𝑛𝑛𝑛𝑛 𝑛𝑛𝑛𝑛𝑛𝑛𝑛𝑛𝑛𝑛𝑛𝑛𝑛𝑛𝑛𝑛𝑛𝑛𝑛𝑛 ) (7)
+After normalisation of the individual components, all valid pixel-year observations from 2000 to 2024 were 
+pooled to fit a single unified PCA model. The component means and PC1 loading vector estimated from the 
+pooled dataset were then fixed and applied consistently to each year. The orientation of PC1 was adjusted only 
+once to ensure that higher scores consistently represented better ecological conditions. The resulting PC1 scores 
+were subsequently rescaled using a common global minimum and maximum derived from the full 2000–2024 
+dataset to generate the primary PRSEI time series:
+ 
+𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃 𝑃 (𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃 𝑃 𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃 𝑃𝑃𝑃𝑃𝑃𝑃 )
+(𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃 𝑃𝑃𝑃𝑃𝑃𝑃 𝑃 𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃 𝑃𝑃𝑃𝑃𝑃𝑃 ) (8)
+PRSEI values range from 0 to 1, with higher values indicating ecological conditions characterised by greater 
+greenness and wetness and lower thermal, sandification-related surface, and particulate matter pressures. Because 
+the same centring parameters, PC1 loadings, and scaling bounds were applied consistently across all years, 
+interannual variations in PRSEI were evaluated within a fixed index framework, thereby enhancing temporal 
+comparability.
+To assess temporal robustness, two alternative index series were additionally constructed. Annual PCA was 
+performed independently for each year, retaining the year-specific centring parameters, PC1 loadings, and scaling 
+procedure of the original approach. A fixed-weight index was also constructed by normalising the absolute values 
+of the unified PC1 loadings so that the resulting weights summed to 1. The three approaches—annual PCA, uni-
+fied PCA, and fixed weights—were compared in terms of annual mean values, the variance explained by PC1, 
+Data group Variable Spatial 
+resolution
+Source Temporal 
+coverage
+Unit
+PRSEI component kNDVI 500 m GEE/MOD09A12526 2000–2024 
+(Jun–Sep)
+Dimension-
+less
+PRSEI component WET 500 m GEE/MOD09A12526 2000–2024 
+(Jun–Sep)
+Dimension-
+less
+PRSEI component SI 500 m GEE/MOD09A12526 2000–2024 
+(Jun–Sep)
+Dimension-
+less
+PRSEI component LST 1 km GEE/MOD11A225,27 2000–2024 
+(Jun–Sep)
+°C
+PRSEI component TI(PM10) 1 km LGHAP28 2000–2024 
+(Jun–Sep)
+µg m⁻³
+Explanatory factor LULC 30 m CLCD29 2000–2024 Categorical
+Explanatory factor ST 1:4,000,000 Soil Map of China30 Static Categorical
+Explanatory factor PET 1 km TPDC31 2000–2024 mm yr⁻¹
+Explanatory factor PRE 1 km TPDC32 2000–2024 mm yr⁻¹
+Explanatory factor TEM 1 km TPDC33 2000–2024 °C
+Explanatory factor DEM 30 m GEE Static m
+Explanatory factor SLO 30 m DEM-derived Static °
+Explanatory factor NTL 500 m TPDC34 2000–2024 nW cm⁻² sr⁻¹
+Explanatory factor PD 1 km LandScan/ORNL35–39 2000–2024 persons km⁻²
+Table 1 Datasets used for 
+adaptive PRSEI construc-
+tion and spatial explanatory 
+association analysis.
+ 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-71853-z
+ranges of PC1 loadings, pixel-level Theil–Sen/Mann–Kendall trends, and agreement in trend direction. Because 
+unified PCA applies a single loading vector and common scaling framework consistently across the entire study 
+period, the unified-PCA series was adopted as the primary time series for all subsequent analyses.
+The inter-index comparison used 24 common years (2000–2008 and 2010–2024) and 1,906,376 pixels shared 
+by all datasets. Conventional RSEI comprised NDVI, WET, LST, and 1 − NDBSI; original PRSEI comprised 
+NDVI, WET, LST, SI, and TI; and adaptive PRSEI replaced NDVI with kNDVI. All three indices were con -
+structed using unified PCA, common scaling, and identical spatial masks. Comparisons included provincial and 
+eco-regional trajectories, spatial correlation, MAE, five-class agreement, weighted Cohen’s κ, pixel-level trend 
+direction, and slope correlation. CLCD restoration and degradation transitions were used only as external cat -
+egorical consistency evidence, not as field validation or causal evidence.
+To assess the contribution of TI, a four-component index excluding TI was constructed using the same work-
+flow and compared with the full adaptive PRSEI in terms of spatial correlation, class agreement, provincial trend 
+slope, and pixel-level trend-direction agreement.
+Temporal, spatial and class statistics
+Annual PRSEI statistics, including the mean, standard deviation, minimum, and maximum, were calculated for the 
+province and each eco-region. Following the conventional RSEI classification and subsequent applications8,11,14, 
+PRSEI values were divided into five fixed 0.2 intervals: very poor [0, 0.2), poor [0.2, 0.4), moderate [0.4, 0.6), 
+good [0.6, 0.8), and excellent [0.8, 1.0]. Fixed thresholds ensured direct interannual comparability and avoided 
+artificial changes caused by year-specific quantiles or natural breaks. These classes represent relative positions 
+along the ecological-quality gradient rather than field-calibrated ecological thresholds or regulatory standards.
+Annual mean PRSEI time series for the five eco-regions were derived by overlaying the annual PRSEI rasters 
+with the corresponding regional boundaries. These series were used to compare baseline ecological quality, the 
+magnitude of change, and interannual variability among regions.
+After applying a common valid-data mask, area statistics were derived from pixel counts using the stan -
+dardised grid-cell area. For each year and eco-region, pixel counts were converted to areas and proportions 
+for PRSEI classes, trend categories, and persistence categories. Proportional statistics were used to facilitate 
+comparison among eco-regions of different sizes, while the underlying raster and area outputs were retained for 
+reproducibility.
+Trend and persistence analysis
+Pixel-level PRSEI trends over 2000–2024 were estimated using the Theil–Sen median slope:
+ 
+𝛽𝛽 = 𝑀𝑀𝑀𝑀𝑀𝑀𝑀𝑀𝑀𝑀𝑀𝑀 (
+𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃 𝑗𝑗 − 𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃 𝑖𝑖
+𝑗𝑗 −𝑀𝑀 ) ,1 ≤ 𝑀𝑀 𝑖𝑗𝑗 ≤ 𝑀𝑀 (9)
+Trend significance was assessed using the Mann–Kendall test, with ∣Z∣>1.96 indicating significance at α = 0.05. 
+Based on the Theil–Sen slope direction and Mann–Kendall significance, pixel-level trends were classified as 
+significant decline, slight decline, stable, slight improvement, or significant improvement.
+The Hurst exponent was calculated by rescaled range analysis. For each time scale n, the relationship was 
+expressed as:
+ 
+𝑙𝑙𝑙𝑙𝑙𝑙 ( 𝑅𝑅 (𝜏𝜏 )
+𝑆𝑆 (𝜏𝜏 ) ) = 𝐻𝐻 𝑙𝑙𝑙𝑙𝑙𝑙 (𝜏𝜏 ) +𝐶𝐶 (10)
+Here, R/S denotes the rescaled range, H is the Hurst exponent, and C is a constant. Values of H > 0.5, H < 0.5, and 
+H = 0.5 indicate tendencies toward persistence, reversal, and random behaviour, respectively. Combining the Hurst 
+exponent with the Theil–Sen slope, pixels were classified as persistent improvement, improvement-to-degradation, 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-71853-z
+degradation-to-improvement, persistent degradation, or stable/uncertain. These categories represent persistence 
+tendencies inferred from historical trajectories rather than deterministic predictions of future ecological change.
+Eco-regional statistics
+Using a common valid-data mask, annual PRSEI values, trend categories, and persistence tendencies were sum-
+marised for each eco-region. The main text reports key regional metrics, including initial and final values, the 
+25-year mean, trend slope, R², and residual degradation proportion, while detailed annual statistics, class areas, 
+and transition matrices are provided in the Supplementary Data for reproducibility without overloading the main 
+text.
+OPGD analysis of spatial explanatory associations
+OPGD was used to quantify spatial associations between PRSEI and nine explanatory factors: PRE, TEM, PET, 
+DEM, SLO, PD, NTL, LULC, and ST.
+For annual OPGD analysis, unified-PCA PRSEI values were matched with the corresponding annual dynamic 
+variables and the static DEM, SLO, and ST layers. Continuous variables were discretised using equal-interval, 
+quantile, geometric-interval, K-means, and natural-breaks methods with 5–10 classes, and the scheme yielding 
+the highest q value was retained. LULC and ST were treated directly as categorical variables.
+The factor-detector q statistic was calculated as:
+ 
+𝑞𝑞𝑞𝑞𝑞 [Σ ℎ 𝑞 𝑞𝐿𝐿 𝐿𝐿 ℎ𝜎𝜎 ℎ2]
+[𝐿𝐿𝜎𝜎 2] (11)
+Here, h denotes the stratum, L the number of strata, Nh and N the numbers of pixels within stratum h and the full 
+sample, and σh² and σ² the corresponding PRSEI variances. A higher q value indicates a greater proportion of 
+PRSEI spatial variance explained by factor stratification. Accordingly, q is interpreted here as a measure of spatial 
+explanatory association rather than a regression coefficient, causal effect, or test of causality.
+Interaction detection was performed by overlaying pairs of factor strata and comparing q(X1 ∩ X2) with the 
+corresponding single-factor q values. A higher interaction q value indicates stronger joint explanatory associa -
+tion than either factor alone, but does not identify the underlying mechanism or quantify the ecological effect of 
+changes in individual factors.
+For reproducibility, the selected discretisation method and class number for each continuous variable were 
+recorded, while LULC and ST retained their original categories. To assess sensitivity to soil classification, the 
+original 112 ST classes were progressively consolidated into the 80, 40, 20, and 10 most frequent classes, with 
+the remaining classes grouped as “Other”, and q values were recalculated for each scheme.
+Robustness of the multi-year OPGD results was further evaluated across random seeds (42, 512, and 2024), 
+sample sizes (25,000, 50,000, and 100,000), four discretisation methods, and 5–10 classes. Stability was assessed 
+by comparing factor rankings, overlap among the top three factors, and q values of key interactions across set -
+tings. These tests quantify sensitivity to sampling and discretisation choices rather than causal effects.
+Results
+Stability of annual PRSEI construction
+Unified PCA defined a temporally consistent composite axis using pooled observations from 2000 to 2024. 
+PC1 explained 79.12% of the total variance, with direction-corrected loadings of 0.709 for kNDVI, 0.138 for 
+WET, 0.388 for LST, 0.342 for SI, and 0.459 for TI (Table 2). These loadings quantify the contributions of the 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-71853-z
+standardised components to the composite axis but do not, by themselves, demonstrate the ecological superiority 
+of a particular index formulation.
+Annual PCA showed substantial temporal variation in index structure. PC1 explained 78.37–85.70% of the 
+variance (mean 81.82%), while loadings ranged from 0.628 to 0.770 for kNDVI, 0.132–0.154 for WET, 0.338–
+0.442 for LST, 0.293–0.386 for SI, and 0.326–0.554 for TI. This variability indicates that trends derived from 
+annual PCA may reflect both ecological change and year-to-year shifts in component weighting.
+Sensitivity analysis revealed strong dependence of long-term trend interpretation on PCA construction. Annual 
+PCA with year-specific scaling classified 39.21% of pixels as improving, 3.34% as stable, and 57.45% as degrad-
+ing, compared with 99.42%, 0.07%, and 0.52% under unified PCA and 99.36%, 0.07%, and 0.57% under the 
+fixed-weight approach, respectively. Pixel-level trend-direction agreement reached 99.90% between unified PCA 
+and fixed weights but only 39.73% between annual and unified PCA. Thus, the apparent widespread degradation 
+inferred from annual PCA was strongly method-sensitive, and subsequent analyses were based on the unified-
+PCA series.
+Provincial annual dynamics and ecological-quality classes
+Based on the unified-PCA series, the mean PRSEI for Gansu Province increased from 0.343 in 2000 to 0.419 in 
+2024, with a linear slope of 0.00432 yr⁻¹ (R² = 0.778), indicating a clear long-term improvement despite interan-
+nual variability. Figure 4 presents the provincial mean PRSEI derived from unified PCA together with the corre-
+sponding ecological-quality class composition. Annual-PCA results are used only for sensitivity assessment and 
+are not used for primary temporal inference.
+Class transitions based on fixed thresholds provide a more conservative measure of structural change than 
+trend direction alone. From 2000 to 2024, 37.57% of pixels increased by at least one 0.2 class, 60.73% remained 
+unchanged, and 1.71% decreased, indicating that widespread positive trends did not necessarily translate into 
+shifts across ecological-quality classes. Provincial trends should therefore be interpreted alongside baseline con-
+ditions and class transitions. Common scaling ensured temporally consistent thresholds, while the five classes 
+were treated as relative mapping intervals rather than field-calibrated ecological-status thresholds.
+Spatial pattern and eco-regional divergence
+Unified PCA revealed a clear south-east–north-west gradient in ecological quality. The 25-year mean PRSEI 
+was highest in the Longnan–Tianshui Qinba Humid Mountain Region (0.692), followed by the Gannan Alpine 
+Mountain Region (0.672), Longzhong–Longdong Loess Hilly Region (0.440), Hexi Oasis–Corridor Agricultural 
+Region (0.343), and Hexi Desert–Gobi Region (0.225). This spatial ranking remained consistent across repre -
+sentative years, confirming a stable pattern of higher ecological quality in south-eastern Gansu and lower values 
+toward the arid north-west Fig. 5.
+All five eco-regions showed positive PRSEI trends, but improvement rates varied markedly. Slopes were high-
+est in the Longnan–Tianshui Qinba Humid Mountain Region (0.00764 yr⁻¹), followed by the Longzhong–Long-
+dong Loess Hilly Region (0.00649 yr⁻¹), Gannan Alpine Mountain Region (0.00481 yr⁻¹), Hexi Oasis–Corridor 
+Agricultural Region (0.00310 yr⁻¹), and Hexi Desert–Gobi Region (0.00270 yr⁻¹). Thus, the Hexi Desert–Gobi 
+Indicator Minimum Maximum Mean Unified PCA
+PC1 contribution (%) 78.37 85.70 81.82 79.12%
+kNDVI loading 0.628 0.770 0.717 0.709
+WET loading 0.132 0.154 0.141 0.138
+LST loading 0.338 0.442 0.399 0.388
+SI loading 0.293 0.386 0.346 0.342
+TI loading 0.326 0.554 0.427 0.459
+Table 2 Unified-PCA 
+loadings and interannual 
+variability in annual-PCA 
+statistics for the adaptive 
+PRSEI during 2000–2024.
+ 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-71853-z
+Region combined the lowest ecological-quality baseline with the slowest improvement, while the Hexi Oasis–
+Corridor Agricultural Region retained the largest share of negative trends (2.07%). These results indicate that 
+broad ecological improvement has not eliminated pronounced regional disparities Fig. 6.
+Historical trend classes
+Under the temporally comparable unified-PCA framework, 99.42% of the common-mask area showed positive 
+trends, 0.07% remained stable, and only 0.52% exhibited negative trends. This pattern contrasts sharply with the 
+annual-PCA results, confirming that the earlier inference of widespread degradation was strongly sensitive to 
+PCA construction Fig. 7.
+Positive trends were widespread across all five eco-regions, although their ecological significance varied with 
+baseline conditions and class transitions. Residual negative trends were highest in the Hexi Oasis–Corridor Agri-
+cultural Region (2.07%), followed by the Longnan–Tianshui Qinba Region (0.33%), and remained below 0.20% 
+elsewhere. Because 60.73% of pixels remained within the same 0.2 PRSEI class, the overall provincial pattern 
+is better characterised as widespread but heterogeneous improvement rather than universal recovery. Accord -
+ingly, subsequent interpretation considers trend direction, slope magnitude, class transitions, and baseline PRSEI 
+jointly to avoid overstatement.
+Fig. 4 Annual mean unified-PCA PRSEI and ecological-quality class composition in Gansu Province from 2000 to 2024. 
+The line represents the annual provincial mean PRSEI, and the dashed line denotes its linear trend (slope = 0.00432 yr⁻¹; R² 
+= 0.778). Stacked areas show the proportions of five fixed PRSEI classes: very poor [0, 0.2), poor [0.2, 0.4), moderate [0.4, 
+0.6), good [0.6, 0.8), and excellent [0.8, 1.0]. PRSEI is dimensionless and class proportions are expressed as percentages.
+ 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-71853-z
+Persistence tendencies from Hurst coupling
+Coupling unified-PCA trends with the Hurst exponent showed that 99.415% of the area exhibited persistent 
+improvement, 0.517% persistent degradation, and 0.066% stable or uncertain behaviour, while reversal catego -
+ries together accounted for < 0.002%. These results indicate persistence tendencies in historical trajectories rather 
+than deterministic predictions of future ecological change Fig. 8.
+Residual degradation was highest in the Hexi Oasis–Corridor Agricultural Region (2.062%), followed by 
+the Longnan–Tianshui Qinba Humid Mountain Region (0.328%), Longzhong–Longdong Loess Hilly Region 
+(0.187%), Gannan Alpine Mountain Region (0.139%), and Hexi Desert–Gobi Region (0.127%). Although these 
+proportions were small, their occurrence across eco-regions with contrasting baseline conditions warrants tar -
+geted monitoring. Accordingly, the Hurst analysis is used here as a monitoring indicator of historical persistence 
+rather than a predictive tool; a positive trend combined with H > 0.5 indicates persistence in past trajectories but 
+does not guarantee continued improvement under future climatic, water-use, or land-cover change.
+OPGD single-factor results
+In the annual unified-PCA OPGD analysis, PRE showed the highest mean q value (0.829), followed by ST 
+(0.790), LULC (0.677), PET (0.531), SLO (0.443), PD (0.299), DEM (0.149), TEM (0.115), and NTL (0.007) 
+(Table 3). PRE, ST, and LULC consistently ranked among the top three factors across all annual analyses. These 
+q values represent spatial explanatory associations rather than causal effects.
+Fig. 5 Spatial distribution of unified-PCA PRSEI ecological-quality classes in representative years across Gansu Province. 
+Maps are shown for (a) 2000, (b) 2005, (c) 2010, (d) 2015, (e) 2020, and (f) 2024. All years use common scaling and the 
+same fixed class thresholds: very poor [0, 0.2), poor [0.2, 0.4), moderate [0.4, 0.6), good [0.6, 0.8), and excellent [0.8, 1.0].
+ 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-71853-z
+The stable factor ranking supports a precipitation–soil–land-cover framework for spatial variation in PRSEI: 
+precipitation covaries with vegetation and surface moisture, soil type differentiates water-retention and erosion 
+conditions, and LULC captures major surface-background differences. These processes provide plausible eco -
+logical context for the observed spatial stratification, although OPGD cannot identify temporal pathways or 
+causal intervention effects. Robustness tests showed that the leading factors remained stable across random seeds, 
+sample sizes, and model settings. For ST, q decreased from 0.800 with all 112 classes to 0.795, 0.716, 0.592, 
+and 0.513 after consolidation to the top 80, 40, 20, and 10 classes, respectively, indicating that soil remains an 
+important spatial explanatory factor but that its q magnitude is sensitive to classification granularity. The multi-
+year OPGD analysis yielded the same leading factors (PRE = 0.854, ST = 0.801, LULC = 0.688; Fig. 9), further 
+supporting the robustness of the overall ranking.
+OPGD interaction results
+Two-factor interactions consistently showed higher q values than the corresponding single factors. Among annual 
+mean interactions, PRE∩ST was strongest (q = 0.907), followed by LULC∩ST (q = 0.898) and PRE∩LULC 
+(q = 0.889), indicating a stable precipitation–soil–land-cover interaction structure in PRSEI spatial heteroge -
+neity. The multi-year interaction matrix showed the same dominant combinations, with PRE∩ST (q = 0.921), 
+Fig. 6 Annual mean unified-PCA PRSEI trajectories for the five eco-regions of Gansu Province from 2000 to 2024. The 
+five series represent the Hexi Desert–Gobi, Hexi Oasis–Corridor Agricultural, Longzhong–Longdong Loess Hilly, Gannan 
+Alpine Mountain, and Longnan–Tianshui Qinba Humid Mountain regions. Labels at the right indicate the 2024 PRSEI val-
+ues, linear trend slopes (yr⁻¹), and net PRSEI changes between 2000 and 2024 (ΔPRSEI). PRSEI is dimensionless.
+ 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-71853-z
+Fig. 8 Spatial distribution of Hurst-coupled PRSEI persistence tendencies in Gansu Province. Unified-PCA Theil–Sen trends 
+were coupled with the Hurst exponent to classify pixels as persistent improvement, improvement-to-degradation, degrada -
+tion-to-improvement, persistent degradation, or stable/uncertain. These classes describe persistence tendencies in historical 
+trajectories and should not be interpreted as deterministic predictions of future ecological change.
+ 
+Fig. 7 Spatial distribution of Theil–Sen/Mann–Kendall PRSEI trend classes in Gansu Province from 2000 to 2024. Trends 
+were derived from the unified-PCA PRSEI series and classified as significant decline, slight decline, stable, slight improve-
+ment, or significant improvement according to Theil–Sen slope direction and Mann–Kendall significance at α = 0.05. Posi-
+tive, stable, and negative trends account for 99.42%, 0.07%, and 0.52% of the common-mask area, respectively.
+ 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-71853-z
+PRE∩LULC (q = 0.909), and ST∩LULC (q = 0.908) ranking highest (Figs. 10 and 11). These interaction enhance-
+ments indicate stronger joint spatial explanatory associations, but do not imply causal relationships or quantify 
+the ecological effects of changes in individual factors.
+Annual q-value trajectories showed a clear hierarchy of spatial associations, with PRE, ST, and LULC form -
+ing the leading tier, PET and SLO the second tier, and PD, DEM, TEM, and NTL showing weaker independent 
+associations. The very low q value of NTL should not be interpreted as evidence of negligible human influence, 
+Fig. 9 Single-factor OPGD explanatory power for the multi-year mean PRSEI. Bars show factor-detector q values for PRE, 
+ST, LULC, PET, SLO, PD, DEM, TEM, and NTL. The accompanying information reports variable type, optimal discretisa-
+tion method, and number of classes. The q statistic is dimensionless and represents spatial explanatory association rather 
+than causal effect.
+ 
+Rank Factor q value Variable type Optimal method Classes
+1 PRE 0.854 Continuous Quantile 10
+2 ST 0.801 Categorical Original categories 112
+3 LULC 0.688 Categorical Original categories 10
+4 PET 0.541 Continuous Quantile 10
+5 SLO 0.453 Continuous K-means 10
+6 PD 0.319 Continuous Quantile 10
+7 DEM 0.149 Continuous K-means 10
+8 TEM 0.120 Continuous K-means 10
+9 NTL 0.019 Continuous Geometric interval 5
+Table 3 Single-factor OPGD 
+results for the multi-year 
+mean PRSEI.
+ 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-71853-z
+because irrigation, grazing, groundwater abstraction, and ecological restoration are poorly captured by night-time 
+lights alone. Although factor rankings were generally stable, q magnitudes remained sensitive to spatial resolu -
+tion, discretisation, and variable selection. OPGD results are therefore interpreted as patterns of spatial associa -
+tion and interaction enhancement rather than causal mechanisms. Overall, water availability, soil background, 
+and land-cover configuration emerge as priorities for future process-based validation, while the current evidence 
+is insufficient to attribute PRSEI changes to any single factor or specific policy intervention Fig. 12.
+Comparison with traditional RSEI and original-configuration PRSEI
+Across the 24 common years, adaptive PRSEI showed very high spatial consistency with original PRSEI (mean 
+r = 0.991, MAE = 0.045, five-class agreement = 75.61%, weighted κ = 0.911). Its correlation with traditional RSEI 
+was also strong (r = 0.975), although class agreement was lower (60.20%; weighted κ = 0.868). Traditional RSEI 
+and original PRSEI were similarly correlated (r = 0.986), with 69.43% class agreement. Overall, the three indices 
+captured broadly similar spatial gradients but differed appreciably in ecological-quality classification.
+Provincial trend slopes were 0.00141 yr⁻¹ for RSEI, 0.00340 yr⁻¹ for original PRSEI, and 0.00429 yr⁻¹ for 
+adaptive PRSEI. Trend-direction agreement was 99.00% between adaptive and original PRSEI ( r = 0.932 for 
+pixel-level slopes), but only 51.15% between adaptive PRSEI and RSEI ( r = 0.895). At the eco-regional scale, 
+traditional RSEI showed slight negative trends in the Hexi Desert–Gobi and Gannan Alpine Mountain regions, 
+Fig. 10 Pairwise OPGD interaction q-value matrix for the multi-year mean PRSEI. Diagonal cells show single-factor q val-
+ues, whereas off-diagonal cells show interaction values q(X₁∩X₂) for pairs of explanatory factors. Higher q values indicate 
+stronger spatial explanatory associations. The q statistic is dimensionless and does not represent a causal effect.
+ 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-71853-z
+whereas both PRSEI formulations showed positive trends across all five eco-regions. These contrasts indicate 
+that long-term trend inference is sensitive to index composition Fig. 13.
+External land-cover consistency revealed a clear trade-off among the three indices. In CLCD restoration-
+transition areas, positive changes were identified in 55.58% of pixels by RSEI, 78.97% by original PRSEI, and 
+81.47% by adaptive PRSEI. In degradation-transition areas, negative changes occurred in 70.36%, 44.53%, and 
+34.22% of pixels, respectively. Thus, adaptive PRSEI showed the highest consistency with mapped restoration 
+but the lowest with degradation. Overall balanced consistency was 62.97% for RSEI, 61.75% for original PRSEI, 
+and 57.84% for adaptive PRSEI, indicating that no index was consistently superior across both transition types 
+Fig. 14.
+All three indices clearly distinguished stable natural vegetation from stable bare ground. Cohen’s d values for 
+2000 and 2024 were 2.019 and 2.408 for RSEI, 2.227 and 2.800 for original PRSEI, and 1.923 and 2.454 for 
+adaptive PRSEI, respectively. However, adaptive PRSEI showed the smallest separation from original PRSEI 
+within the lowest-NDVI group, providing no evidence that it improves discrimination of sparse vegetation.
+Discussion
+Comparative performance and trade-offs of adaptive PRSEI
+Direct comparison among the three indices provides a more robust basis for evaluating adaptive PRSEI than PC1 
+variance contribution alone. Adaptive PRSEI remained highly consistent with original PRSEI in both spatial pat-
+tern (r = 0.991) and trend direction (99.00% agreement), indicating that replacing NDVI with kNDVI modified 
+Fig. 11 Interannual variation in OPGD q values of explanatory factors in Gansu Province from 2000 to 2024. Each cell 
+shows the annual factor-detector q value, and the right-hand column reports the corresponding multi-year mean. Factors 
+are ordered by their mean q values. The q statistic is dimensionless and represents the proportion of spatial PRSEI variance 
+associated with factor stratification.
+ 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-71853-z
+component balance without fundamentally altering the index structure. Its spatial correlation with traditional 
+RSEI was also high (r = 0.975), but trend-direction agreement was much lower (51.15%), highlighting the sensi-
+tivity of long-term change trajectories to index composition.
+CLCD-based external consistency further revealed a trade-off rather than universal superiority. Adaptive 
+PRSEI showed the highest consistency with restoration transitions (81.47%) but the lowest with degradation 
+transitions (34.22%), compared with 78.97% and 44.53% for original PRSEI and 55.58% and 70.36% for RSEI, 
+respectively. All three indices also distinguished stable natural vegetation from stable bare land. These results 
+support adaptive PRSEI as a complementary multi-stressor index for drylands, particularly for capturing recov -
+ery-related responses, while degradation assessment should be corroborated using RSEI, land-cover transitions, 
+or independent field evidence.
+Two component-level findings further refine interpretation of the adaptive PRSEI. First, the difference between 
+adaptive and original PRSEI was not greatest in the lowest-NDVI group, providing no evidence that kNDVI 
+improves sparse-vegetation discrimination; it is therefore interpreted here only as a nonlinear greenness trans -
+formation. Second, excluding TI reduced the provincial trend slope from 0.00432 to 0.00248 yr⁻¹, while spatial 
+correlation remained high ( r = 0.988) and trend-direction agreement was 75.97%, indicating that TI materially 
+affects temporal trend inference. However, PM10 is treated as a general particulate-matter proxy rather than a 
+dust-specific indicator, and dust-related mechanisms require further validation using independent evidence such 
+as AOD, dust-event frequency, or deposition data.
+Fig. 12 Interannual ranking dynamics of OPGD explanatory factors in Gansu Province from 2000 to 2024. Annual ranks 
+were determined from factor-detector q values, with rank 1 representing the highest q value. Labels at the bottom indicate the 
+mean ranks over the study period. Rankings describe relative spatial explanatory associations rather than causal importance.
+ 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-71853-z
+Fig. 14 Spatial comparison of the three ecological indices in 2024. (a) Traditional RSEI, (b) original-configuration PRSEI, 
+(c) adaptive PRSEI, and (d) the difference between adaptive and original PRSEI. All indices were constructed using uni -
+fied PCA fitted to pooled observations, common scaling, and the same valid-pixel mask. Index values and differences are 
+dimensionless.
+ 
+Fig. 13 Comparison of traditional RSEI, original-configuration PRSEI, and adaptive PRSEI over the 24 common years 
+(2000–2008 and 2010–2024). (a) Provincial annual trajectories; (b) eco-regional linear trend slopes; (c) consistency of 
+index-change direction with CLCD restoration and degradation transitions; and (d) pairwise spatial correlation and five-class 
+agreement. All comparisons use identical years and valid-pixel masks. Index values, correlation coefficients, and agreement 
+rates are dimensionless; trend slopes are expressed in yr⁻¹.
+ 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-71853-z
+Temporal comparability reshapes long-term trend interpretation
+The contrast between annual and unified PCA demonstrates that long-term ecological trend inference is highly 
+sensitive to index construction. Because annual PCA allows component loadings, centring parameters, and scal-
+ing ranges to vary among years, apparent temporal changes may partly reflect changes in the composite index 
+itself. The high trend-direction agreement between unified PCA and fixed weights (99.90%), compared with only 
+39.73% between annual and unified PCA, supports the use of a fixed index framework for long-term temporal 
+inference. Under this framework, positive trends were widespread, although only 37.57% of pixels crossed at 
+least one fixed PRSEI class. This distinction indicates that trend direction and class transition capture different 
+aspects of ecological change and should therefore be interpreted jointly.
+Eco-regional divergence in ecological quality and trends
+Eco-regional analysis further identified areas where positive trends coexist with persistent ecological constraints. 
+The Hexi Desert–Gobi Region had the lowest 25-year mean PRSEI (0.225) and the slowest improvement rate 
+(0.00270 yr⁻¹), while the Hexi Oasis–Corridor Agricultural Region retained the highest proportion of residual 
+negative trends (2.07%). These patterns are consistent with persistent constraints related to water limitation, high 
+evaporative demand, wind erosion, sandification, and intensive water use, indicating that positive trends do not 
+necessarily imply the removal of ecological risks. By contrast, the Longnan–Tianshui Qinba Humid Mountain, 
+Longzhong–Longdong Loess Hilly, and Gannan Alpine Mountain regions showed higher ecological baselines 
+and/or faster improvement. Although these patterns are broadly consistent with more favourable hydrothermal 
+conditions and previously reported restoration or soil-conservation processes, the available evidence does not 
+permit attribution to specific policies or engineering interventions.
+Management interpretation should jointly consider PRSEI baseline levels, class transitions, trend direction, and 
+persistence tendencies. Low-value areas may still require continued protection despite positive trends, whereas 
+small residual degradation patches are better suited to targeted monitoring and should not be interpreted as evi -
+dence of province-wide ecological decline.
+Coupled spatial associations among water availability, soil, and land cover
+The most robust OPGD finding was the consistent hierarchy of spatial associations across annual models. PRE, 
+ST, and LULC remained the top three factors, with their principal pairwise interactions yielding q values of 
+0.889–0.907. This stable pattern supports a joint interpretation involving water availability, soil background, and 
+land-cover configuration, while remaining insufficient to establish causal mechanisms.
+A plausible ecological interpretation is that precipitation influences vegetation growth, surface moisture, and 
+bare-ground exposure, while soil properties such as texture, water-holding capacity, salinity, and erodibility mod-
+ulate responses to climatic inputs. LULC further differentiates major surface types, including cropland, grassland, 
+forest, bare land, water bodies, and built-up areas 41–46. Although these pathways are consistent with previous 
+studies, they should be regarded as mechanistic hypotheses because OPGD cannot resolve temporal mediation 
+or intervention effects.
+Interaction effects can be interpreted as context-dependent spatial associations: the relationship between PRE 
+and PRSEI may vary across soil and LULC categories, and similar land-cover types may exhibit different PRSEI 
+levels under contrasting moisture conditions. However, these interactions do not imply that changing a given 
+factor will produce a specific PRSEI response. Soil-classification sensitivity further showed that ST q values 
+remained similar after moderate aggregation but declined under coarser classifications. Thus, soil background is 
+a robust contributor to spatial stratification, while the magnitude of its q value remains dependent on classifica -
+tion resolution.
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-71853-z
+Implications for ecological management across contrasting eco-regions
+Management priorities should integrate PRSEI baseline conditions, class transitions, trend direction, and per -
+sistence tendencies. In the arid Hexi region, the results support continued protection of desert vegetation and 
+oasis margins, targeted monitoring of residual degradation patches, and closer consideration of ecological water 
+requirements in irrigation and groundwater management. Because this study did not quantify the effects of spe -
+cific interventions, these measures should be viewed as evidence-based management priorities rather than pre -
+scriptive recommendations for particular engineering actions.
+In the Loess Hilly, alpine, and humid mountain regions, relatively rapid ecological improvement suggests that 
+restoration and conservation gains should be consolidated rather than assumed complete. Continued priorities 
+include soil and water conservation, grassland and wetland protection, forest conservation, and monitoring of 
+localised degradation. However, project-specific recommendations require independent information on restora -
+tion intensity, grazing pressure, water use, and protected-area management.
+The enhanced joint associations among water availability, soil conditions, and LULC further suggest that 
+ecological monitoring and intervention assessment should be stratified by environmental context. Such context-
+specific evaluation is better supported by the present evidence than uniform province-wide recommendations and 
+provides a practical basis for prioritising future field validation and process-based research.
+Limitations and future work
+First, the 474.751 m grid is appropriate for long-term provincial-scale monitoring but may not resolve narrow 
+valley oases, urban fringes, or small restoration patches. Higher-resolution Landsat, Sentinel, or Chinese satellite 
+data should therefore be used for local validation while retaining the temporal continuity of the MODIS-based 
+analysis.
+Second, OPGD q values and interaction terms represent spatial associations rather than causal effects and can-
+not resolve temporal ordering, mediating pathways, or intervention responses. Future causal attribution should 
+therefore integrate OPGD with process-based models, quasi-experimental designs, field observations, or matched 
+restoration controls.
+Third, the PM10-based TI is not dust-specific because PM10 includes both dust and non-dust sources. In addi-
+tion, the archived TI grids for 2022–2024 extend beyond the period documented for LGHAP v2. Dust-specific 
+interpretation therefore requires further validation using independent evidence such as AOD, dust-event fre -
+quency, or deposition records.
+In addition, annual data on ecological engineering intensity, grazing pressure, groundwater abstraction, and 
+irrigation water use were unavailable. Consequently, the low q value of NTL should not be interpreted as evi -
+dence that human activities exert little influence on ecological quality.
+Finally, although unified PCA improves temporal comparability, it remains sensitive to global minimum–
+maximum extremes. The five fixed 0.2 classes should be interpreted as comparable mapping intervals rather than 
+universal ecological thresholds, and CLCD provides external categorical consistency rather than field validation. 
+Future work should therefore assess more robust scaling approaches, field-calibrated thresholds, and independent 
+ecological datasets.
+Conclusion
+This study constructed a temporally comparable adaptive PRSEI for Gansu Province (2000–2024) using uni -
+fied PCA and common scaling. The unified PC1 explained 79.12% of the total variance. Sensitivity analysis 
+showed that long-term trend inference was highly dependent on PCA construction: pixel-level trend-direction 
+agreement was only 39.73% between annual and unified PCA, but reached 99.90% between unified PCA and the 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-71853-z
+fixed-weight approach. These results highlight the importance of maintaining a consistent index framework in 
+long-term ecological time-series analysis.
+Under the unified-PCA framework, mean provincial PRSEI increased from 0.343 to 0.419 (slope = 0.00432 
+yr⁻¹; R² = 0.778). Positive trends covered 99.42% of the common-mask area, although only 37.57% of pixels 
+increased by at least one fixed PRSEI class. Ecological improvement was therefore widespread but spatially het-
+erogeneous: all five eco-regions showed positive trends, while the Hexi Desert–Gobi Region retained the lowest 
+baseline and the Hexi Oasis–Corridor Agricultural Region the highest proportion of residual negative trends.
+Index comparison showed that adaptive PRSEI remained highly consistent with original PRSEI spatially and 
+showed greater consistency with mapped restoration transitions, but weaker consistency with degradation transi-
+tions than traditional RSEI. It should therefore be viewed as a complementary multi-stressor index for drylands 
+rather than a universally superior replacement for RSEI. OPGD further identified PRE, ST, and LULC as the most 
+stable spatial explanatory factors, although their q values indicate association rather than causality. Remaining 
+uncertainties in TI interpretation, degradation detection, class calibration, and process attribution require further 
+validation using independent atmospheric, field, and management data.
+Supplementary Information The online version contains supplementary material available at https://doi.org/10.1038/
+s41598-026-71853-z.
+Author contributions B.L. wrote the main manuscript text. J.W. supervised the study and critically reviewed the manu -
+script. Q.Z. and Z.Y . prepared the datasets and figures. W.Z. and J.Y . provided methodological and technical support. Z.C. 
+and Y .L. reviewed the data and manuscript. All authors reviewed and approved the final manuscript.
+Funding This research received no specific grant from any funding agency in the public, commercial, or not-for-profit 
+sectors.
+Data availability The publicly available source datasets used in this study are listed in Table 1 and in the corresponding ref-
+erences. The derived annual PRSEI products, eco-regional statistics, trend and persistence classifications, and OPGD outputs 
+generated during the current study are available from the corresponding author on reasonable request.
+Declarations
+Competing interests The authors declare no competing interests.
+Open Access This article is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 Interna-
+tional License, which permits any non-commercial use, sharing, distribution and reproduction in any medium or format, as 
+long as you give appropriate credit to the original author(s) and the source, provide a link to the Creative Commons licence, 
+and indicate if you modified the licensed material. You do not have permission under this licence to share adapted material 
+derived from this article or parts of it. The images or other third party material in this article are included in the article’s Cre-
+ative Commons licence, unless indicated otherwise in a credit line to the material. If material is not included in the article’s 
+Creative Commons licence and your intended use is not permitted by statutory regulation or exceeds the permitted use, you 
+will need to obtain permission directly from the copyright holder. To view a copy of this licence, visit h t t p : / / c r e a t i v e c o m m o 
+n s . o r g / l i c e n s e s / b y - n c - n d / 4 . 0 / . 
+References
+ 1. Wohlfart, C., Kuenzer, C., Chen, C. & Liu, G. Social-ecological challenges in the Yellow River Basin (China): a review. 
+Environ. Earth Sci. 75, 1066. https://doi.org/10.1007/s12665-016-5864-2 (2016).
+ 2. Li, C. et al. Ecological restoration effects of the Beijing-Tianjin Sandstorm Source Control Project in China since 2000. 
+Ecol. Ind. 146, 109782. https://doi.org/10.1016/j.ecolind.2022.109782 (2023).
+ 3. Zhang, B. et al. Land use/cover-related ecosystem service value in fragile ecological environments: a case study in Hexi 
+Region, China. Remote Sens. 16, 563. https://doi.org/10.3390/rs16030563 (2024).
+ 4. Yu, H., Zhang, B., He, Q. & Xiao, H. Primary determinants of water yield services in arid NW China: an empirical 
+analysis of Gansu Province. PLOS One. 20, e0329580. https://doi.org/10.1371/journal.pone.0329580 (2025).
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-71853-z
+ 5. Wang, Y . & Zhang, W. Quantifying the spatiotemporal evolution of NDVI and its response to driving factors based on 
+the geographical detector model in Northwest China. Geomatics Nat. Hazards Risk. 17, 2620048. h t t p s : / / d o i . o r g / 1 0 . 1 0 8 
+0 / 1 9 4 7 5 7 0 5 . 2 0 2 6 . 2 6 2 0 0 4 8 (2026).
+ 6. Drori, R., Dan, H., Sprintsin, M. & Sheffer, E. Precipitation-sensitive dynamic threshold: a new and simple method to 
+detect and monitor forest and woody vegetation cover in sub-humid to arid areas. Remote Sens. 12, 1231. h t t p s : / / d o i . o r g 
+/ 1 0 . 3 3 9 0 / r s 1 2 0 8 1 2 3 1 (2020).
+ 7. Hui, J. & Cheng, Y . Evolution and spatiotemporal response of ecological environment quality to human activities and 
+climate: case study of Hunan Province, China. Remote Sens. 16, 2380. https://doi.org/10.3390/rs16132380 (2024).
+ 8. Xu, H. A remote sensing index for assessment of regional ecological changes. China Environ. Sci. 33, 889–897 (2013).
+ 9. Yang, X., Meng, F., Fu, P., Zhang, Y . & Liu, Y . Spatiotemporal change and driving factors of the eco-environment quality 
+in the Yangtze River Basin from 2001 to 2019. Ecol. Ind. 131, 108214. https://doi.org/10.1016/j.ecolind.2021.108214 
+(2021).
+ 10. Guo, L., Xu, C., Wu, H., Shi, M. & Fan, Y . The decisive influence of the improved remote sensing ecological index on 
+the terrestrial ecosystem in typical arid areas of China. Land 13, 2162. https://doi.org/10.3390/land13122162 (2024).
+ 11. Xiong, Y . et al. Assessment of spatial-temporal changes of ecological environment quality based on RSEI and GEE: a 
+case study in Erhai Lake Basin, Yunnan province, China. Ecol. Ind. 125, 107518. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . e c o l i n d . 2 0 2 1 
+. 1 0 7 5 1 8 (2021).
+ 12. Shan, W. et al. Ecological environment quality assessment based on remote sensing data for land consolidation. J. Clean. 
+Prod. 239, 118126. https://doi.org/10.1016/j.jclepro.2019.118126 (2019).
+ 13. Zhang, Y ., She, J., Long, X. & Zhang, M. Spatio-temporal evolution and driving factors of eco-environmental quality 
+based on RSEI in Chang-Zhu-Tan metropolitan circle, central China. Ecol. Ind. 144, 109436. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . e 
+c o l i n d . 2 0 2 2 . 1 0 9 4 3 6 (2022).
+ 14. Geng, J. et al. Analysis of spatiotemporal variation and drivers of ecological quality in Fuzhou based on RSEI. Remote 
+Sens. 14, 4900. https://doi.org/10.3390/rs14194900 (2022).
+ 15. Cen, Y . et al. Improving remote sensing ecological assessment in arid regions: dual-index framework for capturing 
+heterogeneous environmental dynamics in the Tarim Basin. Remote Sens. 17, 3511. https://doi.org/10.3390/rs17213511 
+(2025).
+ 16. Sun, H. et al. Spatiotemporal dynamics of ecological environment quality in arid and sandy regions with a particular 
+remote sensing ecological index: a study of the Beijing-Tianjin Sand source region. Geo-spatial Inform. Sci. h t t p s : / / d o i . 
+o r g / 1 0 . 1 0 8 0 / 1 0 0 9 5 0 2 0 . 2 0 2 5 . 2 5 4 1 8 7 5 (2025).
+ 17. Li, Q., Cheng, J., Yan, J., Zhang, G. & Ling, H. Comparison of satellite-derived vegetation indices for assessing vegetation 
+dynamics in Central Asia. Water 17, 684. https://doi.org/10.3390/w17050684 (2025).
+ 18. Camps-Valls, G. et al. A unified vegetation index for quantifying the terrestrial biosphere. Sci. Adv. 7, eabc7447. h t t p s : / / 
+d o i . o r g / 1 0 . 1 1 2 6 / s c i a d v . a b c 7 4 4 7 (2021).
+ 19. Zhao, Y . & Wei, T. kNDVI spatiotemporal variations and climate lag on Qilian Southern Slope: Sen-Mann-Kendall and 
+Hurst index analyses for ecological insights. Forests 16, 307. https://doi.org/10.3390/f16020307 (2025).
+ 20. Sen, P. K. Estimates of the regression coefficient based on Kendall’s tau. J. Am. Stat. Assoc. 63, 1379–1389. h t t p s : / / d o i . 
+o r g / 1 0 . 1 0 8 0 / 0 1 6 2 1 4 5 9 . 1 9 6 8 . 1 0 4 8 0 9 3 4 (1968).
+ 21. Mann, H. B. Nonparametric tests against trend. Econometrica 13, 245–259. https://doi.org/10.2307/1907187 (1945).
+ 22. Hurst, H. E. Long-term storage capacity of reservoirs. Trans. Am. Soc. Civ. Eng. 116, 770–799. h t t p s : / / d o i . o r g / 1 0 . 1 0 6 1 / t 
+a c e a t . 0 0 0 6 5 1 8 (1951).
+ 23. Wang, J. F. et al. Geographical detectors-based health risk assessment and its application in the neural tube defects study 
+of the Heshun Region, China. Int. J. Geogr. Inf. Sci. 24, 107–127. https://doi.org/10.1080/13658810802443457 (2010).
+ 24. Song, Y ., Wang, J., Ge, Y . & Xu, C. An optimal parameters-based geographical detector model enhances geographic 
+characteristics of explanatory variables for spatial heterogeneity analysis: cases with different types of spatial data. 
+GIScience Remote Sens. 57, 593–610. https://doi.org/10.1080/15481603.2020.1760434 (2020).
+ 25. Gorelick, N. et al. Google Earth Engine: planetary-scale geospatial analysis for everyone. Remote Sens. Environ. 202, 
+18–27. https://doi.org/10.1016/j.rse.2017.06.031 (2017).
+ 26. Vermote, E. MOD09A1 MODIS/Terra Surface Reflectance 8-Day L3 Global 500 m SIN Grid V061. NASA EOSDIS 
+Land. Processes DAAC. https://doi.org/10.5067/MODIS/MOD09A1.061 (2021).
+ 27. Wan, Z., Hook, S. & Hulley, G. MOD11A2 MODIS/Terra Land Surface Temperature/Emissivity 8-Day L3 Global 1 km 
+SIN Grid V061. NASA EOSDIS Land. Processes DAAC. https://doi.org/10.5067/MODIS/MOD11A2.061 (2021).
+ 28. Bai, K. et al. LGHAP: the Long-term Gap-free High-resolution Air Pollutant concentration dataset, derived via tensor-
+flow-based multimodal data fusion. Earth Syst. Sci. Data 14, 907–927. https://doi.org/10.5194/essd-14-907-2022 (2022).
+ 29. Yang, J. & Huang, X. The 30 m annual land-cover dataset and its dynamics in China from 1985 to 2025. Zenodo h t t p s : / / 
+d o i . o r g / 1 0 . 5 2 8 1 / z e n o d o . 1 8 1 8 0 1 8 4 (2026).
+ 30. Earth System Science Data Sharing Network. 1:4,000,000 Soil Map of China. (2006). (2000).
+ 31. Peng, S. 1-km monthly potential evapotranspiration dataset for China National Tibetan Plateau/Third Pole Environment 
+Data Center. (1901–2024). https://doi.org/10.11866/db.loess.2021.001 (2022).
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-71853-z
+ 32. Peng, S. 1-km monthly precipitation dataset for China (1901–2024). Natl. Tibetan Plateau/Third Pole Environ. Data 
+Cent. https://doi.org/10.5281/zenodo.3114194 (2020).
+ 33. Peng, S. 1-km monthly mean temperature dataset for China (1901–2024). Natl. Tibetan Plateau/Third Pole Environ. 
+Data Cent. https://doi.org/10.11888/Meteoro.tpdc.270961 (2019).
+ 34. Tian, Y . et al. VIIRS-Like Artificial Nighttime Night Dataset of China (1986–2024). National Tibetan Plateau/Third Pole 
+Environment Data Center. https://doi.org/10.11888/HumanNat.tpdc.302930 (2025).
+ 35. Rose, A. et al. LandScan Global 2020. Oak Ridge National Laboratory. (2021). https://doi.org/10.48690/1523378
+ 36. Bright, E., Rose, A. & Urban, M. LandScan Global 2015. Oak Ridge Natl. Lab. https://doi.org/10.48690/1524210 (2016).
+ 37. Bright, E., Coleman, P., Rose, A. & Urban, M. LandScan Global 2010. Oak Ridge National Laboratory. (2011). h t t p s : / / d 
+o i . o r g / 1 0 . 4 8 6 9 0 / 1 5 2 4 2 0 6 
+ 38. Bright, E., Coleman, P. & King, A. LandScan Global 2005. Oak Ridge Natl. Lab. https://doi.org/10.48690/1524201 
+(2006).
+ 39. Bright, E. & Coleman, P. LandScan Global 2000. Oak Ridge Natl. Lab. https://doi.org/10.48690/1524196 (2001).
+ 40. Lobser, S. E. & Cohen, W. B. MODIS tasselled cap: land cover characteristics expressed through transformed MODIS 
+data. Int. J. Remote Sens. 28, 5079–5101. https://doi.org/10.1080/01431160701253303 (2007).
+ 41. Fang, L. et al. Identifying the impacts of natural and human factors on ecosystem service in the Yangtze and Yellow River 
+Basins. J. Clean. Prod. 314, 127995. https://doi.org/10.1016/j.jclepro.2021.127995 (2021).
+ 42. Zhuo, M., Yuan, J., Li, J., Li, G. & Yan, L. Spatio-temporal heterogeneity of vegetation coverage and its driving 
+mechanisms in the agro-pastoral ecotone of Gansu Province: insights from multi-source remote sensing and Geodetector. 
+Atmosphere 16, 501. https://doi.org/10.3390/atmos16050501 (2025).
+ 43. Song, X., Chen, F., Sun, Y . & Ma, J. Effects of land utilization transformation on ecosystem services in urban agglomeration 
+on the northern slope of the Tianshan Mountains, China. Ecol. Ind. 162, 112046. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . e c o l i n d . 2 0 2 4 . 
+1 1 2 0 4 6 (2024).
+ 44. Dong, Z., Shi, G., Fang, X. & Ma, J. Spatiotemporal evolution and driving factors analysis of fractional vegetation coverage 
+in the arid region of northwest China. Sci. Total Environ. 954, 176271. https://doi.org/10.1016/j.scitotenv.2024.176271 
+(2025).
+ 45. Bao, X. et al. Spatio-temporal evolution of ecosystem water use efficiency and the impacts of drought legacy on the Loess 
+Plateau, China, since the onset of the Grain for Green Project. Remote Sens. 17, 3980. h t t p s : / / d o i . o r g / 1 0 . 3 3 9 0 / r s 1 7 2 4 3 9 
+8 0 (2025).
+ 46. Tong, H., Li, Y ., Zou, P. & Zhu, G. Ecological environment quality trends and influencing factors in the Gansu-Qinghai 
+contiguous region of the Upper Yellow River. Environ. Monit. Assess. 198, 267. h t t p s : / / d o i . o r g / 1 0 . 1 0 0 7 / s 1 0 6 6 1 - 0 2 6 - 1 5 0 
+8 7 - 6 (2026).
+Publisher’s note Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional 
+affiliations.
+Authors and Affiliations
+Jiangmin Wu1 · Bin Lian1 · Qirui Zhang1 · Zhen Yan1 · Wei Zhao1 · Jiacheng Ya1 · 
+Zaixin Chen1 · Yuxiang Lan1
+ Bin Lian
+1250251949@qq.com
+1 School of Geography and Environmental Sciences, Northwest Normal Univ ersity, Lanzhou 730070, China

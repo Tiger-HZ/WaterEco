@@ -1,0 +1,687 @@
+Discover Artificial IntelligenceFeng Discover Artificial Intelligence (2026) 6:1165 
+https://doi.org/10.1007/s44163-026-02223-x
+RESEARCH Open Access
+Research on robustness evaluation system 
+of dance movement quality based on causal 
+inference and invariant learning
+Yao Feng1*
+ * C o r r e s p o n d e n c e : 
+Yao Feng
+Yaofengg@outlook.com
+1Music and Dance College, Hubei 
+Normal University, 
+HuangShi 435002, China
+© The Author(s) 2026. Open Access This article is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International 
+License, which permits any non-commercial use, sharing, distribution and reproduction in any medium or format, as long as you give appropriate 
+credit to the original author(s) and the source, provide a link to the Creative Commons licence, and indicate if you modified the licensed material. 
+You do not have permission under this licence to share adapted material derived from this article or parts of it. The images or other third party 
+material in this article are included in the article’s Creative Commons licence, unless indicated otherwise in a credit line to the material. If material 
+is not included in the article’s Creative Commons licence and your intended use is not permitted by statutory regulation or exceeds the permitted 
+use, you will need to obtain permission directly from the copyright holder. To view a copy of this licence, visit h t t p : / / c r e a t i v e c o m m o n s . o r g / l i c e n s 
+e s / b y - n c - n d / 4 . 0 / . 
+Abstract
+Aiming at the problems of poor generalization ability and unstable evaluation of 
+current dance movement evaluation systems based on deep learning when facing 
+unknown dancers, clothing, and environment, this paper proposes a Causal Invariant 
+Dance Evaluation System. The system deeply integrates causal inference and invariant 
+learning theory, aiming to strip surface-level correlations from multi-domain data and 
+learn stable mappings between action quality and core causal characteristics. The 
+core work of this paper is to construct a causal feature decoupling framework that 
+separates the input action sequence into domain-invariant core causal features and 
+domain-specific style features, and uses the principle of invariant risk minimization to 
+ensure that the predictor based on core features is consistent across multiple training 
+environments. To verify the effectiveness and robustness of the Causal Invariant 
+Dance Evaluation System, this paper conducts a comprehensive experiment on a 
+dance dataset comprising 125 dancers across 5 styles and 5 shooting environments. 
+The results show that the system’s evaluation accuracy reaches 92.5% on the known 
+test set, comparable to that of mainstream deep learning methods. In the more 
+challenging cross-domain generalization test, the system is significantly better than 
+the baseline model. Its average absolute error is reduced by 38.7% compared with 
+the optimal baseline model, and the correlation coefficient remains above 89.1%. 
+Ablation experiments further confirmed the necessity of each module, and removing 
+the invariant learning module resulted in a cross-domain performance degradation of 
+more than 15%. This study provides an effective solution for building a highly robust 
+intelligent dance teaching system.
+Keywords Causal inference, Invariance learning, Dance movement evaluation, 
+Robustness analysis, Movement quality evaluation
+ 1 Introduction
+The inheritance and development of dance art have long depended on subjective evalu -
+ation and the transfer of experience between teachers and apprentices, with limitations 
+in efficiency and differing standards. Currently, the field of dance movement evaluation 
+has transitioned from subjective expert assessment to automated computer vision-based 
+Page 2 of 16
+Feng Discover Artificial Intelligence (2026) 6:1165 
+systems, aiming to provide objective feedback through intelligent means [ 1, 2]. State-
+of-the-art methods utilize deep learning to map spatiotemporal action sequences to 
+quality scores, achieving remarkable results on specific datasets [ 3]. However, these 
+mainstream data-driven approaches primarily capture statistical correlations rather than 
+causal mechanisms, leading to significant performance degradation when encountering 
+unseen dancers or environments. To bridge this gap, this research aims to construct a 
+highly robust evaluation system by introducing a methodological approach that inte -
+grates structural causal models and invariant risk minimization to decouple core causal 
+features from environmental noise. These data-driven deep learning methods learn 
+statistical correlations rather than causal mechanisms, leading to severe generalization 
+challenges in practical applications. The model is prone to capturing false associations in 
+the data, including misjudging irrelevant features such as specific dancers’ personal style 
+and the training environments of training venues as evaluation criteria [ 4, 5]. When sys-
+tems are deployed to new environments, facing different dancers, costumes, or lighting 
+conditions, performance tends to degrade significantly, lacking the robustness required 
+for practical applications [6].
+To fundamentally solve this problem, this study introduces causal inference and invari-
+ant learning theory. Causal inference provides a new analysis framework. The quality 
+of dance movements should be determined by their core causal characteristics, includ -
+ing joint angle accuracy, force timing, etc., while dancers’ personal characteristics and 
+environmental background are only non-causal factors that affect the observation data. 
+Invariance learning provides an implementation path. By allowing the model to learn 
+standard prediction rules across multiple training environments, it can strip away envi -
+ronmental interference and capture authentic causal relationships.
+Based on the above analysis, this paper proposes the Causal Invariant Dance Evalu -
+ation System (CIDES). The system aims to construct a robust evaluation system with 
+strong generalization to unknown domains by fusing a causal inference framework and 
+an invariant learning mechanism. The main contributions of this paper include:
+1. The structural causal model is systematically applied to the field of dance evaluation 
+for the first time, and a causal diagram including core causal features, domain features, 
+and other variables is established, which provides a theoretical basis for robust 
+evaluation.
+2. Design the CIDES model architecture and integrate feature decoupling and invariance 
+learning modules, which can automatically separate feature representations causally 
+related to action quality to ensure the stability of cross-domain prediction.
+3. Through experiments on multi-domain dance data sets, it is proven that the 
+generalization performance of CIDES in an unknown environment is significantly 
+better than that of mainstream methods, which provides a reliable solution for 
+intelligent dance teaching.
+2 Relevant theoretical and technical basis
+2.1 The basic framework of dance movement quality evaluation
+Computer vision-based evaluation of dance movement quality typically follows a stan -
+dardized processing flow [ 7]. The process begins with extracting information from raw 
+video data that can characterize human movement. In recent years, deep learning-based 
+2D or 3D human skeleton keypoint detection has become the mainstream approach for 
+Page 3 of 16
+Feng Discover Artificial Intelligence (2026) 6:1165 
+this step [8, 9]. It can simplify complex video information into a time-series sequence of 
+joint-point coordinates, providing a structured data basis for subsequent analysis.
+After obtaining the sequence of skeletal key points, it is necessary to extract the fea -
+tures that effectively represent the quality of action. These features usually include two 
+dimensions of time and space. Spatial features focus on the geometric relationships and 
+angles between joints, including the extension of arms and the curvature of the trunk; 
+Time characteristics describe the dynamic process of movement, including the accuracy 
+of rhythm, fluency, and stability. These low-level features are the cornerstone of building 
+a high-level quality evaluation model, as shown in Equation (1).
+ 
+ℱ=
+𝑇𝑇
+∫
+0
+∂𝑄𝑄𝑄𝑄𝑄𝑄
+∂𝑄𝑄2
+⋅ exp (− 1
+𝜎𝜎2 𝑄𝑄𝑄𝑄𝑄𝑄 − 𝜇𝜇2) 𝑑𝑑𝑄𝑄 (1)
+Here, F is the extracted spatiotemporal eigenvalue, and Q(t) is the joint angle vector at 
+time t. The integral form combines movement speed and deviation from the reference 
+posture to quantify movement fluency and stability, providing a basis for quality evalu -
+ation. The goal of the evaluation system is to map the extracted features onto a quantifi -
+able quality score [ 10, 11]. This process is usually done using machine learning models 
+trained on labeled data rated by human experts [ 12]. The system performs automated, 
+objective evaluation of unknown dance movements by learning the complex mapping 
+between features and expert scores. The core challenge is how to make the model learn 
+in a causal way, rather than superficial or false correlations.
+2.2 Causal inference basis
+Causal inference is a discipline that studies how to identify causal relationships between 
+variables from observed data or experimental data [ 13, 14]. It goes beyond the tradi -
+tional correlation analysis and aims to reveal the direct effects of intervention behavior 
+[15]. In machine learning, introducing causal ideas can help models overcome statistical 
+biases in data and learn more stable, explainable mechanisms [16].
+A structural causal model is one of the core frameworks of causal inference, using a 
+causal diagram to represent the causal relationships between variables intuitively [ 17, 
+18]. The nodes in the graph represent variables, and the directed edges represent the 
+causal direction. Through the causal diagram, we can clearly analyze the impact of inter -
+vening on one variable on other variables, and identify familiar sources of bias such as 
+confounding factors, as shown in Eq. (2).
+ 
+𝑃𝑃 𝑄𝑌𝑌𝑌𝑑𝑑𝑌𝑌 𝑄𝑋𝑋=𝑋𝑋 𝑄𝑄 = ∑
+𝑧𝑧
+𝑃𝑃 𝑄𝑌𝑌 𝑌𝑋𝑋=𝑋𝑋 𝑌 𝑌𝑌= 𝑌𝑌𝑄 𝑃𝑃 𝑄𝑌𝑌=𝑌𝑌 𝑄 (2)
+In this formula, P(Y|do(X = x)) represents the distribution of Y at the intervention set -
+ting X = x, and Z denotes the set of confounding factors. Equation ( 2) is used to esti -
+mate the causal effect from observed data, to avoid bias from confounding factors, and 
+to ensure the model learns the genuine causal relationship [19, 20]. This provides a pow-
+erful visualization tool for understanding and modeling various influencing factors in 
+dance evaluation problems. Counterfactual reasoning is another key concept in causal 
+inference, exploring what would have happened if different actions had been taken at 
+Page 4 of 16
+Feng Discover Artificial Intelligence (2026) 6:1165 
+that time [21]. This way of thinking is very enlightening for building a robust evaluation 
+system, as shown in Eq. (3).
+ 𝑁𝑁𝑁𝑁𝑁𝑁 = 𝑁𝑁 [𝑌𝑌𝑄1𝑌 𝑌𝑌𝑄𝑌𝑄𝑄 − 𝑌𝑌𝑄𝑌𝑌 𝑌𝑌𝑄𝑌𝑄𝑄 ] (3)
+Here, NDE denotes the natural direct effect, while M, Y, and X represent the mediator, 
+the outcome, and the treatment variable respectively, and Eq. ( 3) measures the effect on 
+Y through the direct path when X changes from 0 to 1 while M is held constant, which is 
+used to identify and quantify the direct role in the causal mechanism. A robust system 
+should be able to infer that even if non-core factors such as the dancer’s costume and 
+background environment change, the quality score determined by the dancer’s move -
+ment itself should remain the same.
+2.3 Invariant learning theory
+Invariant learning is a cutting-edge paradigm in domain generalization, enabling models 
+to learn invariant feature representations across diverse training environments [ 22, 23]. 
+The characteristics that are truly causally related to the prediction target should remain 
+unchanged in different environments. Moreover, those characteristics that change with 
+the environment may be unreliable pseudo-correlations. In addition, self-distillation 
+techniques based on data augmentation also embody the core ideas of invariant learn -
+ing. For instance, self-distillation guided by data distortion [ 24] or self-knowledge distil-
+lation using Mixup [ 25] can encourage the model to learn feature representations that 
+are robust to input perturbations, thereby essentially enhancing the model’s ability to 
+capture cross-domain invariance.
+Invariance risk minimization is an important way to realize this idea [ 26]. It forces 
+the model to rely on features that are stable across environments by encouraging it to 
+maintain good predictive performance across multiple defined or automatically inferred 
+training environments [ 27]. In this process, the model will spontaneously ignore false 
+features that are useful in some environments but fail in others, thereby improving its 
+generalization in new environments, as shown in Eq. (4).
+ 
+min
+𝛷𝛷,𝑤𝑤
+∑
+𝑒𝑒∈E
+𝑅𝑅𝑒𝑒 𝑄𝑤𝑤 ∘𝛷𝛷 𝑄+ 𝜆𝜆⋅ 𝑉𝑉𝑉𝑉𝑉𝑉𝑒𝑒∈E 𝑄∇𝑤𝑤 𝑅𝑅𝑒𝑒 𝑄𝑤𝑤 ∘𝛷𝛷 𝑄𝑄 (4)
+In this formula, Φ is the feature extractor and w is the classifier. By minimizing risk and 
+penalizing gradient variance, the model is encouraged to learn invariant features and 
+improve robustness in unknown environments. Applying invariant learning to the evalu-
+ation of dance movements has clear physical significance. Different dancers, shooting 
+scenes, and dance styles are regarded as distinct environments or fields. By learning the 
+invariance across these diverse environments, the system can peel off individual style 
+differences and external interference, and capture the most essential mechanical and 
+aesthetic laws that determine movement quality.
+3 System model construction and implementation
+3.1 Causal framework modeling of dance evaluation
+Traditional dance movement evaluation models often rely on superficial statistical cor -
+relations between movement characteristics and scores [ 28, 29], which are easily influ -
+enced by confounding factors in the data, such as a dancer’s personal style and the 
+Page 5 of 16
+Feng Discover Artificial Intelligence (2026) 6:1165 
+training environment. These factors may cause the model to learn false correlations, 
+leading it to perform poorly in the presence of new dancers or environments [30]. There-
+fore, it is crucial to construct a model framework that can reveal the intrinsic causal 
+mechanism.
+To formalize this problem, this paper introduces a structural causal model. The model 
+defines four core variables, as shown in Eq. (5).
+ 
+𝐶𝐶 𝐶= 𝐶𝐶 𝐶𝐶 𝑄𝑁𝑁𝑌 𝑁𝑁𝐷 𝜃𝜃𝐶𝐶 𝑄+ ∫
+𝐶𝐶
+𝑌 ∫
+𝐶𝐶
+∼ 𝒩𝒩𝑄𝑌𝑌 𝛴𝛴𝐶𝐶 𝑄 (5)
+Here, C is the core causal feature, D is the domain, and E is the environmental distur -
+bance. Core causal characteristics of the action, domains representing the dancer or 
+scene, environmental disturbances introduced by shooting conditions, etc., and ulti -
+mately the action quality score. The core causal characteristics determine the quality 
+score. Domain and environmental interference are not only the cause of core features 
+but may also directly affect the score by confusing the path, as shown in Fig. 1.
+Through the analysis of this causal diagram, the direct causal effect of the core causal 
+features on the quality score is estimated, as shown in Eq. (6).
+ 𝜓𝜓𝐶𝐶𝐶𝐶 =𝑁𝑁 𝐷𝐷 [ ∂
+∂𝑐𝑐 𝑁𝑁[𝑌𝑌𝑌𝐶𝐶 = 𝑐𝑐 𝑌 𝑁𝑁]𝑌𝑐𝑐𝑐𝐶𝐶 ] (6)
+Equation (6) calculates the causal effect ψ CE of C on Y. Under the condition of control -
+ling the confusion factor D, the influence of the instantaneous change of C on the con -
+ditional expectation of Y is investigated, and all possible domains D are averaged. This 
+effectively strips away the false associations generated through domain D, revealing the 
+actual causal effects. Simultaneously block false paths from the domain and interference 
+to the score [31].
+This theoretical analysis bridges the structural causal model with the training objective 
+by identifying domain variable D as a confounder; specifically, the disentanglement loss 
+Ldisentangle in Eq. (7) serves as the numerical implementation of the deconfounding strat -
+egy derived from Eq. ( 6), which effectively blocks non-causal paths by minimizing the 
+mutual information between core features C and domain features D.
+ 
+ℒ𝑑𝑑𝑑𝑑𝑑𝑑𝑒𝑒𝑑𝑑 tan 𝑔𝑔𝑔𝑔𝑒𝑒 = min
+𝛷𝛷
+{−𝐼𝐼𝑄𝛷𝛷𝑄𝑋𝑋𝑄𝐷 𝑌𝑌𝑄 + 𝛽𝛽⋅ 𝐼𝐼𝑄𝛷𝛷𝑄𝑋𝑋𝑄𝐷 𝑁𝑁𝑄} (7)
+Fig. 1 Structural causal model diagram of dance movement evaluation
+ 
+Page 6 of 16
+Feng Discover Artificial Intelligence (2026) 6:1165 
+This loss function Ldisentangle is used to train the feature extractor Φ. I denotes mutual 
+information, and X is the original observation data. By minimizing this loss, the model is 
+forced to learn feature representations that are causally related to scores and invariant to 
+domain changes, and make predictions based on them.
+3.2 CIDES system architecture and core modules
+Based on the above causal framework, this paper proposes the Causal Invariant Dance 
+Evaluation System. The system aims to learn an invariant model for action quality evalu -
+ation from multi-domain training data by establishing a holistic network architecture 
+that maps inputs directly to outputs. This architecture is formulated as a composite 
+function as shown in Eq. (8):
+ 𝑌𝑌=𝐶𝐶 𝑝𝑝𝑝𝑝𝑒𝑒𝑑𝑑 𝑄𝑁𝑁𝑐𝑐 𝑄𝑋𝑋𝑄𝑄 (8)
+In this formulation, X represents the input sequence of skeletal keypoints, Ec denotes the 
+core causal feature encoder designed to filter out domain-specific noise, and fpred repre-
+sents the invariant predictor that maps the decoupled causal features to the final move -
+ment quality score Y. The core modules in the architecture work together to achieve 
+robust evaluation goals, and the data processing and module interaction process is 
+shown in Fig. 2.
+The first core module is the causal feature decoupling module. The module receives 
+the original sequence of skeletal keypoints and decomposes it into two mutually exclu -
+sive feature representations using an encoder network. The core features related to the 
+cause and effect of action quality, and the domain features that describe the changes of 
+style and environment. By imposing decoupling constraints, the system effectively strips 
+raw estimation errors and occlusion noise as domain-specific features or environmental 
+disturbances, ensuring that the core causal features remain independent and prevent -
+ing noise propagation, which lays the foundation for subsequent invariant learning, as 
+shown in Eq. (9).
+ ℒ𝑑𝑑𝑒𝑒𝑐𝑐 =𝑁𝑁 𝑥𝑥∼𝑝𝑝𝑋𝑋 [∥ 𝑋𝑋 − 𝑁𝑁𝑄𝑁𝑁𝑐𝑐 𝑄𝑋𝑋𝑄𝑌 𝑁𝑁𝑑𝑑 𝑄𝑋𝑋𝑄𝑄∥2] + 𝛽𝛽⋅ 𝑇𝑇𝑉𝑉 𝑄𝐾𝐾𝑐𝑐 𝐻𝐻𝐾𝐾𝑑𝑑 𝐻𝐻𝑄 (9)
+In this context, Ldec represents the decoupling loss, Ec and Ed denote the encoders for 
+core causal features and domain-specific features respectively, and Dec refers to the 
+decoder network used for feature reconstruction. The first term ensures reconstruction 
+Fig. 2 Overall workflow chart of the CIDES system
+ 
+Page 7 of 16
+Feng Discover Artificial Intelligence (2026) 6:1165 
+quality, and the second term approximately minimizes inter-feature correlation using 
+the Hilbert-Schmidt independence criterion, thereby forcing feature independence. The 
+second module is the multi-environment invariance learning module. Even if the core 
+features are decoupled, some domain-specific information may remain. This module 
+partitions the training data into environments e∈E based on dancer identity and scene 
+lighting. It defines the environmental risk as shown in Eq. (10):
+ 𝑅𝑅𝑒𝑒 𝑄𝑤𝑤∘𝛷𝛷𝑄=𝑁𝑁 (𝑥𝑥,𝑥𝑥𝑥∈𝑒𝑒 [ℓ𝑄𝑤𝑤∘𝛷𝛷𝑄𝑋𝑋𝑄𝑌 𝑥𝑥𝑄] (10)
+And the system enforces consistency by applying the gradient penalty term as shown in 
+Eq. (11):
+ 
+‖
+‖∇𝑤𝑤𝑌𝑤𝑤𝑐𝑤𝑤0 𝑅𝑅𝑒𝑒 𝑄𝑤𝑤∘𝛷𝛷𝑄‖
+‖
+2
+ (11)
+These terms ensure the mapping remains invariant across environments, as shown in 
+Eq. (12).
+ 
+ℒ𝑑𝑑𝑑𝑑𝑖𝑖 = ∑
+𝑒𝑒∈E
+𝑅𝑅𝑒𝑒 𝑄𝐶𝐶 ∘𝛷𝛷 𝑄 + 𝜆𝜆⋅ 𝕍𝕍𝑒𝑒∈E [∇𝑤𝑤 𝑅𝑅𝑒𝑒 𝑄𝑤𝑤 ∘𝛷𝛷 𝑄𝑤𝑤𝑐𝑤𝑤0 ] (12)
+Where Linv is the invariant learning loss, and E is the set of environments. The first 
+item minimizes the total risk, and the second penalizes the variance of the risk gradient 
+across environments, ensuring mapping invariance and further refining the actual causal 
+invariance characteristics [32].
+3.3 Overview of system implementation process and algorithm
+During implementation, CIDES preprocesses the input video and extracts standardized 
+time-series data for skeletal key points. These data are fed into parallel feature encod -
+ers where invariant learning features are obtained through a dual-stage optimization 
+process. Specifically, the core feature encoder Ec first isolates causal components from 
+domain-specific noise via the decoupling loss as shown in Eq. (13):
+ 𝐿𝐿𝑑𝑑𝑒𝑒𝑐𝑐 = Re 𝑐𝑐𝑄𝑁𝑁𝑐𝑐𝑐𝑐𝑄𝑁𝑁𝑐𝑐 𝑌𝑁𝑁 𝑑𝑑 𝑄𝑌 𝑋𝑋𝑄 + 𝜆𝜆𝐻𝐻𝐻𝐻𝐻𝐻𝐶𝐶 𝐻𝐻𝐻𝐻𝐼𝐼𝐶𝐶𝑄𝑁𝑁 𝑐𝑐 𝑌𝑁𝑁 𝑑𝑑 𝑄 (13)
+These candidate features are refined by the invariance loss to ensure the prediction 
+mechanism remains stable across diverse environments, effectively filtering out non-
+causal statistical correlations. The core feature encoder and the domain feature encoder 
+extract their respective feature components from the input, and the whole process is 
+jointly trained end-to-end. The system’s training depends on the multi-task loss func -
+tion, as shown in Eq. (14).
+ 
+ℒ𝑡𝑡𝑡𝑡𝑡𝑡𝑡𝑡𝑔𝑔 = min
+𝛩𝛩𝑐𝑐 ,𝛩𝛩𝑑𝑑 ,𝛷𝛷
+[𝑁𝑁(𝑥𝑥,𝑥𝑥𝑥∼𝒫𝒫 [ℒ𝑝𝑝𝑝𝑝𝑒𝑒𝑑𝑑 𝑄𝑥𝑥𝑌 ̂𝑥𝑥𝑄] + 𝛼𝛼ℒ𝑑𝑑𝑒𝑒𝑐𝑐 𝑄𝑁𝑁𝑐𝑐 𝑌𝑁𝑁 𝑑𝑑 𝑄+ 𝛽𝛽 ∑
+𝑒𝑒∈E
+ℒ𝑒𝑒
+𝑑𝑑𝑑𝑑𝑖𝑖 𝑄𝛷𝛷𝑄] (14)
+Here, Ltotal is the overall loss, Lpred is the predicted loss, and Ldec is the decoupled loss. 
+Equation  (14) integrates all learning objectives of the system to ensure the prediction 
+loss is a measure of quality prediction accuracy; the decoupling loss promotes the effec -
+tive separation of core features from domain features, as shown in Eq. (15).
+Page 8 of 16
+Feng Discover Artificial Intelligence (2026) 6:1165 
+ 
+ℒ𝑑𝑑𝑒𝑒𝑐𝑐 = max
+∥𝐷𝐷∥≤𝑤
+[𝑁𝑁𝑧𝑧𝑐𝑐 ,𝑧𝑧𝑑𝑑 [𝑁𝑁𝑄𝑇𝑇𝑐𝑐 𝑄𝑌𝑌𝑐𝑐 𝑄𝑌 𝑇𝑇𝑑𝑑 𝑄𝑌𝑌𝑑𝑑 𝑄𝑄] −𝑁𝑁 𝑧𝑧𝑐𝑐 ,𝑧𝑧′
+𝑑𝑑
+[𝑁𝑁𝑄𝑇𝑇𝑐𝑐 𝑄𝑌𝑌𝑐𝑐 𝑄𝑌 𝑇𝑇𝑑𝑑 𝑄𝑌𝑌′
+𝑑𝑑 𝑄𝑄]] (15)
+This formula defines the decoupling loss based on the Wasserstein distance between 
+the feature mappings Tc and Td, where zc and zd represent the positive pair of extracted 
+core and domain features, while z’d signifies a negative domain feature sample used for 
+contrast. By narrowing the discriminant score of the real feature pair (zc, zd) closer and 
+pushing the score of the negative sample pair (zc, zd’) further, the difference between the 
+two types of features is maximized, thus realizing decoupling. The invariance loss is used 
+to maintain the stability of the prediction mechanism across multiple inference environ-
+ments, as shown in Eq. (16).
+ 
+ℒ𝑑𝑑𝑑𝑑𝑖𝑖 = ∑
+𝑒𝑒∈E
+𝑁𝑁𝐾𝐾𝐾𝐾 (𝑃𝑃𝑒𝑒
+mod 𝑒𝑒𝑔𝑔 𝑄𝑌𝑌𝑌𝑌𝑌𝑐𝑐 𝑄 ∥ 𝑃𝑃𝑡𝑡𝑑𝑑𝑐𝑐𝑎𝑡𝑡𝑝𝑝 𝑄𝑌𝑌𝑌𝑌𝑌𝑐𝑐 𝑄) + 𝜆𝜆⋅ 𝑌𝑌𝑌𝑌𝑁𝑁 2𝑄𝒫𝒫𝑒𝑒
+𝑐𝑐 𝑌𝒫𝒫𝑐𝑐 𝑄 (16)
+In this equation, the first term represents the Kullback-Leibler divergence, which 
+forces the predicted distribution Pe
+model of each environment e to be aligned to a stable 
+anchored distribution Panchor. The second term denotes the Maximum Mean Discrep -
+ancy metric, which is utilized to align the feature distributions of different environments 
+with the global core causal feature distribution Pc. The hyperparameter λ balances the 
+two terms, which together ensure that a stable, environment-general prediction mecha -
+nism is learned. By balancing these three losses, the model is directed toward the desired 
+solution space. In the inference stage, the system only uses the core feature encoder in 
+the causal feature decoupling module and the trained shared predictor in the invari -
+ant learning module. The domain feature encoder and associated loss function are dis -
+carded. New dance movement data is entered, and the system outputs its quality score. 
+Because domain-specific interference has been removed and the invariant mechanism 
+has been learned during training, the system also exhibits strong robustness to data 
+from unknown domains.
+In addition, the computational efficiency of the system was evaluated. Experiments 
+show that the single-frame inference latency of CIDES is only 12.4ms, which is a slight 
+increase compared to the baseline model but still far below the 33ms real-time response 
+threshold. Although the multi-task loss function increases the training time by approxi -
+mately 15%, since only the core feature path is retained during the inference stage, the 
+system balances robustness with the feasibility of real-time deployment in intelligent 
+teaching scenarios.
+4 Experiment and result analysis
+The experimental data for this study come from a self-constructed multi-scene dance 
+movement dataset collected from 125 dancers with varying technical levels. They com -
+plete standardized dance routines under five differentiated lighting conditions and back-
+ground environments. Using the Microsoft Kinect V2 depth sensor and a supporting 
+pose estimation algorithm, more than 18,000 high-precision three-dimensional time-
+series samples of human skeleton joint points were obtained. The hardware founda -
+tion of the experiment is a high-performance computing workstation equipped with 
+an NVIDIA GeForce RTX 3090 graphics card, and the software environment is Ubuntu 
+20.04. All models are developed and trained using Python 3.8 and PyTorch 1.10, and rely 
+on the Scikit-learn library for subsequent data analysis and performance evaluation.
+Page 9 of 16
+Feng Discover Artificial Intelligence (2026) 6:1165 
+To verify the influence of causal inference and invariance learning modules on the 
+cross-domain evaluation error of dance movement quality across different motion cap -
+ture data set scenarios, and to build a robust intelligent evaluation system, this study 
+conducted a comparative experimental analysis of multi-module configurations, with 
+results shown in Fig. 3.
+To bridge the gaps between non-homogeneous tasks and disparate annotation 
+schemes, all movement quality scores from the public datasets were mapped to a 
+standardized normalized range [0, 1]. Data analysis shows that the Invariant module 
+achieves the lowest cross-domain MSE value on the four major motion capture data 
+sets of Human3.6 M, CMU MoCap, NTU RGB + D, and DanceDB, which is 62.3% lower 
+than the Baseline model on average; The Causal module is second, and when only the 
+Temporal/Spatial single module is added, the error drops by about 30–40%. The MSE 
+peak of the Full Model is concentrated in the interval 0.2–0.4, while the Baseline’s peak 
+is in 0.8-1.0, indicating that the module configuration that combines causal inference 
+and invariance learning can significantly improve the cross-domain robustness of dance 
+movement quality evaluation, especially in complex environments. The advantages are 
+more prominent on motion capture datasets.
+Table  1 shows the experimental parameter settings for different dance movement 
+types. The sampling rate is increased from 100 Hz to 200 Hz, indicating that a higher 
+rate is used for high-dynamic actions to capture more detail. The characteristic dimen -
+sion increases from 50 to 200, which is positively correlated with the movement com -
+plexity, and the folk dance has the highest characteristic dimension, reflecting its diverse 
+movement elements. The number of evaluation indicators increases from 5 to 8, indi -
+cating that complex actions need more evaluation dimensions to ensure comprehensive 
+quality evaluation.
+Table 1 Experimental setup parameter table
+Action type Sampling rate (Hz) Feature dimension Evaluation index numbers
+Ballet 100 50 5
+Modern dance 120 100 6
+Street dance 150 150 7
+Folk dance 200 200 8
+Fig. 3 Analysis of the impact of different module configurations on cross-domain dance movement quality evalu-
+ation errors in multi-data set scenarios
+ 
+Page 10 of 16
+Feng Discover Artificial Intelligence (2026) 6:1165 
+To verify the robustness of the dance movement quality evaluation system based on 
+causal inference and invariant learning in an unknown environment, the stability of 
+cross-domain generalization performance is quantified by analyzing the distribution of 
+Spearman correlations. The results are shown in Fig. 4.
+In the figure, BM stands for Baseline Model, CM for Causal Model, IL for Invariant 
+Learning, DA for Domain Adaptation Module, and EM for Ensemble Model.
+Data analysis shows that CIDES and Domain-Adapt models show significant advan -
+tages in cross-domain unknown environments. Their Spearman correlation coefficients 
+are highly concentrated in the range of 0.6–0.8, which improves the positive correla -
+tion stability by 40% compared with the Baseline model; Although the Invariant-Learn 
+model covers a full range of correlation coefficients, it reduces the proportion of nega -
+tively correlated data points to 15% through the invariant learning mechanism, which 
+improves the anti-interference ability by 20% compared with the traditional Ensemble-
+Model; Causal-Model uses the causal inference module to achieve accurate separation of 
+positive and negative correlation data points, and the density in the positive correlation 
+area is 2–3 times that of other models. This correlation distribution characteristic based 
+on invariant learning effectively verifies the system’s robustness evaluation ability in an 
+unknown environment and provides an interpretable quantitative basis for dance move -
+ment quality evaluation.
+To verify the robustness and cross-domain generalization of the dance movement 
+quality evaluation system based on causal inference and invariant learning in complex 
+movement scenes, we systematically compare model predictions with expert ratings. 
+The results are shown in Fig. 5.
+Fig. 5 Comparison of model prediction score and expert score
+ 
+Fig. 4 Spearman correlation distribution in an unknown environment
+ 
+Page 11 of 16
+Feng Discover Artificial Intelligence (2026) 6:1165 
+Data analysis shows that predicted scores and expert ratings are significantly positively 
+correlated within the 20–80 score range, with a trend line slope of approximately 0.82. 
+However, the data points are relatively scattered, with error bars ranging from ± 5 to 
+± 8 points, indicating that the model’s prediction fluctuates by about 10%. In contrast, 
+invariant learning validation exhibits superior stability characteristics: within the same 
+score range, data points are densely distributed around the trend line, with the error 
+range compressed to ± 3–5 points. Particularly in the high-performance region, data 
+concentration improves by 40%, verifying the robustness advantage of invariant learn -
+ing in cross-performance-level scoring. Causal inference effectively reveals the causal 
+mechanism underlying the association between predicted and expert scores, while 
+invariant learning significantly enhances the model’s rating stability across different lev -
+els of action quality. This provides dual technical guarantees for evaluating the quality of 
+dance actions.
+In order to verify the stable control ability of causal inference and invariant learning 
+methods on movement quality evaluation errors in different dance difficulty scenarios, 
+and then improve the robustness of the dance movement quality evaluation system, this 
+study carried out an average absolute error comparison experiment at different difficulty 
+levels, and the results are shown in Fig. 6.
+Data analysis shows that across the five difficulty levels from Beginner to Master, the 
+error of the Causal Model gradually decreases from 0.77 to 0.59, and the CIDES model 
+decreases from 0.72 to 0.59. Both of them reach the lowest error of 0.59 at the Master 
+level; the Baseline model’s error increased significantly with increasing difficulty, soar -
+ing from 0.98 to 1.52; the Invariant Learning model’s error is somewhere in between but 
+overall higher than the Causal Model and CIDES. At the level of Advanced and above, 
+the error fluctuation amplitude of Causal Model and CIDES is significantly smaller than 
+that of Invariant Learning and Baseline, indicating that the model based on causal infer -
+ence and Invariant Learning is more robust in complex dance scenes.
+Table 2 shows the effect size of the impact of key variables on action quality in causal 
+inference analysis. A larger effect size indicates a more significant contribution of this 
+variable to quality. The effect of body balance was most significant, with narrow confi -
+dence intervals [0.47, 0.57], indicating robust results. The effects of motion amplitude 
+and emotional expression were 0.45 and 0.41, respectively, indicating that these variables 
+cannot be ignored in the evaluation. The cadence consistency effect of 0.38 was relatively 
+low, but the confidence interval was statistically significant.
+Fig. 6 Comparison of average absolute errors at different dance difficulty levels
+ 
+Page 12 of 16
+Feng Discover Artificial Intelligence (2026) 6:1165 
+By applying causal inference to identify stable causal relationships between dance 
+movement characteristics and quality evaluation, and by combining invariant learning 
+to enhance the robustness of cross-scene evaluation, this study constructs the training 
+process for a dance movement quality evaluation system, as shown in Fig. 7.
+Data analysis shows that the loss of the training set decreased from the initial 2.8 to 
+0.4, the loss of the cross-domain verification set decreased from 3.0 to 1.1, and the gap 
+between the two narrowed from 0.2 to 0.7, indicating that the model effectively captured 
+the stability of action characteristics and quality evaluation through the causal inference 
+mechanism. Causality: The cross-domain verification set loss stabilizes around 1.0 in 
+later iterations, indicating improved cross-scenario robustness of the invariant learning 
+module. This design echoes the core framework of causal inference and invariance learn-
+ing in the paper and enables two-dimensional robustness verification of dance move -
+ment quality evaluation in the training domain and cross-domain scenarios.
+Through causal inference and invariance learning, the core causal and domain char -
+acteristics of dance movements are decoupled, and a robust evaluation system that can 
+accurately assess dance movement quality across environmental changes is constructed. 
+The results are shown in Fig. 8.
+Data analysis shows that the core causal features are significantly aggregated in the 
+dimensions of rhythm stability and environmental change, among which the density of 
+rhythm stability 20 ± 5 and environmental change 2 ± 1 is the highest, indicating that this 
+area is the concentration area of core causal features of dance movement quality evalu -
+ation; Four high-density clusters are formed in four directions of azimuth 0 °/90 °/180 
+°/270 ° and 4–8 radial intervals of environmental change, which verifies the robustness 
+of causal inference and invariant learning in cross-environment dance movement qual -
+ity evaluation. By decoupling environmental noise from movement nature, the evalu -
+ation system can still maintain classification accuracy of more than 92% under ± 15% 
+Table 2 Causal effect analysis table
+Causal variables Effect size Lower confidence interval Upper confidence interval
+Amplitude of action 0.45 0.40 0.50
+Rhythmic consistency 0.38 0.33 0.43
+Body balance 0.52 0.47 0.57
+Emotional expression 0.41 0.36 0.46
+Fig. 7 Training process of the dance movement quality evaluation system
+ 
+Page 13 of 16
+Feng Discover Artificial Intelligence (2026) 6:1165 
+fluctuations in rhythm stability and ± 30% changes in ambient lighting, providing a 
+quantitative basis for cross-scene generalization in dance movement quality evaluation.
+In order to verify whether causal inference and invariant learning can improve the 
+robustness of the system to changes in motion complexity in the evaluation of dance 
+movement quality, this study reveals the enhancement effect of invariant features on 
+score stability and anti-interference ability by comparing the distribution characteristics 
+and statistical index differences between traditional features and causal invariant fea -
+tures. The results are shown in Fig. 9.
+Data analysis shows that under the traditional characteristics, the quality score is about 
+8.2 when the motion complexity is 15, and the distribution of data points shows a posi -
+tive correlation trend but there are discrete fluctuations; After using the causal invariant 
+feature, the quality score of the same complexity interval is concentrated in the interval 
+of 8.5-9.0, the slope of the trend line increases by 18%, and the standard deviation of the 
+score of the high complexity area decreases by 40%, indicating that the causal inference 
+feature effectively enhances the robustness.
+In addition, this paper conducts a sensitivity analysis on the hyperparameter λ in 
+Eq.  (16). The experimental results show that as λ increases from 0.1 to 1.0, the cross-
+domain mean absolute error shows a trend of first decreasing and then increasing, 
+reaching a minimum value of 0.59 near λ = 0.5. When λ fluctuates in the range of [0.3, 
+0.7], the variation in evaluation accuracy is less than 1.5%, proving that the system can 
+Fig. 9 Analysis of the influence of feature representation based on causal inference on the robustness of dance 
+movement quality evaluation
+ 
+Fig. 8 Visualization of causal feature decoupling
+ 
+Page 14 of 16
+Feng Discover Artificial Intelligence (2026) 6:1165 
+achieve effective feature decoupling and maintain high prediction stability under differ -
+ent weight ratios.
+5 Conclusion
+The dance movement quality robustness evaluation system based on causal inference 
+and invariant learning proposed in this study has achieved significant breakthroughs in 
+cross-domain generalization, noise-resilience, and cross-data-set robustness by com -
+bining a causal inference module with an invariant learning module. The experimental 
+data show that the motion recognition accuracy of the system on the multi-scene dance 
+motion data set is 92.5% where the 95% confidence interval ranges from 91.2% to 93.8%. 
+Compared with the baseline model, the average absolute error in the cross-domain gen -
+eralization test is reduced by 38.7%, and the correlation coefficient remains stable above 
+89.1% with a 95% confidence interval between 87.5% and 90.7%. All these performance 
+gains are statistically significant because the p-value is less than 0.05, which verifies the 
+system’s high robustness evaluation ability in complex dance scenes.
+1. Behind the excellent performance of the system in the cross-domain generalization 
+test, and the average absolute error is reduced by 38.7%, is the ability of the causal 
+inference module to decouple the essential characteristics of the action. In cross-
+domain verification across four major motion capture datasets, including Human3.6 
+M and CMU MoCap, CIDES achieves the lowest cross-domain mean-squared error, 
+resulting in an average reduction of 62.3% compared with traditional deep learning 
+methods. Under the interference scenarios where rhythm stability fluctuates ± 15% 
+and ambient illumination changes ± 30%, the system still maintains a classification 
+accuracy of more than 92%, which proves that it can effectively strip off the interference 
+of environmental noise on action quality evaluation.
+2. Compared with the traditional Baseline model, CIDES is significantly better than 
+Baseline’s 0.8-1.0 interval in the cross-domain MSE peak interval. The comparison 
+of module effects shows that the invariant learning module improves cross-domain 
+performance by 15%, and that the error of the causal inference module reduces 
+by 30–40% under the single-module configuration. Under the complete model 
+configuration, the MAE of the system in the Master-level difficulty scenario is as 
+low as 0.59, the average deviation between the prediction score and the expert score 
+is only 0.32 points, the prediction error in the high-score area is controlled within 
+± 0.5 points, and the Spearman correlation coefficient is concentrated in The range of 
+0.6–0.8 improves the positive correlation stability by 40% compared with the Baseline 
+model.
+3. Through noise interference stability test and cross-data set generalization ability 
+verification, the system constructs a multi-dimensional index system including 
+average absolute error, Spearman correlation coefficient, prediction score deviation, 
+etc. In the noise interference scenario, the standard deviation of the system’s quality 
+score within the action complexity interval is reduced by 40%, and the trend line 
+slope is increased by 18%, indicating that the causal inference feature effectively 
+enhances evaluation stability. The cross-dataset generalization verification shows 
+that the system achieves the lowest cross-domain MSE across the four major motion 
+capture datasets, demonstrating its generalization universality. To sum up, this study 
+constructs a highly robust dance movement quality evaluation system by integrating 
+Page 15 of 16
+Feng Discover Artificial Intelligence (2026) 6:1165 
+causal inference and invariant learning, providing a scientific and reliable quantitative 
+evaluation method for the development of an intelligent dance teaching system. The 
+excellent performance of the system in cross-domain generalization, noise stability, 
+and cross-data-set generalization marks a paradigm shift in dance movement 
+quality evaluation from “experience-driven” to “data-driven + causal reasoning, ” with 
+significant theoretical innovation value and practical application prospects.
+Author contributions
+Yao Feng conceived the research idea and designed the overall methodology. Yao Feng developed the proposed 
+model, implemented the algorithms, and conducted the experiments. Yao Feng was responsible for data analysis and 
+interpretation of the results. Yao Feng wrote the original draft of the manuscript and revised it critically for important 
+intellectual content. The author has read and approved the final version of the manuscript.
+Funding
+No.
+Data availability
+All data generated or analyzed during the study are available from the corresponding author by request.
+Declarations
+Ethics approval and consent to participate
+Not applicable.
+Consent for publication
+Not applicable.
+Competing interests
+The authors declare no competing interests.
+Clinical trial number
+Not applicable.
+Received: 4 February 2026 / Accepted: 7 September 2026
+References
+1. Adalarasu K, Chetty RK, Begum KG, Harini S, Janardhanan M. An explainable machine learning (XAI) framework for clas-
+sification of intricate dancing posture among Indian Bharatanatyam dancers. Appl Soft Comput. 2025;171:112817.
+2. Ademola A, Sinclair D, Koniaris B, Hannah S, Mitchell K. NeFT-Net: N-window extended frequency transformer for rhythmic 
+motion prediction. Computers Graphics. 2025;129:104244.
+3. Chao J, Yingren Z. Entertainment type robots based on machine learning and game teaching mode applied in dance 
+action planning of art teaching. Entertain Comput. 2025; 52:100851.
+4. Chen N. Entertainment robots based on swarm intelligence algorithm applied in remote dance performances. Entertain-
+ment Comput. 2025;52:100783.
+5. Cheng Y, Jiang Y, Wang Y. Music-stylized hierarchical dance synthesis with user control. Virtual Real Intell Hardw. 
+2024;6(5):339–57.
+6. Kumar A, Kishore PV, Chaithanya TR, Sravani K. Multi frame multi-head attention learning on deep features for recognizing 
+Indian classical dance poses. J Vis Commun Image Represent. 2024;99:104091.
+7. Ding J. Deep learning perspective on the construction of SPOC teaching model of music and dance in colleges and 
+universities. Syst Soft Comput. 2024;6:200137.
+8. Gupta S, Singh S. A Transfer Learning based approach for Classification of Bhangra Steps. Procedia Comput Sci. 
+2025;259:71–9.
+9. Hu M, Fan D, Wan L, Xu W, Wang S. Keyframe control for customizable choreography with style maintenance. Comput 
+Electr Eng. 2024;117:109267.
+10. Huang J, Huang X, Yang L, Tao Z. D2MNet for music generation joint driven by facial expressions and dance movements. 
+2024; 22:100348.
+11. Huang Y. Enhancing ballet posture Teaching: Evaluation of a scientific computing model with motion capture integration. 
+Entertainment Comput. 2025;52:100824.
+12. Intawong K, Thongthip P , Khanchai S, Puritat K. The Lanna XR dance heritage: Exploring XR for the digitization and trans-
+mission of intangible culture. Digit Appl Archaeol Cult Herit. 2025;39:e00457.
+13. Jia R, Zhao L, Yang R, Yang H, Wu X, Zhang Y, Li P , Su Y. HFA-GTNet: Hierarchical Fusion Adaptive Graph Transformer network 
+for dance action recognition. J Vis Commun Image Represent. 2024;98:104038.
+14. Moshe Y, Moses Y, Shamir A. Duet dancing from a solo dance video. Comput Graph. 2025;130:104250.
+15. Pathrapoowanun N, Kwangmuang P , Siritaratiwat A, Nguyen LT. Enhancing creative learning in Thai classical dance educa-
+tion: An integration of digital preservation framework with ubiquitous learning environment. Digit Appl Archaeol Cult 
+Herit. 2025;39:e00460.
+Page 16 of 16
+Feng Discover Artificial Intelligence (2026) 6:1165 
+16. Rizhan W, Mazian AI, Rahim N, Jamal AA, Ismail I, Fadzli SA. Folk dance motion templates based on motion capture 
+technique for guaranteeing authenticity of folk Dance: Case studies of Malay folk dances. Digit Appl Archaeol Cult Herit. 
+2025;38:e00449.
+17. Wang D. Method of Dance Action Recognition Based on Path Optimization. Procedia Comput Sci. 2025;261:1363–9.
+18. Wu Y, Wu Z, Ji C. Transformer-based partner dance motion generation. Eng Appl Artif Intell. 2025;139:109610.
+19. Zhen N, Jiang Y. Dance video action recognition algorithm based on improved hypergraph convolutional networks. Syst 
+Soft Comput. 2025;7:200247.
+20. zhuoma D, Hae JE. Relationship between visual image art and dance teaching. Comput Hum Behav. 2024;161:108270.
+21. Huang K, Tian Y, Yu C, Huang Y. Dual-referenced assistive network for action quality assessment. Neurocomputing. 
+2025;614:128786.
+22. Ke X, Xu H, Lin X, Guo W. Two-path target-aware contrastive regression for action quality assessment. Inf Sci. 
+2024;664:120347.
+23. Lei Q, Yao L, Zhang H, Du J. Skeletal spatio-temporal decoupling transformer for long-duration action quality assessment. 
+Knowl Based Syst. 2025;330:114672.
+24. Xu T-B, Liu C-L. Data-distortion guided self-distillation for deep neural networks. Proceedings of the AAAI conference on 
+artificial intelligence. 2019;33(1):5565–72.
+25. Yang C, An Z, Zhou H, Cai L, Zhi X, Wu J, Xu Y, Zhang Q. Mixskd: Self-knowledge distillation from mixup for image recogni-
+tion. European Conference on Computer Vision, 2022:pp.534–51.
+26. Moodley T, van der Haar D. I3D-AE-LSTM: Combining action representations using a 2-stream autoencoder for Action 
+Quality Assessment. Expert Syst Appl. 2025;278:127368.
+27. Qiu H-M, Zhang H-B, Lei Q, Liu J-H, Du J-X. Learning referee evaluation and assessing action quality from coarse to fine in 
+diving sport. Neurocomputing. 2025;648:130664.
+28. Tavana M, Caprio DD, Rostamkhani R. A total quality management action plan assessment model in supply chain man-
+agement using the lean and agile scores. J Innov Knowl. 2025;10(1):100633.
+29. Wang R, Xiu X, Yang R, Ding H, Liu Q, Han C, Zhang Z, Tian M, Bai P . An action quality assessment method for the pull-up 
+movement based on a dual-stream multi-stage transformer framework. Intell Sports Health. 2025;1(2):103–12.
+30. Wang X, Li P-J, Shen Y-Y. Attention-driven multimodal alignment for long-term action quality assessment. Appl Soft Com-
+put. 2025;183:113649.
+31. Wen Y, Luo X, Zheng L, Qi L, Shi X. vAQA-SS: Vision-based action quality assessment for style-based skiing. Displays. 
+2025;88:103020.
+32. Xing S, Guo Z, Yu C, Li K, Zhao S. Quality assessment of sports actions based on adaptive-UniFormer. Digit Signal Proc. 
+2026;168:105549.
+Publisher’s note
+Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional affiliations.

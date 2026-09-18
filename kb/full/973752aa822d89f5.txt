@@ -1,0 +1,716 @@
+Discover ComputingYe et al. Discover Computing (2026) 29:635 
+https://doi.org/10.1007/s10791-026-10513-2
+RESEARCH Open Access
+A health- and link-aware adaptive data-rate 
+method for enhancing quality of service 
+in wireless body area networks
+Bizhou Ye1, Wei Zhou2* and Qiliang Liu2
+ * C o r r e s p o n d e n c e : 
+Wei Zhou
+lgxyzw@163.com
+1School of Electronic Science and 
+Information Engineering, Science 
+and Technology College of Hubei 
+University of Arts and Sciences, 
+Xiangyang 441000, China
+2Science and Technology College, 
+Hubei University of Arts and 
+Sciences, Xiangyang 441000, China
+© The Author(s) 2026. Open Access This article is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International 
+License, which permits any non-commercial use, sharing, distribution and reproduction in any medium or format, as long as you give appropriate 
+credit to the original author(s) and the source, provide a link to the Creative Commons licence, and indicate if you modified the licensed material. 
+You do not have permission under this licence to share adapted material derived from this article or parts of it. The images or other third party 
+material in this article are included in the article’s Creative Commons licence, unless indicated otherwise in a credit line to the material. If material 
+is not included in the article’s Creative Commons licence and your intended use is not permitted by statutory regulation or exceeds the permitted 
+use, you will need to obtain permission directly from the copyright holder. To view a copy of this licence, visit h t t p : / / c r e a t i v e c o m m o n s . o r g / l i c e n s 
+e s / b y - n c - n d / 4 . 0 / . 
+Abstract
+Wireless Body Area Networks (WBANs) must provide reliable, low-latency, and 
+energy-efficient communication despite rapid changes in physiological urgency, 
+body-induced channel variation, and heterogeneous sensor quality. Existing adaptive-
+rate and QoS-aware schemes often optimize only a subset of these factors and 
+may induce unstable rate switching when link or physiological states fluctuate. This 
+study proposes HALA-DR, a health- and link-aware adaptive data-rate mechanism 
+that jointly integrates physiological urgency, recent link quality, residual energy, 
+and node quality. A four-level controller with an emergency override and hysteresis 
+maps the fused state to low, medium, high, or emergency transmission rates. The 
+per-interval time complexity is O(NM), which reduces to O(N) when the number 
+of monitored physiological variables M is fixed. A reproducible MATLAB evaluation 
+was conducted using an IEEE 802.15.6-compatible star topology, identical baseline 
+settings, 30 independent runs, confidence intervals, and paired statistical tests. In the 
+15-node scenario, HALA-DR achieved 236 kbps throughput, a 95.1% packet delivery 
+ratio, 45 ms end-to-end latency, 0.94 mJ per successfully delivered packet, and 118 h 
+network lifetime. Scalability, mobility, interference, and ablation analyses show that 
+the link-quality term contributes most strongly to reliability and latency, whereas the 
+energy term contributes most strongly to lifetime. These results indicate that HALA-
+DR provides a reproducible and balanced improvement in WBAN communication 
+efficiency and QoS.
+Clinical trial registration
+Not applicable.
+Keywords Wireless body area network, Adaptive data rate, Physiological urgency, Link 
+quality, Quality of service, Energy efficiency, IEEE 802.15.6
+ 1 Introduction
+Wireless Body Area Networks integrate wearable or implanted sensors with a body 
+coordinator to support continuous physiological monitoring, remote healthcare, reha -
+bilitation, and context-aware assistance [ 1]. Unlike conventional wireless sensor net -
+works, a WBAN operates close to or inside the human body and must satisfy stringent 
+Page 2 of 17
+Ye et al. Discover Computing (2026) 29:635 
+requirements for low power consumption, bounded latency, reliability, and coexistence 
+[2, 3]. IEEE 802.15.6–2026 explicitly recognizes heterogeneous traffic, quality-of-ser -
+vice requirements, extremely low-power operation, multiple data rates, body-induced 
+antenna effects, and user motion as central design considerations [ 1]. These characteris-
+tics make static transmission settings unsuitable for sustained operation under variable 
+physiological and radio conditions.
+A fixed-rate sensor transmits at the same rate during both stable and abnormal physi -
+ological periods. A high fixed rate can reduce response time but wastes energy and 
+channel capacity when signals are stable, whereas a low fixed rate conserves energy but 
+may delay urgent information. Adaptive-rate control is therefore attractive, but the deci-
+sion is challenging because physiological urgency, link quality, residual battery energy, 
+and sensor reliability evolve on different time scales. A controller that reacts too strongly 
+to a single noisy indicator may also oscillate between rates, increase control traffic, and 
+shorten network lifetime.
+Recent real-time WBAN monitoring has emphasized selective signal restoration and 
+physiological trend prediction in resource-constrained health-monitoring systems [ 4]. 
+Communication-focused research spans discrete utility-based rate adaptation [ 5], meta-
+heuristic transmission-rate optimization [ 6], route-stability-aware communication [ 7], 
+multi-path QoS routing [8], and learning-based or multi-objective routing [ 9, 10]. These 
+studies show that adaptive communication can improve reliability or energy efficiency, 
+but they operate at different decision layers and usually optimize only a subset of physi -
+ological urgency, channel state, residual energy, sensor quality, and switching stability. 
+A lightweight controller that directly couples these factors for sensor data-rate selection 
+remains comparatively underexplored.
+The research question is therefore: how can a body coordinator select a transmission 
+rate that prioritizes urgent physiological data, remains robust to channel and mobility 
+variation, protects battery life, and avoids unstable switching on resource-constrained 
+WBAN devices? To address this question, we propose HALA-DR, a health- and link-
+aware adaptive data-rate controller.
+The main contributions are:
+ • A normalized physiological-urgency function with explicit normal and emergency 
+bounds, together with an emergency override that elevates critical traffic without 
+requiring a computationally expensive classifier.
+ • A transparent composite state score that jointly considers urgency, link quality, 
+residual energy, and node quality, followed by four-level rate mapping and a 
+hysteresis/dwell-time constraint that suppresses unnecessary switching.
+ • A reproducible and fair evaluation protocol in which fixed-rate, DDRA, GABAT, 
+and EPRS baselines are reconstructed under the same topology, channel, traffic, run 
+duration, random seeds, and metrics; newer learning-based and link-adaptation 
+methods are additionally positioned qualitatively because they optimize different 
+decision layers.
+ • A broader evaluation using standard WBAN indicators, repeated-run confidence 
+intervals, scalability, mobility, interference, ablation, decision-time, communication-
+overhead, and complexity analyses.
+Page 3 of 17
+Ye et al. Discover Computing (2026) 29:635 
+The remainder of the paper is organized as follows. Section  2 reviews related adap -
+tive-rate and QoS-aware WBAN methods. Section  3 presents the system model and 
+HALA-DR algorithm. Section  4 specifies the reproducible evaluation protocol. Section  
+5 reports the experimental comparison results and discusses robustness, ablation, limi -
+tations, and practical deployment. Section  6 concludes the paper.
+2 Related work
+2.1 Adaptive transmission-rate control
+Rate adaptation addresses the mismatch between time-varying network capacity and 
+heterogeneous sensor streams. Szkaliczki [ 5] formulates discrete data-rate selection as 
+a multiple-choice multidimensional knapsack problem and shows that a greedy strategy 
+can approximate the optimum with short execution time. This treatment is useful when 
+each stream has a finite set of quality levels, but physiological urgency and node health 
+are not primary decision variables. Goyal et al. [ 6] combine genetic and BAT optimi -
+zation to adjust transmission rates under QoS and posture-dependent link constraints; 
+the approach improves optimization quality but requires iterative search and parameter 
+tuning.
+2.2 QoS-, route-, and energy-aware WBAN communication
+QoS-aware routing complements rate control by selecting reliable forwarding paths. 
+EPRS estimates route stability and residual energy to improve packet delivery and net -
+work lifetime [ 7]. Mehmood et al. [ 8] distinguish normal and emergency traffic and 
+reserve the best path for critical data. IM-QRP [9] focuses on QoS-aware next-hop selec-
+tion, while Aryai et al. [ 10] combine metaheuristic optimization with machine learning 
+for adaptive real-time routing. Cooperative fault-tolerant communication [ 11], lifetime-
+oriented routing [ 12], ZITA [ 13], cooperative RF energy-harvesting transmission [ 14], 
+relay-placement optimization [15], two-tier lightweight forwarding [ 16], multi-objective 
+routing [ 17], and link-quality-aware clustering [ 18] similarly seek reliable and energy-
+conscious delivery. These protocols establish the importance of traffic priority, link 
+condition, and residual energy, but routing decisions are not equivalent to selecting a 
+sensor’s transmission rate, and they do not directly address rate oscillation.
+Recent WBAN research also addresses edge collection [ 19], compressed sensing and 
+security [20, 21], encryption [ 22, 23], antennas [24], interference management [25], and 
+congestion control [26]. Broader WBAN reviews and energy-efficient healthcare frame -
+works [27, 28], together with Markov decision process-based inter-WBAN transmission 
+schemes [ 29], further illustrate the diversity of communication objectives and deploy -
+ment settings. More recent work extends adaptation toward learning and lower-layer 
+control: Chen [ 30] shifts model-driven transmission-power control and link adapta -
+tion to the hub, Arafat et al. [ 31] use Q-learning for QoS-aware routing, and Chen [ 32] 
+applies Gaussian Thompson sampling to energy-efficient MCS selection under non-sta -
+tionary channels. These methods strengthen the recent comparison landscape, but they 
+optimize routing, transmit power, or PHY/MCS selection rather than application-level 
+health-aware sensor data rates. Table 1 therefore distinguishes direct data-rate control 
+from these adjacent decision layers. Only methods that can be reconstructed under the 
+same topology, traffic, and metric definitions are used as quantitative baselines; newer 
+Page 4 of 17
+Ye et al. Discover Computing (2026) 29:635 
+Table 1 Comparison of representative adaptive and QoS-aware WBAN methods
+Method Primary mechanism Decision information Direct rate 
+control
+Health-aware Link/energy-aware Main limitation
+Szkaliczki [5] Discrete utility-based rate 
+selection
+Stream utility, capacity Yes No No No statistical repeated-run analysis reported for a 
+physiological urgency controller
+Goyal et al. [6] GA–BAT optimized transmis-
+sion rate
+QoS constraints, posture, link 
+state
+Yes Indirect Yes Metaheuristic iterations and parameter tuning 
+increase implementation cost
+Memon et al. [7] Route-stability-aware WBAN 
+routing
+Residual energy, route stability Indirect No Yes Optimizes routing stability rather than joint health-
+aware rate control
+Mehmood et 
+al. [8]
+QoS multi-path routing Traffic class, path quality Indirect Yes Yes Priority routing does not explicitly adapt sensor 
+transmission rates
+Ahmad et al. [9] QoS-aware routing Link reliability, energy, 
+congestion
+Indirect Yes Yes Focuses on next-hop selection; rate oscillation is 
+not addressed
+Aryai et al. [10] Metaheuristic/ML routing Energy, link state, learned route 
+score
+Indirect No Yes Training and optimization overhead may be high 
+for constrained nodes
+Chen [30] Model-driven TPC and link 
+adaptation
+BER/QoS target, receiver sensi-
+tivity, channel state
+Indirect No Yes Optimizes PHY power/MCS behavior rather than 
+health-aware sensor data-rate control
+Arafat et al. [31] Q-learning QoS-aware 
+routing
+Two-hop reliability, priority, 
+energy, congestion
+No Indirect Yes Learns next-hop routing decisions; direct transmis-
+sion-rate control is not addressed
+Chen [32] Gaussian Thompson-sam-
+pling link adaptation
+SNR/reliability posterior, en-
+ergy/QoS constraint
+Indirect No Yes Learning-based MCS adaptation does not model 
+physiological urgency or application-level hysteresis
+HALA-DR (this 
+study)
+Four-level rate control with 
+hysteresis
+Urgency, link quality, residual 
+energy, node quality
+Yes Yes Yes Requires application-specific threshold calibration 
+and real-device validation
+Page 5 of 17
+Ye et al. Discover Computing (2026) 29:635 
+methods with materially different decision layers are used for qualitative positioning 
+rather than for copying published numerical values.
+2.3 Research gap and positioning
+Table 1 summarizes the closest methods. The remaining gap is narrower than the general 
+problem of adaptive WBAN communication: application-facing sensor data-rate control 
+still lacks a transparent, low-complexity mechanism that (i) treats physiological urgency 
+as an explicit decision variable, (ii) combines urgency with measured link, energy, and 
+sensor-health states, (iii) supports a fail-safe emergency override, (iv) suppresses ping-
+pong switching through hysteresis and dwell time, and (v) is evaluated with repeated-
+run statistical evidence under identical conditions. HALA-DR is designed to address this 
+specific and testable gap rather than to replace routing or PHY-level link adaptation.
+3 Proposed HALA-DR method
+3.1 System model and assumptions
+The WBAN contains N sensor nodes and one body coordinator. Each node measures 
+one or more physiological variables and periodically reports data to the coordinator 
+through an IEEE 802.15.6-compatible wireless link. The coordinator maintains recent 
+link statistics, residual-energy reports, node-quality status, and configured urgency 
+thresholds, and it selects one of four transmission rates for each node. Routine traffic 
+uses the low or medium rate, elevated traffic uses the high rate when resources permit, 
+and emergency traffic receives the maximum rate and priority access. Figure 1 shows the 
+architecture and the location of the adaptive controller. Because the topology contains 
+a single coordinator, the coordinator index j is fixed; after the distance definition below, 
+the controller notation omits j and uses Li and Si for clarity.
+The design assumes that the coordinator can obtain short-window RSSI, SNR, and 
+packet-delivery statistics from acknowledgments and can receive periodic residual-
+energy and sensor-health reports. Physiological thresholds are application-specific 
+Fig. 1 System architecture of the proposed health- and link-aware WBAN data-rate controller
+ 
+Page 6 of 17
+Ye et al. Discover Computing (2026) 29:635 
+configuration parameters. The bounds used in simulation are scenario triggers rather 
+than clinical diagnostic thresholds and must not be used for patient-treatment decisions.
+3.2 Distance and link-quality estimation
+For node i and the single body coordinator j, the Euclidean distance is
+ 
+𝑑𝑑𝑖𝑖𝑖𝑖 = √ [(𝑥𝑥𝑖𝑖 −𝑥𝑥 𝑖𝑖 )
+2
++ (𝑦𝑦𝑖𝑖 −𝑦𝑦 𝑖𝑖 )
+2
+] (1)
+Distance is used only as a contextual feature in simulation; the online controller relies on 
+measured link indicators. RSSI and SNR are clipped to configured operating ranges and 
+normalized to [0,1]. For a generic link indicator x, the normalized value is xi
+norm = clip[(xi 
+− xmin)/(xmax − xmin), 0, 1]. Because recent packet-delivery ratio is already bounded, PDRi 
+is used directly. The link-quality score is
+ 𝐿𝐿𝑖𝑖 = 𝛽𝛽1 ⋅ RSSInorm
+𝑖𝑖 + 𝛽𝛽2 ⋅ SNRnorm
+𝑖𝑖 + 𝛽𝛽3 ⋅ PDR𝑖𝑖 , 𝛽𝛽1 + 𝛽𝛽2 + 𝛽𝛽3 =1 (2)
+where xmin and x max denote the configured operating limits for the corresponding link 
+indicator. The implementation uses β1 = 0.30, β2 = 0.25, β3 = 0.45, with β1 + β2 + β3 = 1. The 
+larger weight on recent PDR reflects its direct sensitivity to the combined effects of fad -
+ing, interference, contention, and mobility.
+3.3 Physiological urgency, energy, and node quality
+Let p im denote the observation of physiological variable m for node i. Let [l m
+N, u m
+N] 
+denote its configured normal band and l m
+E and u m
+E its lower and upper emergency 
+boundaries, with l m
+E < l m
+N < u m
+N < u m
+E. The normalized deviation is zero inside the 
+normal band and increases linearly toward one outside it: δ im = 0 for l m
+N≤pim≤um
+N; 
+δim = min{1,(lm
+N-pim)/(lm
+N-lm
+E)} for p im< l m
+N; and δ im = min{1,(pim-um
+N)/(um
+E-um
+N)} for 
+pim> um
+N. With positive importance coefficients am, the urgency score is
+ 
+𝑈𝑈 𝑖𝑖 = 𝑚𝑚𝑚𝑚𝑚𝑚 {1, 𝛴𝛴𝑚𝑚𝑎𝑎𝑚𝑚 ⋅𝛿𝛿 𝑖𝑖𝑚𝑚
+𝛴𝛴𝑚𝑚𝑎𝑎𝑚𝑚
+} (3)
+If any physiological observation crosses its configured emergency boundary (p im≤lm
+E or 
+pim≥um
+E), the controller sets U i=1 before rate selection; otherwise U i is computed from 
+Eq. (3). This prevents a strongly abnormal measurement from being diluted by several 
+normal variables. Residual energy is normalized as E i=Ei,res/Ei,init. Node quality Q i in 
+[0,1] is the normalized sensor-health state supplied to the controller from recent cali -
+bration validity, fault status, and measurement/packet error history. Q i is kept separate 
+from Ei so that battery state is not counted twice.
+3.4 State fusion, rate mapping, and hysteresis
+The composite score used by the body coordinator is
+ 𝑆𝑆𝑖𝑖 =𝑤𝑤 𝑈𝑈 ⋅ 𝑈𝑈 𝑖𝑖 +𝑤𝑤 𝐿𝐿 ⋅ 𝐿𝐿𝑖𝑖 +𝑤𝑤 𝐸𝐸 ⋅ 𝐸𝐸𝑖𝑖 +𝑤𝑤 𝑄𝑄 ⋅ 𝑄𝑄𝑖𝑖 (4)
+The default fusion weights are wU = 0.35, wL = 0.30, wE = 0.20, and wQ = 0.15, and they 
+satisfy wU + wL+wE + wQ = 1. The weighting gives first priority to physiological urgency 
+and link reliability while retaining explicit energy and sensor-health constraints. If 
+Page 7 of 17
+Ye et al. Discover Computing (2026) 29:635 
+Ui ≥ τE, the emergency rate is selected. Otherwise, S i is mapped monotonically to the 
+four available levels as
+ 
+𝑟𝑟𝑖𝑖 (𝑡𝑡) =
+⎧{
+⎨{⎩
+𝑅𝑅𝑙𝑙𝑙𝑙𝑙𝑙 𝑆𝑆𝑖𝑖 < 𝜏𝜏 1
+𝑅𝑅𝑚𝑚𝑚𝑚𝑚𝑚 𝜏𝜏 1 ≤ 𝑆𝑆𝑖𝑖 < 𝜏𝜏 2
+𝑅𝑅ℎ𝑖𝑖𝑖𝑖ℎ 𝜏𝜏 2 ≤ 𝑆𝑆𝑖𝑖 < 𝜏𝜏 3
+𝑅𝑅𝑚𝑚𝑚𝑚𝑖𝑖 𝑆𝑆𝑖𝑖 ≥𝜏𝜏 3
+ (5)
+A non-emergency rate change is accepted only when S i crosses the next threshold by 
+at least the hysteresis margin h = 0.05 and the current rate has been maintained for D_
+min = 3 decision intervals. Emergency escalation bypasses the dwell-time restriction, 
+whereas de-escalation follows the hysteresis rule. This asymmetric rule preserves rapid 
+emergency response while reducing ping-pong switching and its associated control and 
+queueing overhead (Table 2).
+3.5 Algorithm workflow and packet scheduling
+Figure 2 summarizes the complete workflow. At each decision interval, the coordina -
+tor acquires physiological, link, energy, and node-quality states; normalizes the required 
+inputs; computes Ui, Li, Ei, and Qi; forms Si; selects a candidate rate; applies emergency, 
+capacity, energy, hysteresis, and dwell-time constraints; schedules packets; and updates 
+the short-window statistics after acknowledgments or timeouts. Emergency packets 
+enter a strict-priority queue, whereas routine classes use weighted round-robin schedul -
+ing to prevent starvation.
+Algorithm 1 HALA-DR decision procedure executed at the body coordinator
+3.6 Computational complexity and communication overhead
+Urgency estimation requires O(M) operations per node, whereas link, energy, quality, 
+and rate mapping require constant time. The overall per-interval decision complexity is 
+therefore O(NM), which becomes O(N) when the physiological feature set M is fixed. 
+The coordinator stores a short state window for each node, giving O(NW) memory for 
+history length W. The proposed packet format adds a 4-byte state report and a 1-byte 
+rate command per decision interval. In the 15-node scenario, this corresponds to an 
+estimated 1.8% control overhead for HALA-DR, lower than the multi-path signaling 
+of EPRS but higher than that of a fixed-rate system. The overhead is reported explicitly 
+rather than being absorbed into payload throughput.
+Page 8 of 17
+Ye et al. Discover Computing (2026) 29:635 
+3.7 Practical safety and security considerations
+HALA-DR controls communication resources; it does not diagnose disease or replace 
+medical alarms. Clinical thresholds must be configured and validated for the intended 
+application. Rate-control messages should be authenticated to prevent false emergency 
+escalation, battery-drain attacks, or forced rate suppression. Sensor failures are repre -
+sented through Q i and timeout rules, but secure key management, privacy protection, 
+and formal fail-safe behavior remain deployment requirements [20, 22].
+4 Experimental methodology
+4.1 Simulation environment and network configuration
+The evaluation protocol was specified to support reproducibility. All methods use the 
+same MATLAB release, topology, channel, traffic, energy model, simulation time, and 
+random seeds. The body coordinator is located near the waist, and nodes are placed at 
+anatomically plausible chest, arm, wrist, waist, finger, and ankle positions with small 
+random perturbations. The main comparison uses 15 nodes, whereas scalability tests 
+vary the network from 5 to 25 nodes. A 100 s warm-up precedes the 1200 s evaluation 
+period and populates the 10 s state-history window before reported metrics are accumu-
+lated. Table 3 lists the complete configuration.
+4.2 Baselines and fairness controls
+Four quantitative baselines are considered: (i) a fixed-rate controller using the medium 
+rate; (ii) DDRA, reconstructed from the discrete utility-based adaptation strategy in [ 5]; 
+(iii) GABAT, reconstructed from the QoS-supported optimized transmission-rate design 
+in [ 6]; and (iv) EPRS, reconstructed as a route-stability-aware QoS baseline from [ 7]. 
+Table 2 Symbols, variables, and default controller parameters
+Symbol Definition Default/range
+N Number of active WBAN sensor nodes 5–25
+M Number of physiological variables used for urgency estimation 6
+dij Distance between node i and the body coordinator j m
+RSSIij Received signal-strength indicator dBm
+PDRij Recent packet-delivery ratio of the link 0–1
+SNRij Signal-to-noise ratio dB
+Ui Normalized physiological urgency score 0–1
+Li Normalized link-quality score for node i to the single coordinator 0–1
+Ei Residual-energy ratio 0–1
+Qi Node-quality score derived from calibration, fault, and recent error 
+state
+0–1
+Si Composite state-fusion score 0–1
+wU, wL, wE, 
+wQ
+Fusion weights 0.35, 0.30, 0.20, 0.15
+τ1,τ2,τ3 Rate-selection thresholds 0.35, 0.60, 0.80
+τE Emergency override threshold for Ui 0.85
+h Hysteresis margin 0.05
+Dmin Minimum dwell time at a selected rate 3 decision intervals
+R Available data-rate set {50, 100, 200, 400} kbps
+β1,β2,β3 Link-quality weights for RSSI, SNR, and recent PDR 0.30, 0.25, 0.45
+am Positive importance coefficient for physiological variable m normalized by Σmam
+lm
+N,um
+N Lower/upper bounds of the configured normal band scenario/application-specific
+lm
+E,um
+E Lower/upper emergency boundaries lm
+E< lm
+N< um
+N< um
+E
+W State-history window used for recent link/error statistics 10 s
+Page 9 of 17
+Ye et al. Discover Computing (2026) 29:635 
+Fig. 2 End-to-end workflow of HALA-DR, including state acquisition, fusion, rate selection, hysteresis, scheduling, 
+and feedback
+ 
+Page 10 of 17
+Ye et al. Discover Computing (2026) 29:635 
+Published numerical values were not copied into the figures. Each baseline was imple -
+mented in the same simulation environment and tuned within the parameter ranges 
+described by its source, while the PHY, traffic, topology, random seeds, and evaluation 
+metrics were held constant. Recent model-driven link adaptation [ 30], Q-learning rout-
+ing [31], and Thompson-sampling MCS adaptation [ 32] are included in the qualitative 
+comparison in Table 1 but not as numerical baselines because their decision variables 
+and PHY/routing assumptions are not directly equivalent to application-level sensor 
+data-rate control.
+Each method is evaluated with seeds 1001–1030. Within a paired run, the same seed 
+controls node placement, fading, traffic arrivals, mobility perturbations, and interference 
+for every method. This paired design reduces nuisance variability and supports direct 
+within-seed statistical comparison.
+4.3 Evaluation metrics
+The primary metrics are defined as follows:
+ • Throughput: successfully delivered payload bits divided by active evaluation time.
+ • Packet delivery ratio (PDR): successfully delivered packets divided by generated 
+packets.
+ • Packet loss ratio (PLR): 1 − PDR.
+ • End-to-end latency: time from packet generation to successful coordinator reception.
+ • Energy per successfully delivered packet: total communication and decision energy 
+divided by delivered packets.
+ • Network lifetime: time until the first node exhausts its usable energy budget.
+ • Control overhead: control bytes divided by total transmitted bytes.
+ • Average decision time: coordinator execution time per decision interval.
+The primary evaluation avoids custom composite indices such as Data Rate Adjustment 
+Efficiency, Energy Consumption Efficiency, and a Robustness Index. Their intended 
+concepts are represented more transparently by rate-switch behavior, energy per 
+Table 3 Reproducible simulation configuration used for all comparisons
+Item Configuration
+Software MATLAB R2024b; Communications Toolbox; Statistics and Machine Learning 
+Toolbox
+Topology IEEE 802.15.6-compatible single-hop star WBAN with one body coordinator
+Network size 5, 10, 15, 20, and 25 sensor nodes; main comparison uses 15 nodes
+Deployment region 1.5 m × 1.5 m body-centered area; anatomically constrained random placement
+Carrier/channel 2.4 GHz ISM; log-distance body-area path loss with shadowing and Rician fading
+Rate set 50, 100, 200, and 400 kbps
+Packet model 256-byte normal packets; 128-byte urgent packets; offered load ≈ 280 kbps in the 
+main scenario
+Traffic classes Routine, elevated, urgent, and emergency; emergency packets have strict priority
+Decision interval 1 s; state history window 10 s; minimum rate dwell time 3 s
+Energy model Initial energy 1800 J per node; Tx/Rx/idle/sleep energy accounted for per event
+Mobility Static; walking (0.8–1.4 m/s); running (2.0–3.0 m/s)
+Interference Low, medium, and high co-channel interference levels
+Simulation duration 1200 s after a 100 s warm-up
+Independent runs 30 runs per condition; random seeds 1001–1030
+Statistics Mean, SD, 95% CI; paired Wilcoxon tests with Holm correction; Hedges g effect size
+Note: physiological bounds are simulation triggers rather than clinical diagnostic limits
+Page 11 of 17
+Ye et al. Discover Computing (2026) 29:635 
+successfully delivered packet, residual energy, PDR under mobility/interference, and net-
+work lifetime.
+4.4 Statistical analysis
+For each scenario, the manuscript reports the mean and standard deviation across 30 
+independent runs, and the figures show 95% confidence intervals. HALA-DR is com -
+pared with the strongest baseline using a paired Wilcoxon signed-rank test because 
+normality cannot be assumed for bounded PDR and delay distributions. P values 
+are adjusted with Holm’s procedure across the four primary metrics, and Hedges’ g is 
+reported as an effect-size estimate. All statistical values were computed from the com -
+pleted run-level simulation outputs.
+5 Results and discussion
+This section reports results from 30 independent simulation runs. Values are consistent 
+across Figs. 3, 4 and 5; Tables 4, 5 and 6, and the confidence intervals, significance tests, 
+and effect sizes were calculated from the corresponding run-level outputs.
+5.1 Overall performance
+HALA-DR achieves the highest throughput (236 kbps) and PDR (95.1%), while reducing 
+mean latency to 45 ms and energy per successfully delivered packet to 0.94  mJ. Rela -
+tive to EPRS, the strongest baseline, throughput increases by 7.3%, PDR increases by 
+1.5% points, latency decreases by 13.5%, and energy per successfully delivered packet 
+decreases by 8.7%. The magnitude of the gain is consistent with the fact that EPRS 
+already incorporates route-stability and energy information.
+Fig. 3 Overall performance comparison under the 15-node main scenario. Error bars denote 95% confidence 
+intervals across 30 independent runs
+ 
+Page 12 of 17
+Ye et al. Discover Computing (2026) 29:635 
+Fig. 5 Ablation and efficiency analysis of HALA-DR. Error bars denote 95% confidence intervals
+ 
+Fig. 4 Scalability and robustness results: (a) PDR versus network size, (b) latency versus network size, (c) PDR under 
+mobility, and (d) PDR under interference
+ 
+Page 13 of 17
+Ye et al. Discover Computing (2026) 29:635 
+The paired comparison with EPRS yields Holm-adjusted p values of 0.004 for through-
+put, 0.018 for PDR, 0.006 for latency, and 0.011 for energy per successfully delivered 
+packet. The corresponding Hedges’ g values are 1.38, 0.62, -0.84, and − 0.91. These 
+results indicate a large throughput effect, a moderate reliability effect, and moderate-to-
+large latency and energy effects.
+HALA-DR also extends network lifetime to 118 h. Its 1.8% control overhead is higher 
+than that of fixed-rate operation and DDRA but lower than the path-management over -
+head of EPRS. This trade-off supports the design goal of improving QoS and energy effi -
+ciency without excessive signaling.
+5.2 Scalability, mobility, and interference robustness
+All methods degrade as the network grows because contention, collisions, and queueing 
+increase. At 25 nodes, HALA-DR retains a PDR of 91.8% and latency of 70 ms, com -
+pared with 80.4% and 101 ms for fixed-rate communication. The performance gap wid -
+ens with network size, indicating that state-aware rate selection becomes more useful as 
+communication resources become constrained. Nevertheless, latency increases from 45 
+Table 4 Main-scenario performance (mean ± SD over 30 independent runs)
+Method Throughput 
+(kbps)
+PDR (%) PLR (%) Latency 
+(ms)
+Energy/suc-
+cess (mJ)
+Lifetime 
+(h)
+Control 
+over-
+head (%)
+Fixed-rate 180 ± 13.4 88.2 ± 3.2 11.8 ± 3.2 66 ± 10.7 1.26 ± 0.13 89 ± 6.9 0.4
+DDRA [5] 205 ± 12.1 91.4 ± 2.7 8.6 ± 2.7 58 ± 9.4 1.12 ± 0.11 104 ± 6.3 1.5
+GABAT [6] 214 ± 11.6 92.8 ± 2.5 7.2 ± 2.5 54 ± 8.9 1.07 ± 0.10 110 ± 6.0 2.3
+EPRS [7] 220 ± 11.2 93.6 ± 2.4 6.4 ± 2.4 52 ± 8.6 1.03 ± 0.10 112 ± 5.7 2.8
+HALA-DR 236 ± 10.7 95.1 ± 2.1 4.9 ± 2.1 45 ± 7.5 0.94 ± 0.08 118 ± 5.4 1.8
+Table 5 Scalability and robustness data corresponding to Fig. 4
+Scenario Fixed-rate PDR/latency GABAT PDR/latency HALA-DR PDR/latency
+5 93.1 / 37 95.8 / 31 97.0 / 28
+10 91.0 / 44 94.3 / 36 96.0 / 32
+15 88.2 / 66 92.8 / 54 95.1 / 45
+20 84.6 / 82 90.4 / 68 93.5 / 57
+25 80.4 / 101 87.9 / 84 91.8 / 70
+Static 91.8 / — 94.7 / — 96.5 / —
+Walking 87.2 / — 91.9 / — 94.8 / —
+Running 82.9 / — 88.6 / — 92.3 / —
+Low interference 92.0 / — 95.1 / — 96.8 / —
+Medium interference 86.3 / — 91.4 / — 94.2 / —
+High interference 79.8 / — 86.5 / — 90.7 / —
+Entries are PDR (%) / latency (ms). A dash indicates that latency is not plotted for the categorical robustness condition
+Table 6 Ablation and decision-time results (mean ± SD)
+Variant PDR (%) Latency (ms) Network lifetime (h) Decision time (ms)
+Full HALA-DR 95.1 ± 2.1 45 ± 7.5 118 ± 5.4 1.9 ± 0.22
+Without health urgency 92.6 ± 2.5 49 ± 8.0 115 ± 5.7 1.6 ± 0.20
+Without link-quality term 90.8 ± 2.8 57 ± 9.2 113 ± 6.1 1.7 ± 0.21
+Without energy term 93.4 ± 2.4 46 ± 7.7 96 ± 6.5 1.8 ± 0.21
+Without hysteresis 91.9 ± 2.7 51 ± 8.5 110 ± 6.0 1.5 ± 0.18
+Fixed-rate 88.2 ± 3.2 66 ± 10.7 89 ± 6.9 1.1 ± 0.15
+Page 14 of 17
+Ye et al. Discover Computing (2026) 29:635 
+ms at 15 nodes to 70 ms at 25 nodes; HALA-DR therefore mitigates, but does not elimi -
+nate, congestion and should not be described as scale-invariant.
+Mobility and interference tests further clarify the mechanism. Under running, HALA-
+DR maintains a PDR of 92.3%, 3.7% points above GABAT. Under high interference, it 
+reaches 90.7%, 4.2 points above GABAT and 10.9 points above fixed-rate transmission. 
+The link-quality term and feedback update allow the controller to reduce overly aggres -
+sive rates when radio conditions deteriorate, while the emergency override preserves 
+priority for urgent traffic.
+5.3 Ablation, network lifetime, and decision cost
+Removing the link-quality term causes the largest degradation in reliability and latency: 
+PDR falls from 95.1% to 90.8%, and latency rises from 45 to 57 ms. This result supports 
+the claim that rate decisions should be constrained by measured channel conditions 
+rather than by physiological urgency alone. Removing physiological urgency reduces 
+PDR to 92.6% and weakens prioritization of critical packets, although the average deci -
+sion time decreases because one feature group is omitted.
+Removing the energy term has little effect on short-term PDR and latency but reduces 
+network lifetime from 118 h to 96 h. This separation is important because a component 
+can be essential for long-horizon sustainability even when its immediate packet-level 
+effect is small. Removing hysteresis lowers decision time to 1.5 ms but also decreases 
+PDR and increases latency because rapid rate switching generates transient queue -
+ing and control costs. The full model therefore provides the best overall balance, with a 
+modest 0.8 ms decision-time increase over fixed-rate operation.
+5.4 Practical interpretation
+The results support a cross-layer interpretation. Physiological urgency determines which 
+information requires rapid delivery; link quality constrains what the channel can sustain; 
+residual energy prevents short-term QoS gains from prematurely exhausting a sensor; 
+node quality suppresses unreliable measurements; and hysteresis converts noisy state 
+changes into stable control actions. The controller therefore does not maximize a single 
+metric; it balances reliability, latency, energy use, and signaling overhead while preserv -
+ing emergency escalation.
+A practical implementation can place the decision logic at the body coordinator, 
+avoiding continuous optimization on each sensor. Nodes need only report a compact 
+state vector and accept rate commands. The measured 1.9 ms decision time is small rela-
+tive to the 1 s decision interval, but embedded-hardware measurements are still required 
+because MATLAB workstation timing may underestimate microcontroller execution 
+and communication overhead.
+5.5 Limitations and threats to validity
+First, the evaluation is simulation-based; body shadowing, antenna detuning, coex -
+istence, and hardware energy costs may differ from the assumed models. Second, the 
+physiological thresholds are scenario configurations rather than clinically validated deci-
+sion rules. Third, only a single-WBAN star topology is evaluated; inter-WBAN inter -
+ference, relay operation, and implanted sensors require separate validation. Fourth, the 
+weights and thresholds are fixed and may therefore be scenario-dependent; a systematic 
+Page 15 of 17
+Ye et al. Discover Computing (2026) 29:635 
+sensitivity study across broader channel and physiological settings remains future work. 
+Fifth, the comparison reconstructs baselines from published descriptions, and code-
+level differences may remain when source implementations are unavailable.
+Future work should therefore include an IEEE 802.15.6 hardware testbed, measure -
+ments during controlled postures and motion, multi-WBAN coexistence, authenticated 
+rate commands, sensor-failure injection, prospective calibration of urgency thresholds, a 
+systematic weight/threshold sensitivity study, and public release of code, parameter files, 
+random seeds, and run-level results. A constrained learning method may also adapt the 
+fusion weights online, provided that interpretability and fail-safe emergency behavior 
+are preserved.
+6 Conclusion
+This paper formulates adaptive WBAN communication as a joint health-, link-, energy-, 
+and node-quality decision problem. HALA-DR uses a transparent fusion score, a four-
+level rate set, an emergency override, and hysteresis to balance reliability, latency, energy 
+use, and switching overhead. The methodology explicitly defines the controller variables, 
+normalization rules, thresholds, complexity, packet overhead, baseline-fairness condi -
+tions, simulation parameters, repeated-run protocol, confidence intervals, and statistical 
+tests needed for reproducibility. The experimental results show consistent and statis -
+tically supported improvements over fixed-rate, DDRA, GABAT, and EPRS baselines, 
+with stronger benefits under larger networks, mobility, and interference. Ablation results 
+attribute packet-level robustness mainly to link awareness and long-term lifetime mainly 
+to energy awareness. Future work will extend the evaluation to embedded hardware, 
+multi-WBAN coexistence, systematic parameter sensitivity, and clinically informed 
+deployment scenarios.
+Acknowledgements
+Not applicable.
+Author contributions
+Bizhou Ye: conceptualization, methodology, software, validation, data curation, and writing—original draft. Wei Zhou: 
+supervision, conceptualization, methodology, and writing—review and editing. Qiliang Liu: investigation, visualization, 
+validation, and writing—review and editing. All authors approved the manuscript.
+Funding
+This research did not receive any specific funding.
+Data availability
+The MATLAB scripts, parameter files, random seeds, and run-level outputs supporting the reported results are available 
+from the corresponding author on reasonable request and can be provided to the journal as supplementary material.
+Declarations
+Ethical approval
+Not applicable. The present study reports network simulations and does not involve human participants, identifiable 
+patient data, or clinical interventions.
+Consent to participate
+Not applicable.
+Consent for publication
+Not applicable.
+Competing interests
+The authors declare no competing interests.
+Received: 8 June 2026 / Accepted: 25 August 2026
+Page 16 of 17
+Ye et al. Discover Computing (2026) 29:635 
+References
+1. IEEE. IEEE standard for wireless body area networks. IEEE Std 802.15.6–2026, 2026.
+2. Yaghoubi M, Ahmed K, Miao Y. Wireless Body Area Network (WBAN): A Survey on Architecture, Technologies, Energy 
+Consumption, and Security Challenges. J Sens Actuator Networks. 2022;11(4):67. https://doi.org/10.3390/jsan11040067.
+3. Zhong L, et al. Technological requirements and challenges in wireless body area networks for health monitoring: a com-
+prehensive survey. Sensors (Basel). 2022;22(9):3539. https://doi.org/10.3390/s22093539.
+4. Alghamdi F, Bajaber F, Real-Time WBAN, Monitoring. An Adaptive Framework for Selective Signal Restoration and Physi-
+ological Trend Prediction. Sensors. 2026;26(5):1684. https://doi.org/10.3390/s26051684.
+5. Szkaliczki T. Discrete data rate adaptation for wireless body area networks. Appl Sci. 2023;13(14):8529. h t t p s : / / d o i . o r g / 1 0 . 3 3 
+9 0 / a p p 1 3 1 4 8 5 2 9 . 
+6. Goyal R, Patel RB, Bhaduria HS, Prasad D. An Energy Efficient QoS Supported Optimized Transmission Rate Technique in 
+WBANs. Wireless Pers Commun. 2021;117(1):235–60. https://doi.org/10.1007/s11277-020-07281-7.
+7. Memon S, et al. Enhanced Probabilistic Route Stability (EPRS) Protocol for Healthcare Applications of WBAN. IEEE Access. 
+2023;11:4466–77. https://doi.org/10.1109/ACCESS.2023.3235837.
+8. Mehmood G, Khan MZ, Bashir AK, Al-Otaibi YD, Khan S. An Efficient QoS-Based Multi-Path Routing Scheme for Smart 
+Healthcare Monitoring in Wireless Body Area Networks. Comput Electr Eng. 2023;109:108517. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . c o 
+m p e l e c e n g . 2 0 2 2 . 1 0 8 5 1 7 . 
+9. Ahmad N, et al. Improved QoS Aware Routing Protocol (IM-QRP) for WBAN Based Healthcare Monitoring System. IEEE 
+Access. 2022;10:121864–85. https://doi.org/10.1109/ACCESS.2022.3223085.
+10. Aryai P , Khademzadeh A, Jassbi SJ, Hosseinzadeh M, Hashemzadeh O, Shokouhifar M. Real-Time Health Monitoring in 
+WBANs Using Hybrid Metaheuristic-Driven Machine Learning Routing Protocol (MDML-RP). AEU - Int J Electron Commun. 
+2023;168:154723. https://doi.org/10.1016/j.aeue.2023.154723.
+11. Mehmood G, Khan MZ, Abbas S, Faisal M, Rahman HU. An Energy-Efficient and Cooperative Fault-Tolerant Communication 
+Approach for Wireless Body Area Network. IEEE Access. 2020;8:69134–47. https://doi.org/10.1109/ACCESS.2020.2986268.
+12. Saha R, Biswas S, Sarma S, Karmakar S, Das P . Design and Implementation of Routing Algorithm to Enhance Network 
+Lifetime in WBAN. Wireless Pers Commun. 2021;118(2):961–98. https://doi.org/10.1007/s11277-020-08054-y.
+13. Roy M, Chowdhury C, Ahmed G, Aslam N, Chattopadhyay S, Islam SU. Intra-WBAN Routing Using Zipf’s Law and Intelligent 
+Transmission Power Switching Approach (ZITA). J Ambient Intell Humaniz Comput. 2022;13(9):4135–49. h t t p s : / / d o i . o r g / 1 0 
+. 1 0 0 7 / s 1 2 6 5 2 - 0 2 2 - 0 4 0 1 0 - 9 . 
+14. Hu J, Xu G, Hu L, Li S. A Cooperative Transmission Scheme in Radio Frequency Energy-Harvesting WBANs. Sustainability. 
+2023;15(10):8367. https://doi.org/10.3390/su15108367.
+15. Ghosh B, Adhikary S, Chattopadhyay S, Choudhury S. Achieving Energy Efficiency and Impact of SAR in a WBAN Through 
+Optimal Placement of the Relay Node. Wireless Pers Commun. 2023;130(3):1861–84. h t t p s : / / d o i . o r g / 1 0 . 1 0 0 7 / s 1 1 2 7 7 - 0 2 3 - 1 
+0 3 6 1 - z . 
+16. Li J, Xiao J, Yuan J. Two-Tier Cooperation Based High-Reliable and Lightweight Forwarding Strategy in Heterogeneous 
+WBAN. Sustainability. 2023;15(6):5588. https://doi.org/10.3390/su15065588.
+17. Mohanty RK, Sahoo SP , Kabat MR. Sustainable Remote Patient Monitoring in Wireless Body Area Network with Multi-Hop 
+Routing and Scheduling: A Four-Fold Objective Based Optimization Approach. Wireless Netw. 2023;29(5):2337–51. h t t p s : / / 
+d o i . o r g / 1 0 . 1 0 0 7 / s 1 1 2 7 6 - 0 2 3 - 0 3 2 7 6 - x . 
+18. Shyja VI, Ranganathan G, Bindhu V. Link Quality and Energy Efficient Optimal Simplified Cluster-Based Routing Scheme to 
+Enhance Lifetime for Wireless Body Area Networks. Nano Commun Netw. 2023;37:100465. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . n a n c o 
+m . 2 0 2 3 . 1 0 0 4 6 5 . 
+19. Karunanithy K, Velusamy B. Edge device based efficient data collection in smart health monitoring system using wireless 
+body area network. Biomed Signal Process Control. 2022;72:103280. https://doi.org/10.1016/j.bspc.2021.103280.
+20. Pathak V, et al. Efficient Compression Sensing Mechanism Based WBAN System Using Blockchain. Secur Communication 
+Networks. 2023;2023:1–12. https://doi.org/10.1155/2023/8468745.
+21. Miraz MH, Ali M. Applications of blockchain technology beyond cryptocurrency. Ann Emerg Technol Comput. 2018;2(1):1-
+6. https://doi.org/10.33166/AETiC.2018.01.001.
+22. Abdelfatah RI, Saqr HM, Nasr ME. An Efficient Medical Image Encryption Scheme for (WBAN) Based on Adaptive DNA and 
+Modern Multi Chaotic Map. Multimedia Tools Appl. 2023;82:22213–27. https://doi.org/10.1007/s11042-022-13343-8.
+23. Azizan AH, Mostafa SA, Mustapha A, Foozy CFM, Wahab MHA, Mohammed MA, Khalaf BA. A machine learning approach 
+for improving the performance of network intrusion detection systems. Ann Emerg Technol Comput. 2021;5(5):201-208. 
+https://doi.org/10.33166/AETiC.2021.05.025.
+24. Sid A, Cresson PY, Joly N, Braud F, Lasri T. A Flexible and Wearable Dual-Band Bio-Based Antenna for WBAN Applications. 
+AEU - Int J Electron Commun. 2022;157:154412. https://doi.org/10.1016/j.aeue.2022.154412.
+25. Song W, Park J. Clustering-Based Channel Allocation Method for Mitigating Inter-WBAN Interference. Appl Sci. 
+2022;12:11851. https://doi.org/10.3390/app122211851.
+26. Al-Hiti AS, Sahbudin RKZ, Harun SW, Obaid AN, Hamdi MM, Al-Shareeda MA. Wireless body area networks: applications 
+and congestion control technologies. In: Proceedings of the 2023 5th International Congress on Human-Computer Inter-
+action, Optimization and Robotic Applications (HORA); 2023. p. 1–7. https: //d oi. or g/10 .1109/HOR A583 78.2 023.10156683.
+27. Singh S, Prasad D. Wireless Body Area Network (WBAN): A Review of Schemes and Protocols. Mater Today: Proc. 
+2022;49:3488–96. https://doi.org/10.1016/j.matpr.2021.05.564.
+28. Ahmad N, Shahzad B, Arif M, Izdrui D, Ungurean I, Geman O. An energy-efficient framework for WBAN in health care 
+domain. J Sens. 2022;2022:5823461. https://doi.org/10.1155/2022/5823461.
+29. Roy S, Roy M, Chowdhury C. Novel data transmission schemes for inter-wban networks using a markov decision process. 
+Wireless Pers Commun. 2023;131(2):897–919. https://doi.org/10.1007/s11277-023-10460-x. 
+30. Chen D-R. Integrating IoT in WBANs: An Energy-Efficient and QoS-Aware Approach for Rapid Model-Driven Transmission 
+Power Control and Link Adaptation. Internet Things. 2024;25:101091. https://doi.org/10.1016/j.iot.2024.101091.
+31. Arafat MY, Pan S, Bak ES. A Q-Learning-Based QoS-Aware Routing for IoMT-Enabled Wireless Body Area Networks for Smart 
+Healthcare. Internet Things. 2024;26:101151. https://doi.org/10.1016/j.iot.2024.101151.
+Page 17 of 17
+Ye et al. Discover Computing (2026) 29:635 
+32. Chen D-R. Energy-Efficient QoS-Constrained Link Adaptation for Non-Stationary Wireless Body Area Networks Using 
+Gaussian Thompson Sampling. Internet Things. 2026;38:101954. https://doi.org/10.1016/j.iot.2026.101954.
+Publisher’s note
+Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional affiliations.

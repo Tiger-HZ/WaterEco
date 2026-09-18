@@ -1,0 +1,924 @@
+npj | science of food Article
+Published in partnership with Beijing Technology and Business U niversity & International Union of Food Science and Technology
+Article in Press https://doi.org/10.1038/s41538-026-01160-4
+Multiomics proﬁling identiﬁes molecular
+signatures of meat quality in sika deer cuts
+Check for updates
+Lan Tang1, Qianghui Wang1, Haihua Xing1, Derui Zhao1, Yukai Ma1,Q i n gW a n g1, Tao Zhu1& Heping Li1
+Sika deer ( Cervus nippon hortulorum ) meat is increasingly recognized for its nutritional and culinary
+value, yet the molecular mechanisms underlying its quality traits remain poorly understood. In this
+study, we performed integrated transcriptomic, proteomic, and metabolomic pro ﬁling of six
+representative muscle cuts from farmed sika deer (n = 12). Intercostal and trapezius muscles exhibiting
+enriched features related to tenderness, marbling, and ﬂavor. Weighted gene co-expression network
+analysis identiﬁed two convergent multi-omics regulatory axes, in which transcriptional programs
+represented by ME6_trans and ME7_trans were linked to protein modules involved in muscle
+structural organization and contractile metabolism (ME3_protein), ultimately re ﬂected in metabolite
+clusters associated with lipid utilization and energy homeostasis (ME2_metab). These coordinated
+transcription-to-protein-to-metabolite relationships suggest integrated regulation of extracellular
+matrix remodeling, muscle ﬁber functional properties, and lipid metabolic adaptation underlying
+region-dependent molecular variation in sika deer muscle. In addition, RT –qPCR and Western blot
+validation of selected key factors demonstrated expression patterns consistent with the multi-omics
+analyses, supporting the robustness of the identiﬁed molecular features. This study represents theﬁrst
+integrative multi-omics characterization of molecular variation across major muscle cuts in farmed
+sika deer, providing preliminary systems-level insights into coordinated metabolic and structural
+features associated with meat quality-related traits.
+Sika deer (Cervus nippon hortulorum) is increasingly recognized as a pre-
+mium meat source due to its high protein content, low fat, and favorable
+amino acid and fatty acid composition 1,2.C h i n a ,a st h ew o r l d’sl a r g e s t
+producer of farmed sika deer with an estimated annual population of
+700,000, has traditionally prioritized the harvesting of antlers for medicinal3.
+In recent years, the growing consumer demand for venison has prompted a
+strategic shift in the sika deer industry,transitioning from traditional antler-
+oriented practices toward meat-focused production systems4.C o n c u r r e n t l y ,
+sika deer meat has entered high-end food markets globally. In addition,
+regions such as New Zealand, Europe, and the United States have estab-
+lished integrated systems encompassing deer farming, meat quality eva-
+luation, and product marketing 5. These developments underscore the
+urgent need for systematic research on venison to support industry
+advancement and the comprehensive elucidation of meat quality
+characteristics.
+However, research on deer meat quality remains sparse, particularly at
+the molecular level. To date, most studies have focused on macroscopic or
+physicochemical parameters, with limited application of high-throughput
+omics approaches. For example, a recent study by Jin et al. provided a
+comprehensive analysis of the physicochemical and nutritional properties of
+meat from twelve sika deer cut parts, highlighting site-speciﬁc differences in
+pH, tenderness, amino acid content, and fatty acid composition4. However,
+such studies lack insight into the molecular regulatory mechanisms driving
+these differences. In recent years, high-throughput omics approaches—
+including transcriptomics, proteomics, and metabolomics —have been
+widely employed to elucidate meat quality traits in major livestock species
+such as cattle, pigs, and poultry6–8. For instance, a 2024 study on beef cattle
+undergoing compensatory growth employed RNA-Seq to identify 57 dif-
+ferentially expressed genes and 31 enriched pathways related to pH, cooking
+loss, and fat content, highlighting the complement–coagulation–ﬁbrinolysis
+system as a key regulatory network9. In pigs, a proteomic analysis used data-
+independent acquisition mass spectrometry to investigate the effects of
+chilling rate on pork quality, pinpointing several proteins involved in cut
+structure and energy metabolism10. Additionally, a metabolomic study of
+Jingyuan chickens identiﬁed 4643 differential metabolites across age groups,
+revealing links between oxidative phosphorylation,β-alanine metabolism,
+and cut lipid deposition with changes in pH₄₅min and color traits11.D e s p i t e
+these advances in other livestock, comparable single-omics studies on sika
+deer are still absent, and integrated multi-omics investigations in deer meat
+have not yet been conducted. This gap underscores the need for a
+College of Wildlife and Protected Area, Northeast Forestry University, Harbin, China. e-mail: lihepinghrb2002@nefu.edu.cn
+npj Science of Food Article in Press
+1234567890():,;
+1234567890():,;
+comprehensive analysis of sika deer to elucidate the molecular basis of cut-
+speciﬁc meat quality traits, which would provide valuable insights for meat
+science and breeding strategies in cervids.
+In response to this research gap, we employed an integrative multi-
+omics approach to analyze six representative cuts from farmed sika deer,
+incorporating transcriptomic, proteomic, and metabolomic data. By com-
+paring samples from deer ofdifferent sexes and slaughter seasons, we further
+investigated how intrinsic (sex-related) and extrinsic (environmental) fac-
+tors inﬂuence meat quality traits. After identifying differentially expressed
+genes, proteins, and differentially ab undant metabolites, we performed
+functional enrichment analysis and constructed co-expression networks for
+each omics dataset using Weighted Gene Co-expression Network Analysis
+(WGCNA)12, followed by cross-omics integration. This integrative analysis
+facilitated the identiﬁcation of putative co-expression modules associated
+w i t hr e g i o n a lv a r i a t i o ni nm o l e c u l a rf e a t u r e sr e l a t e dt om e a tq u a l i t y .O u r
+study not only characterizes the molecular basis of cut-speciﬁcm e a tq u a l i t y
+but also provides theoretical and data-driven support for future research on
+sika deer improvement and molecular breeding strategies.
+Results
+Overview of multi-omics analysis design and dimensionality
+reduction
+Yinshi Sun et al. revealed that LD and QF exhibit higher shear force and
+muscle ﬁber density4, whereas IM and T are characterized by greater
+intramuscular fat content and tenderness. BB and GM display moderate
+levels of water retention and collagen content, reﬂecting distinct and diverse
+meat quality traits among muscle regions. To explore the molecular
+mechanisms underlying meat quality differences across anatomical loca-
+tions, we performed integrated transc riptomic, proteomic, and metabo-
+lomic proﬁling on six representative sika deer cuts, and the experimental
+design and workﬂow are shown in Fig. 1. After normalization, each omics
+level underwent dimensionality reduction to visualize overall expression
+variation (Supplementary Fig. 1A–C ) .N o t a b l y ,n oc l e a rc l u s t e r i n gb yc u t
+type was observed in transcriptomics (PCA), proteomics (PCA), or meta-
+bolomics (PLS-DA), indicating that subtle yet biologically meaningful dif-
+ferences may be embedded within speciﬁc regulatory features explored in
+subsequent analyses.
+Transcriptional characteristics across cuts
+To explore transcriptional differences among cut regions, we performed
+differential gene expression analysis using a “one-vs-rest” comparison
+strategy while adjusting for sex, sam pling season, and individual animal
+identity. We identi ﬁed a variable number of signi ﬁcantly differentially
+expressed genes (DEGs) across six cuts: BB (DEGs = 2), IM (DEGs = 26),
+QF (DEGs = 1), T (DEGs = 23), GM (DEGs = 4), and LD (DEGs = 5)
+(Fig. 2A and Supplementary Data 2). Subsequent KEGG enrichment ana-
+lysis revealed that some DEGs were signiﬁcantly associated with pathways
+implicated in meat quality traits (Fig.2B and Supplementary Data 2). For
+example, the Protein digestion and ab sorption pathway includes several
+genes involved in cellular structure and cytoskeletal organization, such as
+collagens and actins, which may affect muscle ﬁber integrity and inter-
+muscular tenderness13.A d d i t i o n a l l y ,t h eT G F -β signaling pathway, which is
+involved in muscle growth and differentiation, may play a role in regulating
+muscle development and tenderness14, and the PPAR signaling pathway,
+linked to lipid metabolism, could inﬂuence intramuscular fat deposition and
+ﬂavor formation15.I na d d i t i o n ,t h eE C M–receptor interaction pathway,
+involving collagens and integrins, may affect tissue stability and shear force,
+thereby contributing to meat toughness 16. The IM region exhibited the
+greatest number of DEGs, including several upregulated genes closely linked
+to meat quality (Fig. 2C). ADIPOQ and PLIN1, key regulators of lipid
+metabolism, were signiﬁcantly upregulated and may enhance marbling and
+juiciness17,18. Meanwhile, upregulation of ECM-related genes such as
+COL11A2, COL12A1, COL22A1, COMP, FMOD,a n d THBS4 suggests
+enhanced extracellular matrix stability, potentially improving cut structure
+and tenderness19. These results are consistent with Yinshi Sun et al.'s meat
+quality studies and highlight the functional relevance of these transcrip-
+tional differences in shaping region-speciﬁc meat characteristics4.
+Finally, we conducted differential transcriptomic expression analyses
+across the six cuts regions in terms of sex and seasonal factors. In terms of
+sex, male samples exhibited more upregulated genes overall, with the GM
+cuts showing the most signiﬁcant difference, containing 288 differentially
+expressed genes (Fig. 2D and Supplementary Data 2). KEGG pathway
+analysis revealed that male-upregulated genes were predominantly enriched
+in pathways related to protein processing in the endoplasmic reticulum and
+lipid metabolism (Fig.2E and Supplementary Data 2), suggesting enhanced
+activity in protein synthesis and lipid regulation. Regarding seasonal effects,
+Fig. 1 | Experimental design and multi-omics
+workﬂow. Overview of the experimental design. A
+total of 12 farmed sika deer were sampled, and six
+representative cuts regions were collected from each
+animal. Transcriptomic (RNA-Seq), proteomic
+(DIA-MS), and metabolomic (LC-MS/MS) analyses
+were performed on all cut samples to investigate
+molecular mechanisms underlying meat quality
+differences.
+https://doi.org/10.1038/s41538-026-01160-4 Article
+npj Science of Food Article in Press
+a total of 921 signi ﬁcantly different genes were identiﬁed, with 533 upre-
+gulated in spring and 388 in winter (Fig. 2F and Supplementary Data 2).
+KEGG enrichment indicated that spr ing-upregulated genes were mainly
+associated with protein synthesis and lipid-related signaling pathways, while
+winter-upregulated genes were enriched in carbon metabolism and circa-
+dian rhythm pathways (Fig.2G and Supplementary Data 2). In summary,
+the differences in gene expression across cuts regions, sexes, and seasons
+reﬂect transcriptomic-level regulation of metabolic activity, structural
+integrity, and physiological functions in cuts tissues, ultimately contributing
+to the molecular basis underlying sika deer meat quality traits.
+Proteomic proﬁles and functional insights
+A total of 5367 proteins were detected (Supplementary Fig. 2A), with
+approximately 98% (5271) shared across all cuts (Fig.3A), indicating a high
+overlap in protein types among different tissues. Based on this, differential
+expression analysis was conducted by comparing each cuts against the
+others, revealing differentially expressed proteins (DEPs) in each: BB
+(DEPs = 40), GM (DEPs = 56), IM (DEPs = 49), LD (DEPs = 60), QF
+(DEPs = 128), and T (DEPs = 63) (Fig. 4B and Supplementary Data 4).
+Functional enrichment showed region-speciﬁc proteomic patterns asso-
+ciated with cuts quality (Fig. 3C and Supplementary Data 3). LD-speciﬁc
+proteins were enriched in transcriptional regulation and arginine/proline
+metabolism pathways, indicating act ive protein synthesis and turnover,
+which may support tenderness and functional integrity 20. In contrast,
+downregulated proteins in LD were associated with lipid metabolism and
+the PI3K-Akt signaling pathway, su ggesting a lower capacity for fat
+deposition and stress adaptation21. QF was enriched in glycolysis and pyr-
+uvate metabolism, reﬂecting high-energy metabolism that may in ﬂuence
+cuts pH and ﬂavor22. IM and GM were associated with lysosomal degra-
+dation and glycosaminoglycan metabolism, highlighting their potential role
+in maintaining extracellular matrix integrity and improving textural
+properties23,24. BB and T showed upregulation in immune-related and
+developmental pathways, possibly re ﬂecting stress response or repair
+mechanisms with less direct contribution to meat quality.
+Regarding sex differences (Supplementary Fig. 2B and Supplementary
+Data 3), male samples exhibited upregulation in cAMP signaling and
+morphine addiction pathways, suggesting more dynamic responses in
+neuromuscular regulation25 (Fig. 3D and Supplementary Data 3). Female
+samples were enriched in ribosome biogenesis, basal transcription factors,
+and ABC transporters, indicating enhanced capacity for protein synthesis
+and metabolic stability26. In terms of seasonal differences (Supplementary
+Fig. 2C and Supplementary Data 3), spring samples showed enrichment in
+transcriptional regulation and virus-related pathways, suggesting higher
+metabolic and renewal activity. In contrast, winter samples were enriched in
+carbon ﬁxation, galactose metabolism, and starch/sucrose metabolism
+pathways, implying greater capacity for energy storage and sugar accu-
+mulation, which may enhance ﬂavor and nutritional quality (Fig. 3Ea n d
+Supplementary Data 3). Collectively, proteomic proﬁl e sa c r o s sc u t st y p e s ,
+sexes, and seasons highlight functional variations in metabolic regulation,
+structural maintenance, and lipid homeostasis, laying the molecular foun-
+dation for distinct meat quality traits.
+Metabolomic differences and functional pathways
+A total of 1124 metabolites were identi ﬁed (Fig. 4A), primarily encom-
+passing lipids and lipid-like molecules (N = 278), and fatty acyls were the
+most abundant subclass wi thin lipids, suggesting robust activity in lipid
+synthesis, membrane stability, andﬂavor precursor metabolism, potentially
+inﬂuencing ﬂavor, fat deposition, and metabolic activity 27. Differential
+expression analysis, adjusted for sex,sampling season, and individual ani-
+mal identity, revealed variable numbers of signiﬁcantly altered metabolites
+across cuts (Fig. 4B and Supplementary Data 4), with T and IM cuts exhi-
+biting the highest counts, indicating more active metabolic features. Func-
+tional insights revealed region-speciﬁc enrichment of key metabolites and
+lipid classes closely related to meat q uality. IM exhibited high levels of
+L-lysine and ADP, participating in amino acid and nucleotide metabolism,
+alongside fatty acyl compounds such as tiglic acid, oleamide, and propio-
+nylcarnitine, likely enhancingﬂavor, lipid aroma, and juiciness28 (Supple-
+mentary Fig. 3A). In LD, the enrichment of L-Anserine and Lipoamide
+(linked to antioxidant defense and lipid transport), along with LPE 16:1 (a
+glycerophospholipid), may contribute to membrane stability and meat
+tenderness (Supplementary Fig. 3B). T was enriched in nucleotide meta-
+bolites (Guanosine, Uridine) and structural lipids (PC O-18:0), suggesting
+Fig. 2 | Transcriptional characteristics across cut regions. A Differential
+expression analysis of six cuts regions. X-axis shows cuts types; red dots indi-
+cate upregulated genes, blue dots in dicate downregulated genes. B KEGG
+pathway enrichment of all signi ﬁcantly differentially expressed genes across
+regions. X-axis shows gene counts; color represents adjusted p values.
+C Boxplots showing expression of genes in ﬁve key pathways for IM vs. other
+regions. Red indicates IM samples; blue indicates other cuts samples.
+D Transcriptomic differences across cuts regions strati ﬁed by sex, same as
+above. E KEGG enrichment of DEGs upregulated in males (red) or females
+(blue) across all regions. X-axis shows –log10 adjusted p values.
+F Transcriptomic differences across cuts regions strati ﬁed by season, same as
+above. G KEGG enrichment of DEGs upregulated in spring (red) or winter
+(blue) across all regions. X-axis shows –log10 adjusted p values.
+https://doi.org/10.1038/s41538-026-01160-4 Article
+npj Science of Food Article in Press
+enhanced energy balance and membraneintegrity (Supplementary Fig. 2C).
+QF showed enrichment in Pyridoxal-5 ’-phosphate and diverse glycer-
+ophospholipids and fatty acyls (Supplementary Fig. 3D). Enrichment ana-
+lyses of signi ﬁcantly altered metabolites revealed their involvement in
+nucleotide, lipid, amino acid, and energy metabolism (Fig. 4Ca n dS u p -
+plementary Data 4), with lipid subclass analysis indicating dominant con-
+tributions from fatty acyls, glycerophospholipids, and sterol lipids (Fig.4D
+and Supplementary Data 4), all of whic h are critical for tissue integrity,
+ﬂavor, and meat texture.
+Regarding biological variation, PLS-DA results demonstrated clear
+separations between sex and seasonalgroups (Supplementary Fig. 3E, G).
+Seasonal analysis identiﬁed 294 differential metabolites (Supplementary
+Fig. 3F and Supplementary Data 4); KEGG pathways revealed that spring
+samples were enriched in nucleotide and general metabolic pathways,
+suggesting elevated biosynthetic and n utrient-processing activity, while
+winter samples showed enrichment incarbohydrate metabolism and ner-
+vous system pathways (Fig. 3E). Sex-based analysis identiﬁed 158 differ-
+ential metabolites with region-speciﬁc patterns (Supplementary Fig. 3H and
+Supplementary Data 4), and GSEA results further showed male samples had
+Fig. 3 | Proteomic proﬁles and functional insights across cuts regions in sika deer.
+A Venn diagram illustrating the overlap of identi ﬁed proteins among six cuts
+regions, with 98% shared across all samples. B Differential protein expression pat-
+terns for each region; X-axis shows cuts parts andY-axis shows log2FC, with red and
+blue indicating signi ﬁcantly upregulated and downregulated proteins, respectively.
+C KEGG pathway enrichment of signi ﬁcantly altered proteins in each region; red
+and blue bars represent up- and downregulated pathways, respectively. D KEGG
+enrichment of differentially expressed proteins between male and female samples;
+red and blue indicate pathways upregulated in male and female groups, respectively.
+E KEGG enrichment of differentially expressed proteins between spring and winter
+groups; red and blue indicate pathways upregulated in spring and winter samples,
+respectively.
+https://doi.org/10.1038/s41538-026-01160-4 Article
+npj Science of Food Article in Press
+enhanced activity in coremetabolic pathways, while sex-biased differences
+in lipid and nervous system-related pathways varied across cuts (Fig.4F).
+Collectively, theseﬁndings suggest that regional metabolic proﬁles and sex/
+season-dependent differences in structural lipids and core metabolic pro-
+cesses jointly contribute to the diversity of sika deer quality across differ-
+ent cuts.
+WGCNA module– trait associations
+Transcriptomic, proteomic, and me tabolomic levels exhibit strong
+regulatory coordination, which shapes cuts structure, metabolic
+states, and ﬂavor pro ﬁles. To investigate their interconnections, we
+performed WGCNA on each omics d ataset using optimized soft
+thresholds (Supplementary Fig. 4A –C), identifying 25 transcriptomic
+(Fig. 5A), 14 proteomic modules (Fig. 5B), and 13 metabolomic
+(Fig. 5C). We then modeled module –cuts relationships using linear
+regression (adjusted for sex, sampling season, and individual animal
+identity). Results revealed multiple modules signi ﬁcantly associated
+with IM and T in the transcriptome (Fig. 5D ) ,M E 3 ,M E 8 ,M E 7 ,
+ME10, and ME11 in the proteome (Fig. 5E), and ME2 and ME4 in
+the metabolome (Fig. 5F). Proteomic ME3, assoc iated with glycolysis,
+amino acid biosynthesis, and cytos keletal regulation, showed high
+expression in IM and low in QF, supporting roles in marbled, soft
+tissues29 (Fig. 5G). ME8, enriched in structural and metabolic path-
+ways including PPAR and adrenaline signaling, was highest in IM
+and lowest in QF, marking it as a key regulator of tenderness and
+lipid-rich meat quality 30 (Fig. 5H). The ME2 metabolic module,
+enriched in nucleotide and amino acid metabolism, was positively
+associated with QF and negatively with IM and T (Fig. 5I). This
+suggests that ME2 contributes to fast-twitch cuts properties such as
+higher metabolic activity, larger ﬁber size, and protein synthesis,
+while lower ME2 expression in IM and T aligns with slower oxidative
+ﬁbers associated with tenderness and marbling 31.M E 4w a se n r i c h e d
+in lipid metabolism, neuroendocrine signaling, and nervous system
+pathways. Its low expression in IM and T may promote fat accu-
+mulation and softness, while its el evated expression in QF supports
+ﬁrm cuts texture 32 (Fig. 5J).
+Fig. 4 | Metabolomic differences and enriched pathways across sika deer cuts
+regions. A Classiﬁcation and subclass distribution of identi ﬁed metabolites.
+B Differential metabolite expression across cuts regions; red indicates upregulation
+and blue indicates downregulation. C KEGG pathway enrichment network of sig-
+niﬁcantly different metabolites. D LIPID MAPS enrichment network of signiﬁcantly
+different metabolites. E KEGG enrichment of metabolites upregulated in males (red)
+and females (blue); x-axis represents adjusted p values. F GSEA enrichment score
+heatmap across seasons; x-axis shows cuts regions, and color indicates NES based
+on FC.
+https://doi.org/10.1038/s41538-026-01160-4 Article
+npj Science of Food Article in Press
+In summary, multi-omics WGCNA identi ﬁed functional modules
+linked to speciﬁc cuts, providing system-level insights into the molecular
+regulation of regional meat quality traits.
+Multi-omics integration reveals key regulatory hubs
+To explore multi-level regulatory mechanisms, we constructed a cross-
+omics interaction network based on WGCNA module correlations and
+identiﬁed several signi ﬁcantly associated module pairs across tran-
+scriptomic, proteomic, and metabolomic levels (Fig. 6A). Among them,
+ME4_metab and ME8_protein exhibited strong negative correlation and
+were both highly associated with the IM region, suggesting that this cuts area
+features lipid-driven and endocrine-regulated activity, while having lower
+energy and structural metabolism—traits consistent with soft texture and
+rich ﬂavor. Moreover, ME3_protein and ME2_metab formed two inte-
+grated regulatory chains with ME6_trans and ME7_trans
+(ME6_trans–ME3_protein-ME2_metab and ME7_trans –ME3_protein-
+ME2_metab). ME6_trans was enrichedin oxidative phosphorylation and
+glycolysis (Fig. 6B), while ME7_trans focused on carbon metabolism and
+lipid biosynthesis (Fig.6C), indicating their roles in energy supply, cutsﬁber
+formation, and fat deposition.
+We further constructed a tri-omics regulatory network (Fig.6D) and
+identiﬁed key hub molecules. Transcriptomic hub genes like COQ9 and
+NDUFA8 (energy metabolism) were highly expressed in LD, BB, and GM,
+whereas ITGA6 and WWC1 (linked to structural integrity and lipid meta-
+bolism) were enriched in IM and QF, reﬂecting their roles in fat accumu-
+lation and cuts quality formation (Fig. 6E). In the proteomic level, TBB1,
+TNNC1, TNNT1,a n dMYL10 emerged as key hub proteins, showing high
+expression in IM and T —cuts regions known for higher fat content and
+tender texture—and lower levels in the ﬁrmer BB and QF regions. TBB1
+contributes to cytoskeletal integrity, TNNC1 and TNNT1 regulate slow-
+twitch ﬁber contraction, and MYL10 inﬂuences cuts ﬂexibility and lipid
+metabolism. Their elevated expressionmay support the softness, elasticity,
+and marbling features of IM and T, reinforcing their superior tenderness
+and ﬂavor (Fig.6F). At the metabolite level, lipid oxidation products such as
+Prostaglandin G2 and (±)11-HETE were downregulated in IM and T,
+potentially contributing to tenderness and ﬂavor. Conversely, 19(R)-
+hydroxy PGE2 was elevated in QF, likely supporting rapid metabolism and
+ﬁrmer texture (Fig.6G).
+In summary, our multi-omics WGCNA integration identiﬁed a set of
+key regulatory modules and hub molecules associated with cuts region-
+speciﬁc traits. In particular, the two core interaction chains —
+ME6_trans–ME3_protein-ME2_metab and ME7_trans –ME3_protein-
+ME2_metab—highlight the coordinated regulation of lipid metabolism,
+energy supply, and tissue structure, representing majorﬁndings of this study
+and offering valuable targets for meat quality improvement and molecular
+breeding.
+RT-qPCR and Western blot validation of key factors
+FMOD, THBS4, and PLIN1 were selected as representative IM-enriched
+genes, while TNNC1 and TNNT1 were chosen as hub proteins from the
+multi-omics network, and validation was performed using samples from
+adult male animals with three indepen dent biological replicates for each
+muscle region. RT–qPCR analysis (Fig. 7A–E) demonstrated that TNNC1
+and TNNT1 exhibited consistently higher expression in IM, whileFMOD,
+THBS4,a n d PLIN1 displayed region-dependent expression patterns with
+relatively elevated levels in IM compared to several other cuts. These trends
+were concordant with the transcript omic result. Western blot analysis
+(Fig. 7F–H) further conﬁrmed differential protein abundance of FMOD,
+Fig. 5 | WGCNA across transcriptome, proteome, and metabolome. A–C Cluster
+dendrograms showing WGCNA modules identi ﬁed from transcriptomic (25
+module), proteomic (14 module), and metabolomic (13 module) data, respectively.
+D–F Correlation heatmaps between WGCNA modules and cuts regions for tran-
+scriptome, proteome, and metabolome. Red and blue indicate positive and negative
+correlations; *, **, and *** represent p < 0.05, 0.01, and 0.001, respectively.G KEGG
+enrichment of proteins in ME3 proteomic module, same as above. H KEGG
+enrichment of proteins in ME8 proteomic module, same as above. I KEGG
+enrichment of metabolites in ME2 metabolic module.X-axis indicates the number of
+metabolites enriched in each pathway, the Y-axis shows KEGG pathway names, and
+the color gradient represents adjustedp values. J KEGG enrichment of metabolites in
+ME4 metabolic module, same as above.
+https://doi.org/10.1038/s41538-026-01160-4 Article
+npj Science of Food Article in Press
+TNNC1,a n d TNNT1 across QF, IM, and T, with the highest expression
+observed in IM and relatively elevated levels in T, consistent with the pro-
+teomic pro ﬁles. Original blots are shown in Supplementary Figs. 5 –7.
+Collectively, these cross-platform validations reinforce the reliability of the
+multi-omicsﬁndings and support the relevance of these molecules to cut-
+speciﬁc molecular characteristics associated with meat quality traits.
+Discussion
+Sika deer meat has attracted increasing attention because of its high protein
+content, low fat level, and favorable nutritional composition. Although
+previous research has reported differences in physicochemical traits among
+venison cuts, the molecular mechanismsassociated with these differences
+are still not fully understood 1–3. In recent years, omics technologies have
+been increasingly applied in cattle, pigs, and poultry to investigate biological
+Fig. 6 | Multi-omics integration reveals key regulatory hubs associated with meat
+quality in different cuts regions. A Correlation network among WGCNA modules
+derived from transcriptomics (red nodes), proteomics (green nodes), and metabo-
+lomics (black nodes). Node size represents the number of features in each module;
+edge color indicates the correlation direction (red: positive; blue: negative), with all
+edges showing signi ﬁcant correlations (| r| > 0.5, p < 0.05). B KEGG pathway
+enrichment of transcriptomic module ME6. C KEGG pathway enrichment of
+transcriptomic module ME7. D Multi-omics correlation networks for two
+regulatory cascades: ME6_trans –ME3_protein-ME2_metab and
+ME7_trans–ME3_protein-ME2_metab. Node color indicates data level (red: tran-
+scriptome, green: proteome, black: metabolome,); node size re ﬂects node con-
+nectivity (degree), and edge color indicates the correlation direction (red: positive;
+blue: negative) with |r| > 0.3 and p < 0.05. Expression boxplots of hub feature, include
+transcriptomics (E), proteins ( F) and metabolites ( G) from the two regulatory cas-
+cades across cuts regions. X-axis shows feature names, Y-axis represents normalized
+expression values, and color indicates cuts type.
+Fig. 7 | RT-qPCR and Western blot validation of key factors.RT-qPCR analysis of
+FMOD (A), TNNC1 (B), TNNT1 (C), THBS4 (D), and PLIN1 (E) across six cuts
+regions. The x-axis represents cuts regions, and the y-axis shows relative expression
+levels. A Western blot analysis of FMOD, TNNC1, and TNNT1 in QF, IM, and T,
+with three biological replicates per group.
+https://doi.org/10.1038/s41538-026-01160-4 Article
+npj Science of Food Article in Press
+processes associated with tenderness, fat deposition, and ﬂavor
+development6–10. Comparable studies in sika deerare still limited, especially
+in integrating multiple omics layers. In this study, transcriptomic, pro-
+teomic, and metabolomic datasets were analyzed to characterize molecular
+variation among six representative muscle cuts from farmed sika deer.
+Different muscle cuts exhibited varying degrees of molecular variation
+across the transcriptomic, proteomic, and metabolomic datasets. At the
+transcriptomic level, IM showed rela tively more differentially expressed
+genes, including ADIPOQ and PLIN1, which are associated with lipid
+metabolism and intramuscular fat deposition 17,18. Several extracellular
+matrix-related genes, including COL11A2, COL12A1, COL22A1, COMP,
+FMOD,a n dTHBS4, were also relatively highly expressed in IM. These genes
+have been reported to participate in extracellular matrix organization and
+structural maintenance in skeletal muscle 19. Pathways including PPAR
+signaling, ECM–receptor interaction, and TGF-β signaling were also enri-
+ched among different muscle regions. Previous studies have linked PPAR
+signaling to lipid metabolism and intramuscular fat deposition, whereas
+ECM-related pathways may contribute to tissue structure and tenderness-
+associated properties13,19. At the proteomic level, QF was mainly enriched in
+glycolysis and pyruvate metabolism pathways, which may inﬂuence muscle
+energy metabolism and meat quality characteristics22. In contrast, IM and
+GM were associated with lysosomal d egradation and glycosaminoglycan
+metabolism, pathways potentially re lated to extracellular matrix main-
+tenance and tissue properties 23,24. In addition, proteins such as TNNC1,
+TNNT1,a n dMYL10 showed relatively high abundance in IM and T, con-
+sistent with their roles in muscle contraction and slow-twitch ﬁber char-
+acteristics. Metabolomic analysis identi ﬁed fatty acyls,
+glycerophospholipids, and sterol lipids as major differential metabolite
+classes among muscle regions 27,28. IM contained relatively high levels of
+metabolites such as tiglic acid, oleamide, and propionylcarnitine, which may
+be associated with lipid metabolism andﬂavor-related characteristics28.
+Cross-omics integration identiﬁed several correlated transcriptomic,
+proteomic, and metabolomic modules associated with regional differences
+among muscle cuts. Among these, ME3_protein and ME8_protein were
+enriched in pathways including glycolysis, amino acid biosynthesis, cytos-
+keletal regulation, and PPAR signaling. Previous studies have linked these
+processes to tenderness-related traits and intramuscular fat deposition29,30.
+Metabolomic modules ME2 and ME4 displayed opposite association pat-
+terns between QF and IM/T, suggesting differences in energy metabolism
+and lipid-associated processes among muscle regions31,32. Two correlated
+module chains, ME6_trans –ME3_protein–ME2_metab and
+ME7_trans–ME3_protein–ME2_metab, connected transcriptomic, pro-
+teomic, and metabolomic features a ssociated with muscle structure and
+metabolism. In addition, hub molecules includingCOQ9, NDUFA8, ITGA6,
+TNNC1,a n dTNNT1 displayed region-speciﬁc expression patterns. Finally,
+RT–qPCR and Western blot analyses of genes associated with lipid
+deposition, extracellular matrix-related characteristics, and muscle con-
+traction features (FMOD, THBS4, PLIN1, TNNC1,a n d TNNT1)f u r t h e r
+supported the expression patterns observed in the multi-omics analyses.
+Several limitations should also be considered. First, this study mainly
+focused on molecular proﬁling and did not include direct, detailed histo-
+logical analyses of meat quality traits. Second, the relationships identiﬁed by
+WGCNA were based on correlation analyses and cannot fully demonstrate
+causal regulation among genes, proteins, and metabolites. Although
+RT–qPCR and Western blot analyses supported several of the observed
+expression patterns, validation was limited to selected targets and repre-
+sentative muscle regions.
+In conclusion, this study provides an integrative characterization of
+molecular differences across six maj or muscle cuts in farmed sika deer.
+Integrated transcriptomic, proteomic, and metabolomic analyses revealed
+region-dependent molecular differences among muscle regions, with
+intercostal and trapezius muscles showing coordinated molecular features
+related to lipid metabolism, extracellular matrix organization, muscle con-
+traction, and energy utilization. Cross-omics integration further identiﬁed
+two correlated module chains, ME6_trans–ME3_protein–ME2_metab and
+ME7_trans–ME3_protein–ME2_metab, linking transcriptional variation to
+structural and contractile protein modules and downstream metabolic
+characteristics. The region-dependent expression patterns of FMOD,
+THBS4, PLIN1, TNNC1,a n d TNNT1 were further supported at the tran-
+script and protein levels by RT–qPCR and Western blot analyses, providing
+independent validation of selected multi-omics ﬁndings. These ﬁndings
+provide candidate molecular features associated with variation among sika
+deer muscle cuts and establish a reference framework for future studies
+integrating direct meat quality measurements and functional validation.
+Methods
+Sample collection
+A total of 72 cuts were obtained from 12 healthy adult sika deer (6 males and
+6 females), all raised under standardized feeding and management condi-
+tions at Shuangyang Deer Quality Breed Breeding Co., Ltd. (Changchun,
+China). All animals were selected with comparable developmental status
+and body condition and were maintai ned under standardized intensive
+housing conditions with routine health monitoring to minimize biological
+heterogeneity. The sample size was determined to ensure sufﬁcient statis-
+tical power while adhering to the principles of animal welfare. No animals or
+samples were excluded from the analysis. Due to the seasonal reproductive
+characteristics of sika deer, estrus generally occurs in autumn, and par-
+turition is concentrated mainly between May and June each year. All ani-
+mals in the spring group were slaughtered on April 1, 2024, at 22–23 months
+of age, whereas all animals in the winter group were slaughtered on
+December 23, 2024, at 29–30 months of age. Therefore, when sika deer from
+the same birth cohort are slaughtered in different seasons, a difference of
+about 6 months in biological age is unavoidable. Within each group, all
+animals were slaughtered on the same day under uniform procedures to
+maintain consistency in their physiological condition, slaughter handling,
+and postmortem treatment. Prior to sample collection, all deer were
+transported to the Shilu Deer Industry Group Co., Ltd. in Shuangyang
+District, Changchun, Jilin Province, where slaughtering was performed
+under uniform protocols. Six distinct cuts—longissimus dorsi (LD), inter-
+costal muscles(IM), trapezius (T), b iceps brachii (BB), gluteus maximus
+(GM), and quadriceps femoris (QF)—were dissected postmortem. Detailed
+sample information is provided in Supplementary Data 1. According to the
+speciﬁc requirements of transcriptomic, proteomic, and metabolomic
+analyses, tissue samples were appropriately processed and preserved,
+including storage in RNA-later solution and/or immediate snap-freezing in
+liquid nitrogen. All procedures in volving animals were reviewed and
+approved by the Institutional Animal Care and Use Committee of Northeast
+Forestry University, China (A pproval No. 20220409). This study was
+reported in accordance with the ARR IVE guidelines (Animal Research:
+Reporting of In Vivo Experiments).
+Transcriptomic sequencing and data analysis
+Total RNA was extracted from cuts tissue samples collected from different
+anatomical regions of sika deer using the Trizol method and quantiﬁed with
+the NanoDrop® 2000 spectrophotometer (Thermo, USA). Genomic DNA
+was removed with RNase-free DNase I and the mRNA libraries were
+constructed using the TruSeq Stranded mRNA Library Prep Kit (Illumina)
+with 5 μg of input RNA. Fragmentation, reverse transcription, adapter
+ligation, and ampliﬁcation were conducted following the manufacturer’s
+protocol. A 150 bp insert size was selected using AMPure XP beads
+(Beckman Coulter), and library quality was validated on the Agilent Bioa-
+nalyzer 2100 system. Sequencing was performed on the Illumina NovaSeq
+6000 platform.
+Raw reads wereﬁltered using FASTP (v0.20.1)33,34 to remove adapters
+and low-quality sequences. Clean reads were aligned to the sika deer
+reference genome (GCA_040085125.1])12 using HISAT2(v2.0.4)35. Gene-
+level counts were generated with HTSeq36, and expression levels were cal-
+c u l a t e di nF P K M( f r a g m e n t sp e rk i l o b ase of transcript per million mapped
+reads) using the formula: FPKM = (read count × 10 ⁹)/(total mapped
+reads × gene length).
+https://doi.org/10.1038/s41538-026-01160-4 Article
+npj Science of Food Article in Press
+Differential gene expression analysis was conducted using the
+DESeq237 (v1.42.0) based on read count data obtained from RNA-seq. To
+ensure statistical robustness and to avoidpotential pseudoreplication arising
+from multiple muscle samples collected from the same animal, sex, sam-
+pling season, and individual animal identity were included as covariates in
+the design formula. For each cuts type , pairwise comparisons against the
+remaining groups were performed, an d differentially expressed genes
+(DEGs) were deﬁned using the threshold of adjusted p value (padj) <0.05
+and absolute log₂ fold-change (log2FC) > 1. For dimensionality reduction,
+transcript per million (TPM) values were calculated by normalizing FPKM
+values across genes within each sample38. The top 2000 most variable genes
+were selected for principal component analysis (PCA) to assess global
+expression patterns across samples.
+Proteomic proﬁling and data analysis
+Cuts tissue samples from different a natomical regions of sika deer were
+ground in liquid nitrogen and lysed using SDT buffer supplemented with
+DTT39. After ultrasonication on ice and thermal denaturation at 95 °C,
+samples were centrifuged, and supernatants were alkylated with IAM in the
+dark. Proteins were precipitated with pre-cooled acetone and washed with
+cold acetone before being re-dissolved in dissolution buffer. Protein con-
+centrations were measured using a Bradford assay, and protein integrity was
+assessed via SDS-PAGE. For digestion, proteins were denatured in 8 M urea
+with 100 mM TEAB (pH 8.5), and trypsin was added for a two-step
+digestion at 37 °C. After acidi ﬁcation, peptides were desalted using C18
+columns and dried under vacuum. Dried peptides were reconstituted,
+centrifuged, and subjected to LC-MS/MS analysis using a Vanquish™ Neo
+UHPLC system coupled to a Thermo Orbitrap Astral mass spectrometer.
+Peptides were separated on a PepMap ™ Neo C18 column with a linear
+gradient of acetonitrile containing 0.1% formic acid. DIA acquisition was
+performed with 300 variable windows (m/z 380–980) and resolution set-
+tings of 240,000 (MS1) and 80,000 (MS2).
+Raw DIA data were analyzed using DIA-NN software(v2.2.0) in
+DirectDIA mode40. A project-speciﬁc protein database was used for spectral
+matching, with iRT peptides for reten tion time calibration. Search para-
+meters included 10 ppm precursor mass tolerance and 0.02 Da fragment
+tolerance. Cysteine residues were carbamidomethylated, and methionine
+oxidation and N-terminal modiﬁcations were considered. Up to two missed
+cleavages were allowed. Peptide-spectrum matches (PSMs) wereﬁltered to
+retain only those with ≥99% conﬁdence, and false discovery rate (FDR)
+thresholds were set at 1% for both peptides and proteins.
+We performed principal component analysis to reduce dimensionality
+and visualize the distribution of proteomic expression proﬁles across dif-
+ferent cuts regions. Protein abundance data were standardized usingz-score
+transformation to ensure comparability across samples. Subsequently, two-
+sample t-tests were conducted to identify proteins with signiﬁcant abun-
+dance differences between each cuts region and all others. FC was calculated
+as the ratio of mean expression levelsbetween groups, providing a quanti-
+tative measure of differential expression.
+Metabolomic proﬁling and data analysis
+Approximately 100 mg of cuts tissue from different anatomical regions of
+sika deer was ground in liquid nitrogen and extracted with prechilled 80%
+methanol by vortexing. The homogenates were incubated on ice for 5 min
+and centrifuged at 15,000 ×g, 4 °C for 20 min. The supernatant was diluted
+with LC-MS grade water to a ﬁnal methanol concentration of 53%, then
+centrifuged again under the same condi tions. The resulting supernatants
+were transferred to autosampler vials for LC-MS/MS analysis41.C h r o m a -
+tographic separation was performed on a Hypersil Gold C18 column
+(100 × 2.1 mm, 1.9μm) using a Vanquish UHPLC system (Thermo Fisher
+Scientiﬁc), coupled with a Q Exactive ™ HF or HF-X Orbitrap mass spec-
+trometer (Thermo Fisher Scienti ﬁc). A 12-min linear gradient of 0.1%
+formic acid in water (eluent A) and methanol (eluent B) was applied at a
+ﬂow rate of 0.2 mL/min. Mass spectrometry was operated in both positive
+and negative ion modes, with a spray voltage of 3.5 kV, capillary
+temperature of 320 °C, and sheath/auxiliary gas rates of 35 and 10 L/min,
+respectively.
+Raw MS data were processed using Compound Discoverer 3.3
+(Thermo Fisher) for peak detection, alignment, and quantiﬁcation. Main
+parameters included a 5 ppm mass tolerance, 30% signal intensity tolerance,
+and normalization to total ion intensi ty. Metabolites were annotated by
+matching MS/MS spectra against mzCloud, mzVault, and MassList data-
+bases. Quality controlﬁltering excluded compounds with a relative standard
+deviation >30% in QC samples. Identiﬁed metabolites were annotated using
+KEGG42, and LIPIDMaps43 databases.
+Metabolite proﬁling data were normalized and analyzed through
+Partial Least Squares Discriminant Analysis (PLS-DA) using the mixOmics
+(v6.26.0)44 in R to identify cuts-speciﬁc metabolic signatures. The PLS-DA
+model was used to evaluate the contribution of each metabolite to the
+discrimination between cuts types. Metabolites with Variable Importance in
+Projection (VIP) scores >1 were selected as discriminant features. Differ-
+ential abundance analysis wasconducted with limma (v3.58.1)15,a p p l y i n g
+thresholds of 1.5- FC andp value < 0.05, while controlling for sex, sampling
+season, and individual animal identity as covariates.
+KEGG pathway enrichment analysis
+KEGG pathway enrichment analysis was conducted using KOBAS (v2.0)45,
+where all differentially expressed genes were ﬁrst annotated to KEGG
+Orthology (KO)42 terms using Bos taurus (bta) as the reference species.
+Subsequently, enrichment testing via hypergeometric distribution using the
+R package clusterProﬁler (v4.19.4) to identify signiﬁcantly overrepresented
+biological pathways (adjustedp value < 0.05).
+WGCNA-based module identiﬁcation
+WGCNA was applied to transcriptom i c ,p r o t e o m i c ,a n dm e t a b o l o m i c
+datasets to identify co-expressed mo dules and explore their associations
+with cuts regions. WGCNA package (v1.72.5) was applied, we ﬁrst pre-
+processed the data and removed ou tlier samples. The optimal soft-
+thresholding power was selected using pickSoft-Threshold to construct a
+scale-free network. An adjacency matrix was generated and transformed
+into a topological overlap matrix (TOM), followed by hierarchical clustering
+and dynamic tree cut to identify discrete modules. Each module was sum-
+marized by its module eigengene. We then assessed the correlation between
+module eigengenes and cuts parts, identifying trait-related modules, which
+were further analyzed for KEGG pathway enrichment. Finally, we calculated
+pairwise correlations between module eigengenes across the three omics
+levels. Module pairs with |r|>0 . 5a n dp < 0.05 were selected to construct a
+multi-omics regulatory network, highlighting cross-omics functional links
+related to cuts characteristics.
+RT-qPCR
+RT–qPCR was used to quantify the expression of key genes (FMOD,
+TNNC1, TNNT1, THBS4, and PLIN1) across six muscle regions, with three
+biological replicates per group. Total RNA was extracted using TRIzol
+reagent (Takara, Japan), and reverse transcription was conducted using the
+PrimeScript™ FAST RT reagent Kit with gDNA Eraser (Takara, Japan)
+according to the manufacturer’s instructions. Quantitative PCR was carried
+out using TB Green® Premix Ex Taq™ II (Tli RNaseH Plus) on a SLAN-96S
+Real-Time PCR system (Hongshi Medical Technology, China). Each
+sample was analyzed with three technical replicates. RPLP0 was used as the
+internal reference gene for normalization. Relative gene expression levels
+were calculated using the 2 −ΔΔCt method after quality control, where ΔCt
+represents the difference between target and reference genes, andΔΔCt is
+deﬁned as the difference between experimental and control groups. Primer
+sequences were designed using Primer3 and are listed in Supplemen-
+tary Data 5.
+Western blotting
+Western blotting was performed to evaluate the protein abundance of
+FMOD, TNNC1, and TNNT1 in representative muscle tissues, including
+https://doi.org/10.1038/s41538-026-01160-4 Article
+npj Science of Food Article in Press
+QF, IM, and T. Detailed information on antibodies is provided in Supple-
+mentary Data 6. Samples were rinsed with cold PBS and mechanically
+homogenized. Total proteins were e xtracted using RIPA buffer supple-
+mented with protease inhibitors, follow e db yi n c u b a t i o no ni c ew i t hi n t e r -
+mittent mixing to ensure complete lysis. The lysates were then centrifuged,
+and the supernatants were collected for further analysis. Equal amounts of
+protein were separated by SDS–PAGE and transferred onto PVDF mem-
+branes. After blocking to minimize non-speciﬁc binding, membranes were
+incubated with primary antibodies against FMOD, TNNC1, and TNNT1 at
+4 °C, followed by incubation with HRP-conjugated secondary antibodies at
+room temperature. Protein signals were detected using a chemilumines-
+cence imaging system. Band intensities were quantiﬁed using image analysis
+software, and relative protein levels were calculated by normalization to the
+internal reference protein. All experiments were performed with three
+independent biological replicates to ensure reproducibility and reliability of
+the results.
+Statistical analysis and data visualization
+All statistical analyses were conducted using R software (v4.3.1). Pearson
+correlation was applied to evaluate inter-module relationships across omics
+levels, while Spearman correlation was used to assess associations between
+WGCNA modules and cuts regions, with p < 0.05 considered signiﬁcant.
+Metabolomic pathway activity was assessed using the GSEA function from
+t h eRp a c k a g ec l u s t e r P r oﬁler (v4.19.4), based on log2FC values across cuts
+groups. All visualizations were generated using R packages, including
+ggplot2 (v3.5.1)46, ComplexHeatmap (v2.18.0)14, patchwork (v1.3.0.9)16,a n d
+scRNAtoolVis (v0.1.0).
+Data availability
+The datasets generated and analyzed during this study have been deposited
+in the following public repositories and are available upon request from the
+corresponding author: Metabolomics data have been deposited in the
+MetaboLights database ( https://www.ebi.ac.uk/metabolights/)u n d e rt h e
+accession number MTBLS12900. Proteo mics data are available via the
+iProX database (https://www.iprox.cn/) with the ProteomeXchange acces-
+sion number PXD067526. Transcriptomics data have been deposited in the
+NCBI Sequence Read Archive under the accession number PRJNA1213237.
+Received: 8 January 2026; Accepted: 3 September 2026;
+References
+1. Hoffman, L. C. & Wiklund, E. Game and venison — meat for the modern
+consumer. Meat Sci. 74, 197–208 https://doi.org/10.1016/j.meatsci.
+2006.04.005 (2006).
+2. Wiklund, E., Farouk, M. & Finstad, G. Venison: meat from red deer
+(Cervus Elaphus) and reindeer ( Rangifer Tarandus Tarandus). Anim.
+Front. 4,5 5–61 https://doi.org/10.2527/af.2014-0034 (2014).
+3. Peng, Z. et al. Characteristics of meat from farmed sika deer ( Cervus
+Nippon) and the effects of age and sex on meat quality. Foods 13,
+3978 https://doi.org/10.3390/foods13233978 (2024).
+4. Jin, C. et al. Nutritional processing quality of sika deer ( Cervus Nippon)
+venison in different muscles. Foods 13, 3661 https://doi.org/10.3390/
+foods13223661 (2024).
+5. Ny, V., Needham, T. & Ceacero, F. Potential bene ﬁts of amino acid
+supplementation for cervid performance and nutritional ecology, with
+special focus on lysine and methionine: a review. Anim. Nutr. 11,
+391–401 https://doi.org/10.1016/j.aninu.2022.09.001 (2022).
+6. Muroya, S., Ueda, S., Komatsu, T., Miyakawa, T. & Ertbjerg, P.
+MEATabolomics: muscle and meat metabolomics in domestic
+animals. Metabolites 10, 188 https://doi.org/10.3390/
+metabo10050188 (2020).
+7. van de Wiel, D. F. M. & Zhang, W. L. Identi ﬁcation of pork quality
+parameters by proteomics. Meat Sci. 77,4 6–54 https://doi.org/10.
+1016/j.meatsci.2007.04.017 (2007).
+8. Martínez, A. et al. Recent trends in food quality and authentication: the
+role of omics technologies in dairy and meat production. Int. J. Mol.
+Sci. 26, 4405 https://doi.org/10.3390/ijms26094405 (2025).
+9. Deng, T. et al. Transcriptome analysis of compensatory growth and
+meat quality alteration after varied restricted feeding conditions in
+beef cattle. Int. J. Mol. Sci. 25, 2704 https://doi.org/10.3390/
+ijms25052704 (2024).
+10. DIA-based quantitative proteomic analysis on porcine meat quality at
+different chilling rates. Food Sci. Hum. Wellness 13, 2573–2583
+https://doi.org/10.26599/FSHW.2022.9250206 (2024).
+11. Hu, J. et al. Metabolomics and transcriptomics reveal age-dependent
+development of meat quality traits in Jingyuan chicken. Animals 15,
+1938 https://doi.org/10.3390/ani15131938 (2025).
+12. Langfelder, P. & Horvath, S. WGCNA: an R package for weighted
+correlation network analysis. BMC Bioinform. 9, 559 https://doi.org/
+10.1186/1471-2105-9-559 (2008).
+13. Warner, R. et al. Meat tenderness: underlying mechanisms,
+instrumental measurement, and sensory assessment. Meat Muscle
+Biol. 4 https://doi.org/10.22175/mmb.10489 (2021).
+14. Gu, Z., Eils, R. & Schlesner, M. Complex heatmaps reveal patterns and
+correlations in multidimensional genomic data. Bioinformatics 32,
+2847–2849 https://doi.org/10.1093/bioinformatics/btw313 (2016).
+15. Ritchie, M. E. et al. Limma powers differential expression analyses for
+RNA-sequencing and microarray studies. Nucleic Acids Res. 43, e47
+https://doi.org/10.1093/nar/gkv007 (2015).
+16. thomasp85 GitHub. Thomasp85/Patchwork: the composer of
+Ggplots. https://github.com/thomasp85/patchwork (2026).
+17. Li, B. et al. A key gene, PLIN1, can affect porcine intramuscular fat
+content based on transcriptome analysis. Genes 9, 194 https://doi.
+org/10.3390/genes9040194 (2018).
+18. Valdés-Hernández, J. et al. Identi ﬁcation of candidate regulatory
+genes for intramuscular Fatty acid composition in pigs by
+transcriptome analysis. Genet. Sel. Evol. 56,1 2 https://doi.org/10.
+1186/s12711-024-00882-x (2024).
+19. Wohlgemuth, R. P., Brashear, S. E. & Smith, L. R. Alignment, cross
+linking, and beyond: a collagen architect ’s guide to the skeletal
+muscle extracellular matrix. Am. J. Physiol. Cell Physiol. 325,
+C1017–C1030 https://doi.org/10.1152/ajpcell.00287.2023 (2023).
+20. Ji, J. et al. DIA-based quantitative proteomic insight of lamb meat
+quality: tenderness and amino acid pro ﬁle under different grazing
+intensities. LWT 215, 117285 https://doi.org/10.1016/j.lwt.2024.
+117285 (2025).
+21. Reis, I. A. et al. Muscle tissue transcriptome of F1 angus-nellore bulls
+and steers feedlot ﬁnished: impacts on intramuscular fat deposition.
+BMC Genomics 25, 1178 https://doi.org/10.1186/s12864-024-
+11066-8 (2024).
+22. Abril, B., Bou, R., García-Pérez, J. V. & Benedito, J. Role of enzymatic
+reactions in meat processing and use of emerging technologies for
+process intensiﬁcation. Foods 12, 1940 https://doi.org/10.3390/
+foods12101940 (2023).
+23. Peng, Y., He, W., Teng, S. & Jamali, M. A. The degradation of
+intramuscular connective tissue in vitro with puriﬁed cathepsin L from
+bovine pancreas. Foods 12, 3517 https://doi.org/10.3390/
+foods12183517 (2023).
+24. Han, S. et al. Comparative study on the postmortem proteolysis and
+shear force during aging of pork and beef semitendinosus muscles.
+Food Sci. Anim. Resour. 44, 1055–1068 https://doi.org/10.5851/
+kosfa.2024.e37 (2024).
+25. Berdeaux, R. & Stewart, R. cAMP signaling in skeletal muscle
+adaptation: hypertrophy, metabolism, and regeneration. Am. J.
+Physiol. Endocrinol. Metab. 303,E 1–E17 https://doi.org/10.1152/
+ajpendo.00555.2011 (2012).
+26. Schneider, E. ABC transporters catalyzing carbohydrate uptake. Res.
+Microbiol. 152, 303–310 https://doi.org/10.1016/s0923-2508(01)
+01201-3 (2001).
+https://doi.org/10.1038/s41538-026-01160-4 Article
+npj Science of Food Article in Press
+27. Dinh, T. T. N., To, K. V. & Schilling, M. W. Fatty acid composition of
+meat animals asﬂavor precursors.Meat Muscle Biol.5 https://doi.org/
+10.22175/mmb.12251 (2021).
+28. Bleicher, J., Ebner, E. E. & Bak, K. H. Formation and analysis of volatile
+and odor compounds in meat— a review. Molecules 27, 6703 https://
+doi.org/10.3390/molecules27196703 (2022).
+29. Njisane, Y. Z., Semwogerere, F., Mohamed, G., Ndimba, B. K. &
+Mapiye, C. Color and tenderness proteomic biomarkers of beef from
+steers fed sorghum substituted for maize.Meat Muscle Biol. 8 https://
+doi.org/10.22175/mmb.17305 (2024).
+30. Cui, J., Chen, W., Liu, J., Xu, T. & Zeng, Y. Study on quantitative
+expression of PPARγ and ADRP in muscle and its association with
+intramuscular fat deposition of pig. Springerplus 5, 1501 https://doi.
+org/10.1186/s40064-016-3187-0 (2016).
+31. Wood, J. D. et al. Manipulating meat quality and composition. Proc.
+Nutr. Soc. 58, 363–370 https://doi.org/10.1017/s0029665199000488
+(1999).
+32. Terlouw, E. M. C. et al. Understanding the determination of meat
+quality using biochemical characteristics of the muscle: stress at
+slaughter and other missing keys. Foods 10,8 4 https://doi.org/10.
+3390/foods10010084 (2021).
+33. Chen, S., Zhou, Y., Chen, Y. & Gu, J. Fastp: an ultra-fast all-in-one
+FASTQ preprocessor. Bioinformatics 34, i884–i890 https://doi.org/
+10.1093/bioinformatics/bty560 (2018).
+34. Wang, Q., Han, R., Xing, H. & Li, H. A consensus genome of sika deer
+(Cervus Nippon) and transcriptome analysis provided novel insights
+on the regulation mechanism of transcript factor in antler
+development. BMC Genomics 25, 617 https://doi.org/10.1186/
+s12864-024-10522-9 (2024).
+35. Zhang, Y., Park, C., Bennett, C., Thornton, M. & Kim, D. Rapid and
+accurate alignment of nucleotide conversion sequencing reads with
+HISAT-3N. Genome Res. 31, 1290–1295 https://doi.org/10.1101/gr.
+275193.120 (2021).
+36. Putri, G. H., Anders, S., Pyl, P. T., Pimanda, J. E. & Zanini, F. Analysing
+high-throughput sequencing data in Python with HTSeq 2.0.
+Bioinformatics 38, 2943–2945 https://doi.org/10.1093/
+bioinformatics/btac166 (2022).
+37. Love, M. I., Huber, W. & Anders, S. Moderated estimation of fold
+change and dispersion for RNA-Seq data with DESeq2.Genome Biol.
+15, 550 https://doi.org/10.1186/s13059-014-0550-8 (2014).
+38. Zhao, S., Ye, Z. & Stanton, R. Misuse of RPKM or TPM normalization
+when comparing across samples and sequencing protocols.RNA 26,
+903–909 https://doi.org/10.1261/rna.074922.120 (2020).
+39. Kachuk, C., Stephen, K. & Doucette, A. Comparison of sodium
+dodecyl sulfate depletion techniques for proteome analysis by mass
+spectrometry. J. Chromatogr. A 1418, 158–166 https://doi.org/10.
+1016/j.chroma.2015.09.042 (2015).
+40. Demichev, V., Messner, C. B., Vernardis, S. I., Lilley, K. S. & Ralser, M.
+DIA-NN: neural networks and interference correction enable deep
+proteome coverage in high throughput. Nat. Methods 17,4 1–44
+https://doi.org/10.1038/s41592-019-0638-x (2020).
+41. Want, E. J. et al. Global metabolic pro ﬁling of animal and human
+tissues via UPLC-MS. Nat. Protoc. 8,1 7–32 https://doi.org/10.1038/
+nprot.2012.135 (2013).
+42. Kanehisa, M. & Goto, S. KEGG: kyoto encyclopedia of genes and
+genomes. Nucleic Acids Res. 28,2 7–30 https://doi.org/10.1093/nar/
+28.1.27 (2000).
+43. Conroy, M. J. et al. LIPID MAPS: update to databases and tools for the
+lipidomics community. Nucleic Acids Res. 52, D1677–D1682 https://
+doi.org/10.1093/nar/gkad896 (2024).
+44. Rohart, F., Gautier, B., Singh, A. & Lê Cao, K.-A. mixOmics: an R
+package for ‘omics feature selection and multiple data integration.
+PLoS Comput. Biol. 13, e1005752 https://doi.org/10.1371/journal.
+pcbi.1005752 (2017).
+45. Bu, D. et al. KOBAS-i: intelligent prioritization and exploratory
+visualization of biological functions for gene enrichment analysis.
+Nucleic Acids Res. 49, W317–W325 https://doi.org/10.1093/nar/
+gkab447 (2021).
+46. Wickham, H. Ggplot2: Elegant Graphics for Data Analysis (Springer,
+2009).
+Acknowledgements
+This study was supported by the Jilin Province Changchun Shuangyang
+District Shilu Deer Industry Group Co., Ltd. The authors would like to thank
+Sun Zihui, Wang Qing, and Chen Zongzhe for their assistance in the
+preparation of consumables prior to sample collection. This work was
+supported by the Collaborative Innovation Program for Academic
+Disciplines in Universities of Heilongjiang Province (Grant No.
+LJGXCG2022-008).
+Author contributions
+Heping Li and Lan Tang designed the study and conducted the literature
+review; Lan Tang, Derui Zhao, Yukai Ma, and Tao Zhu collected the samples;
+Lan Tang and Qianghui Wang performed the data analysis; Lan Tang, Qing
+Wang, and Haihua Xing wrote the manuscript; Lan Tang and Yukai Ma
+edited; Heping Li, Lan Tang, Qing Wang, and Haihua Xing revised the
+manuscript. All authors read and approved the ﬁnal manuscript.
+Competing interests
+The authors declare no competing interests.
+Additional information
+Supplementary informationThe online version contains
+supplementary material available at
+https://doi.org/10.1038/s41538-026-01160-4.
+Correspondenceand requests for materials should be addressed to
+Heping Li.
+Reprints and permissions informationis available at
+http://www.nature.com/reprints
+Publisher’s note Springer Nature remains neutral with regard to
+jurisdictional claims in published maps and institutional afﬁliations.
+Open Access This article is licensed under a Creative Commons
+Attribution-NonCommercial-NoDerivatives 4.0 International License,
+which permits any non-commercial use, sharing, distribution and
+reproduction in any medium or format, as long as you give appropriate
+credit to the original author(s) and the source, provide a link to the Creative
+Commons licence, and indicate if you modi ﬁed the licensed material. You
+do not have permission under this licence to share adapted material
+derived from this article or parts of it. The images or other third party
+material in this article are included in the article's Creative Commons
+licence, unless indicated otherwise in a credit line to the material. If material
+is not included in the article's Creative Commons licence and your intended
+use is not permitted by statutory regulation or exceeds the permitted use,
+you will need to obtain permission directly from the copyright holder. To
+view a copy of this licence, visit http://creativecommons.org/licenses/by-
+nc-nd/4.0/.
+© The Author(s) 2026
+This Article in Press is shared early to give you faster access to new research.
+It is citable and carries a permanent DOI. Theﬁnal edited version will replace it
+automatically.
+https://doi.org/10.1038/s41538-026-01160-4 Article
+npj Science of Food Article in Press

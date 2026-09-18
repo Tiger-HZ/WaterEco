@@ -1,0 +1,959 @@
+communications biology Article
+A Nature Portfolio journal
+https://doi.org/10.1038/s42003-026-10788-7
+The Soifua Manuia reference panel with
+2,570 Samoan haplotypes improves
+genotype imputation quality among
+Samoans
+Check for updates
+Jenna C. Carlson 1,2 ,M o h a n r a jK r i s h n a n1,S h u w e iL i u1, Kevin J. Anderson1, Jerry Z. Zhang2,
+Lauren M. Spor 1,T o n i - A n nJ .Y a p p1, Elizabeth A. Chiyka1, Devin A. Dikec 1, Hong Cheng3,
+Take Naseri4,5, Muagututi’a Sefuiva Reupena6,S a t u p a’itea Viali7,8, Ranjan Deka3, Nicola L. Hawley 8,
+Stephen T. McGarvey 5,9, Daniel E. Weeks 1,2 &R y a nL .M i n s t e r1
+Genotype imputation is fundamental to association studies, and yet even gold standard panels like
+TOPMed are limited in the populations for which they yield good imputation. Speci ﬁcally, Paciﬁc
+Islanders are poorly represented in extant panels. To address this, we used whole-genome sequencing
+from 1,285 Samoan individuals combined with 1000 Genomes Project (1KGP) individuals to construct
+an imputation reference panel that better represents Paci ﬁc Islander, speciﬁcally Samoan, genetic
+variation. Here we show that this panel yielded up to two times more well-imputed ( r2 ≥ 0.80) variants
+than TOPMed-R3 and 1KGP and was enriched for moderate and high impact variants. There was
+improved imputation accuracy across the minor allele frequency (MAF) spectrum; accuracy ( r2)w a s
+greater for population-speciﬁcv a r i a n t s( h i g hﬁxation index, FST) and those from larger haplotypes (high
+LD score). However, the gain in accuracy over TOPMed-R3 was largest for small haplotypes, reﬂecting
+the Samoan panel’s ability to capture variation not well tagged by other panels.
+Genotype imputation is fundamental to modern genome-wide association
+studies (GWAS), yielding a much de nser association landscape in which
+ﬁne-mapping of causal variants and genes can occur than can be obtained
+u s i n gg e n o t y p i n ga r r a yd a t aa l o n e .H o w e v e r ,t h eu t i l i t yo fg e n o t y p ei m p u -
+tation depends upon the haplotypes that make up the reference panels. This
+is especially critical in populations that are underrepresented in genetic
+research, as imputation is much poorer when the reference panel does not
+contain good haplotype matches to that of the target population. Existing
+panels like 1000 Genomes (1KGP)1, the Haplotype Reference Consortium
+(HRC)2, and the Trans-Omics for Precision Medicine version R3
+(TOPMed-R3)3 catalog human genome variation of numerous majority
+populations worldwide, especially those with Western European ancestry.
+The TOPMed-R3 panel contains the most ancestrally diverse set of parti-
+cipants and has addressed disparities in representation, especially for
+Hispanic- and African-admixed populations, greatly improving imputation
+accuracy in these populations3,4. However, there are still populations for
+which these reference panels are inadequate. This is obvious in looking at the
+representation of Paciﬁc Islanders, who are underrepresented in health
+research. In common publicly available reference panels (1KGP, HRC, and
+TOPMed-R3), there are no participants explicitly from Oceania, and so the
+totality of genetic variation present in Paciﬁc Islanders cannot be adequately
+represented in genetic association studies. This may further exacerbate the
+health disparities faced by Paci ﬁc Islanders, who are not only under-
+represented in research but have a disproportionate burden of non-
+communicable diseases compared to majority populations.
+For example, the Paciﬁc Island nation of Samoa, which has a unique
+population history consisting of founder effects and bottlenecks5–8, also faces
+some of the highest rates of non-communicable disease globally9–13.D e s p i t e
+1Department of Human Genetics, University of Pittsburgh, Pittsburgh, PA, USA. 2Department of Biostatistics and Health Data Science, University of Pittsburgh,
+Pittsburgh, PA, USA. 3Department of Environmental and Public Health Sciences, College of Medicine, University of Cincinnati, Cincinnati, OH, USA. 4Naseri &
+Associates Public Health Consultancy Firm and Family Health Clinic, Apia, Samoa. 5Department of Epidemiology, Center for Global Public Health International
+Health Institute, Brown University School of Public Health, Providence, RI, USA. 6Lutia i Puava ae Mapu i Fagalele, Apia, Samoa. 7Oceania University of Medicine,
+Apia, Samoa. 8Department of Chronic Disease Epidemiology, Yale School of Public Health, New Haven, CT, USA.9Department of Anthropology, Brown University,
+Providence, RI, USA. e-mail: jnc35@pitt.edu
+Communications Biology | (2026) 9:1191 1
+1234567890():,;
+1234567890():,;
+this, most existing knowledge about disease etiology comes from majority
+ethnic groups, even though disease presentation, progression, and response
+to treatment can differ by ancestry11,14–21. Speciﬁc to genetic studies, Paciﬁc
+Islanders more broadly are often grouped into an“other/mixed” ancestral
+category, which itself is still <1% of GWAS participants22. However, because
+of their unique population history, there are regions of the genome for which
+Samoans have different variant frequencies and haplotype structure (LD)
+from other majority populations, making the aggregation of them with
+other Oceanic- or Asian-ancestry individuals inappropriate. Moreover,
+advances in knowledge on the genetic underpinnings of human phenotypic
+variation from majority populations are often assumed to apply to all
+populations globally, which is premat u r ea tb e s t( b u t ,m o r el i k e l y ,c o n -
+tributing to racial health disparity)23,24.
+To combat this, greater representation of Paciﬁc Islanders is needed in
+gene-mapping studies. However, this cannot happen without additional
+whole-genome sequencing and/or im proved genotype imputation. Evi-
+dence of this comes from studies based on cohorts of Samoans and
+American Samoans recruited in 1990–199525–27, 2002–200328,29, and 201012.
+We have performed GWAS to dissect the genetic architecture of cardio-
+metabolic disease traits in these cohorts. Through this, we have identiﬁed
+variants of high frequency in Samoa and not appearing (at least at high
+frequency) in other non-Paci ﬁc-Islander populations that are associated
+with body mass index30 and lipid traits31. They may be at high frequency due
+to founding events and bottlenecks. Interestingly, these variants were not
+present in initial GWAS using genotyping array data only. They were dis-
+covered using imputation based on Samoan haplotypes. In the two loci
+harboring Samoan-speciﬁcv a r i a n t s30,31,t h eg e n e t i ca r c h i t e c t u r eo ft h e
+GWAS signal looks markedly different after imputation, with the location of
+the sentinel variants shifting post-imputation dramatically. The discovery of
+these associations offers a case studyinto how genetic studies in Samoans
+and other Paci ﬁc-Islander populations will bene ﬁt from improved
+imputation.
+In this study, we describe the strategy we employed to create a Samoan-
+speciﬁc reference panel containing phased haplotypes from 1KGP partici-
+pants and Samoan participants with whole-genome sequencing (WGS)
+from the Samoan Study, part of the TOPMed Consortium. Importantly, the
+Samoan Study, which consists of 1285 participants of Samoan ancestry that
+are part of the TOPMed Consortium, was not included in the TOPMed-R3
+reference panel. Prior admixture studies have demonstrated that some
+Samoan genomes share some overlap with other global ancestry popula-
+tions (mostly East Asian and European)8. To impute well in individuals with
+such admixture, it is necessary to include diversity such as that of the 1KGP
+in the panel.
+We investigated this panel derived from Samoan participants with
+WGS and compared it to several other reference panels to determine the
+extent to which adding Samoan participants to the existing 1KGP reference
+panel impacted imputation quality. Speciﬁcally, we sought to address these
+questions:
+1) How does the imputation for a re ference panel of 1285 Samoans plus
+1KGP compare to other existing panels?
+2) How many population-speci ﬁc sequences are necessary to add to
+1KGP to achieve good imputation accuracy?
+3) Does the phasing of the reference panel impact imputed accuracy and
+genotype frequency?
+4) How does meta imputation of a population-speci ﬁc panel with the
+TOPMed-R3 panel perform compared to the panels separately?
+Here we show that the combined Samoan and 1KGP panel yields many
+more well-imputed variants than TOPMed-R3 and 1KGP, with improved
+imputation accuracy across the allele frequency spectrum. We also show
+that imputation accuracy is gr eater for population-speciﬁc variants and
+those from larger haplotypes; but the gain in imputation accuracy over
+TOPMed-R3 is largest for small haplotypes, reﬂecting the Samoan panel’s
+ability to capture population-speciﬁc variation not well tagged by other
+panels. Moreover, the variants that are uniquely well imputed with Samoan-
+speciﬁc panels are enriched for moderate and high impact.
+Methods
+Participants for this study came from the Soifua Manuia (“good health”)
+study, a population-based sample of 3504 Samoan adults recruited in 201012.
+The study was approved by the institutional review board of Brown Uni-
+versity (#0903992671) and the Health Research Committee of the Samoa
+Ministry of Health. All participants gave written informed consent via
+consent forms in the Samoan language. Genotyping was performed for a
+subset of 3182 Samoan adults usingGenome-Wide Human SNP 6.0 arrays
+(Affymetrix) and extensive quality control was conducted via a pipeline
+developed by Laurie et al.32. Additional details about sample genotyping and
+genotype quality control are described in Minster et al.30.As u b s e t(n = 1285)
+from this cohort also had WGS data from TOPMed. These 1285 individuals
+were optimally selected for WGS by using the rankings from INFOSTIP33 to
+capture the cohort’s genetic diversity (http://www.cs.columbia.edu/~itsik/
+software/INFOSTIP.html)(Figs. S1 and S2). In addition to the Samoan
+participants, 2,504 individuals from the 1000 Genomes Project Phase III
+(1KGP) with WGS through TOPMed were included where appropriate.
+Construction and comparison of the reference panels
+We constructed 14 in-house imputat ion reference panels, varying the
+number of Samoan participants, the inclusion of 1KGP individuals, and
+using different phasing strategies, to assess differences in imputation quality
+across a variety of settings (Fig. 1,a n dT a b l e1). We included high-quality
+(i.e., passing all QCﬁlters and with a minimum read depth of 10), bi-allelic
+markers from the TOPMed freeze 9b call set.
+We created the Soifua Manuia reference panel by combining 2504
+1KGP individuals with all 1285 Samoan participants (protocol 2). For
+comparison, we created panels with only 1KGP (protocol 3) and only
+Samoan participants (protocol 4).
+To assess the relative gain from having additional population-speciﬁc
+participants in the reference panel, we created panels by combining 1KGP
+with varying numbers of Samoan pa rticipants: 4, 24, 48, 96, and 384
+(representing fractions/multiples of a 96-well plate; protocols 5–9). These
+participants were the ﬁrst 4, 24, 48, 96, or 384 individuals based on the
+INFOSTIP ranking so that the reference panels reﬂected the most Samoan
+genetic diversity possible at that sample size (Fig. S2).
+For calculating genotype concordance among the panels with the most
+Samoan representation, we constructed panels with 1275 Samoan partici-
+pants (protocols 10 and 11, with and without 1KGP respectively), holding
+out 10 participants distributed uniformly across the INFOSTIP rankings of
+individuals (ranks 120, 240, 360, 480, 600, 720, 840, 960, 1080, and 1200,
+chosen for generalizability and to speciﬁcally compare the performance of
+the panels with <100 Samoans).
+All the haplotypes from panels described above were phased in a
+population-unaware manner by the TOPMed Informatics Research
+Center3, along with all other individuals present in freeze 9b. For protocols
+12–15, we phased the sequence data comprising the reference panels
+separately using Eagle v2.4.134, such that protocol pairs 1 and 15, 4 and 13, 10
+and 14, and 11 and 12 only differ fromeach other in the way the reference
+panel was phased.
+Analyzes comparing reference panels andﬁgures were created with R
+version 4.4.135, unless otherwise noted.
+Imputation
+We imputed genotypes using all reference panels into Samoans with
+Affymetrix genotyping array genotypes as the target. We imputed genotypes
+on chromosomes 21 (for computational ef ﬁciency) and 5 (to measure
+imputation in a Samoan-speciﬁc variant of interest— rs200884524, a stop-
+gain variant associated with lipid levels in a prior study 31) for all Samoan
+participants in the 2010 cohort who were not part of any reference panel
+(n = 1834). To ensure that conclusions drawn from these two chromosomes
+Communications Biology | (2026) 9:1191 2
+did not misrepresent genome-wide trends, we also imputed genotypes on all
+autosomes for 100 randomlyselected participants.
+Prior to imputation, Affymetrix genotyped variant coordinates were
+converted from hg19 to the hg38 genome build using LiftOver ( https://
+genome.ucsc.edu/cgi-bin/hgLiftOver)to align with the build of the WGS
+data comprising the reference panel (mimicking the steps taken by publicly
+available imputation servers36). Then, data were aligned to the reference
+panel using Genotype Harmonizer37, using the mafAlign option to align to
+the minor allele when LD alignment failed, and the minor allele frequency
+(MAF) was ≤ 30% in both the input and reference sets. The resulting
+variants were then phased with Eagle v2.4.134, and genome-wide imputation
+was performed using Minimac436.A ne x a m p l eo ft h ei m p u t a t i o nc o d ei s
+available at https://github.com/jennaccarlson/imputation.
+To benchmark the performance of the in-house panels, we imputed
+variants in the same sets of Samoans using the TOPMed-R3 reference panel
+via the TOPMed Imputation Server3,36,38 (protocol 1). We also performed
+meta imputation between the TOPMed-R3 and 1285S imputed variants
+(protocols 1 and 4) with MetaMinimac2 39 (https://github.com/yukt/
+MetaMinimac2). Importantly, MetaMinimac2 requires that the genotyp-
+ing array data be phased consistently prior to meta imputation. Thus, we
+pre-phased the genotypes of the n = 1834 Samoan participants with the
+TOPMed Imputation Server prior to imputing with our in-house 1285S
+reference panel for the meta-imputation comparison only.
+We extracted imputation metrics from the resulting info ﬁles and
+tabulated the number of well-imputed (r2 ≥ 0.80), non-monomorphic var-
+iants for each imputation. For each variant, we predicted functional con-
+sequence and impact using VEP 40, and calculated enrichment for each
+variant consequence and SnpEff impact group 41 f o rv a r i a n t st h a tw e r e
+uniquely imputed in a Samoan panel ( r2 ≥ 0.80 in either 1285S or 1KGP
++1285S and r2 <0 . 8 0o ra b s e n tf r o mb o t hT O P M e d - R 3a n d1 K G P )c o m -
+pared to shared variants ( r2 ≥ 0.80 in either 1285S or 1KGP +1285S and
+either TOPMed-R3 or 1KGP). Consequence and impact groupings are
+listed in Table S3. Enrichmentp-values were calculated with a two-sidedz
+test for the proportion of variants with the given annotation within the MAF
+stratum.
+Additionally, we merged imputed variants by position and alleles,
+accounting for possible reference and alternate allele ﬂips, and calculated
+mean and median r2 for the intersection of variants across MAF bins. We
+examined empirical r2 for the genotyped variants. We also assessed the
+impact of the reference panel to impute rs200884524, a population-speciﬁc
+variant of interest mentioned above, by examining imputed MAF andr2.
+To assess if the imputation quality gains from using a reference
+panel that includes Samoan haplotypes were due to allele frequency
+differences or haplotype size, we calculated ﬁxation index (FST) using the
+Weir and Cockerham formula and LD score. FST was calculated using the
+Soifua Manuia panel (protocol 1) with vcftools 42; the population labels
+used were derived from the super populations listed in 1KGP (AFR,
+AMR, EAS, EUR, SAS)1, with the 1285 Samoans listed as a separate sixth
+population. LD scores were calculated using the Soifua Manuia reference
+panel (protocol 1) in GCTA 43 with the default block size (1 Mb with an
+overlap of 500 kb between blocks). For visualization, F ST and LD scores
+were each stratiﬁed into low and high at the median value within a given
+MAF bin (Table S8).
+Additionally, we compared genotype concordance for 10 hold-out
+participants with WGS from imputations using the following reference
+panels: TOPMed-R3, 1KGP, 1KGP + 4S, 1KGP + 24S, 1KGP + 48S,
+1KGP + 96S, 1KGP+ 1275S, 1KGP+ 1275S in-house phasing, 1275S, and
+1275S in-house phasing (protocols 2, 3, 5-11). We calculated non-reference
+discordance (NRD) for each of these panels’imputed genotypes for the 10
+hold-out participants with WGS on chromosome 21 using bcftools44 using
+the formula NRD = 100 * (xRR + xRA + xAA) / (xRR + xRA + xAA +
+mRA + mAA), where xRR, xRA, and xAA represent the counts of dis-
+cordant homozygous reference, heterozygous, and homozygous alternate
+genotypes, and mRA and mAA are the counts of the matching heterozygous
+and homozygous alternative genotypes.
+We also investigated if the phasing of the reference panel impacted the
+imputation of population-speci ﬁc variation. We hypothesized that for
+Samoan-speciﬁc variation, the phasing of genotypes when done alongside
+supermajority populations with very different allele frequencies might be
+biased toward the haplotypes not common in Samoans, thereby decreasing
+the Samoan-speciﬁc allele frequency. To investigate this, we compared
+imputation quality (r2), MAF, and non-reference discordance for two sets of
+imputed, Samoan-speciﬁc variants, deﬁned as those in the 99th percentile of
+FST and with MAF > 0.05.
+Fig. 1 | Graphical depiction of the reference panels.
+The construction of the reference panels from
+Table 1 is represented below. Each person icon
+represents approximately 10 participants. Dark blue
+icons indicate participants with whole-genome
+sequencing, gray icons indicate those with geno-
+typing array data only, and orange indicates the 1000
+Genomes Project (1KGP) participants sequenced
+with TOPMed freeze 9. Panels indicated with an a
+were created in two ways: one from deriving the
+phased haplotypes from the jointly phased haplo-
+types of TOPMed freeze 9b and one from phasing
+the individuals in the panel separately. Panels indi-
+cated with a b were only used to calculate genotype
+concordance. Created in BioRender. Carlson, J.
+(2026) https://BioRender.com/kberhrq.
+https://doi.org/10.1038/s42003-026-10788-7 Article
+Communications Biology | (2026) 9:1191 3
+Reporting summary
+Further information on research designis available in the Nature Portfolio
+Reporting Summary linked to this article.
+Results
+We compared the average imputation quality (r2), genotype concordance,
+and the number of well-imputed variants (r2 ≥ 0.8) across 11 sets of imputed
+genotypes to assess the performance of the various imputation reference
+panels which included TOPMed-R3, 1KGP, 2 panels of 1285 Samoan
+participants, and 8 panels constructed by combining 1KGP with varying
+numbers of Samoans (Table1).
+Panels with more than 24 Samoans yield more well-imputed
+variants than TOPMed
+Panels with 1285 Samoan participants (1KGP+ 1285S and 1285S) resulted
+in the largest number of well-imputed variants, yielding ~300,000 more
+variants on chromosome 5 and ~70,000 more on chromosome 21 than the
+TOPMed-R3 panel, with over 25,000 and ~6500 of these having a MAF of at
+least 0.05 on chromosomes 5 and 21, respectively (Fig.2,a n dT a b l eS 1 ) .T h e
+yield in well-imputed variants increased as the number of Samoans included
+in the reference panel increased across all MAF bins (up to a 55% increase in
+the total number of well-imputed variants compared to the TOPMed-R3
+imputation). The largest gains were se e nf o rv a r i a n t sw i t hM A F<0 . 0 5 ,w i t h
+up to a 187% increase in well-imputedvariants compared to the TOPMed-
+R3 imputation. Moreover, the panels with the most Samoans (1KGP +
+1285S and 1285S panels) had over 200,000 and 60,000 well-imputed unique
+variants (not seen in TOPMed-R3 or 1KGP imputations) on chromosomes
+5 and 21, respectively, in addition to the variants shared across panels
+(Fig. 3). We annotated these shared and unique variants for consequence
+and impact and observed enrichment in several categories among our
+uniquely imputed variants, including signiﬁcantly more modiﬁer, moder-
+ate, and high impact variants (Fig.4,a n dT a b l e sS 4a n dS 5 ) .
+We also examined “lost” variants, those with imputation quality
+r2 < 0.80 in the 1KGP imputation, to see how many could be“rescued”(had
+imputation quality r2 ≥ 0.80) across other panels (Fig. 5,T a b l eS 2 ,a n d
+Fig. S16). The proportion of lost variants rescued was highest for variants
+with greater MAF across all panels, with nearly 100% of lost variants
+recovered in some cases (MAF ≥ 0.05 for the 1KGP + 1285S panel). The
+panels with at least 48 Samoans included rescued more variants overall than
+TOPMed-R3 (15.0% to 35.5% for Sam oan panels compared to 12.2% to
+13.2% for TOPMed). Over 95% of lost variants with MAF ≥ 0.05 were
+rescued for the reference panels with 384 or more Samoans. Even for the
+1KGP + 4S panel, 29.4% to 37.1% of variants with MAF ≥ 0.05 were res-
+cued. As a control, we also examined the reverse scenario — variants that
+were of high-quality (r2 ≥ 0.80) in the 1KGP imputation that were dropped
+(r2 < 0.80) when using other reference panels. We found very few variants
+that were dropped (Fig. S15), demonstrating that variants the 1KGP panel
+imputes well are generally also imputed well with other panels.
+Similar imputation quality to TOPMed is achieved with as few as
+24 Samoans
+Imputation quality increased as the number of Samoans represented in the
+panel increased. The panels with 48 or more Samoans included out-
+performed the TOPMed-R3 panel for all variants with imputed MAF ≥
+0.001 (based on the 1KGP + 1285S imputation), while the 1KGP + 24S
+performed similarly to TOPMed-R3 (Fig.6,a n dT a b l e sS 6a n dS 7 ) .W h e n
+looking at empiricalr2 for genotyped variants only, which is a more robust
+metric for evaluating imputation for lower-frequency variants, the panels
+including at least 24 Samoans outperform both the TOPMed-R3 and 1KGP
+panels (Fig. S4). This trend was consistent across all autosomes (Fig. S10).
+Average imputation quality tended to be lower when examining variants
+based on TOPMed-imputed MAF instead of 1KGP+ 1285S-imputed MAF
+(Fig. 6), consistent with expectations that Samoan allele frequencies would
+differ from those in TOPMed-R3 due to lower-quality matches of local
+haplotypes in the TOPMed-R3 referencepanel. Indeed, many of the variants
+in the (0, 0.001) MAF bin when using the 1KGP+ 1285S imputation are in
+the [0.001, 0.01) MAF bin when using the TOPMed-R3 imputation
+(Fig. S17). However, even when using TOPMed-imputed MAF, the panels
+containing 24 or more Samoans yielded the same or higher quality com-
+pared to the TOPMed-R3 panel across the allele frequency spectrum.
+Consistent with this, the non-reference discordance for TOPMed-R3 (4.44)
+was higher than that for 1KGP+ 24S (4.19), 1KGP+ 48S (3.14), 1KGP+
+96S (2.43), 1KGP+ 1275S (0.81), and 1275S (0.84) panels (Table2). Meta-
+imputation between the 1275S and TOPMed-R3 results yielded higher
+Table 1 | Names and descriptions of tested imputation protocols
+Protocol Name Server Individuals Phased by TOPMed Phased in-house
+1 TOPMed-R3 TOPMed Imputation Server 133,597 TOPMed participants (no
+Samoans)
+X
+2 The Soifua Manuia panel
+(1KGP+1285S)
+In-house 2504 1KGP +1285 Samoans X
+3 1KGP In-house 2504 1KGP (no Samoans) X
+4 1285S In-house 1285 Samoans X
+5 1KGP +4S In-house 2504 1KGP +4 Samoans X
+6 1KGP +24S In-house 2504 1KGP +24 Samoans X
+7 1KGP +48S In-house 2504 1KGP +48 Samoans X
+8 1KGP +96S In-house 2504 1KGP +96 Samoans X
+9 1KGP +384S In-house 2504 1KGP +384 Samoans X
+10 1KGP +1275S In-house 2504 1KGP +1275 Samoans X
+11 1275S In-house 1275 Samoans X
+12 1275S in-house phasing In-house 1275 Samoans X
+13 1285S in-house phasing In-house 1285 Samoans X
+14 1KGP +1275S in-house phasing In-house 2504 1KGP +1275 Samoans X
+15 1KGP +1285S in-house phasing In-house 2504 1KGP +1285 Samoans X
+Protocols 1-4 were used to compare the newly constructed Soifua Manuia panel to TOPMed-R3, 1000 Genomes (1KGP) and to a Samoan-only panel (1285S). The relative gain in imputation quality for
+additional Samoan sequences added to the panel was measured with protocols 5– 9. Protocols 10– 11 were used to directly measure genotype concordance with 10 hold-out participants. Protocols 12– 15
+were compared with 11, 4, 10, and 2 to assess the impact of the phasing of the reference panel. Reference panel haplotypes were either extracted from TOP Med ﬁles (phased by TOPMed) or through
+phasing of the whole-genome sequences separately (phased in-house).
+https://doi.org/10.1038/s42003-026-10788-7 Article
+Communications Biology | (2026) 9:1191 4
+discordance (2.22) than the Samoan-only panel alone, but lower dis-
+cordance than the TOPMed-R3 panel alone (Table2).
+Gains in imputation quality from Samoan representation in the
+reference panel are greatest for high FST variants and low LD
+score variants
+Imputation quality generally increased for all panels as FST increased, as
+expected due to higher conﬁdence in matching haplotypes with population-
+speciﬁcv a r i a t i o n( F i g .S 5 ) .H o w e v e r ,f o rt h eh i g h e s tt h r e eFST deciles, the
+mean r2 for the TOPMed-R3 panel dipped slightly, which may imply that
+allele frequencies are more similar between Samoans and one or more 1KGP
+populations than between Samoans and the TOPMed-R3 populations for
+these highFST variants. We also stratiﬁed FST into high and low strata about
+the median value within each MAF bin to examine the relative difference in
+imputation quality byFST (Table S8). For variants with MAF < 0.05, those
+with highFST (i.e., FST greater than the medianFST of all variants within the
+same MAF bin) tended to be imputed better across all reference panels
+except the TOPMed-R3 panel, which had similar or slightly lowerr2 for high
+FST, low-frequency variants. For variants with MAF ≥ 0.05, there did not
+appear to be a substantial difference in imputation quality byFST except for
+the 1KGP panel (Fig. S6). A similar trend was observed for LD scores, with
+imputation quality increasing as LD score increased (Fig. S7) and high LD
+score variants (i.e., LD score greater than the median LD score of all variants
+w i t h i nt h es a m eM A Fb i n( T a b l eS 8 ) )b e i n gi m p u t e db e t t e ro na v e r a g et h a n
+low LD score ones across the MAF spectrum, consistent with expecta-
+tions (Fig. S8).
+To identify which variants had higher imputation quality with the
+1KGP + 1285S panel than with the TOPMed-R3 panel, we compared the
+difference in mean r2 across the two sets of imputed variants. The gains in
+average r2 for the 1KGP + 1285S panel compared to the TOPMed-R3
+panel were more pronounced for lower-frequency variants
+(0.001 ≤ MAF < 0.05) with low FST and low LD scores (Fig. S9). However,
+for variants with MAF ≥ 0.05, there was no discernible difference in
+average imputation quality across low- and high-FST variants but a small
+difference comparing low- and high-LD score variants. Low LD score
+variants had a larger gain in imputation quality than low FST variants for
+the 1KGP + 1285S panel over the TOPMed-R3 panel. This suggests that
+the gains in imputation from the 1KGP + 1285S panel over TOPMed-R3
+were not only from allele frequency differences but also from haplotype
+structure and that the imputation was the most improved for lower-
+frequency variants on smaller haplotypes.
+Improvement in the imputation of population-speciﬁcv a r i a t i o n
+For rs200884524, the imputation quality is highest (r2 =0 . 8 9–0.95) for the
+reference panels that include Samoan haplotypes (Table 3). Additionally,
+the MAF among the imputed genotypes in the 1834 non-reference-panel
+Samoans from protocols 3 –11 (0.204-0.222) is much closer to what is
+expected— targeted genotyping in separate cohorts of similar ancestry
+Fig. 2 | Count of well-imputed variants by
+reference panel. The number of variants with
+imputation quality r2 ≥ 0.80 by reference panel is
+plotted across minor allele frequency (MAF) bins for
+chromosomes 5 and 21. (These counts are printed in
+Table S1).
+Fig. 3 | Count of uniquely imputed variants by
+combinations of reference panels. The number of
+well-imputed variants ( r2 ≥ 0.80) is plotted for
+chromosomes 5 and 21 across combinations of four
+reference panels (1285S, 1KGP + 1285S, TOPMed-
+R3, and 1KGP) to demonstrate how many variants
+are imputed similarly or uniquely across the panels.
+Black dots in the bottom panels indicate which
+reference panels contained the variants. For exam-
+ple, the ﬁrst bar represents variants with r2 ≥ 0.80
+across all four panels, while the second bar repre-
+sents those with r2 ≥ 0.80 only in 1KGP + 1285S and
+1285S. Colored bars (non-grey) represent the counts
+of variants uniquely captured with a single refer-
+ence panel.
+https://doi.org/10.1038/s42003-026-10788-7 Article
+Communications Biology | (2026) 9:1191 5
+yielded an MAF of 0.202-0.23331. The TOPMed-R3 imputation yielded a
+much more accurate imputed MAF th an 1KGP, which suggests the pre-
+sence of some Paciﬁc haplotypes at this locus in the TOPMed-R3 reference
+panel even though the T (minor) allele count of this variant is still low in
+TOPMed (55 alleles present out of 301,798 total alleles in TOPMed freeze 10
+according to BRAVO 45; https://bravo.sph.umich.edu/). Examining the
+genotype concordance of Samoan-speciﬁcv a r i a t i o n(FST above the 99th
+percentile and having MAF≥ 0.05 in Samoans) yielded similar conclusions;
+panels with Samoans included had the lowest non-reference discordance for
+these variants and TOPMed-R3, while worse than Samoan panels with at
+least 24 Samoans, still outperformed 1KGP (Table2).
+Phasing of the reference panel can affect imputation of
+population-speciﬁc variation
+We compared r2 between variants imputed with reference panels that only
+differed in how they were phased (protocols 1 & 15, 4 & 13) for Samoan-
+speciﬁc variants (i.e., those in the 99th percentile ofFST that had MAF≥ 0.05
+in Samoans). For the panels comprised of 1KGP + 1285S there were no
+systematic differences in imputation quality by phasing of the reference
+panel. The correlation between imputedr2 from the 1KGP + 1285S panel
+and that from the 1KGP + 1285S in-house phasing panel for the 3410
+Samoan-speciﬁc variants was ~0.999 (Fig.7, bottom row). However, for the
+panels comprising only the 1285 Samoans (without 1KGP), imputedr2 was
+lower for the panel that was phased in-house (Fig.7,t o pr o w ) ,c o n t r a r yt o
+our hypothesis. The correlation between imputedr2 from the 1285S panel
+and that from the 1285S in-house phas ing panel was lower than for the
+1KGP + 1285S panels (r = ~0.95). When examining all variants aggregated
+(not examining Samoan-speciﬁc variation), the panels that only differed in
+the way they were phased performed very similarly for imputation r2
+(Tables S1, S2, S6 and S7). Through examining genotype concordance, we
+observed that the panels that were phased in-house (with or without 1KGP)
+had slightly higher non-reference di scordance for all variants (Table 2),
+suggesting that which additional participants are included in the phasing of
+the reference panel can impact imputation quality.
+Meta imputation has worse performance than the population-
+speciﬁcp a n e la l o n e
+We performed meta imputation of the 1285S panel with the TOPMed-R3.
+Prior to meta imputation, we phased the genotyping data of the n = 1834
+target participants with the TOPMed Imputation Server, which, through its
+standard QC process to align the target genotypes to the TOPMed reference
+panel, resulted in 3503 fewer variants in the target genotypes (2840 and 663
+on chromosomes 5 and 21, respectively).
+The average imputationr2 for meta-imputation fell between that for the
+1285S and TOPMed-R3 panels across the MAF spectrum
+(Figs. S11 and S12). We examined the average meta-imputation weights for
+each reference panel, reﬂecting the optimal reference panel choice for each
+genetic marker on chromosome 21. Across all variants, the average 1285S
+weight was greater than 0.5, indicati ng that the Samoan-only panel out-
+performed the TOPMed-R3 panel universally (Fig. S13).
+Fig. 4 | Enrichment of variants from Samoan
+imputation. For well-imputed ( r2 ≥ 0.80) variants
+on chromosomes 5 and 21, variants that were unique
+(present in 1285S and/or 1KGP + 1285S and not in
+TOPMed-R3 or 1KGP) and shared (present in
+1285S or 1KGP + 1285S and TOPMed-R3 or
+1KGP) were annotated by consequence and impact
+with VEP. Enrichment was calculated by comparing
+the proportion of variants in that grouping and MAF
+bin between unique and shared variants so that a
+fold enrichment >1 indicates a variant type more
+common in the uniquely imputed variants. For each
+variant type and MAF bin a 95% Wald con ﬁdence
+interval was constructed. (Data underlying plots are
+available in Table S10).
+https://doi.org/10.1038/s42003-026-10788-7 Article
+Communications Biology | (2026) 9:1191 6
+The meta imputation yielded the highest number of well-imputed
+variants ( r2 ≥ 0.80) compared to the 1285S and TOPMed-R3 panels
+(Fig. S14, and Table S9), but fewer than the Soifua Manuia panel
+(Table S1). Notably, there was a difference in the number of well-
+imputed variants with the 1285S panel when using pre-phased target
+genotypes from the TOPMed Imputation Server (861,094 and 179,604
+variants with r2 ≥ 0.8 on chromosomes 5 and 21, respectively) compared
+to those from the 1285S panel when phasing the target genotypes in-
+house (954,408 and 202,920 variants withr2 ≥ 0.8 on chromosomes 5 and
+21, respectively).
+Discussion
+The Soifua Manuia reference panel consisting of 1KGP + 1285 Samoans
+outperformed all other panels tested, especially for low-frequency var-
+iants. There were substantial gains in imputation quality ( r2) and in the
+number of well-imputed variants across the allele frequency spectrum,
+Fig. 5 | Count of rescued variants by
+reference panel. The number of imputed variants
+that were lost (r2 < 0.80) in the 1KGP imputation but
+were rescued ( r2 ≥ 0.80) in other panels by minor
+allele frequency (MAF) and reference panels across
+chromosomes. Percentages are displayed in Fig. S16.
+Fig. 6 | Imputation quality versus minor allele frequency by reference panel.
+Mean imputation quality ( r2) by minor allele frequency (MAF) bin (left column:
+MAF based on 1KGP + 1285S imputation; right column: MAF based on the
+TOPMed-R3 imputation) is plotted by reference panel on chromosomes 5 and 21.
+(Plots with median r2 are given in Fig. S3. Tables with mean and median r2 across
+reference panel are in Table S6 and S7).
+https://doi.org/10.1038/s42003-026-10788-7 Article
+Communications Biology | (2026) 9:1191 7
+with more pronounced gains for low-frequency variants. Compared to
+the commonly recommended TOPMed-R3 panel, the number of well-
+imputed variants available across chromosomes and MAF ranges
+increased by 8% to 182% with the 1KGP + 1285S panel and average
+imputation quality increased by 3% to 42%. When examining meta
+imputation between a population-speci ﬁc panel (1285S) and the
+TOPMed-R3 panel, we observed lower imputation quality on average
+with meta imputation compared to the population-speci ﬁc panel, con-
+trary to prior work demonstrating the superiority of meta imputation to
+single reference panel imputation 39,46. This demonstrates that while the
+TOPMed-R3 panel has improved imputation quality for many diverse
+populations, there are still populations that are not well represented by
+this or other publicly available panels.
+Additionally, there was an enrichment in high-impact, coding variants
+among those that were uniquely well-imputed by a Samoan panel (1285S or
+1KGP + 1285S) compared to TOPMed-R3 and 1KGP. This phenomenon,
+t h ee n r i c h m e n to fh i g h - i m p a c tv a r i a n t s ,h a sb e e no b s e r v e di no t h e rp o p u -
+lation isolates47–51 and re ﬂects the population history of Samoa through
+founder and bottleneck effects. This has important implications for genetic
+association testing and ﬁne-mapping of GWAS loci, as measuring asso-
+ciation with these variants that likelyimpact gene function would elucidate
+the putative causal gene, as we have previously demonstrated with the
+discovery of the stop-gain variant rs20088452431.A sap r o o fo fc o n c e p t ,w e
+explicitly examined this variant and demonstrated that the imputation
+quality and minor allele frequency changed across the tested reference
+panels, with the most accurate imputation occurring with the Soifua
+Manuiapanel. This has implications for post-imputation association testing
+for similar population-speciﬁc variants, as they may be poorly imputed or
+imputed with fewer non-reference ge notypes (i.e., with lower MAF) by
+panels not including population-speciﬁch a p l o t y p e s .
+In looking at variants with low imputation quality in the 1KGP
+imputation, a large proportion of them were “rescued”,i . e . ,h a dh i g h
+imputation quality, in panels containing 48 or more Samoans. These panels
+rescued more variants, especiallycommon variants, than the TOPMed-R3
+panel did. Across the variant frequency spectrum, with only 24 Samoans, we
+achieved the same imputation performance as TOPMed-R3 and had greater
+performance with all panels with 48 or more Samoans. Importantly, this
+sample size is not necessarily prescr iptive for future studies planning to
+perform WGS to create their own population-speci ﬁc panel as these 48
+individuals were not randomly selected— they were chosen to maximize the
+genetic variation present in the orig inal set of ~3000 participants, which
+were all of Samoan ethnicity (de ﬁned by participant self-reporting four
+Samoan grandparents) and therefore comprised a quite homogeneous
+population with little to no admixture8.T h e s eﬁndings may reﬂect the fact
+that in this cohort, the 48 individuals yielded over 70% of the information
+content from INFOSTIP (Fig. S2). In other populations, the number of
+individuals needed to see improved imputation will depend on the genetic
+variation of the target population. Forp o p u l a t i o n sw i t hl a r g e rg e n e t i ch e t -
+erogeneity, including those with lots of admixture or different haplotype
+sizes, more individuals will likely be needed to achieve improved imputation
+accuracy over extant panels.
+The trends in imputation quality byFST and LD score suggest that these
+improvements inr2 for theSoifua Manuiapanel are driven by differences in
+both the LD patterns and haplotypes of Samoans and allele frequency dif-
+ferences across populations. While imputation quality was highest for high
+LD score variants, the gains in imputation quality for the Soifua Manuia
+panel over the TOPMed-R3 panel were the largest for low LD score variants
+across the MAF spectrum. This suggests that the gains in imputation quality
+for the Soifua Manuia panel over TOPMed-R3 are driven by population-
+speciﬁc variants in small LD blocks that would not be predicted well by other
+reference panels.
+We hypothesized that the phasing of reference panel haplotypes would
+affect imputation quality, speciﬁcally, that phasing taking place in large
+multiethnic consortia might bias thephasing of the reference panel haplo-
+types more common in majority-represented populations. In this study, we
+observed an opposite effect to what we hypothesized — the imputation
+quality was slightly lower for population-speci ﬁc variation within a
+population-speciﬁc panel (1285S) phased separately. We did not observe
+this trend with the cosmopolitan panel (1KGP+ 1285S). We also observed
+differences in genotype concordance by phasing of the reference panel—
+with those having been phased sepa rately (1285S in-house phasing and
+1KGP + 1285S in-house phasing) having slightly higher discordance than
+those phased with other studies as part of a consortium (1285S and
+1KGP + 1285S). Based on ourﬁndings in this study, it does not appear that
+separate phasing yields better imputation.
+These ﬁndings of substantially improved imputation quality by
+including population-speciﬁc sequences to existing cosmopolitan reference
+panels conceptually extend to other populations with a similar evolutionary
+Table 2 | Non-reference discordance on chromosome 21
+calculated from 10 hold-out participants with WGS
+Protocol Reference Panel Non-Reference Discordance
+All SNVs 598 Samoan-
+speciﬁc SNVs
+1 TOPMed-R3 4.44 3.17
+3 1KGP 10.21 4.34
+5 1KGP + 4S 7.66 3.18
+6 1KGP + 24S 4.19 1.87
+7 1KGP + 48S 3.14 1.51
+8 1KGP + 96S 2.43 1.40
+10 1KGP + 1275S 0.81 0.61
+14 1KGP + 1275S in-house
+phasing
+0.99 0.59
+11 1275S 0.84 0.56
+12 1275S in-house phasing 0.99 0.62
+Discordance was calculated for two sets of variants: all single nucleotide variants on the
+chromosome (SNVs) and 598 Samoan-speciﬁc SNVs (deﬁned as being in the 99th percentile of FST
+and having MAF ≥ 0.05 in Samoans). The 10 hold-out participants were chosen based on INFOSTIP
+ranking (ranks 120, 240, 360, 480, 600, 720, 840, 960, 1080, and 1200) to capture a range of
+haplotypes present in the sample and facilitate the evaluation of the panels with <100 Samoans.
+Non-reference discordance represents the percentage of non-homozygous-reference genotypes
+that were discordant, calculated as 100 * (xRR + xRA + xAA) / (xRR + xRA + xAA + mRA + mAA),
+where xRR, xRA, and xAA represent the counts of discordant homozygous reference,
+heterozygous, and homozygous alternate genotypes, and mRA and mAA are the counts of the
+matching heterozygous and homozygous alternative genotypes.
+Table 3 | Imputation quality and minor allele frequency (MAF)
+for rs200884524 (chr5:181050285 C/T [hg38]) in BTNL9 across
+reference panels
+Protocol Reference panel r2 MAF
+1 TOPMed-R3 0.84740 0.17385
+3 1KGP 0.45654 0.01361
+5 1KGP + 4S 0.90687 0.20424
+6 1KGP + 24S 0.91276 0.22198
+7 1KGP + 48S 0.86967 0.20785
+8 1KGP + 96S 0.91062 0.20710
+9 1KGP + 384S 0.94567 0.22130
+2 1KGP + 1285S 0.94360 0.21852
+15 1KGP + 1285S in-house
+phasing
+0.94360 0.21852
+4 1285S 0.93441 0.21926
+13 1285S in-house phasing 0.93036 0.22106
+Targeted genotyping in two separate cohorts of 1666 Samoan and American Samoan adults yielded
+a MAF of 0.202 – 0.23331.
+https://doi.org/10.1038/s42003-026-10788-7 Article
+Communications Biology | (2026) 9:1191 8
+history to the Samoan population included here. Samoans are an isolated
+founder population with a history of population bottlenecks, which confers
+extended haplotype blocks with high LD scores and reduced
+heterozygosity8,52.T h eﬁndings here mirror those from other isolated and/or
+founder populations47,53,54 and suggest that other isolated populations
+(including those who have been previously sequenced48–51)w o u l de x p e r i -
+ence these improvements in imputation quality as well through similar
+imputation strategies.
+Taken together, this work highligh ts the utility of augmenting cos-
+mopolitan extant panels with population-speciﬁc sequences, resulting in
+more well-imputed variants for associ ation testing, higher imputation
+quality overall, and better imputation of population-speciﬁcv a r i a t i o n .I n
+this work, these gains were the greatest for low-frequency population-spe-
+ciﬁc variants in smaller LD blocks. These results suggest that adding even a
+small number of population-speciﬁc haplotypes can substantially increase
+the number of well-imputed variants available for analysis compared to
+gold-standard extant panels, which may allow for better inclusion of even
+more diverse populations in genetic association studies. This improvement
+in the representativeness of genetic studies, by extension, will lay the
+foundation for more equitable access to personalized medicine innovation
+in this and other Paciﬁc populations.
+Data availability
+The Soifua Manuia reference panel is available through dbGaP (accession
+number: phs000914.v1.p1) in the format of m3vcfﬁles (accession number:
+phs000972.v5.p1). The whole-genome sequencing and genotyping array
+data used for this study are available through dbGaP (accession numbers:
+phs000914.v1.p1 [genotyping] and phs 000972.v5.p1 [sequencing]). The
+source data for Figs.2–7 are available through FigShare (https://doi.org/10.
+6084/m9.ﬁgshare.32987543).
+Code availability
+A template for the imputation code is available at https://github.com/
+jennaccarlson/imputation(Jenna C. Carlson, TheSoifua Manuiareference
+panel with 2,570 Samoan haplotypes improves genotype imputation quality
+among Samoans, GitHub,https://doi.org/10.5281/zenodo.21363521.2026).
+Additional code for creating the imputation reference panels and imputa-
+tion quality analysis will be made available upon request.
+Received: 23 May 2025; Accepted: 7 August 2026;
+References
+1. 1000 Genomes Project Consortium; Auton, A., Brooks, L. D.,
+Durbin, R. M., Garrison, E. P., Kang, H. M., Korbel, J. O.,
+M a r c h i n i ,J .L . ,M c C a r t h y ,S . ,M c V e a n ,G .A . ,A b e c a s i s ,G .R .A
+global reference for human genetic variation. Nature 526,6 8 – 74
+(2015).
+2. McCarthy, S. et al. A reference panel of 64,976 haplotypes for
+genotype imputation. Nat. Genet. 48, 1279– 1283 (2016).
+3. Taliun, D. et al. Sequencing of 53,831 diverse genomes from the
+NHLBI TOPMed Program. Nature 590, 290– 299 (2021).
+4. Kowalski, M. H. et al. Use of >100,000 NHLBI Trans-Omics for
+Precision Medicine (TOPMed) Consortium whole genome sequences
+improves imputation quality and detection of rare variant associations
+in admixed African and Hispanic/Latino populations. PLoS Genet 15,
+e1008500 (2019).
+5. Friedlaender, J. S. et al. The Genetic Structure of Paci ﬁc Islanders.
+PLoS Genet. 4, e19 (2008).
+6. Skoglund, P. et al. Genomic insights into the peopling of the
+Southwest Paciﬁc. Nature 538, 510– 513 (2016).
+Fig. 7 | Comparison of imputation quality by
+phasing of the reference panel. Imputation quality
+(r2) for variants in the 99th percentile of FST that
+were common in Samoans (MAF ≥ 0.05) across
+chromosome 5 and 21. Top row: the 1285S panel (X-
+axis; protocol 10) versus the 1285S in-house phasing
+panel (Y-axis; protocol 11). Bottom row: the
+1KGP + 1285S panel (X-axis; protocol 8) versus the
+1KGP + 1285S in-house phasing panel ( Y-axis;
+protocol 9). Red line indicates Y = X line. Blue line is
+ﬁtted linear regression line based on the observed r2
+values. Correlation (r) between the imputed r2 from
+the two panels is given above each plot.
+https://doi.org/10.1038/s42003-026-10788-7 Article
+Communications Biology | (2026) 9:1191 9
+7. Tsai, H.-J. et al. Distribution of genome-wide linkage disequilibrium
+based on microsatellite loci in the Samoan population. Hum.
+Genomics 1, 327 (2004).
+8. Harris, D. N. et al. Evolutionary history of modern Samoans. Proc. Natl.
+Acad. Sci. USA 117, 201913157 (2020).
+9. World Health Organization. Regional Of ﬁce for the Western Paci ﬁc.
+Progress on the Prevention and Control of Noncommunicable
+Diseases in the Western Paci ﬁc Region: Country Capacity Survey
+2019 (WHO Regional Ofﬁce for the Western Paci ﬁc, 2021).
+10. Graham, G. Disparities in cardiovascular disease risk in the United
+States. Curr. Cardiol. Rev. 11, 238– 245 (2015).
+11. Anand, S., Bradshaw, C. & Prabhakaran, D. Prevention and
+management of CVD in LMICs: why do ethnicity, culture, and context
+matter? BMC Med. 18, 7 (2020).
+12. Hawley, N. L. et al. Prevalence of adiposity and associated
+cardiometabolic risk factors in the Samoan genome-wide association
+study. Am. J. Hum. Biol. 26, 491– 501 (2014).
+13. McGarvey, S. T. Cardiovascular disease (CVD) risk factors in Samoa
+and American Samoa, 1990-95. Pac. Health Dialog. 8, 157– 162
+(2001).
+14. Klag, M. J. et al. End-stage renal disease in African-American and
+White Men: 16-year MRFIT ﬁndings. JAMA 277, 1293– 1298 (1997).
+15. SIGMA Type 2 Diabetes Consortium, Williams, A. L., et al. Sequence
+variants in SLC16A11 are a common risk factor for type 2 diabetes in
+Mexico. Nature 506,9 7– 101 (2014).
+16. Nair, A. K. & Baier, L. J. Complex genetics of type 2 diabetes and effect
+size: what have we learned from isolated populations? Rev. Diabet.
+Stud. 12, 299– 319 (2015).
+17. Staimez, L. R. et al. Tale of two Indians: heterogeneity in type 2
+diabetes pathophysiology. Diab./Metab. Res. Rev. 35, e3192 (2019).
+18. Vartiainen, E. et al. Mortality, cardiovascular risk factors, and diet in
+China, Finland, and the United States. Public Health Rep. 106,4 1– 46
+(1991).
+19. Gupta, A. K. et al. Ethnic differences in blood pressure response to ﬁrst
+and second-line antihypertensive therapies in patients randomized in
+the ASCOT trial. Am. J. Hypertens. 23, 1023– 1030 (2010).
+20. Ojji, D. B. et al. Comparison of dual therapies for lowering blood
+pressure in Black Africans. N. Engl. J. Med. 380, 2429– 2439 (2019).
+21. James, P. A. et al. 2014 Evidence-Based Guideline for the
+Management of High Blood Pressure in Adults: Report From the Panel
+Members Appointed to the Eighth Joint National Committee (JNC 8).
+JAMA 311, 507– 520 (2014).
+22. Mills, M. C. & Rahal, C. The GWAS Diversity Monitor tracks diversity by
+disease in real time. Nat. Genet. 52, 242– 243 (2020).
+23. Precision medicine needs an equity agenda. Nat. Med. 27, 737– 737
+https://doi.org/10.1038/s41591-021-01373-y (2021).
+24. Burke, W. Utility and diversity: challenges for genomic medicine.
+Annu. Rev. Genomics Hum. Genet. 22,1 – 24 (2021).
+25. McGarvey, S. T., Levinson, P. D., Bausser-Man, L., Galanis, D. J. &
+Hornick, C. A. Population change in adult obesity and blood lipids in
+American Samoa from 1976– 1978 to 1990. Am. J. Hum. Biol.5,1 7– 30
+(1993).
+26. Chin-Hong, P. V. & McGarvey, S. T. Lifestyle incongruity and adult
+blood pressure in Western Samoa. Psychosom. Med. 58, 131– 137
+(1996).
+27. Galanis, D. J., McGarvey, S. T., Quested, C., Sio, B. & Afele-
+Fa’amuli, S. A. Dietary intake of modernizing Samoans:
+implications for risk of cardiovascular disease. J. Am. Diet. Assoc.
+99, 184 – 190 (1999).
+28. Dai, F. et al. Genome-wide scan for adiposity-related phenotypes in
+adults from American Samoa. Int. J. Obes. 31, 1832– 1842 (2007).
+29. Dai, F. et al. A whole genome linkage scan identi ﬁes multiple
+chromosomal regions inﬂuencing adiposity-related traits among
+Samoans. Ann. Hum. Genet. 72, 780– 792 (2008).
+30. Minster, R. L. et al. A thrifty variant in CREBRF strongly in ﬂuences
+body mass index in Samoans. Nat. Genet. 48, 1049– 1054 (2016).
+31. Carlson, J. C. et al. A stop-gain variant in BTNL9 is associated with
+atherogenic lipid proﬁles. HGG Adv. 4, 100155 (2023).
+32. Laurie, C. C. et al. Quality control and quality assurance in genotypic
+data for genome-wide association studies. Genet. Epidemiol. 34,
+591– 602 (2010).
+33. Gusev, A. et al. Low-pass genome-wide sequencing and variant
+inference using identity-by-descent in an isolated human population.
+Genetics 190, 679– 689 (2012).
+34. Loh, P.-R. et al. Reference-based phasing using the Haplotype
+Reference Consortium panel. Nat. Genet 48, 1443– 1448 (2016).
+35. R Core Team. R: A Language and Environment for Statistical
+Computing. R Foundation for Statistical Computing, Vienna, Austria.
+https://www.R-project.org/ (2017).
+36. Das, S. et al. Next-generation genotype imputation service and
+methods. Nat. Genet. 48, 1284– 1287 (2016).
+37. Deelen, P. et al. Genotype harmonizer: automatic strand alignment
+and format conversion for genotype data integration.BMC Res. Notes
+7, 901 (2014).
+38. Fuchsberger, C., Abecasis, G. R. & Hinds, D. A. minimac2: faster
+genotype imputation. Bioinformatics 31, 782– 784 (2015).
+39. Yu, K. et al. Meta-imputation: An ef ﬁcient method to combine
+genotype data after imputation with multiple reference panels. Am. J.
+Hum. Genet. 109, 1007– 1015 (2022).
+40. McLaren, W. et al. The ensembl variant effect predictor. Genome Biol.
+17, 122 (2016).
+41. Cingolani, P. et al. A program for annotating and predicting the effects
+of single nucleotide polymorphisms, SnpEff. Fly 6,8 0– 92 (2012).
+42. Danecek, P. et al. The variant call format and VCFtools. Bioinformatics
+27, 2156– 2158 (2011).
+43. Yang, J., Lee, S. H., Goddard, M. E. & Visscher, P. M. GCTA: a tool for
+genome-wide complex trait analysis. Am. J. Hum. Genet. 88,7 6– 82
+(2011).
+44. Danecek, P. et al. Twelve years of SAMtools and BCFtools.
+Gigascience 10, giab008 (2021).
+45. The NHLBI Trans-Omics for Precision Medicine (TOPMed) Whole
+Genome Sequencing Program (BRAVO variant browser: University of
+Michigan and NHLBI, 2018).
+46. Yang, M.-Y. et al. SEAD reference panel with 22,134 haplotypes
+boosts rare variant imputation and genome-wide association analysis
+in Asian populations. Nat. Commun. 15, 10839 (2024).
+47. Southam, L. et al. Whole genome sequencing and imputation in
+isolated populations identify genetic associations with medically-
+relevant complex traits. Nat. Commun. 8, 15606 (2017).
+48. Mortensen, Ó et al. FarGen: elucidating the distribution of coding
+variants in the isolated population of the Faroe Islands. Eur. J. Hum.
+Genet. 31, 329– 337 (2023).
+49. Halachev et al. Increased ultra-rare variant load in an isolated Scottish
+population impacts exonic and regulatory regions. PLoS Genet. 15,
+e1008480 (2019).
+50. Jeroncic, A. et al. Whole-exome sequencing in an isolated population
+from the Dalmatian island of Vis. Eur. J. Hum. Genet. 24, 1479– 1487
+(2016).
+51. Nutile, T. et al. Whole-exome sequencing in the isolated populations
+of Cilento from South Italy. Sci. Rep. 9, 4059 (2019).
+52. Tsai, H.-J. et al. Distribution of genome-wide linkage disequilibrium
+based on microsatellite loci in the Samoan population. Hum.
+Genomics 1, 327– 334 (2004).
+53. Pistis, G. et al. Rare variant genotype imputation with thousands of
+study-speciﬁc whole-genome sequences: implications for cost-
+effective study designs. Eur. J. Hum. Genet. 23, 975– 983 (2015).
+54. Hou, L. et al. A population-speci ﬁc reference panel empowers genetic
+studies of Anabaptist populations. Sci. Rep. 7, 6079 (2017).
+https://doi.org/10.1038/s42003-026-10788-7 Article
+Communications Biology | (2026) 9:1191 10
+Acknowledgements
+We would like to thank the Samoan participants of the study, local village
+authorities, and the many Samoan and otherﬁeld workers over the years. We
+acknowledge the Samoan Ministry of Health, the Samoa Bureau of
+Statistics, and the Samoan Ministry of Women, Community and Social
+Development for their support of this research. We give particular thanks to
+two research assistants, Melania Selu and Vaimoana Lupematisila, who
+contributed to the 2010 recruitment and continue to assist us in our work
+in Samoa.
+Molecular data for the Trans-Omics in Precision Medicine (TOPMed)
+program was supported by the National Heart, Lung, and Blood Institute
+(NHLBI). Genome Sequencing for NHLBI TOPMed: Samoan
+(phs000972.v5.p1) was performed at New York Genome Center Genomics
+(HHSN268201500016C) and Northwest Genomics Center
+(HHSN268201100037C). Core support including centralized genomic read
+mapping and genotype calling, along with variant quality metrics andﬁltering
+was provided by the TOPMed Informatics Research Center
+(3R01HL117626-02S1; contract HHSN268201800002I). Core support
+including phenotype harmonization, data management, sample-identity
+QC, and general program coordination was provided by the TOPMed Data
+Coordinating Center (R01HL120393; U01HL120393; contract
+HHSN268201800001I). We gratefully acknowledge the studies and partici-
+pants who provided biological samples and data for TOPMed.
+Trans-Omics in Precision Medicine (TOPMed) program imputation
+panel (version TOPMed-r3) supported by the National Heart, Lung and Blood
+Institute (NHLBI); see www.nhlbiwgs.org. TOPMed study investigators
+contributed data to the reference panel, which can be accessed through the
+TOPMed Imputation Server. The panel was constructed and implemented
+by the TOPMed Informatics Research Center at the University of Michigan
+(3R01HL-117626-02S1; contract HHSN268201800002I). The TOPMed
+Data Coordinating Center (3R01HL-120393-02S1; contract
+HHSN268201800001I) provided additional data management, sample
+identity checks, and overall program coordination and support. We gratefully
+acknowledge the studies and participants who provided biological samples
+and data for TOPMed.
+Author contributions
+J.C.C. – Conceptualization, Data curation, Formal Analysis, Methodology,
+Supervision, Visualization, Writing– original draft, Writing– review & editing.
+M.K. – Methodology, Software, Writing– review & editing. S.L. –
+Methodology, Software, Writing– review & editing. K.A. – Formal Analysis,
+Writing – review & editing. J.Z.Z. – Methodology, Software. L.M.S.–
+Visualization, Writing– review & editing. T.J.Y. – Visualization, Writing–
+review & editing. E.A.C. – Formal Analysis. D.A.D.– Formal Analysis. H.C. –
+Data curation, Resources, Investigation. T.N.– Project administration.
+M.S.R. – Data curation, Project administration. S.V.– Project administration,
+Writing – review & editing. R.D. – Data curation, Resources, Investigation,
+Funding acquisition, Writing– review & editing. N.L.H. – Data curation,
+Funding acquisition, Project administration, Writing– review & editing.
+S.T.M. – Data curation, Funding acquisition, Project administration, Writing–
+review & editing. D.E.W. – Conceptualization, Funding acquisition,
+Methodology, Project administration, Supervision, Writing– review &
+editing. R.L.M. – Conceptualization, Funding acquisition, Methodology,
+Project administration, Supervision, Writing– review & editing.
+Funding
+This work was funded by the National Institute of Health grants
+R01HL093093 (STM), R01HL133040 (RLM), R01AG009375 (STM),
+R01HL052611 (MI Kamboh), R01DK059642 (STM), and R01DK055406 (RD).
+Genotyping was performed in the Core Genotyping Laboratory at the
+University of Cincinnati, funded by National Institutes of Health grant
+P30ES006096 (S Pinney).
+Competing interests
+The authors declare no competing interests.
+Additional information
+Supplementary informationThe online version contains
+supplementary material available at
+https://doi.org/10.1038/s42003-026-10788-7.
+Correspondenceand requests for materials should be addressed to
+Jenna C. Carlson.
+Peer review information Communications Biologythanks Qingbo Wang,
+Ricardo A. Verdugo and the other, anonymous, reviewer(s) for their
+contribution to the peer review of this work. Primary Handling Editors: [Dr
+Huiying Zhao and Aylin Bircan]. A peer review ﬁle is available.
+Reprints and permissions informationis available at
+http://www.nature.com/reprints
+Publisher’s note Springer Nature remains neutral with regard to
+jurisdictional claims in published maps and institutional afﬁliations.
+Open Access This article is licensed under a Creative Commons
+Attribution-NonCommercial-NoDerivatives 4.0 International License,
+which permits any non-commercial use, sharing, distribution and
+reproduction in any medium or format, as long as you give appropriate
+credit to the original author(s) and the source, provide a link to the Creative
+Commons licence, and indicate if you modi ﬁed the licensed material. You
+do not have permission under this licence to share adapted material
+derived from this article or parts of it. The images or other third party
+material in this article are included in the article ’s Creative Commons
+licence, unless indicated otherwise in a credit line to the material. If material
+is not included in the article’s Creative Commons licence and your intended
+use is not permitted by statutory regulation or exceeds the permitted use,
+you will need to obtain permission directly from the copyright holder. To
+view a copy of this licence, visit http://creativecommons.org/licenses/by-
+nc-nd/4.0/.
+© The Author(s) 2026
+https://doi.org/10.1038/s42003-026-10788-7 Article
+Communications Biology | (2026) 9:1191 11

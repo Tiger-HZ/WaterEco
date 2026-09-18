@@ -1,0 +1,860 @@
+ARTICLE | Article in Press
+Scientific Reports https://doi.org/10.1038/s41598-026-69019-y
+Scientific Reports
+This Article in Press is shared early to give you faster access to new research. It is citable and carries a permanent DOI. 
+The final edited version will replace it automatically.
+Spatio-temporal evaluation of land use and cover 
+change and prediction of habitat quality in Estuarine 
+Delta National Parks: a case study of the Yellow River 
+Estuary National Park
+Zhuang Zhuang · Zhaojin Li · Pengfei Tai · Fugao Jiang
+Received: 18 March 2026 / Accepted: 25 August 2026
+© The Author(s) 2026
+Abstract
+As a critical component of China’s national park system, the Yellow River Estuary National Park exhibits a 
+unique habitat evolution mechanism shaped by the interplay between anthropogenic disturbances and ecologi -
+cal restoration within a land–sea interaction zone. This study simulates land use and land cover change and 
+assesses habitat quality dynamics from 2003 to 2023, with scenario projections for 2033, by integrating the 
+InVEST and PLUS models. The results reveal a dual-process mechanism underlying habitat change: urbaniza -
+tion drives the expansion of construction land, which encroaches upon cropland and barren land, leading to 
+widespread habitat degradation and fragmentation; concurrently, wetland restoration and water body expansion, 
+driven by ecological policies, partially offset these losses by locally enhancing habitat quality in coastal zones. 
+This coexistence of degradation and restoration shapes a spatially heterogeneous pattern, where low-quality 
+habitat expands and consolidates around urban agglomerations, while high-quality habitat becomes increasingly 
+fragmented and confined to remnant wetland patches. Scenario projections indicate a continuation of these 
+trends, with further expansion of low-quality habitat and sustained fragmentation of high-quality areas, suggest-
+ing limited ecological resilience under current land use trajectories. By uncovering the process-based linkages 
+between land use transformation and habitat quality response, this study provides a mechanistic understanding 
+of estuarine habitat evolution and offers a scientific foundation for spatial planning and ecological governance 
+in integrated land–sea national parks. These insights contribute to broader discourses on land quality and eco -
+system service sustainability in deltaic social-ecological systems.
+Keywords Yellow River Estuary National Park · Habitat quality · Land use and cover change · InVEST 
+model · PLUS model · Ecosystem services
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-69019-y
+Introduction
+The establishment of a nature reserve system with national parks as the main body in China is an important insti-
+tutional innovation in the construction of global ecological civilization construction and a key practice to realize 
+the harmonious coexistence between man and nature1. At present, China has established a national park system to 
+protect the authenticity and integrity of the natural ecosystem and build a national ecological security barrier 2,3. 
+Yellow River Estuary National Park is the first Marine land integrated national park in China. It undertakes the 
+important mission of ecological protection and high-quality development in the Yellow River Basin 4. It is an 
+important practice to fully implement the concept that “lucid waters and lush mountains are invaluable assets”, 
+adhere to harmonious coexistence between man and nature, and promote all-round, all-round, and all-round eco-
+logical protection5,6. As a key indicator of ecosystem health, habitat quality directly reflects the capacity of land-
+scapes to provide essential ecosystem services, such as biodiversity maintenance, water purification, and climate 
+regulation. Moreover, land use changes not only alter habitat patterns but also affect land quality which in turn 
+influences the delivery of these services. Therefore, assessing habitat quality dynamics within the framework of 
+land quality and ecosystem services is critical for guiding national park management and regional sustainability. 
+In 2021, the Chinese government formulated the outline of the Yellow River Basin ecological protection and 
+high-quality development plan, indicating that the high-quality ecological protection and high-quality develop -
+ment of Yellow River Estuary National Park have been incorporated into the national strategic plan.
+Although previous studies have extensively examined the spatial and temporal variation of habitat quality 
+under land-use change, most have emphasized changes in habitat quality patterns and future trends. Less atten -
+tion has been paid to the relationship between specific land-use transitions and their corresponding habitat quality 
+responses. In estuarine wetlands, where human activities and ecological restoration jointly influence land-use 
+change, overall habitat quality trends may conceal spatially differentiated processes of degradation and improve-
+ment. Clarifying this relationship is therefore important for understanding habitat quality evolution in estuarine 
+protected areas.
+Against this background, this study examines the spatio-temporal relationship between land-use change and 
+habitat quality in the Yellow River Estuary National Park. The PLUS model is employed to characterize and 
+simulate land-use dynamics, while the InVEST model is used to evaluate habitat quality under observed and 
+projected land-use patterns. (Fig. 1). At the level of land use simulation, the multi-factor driven land use change 
+simulation prediction is constructed based on the PLUS model to identify the leading driving mechanism of land 
+use spatial evolution in the study area. The land use pattern in 2023 was simulated by using the land use data in 
+2003 and 2013, and compared with the actual land use results in 2023 to evaluate the accuracy and applicability 
+of the model. On the premise that the reliability of the model has been verified, further use the land use change 
+from 2013 to 2023 to predict the Scenario prediction of land use pattern in 2033, providing a spatial basis for 
+habitat quality analysis. Finally, based on the land use data at different stages, the simulation results of the PLUS 
+model are used as an important input of the InVEST model to quantitatively evaluate the temporal and spatial 
+distribution characteristics of habitat quality in the study area in 2003, 2013, 2023 and 2033. The system reveals 
+the potential ecological risk of land use change on habitat quality, so as to realize the comprehensive analysis of 
+the evolution process of habitat quality evolution in Yellow River Estuary National Park.
+Accordingly, the central scientific question of this study is how different land-use transitions are associated 
+with spatially differentiated changes in habitat quality within a dynamic estuarine landscape. The research results 
+can not only provide a scientific basis for the space control, ecological restoration and adaptive management of 
+Yellow River Estuary National Park, but also provide a theoretical basis and typical cases for the research and 
+practice of similar land and sea integrated protected areas in the world.
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-69019-y
+Fig. 1 Research roadmap.
+ 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-69019-y
+Literature review
+Habitat quality is a key indicator to measure ecosystem health and biodiversity sustainability, and its core theory 
+has evolved over time 7,8. In the early stage, the definition of habitat quality mainly focused on providing basic 
+living conditions such as food, water and breeding sites for species9. With the deepening of ecological research, 
+its connotation extends to the comprehensive assessment of ecological integrity and ecosystem services 10. Eco-
+logical integrity emphasizes the integrity and stability of ecosystem structure, function and processes. A healthy 
+ecosystem can resist external interference and maintain its original state for a long time 11,12. Ecosystem service 
+functions link habitat quality with human well-being, emphasizing the ability of habitat to provide support ser -
+vices, supply services and cultural services 13,14. Based on the evolution of the above theoretical connotation, 
+research on habitat quality has gradually formed a theoretical system with landscape ecology theory and Bio -
+diversity Conservation Theory as the core. Landscape ecology emphasizes the impact of spatial pattern on eco -
+logical processes, and believes that Land Use and Land Cover Change (LUCC) is a key factor affecting habitat 
+quality15,16. Rapid urbanization and agricultural expansion will lead to habitat fragmentation and connectivity 
+decline17,18. The theory of ecological diversity protection is the core driving force for the study of habitat qual -
+ity, and habitat degradation is the main reason for the decline in biodiversity 19,20. In summary, habitat quality is 
+understood as a dynamic, multi-scale, complex system affected by both natural and human factors21.
+The habitat quality assessment method system covers the traditional field survey method and model evalua -
+tion method. The traditional field survey method has the advantages of high data authenticity and rich details by 
+directly obtaining the data on species distribution and habitat characteristics22. However, these methods are often 
+expensive and difficult to operate on a large scale or long time series. The RSEI model is based on remote sensing 
+data to rapidly assess the regional ecological environment quality by integrating indicators such as greenness, 
+humidity, heat and rainfall23. The MaxEnt model is often used to predict species distribution and assess habitat 
+suitability by associating species appearance data with environmental factors24. The CA-Markov model is mainly 
+used to simulate land use change and indirectly assess habitat quality changes 25,26. These models have their 
+own advantages, but the common challenge is how to accurately obtain high-quality input data, calibrate model 
+parameters and deal with spatial heterogeneity27. The InVEST model is widely used because it can quantify the 
+degree of habitat threatened and assess habitat quality28,29. The habitat quality index is calculated by the sensitiv-
+ity of land cover types to threat sources and the impact range of threat sources, which includes multiple factors 
+such as economy, nature, society, and land use that jointly affect habitat quality30. This method breaks through the 
+inherent limitations of traditional field survey and provides the feasibility for high-precision and dynamic habi -
+tat quality assessment. Among these approaches, the InVEST model’s habitat quality module has been widely 
+applied because it links land use/cover patterns to ecosystem service outcomes. By quantifying the impacts of 
+threats on habitat suitability, it provides a spatially explicit assessment of a key supporting service which under-
+pins biodiversity and other regulating and cultural services. This makes the InVEST model particularly suitable 
+for studies framed within the land quality–ecosystem services nexus. These methods differ in their data require -
+ments and applicability: field surveys provide detailed ecological information but are difficult to apply over large 
+areas, RSEI is suitable for regional environmental assessment, MaxEnt is more appropriate for species-specific 
+habitat suitability analysis, whereas InVEST provides a spatially explicit framework for evaluating habitat qual-
+ity responses to land-use change.
+Land-use simulation has gradually evolved from traditional cellular automata approaches toward machine-
+learning and deep-learning methods capable of capturing complex spatio-temporal patterns. These approaches 
+differ in their data requirements, interpretability, and analytical purposes. Deep-learning methods offer advan -
+tages in learning complex spatial and temporal dependencies from data-rich time series, whereas PLUS is well 
+suited to identifying the driving factors of land expansion and reproducing spatially explicit land-use transi -
+tions. Compared with purely prediction-oriented approaches, process-based land-use models such as PLUS place 
+greater emphasis on identifying land expansion rules and their associated driving factors, thereby providing a 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-69019-y
+more interpretable basis for linking land-use transitions with subsequent ecological responses. In this study, 
+PLUS was selected because its land expansion analysis and patch-generation mechanisms are consistent with the 
+objective of examining land-use transitions and their associated habitat quality responses.
+The particularity of estuarine wetland habitat quality is that its rivers and coastlines intersect each other, form-
+ing a unique ecological environment. Hydrological connectivity, such as runoff and sediment transport, is crucial 
+to the formation and maintenance of estuarine wetland habitats 31. Studies have shown that estuarine wetlands 
+are important biodiversity hot-spots and are vulnerable to human activities and climate change32. Therefore, it is 
+particularly important to evaluate and protect the habitat quality of estuarine wetlands. The existing research on 
+the Yellow River Estuary covers wetland evolution in the Yellow River Delta, habitat suitability of rare species, 
+and the impact of human activities 31–32. However, relatively limited attention has been paid to the integrated 
+coupling of habitat quality evaluation, simulation, prediction, and the quantification of underlying driving mecha-
+nisms34,35. Existing studies have tended to focus on assessments at a single time point or scale, with compara -
+tively less emphasis on comprehensive analyses that integrate historical evolution, current conditions, and future 
+projections36,34. Moreover, although previous studies have examined the effects of human activities, climate 
+change, and other driving factors, how these factors interact and how different land-use transitions are associated 
+with corresponding habitat quality responses in the Yellow River Estuary remain insufficiently understood32.
+Therefore, the PLUS model and InVEST model are used to provide effective tools for land use simulation and 
+habitat quality assessment, respectively. The PLUS model can accurately simulate the spatio-temporal evolution 
+of land use pattern 37, while the InVEST model can quantitatively assess habitat quality based on land use pat -
+tern38,39. The integration of PLUS and InVEST combines the spatial simulation capability of land-use change 
+with habitat quality assessment, enabling historical land-use transitions, future scenarios, and corresponding 
+habitat quality responses to be examined within a unified spatio-temporal framework40.
+Overview of the study area and data sources
+Overview of the study area
+Yellow River Estuary National Park (37°25′02″―38°17′53″N, 118°13′55″―119°30′57″E) is the first land-sea 
+integrated national park in China. This study defines its research area based on the scope of three county-level 
+administrative divisions—Kenli District, Hekou District, and Lijin County—as delineated in official documents 
+including “the Construction Plan of the Yellow River Estuary National Park” and “the Boundary and Manage-
+ment Zoning Map of the Yellow River Estuary National Park” issued by the Shandong Provincial Department of 
+Natural Resources (Shandong Provincial Forestry Bureau) (Fig. 2). The region is located in the monsoon climate 
+zone of the warm zone, with four distinct seasons and obvious interannual variation of precipitation. The land -
+form is dominated by a delta plain and tidal flat, and the dynamic change of coastline is significant. Yellow River 
+Estuary National Park has the most complete estuarine wetland ecosystem in China’s warm zone and the most 
+active land and sea changes. It is a typical representative of the estuarine wetland ecosystem in the world.
+Data source and processing
+The data used in the study include land use data41, socioeconomic factors42, distance factor43 and natural factor44 
+(Table 1). The land use data was obtained from the CLCD dataset provided by Wuhan University. To maintain 
+consistency between the PLUS-based land use simulation and the investment-based habitat quality assessment 
+approach, the land cover data for 2003, 2013, and 2023 were categorized into five classes using ArcMap 10.8.1 
+(https://www.esri.com): cropland, grassland, water, barren land, and built-up land. This classification scheme was 
+applied uniformly across all study periods to ensure comparability in analyses of land use transitions and habitat 
+quality changes. Considering the accuracy and practical significance of the PLUS model, 12 driving factors were 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-69019-y
+Fig. 2 Overview of the study area. Map lines delineate study areas and do not necessarily depict accepted national boundar-
+ies, the same below.
+ 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-69019-y
+selected based on the impact of the natural environment and social economy on landscape in the study area45. In 
+addition, the study unified the data projection coordinates as WGS 1984 UTM Zone 50 N, resampled the raster 
+data with a spatial resolution of 30 m × 30 m, and kept the number of rows and columns consistent.
+Research methods
+PLUS model
+The PLUS model is a land use simulation tool based on cellular automata. It not only has high simulation accu -
+racy, but also has the ability to measure landscape patterns more realistically. It includes two modules: Land 
+Expansion Analysis Strategy (LEAS) and CA-based Randomized Seed (CARS)53,54. For future simulations, the 
+land use demand projected for 2033 is derived from the observed transition patterns between 2013 and 2023, and 
+is integrated into the PLUS model as a quantitative constraint.
+LEAS
+ Pd
+i,𝒋𝒋 (x)= ∑ M
+n=1I[hn(x)=d]
+M (1)
+In the formula (1), Pd
+i,𝑗𝑗 (x) is the probability that sample x is judged as category di under the background of model 
+j; x is the vector composed of driving factors; M is the number of decision trees; hn(x) is the prediction of sample 
+x by the nth base classifier; I (·) is the indicator function of the decision tree.
+CARS
+ OPd-1,𝑡𝑡
+i,𝑗𝑗 =R d-1
+i,𝑗𝑗 × 𝛺𝛺t
+i, j × Dt
+j (2)
+In the formula (2), OPd-1,𝑡𝑡
+i,𝑗𝑗 is the comprehensive probability that space i is transformed into land type j at time t; 
+Rd-1
+i, j Is the basic probability of land type transformation; 𝛺𝛺t
+i,𝑗𝑗Is the domain weight of land class j in space i; Dt
+j
+Is the adaptive driving coefficient, which affects the future prediction of land type j. The domain weights were 
+determined according to the historical expansion characteristics of different land-use types in the study area and 
+data type Data name data sources
+Basic data Land use data Wuhan University (https://zenodo.org)
+Socio-
+economic 
+factors
+Population density Resource and environmental science and data center, 
+Chinese Academy of Sciences (https://www.resdc.cn/)GDP
+Distance 
+factor
+Distance from class I road National Geographic Information Resources Directory 
+Service System (https://www.webmap.cn/)Distance from class II road
+Distance from class III road
+Distance from water system
+Distance from county government National Bureau of Statistics (https://www.stats.gov.
+cn/)
+Natural 
+factor
+Soil type Resource and environmental science and data center, 
+Chinese Academy of Sciences (https://www.resdc.cn/)Annual average temperature
+Annual precipitation
+DEM Geospatial data cloud (https://www.gscloud.cn/search)
+Slope Generated by DEM
+Table 1 Data sources. 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-69019-y
+adjusted during model calibration, with larger values indicating stronger neighborhood expansion capacity. The 
+land-use transition matrix was established based on the observed historical conversion characteristics and actual 
+land-use constraints of the study area (Tables 2 and 3). In the transition matrix, “1” indicates that the correspond-
+ing land-use conversion is permitted, whereas “0” indicates that the conversion is restricted55.
+InVEST model
+The habitat quality module in the InVEST model has significant advantages in spatial analysis and accuracy, and 
+is often used to quantitatively assess the habitat quality level in the study area46,47. Based on the land use data, the 
+degree of habitat degradation and habitat quality are calculated according to the Maximum coercive distance and 
+weight of the threat factor, the habitat suitability of different land use types and the sensitivity to threat source48,49. 
+The index is between 0 and 1, and the closer it is to 1, the better the quality of habitat quality50.
+The formula for Degree of habitat degradation is:
+ 
+Dxj = ∑ R
+r=1 ( Wr
+∑ R
+r=1 Wr
+− ∑ Y
+y=1 (
+Iry − Sjr − 𝛽𝛽x
+(dxy/drmax)
+2
++1
+)) (3)
+In the formula (3), Dxjis the comprehensive impact of all threat factors on land use type j in grid cell x; r is the 
+number of threat factors; R is the total number of threat factors; Wr is the weight of threat factor r; y is the grid cell 
+of the threat factor r distribution; Y is the number of distribution units of all threat factors; Iry is the threat intensity 
+value of the unit if there is a threat factor r in the unit y; Sjr is the sensitivity of land use type j to threat factor r; 
+βx is the Management coefficient; Dxy is the distance from grid x to threat factor grid y; drmax is the Maximum 
+operating distance of the threat factor r.
+Habitat quality formula is:
+ 
+Qxj =H j × (1 −
+Dz
+xj
+Dz
+xj +k
+z ) (4)
+In the formula (4), Qxj is the habitat quality index of grid x in land type j, with a value between “0” and “1”; Hj 
+is the habitat suitability of land use type j; z is the default constant of the model; k is the semi-saturated constant, 
+usually taken as 0.5.
+The threat factors and associated parameter values were determined with reference to the InVEST user manual 
+and parameter settings reported in previous habitat quality studies 51,52. Particular attention was given to studies 
+conducted in the Yellow River Delta and comparable estuarine environments to improve the regional relevance 
+of the parameterization. The specific parameter sources are provided in Tables 4 and 5.
+Table 2 Domain weighting settings.
+Land type Cropland Grassland Water Barren Built-up area
+Domain weight 0.01 0.57 0.8 0.5 1
+Land use type Cropland Grassland Water Barren Built-up area
+Cropland 1 1 1 1 1
+Grassland 1 1 1 1 1
+Water 0 0 1 0 0
+Barren 1 1 1 1 1
+Built-up area 0 0 0 0 1
+Table 3 Over-transposed 
+matrix.
+ 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-69019-y
+Land use transition matrix
+The land transition matrix is used to quantify and analyze the transformation relationship between land use types 
+in different periods56,57 and reveal the dynamic law of land use change.
+ 
+Sij =
+⎡⎢⎢
+⎣
+S11 S12 ⋯ S1n
+S21 S22 ⋯ S2n
+⋮ ⋮⋮⋮
+Sn1 Sn2 ⋯ Snn
+⎤⎥⎥
+⎦
+ (5)
+In the formula (5), n is the number of land use types; i, j is the land type before and after the research transfer; Sij 
+represents the area transferred from land type i to land type j.
+Results and analysis
+Spatio-temporal evaluation of land use and cover change in Yellow River Estuary National Park from 
+2003 to 2023
+From 2003 to 2023, the land use pattern of Yellow River Estuary National Park changed significantly, showing 
+a trend of dual transformation from cropland to construction land and water (Fig. 3). Land use change shows 
+Fig. 3 Distribution of land use types in Yellow River Estuary National Park from 2003 to 2023.
+ 
+Land use type Habitat suitability Coercive factors
+Cropland Barren Built-up area
+Cropland 0.4 0.3 0.4 0.4
+Grassland 1 0.7 0.7 0.6
+Water 1 0.7 0.6 0.8
+Barren 0.3 0.3 0.1 0
+Built-up area 0 0 0 0
+Table 5 Sensitivity table. 
+Threat factor Maximum influence distance Relative weight Distance attenuation type
+Cropland 1 0.2 linear
+Barren 6 0.5 linear
+Built-up area 7 0.6 index
+Table 4 Source of threat 
+attributes.
+ 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-69019-y
+obvious stage and direction characteristics in spatial distribution characteristics, structural composition and type 
+conversion.
+From the perspective of spatial pattern characteristics, cropland is mainly distributed in the central and southern 
+plains of the study area. During the study period, its spatial scope continued to shrink and gradually concentrated 
+in the inland area; The construction land expanded significantly along the traffic trunk lines, urban nodes and the 
+northern and eastern coastal zones, gradually forming agglomeration patches; The water area is concentrated in 
+the main stream of the Yellow River, estuaries and coastal wetland areas, and its spatial scope is significantly 
+expanded, reflecting the continuous implementation of estuarine wetland restoration and water system manage -
+ment projects. Barren is mainly distributed in estuarine sediment areas and coastal beaches, and its spatial scope 
+is significantly reduced, which is closely related to the evolution of coastline evolution and wetland reconstruc -
+tion process; The grassland is scattered, the overall scale is small, and the change of spatial pattern is not obvious.
+From the change characteristics of land use Structural change characteristics (Fig. 4), the area composition and 
+proportion of various land use types have been systematically adjusted during the study period. Cropland and 
+barren continued to decrease, construction land and water area increased significantly, and the land use structure 
+gradually evolved from being dominated by agricultural land to a composite pattern of construction land, water 
+area and agricultural land. This change process reflects that, while urbanization continues to advance, ecological 
+protection and wetland restoration measures have had an important impact on the regional land use pattern.
+Based on the land use transition matrix from 2003 to 2023 (Table 6), the internal mechanism of land use struc-
+ture adjustment is further revealed, and the transformation paths between different land use types are analyzed. 
+The results showed that the land use change in the study area showed obvious directional transfer characteristics, 
+cropland and barren were the main transfer out types, and the transformation process had significant stage differ-
+ences. From 2003 to 2013, the conversion of cropland to construction land and water conversion was 154.55 km² 
+and 98. 30 km² respectively; From 2013 to 2023, the Conversion scale has expanded significantly, and the trans-
+formation area from cropland to construction land and Water conversion has increased to 378.11 km2 and 225.25 
+Fig. 4 Proportion of land use 
+types in Yellow River Estuary 
+National Park from 2003 to 
+2023.
+ 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-69019-y
+km2, respectively, indicating that the squeezing effect of urban expansion and reconstruction of aquatic ecologi-
+cal space on agricultural land continues to increase. The transformation of barren also showed significant stage 
+characteristics, from 117.57 km² and 30.59 km² in the previous stage to water and construction land, increased 
+to 324.54 km² and 293.34 km², respectively, indicating that the estuarine wetland restoration project and Shore -
+line evolution had a more prominent impact on the land use pattern in the past decade. In contrast, the grassland 
+conversion scale has always been small, and no dominant transfer path has been formed in either stage, and the 
+overall situation remains relatively stable.
+In general, the land use change of Yellow River Estuary National Park from 2003 to 2023 is spatially mani -
+fested as the agglomeration expansion of coastal and urban surrounding areas and the continuous retreat of inland 
+agricultural space. Structurally, it is reflected in the significant increase of construction land and water area, and 
+the continuous reduction of cropland and barren. The land use transformation process was formed under the joint 
+action of the development needs of urbanization and the national ecological protection policy, which provided a 
+spatial basis for the subsequent analysis of the evolution characteristics of habitat quality.
+Future land use prediction based on PLUS model
+PLUS model validation
+To evaluate the predictive performance of the PLUS model, the land-use changes observed from 2003 to 2013 
+were used to simulate the land-use pattern in 2023. The simulated 2023 land-use map was then compared with 
+the observed 2023 land-use map to assess the agreement between predicted and actual spatial patterns (Fig. 5). 
+Overall accuracy and the Kappa coefficient were used as validation metrics. The results showed an overall accu-
+racy of 0.85 and a Kappa coefficient of 0.7567 (> 0.75), indicating an acceptable level of agreement between the 
+simulated and observed land-use patterns 58,59. Based on this validation, the land-use transition characteristics 
+observed during 2013–2023 were subsequently used for the 2033 scenario simulation.
+Analysis on driving factors of land use expansion
+In order to explore the spatial pattern and its driving mechanism of land use change in Yellow River Estuary 
+National Park, the study analyzed the land use data of Yellow River Estuary National Park from 2003 to 2023 by 
+using the Random Forest Algorithm and the LEAS module, and evaluated the contribution of each driving factor 
+in different land use changes (Fig. 6). The results show that the land use pattern in the study area is mainly driven 
+Table 6 Yellow River Estuary National Park land use transfer matrix from 2003 to 2023 (km²).
+Land use type 2013
+Cropland Grassland Water Barren Built-up area
+2003 Cropland 3417.02 26.87 98.30 16.95 154.55
+Grassland 13.61 16.07 2.61 14.35 0.55
+Water 22.28 0.94 175.25 66.76 2.94
+Barren 18.49 1.59 117.57 631.31 30.59
+Built-up area 0.16 0.0027 25.97 1.55 459.37
+Land use type 2023
+Cropland Grassland Water Barren Built-up area
+2013 Cropland 2864.66 2.99 225.25 0.55 378.11
+Grassland 25.38 4.10 10.31 0.54 5.13
+Water 22.39 0.03 356.11 5.77 35.40
+Barren 40.62 1.07 324.54 71.35 293.34
+Built-up area 0.42 0 47.45 0.17 599.96
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-69019-y
+by the radiation effect of the Administrative center radiation effect and the development of the transportation net-
+work, and its formation is closely related to the promotion of urbanization and industrial development.
+The spatial distribution of cropland, grassland and barren showed a marginal gradient with the county govern-
+ment as the core and increasing around, and its area was negatively correlated with the distance from the city 
+center. This pattern reflects the spatial process of the continuous agglomeration of population, economy and 
+public resources to the administrative center in the process of urbanization. As an area with a high concentration 
+of population and economic activities, the land use intensity around the administrative center has been continu -
+ously improved, and a large number of agricultural and ecological land has been converted into construction 
+land, resulting in the significant compression of cropland, grassland and barren in the core area of the town. With 
+the increase of the distance from the town, the intensity of human activities has gradually weakened, and can be 
+relatively concentrated in the peripheral area. This land use development pattern, dominated by the expansion of 
+construction land, not only improves the carrying capacity of cities and towns, but also weakens the spatial integ-
+rity of agricultural and ecological land to a certain extent. From the perspective of socioeconomic background, 
+China’s urbanization process has long presented a rapid development mode characterized by spatial expansion 
+and factor agglomeration, which not only promotes regional economic vitality, but also forms a continuous 
+squeeze on agriculture and ecological space.
+On the basis of administrative center radiation effect, traffic conditions further magnified the impact of urban-
+ization and industrial activities on land use patterns. As an important infrastructure for animal husbandry and 
+industrial development, the layout of the class II roads has significantly improved regional accessibility and 
+efficiency of factor flow in production, directly supporting the belt and node expansion of construction land. By 
+integrating the regional internal transportation system, it promotes the agglomeration and development of indus-
+tries along the line that rely on traffic conditions, such as animal husbandry and salt industry, and thus has a far-
+reaching impact on the spatial layout of water and related productive land. The population agglomeration effect 
+of the administrative center and the industrial amplification effect of traffic conditions are superimposed, which 
+jointly promote the transformation of the land use structure in the study area to artificialization and high-intensity 
+utilization, and continue to squeeze the low-intensity use of cropland, grassland and barren.
+Fig. 5 Comparison between prediction and practice of Yellow River Estuary National Park in 2023.
+ 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-69019-y
+Fig. 6 Contribution of driving factor of land use from 2003 to 2023.
+ 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-69019-y
+Land use prediction of Yellow River Estuary National Park in 2033
+The prediction results of land use pattern of Yellow River Estuary National Park in 2033 are shown in Fig. 7. 
+The area of each land use type is 2498.36 km² of cropland, 3.48 km² of grassland, 1127.87 km² of water area, 
+36.00 km² of barren and 1650.04 km² of construction land. Cropland is still the largest land use type in the study 
+area, but its proportion has decreased to 46.99%, indicating that the trend of agricultural land shrinking will con-
+tinue; The proportion of grassland and barren decreased synchronously, indicating that it will tend to be marginal-
+ized in the future land cover pattern. In contrast, the water area will increase to 1127.87 km² (21.21%), reflecting 
+the sustainable role of wetland restoration and water ecological protection measures in the future scenario; con -
+struction land maintained a significant expansion trend, accounting for 31.04%, becoming the most prominent 
+type of land use structure change.
+Combined with the analysis of land use transition matrix in 2033 (Table 7), the land use change in the study 
+area shows the multipath flow characteristics with Cropland conversion as the core. While maintaining the core 
+distribution area of 2495.76 km², cropland is still under the dual transformation pressure of construction land 
+(323.91 km²) and water area (133.50 km²), reflecting the compound impact of urbanization expansion and ecolog-
+ical restoration projects on agricultural space; The transformation of grassland (3.83 km²) and barren (26.83 km²) 
+to water shows that the expansion trend of wetland ecosystem is still continuing, while the transformation of 
+barren to construction land (13.73 km²) shows that it is still under certain development pressure in some areas.
+On the whole, the expansion of construction land is characterized by path dependence with cropland conversion 
+as the main factor, and the growth of water area is mainly from cropland and barren conversion, which reveals 
+the characteristics of multiple circulation and structural differentiation of the land use pattern of Yellow River 
+Estuary National Park under the dual drive of ecological protection policy and regional economic development.
+Table 7 Land use transition matrix from 2022 to 2033 (km²).
+Land use type 2033
+Cropland Grassland Water Barren Built-up area
+2023 Cropland 2495.76 0.30 133.50 0.0054 323.91
+Grassland 0.93 3.01 3.83 0.0036 0.41
+Water 0 0 963.69 0 0
+Barren 1.66 0.15 26.83 35.99 13.73
+Built-up area 0 0 0 0 1311.97
+Fig. 7 Land use prediction of Yellow River Estuary National 
+Park in 2033.
+ 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-69019-y
+Change and simulation of habitat quality changes in Yellow River Estuary National Park based on 
+InVEST model
+Spatio-temporal evolution characteristics of habitat quality from 2003 to 2023
+Based on the land use data of Yellow River Estuary National Park from 2003 to 2023, the Habitat Quality module 
+of the InVEST model was used to calculate changes in habitat quality. According to the natural breaks method 
+(Jenks) in ArcGIS 10.8 and referring to relevant literature60,61, habitat quality in the study area was classified into 
+five levels: low [0, 0.2), moderate-low [0.2, 0.4), moderate [0.4, 0.6), moderate-high [0.6, 0.8), and high [0.8, 
+1.0]. To avoid interval overlap, the half-open interval principle was adopted to ensure that each value has a unique 
+attribution.
+From the perspective of spatial pattern (Fig. 8), the habitat quality of Yellow River Estuary National Park from 
+2003 to 2023 showed a significant differentiation characteristic of “high in coastal areas and low in inland areas”. 
+Moderate-high and high habitat quality areas are mainly concentrated in the Yellow River Estuary and coastal 
+wetland areas, which are dominated by natural water bodies and wetland ecosystems with relatively weak human 
+disturbance; while low and moderate-low habitat quality areas are widely distributed in inland cropland areas and 
+urban built-up area agglomeration areas, and highly coincide with high-intensity agricultural utilization, urban 
+expansion, and transportation infrastructure layout, indicating that land use mode is the key factor driving the 
+spatial differentiation of habitat quality.
+From the perspective of structural change characteristics (Fig. 9), the composition of habitat quality levels has 
+been significantly adjusted during the study period. The proportion of low habitat quality continued to increase, 
+becoming the most dominant habitat quality type in the study area; moderate-low habitat quality decreased signif-
+icantly, while moderate habitat quality increased in the late stage. Moderate-high and high habitat quality showed 
+restorative growth after reaching a phased trough in 2013, but their spatial distribution tended to be fragmented, 
+patch sizes were small, and overall connectivity remained weak. In general, the structure of habitat quality levels 
+in the study area shows a complex pattern of low-quality expansion and high-quality local restoration.
+In order to further reveal the internal mechanism of habitat quality evolution, the analysis is based on the tran-
+sition matrix of habitat quality from 2003 to 2023 (Table 8). The results showed that habitat quality changes had 
+obvious directional and stage-based characteristics. From 2003 to 2013, the degradation of habitat quality was 
+mainly from moderate-low to low habitat quality; from 2013 to 2023, the degradation trend was further intensified, 
+and the transformation area from moderate-low to low habitat quality reached 702.45 km². At the same time, the 
+transformation from high to moderate-low habitat quality existed in both stages, indicating that high-quality habi-
+tat is still facing continuous human activity pressure. In terms of habitat quality improvement, the improvement 
+process mainly occurred within moderate-low habitat quality. During 2013–2023, the transformation areas from 
+Fig. 8 Spatial distribution of habitat quality in Yellow River Estuary National Park from 2003 to 2023.
+ 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-69019-y
+moderate-low to moderate-high and high habitat quality were 65.96 km² and 50.92 km², respectively, reflecting 
+that estuarine wetland protection and ecological restoration measures have achieved certain results in some areas.
+Overall, habitat quality evolution in Yellow River Estuary National Park from 2003 to 2023 showed general 
+characteristics of degradation and local improvement. Low habitat quality continues to expand spatially, while 
+moderate-high and high habitat quality have recovered, but due to patch fragmentation and insufficient connectiv-
+ity, it is difficult to form a stable expansion pattern. The evolutionary characteristics of habitat quality provide a 
+realistic background for subsequent scenario simulation analysis and further highlight the dominant role of land 
+use change in habitat quality.
+Habitat quality simulation of Yellow River Estuary National Park in 2033
+Based on the simulation results of land use in 2033, the InVEST model was used to predict the future habitat 
+quality pattern of Yellow River Estuary National Park (Fig. 10; Table 9). The results show that future habitat 
+quality will exhibit an evolutionary pattern dominated by low-quality expansion, and the overall trend signifi -
+cantly deviates from the improvement goal emphasized by high-quality ecological environment development. 
+Spatially, low habitat quality continues to expand and form clusters in and around urban agglomeration areas, 
+while moderate-low habitat quality continues to be replaced by it in the western and central regions, reflecting 
+the continuous squeezing effect of built-up area expansion and human activity intensity on habitat quality. At the 
+Table 8 Transition matrix of habitat quality of Yellow River Estuary National Park from 2003 to 2023 (km²).
+Habitat quality level 2013
+Low Moderate-low Moderate Moderate-high High
+2003 Low 459.37 27.65 0.04 0 0
+Moderate-low 188.24 4464.56 52.01 6.003 1.29
+Moderate 0.38 21.17 46.21 0.0054 0
+Moderate-High 0.0081 7.63 0.0009 3.12 0
+High 0.0054 30.9 0 0 7.08
+Habitat quality level 2023
+Low Moderate-low Moderate Moderate-high High
+2013 Low 599.96 44.56 3.37 0.12 0
+Moderate-low 702.45 3589.36 143.24 65.96 50.92
+Moderate 8.73 26.65 62.89 0.0009 0
+Moderate-high 0.78 1.68 0.0009 6.66 0
+High 0.036 0.63 0 0 7.70
+Fig. 9 Proportion of Habitat quality level of Yellow River 
+Estuary National Park from 2003 to 2023.
+ 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-69019-y
+same time, although high habitat quality is limited to core wetland areas, patch sizes have shrunk, fragmentation 
+has intensified, and spatial connectivity has declined. Moderate habitat quality is scattered in coastal zones and 
+around river channels, with limited transition and buffer functions, making it difficult to support the expansion 
+and agglomeration of high-quality habitat.
+The characteristics of habitat quality transfer further reveal internal changes in spatial pattern formation. From 
+2023 to 2033, the maintenance area of low habitat quality reached 1131.97 km², with almost no transformation 
+to higher habitat quality levels, indicating that, under current land use structures and human activities, once low-
+quality habitat is formed, it tends to persist for long periods due to built-up area expansion, ecological space 
+destruction, and limited natural restoration conditions. Although moderate-low habitat quality remains the domi-
+nant type (3257.06 km²), 337.75 km² has transformed into low habitat quality, indicating that habitat structure and 
+function in regions with certain ecological functions have been continuously weakened under sustainable agricul-
+tural utilization and urbanization, ultimately leading to quality degradation. In contrast, although moderate-high 
+and high habitat quality maintained areas of 72.46 km² and 58.49 km², respectively, there was still transformation 
+to lower-grade habitat quality, indicating that under conditions of high-intensity human activities and hindered 
+Table 9 Transition matrix of habitat quality from 2023 to 2033/km².
+Habitat quality level 2033
+Low Moderate-low Moderate Moderate-high High
+2023 Low 1311.97 0 0 0 0
+Moderate-low 337.75 3257.06 54.94 7.91 5.21
+Moderate 0.27 1.37 207.86 0 0
+Moderate-high 0.03 1.68 0.0018 72.46 0.02
+High 0.0045 0.13 0 0 58.49
+Fig. 10 Prediction of habitat 
+quality in 2033.
+ 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-69019-y
+spatial continuity, it is difficult for high-quality habitats to achieve stable expansion. In general, future habitat 
+quality evolution is subject to the expansion of low habitat quality and the fragmentation and transformation of 
+high-quality habitats, which together constitute the core structural factors restricting overall regional habitat qual-
+ity improvement.
+Discussion
+The observed evolution of habitat quality has direct implications for land quality and ecosystem services in the 
+Yellow River Estuary National Park62. The expansion of low-quality habitat associated with built-up land growth 
+and intensive land use indicates a decline in the landscape’s capacity to sustain biodiversity and related regulat -
+ing services. In contrast, the localized recovery of relatively high-quality habitat in wetland and water-dominated 
+areas suggests that ecological restoration can improve habitat conditions in specific locations. However, these 
+improvements remain spatially limited and are insufficient to fully offset the broader pressures generated by 
+continued land development. The coexistence of degradation and localized recovery indicates that habitat quality 
+evolution in the Yellow River Estuary should not be interpreted as a uniform process, but rather as the combined 
+outcome of different land-use transitions and their spatially differentiated ecological consequences.
+This interpretation is broadly consistent with previous studies showing that urban expansion, agricultural 
+intensification, and transportation infrastructure development are important drivers of habitat degradation in 
+estuarine regions63,64. However, the present study further indicates that the ecological consequences of land-use 
+change vary with both the direction of land conversion and its spatial context. The expansion and concentration of 
+built-up land intensify landscape fragmentation and reinforce the persistence of low-quality habitat, particularly 
+in inland and peri-urban areas. By contrast, the expansion of water-related ecological space and the restoration 
+of wetland areas contribute to localized improvements in habitat quality. This finding is consistent with previous 
+evidence that ecological restoration can alleviate habitat degradation to some extent, while also suggesting that 
+localized restoration alone is insufficient to offset the broader ecological pressures associated with continued 
+land-use restructuring65. Accordingly, the observed pattern of relatively high habitat quality in coastal and estua-
+rine areas and lower habitat quality in inland areas reflects not only differences in natural conditions, but also the 
+spatial interaction among development pressure, land-use change, and ecological restoration.
+These spatial differences have important implications for the management of the Yellow River Estuary National 
+Park. Areas characterized by persistently low habitat quality and continued expansion of built-up land should pri-
+oritize the control of additional development pressure and the prevention of further fragmentation of ecological 
+space. Coastal wetlands and estuarine areas with relatively high habitat quality should focus on maintaining the 
+integrity and continuity of existing habitat patches while limiting new disturbances. In areas where habitat quality 
+has improved alongside the expansion or restoration of water-related ecological space, management should place 
+greater emphasis on consolidating restoration outcomes and strengthening ecological connectivity with surround-
+ing habitats. Therefore, ecological restoration should be differentiated according to the spatial characteristics of 
+land-use change and habitat quality, rather than relying on uniform interventions across the entire national park. 
+Such spatially targeted management can enhance the practical value of habitat quality assessment for conserva -
+tion zoning, restoration priority setting, and adaptive ecological management.
+Several limitations should nevertheless be acknowledged. First, the InVEST habitat quality model is sensitive 
+to the weights, influence distances, habitat suitability values, and sensitivity coefficients assigned to different 
+threat factors. Although these parameters were derived from previous studies and adjusted according to the char-
+acteristics of the study area, they cannot fully capture the complexity of ecosystem responses to anthropogenic 
+disturbance. Second, the PLUS-based projections primarily reflect the continuation of historical land-use tran -
+sition patterns and do not fully account for uncertainties associated with extreme climate events, hydrological 
+change, or major policy adjustments. Future studies should therefore integrate longer time-series data, field-based 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-69019-y
+ecological observations, and spatial management units to further evaluate the robustness of habitat quality pat -
+terns and translate model-based assessments into more precise restoration priorities and management strategies.
+Conclusion
+Based on the InVEST-PLUS coupling model, this study constructed a spatiotemporal evolution assessment and 
+simulation prediction system for habitat quality in Yellow River Estuary National Park from the perspective of 
+land use change, and systematically revealed the differentiation characteristics and response mechanisms of habi-
+tat quality patterns under different human activities. The results show that land use transformation and its spatial 
+pattern characteristics have a decisive impact on habitat quality evolution.
+(1) Habitat quality in Yellow River Estuary National Park showed significant spatial heterogeneity. Coastal wet-
+lands and estuarine waters are dominated by continuous natural patches, which maintain high habitat qual -
+ity and show strong ecological stability. However, low habitat quality in inland urban expansion areas and 
+high-intensity agricultural utilization areas continued to aggregate, forming a pattern of habitat degradation 
+dominated by human disturbance. This difference reflects the imbalance between natural ecological space 
+and human land expansion in spatial competition.
+(2) Different land use evolution paths shape different habitat response patterns. The centralized expansion of 
+built-up area aggravates landscape fragmentation by compressing natural habitat space, and significantly 
+reduces regional habitat quality. Ecological patches dominated by wetlands and water bodies have buffered 
+human activity pressure to a certain extent by maintaining landscape connectivity, forming a low-interfer -
+ence, high-quality habitat maintenance mechanism.
+(3) Habitat quality evolution has obvious stage-based and nonlinear characteristics. In the early stage of the 
+study, rapid urbanization advancement continued to suppress habitat quality. In the later stage, with the inter-
+vention of ecological protection and restoration measures, local habitat quality was restored, but low habitat 
+quality still showed an expanding trend, indicating that the cumulative effect of human activity intensity 
+remains dominant.
+(4) Scenario simulation reveals the potential risks of future habitat quality evolution. The prediction results 
+show that continuous built-up area expansion in the future will strengthen the stability of low habitat quality. 
+Although high habitat quality patches can maintain a certain scale, their spatial connectivity will decline, and 
+overall ecosystem resilience will face the risk of weakening.
+(5) The study highlights the critical role of habitat quality as a proxy for ecosystem services in the context of 
+land use change. The observed patterns of degradation and recovery have direct consequences for land qual-
+ity, suggesting that future research should incorporate soil and vegetation attributes to fully assess the multi-
+faceted impacts of human activities on estuarine landscapes. This integrated approach will better support 
+policy-making aimed at balancing development with ecological conservation in national parks and similar 
+protected areas.
+The research shows that habitat quality evolution in Yellow River Estuary National Park is essentially the result 
+of the coupling effect of land use transformation and ecosystem response. The InVEST-PLUS coupling model 
+can provide quantitative support and methodological reference for zoning management and control of national 
+parks, identification of priority areas for wetland protection and restoration, and integrated land-sea ecological 
+governance.
+Acknowledgements The authors are very grateful for the funding support provided by Major Projects of the National 
+Social Science Foundation of China (ID:24ATY005). We would like to thank Wuhan University for providing the CLCD 
+land use dataset, and the Resource and Environmental Sciences and Data Center, Chinese Academy of Sciences for provid-
+ing the socioeconomic and natural factor data. We also extend our sincere appreciation to the National Geographic Informa-
+tion Resources Directory Service System and the National Bureau of Statistics for their valuable data resources. We thank 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-69019-y
+the editors and anonymous reviewers for their constructive comments that greatly improved the manuscript.
+Author contributions Conceptualization, Zhuang Zhuang and Pengfei Tai; Data curation, Zhuang Zhuang and Pengfei Tai; 
+Formal analysis, Zhaojin Li; Funding acquisition, Zhaojin Li; Methodology, Zhuang Zhuang and Fugao Jiang; Project ad -
+ministration, Pengfei Tai; Software, Zhuang Zhuang; Supervision, Pengfei Tai; Validation, Zhaojin Li; Visualization, Zhuang 
+Zhuang; Writing – original draft, Zhuang Zhuang; Writing–review & editing, Pengfei Tai.
+Funding This research is funded by the Major Projects of the National Social Science Foundation of China (ID:24ATY005).
+Data availability The datasets used and/or analysed during the current study available from the corresponding author on 
+reasonable request.
+Declarations
+Competing interests The authors declare no competing interests.
+Open Access This article is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 Interna-
+tional License, which permits any non-commercial use, sharing, distribution and reproduction in any medium or format, as 
+long as you give appropriate credit to the original author(s) and the source, provide a link to the Creative Commons licence, 
+and indicate if you modified the licensed material. You do not have permission under this licence to share adapted material 
+derived from this article or parts of it. The images or other third party material in this article are included in the article’s Cre-
+ative Commons licence, unless indicated otherwise in a credit line to the material. If material is not included in the article’s 
+Creative Commons licence and your intended use is not permitted by statutory regulation or exceeds the permitted use, you 
+will need to obtain permission directly from the copyright holder. To view a copy of this licence, visit h t t p : / / c r e a t i v e c o m m o 
+n s . o r g / l i c e n s e s / b y - n c - n d / 4 . 0 / . 
+References
+ 1. Li, S., Liang, H., Sui, Y . & Zhang, C. Impact of Ecotourism on the Livelihood Resilience of Island Residents in the 
+Context of National Park Construction:A Case Study of Changdao in Shandong Province. Econ. Geogr. 45, 219–229 
+(2025).
+ 2. Liu, Q. et al. Accessibility evaluation and optimization of emergency medical services in Qingzang Plateau National Park 
+Cluster. Geographical Res. 44, 2186–2201 (2025).
+ 3. Sun, Z. & Wang, C. The spatial coupling of recreational accessibility and ecological conservation value in the Qingzang 
+Plateau National Park Cluster. Geographical Res. 44, 2121–2133 (2025).
+ 4. Liu, N. Suggestions for the Development of Huanghekou National Park under the Background of High Quality 
+Development. Environ. Prot. 52, 59–60 (2024).
+ 5. Liang, T. et al. Evolution and Prediction of Habitat Quality in the Three Gorges Reservoir (Chongqing section) Based on 
+the InVEST-PLUS Model. Resour. Environ. Yangtze Basin. 32, 2184–2195 (2023).
+ 6. Zhang, N. & Zhao, X. Spatio-temporal dynamics of ecosystem health and its response to human activities in China’s first 
+batch of national parks. J. Nat. Resour. 40, 2134–2151 (2025).
+ 7. Yu, H., Qian, X., Jing, H. & Liu, Y . Spatiotemporal evolution characteristics and the driving force of habitat quality in 
+the Qinghai–Tibet Plateau in topographic view (2000–2020). Front. Ecol. Evol. 12, 1345665 (2024).
+ 8. Wang, S. et al. Research on habitat quality assessment and decision-making based on Semi-supervised Ensemble Learning 
+method—Daxia River Basin, China. Ecol. Ind. 156, 111153 (2023).
+ 9. Juan, Z., Bin, C., Wei-Wei, Y . & Hao, H. Study on coastal wetland habitat quality evaluation in Quanzhou Bay, Fujian, 
+China. Acta Ecol. Sin. 31, 264–270 (2011).
+ 10. Admasu, S. Modeling habitat quality for rangeland ecosystem restoration in the Alledeghi Wildlife reserve, Ethiopia. 
+Front. Environ. Sci. 11, 1244238 (2023).
+ 11. Islam, M., Kunzmann, A. & Bögner, M. Metabolic and molecular stress responses of European seabass, Dicentrarchus 
+labrax at low and high temperature extremes. Ecol. Ind. 112, 106118 (2020).
+ 12. Cavael, U., Diehl, K. & Lentzsch, P. Assessment of growth suppression in apple production with replant soils. Ecol. Ind. 
+109, 105846 (2020).
+ 13. Zhang, H., Li, S., Liu, Y . & Xu, M. Assessment of the habitat quality of offshore area in Tongzhou Bay, China: using 
+benthic habitat suitability and the InVEST model. Water 14, 1574 (2022).
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-69019-y
+ 14. Chen, X., Zhang, C. & Huang, L. Study on the habitat quality assessment based on spatiotemporal evolution of territorial 
+space in Hubei Province. ResearchofSoiland WaterConservation. 32, 379–388 (2025).
+ 15. Zhang, X., Tong, H., Zhao, L., Huang, E. & Zhu, G. Spatial and Temporal Dynamics and Multi-Scenario Forecasting of 
+Habitat Quality in Gansu–Qinghai Contiguous Region of the Upper Yellow River. Land 13, 1060 (2024).
+ 16. Shi, G. et al. Spatiotemporal Dynamics and Prediction of Habitat Quality Based on Land Use and Cover Change in 
+Jiangsu, China. Remote Sens. 16, 4158 (2024).
+ 17. Tang, F., Fu, M., Wang, L. & Zhang, P. Land-use change in Changli County, China: Predicting its spatio-temporal 
+evolution in habitat quality. Ecol. Ind. 117, 106719 (2020).
+ 18. Zhu, X., Wang, Z., Gu, T. & Zhang, Y . Multi–Scenario Prediction of Land Cover Changes and Habitat Quality Based on 
+the FLUS–InVEST Model in Beijing. Land 13, 1163 (2024).
+ 19. Xue, Q., Lu, L., Zhang, Y . & Qin, C. Spatiotemporal Evolution and Coupling Analysis of Human Footprints and Habitat 
+Quality: Evidence of 21 Consecutive Years in China. Land 13, 980 (2024).
+ 20. Yang, Y . et al. Impact of current and future land use change on biodiversity in Nanliu River Basin, Beibu Gulf of South 
+China. Ecol. Ind. 141, 109093 (2022).
+ 21. Liu, Y . et al. Habitat quality assessment and driving factors analysis of Guangdong Province, China. Sustainability 15, 
+11615 (2023).
+ 22. Sakhvon, V . & Kövér, L. Distribution and habitat preferences of the urban Woodpigeon (Columba palumbus) in the 
+north-eastern breeding range in Belarus. Landsc. urban Plann. 201, 103846 (2020).
+ 23. Ya-shan, S., Chong, D., Chao, Y . & Chao, Q. Ecological environmental quality evaluation of Yellow River basin. Procedia 
+Eng. 28, 754–758 (2012).
+ 24. Zhang, H. et al. Facilitating giant panda crossings of national highway in Wolong area of Giant Panda National Park amid 
+human activities. Ecol. Evol. 14, e70067 (2024).
+ 25. Gao, B. et al. Multi-scenario prediction of habitat quality in Nanjing based on FLUS and InVEST models. J. Agricultural 
+Resour. Environ. 39, 1001–1013 (2022).
+ 26. Li, Z., Ma, Z. & Zhou, G. Impact of land use change on habitat quality and regional biodiversity capacity: Temporal and 
+spatial evolution and prediction analysis. Front. Environ. Sci. 10, 1041573 (2022).
+ 27. Zhao, H., Xu, X., Tang, J., Wang, Z. & Miao, C. Spatial pattern evolution and prediction scenario of habitat quality in 
+typical fragile ecological region, China: A case study of the Yellow River floodplain area. Heliyon 9, e14430 (2023).
+ 28. Babbar, D. et al. Assessment and prediction of carbon sequestration using Markov chain and InVEST model in Sariska 
+Tiger Reserve, India. J. Clean. Prod. 278, 123333 (2021).
+ 29. Ye, H., Song, Y . & Xue, D. Multi-scenario simulation of land use and habitat quality in the Guanzhong plain urban 
+agglomeration, China. Int. J. Environ. Res. Public Health. 19, 8703 (2022).
+ 30. Zhang, J. Multiscenario Land Use Change Simulation and Its Impact on Ecosystem Service Function in Henan Province 
+Based on FLUS-InVEST Model. Ecol. Evol. 15, e71111 (2025).
+ 31. Liu, Y ., Han, M., Wang, M., Fan, C. & Zhao, H. Habitat quality assessment in the Yellow River Delta based on remote 
+sensing and scenario analysis for land use/land cover. Sustainability 14, 15904 (2022).
+ 32. Zhang, H., Wang, F., Zhao, H., Kang, P. & Tang, L. Evolution of habitat quality and analysis of influencing factors in the 
+Yellow River Delta Wetland from 1986 to 2020. Front. Ecol. Evol. 10, 1075914 (2022).
+ 33. Ding, Q., Chen, Y ., Bu, L. & Ye, Y . Multi-scenario analysis of habitat quality in the Yellow River delta by coupling FLUS 
+with InVEST model. Int. J. Environ. Res. Public Health. 18, 2389 (2021).
+ 34. Hou, Y ., Wu, J. & Guo, Y . Spatial-temporal evolution and prediction of habitat quality in the Yellow River Basin. Front. 
+Environ. Sci. 13, 1650777 (2025).
+ 35. Zhang, D., Wang, J., Wang, Y . & Lei, X. Is there a spatial relationship between urban landscape pattern and habitat 
+quality? Implication for landscape planning of the Yellow River Basin. Int. J. Environ. Res. Public Health . 19, 11974 
+(2022).
+ 36. Ning, X. et al. Multi-Scenario Simulation of Habitat Quality in the Yellow River Basin by Coupling FLUS with InVEST 
+Model. Polish J. Environ. Studies (2025).
+ 37. Liang, X. et al. Understanding the drivers of sustainable land expansion using a patch-generating land use simulation 
+(PLUS) model: A case study in Wuhan, China. Comput. Environ. Urban Syst. 85, 101569 (2021).
+ 38. Wang, B. & Cheng, W. Effects of land use/cover on regional habitat quality under different geomorphic types based on 
+InVEST model. Remote Sens. 14, 1279 (2022).
+ 39. Chen, C., Liu, J. & Bi, L. Spatial and temporal changes of habitat quality and its influential factors in China based on the 
+InVEST model. Forests 14, 374 (2023).
+ 40. Li, X., Liu, Z., Li, S. & Li, Y . Multi-scenario simulation analysis of land use impacts on habitat quality in Tian based on 
+the PLUS model coupled with the InVEST model. Sustainability 14, 6923 (2022).
+ 41. Li, X. et al. Future land use spatial conflicts and habitat quality impacts based on SSPs-RCPs scenarios—Qin-Ba 
+Mountain City. Land 12, 1708 (2023).
+ 42. Tang, F. et al. Dynamic evolution and scenario simulation of habitat quality under the impact of land-use change in the 
+Huaihe River Economic Belt, China. PloS one. 16, e0249566 (2021).
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-69019-y
+ 43. Hu, N. et al. Multi-scenario simulations of land use and habitat quality based on a PLUS-InVEST model: A case study of 
+baoding, China. Sustainability 15, 557 (2022).
+ 44. Pang, J., Duan, J., Zhang, R. & Lv, J. Characteristics of Spatiotemporal Evolution and Climate Response of Vegetation 
+Cover in the Wei River Basin from 2000 to 2019. Res. Soil. Water Conserv. 28, 230–237 (2021).
+ 45. Zhang, J. Response of habitat quality to land use changes in The Johor River Estuary. Int. J. Digit. Earth. 17, 2390439 
+(2024).
+ 46. Lee, D. & Jeon, S. Estimating changes in habitat quality through land-use predictions: Case study of roe deer (Capreolus 
+pygargus tianschanicus) in Jeju Island. Sustainability 12, 10123 (2020).
+ 47. Wang, R. et al. Coupling PLUS–InVEST model for ecosystem service research in Yunnan Province, China. Sustainability 
+15, 27 (2022).
+ 48. Zhang, X. et al. Spatial pattern reconstruction of regional habitat quality based on the simulation of land use changes 
+from 1975 to 2010. J. Geog. Sci. 30, 601–620 (2020).
+ 49. Zhao, L., Yu, W., Meng, P., Zhang, J. & Zhang, J. InVEST model analysis of the impacts of land use change on landscape 
+pattern and habitat quality in the aolangdi Reservoir area of the Yellow River basin, China. Land. Degrad. Dev. 33, 
+2870–2884 (2022).
+ 50. Zhao, B., Li, S. & Liu, Z. Multi-scenario simulation and prediction of regional habitat quality based on a system dynamic 
+and patch-generating land-use simulation coupling model—a case study of Jilin Province. Sustainability 14, 5303 (2022).
+ 51. Zhang, X., Tong, H., Zhao, L., Huang, E. & Zhu, G. Spatial and Temporal Dynamics and Multi-Scenario Forecasting of 
+Habitat Quality in Gansu–Qinghai Contiguous Region of the Upper Yellow River. Land 13, 1060 (2024).
+ 52. Wang, Y . et al. Multi-scenario carbon storage analysis based on PLUS model and InVEST model: a case study of Zhejiang 
+province, China. Earth Sci. Inf. 18, 192 (2025).
+ 53. Ren, D., Cao, A. & Wang, F. Response and multi-scenario prediction of carbon storage and habitat quality to land use in 
+liaoning Province, China. Sustainability 15, 4500 (2023).
+ 54. Liu, K., Zhang, H., Zhang, D., Zheng, W. & Zhang, C. Scenario simulation and driving factors of ecosystem carbon 
+storage in the Loess Plateau: A study based on the PLUS- InVEST-Geodector model. China Environ. Sci. 45, 2159–2170 
+(2025).
+ 55. Li, X., Liu, Z., Li, S. & Li, S. Multi-scenario simulation analysis of land use impacts on habitat quality in Tian based on 
+the PLUS model coupled with the InVEST model. Sustainability 14, 6923 (2022).
+ 56. Li, S. et al. Study on spatio-temporal evolution of habitat quality based on land-use change in Chongming Dongtan, 
+China. Environ. Earth Sci. 81, 220 (2022).
+ 57. Yang, D., Gao, M., Zhang, B. & Zhang, J. Land use simulation and carbon storage assessment in Xiaoxing’ an Mountains 
+region based on PLUS-InVEST model. Bull. Soil Water Conserv. 45, 286–294 (2025).
+ 58. Lv, B. et al. Multi-scenario simulation of future land use and landscape ecological risk analysis based on PLUS model: a 
+case study of Wuding River Basin. Res. Soil. Water Conserv. 32, 361–369 (2025).
+ 59. Liang, Y . et al. Habitat quality assessment provides indicators for socio-ecological management: A case study of the 
+Chinese Loess Plateau. Environ. Monit. Assess. 195, 101 (2023).
+ 60. Wang, Y . et al. Characterization and multi-scenario prediction of habitat quality evolution in the bosten lake watershed 
+based on the InVEST and PLUS models. Sustainability 16, 4202 (2024).
+ 61. Qu, Y ., Long, H. & Cao, L. Construction of a research framework for coupling environmental and economic effects of 
+land use transition under urbanization. Progress Geogr. 43, 799–809 (2024).
+ 62. Chen, Y . et al. Spatiotemporal evolution and multi-scenario prediction of habitat quality in the Yellow River Basin. Front. 
+Ecol. Evol. 11, 1226676 (2023).
+ 63. Wang, Z., Shi, P., Li, X., Liu, Y . & Shi, J. Response mechanism and promotion path of habitat quality to land use change 
+in Hexi Corridor area. Huan jing ke xue= Huanjing kexue. 45, 6910–6921 (2024).
+ 64. Wang, B., Oguchi, T. & Liang, X. Evaluating future habitat quality responding to land use change under different city 
+compaction scenarios in Southern China. Cities 140, 104410 (2023).
+ 65. Dong, B., Huang, T., Tang, T., Huang, D. & Tang, C. Impact of multi-scenario land-use changes on habitat quality 
+evolution in the Yangtze River economic belt. Front. Environ. Sci. 12, 1516703 (2025).
+Publisher’s Note Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional 
+affiliations.
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-69019-y
+Authors and Affiliations
+Zhuang Zhuang1,2 · Zhaojin Li1,2 · Pengfei Tai1,2 · Fugao Jiang1,2
+ Pengfei Tai
+taipengfei268@qfnu.edu.cn
+1 School of Sports Science, Qufu Normal University, Jining 273165, China
+2 Shandong Rural Revitalization Sports Research Institute, Qufu Normal University, Jining 273165, China

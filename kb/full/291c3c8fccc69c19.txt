@@ -1,0 +1,1121 @@
+Discover WaterLe Goff et al. Discover Water (2026) 6:110 
+https://doi.org/10.1007/s43832-026-00446-8
+REVIEW Open Access
+A review of autonomous and low cost sensor 
+systems for surface water quality monitoring 
+with implications for local decision making
+Lucie Le Goff1,2 , Norka Fuentes1* , Marco Soto-Alvarez3 , Pedro Hervé-Fernández4 and Ricardo A. Ayala5
+*Correspondence:
+Norka Fuentes
+norka.fuentes@ulagos.cl
+1Laboratorio de Limnología, 
+Departamento de Acuicultura 
+y Recursos Agroalimentarios, 
+Universidad de Los Lagos, Campus 
+Osorno, Osorno, Chile
+2Instituto Para El Desarrollo 
+Sustentable, Pontificia Universidad 
+Católica de Chile, 
+6904411 Santiago, Chile
+3Departamento de Ciencias de 
+la Ingeniería, Universidad de Los 
+Lagos, Campus Puerto Montt, 
+Puerto Montt, Chile
+4Laboratorio de Ecohidrología y 
+Gestión Hídrica, Departamento de 
+Ciencias Agropecuarias y Acuícolas, 
+Facultad de Ciencias, Universidad 
+de Magallanes, Punta Arenas, Chile
+5Núcleo de Estudios Sobre 
+Configuraciones Territoriales del 
+Bienestar. Facultad de Salud y 
+Ciencias Sociales, Universidad de 
+Las Américas, Santiago, Chile
+© The Author(s) 2026. Open Access This article is licensed under a Creative Commons Attribution 4.0 International License, which permits use, 
+sharing, adaptation, distribution and reproduction in any medium or format, as long as you give appropriate credit to the original author(s) and the 
+source, provide a link to the Creative Commons licence, and indicate if changes were made. The images or other third party material in this article 
+are included in the article’s Creative Commons licence, unless indicated otherwise in a credit line to the material. If material is not included in the 
+article’s Creative Commons licence and your intended use is not permitted by statutory regulation or exceeds the permitted use, you will need to 
+obtain permission directly from the copyright holder. To view a copy of this licence, visit http://creativecommons.org/licenses/by/4.0/.
+Abstract
+Preserving water quality has become a critical priority due to the increasing pressure 
+on water resources from population growth, production activities and climate 
+change. This article reviews recent studies on water quality monitoring in lakes, 
+rivers and reservoirs, with a focus on lessons relevant to local decision-making. 
+Using a structured literature review approach, we synthesised and interpreted 
+research on water quality monitoring systems used in aquatic ecosystems affected 
+by eutrophication and turbidity. Particular attention was given to turbidity sensors 
+and autonomous monitoring approaches. The findings show that traditional manual 
+quality measurements continue to coexist with autonomous monitoring systems, 
+each contributing different strengths to water quality assessment. However, studies 
+on low-cost sensors and permanent autonomous measurement systems remain 
+limited, likely because of other research priorities. The limited number of published 
+studies suggests either that these systems remain uncommon in practice or that 
+their use is insufficiently documented. Current monitoring efforts largely rely on field 
+manual sampling carried out by specialised technical personnel employed in state 
+services or research centres. Looking ahead, it appears promising to complement 
+current methods by increasingly integrating low-cost autonomous sensor networks 
+and expanding opportunities for citizen participation. Such developments 
+could support the creation of real-time information systems that facilitate local 
+decision-making.
+Keywords Water monitoring, Lakes, Rivers, Autonomous sensors, Turbidity, 
+Eutrophication
+1 Introduction
+1.1 Water quality: a global challenge
+Ensuring water quality is one of the major environmental and societal challenges of the 
+twenty-first century. Water quality plays a crucial role in public health and ecosystem 
+conservation [ 28]. It is also central to sustainable development, as access to safe and 
+reliable water supports economic growth and social well-being [ 10]. However, progress 
+towards achieving the United Nations Sustainable Development Goal on clean water 
+Page 2 of 25
+Goff Le et al. Discover Water (2026) 6:110 
+and sanitation remain insufficient, and improvements in water supply quality continue 
+to fall short of global targets [ 99]. This challenge is particularly evident in Latin America 
+and the Caribbean, where water quality continues to deteriorate due to combined effects 
+of climate change and socioeconomic pressures [ 98]. The risk of water shortages due to 
+pollution is a growing concern [ 104], exacerbated by extreme hydroclimatic events that 
+increase the likelihood of droughts and degrade water quality [29]. Human activities also 
+contribute to pollution along entire river systems, from upstream to downstream [ 44]. 
+The two main threats identified for freshwater bodies are nutrient pollution, which leads 
+from eutrophic to hypertrophic conditions and toxic stress from chemical pollution [97]. 
+The World Bank has warned of the urgent need to address water quality issues before 
+they escalate [ 23]. Over the past decade, water-related conflicts have increased world -
+wide, [45], and social movements advocating for the protection of water resources have 
+also emerged [100].
+1.2 Monitoring water quality to reduce exposure to pollution and its effects
+Limited water quality information in low-income countries remains a major challenge 
+that must be addressed to enable informed decision-making [ 99]. Beyond technological 
+innovation, the evolution of water-quality monitoring systems reflects a broader tran -
+sition in environmental science towards data-intensive observation frameworks that 
+support anticipatory and evidence-based water governance. Improved knowledge of 
+water quality enhances the capacity to anticipate health risks. Poor-quality or contami -
+nated water affects mental and psychological well-being as much as physical health [ 28], 
+increasing the incidence of infectious diseases, which are often linked to microbiologi -
+cal contamination. Contaminated water can also cause organ damage and cancer due to 
+exposure to inorganic and organic contaminants [19].
+Effective water purification strategies are essential for maintaining public health 
+while supporting agriculture and conserving biodiversity. Yet, as water challenges vary 
+Graphical abstract
+Page 3 of 25
+Goff Le et al. Discover Water (2026) 6:110 
+widely across regions, these strategies are most appropriate when informed by both local 
+knowledge and expertise [ 28]. Monitoring programmes and water-resource manage -
+ment are crucial for reducing the risk of microbial and chemical contamination of drink-
+ing water, often driven by land-use practices in river basins [106].
+The World Health Organisation has also underscored the responsibility of govern -
+ments to fund and coordinate national water quality monitoring programmes by pro -
+moting initiatives that encourage communities to participate in citizen science, known 
+as community-based monitoring [ 107]. Developing citizen science initiatives involving 
+researchers, citizens and public authorities for long-term water quality monitoring could 
+help fill information gaps, reduce waterbodies degradation and raise public awareness 
+[20].
+1.3 Emerging WQMS: examples from Latin America
+With abundant surface and groundwater resources, Latin America has the highest per 
+capita water availability in the world , [ 16]. However, land use strongly influences water 
+quality, particularly through increasing urbanisation [ 91]. Numerous cases of pollu -
+tion have been documented across the region, linked to agricultural activities [ 16, 35], 
+industrial discharges [ 33] and domestic wastewater [ 16, 76]. Pollution remains difficult 
+to control due to high financial costs, inadequate wastewater-treatment systems [44] and 
+insufficient water quality monitoring programmes , [16].
+Many Latin American countries operate permanent public WQMS which focus on 
+major surface waters or key watersheds. Nevertheless, these data often consist of irregu -
+lar point-in-time measurements rather than real-time observations. Government agen -
+cies often manage online platforms that provide public access to this data, such as the 
+Water Quality Information System (SINA) in Mexico [ 22] and the National Informa -
+tion System for Integrated Water Resource Management (SINIGIRH) in Costa Rica [ 57] 
+in Central America. Other examples include the online monitoring system of Brazil’s 
+National Water and Basic Sanitation Agency [3], the Environmental Information Centre 
+(CIAM) in Argentina [ 83] and the information systems of the General Directorate of 
+Water in Chile [26].
+However, within that world region, these measures remain insufficient to address 
+persistent water quality problems. The uneven distribution of the thousand monitor -
+ing stations limits the availability of comprehensive data for real-time decision-making 
+[66]. The implementation of on-site sensor networks and the establishment of addi -
+tional monitoring stations will be essential to achieving adequate territorial coverage. 
+Another important consideration is that citizen monitoring remains underrepresented 
+and undervalued in water quality monitoring systems (WQMS).These initiatives aim 
+to track changes in drinking water quality and safeguard the surrounding aquatic eco -
+systems. However, its range of analysis methods can be adapted to local environmental 
+and socio-economic conditions, complementing official hydrological data monitoring by 
+facilitating the detection of pollution and environmental changes in areas lacking for -
+mal monitoring [ 13]. Similar to the challenges observed in Latin America, a research 
+gap remains regarding non-interconnected lakes in emerging economies [ 55]. Where 
+autonomous monitoring is still limited, the combination of multivariate analysis with 
+GIS mapping is essential to identify critical pollution areas and guide local management 
+strategies.
+Page 4 of 25
+Goff Le et al. Discover Water (2026) 6:110 
+1.4 Turbidity and eutrophication as main factors of disturbance
+Turbidity is a key water quality parameter and is widely used as an indicator of trophic 
+status and hydrosystem productivity. It may reflect the presence of suspended particles 
+in the water column, arising from both organic matters [ 12] and inorganic suspended 
+solids [36]. Elevated turbidity reduces light penetration through increased light scatter -
+ing, thereby affecting aquatic ecosystem functioning [82, 85].
+Turbidity exhibits strong seasonal and interannual variability [ 1, 43, 79, 96], driven by 
+meteorological conditions that affect biological, and sediment transport processes [ 36]. 
+Depending on local climatic conditions, turbidity peaks may occur during summer or 
+wetter autumn/winter periods [ 1, 39, 50, 51, 102]. Extreme events, including storms, 
+strong winds, typhoons and monsoons, can substantially increase sediment resuspen -
+sion and run-off, often contributing disproportionately to annual sediment loads [ 1, 
+42, 109]. In addition, the relative contribution of inorganic particles and phytoplankton 
+varies among systems, with algal blooms commonly intensifying turbidity during warm 
+periods [53]. In shallow lentic systems, turbidity is closely associated with nutrient con -
+centrations particularly total phosphate and nitrogen, highlighting the critical role of 
+nutrient loading in determining water quality [55].
+Both natural and anthropogenic factors influence turbidity and nutrient dynamics. 
+Catchment characteristics, including topography, soil properties and land-use practices, 
+regulate erosion and sediment delivery [ 38, 54], while hydrodynamic conditions, water 
+depth and sediment resuspension control turbidity within lakes and rivers [ 38, 54]. At 
+the lake or river scale, turbidity is affected by water column depth [ 43, 68], hydrody -
+namic conditions [ 43, 82], bed and bank erosion, sediment deposition and resuspen -
+sion. Within lakes, turbidity differs between the fluvial zone [ 78] and deeper or bottom 
+regions. Human activities such as agriculture, urbanisation, industry and aquaculture 
+increase sediment and nutrient inputs, particularly nitrogen and phosphorus, through 
+runoff and tributary inflows [60, 70, 74, 92, 103, 108, 112]. Nitrogen pollution is strongly 
+associated with agricultural activities in catchment areas, primarily as a result of exces -
+sive fertiliser application [ 1, 56, 60, 108]. Tributaries redistribute pollutants from urban 
+and agricultural areas, resulting in cumulative downstream impacts [ 43, 52, 108, 115]. 
+These inputs stimulate algal growth, increase chlorophyll-a concentrations and can 
+reduce dissolved oxygen levels, ultimately degrading water quality and ecosystem health 
+[48, 84].
+The combined effects of climate change and nutrient enrichment contribute to eutro -
+phication, one of the main causes of degradation in aquatic ecosystems in lakes and 
+wetlands [18, 25, 88] [39, 48, 50, 51, 60, 102, 108]. Rising temperatures accelerate algal 
+productivity and may concentrate dissolved constituents through increased evaporation, 
+exacerbating water quality degradation. [ 48, 55, 60, 78, 103]. As a result, eutrophication 
+threatens key ecosystem services such as recreation, irrigation and drinking water provi-
+sion [89]. These interactions underline the need for monitoring systems capable of cap -
+turing the temporal and spatial variability of turbidity and nutrient dynamics to support 
+effective water resource management.
+1.5 Objective, hypothesis and article outline
+As environmental monitoring rapidly transitions toward continuous, data-inten -
+sive observation and advanced analytical approaches that support decision-making, 
+Page 5 of 25
+Goff Le et al. Discover Water (2026) 6:110 
+a synthesis is needed to understand how these advances are reshaping both scientific 
+understanding and governance. This article aims to synthesise the literature on the role 
+of autonomous systems within water quality monitoring systems used to address envi -
+ronmental risks in rivers, lakes and reservoirs. Our research focuses on surface waters 
+affected by runoff, erosion, and acute eutrophication, and as such does not include 
+groundwater. Indeed, the cost-effective, autonomous optical turbidity sensors and telem-
+etry equipment presented in this article are designed for surface deployment to capture 
+high-frequency spatial and temporal dynamics induced by weather events and land-use 
+practices. While groundwater quality is a critical component of water resource manage -
+ment, its monitoring presents entirely different hydrogeological dynamics, access limita-
+tions, and sensor deployment challenges, which fall outside the technological framework 
+of the affordable surface water telemetry examined here.
+We prioritised turbidity as a proxy variable and required these keywords to ensure 
+comparability across systems. Our review was guided by two hypotheses. First, pre -
+ferred methods for monitoring the quality of continental would rely primarily on time-
+consuming, labour-intensive field sampling campaigns or, alternatively, satellite imagery. 
+And second, the adoption of low-cost, autonomous and easy-to-use local technologies 
+would remain relatively uncommon, creating gaps in real-time data availability for local 
+decision-makers and concerned communities. In this context, local monitoring systems 
+could serve as powerful tools for community-level decision-making and may be read -
+ily adopted by local populations. We paid attention to the most used tools for assessing 
+water quality, seeking to address the challenges associated with developing and imple -
+menting low-cost monitoring systems.
+1.6 The novelty of the review
+This paper highlights the emerging use of low-cost, autonomous sensor networks as a 
+rapidly evolving approach to water quality monitoring in high-resource countries. In 
+contrast to traditional systems that rely on manual, point-in-time sampling, these tech -
+nologies generate continuous, real-time data, addressing longstanding limitations asso -
+ciated with irregular or delayed information. This enables early detection of quick or 
+short-lived disturbances such as turbidity and eutrophication, which are particularly 
+relevant in the region. Moreover, the reviewed studies point to the potential for stron -
+ger community participation in water monitoring, helping close persistent gaps in timely 
+and actionable information for decision-making, in lower income countries, particularly 
+in Latin America. Beyond their technical advantages, these systems represent a shift 
+toward high-frequency environmental observation capable of capturing transient pro -
+cesses that traditional sampling often overlooks. This transition has important implica -
+tions for hydrological modelling, early-warning capacity and adaptive water governance, 
+particularly in regions where delayed information constrains timely decision-making, 
+reinforcing the transition from reactive to anticipatory water management.
+Page 6 of 25
+Goff Le et al. Discover Water (2026) 6:110 
+2 Material and methods
+In order to review and synthesise the literature on the subject, we followed the PRISMA 
+reporting guidelines, applying its procedural steps, flowchart and checklist [ 58, 59].1 The 
+article selection process is summarised in Table SI-1 and Fig. 1.
+2.1 Literature search
+In October 2025, scientific articles were retrieved from the Web of Science (WoS) data -
+base, selected for its extensive peer-reviewed literature, multidisciplinary coverage and 
+advanced filtering tools. We used keyword-based search equations:
+1 https://www.prisma-statement.org/prisma-2020
+Fig. 1 Stages of the literature review process. Based on the PRISMA 2020 flowchart
+ 
+Page 7 of 25
+Goff Le et al. Discover Water (2026) 6:110 
+Equation  1= (lake AND “water quality” AND (eutrophication OR turbidity) AND 
+monitoring AND sensor AND (“low cost” OR low-cost).
+Equation  2= (turbidity AND “hydrological modelling” AND (catchment OR basin) 
+AND sensor AND monitoring NOT lake).
+Each search query was applied to all fields (topic, title, publication titles, abstract and 
+keywords) and a filter was applied to include only articles. While no timespan filter was 
+applied, the initial search returned 6,710 articles.
+2.2 Inclusion and exclusion criteria
+Due to the large number of results, inclusion and exclusion criteria were applied to 
+obtain a more focused dataset.
+The inclusion criteria were:
+i) For Eq. 1: articles had to contain the keywords ‘lake’ , ‘quality’ and ‘turbidity’ (criterion 
+1).
+ii) For Eq.  2: articles had to contain the keywords ‘monitoring’ , ‘sensors’ and ‘quality’ 
+(criterion 2).
+The exclusion criteria were:
+iii) Articles not written in English or Spanish (criterion 3). The language criterion applied 
+to screened journal articles; background references in other languages were retained 
+where relevant.
+iv) Duplicate articles were removed from the list (criterion 4).
+These inclusion and exclusion criteria were subsequently automated using a custom R 
+script. The script was designed to cross-reference target keywords within article titles 
+and abstracts, which had been retrieved from the Web of Science (WoS) database using 
+its built-in export functionality. The dataset was exported in CSV format for subsequent 
+analysis. Application of these criteria reduced the dataset to 236 articles.
+2.3 Screening procedure
+The abstracts were screened independently by two of the listed authors (one from engi -
+neering, one from social sciences, both specialised in water studies), who coded each 
+abstract. Articles were classified as:
+i) Clearly related to the topic
+ii) Potentially related; to be discussed
+iii) Unrelated to the topic
+Articles coded ‘i’ by both reviewers were retained, while those coded ‘iii’ by both were 
+discarded. For articles coded “ii” , inclusion or exclusion was determined through collab-
+orative discussion between the reviewers. Reasons for exclusion included: overly general 
+approaches, lack of remote-sensing or machine-learning components or WQ monitor -
+ing based solely on algae or fish sampling. A total of 172 articles were discarded, leaving 
+64 for analysis (see Fig. 1).
+Page 8 of 25
+Goff Le et al. Discover Water (2026) 6:110 
+2.4 Analysis
+We applied thematic analysis [64] using article titles and abstracts to classify the selected 
+articles into inductively constructed categories aligned with the review hypotheses, 
+emphasising water quality monitoring in hydrosystems for real-time decision-making. 
+The detailed list of the 64 articles analysed can be found in Table SI-2.
+3 Results. Water quality monitoring systems: from manual sampling to 
+autonomous techniques. Benefits and prospects
+In many countries, water authorities are responsible for ensuring the safety of water 
+use and consumption, including maintaining standard biological and chemical levels in 
+aquatic ecosystems [ 1]. To assess the condition of surface waters, monitoring is funda -
+mental for identifying cycles and changes in water quality. As various studies suggest, 
+these cycles—observed in rivers, estuaries, lakes, reservoirs and lagoons—are influenced 
+by both natural factors and anthropogenic pressures [1].
+Over time, water quality monitoring has become increasingly technical and diversi -
+fied. Methods range from manual sampling [ 41] to automated approaches, temporary 
+campaigns [ 49] to continuous monitoring [ 62], and small-case analyses [ 49] to exten -
+sive basin-level assessments [ 87]. Given this diversity and the growing need for reliable 
+data, analysing existing water quality measurement methods is particularly important 
+for resource-constrained regions.
+3.1 Bibliometric and geographical distribution
+This section presents graphical representations summarising key characteristics of the 
+dataset. First, Table  1 examines the geographical distribution of the case studies con -
+tained in the scientific articles. In this review, the vast majority of the identified articles 
+refer to case studies conducted in a specific country, or sometimes to several case studies 
+(generally on the same continent). Only four articles were theoretical and did not involve 
+practical fieldwork. Second, Fig.  2 presents continent-specific approaches to water qual -
+ity monitoring of surface water bodies presented in the articles.
+Although water quality monitoring involves diverse and complementary approaches, 
+a striking pattern emerged: studies focused on (or conducted in) Oceania, Africa and 
+Latin America are under-represented compared with those from Asia, Europe and 
+North America (Table  1b). Table 1a shows that one third of all reviewed articles con -
+cern China or the United States, while Asia leads in the total number of publications, 
+followed by Europe (with Germany contributing four articles). This geographic imbal -
+ance suggests that current knowledge of water quality monitoring is disproportionately 
+shaped by regions with greater technical and institutional capacity. As a result, monitor -
+ing approaches promoted in the literature may not fully reflect the operational realities 
+of emerging economies, where financial, logistical and governance constraints influence 
+technology adoption. Latin America is represented by only three articles (Brazil, Ecua -
+dor and Argentina), Africa by three (Ethiopia and Egypt) and Oceania by one (Australia). 
+None of the articles specifically examined sensor development.
+With regard to water quality monitoring systems, as far as this specific review report, 
+manual sampling remains predominant across all continents and is the only technique 
+reported in Latin America and Africa (Fig.  2). Indeed, probably many experiences of 
+implementing low-cost devices in developing countries are not even documented in 
+Page 9 of 25
+Goff Le et al. Discover Water (2026) 6:110 
+Table 1 Geographical distribution of case studies in selected articles by country (a) and continent 
+(b)
+Fig. 2 Continent-specific approaches to water monitoring
+ 
+Page 10 of 25
+Goff Le et al. Discover Water (2026) 6:110 
+Web of Science. Autonomous systems are widely used in Europe, North America and 
+Asia, and are more developed for rivers than for lakes and reservoirs. Remote sensing is 
+used in lakes, particularly in Europe and Asia, but remains less widely applied in rivers 
+than in-situ sensors.
+None of the reviewed articles related to in resource-constrained regions focused on 
+sensor development. The widespread availability of low-cost sensors and microcon -
+trollers is transforming monitoring practices; therefore, this imbalance is noteworthy 
+given the importance of water quality monitoring for local policy agendas, as outlined in 
+the introduction of this article. Nevertheless, the close reading of the available literature 
+provides important insights, detailed in the following sections.
+3.2 Traditional tools used for monitoring vital signs of surface waters
+3.2.1 Traditional sampling to identify key correlations between the main water quality 
+indicators for calibration purposes
+In the reviewed case studies, water quality monitoring systems based on traditional sam-
+pling methods confirm their usefulness and effectiveness in many respects. Water qual -
+ity parameters are recognised as indicators of aquatic ecosystems’s ecological health [ 9, 
+14, 41, 62, 72, 77, 113]. Measurement campaigns carried out on a wide range of variables 
+at the start of the study make it possible to determine the key water quality indicators 
+specific to each waterbody that locally influence eutrophication and turbidity processes. 
+Cross-analysis of the results of these measurements also helps to identify correlations, 
+which provide an understanding of the complexity of interactions between physical–
+chemical and/or biological variables in the degradation of water quality. Jia et al. [43] and 
+Lin and Li [ 52] reported that turbidity and eutrophication of water bodies were corre -
+lated, with a system’s sensitivity to nutrient depending on internal factors (resuspension 
+of sediments) and external factors (upstream water discharges). Similarly, Abalasei et al. 
+[1] demonstrated a relationship between turbidity and organic matter in their analysis 
+of Chirita Lake’s water quality data, which could contribute to the sustainable manage -
+ment of drinking water in Romania. For their part, Mequanent et al. [ 56] showed a posi-
+tive correlation between turbidity and: 1) low vegetation cover in the buffer zone, 2) % 
+of human disturbance assessment and 3) total nitrogen. Identifying these associations 
+is important to long-term monitoring, making it possible to better calibrate predictive 
+models.
+Dissolved oxygen emerges as a key variable for assessing rivers, lakes or reservoirs 
+integrity, as its near-bottom depletion is closely linked to eutrophication processes, ther-
+mal stratification and the accumulation of organic matter [ 2]. The spatial and temporal 
+dynamics of dissolved oxygen, particularly in deeper or poorly mixed zones, can exhibit 
+pronounced variability that is not captured by low-frequency or point-based measure -
+ments, underscoring the value of continuous and sensor-based monitoring approaches 
+[2]. Therefore, long-term monitoring of each body of water is essential to understand 
+the interactions that influence water quality throughout the year. [ 49, 87]. At the same 
+time, the precise spatial resolution of this type of measurement is necessary to calibrate 
+remote sensors and in-situ loggers to determine the strategic locations for their installa -
+tion in the basin or water body.
+Page 11 of 25
+Goff Le et al. Discover Water (2026) 6:110 
+3.2.2 The benefits and complementarity of in-situ and ex-situ sensors
+Satellite-based sensors are widely used in several research areas. Yet, as Lepistö et al. 
+[49] highlight, satellite-based remote sensing offers high spatial and temporal resolution, 
+but it needs to be calibrated using field campaign measurements. Caroni et al. [ 17] used 
+global satellite observations to study 307 shallow lakes (< 3m depth) worldwide over the 
+last 20 years, assessing trends of water quality as chlorophyll-a and turbidity – related to 
+phytoplankton biomass and suspended sediments, respectively. Their study revealed the 
+benefits of low-cost, large spatial coverage and high spatial resolution for water monitor-
+ing. The performance of satellite-based techniques varies. Tavares et al. [ 94] used satel-
+lite imagery (Sentinel-2 MSI Imagery) for monitoring superficial events in small lakes 
+(<10 km2) located in the Adour Garonne river basin, calibrated with more than 600 in-
+situ data from 108 lakes. Laneve et al. [ 47] compared different methods using Sentinel-2 
+and Landsat 5.7-8, implementing atmospheric corrections in 4 lakes in Italy, obtaining 
+high performances (RMSE close to 3 mg/m3) in lakes with low turbidity. Kiwanuka et al. 
+[46] developed predictive models to improve the health of lakes, based on the experience 
+using Landsat 8 and 9 imagery and in-situ samples. In contrast, Mequanent et al [ 56] 
+used remote sensing, GIS, human disturbance assessment and manual sampling in four 
+sites with varying degrees of alteration in the Lake Tana buffer zone in Ethiopia. Their 
+study showed the value of cross-referencing the accuracy of data measured using a mul -
+tiparameter probe and a Secchi disk –following Tantu et al. ’s [93] approach in lake Abaya 
+in Ethiopia– with data from ex situ sensors to better understand interactions between 
+land use and water quality.
+In addition, several studies have developed different on-site monitoring systems 
+that yield valuable insights in aquatic ecosystems. García-Avila et al. [ 31], for example, 
+assessed eutrophication levels in a high Andean lake in Ecuador using multiple trophic 
+indices (OECD, Carlson, and others). Similarly, Prasetyo et al. [70] evaluated water qual-
+ity in Lake Batur, Indonesia, through a Water Quality Index based on seven parameters, 
+identifying the suitability of water for different uses. More recently, machine-learning 
+approaches have proven effective for calibrating water-quality models, suggesting a 
+strong capacity to identify relationships among in-situ parameters [37, 54] and [75]).
+Finally, manual data help to programme hydrological models, which are used to pre -
+dict water quality. In Canada, Zolfaghari et al. [ 113] employed a combination of mod -
+elling, optical sensors and laboratory analyses to study variables such as chlorophyll-a, 
+turbidity and dissolved organic carbon, illustrating the ecological and socio-economic 
+risks associated with high turbidity. Using a quantitative approach, Jamal et al. [ 41] 
+examined how land use affects the water quality of Wular Lake in the Kashmir Valley, 
+India, based on manual sampling of 22 physicochemical parameters. The analyses led to 
+the design of strategies aiming to protect both the wetland ecosystem and the health of 
+the water body.
+Field campaigns remain a standard approach, often requiring extensive logistics, per -
+sonnel and equipment. Although per -sample costs can be moderate in well-resourced 
+programmes, laboratory analyses are often prohibitively expensive for citizen initiatives. 
+In contrast, the deployment of in-situ sensors enables continuous monitoring of water 
+quality parameters, offering temporal precision that traditional field campaigns often 
+lack.
+Page 12 of 25
+Goff Le et al. Discover Water (2026) 6:110 
+3.3 International experiences in the use of autonomous and continuous sensors, with 
+emphasis on turbidity sensors
+In-situ turbidity monitoring relies on the temporary or continuous deployment of 
+instruments in surface waters. This literature review reports on the use of turbidimeters, 
+nephelometers, multiparameter and multimeter probes for manual sampling, and mul -
+tiparameter probes and turbidity sensors for automated sampling (Fig.  3). Some equip -
+ment is used for all types of monitoring.
+Among the studies we reviewed, Skarbøvik et al. [ 87] provided the most comprehen -
+sive comparison between in-situ turbidity sensors and existing suspended sediments 
+concentration northwestern European streams. The relevance of this study is under -
+scored by the Water Framework Directive, introduced by the European Commission in 
+2000, which aims to achieve good water quality status across member states. As noted 
+by the authors, optical turbidity sensors offered a promising solution for monitoring sus-
+pended sediments concentrations. However, their study also highlighted two limitations 
+Fig. 3 Types of turbidity sensors for in-situ monitoring. The abbreviations in parentheses refer to the continents 
+where the sensors are used: As for Asia, Eu for Europe, NA for North America, LA for Latin America and O for Oceania
+ 
+Page 13 of 25
+Goff Le et al. Discover Water (2026) 6:110 
+in the current continental monitoring system. First, such sensors are not yet integrated 
+into the national monitoring programmes of Denmark, Finland, Scotland and Northern 
+Ireland, where only data from research projects were available. Second, Sweden, Norway 
+and Ireland have only relatively recently adopted turbidity sensors –since 2017, 2013 
+and 2009 respectively– making long-term temporal comparisons difficult. These find -
+ings align with those of O’Flynn et al. [62], who emphasised the need for a cost-effective, 
+real-time monitoring framework to support the Water Framework Directive objectives, 
+noting its potential scalability to other regions, such as Latin America.
+3.4 Towards more effective hydrological models using data from affordable, remote and 
+autonomous sensors for measuring water turbidity
+Excess sediment and nutrient loads can pose serious challenges for aquaculture, tour -
+ism and public health [ 4, 21]. Furthermore, factors such as land cover, topography and 
+catchment size, along with meteorological data, can be integrated into semi-distributed 
+hydrologic models [ 65, 95]. Extending this line of inquiry, several studies have demon -
+strated that hydrological modelling, when combined with variables like sediment and 
+nutrient concentrations in the water column, is a widely used and effective approach [34, 
+63, 71, 110]. However, high-frequency sampling –ranging from minutes to daily inter -
+vals– over extended periods (e.g., 2 to 7 years) is essential for reliable model calibration 
+and validation. Therefore, acquiring such data in the most cost-effective manner is cru -
+cial [6, 63].
+In parallel, advanced data fusion techniques, including machine-learning algorithms, 
+can be employed to integrate diverse datasets, allowing for a more nuanced understand -
+ing of the relationships between variables and improving the accuracy of model predic -
+tions. According to Arnold et al. [ 7], the widely used Soil and Water Assessment Tool 
+(SWAT) is a simple yet reliable model for simulating hydrological fluxes alongside water 
+quality variables. Similar findings were reported by Yeo et al. [ 110] and Arabi et al. [ 5], 
+who used SWAT to simulate water flow, soil erosion, SS concentration and nutrient 
+transport at the catchment scale, as well as to assess the impacts of land-use change, best 
+management practices and climate change.
+In contrast, Lepistö et al. [ 49] used a multi-technical approach to monitor water qual -
+ity in Pyhajarvi Lake, southwest Finland, using remote sensing data from the MEdium 
+Resolution Imaging Spectrometer (MERIS) and transect measurements collected from a 
+moving boat. Their methodology included manual water sampling and laboratory analy -
+sis to compare the results with remote sensing data. Although their findings suggest that 
+transect measurements provide accurate estimates of water quality parameters, the costs 
+of measurements remain high, and remote sensing techniques require improvement for 
+certain estimations.
+3.5 AI-assisted sensor fusion and cloud-based environmental monitoring as tools that 
+enhance data reliability and accessibility
+Beyond data acquisition, several recent studies focused on how large monitoring datas -
+ets can be analysed and translated into management decisions. The latter has introduced 
+new methodologies such as hybrid machine-learning models. Gandhimathi et al. [ 30] 
+integrated regression and boosting techniques to improve river water quality classifi -
+cation, demonstrating the downstream analytical potential of monitoring data. Other 
+Page 14 of 25
+Goff Le et al. Discover Water (2026) 6:110 
+studies have emphasised the use of monitoring data as direct inputs for decision-support 
+and monitoring network design. Batina and Šiljeg [ 11], for example, combined in-situ 
+water quality measurements with a GIS-based multi-criteria decision analysis frame -
+work to optimise the spatial configuration of monitoring stations in a coastal shallow 
+lake. By integrating physicochemical parameters, anthropogenic pressures and meteo -
+rological drivers, their approach illustrated that water quality monitoring systems can 
+indeed support early-warning capabilities and management decisions under practical 
+resource constraints.
+Based on experiences in various countries, the reviewed literature supports the use of 
+water quality monitoring systems for local-level decision-making. Moreover, the instal -
+lation of networked sensors offers clear economic advantages. Postolache et al. [ 69] 
+introduced a low-cost wireless system based on ZigBee technology to monitor surface 
+water quality, highlighting its potential for scalable deployment. In this regard, the co-
+design of low-cost underwater wireless sensor networks has proved to be a viable alter -
+native for enhancing continuous monitoring systems without incurring the prohibitive 
+costs associated with conventional commercial stations [ 105]. Another example is the 
+use of high-frequency monitoring buoys, as implemented by Stevens et al. [ 90] in Lake 
+Erie, North America, which provide a real-time application network for environmental 
+parameters (e.g., temperature, dissolved oxygen, chlorophyll-a, phycocyanin and turbid -
+ity). In aquaculture systems, the use of sensors also represents a cost-effective solution 
+for supplying water quality monitoring systems. Petrea et al. [67] applied machine-learn-
+ing techniques to develop algorithms embedded in soft sensors (models complement -
+ing physical sensors), allowing the estimation of parameters such as pH, temperature, 
+ammonia, enabling the prediction of nitrate events in aquaponics systems.
+Machine-learning techniques can partially compensate for the lack of continuous in-
+situ turbidity monitoring by reconstructing long-term satellite-derived products. Zou 
+et al. [ 114] reconstructed a continuous turbidity time series (2004–2021) for Tonle Sap 
+Lake by combining MODIS imagery with Random Forest and XGBoost models to fill 
+multi-year data gaps in Copernicus products. Their results revealed strong seasonal 
+and spatial patterns in turbidity, along with an overall increasing trend, indicating that 
+anthropogenic factors exerted a stronger influence on turbidity dynamics than natural 
+drivers or dam construction. Although this approach does not provide real-time infor -
+mation, it underscored the potential of data-driven methods to recover long-term tur -
+bidity dynamics in systems where permanent monitoring infrastructure is limited and 
+can serve to support autonomous in-situ monitoring strategies.
+3.6 Recommendations for implementing autonomous continuous sensors as an early 
+warning system for real-time decision-making
+In recent years, the availability of low-cost sensors and microprocessors at moderate 
+prices has revolutionised field science and environmental observations, democratis -
+ing access to data collection and analysis [ 32, 40, 105]. It has facilitated the modelling 
+and integration of various variables that were previously costly and challenging to mea -
+sure [ 73]. As noted by Borah et al. [ 15] and Rollo and Robin [ 81], model calibration 
+and validation performance are evaluated through statistical metrics. Once validated, 
+such models can be used for scenario analysis, forecasting the impacts of different 
+Page 15 of 25
+Goff Le et al. Discover Water (2026) 6:110 
+environmental changes on turbidity levels, with acknowledging the limitations of low-
+cost optical telemetry.
+Three factors are widely recognised as having the potential to improve future water 
+quality measurement systems: turbidity as a key parameter, the use of optical sensors 
+and the temporal continuity of measurements. First, according to Robertson et al. [ 80], 
+turbidity is the most cost-effective variable to measure. Integrating hydrological models 
+with turbidity data can help predict when and under what conditions turbidity events 
+may occur. As demonstrated by Rele et al. [ 77], combining low-cost sensor data with 
+public databases can further enhance the prediction of turbidity in riverine systems.
+Second, while Sirabahenda et al. [ 86] argue that optical sensors should be used to 
+monitor changes in turbidity to ensure accurate water quality assessment, Lepistö et al. 
+[49] emphasise that the resolution offered by these sensors is superior to the imperfect 
+results obtained from interpreting satellite imagery, even when remote sensing is com -
+bined with manual field measurements using optical and electrochemical sensors.
+Third, as suggested by Zeng et al. [ 111], high-frequency and continuous time series of 
+measurements seem essential to overcome the biases associated with seasonal variability 
+of water quality parameters. To ensure the reliability of model predictions, long-term 
+time series (exceeding three years) are required, as Robertson et al. [ 80] demonstrated 
+in their load estimation using two regression models developed by combining the sur -
+rogate model (continuous flow, seasonality and surrogates) and the UV-flow model (con-
+tinuous Unit-Value flow and a seasonality factor). This study offers an interesting option 
+for providing baseline information on water quality and loads, as well as allowing the 
+calculation of historical and real-time daily loading. Similar findings were reported by 
+de Vicente et al. [24], who showed that multi-temporal variability (inter-annual, seasonal 
+and daily) in episodes of water quality deterioration, together with the unpredictability 
+of their drivers –particularly in shallow lakes– highlights the need to increase the fre -
+quency of data collection to obtain a more comprehensive long-term dataset. This sug -
+gests that a sensor capable of capturing the entire water column would be very useful. 
+However, given the challenges of maintenance and reliance on costly fixed infrastruc -
+ture, it would be better to develop monitoring based on wireless sensor systems.
+4 Discussion
+4.1 Clean water is of vital importance
+Monitoring the quality of hydrosystems is essential. Favouring the concept of ‘clean 
+water scarcity’ (using both quantitative and qualitative criteria) over that of ‘classic water 
+scarcity’ (using quantitative criteria alone) is projected to triple the number of river 
+basins at risk worldwide between 2010 and 2050 [ 104]. About 40% of South America’s 
+population could be living in a ‘clean water scarcity’ hotspot by 2050 (under the SSP5—
+RCP8p5 scenario) [104]. Synthetic fertilisers and domestic waste are the main contribu -
+tors to river pollution, due to the lack of wastewater collection networks and treatment 
+infrastructures. Furthermore, from an economic perspective, Li et al. [ 51] have dem -
+onstrated that water pollution will affect the economic resilience of foreign trade, as is 
+currently happening in China’s industrialised provinces where productive activities are 
+altering water quality, sometimes irreversibly. Indeed, by 2017, estimated economic 
+losses due to the risk of water shortages had already doubled when water pollution was 
+Page 16 of 25
+Goff Le et al. Discover Water (2026) 6:110 
+included in the evaluation criteria, with economic activities located downstream of 
+catchment areas being the most affected.
+4.2 The development of sensors and monitoring networks in Latin America
+There is an urgent need for a robust assessment of pressures on aquatic ecosystems 
+and for tools that democratise water quality information for bodies of water – this gap 
+directly impacts societies. Given the limited understanding of the complex interactions 
+between biological, physical, chemical, climatic and hydrological processes across time 
+and space [1], a reliable assessment of water status is therefore of great importance. Iden-
+tifying patterns of water quality variability can provide surface waters managers, local 
+governments and scientists with valuable insights into the impacts of various human-
+driven stressors [ 89]. The degradation of lakes, rivers and reservoirs worldwide threat -
+ens the maintenance of essential ecosystem services. In that sense, Latin America is a 
+key stakeholder with strong potential and growing interest in the development of public 
+monitoring of its waterbodies.
+The review revealed that acoustic and optical sensors are important for measuring 
+water quality. On one hand, acoustic sensors often work in environments with high par -
+ticle density and low visibility, where light-based sensors might falter. The use of sound 
+waves allows penetration through turbid water, enabling measurements even in chal -
+lenging conditions. Their robustness makes them suitable for deployment in harsh envi -
+ronments where durability is essential. On the other hand, optical sensors, such as those 
+based on Nephelometric Turbidity Units (NTU) and Formazin Attenuation Units (FAU), 
+leverage light to measure turbidity [ 40]. Optical sensors are highly sensitive to small 
+particles, providing accurate data that are crucial for detailed water quality assessment. 
+One significant benefit of optical sensors over acoustic ones under specific environmen -
+tal conditions is their cost-effectiveness, making them accessible for widespread use. 
+Additionally, their precision and sensitivity make them particularly suitable for qual -
+ity monitoring, where detailed and accurate data is paramount. Both sensor types have 
+their place in water quality measurement. Optical sensors tend to be favoured for their 
+high-resolution capabilities and affordability. In Latin America, where there is generally 
+a lack of water quality information, combining both sensor types can offer a compre -
+hensive approach to water quality monitoring, supporting the adoption of low-cost yet 
+reliable equipment. Hydrological modeling serves as another critical tool for effective 
+water quality management, as proposed by Arnold et al. [ 7], by simulating water quality 
+fluctuations driven by hydrological processes at the catchment scale. These models can 
+simulate sediment transport and localised pollution by incorporating diverse point and 
+non-point sources into the equation. Furthermore, the integration of machine-learning 
+with continuous monitoring—using in-situ sensors or satellite remote sensing data—has 
+enhanced measurement precision.
+The reviewed literature suggests that there is a need to increase the capacity to moni -
+tor hydrosystems in different countries, taking advantage of more affordable equipment 
+available on the market. Skarbøvik et al. [ 87] indicate that more harmonised methods 
+are needed in monitoring programmes in northern Europe, including the development 
+of coordinated measurement plans for various aquatic ecosystems and the integration 
+of results into data networks that allow spatial comparisons of water quality variability. 
+In contrast, the few cases presented in this review that concern Latin America tend to 
+Page 17 of 25
+Goff Le et al. Discover Water (2026) 6:110 
+relate to isolated measurements that are not yet systematically even linked to ongoing 
+monitoring programmes.
+Political measures, such as the Water Framework Directive (WFD; 2000/60/EC) 
+applied by the European Commission, promote the monitoring of watercourses, increas-
+ing the amount of information available. National or regional monitoring programmes 
+and policies are tools for decision-making and the mitigation and restoration of water 
+quality in lakes and rivers. In Latin America, as shown in this review, multiple bodies of 
+water show signs of deterioration. These cases indicate the need for measures to improve 
+water quality in order to help to prevent contamination, turbidity and eutrophication.
+4.3 Connecting citizen science and easy-to-use autonomous sensor networks for 
+widespread water quality monitoring in Latin America
+Several factors have influenced the growing number of citizen science initiatives focused 
+on water quality monitoring since 2014 [ 61]. On one hand, institutional vulnerabili -
+ties, high financial constraints and the rigidness of regional discharge legislations may 
+explain the need to produce water quality data from local communities themselves using 
+low-cost devices. On the other hand, this phenomenon could be linked to the rise of 
+low-cost emerging technologies and the growing interest in this field [ 61]. The authors 
+highlighted the challenge of implementing costly public water monitoring in low-income 
+countries, for which citizen monitoring represents an interesting alternative. How -
+ever, citizen science in hydrology appears more frequently documented in the Global 
+North (North America and Europe) than in the Global South [ 27, 61]. This geographical 
+imbalance represents a fundamental diagnostic finding of our review: the under-repre -
+sentation of Latin American literature in major indexing databases does not reflect an 
+absence of water quality crises, but rather a structural asymmetry in research funding 
+and technological adoption. Unlike in the Global North, where data collected through 
+participatory science is sometimes integrated by the authorities, citizen water monitor -
+ing in the Global South is frequently carried out more to defend territories exposed to 
+threats and to challenge public authorities, which, however, do not universally recognise 
+these measurements [ 27]. In Latin America, this asymmetric relationship is aggravated 
+by obsolete regulatory frameworks. For instance, the systematic delay in updating key 
+environmental standards—such as Decree D.S. N°90/2000 in Chile—creates an institu -
+tional vacuum where modern parameters of ecological integrity are ignored in official 
+enforcement, forcing local populations to operate under high financial constraints to 
+generate their own defensive environmental data.
+Extractive industrial activities, especially mining, are the main concerns behind citizen 
+water initiatives in Latin America [ 27]. The presence of cyanobacteria associated with 
+nutrient enrichment and increased water turbidity in lakes is another source of inter -
+est [29]. In contrast, despite expanding rural change processes, concerns over pollution 
+risks to drinking water and recreational surface waters remain limited, particularly from 
+direct wastewater discharge or septic tanks [8].
+These projects primarily focus on measuring surface water and collecting chemical, 
+physical and biological data [27]. The main parameters measured are clarity, nitrate, pH, 
+dissolved oxygen, phosphate, temperature, macroinvertebrates, electrical conductiv -
+ity and faecal coliform bacteria ( E. coli) [13]. Strip-type colorimetric tests are the most 
+widely used despite their lack of accuracy, followed by the Secchi disk for turbidity and 
+Page 18 of 25
+Goff Le et al. Discover Water (2026) 6:110 
+a series of test kits approved by accredited organisations [ 13]. These initiatives rely on 
+manual sampling campaigns, which are often sporadic and constrained by the high cost 
+of laboratory analyses. Consequently, these localized networks currently function as 
+reactive, point-in-time responses to environmental contamination. The integration of 
+low-cost continuous telemetry into these existing Latin American networks holds the 
+potential to structurally transform these sporadic efforts. By overcoming the economic 
+barrier of laboratory analysis and traditional station maintenance, continuous telemetry 
+can elevate community-led monitoring into automated, high-frequency early-warning 
+systems capable of capturing sudden eutrophication and turbidity events that currently 
+escape both official state surveillance and intermittent citizen campaigns. However, [ 61] 
+qualify that training and certification programmes make it possible to produce relatively 
+reliable databases. The development of low-cost methods based on camera or smart -
+phone-based systems and wireless sensor networks, such as Zigbee, seems promising for 
+promoting continuous water citizen science in territories facing water quality challenges 
+[61]. Therefore, citizen science networks are increasingly complementing government 
+monitoring programs by addressing data deficiencies, and the integration of low-cost 
+continuous telemetry could elevate these sporadic observations into systematic and reli -
+able early-warning systems within the limits of low-cost optical telemetry.
+4.4 Common way forward
+Across the reviewed studies, and although some articles may have been inadvertently 
+omitted, it became clear that maintaining water quality requires a multifaceted approach 
+combining advanced monitoring technologies, hydrological modelling and proactive 
+management strategies. Although challenging, a widely supported path forward involves 
+integrating low‐cost, autonomous sensor networks with traditional monitoring methods 
+and remote sensing techniques. This integrated approach presents a range of advantages 
+and limitations that merit careful consideration.
+However, moving beyond a descriptive synthesis requires a critical evaluation of the 
+socio-technical friction points inherent to these hybrid frameworks. The transition 
+toward low-cost environmental observation is not merely a matter of technological 
+substitution, but a structural shift in how environmental uncertainty is managed and 
+validated.
+4.4.1 Advantages
+ • Availability of high-frequency data: While manual sampling may be limited by 
+seasonal weather constraints [56], autonomous sensors provide high-frequency data, 
+enabling early detection of water quality changes year-round and the development 
+of timely alert systems [ 49, 113]. This high temporal resolution effectively shifts the 
+paradigm from reactive monitoring to anticipatory limnological management
+ • Cost-effectiveness: Low-cost sensors reduce reliance on expensive and labour-
+intensive field campaigns, making extensive monitoring—especially in remote or 
+under-resourced regions—more feasible [69].
+ • Enhanced decision-making: Real-time data integrated into hydrological models 
+supports informed management and regulatory decisions. It also opens opportunities 
+for citizen science initiatives that can empower local communities.
+Page 19 of 25
+Goff Le et al. Discover Water (2026) 6:110 
+ • Scalability and flexibility: Combining sensor data with remote sensing and modelling 
+enables assessments over wide spatial and temporal scales, essential for developing 
+sustainable public policies and legislation [ 1] to address both local and global water 
+quality challenges.
+4.4.2 Limitations:
+ • Calibration and data quality issues: Despite their advantages, low-cost sensors require 
+regular calibration and validation to ensure data accuracy, given seasonal variations 
+and spatial heterogeneity [ 49, 87], before they can be used for robust hydrological 
+models, for example. Their wider adoption also depends on demonstrating 
+performance and quantifying measurement uncertainty, as they are often perceived 
+as less reliable than conventional monitoring methods. Standardized protocols, 
+such as EN 17075+A1:2023 and ISO 15839:2005, provide frameworks for evaluating 
+sensor performance under real-world conditions. From a critical standpoint, the 
+trade-off of spatial flexibility in low-cost arrays is a continuous vulnerability to 
+operational drift. Biological fouling—such as biofilm accretion on optical windows—
+and lens sedimentation cause progressive signal attenuation that requires systematic, 
+often resource-intensive field maintenance, partially offsetting the initial economic 
+advantage of these devices.
+ • Technical and logistical challenges: Deploying and maintaining autonomous 
+sensor networks can be challenging, particularly in harsh or remote environments. 
+Challenges include ensuring continuous power supply, data transmission integrity 
+and sensor longevity. In addition, integrating data from various sources (manual 
+sampling, satellite imagery, in-situ sensors) into unified, robust hydrological models 
+is complex and demands significant technical expertise, which is frequently lacking. 
+Moreover, prolonged use of the sensors leads to biological fouling, which causes 
+progressive data drift and signal attenuation. Therefore, to ensure the reliability 
+and continuity of autonomous systems, they should be equipped with antifouling 
+mechanisms, such as wipers or compressed air purges.
+ • Policy and coordination needs: While the successful implementation of these 
+technologies requires updated technical guidelines and the coordination of multiple 
+stakeholders, including water utilities, local governments and research institutions, 
+systemic institutional barriers continue to limit the integration of community-
+validated citizen science data into official regulatory frameworks.
+A review of this literature provides a deeper understanding that the most promising 
+strategy is to use the complementary strengths of traditional and emerging water quality 
+monitoring systems, for example, training local communities to employ low-cost sen -
+sors. Nevertheless, several challenges need to be addressed, such as sensor calibration, 
+ensuring robust data integration and nurturing collaborative governance frameworks. 
+To enhance the long-term reliability and interoperability of low-cost sensor networks, 
+future implementations should incorporate regular validation procedures, rigorous 
+site-specific calibration protocols and maintenance strategies to mitigate the effects of 
+biofouling, lens sedimentation and seasonal temperature variability. In addition, the 
+development of harmonised data-processing frameworks is recommended to improve 
+data comparability and facilitate the integration of citizen-generated observations into 
+Page 20 of 25
+Goff Le et al. Discover Water (2026) 6:110 
+regional and public monitoring networks. By engaging diverse stakeholders, it becomes 
+possible to develop effective early warning systems and sustainable water management 
+practices. This integrated approach not only enhances scientific understanding of water 
+quality dynamics in monitored ecosystems but also equip local decision-makers with 
+actionable insights to safeguard critical hydrosystems amid increasing environmental 
+pressures.
+5 Conclusion
+Water quality is increasingly threatened by population growth, urbanisation, land-use 
+change and climate-driven pressures. This review has synthesised the core literature on 
+the evolution of water quality monitoring systems applied to aquatic ecosystems affected 
+by turbidity and eutrophication, drawing primarily on peer-reviewed studies indexed in 
+Web of Science. The analysed studies consistently highlight growing environmental and 
+public-health risks associated with declining water quality.
+In line with the hypotheses guiding this review, published monitoring practice in 
+lakes and rivers remains dominated by grab sampling campaigns and satellite-based 
+approaches, while continuous autonomous in-situ monitoring is comparatively less 
+represented, except in rivers. At the same time, the literature reveals a persistent gap in 
+accessible real-time information, particularly in regions with limited resources, where 
+monitoring often depends on specialised technical capacity and uneven station cover -
+age. Despite the increasing availability of affordable sensors capable of generating high-
+frequency datasets, their systematic integration into coordinated monitoring networks 
+remains limited. These insights suggest that the principal barrier to improving monitor -
+ing is no longer technological availability but the institutional and operational integra -
+tion of autonomous systems into structured observation frameworks. From a research 
+perspective, the evidence supports deploying sensors both at basin scale and at strate -
+gically selected locations within water bodies to capture spatial variability and identify 
+pollution sources. Such configurations can strengthen model calibration, improve early-
+warning capacity and enhance long-term environmental assessment.
+To ensure future water security worldwide, two key public policy measures appear 
+promising. On the one hand, the deployment of sensor networks in surface waters is 
+crucial for preserving ecological processes while supporting socio-economic, produc -
+tive, recreational and educational activities that depend on reliable water resources. On 
+the other hand, the development of autonomous and participatory monitoring systems 
+involving local communities could significantly improve real-time decision-making and 
+promote more adaptive water governance.
+In looking ahead, the decisive question will be whether systems can transform increas-
+ingly available high-resolution data into effective environmental action alongside cur -
+rent monitoring frameworks. Global challenges of water quality will thus require not 
+only an effective data-to-decision chain, but also a broader transition from fragmented 
+monitoring architectures towards more coordinated and responsive governance.
+Supplementary Information
+The online version contains supplementary material available at https://doi.org/10.1007/s43832-026-00446-8.
+Supplementary Material 1
+Page 21 of 25
+Goff Le et al. Discover Water (2026) 6:110 
+Acknowledgements
+The authors are grateful to the Red Sur Sur project implemented cooperatively in 2023-2024 by state universities in 
+southern Chile (UFRO, ULAGOS, UMAG, UAY) and to Cristián Ferrada Ferrada for his contribution to structuring the 
+methodology.
+Author contributions
+LLG: Conceptualisation, Methodology, Writing—Original draft preparation, Data curation, Reviewing, Editing, Validation. 
+NF: Conceptualisation, Writing—Original draft preparation, Supervision, Reviewing, Editing. MS: Conceptualisation, 
+Methodology, Writing, Data curation, Editing, Reviewing. PH: Conceptualisation, Writing, Editing, Reviewing. RA: 
+Methodological support, Reviewing, Editing
+Funding
+This study was funded by the Red Sur Sur project, implemented cooperatively by D.U. 202.2024.
+Data availability
+No datasets were generated or analysed during the current study.
+Declarations
+Ethics approval and consent to participate
+Not applicable.
+Consent for publication
+Not applicable.
+Competing interests
+The authors declare no competing interests.
+Received: 31 March 2026 / Accepted: 27 August 2026
+References
+1. Abalasei ME, Toma D, Teodosiu C. Monitoring and evaluation of water quality from Chirita Lake, Romania. Water. 
+2025;17(13):1844. https://doi.org/10.3390/w17131844.
+2. Ackerman J, Smith G, Boegman L, Rao Y. Spatial and temporal dynamics of near-bottom dissolved oxygen in the central 
+basin of Lake Erie. Aquat Ecosyst Health Manag. 2024;27(1):5–18. https://doi.org/10.14321/aehm.027.01.05.
+3. Agência Nacional de Águas e Saneamento Básic. (n.d.). Sistema Nacional de Informações sobre Recursos Hídricos. h t t p s : / / 
+p o r t a l 1 . s n i r h . g o v . b r / a n a / a p p s / w e b a p p v i e w e r / i n d e x . h t m l ? i d = e 7 4 5 d b 7 4 8 8 f 6 4 e 1 a 9 a 2 e 4 e 1 5 0 e 4 1 b 0 8 e 
+4. JD Allan MM Castillo 2007 Stream Ecology https://doi.org/10.1007/978-1-4020-5583-6
+5. Arabi M, Govindaraju RS, Hantush MM. Cost‐effective allocation of watershed management practices using a genetic 
+algorithm. Water Resour Res. 2006. https://doi.org/10.1029/2006wr004931.
+6. Arízaga-Idrovo V, Pesántez J, Birkel C, Peña P , Mora E, Crespo P . Characterizing solute budgets of a tropical Andean páramo 
+ecosystem. Sci Environ. 2022;835:155560. https://doi .org/10.101 6/j.scitote nv.2022. 155560.
+7. Arnold NJG, Moriasi NDN, Gassman NPW, Abbaspour NKC, White NMJ, Srinivasan NR, et al. SWAT: model use, calibration, 
+and validation. Trans ASABE. 2012;55(4):1491–508. https://doi.org/10.13031/2013.42256.
+8. Ayala, R., P . Hervé-Fernández, J.F. Vergara, and R. Greene. (2025). Rural Gentrification and Health: The case of Pucón, Chile. 
+In: A.I. Ribeiro, J.P . Silva, P . Gullón, T. Astell-Burt. Gentrification and Public Health. Taylor & Francis. h t t p s : / / d o i . o r g / 1 0 . 4 3 2 4 / 9 7 8 
+1 0 0 3 4 9 6 9 5 3 
+9. Baker EB, Showers WJ. Hysteresis analysis of nitrate dynamics in the Neuse River, NC. Sci Total Environ. 2018;652:889–99. 
+https://doi .org/10.101 6/j.scitote nv.2018. 10.254.
+10. Barbier EB. Water and economic growth in developed and developing countries. Water Econ Policy. 2024. h t t p s : / / d o i . o r g / 
+1 0 . 1 1 4 2 / s 2 3 8 2 6 2 4 x 2 4 3 0 0 0 2 0 . 
+11. Batina A, Šiljeg A. Enhancing water quality monitoring in a coastal shallow lake using GIS and multi-criteria decision 
+analysis. Environ Sustain Indic. 2025;28:100881. https://doi.org/10.1016/j.indic.2025.100881.
+12. Biswas JK, Bera B, Chanda R, Sarkar SK, Majumdar J, Majumder S, et al. Nutrient modeling of an urban lake using best 
+subset method. Int J Environ Sci Technol. 2018;15(9):1867–78. https://doi.org/10.1007/s13762-017-1540-7.
+13. Blanco-Ramírez S, van Meerveld I, Seibert J. Citizen science approaches for water quality measurements. Sci Total Environ. 
+2023;897:165436. https://doi .org/10.101 6/j.scitote nv.2023. 165436.
+14. Bolade O, Hansen AT. Inferring drivers of nitrate and sediment event dynamics from hysteresis metrics for two large agri-
+cultural watersheds. Hydrol Process. 2023. https://doi.org/10.1002/hyp.14969.
+15. Borah, N. D. K., Krug, N. E. C., Bera, N. M., Liang, N. A. X., & Arnold, N. J. G. (2005). Storm Event and Continuous Modeling of 
+an Illinois Watershed to Evaluate Surface Water Supplies. Tampa, FL July 17–20, 2005. https://doi.org/10.13031/2013.19807
+16. Campuzano C, Hansen AM, De Stefano L, Martínez-Santos P , Torrente D, Willaarts BA. Water resources assessment. In: 
+Willaarts BA, Garrido A, Llamas MR, editors. Water for food and wellbeing in Latin America and the Caribbean. Social and 
+environmental implications for a globalized economy. Oxon and New York: Routledge; 2014. p. 27–53.
+17. Caroni R, Greife AJ, Bresciani M, Giardino C, Tellina G, Carrea L, et al. Examining global trends of satellite-derived water qual-
+ity variables in shallow lakes. Remote Sens Appl Soc Environ. 2025;38:101565. https://doi.org/10.1016/j.rsase.2025.101565.
+18. Catianis, I., Constantinescu, A. M., Grosu, D., Lupascu, N., Iordache, G., & Dutu, F. (2024). Seasonal and Spatial Variation of 
+Water Quality in the Lumina - Rosu Lakes System, Danube Delta, Romania. Inżynieria Mineralna, 1(1). h t t p s : / / d o i . o r g / 1 0 . 2 9 2 
+2 7 / i m - 2 0 2 4 - 0 1 - 8 1 
+Page 22 of 25
+Goff Le et al. Discover Water (2026) 6:110 
+19. Caylak E. Drinking Water Related Health Risks. In: Bahadir AM, Haarstrick A, Karadirek IE, Aydin ME, Kumcu SY, Bandyopad-
+hyay A, editors. Hydrology and Urban Water Supply. Springer, Cham: Water and Wastewater Management; 2024.
+20. Chapman DV, Sullivan T. The role of water quality monitoring in the sustainable use of ambient waters. One Earth. 
+2022;5(2):132–7. https://doi.org/10.1016/j.oneear.2022.01.008.
+21. Chen N, Wu J, Hong H. Effect of storm events on riverine nitrogen dynamics in a subtropical watershed, southeastern 
+China. Sci Total Environ. 2012;431:357–65. https://doi .org/10.101 6/j.scitote nv.2012. 05.072.
+22. Comisión Nacional del Agua (CONAGUA]. (n.d). Sistema Nacional de Información del Agua . h t t p s : / / s i n a v 3 0 . c o n a g u a . g o 
+b . m x : 8 0 8 0 / D i r e c c i ó n General de Aguas (n.d.). Información Oficial Hidrometeorológica y de Calidad de Aguas en Línea. 
+https://sni a.mop.gob.c l/BNAConsul tas/repo rtes
+23. Damania R, Desbureaux S, Rodella AS, Russ J, Zaveri E. Quality Unknown: The Invisible Water Crisis. World Bank. 2019 
+https://doi.org/10.1596/978-1-4648-1459-4 
+24. de Vicente I, Moreno-Ostos E, Amores V, Rueda F, Cruz-Pizarro L. Low predictability in the dynamics of shallow lakes: impli-
+cations for their management and restoration. Wetlands. 2006;26(4):928–38. h t t p s : / / d o i . o r g / 1 0 . 1 6 7 2 / 0 2 7 7 - 5 2 1 2 ( 2 0 0 6 ) 2 6 [ 9 
+2 8 : L P I T D O ] 2 . 0 . C O ; 2 . 
+25. Ding X, Gong F, Li J, Zhao M, Li H, Bai R, et al. High-frequency monitoring of Secchi-disk depth in Taihu Lake using 
+Himawari-8/AHI data. Opt Express. 2023;31(10):15966. https://doi.org/10.1364/oe.484390.
+26. Dirección General de Aguas., Información Oficial Hidrometeorológica y de Calidad de Aguas en Línea, n.d. h t t p s : / / s n i a . m o 
+p . g o b . c l / B N A C o n s u l t a s / r e p o r t e s 
+27. Dominguez-Rendón E, Villada-Canela M, Muñoz-Pizza DM. Community strengthening through citizen monitoring of 
+water quality: a systematic review. PLoS ONE. 2024;19(7):e0305723. https://doi.org/10.1371/journal.pone.0305723.
+28. Ejiohuo O, Onyeaka H, Akinsemolu A, Nwabor OF, Siyanbola KF, Tamasiga P , et al. Ensuring water purity: mitigating envi-
+ronmental risks and safeguarding human health. Water Biol Secur. 2024;4(2):100341. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . w a t b s . 2 0 2 4 . 
+1 0 0 3 4 1 . 
+29. Fuentes N, Ríos-Henríquez C, Díaz PA. Hydroclimatic drivers associated with an unusual bloom of Microcystis aeruginosa 
+and increase of CyanoHABs in a deep oligotrophic lake. J Plankton Res. 2021;44(1):68–72. h t t p s : / / d o i . o r g / 1 0 . 1 0 9 3 / p l a n k t / f 
+b a b 0 7 9 . 
+30. Gandhimathi G, Chellaswamy C, Geetha TS, Arunmozhi SA. Integrating regression and boosting techniques for 
+enhanced river water quality monitoring in the Cauvery Basin: a seasonal and sustainable approach. Water Environ Res. 
+2025;97(7):e70128. https://doi.org/10.1002/wer.70128.
+31. García-Avila F, Loja-Suco P , Siguenza-Jeton C, Jiménez-Ordoñez M, Valdiviezo-Gonzales L, Cabello-Torres R, et al. Evaluation 
+of the water quality of a high Andean lake using different quantitative approaches. Ecol Indic. 2023;154:110924. h t t p s : / / d o 
+i . o r g / 1 0 . 1 0 1 6 / j . e c o l i n d . 2 0 2 3 . 1 1 0 9 2 4 . 
+32. Gokulanathan S, Manivasagam P , Prabu N, Venkatesh T. GSM based water quality monitoring system using Arduino. Shan-
+lax Int J Arts Sci Humanit. 2019;6(4):22–6. https://doi.org/10.34293/sijash.v6i4.341.
+33. Gómez-Oliván, L.M. (Eds). (2019). Pollution of Water Bodies in Latin America. Impact of Contaminants on Species of Ecological 
+Interest. Springer Cham, IX, 366. https://doi.org/10.1007/978-3-030-27296-8
+34. Grizzetti B, Bouraoui F, De Marsily G. Modelling nitrogen pressure in river basins: a comparison between a statistical 
+approach and the physically-based SWAT model. Phys Chem Earth Parts A/B/C. 2005;30(8–10):508–17. h t t p s : / / d o i . o r g / 1 0 . 1 
+0 1 6 / j . p c e . 2 0 0 5 . 0 7 . 0 0 5 . 
+35. Grondona SI, Lima ML, Massone HE, Miglioranza KSB. Pesticides in aquifers from Latin America and the Caribbean. Sci Total 
+Environ. 2023;901:165992. https://doi .org/10.101 6/j.scitote nv.2023. 165992.
+36. Ha N, Nguyen HQ, Truong NCQ, Le TL, Thai VN, Pham TL. Estimation of nitrogen and phosphorus concentrations from 
+water quality surrogates using machine learning in the Tri An Reservoir Vietnam. Environ Monit Assess. 2020;192(12):789. 
+https://doi.org/10.1007/s10661-020-08731-2.
+37. Hasani SS, Arias ME, Nguyen HQ, Tarabih OM, Welch Z, Zhang Q. Leveraging explainable machine learning for enhanced 
+management of lake water quality. J Environ Manage. 2024;370:122890. https://doi .org/10.101 6/j.jenvman .2024.12 2890.
+38. Henderson KA, Murdock JN, Lizotte RE. Water depth influences algal distribution and productivity in shallow agricultural 
+lakes. Ecohydrology. 2021. https://doi.org/10.1002/eco.2319.
+39. Hoorman J, Hone T, Sudman T, Dirksen T, Iles J, Islam KR. Agricultural impacts on lake and stream water quality in Grand 
+Lake St. Marys, Western Ohio. Water Air Soil Pollut. 2008;193(1–4):309–22. https://doi.org/10.1007/s11270-008-9692-1.
+40. Hong W, Shamsuddin N, Abas E, Apong R, Masri Z, Suhaimi H, et al. Water quality monitoring with Arduino based sensors. 
+Environments. 2021;8(1):6. https://doi.org/10.3390/environments8010006.
+41. Jamal S, Ahmad WS, Ajmal U, Aaquib M, Ali MA, Ali MB, et al. An integrated approach for determining the anthropogenic 
+stress responsible for degradation of a Ramsar Site – Wular Lake in Kashmir, India. Mar Geod. 2022;45(4):407–34. h t t p s : / / d o 
+i . o r g / 1 0 . 1 0 8 0 / 0 1 4 9 0 4 1 9 . 2 0 2 2 . 2 0 3 4 6 8 6 . 
+42. Jargal N, Lee H, An K. Long-term water quality patterns in an estuarine reservoir and the functional changes in relations of 
+trophic state variables depending on the construction of serial weirs in upstream reaches. Int J Environ Res Public Health. 
+2021;18(23):12568. https://doi.org/10.3390/ijerph182312568.
+43. Jia R, Dou M, Bi J, Wang Z, Mi Q, Li J. Analyzing factors driving of eutrophication of river‐type urban landscape lakes. Water 
+Environ Res. 2023;95(7):e10906. https://doi.org/10.1002/wer.10906.
+44. Jones ER, Bierkens MFP , Wanders N, Sutanudjaja EH, Van Beek LPH, Van Vliet MTH. Current wastewater treatment targets 
+are insufficient to protect surface water quality. Commun Earth Environ. 2022. h t t p s : / / d o i . o r g / 1 0 . 1 0 3 8 / s 4 3 2 4 7 - 0 2 2 - 0 0 5 5 
+4 - y . 
+45. Kåresdotter E, Skoog G, Pan H, Kalantari Z. Water-related conflict and cooperation events worldwide: a new dataset on 
+historical and change trends with potential drivers. Sci Total Environ. 2023;868:161555. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . s c i t o t e n v . 
+2 0 2 3 . 1 6 1 5 5 5 . 
+46. Kiwanuka M, Oyege I, Bhaskar MSB. Spatial and temporal dynamics of water quality in Lake Okeechobee using remote 
+sensing and its impact on environmental health. Remote Sens. 2025;17(18):3197. https://doi.org/10.3390/rs17183197.
+47. Laneve G, Téllez A, Kuruvila AK, Bruno M, Messineo V. Eutrophication and HAB occurrence control in lakes of different 
+origins: a multi-source remote sensing detection strategy. Remote Sens. 2024;16(10):1792. h t t p s : / / d o i . o r g / 1 0 . 3 3 9 0 / r s 1 6 1 0 
+1 7 9 2 . 
+Page 23 of 25
+Goff Le et al. Discover Water (2026) 6:110 
+48. Leiva G, Fuentes N, Zelada S, Ríos-Henríquez C. Application of the Lake Biotic Index (LBI) in the ecological characterization 
+of a North Patagonian lake in Chile. Heliyon. 2019;5(10):e02492. https://doi .org/10.101 6/j.heliyon .2019.e0 2492.
+49. Lepistö A, Huttula T, Koponen S, Kallio K, Lindfors A, Tarvainen M, et al. Monitoring of spatial water quality in lakes by 
+remote sensing and transect measurements. Aquat Ecosyst Health Manag. 2010;13(2):176–84. h t t p s : / / d o i . o r g / 1 0 . 1 0 8 0 / 1 4 6 
+3 4 9 8 1 0 0 3 7 9 6 2 9 5 . 
+50. Li D, Chang F, Wen X, Duan L, Zhang H. Seasonal variations in water quality and algal blooming in hypereutrophic Lake 
+Qilu of Southwestern China. Water. 2022;14(17):2611. https://doi.org/10.3390/w14172611.
+51. Li J, Yang J, Liu M, Ma Z, Fang W, Bi J. Quality matters: pollution exacerbates water scarcity and sectoral output risks in 
+China. Water Res. 2022;224:119059. https://doi.org/10.1016/j.watres.2022.119059.
+52. Lin J, Li J. Nutrient response modeling in Falls of the Neuse Reservoir. Environ Manage. 2011;47(3):398–409. h t t p s : / / d o i . o r g 
+/ 1 0 . 1 0 0 7 / s 0 0 2 6 7 - 0 1 1 - 9 6 1 7 - 4 . 
+53. Lin J, Karangan A, Huang YM, Kang S. Eutrophication factor analysis using Carlson trophic state index (CTSI) towards non-
+algal impact reservoirs in Taiwan. Sustainable Environ Res. 2022;32(1):25. https://doi.org/10.1186/s42834-022-00134-x.
+54. Liu Y, Wang Z, Yue H. Water quality parameters retrieval and nutrient status evaluation based on machine learning meth-
+ods and Sentinel-2 imagery: a case study of the Hongjiannao Lake. Environ Monit Assess. 2025;197(5):556. h t t p s : / / d o i . o r g / 
+1 0 . 1 0 0 7 / s 1 0 6 6 1 - 0 2 5 - 1 3 9 9 9 - 3 . 
+55. Mageswaran R, Porchelvan P . Impact of nutrient dynamics on chlorophyll-a concentrations in non-interconnected lakes: a 
+study in the Vellore and Chennai region. Results Eng. 2025;25:104315. https://doi.org/10.1016/j.rineng.2025.104315.
+56. Mequanent D, Masresha A, Wondie A, Teshome M, Aemro D. Impacts of buffer zone degradation on some water quality 
+parameters in the northeastern part of Lake Tana, Ethiopia. J Freshw Ecol. 2025. h t t p s : / / d o i . o r g / 1 0 . 1 0 8 0 / 0 2 7 0 5 0 6 0 . 2 0 2 5 . 2 4 
+8 1 0 7 5 . 
+57. Ministerio de Ambiente y Minería. Dirección de Agua. (n.d.). Sistema Nacional de Información para la Gestión Integrada 
+del Recurso Hídrico. https://mapas.da.go.cr/
+58. Moher D, Liberati A. Revisiones sistemáticas y metaanálisis: la responsabilidad de los autores, revisores, editores y patroci-
+nadores. Med Clin (Barc). 2010;135(11):505–6. ( In Spanish). https://doi.org/10.1016/j.medcli.2010.02.016
+59. Moher D, Liberati A, Tetzlaff J, Altman DG. Preferred reporting items for systematic reviews and meta-analyses: the PRISMA 
+statement. J Clin Epidemiol. 2009;62(10):1006–12. https://doi .org/10.101 6/j.jclinep i.2009.0 6.005.
+60. Nachtigall S, Heim C. Monitoring the efficiency of a catchment restoration to further reduce nutrients and sediment input 
+into a eutrophic lake. Water. 2023;15(21):3794. https://doi.org/10.3390/w15213794.
+61. Njue N, Stenfert Kroese J, Gräf J, Jacobs SR, Weeser B, Breuer L, et al. Citizen science in hydrological monitoring and ecosys-
+tem services management: state of the art and future prospects. Sci Total Environ. 2019;693:133531. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 
+6 / j . s c i t o t e n v . 2 0 1 9 . 0 7 . 3 3 7 . 
+62. O’Flynn B, Regan F, Lawlor A, Wallace J, Torres J, O’Mathuna C. Experiences and recommendations in deploying a real-time, 
+water quality monitoring system. Meas Sci Technol. 2010;21(12):124004. https://doi .org/10.108 8/0957-0233 /21/12/1 
+24004.
+63. Op De Hipt F, Diekkrüger B, Steup G, Yira Y, Hoffmann T, Rode M. Applying SHETRAN in a tropical West African catchment 
+(Dano, Burkina Faso)—calibration, validation, uncertainty assessment. Water. 2017;9(2):101. h t t p s : / / d o i . o r g / 1 0 . 3 3 9 0 / w 9 0 2 0 
+1 0 1 . 
+64. Paillé P , Mucchielli A. L ’analyse qualitative en sciences humaines et sociales. Paris: Armand Colin; 2016.
+65. Pandey V, Panda SN, Sudhakar S. Modelling of an agricultural watershed using remote sensing and a geographic informa-
+tion system. Biosyst Eng. 2005;90(3):331–47. https://doi .org/10.101 6/j.biosyst emseng.2 004.10.001.
+66. Pastén, P ., Vega, A., Lizama, K., Guerra, P ., & Pizarro, J. (2020). Water quality. En World water resources. In B. Fernández and J. 
+Gironás (Eds.), Water resources of Chile (pp. 209–228). Springer Nature. https://doi.org/10.1007/978-3-030-56901-3_10
+67. Petrea SM, Simionov IA, Antache A, Nica A, Calmuc M, Calmuc V, et al. Enabling soft sensors for water quality monitoring in 
+multi-trophic aquaculture systems. Sci Papers-Series e-Land Reclamation Earth Observ Surv Environ Eng. 2024;13:610–7.
+68. Petty EL, Obrecht DV, North RL. Filling in the flyover zone: high phosphorus in midwestern (USA) reservoirs results in high 
+phytoplankton biomass but not high primary productivity. Front Environ Sci. 2020;8:111. h t t p s : / / d o i . o r g / 1 0 . 3 3 8 9 / f e n v s . 2 0 2 
+0 . 0 0 1 1 1 . 
+69. Postolache O, Pereira JD, Girão PS. Wireless sensor network-based solution for environmental monitoring: water quality 
+assessment case study. IET Sci Meas Technol. 2014;8(6):610–6. https://doi.org/10.1049/iet-smt.2013.0136.
+70. Prasetyo S, Soeprobowati TR, Tirtadanu T, Purnomo A, Hartati S, Chodrijah U, et al. Assessment of water pollution levels in 
+Lake Batur, Indonesia and their effect on water weed presence. Philipp Agric Sci. 2025;108(1):50–62. h t t p s : / / d o i . o r g / 1 0 . 6 2 5 
+5 0 / h l 2 0 0 5 8 0 2 4 . 
+71. Qi H, Lu J, Chen X, Sauvage S, Sanchez-Pérez J. Water age prediction and its potential impacts on water quality using a 
+hydrodynamic model for Poyang Lake, China. Environ Sci Pollut Res Int. 2016;23(13):13327–41. h t t p s : / / d o i . o r g / 1 0 . 1 0 0 7 / s 1 1 
+3 5 6 - 0 1 6 - 6 5 1 6 - 5 . 
+72. Qu X, Chen Y, Liu H, Xia W, Lu Y, Gang D, et al. A holistic assessment of water quality condition and spatiotemporal 
+patterns in impounded lakes along the eastern route of China’s South-to-North water diversion project. Water Res. 
+2020;185:116275. https://doi.org/10.1016/j.watres.2020.116275.
+73. Raghul M, Porchelvan P . A critical review of remote sensing methods for inland water quality monitoring: progress, limita-
+tions, and future perspectives. Water Air Soil Pollut. 2024;235:159. https://doi.org/10.1007/s11270-024-06957-1.
+74. Rasmussen EK, Petersen OS, Thompson JR, Flower RJ, Ahmed MH. Hydrodynamic-ecological model analyses of the water 
+quality of Lake Manzala (Nile Delta, Northern Egypt). Hydrobiologia. 2009;622(1):195–220. h t t p s : / / d o i . o r g / 1 0 . 1 0 0 7 / s 1 0 7 5 
+0 - 0 0 8 - 9 6 8 3 - 7 . 
+75. Recknagel F, Shan K, Adrian R, Köhler J. Early warning of harmful cyanobacteria blooms based on high frequency in 
+situ monitoring and intelligible machine learning modelling: the case study of Lake Müggelsee (Germany). Water Res. 
+2025;287(Pt B):124514. https://doi.org/10.1016/j.watres.2025.124514.
+76. Reichert G, Hilgert S, Fuchs S, Azevedo JCR. Emerging contaminants and antibiotic resistance in the different environmen-
+tal matrices of Latin America. Environ Pollut. 2019;255(1):113140. https://doi.org/10.1016/j.envpol.2019.113140.
+77. Rele B, Hogan C, Kandanaarachchi S, Leigh C. Short‐term prediction of stream turbidity using surrogate data and a meta‐
+model approach: a case study. Hydrol Process. 2023. https://doi.org/10.1002/hyp.14857.
+Page 24 of 25
+Goff Le et al. Discover Water (2026) 6:110 
+78. Ribeiro Filho R, Petrere Junior M, Benassi S, Pereira J. Itaipu reservoir limnology: eutrophication degree and the horizontal 
+distribution of its limnological variables. Braz J Biol. 2011;71(4):889–902. h t t p s : / / d o i . o r g / 1 0 . 1 5 9 0 / S 1 5 1 9 - 6 9 8 4 2 0 1 1 0 0 0 5 0 0 0 
+1 0 . 
+79. Rip WJ, Ouboter MRL, Los HJ. Impact of climatic fluctuations on Characeae biomass in a shallow, restored lake in The 
+Netherlands. Hydrobiologia. 2007;584(1):415–24. https://doi.org/10.1007/s10750-007-0608-7.
+80. Robertson DM, Hubbard LE, Lorenz DL, Sullivan DJ. A surrogate regression approach for computing continuous loads for 
+the tributary nutrient and sediment monitoring program on the Great Lakes. J Great Lakes Res. 2018;44(1):26–42. h t t p s : / / d 
+o i . o r g / 1 0 . 1 0 1 6 / j . j g l r . 2 0 1 7 . 1 0 . 0 0 3 . 
+81. Rollo N, Robin M. Relevance of watershed modelling to assess the contamination of coastal waters due to land-based 
+sources and activities. Estuar Coast Shelf Sci. 2010;86(3):518–25. https://doi.org/10.1016/j.ecss.2009.10.025.
+82. Rügner H, Schwientek M, Beckingham B, Kuch B, Grathwohl P . Turbidity as a proxy for total suspended solids (TSS) and 
+particle facilitated pollutant transport in catchments. Environ Earth Sci. 2013;69(2):373–80. h t t p s : / / d o i . o r g / 1 0 . 1 0 0 7 / s 1 2 6 6 
+5 - 0 1 3 - 2 3 0 7 - 1 . 
+83. Secretaría de Turismo y Ambiente. (n.d.). Centro de Información Ambiental. https://ciam.ambiente.gob.ar/repositorio.php
+84. Sharip Z, Zulkifli MH, Wahab MNFA, Johar Z, Amin MZM. Assessing trophic state and water quality of small lakes and pons 
+in Perak. J Teknologi. 2024;86(2):51–9. https://doi .org/10.111 13/jurnalte knologi. v86.20566.
+85. Sherriff SC, Rowan JS, Melland AR, Jordan P , Fenton O, hUallacháin DÓ. Investigating suspended sediment dynamics in 
+contrasting agricultural catchments using ex situ turbidity-based suspended sediment monitoring. Hydrol Earth Syst Sci. 
+2015;19(8):3349–63. https://doi.org/10.5194/hess-19-3349-2015.
+86. Sirabahenda Z, St-Hilaire A, Courtenay SC, Van Den Heuvel MR. Comparison of acoustic to optical backscatter continu-
+ous measurements of suspended sediment concentrations and their characterization in an agriculturally impacted river. 
+Water. 2019;11(5):981. https://doi.org/10.3390/w11050981.
+87. Skarbøvik E, Veen SGMV, Lannergård EE, Wenng H, Stutter M, Bieroza M, et al. Comparing in situ turbidity sensor measure-
+ments as a proxy for suspended sediments in North-Western European streams. CATENA. 2023;225:107006. h t t p s : / / d o i . o r g 
+/ 1 0 . 1 0 1 6 / j . c a t e n a . 2 0 2 3 . 1 0 7 0 0 6 . 
+88. Smith AJ, Duffy BT, Novak MA. Observer rating of recreational use in wadeable streams of New York State, USA: implica-
+tions for nutrient criteria development. Water Res. 2014;69:195–209. https://doi.org/10.1016/j.watres.2014.11.022.
+89. Stefanidis K, Varlas G, Papaioannou G, Papadopoulos A, Dimitriou E. Assessing temporal variability of lake turbidity and 
+trophic state of European lakes using open data repositories. The Sci Total Environ. 2022;857(Pt 3):159618. h t t p s : / / d o i . o r g / 
+1 0 . 1 0 1 6 / j . s c i t o t e n v . 2 0 2 2 . 1 5 9 6 1 8 . 
+90. Stevens C, Frost PC, Pearce NJT, Kelley JD, Zastepa A, Xenopoulos MA. Limnological data derived from high frequency 
+monitoring buoys are asynchronous in a large lake. PLoS ONE. 2025;20(3):e0314582. h t t p s : / / d o i . o r g / 1 0 . 1 3 7 1 / j o u r n a l . p o n e . 
+0 3 1 4 5 8 2 . 
+91. Strokal M, Bai Z, Franssen W, Hofstra N, Koelmans AA, Ludwig F, et al. Urbanization: an increasing source of multiple pollut-
+ants to rivers in the 21st century. Npj Urban Sustain. 2021. https://doi.org/10.1038/s42949-021-00026-w.
+92. Stoate C, Báldi A, Beja P , Boatman N, Herzon I, Van Doorn A, et al. Ecological impacts of early 21st century agricultural 
+change in Europe: a review. J Environ Manage. 2009;91(1):22–46. https://doi .org/10.101 6/j.jenvman .2009.07 .005.
+93. Tantu ST, Yilma SM, Mary K. Water quality characterization of Lake Abaya, a water body under increasing anthropogenic 
+pressure in Southern Ethiopia. Sustain Water Resour Manag. 2024. https://doi.org/10.1007/s40899-024-01119-x.
+94. Tavares MH, Guimarães D, Roussillon J, Baute V, Cucherousset J, Boulêtreau S, et al. A framework to retrieve water 
+quality parameters in small, optically diverse freshwater ecosystems using Sentinel-2 MSI imagery. Remote Sens. 
+2025;17(15):2729. https://doi.org/10.3390/rs17152729.
+95. Tetzlaff D, Waldron S, Brewer M, Soulsby C. Assessing nested hydrological and hydrochemical behaviour of a mesoscale 
+catchment using continuous tracer data. J Hydrol. 2007;336(3–4):430–43. https://doi.org/10.1016/j.jhydrol.2007.01. 0 20.
+96. Tokatlı C, Uğurluoğlu A, Muhammad S. Spatiotemporal variation of organic contaminants and their ecotoxicological risk in 
+the Uluabat lake basin, Türkiye: a Ramsar living wetland. Phys Chem Earth Parts A-B-C. 2025;138:103851. h t t p s : / / d o i . o r g / 1 0 . 
+1 0 1 6 / j . p c e . 2 0 2 5 . 1 0 3 8 5 1 . 
+97. United Nations Environment Programme. (2023). World Water Quality Assessment: Ecosystems and water quality technical 
+highlights. UNEP . https://www .unep.org/i nteractives /wwqa/te chnical-highlights/ecosystems-and-water-quality
+98. UNESCO, UN-Water. Rapport Mondial des Nations Unies sur la mise en valeur des ressources en eau 2020. L ’eau et les 
+changements climatiques. Paris: UNESCO; 2020.
+99. UN-Water. (2023). Blueprint for Acceleration: Sustainable Development Goal 6 Synthesis Report on Water and Sanitation. 
+Geneva. 47 p.
+100. Van Den Berge J, Scheunpflug L, Vos J, Boelens R. Social movements in defense of public water services: the case of Spain. 
+Front Water. 2023. https://doi.org/10.3389/frwa.2023.1200440.
+101. Van der Grift B, Broers HP , Berendrecht W, Rozemeijer J, Osté L, Griffioen J. High-frequency monitoring reveals nutri-
+ent sources and transport processes in an agriculture-dominated lowland water system. Hydrol Earth Syst Sci. 
+2016;20(5):1851–68. https://doi.org/10.5194/hess-20-1851-2016.
+102. Van Duin EHS, Frinking LJ, Van Schaik FH, Boers PCM. First results of the restoration of Lake Geerplas. Water Sci Technol. 
+1998;37(3):185–92. https://doi.org/10.2166/wst.1998.0204.
+103. Wang R, Zhang Y, Xia W, Qu X, Xin W, Guo C, et al. Effects of aquaculture on lakes in the Central Yangtze River Basin, China, 
+I. Water quality. N Am J Aquac. 2018;80(3):322–33. https://doi.org/10.1002/naaq.10038.
+104. Wang M, Bodirsky BL, Rijneveld R, Beier F, Bak MP , Batool M, et al. A triple increase in global river basins with water scarcity 
+due to future pollution. Nat Commun. 2024;15(1):880. https://doi.org/10.1038/s41467-024-44947-3.
+105. Waseem M, Alamzeb M, Mustafa B, Malik F, Shakir M, Khan M. Design of a low-cost underwater wireless sensor network for 
+water quality monitoring. IETE J Res. 2013;59(5):523. https://doi.org/10.4103/0377-2063.123758.
+106. World Health Organization. (2022). Guidelines for drinking-water quality: fourth edition incorporating the first and second 
+addenda. Geneva.
+107. World Health Organization, UN-Water. Progress on wastewater treatment: global status and acceleration needs for SDG 
+indicator 6.3.1. World Health Organization and United Nations Children’s Fund (UNICEF); 2021.
+108. Wu J, Zeng H, Yu H, Ma L, Xu L, Qin B. Water and sediment quality in lakes along the middle and lower reaches of the Yang-
+tze River, China. Water Resour Manag. 2012;26(12):3601–18. https://doi.org/10.1007/s11269-012-0093-2.
+Page 25 of 25
+Goff Le et al. Discover Water (2026) 6:110 
+109. Wu T, Wang Z, Niu C, Zhang Y, Li B, Li P . The effect of intense hydrodynamic disturbance on chromophoric dissolved 
+organic matter in a shallow eutrophic lake. J Freshw Ecol. 2014;30(1):143–56. h t t p s : / / d o i . o r g / 1 0 . 1 0 8 0 / 0 2 7 0 5 0 6 0 . 2 0 1 4 . 9 6 1 0 
+4 3 . 
+110. Yeo M, Chang A, Pangelinan J. Application of a SWAT model for supporting a ridge-to-reef framework in the Pago Water-
+shed in Guam. Water. 2021;13(23):3351. https://doi.org/10.3390/w13233351.
+111. Zeng Y, Chang F, Wen X, Duan L, Zhang Y, Liu Q, et al. Seasonal variation in the water quality and eutrophication of Lake 
+Xingyun in Southwestern China. Water. 2022;14(22):3677. https://doi.org/10.3390/w14223677.
+112. Zhao L, Li Y, Zou R, He B, Zhu X, Liu Y, et al. A three-dimensional water quality modeling approach for exploring the eutro-
+phication responses to load reduction scenarios in Lake Yilong (China). Environ Pollut. 2013;177:13–21. h t t p s : / / d o i . o r g / 1 0 . 
+1 0 1 6 / j . e n v p o l . 2 0 1 3 . 0 1 . 0 4 7 . 
+113. Zolfaghari K, Wilkes G, Bird S, Ellis D, Pintar KDM, Gottschall N, et al. Chlorophyll-a, dissolved organic carbon, turbidity and 
+other variables of ecological importance in river basins in southern Ontario and British Columbia, Canada. Environ Monit 
+Assess. 2019;192(1):67. https://doi.org/10.1007/s10661-019-7800-x.
+114. Zou T, Yang K, Pan M, Zhu Y, Zhang Y, Su D. Analysis of the temporal and spatial evolution of turbidity in Tonle Sap Lake 
+and its influencing factors. Sci Total Environ. 2024;943:173618. https: //d oi. or g/10 . 1016/j.sc itot en v.2024.173618.
+115. Zunino J, La Colla NS, Brendel AS, Alfonso MB, Botté SE, Perillo GME, et al. Water quality analysis based on phytoplankton 
+and metal indices: a case study in the Sauce Grande River Basin (Argentina). Environ Sci Pollut Res. 2022;29(52):79053–66. 
+https://doi.org/10.1007/s11356-022-21349-w.
+Publisher's Note
+Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional affiliations.

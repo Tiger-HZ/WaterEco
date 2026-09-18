@@ -1,0 +1,1317 @@
+Article | Article in Press https://doi.org/10.1038/s41467-026-76774-z
+Symbiotic heat sharing in MOF-based
+atmospheric water generators for battery
+thermal management and sorbent
+regeneration
+Weicheng Chen1,2,3,M i n g y u nL u o3,4, Yuxuan Tan3,L i n t a oY a n3, TingTing Liao3,
+Weiqi Liu3, Fengwen Liu3,Z h i x u a nC h e n3,J i n z eY a o3, Xianghui Liang3,
+Yutang Fang 3,S h u a n g f e n gW a n g3,Y u j i eK e5,A d yS u w a r d i6,
+Anthony Chun Yin Yuen 2 , Swee Ching Tan 7 & Sai Kishore Ravi 1
+Atmospheric water harvesting (AWH) is limited by the high energy demand for
+sorbent regeneration, while batterythermal management dissipates sub-
+stantial low-grade heat unused. Here, we propose a thermally symbiotic
+architecture integrating these systems. Battery discharge waste heat regen-
+erates a MOF-303 sorbent layer via desorption, while the sorption process
+passively stabilizes battery temperature. The sorbent’s regeneration enthalpy
+aligns with the battery’s thermal output, triggering desorption under−12 to
+−20 A discharge. Within 46 min, the MOF exceeds 50 °C, releasing vapor for
+condensation in a sealed setup. Concurrently, sorption extracts heat from the
+battery, reducing peak temperatures by ~10 °C. Notably, this integrated system
+achieves a water production rate of 1.39 g g−1 day−1, a 117% increase over solar-
+driven counterparts. Finite-element simulations validate the heat transfer
+dynamics and identify key thermal efﬁciency parameters. This work estab-
+lishes a closed-loop thermal cycle that repurposes energy-storage waste heat
+to power AWH, enabling sorbent regeneration without solar heating. The
+strategy offers a pathway to enhance thermal efﬁciency across various energy
+and environmental systems through internal heat recovery.
+In nature, symbiotic relationships represent ﬁnely tuned mutualistic
+interactions, wherein two distinct organisms co-evolve to establish
+interdependent systems that improve survival, resilience, and ecolo-
+gical ﬁtness. For example, the human gastrointestinal tract hosts
+trillions of microorganisms that facilitate nutrient breakdown, syn-
+thesize essential vitamins, and provide a protective barrier against
+pathogens. In return, these microbes inhabit a nutrient-rich, stable
+environment supported by the host 1,2. A similarly interdependent
+Received: 30 January 2026
+Accepted: 5 August 2026
+Check for updates
+1School of Energy and Environment, City University of Hong Kong, Hong Kong, China. 2Department of Building Environment and Energy Engineering, The
+Hong Kong Polytechnic University, Hong Kong, China. 3Key Laboratory of Enhanced Heat Transfer and Energy Conservation of the Ministry of Education,
+South China University of Technology, Guangzhou, China. 4Shenzhen Institute of Artiﬁcial Intelligence and Robotics for Society (AIRS), Harbin Institute of
+Technology, Shenzhen, China. 5Wu Jieh Yee School of Interdisciplinary Studies, Lingnan University, Hong Kong, China. 6Department of Electronic
+Engineering, and Shun Hing Institute of Advanced Engineering, The Chinese University of Hong Kong, Sha Tin, Hong Kong SAR, Hong Kong. 7Department
+of Materials Science and Engineering, National University of Singapore, Singapore, Singapore. e-mail: anthony-cy.yuen@polyu.edu.hk;
+msetansc@nus.edu.sg; skravi@cityu.edu.hk
+Nature Communications Article in Press
+1234567890():,;
+1234567890():,;
+model is exempli ﬁed in the interaction between bees and ﬂowering
+plants: bees harvest nectar and pollen for nourishment, while con-
+currently mediating pollination essential for plant reproduction 3,4.
+These interactions profoundly inﬂuence species persistence by creat-
+ing energetically favorable, self-sustaining ecosystems 5,6.T h i sc o n -
+ceptual foundation of symbiosis, although biological in origin, can be
+extended to physical and engineering systems that exhibit com-
+plementary functional roles.
+In engineered thermal systems, symbiotic coupling of compo-
+nents with opposing thermal requirements offers an opportunity to
+enable efﬁcient energy utilization. Lithium-ion batteries—compared to
+traditional battery chemistries such as nickel–cadmium, nickel–metal
+hydride, and lead –acid—provide a superior combination of high
+energy density, long cycle life, minimal self-discharge, high voltage,
+low maintenance, and rapid charging 7,8. However, lithium batteries
+generate signiﬁcant heat during discharge due to internal resistance
+and electrochemical reactions, which can lead to thermal runaway
+once it rises to overtemperature 9–11. In this hazardous condition, the
+battery’s temperature increases uncontrollably, potentially causing
+ﬁres or explosions12,13. To mitigate this risk, battery thermal manage-
+ment (BTM) is widely employed to enhance the battery ’s heat dis-
+sipation capabilities, which is crucial for maintaining optimal operating
+temperatures below 55 °C and ensuring safety, performance, and
+longevity13,14. Based on the cooling medium, BTM can be classiﬁed into
+air cooling, liquid cooling, and composite phase change material
+(CPCM) cooling BTMs15,16. While effective in limiting thermal buildup,
+these cooling strategies are inherently dissipative, discarding the bat-
+tery’s thermal energy into the environment without functional recov-
+ery, thus representing a major limitation in thermal resource
+utilization.
+In contrast to BTM systems that require heat extraction, certain
+emerging environmental technologies depend on continuous heat
+input to function. One such application is sorption-based AWH, which
+has gained attention for its ability to extract water vapor from ambient
+air and convert it into liquid water 17–19. This technology captures
+atmospheric moisture even at low relative humidity (RH) and converts
+it into potable water, typically using solar irradiance for desorption20,21.
+A key advantage of sorption-based AWH is its geographical adapt-
+ability and scalability. The performance of these systems hinges on the
+properties of the sorbent materials, primarily MOFs, covalent organic
+frameworks (COFs) 22, zeolites 23,s i l i c ag e l24, hygroscopic salts 25,
+hydrogels26,27,a n dt h e i rh y b r i d s28–31. Among these, MOFs such as MOF-
+30332,M O F - 8 0 133, Al-Fum31,M I L - 1 6 034,a n dU i O - 6 635 stand out due to
+their high surface area, tunability, low regeneration temperature, and
+exceptional selectivity, enabling adsorption at sub-30% RH
+conditions36,37. Recent advances in continuous-operation AWH devices
+have enabled multiple adsorption–desorption cycles per day, drama-
+tically improving water output. 33,38,39 However, in regions lacking
+consistent sunlight or where solar irradiance is insufﬁcient, such sys-
+tems struggle to maintain continuous regeneration, prompting alter-
+native strategies that require externally paid thermal input 40,41.T h i s
+approach may not be viable in resource-limited arid environments,
+where both water scarcity and energy access are major constraints37.
+Interestingly, the thermal demands of BTM and AWH systems are
+inherently complementary: BTM produces low-grade heat that is
+typically dissipated, while AWH systems require precisely such low-
+grade thermal energy for desorption. The operating temperature
+range of lithium batteries during high-rate discharge42 coincides well
+with the initial regeneration temperatures of water-saturated MOFs
+used in AWH43, creating a thermodynamic basis for coupling the two.
+In a conceptual BTM–AWH hybrid system, thermal energy generated
+during battery discharge can be redirected to regenerate the sorbent
+through passive heat transfer. In an integrated BTM –AWH system,
+thermal energy released during battery discharge is harnessed to drive
+desorption in the sorbent layer, while the sorbent simultaneously acts
+as a thermal sink, which absorbs latent and sensible heat during
+moisture uptake, reducing peak b attery temperature and enabling
+passive regeneration. This bidirectional exchange, in which the ther-
+mal output of one subsystem drives the operation of the other while
+simultaneously receiving stabilizing feedback, establishes a closed-
+loop, self-regulating partnership. This integrated approach is termed
+“Thermal symbiosis ”. It extends beyond traditional unidirectional
+waste-heat recovery by forming a mutually reinforcing system that
+enhances thermal management and functional output without a
+dedicated external heat source for sorbent regeneration.
+Despite this conceptual promise, there have been no prior
+demonstrations of such a thermally symbiotic strategy, nor estab-
+lished frameworks for integrating AWH and BTM subsystems through
+direct thermal coupling. To address this gap, we developed a proto-
+type system that couples a lithium battery pack with a passive
+sorption-based atmospheric water generator (AWG) containing a
+MOF-303 layer. This architecture enables bidirectional thermal inter-
+action: waste heat from battery discharge is transferred through a
+thermally conductive copper-based interface to drive MOF regenera-
+tion, while the sorbent layer simultaneously buffers temperature
+spikes during cycling. Experimental results show that at a discharge
+current of −16 A, the MOF layer passively reaches temperatures above
+50 °C within 46 min, initiating effective desorption and moisture
+release. Concurrently, the sorption module extracts both latent and
+sensible heat, reducing the battery ’s peak temperature by approxi-
+mately 10 °C and allowing safe operation under elevated current loads.
+To overcome the mismatch in temporal operating pro ﬁles between
+battery discharge and sorbent regeneration, we implement an asyn-
+chronous strategy in which three battery modules alternately supply
+heat to a common AWG unit, enabling up to 15 regeneration cycles
+per day without relying on solar heating. Notably, the 24 h continuous
+operation enabled a water production rate of 1.39 g(water) g(MOF)
+−1 day−1,
+a 117% increase over the solar-driven system. This enhancement,
+stemming from the doubled operational time and a steady, weather-
+independent heat source, establishes the method as a more ef ﬁcient
+and reliable strategy, particularly for sun-limited regions.
+To elucidate the internal therma l behavior governing this ther-
+mally symbiotic system, we performedﬁnite-element thermal simula-
+tions that trace spatiotemporal heat-transfer pathways within the
+coupled modules. The simulations reveal critical design parameters—
+including interface thermal conductivity and battery discharge proﬁles
+—that in ﬂuence thermal transport ef ﬁciency and desorption perfor-
+mance. Together, our experimental and computational analyses
+demonstrate a self-regulating, closed-loop thermal integration strat-
+egy that refunctionalizes waste heat from energy storage systems to
+drive decentralized water harvesting. This is a report to realize AWH
+and BTM as a single thermally symbiotic design. By harmonizing dis-
+parate thermal requirements through shared heat infrastructure, this
+framework offers a versatile blueprint for integrating heat-intensive
+and heat-generating subsystems. The broader principle of “thermal
+symbiosis” introduced here can be extended to a wide range of energy
+and environmental technologies seeking improved thermal efﬁciency
+through intra-system heat circulation.
+Results
+A thermally symbiotic BTM–AWH architecture
+As illustrated in Fig. 1a, AWH with MOFs typically involves a two-step
+cycle: adsorption and desorption. Initially, at lower ambient tempera-
+tures, the MOF adsorbs water vapour, reaching a hydrated state.
+Subsequently, during the regeneration phase, the temperature is ele-
+vated—typically above 40 °C—inducing desorption and returning the
+MOF to a dehydrated state 39,44. This desorption step is energy-inten-
+sive, often requiring an external heat source. Interestingly, this heat
+demand aligns with the thermal management characteristics of
+lithium-ion batteries. During operation, batteries generate signiﬁcant
+Article https://doi.org/10.1038/s41467-026-76774-z
+Nature Communications Article in Press
+waste heat, which must be dissipated to maintain temperatures below
+a safe operating threshold of 55 °C. This creates a complementary
+supply-demand relationship: the AWH system requires heat for deso-
+rption, while the battery produces excess heat that must be removed.
+We captured infrared images of battery packs with and without an
+integrated MOF-based AWH system. Under identical discharge condi-
+tions, the battery pack with the B TM-AWH system exhibited a lower
+temperature. This temperature reduction indicates that a portion of
+the battery’s waste heat was transferred to drive the AWH process,
+thereby supporting the concept of thermal symbiosis.
+The system comprised two main components, as depicted in
+Fig. 1b. The ﬁrst component, referred to as the sorption unit, consisted
+of a 2.5 × 6.5 × 7.5 cm copper container housing a 5 g MOF-303 layer for
+water absorption and desorption processes (Suppl. Fig. 1). MOF-
+30332,43, which has superior adsorption kinetics compared to other
+benchmark MOFs or salts under arid conditions (Suppl. Table 5), was
+characterized in terms of its crystal structure, microstructure, and
+pore size distribution (Suppl. Figs. 2–4 and Suppl. Table 1). The MOF
+layer reaches adsorption equilibrium within 30–40 min across 20–60%
+RH (Suppl. Fig. 40a). Fitted with a pseudo‑ﬁrst‑order kinetic model, the
+adsorption rate constant (k1, Suppl. Equation 6) at 30% RH and 25 °C
+was determined to be 0.14 min−1 (Suppl. Fig. 40b, Suppl. Table 4). This
+copper container with high thermal conductivity facilitated heat
+transfer between the two components, reducing interfacial thermal
+resistance. The second component was a 14 Ah battery pack, assem-
+bled with four 3.5 Ah lithium cells in parallel using nickel sheets, which
+was further encased in plastic support for shape stabilization and
+partial heat insulation (Suppl. Fig. 5). To ensure optimal contact within
+the system, silicone thermal grease with a high thermal conductivity of
+approximately 5 W m−1 K−1 was utilized to ﬁll the air gaps between the
+sorption unit and battery pack (Suppl. Figs. 6 and 7). The silicone layer
+is relatively thick and non‑uniform, as illustrated in Suppl. Fig. 43. This
+promoted efﬁcient heat transfer by conduction through the silicone
+thermal grease, which replaces the air gaps.
+In operation, the sorption unit ﬁrst adsorbs atmospheric water
+before being coupled with the discharging battery pack to achieve
+thermal symbiosis, involving the sorption unit recycling heat from the
+battery pack for water desorption, while the battery pack simulta-
+neously dissipates heat to the sorption unit. This reciprocal heat
+exchange helped maintain the battery pack within a safer temperature
+range while concurrently facilitating water production by the
+MOF layer.
+Plastic 
+support
+Lithium
+cell
+Silicone 
+thermal 
+grease Nickel 
+sheet
+Copper 
+container
+MOF 
+layer
+Part 2͹Battery pack
+Part 1͹Sorption unit BTM-AWH system
+Water 
+adsorption
+Water 
+desorption
+Temperature (℃)
+Optimal 
+Temperature 
+Range
+0 15 40 60
+Slow 
+Reactions
+Accelerated
+Side Reactions
+Heat-generation
+Subsystem
+Adsorption of 
+Atmospheric 
+Water
+MOF-303
+Condensationͽ 40 qC
+Heat-demanding
+System
+Dehydrated State Hydrated State
+Battery
+Performance
+Desorption
+a
+b 
+25 ℃ 70 ℃
+With MOF Without MOF
+Safe Dangerous
+Fig. 1 | Concept and con ﬁguration of the thermally symbiotic BTM–AWH sys-
+tem. a Conceptual illustration of the complementary thermal roles of MOF-based
+atmospheric water harvesting and battery operation. The MOF-303 sorption unit
+adsorbs atmospheric water at low temperature and releases water upon heating
+above 40 °C, whereas the battery pack generates heat during discharge. Infrared
+images compare battery packs with and without the MOF-based sorption unit.
+b Components, assembly and working principle of the BTM–AWH system, in which
+a MOF-303 sorption unit is thermally coupled to a lithium-ion battery pack through
+silicone thermal grease to enable heat transfer for water desorption.
+Article https://doi.org/10.1038/s41467-026-76774-z
+Nature Communications Article in Press
+Sorption-assisted battery thermal management
+To monitor the thermal behavior, the temperature of the battery pack
+was recorded. When adjusting the discharge currents from −12 to
+−20 A, the peak temperature of the battery pack rose from 56.6 to
+78.5 °C (Note: Negative currents denote the discharging process
+throughout this work). This increase was attributed to signi ﬁcant
+resistance heating during the discharge process, which intensiﬁed as
+the discharge current grew. Concurrently, the total discharge time (td)
+decreased from 62.8 to 36.9 min (Suppl. Fig. 8). To assess the battery
+pack’s safety, the safety ratio (sr) was introduced and calculated using
+Eq. 1.
+sr = ts
+td
+ð1Þ
+ts refers to the safe operation time of the battery pack, during which
+the system temperature stayed below 55 °C 45,46.( S u p p l .T a b l e2 )T h e
+speciﬁc measurement method of ts, sampling frequency of tempera-
+ture monitoring, and layout of measuring points are speciﬁed in Sup-
+plementary Fig. 41.
+Figure 2b summarizes the sr calculated from the corresponding
+battery-temperature proﬁles; the underlying td and ts values are listed
+in Suppl. Table 2. sr exhibited a decreasing trend with increasing dis-
+charge currents, registering at 93.2%, 71.2%, 57.2%, 44.0%, and 36.5% as
+the discharge currents varied from −12 to −20 A. In Fig. 2c, upon the
+assembly of the sorption unit, the peak temperature of the battery
+pack showed a reduction, falling within the range of 45.7–64.8 °C when
+subjected to discharge currents of −12 to −20 A. This marked a
+decrease of approximately 10 °C at each discharge current compared
+to con ﬁgurations without a sorption unit. Consequently, sr of the
+battery pack rose to 100.0%, 100.0%, 100.0%, 86.4%, and 65.0%,
+respectively.
+Across the tested discharge currents, the incorporation of the
+sorption unit improved heat dissipation, lowering the battery pack ’s
+peak temperature and reducing the risk of thermal runaway. This
+enhancement also increased sr, delaying battery aging and enabling
+safe, stable system operation within a −12 to −16 A current range.
+Simultaneously, in Fig. 2d, the MOF temperature displayed a similar
+trend, with slightly reduced peak temperatures compared to those of
+the battery pack, ranging from 42.6 to 58.5 °C within a −12 to −20 A
+current range, indicating an effective heat transfer pathway between
+the battery pack and MOF. In subsequent discussions, the discharge
+current was set to −16 A, balancing requirements of MOF desorption
+and BTM — desorption occurs when the MOF temperature is higher
+(regeneration temperatures typically exceed 40 °C and refs. 39,44)
+while ensuring the battery pack remains below 55 °C. Notably, the
+desorption time was set to 62 min, during which the MOF temperature
+exceeded the regeneration threshold.
+Battery waste heat drives sorbent regeneration
+The sorption behavior of the sorption unit was examined as follows.
+MOF-303 exhibits relatively high desorption energy due to its hydro-
+philic functional groups, which strongly interact with water
+molecules32,43. In Fig. 3a, MOF-303’s desorption activation energy was
+ﬁtted and calculated based on its desorption performance under var-
+ious heating rates (Suppl. Fig. 9), using the Kissinger equation 47,48
+(Suppl. Equation 1), amounting to approximately 40 kJ mol-1. This value
+aligned with the reported literature, indicating its high capacity to
+absorb heat generated by the battery pack.
+In Fig. 3b, we compared the desorption process to traditional
+solar-driven desorption, with MOF layers pre-adsorbing water at 30%
+RH and 25 °C for 30 min (Suppl. Fig. 10). Under a 1.0 kW m −2 light
+irradiance, the MOF layer was heated to 39 °C in roughly 20 min, due to
+limited light absorbance (Suppl. Fig. 11). The solar-driven MOF layer’s
+temperature exceeded the battery pack-driven counterpart around
+20 min. However, after 20 min, the battery pack-driven MOF layer
+displayed a higher temperature, which may lead to a superior
+desorption rate.
+-12 -14 -16 -18 -20
+20
+40
+60
+80
+100
+With the sorption unit
+Without the sorption unit
+Sr (%)
+Discharge current (A)
+a b
+0 1 02 03 04 05 06 07 08 0
+30
+40
+50
+60
+ -12 A
+ -14 A
+ -16 A
+ -18 A
+ -20 A
+Time (min)
+ 40 °C 
+MOF
+erutarepmeT( °C)
+62 min
+50.5 °C 
+ 58.5 °C 
+48.8 °C 
+ 54.1 °C 
+42.6 °C 
+0 1 02 03 04 05 06 07 08 0
+30
+40
+50
+60
+70 -12 A
+ -14 A
+ -16 A
+ -18 A
+ -20 A
+erutarepmeT( °C)
+Time (min)
+Battery park
+ 55 °C 
+ 64.8 °C 
+59.3 °C 
+55.0 °C 52.2 °C 
+45.7 °C 
+01 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0
+30
+40
+50
+60
+70
+80 -12 A
+ -14 A
+ -16 A
+ -18 A
+ -20 A
+Time (min)
+Battery park
+ 55 °C 
+ 78.5 °C 
+72.0 °C 
+65.9 °C 
+62.3 °C 
+56.6 °C 
+erutarepmeT( °C)
+c d
+Fig. 2 | Thermal-management performance of the BTM-AWH system.
+a Temperature proﬁles of the battery pack without the sorption unit at different
+discharge currents.b Calculated safety ratios (sr)o ft h eb a t t e r yp a c kw i t ha n d
+without the sorption unit, determined from the corresponding battery-
+temperature proﬁles using Eq. (1); the underlyingtd, ts,a n dsr values are provided in
+Suppl. Table 2.c Temperature proﬁles of the battery pack with the sorption unit at
+different discharge currents.d Temperature proﬁles of the MOF layer coupled to
+the battery pack at different discharge currents.
+Article https://doi.org/10.1038/s41467-026-76774-z
+Nature Communications Article in Press
+Cling ﬁlm was employed to seal the sorption element to simulate
+an actual AWG, creating a simple closed system as depicted in Fig.3c.
+Before desorption (discharge), there was no water vapor condensation
+on the inner cling ﬁlm (Suppl. Fig. 12). During discharge, heat was
+transferred from the battery pack to the MOFs for desorption, leading
+to a closed cavity with high water vapor partial pressure due to the
+abundance of desorbed water. Concurrently, the copper container ’s
+temperature increased due to its high thermal conductivity. This
+temperature rise increased the air temperature within the cavity due to
+heat transfer from the heated copper container, accompanied by
+convective air mixing. The temperature gradient led to cooling of the
+inner cling ﬁlm surface, facilitating condensation of water vapor, as
+illustrated in Fig.3d. This lab-scale AWG experiment demonstrated the
+potential for water production facilitated by the battery pack.
+Battery pack-driven water production can be achieved without
+sunlight, broadening the application of sorbents in regions with lim-
+ited sunlight and extending their daily production time to increase
+water yield. In this study, we initially employed an isochronous and
+one-to-one mapping approach, pairing one sorption unit with one
+battery pack during the thermal symbiosis process. To preserve bat-
+tery life, the charging current was limited to 0.5 C (7 A), resulting in a
+charging time of approximately 133 min (Suppl. Fig. 13). As illustrated
+in Fig. 3e (the clearer schematic diagram is shown in Suppl. Fig. 39),
+one cycle consisted of a 62 min desorption and water generation
+period (during this period, the battery pack completed the discharge
+process), followed by a 30 min adsorption period at 30% RH and 25 °C
+(Supplementary Fig. 10), allowing the sorption to equalize. Con-
+currently, the battery pack began recharging for 133 min. However, the
+battery pack’s charging time exceeded the sorption unit’s adsorption
+time, creating a timing mismatch in which the battery pack required
+more time before initiating the next sorption cycle. Consequently, one
+cycling time of the sorption unit was extended to approximately
+195 min, including a 62 min water generation and a 133 min sorption
+unit’s charge time, which reduced the daily (24 h) theoretical cycle
+number to only 7 times.
+In contrast to the isochronous battery-to-sorbent pairing, we
+adopted an asynchronous con ﬁguration that eliminates downtime
+associated with the battery ’s prolonged charging period. By coordi-
+nating three battery packs (Packs 1, 2, and 3) with a single sorption unit,
+the system enables continuous regeneration cycles —eliminating the
+need to wait for the same pack to recharge. As shown in Fig. 3e, the
+sorption unit can complete one cycle in 92 min using a single battery
+pack. The three battery packs contributed to water generation during
+the 0 –92, 92 –184, and 184 –276 min intervals, respectively. After
+completing its ﬁrst discharge, Pack 1 had enough time to charge,
+preparing for its second water generation cycle at 276 min. This
+asynchronous design reduced the sorption unit’s cycle time to 92 min,
+increasing its theoretical daily cycle count to 15, representing a 114%
+improvement over the isochronous con ﬁguration. The increased
+production frequency of the BTM-AWH system resulted in a higher
+daily water yield than that achievable under standard 1.0 kW m−2 solar
+irradiance, the typical condition for AWH, as conclusively demon-
+strated in Fig. 5.
+MOF-303 is well recognized for its exceptional stability. To eval-
+uate its cycling stability, we tested the adsorption behavior of MOF-
+303 after 50 sorption cycles; the detailed procedure is provided in the
+Supporting Information (Supplem entary Fig. 14). Notably, the
+adsorption kinetics of MOF ‑303 showed minimal change over 50
+cycles, as supported by nearly identical pore ‑size distributions, pre-
+served crystalline frameworks, and stable granular morphology
+(Suppl. Figs. 2–4). This structural and performance consistency high-
+lights the material’s robustness and strongly indicates the long ‑term
+operational stability potential of the BTM‑AWH system. Moreover, the
+introduction of the AWH module enhances the long‑term performance
+of the battery pack, manifesting as superior electrochemical char-
+acteristics (Suppl. Fig. 45).
+Herein, to better evaluate the thermal management performance
+of our system, we measured the battery heat dissipation under various
+conditions. Initially, a copper container was placed on the battery pack
+to enhance heat transfer and facilitate heat dissipation. In Fig.3f, under
+0 1 02 03 04 05 06 07 08 0
+30
+40
+50
+60
+70 Copper container only
+ MOF
+ CPCM
+Time (min)
+ 54.0 °C 
+60.6 °C 
+51.1 °C 
+Temperature (°C) 
+55.0 °C 
+Desorption
+CondensationCling 
+film
+Water
+vapor
+a b c
+Time (min)
+d e fAdsorption
+Desorption
+Discharge
+Charge
+0 50 100 150 200
+2nd desorption, t=195 min
+2nd desorption, t=92 min
+Asynchronous pattern
+Isochronous pattern
+0 2 04 06 08 0 1 0 0
+25
+30
+35
+40
+45
+50
+55
+ 1 kW m-2
+ Battery pack
+Time (min)
+39.0 °C 
+Temperature (°C) 
+20.0 min 
+0.33 0.34 0.35 0.36 0.37
+-4.4
+-4.8
+-5.2
+-5.6
+Fitted curve
+Tested point
+ln(β/RT2
+d)
+1/RT2
+d (K-1)
+k=-40.221
+R2=0.9984
+Fig. 3 | Atmospheric water harvesting enabled by battery-pack-driven sorbent
+regeneration. a Linear ﬁt used to determine the desorption activation energy of
+MOF-303. b Temperature proﬁles of the MOF layer under simulated sunlight (blue
+solid curve, 1.0 kW m−2) and battery-pack heating (pink dotted curve). The vertical
+dashed line at 20 min marks the approximate ﬁrst crossover, after which the
+battery-pack-driven MOF temperature exceeds that under simulated sunlight.
+c Schematic of the closed sorption unit and its water-production mechanism.
+d Digital photograph of the closed sorption unit after water generation.
+e Schematic timelines of adsorption–desorption and charge–discharge under iso-
+chronous and asynchronous operating patterns.f Temperature proﬁles of the
+battery pack under different thermal-management conditions.
+Article https://doi.org/10.1038/s41467-026-76774-z
+Nature Communications Article in Press
+a discharge current of −16 A, the pack reached a peak temperature of
+60.6 °C, which was slightly lower than that of the group without the
+copper container (65.9 °C, Fig. 2a). Then, the MOF content was
+increased to 10 g, and this resulted in a peak temperature of 54.0 °C,
+indicating that higher MOF loading contributes to reduced peak
+temperatures (compared to 55 °C in the reference case, Fig. 2c). Fur-
+ther improvement was observed when the MOF was replaced with 10 g
+of expanded graphite-based eutectic CPCM, which has a phase change
+temperature of 38.25 °C and an enthalpy of 179.60 kJ kg −1 (Suppl.
+Fig. 15). This con ﬁguration reduced the peak temperature to 51.1 °C,
+suggesting that CPCMs can signiﬁcantly enhance the thermal safety of
+the system. The improved performance is likely associated with the
+carbon-based conductive framework of expanded graphite, which
+enhances heat transfer and thermal storage from the battery pack.
+Comparing the three systems, we conclude that while natural con-
+vection provides considerable cooling, the incorporation of heat-
+absorbing materials, especially those enabling direct-contact heat
+exchange, further enhances heat dissipation. These results underscore
+the rationale for adopting a thermal symbiosis approach in BTM.
+Thermo-symbiotic heat sharing pathways
+During the 46 min heating period, both the MOF and battery pack
+reached peak temperatures (Fig. 2c, d). To analyze the thermo-
+symbiotic mechanism of this system, a thermal simulation was con-
+ducted, observing the temperature tendencies and peak temperatures
+of each component. The model mesh, calculation equations, and
+assumed conditions are detailed in Supplementary Note 16 (Suppl.
+Figs. 16–25). Firstly, a pure battery pack model without the sorption
+unit was established, termed Model 1 (Suppl. Fig. 18). In this model, the
+experimental and simulated battery pack temperatures demonstrated
+a strong correlation, indicated by a low deviation value ( Dv, Suppl.
+Equation 4) ranging from −0.57 to 1.00 K and a low deviation rate (Dr,
+Supplementary Equation 5) ranging from−0.17% to 0.33%. This result
+conﬁrms the model’s excellent reliability (Suppl. Figs. 19–21).
+On this basis, we analyzed the temperature pro ﬁle of the pure
+battery pack cross-section (Suppl. Fig. 26) that passes through the
+geometric center, as depicted in Fig.4a. Before discharge, the battery
+pack appeared blue, corresponding to the ambient temperature of
+25 °C. Within 45 min, due to a high heating rate, the color transitioned
+from blue-green to an orange-red hue. Interestingly, the battery pack
+0 1 02 03 04 05 06 0
+20
+30
+40
+50
+60
+70 battery pack (unaltered)
+0.25 MOF
+4.00 MOF
+Temperature (°C) 
+Time (min)
+Battery pack
+56.4 °C 
+48.7 °C 
+0 1 02 03 04 05 06 0
+20
+30
+40
+50
+60
+70 battery pack (unaltered)
+0.25 CE
+4.00 CE
+Temperature (°C) 
+Time (min)
+Battery pack
+56.4 °C 
+48.7 °C 
+0 1 02 03 04 05 06 0
+20
+30
+40
+50
+60
+70 Battery pack
+MOF
+Battery pack (unaltered)
+MOF (unaltered)
+Temperature (°C) 
+Time (min)
+48.3 °C 
+61.8 °C 
+0 1 02 03 04 05 06 0
+20
+30
+40
+50
+60
+70Temperature (°C) 
+Time (min)
+MOF
+41.9 °C 
+52.4 °C 
+53.4 °C 
+MOF (unaltered)
+0.00 h0
+0.25 h0
+4.00 h0
+0 1 02 03 04 05 06 0
+20
+30
+40
+50
+60
+70 battery pack (unaltered)
+0.00 h0
+0.25 h0
+4.00 h0
+Temperature (°C) 
+Time (min)
+Battery pack
+58.7 °C 
+57.4 °C 
+44.6 °C 
+0 1 02 03 04 05 06 0
+20
+30
+40
+50
+60
+70 0.001 κcon
+MOF (unaltered)
+Temperature (°C) 
+Time (min)
+MOF
+53.4 °C 
+0 1 02 03 04 05 06 0
+20
+30
+40
+50
+60
+70 0.001 κcon
+battery pack (unaltered)
+Temperature (°C) 
+Time (min)
+Battery pack
+58.2 °C 
+Thermal convection
+0.5 mm air layer
+Thermal conduction
+0 min
+5 min
+15 min
+30 min
+45 min
+Model 1 Model 2
+25 30 35 40 45 50 55 60 65 70
+a b c e
+(qC)
+Channel 1: 
+Heat loss through 
+convection
+Channel 2: 
+Heat exchange 
+for desorption
+d f
+g h i j
+15 min 45 min
+k l m 
+ͪ
+Lithium cell MOF layer MOF-contacted battery (pack)
+or
+Efficient heat conversion 
+Efficient water adsorption
+Heat transfer 
+direction
+0 min 30 min
+Fig. 4 | Thermo-symbiotic heat sharing in the BTM–AWH system. a, b Simulated
+temperature distributions of Model 1, comprising the battery pack alone (a), and
+Model 2, comprising the battery pack coupled with the MOF layer (b), at the indi-
+cated discharge times. c Schematic of the two heat-transfer channels in Model 2:
+heat loss to the surroundings through convection (Channel 1) and heat exchange
+from the battery pack to the MOF layer for desorption (Channel 2).d Schematic of
+an altered Model 2 incorporating a 0.5 mm air layer between the battery pack and
+MOF layer to modify the interfacial heat-transfer mode.e Simulated temperature
+proﬁles of the battery pack and MOF layer in the altered Model 2.f Corresponding
+simulated temperature distributions at the indicated discharge times.
+g, h Simulated temperature proﬁles of the battery pack (g) and MOF layer (h)a f t e r
+reducing the thermal conductivity of the copper container to 0.001κcon.
+i, j Simulated temperature proﬁles of the battery pack (i) and MOF layer ( j)a t
+different convective heat-transfer coefﬁcients, h0. k Simulated battery-pack tem-
+perature proﬁles at different equivalent speciﬁc heat capacities, CE. l Simulated
+battery-pack temperature proﬁles at different MOF loadings,mMOF. Solid curves in
+(e–l) show the indicated altered-model results, whereas dotted curves denote the
+corresponding unaltered temperature proﬁles. m Conceptual illustration of an
+MOF-contacted battery conﬁguration for thermo-symbiotic heat sharing, efﬁcient
+heat conversion and water adsorption.
+Article https://doi.org/10.1038/s41467-026-76774-z
+Nature Communications Article in Press
+demonstrated a consistent temperature distribution at each recorded
+interval, suggesting limited heat exchange with the surrounding
+environment, even at the edge proﬁle where convective heat transfer
+would typically be more pronounced. The only exception occurred at
+the 45 min mark. This limited heat dissipation, leading to an increase in
+the battery pack ’s temperature. It was found that the battery pack
+temperature decreased when the convective heat-transfer coefﬁcient
+(h0) was increased via simulation, moving towards a forced convection
+state (Suppl. Fig. 27). However, achieving such enhanced convective
+heat transfer would typically require additional energy input49.
+Next, with equal battery pack heating power input and consistent
+environmental factors, the sorption unit was integrated into the bat-
+tery pack, resulting in Model 2, namely the thermo-symbiotic system
+(Suppl. Fig. 22). The cross-section of the Model 2 system also passed
+through a geometric center, as illustrated in Supplementary. Fig. 26.
+To simplify calculations while accounting for desorption heat and
+sensible heat, the equivalent speci ﬁch e a tc a p a c i t y(CE)m e t h o dw a s
+employed to set the MOF’ss p e c iﬁc heat capacity, as detailed in Suppl.
+Figs. 16 and 17. Similarly, the simulated and experimental temperature
+curves of the battery pack and MOF in Model 2 exhibited a strong
+correlation, indicated by low Dv values ranging from −1.08 to 0.59 K
+and −0.74 to 0.38 K, and low Dr values ranging from −0.33% to 0.20%
+and −0.23% to 0.13%, respectively (Suppl. Figs. 23 –25). These results
+demonstrate the accuracy of the method and the reliability of
+the model.
+In Model 2, the battery pack exhibited lower temperatures than
+Model 1 at nearly all recorded intervals, as indicated by the darker
+colors in the thermal proﬁle of Fig. 4b. The only exception occurred at
+the 5-min mark. Having the same convection setting as Model 1, the
+battery pack in Model 2 maintained a consistent color at each recorded
+interval, suggesting that convection plays a limited role and that other
+heat dissipation mechanisms may also contribute. The temperature
+proﬁles of the integrated components (copper container and MOF
+layer) were observed (Suppl. Figs. 28-30), leading to the preliminary
+prediction of two channels for the thermo-symbiotic mechanism, as
+shown in Fig. 4c. First, the heat generated during battery discharge is
+transferred to the copper container through the silicone thermal
+grease layer, aided by the high thermal conductivity of copper, as
+evidenced by the temperature proﬁle of the system in Suppl. Fig. 28.
+Next, the heat, with two channels, is dissipated through convection to
+the surroundings and utilized for MOF regeneration. To con ﬁrm this
+hypothesis, comparative experiments were simulated by adjusting the
+heat-transfer mode or parameters.
+In Fig. 4d, Model 2 was reconstructed by inserting a 0.5 mm air
+layer between the sorption unit and the battery pack, replacing ef ﬁ-
+cient conductive heat transfer with a low-conductivity air gap and
+disrupting the close-contact structure. As anticipated, in Fig. 4e, the
+temperature difference between the MOF layer and the battery pack
+was greater than in the unaltered Model 2 (dotted curves represent the
+components’ temperature curves in the unaltered Model 2). Speci ﬁ-
+cally, the peak temperature of the battery pack increased to 61.8 °C,
+while the peak temperature of the MOF layer decreased to 48.3 °C. In
+this scenario, both the BTM and MOF desorption effects were dimin-
+ished due to the thermal resistance of air with low thermal con-
+ductivity. In Fig.4f (the temperature proﬁle matched the temperature-
+dependent color axis in Fig. 4a, b), a distinct color transition, func-
+tioning as a“temperature speed bump,” was observed in the air zone of
+this system, providing qualitative visual support for the reduction of
+the two thermal effects. This change in the altered Model 2 highlighted
+the importance of close contact between system components.
+κ of the copper container was adjusted to 0.001 of its original
+value (denoted as κcon,3 8 7 W m−1 K−1), simulating the replacement of
+the copper container with materials having lower heat-transfer ef ﬁ-
+ciency, such as a plastic-based (approximately 0.3 W m−1 K−1)c o n t a i n e r .
+As expected, this container exhibited different and higher-
+temperature colors at each recorded time compared to the unal-
+tered Model 2, due to slower heat dissipation (Suppl. Fig. 31). Conse-
+quently, in Fig. 4g, the BTM effect was reduced compared to the
+unaltered Model 2, resulting in an increased peak temperature of the
+battery pack at 58.2 °C, indicating delayed conduction of the immense
+heat generated during discharge. Interestingly, as shown in Fig.4h, the
+heat accumulation in the MOF also increased, with a peak temperature
+reaching 53.4 °C. In this scenario, the overall system’sh e a td i s s i p a t i o n
+through air convection, closely related to the container’s heat-transfer
+capability, was diminished. In effect, the containers with 0.001 κcon
+acted as insulation, forming a natural thermal barrier that prevented
+excessive heat diffusion in the MOF, contributing to MOF desorption.
+Simultaneously, the thin thickness (1 mm, Suppl. Fig. 1) of the container
+resulted in limited thermal resistance between the MOF layer and the
+battery pack, further promoting the MOF temperature increase.
+Notably, the material transformation in the container suggested a
+positive correlation change in the temperatures of the MOF layer and
+battery pack, potentially leading to two outcomes: improving deso-
+rption efﬁciency at the cost of reduced maximum working current
+limits, or enhancing the container ’s convection to ensure the BTM
+effect.
+In an altered Model 2,h0 of the copper container was modiﬁed. As
+depicted in Fig.4i, j, when settingh0 = 0, corresponding to the removal
+of convective heat loss at the boundary, the peak temperatures of the
+battery pack and MOF increased to 58.7 and 53.4 °C, respectively, due
+to reduced heat dissipation in the system. Similarly, with a reduced
+convective effect of 0.25 h0, the peak temperatures rose to 57.4 and
+52.4 °C, respectively. The limitation of heat loss through Channel 1
+(Fig. 4c) increased the thermal load on MOF desorption, which may
+reduce the BTM capacity. When h0 was quadrupled, the peak tem-
+peratures decreased to 44.6 and 41.9 °C, respectively, indicating an
+improved BTM effect under enhanced convective heat transfer con-
+ditions. However, MOF desorption was severely hampered. The infra-
+red thermal imaging photos detected the temperature variation of the
+surroundings around the assembly device (Suppl. Fig. 32). Both the
+experimental and simulation results demonstrated that heat dissipa-
+tion through convection by the copper container is crucial for BTM,
+further corroborating the validity of Channel 1.
+To validate Channel 2, the heat exchange for desorption, MOF
+parameters were altered in a reconstructed Model 2. In Fig. 4k,
+increasing equivalent speciﬁch e a t(CE,S u p p l .F i g s .1 6 ,1 7 )t of o u rt i m e s
+its baseline value reduced the battery pack ’s peak temperature to
+48.7 °C, while reducing it to one-quarter increased the peak tempera-
+ture to 56.4 °C. MOF-303 with good hydrophilicity that enabled water
+adsorption even in low-RH regions (Suppl. Fig. 10), exhibited a high
+desorption enthalpy of approximately 700 J g −1 (Suppl. Fig. 16), sur-
+passing most melting enthalpies of reported CPCMs 50–62 (Suppl.
+Table 3) for BTM, ranging from 100-200 J g−1. As expected, the battery
+pack temperature was affected by the total MOF mass ( mMOF), as
+shown in Fig. 4l. The peak temperatures of the battery pack were 56.4
+and 48.7 °C when setting 0.25mMOF and 4 mMOF, respectively. A higher
+loading of MOF enhanced the BTM effect. However, it simultaneously
+lowered the water production capacity per unit mass of MOF, primarily
+due to a reduction in average MOF temperature and an increase in
+mass transfer resistance. This dose-performance trade‑off is illustrated
+in Suppl. Figs. 33, 42. Notably, because the CE and mass collectively
+govern the MOF’s thermal energy absorption capacity, the simulated
+temperature values in Fig. 4k, l remain nearly identical when both
+parameters are scaled by the same factor throughout the simulation.
+Closed-chamber water generation
+To evaluate the actual water production of the BTM-AWH system, we
+constructed a closed-chamber water generator (Fig. 5a, b). The main
+body consisted of a transparent acrylic plate (Suppl. Fig. 34), inside
+which the BTM-AWH unit was housed. A semiconductor cooler was
+Article https://doi.org/10.1038/s41467-026-76774-z
+Nature Communications Article in Press
+installed on the top side of the plate to facilitate water condensation.
+The bottom of the chamber was insulated to minimize heat loss,
+maintain internal temperature, and promote a thermal gradient with
+the external environment. Within this system, 5.0 g of MOF was used
+for water harvesting. The adsorption phase was conducted for 30 min
+at 25 °C and 30% RH (Supplementary Fig. 10), followed by a 60 min
+desorption phase, during which the MOF temperature reached
+approximately 50 °C (Suppl. Fig. 35). Notably, as shown in Fig. 5c, the
+peak temperature of the battery pack was reduced to 54.5 °C despite
+the acrylic enclosure hindering natural convection. This temperature is
+lower than that observed in the open system (Fig. 2c), indicating that
+the active cooling from the semiconductor cooler effectively offset the
+heat buildup. This conclusion is supported by a control experiment in
+which the cooler was removed (Suppl. Fig. 36), resulting in a peak
+battery temperature of 56.5 °C, which exceeds the safe operating
+threshold. The operational process of the BTM-AWH system is shown
+in Fig. 5d, e. Following the simultaneous activation of the battery pack
+and semiconductor cooler, the cooler was temporarily displaced,
+revealing a distinct cooling region on the generator ceiling. Within this
+region, a hazy mist initially formed and subsequently coalesced into
+visible water droplets as the temperature gradient increased (Suppl.
+Fig. 37), with prominent condensation evident after 60 min (Fig. 5f).
+The mass of water produced was measured for each cycle. For the
+closed-chamber water-generation experiment, each cycle comprised a
+60 min desorption stage followed by a 30 min adsorption stage, giving
+a 90 min cycle. Over 24 h, 16 cycles yielded a total of 6.95 g of water,
+corresponding to a daily production rate of 1.39 g (water) g(MOF)
+−1
+day−1 (Fig. 5g).
+For comparison, a traditional solar-driven AWH experiment was
+conducted outdoors in Guangzhou on October 17, 2025, from 06:00 to
+18:00. In this setup (Fig.5h), the AWH unit was operated independently
+from the battery system using identical 30 min adsorption and 60-min
+desorption cycles. To optimize solar ef ﬁciency, the cooler was posi-
+t i o n e do nt h es i d eo ft h eg e n e r a t o rt om i n i m i z es h a d i n g ,a n dab l a c k
+cardstock was placed at the bottom to enhance the photothermal
+effect, thereby raising the internal temperature to facilitate deso-
+rption. During the 12 h test period, 8 cycles were completed, collecting
+3.2 g of water, which equates to a daily yield of 0.64 g (water) g(MOF)
+−1
+day−1 (Supplementary Fig. 38). In this experiment, the BTM-AWH sys-
+tem achieved a 117% higher daily water yield than the solar-driven AWH
+system. Also, the BTM-AWH system demonstrates a clear advantage.
+Even when operated for only 12 h, it achieved a water yield of
+0.70 g(water) g(MOF)
+−1 day−1, surpassing the yield of the solar-driven sys-
+tem over the same duration. This superior production rate, combined
+with the ability to operate continuously without being constrained by
+daylight, makes the BTM-AWH system signi ﬁcantly more effective.
+Under the tested conditions, the steady thermal energy supplied by
+the battery enabled continuous operation independent of daylight and
+produced a higher water yield than the solar-driven system, suggesting
+a potential advantage in regions with limited sunlight. Finally, we
+propose a hybrid approach (Fig.5h) that utilizes solar-driven AWH for
+12 h during the day and battery-driven AWH for 12 h at night. This
+combined method achieves a total daily water yield of 1.34 g (water)
+g(MOF)
+−1 day−1 (comprising 0.64 g(water) g(MOF)
+−1 day−1 from the daytime
+and 0.70 g(water) g(MOF)
+−1 day−1 from the nighttime), representing a 109%
+increase compared to the conventional daytime-only solar-driven
+AWH system. This result demonstrates that thermal symbiosis can
+signiﬁcantly enhance traditional solar water harvesting by enabling
+continuous 24-h operation.
+01 0 2 0 3 0 4 0 5 0 6 0
+20
+30
+40
+50
+60 With cooler
+Without cooler
+erutarepmeT( °C )
+Time (min)
+ 56.5 °C 
+54.5 °C 
+BTM-AWH
+system Insulation
+Water
+vapor
+Semiconductor
+cooler
+Acrylic 
+cover
+a b d
+c ef
+60 min
+g h
+0.0
+0.4
+0.8
+1.2
+1.6
+Battery-driven
+Solar-driven
+Time (h) 
+noitarenegretaW( g g -1)
+06:00 12:00 24:00 06:00 18:00
+1.39 g g-1
+0.64 g g-1 0.70 g g-1
+Fig. 5 | Water generation in the closed BTM–AWH system. a Digital photograph
+of the closed BTM–AWH water generator. b Schematic of the closed water-
+generation setup incorporating the BTM–AWH unit, acrylic cover, semiconductor
+cooler and base insulation.c Temperature proﬁles of the battery pack in the closed
+BTM–AWH system with and without semiconductor cooling.d Schematic of water-
+vapour transport and condensation on the cooled inner surface of the acrylic cover.
+e Digital photograph of the closed BTM–AWH system after 60 min of operation.
+f Enlarged view of condensed water droplets on the cooled inner surface.
+g Cumulative water production of the battery-driven and solar-driven AWH sys-
+tems. h Digital photograph of the solar-driven closed-system AWH unit.
+Article https://doi.org/10.1038/s41467-026-76774-z
+Nature Communications Article in Press
+Under dynamic conditions (e.g., vibration or tilting), liquid con-
+densate may leak or accumulate near electrical contacts, thereby
+posing a risk of short circuits or insulation failure. To mitigate this risk
+in future practical designs, the following safety measures are pro-
+posed: First, electrical contacts should be insulated and physically
+separated from the condensate pathway to reduce the risk of moisture
+exposure. Second, structural optimization of the prototype is sug-
+gested: as illustrated in Suppl. Fig. 44, securing the BTM-AWH assem-
+bly with a ﬁxed cover can help mitigate vibration and tilting while also
+shielding the assembly from dripping water. Furthermore, elevating
+the assembly on a platform would allow any condensate toﬂow safely
+beneath it, ensuring no direct contact between water and electrical
+components.
+Discussion
+This study introduces a thermo-symbiotic system in which waste heat
+generated during battery discharge drives MOF-based atmospheric
+water harvesting, while the sorption unit concurrently moderates the
+battery temperature. The coupled system effectively utilizes battery
+waste heat to drive MOF desorption, maintaining safe operating tem-
+peratures (below 55 °C) under high discharge currents while simulta-
+neously achieving a substantial enhancement in water yield compared
+to solar-driven analogues. The implementation of an asynchronous
+operational mode further enables continuous operation without solar
+heating for sorbent regeneration. These results collectively demon-
+strate a scalable strategy for synergistic energy and water manage-
+ment. Beyond the speci ﬁcc o n ﬁguration presented, the “thermo-
+symbiosis” framework is generalizable. Its core principle—repurposing
+low-grade waste heat for a useful thermal demand—c a nb ee x t e n d e dt o
+larger battery systems (e.g., in electric vehicles or stationary storage)
+and is compatible with other sorbents featuring low regeneration
+temperatures. This design offers a practical solution for off-grid or
+resource-constrained environments, such as telecommunication sta-
+tions or remote facilities, where concurrent thermal management and
+water supply are critical. Looking forward, this work opens promising
+avenues for material innovation (e.g., composites with enhanced
+thermal properties) and system-level integration with renewable
+energy sources, paving the way toward fully autonomous, sustainable
+water-energy systems. Thus, the present study not only establishes a
+functional prototype but also provides a versatile blueprint for
+synergistic resource recovery in a wide range of applications.
+Methods
+Materials
+Aluminum nitrate nonahydrate (Al(NO)3·9H2O, AR) and sodium acet-
+a t et r i h y d r a t e( C H3COONa·3H2O, AR) were purchased from Tianjin
+Kemiou Chemical Reagent Co., Ltd. Sodium hydroxide (NaOH, AR) was
+purchased from Guangzhou Chemical Reagent Factory. Pyrazole-3,5-
+dicarboxylic acid (C 5H4N2O4·H2O, AR), sodium thiosulfate pentahy-
+drate (Na 2S2O3·5H2O, AR) and strontium chloride hexahydrate
+(SrCl2·6H2O, AR) were purchased from Shanghai Aladdin Biochemical
+Technology Co., Ltd. The 3.5 Ah lithium cells were purchased from
+Shenzhen Jingdou Electronic Technology Co., Ltd. Thermal conductive
+silicone was purchased from Nuofeng Electronic Technology Co., Ltd.
+Nickel sheet was purchased from Jiangsu Huiyu Alloy Technology
+Co., Ltd.
+Preparation of MOF-303
+Dissolve 1.88 g Al(NO) 3·9H2O in 10 mL deionized water, denoted as
+Solution-1. Dissolve 0.78 g C5H4N2O4·H2Oa n d0 . 6 gN a O Hi n t o1 5 m L
+deionized water, denoted as Solution-2. Mix two solutions by pouring
+Solution-2 drop-by-drop into Solution-1. Stir the mixture and place it at
+100 °C for 24 h, and clean the residue with deionized water twice. Dry
+the residue in a 120 °C vacuum oven for 24 h.
+Preparation of the CPCM
+A PCM solution was prepared by dissolving 7.2 g Na 2S2O3·5H2O, 2.8 g
+CH3COONa·3H2O, and 0.2 g SrCl 2·6H2O in a sealed glass bottle. The
+mixture was stirred at 70 °C for 3 h. Subsequently, 8.5 g of the resulting
+liquid PCM was added dropwise to 1.5 g of EG under physical stirring to
+form the CPCM.
+Program setting of the battery pack
+The battery pack discharges at constant currents of −12, −1 4 ,- 1 6 ,- 1 8 ,
+and -20 A until the voltage decreases to 2.7 V. The battery pack is then
+charged at a constant current of 7 A until the voltage reaches 4.25 V,
+followed by constant-voltage charging at 4.25 V until the current
+decreases to 0.7 A.
+Data availability
+Numerical data supporting the quantitative results reported in this
+Article are provided in the accompanying Source Dataﬁle. Additional
+experimental details and supporting results are available in the Article
+and its Supplementary Information. Source data are provided with
+this paper.
+References
+1. Blackmer-Raynolds, L. & Sampson, T. R. Overview of the gut
+microbiome.Semin. Neurol. 43,5 1 8–529 (2023).
+2. Qin, J. et al. A human gut microbial gene catalogue established by
+metagenomic sequencing.Nature 464,5 9–65 (2010).
+3. Ali, M. A., Al-Farga, A. & Seddik, M. A. The positive impact of hon-
+eybee activity on fennel crop production and sustainability.Sci.
+Rep. 14, (2024).
+4 . P a r k e r ,A .J . ,W i l l i a m s ,N .M .&T h o m s o n ,J .D .S p e c i a l i s tp o l l i n a t o r s
+d e p l e t ep o l l e ni nt h es pring ephemeral wildﬂower Claytonia virgi-
+nica. Ecol. Evol. 6,5 1 6 9–5177 (2016).
+5. Sarabeev, V. et al. Symbiotic species diversity can explain invasion
+success and host-parasite system stability: The case of gammarid
+hosts. Ecosphere 15, (2024).
+6 . K i h a r a ,K .e ta l .G l o b a l / t e m p o r a lg e n ee x p r e s s i o na n a l y s i so f
+Escherichia coli in the early stages of symbiotic relationship
+development with the cellular slime mold Dictyostelium dis-
+coideum. Biosystems96,1 4 1–164 (2009).
+7. Liu, Y. X. et al. 5.1 μm Ion-Regulated Rigid Quasi-Solid Electrolyte
+Constructed by Bridging Fast Li-Ion Transfer Channels for Lithium
+Metal Batteries.Adv. Mater. 36,( 2 0 2 4 ) .
+8. Xi, G. et al. Polymer-Based Solid Electrolytes: Material Selection,
+Design, and Application.Adv. Funct. Mater. 31, (2021).
+9. Yang, S. J. et al. Thermally Stable Polymer-Rich Solid Electrolyte
+Interphase for Safe Lithium Metal Pouch Cells.Angewandte
+Chemie-Int. Ed. 61, (2022).
+10. Li, Y. et al. Thermal runaway mechanism of lithium-ion battery with
+LiNi0.8Mn0.1Co0.1O2 cathode materials.Nano Energy 85, (2021).
+11. Wang, Y. et al. Reductive gas manipulation at early self-heating
+stage enables controllable battery thermal failure.Joule 6,
+2810–2820 (2022).
+12. Tran M. K. et al. A Review of Lithium-Ion Battery Thermal Runaway
+Modeling and Diagnosis Approaches.Processes 10, (2022).
+13. Chen, Y. Q. et al. A review of lith ium-ion battery safety concerns:
+The issues, strategies, and testing standards.J. Energy Chem. 59,
+83–99 (2021).
+1 4 . J i a n g ,Z .Y . ,L i ,H .B . ,Q u ,Z .G .&Z h a n g ,J .F .R e c e n tp r o g r e s si n
+lithium-ion battery thermal management for a wide range of tem-
+perature and abuse conditions.Int. J. Hydrog. Energy 47,
+9428–9459 (2022).
+15. Zhang, J. Y. et al. Advanced thermal management system driven by
+phase change materials for power lithium-ion batteries: A review.
+Renew. Sustain. Energy Rev.159, (2022).
+Article https://doi.org/10.1038/s41467-026-76774-z
+Nature Communications Article in Press
+1 6 . L i n ,J .Y . ,L i u ,X .H . ,L i ,S . ,Z h a n g ,C .&Y a n g ,S .C .Ar e v i e wo nr e c e n t
+progress, challenges and perspective of battery thermal manage-
+ment system. International J. Heat Mass Transfer167, (2021).
+17. Tu, Y. D., Wang, R. Z., Zhang, Y. N. & Wang, J. Y. Progress and
+Expectation of Atmospheric Water Harvesting.Joule 2,
+1452–1475 (2018).
+18. Wang, M. L. et al. Towards a better understanding of atmospheric
+water harvesting (AWH) technology.Water Res. 250, (2024).
+19. Chen, W. C. et al. Nighttime Atmospheric Water Harvesting Enabled
+by Solar Prestorage Using a Phase-Change Thermal Storage Sys-
+tem. Adv. Funct. Mater. (2025).
+20. Shi, W., Guan, W. X., Lei, C. X. & Yu, G. H. Sorbents for Atmospheric
+Water Harvesting: From Design Principles to Applications.Ange-
+wandte Chemie-International Edition61, (2022).
+21. Xu, W. T. & Yaghi, O. M. Metal-Organic Frameworks for Water Har-
+vesting from Air, Anywhere, Anytime.Acs Cent. Sci. 6,
+1348–1354 (2020).
+22. Nguyen, H. L. et al. A Porous Covalent Organic Framework with
+Voided Square Grid Topology for Atmospheric Water Harvesting.J.
+Am. Chem. Soc. 142, 2218–2221 (2020).
+23. Chen, B. et al. All-natural, eco-friendly composite foam for highly
+efﬁcient atmospheric water harvesting.Nano Energy 110, (2023).
+24. Ahrestani, Z., Sadeghzadeh, S. & Emrooz, H. B. M. An overview of
+atmospheric water harvesting methods, the inevitable path of the
+future in water supply. Rsc Adv. 13,1 0 2 7 3–10307 (2023).
+25. Xu, J. X. et al. Ultrahigh solar-driven atmospheric water production
+enabled by scalable rapid-cyclingwater harvester with vertically
+aligned nanocomposite sorbent.Energy Environ. Sci. 14,
+5979–5994 (2021).
+26. Lei, C. X. et al. Polyzwitterionic Hydrogels for Efﬁcient Atmospheric
+Water Harvesting.Angewandte Chemie-Int. Ed.61, (2022).
+27. Zhao, F. et al Super Moisture-Absorbent Gels for All-Weather
+Atmospheric Water Harvesting.Adv. Mater. 31,( 2 0 1 9 ) .
+28. Xu, J. X. et al. Ef ﬁcient solar-driven water harvesting from arid air
+with metal-organic frameworks modiﬁed by hygroscopic salt.
+Angew. Chem. -Int. Ed. 59,5 2 0 2–5210 (2020).
+29. Li, R. Y. et al. Hybrid hydrogel with high water vapor harvesting
+capacity for deployable solar-driven atmospheric water generator.
+Environ. Sci. Technol.52, 11367–11377 (2018).
+30. Vartanian, A. Designing desorption. Nat. Rev. Mater. 9,
+680–680 (2024).
+31. Chen, W. C. et al. A functionally asymmetric janus hygro-
+photothermal hybrid for atmospheric water harvesting in arid
+regions. Small 20, (2024).
+32. Hanikel, N. et al. Evolution of water structures in metal-organic
+frameworks for improved atmospheric water harvesting.Science
+374,4 5 4–45 (2021).
+33. Kim, H. et al. Adsorption-based atmospheric water harvesting
+device for arid climates. Nat. Commun. 9,( 2 0 1 8 ) .
+34. Luo, F. et al. High-ef ﬁcient and scalable solar-driven MOF-based
+water collection unit: From module design to concrete imple-
+mentation.C h e m .E n g .J .465,( 2 0 2 3 ) .
+35. Wu, Q. N., Su, W., Li, Q. Q., Tao, Y. L. & Li, H. Q. Enabling Continuous
+and Improved Solar-Driven Atmospheric Water Harvesting with
+Ti3C2-Incorporated Metal-Organic Framework Monoliths.Acs Appl.
+Mater. Interfaces13,3 8 9 0 6–38915 (2021).
+3 6 . H a n i k e l ,N . ,P r é v o t ,M .S .&Y a g h i ,O .M .M O Fw a t e rh a r v e s t e r s .Nat.
+Nanotechnol.15,3 4 8–355 (2020).
+37. Chen, W. C. et al. Enhancing Atmospheric Water Harvesting of MIL-
+101 (Cr) MOF Sorbent with Rapid Desorption Enabled by Ni-Ni3S2
+Photothermal Bridge.Adv. Funct. Mater. 34,( 2 0 2 4 ) .
+38. Xu, J. X. et al. All-in-one hybrid atmospheric water harvesting for all-
+day water production by natural sunlight and radiative cooling.
+Energy Environ. Sci. 17, (2024).
+39. Qi, H. S. et al. An Interfacial Solar-Driven Atmospheric Water Gen-
+erator Based on a Liquid Sorbent with Simultaneous Adsorption-
+Desorption.Advanced Materials31,( 2 0 1 9 ) .
+40. Wang, H. M. et al. Microtubular PEDOT-Coated Bricks for Atmo-
+spheric Water Harvesting.Acs Appl. Mater. Interfaces13,
+34671–34678 (2021).
+4 1 . T a o ,Y .L . ,S u n ,J .F . ,W u ,Q .N . ,Z h u ,D .R .&L i ,H .Q .T u b u l a rm e t a l -
+organic framework membranes enabling exceptional atmospheric
+water harvesting by fast air permeation.Chem. Eng. J. 461,( 2 0 2 3 ) .
+42. Wang, Q., Jiang, B., Li, B. & Yan, Y. Y. A critical review of thermal
+management models and solutions of lithium-ion batteries for the
+development of pure electric vehicles.Renew. Sustain. Energy Rev.
+64,1 0 6–128 (2016).
+43. Hanikel, N. et al. MOF Linker Extension Strategy for Enhanced
+Atmospheric Water Harvesting.Acs Cent. Sci. 9,5 5 1–557 (2023).
+44. Zheng, Z., Hanikel, N., Lyu, H. & Yaghi, O. M. Broadly Tunable
+Atmospheric Water Harvesting in Multivariate Metal–Organic Fra-
+meworks. J. Am. Chem. Soc. 144,2 2 6 6 9–22675 (2022).
+4 5 . L u o ,M .Y . ,L i n ,X .M . ,L i n g ,Z .Y . ,Z h a n g ,Z .G .&F a n g ,X .M .A ne l e c t r i c
+conductive wide-temperatureﬂexible phase change material for
+all-climate battery thermal management.Appl. Thermal Eng.
+256,( 2 0 2 4 ) .
+46. Huang, Y. F. et al. A Novel Room-Temperature Flexible Phase
+Change Material for Solar Energy Photothermal Conversion and
+Battery Thermal Management.Acs Sustain. Chem. Eng. 12,
+4662–4675 (2024).
+4 7 . K h u t i a ,A . ,R a m m e l b e r g ,H .U . ,S c h m i d t ,T .J . ,H e n n i n g e r ,S .K .&
+Janiak, C. Water Sorption Cycle Measurements on Functionalized
+MIL-101Cr for Heat Transformation Application.Chem. Mater. 25,
+790–798 (2013).
+48. Luo, F. et al. Symbiotic defect-reinforced bimetallic MOF-derived
+ﬁber components for solar-assistedatmospheric water collection.
+Water Res. 259, 121872 (2024).
+4 9 . L i u ,C .C .e ta l .P h a s eC h a n g eM a t e r i a l sA p p l i c a t i o ni nB a t t e r y
+Thermal Management System: A Review.Materials 13,( 2 0 2 0 ) .
+50. Wang, Z. Z., He, Y. R., Cheng, G. & Tang, T. Q. Thermal character-
+istics of a ﬂame-retardant composite phase change material for
+battery thermal management.Appl. Thermal Eng. 243, (2024).
+51. Li, Y. J. et al. Flexible phase change composites with multiple colors
+and reversible thermochromic for temperature indication and bat-
+tery thermal management.Composites Sci. Technol.249,( 2 0 2 4 ) .
+52. Li, J. Y. et al. Superhydrophobic multi-shell hollow microsphere
+conﬁned phase change materials for solar photothermal conver-
+sion and energy storage. Appl. Energy 365,( 2 0 2 4 ) .
+53. Verma, A., Shashidhara, S. & Rakshit, D. A comparative study on
+battery thermal management using phase change material (PCM).
+Therm. Sci. Eng. Prog. 11,7 4–83 (2019).
+54. Vélez, C., Khayet, M. & Ortiz de Zárate, J. M. Temperature-
+dependent thermal properties of solid/liquid phase change even-
+numbered n-alkanes: n-Hexadecane, n-octadecane and
+n-eicosane.Appl. Energy 143,3 8 3–394 (2015).
+5 5 . J i a n g ,G .W . ,H u a n g ,J .H . ,F u ,Y .S . ,C a o ,M .&L i u ,M .C .T h e r m a l
+optimization of composite phase change material/expanded gra-
+phite for Li-ion battery thermal management.Appl. Therm. Eng.
+108, 1119–1125 (2016).
+56. Deng, J. et al. Flexible composite phase-change material with shape
+recovery and antileakage properties for battery thermal manage-
+ment. Acs Appl. Energy Mater. 4,1 3 8 9 0–13902 (2021).
+57. Wu, W. X. et al. Role of natural convection and battery arrangement
+for phase change material based battery thermal management unit.
+J. Energy Storage 52, (2022).
+5 8 . J i a ,X .Z . ,Z h a n g ,B . ,C h e n ,C . ,F u ,X .&H u a n g ,Q .I m m o b i l i z a t i o no f
+chitosan grafted carboxylic Zr-MOF to porous starch for sulfanila-
+mide adsorption.Carbohydrate Polym.253, (2021).
+Article https://doi.org/10.1038/s41467-026-76774-z
+Nature Communications Article in Press
+59. Parkerson, Z. J., Le, T., Das, P., Mahmoodi, S. N. & Esfahani, M. R. Cu-
+MOF-Polydopamine-Incorporated Functionalized Nanoﬁltration
+Membranes for Water Treatment: Effect of Surﬁcial Adhesive
+Modiﬁcation Techniques.Acs EsT. Water 1,4 3 0–439 (2021).
+60. Yu, Z. P., Zhang, J. K. & Pan, W. G. A review of battery thermal
+management systems about heat pipe and phase change materials.
+J. Energy Storage 62,( 2 0 2 3 ) .
+61. Pan, M. & Zhong, Y. Experimenta l and numerical investigation of a
+thermal management system for a Li-ion battery pack using cutting
+copper ﬁber sintered skeleton/parafﬁn composite phase change
+materials.Int. J. Heat. Mass Transf. 126,5 3 1–543 (2018).
+62. Sanker, S. B. & Baby, R. Phase change material based thermal
+management of lithium ion batteries: A review on thermal perfor-
+mance of various thermal conductivity enhancers.J. Energy Storage
+50, (2022).
+Acknowledgements
+The authors thank Dr. Wanwan Fu (Wuhan Polytechnic University) for
+assistance with thermal simulation.
+Author contributions
+W. Chen, M. Luo, and Y. Tan conceived the initial research idea. W. Chen,
+L .Y a n ,a n dT .L i a of a b r i c a t e dt h ed e v i c e s .W .C h e n ,W .L i u ,F .L i u ,Z .C h e n ,
+and J. Yao synthesized the MOF and CPCM materials. W. Chen and X.
+Liang performed the characterization. S. K. Ravi, W. Chen, Y. Ke, A.
+Suwardi, and X. Liang contributed to data analysis, interpretation, and
+scientiﬁc discussion. W. Chen and M. Luo performed the heat-transfer
+simulations. Y. Fang, S. Wang, A. C. Y. Yuen, S. C. Tan, and S. K. Ravi
+guided the research. S. K. Ravi supervised the project.
+Funding
+This work was supported by the National Natural Science Foundation of
+China (Grant No. 51536003), the Hong Kong Polytechnic University UGC
+funding (P0044994 and P0052426), and City University of Hong Kong
+(Grant No. 7020100).
+Competing interests
+The authors declare no competing interests.
+Additional information
+Supplementary informationThe online version contains
+supplementary material available at
+https://doi.org/10.1038/s41467-026-76774-z.
+Correspondenceand requests for materials should be addressed to
+Anthony Chun Yin Yuen, Swee Ching Tan or Sai Kishore Ravi.
+Peer review informationNature Communicationsthanks Yanhua Cheng
+and the other anonymous reviewer(s) for their contribution to the peer
+review of this work. A peer review ﬁle is available.
+Reprints and permissions informationis available at
+http://www.nature.com/reprints
+Publisher’s note Springer Nature remains neutral with regard to
+jurisdictional claims in published maps and institutional afﬁliations.
+Open Access This article is licensed under a Creative Commons
+Attribution-NonCommercial-NoDerivatives 4.0 International License,
+which permits any non-commercial use, sharing, distribution and
+reproduction in any medium or format, as long as you give appropriate
+credit to the original author(s) and the source, provide a link to the
+Creative Commons licence, and indicate if you modiﬁed the licensed
+material. You do not have permission under this licence to share adapted
+material derived from this article or parts of it. The images or other third
+party material in this article are included in the article's Creative
+Commons licence, unless indicatedotherwise in a credit line to the
+material. If material is not included in the article's Creative Commons
+licence and your intended use is not permitted by statutory regulation or
+exceeds the permitted use, you will need to obtain permission directly
+from the copyright holder. To view a copy of this licence, visit http://
+creativecommons.org/licenses/by-nc-nd/4.0/.
+© The Author(s) 2026
+This Article in Press is shared early to give you faster access to new
+research. It is citable and carries a permanent DOI. The ﬁnal edited
+version will replace it automatically.
+Article https://doi.org/10.1038/s41467-026-76774-z
+Nature Communications Article in Press
