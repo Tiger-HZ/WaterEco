@@ -783,6 +783,7 @@ function recCard(r){
   const impHtml = imp!=null ? '<span class="imp-star" title="重要性评分">★ '+imp.toFixed(1)+'</span>' : '';
   const q = r.quality||'';
   const full = r.content_fetched ? '<span class="badge b-full">全文</span>' : '';
+  const pdfb = r.pdf ? '<span class="badge b-full">📄 原文PDF</span>' : '';
   const realDate=(r.date||'').slice(0,10);
   const d=effDate(r);
   const futureMark = (realDate && realDate>todayStr()) ? ' <span class="badge b-future" title="文献预发表：原文发表 '+esc(realDate)+'，统计时间以入库日计">预发表</span>' : '';
@@ -795,6 +796,7 @@ function recCard(r){
       ${r.region?`<span class="badge b-region">${esc(r.region)}</span>`:''}
       ${q?`<span class="badge b-q">质量${esc(q)}</span>`:''}
       ${full}
+      ${pdfb}
       ${impHtml}
       <span class="muted" style="margin-left:auto">${esc(d)}</span>${futureMark}
     </div>
@@ -1058,7 +1060,7 @@ function loadDetailStatic(idx){
           <p class="muted" style="font-size:11.5px;margin:6px 0 0">滚轮缩放 · 拖拽平移 · 点击节点查看</p></div>
       </div>
     </div>
-    ${r.pdf?`<div class="sub-card" style="margin-top:14px"><h3 style="font-size:14px;margin:0 0 6px">📄 全文 PDF</h3><a class="pdfbtn" href="${/^https?:/i.test(r.pdf)?esc(r.pdf):(SITE_BASE+esc(r.pdf))}" target="_blank" rel="noopener">⬇ 下载 / 在线阅读全文 PDF</a><p class="muted" style="font-size:11.5px;margin:4px 0 0">学术文献原文 PDF（开放获取），已一并入库</p></div>`:''}
+    ${r.pdf?`<div class="sub-card" style="margin-top:14px"><h3 style="font-size:14px;margin:0 0 6px">📄 原文 PDF</h3><a class="pdfbtn" href="${/^https?:/i.test(r.pdf)?esc(r.pdf):(SITE_BASE+esc(r.pdf))}" target="_blank" rel="noopener">⬇ 在线阅读 / 下载原文 PDF</a><p class="muted" style="font-size:11.5px;margin:4px 0 0">已抓取的标准/法规/规划原文 PDF，随知识库一同入库（离线可用）</p></div>`:''}
     <div class="mmap-card"><h3 style="font-size:13.5px;margin:0 0 8px">思维导图 · 实体与关系</h3>${buildMindMapHtml(r)}</div>`;
   $('#mask').classList.add('on');
   GraphViz.mount('localCanvas', localNodes, localEdges);
@@ -1888,6 +1890,7 @@ function mustCard(r, idx){
   if(r.status) meta.push(esc(r.status));
   if(r.importance) meta.push('★'+Number(r.importance).toFixed(1));
   const note = (r.note && String(r.note).indexOf('待补')>=0) ? '<div class="must-note">⚠ 原文链接待补，当前为官方栏目页</div>' : '';
+  const badges = (r.pdf?'<span class="badge b-full">📄 原文PDF</span>':'') + (r.content_fetched?'<span class="badge b-full">全文</span>':'');
   const url = r.url||'';
   return '<div class="must-item'+pos+'" onclick="openDetail('+JSON.stringify(typeof r.id==='number'?r.id:r.id)+')">'
     + '<div class="must-rank">'+(idx+1)+'</div>'
@@ -1895,6 +1898,7 @@ function mustCard(r, idx){
     +   '<h3>'+(url?'<a href="'+esc(url)+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">'+esc(r.title)+'</a>':esc(r.title))+'</h3>'
     +   '<div class="must-meta">'+(r.content_type?'<span class="badge b-cat">'+esc(r.content_type)+'</span>':'')
     +     (r.region?'<span class="badge b-region">'+esc(r.region)+'</span>':'')
+    +     badges
     +     '<span>'+meta.join(' · ')+'</span></div>'
     +   '<div class="must-sum">'+esc(r.summary||'')+'</div>'
     +   note

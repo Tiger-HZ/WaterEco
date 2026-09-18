@@ -1,0 +1,152 @@
+# 水生态环境知识库 · 大批量采集（一次性 / 手动触发）
+#
+# 与 auto.yml 的分工：
+#   auto.yml  —— 每小时/每日的小批量增量（轻、稳、必须每天跑通）
+#   bulk.yml  —— 需要"一次性灌入大量条目 + 回填历史原文"时手动触发（重、超时放宽）
+#
+# 本次目标（2026-09-18）：单次采集 >= 2000 条；并抓取标准/法规页面的 **PDF 原文**；
+# 同时回填存量知识缺失的原文（此前全库 content_fetched=0%、pdf=0）。
+#
+# 设计要点：每个采集步骤都带 step 级 timeout-minutes + `timeout` 硬限时；
+#          「合并→提交→部署」用 if: always()，任何一步失败都要把已有成果落库并部署。
+name: 大批量采集（手动）
+
+on:
+  workflow_dispatch:
+    inputs:
+      pdf_batch:
+        description: '存量原文回填条数上限（crawl_pdf_attach BATCH）'
+        required: false
+        default: '900'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+  issues: write
+
+concurrency:
+  group: water-eco-collect   # 与 auto.yml 同组，避免互相覆盖 kb/inbox.json
+  cancel-in-progress: false
+
+jobs:
+  bulk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 260
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 安装依赖（含 pypdf，用于抽取原文 PDF 文本）
+        run: pip install --quiet requests beautifulsoup4 pypdf
+
+      # ① 生态环境部水环境标准库：条目 + PDF 原文
+      - name: 采集·标准库与PDF原文
+        timeout-minutes: 20
+        continue-on-error: true
+        env:
+          MAX_PAGES: '12'
+        run: timeout 1080 python3 crawl_std.py || echo "crawl_std failed/timeout, skip"
+
+      # ② 国务院政策文件库（大批量：100+ 检索词；本条只入条目，全文稍后统一回填）
+      - name: 采集·国家政策文件库（批量）
+        timeout-minutes: 45
+        continue-on-error: true
+        env:
+          BULK: '1'
+          FETCH_FULL: '0'
+          GOV_PAGES: '8'
+          FETCH_IMAGES: '0'
+        run: timeout 2400 python3 crawl_gov.py || echo "crawl_gov failed/timeout, skip"
+
+      # ③ 微信公众号（水生态条线）
+      - name: 采集·微信公众号
+        timeout-minutes: 15
+        continue-on-error: true
+        env:
+          PAGES: '10'
+          FETCH_IMAGES: '0'
+        run: timeout 840 python3 crawl_weixin.py || echo "crawl_weixin failed/timeout, skip"
+
+      # ④ 学术开放获取三源
+      - name: 采集·学术开放获取
+        timeout-minutes: 35
+        continue-on-error: true
+        env:
+          PAGES: '20'
+          FETCH_PDF: '1'
+          OA_MAIL: 'water-eco-bot@users.noreply.github.com'
+        run: |
+          timeout 600 python3 crawl_academic.py  || echo "crawl_academic failed/timeout, skip"
+          timeout 900 python3 crawl_crossref.py  || echo "crawl_crossref failed/timeout, skip"
+          timeout 900 python3 crawl_europepmc.py || echo "crawl_europepmc failed/timeout, skip"
+
+      # ⑤ 存量原文回填：给既有条目找 PDF 原文 / HTML 全文（本轮的重点之一）
+      - name: 回填·存量原文（PDF / 全文）
+        timeout-minutes: 55
+        continue-on-error: true
+        env:
+          BATCH: ${{ github.event.inputs.pdf_batch || '900' }}
+          PREFER_PDF: '1'
+        run: timeout 3240 python3 crawl_pdf_attach.py || echo "crawl_pdf_attach failed/timeout, skip"
+
+      # ⑥ 整理入库（always：前面任何一步异常都要把已有成果落库）
+      - name: 合并 / 归一化 / 富化 / 抽全文 / 分片 / 渲染
+        if: always()
+        timeout-minutes: 40
+        run: python3 update.py || echo "update failed, continue to commit what we have"
+
+      - name: 提交并推送
+        if: always()
+        run: |
+          git config user.email "bot@water-eco.local"
+          git config user.name "WaterEco Bot"
+          date +%FT%T%z > last_run.txt
+          git add -A
+          if git diff --cached --quiet; then
+            git commit --allow-empty -m "bulk: 大批量采集无新增 $(date +%F-%H:%M) UTC" && git push
+          else
+            git commit -m "bulk: 大批量采集 $(date +%F-%H:%M) UTC" && git push
+          fi
+
+      - name: 配置 Pages
+        if: always()
+        uses: actions/configure-pages@v5
+
+      - name: 上传站点产物
+        if: always()
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: 部署到 GitHub Pages
+        id: deployment
+        if: always()
+        uses: actions/deploy-pages@v4
+
+      - name: 失败告警
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = '⚠️ WaterEco 大批量采集工作流失败';
+            const body = '大批量采集在 ' + new Date().toISOString() + ' (UTC) 失败。\n'
+                       + '请到 Actions 页查看日志（常见原因：站点限流/改版、超时、仓库体积）。';
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo, state: 'open', per_page: 30
+            });
+            if (!issues.data.find(i => i.title === title)) {
+              await github.rest.issues.create({
+                owner: context.repo.owner, repo: context.repo.repo, title, body
+              });
+            }
