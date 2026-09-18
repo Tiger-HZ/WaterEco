@@ -1,0 +1,341 @@
+npj | clean water Comment
+Published in partnership with King Fahd University of Petroleum & Minerals
+https://doi.org/10.1038/s41545-026-00610-6
+Operational evidence standards for machine
+learning in wastewater treatment
+Siyuan Jiang, Ying Yang, Keqiang Zhang, Yaoru Mao & Xiuwen Cheng
+ Check for updates
+Machine learning studies in water treatment often
+report high retrospective accuracy but rarely show
+whether models can support operational decisions.
+We analyse 423 full-text studies and a bounded six-
+plant wastewater-treatment scenario. Plant
+deployment (2.8%), real-time testing (5.2%), future-
+facing validation (18.2%) and uncertainty reporting
+(8.5%) remain uncommon. We propose an
+operation-aware evidence standard linking sensing
+context, validation timing, uncertainty and control
+role to deployment claims.
+Why operational evidence matters
+Machine learning (ML) is increasingly used to predict water-treatment
+performance, optimise process settings and support monitoring
+decisions1–5. The reported accuracy of these models is often high. In our 423-
+study full-text corpus, 202 studies report R² as the primary metric and the
+median reported R² is 0.97. This number is informative aboutﬁtt oh i s t o r i c a l
+records, but it does not by itself show whether a model can guide an
+operating decision whose outcome is not yet known.
+The operating question is narrower and more demanding than
+retrospective ﬁt. A plant operator deciding how much coagulant to dose,
+whether to investigate a predicted permit exceedance, or whether to allow
+an ML output into a control loop must act on measurements available
+before the response is observed. A model can interpolate within a curated
+dataset while remaining operationally uninformative when sensors are
+sparse, process states are partly observed, compliance-relevant outputs
+are delayed or future data leak into validation; benchmark-simulation
+and digital-twin studies can help de ﬁne operating settings, but they still
+require clear reporting of what information is available before a plant
+decision is made 6–11. In regulated wastewater settings, these distinctions
+matter because ML-assisted actions may affect compliance and safety
+responsibilities12–15.
+Here we examine whether the evidence reported in water-treatment
+ML matches this operational decisioncontext. We combine two empirical
+components. First, a 423-study evidence map quantiﬁes how often studies
+report deployment-relevant evidence practices. Second, a six-plant waste-
+water-treatment scenario tests a bou nded routine-monitoring question
+under forward-looking validation. We use these results to formulate an
+operation-aware evidence standard that links model claims to sensing
+context, validation timi ng, uncertainty and control role. The six-plant
+scenario is used as an illustration of evidence requirements, not as a general
+benchmark for all water-treatment ML.
+What the literature reports
+T h el i t e r a t u r ee v i d e n c em a ps h o w sal arge gap between accuracy reporting
+and operation-facing evidence. In the 423-study corpus, plant deployment is
+reported in only 12 studies (2.8%, Wilson 95% CI 1.6-4.9%), real-time
+testing with live plant data in 5.2%, and uncertainty quantiﬁcation in 8.5%.
+Future-facing validation, deﬁned as temporal split, walk-forward or external
+validation, appears in 18.2%. Public code (7.3%) and public data (13.2%) are
+also uncommon, limiting independent retesting of most claims (Fig.1). The
+ﬁeld has grown from 14 papers in 2018 to 104 in 2023, and artiﬁcial neural
+networks appear in 68.6% of studies, but the evidence practices needed for
+operation remain much less frequently reported.
+The low deployment rate is not driven by a single document type or
+journal subset. Restricting to journal articles gives a 3.2% deployment rate, a
+core-water-journal subset gives 2.2%, and the high-impact subset contains
+no deployed studies at all (Tables S11 and S12). All 12 deployment labels in
+the analysis corpus were checked by full-text manual review. These ﬁlters
+and checks do not establish prevalence beyond the screened corpus, but they
+show that the operational-evidence gap is not a simple artefact of
+conference-like records or lower-visibility venues.
+We therefore treat the evidence-map indicators as separate descriptive
+ﬁelds rather than as a composite score. Plant deployment is an outcome, not
+a component of an index used to explain deployment. R²-tier deployment
+counts are reported descriptively , and we do not infer an association
+between retrospective accuracy and deployment from the small number of
+deployed studies. Keeping deployment, validation timing, uncertainty, code
+availability, and data availability separate is what makes the missing evi-
+dence visible.
+A bounded six-plant operational test
+The plant analysis asks a deliberately constrained question: using only
+routine in ﬂuent chemistry available before ef ﬂuent feedback, how well
+can the next compliance-relevant efﬂuent value be predicted? The dataset
+contains six anonymised operating wastewater treatment plants (6006
+timestamped records, 8 to 13 routinely monitored in ﬂuent variables per
+plant and compliance-critical ef ﬂuent targets including COD, NH ₃-N,
+TN, TP and TSS where available). Records sharing a timestamp were kept
+within the same partition, and ridge regression, random forest and his-
+togram gradient boosting were evaluated under random cross-validation
+and walk-forward evaluation against mean, persistence and lagged-
+efﬂuent baselines.
+Across 29 plant-target tasks, th e median feedforward R² was 0.063
+under random cross-validation and 0.029 under walk-forward evaluation.
+At the plant level, the best feedforward random-CV mean R² was 0.396 and
+the weakest was −0.098; under walk-forward evaluation, ﬁve plants
+npj Clean Water | (2026) 9:55 1
+1234567890():,;
+1234567890():,;
+remained near zero and the strongest plant mean was 0.099. The median
+walk-forward R² values were −0.024 for the mean baseline, -0.960 for
+persistence and 0.031 for in ﬂuent plus lagged ef ﬂuent (Fig. 2). A daily
+residence-time lag scan from 0 to 3 days did not raise the in ﬂuent-only
+result, and efﬂuent coefﬁcients of variation reached about 105% in one plant,
+indicating that the weak scores were not simply caused by a nearly constant
+target (Tables S13-S15).
+This result should be interpreted within its stated operating scenario. It
+does not show that richer sensor sui tes, mechanistic features, online
+ammonia or dissolved oxygen histories,o ra c t u a t o rh i s t o r i e sw o u l df a i li n
+the same way. It shows that when the sensing context is restricted to routine
+inﬂuent chemistry and validation is prospective, the evidence needed for an
+operational claim is different from the evidence supplied by retrospective
+ﬁtting alone.
+Fig. 1 | Published evidence map for water-treatment ML. a Distribution of
+reported R² across seven sub- ﬁelds (corpus median R² = 0.97, n = 202). b Annual
+publication trends by sub- ﬁeld. c Algorithm-usage heatmap (percentage of studies
+per sub-ﬁeld). d Adoption of deployment-relevant evidence practices in the 423-
+study corpus. e Plant-deployment counts and rates by reported-R² tier with Wilson
+95% conﬁdence intervals; tier comparisons are descriptive only and not used for
+association inference. WWTP, wastewater treatment plant; UQ, uncertainty
+quantiﬁcation.
+npj | clean water Comment
+npj Clean Water | (2026) 9:55 2
+Fig. 2 | Bounded six-plant operational illustration under routine monitoring.
+Plants are anonymised (Plant 1-6) with relative time. a Dataset overview; bars show
+complete timestamped records and labels the number of routine inﬂuent predictors.
+b Feedforward inﬂuent-only R² by plant under random cross-validation versus date-
+based walk-forward evaluation. c Walk-forward distributions across 29 plant-target
+tasks for mean, persistence, feedforward ML and in ﬂuent-plus-lagged-efﬂuent ML.
+d Per-target feedforward walk-forward R² heatmap. e Efﬂuent coefﬁcient of varia-
+tion per plant. f Per-target random-CV versus walk-forward R²; points below the
+diagonal indicate weaker future-facing performance.
+npj | clean water Comment
+npj Clean Water | (2026) 9:55 3
+An operation-aware evidence standard
+T h ee v i d e n c em a pa n dt h ep l a n ts c enario point to the same practical
+requirement: accuracy metrics need to be accompanied by evidence that
+matches the intended operating role. We de ﬁne an operation-aware evi-
+dence standard as a minimum set of disclosures that states what a model is
+for, what information it can see at the decision point, how it was validated in
+time, how uncertainty is reported, and what happens if the output is
+acted upon.
+The standard has four core axes. Sensing context labels each predictor
+as a feedforward variable available before the decision, a feedback variable
+observed after the response, an actuator history, a laboratory measurement,
+a simulated variable or an external covariate. Validation timing asks whether
+testing is random, temporal, walk-forward, or external. Uncertainty asks
+whether prediction intervals, calibration or abstention rules are reported.
+Control role and risk ask whether the output is used for of ﬂine analysis,
+shadow testing, advisory decisions, supervised autonomy or closed-loop
+control. For compliance-relevant efﬂuent prediction, the minimum evi-
+dence should include a future-facing validation design and uncertainty
+intervals. For advisory dosing, authors should report reversibility, operator
+review and comparison with the relevant conventional rule. For closed-loop
+control, the evidence should include safety constraints, fail-safe logic and
+comparison with a conventional or mechanistic baseline16–20.
+T h es a m ea x e ss u p p o r ts t a g e dd e p l oyment, recognising practical
+constraints on AI use in wastewater treatment21. In shadow mode a model
+runs beside existing operations with out affecting decisions; in advisory
+mode operators review predictions and retain authority; in supervised
+autonomy the model can execute bounded actions under oversight and fail-
+safe rules; and fully autonomous operation should be reserved for cases with
+future-facing validation, uncertainty calibration, operational monitoring
+and documented control constraints22,23. For weakly observed or high-risk
+processes, advisory deployment may b e the appropriate endpoint rather
+than a transition to full autonomy (Fig.3).
+Implications and limitations
+This study reframes the evidence problem in water-treatment ML. The issue
+is not that retrospective accuracy is useless; it is that retrospective accuracy
+answers a different question from operational use. The literature evidence
+map shows that deployment-relevant reporting remains uncommon, while
+the plant scenario shows how a modelclaim changes when sensing context
+and validation timing are made explicit. Together, these results support a
+reporting standard rather than a single universal performance threshold.
+For authors, the standard provides away to align model claims with the
+evidence actually collected. For utili ties, it separates low-risk shadow or
+advisory use from higher-risk control applications. For reviewers and reg-
+ulators, it identiﬁes the disclosures needed before an ML-assisted decision
+affects compliance-relevant operations. Physics-informed and hybrid ML
+can ﬁt naturally into this standard when physical constraints are tested and
+reported as evidence, rather than used only as labels; in our corpus, only 47
+of 423 studies (11.1%) mention such concepts.
+Several limitations bound the conclusions. The 423-study corpus is a
+screened full-text corpus from 2018 to 2025, not a census of every water-
+treatment ML paper. The extraction workﬂow used LLM-assisted coding
+followed by validation and manual checks, so rare or ambiguous reporting
+practices may still be missed. Deployment counts are small and are used
+Fig. 3 | Operation-aware evidence standard for water-treatment ML. a Reporting
+ﬁrst identiﬁes the sensing context and the application suitability that follows from
+sensing richness and control risk. b Staged deployment progresses from shadow to
+advisory mode, supervised autonomy and, only where appropriate, bounded
+autonomous operation, with evidence requirements rising at each stage.
+npj | clean water Comment
+npj Clean Water | (2026) 9:55 4
+descriptively only. The six-plant records are anonymised and raw data
+cannot be released because of utility con ﬁdentiality; public veriﬁcation is
+therefore based on derived outputs. The plant scenario tests one routine-
+monitoring feedforward task and sh ould not be generalised to richer
+instrumentation, different targets or m echanistically constrained control
+designs.
+The constructive implication is straightforward. Studies should report
+the intended operating role, the senso rs available at decision time, the
+validation design, uncertainty behaviour and control interface. Utilities can
+use shadow and advisory modes to t est models without surrendering
+authority. The ﬁeld does not need to replace accuracy metrics; it needs to
+pair them with evidence that matches the decision being claimed.
+How the evidence was assembled
+Literature evidence map. The literature analysis used a 500-record source
+extraction pool and a 423-study full-text analysis corpus covering
+2018–2025. Records were screened for water-treatment ML relevance and
+coded for sub-ﬁeld, model family, data source, validation method, reported
+performance metric, deployment evidence, real-time testing, uncertainty
+quantiﬁcation, interpretability, code availability and data availability. The
+primary manuscript numbers are taken from the project truth tables
+generated from these coded records.
+Extraction reliability was evaluated against a 50-paper gold-standard
+subset. In that benchmark, boolean- ﬁeld mean accuracy was 0.973,
+categorical-ﬁeld mean accuracy was 0.89 and macro F1 was 0.849.
+Deployment labels were treated as load-bearingﬁelds: all positive deploy-
+ment labels in the 423-study corpus were checked by full-text manual
+review. Robustness analyses repeated the main deployment and reporting
+summaries after restricting to journal a rticles, excluding conference-like
+records, restricting to core water journals and considering a high-impact-
+journal subset.
+Six-plant operational scenario. The plant analysis used derived records
+from six anonymised wastewater treatment plants. Plants were labelled
+1–6, real dates were replaced by relative time and raw records were not
+released. The modelling table contained 6006 complete timestamped
+records. Each plant had 8 –13 routinely monitored inﬂuent variables and
+up to ﬁve compliance-relevant efﬂuent targets, depending on availability.
+The feedforward scenario used only routine in ﬂuent chemistry available
+before efﬂuent feedback was observed.
+For each plant-target task, ridge regression, random forest, and his-
+togram gradient boosting were compared with mean, persistence, and
+inﬂuent-plus-lagged-efﬂuent baselines. Random cross-validation and walk-
+forward evaluation used the same date -based split logic so that records
+sharing a timestamp could not straddle training and test partitions. Walk-
+forward folds retrained on past date blocks withﬁxed hyperparameters and
+no tuning on the future test block. Model skill was summarised as R², with
+negative values retained because they indicate performance worse than the
+relevant baseline.
+Supporting Information reports the s creening, extraction, reliability
+and modelling details, including the robustness summaries in Tables
+S11 and S12, the six-plant residence-time and variability checks in Tables
+S13–S15, and the staged evidence framework in Table S16. Public data and
+code are provided through Zenodo as described below.
+Data availability
+The literature corpus, manual-review records, extraction prompts, LLM
+benchmark summaries, ﬁgure source data and anonymised six-plant
+derived outputs are available at Zenodo: https://doi.org/10.5281/zenodo.
+20604112.
+Code availability
+All analysis, validation and ﬁgure-generation scripts needed to reproduce
+the public results are available in the Zenodo package athttps://doi.org/10.
+5281/zenodo.20604112and in the project repository. The released scripts
+include corpus cleaning, extraction reliability checks, manual-review sum-
+maries, six-plant derived-output analysis, ﬁgure generation, manuscript
+validation and submission-package preparation.
+Siyuan Jiang1,Y i n gY a n g1, Keqiang Zhang1, Yaoru Mao1&X i u w e nC h e n g1
+Key Laboratory for Environmental Pollution Prediction and Control, Gansu
+Province, College of Earth and Environmental Sciences, Lanzhou
+University, Lanzhou, China. e-mail: chengxw@lzu.edu.cn
+Received: 9 June 2026; Accepted: 10 July 2026;
+References
+1. Newhart, K. B. et al. Data-driven performance analyses of wastewater treatment plants: a
+review. Water. Res. 157, 498– 513 (2019).
+2. Alvi, M. et al. Deep learning in wastewater treatment: a critical review. Water Res. 245, 120518
+(2023).
+3. Zhi, W., Appling, A. P., Golden, H. E., Podgorski, J. & Li, L. Deep learning for water quality. Nat.
+Water. 2, 228– 241 (2024).
+4. Safeer, S. et al. A review of arti ﬁcial intelligence in water puriﬁcation and wastewater treatment:
+recent advancements. J. Water. Process Eng. 49, 102974 (2022).
+5. Huang, R., Ma, C., Ma, J., Huangfu, X. & He, Q. Machine learning in natural and engineered water
+systems. Water. Res. 205, 117666 (2021).
+6. Quiñonero-Candela, J., Sugiyama, M., Schwaighofer, A. & Lawrence, N. D. Dataset Shift in
+Machine Learning (MIT Press, 2009).
+7. Alex, J. et al. Benchmark Simulation Model no.1 BSM1 (Lund University, 2008).
+8. Paleyes, A., Urma, R.-G. & Lawrence, N. D. Challenges in deploying machine learning: a survey
+of case studies. ACM Comput. Surv. 55,1 – 29 (2022).
+9. Wang, A. J. et al. Digital twins for wastewater treatment: a technical review. Engineering 36,
+21– 35 (2024).
+10. Rudin, C. Stop explaining black box machine learning models for high stakes decisions and use
+interpretable models instead. Nat. Mach. Intell. 1, 206– 215 (2019).
+11. Roberts, D. R. et al. Cross-validation strategies for data with temporal, spatial, hierarchical, or
+phylogenetic structure. Ecography 40, 913– 929 (2017).
+12. Federal Water Pollution Control Act, 33 U.S.C. §1251 et seq. (1972).
+13. Council Directive 91/271/EEC of 21 May 1991 concerning urban waste water treatment. Off. J.
+Eur. Communities L135, 40-52 (1991).
+14. Directive (EU) 2024/3019 of the European Parliament and of the Council of 27 November 2024
+concerning urban wastewater treatment (recast). Off. J. Eur. Union L 2024/3019 (2024).
+15. Amodei, D. et al. Concrete problems in AI safety. Preprint at https://doi.org/10.48550/arXiv.
+1606.06565 (2016).
+16. Bratby, J. Coagulation and Flocculation in Water and Wastewater Treatment (IWA Publishing,
+2006).
+17. Sutton, R. S. & Barto, A. G. Reinforcement learning: an introduction 2nd edn (MIT Press, 2018).
+18. Camacho, E. F. & Bordons, C. Model Predictive Control 2nd edn (Springer, 2007).
+19. Salvato, E., Fenu, G., Medvet, E. & Pellegrino, F. A. Crossing the reality gap: a survey on sim-to-
+real transferability of robot controllers in reinforcement learning. IEEE Access 9,
+153171– 153187 (2021).
+20. Metcalf & Eddy, AECOM. Wastewater Engineering: Treatment and Resource Recovery 5th edn
+(McGraw-Hill Education, 2014).
+21. Capodaglio, A. G. & Callegari, A. Use, potential, needs, and limits of AI in wastewater treatment
+applications. Water. 17, 170. https://doi.org/10.3390/w17020170
+22. Mankins, J. C. Technology Readiness Levels: A White Paper (NASA Ofﬁce of Space Access and
+Technology, 1995).
+23. SAE International. Taxonomy and De ﬁnitions for Terms Related to Driving Automation Systems
+for On-Road Motor Vehicles J3016_202104 (SAE International, 2021). https://doi.org/10.4271/
+J3016_202104
+Acknowledgements
+This study was supported by the Key Research and Development Program Project of Gansu Province
+(25YFFA003), Youth Science and Technology Talent Innovation Project of Lanzhou City (2023-QN-
+80), Gansu Provincial Youth Science and Technology Fund Project (26JRRA223) and the
+Fundamental Research Funds for the Central Universities (lzujbky-2023-ey14, lzujbky-2025-pd09).
+npj | clean water Comment
+npj Clean Water | (2026) 9:55 5
+Author contributions
+S.J. conceived the study, curated the literature corpus, performed the analysis, generatedﬁgures and
+drafted the manuscript. Y.Y. contributed to study design, literature interpretation and manuscript
+revision. K.Z. contributed to data curation, validation checks and interpretation of the operational
+evidence framework. Y.M. contributed to literature screening, data checking and manuscript review.
+X.C. supervised the study, secured funding, guided interpretation and revised the manuscript.
+Competing interests
+The authors declare no competing interests.
+Additional information
+Supplementary informationThe online version contains supplementary material available at
+https://doi.org/10.1038/s41545-026-00610-6.
+Correspondence and requests for materials should be addressed to Xiuwen Cheng.
+Reprints and permissions informationis available at
+http://www.nature.com/reprints
+Publisher’sn o t eSpringer Nature remains neutral with regard to jurisdictional claims in published
+maps and institutional afﬁliations.
+Open Access This article is licensed under a Creative Commons Attribution-NonCommercial-
+NoDerivatives 4.0 International License, which permits any non-commercial use, sharing,
+distribution and reproduction in any medium or format, as long as you give appropriate credit to the
+original author(s) and the source, provide a link to the Creative Commons licence, and indicate if you
+modiﬁed the licensed material. You do not have permission under this licence to share adapted
+material derived from this article or parts of it. The images or other third party material in this article
+are included in the article’s Creative Commons licence, unless indicated otherwise in a credit line to
+the material. If material is not included in the article’s Creative Commons licence and your intended
+use is not permitted by statutory regulation or exceeds the permitted use, you will need to obtain
+permission directly from the copyright holder. To view a copy of this licence, visit http://
+creativecommons.org/licenses/by-nc-nd/4.0/.
+© The Author(s) 2026
+npj | clean water Comment
+npj Clean Water | (2026) 9:55 6
