@@ -1,0 +1,1453 @@
+AUTOMORPHISMS OF THE PANTS GRAPH OF A NONORIENTABLE
+SURFACE
+MICHA L STUKOW AND B LA˙ZEJ SZEPIETOWSKI
+Abstract. We prove that, except in certain low-complexity cases, the automorphism group
+of the graph of pants decompositions of a nonorientable surface is isomorphic to the mapping
+class group of that surface.
+1. Introduction
+Let S be a compact surface, possibly nonorientable and with boundary. We define the
+mapping class group Mod(S) of S to be the group of isotopy classes of all homeomorphisms
+ofS. If S is orientable then Mod( S) is usually called the extended mapping class group and
+we denote by Mod+(S) the subgroup of Mod(S) consisting of orientation preserving mapping
+classes.
+A connected orientable (resp. nonorientable) surface of genus g with b boundary compo-
+nents will be denoted by Sg,b (resp. Ng,b). If b = 0 we drop it from the notation. Note that
+Ng,b is obtained fromS0,g+b by gluingg M¨ obius bands (also called crosscaps) alongg distinct
+boundary components of S0,g+b.
+One of the most important breakthroughs in the study of mapping class groups Mod+(Sg,b)
+of oriented surfaces was the introduction of the so-called cut-system complex by Hatcher and
+Thurston in [7]. They proved that this 2-dimensional complex is connected and simply-
+connected. Moreover, the action of Mod +(Sg,b) on cut-system complex is cocompact, so the
+full finite presentation of Mod +(Sg) can be derived from the presentations of the stabilizers
+of vertices and edges. This program was initiated by Hatcher and Thurston in [7], completed
+by Harer [4], and later greatly simplified by Wajnryb [16, 17] – see [17] for more details.
+1.1. The pants complex. In Appendix of [7] Hatcher and Thurston introduced another
+important concept – the graphP1(Sg,b) of maximal cut systems of an oriented surface. The
+vertices of this graph are pants decompositions of Sg,b and edges correspond to two types of
+elementary moves (see Section 3). Later, Hatcher, Lochak and Schneps [5, 6] proved that
+P1(Sg,b) is connected and added five types of 2-dimensional cells to turn the graph P1(Sg,b)
+into 2-dimensional complexP(Sg,b) and they proved thatP(Sg,b) is simply-connected. This
+complex is now called the pants complex of Sg,b.
+There are a number of interesting results concerningP(Sg,b). Brock [3] proved thatP1(Sg,b)
+is quasi-isometric to Teichm¨ uller space with the Weil-Petersson metric. Margalit [12] proved
+the following characterization of Aut(P(Sg,b)).
+Theorem 1.1. The natural map θ : Mod(Sg,b) → Aut(P(Sg,b)) is surjective. Moreover,
+kerθ ∼= Z2 for S ∈ {S1,1,S 1,2,S 2}, kerθ ∼= Z2⊕ Z2 for S = S0,4, kerθ = Mod(S) for
+S =S0,3, and kerθ is trivial otherwise.
+Key words and phrases. Mapping class group, nonorientable surface, pants decomposition, curve complex.
+1
+arXiv:2507.12613v1 [math.GT] 16 Jul 2025
+2 MICHA L STUKOW AND B LA ˙ZEJ SZEPIETOWSKI
+Later, this result was extended by Aramayona [1] to injective simplicial and locally-
+injective simplicial maps ofP(S).
+The proof of Theorem 1.1 is based on a similar result for another simplicial complex asso-
+ciated to a surface, namely the curve complex Curv(S). The vertices of Curv(S) correspond
+to homotopy classes of nontrivial simple closed curves in S, and k-simplexes correspond to
+sets of k + 1 vertices that may be represented as a multicurve in S – see Section 2 for a
+proper definition. One of the fundamental properties of Curv( S) is the following
+Theorem 1.2 (Ivanov [8], Korkmaz [9], Luo [10]) . If S̸=S0,3 is an orientable surface with
+χ(N)< 0 and η : Mod(S)→ Aut(Curv(S)) is the natural map, then
+(1) η is surjective when S̸= S1,2 and imθ is a proper subgroup of Aut(Curv(S)) that
+preserves the set of nonseparating curves for S =S1,2.
+(2) kerη∼= Z2⊕ Z2 for S = S0,4, kerη∼= Z2 for S∈{ S1,1,S 1,2,S 2}, and kerη is trivial
+otherwise.
+In contrast to the orientable case, much less is known about the pants complex of a nonori-
+entable surface. The most significant result to date is due to Papadopoulos and Penner [13],
+who introduced two new elementary moves between pants decompositions of a nonorientable
+surface (see Section 3) and proved that the resulting pants graph P(Ng,b) is connected.
+1.2. The main theorems. The main goal of this paper is to extend Theorem 1.1 to the
+case of a nonorientable surface (Theorem 1.4). However, as a first step we need the following
+nonorientable version of Theorem 1.2.
+Theorem 1.3. IfN is a nonorientable surface withχ(N)< 0 andη : Mod(N)→ Aut(Curv(N))
+is the natural map, then
+(1) η is surjective;
+(2) kerη∼= Z2⊕ Z2 for N = N1,2, kerη∼= Z2 for N∈{ N2,1,N 3}, and kerη is trivial
+otherwise.
+The above theorem was proved by Atalan and Korkmaz [2] for nonorientable surfacesNg,b
+withg+b̸= 4, the caseN =N1,3 was settled in [15], and the proof for the remaining surfaces
+N∈{N2,2,N 3,1,N 4,0} is given in the present article (Theorem 9.1).
+The following theorem is the main result of this paper.
+Theorem 1.4. IfN is a nonorientable surface withχ(N)< 0 andθ : Mod(N)→ Aut(P(N))
+is the natural map, then
+(1) θ is surjective;
+(2) kerθ = kerη, where η : Mod(N)→ Aut(Curv(N)) is the map from Theorem 1.3.
+As an immediate corollary, we get
+Corollary 1.5. If N =Ng,b is a nonorientable surface with χ(N)< 0, then
+(1) Aut(P(N))∼= Aut(Curv(N)),
+(2) Aut(P(N))∼= Aut(Curv(N))∼= Mod(N), for g +b≥ 4.
+We also prove that if two nonorientable surfaces have isomorphic pants graphs, then they
+are homeomorphic – see Theorem 8.4. Finally, we show that it is enough to add 3 types
+of 2-dimensional cells (two types of triangles and one type of pentagonal cells) to P(N3) to
+obtain a connected and simply-connected complex P(N3)⊃P (N3) – see Theorem 10.15.
+AUTOMORPHISMS OF THE PANTS GRAPH 3
+1.3. Comparison with the case of an orientable surface. Our proof of Theorem 1.4
+has a similar structure as the proof of Theorem 1.1 in [12] however, there are some important
+differences.
+If S is an oriented surface, then to each edge of P(S) there is an associated Farey graph
+and these graphs are the main tool to control the action of elements of Aut( P(S)). If N
+is nonorientable, then the situation is more complicated, because there are different kinds
+of subgraphs associated to edges in P(N) – see Proposition 4.23. What is more, there are
+edges inP(N) that are not contained in any triangle – see Example 4.12.
+Another new phenomena in a nonorientable case is the fact that two pants decompositions
+of the same surface can have a different number of components (see for example Figure 1).
+The existence of moves of type 4 (Figure 2) implies that ifN has a pants decomposition with
+p≥ 2 one-sided and q two-sided curves, then N has also a pants decomposition with p− 2
+one-sided and q + 1 two-sided curves. This significantly complicates the notion of 2-tight
+paths inP(N) (corresponding to the notion of 2-curve small paths in [12]) – see Definition
+5.5.
+Finally, in an oriented case, the pants graph P1(S) is embedded in a simply-connected
+pants complexP(S) and we have a short list of types of 2-cells in that complex. It turns out
+that these 2-dimensional cells play a crucial role in the proof of Theorem 1.1. On the other
+hand, if N is nonorientable, then we only have a connected graph P(N) =P1(N) and the
+full list of types of 2-dimensional cells are yet to be discovered. In fact, in the present paper
+we discovered three interesting 2-cells: pentagon in N3, tame alternating hexagon inP(N1,3)
+and standard heptagon in P(N2,2) – see Figures 16, 9 and 8. We expect that this kind of
+cells will be crucial in constructing the 2-dimensional structure of P(N), but we leave this
+for future considerations.
+1.4. Outline of the paper. In Section 3 we review the definition of the pants graph P(N)
+of a nonorientable surface N =Ng,b. We also identify this graph for surfaces of some small
+values ofg andb. In Section 4 we identify the subgraphs of P(N) corresponding to edges of
+P(N) (Remark 4.7). Then we classify the triangles in P(N) (Proposition 4.9) and we prove
+the abstract characterization of moves (Proposition 4.23). In Section 5 we study properties of
+short loops (circuits) inP(N) and we introduce the circuit corresponding to 2-cell inP(N2,2)
+(standard heptagon). The analysis of short circuits is continued in Section 6 and we prove
+that (in most cases) every edge ofP(N) can be extended to a short circuit with some special
+properties (Proposition 6.4). This construction is a crucial step towards the proof that there
+is a well-defined correspondence between Aut( P(N)) and Aut(Curv( N)) – we prove this
+in Section 7, Theorem 7.5. In the same section, we finish the proof of our main Theorem
+1.4. In Section 8 we prove that if two nonorientable surfaces have isomorphic pants graphs,
+then they are homeomorphic (Theorem 8.4). Section 9 contains the proof of Theorem 1.3 if
+g +b = 4 (Theorem 9.1). Finally, in Section 10 we focus on the case N =N3. We describe
+the structure of P(N) and construct an abstract graph isomorphic to it. Additionally, we
+define a simply-connected 2-dimensional complexP(N), whose 1-skeleton isP(N), and such
+that Aut(P(N)) = Aut(P(N)) (Theorem 10.15).
+4 MICHA L STUKOW AND B LA ˙ZEJ SZEPIETOWSKI
+2. Preliminaries
+Let S be a connected compact surface of negative Euler characteristic. Recall that
+χ(Sg,b) = 2− 2g−b, whereas χ(Ng,b) = 2−g−b. A non-trivial curve on S is an embedded
+simple closed curve which does not bound a disc nor a M¨ obius band in S and which is not
+homotopic to a boundary component of S. By a curve we always understand a non-trivial
+curve. A curve is either two- or one-sided depending on whether its regular neighbourhood
+is an annulus or a M¨ obius band respectively. To simplify the notation, we identify a curve
+with its isotopy class. We denote by i(α,β ) the geometric intersection number of two curves
+α,β . If i(α,β ) = 0 and α̸=β, then we say that α and β are disjoint.
+A (finite) set of pairwise disjoint curves on S is called a multicurve. For a multicurve X
+we denote by X+ (resp. X−) the set of two-sided (resp. one-sided) curves of X, and by|X|
+the number of curves in X.
+The curve complex Curv(S) is a simplicial complex whose k-simplices are multicurves of
+cardinalityk + 1 on S. The k-skeleton of Curv(S) is denoted by Curvk(S).
+IfS =S0,4 orS =S1,1, the definition of Curv(S) is modified by declaring α,β ∈ Curv0(S)
+to be adjacent in Curv( S) whenever i(α,β ) = 2 or i(α,β ) = 1 respectively. The resulting
+connected graph is isomorphic to the Farey graph – see Section 3 of [11]. For the description
+of Curv(N) for nonorientable surfaces of small complexity see [14].
+For a multicurveX on S we denote by SX the surface obtained by cutting S along X. A
+component of SX is trivial if it is homeomorphic to S0,3. A pants decomposition of S is a
+multicurveX such that all components of SX are trivial. Note that a pants decomposition
+is a maximal multicurve.
+Any pants decomposition of an orientable surface Sg,b consists of 3g +b− 3 curves. The
+number of curves in a pants decomposition of a nonorientable surface Ng,b varies. For any
+integerm such that 0≤m≤g and m≡g (mod 2) there is a pants decoposition of Ng,b of
+cardinality
+3g +m
+2 +b− 3
+containing exactly m one-sided curves – see Figure 1 (the shaded disks represent crosscaps,
+hence their interiors are to be removed and then the antipodal points on each boundary
+component are to be identified).
+4 4
+Figure 1. Pants decompositions of N4 with different cardinalities.
+3. The pants graph
+3.1. Definition and connectivity. Let N be a nonorienatble surface with χ(N)< 0. We
+denote byP0(N) the set of all pants decompositions of N. The pants graph of N, denoted
+byP(N) is a graph whose vertex set is P0(N) and whose edges correspond to elementary
+moves between pants decompositions. An elementary move is an operation of replacing
+AUTOMORPHISMS OF THE PANTS GRAPH 5
+one curve α of a pants decomposition X either by a curve β, or by a pair of disjoint one-
+sided curves{β1,β 2} to obtain a different pants decomposition Y . There are four types of
+elementary move depending on the nontrvial component of NX\{α} called the support of the
+move. The intersection numbers of the involved curves are given in the following table (see
+also Figure 2).
+Type Support Notation Curves Intersection
+1 S1,1 α−−1 β α∈X+, β∈Y + i(α,β ) = 1
+2 S0,4 α−−2 β α∈X+, β∈Y + i(α,β ) = 2
+3 N1,2 α−−3 β α∈X−, β∈Y− i(α,β ) = 1
+4 N2,1 α−→4 {β1,β 2} α∈X+,{β1,β 2}⊆ Y− i(α,β 1) =i(α,β 2) = 1
+1 2
+3 4
+Figure 2. The four elementary moves between pants decompositions.
+A move a type 4 has a natural direction towards the pants decomposition of bigger car-
+dinality, which we indicate by an arrow. For the sake of symmetry, the inverse of such a
+move, replacing a pair of disjoint one-sided curves by a single two-sided curve, will also be
+considered a move of type 4.
+The pants graph of an orientable surface is defined analogously, using only moves of type 1
+and 2 coming from the seminal paper [7]. Moves of type 3 and 4, supported on nonorientable
+surfaces and involving one-sided curves, were introduced by Papadopoulos and Penner [13]
+who proved the following fundamental result.
+Theorem 3.1 ([13]). For every nonorientable surface N with χ(N) < 0 the pants graph
+P(N) is connected.
+3.2. Notation for edges. We denote by XY an edge of P(N) (elementary move) joining
+verticesX and Y . We also write
+X−−i Y or XY : α−−i β or α−−i β
+to denote a move of typei replacingα∈X byβ∈Y . The type of the move may be dropped
+if it is arbitrary or unknown. A move a type 4, changing the number of curves in a pants
+decomposition, has a natural direction towards the vertex of bigger cardinality, which we
+indicate by an arrow
+X−→4 Y or XY : α−→4 {β1,β 2} or α−→4 {β1,β 2}.
+6 MICHA L STUKOW AND B LA ˙ZEJ SZEPIETOWSKI
+Unless explicitly stated otherwise, letters of the Greek alphabet denote curves. An underlined
+Greek letter, e.g. α, denotes either a curve, or a multicurve consisting of two one-sided curves.
+For example
+XY : α−−α′
+denotes a move replacing a curveα byα′, which is either a single curve, or a pair of one-sided
+curves. In the latter case XY is a move of type 4 directed from X to Y .
+3.3. Pants graph of S0,4, S1,1, N1,2 and N2,1. The graphs P(S0,4) and P(S1,1) are the
+same as the curve complexes of these surfaces and are isomorphic to the Farey graph – see
+Section 3 of [11].
+Proposition 3.2 (Pants graph of N1,2, [13]). The graph P(N1,2) consists of two vertices,
+corresponding to two one-sided curves, joined by an edge of type 3.
+Definition 3.3 (Infinite fan). The infinite fan F∞ is the graph with vertex set{v}∪{vi}i∈Z
+and edge set set{vvi,vivi+1}i∈Z. The vertex v is called the centre of F∞.
+Proposition 3.4 (Pants graph ofN2,1, [13]). The graphP(N2,1) is isomorphic to F∞. Every
+isomorphism F∞→P (N2,1) maps the centre of F∞ to the pants decomposition consisting of
+the unique non-separating two-sided curve in N2,1.
+Proof. We only show how to define an isomorphismF∞→P (N2,1), see [13] for details. Let α
+be the unique non-separating two-sided curve in N =N2,1 and let Tα∈ Mod(N) be a Dehn
+twist about α. We have{α}∈P 0(N). Choose a one-sided curve β in N. Since Nβ∼=N1,2,
+by Proposition 3.2 there are exactly two pants decompositions of N containing β, namely
+{β,Tα(β)} and{β,T −1
+α (β)}, joined inP(N) by an edge of type 3. Each of these vertices is
+also connected to{α} by an edge of type 4. The map ϕ: F∞→P (N) defined by
+ϕ(v) ={α}, ϕ (vi) ={Ti
+α(β),T i+1
+α (β)},i∈ Z
+is an isomorphisms of graphs. □
+4. Farey and fan subgraphs
+Definition 4.1. ForX∈P (N) and α∈ X we denote by F (X,α ) the subgraph of P(N)
+spanned by all the pants decompositions containing X\{α}.
+Remark 4.2. ForX∈P (N) and α∈X letM be the non-trivial (i.e. M̸∼=S0,3) component
+of NX\{α}. Then F (X,α )∼=P(M) and if α∈ X+, then M∈{ S0,4,S 1,1,N 2,1}, whereas if
+α∈X−, then M∼=N1,2. Therefore, we have the following characterization of the subgraphs
+F (X,α ).
+(1) If α∈X+ andM∼=S0,4 orM∼=S1,1, thenF (X,α ) is isomorphic to the Farey graph.
+(2) If α∈ X+ and M ∼= N2,1, then F (X,α ) is isomorphic to the infinite fan F∞ by
+Proposition 3.4. Note that in this case X is the unique vertex of infinite degree in
+F (X,α ) and we call it the centre of F (X,α ).
+(3) If α∈X−, then F (X,α ) consist of two vertices joined by an edge of type 3 replacing
+α by a uniquely determined α′ by Proposition 3.2.
+Definition 4.3. LetX∈P (N) andα∈X+. We say thatα is special inX if the non-trivial
+component of NX\{α} is a one-holed Klein bottle N2,1.
+AUTOMORPHISMS OF THE PANTS GRAPH 7
+Remark 4.4. By Remark 4.2, F (X,α )∼=F∞ if and only if α is special in X. Moreover, if α
+is special in X, then X is the centre of F (X,α ).
+Remark 4.5. By the previous remark, if
+XY : α−→4 {β,β′}
+is a move of type 4, then α is special in X, α̸∈ Y and XY is an edge of F (X,α )∼= F∞.
+Moreover,X is of infinite degree in F (X,α ).
+Definition 4.6. LetXY be an edge ofP(N). We denote by F (XY ) the subgraph ofP(N)
+spanned by all pants decompositions containing X∩Y .
+Remark 4.7. If XY : α−−α′ then F (XY ) = F (X,α ). By Remarks 4.2–4.5, F (XY ) is
+isomorphic
+(1) to the Farey graph if XY is of type 1 or 2;
+(2) to the infinite fan F∞ if XY is of type 4;
+(3) to the single edge graph if XY is of type 3.
+Lemma 4.8. If XY is a move of type 1, 2 or 3 and α is special in X, then α∈Y .
+Proof. Suppose α /∈ Y . Then XY must replace α by some β ∈ Y . By definition α ∈
+X+, hence β∈ Y + and i(α,β ) > 0. Let K be the one-holed Klein bottle component of
+NX\{α} = NY\{β}. Since α is the unique two-sided curve in K we have β = α which is a
+contradiction. □
+Proposition 4.9 (Classification of triangles) . Every triangle in P(N) is of one of the two
+forms. Either
+α′
+i(1) α
+i
+i α′′
+wherei∈{ 1, 2}, or
+{β1,β 2}
+3(2) α
+4 55
+4 ))
+{β′
+1,β 2}
+A triangle of the form (1) (resp. (2)) will be called a Farey triangle (resp. fan triangle).
+Proof. Let X,Y,Z ∈P (N) be vertices of a triangle.
+Suppose first that |X| =|Y| =|Z| = n and XY is a move replacing α∈ X by α′∈ Y .
+We have i(α,α′) > 0 so α /∈ Z or α′ /∈ Z. But |X∩Z| =|Y∩Z| = n− 1 which implies
+X∩Z =Y∩Z =X\{α}. We see thatXYZ is of the form (1) but we still need to show that
+i̸= 3. Suppose that α is one-sided. The non-trivial component of NX\{α} is homeomorphic
+to N1,2. This component contains α,α′ and α′′, which is a contradiction, because there are
+only two isotopy classes of nontrivial curves in N1,2 – see Proposition 3.2.
+Now supposen =|X|<|Y| andXY is a move of type 4 replacingα∈X+ byβ1,β 2∈Y−.
+We haven≤|Z|≤ n + 1 so we consider two cases. First suppose |Z| =n so that XZ is a
+move of type 1, 2 or 3, and ZY is a move of type 4. Since α is special in X, by Lemma 4.8,
+α∈ Z. We see that ZY replaces α by β1,β 2 so ZY = XY and X = Z, a contradiction.
+8 MICHA L STUKOW AND B LA ˙ZEJ SZEPIETOWSKI
+Therefore,|Z| = n + 1 and XZ is a move of type 4. Now |Z∩Y| = n and we can assume
+that β2∈ Z. We have α /∈ Z because i(β2,α ) = 1 so XZ replaces α by β′
+1,β 2 for some
+one-sided β′
+1, β′
+1̸=β1. It follows that YZ is a move of type 3 replacing β1 byβ′
+1. □
+Corollary 4.10. LetXYZ be a triangle in P(N) and assume that YZ is of type 3 if XYZ
+is a fan triangle. Then
+(1) XYZ ⊂F (X,α ) =F (XY ) for a unique α∈X+;
+(2) if XYZ ′ is another triangle in P(N) and YZ′ is of type 3 if XYZ ′ is a fan triangle,
+then
+XYZ ′⊂F (X,α ) =F (XY ),
+whereα is as in (1).
+Proof. If XY : α−−α′, then Proposition 4.9 implies that
+XYZ ⊂F (X,α )
+XYZ ′⊂F (X,α ).
+Combine this with Definition 4.6 to get the statement. □
+Lemma 4.11. Suppose that XY is an edge of type 3 inP(N).
+(1) If N̸=N3, then XY belongs to at most one triangle.
+(2) If N = N3, then XY either does not belong to any triangle, or it belongs to exactly
+two different triangles. It belongs to two triangles if and only if X andY are vertices
+of degree 6 inP(N).
+Proof. LetXY : β1−−3 β′
+1. By Lemma 4.9, an edge of type 3 can belong only to a fan triangle,
+andXY belongs to such a triangle if and only if there is a multicurveγ⊂ (X\β1) = (Y\β′
+1)
+such that the only non-trivial component of Nγ is a one-holed Klein bottle K containingβ1
+and β′
+1. Such γ uniquely determines a fan triangle XYZ of the form
+ZX: α−→4 {β1,β 2}, XY : β1−−3 β′
+1, YZ :{β′
+1,β 2}←−4 α.
+Indeed, α is the unique two-sided curve in K and β2∈ X−∩Y− is the unique one-sided
+curve in K disjoint form β1∪β′
+1 – see Figure 3.
+β1 β2
+β'1
+α K
+δ1 δ2
+Figure 3. Curves of the fan triangle in N2,1.
+Suppose that suchγ exists. The regular neighbourhood of β1∪β′
+1 is a projective planeN1,2
+with two boundary componentsδ1,δ 2 and the existence ofγ implies that at least one of these
+two boundary components, say δ2, cuts a projective plane from N (Figure 3). Therefore, if
+N̸=N3, then γ is unique: γ =X\{β1,β 2}.
+If N = N3, then γ is a single one-sided curve disjoint from β1∪β′
+1, and there are two
+such curves (Figure 4). In this case each of the vertices X and Y is a pants decomposition
+AUTOMORPHISMS OF THE PANTS GRAPH 9
+γ1
+β1
+γ2
+β'1 N3
+Figure 4. One-sided curves in N3.
+consisting of three one-sided curves. Such a vertex has degree 6, as it is incident to three
+edges of type 3 and three edges of type 4 (Figure 5). □
+3 4
+3
+34
+44
+4
+4
+4
+4
+4
+Figure 5. The vertex of degree 6 in P(N3).
+Example 4.12. Let
+XY :{α,β}−−3 {α,β′}
+be an edge of type 3 in P(N3), where α,α′,β are as in Figure 6. Since the complement of
+β α αβ'
+3
+Figure 6. An edge of type 3 in P(N3) that is not contained in any triangle.
+β in N3 is orientable, this edge can not be contained in a fan triangle. Moreover, this edge
+cannot be contained in a Farey triangle, because β is one-sided. By Proposition 4.9, XY is
+not contained in any triangle.
+Definition 4.13. Let F be a subgraph of P(N). We say that
+(1) F is a Farey subgraph if F is isomorphic to the Farey graph;
+10 MICHA L STUKOW AND B LA ˙ZEJ SZEPIETOWSKI
+(2) F is a fan subgraph if F is isomorphic to the infinite fan F∞ and F is not contained
+in any Farey subgraph;
+(3) F is a thin edge if F consists of a single edge, F is not contained in any Farey
+subgraph and if F is contained in a fan subgraph F′, then both vertices of F are of
+finite degree in F′.
+Remark 4.14. Note that every Farey subgraph contains subgraphs that are isomorphic to
+F∞. However, by the above definition, they are not fan subgraphs of P(N).
+Lemma 4.15. LetF be an edge of type 3 in P(N). Then F is a thin edge.
+Proof. Every edge in a Farey subgraph F′ belongs to two different triangles in F′ and every
+vertex ofF′ has infinite degree in F′. Therefore, by Lemma 4.11, F can not be contained in
+F′.
+If F is contained in a fan subgraph F′ and one of the vertices of F is of infinite degree in
+F′, then F belongs to two different triangles in F′. This contradicts Lemma 4.11. □
+Lemma 4.16. If
+XY : α−→4 {β1,β 2}
+is an edge of type 4 in P(N), then the fan graph F (XY ) =F (X,α ) is not contained in any
+Farey subgraph, so it is a fan subgraph of P (N).
+Proof. Recall that F (XY ) =F (X,α )∼=P(N2,1) is a fan subgraph by Remarks 4.2 and 4.5.
+Moreover, by the proof of Proposition 3.4,P(N2,1) contains edges of type 3. By Lemma 4.15,
+F (XY ) can not be contained in any Farey subgraph. □
+Definition 4.17. A marked F-graph is a pair ( F,X ), where X is a vertex of F and F is
+either
+(1) a Farey subgraph of P(N), or
+(2) a fan subgraph of P(N), and X is the centre of F , or else
+(3) a single thin edge in P(N).
+Remark 4.18. If we combine Remark 4.7 and Lemmas 4.15 and 4.16, we see that to ev-
+ery oriented edge XY ofP(N) with |X| ≤ |Y|, there is an associated marked F-graph
+(F (XY ),X ).
+The following proposition shows that the above correspondence is surjective.
+Proposition 4.19. If (F,X ) is a marked F-graph, then F =F (X,α ) for a unique α∈X.
+Moreover,
+(1) α∈X+ if and only if F is a Farey or a fan subgraph;
+(2) α is special in X if and only if F is a fan subgraph.
+Proof. Suppose first that F is a Farey of fan subgraph of P(N) and let T be a triangle
+of F with vertices X,Y,Z , where X is of infinite degree in F (see Definition 4.17). By
+Proposition 4.9, T is either a Farey triangle or a fan triangle. In the latter case, since X is of
+infinite degree in F , each of the edges XY and XZ belongs to two different triangles in F ,
+hence Lemma 4.11 implies that XY and XZ are moves of type 4. In either case T satisfies
+the assumptions of Corollary 4.10, so T⊂F (X,α ) for a unique α∈X+.
+AUTOMORPHISMS OF THE PANTS GRAPH 11
+Now, ifT′ is any triangle ofF , thenT′ andT are connected by a sequence of triangles such
+that every two consecutive triangles in that sequence satisfy the assumptions of part (2) of
+Corollary 4.10. It follows that all these triangles are contained in F (X,α ) and consequently
+F⊆F (X,α ). Since every injective simplicial map F→F is an isomorphism, F =F (X,α ).
+Assume now that F is a thin edge:
+XY : α−−α′
+If XY is an edge of type 1 or 2, then F is contained in a Farey graph F (XY ) = F (X,α ).
+This contradicts the definition of a thin edge. Similarly, if XY is of type 4, then Remark
+4.5 and Lemma 4.16 imply that X is of infinite degree in a fan subgraph F (XY ) =F (X,α ).
+This contradicts the definition of a thin edge. Hence, F is of type 3, F = F (X,α ) (see
+Remark 4.2) and α is the unique element of X such that i(α,α′)> 0.
+Statements (1) and (2) follow from Remarks 4.2 and 4.4.
+□
+The construction of F (X,α ) in the proof of the above proposition implies the following
+corollary.
+Corollary 4.20. If (F,X ) is a marked F-graph and
+XY : α−−α′
+is an edge of F , then F =F (X,α ) =F (XY ).
+Corollary 4.21. If F is a Farey (resp. fan) subgraph of P(N), then every triangle of F is
+a Farey (resp. fan) triangle.
+Proof. Let F =F (X,α ) be as in Proposition 4.19. By Remark 4.2, all triangles of F (X,α )
+are either fan or Farey depending on whether α∈X+ is special or not. □
+Corollary 4.22. If N,N′ are nonorientable surfaces of negative Euler characteristic and
+A:P(N)→P (N′) is an isomorphism, then for any edge XY ofP(N)
+A(F (XY )) =F (A(X)A(Y )).
+Proof. Assume|X|≤| Y|. By Remark 4.18, ( F (XY ),X ) is a marked F-graph, so
+(A(F (XY )),A (X))
+is also a marked F-graph (see Definitions 4.13 and 4.17). Moreover, A(X)A(Y ) is and edge
+of A(F (XY )), so Corollary 4.20 implies that
+A(F (XY )) =F (A(X)A(Y )).
+□
+Proposition 4.23 (Characterisation of moves). LetXY be an edge of P(N).
+(1) XY is a move of type 1 or 2 if and only if F (XY ) is a Farey subgraph;
+(2) XY is a move of type 4 directed from X toY if and only if F (XY ) is a fan subgraph
+with centre X;
+(3) XY is a move of type 3 if and only if F (XY ) is a thin edge.
+12 MICHA L STUKOW AND B LA ˙ZEJ SZEPIETOWSKI
+Proof. Assume|X|≤| Y|. By Remark 4.18, ( F (XY ),X ) is a marked F-graph and its type
+is uniquely determined by the type of XY by Remark 4.7.
+Conversely, ifF (XY ) is a Farey subgraph, then Corollary 4.21 implies that XY is of type
+1 or 2. If F (XY ) is a fan subgraph with centre X, then Corollary 4.21 implies that XY is
+of type 3 or 4. But we also know that X is of infinite degree in F (XY ), so Lemma 4.15
+implies that XY is an edge of type 4 and |X|<|Y|. Finally, if F (XY ) is a thin edge, then
+XY can not be of types 1, 2 or 4 by (1) and (2). □
+Remark 4.24. Note that there are two different types of edges of type 3 – some of them are
+contained in some fan subgraph of P(N), but some of them are not – see Example 4.12.
+Corollary 4.25. If N, N′ are nonorientable surfaces of negative Euler characteristic and
+A:P(N)→P (N′) is an isomorphism, then A maps an edge of type 3 or 4 to an edge of the
+same type. Furthermore, A also preserves directions of edges of type 4.
+Proof. By Corollary 4.22, if XY is an edge of type 3 or 4 in P(N), then
+F (A(X)A(Y )) =A(F (XY ))∼=F (XY ),
+so A(X)A(Y ) and XY are of the same type by Proposition 4.23. Furthermore, if |X|<|Y|
+thenX is the centre ofF (XY ), soA(X) is the centre ofA(F (XY )) and|A(X)|<|A(Y )|. □
+5. Small circuits
+Definition 5.1. A circuit (resp. a path) is a subgraph of P(N) homeomorphic to a circle
+(resp. an interval). The length of a circuit (resp. a path) is the number of its edges.
+We use the names triangle, quadrangle, pentagon, hexagon, heptagon for circuits of length
+at most 7.
+Definition 5.2. A path or a circuit is alternating if no two consecutive edges (i.e. edges
+incident to a common vertex) are contained in one Farey or fan subgraph.
+Remark 5.3. Alternating paths (resp. circuits) are mapped to alternating paths (resp. cir-
+cuits) by automorphisms ofP(N).
+Lemma 5.4. (1) Every alternating path of length 3 is of the form
+(5.1) {α1,α 2}−−{α1
+′,α 2}−−{α1
+′,α 2
+′}.
+(2) If P is a path of the form (5.1), then either P is alternating, or P is contained in a
+fan subgraph and both edges of P are of type 3.
+Recall that according to our convention, each of α1,α′
+1,α 2,α′
+2 may be a pair of one-sided
+curves corresponding to a move of type 4.
+Proof. Let P be a path X−−Y−−Z.
+(1) Suppose that P is alternating, XY : α1−−α1′, and α′
+1 /∈ Z. If α1′ = α′
+1 is a single
+curve, then the path is contained in F (Y,α′
+1), and since it has length 3, α′
+1 is two-sided and
+F (Y,α′
+1) is either a Farey subgraph or a fan subgraph by Remark 4.2. This is a contradiction,
+because we assumed that the path is alternating. If α1′ ={β1,β 2} is a multicurve, then YZ
+is an edge of type 3 replacing one of the curves β1 orβ2. It follows that the path is contained
+AUTOMORPHISMS OF THE PANTS GRAPH 13
+in the fan subgraphF (X,α 1), which is also a contradiction. Thereforeα1′∈Z, which implies
+that the path is of the form (5.1).
+(2) Suppose that P is of the form (5.1) and P ⊂ F , where F is either a Farey or a fan
+subgraph. If Y has infinite degree inF , then (F,Y ) is a markedF -graph and by Lemma 4.19
+we have F = F (Y,α ) for a unique α∈ Y . Since X,Z ∈ F we have α′
+1 = α = α2, which is
+a contradiction. Thus Y has finite degree in F , which means that F is a fan subgraph and
+both edges of P are of type 3. □
+Definition 5.5. A subgraph Γ (path or circuit) of P(N) is 2-tight if there exists X0∈ Γ0
+such that 
+\
+X∈Γ0
+X
+≥|X0|− 2.
+Remark 5.6. Note that a subpath of a 2-tight path may not be 2-tight. For example, the
+following circuit of length 4
+{α,β}
+4 //
+4
+
+{α,β 1,β 2}
+4
+
+{α1,α 2,β} 4
+//{α1,α 2,β 1,β 2}
+is 2-tight, but its subpath
+{α1,α 2,β}−→4 {α1,α 2,β 1,β 2}←−4 {α,β 1,β 2}
+is not 2-tight.
+Definition 5.7. A vertex X of a subgraph Γ of P(N) is minimal in Γ if |X| is minimal
+among all vertices of Γ.
+Lemma 5.8. Automorphisms of P(N) map minimal vertices of a subgraph Γ to minimal
+vertices of the image of Γ.
+Proof. A vertex X is minimal in Γ if and only if for every path from X to any other vertex
+Y of Γ, the number of edges of type 4 directed from X to Y is greater than the number
+of edges of type 4 directed from Y to X. By Corollary 4.25 this property is preserved by
+automorphisms ofP(N). □
+Lemma 5.9. Suppose that P is an alternating and 2-tight path
+W−−X−−Y−−Z,
+such that X is minimal in P . Then P is of the form
+(5.2) {α1
+′,α 2}−−{α1,α 2}−−{α1,α 2
+′}−−{α1
+′′,α 2
+′}.
+Proof. By Lemma 5.4, the path W−−X−−Y is of the form
+{α1
+′,α 2}−−{α1,α 2}−−{α1,α 2
+′},
+where α1,α 2 are curves (because X is minimal). Since P is 2-tight we have
+X\{α1,α 2} =Y\{α1,α 2
+′}⊂ Z,
+14 MICHA L STUKOW AND B LA ˙ZEJ SZEPIETOWSKI
+and by applying Lemma 5.4 to the path X−−Y−−Z we obtain that it is of the form
+{α1,α 2}−−{α1,α 2
+′}−−{α1
+′′,α 2
+′}.
+□
+Lemma 5.10. Every quadrangle is 2-tight.
+Proof. LetC be a quadrangle WXYZ and assume that X is minimal in C. We assume
+|X|≥ 3, for otherwiseC is obviously 2-tight. Let XY : α1−−α1′.
+If α1∈W , then the path W−−X−−Y is of the form
+{α1,α 2
+′,α 3}−−{α1,α 2,α 3}−−{α1
+′,α 2,α 3}.
+Note that α1 /∈ Z and α2 /∈ Z, for otherwise Z = X. If C is not 2-tight, then there is
+α3∈X\{α1,α 2} such that α3 /∈Z. Then ZW and YZ must be edges of type 4:
+ZW : β←−4 {α1,α 3}, YZ :{α2,α 3}−→4 β
+for some β∈Z. But then α1′ =α′
+1 and α2′ =α′
+2 are curves and
+Z ={α′
+2,β,... } ={α′
+1,β,... },
+which gives α′
+1 =α′
+2. This is a contradiction, as i(α′
+1,α 2) = 0<i (α′
+2,α 2).
+Now suppose α1 /∈W , so the path
+W−−X−−Y
+is of the form:
+{α1
+′′,α 2,α 3}−−{α1,α 2,α 3}−−{α1
+′,α 2,α 3}.
+IfC is not 2-tight, then there are α2,α 3∈ X\{α1} such that α2,α 3 /∈ Z. Then ZW and
+YZ must be edges of type 4:
+ZW : β←−4 {α2,α 3}, YZ :{α2,α 3}−→4 β
+for some β∈Z. But then
+Z ={α1
+′′,β,... } ={α1
+′,β,... },
+which gives α1′ =α1′′ and W =Y , a contradiction. □
+Example 5.11. Ifg⩾ 4, then there are pentagons inP(Ng) that are not 2-tight. For example,
+consider the pentagon of the form
+{β1,β 2,γ 1,γ 2} { β1,β 2,γ}
+4oo
+3{β,γ 1,γ 2}
+4 33
+4 ++
+{β1,β′
+2,γ 1,γ 2} { β1,β′
+2,γ}4
+oo
+where β1,β 2,β,γ 1,γ 2,γ are as in Figure 7.
+Lemma 5.12. LetC be circuit of length at most 6 without edges of type 4. If C is not 2-tight,
+then it is an alternating hexagon with even number of edges of type 3.
+AUTOMORPHISMS OF THE PANTS GRAPH 15
+3
+4 4
+44
+Figure 7. Pentagon inP(N4) that is not 2-tight.
+Proof. IfC does not contain edges of type 4, and we assume that C is not 2-tight, then the
+proof of Lemma 4 in [12] works verbatim and we conclude that C is an alternating hexagon
+with edges of the form
+α1−−α′
+1, α2−−α′
+2, α3−−α′
+3,
+α′
+1−−α1, α′
+2−−α2, α′
+3−−α3.
+Hence, the number of edges of type 3 is even – it is twice the number of one-sided curves
+among{α1,α 2,α 3}. □
+Definition 5.13. LetN /∈{N2,1,N 3} and suppose thatXY : α−→4 {β1,β 2} is a move of type
+4. There is a unique γ∈X∩Y separating a one-holed Klein bottle containing α,β 1 andβ2.
+We call it the separating curve associated to XY .
+Remark 5.14. The separating curve associated toXY : α−→4 {β1,β 2} is isotopic to the bound-
+ary of a regular neighbourhood of α∪β1. In particular, it is determined by α and β1.
+Lemma 5.15. SupposeN /∈{N2,1,N 3} and P is a path in P(N) of the form
+X−→4 Y−−Z,
+whereYZ is of type 1 or 2. Then Z contains the separating curve associated to XY if and
+only if the path P is contained in a quadrangle.
+Proof. Let
+XY : α1−→4 {β1,β 2}
+and let α2 be the associated separating curve. Since YZ is of type 1 or 2, Z containsβ1 and
+β2.
+If α2∈Z and
+YZ : α3−−α′
+3,
+then by applying the move
+{β1,β 2}←−4 α1
+to Z we obtain a vertex
+W ={α1,α 2,α′
+3,...}
+16 MICHA L STUKOW AND B LA ˙ZEJ SZEPIETOWSKI
+such that XYZW is a a quadrangle.
+Conversely, supposeXYZW is a quadrangle and α2 /∈Z. We have
+X ={α1,α 2,... }, Y ={β1,β 2,α 2,... }, Z ={β1,β 2,α′
+2,... },
+for some α′
+2 such that i(α′
+2,α 2) = 2 (YZ is of type 2 since α2 is separating). Since W̸=Y ,
+we have α2 /∈W , and thus α1∈W (because α1∈X). Thus ZW is a move o type 4 of the
+form
+ZW :{β1,β 2}←−4 α1.
+and W ={α1,α′
+2,... }. By Remark 5.14, the separating curves associated to ZW and XY
+are isotopic, so α2∈W∩Z, which is a contradiction, as i(α′
+2,α 2) = 2. □
+Definition 5.16. Standard heptagon is a circuit of the form
+X
+4 //Y
+Z
+3S
+P
+R 4
+//Q
+such that the path X−→4 Y−−Z is not contained in a quadrangle.
+Remark 5.17. By Corollary 4.25, automorphisms ofP(N) map standard heptagons to stan-
+dard heptagons.
+The circuit in Figure 8 is a standard heptagon. It is easy to check, using Lemma 5.15,
+that it satisfies the definition.
+3
+2
+2
+4
+4
+2
+2
+Figure 8. Standard heptagon inP(N2,2).
+Lemma 5.18. Every standard heptagon is 2-tight and alternating.
+AUTOMORPHISMS OF THE PANTS GRAPH 17
+Proof. LetC be a standard heptagon as in Definition 5.16 and let
+XY : α1−→4 {β1,β 2}
+Since YZ is of type 1 or 2, Y contains at least one two-sided curve, which implies N /∈
+{N2,1,N 3}. Let α2∈ X∩Y be the separating curve associated to XY . We will show that
+X\{α1,α 2} is contained in every vertex of C.
+By definition of standard heptagon and Lemma 5.15, we have α2 /∈ Z. Moreover, α2 is
+separating, so
+YZ : α2−−2 α′′
+2
+for some α′′
+2∈Z such that i(α2,α′′
+2) = 2.
+By looking at one-sided curves we see that
+Z− =Y− =X−∪{β1,β 2} =S−∪{β1,β 2},
+P− =Q− =R−∪{β′
+1,β′
+2} =S−∪{β′
+1,β′
+2}.
+for some β′
+1,β′
+2∈P−. But ZP is an edge of type 3, so we may assume that β′
+1 =β1 and
+ZP : β2−−3 β′
+2,
+QR:{β1,β′
+2}←−4 α′
+1
+for some β′
+2∈P− such that i(β2,β′
+2) = 1 and α′
+1∈R+.
+Letα′
+2∈Q∩R be the separating curve associated toQR. By Remark 5.14,α′
+2 (respectively
+α2) is the boundary of a regular neighbourhood of α′
+1∪β1 (respectively α1∪β1). It follows
+that
+α′
+2 =α2 ⇐⇒ α′
+1 =α1.
+Suppose that α′
+1 = α1. Then α2 = α′
+2∈ R∩Q. We have α′′
+2∈ P and i(α′′
+2,α 2) = 2, so
+α2 /∈P and α′′
+2 /∈Q. It follows that
+PQ: α′′
+2−−2 α2
+We see that Y and Q differ by the move β2−−β′
+2, hence X =R, a contradiction (with the
+definition of a circuit).
+So α′
+1̸= α1 and α′
+2̸= α2. Then α′
+1 /∈ X because all curves in X\{α1} are disjoint from
+β1. Analogously α1 /∈ R. We have i(α2,α′
+2) > 0 because α2 and α′
+2 separate one-holed
+Klein bottles which are not disjoint, as they both contain β1. So α′
+2 /∈ X and α2 /∈ R. By
+Lemma 4.8, we have α1,α′
+1∈S so
+SX: α′
+1−−2 α2
+RS: α′
+2−−2 α1.
+18 MICHA L STUKOW AND B LA ˙ZEJ SZEPIETOWSKI
+Summarizing,C has the following form
+(5.3) X⊇{α1,α 2}
+4 //{β1,β 2,α 2}⊆ Y 2
+{β1,β 2,α′′
+2}⊆ Z
+3S⊇{α′
+1,α 1}
+2
+2
+{β1,β′
+2,α′′
+2}⊆ P
+2
+R⊇{α′
+1,α′
+2} 4
+//{β1,β′
+2,α′
+2}⊆ Q
+In particular,C is 2-tight and alternating. □
+As an immediate consequence of the explicit form (5.3) of the standard heptagon obtained
+in the above proof, we get the following corollaries.
+Corollary 5.19. If
+R−−S−−X−→4 Y−−Z−−3 P−−Q←−4 R
+is a standard heptagon as in Definition 5.16, then the path
+P−−Q←−4 R
+is not contained in a quadrangle.
+Corollary 5.20. If
+C : R−−S−−X−→4 Y−−Z−−3 P−−Q←−4 R
+is a standard heptagon, then any subpath
+P0−−P1−−P2−−P3
+ofC is 2-tight.
+Example 5.21. If the genus of N is at least 6, then P(N) contains non-standard heptagons
+of the form
+P0⊇{α1,α 2,α 3}
+4 //{β1,β 2,α 2,α 3}⊆ P1
+{β1,β 2,α′
+2,α 3}⊆ P2
+3P6⊇{α1,α 2,α′
+3}
+{β′
+1,β 2,α′
+2,α 3}⊆ P3
+P5⊇{α1,α′
+2,α′
+3} 4
+//{β′
+1,β 2,α′
+2,α′
+3}⊆ P4
+which are not 2-tight.
+Note that if Q ={α1,α′
+2,α 3,... }, then Q is connected by edges to P0, P2, P3 and P5. In
+particular, the path P0−→4 P1−−P2 is contained in a quadrangle P0P1P2Q, so this heptagon
+is not standard.
+AUTOMORPHISMS OF THE PANTS GRAPH 19
+6. Tame circuits
+Definition 6.1. A circuitC of length n is tame if 4≤n≤ 7 and
+(1) if n∈{ 5, 6}, thenC contains no edge of type 4;
+(2) if n = 6 andC is alternating, thenC contains odd number of edges of type 3;
+(3) if n = 7, thenC is a standard heptagon (see Definition 5.16).
+Remark 6.2. Every tame circuitC is 2-tight by Lemmas 5.10, 5.12 and 5.18. Furthermore,
+by Corollary 4.25 and Remark 5.17, for every A∈ Aut(P(N)),A(C) is tame, and hence also
+2-tight.
+Remark 6.3. Suppose that P is an alternating path
+W−−X−−Y−−Z,
+contained in a tame circuit C and assume that X is minimal in P .
+(1) IfC is of length at most 6, then X is also minimal in C, hence P is 2-tight (because
+C is 2-tight – see Remark 6.2).
+(2) IfC is a standard heptagon, then P is 2-tight by Remark 5.20.
+In both cases P satisfies the assumptions of Lemma 5.9, so it is of the form (5.2).
+Proposition 6.4. LetN̸=N3 and let
+X ={α1,α 2,α 3,...,α n}−−{ α1,α 2
+′,α 3,...,α n} =X′
+be an edge in P(N) such that:
+(1)|X|≤| X′| (i.e. if this is an edge of type 4, then α2 is two-sided and α2′ is a pair of
+disjoint one-sided curves);
+(2) if M is the union of non-trivial components of NX\{α1,α2} then M ̸= N2,1, and if
+M∈{S1,2,N 2,2} then at least one of the curves α1,α 2,α 2′ is separating in M.
+Then the edge XX′ is contained in a tame circuit C
+V−−X−−X′−−W−−... −−V,
+such that
+(1) the path V−−X−−X′−−W is alternating;
+(2) α1̸∈V∪W ;
+(3) X is minimal in the path V−−X−−X′−−W .
+Proof. Let M be the union of non-trivial components of NX\{α1,α2}.
+Case 1: M is disconnected. If M1 and M2 are connected components of M, then
+M1,M 2∈{S0,4,S 1,1,N 1,2,N 2,1}
+and XX′ is contained in an alternating quadrangle C of the form
+{α1,α 2} {α1,α 2′}
+{α1′,α 2} {α1′,α 2′}
+20 MICHA L STUKOW AND B LA ˙ZEJ SZEPIETOWSKI
+3
+3
+3
+2
+22
+α
+β
+α
+β' α'α'
+β'
+β''
+β'' α''
+α''
+β
+Figure 9. Tame alternating hexagon inP(N1,3).
+Note that α1′ and α2′ may be pairs of disjoint one-sided curves (corresponding to edges of
+types 4), but in each case X is minimal inC.
+Case 2: M is connected and M\{α1,α 2} has three connected components. In
+this caseM∼=S0,5, and we can use standard 5-cell to constructC as in the proof of Lemma 6
+of [12]. Since M is orientable,C has no edges of type 4, so X is minimal inC.
+Case 3: M is connected and M\{α1,α 2} has less than 3 connected components
+IfM\{α1,α 2} has less than 3 connected components, then it has exactly 2 connected com-
+ponents. Indeed, otherwise M =N2,1 or M =N =N3, which contradicts our assumptions.
+If M ∼= S1,2, then the situation is identical to that in the proof of Lemma 6 of [12].
+Following the same argument we obtain a hexagon C without edges of type 3 or 4 (because
+M is orientable). This hexagon is not alternating, and hence C is tame and X is minimal in
+C.
+Suppose now thatM∼=N1,3. If α1 is two-sided, then it is separating inM andα2,α 2′ =α′
+2
+are one-sided curves in M\{α1}∼=N1,2 connected by an edge of type 3. If α1 is one-sided,
+thenα2,α 2′ =α′
+2 are two-sided curves inM\{α1}∼=S0,4 connected by an edge of type 2. In
+either case XX′ is contained in an alternating hexagon C without edges of type 4 and with
+3 edges of type 3 – see Figure 9. Such C is tame, and X is minimal inC.
+Finally, suppose that M ∼= N2,2. We assumed that one of α1,α 2 or α2′ is separating.
+Moreover,M\{α1,α 2} are 2 pairs of pants, so α1, α2 or α′
+2 cuts N2,1 from M.
+If α1 cuts N2,1 from M, then α2,α 2′∈ N2,1 are connected by an edge of type 3 or 4. In
+either case XX′ is contained in a standard heptagon C. If XX′ is of type 4, then X is
+minimal inC.
+Ifα2 (orα′
+2) cutsN2,1 fromM, thenα1 is the unique two-sided curve inN2,1 andα2,α 2′ =
+α′
+2 are connected by an edge of type 2. As in the previous case, XX′ is contained in a
+AUTOMORPHISMS OF THE PANTS GRAPH 21
+standard heptagon C and X is minimal in C (in this case the edges VX and X′W are of
+different type; one is of type 4 and the other one is of type 2). □
+Proposition 6.5. Let
+X ={α1,α 2,α 3,...,α n}−−{ α1,α 2
+′,α 3,...,α n} =X′
+be an edge in P(N) and let M be the union of non-trivial components of NX\{α1,α2}. If
+M∈{ S1,2,N 2,2} and each of {α1,α 2,α 2′} is nonseparating in M, then α2′ = α′
+2 is a curve
+and there exists a vertex
+X′′ ={α1,α′′
+2,α 3,...,α n}
+inP(N) and two edges
+XX′′ :{α1,α 2,α 3,...,α n}−−{ α1,α′′
+2,α 3,...,α n}
+X′′X′ :{α1,α′′
+2,α 3,...,α n}−−{ α1,α′
+2,α 3,...,α n}
+such that XX′′ and X′′X′ satisfy the assumptions of Proposition 6.4.
+Proof. IfM∼=S1,2 see Figure 8 of [12] for the construction of α′′
+2, so assume that M∼=N2,2.
+Note the following:
+(1){α1,α 2} and{α1,α 2′} decompose M into pairs of pants, hence α1, α2 and α2′ =α′
+2
+are two-sided curves;
+(2) α2 and α′
+2 intersect in two points in M\{α1}∼=S0,4.
+Hence, the configuration of α1,α 2,α′
+2 is as in Figure 10. See the same figure for α′′
+2. □
+α'2
+α1
+α2
+α''2
+Figure 10. Nonseparating curves α1,α 2,α′
+2 in N2,2.
+7. Automorphisms ofP(N)
+Definition 7.1. If (F,X ) is a marked F -graph and α∈ X is the unique curve such that
+F =F (X,α ) (see Proposition 4.19), then define
+v[F,X ] =α.
+Remark 7.2. By definition, if X∈P 0(N) and α∈X, then
+v [F (X,α ),X ] =α.
+Definition 7.3. Let A∈ Aut(P(N)) and α∈ Curv0(N). Extend α to a vertex X ofP(N)
+and define
+Φ(A)(α) =v [A(F (X,α )),A (X)].
+22 MICHA L STUKOW AND B LA ˙ZEJ SZEPIETOWSKI
+Proposition 7.4. Definition of Φ does not depend on X∈P 0(N), hence Φ(A) is a well
+defined map
+Φ(A) : Curv 0(N)→ Curv0(N).
+Proof. We need to show that if X,X′∈P 0(N) are such that α∈X∩X′, then
+v [A(F (X,α )),A (X)] =v [A(F (X′,α )),A (X′)].
+SinceP(Nα) is path-connected by Theorem 3.1, it suffices to show the statement for X and
+X′ being connected by an edge X−−X′. We can assume that
+X ={α,α 2,α 3,...,α n},
+X′ ={α,α 2
+′,α 3,...,α n},
+so if X and X′ are connected by an edge of type 4, we assume that α2 is two-sided. Let M
+be the union of non-trivial components of NX\{α,α2}. We consider three cases.
+Case 1: N̸= N3 and M̸= N2,1. By Proposition 6.5, we can assume that X and X′
+satisfy the assumptions of Proposition 6.4 – if this is not the case, we split the edge
+X−−X′
+into two edges
+X−−X′′−−X′
+satisfying the assumptions of Proposition 6.4.
+By Proposition 6.4, X and X′ are consecutive vertices of a tame circuit C inP(N),
+containing an alternating path P
+V−−X−−X′−−W
+such that α /∈ V∪W , and X is minimal in P . Since, α /∈ V∪W and α∈ X∩X′, by
+Corollary 4.20,
+(7.1)
+F (XV ) =F (X,α )
+F (X′W ) =F (X′,α ).
+By Remark 6.2, A(C) is tame and 2-tight. By Remark 5.3, the path A(P )
+A(V )−−A(X)−−A(X′)−−A(W )
+is alternating, and by Lemma 5.8, A(X) is minimal in A(P ). By Remark 6.3, A(P ) satisfies
+the assumptions of Lemma 5.9 and we have
+A(V )⊇{β1
+′,β 2} {β1,β 2}⊆ A(X)
+A(W )⊇{β1
+′′,β 2
+′} {β1,β 2
+′}⊆ A(X′)
+where β1 and β2 are curves. By Corollary 4.20,
+(7.2)
+F (A(X)A(V )) =F (A(X),β 1)
+F (A(X′)A(W )) =F (A(X′),β 1).
+AUTOMORPHISMS OF THE PANTS GRAPH 23
+Hence, Remark 7.2, Corollary 4.22, (7.1) and (7.2) imply that
+v [A(F (X,α )),A (X)] =v [A(F (XV )),A (X)]
+=v [F (A(X)A(V )),A (X)] =v [F (A(X),β 1),A (X)] =β1
+v [A(F (X′,α )),A (X′)] =v [A(F (X′W,X′)),A (X′)]
+=v [F (A(X′)A(W )),A (X′)] =v [F (A(X′),β 1),A (X′)] =β1.
+Case 2: M = N2,1. In this case α and α2 are one-sided curves contained in a one-holed
+Klein bottle M. Let V,W ∈P 0(N) be such that
+F (X,α ) =XV, F (X′,α ) =X′W.
+We have a path P inP(N):
+V−−3 X−−3 X′−−3 W,
+which is contained in a fan subgraph. Then A(P ) is also a path of edges of type 3 contained
+in a fan subgraph ofP(N), and by the structure ofP(N2,1) (see Proposition 3.4) it is of the
+same form as in Case 1 with one-sided β1,β 2,β′
+1, β′′
+1 and β′
+2. The rest of the proof is the
+same as in Case 1.
+Case 3: N = N3. We can assume that one of the curves α or α2 is two-sided, because
+otherwise we are in Case 2. We have X ={α,α 2}. Extend XX′ to an alternating path P
+V−−X−−X′−−W
+such that α /∈ V ∪W . By Remark 5.3, the path A(P ) is alternating. Since one of the
+edges A(XX′) or A(XV ) is not of type 3 (because α or α2 is two-sided), A(X) contains a
+two-sided curve and |A(X)| = 2, which means that A(P ) is 2-tight and A(X) is minimal.
+By Lemma 5.9, A(P ) is of the same form as in Case 1, and the rest of the proof is the same
+as in Case 1. □
+Our next goal is to prove the following proposition.
+Theorem 7.5. For every nonorienatable surface N with χ(N)< 0,
+Φ: Aut(P(N))→ Aut(Curv(N))
+is an isomorphism.
+The proof of the above proposition is divided into several steps – see Lemmas 7.6 – 7.9
+below.
+Lemma 7.6. If A∈ Aut(P(N)) and α,β ∈ Curv0(N) are such that i(α,β ) = 0, then
+i(Φ(A)(α), Φ(A)(β)) = 0.
+Hence,
+Φ(A): Curv(N)→ Curv(N)
+is a simplicial map.
+24 MICHA L STUKOW AND B LA ˙ZEJ SZEPIETOWSKI
+Proof. We extend{α,β} to a vertex
+X ={α,β,γ 3,...,γ n}∈P 0(N).
+Then
+X =F (X,α )∩F (X,β )
+and
+Φ(A)(α) =v [A(F (X,α )),A (X)]
+Φ(A)(β) =v [A(F (X,β )),A (X)].
+Hence,
+Φ(A)(α), Φ(A)(β)∈A(X)
+are disjoint as they are in the same vertex A(X) ofP0(N). □
+Lemma 7.7. If A,B∈ Aut(P(N)) and α∈ Curv0(N), then
+Φ(A)(Φ(B)(α)) = Φ(AB)(α).
+Hence
+Φ: Aut(P(N))→ Aut(Curv(N))
+is a homomorphism.
+Proof. Let X∈P 0(N) such that α∈X and F =F (X,α ). If
+β = Φ(B)(α) =v(B(F ),B (X)),
+then β∈B(X) and
+B(F ) =F (B(X),β ).
+Hence,
+Φ(A)(Φ(B)(α)) = Φ(A)(β) =v [A(F (B(X),β )),A (B(X))]
+=v [AB(F ),AB (X)] =v [AB(F (X,α )),AB (X)] = Φ(AB)(α).
+This and Lemma 7.6 imply that for any A∈ Aut(P(N)), Φ(A) is an invertible simplicial
+map, so Φ(A)∈ Aut(Curv(N)). □
+Lemma 7.8 (Injectivity). If Φ(A) = id in Aut(Curv(N)), then A = id in Aut(P(N)).
+Proof. For everyX∈P 0(N) and α∈X we have
+α = Φ(A)(α) =v [A(F (X,α )),A (X)]∈A(X),
+so X⊆A(X). But X is a maximal multicurve, so X =A(X). □
+Lemma 7.9 (Surjectivity). For every nonorienatable surface N with χ(N)< 0,
+Φ: Aut(P(N))→ Aut(Curv(N))
+is surjective.
+AUTOMORPHISMS OF THE PANTS GRAPH 25
+Proof. Consider the diagram
+(7.3)
+Mod(N) Mod(N)
+θ
+y
+yη
+Aut(P(N))
+Φ
+−−−→Aut(Curv(N))
+By Theorem 1.3, η is surjective, so it is enough to prove that this diagram commutes.
+Let f∈ Mod(N), α∈ Curv0(N) and extend α to
+X ={α,α 2,...,α n}∈P 0(N).
+Then
+θ(f)(X) ={f(α),f (α2),...,f (αn} =f(X)
+and
+θ(f)(F (X,α )) =F (f(X),f (α)).
+By Remark 7.2,
+Φ(θ(f))(α) =v [F (f(X),f (α)),f (X)] =f(α) =η(f)(α).
+□
+Proof of Theorem 1.4. Theorem 1.4 follows from commutativity of the diagram (7.3), The-
+orem 1.3 and the fact that Φ: Aut( P(N))→ Aut(Curv(N)) is an isomorphism – see Theo-
+rem 7.5. □
+8. Isomorphisms of pants graphs
+In this section we prove that if two nonorientable surfaces have isomorphic pants graphs
+then they are homeomorphic (Theorem 8.4).
+ForA∈P 0(N) the number|A−| is called one-sided degree of A and denoted by d−(A).
+Remark 8.1. The maximum one-sided degree of a vertex ofP(N) is equal to the genus of N.
+Lemma 8.2. LetA∈P 0(N). There are exactly d−(A) vertices inP(N) connected toA by
+an edge of type 3.
+Proof. For everyα∈A− there is a unique one-sided curve α′, disjoint fromA\{α} and such
+that i(α,α′) = 1. Indeed, the nontrivial component of the complement of A\{α} in N is
+a two-holed projective plane, and there are only two isotopy classes of nontrivial curves in
+N1,2. □
+Lemma 8.3. IfA is vertex ofP(Ng,b) such that|A−| =g thenA belongs to exactly g +b− 3
+Farey subgraphs.
+Proof. The complement of A− in Ng,b is a (g +n)-holed sphere, so A+ consists of g +b− 3
+non-special two-sided curves. If A belongs to a Farey subgraph F then F = F (A,α ) for a
+unique α∈ A+ (Proposition 4.19). It follows that A belongs to exactly g +n− 3 Farey
+subgraphs. □
+Theorem 8.4. If N and N′ are non-orientable surfaces such that P(N) is isomorphic to
+P(N′) then N and N′ are homeomorphic. Furthermore, every isomorphism of pants graphs
+is induced by a homeomorphism of the underlying surfaces.
+26 MICHA L STUKOW AND B LA ˙ZEJ SZEPIETOWSKI
+Proof. Let N = Ng,b, N′ = Ng′,b′ and let φ:P(N)→P (N′) be an isomorphism. Since
+φ preserves type of edges (Corollary 4.25), it also preserves one-sided degree of vertices by
+Lemma 8.2. Let A be a vertex ofP(N) of maximum one-sided degree. Then φ(A) is also a
+vertex of maximum one-sided degree in P(N′) and
+g =d−(A) =d−(φ(A)) =g′.
+By Lemma 8.3, A belongs to g +b− 3 Farey subgraphs, whereas φ(A) belongs to g′ +b′− 3
+Farey subgraphs. Since φ maps Farey subgraphs to Farey subgraphs, we have
+g +b− 3 =g′ +b′− 3,
+which implies b =b′.
+The second part of the statement follows from Theorem 1.4. □
+9. Automorphisms of Curv(N)
+The purpose of this section is to complete the description of Aut(Curv( N)) given in [2]
+by proving the following result.
+Theorem 9.1. LetN =Ng,4−g, where 1≤g≤ 4. The natural map
+Mod(N)→ Aut(Curv(N))
+is an isomorphism.
+The star of a vertex α∈ Curv0(N), denoted by St( α) is the subcomplex of Curv( N)
+consisting of all simplices containingα and all faces of such simplices. The link ofα, denoted
+by Lk(α) is the subcomplex of St(α) consisting of all simplices of St(α) not containingα. We
+have Lk(α)∼= Curv(Nα). Following [2], we say that a one-sided curve α is essential if either
+g = 1 or Nα is nonorientable. We denote by Curv 0
+e(N) the set of essential one-sided vertices
+of Curv(N), and for g≥ 2 we denote by Curv 1
+e(N) the subgraph of Curv 1(N) spanned by
+Curv0
+e(N).
+Lemma 9.2. Forg≥ 2 and b≥ 0 the graph Curv1
+e(N) is connected.
+Proof. We use the graphX(N) defined in [2], which has Curv 0
+e(N) as the vertex set and two
+vertices α,β are joined by en edge in X(N) if and only if i(α,β ) = 1. If α,β ∈ Curv0
+e(N)
+are such that i(α,β ) = 1 then the complement of a regular neighbourhood of α∪β in N is
+nonorientable, and so there is an essential one-sided curveγ disjoint fromα andβ. It follows
+that if two vertices are connected by a path in X(N) then they are also connected by a path
+in Curv1
+e(N). From this observation and the description of connected components of X(N)
+given in [2] it follows immediately that Curv 1
+e(N) is connected. □
+Proposition 9.3 (Theorem 5.1 of [2]) . If α∈ Curv0(N) and A∈ Aut(Curv(N)) then α
+and A(α) are in the same Mod(N)-orbit.
+We are ready to prove the main result of this section.
+Proof of Theorem 9.1. We use induction on the genus of N. For g = 1 the theorem is
+true by [15]. Let g≥ 2 and assume the theorem is true for surfaces of lower genus. Let
+A ∈ Aut(Curv(N)). We need to show that there is a unique f ∈ Mod(N) such that
+f(α) =A(α) for every α∈ Curv0(N). We break the proof into three steps.
+AUTOMORPHISMS OF THE PANTS GRAPH 27
+Step 1. For every α∈ Curv0
+e(N) there is a unique fα∈ Mod(N) such that fα(β) = A(β)
+for every β∈ St(α).
+Let α∈ Curv0
+e(N). By Proposition 9.3, we have A(α)∈ Curv0
+e(N)
+NA(α)∼=Nα∼=Ng−1,5−g.
+By induction hypothesis there is a unique f′
+α : Nα→NA(α) such thatf′
+α(β) =A(β) for every
+β∈ Lk(α) = Curv( Nα). We need to show that f′
+α can be extended over N to a unique
+fα ∈ Mod(N) such that fα(α) = A(α). It suffices to show that f′
+α maps the boundary
+component of Nα corresponding to α to the boundary component of NA(α) corresponding to
+A(α), which is equivalent to f′
+α(∂N ) = ∂N . There is nothing to prove if g = 4, since then
+∂N =∅.
+Assume g = 2 and let β be a separating curve disjoint from α such that one of the
+components ofNβ, sayM, is a pair of pants containing ∂N (Figure 11). By Proposition 9.3,
+M'
+A α ( )
+A β =f'α β( ) ( )M β
+α
+Figure 11. Curves in N2,2 from the proof of Step 1.
+A(β) is also a separating curve disjoint from A(α) such that one of the components of NA(β),
+say M′, is a pair of pants containing ∂N . Observe that M (respectively M′) is the unique
+orientable component of N{α,β} (respectively N{A(α),A(β)}). Since A(β) = f′
+α(β) we have
+f′
+α(M) =M′ and f′
+α(∂N ) =∂N .
+Finally assume g = 3 and let β be a separating curve disjoint from α such that both
+components ofNβ are nonorientable andα is contained in the genus 2 component ofNβ. Let
+M be the genus 1 component of Nβ, γ a one-sided curve in M, and δ the unique two-sided
+nonseparating curve inN\M (Figure 12). By Proposition 9.3, A(β) is also a separating curve
+M'
+A γ( ) A δ( )
+A β =f'α β( ) ( )M
+γ δ
+β
+α
+Figure 12. Curves in N3,1 from the proof of Step 1.
+disjoint from A(α) such that both components of NA(β) are nonorientable. Let M′ be the
+genus 1 component ofNA(β) which must contain∂N . By Proposition 9.3, A(δ) is a two-sided
+nonseparating curve disjoint form A(β), so it must be contained in N\M′. Furthermore,
+28 MICHA L STUKOW AND B LA ˙ZEJ SZEPIETOWSKI
+A(δ) fills N\M′ which implies that A(γ) is contained in M′. Since A(β) = f′
+α(β) and
+A(γ) =f′
+α(γ) we have f′
+α(M) =M′ and f′
+α(∂N ) =∂N .
+Step 2. For every α,β ∈ Curv0
+e(N) we have fα =fβ.
+Since Curv1
+e(N) is connected by Lemma 9.2 we can assume that α andβ are disjoint. Then
+fα(α) =A(α) =fβ(α), f α(β) =A(β) =fβ(β).
+Leth =fα◦f−1
+β ,M =N{α,β} andh′ =h|M. Observe that h′ fixes every vertex of Curv(M) =
+Lk({α,β}) because fα(γ) = fβ(γ) = A(γ) for every γ∈ Lk({α,β}). If M is nonorientable
+then M ∼= Ng−2,6−g and h′ = idM by the induction hypothesis. If M is orientable then
+either g = 2 and M ∼= S0,4, or g = 4 and M ∼= S1,2. Let H be the kernel of the map
+Mod(M)→ Aut(Curv(M)), which is generated by hyperelliptic involutions, H∼= Z2⊕ Z2
+if M ∼= S0,4, or H ∼= Z2 if M ∼= S1,2, see [10]. We know that H acts faithfully on the
+components of ∂M , and in the case of S0,4 it acts by even permutations. Since h′ fixes the
+two components of ∂M corresponding to α andβ, we haveh′ =idM. It follows that h =id.
+After Step 2 we know that there is a unique f∈ Mod(N) such that for every β∈ Curv0
+e(N)
+and α∈ St(β) we have f(α) =A(α).
+Step 3. For every α∈ Curv0(N) we have f(α) =A(α).
+We know that f(α) =A(α) if either
+(1) Nα is connected and nonorientable, or
+(2) Nα has two nonorientable components, or
+(3) Nα has a nonorientable component of genus at least 2.
+Indeed, in each of these cases there is β∈ Curv0
+e(N) such that α∈ St(β). It remains to
+consider the following cases.
+(4) Nα is connected and orientable.
+(5) Nα∼=S1,1⊔N1,2.
+Suppose Nα is connected and orientable. Let β be any curve in N such that i(α,β ) = 1.
+Observe that β is one-sided and essential, so for every γ∈ St(β) we have A(γ) = f(γ). By
+[2, Lemma 7.5] we also have A(γ) = f(γ) for every γ∈ Curv0(N) such that i(β,γ ) = 1, so
+in particular A(α) =f(α).
+Finally suppose Nα∼= S1,1⊔N1,2. Consider the curves β, γ and δ in Figure 13. Observe
+β
+δ
+α γ
+Figure 13. Curves in N3,1 from case 5.
+that Lk(β)∩ Lk(γ)∩ Lk(δ) = {α}. We have f(β) = A(β) by case (4) and f(γ) = A(γ),
+AUTOMORPHISMS OF THE PANTS GRAPH 29
+f(δ) =A(δ) by case (1), which implies
+{f(α)} = Lk(f(β))∩ Lk(f(γ))∩ Lk(f(δ))
+= Lk(A(β))∩ Lk(A(γ))∩ Lk(A(δ)) ={A(α)}.
+□
+Remark 9.4. Our proof of Theorem 9.1 is similar to the proof of the main result of [2]. In
+fact Step 1 of our proof is the same as in [2, Theorem 7.7] (although more detailed in the case
+n = 1). The main difference is in Step 2, where we use connectivity of the graph Curv 1
+e(N),
+which requires the assumption g≥ 2. We can assume g≥ 2 because the case of N1,3 was
+settled in [15] by a different argument. The proof in [2] is based on connectivity of a different
+graph and it works also for g = 1.
+10. The graphP(N3).
+In this section we focus on the case N = N3. We describe the structure of the pants
+graphP(N) and construct an abstract graph isomorphic to it. Additionally, we define a
+simply-connected 2-dimensional complex P(N), whose 1-skeleton is P(N), and such that
+Aut(P(N)) = Aut(P(N)).
+10.1. Curves on N. There is a unique (up to isotopy) one-sided curve α0 in N such that
+Nα0
+∼=S1,1, see [14]. The remaining curves in N can be partitioned into two disjoint subsets:
+Curv0(N)\{α0} = Curv+∪ Curv−,
+where Curv + consists of two-sided curves, and Curv − consisting of one-sided curves whose
+complement is nonorientable.
+For everyα∈ Curv0(N), α̸=α0
+Nα∼=
+(
+N1,2 α∈ Curv+
+N2,1 α∈ Curv− i(α,α 0) =
+(
+0 α∈ Curv+
+1 α∈ Curv−.
+Lemma 10.1. There exists a bijection φ: Curv−→ Curv+ such that for α∈ Curv− and
+β∈ Curv+
+i(α,β ) = 0 ⇐⇒ β =φ(α).
+Proof. Forα∈ Curv−, since Nα∼= N2,1, there exists a unique two-sided curve β such that
+i(α,β ) = 0. We define φ(α) = β. To prove that φ is a bijection, we construct its inverse
+φ−1 : Curv+→ Curv−. For β∈ Curv+, since Nα∼= N1,2, there exist two one-sided curves
+disjoint from β. One of them is α0, and the other one is φ−1(β). □
+Lemma 10.2. Forα,α′∈ Curv−
+i(α,α′) = 0 ⇐⇒ i(φ(α),φ (α′)) = 1.
+Proof. See the configuration of pairs {α,φ (α)} and{α′,φ (α′)} in Figure 14. □
+30 MICHA L STUKOW AND B LA ˙ZEJ SZEPIETOWSKI
+α
+N3
+φ(α)
+α'
+φ(α')
+Figure 14. Curvesα,α′,φ (α) and φ(α) in N3 – Lemma 10.2.
+10.2. Vertices and edges ofP(N).
+Proposition 10.3. Every vertex of P(N) belongs to one of the following sets.
+V1 ={{α0,β}| β∈ Curv+},
+V2 ={{α,φ (α)}| α∈ Curv−} ={{φ−1(β),β}| β∈ Curv+},
+V3 ={{α1,α 2,α 3}| αi∈ Curv−, i= 1, 2, 3, i(αi,αj) = 0 for i̸=j}.
+Proof. Let X∈P 0(N). If X+ =∅ then X∈ V3. If β∈ X+ then since Nβ∼= N1,2, either
+X ={β,α 0}∈ V1 or X ={β,φ−1(β)}∈ V2. □
+Let ψ : V1→V2 be the bijection defined by
+ψ({α0,β}) ={φ−1(β),β}
+for β∈ Curv+. For i = 1, 2 we define maps vi : Curv+∪ Curv−→Vi by the formulas
+v1(α) =
+(
+{α0,α} α∈ Curv+
+{α0,φ (α)} α∈ Curv− v2(α) =
+(
+{φ−1(α),α} α∈ Curv+
+{α,φ (α)} α∈ Curv−.
+Observe that v2 = ψ◦v1. For i = 1, 2 the restrictions vi|Curv+ and vi|Curv− are bijections
+ontoVi, and for α∈ Curv−, β∈ Curv+ we have
+vi(α) =vi(β) ⇐⇒ β =φ(α).
+Proposition 10.4. Every edge of P(N) belongs to one of the following sets.
+E11 ={v1(β)−−1 v1(β′)| β,β′∈ Curv+, i(β,β′) = 1},
+E12 ={X−−3 ψ(X)| X∈V1},
+E23 ={X←−4 v2(α)| X∈V3,α∈X},
+E33 ={{α1,α 2,α 3}−−3 {α′
+1,α 2,α 3}|{ α1,α 2,α 3},{α′
+1,α 2,α 3}∈ V3}.
+Proof. Lete =XY be an edge ofP(N). If X,Y ∈V3 thene∈E33. Suppose that e is of the
+form
+{α,β}−−{α′,β},
+where α,β are curves (X /∈V3). If β∈ Curv+ then{α,α′} ={α0,φ−1(β)} and e∈E12. If
+β =α0 then e∈E11. Finally, suppose β∈ Curv− and α =φ(β), so that X =v2(β). Then
+α′ /∈ Curv+, because α is the unique two-sided curve disjoint from β. Thus α′ ={α1,α 2}
+for α1,α 2∈ Curv−, Y∈V3 and e∈E23. □
+AUTOMORPHISMS OF THE PANTS GRAPH 31
+Remark 10.5. LetX ={α1,α 2,α 3}∈ V3. Since Nα1
+∼=N2,1, by the description ofP(N2,1) we
+havei(φ(α1),αj) = 1 forj = 2, 3, which implies thatX is joined tov2(α1) ={α1,φ (α1)}∈ V2
+by a move of type 4. By symmetry, X is also joined to v2(α2) and v2(α3). Since X is also
+incident to three edges of type 3 (from E33),X is a vertex of degree 6 – see Figure 5. On the
+other hand, every vertex from V1 is contained in a Farey subgraph, and every vertex from
+V2 is the centre of a fan subgraph, so these vertices have infinite degree.
+Remark 10.6. Every edge from E33 belongs to two different fan triangles – see Figure 15.
+Namely, an edge of the form
+{α1,α 2,α 3}−−3 {α′
+1,α 2,α 3}
+belongs to triangles with the third vertex v2(αj) ={αj,φ (αj)} for j = 2, 3. On the other
+1 1
+1
+1
+1
+1
+3
+333
+3
+4
+3 3 3
+4
+4 4
+V1
+V2
+V3
+E12
+E23
+E11
+E33
+Γ1
+Γ3
+ψ
+Figure 15. Vertices and edges of the pants graphP(N3). The shaded region
+is one of the standard pentagons – see Definition 10.13.
+hand, edges form E12 are not contained in any triangles – see Example 4.12.
+Remark 10.7. Using terminology from graph theory, the set E12 is a matching, that is to say
+no two edges in E12 share a common vertex. It is a realisation of the bijection ψ : V1→V2,
+as X∈V1 is matched with ψ(X)∈V2.
+10.3. Subgraphs ofP(N). Consider the following natural subgraphs of P(N):
+Γ1 = (V1,E 11), Γ3 = (V3,E 33).
+Proposition 10.8. Γ1 is the unique Farey subgraph of P(N).
+Proof. We have
+Γ1∼=P(Nα0)∼=P(S1,1),
+so Γ1 is a Farey subgraph. Since Γ 1 contains all edges of type 1, and there are no edges of
+type 2 inP(N), Γ1 contains all Farey triangles ofP(N). □
+32 MICHA L STUKOW AND B LA ˙ZEJ SZEPIETOWSKI
+Definition 10.9. (Farey tree) Farey tree Γ∗
+1 is the graph which has a vertex for each triangle
+of Γ1, and two vertices of Γ∗
+1 are joined by an edge if and only if the corresponding triangles
+share an edge.
+As the name suggests, Γ ∗
+1 is a regular tree of degree 3. Let T (Γ1) denote the set of
+triangles of Γ1. In this section we identify a triangle with its set of vertices. By Lemma 10.2,
+for αi∈ Curv−, i = 1, 2, 3
+{α1,α 2,α 2}∈ V3 ⇐⇒ {v1(α1),v 1(α2),v 1(α3)}∈T (Γ1).
+Let us define θ : V3→T (Γ1) by
+θ({α1,α 2,α 3}) ={v1(α1),v 1(α2),v 1(α3)}.
+Since v1|Curv− is a bijection, θ is also a bijection. Furthermore, for X,Y ∈ V3, XY ∈ E33
+if and only if the triangles θ(X) and θ(Y ) share an edge. Thus θ is a graph isomorphism
+θ : Γ3→ Γ∗
+1 and we have the following result.
+Proposition 10.10. Γ3 is isomorphic to the Farey tree Γ∗
+1.
+Lemma 10.11. ForX∈V2 and Y∈V3,
+XY ∈E23 ⇐⇒ ψ−1(X)∈θ(Y ).
+Proof.XY ∈E23 if and only if X =v2(α) for some α∈Y , in other words X∈v2(Y ). We
+havev2(Y ) =ψ(v1(Y )) =ψ(θ(Y )), so X∈v2(Y ) ⇐⇒ ψ−1(X)∈θ(Y ). □
+Proposition 10.12. Every X ∈ V2 is the centre of a unique fan subgraph of P(N) with
+vertex set
+{X}∪{ Y∈V3|ψ−1(X)∈θ(Y )}.
+Proof. If X ={φ−1(β),β}∈ V2, where β∈ Curv+, then F = F (X,β ) is the unique fan
+subgraph ofP(N) containingX. If Y̸=X, then Y is a vertex of F if and only if XY ∈E4,
+which is equivalent to ψ−1(X)∈θ(Y ) by the previous lemma. □
+10.4. Abstract model of P(N). Using the results of the two previous subsections we can
+construct an abstract graph isomorphic to P(N) starting from the Farey graph F and the
+associated Farey tree F∗. Let V (F) (resp. V (F∗)) denote the vertex set of F (resp. F∗).
+Recall that V (F∗) is the set of triangles of F.
+We defineG to be the graph obtained from the disjoint unionF⊔F∗ by adding a new vertex
+ex for every x∈V (F) together with edges exx andexT for every T∈V (F∗) such that x∈T .
+In follows from the results of the two previous subsections that G is isomorphic to P(N),
+withF andF∗ corresponding to Γ 1 and Γ3 respectively, and forx∈V (F) corresponding to
+X∈V1,ex corresponds to ψ(X)∈V2.
+10.5. Attaching 2-cells to P(N). The analysis from the previous section indicates that
+there are natural cycles of length 5 (pentagons) in P(N).
+Definition 10.13. For X∈ V3 and α1,α 2∈ X we define a standard pentagon to be the
+circuit
+X←−4 v2(α1)−−3 v1(α1)−−1 v1(α2)−−3 v2(α2)−→4 X.
+Example 10.14. See Figure 16 for the geometric realization of a standard pentagon in N.
+AUTOMORPHISMS OF THE PANTS GRAPH 33
+3
+4 4
+1
+3
+Figure 16. Standard pentagon in N3.
+Theorem 10.15. The 2-dimensional complex P(N) obtained by attaching 2-cells to P(N)
+along each triangle and each standard pentagon is simply-connected.
+Proof. Let L be a loop in P(N) based at X0∈ V1. We can assume that L is a simplicial
+loop in the graph P(N). Since every edge from E33 is contained in a fan triangle, every
+loop is homotopic inP(N) to a loop without edges from E32, so we assume that L does not
+contain edges from E33. Let n be the length of L, i.e. the number of edges contained in L.
+We prove by induction on n that L is null-homotopic inP(N). If n = 0 then L is obviously
+null-homotopic, so assumen≥ 1 and that all loops of length less than n are null-homotopic.
+IfL is contained in the Farey subgraph Γ1, thenL is null-homotopic, because the complex
+obtained by attaching 2-cells to Γ 1 along each Farey triangle is simply-connected.
+IfL is not contained in Γ1, then it contains at least one vertexX1∈V2 and we can assume
+thatX1 is joined to X0 by an edge fromE12 and this edge is contained in L. If n = 2 thenL
+travels from X0 to X1 and then back to X0 along the same edge, so it is null-homotopic. If
+n≥ 3 then L must contain X2∈V3, X3∈V2, and edges X1X2∈E23, X2X3∈E23 (because
+we assumed that L contains no edges from E33). Consider the following segment L′ of L:
+X0−−3 X1−→4 X2←−4 X3.
+If X3 =X1 then by replacing L′ by the single edge X0X1 we obtain a loop of length n− 2
+homotopic to L, which is null-homotopic by induction hypothesis. If X3̸= X1 then L′ is
+contained in a standard pentagon
+X0−−3 X1−→4 X2←−4 X3−−3 Y−−1 X0,
+where Y =ψ−1(X3). By replacing L′ by the segment
+X0−−1 Y−−3 X3,
+we obtain a loop of length n− 1 homotopic to L, which is null-homotopic by induction
+hypothesis. □
+Acknowledgments. We thank our colleagues Marta Le´ sniak and Jakub Szmelter-Tomczuk
+for fruitful discussions. Special thanks go to Jakub for finding Example 5.11.
+34 MICHA L STUKOW AND B LA ˙ZEJ SZEPIETOWSKI
+References
+[1] J. Aramayona, Simplicial embeddings between pants graphs. Geom Dedicata (2010) 144, 115—128.
+[2] F. Atalan and M. Korkmaz, Automorphisms of curve complexes on nonorientable surfaces, Groups
+Geom. Dyn. 8 (2014), 39–68.
+[3] J. F. Brock, The Weil-Petersson metric and volumes of 3-dimensional hyperbolic convex cores, J. Amer.
+Math. Soc. 16 (2003), 495 – 535.
+[4] J. Harer, The second homology group of the mapping class group of an orientable surface, Invent. Math.
+72 (1983), 221–239.
+[5] A. Hatcher, Pants Decompositions of Surfaces, Preprint (1999), arXiv:math/9906084.
+[6] A. Hatcher and P. Lochak and L. Schneps, On the Teichm¨ uller tower of mapping class groups, J. Reine
+Angew. Math. 521 (2000), 1–24
+[7] A. Hatcher and W. Thurston, A presentation for the mapping class group of a closed orientable surface,
+Topology 19 (1980), 221–237
+[8] N. V. Ivanov, Automorphisms of complexes of curves and of Teichmuller spaces, in Progress in Knot
+Theory and Related Topics, Travaux en Cours 56, Hermann, Paris, 1997, 113 – 120.
+[9] M. Korkmaz, Automorphisms of complexes of curves on punctured spheres and on punctured tori,
+Topology Appl. 95 (1999), 85 – 111.
+[10] F. Luo, Automorphisms of the complex of curves. Topology 39 (2000), 283—298.
+[11] Y. N. Minsky, A geometric approach to the complex of curves, in Topology and Teichm¨ uller Spaces,
+1996, 149–158.
+[12] D. Margalit, Automorphisms of the pants complex. Duke Math. J. 121(3) (2004), 457—479.
+[13] A. Papadopoulos and R. C. Penner, Hyperbolic metrics, measured foliations and pants decompositions
+for non-orientable surfaces, Asian J. Math. 20 (2016), no. 1, 157–182.
+[14] M. Scharlemann, The complex of curves of a nonorientable surface, J. London Math. Soc. 25 (1982),
+171–184.
+[15] B. Szepietowski, A note on the curve complex of the 3-holed projective plane, Math. Commun. 25
+(2020), 289–296.
+[16] B. Wajnryb, A simple presentation for the mapping class group of an orientable surface, Israel J. Math.
+45 (1983), 157–174.
+[17] B. Wajnryb, An elementary approach to the mapping class group of a surface, Geom. Topol. 3 (1999),
+no. 1, 405–466.
+Institute of Mathematics, Faculty of Mathematics, Physics and Informatics, University
+of Gda´nsk, 80-308 Gda´nsk, Poland
+Email address : michal.stukow@ug.edu.pl
+Email address : blazej.szepietowski@ug.edu.pl

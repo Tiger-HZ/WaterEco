@@ -1,0 +1,427 @@
+Scholar Publishing Group 
+International Journal of Business Management and Economics and Trade 
+https://doi.org/10.38007/IJBMET.2026.070305 
+ISSN 2790-0959 V ol. 7, Issue 3:47-55 
+Copyright: © 2026 by the authors. This is an Open Access article distributed under the Creative Commons Attribution License (CC BY 4.0), which 
+permits unrestricted use, distribution, and reproduction in any medium, provided the original work is properly cited (https://creativecommons.org/ 
+licenses/by/4.0/). 
+47 
+Research on Multi-source Demand Perception and 
+Inventory-Capacity Co-optimization of Sales and 
+Operation Planning in Discrete Manufacturing 
+Enterprises 
+Qian Lin 
+W. P. Carey School of Business, Arizona State University, Mesa, 85287, Arizona, U.S 
+Keywords: Big data analytics; supply chain collaboration; sales and operations planning; 
+demand forecasting; multi-objective optimization 
+Abstract: Given the changes in the demand environment, delivery risks and extended 
+supply chains of modern manufacturing enterprises, the previous model of sales and 
+operations planning has shown several defects, such as scattered data, slow forecasting and 
+departmental misalignment. Based on the EU enterprise digital technology application 
+statistics in 2025, this paper proposes a multi -source big data -driven framework for 
+collaborative sales and operations planning by means of secondary data analysis, 
+standardised modelling and process design. The five kinds of models in this study are: 
+demand perception, dynamic weight updates, inventory balancing, multi -objective cost 
+optimisation and service-level risk constraints. The four levels of the implementation plan 
+are data governance, collaborative planning, decis ion optimisation and closed- loop 
+execution. Based on the statistics, large enterprises significantly outperform the average 
+enterprise in terms of ERP, business intelligence, cloud computing, data analytics and 
+artificial intelligence applications, and the adoption rates of data analytics vary 
+substantially among different countries. Therefore, to optimise the supply chain, we do not 
+need a single algorithm that replaces human labour; rather, we should establish a unified 
+data semantics, cross -departmental constraint negotiation, and an interpretable rolling 
+decision-making mechanism. 
+1. Research Background of Collaborative Optimization of Sales and Operations Planning in 
+Discrete Manufacturing Enterprises 
+The world's supply chain has moved away from a relat ively stable linear model to a multi- node, 
+highly interconnected and prone -to-disruption network system. A manufacturing enterprise 
+produces a large number of organised and unorganised data during sales forecasting, procurement 
+planning, capacity allocation, inventory replenishment and logistics scheduling. The above data are 
+generally distributed among ERP, MES, WMS, TMS, CRM and other external market platforms, 
+and it is difficult to establish a unified, timely and intuitive planning foundation. The old method of 
+International Journal of Business Management and Economics and Trade 
+48 
+sales and operations planning usually issues only monthly summaries, and thus it cannot promptly 
+identify changes in orders, supply problems or shifts in sales channels. Therefore, the forecasting 
+errors will be magnified at each link in the procurement, production and inventory stages. 
+Based on the above research, it has been determined that the effective application of big data 
+analysis in supply chain planning depends on the alignment of data sources, analysis methods and 
+specific plan ning activities, and simply adding more data does not guarantee better results [1]. 
+Therefore, this paper takes the sales and operating plan scenario of manufacturing enterprises as its 
+research object, explores how multiple sources of data can be converte d into cross -departmental 
+collaborative plans, and finally introduces business decision optimisation. The main content of this 
+paper is as follows: First, based on actual statistical data, analyze the deficiency in enterprise digital 
+technology adoption. S econd, propose a collaborative framework consisting of the data layer, 
+analysis layer, planning layer and execution layer. Third, build five editable core models. Fourth, 
+establish a data governance and organisation mechanism that can be rolled out in stages. 
+2. Current Status of Enterprise Digital Technology Adoption and Cross -Departmental Supply 
+Chain Planning Collaboration 
+2.1 Differences in Enterprise Adoption of ERP Cloud Platforms and Data Analytics 
+Technologies 
+Supply chain big data usually includes order, price, promotion, customer behaviour, inventory, 
+equipment status, supplier delivery, transportation route and weather/macro market data. The more 
+abundant the data sources , the more urgently master data unification, time -granularity alignment 
+and business -scope extension are required. Research on absorption capacity has shown that a 
+company's ability to convert external knowledge into procurement and supply chain decisions is 
+related to the organization's capability to identify, absorb and apply dat a-knowledge [2]. Therefore, 
+when building a big data platform, one must pay attention to data quality rules, permissions, lineage 
+and responsible persons in the governance system, not only storage and computation. 
+Table 1. Use of Order, Inventory, Supply Chain, Logistics and External Data in Sales Operations 
+Planning 
+Data Domain Typical Fields Planning Role Quality Rule 
+Demand Orders, price, promotion, 
+search index 
+Demand sensing and forecast 
+revision 
+Time alignment and 
+duplicate removal 
+Inventory On-hand, in-transit, safety 
+stock, ageing 
+Replenishment and shortage 
+control SKU-location consistency 
+Supply Capacity, yield, lead time, 
+supplier status 
+Allocation and capacity 
+reservation 
+Supplier master-data 
+validation 
+Logistics Route, freight rate, delay, 
+node congestion 
+Transport planning and 
+delivery promise Event timestamp integrity 
+External Weather, policy, commodity 
+price, sentiment 
+Scenario adjustment and risk 
+warning Source credibility scoring 
+ 
+Table 1 analysis: The table divides the multi- source data into categories of demand, inventory, 
+supply, logistics and external environment, and links them to demand perception, replenishment, 
+capacity, transportation and risk warning activities. Therefore, the value of the data needs to be 
+International Journal of Business Management and Economics and Trade 
+49 
+realised by planning its use clearly, and quality rules are set for different kinds of data to prevent 
+model bias caused by inconsistencies in the same SKU, location or time. 
+Although artificial intelligence and big data analysis have been applied to enhance the resilience 
+of supply chains, some deficiencies remain in the research, such as scattered technology topics, 
+disjointed business scenarios and weak organisational implementation [3]. The Scope of the Digital 
+Infrastructure in enterprises also varies considerably from place to place. By 2025, the proportion of 
+large EU enterprises that have adopted ERP, business intelligence, pay -as-you-go cloud computing, 
+data analytics and artificial intelligence will be much higher than at the overall enterprise level. 
+ 
+Figure 1. Adoption Rate of Five Types of Digital Technologies by EU Enterprises and Large 
+Enterprises in 2025 
+Data source: Eurostat, Digital Economy and Society Statistics —Enterprises, data codes 
+isoc_eb_iip, isoc_cicce_use, isoc_eb_das, and isoc_eb_ai. 
+As shown in Figure 1, large enterprises have an ERP adoption rate of 88.71% and a data analysis 
+adoption rate of 78.84%; both are significantly higher than the general EU enterprise adoption rates 
+of 46.45% and 33.02%, respectively, and the gap in artificial intelligence adoption rates is also 
+relatively large. As shown in the above results, the resource barrier for large -scale data- driven 
+collaborative initiatives is relatively high; therefore, SMEs can reduce construction costs by using 
+cloud platforms, standardised interfaces, modular models, etc. 
+2.2 Mechanism for Resolving Conflicts and Negotiations Regarding Sales, Production, 
+Procurement, and Financial Objectives 
+The old planning system generally has the sa les department put forward high- demand plans, the 
+production department requires a stable production schedule, the purchasing department seeks bulk 
+discounts, and the finance department manages working capital. The Goals of the different 
+departments are not aligned. Research on the risks of technology adoption shows that data security, 
+system compatibility, talent shortage, uncertainty of return on investment, and organisational 
+resistance can all hinder the spread of analytical technologies in the supply chain [4]. Therefore, 
+through the spread of a single forecast figure, collaborative planning cannot be achieved; instead, 
+negotiable constraints, traceable versions, and explainable reasons for modification must be 
+generated. 
+Research in data ethics has fou nd that errors in analysis or out -of-bounds use of data can harm 
+supplier-customer relationships and create new governance risks for technological efficiency [5]. 
+International Journal of Business Management and Economics and Trade 
+50 
+Therefore, the data source , model version, reason for human intervention and the final responsible 
+party need to be recorded in the planning process, and a decision path of "machine suggestion - 
+business review - authorised execution" should be established. 
+2.3 The Evolution of Supply Chain Analysis from Visualization to Predictive Optimization 
+The impact of big data analytics on innovation performance varies according to the cycle of 
+technology and business, so different rhythms of data investment are needed at different stages of 
+development [6]. For manufacturing enterprises, the first need is t o solve the unification and 
+visualisation of master data; in the middle stage, prediction and anomaly detection models can be 
+built; and finally, cross -node optimisation and intelligent decision -making will be realised . 
+Research on industry barriers has found that there is a hierarchical transmission relationship among 
+strategic cognition, data foundation, organisational resources and methodological capabilities, and 
+thus, algorithms cannot break through the systemic bottleneck at a single point [7]. 
+ 
+Figure 2. Differences in the Adoption Rate of Corporate Data Analytics in the Eight EU Member 
+States by 2025. 
+Data source: Eurostat, Data analysis by enterprise size class, data code isoc_eb_das. 
+As shown in Figure 2, the data analysis adoption rates in Denmark, Estonia, the Netherlands, 
+Lithuania and Belgium all exceed 52%, whereas those in Bulgaria, Austria and Poland are below 
+28%; thus, the highest and lowest rates differ by 35.49 percentage points. Therefore, the lack of this 
+feature is likely due to insufficient digital infrastructure, a shortage of talent, and an unsupportive 
+institutional environment, rather than only an internal algorithm. 
+3. Three types of obstacles to the execution of data forecasting in sales and operations 
+planning 
+3.1 Conflicts between coding granularity and timeliness of order, inventory, capacity, and 
+delivery date data. 
+The problem of manufacturing enterprises is not a lack of data, but rather inconsistencies in the 
+coding, hierarchy and update time of order, inventory, capacity and delivery date data. For example, 
+the same material may have different codes in the purchasing, production and warehousing systems; 
+International Journal of Business Management and Economics and Trade 
+51 
+sales forecasts are aggregated weekly, production schedules are implemented daily, and there is no 
+closed-loop mechanism connecting supplier -committed delivery dates with actual delivery events. 
+These differences make it difficult to stabilise the model's input, and thus the forecast results cannot 
+be directly applied to business decisions. 
+3.2 Disconnect between demand forecasting and constraints on batch production capacity, 
+inventory, and logistics. 
+Most enterprises still focus on a single goal of forecasting accuracy and ignore the combined 
+effect of forecasting errors on inventory, production capacity and service level. Even if the models 
+improve the short-term forecasting accuracy, these forecasts are still not feasible for implementation 
+without considering constraints such as planning freeze periods, minimum order quantities, 
+changeover times and logistics windows. Human experience often outweighs the model's output in 
+the end, and thus there is a loss of trust in the model and business operations. 
+3.3 Conflict between cost -service resilience objectives and insufficient explanation of 
+optimization results 
+The Goals of Supply -Chain Decisions Differ: reduce inventory to prevent stockouts, achieve a 
+high-service-level requirement with rapid delivery, and strengthen the network of suppliers by 
+expanding coverage at the expense of scale e conomies. Research on resilience has moved from 
+prediction to prescription and now integrates algorithm -driven recommendations with scenarios, 
+constraints and organisational choices [8]. However, many enterprises lack standardised weighting 
+rules and risk boundaries, and the different departments have thus achieved local optima according 
+to their own indicators. 
+Table 2: Analysis Methods and Cross-departmental Action Mapping for Five Types of Obstacles to 
+Sales Operations Planning. 
+Planning 
+Issue Root Cause Analytics Method Collaborative 
+Action KPI 
+Forecast bias Fragmented demand 
+signals Ensemble forecasting Joint forecast 
+review MAPE and bias 
+Excess 
+inventory Static safety stock Probabilistic inventory 
+model 
+Parameter 
+approval Inventory days 
+Capacity 
+conflict 
+Independent functional 
+targets Constraint optimization Capacity 
+negotiation 
+Utilization and 
+backlog 
+Delivery 
+delay Weak event visibility Anomaly detection Exception 
+escalation On-time delivery 
+Supplier risk Single-source 
+dependence 
+Risk scoring and scenario 
+analysis 
+Allocation 
+adjustment Supply continuity 
+ 
+Table 2 Analysis: The table shows five typical problems and their corresponding predictive 
+integrations, probabilistic inventories, constraint optimisations, anomaly detections and risk scores, 
+along with cross -departmental actions and indicators. As shown in the mapping, only by adding a 
+joint review, parameter approval, capacity negotiation and anomaly escalation mechanism can the 
+algorithm be transformed into an executable collaborative plan rather than just an analytical tool. 
+International Journal of Business Management and Economics and Trade 
+52 
+4. Multi -source demand perception and inventory -capacity collaborative decision -making 
+optimization framework 
+4.1 Integrated Data Architecture of Lake Warehouse Semantic Layer and Planning 
+Workbench 
+The five levels of the architecture for the enterprise are: Data Lakehouse - Indicator Semantic 
+Layer - Analysis Service - Planning Workbench - Execution Feedback. The data lake warehouse 
+collects internal transaction data, equipment information, logistics data and external data; the 
+indicator semantic layer normalises SKU, customer, supplier, location, time and version attributes; 
+the analysis service provides prediction, classification, optimisation and scenario simulation 
+functions; the planning workbenc h supports joint review by sales, operations, procurement and 
+finance; and the execution feedback writes back actual order, output, arrival and delivery results to 
+the model. The function of big data analysis capability in supply chain resilience is often to provide 
+visibility and flexibility; thus, visualised event flow and rapid replanning should be the focus of the 
+platform [9]. 
+4.2 Dynamically Weighted Demand Forecasting Based on Integrated Order and Promotion 
+Channel Signals 
+Demand forecasting should not rely on a single historical sales volume, but should integrate 
+orders, prices, promotions, channel search, customer behavior, and macroeconomic variables. Let 
+the product be p, the time be t, and the data source or forecaster be s, then the integrated f orecast 
+can be expressed as: 
+ D�p,t= ∑ ws
+S
+s=1 fs�Xs,t�,  ∑ ws
+S
+s=1 =1 (1) 
+In equation (1), D�p,trepresents the predicted demand for the product pat a given time point t, 
+fs(⋅)represents sthe prediction function of the i -th data source or model, Xs,trepresents the input 
+feature, and wsrepresents the weight. The sum of the weights equals 1 to ensure the interpretability 
+of the fusion result. 
+Given the change in the structure of demand, weights can be updated dynamically based on 
+errors over a rolling window. 
+ ws,t=
+exp�-λEs,t�
+∑ expS
+r=1 �-λEr,t� (2) 
+In equation (2), Es,trepresents sthe prediction error of the model in the nearest window, λand is 
+the error sensitivity coefficient. The smaller the error, the higher the model weight; when promotion, 
+season or channel structure changes, the system can automatically adjust the importance of different 
+signals. Comparative studies of machine learning show that incorporating prediction accuracy, 
+implementation cost and sustainability indicators into model selection is more conducive to 
+business implementation [10]. 
+4.3 Multi-objective optimization of inventory shortage transportation and plan change costs 
+Collaborative planning should incorporate inventory, stockout , transportation, and plan change 
+costs into a unified objective. Let the inventory cost during the decision- making period be *x* Cinv, 
+the stockout cost be *y Cshort*, the transportation cost be *f* Ctrans, and the plan change cost be *v* 
+Cchg, then the comprehensive objective function is: 
+International Journal of Business Management and Economics and Trade 
+53 
+ minZ=αCinv+βCshort+γCtrans+δCchg (3) 
+In equation (3), α, β, γand δare weights jointly confirmed by sales, operations, procurement, and 
+finance. By comparing different weight combinations through scenario simulation, the trade -offs 
+between service level, cost, and stability can be identified, avoiding the dominance of a single 
+department's indicator in overall decision-making. 
+Multi-node inventory and order flow need to maintain a basic balance: 
+ Ii,t=Ii,t-1+Qi,t+Ri,t-Di,t-Bi,t (4) 
+In equation (4), Ii,tis the ending inventory at the node iat time point t, Qi,tis the purchase or 
+production replenishment quantity, Ri,tis the transfer-in quantity, Di,tis the actual demand, Bi,tand is 
+the stockout or backlog disposal quantity. This constraint ensures that the planning results are 
+executable at the material flow level and can be used to identify imbalances in cross -warehouse 
+transfers and replenishment schemes. 
+Limit the scope of demand uncertainty and set a service-level objective constraint. 
+ Pr�It-1+ ∑ xi,t
+n
+i=1 ≥Dt�≥1-ε (5) 
+In equation (5), xi,t represents i the supply quantity of the source ε during the cycle , t and 
+represents the allowable stockout probability. Enterprises can set differentiated risk thresholds 
+based on product value, customer level, and life cycle to ensure higher service guarantees for high -
+value or critical products, rather than using a uniform safety stock for all SKUs [[11-20]. 
+4.4 Closed-loop execution of weekly re-planning and monthly sales operations meetings 
+Model outputs will be included in the management process via weekly rolling plans and monthly 
+sales and operations meetings. A weekly mechanism will respond to changes in demand and supply 
+and delivery problems; a monthly mechanism will coordinate the capacity, inventory, cash and 
+profit of all departments. The three retained versions of the system are the baseline plan, the 
+optimised plan and the manually adjusted plan, a long with the reasons for each. For high- impact 
+decisions, the contribution of key variables, constraint conflicts and sensitivity analysis results 
+should be shown to help managers understand "why adjust", rather than accepting a single figure. 
+Table 3. Five-Stage Implementation Roadmap for Data Governance and Feedback Learning in 
+Manufacturing Enterprises. 
+Stage Core Task Data Scope Decision Output Governance Gate 
+Foundation Master-data and metric 
+alignment 
+ERP, WMS, MES, 
+CRM 
+Trusted planning 
+dataset 
+Data-owner 
+approval 
+Visibility Event integration and 
+dashboards 
+Orders, inventory, 
+logistics 
+Exception list and 
+alerts Quality threshold 
+Intelligence Forecasting and risk 
+scoring 
+Internal and external 
+signals Scenario forecast Model validation 
+Optimization Multi-objective planning Cost, capacity, 
+service, risk Executable plan Cross-functional 
+sign-off 
+Learning Feedback and parameter 
+update 
+Actual execution 
+results 
+Updated weights and 
+rules Post-action review 
+ 
+International Journal of Business Management and Economics and Trade 
+54 
+Table 3 analysis : The implementation roadmap gradually moves from basic governance to 
+visualisation, intelligent analysis, optimised decision -making and feedback learning, and does not 
+directly apply complex algorithms by enterprises before data standards are normalised. At all times, 
+a government department or organisation should be in charge of managing the quality of the data 
+and models [21-25]. 
+5. Research findings and implementation implications of multi -source data-driven sales and 
+operations plan optimization 
+This paper studies the cooperation between sales and operations planning in manufacturing 
+enterprises, investigates the actual foundation, main problems and implementation paths of big data-
+driven supply chain planning and business decision optimisation. A ctual statistics show that 
+enterprise size and the digital environment in a certain area affect the level of adoption for ERP, 
+cloud computing, data analysis and artificial intelligence; therefore, technological application 
+should be conducted in coordinat ion with organisational capacity and governance. The framework 
+presented in this paper connects forecasting, planning and execution in a closed- loop manner via 
+multi-source demand fusion, dynamic weighting, multi -objective costing, inventory balancing and 
+opportunity constraints. 
+The main results of this study are as follows: First, the problem of supply chain collaborative 
+optimisation is mainly one of data semantics and accountability mechanisms, and only secondarily 
+an algorithmic issue; Second, demand forecasting should be integrated into rolling plans along with 
+inventory, capacity, transportation and risk constraints; Third, the optimisation results must be 
+interpretable, negotiable and retain human authorisation; Fourth, SMEs can lower the 
+implementation threshold through cloud platforms, standardised data interfaces and phased 
+construction. This paper will use publicly available data and standardised models. In the future, one 
+can add order, inventory and delivery data from manufacturing enterprises f or multi- industry 
+comparison and model ablation and verification of actual operating performance [26-30]. 
+References 
+[1] Xu J, Pero M, Fabbri M. Unfolding the link between big data analytics and supply chain 
+planning[J]. Technological Forecasting and Social Change, 2023, 196: 122805. DOI: 
+10.1016/j.techfore.2023.122805. 
+[2] Patrucco AS, Marzi G, Trabucchi D. The role of absorptive capacity and big data analytics in 
+strategic purchasing and supply chain management decisions[J]. Technovation, 2023, 126: 
+102814. DOI: 10.1016/j.technovation.2023.102814. 
+[3] Han, X. (2026). Research on Adaptive Optimization Methods for Multi -Objective 
+Manufacturing Process Parameters in Complex Assembly Processes. Procedia Computer 
+Science, 279, 366-374. 
+[4] Ma, X. (2026). Distributed Fault Root Cause Localization and Self -Healing Strategy 
+Generation Based on Causal Inference. Procedia Computer Science, 281, 753-760. 
+[5] Chi, C. (2026). Quantitative Evaluation of Tranche -Level Returns and Loss Distributions of 
+Structured Credit Assets under Stress Scenarios. 
+[6] Su, J. (2026). Design and Implementation of Android High Reliability Communication Module 
+Based on Hierarchical Architecture. 
+[7] Sun, L. (2026). Resource Scheduling and Elastic Scaling Optimization of Distributed 
+Advertising Systems in Cloud-Native Environments. 
+[8] Qian, X. (2026). Market Data–Driven Demand Forecasting and Inventory Coordination 
+Mechanisms in Retail Supply Chains. 
+International Journal of Business Management and Economics and Trade 
+55 
+[9] Yang, Y. (2026). The Integration and Application of Ai Technology in Marketing Data Analysis 
+and Business Decision-Making. 
+[10] Zhang, Y. (2026). Exploration of Enterprise Big Data Microservice Architecture Based on 
+Domain-Driven Design (DDD). Procedia Computer Science, 282, 1994-2003. 
+[11] Liu, X. (2026). Construction of Consumer Data Privacy Protection System Based On 
+Blockchain Technology. Procedia Computer Science, 282, 2082-2091. 
+[12] Liu, X. (2026). Research on the Application of Artificial Intelligence in Consumer Privacy 
+Data Protection. Procedia Computer Science, 279, 956-965. 
+[13] Zhang, Y. (2026). Research on LLM -Driven Intelligent Architecture Design and Autonomy 
+Mechanism Construction for Cloud-Native Control Planes. 
+[14] Zhang, Y. (2026). A Framework for LLM -Based Semantic Configuration Understanding and 
+Automated Change Generation in Microservice Orchestration. 
+[15] Li, J. (2026). Research on the Path and Efficiency of Empowering Accurate Advertising 
+Delivery with Data Infrastructure. 
+[16] Li, J. (2026). Analysis of Advertising Creativity Generation and User Response Mode Based 
+on AIGC. 
+[17] Zhang, J. (2026). Research on Value Stratification and Precision Marketing of Retail 
+Customers in Banks Based on Clustering Algorithm. 
+[18] Wang, Z. (2026). Earnings Quality of Resource Enterprises Under Commodity Price Volatility 
+Transmission. 
+[19] Ma, W. (2026). Reliable Data Infrastructure Supported by Automated Data Pipelines. 
+Engineering Advances, 6(2). 
+[20] Jin, C. (2026). Research on the Optimization Strategy of Retail Enterprise Product Portfolio 
+Based on Association Rule Analysis. Advances in Computer and Communication, 7(2). 
+[21] Wang, Z. (2026). Data- driven Pathways for Optimizing Supply Chain Operational Efficiency 
+in Physical Industries. Advances in Computer and Communication, 7(2). 
+[22] Wang, N. (2026). Research on Digital Marketing Conversion Improvement Strategies and 
+Predictive Analysis Based on User Behavior Segmentation. Journal of Humanities, Arts and 
+Social Science, 10(7). 
+[23] Ma, X. (2026). Research on Elastic Scaling and Resource Scheduling Strategies for 
+Distributed Systems Facing Traffic Fluctuations. 
+[24] Wang, Z. (2026). Valuation Enhancement Pathways for Resource Stocks Driven by the Growth 
+of Energy Storage Demand. Engineering Advances, 6(3). 
+[25] Su, J. (2026). Research on Machine Learning- based Performance Prediction and High-
+reliability Software Evolution Mechanisms for Android Communication Systems. 
+[26] Zhang, Y. (2026). Aut onomous Software Release Management and Cross -service Consistency 
+Control Mechanisms Based on Large Language Models. Advances in Computer and 
+Communication, 7(3). 
+[27] Chen, J. (2026). Research on Traffic Peak Shaving and Data Consistency Guarantee 
+Mechanism of E-commerce Flash Sale System Under Event -driven Architecture. Engineering 
+Advances, 6(2). 
+[28] Xin, H. (2026). Research on Distributed Data Cleaning and Standardized Mapping for 
+Heterogeneous Logistics Data. Advances in Computer and Communication, 7(2). 
+[29] Zhang, Z. (2026). Research on the Optimization of Payment Risk Dynamic Monitoring Models 
+Driven by High-dimensional Behavioral Features. Advances in Computer and Communication, 
+7(3). 
+[30] Yuan, Y. (2026). Research on Memory Management and Dynamic Reasoning Methods for 
+Intelligent Agents Based on Large Language Models.

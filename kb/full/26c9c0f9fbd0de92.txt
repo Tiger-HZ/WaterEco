@@ -1,0 +1,1848 @@
+Vol.:(0123456789)
+Nanomanufacturing and Metrology (2026) 9:30 
+https://doi.org/10.1007/s41871-026-00312-0
+ORIGINAL ARTICLE
+Measurement‑Driven Low‑Label Adaptation for Signal‑Based Areal 
+Surface Roughness Prediction After Tool Replacement in Ti–6Al–4V 
+Milling
+Jie Feng1 · Nan Zhang1 · Zhenyu Liu1 · Long Li1 · Peng Duan1 · Kang Shu1 · Liyuan Zheng1 · Ze Yu1 · Zhen Chen2
+Received: 21 May 2026 / Revised: 13 July 2026 / Accepted: 13 July 2026 
+© The Author(s) 2026
+Abstract
+In precision milling, areal surface roughness ( Sa ) is commonly verified through offline surface topography measurement. 
+However, tool replacement can change process signals and reduce the reliability of signal-based Sa prediction. This study 
+formulates Sa prediction in Ti–6Al–4V milling as a measurement-driven low-label target-tool adaptation problem. Three 
+tools were machined under fixed cutting parameters, and each steady-state pass was paired with one confocal white-light 
+Sa measurement. Force and vibration signals were organized using a one-pass–one-sample strategy to avoid overlapping 
+window sample inflation. Seventy-two statistical descriptors were extracted to describe amplitude, energy, fluctuation, dis-
+tribution, and spectral response characteristics. Descriptor-based regressors and a hierarchical signal statistical fusion model 
+were evaluated using the same leave-one-tool-out (LOTO) protocol. Unlabeled target-tool descriptors were used for per-tool 
+input normalization, and limited target-tool Sa labels were used only for affine output calibration. Raw cross-tool predic-
+tion remained unreliable for all models, with negative average R2 values. After calibration, random forest achieved the best 
+numerically calibrated performance in the present controlled setting, with average RMSE/ R2 values of 0.0925 µm/0.4658, 
+0.0956 µm/0.3331, and 0.0973 µm/0.2908 under pass-uniform calibration, layer-all-pass calibration, and layer-one-pass 
+calibration, respectively. Under the present controlled three-tool LOTO setting, the results indicate that reliable statistical 
+descriptors, unsupervised input alignment, and few-shot affine correction provide a practical route for improving Sa predic-
+tion after tool replacement.
+Highlights
+1. Tool replacement causes severe Sa prediction bias 
+despite fixed cutting parameters.
+2. One-pass samples link steady-state signals with meas-
+ured Sa values.
+3. Few-shot affine calibration improves cross-tool Sa pre-
+diction with limited labels.
+Keywords Ti–6Al–4V milling · Areal surface roughness · Surface metrology · Tool replacement · Statistical descriptors · 
+Affine calibration
+1 Introduction
+Surface topography metrology plays an essential role in 
+precision manufacturing because the measured surface state 
+directly affects friction, wear, fatigue resistance, sealing per-
+formance, and assembly contact quality [1 , 2]. Areal sur -
+face roughness ( Sa ), provides a three-dimensional descrip-
+tion of machined surface texture, making it more suitable 
+ * Nan Zhang 
+ zhn_ngd@126.com
+1 School of Mechanical Engineering, Inner Mongolia 
+University of Technology, Hohhot 010051, China
+2 School of Aeronautical Manufacturing and Automotive 
+Engineering, Xihang University, Xi’an 710077, China
+ Nanomanufacturing and Metrology (2026) 9:30 
+ 30 Page 2 of 23
+than a single profile-based index for evaluating the quality 
+of milled surfaces. Ultimately, the cutting process is highly 
+nonlinear and unstable due to milling of Ti–6Al–4V, low 
+thermal conductivity, high chemical activity, and severe 
+thermomechanical coupling [3 ]. Progressive tool wear 
+further changes the tool–chip–workpiece contact state and 
+cutting dynamics, which may alter the machined surface 
+topography and the process signals acquired during cutting. 
+Consequently, reliable Sa prediction after tool replacement is 
+important for surface-quality consistency and measurement-
+driven process control.
+In practical machining, Sa is usually obtained through 
+offline contact or optical surface topography measurement. 
+These measurement methods provide reliable roughness 
+values, but they require additional measurement planning, 
+machine stoppage, and dedicated instruments. For complex 
+surfaces or high-throughput production, measuring every 
+machined pass at a sufficiently high frequency can be dif-
+ficult. Therefore, signal-based prediction provides a useful 
+complement to surface metrology: force and vibration sig-
+nals collected during cutting can be used to estimate the 
+measured Sa value and support timely quality assessment 
+before full offline inspection is completed [4]. In this sense, 
+the prediction task is not merely a data regression problem 
+but also a measurement-driven process-quality estimation 
+problem.
+Surface roughness prediction methods can be broadly 
+divided into physics-based modeling, traditional machine 
+learning, signal-feature-based modeling, and deep represen-
+tation learning. Physics-based models are usually established 
+from geometric kinematics, material-removal mechanisms, 
+and dynamic cutting responses. Moreover, they provide clear 
+physical interpretability. However, their accuracy may be 
+affected by idealized assumptions, parameter uncertainty, 
+boundary conditions, tool runout, and transient disturbances 
+in real machining [5]. Therefore, traditional machine learn-
+ing methods have been widely used to learn nonlinear map-
+pings from machining variables to roughness. For example, 
+Zhou et al. [6] combined genetic optimization with gradient 
+boosting regression trees, Chen et al. [7 ] introduced cut-
+ting forces and vibrations into a nested artificial neural net-
+work (ANN) framework, Lu [8 ] reviewed surface quality 
+prediction in terms of process parameter effects, and Wu 
+and Lei [9] used vibration signal analysis with an ANN for 
+milling roughness prediction. These studies demonstrated 
+the feasibility of data-driven roughness prediction. However, 
+models based mainly on nominal process parameters or low-
+dimensional handcrafted variables may be insufficient for 
+describing real-time cutting-state variation [10].
+With advances in sensing and data acquisition tech-
+nologies, dynamic cutting signals such as force, vibration, 
+acoustic emission, and temperature have been further inte-
+grated into roughness prediction models. Researchers have 
+extracted time-domain, frequency-domain, and time–fre-
+quency-domain features to characterize machining-state 
+variation more directly  [9 , 11, 12]. These approaches 
+improve the representation of cutting dynamics, but their 
+performance may still greatly depend on manually designed 
+signal processing and feature extraction procedures. When 
+cutting conditions, noise patterns, or data distributions 
+change, the stability and transferability of handcrafted fea-
+tures may deteriorate [13]. To reduce dependence on feature 
+engineering, deep learning models have also been introduced 
+for roughness prediction from process signals. Convolu-
+tional and sequence-aware models have shown potential in 
+learning latent representations from acoustic emission or 
+vibration signals [14, 15], while long short-term memory 
+(LSTM)- and convolutional neural network (CNN)-based 
+structures have been used to model temporal signal evolu-
+tion in machining-related prediction tasks [16, 17]. How-
+ever, increasing model complexity alone does not necessar-
+ily guarantee stable prediction when the tool state or data 
+distribution changes.
+More recently, structural fusion, multi-task learning, 
+transfer learning, and wear-aware modeling have been 
+explored to improve model usability under complex machin-
+ing distributions. Cheng et al. [18] developed a multi-task 
+learning model for simultaneous estimation of surface 
+quality and tool wear. Wang et al. [12] incorporated tool 
+wear information into a stacked autoencoder (SAE)-LSTM-
+based online roughness prediction framework, and Cooper 
+et al. [ 19] used generative adversarial network (GAN)-
+synthesized power signals as process signatures to support 
+surface roughness prediction. In the broader field of tool 
+state perception and transfer modeling, Qiang et al. [20, 21] 
+investigated cross-condition transfer learning for tool health 
+monitoring and tool wear prediction, Shi et al. [22] incor -
+porated wear information into cutting-force prediction, Ma 
+et al. [23] proposed an end-to-end deep learning method for 
+tool-wear monitoring, Li et al. [24] introduced a condition-
+adaptive framework for multi-condition tool wear prediction, 
+and Fan et al. [25] analyzed tool-state-related deformation 
+from a mechanics perspective. These studies suggest that 
+the tool state is an important source of process variation 
+and can reshape the mapping between cutting signals and 
+machining responses.
+Nevertheless, reliable Sa prediction after tool replacement 
+remains insufficiently addressed from a measurement adap-
+tation perspective. Many roughness prediction studies have 
+implicitly assumed that training and test samples are drawn 
+from the same or similar distributions. In real production, 
+however, a newly installed tool may produce different force/
+vibration amplitudes, spectral responses, and output rough-
+ness distributions even when the cutting parameters remain 
+unchanged. Consequently, a model learned from source 
+tools may suffer from input distribution shifts, output mean 
+Nanomanufacturing and Metrology (2026) 9:30 
+ Page 3 of 23 30 
+bias, scale mismatches, and goodness-of-fit degradation 
+when applied to a target tool [20]. Since repeatedly collect-
+ing many surface topography measurements for every new 
+tool is usually unrealistic, a more practical strategy is to 
+use unlabeled target-tool signal/statistical distributions for 
+input-level alignment and only a few measured target-tool 
+Sa values for output-level correction [21].
+To address this problem, this study constructs a pass-
+level Sa prediction framework that links steady-state force/
+vibration signals with measured Sa values. Descriptor-based 
+regressors, including support vector regression (SVR), ran-
+dom forest (RF), Gaussian process regression (GPR), and 
+least-squares boosting (LSBoost) are compared with a hier-
+archical signal statistical fusion model under identical leave-
+one-tool-out (LOTO), per-tool unsupervised normalization, 
+and affine-calibration protocols. This fusion model serves 
+as a structured comparison baseline instead of a predefined 
+optimal solution. This design enables the study to determine 
+whether compact statistical descriptors and conventional 
+regressors offer a more reliable approach than increasing 
+model complexity under the present small-sample, meas -
+urement-limited cross-tool setting [20, 21].
+This study takes a different approach compared with gen-
+eral transfer learning and domain adaptation algorithms. 
+Instead of focusing on a generic feature alignment model, 
+this work formulates tool replacement as a measurement-
+driven, low-label target-tool adaptation problem for pass-
+level Sa prediction. The target response is the measured sur-
+face topography parameter Sa , and each valid steady-state 
+cutting pass is paired with one measured Sa value. Under 
+this setting, unlabeled target-tool signal/statistical descrip-
+tors are used for input-level alignment, while only a few 
+measured target-tool Sa labels are used for output-level affine 
+calibration. This design addresses the practical metrology 
+constraint that target-tool process signals are easily acquired, 
+whereas dense target-tool surface topography measurements 
+are costly. Therefore, the contribution of this work lies in the 
+measurement-driven problem formulation, pass-level data 
+organization, low-label target-tool calibration protocol, and 
+systematic comparison of descriptor-based and fusion-based 
+predictors under identical LOTO settings.
+The main contributions of this work are summarized as 
+follows: 
+1. A measurement-driven pass-level Sa prediction frame-
+work is established for Ti–6Al–4V milling after tool 
+replacement. Each steady-state cutting pass is linked to a 
+single measured Sa value, providing a direct correspond-
+ence between process signals and surface-topography-
+derived quality labels.
+2. A one-pass–one-sample data organization strategy is 
+used to avoid overlapping window sample inflation. The 
+proposed organization explicitly distinguishes pass-level 
+Sa labels from layer-level tool-life progression and pro-
+vides a reproducible basis for evaluating prediction reli-
+ability under a tool-to-tool shift.
+3. A measurement-driven low-label target-tool adapta-
+tion setting is formulated for Sa prediction after tool 
+replacement. Unlike generic source-only transfer or 
+conventional domain-adaptation settings, the target-tool 
+unlabeled descriptors are used only for input-level nor -
+malization, while a few measured target-tool Sa values 
+are used only for affine output calibration. This design 
+reflects practical machining conditions in which full 
+target-tool roughness measurement is costly, but limited 
+metrology feedback can be obtained.
+4. Statistical-descriptor-based regressors and a hierarchical 
+signal statistical fusion comparison model are evaluated 
+under identical LOTO partitions, normalization strate -
+gies, and calibration protocols. The comparison clarifies 
+whether compact descriptors and conventional regres-
+sors are more suitable than a more complex fusion archi-
+tecture under the present controlled three-tool small-
+sample setting.
+5. Pass-uniform, layer-uniform all-pass, and layer-uniform 
+one-pass calibration protocols are systematically com-
+pared to clarify differences in label availability across 
+target-tool scenarios. These protocols distinguish a con-
+trolled full-life calibration upper bound from more con-
+servative layer-wise adaptation settings, helping avoid 
+overly optimistic conclusions in low-label target-tool 
+evaluation.
+2 Experiments and Data
+2.1 Experimental Setup and Signal Acquisition
+End-milling experiments on TC4 (Ti–6Al–4V) were 
+conducted using a five-axis CNC machining center 
+(Jingdiao JDGR400T). The workpiece size was 
+50 mm × 50 mm × 30 mm , and a four-flute shank radius end 
+mill (RM-4R-D10.0R1.0) was used. The main tool specifi-
+cations and cutting parameters are summarized in Table  1.
+During milling, cutting force and vibration signals were 
+synchronously acquired. The cutting forces were measured 
+using a triaxial dynamometer (ME-Systeme K3D160), pro-
+viding the cutting force components Fx , Fy , and F z . The 
+vibration signal Vib was collected using an IEPE single-
+axis piezoelectric accelerometer [26, 27]. After signal con-
+ditioning, all channels were recorded by an MI-7016 data 
+acquisition system at a sampling frequency of 5 kHz [28, 
+29]. The dynamometer was mounted between the fixture and 
+the machine table, while the accelerometer was attached to 
+the fixture to capture the dynamic response during cutting. 
+ Nanomanufacturing and Metrology (2026) 9:30 
+ 30 Page 4 of 23
+The experimental platform and signal acquisition system are 
+shown in Fig. 1.
+2.2 Surface Roughness and Tool‑Wear 
+Characterization
+Surface topography was measured using a laser confocal 
+white-light interferometer (Sensofar S neox), and Sa was 
+adopted as the pass-level surface-quality label [30, 31]. For 
+each machined pass, the measurement region was selected 
+from the middle stable cutting area of the corresponding 
+milled surface, avoiding the entry edge, exit edge, and 
+boundary region. A stitched surface topography region of 
+approximately 12.34 mm × 5.21 mm was acquired using a 
+50× objective. Before the areal roughness evaluation, the 
+acquired topography was processed by tilt correction in the 
+SensoVIEW software. The parameter Sa was then evalu-
+ated following ISO 25178. No additional task-specific 
+S-filter or L-filter cutoff was manually specified beyond 
+the standard evaluation settings used in the instrument 
+software. For each pass, three repeated surface topography 
+measurements were performed, taking their average value 
+as the final pass-level Sa label. The average Sa value was 
+then aligned with the corresponding pass-level steady-state 
+force/vibration signal sample. Although repeated measure -
+ments were used to reduce random measurement variation, 
+the repeated-measurement uncertainty was not separately 
+quantified as an independent uncertainty component in 
+Fig. 1 Experimental setup and measurement system: a milling experimental platform (machine tool/tool/fixture/dynamometer); b accelerometer 
+and vibration sensor; c four-flute end mill; and d Ti–6Al–4V workpiece ( 50 mm × 50 mm × 30 mm )
+Table 1 Tool specifications and 
+cutting parameters used in the 
+TC4 milling experiments
+Category Parameter Value
+Tool type Four-flute shank radius end mill RM-4R-D10.0R1.0
+Coating Coating material TiAlXN
+Geometry Tool diameter D 10 mm
+Geometry Corner radius R 1.0 mm
+Geometry Shank diameter d 10 mm
+Geometry Cutting edge length H 25 mm
+Geometry Overall length L 75 mm
+Geometry Helix angle /u1D6FD 42◦
+Structure Number of flutes z 4
+Cutting parameter Spindle speed n 1600 r/min
+Cutting parameter Feed per tooth fz 0.07 mm/tooth
+Cutting parameter Feed speed vf 448 mm/min
+Cutting parameter Cutting speed vc 50.27 m/min
+Cutting parameter Axial depth of cut ap 1.0 mm
+Cutting parameter Radial depth of cut ae 9.0 mm
+Process condition Machining process / cooling End milling / dry cutting
+Nanomanufacturing and Metrology (2026) 9:30 
+ Page 5 of 23 30 
+the present study. The surface measurement device and 
+an example of the extracted Sa result are shown in Figs.  2 
+and 3.
+To characterize tool wear, the flank wear land width VB 
+was measured using a tool measuring instrument (Omega 
+PG1000–400–4K). Because non-uniform wear may occur 
+on multi-flute tools, VB was measured for all four cutting 
+edges and recorded at the layer level [32]. Since wear was 
+measured once for each machined layer, the corresponding 
+VB value was shared by the valid passes within each layer. 
+In this study, tool replacement and progressive tool wear 
+are treated as related but different sources of machining 
+state variation. Tool replacement mainly refers to the dis -
+tribution shift between different tools, whereas progressive 
+tool wear describes the within-tool cutting state evolution 
+over the tool’s lifetime. Therefore, the measured VB values 
+were used to characterize tool-life progression, verify that 
+the dataset spanned a broad wear range, and support the 
+physical interpretation of changes in surface morphology. 
+However, VB was not used as a supervised input or auxiliary 
+prediction target in the final selected prediction model. This 
+choice was made because Sa was measured at the pass level, 
+whereas VB was measured at the layer level. Directly using 
+layer-level VB as a pass-level model input would repeat-
+edly assign identical wear values to multiple passes within a 
+layer and could introduce an artificial form of repeated layer-
+level supervision. Therefore, the modeling task examines 
+pass-level Sa prediction using signal statistical descriptors 
+and low-label target-tool adaptation.
+Representative examples of tool wear and corresponding 
+surface topography are shown in Fig.  4. As the tool wear 
+progresses from slight to more severe, VB becomes more 
+evident, and the surface morphology tends to deteriorate. 
+This observation supports the physical relevance of tool-
+life progression to surface generation. However, this figure 
+is used only to characterize the experimental dataset and 
+provide machining context interpretation; the final selected 
+prediction model does not use VB or wear stage labels as 
+supervised inputs.
+2.3 Signal Preprocessing and Steady‑State Sample 
+Construction
+A unified preprocessing pipeline was applied to the recorded 
+Fx , Fy , F z , and Vib signals before sample construction. The 
+purpose was to reduce sensor drift, non-cutting transients, 
+and isolated spike-like artifacts while preserving the stable 
+cutting dynamics used for roughness prediction.
+First, baseline removal was performed for each channel 
+to suppress DC offset:
+where xd(t) denotes the baseline-corrected signal after DC-
+offset removal, x(t) denotes the original signal, and ̄x is its 
+mean value. This operation was applied consistently to all 
+force and vibration channels before steady-state extrac-
+tion [33, 34].
+Second, steady-state cutting intervals were extracted 
+automatically. A sliding envelope based on the amplitude 
+or moving root-mean-square (RMS) of Fx was first used 
+to locate the coarse cutting intervals corresponding to the 
+six tool passes in each layer. Within each coarse interval, 
+a steady-state gating procedure based on high-frequency 
+energy indicators was further used to retain the stable cut-
+ting plateau and remove entry, exit, and residual transient 
+portions. The first 5% and last 5% of the retained plateau 
+were then trimmed to reduce boundary effects. A compari-
+son between the raw multichannel signals and the extracted 
+steady-state segments is shown in Fig. 5.
+Third, isolated spike-like artifacts were corrected con-
+servatively. For each valid pass and each channel, a Hampel 
+filter was applied independently using a sliding window. The 
+median absolute deviation (MAD) and robust scale estimate 
+are defined as
+A sample xi was identified as an outlier when
+(1)xd (t)= x(t)− ̄x,
+(2)
+MAD = median/parenleft.s1/uni007C.varxi − median(xi)/uni007C.var/parenright.s1,
+/u1D70Erob = 1.4826 MAD.
+Fig. 2 Measurement devices: a laser confocal white-light interferom-
+eter for surface topography measurement and b tool measuring instru-
+ment for flank wear evaluation
+Fig. 3 Examples of measurement results: a 3D surface topography 
+with extracted Sa and b a flank wear measurement interface for VB 
+evaluation
+ Nanomanufacturing and Metrology (2026) 9:30 
+ 30 Page 6 of 23
+where medw denotes the local median calculated within a 
+sliding window of length w , w is the Hampel-filter window 
+length in samples, and /u1D702 is the outlier threshold coefficient. 
+In this study, conservative parameters of w = 41 samples 
+and /u1D702= 4.0 were used. Only the detected outlier points 
+were repaired by linear interpolation within the same pass; 
+boundary points were filled using the nearest valid value. 
+No global smoothing was applied, so normal tooth–passing 
+fluctuation and cutting impacts were not suppressed [35].
+2.4 Pass‑Level Sample Definition and Dataset 
+Statistics
+Each machining layer contains six tool passes. After pre-
+processing and steady-state extraction, each pass is treated 
+as one sample source. This one-pass–one-sample strategy 
+establishes a direct correspondence between the cutting 
+signal and the machined surface unit and avoids artificial 
+sample inflation caused by overlapping sliding-window seg-
+mentation [36, 37].
+Because the effective length N of each steady-state seg-
+ment may vary, a fixed-length rule was used to construct 
+(3)/uni007C.varxi − med w /uni007C.var>𝜂𝜎 rob, uniform model inputs. If N ≥ L , the middle L = 384 points 
+of each channel were retained by center cropping:
+where s denotes the starting index of the cropped sequence, 
+xc denotes the one-dimensional signal of channel c , and xcrop
+c 
+denotes the cropped sequence of that channel. If N < 384 , 
+the pass was discarded. No padding, interpolation-based 
+extension, or resampling was used for short sequences, so 
+as to avoid introducing artificial temporal information. The 
+cropped sequences from all four synchronized channels are 
+then stacked to form the waveform sample:
+where, i and p denote the layer index and pass index, respec-
+tively; C denotes the number of signal channels (C =4); 
+and L denotes the temporal sequence length (L =384). A 
+binary field, keep_f lag , was used in the master label table 
+to indicate whether a pass sample satisfied the fixed-length 
+requirement.
+Areal surface roughness was characterized by Sa (µm), 
+measured using a laser confocal white-light interferometer. 
+(4)s =
+/uni230A.s2N − L
+2
+/uni230B.s2
+, xcrop
+c = xc[s ∶ s + L − 1],
+(5)X(i,p) ∈ ℝC ×L , C = 4, L = 384.
+Fig. 4 Representative correspondence between tool wear states and 
+surface topography characteristics. The examples illustrate that tool-
+life progression is associated with changes in VB and machined sur -
+face morphology. In this study, VB is used for dataset characterization 
+and mechanism interpretation, rather than as a supervised input to the 
+final selected prediction model
+Nanomanufacturing and Metrology (2026) 9:30 
+ Page 7 of 23 30 
+For each machined pass, three repeated surface topography 
+measurements were conducted in the middle stable cutting 
+region, and the average Sa value was used as the final pass-level 
+roughness label. One average Sa value was assigned to each 
+machined pass, giving a one-to-one correspondence between 
+each valid signal sample and its roughness label:
+The label was uniquely indexed by tool ID, layer ID, pass 
+ID, and file name.
+Tool wear was measured at the layer level using VB . Since 
+VB was measured once per layer, the same layer-level wear 
+value was applied to all valid passes in each layer. Accordingly, 
+VB was treated as a layer-level descriptor for dataset charac-
+terization rather than as a pass-level supervised model input. 
+This distinction prevents layer-level wear measurements from 
+being repeated as if they were independent pass-level labels. 
+Thus, each valid sample can be represented as
+(6)y(i,p)
+Sa
+= S(i,p)
+a ,
+(7)
+/parenleft.s2
+X(i,p) ,y(i,p)
+Sa
+, VB (i)
+/parenright.s2
+,
+where VB(i) denotes the layer-level wear descriptor used only 
+for dataset characterization and mechanism interpretation, 
+not as a supervised input for the final Sa prediction.
+After the fixed-length rule was applied, the three tools 
+contained 718 valid pass-level samples out of 744 origi-
+nal pass records. Specifically, C1, C2, and C3 contained 
+251, 240, and 227 valid samples, respectively. Twenty-six 
+samples were removed because their steady-state lengths 
+were shorter than 384 points, corresponding to an overall 
+Fig. 5 Comparison between raw multi-channel cutting signals and 
+automatically extracted steady-state cutting segments for passes 
+1–6. The raw signals include entry, exit, and non-cutting intervals, 
+whereas the extracted steady-state segments correspond to the stable 
+cutting portions retained for pass-level sample construction. This fig-
+ure demonstrates the signal portions used to construct one-pass–one-
+sample inputs for subsequent descriptor extraction and model evalu-
+ation
+Table 2 Dataset statistics after fixed-length pass-level sample con-
+struction
+Tool Layers Pass records Valid samples Invalid Removal 
+rate (%)
+C1 44 264 251 13 4.92
+C2 42 252 240 12 4.76
+C3 38 228 227 1 0.44
+Total 124 744 718 26 3.49
+ Nanomanufacturing and Metrology (2026) 9:30 
+ 30 Page 8 of 23
+removal rate of 3.49%. The dataset statistics are summa-
+rized in Table  2.
+The roughness and wear distributions of the retained 
+samples are shown in Fig.  6. The median Sa is 1.053 µm, 
+with an interquartile range of 0.298 µm. The median VB is 
+0.168, with an interquartile range of 0.112 and a range of 
+0.020−0.544. Because VB was measured at the layer level 
+and shared by valid passes within a layer, its distribution is 
+counted at the pass-sample level only for consistency with 
+the modeling samples. These statistics indicate that the data-
+set spans a broad tool-life range and provides a controlled 
+basis for evaluating tool-to-tool shifts under fixed cutting 
+parameters.
+3 Method
+3.1 Task Definition and Low‑Label Adaptation 
+Pipeline
+The objective of this study is to predict pass-level Sa from 
+force/vibration signals under a tool-replacement-induced 
+distribution shift. Since Sa is obtained from offline surface 
+topography measurement, the prediction model is expected 
+to provide a signal-based estimate of the measured surface 
+quality value rather than replace the metrology process 
+itself [30, 31]. In practical machining, a model trained on 
+source tools may perform poorly when applied directly 
+to a newly introduced target tool, even when the cutting 
+parameters remain unchanged. This degradation is mainly 
+caused by tool-to-tool differences in signal scale, spectral 
+response, and output Sa distribution [20]. Therefore, this 
+work does not formulate the task as a strict source-only 
+generalization. Instead, it examines a low-label target-tool 
+adaptation setting for measurement-driven Sa prediction after 
+tool replacement [21].
+In each LOTO fold, two tools serve as source tools, and 
+the remaining tool serves as the unseen target tool. The 
+source tools provide labeled pass-level samples for model 
+training. The target tool provides unlabeled signal/statistical-
+feature distributions for input-level normalization, and only a 
+few labeled Sa samples are used for affine output calibration. 
+No target-tool Sa labels are used during source model train-
+ing, descriptor ranking, or per-tool feature normalization.
+The overall pipeline is summarized in Fig. 7 and contains 
+five sequential stages. First, experimental measurements 
+provide synchronized force/vibration signals and pass-level 
+measured Sa labels. Second, steady-state pass-level samples 
+are extracted from the multi-channel signals using a one-
+pass–one-sample strategy. Third, each valid pass is rep-
+resented by all 72 statistical descriptors, layer-level mean 
+descriptors, and pass-index information. Fourth, descrip -
+tor-based regressors and the hierarchical signal statistical 
+fusion comparison model are trained on source tools under 
+the LOTO setting, while unlabeled target-tool descriptors 
+are used for per-tool input normalization. Fifth, few-shot 
+affine calibration is applied using limited target-tool Sa label 
+measurements, and the calibrated model is evaluated on the 
+remaining target-tool samples.
+3.2 Pass‑Level Data Representation
+Each machining layer contains up to six cutting passes. 
+After baseline removal, steady-state segment extraction, 
+and outlier correction, each valid pass is converted into a 
+fixed-length four-channel signal sequence. The four channels 
+Fig. 6 Distributions of retained pass-level samples from C1, C2, and C3: a areal surface roughness Sa and b layer-level VB counted at the pass-
+sample level for consistency with the modeling samples
+Nanomanufacturing and Metrology (2026) 9:30 
+ Page 9 of 23 30 
+comprise Fx , Fy , F z , and Vib . The waveform input of the p-th 
+pass in the i-th layer is denoted as
+When the steady-state segment exceeds 384 points, center 
+cropping is used. Samples shorter than 384 points are dis-
+carded rather than padded or resampled.
+The corresponding pass-level roughness label is
+where Sa,i,p is the measured Sa of the corresponding machined 
+pass. This one-pass–one-sample definition avoids the artifi-
+cial sample inflation caused by overlapping sliding windows 
+and provides a clear correspondence between signal input 
+and roughness label [38].
+Because some layers contain fewer than six valid passes 
+after fixed-length screening, a binary validity mask is 
+introduced:
+Only valid passes with m i,p = 1 are used for training, cali -
+bration, and evaluation. The mask is also used to compute 
+layer-level mean descriptors and masked layer aggregation 
+so that invalid passes are not treated as real samples.
+Tool wear, represented by VB , is measured at the layer 
+level and retained for tool-life characterization and mecha-
+nism discussion. However, VB and wear stage labels are not 
+used as supervised inputs or auxiliary prediction targets in 
+the final selected prediction model. This design separates 
+two roles of wear information: VB is used to describe the 
+physical tool-life state of the experimental dataset, whereas 
+the prediction model estimates pass-level Sa from signals 
+and statistical descriptors that are available for each pass. 
+Because VB is not measured independently for each pass, 
+using it as a pass-level input imposes repeated layer-level 
+information on multiple pass-level samples. This approach 
+avoids imposing layer-level wear information as repeated 
+pass-level supervision and keeps the prediction task focused 
+on pass-level Sa.
+3.3 Pass‑Layer Organization and Layer Context 
+Descriptors
+The dataset has a natural pass-layer structure. A tool con-
+tains multiple machined layers, each layer with several pass-
+level samples. Although Sa is measured at the pass level, the 
+passes within a layer are not completely independent because 
+they share similar tool-life states, machining environments, 
+and layer-level wear conditions. Therefore, the pass-layer 
+organization is explicitly retained in the data representation.
+(8)Xi,p ∈ ℝC ×L , C = 4, L = 384.
+(9)yi,p = Sa,i,p ,
+(10)m i,p =
+/braceleft.s31, if pass p of layer iis valid,
+0, otherwise.
+For the i-th layer, the set of pass-level waveform samples 
+and the corresponding mask vector are expressed as
+and
+This structure is used in two ways. For descriptor-based 
+regressors, layer-level mean descriptors are calculated from 
+the valid passes within a layer and concatenated with the 
+pass-level descriptor vector. For the fusion comparison 
+model, the same validity mask is used in the masked layer 
+aggregation module. Thus, the layer context is introduced 
+without generating additional overlapping samples or treat-
+ing invalid passes as real observations.
+This representation is especially important for small-sam-
+ple cross-tool evaluation. It preserves the real pass-layer data 
+organization, avoids excessive sample inflation, and provides 
+a consistent input structure for statistical descriptor regres-
+sors and the hierarchical fusion comparison model [39].
+3.4 Pass‑Level Statistical Descriptors
+For each valid steady-state pass, statistical descriptors are 
+extracted from the four-channel force/vibration signals to 
+provide a compact description of the cutting state. These 
+descriptors characterize amplitude, energy, fluctuation 
+intensity, distribution shape, and spectral response. Typi -
+cal descriptors include the mean value, standard deviation, 
+RMS, mean absolute value, peak-to-peak value, extrema, 
+spectral centroid, and spectral-energy-related quantities. The 
+descriptor vector of pass p in layer i is denoted as
+where D is the total number of candidate descriptors 
+extracted from the valid steady-state signal.
+To avoid target-label leakage, descriptor ranking is per -
+formed only on the source-domain training data within each 
+LOTO fold. For the d-th descriptor, the absolute Pearson 
+correlation between the descriptor values and the training-
+set Sa labels is calculated as
+where rd is the absolute correlation coefficient of the d-th 
+descriptor, sd denotes the vector of the d-th descriptor values 
+over all source-training samples, ySa
+ denotes the correspond-
+ing vector of training-set Sa labels, and D is the total number 
+of candidate descriptors. The descriptors are then ranked in 
+descending order of rd:
+(11)Xi ={ Xi,p }6
+p= 1 ,
+(12)mi =[ m i,1,m i,2,… ,m i,6].
+(13)si,p ∈ ℝD ,
+(14)rd = /uni007C.x/uni007C.x/uni007C.xcorr(sd,ySa
+)/uni007C.x/uni007C.x/uni007C.x, d = 1, 2,… ,D .
+ Nanomanufacturing and Metrology (2026) 9:30 
+ 30 Page 10 of 23
+Nanomanufacturing and Metrology (2026) 9:30 
+ Page 11 of 23 30 
+This ranking is used only for fold-wise descriptor analysis 
+and for assessing the influence of descriptor retention. The 
+final descriptor-based regressors retain all available descrip-
+tors. Since the candidate pool contains 72 descriptors, the 
+final pass-level descriptor vector is written as
+This all-descriptor setting is adopted to avoid unstable 
+fold-dependent feature selection under the small three-
+tool LOTO setting. Since the available source tools change 
+across folds, selecting a fixed top- K subset may make the 
+retained descriptors sensitive to the specific source-tool 
+combination. Tree-based ensemble models such as RF and 
+LSBoost reduce the influence of redundant or weakly rel-
+evant descriptors through their split-selection and ensemble 
+mechanisms. Therefore, all 72 descriptors are retained to 
+provide a stable and reproducible representation for model 
+comparison. Descriptor ranking is used only for fold-wise 
+analysis and does not involve target-tool Sa labels [40].
+3.5 Per‑Tool Unsupervised Feature Normalization
+Tool replacement can change the scale and distribution of 
+statistical descriptors, even when the cutting parameters 
+remain unchanged. To reduce this input-level mismatch, 
+per-tool unsupervised normalization is applied to the 72 
+statistical descriptors. For the source tools, the normali-
+zation statistics are calculated using the valid source-tool 
+passes available in the corresponding LOTO fold. In the 
+present study, the target tool’s normalization statistics are 
+calculated using all valid unlabeled passes collected over 
+its life. Therefore, this step should be interpreted as an 
+offline unsupervised input-level alignment strategy, rather 
+than an early-stage online normalization strategy. For each 
+tool q, the mean and standard deviation of the d-th descrip-
+tor are calculated as follows:
+(15)R = argsort(rd , descending).
+(16)̃si,p ∈ ℝ72 .
+where, ̃si,p,d denotes the d -th component of the 72-dimen-
+sional pass-level statistical descriptor vector ̃si,p for pass p in 
+layer i, with d = 1,2,…,72; Ωq denotes the set of valid pass 
+samples belonging to q and Nq is the number of valid passes 
+in this tool. The normalized descriptor is obtained as
+where /u1D716 is a small constant used to avoid division by zero. 
+The normalized values are clipped to suppress extreme val-
+ues before model training and evaluation.
+This normalization uses only unlabeled signal/statistical 
+feature distributions and does not use target-tool Sa labels. 
+Therefore, it should not be interpreted as label leakage. 
+However, because the target-tool normalization statistics 
+are estimated from the full available unlabeled target-tool 
+descriptor distribution, the raw setting in this study is not 
+a strict source-only or early-stage online setting. It is more 
+accurately described as cross-tool prediction with offline 
+unsupervised input-level alignment, followed by limited-
+label affine output calibration. In practical online deploy -
+ment, the same idea would require rolling or incremental 
+estimation of target-tool normalization statistics from newly 
+acquired unlabeled signals. This distinction is important for 
+practical target-tool adaptation and for avoiding overly opti-
+mistic claims about source-only transfer [41].
+The role of this normalization step is limited to input-
+level alignment. Tool replacement may change the magni-
+tude range, variance, and distribution shape of force/vibra-
+tion-derived descriptors even under fixed cutting parameters. 
+Consequently, per-tool normalization reduces descriptor-
+scale mismatch between source tools and the target tool 
+using only unlabeled target-tool information. However, this 
+operation does not use measured target-tool Sa labels and 
+cannot correct the target-tool output response itself. In other 
+words, per-tool normalization can reduce input distribution 
+shift, but it cannot remove systematic prediction offset or 
+scale error in the predicted Sa . Thus, an additional output-
+level calibration step is required.
+3.6 Hierarchical Signal Statistical Fusion Model 
+for Comparison
+In addition to descriptor-based regressors, a hierarchical 
+signal statistical fusion model is constructed as a structured 
+(17)𝜇q,d = 1
+N q
+/uni2211.s1
+(i,p)∈Ωq
+̃si,p,d ,
+(18)𝜎q,d =
+/uni221A.s3
+1
+N q − 1
+/uni2211.s1
+(i,p)∈Ωq
+/parenleft.s1̃si,p,d − 𝜇q,d
+/parenright.s12
+,
+(19)̄si,p,d =
+̃si,p,d − 𝜇q,d
+𝜎q,d + 𝜖 ,
+Fig. 7 Overall workflow of the low-label target-tool adaptation 
+framework. Pass-level steady-state samples are constructed from 
+multi-channel force/vibration signals. All 72 statistical descriptors, 
+layer-level mean descriptors, and pass index information are used to 
+construct descriptor-based regressors. Additionally, a hierarchical 
+signal statistical fusion model is retained as a structured comparison 
+model. In each LOTO fold, labeled source-tool samples are used for 
+model training, unlabeled target-tool descriptors are used for per-tool 
+input normalization, limited measured target-tool Sa labels are used 
+only for affine output calibration, and the remaining target-tool sam-
+ples are used for final evaluation. The trained source models are eval-
+uated using raw LOTO prediction and fixed-budget affine calibration 
+protocols
+◂
+ Nanomanufacturing and Metrology (2026) 9:30 
+ 30 Page 12 of 23
+deep learning comparison architecture. This model examines 
+whether waveform representation and masked layer aggrega-
+tion provide additional information compared with statisti-
+cal descriptors under the same LOTO, normalization, and 
+calibration settings. Therefore, it is used for fair comparison 
+rather than being predefined as the final proposed model.
+The fusion model comprises a CNN waveform branch, 
+a statistical feature branch, a masked layer aggregation 
+module, and a pass-level regression head. Its architecture 
+is shown in Fig. 8.
+For each valid pass, the fixed-length waveform input 
+Xi,p ∈ ℝ4×384 is first standardized by sample-wise and chan-
+nel-wise normalization:
+where, X/uni2032.var
+i,p,k denotes the normalized waveform of the k -th 
+signal channel for pass p in layer i ; Xi,p,k denotes the cor -
+responding original waveform; mean (Xi,p,k ) and std(Xi,p,k ) 
+denote the mean and standard deviation calculated over the 
+temporal samples of that channel, respectively; k denotes 
+the signal-channel index, k =1,2,3,4. The normalized wave-
+form is fed into a lightweight CNN encoder:
+where hcnn
+i,p is the waveform embedding; /u1D73Dcnn denotes the 
+trainable parameters of the CNN encoder; X/uni2032.var
+i,p denotes the 
+normalized four-channel waveform matrix of pass p in layer 
+i, obtained using the normalization defined in Eq. (20); 
+fcnn(⋅) denotes the nonlinear mapping implemented by the 
+lightweight CNN encoder.
+(20)X�
+i,p,k =
+Xi,p,k − mean /parenleft.s1Xi,p,k
+/parenright.s1
+std/parenleft.s1Xi,p,k
+/parenright.s1+ /u1D716
+,
+(21)hcnn
+i,p = fcnn (X�
+i,p ;/u1D73Dcnn ),
+The per-tool-normalized statistical descriptor vector 
+̄si,p ∈ ℝ72 is encoded by a fully connected statistical branch:
+where hstat
+i,p is the statistical-feature embedding, /u1D73Dstat denotes 
+the trainable parameters of the statistical branch, fstat (⋅) 
+denotes the nonlinear mapping implemented by the fully 
+connected statistical branch. The waveform embedding and 
+statistical feature embedding are concatenated to form the 
+pass-level representation:
+To preserve the natural pass-layer structure and avoid inva-
+lid-pass interference, masked layer aggregation is performed 
+over valid passes within a layer:
+where zi denotes the layer-level context embedding, m i,p is 
+the binary validity mask of pass p in layer i , p = 1, 2,… ,6 
+denotes the pass index within the layer. The final regression 
+input comprises the pass embedding, layer context, and pass-
+index one-hot vector:
+where ep represents the one-hot encoding of the pass index. 
+The predicted roughness is then obtained by
+(22)hstat
+i,p = fstat (̄si,p ;/u1D73Dstat ),
+(23)hi,p =[ hcnn
+i,p ;hstat
+i,p ].
+(24)zi =
+∑6
+p=1 m i,phi,p
+∑6
+p=1 m i,p + /u1D716
+,
+(25)qi,p =[ hi,p ;zi;ep ],
+(26)̂yi,p = freg (qi,p ;/u1D73Dreg ).
+Fig. 8 Architecture of the hierarchical signal statistical fusion model 
+used as a structured deep learning comparison model. The model 
+combines a CNN waveform branch for the fixed-length four-channel 
+steady-state signal and a statistical feature branch for all 72 pass-level 
+descriptors. The pass-level embeddings are fused and further aggre-
+gated by masked layer pooling to generate layer context information 
+exclusively from valid passes. The pass-index one-hot vector is then 
+combined with the pass-level and layer context embeddings for the 
+final Sa regression
+Nanomanufacturing and Metrology (2026) 9:30 
+ Page 13 of 23 30 
+where /u1D73Dreg denotes the trainable parameters of the regression 
+head. The fusion model is trained by minimizing the mean 
+squared error over valid pass samples:
+Tool wear is not used as an auxiliary supervised target in 
+the final comparison. This approach avoids imposing layer-
+level wear labels on pass-level Sa prediction, keeping the 
+comparison focused on signal statistical representation and 
+low-label target-tool adaptation.
+3.7 Training and Validation of the Fusion 
+Comparison Model
+The fusion comparison model is trained only on source-tool 
+samples in each LOTO fold. Between the two source tools, 
+approximately 20% of the layers are uniformly selected from 
+the tool’s lifespan as the validation set, and the remaining 
+layers are used for training. This layer-wise validation split 
+reduces the risk that validation samples are concentrated 
+within a narrow tool-life interval.
+The training set Sa labels are standardized by z -score 
+normalization:
+where, y denotes the original measured Sa label in the source 
+training set, y' denotes the corresponding standardized label, 
+/u1D707y and /u1D70Ey denote the mean and standard deviation of the 
+source-training Sa labels, respectively. Predictions are trans-
+formed back to the original Sa scale during evaluation. Bal-
+anced resampling based on roughness bins is applied during 
+training to reduce label distribution imbalance. The Adam 
+optimizer is used for parameter optimization, and early stop-
+ping is applied according to the source validation root mean 
+squared error (RMSE).
+Because the dataset contains only three tools and the 
+pass-level samples are limited, random initialization may 
+affect the fusion model. Therefore, five independent fusion 
+models are trained using different random seeds. Let ̂y(m)
+i,p 
+denote the prediction of the m -th seed model, where 
+m = 1, 2,… ,M and M = 5 . The final fusion model predic-
+tion is obtained by mean-of-all-seeds averaging:
+This ensemble strategy does not use target-tool test labels 
+or calibration labels for seed selection. The strategy is used 
+only to reduce the training variance of the fusion comparison 
+(27)LSa
+=
+∑
+i
+∑6
+p=1 m i,p(̂yi,p − yi,p)2
+∑
+i
+∑6
+p=1 m i,p
+.
+(28)y� =
+y − /u1D707y
+/u1D70Ey
+,
+(29)̂yens
+i,p = 1
+M
+M/uni2211.s1
+m=1
+̂y(m)
+i,p .
+model. Similar ensemble ideas have been adopted in data-
+driven machining monitoring and industrial prediction tasks 
+to improve robustness [42, 43].
+3.8 Descriptor‑Based Regressors
+Descriptor-based regressors are constructed to evaluate 
+whether compact statistical descriptors can provide reliable 
+cross-tool Sa prediction under limited target-tool calibration. 
+For each valid pass, the input vector comprises three parts: 
+the 72 per-tool-normalized pass-level statistical descriptors, 
+the corresponding layer-level mean descriptors, and the 
+pass-index one-hot vector. The layer-level mean descriptors 
+summarize the valid passes within a layer, while the pass-
+index vector preserves the toolpath-order information.
+The descriptor–regressor input can be expressed as
+where ̄slayer
+i denotes the mean descriptor vector of valid 
+passes in layer i . The vectors ̄si,p and ep have been defined 
+above as the normalized pass-level descriptor vector and 
+the pass-index one-hot vector, respectively. Therefore, the 
+descriptor–regressor input includes pass-level information, 
+layer-context information, and pass identity.
+The compared descriptor-based regressors include sup-
+port vector regression with a radial basis function kernel 
+(SVR-RBF), support vector regression with a linear kernel 
+(SVR-Linear), RF, GPR, and LSBoost. All descriptor-based 
+regressors are evaluated under the same LOTO partition, 
+per-tool unsupervised feature normalization, and affine-
+calibration protocols as the fusion comparison model. This 
+design ensures that the comparison reflects differences in 
+model structure rather than differences in data partitioning, 
+normalization, or calibration strategy [42, 43].
+3.9 Few‑Shot Affine Calibration
+Raw cross-tool prediction may still contain systematic out-
+put bias and scale mismatch after per-tool unsupervised 
+normalization. This outcome arises because input-level 
+descriptor alignment only reduces differences in the statisti-
+cal feature distribution, whereas the relationship between the 
+aligned descriptors and the measured Sa response can still 
+vary across tools. In the present measurement-driven set-
+ting, collecting a dense set of target-tool surface topography 
+measurements is costly. However, a few measured target-tool 
+Sa values can be obtained for calibration. Therefore, affine 
+calibration is used as a simple and interpretable output-level 
+correction strategy for low-label target-tool adaptation. The 
+affine form corrects the dominant offset and scale errors in 
+the transferred prediction without introducing a complex 
+target-domain model that may overfit the limited calibration 
+(30)xML
+i,p =[ ̄si,p ;̄slayer
+i ;ep ],
+ Nanomanufacturing and Metrology (2026) 9:30 
+ 30 Page 14 of 23
+samples. Given a small labeled calibration set from the target 
+tool, an affine mapping is fitted between the raw prediction 
+̂y and the measured roughness y:
+where a and b are estimated by least-squares fitting on the 
+target-tool calibration set, ̂y denotes the raw model predic -
+tion, and ̂ycal denotes the calibrated prediction.
+where C denotes the calibration set. After the affine param-
+eters are fitted, the calibration samples are excluded from 
+the final evaluation set, and the fitted mapping is applied 
+only to the remaining target-tool evaluation samples. This 
+rule is used consistently for all calibration protocols to avoid 
+evaluating the model on samples used for output correction.
+Three fixed-budget calibration protocols are used in this 
+study: pass-uniform calibration with Npass = 30 , layer-uni-
+form all-pass calibration with Nlayer = 10 , and layer-uniform 
+one-pass calibration with Nlayer = 10 . These protocols are 
+designed to represent different levels of target-tool meas-
+urement availability. The pass-uniform protocol selects 
+calibration passes uniformly throughout the available tar -
+get-tool life. Therefore, it represents a controlled full-life 
+adaptation upper-bound case, rather than a strictly online 
+early-stage deployment case. The layer-uniform all-pass pro-
+tocol assumes that several representative target-tool layers 
+are inspected and that all valid passes in these layers can 
+be measured. The layer-uniform one-pass protocol is more 
+conservative because only one valid pass from each selected 
+layer is used for calibration, which reduces the influence 
+of within-layer pass correlation and better reflects a sparse 
+low-label calibration condition. The detailed evaluation set-
+ting is described in Sect.  4.1. Similar low-label calibration 
+strategies have been used to correct target-domain response 
+shifts in sensor-based prediction tasks [44].
+3.10 Evaluation Metrics
+The prediction performance is evaluated using RMSE and 
+the coefficient of determination R2:
+(31)̂ycal = ây + b,
+(32)(a,b)= arg min
+a,b
+/uni2211.s1
+j∈C
+/parenleft.s1yj − a ̂yj − b/parenright.s12
+,
+(33)RMSE =
+/uni221A.t/uni221A.x/uni221A.x/uni221A.s41
+N
+N/uni2211.s1
+n=1
+/parenleft.s1yn − ̂yn
+/parenright.s12
+,
+(34)R2 = 1 −
+∑N
+n=1
+�yn − ̂yn
+�2
+∑N
+n=1
+�yn − ̄y�2 .
+RMSE reflects the absolute prediction error, while R2 indi-
+cates how well the model explains the target-tool roughness 
+variation. In cross-tool prediction, negative R2 values indi-
+cate that using the model is worse than using the mean value 
+of the target-tool samples.
+4 Results and Comparative Analysis
+4.1 Evaluation Setting
+All models are evaluated using a three-fold LOTO proto-
+col. In each fold, one tool is used as the unseen target tool, 
+while the other two tools are used for source-tool training 
+and validation. The final fold assignment is defined as Fold 1 
+targeting C1, Fold 2 targeting C2, and Fold 3 targeting C3. 
+This setting is designed to examine tool-to-tool shifts under 
+fixed cutting parameters, rather than generalization across 
+different machining conditions. Similar cross-domain and 
+cross-tool distribution shift issues have also been empha-
+sized in recent tool condition monitoring and machining 
+transfer studies [43].
+The comparison includes conventional machine learn-
+ing regressors and the hierarchical signal statistical fusion 
+model. For the conventional regressors, the input features 
+comprise all 72 available pass-level statistical descriptors, 
+the corresponding layer-level mean descriptors, and pass-
+index one-hot encoding. The compared regressors include 
+SVR-RBF, SVR-Linear, RF, GPR, and LSBoost. For the 
+fusion model, the CNN waveform branch, statistical feature 
+branch, per-tool unsupervised normalization, masked layer 
+aggregation, and mean-of-all-seeds ensemble are used. All 
+models are evaluated using the same LOTO partition, per-
+tool unsupervised normalization strategy, and affine-calibra-
+tion protocols.
+Because direct raw cross-tool prediction may suffer from 
+systematic output bias and scale mismatch, few-shot affine 
+calibration is further evaluated as a low-label target-tool 
+correction strategy. This evaluation design is used to test 
+whether the proposed affine calibration can correct output-
+level mismatch under different amounts and organizations of 
+target-tool metrology feedback. Similar few-shot calibration 
+ideas have been used in other sensor-based transfer scenarios 
+to rapidly correct target-domain response shifts with limited 
+labeled samples [44]. Three fixed-budget target-tool calibra-
+tion protocols are considered:
+• Pass-uniform calibration: Npass = 30 pass samples are 
+uniformly selected from the target-tool life for affine cali-
+bration, and these calibration samples are excluded from 
+the final evaluation set. Because the selected labels are 
+distributed over the whole available target-tool life, this 
+Nanomanufacturing and Metrology (2026) 9:30 
+ Page 15 of 23 30 
+protocol should be interpreted as a controlled full-life 
+adaptation upper bound. It estimates the potential cali-
+brated performance achievable when limited but repre-
+sentative target-tool labels are available, rather than the 
+performance that can be obtained immediately after a 
+new tool is installed.
+• Layer-uniform all-pass calibration: Nlayer = 10 target-
+tool layers are uniformly selected, and all valid passes in 
+these layers are used for calibration. The selected cali-
+bration layers are excluded from the final evaluation set. 
+This protocol corresponds to a stage-wise inspection sce-
+nario, in which several representative layers are measured 
+during the target-tool life, and all valid passes in those 
+layers are used to fit the affine correction.
+• Layer-uniform one-pass calibration: Nlayer = 10 target-
+tool layers are uniformly selected, and only one valid 
+pass from each selected layer is used for calibration. The 
+selected calibration layers are excluded from the final 
+evaluation. This protocol is the most conservative among 
+the three settings because it uses fewer pass-level rough-
+ness labels and reduces the possible optimistic effect 
+caused by within-layer pass correlation. Therefore, it is 
+used to evaluate sparse low-label target-tool adaptation 
+more strictly.
+Notably, these three protocols are not intended to represent 
+the same deployment condition. Instead, they define com-
+plementary calibration scenarios with different levels of tar-
+get-tool label availability: pass-uniform calibration provides 
+an idealized full-life upper-bound estimate, layer-uniform 
+all-pass calibration represents representative stage-wise 
+inspection, and layer-uniform one-pass calibration provides 
+a stricter sparse label evaluation. In all cases, the samples 
+used for affine calibration are excluded from the final evalu-
+ation set.
+In the following analysis, RF is used for detailed visuali-
+zation because it achieves the best numerically calibrated 
+performance among the compared models in the present 
+controlled LOTO setting. However, this selection should not 
+be interpreted as universal RF dominance, because LSBoost 
+and the hierarchical signal statistical fusion model also show 
+competitive calibrated performance. This setting allows the 
+analysis to focus not only on model accuracy but also on the 
+relative roles of statistical descriptors, waveform representa-
+tion, target-tool calibration, and input-level alignment.
+4.2 Comparison with Conventional Machine 
+Learning Baselines
+Table 3 summarizes the average LOTO performance of the 
+statistical-descriptor-based regressors and the hierarchical 
+signal statistical fusion model. In the raw cross-tool set-
+ting, all methods produce negative R2 values, indicating 
+that direct signal-based Sa estimation on a newly introduced 
+tool is unreliable even with per-tool unsupervised input nor-
+malization. From a measurement adaptation perspective, this 
+result shows that tool replacement changes not only the input 
+descriptor distribution but also the mapping between process 
+signals and the measured surface topography response [20, 
+41].
+After few-shot affine calibration, all models show sub-
+stantial performance improvements. This finding indicates 
+that a few measured target-tool Sa values can effectively 
+correct the output-level bias of a transferred prediction 
+model [ 44]. Among the descriptor-based regressors, RF 
+achieves the lowest RMSE under the three calibrated pro-
+tocols, with RMSE values of 0.0925 µm, 0.0956 µm, and 
+0.0973 µm under pass-uniform, layer-all-pass, and layer-
+one-pass calibration, respectively. These results demon-
+strate that compact statistical descriptors remain highly 
+informative for measurement-driven Sa prediction after tool 
+replacement, especially when they are combined with tree-
+based ensemble regression and affine output correction. 
+Notably, RF, LSBoost, and the fusion comparison model 
+show modest performance differences under some calibrated 
+protocols. For example, under pass-uniform calibration, RF, 
+Table 3 Average LOTO 
+performance of statistical-
+descriptor-based regressors 
+and the hierarchical signal 
+statistical fusion model under 
+raw prediction and fixed-budget 
+affine calibration protocols
+Pass-uniform denotes affine calibration using Npass = 30 uniformly selected target-tool pass samples. 
+Layer-all-pass and layer-one-pass use Nlayer = 10 target-tool layers, with all valid passes and one valid pass 
+from each selected layer used for calibration, respectively. For fair comparison, all results are computed on 
+the same evaluation subset after the calibration samples are excluded. Raw denotes prediction after per-tool 
+unsupervised input-level normalization but before affine output calibration
+Method Raw Pass-uniform Layer-all-pass Layer-one-pass
+RMSE(µm)/ R2 RMSE(µm)/ R2 RMSE(µm)/ R2 RMSE(µm)/ R2
+SVR-RBF 0.3026 / −3.9585 0.1106 / 0.2890 0.1085 / 0.2156 0.1107 / 0.1773
+SVR-Linear 1.1569 / −110.8032 0.1417 / −0.1161 0.1624 / −0.7997 0.1678 / −0.9335
+RF 0.3212 / −4.9426 0.0925 / 0.4658 0.0956 / 0.3331 0.0973 / 0.2908
+GPR 0.3282 / −5.0482 0.1014 / 0.3770 0.1071 / 0.1676 0.1075 / 0.1556
+LSBoost 0.3167 / −4.8478 0.0952 / 0.4255 0.0988 / 0.2719 0.1063 / 0.1113
+Fusion model 0.3074 / −4.2560 0.0949 / 0.4357 0.1008 / 0.2580 0.1046 / 0.1880
+ Nanomanufacturing and Metrology (2026) 9:30 
+ 30 Page 16 of 23
+LSBoost, and the fusion model obtain RMSEs of 0.0925 µm, 
+0.0952 µm, and 0.0949 µm, respectively. Under layer-all-
+pass calibration, the corresponding RMSE values are 
+0.0956 µm for RF, 0.0988 µm for LSBoost, and 0.1008 µm 
+for the fusion model. Therefore, RF should be interpreted as 
+the numerically best model in the present controlled data-
+set, rather than as a universally superior model. The broader 
+conclusion is that compact statistical descriptors provide a 
+strong and practical route for target-tool adaptation, espe-
+cially when combined with tree-based ensemble regressors 
+and low-label affine calibration.
+The hierarchical signal statistical fusion model performs 
+competitively but does not uniformly outperform the strong-
+est feature-based baseline. Under pass-uniform calibration 
+with Npass = 30 , the fusion model obtains an RMSE of 
+0.0949 µm and an R2 of 0.4357, which is near RF and better 
+than SVR-RBF, SVR-Linear, and GPR. Under the stricter 
+layer-one-pass protocol, the fusion model achieves an RMSE 
+of 0.1046 µm and an R2 of 0.1880. These results suggest that 
+the CNN waveform branch and masked layer aggregation do 
+not replace the importance of statistical descriptors. Instead, 
+the fusion model should be interpreted as a structured sig-
+nal statistical alternative that preserves the pass-layer data 
+organization while providing competitive low-label target-
+tool adaptation.
+Overall, Table  3 shows that raw cross-tool prediction 
+remains unreliable, whereas affine calibration substan-
+tially improves all compared models. RF achieves the best 
+numerically calibrated performance on the present dataset. 
+However, the modest margins over LSBoost and the fusion 
+comparison model indicate that the main conclusion should 
+be the effectiveness of statistical descriptors and low-label 
+affine calibration, rather than the universal superiority of a 
+single regressor.
+4.3 Raw Prediction and Pass‑Uniform Calibration 
+Analysis of the RF Model
+Since RF achieves the best numerically calibrated perfor -
+mance among the compared models in the present dataset, it 
+is selected for detailed visualization of raw and pass-uniform 
+calibrated predictions in Fig. 9. This selection demonstrates 
+the calibration behavior of the strongest numerical base-
+line without implying the universal superiority of RF. Pan-
+els (a), (c), and (e) show the raw cross-tool predictions for 
+Fold 1–Fold 3, respectively. Panels (b), (d), and (f) show the 
+corresponding pass-uniform affine-calibrated results using 
+Npass = 30 target-tool samples.
+The raw prediction results exhibit clear target-depend -
+ent mismatch. For Fold 1 targeting C1, the raw RMSE 
+is 0.2166 µm and the R2 is −2.5904 ; for Fold 2 targeting 
+C2, 0.3795 µm and −8.7477 ; and for Fold 3 targeting C3, 
+0.3675 µm and −3.4897 . These negative R2 values indicate 
+that directly applying a source-trained model to a new tool is 
+worse than using the target-tool mean predictor. Therefore, 
+raw cross-tool prediction remains unreliable even when all 
+72 statistical descriptors and per-tool unsupervised normali-
+zation are used.
+The RMSE values decrease to 0.0899 µm, 0.1062 µm, 
+and 0.0815 µm for Fold 1, Fold 2, and Fold 3, respectively. 
+The corresponding R2 values become positive, reaching 
+0.3817, 0.2363, and 0.7793, respectively. On average, pass-
+uniform calibration reduces the RF RMSE from 0.3212 µm 
+to 0.0925 µm and improves the average R2 from −4.9426 to 
+0.4658. This comparison confirms that the dominant cross-
+tool error is not purely random scatter; instead, it contains 
+systematic output bias and scale mismatch that can be effec-
+tively corrected using a few labeled target-tool samples.
+Notably, that pass-uniform calibration is interpreted as a 
+controlled full-life adaptation protocol rather than a strictly 
+online early-stage deployment setting. Since the calibration 
+samples are uniformly selected across the entire target-tool 
+life, this protocol models the potential performance when 
+limited but representative target-tool labels are available. 
+Therefore, stricter layer-wise calibration protocols are 
+further analyzed in the following subsection to provide 
+a more conservative evaluation of low-label target-tool 
+adaptation [44].
+4.4 Layer‑Wise Calibration Protocol Comparison
+Although pass-uniform calibration provides the best average 
+RF performance, it should be considered a controlled full-
+life adaptation setting. In practical deployment, calibration 
+labels uniformly spanning the entire target-tool life may not 
+always be available at the initial stage of a new tool. There-
+fore, two layer-wise calibration protocols are further evalu-
+ated, and the corresponding prediction-error distributions 
+are compared in Fig. 10.
+The layer-uniform all-pass protocol selects Nlayer = 10 
+target-tool layers uniformly across tool life and uses all valid 
+passes in these selected layers for affine calibration. Under 
+this setting, the RF model achieves an average RMSE of 
+0.0956 µm and an average R2 of 0.3331. The layer-all-pass 
+protocol shows slightly weaker performance than the pass-
+uniform result of 0.0925 µm and 0.4658, but it still provides 
+a substantial improvement over raw cross-tool prediction. 
+This comparison indicates that representative layer-level 
+calibration samples can effectively correct part of the output 
+bias and scale mismatch caused by tool-to-tool shift.
+The layer-uniform one-pass protocol is stricter. In this 
+setting, only one valid pass from each selected calibration 
+layer is used to fit the affine mapping, and these layers are 
+excluded from the final evaluation set. This design reduces 
+the possibility that within-layer pass correlation leads to 
+Nanomanufacturing and Metrology (2026) 9:30 
+ Page 17 of 23 30 
+overly optimistic results. Under this protocol, RF achieves 
+an average RMSE of 0.0973 µm and an average R2 of 0.2908. 
+Although the performance is slightly lower than that of 
+layer-all-pass calibration, the result remains near the other 
+calibrated protocols and is far better than the raw prediction. 
+This comparison demonstrates that even sparse layer-wise 
+Fig. 9 Scatter plot comparison of raw and pass-uniform calibrated 
+predictions of the RF model under the LOTO cross-tool evaluation. 
+Panels (a), (c), and (e) show the raw prediction results for Fold  1–
+Fold  3, respectively, whereas panels (b), (d), and (f) show the cor -
+responding pass-uniform calibrated results with Npass = 30 . For fair 
+comparison, raw and calibrated results are evaluated on the same tar -
+get-tool evaluation subset after the samples used for affine calibration 
+are excluded
+ Nanomanufacturing and Metrology (2026) 9:30 
+ 30 Page 18 of 23
+target-tool labels can provide useful information for output-
+level correction.
+The fold-wise results also reveal target-dependent differ-
+ences. For Fold 3 targeting C3, both layer-wise protocols 
+yield high positive R2 values, with 0.7223 for layer-all-pass 
+and 0.7327 for layer-one-pass. In contrast, Fold 1 targeting 
+C1 remains more challenging under the stricter layer-one-
+pass protocol, whose R2 is −0.1008 despite the RMSE being 
+reduced to 0.1102 µm. This finding suggests that calibration 
+can substantially reduce absolute error, but the ability to 
+recover target-tool variation still depends on the roughness 
+distribution and fold-specific response characteristics.
+Overall, Fig.  10 shows that the prediction error distri -
+butions become more concentrated around zero after affine 
+calibration. The reductions in mean error and error disper -
+sion support the interpretation that few-shot affine calibra-
+tion mainly corrects systematic output bias and scale mis-
+match. Therefore, the key deployment implication is that 
+raw source-trained prediction should not be directly trusted 
+after tool replacement, whereas a few target-tool roughness 
+measurements can markedly improve the reliability of cross-
+tool Sa prediction.
+4.5 Discussion and Limitations
+The proposed framework should be distinguished from 
+conventional transfer learning or domain adaptation meth-
+ods. Its main purpose is not to learn a generic domain-
+invariant representation but to provide a practical meas-
+urement adaptation procedure after tool replacement. In 
+this procedure, target-tool unlabeled descriptors are first 
+used to reduce input-scale mismatch, and a few measured 
+target-tool Sa values are then used to correct output bias 
+through affine calibration. This separation between unsu-
+pervised input alignment and low-label output correc -
+tion is consistent with the practical metrology workflow 
+in which cutting signals can be continuously collected, 
+whereas surface topography measurements are available 
+only for a few target-tool samples.
+The results further support the rationale of this two-
+stage adaptation design. Per-tool normalization and affine 
+calibration address two types of tool-replacement-induced 
+mismatch. Per-tool normalization uses unlabeled target-tool 
+descriptors to reduce differences in input-level scale and dis-
+tribution. Conversely, affine calibration uses a few measured 
+target-tool Sa values to correct output-level offset and scale 
+mismatch. The negative raw R2 values in Table  3 indicate 
+that input-level alignment alone is insufficient for reliable 
+target-tool prediction. In contrast, the improved calibrated 
+results in Table 3 and Fig. 9 show that a simple affine map-
+ping can effectively correct the remaining dominant error 
+component. Therefore, the proposed framework is inten-
+tionally designed as a lightweight measurement adaptation 
+procedure rather than a complex target-domain retraining 
+strategy, which would be more prone to overfitting across 
+limited target-tool Sa labels.
+The results indicate that Sa prediction after tool replace-
+ment is mainly limited by target-tool output bias and scale 
+mismatch. Although per-tool unsupervised normalization 
+reduces input-level descriptor differences, all compared 
+models still produce negative average R2 values before affine 
+calibration. Therefore, raw source-trained prediction should 
+Fig. 10 Boxplot comparison of prediction errors of the RF model 
+under different calibration protocols. Panel (a) compares raw predic-
+tion and pass-uniform affine calibration with Npass = 30 , whereas 
+panel (b) compares layer-uniform all-pass and layer-uniform one-pass 
+calibration with Nlayer = 10 . The error is defined as the predicted Sa 
+minus the measured Sa
+Nanomanufacturing and Metrology (2026) 9:30 
+ Page 19 of 23 30 
+not be directly trusted as a reliable estimate of the measured 
+Sa value after a new tool is installed [20, 41].
+A key implication for surface quality metrology is that 
+compact statistical descriptors provide a robust represen-
+tation of the cutting state under the present small-sample 
+setting. In the present controlled three-tool LOTO set-
+ting, RF with all 72 descriptors achieves the best numeri-
+cally calibrated performance. However, the performance 
+margins between RF, LSBoost, and the hierarchical signal 
+statistical fusion model are modest under some calibrated 
+protocols. For example, under pass-uniform calibration, RF, 
+LSBoost, and the fusion model obtain RMSEs of 0.0925 µm, 
+0.0952 µm, and 0.0949 µm, respectively. Therefore, this 
+result should not be interpreted as universal RF dominance. 
+Instead, it suggests that compact statistical descriptors 
+provide a reliable and practical route for target-tool adap-
+tation, especially when combined with tree-based ensem-
+ble regressors and low-label affine calibration. The fusion 
+model remains a meaningful structured comparison model. 
+However, with the present three-tool small-sample dataset, a 
+more complex waveform fusion architecture may not consist-
+ently outperform compact descriptor-based regressors [44].
+Moreover, the calibration protocol affects the interpre-
+tation of the results. Pass-uniform calibration provides the 
+best average performance because the selected calibration 
+samples span the entire life of the target tool. Therefore, it 
+should be considered a controlled full-life adaptation upper 
+bound rather than a strict early-stage online deployment 
+condition. This result should not be interpreted as the per -
+formance achievable immediately after installing a new tool, 
+because uniformly distributed labels over the full target-tool 
+life are generally unavailable at the beginning of machining. 
+The layer-wise protocols provide more conservative evalua-
+tions. In particular, the layer-one-pass protocol uses only one 
+valid pass from each selected layer, excluding the selected 
+calibration layers from final evaluation. This approach 
+reduces the influence of within-layer pass correlation [44]. 
+Therefore, the three protocols should be considered comple-
+mentary evaluation settings: pass-uniform gives an idealized 
+upper-bound estimate, layer-all-pass represents representa-
+tive stage-wise inspection, and layer-one-pass provides a 
+stricter sparse-label assessment.
+The role of per-tool normalization should also be clearly 
+defined. In this study, per-tool normalization uses only unla-
+beled target-tool signal/statistical feature distributions and 
+does not use target-tool Sa labels, so it is not label leakage. 
+Specifically, the target-tool normalization statistics are esti-
+mated using all valid unlabeled passes collected over the 
+target-tool life. Therefore, the present raw setting should 
+be interpreted as an offline unsupervised input-level align-
+ment setting, rather than a strict source-only transfer or 
+early-stage online deployment. This setting should be inter-
+preted as cross-tool prediction with unsupervised input-level 
+alignment, followed by limited-label affine calibration [41, 
+44]. This distinction is important for avoiding overly opti-
+mistic claims about source-only generalization.
+From an industrial-use perspective, the proposed frame-
+work can be interpreted as a measurement-assisted adapta-
+tion procedure after tool replacement. First, a source predic-
+tion model can be trained on historical labeled data from 
+previously used tools, where each valid pass-level force/
+vibration sample is paired with a measured Sa value. Second, 
+after a new target tool is installed, force/vibration signals 
+can be collected during normal cutting, and the resulting 
+unlabeled target-tool descriptors can be used to estimate 
+per-tool normalization statistics for input-level alignment. 
+Third, a few target-tool passes, or representative layers, can 
+be selected for offline surface topography measurement. 
+These limited measured values of target-tool Sa are then used 
+to fit the affine calibration parameters. Finally, the calibrated 
+model can be applied to the remaining target-tool passes to 
+provide signal-based Sa estimates. In this workflow, dense 
+roughness measurements of every target-tool pass are unnec-
+essary, while limited metrology feedback is still used to cor-
+rect target-tool output bias and improve prediction reliability.
+Several limitations remain. First, the dataset contains only 
+three tools under a single fixed cutting parameter setting. 
+This design enables a strict, three-fold LOTO evaluation in 
+which each tool is held out once as an unseen target tool, and 
+the remaining two tools are used as source tools. Therefore, 
+the current dataset is suitable for examining whether low-
+label target-tool adaptation is feasible under controlled cut-
+ting conditions and for isolating tool-replacement-induced 
+shift from cutting-parameter variation [20]. However, three 
+tools cannot support broad generalization claims across dif-
+ferent machines, tool batches, cutting parameters, materi-
+als, or industrial production environments. Consequently, the 
+present results should be interpreted as evidence of feasibil-
+ity within the current controlled experimental setting rather 
+than a complete proof of universal tool-replacement gener -
+alization. Future work should include more tools, repeated 
+tool replacements, different tool batches, and broader cutting 
+conditions to further evaluate the robustness and industrial 
+generalizability of the proposed framework.
+Second, the calibration protocols still require limited 
+target-tool Sa measurements. In particular, pass-uniform 
+calibration uses target-tool labels distributed throughout the 
+available tool life and may be unavailable at the early stage 
+of a new tool life. Therefore, it should be interpreted as a 
+controlled full-life adaptation upper-bound protocol rather 
+than a strictly online early-stage deployment protocol [44]. 
+The layer-all-pass and layer-one-pass protocols offer more 
+conservative layer-wise calibration scenarios, but they still 
+depend on target-tool surface topography measurements. 
+Future work should further investigate early-life calibration 
+strategies with smaller target label budgets and more realistic 
+ Nanomanufacturing and Metrology (2026) 9:30 
+ 30 Page 20 of 23
+online measurement schedules. For practical deployment, 
+the layer-wise protocols and future early-life calibration 
+strategies are more relevant than the pass-uniform upper-
+bound protocol because they require fewer, more localized 
+target-tool measurements.
+Third, the current per-tool normalization uses the avail -
+able unlabeled target-tool descriptor distribution in an 
+offline adaptation manner. This setting is useful for evaluat-
+ing whether unlabeled target-tool signals reduce input-level 
+descriptor mismatch, but it should not be interpreted as 
+strictly source-only or fully online. Future online deploy -
+ment should further investigate rolling or incremental nor -
+malization strategies, in which target-tool normalization sta-
+tistics are updated progressively as new unlabeled cutting 
+signals are collected [41].
+Fourth, tool wear is physically related to surface genera-
+tion, but the final selected prediction model does not use 
+VB or wear stage labels as supervised inputs because Sa is 
+measured at the pass level, whereas VB is measured at the 
+layer level. Thus, VB should be interpreted as an experi-
+mental tool-life characterization variable and a mechanism 
+interpretation variable in this study, rather than as an online 
+input variable of the final prediction model. This choice also 
+reflects the intended deployment scenario, in which force/
+vibration signals and limited Sa measurements are more 
+readily available for target-tool adaptation than frequent 
+direct VB measurements.
+Finally, although three repeated surface topography 
+measurements were averaged to obtain each pass-level Sa 
+label, the repeated-measurement uncertainty was not inde -
+pendently quantified as a separate uncertainty component. 
+Therefore, the reported prediction errors may still include 
+model prediction error and residual surface measurement 
+variability. Future work should further quantify the metrol-
+ogy uncertainty in repeated Sa measurements and separate 
+it from model prediction error.
+5 Conclusions
+This study investigated measurement-driven low-label 
+target-tool adaptation for signal-based Sa prediction in 
+Ti–6Al–4V milling. A one-pass–one-sample dataset was 
+constructed from steady-state force/vibration signals, and 
+each valid pass was associated with one measured Sa value 
+obtained from surface topography measurement [30, 31]. 
+Seventy-two statistical descriptors were retained to charac-
+terize the cutting state. Descriptor-based regressors and a 
+hierarchical signal statistical fusion model were compared 
+under identical three-fold LOTO protocols, per-tool unsu-
+pervised normalizations, and fixed-budget affine calibration 
+protocols [41, 44]. The main conclusions are as follows: 
+1. Direct raw cross-tool Sa prediction remains unreliable 
+after tool replacement. All compared models produce 
+negative average R2 values before affine calibration, indi-
+cating that input-level alignment and model representa-
+tion alone cannot fully remove target-tool output bias 
+and scale mismatch.
+2. Few-shot affine calibration substantially improves the 
+reliability of target-tool Sa prediction. By fitting a simple 
+affine mapping with a limited number of measured tar -
+get-tool Sa samples, prediction errors are reduced under 
+pass and layer-wise calibration protocols.
+3. In the present controlled three-tool LOTO setting, 
+RF with all 72 statistical descriptors achieves the 
+best numerically calibrated performance. Its average 
+RMSE/R2 values are 0.0925 µm/0.4658 under pass-uni-
+form calibration, 0.0956 µm/0.3331 under layer-all-pass 
+calibration, and 0.0973 µm/0.2908 under layer-one-pass 
+calibration. However, the margins over LSBoost and the 
+fusion comparison model are modest under some proto-
+cols. Therefore, this result should not be interpreted as 
+universal RF dominance. Instead, it suggests that com-
+pact statistical descriptors offer a reliable and practi-
+cal route for low-label target-tool adaptation, especially 
+when combined with tree-based ensemble regressors 
+and few-shot affine calibration.
+4. The hierarchical signal statistical fusion model remains 
+competitive but does not consistently outperform RF. 
+This comparison suggests that, under the current three-
+tool small-sample setting, reliable statistical descriptors 
+and affine output correction are more important than 
+increasing model complexity.
+5. The proposed framework clarifies the boundary between 
+strict source-only prediction and practical low-label 
+target-tool adaptation. Per-tool normalization should 
+be interpreted as unsupervised input-level alignment, 
+whereas affine calibration provides output-level correc-
+tion using a limited number of measured target-tool Sa 
+values.
+Overall, the most reliable approach in the present con-
+trolled Ti–6Al–4V milling dataset is to combine inform-
+ative statistical descriptors, robust descriptor-based 
+regression, and few-shot affine calibration. These results 
+demonstrate the feasibility of the proposed low-label tar -
+get-tool adaptation framework under the current three-tool 
+LOTO setting, but further validation with more tools, dif-
+ferent tool batches, and broader cutting conditions remains 
+necessary before broad industrial generalization can be 
+claimed. Future work will expand the dataset to include 
+more tools and cutting conditions and further investigate 
+early-life calibration strategies for online deployment after 
+tool replacement.
+Nanomanufacturing and Metrology (2026) 9:30 
+ Page 21 of 23 30 
+Acknowledgements The authors thank the technical staff for assistance 
+with the machining experiments and measurements.
+Author Contributions Jie Feng: Conceptualization, Methodology, 
+Data curation, Formal analysis, Writing–original draft. Nan Zhang: 
+Supervision, Funding acquisition, Writing–review and editing. Zhe-
+nyu Liu: Investigation, Validation. Long Li: Resources. Peng Duan: 
+Software. Kang Shu: Formal analysis. Liyuan Zheng: Visualization. Ze 
+Yu: Experimental support. Zhen Chen: Funding acquisition, Writing–
+review and editing. All authors read and approved the final manuscript.
+Funding This work was funded in part by the National Natural Sci-
+ence Foundation of China (Grant No. 52465052) in part by the Natu-
+ral Science Foundation of Inner Mongolia (Grant No. 2023MS05034) 
+and in part by the Natural Science Foundation of Xi’an (Grant No. 
+2025JH-ZRKX-0424).
+Data Availability The datasets generated and/or analyzed during the 
+current study are available from the corresponding author on reason-
+able request.
+Code Availability The code used to support the findings of this study is 
+available from the corresponding author on reasonable request.
+Declarations 
+Competing interests The authors declare that they have no known 
+competing financial interests or personal relationships that could have 
+appeared to influence the work reported in this paper.
+Open Access This article is licensed under a Creative Commons 
+Attribution-NonCommercial-NoDerivatives 4.0 International License, 
+which permits any non-commercial use, sharing, distribution and repro-
+duction in any medium or format, as long as you give appropriate credit 
+to the original author(s) and the source, provide a link to the Creative 
+Commons licence, and indicate if you modified the licensed material. 
+You do not have permission under this licence to share adapted material 
+derived from this article or parts of it. The images or other third party 
+material in this article are included in the article's Creative Commons 
+licence, unless indicated otherwise in a credit line to the material. If 
+material is not included in the article's Creative Commons licence and 
+your intended use is not permitted by statutory regulation or exceeds 
+the permitted use, you will need to obtain permission directly from the 
+copyright holder. To view a copy of this licence, visit http:// creat iveco 
+mmons. org/ licen ses/ by- nc- nd/4. 0/.
+References
+ 1. Teti R, Mourtzis D, D’ Addona D, Caggiano A (2022) Process 
+monitoring of machining. CIRP Ann 71(2):529–552
+ 2. Yang H, Zheng H, Zhang T (2024) A review of artificial intelligent 
+methods for machined surface roughness prediction. Tribol Int 
+199:109935
+ 3. Shixiong W, Xiaojian M, Yimin L, et al (2025) Surface integ-
+rity in titanium alloy cutting: a comprehensive review. Chinese J 
+Aeronautics 39(9):103903
+ 4. Wu P, Dai H, Li Y, He Y, Zhong R, He J (2022) A physics-
+informed machine learning model for surface roughness 
+prediction in milling operations. Int J Adv Manuf Technol 
+123(11):4065–4076
+ 5. Antosz K, Kozlowski E, Slep J, Prucnal S (2025) Application of 
+machine learning to the prediction of surface roughness in the 
+milling process on the basis of sensor signals. Materials 18(1):148
+ 6. Zhou T, He L, Wu J, Du F, Zou Z (2019) Prediction of surface 
+roughness of 304 stainless steel and multi-objective optimization 
+of cutting parameters based on GA-GBRT. Appl Sci 9(18):3684
+ 7. Chen Y, Sun R, Gao Y, Leopold J (2017) A nested-ANN predic-
+tion model for surface roughness considering the effects of cutting 
+forces and tool vibrations. Measurement 98:25–34
+ 8. Lu C (2008) Study on prediction of surface quality in machining 
+process. J Mater Process Technol 205(1–3):439–450
+ 9. Wu T, Lei K (2019) Prediction of surface roughness in milling 
+process using vibration signal analysis and artificial neural net-
+work. Int J Adv Manuf Technol 102(1):305–314
+ 10. Wang J, Wu X, Huang Q, et al (2025) Surface roughness pre-
+diction based on fusion of dynamic-static data. Measurement 
+243:116351
+ 11. Guleria V, Kumar V, Singh PK (2022) Prediction of surface rough-
+ness in turning using vibration features selected by largest Lyapu-
+nov exponent based ICEEMDAN decomposition. Measurement 
+202:111812
+ 12. Wang Y, Wang Y, Zheng L, Zhou J (2022) Online surface rough-
+ness prediction for assembly interfaces of vertical tail integrating 
+tool wear under variable cutting parameters. Sensors 22(5):1991
+ 13. Song C, Liu Z, Wang X et al (2025) Surface roughness online 
+prediction using parallel ensemble learning in robotic side milling 
+for aluminum alloy. Mech Syst Signal Process 235:112932
+ 14. Ibarra-Zarate D, Alonso-Valerdi LM, Chuya-Sumba J, Velarde-
+Valdez S, Siller HR (2019) Prediction of Inconel 718 roughness 
+with acoustic emission using convolutional neural network based 
+regression. Int J Adv Manuf Technol 105(1):1609–1621
+ 15. Pan Y, Kang R, Dong Z, Du W, Yin S, Bao Y (2022) On-line pre-
+diction of ultrasonic elliptical vibration cutting surface roughness 
+of tungsten heavy alloy based on deep learning. J Intell Manuf 
+33(3):675–685
+ 16. Guo W, Wu C, Ding Z, Zhou Q (2021) Prediction of surface 
+roughness based on a hybrid feature selection method and long 
+short-term memory network in grinding. Int J Adv Manuf Technol 
+112(9):2853–2871
+ 17. Lin WJ, Lo SH, Young HT, Hung CL (2019) Evaluation of deep 
+learning neural networks for surface roughness prediction using 
+vibration signal analysis. Appl Sci 9(7):1462
+ 18. Cheng M, Jiao L, Yan P, et al (2022) A novel multi-task learning 
+model with PSAE network for simultaneous estimation of surface 
+quality and tool wear in milling of nickel-based superalloy haynes 
+230. Sensors 22(13):4943
+ 19. Cooper C, Zhang J, Guo Y, Gao RX (2023) Surface roughness 
+prediction through GAN-synthesized power signal as a process 
+signature. J Manuf Syst 68:660–669
+ 20. Qiang B, Shi K, Ren J, Shi Y (2024) Multi-source online transfer 
+learning based on hybrid physics-data model for cross-condition 
+tool health monitoring. J Manuf Syst 77:1–17
+ 21. Qiang B, Shi K, Liu N, Ren J, Shi Y (2023) Integrating physics-
+informed recurrent Gaussian process regression into instance 
+transfer for predicting tool wear in milling process. J Manuf Syst 
+68:42–55
+ 22. Shi K, Shi X, Li J, Qiang B, Ren J, Shi Y (2025) A novel method 
+for predicting cutting force considering tool wear by power con-
+sumption in milling process. J Manuf Process 149:632–646
+ 23. Ma L, Zhang N, Zhao J, Kong H (2024) An end-to-end deep learn-
+ing approach for tool wear condition monitoring. Int J Adv Manuf 
+Technol 133(5):2907–2920
+ 24. Li L, Yu Z, Ma L, Zhang N (2026) Condition-Adaptive 1DCNN-
+Transformer for Multi-Condition Tool Wear Prediction. Int J Adv 
+Manuf Technol 142(9–10):4433–4452
+ 25. Fan Y, Ren J, Shi K, Tang Y, Li X, Liu C (2025) Calculation 
+method for bending deformation of complex structured tools 
+based on subcomponent method. J Manuf Process 134:790–813
+ Nanomanufacturing and Metrology (2026) 9:30 
+ 30 Page 22 of 23
+ 26. Souflas T, Triantopoulou E, Papaioannou C, Ramsauer C, 
+Greitler JA, Schörghofer P et al (2025) Tool condition moni -
+toring in milling using cutting force and temperature data 
+from an instrumented milling head. Int J Adv Manuf Technol 
+139(11):6049–6072
+ 27. Kouguchi J, Yoshioka H (2024) Monitoring method of cutting 
+forces and vibrations by using frequency separation of accelera-
+tion sensor signals during milling process with small ball end 
+mills. Precis Eng 85:337–356
+ 28. Wang H, Wang S, Sun W, Xiang J (2024) Multi-sensor signal 
+fusion for tool wear condition monitoring using denoising trans-
+former auto-encoder Resnet. J Manuf Process 124:1054–1064
+ 29. Zhang PF, Hong DB, Totis G et al (2025) Systematic review of 
+cutting force measuring systems in machining: principles, design, 
+filtering techniques and applications. Int J Mach Tools Manuf 
+210:104308
+ 30. Ruzova D, Haddadi B (2025) Surface roughness and its meas-
+urement methods-analytical review. Results Surf Interfaces 
+19:100441
+ 31. Moreau C, Lemesle J, Páez Margarit D, Blateyron F, Bigerelle 
+M (2024) A statistical approach for characterizing the behaviour 
+of roughness parameters measured by a multi-physics instrument 
+on ground surface topographies: four novel indicators. Metrology 
+4(4):640–672
+ 32. Daicu R, Oancea G (2022) Methodology for measuring the cutting 
+inserts wear. Symmetry 14(3):469
+ 33. Navarro-Devia JH, Chen Y, Dao DV, Li H (2023) Chatter detec-
+tion in milling processes–a review on signal processing and condi-
+tion classification. Int J Adv Manuf Technol 125(9):3943–3980
+ 34. Wei X, Liu X, Yue C, Wang L, Liang SY, Qin Y (2022) Tool 
+wear state recognition based on feature selection method with 
+whitening variational mode decomposition. Robot Comput -Integr 
+Manuf 77:102344
+ 35. Roos-Hoefgeest Toribio M, Garnung Menéndez A, Roos-Hoef-
+geest Toribio S, Álvarez GI (2025) A novel approach to speed up 
+hampel filter for outlier detection. Sensors 25(11):3319
+ 36. Li S, Li J, Zhu K (2025) Application of physics-guided deep learn-
+ing model in tool wear monitoring of high-speed milling. Mech 
+Syst Signal Process 224:111949
+ 37. Apicella A, Isgrò F, Prevete R (2025) Don’t push the button! 
+exploring data leakage risks in machine learning and transfer 
+learning. Artif Intell Rev 58(11):339
+ 38. Wang D, Liu Q, Wu D, Wang L (2022) Meta domain generaliza-
+tion for smart manufacturing: tool wear prediction with small data. 
+J Manuf Syst 62:441–449
+ 39. Peralta Abadia JJ, Cuesta Zabaljauregui M, Larrinaga BF (2025) 
+Mondragon Unibertsitatea face-milling dataset for smart tool con-
+dition monitoring. Scientific Data 12(1):855
+ 40. Lin Z, Fan Y, Tan J et al (2025) Tool wear prediction based on 
+XGBoost feature selection combined with PSO-BP network. Sci 
+Rep 15(1):3096
+ 41. Huang Z, Li W, Zhu J, Wang L (2024) Cross-domain tool wear 
+condition monitoring via residual attention hybrid adaptation net-
+work. J Manuf Syst 72:406–423
+ 42. Krupp L, Wiede C, Friedhoff J, Grabmaier A (2023) Explainable 
+remaining tool life prediction for individualized production using 
+automated machine learning. Sensors 23(20):8523
+ 43. Lin SY, Hsieh CJ (2024) Construction of a cutting-tool wear pre-
+diction model through ensemble learning. Appl Sci 14(9):3811
+ 44. Goodarzi P, Schütze A (2025) Practical test-time domain adapta-
+tion for industrial condition monitoring by leveraging normal-
+class data. Sensors 25(24):7614
+Publisher's Note Springer Nature remains neutral with regard to 
+jurisdictional claims in published maps and institutional affiliations.
+Jie Feng received his bachelor’s 
+degree in Mechanical Design, 
+Manufacturing and Automation 
+from Inner Mongolia University 
+of Technology, Hohhot, China. 
+He is currently pursuing a mas-
+ter’s degree in Mechanical Engi-
+neering at the same university. 
+His research interests focus on 
+machining surface roughness 
+prediction.
+Nan Zhang is a Professor at the 
+School of Mechanical Engineer-
+ing, Inner Mongolia University 
+of Technology, Hohhot, China. 
+Her research interests include 
+forming and machining mecha-
+nisms of complex components 
+and difficult-to-machine materi-
+als, machining condition moni-
+toring and reliability, and data-
+driven remaining useful life 
+prediction for complex equip-
+ment and systems.
+Zhenyu Liu received his bache-
+lor’s degree in Mechanical 
+Design, Manufacturing and 
+Automation from Inner Mongo-
+lia University of Technology, 
+Hohhot, China. He is currently 
+pursuing a master’s degree in 
+Mechanical Engineering at the 
+same university. His research 
+interests include machining sur -
+face roughness prediction and 
+deep learning.
+Long Li is currently pursuing a 
+master’s degree at the School of 
+Mechanical Engineering, Inner 
+Mongolia University of Technol-
+ogy, Hohhot, China. His research 
+interests include intelligent fault 
+diagnosis, condition monitoring, 
+remaining useful life prediction, 
+and deep learning.
+Nanomanufacturing and Metrology (2026) 9:30 
+ Page 23 of 23 30 
+Peng Duan received his bache-
+lor’s degree in Mechanical 
+Design, Manufacturing and 
+Automation from Dalian Univer-
+sity, Dalian, China. He is cur -
+rently pursuing a master’s degree 
+in Mechanical Engineering at 
+Inner Mongolia University of 
+Technology, Hohhot, China. His 
+research focuses on fatigue life 
+prediction of Ti–6Al–4V tita-
+nium alloy.
+Kang Shu received his bachelor’s 
+degree in Mechanical Design, 
+Manufacturing and Automation 
+from Inner Mongolia University 
+of Technology, Hohhot, China, 
+in 2025. He is currently pursuing 
+a master’s degree at the School 
+of Mechanical Engineering, 
+Inner Mongolia University of 
+Technology. His research focuses 
+on surface roughness prediction 
+in titanium-alloy milling.
+Liyuan Zheng is currently study-
+ing Mechanical Design, Manu-
+facturing and Automation at 
+Inner Mongolia University of 
+Technology, Hohhot, China. Her 
+research interests include 
+mechanical mechanism design 
+and structural optimization.
+Ze Yu is currently pursuing a 
+master’s degree at the School of 
+Mechanical Engineering, Inner 
+Mongolia University of Technol-
+ogy, Hohhot, China. His research 
+interests include part forming 
+and manufacturing 
+technologies.
+Zhen Chen is a Lecturer at the 
+School of Aeronautical Manu-
+facturing and Automotive Engi-
+neering, Xi’an Aeronautical 
+Institute, Xi’an, China. He 
+received his Ph.D. degree in 
+Mechatronic Engineering from 
+Northwestern Polytechnical Uni-
+versity in 2021. His research 
+focuses on precision polishing 
+technologies for complex free-
+form surfaces.

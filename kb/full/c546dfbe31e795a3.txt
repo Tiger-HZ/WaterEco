@@ -1,0 +1,360 @@
+Magrathea v2: A planetary interior modeling platform
+in C++
+David R. Rice 1,5¶, Chenliang Huang 2, Robert Royer 3, Mangesh
+Daspute4, Krishang Mittal5, Baptiste Journaux 6, Jason H. Steffen3, and
+Allona Vazan 1
+1 Astrophysics Research Center (ARCO), Department of Natural Sciences, The Open University of Israel,
+Raanana 4353701, Israel2 Shanghai Astronomical Observatory, Chinese Academy of Sciences, Shanghai
+200030, People’s Republic of China3 Department of Physics and Astronomy, University of Nevada, Las
+Vegas, 4505 South Maryland Parkway, Las Vegas, NV 89154, USA4 Department of Physics, Ariel
+University, Ariel 40700, Israel5 Department of Astronomy, University of Wisconsin–Madison, 475 N.
+Charter Street, Madison, WI 53706, USA6 Department of Earth and Space Science, University of
+Washington, Seattle, WA 98195, USA¶ Corresponding author
+DOI: 10.21105/joss.10692
+Software
+• Review
+• Repository
+• Archive
+Editor: Tobias Buck
+Reviewers:
+• @Mark-Eb
+• @astro-seanwhy
+Submitted: 23 October 2025
+Published: 15 September 2026
+License
+Authors of papers retain copyright
+and release the work under a
+Creative Commons Attribution 4.0
+International License (CC BY 4.0).
+Summary
+Magrathea is an open-source C++ code for modeling the internal structure of differentiated
+planets. The initial release, Huang et al. (2022), introduced the base solver, a modular
+framework for defining equations of state (EOS) within phase diagrams for each layer, and a
+plan for expanding the code. Many of those updates are now implemented. Magrathea v2
+is a more versatile platform that supports a wider range of compositions, adds new tools for
+composition retrieval, and makes it easier for users to adapt the code to their own models.
+Statement of need
+Constraining a planet’s composition is essential for understanding its formation and evolution.
+Observations of mass and radius alone are not sufficient, since many different interiors can yield
+the same bulk density. Interior structure solvers are therefore essential tools for constraining
+possible compositions. With observational programs routinely measuring the densities of small
+to large planets, researchers require codes with models that are transparent, are flexible, and
+can adapt as our understanding of planet mineralogy changes.
+Magrathea is designed as such a platform. Rather than enforcing a fixed planet model,
+Magrathea provides a framework in which users can define their own phase diagrams, equations
+of state (EOS), and thermal profiles. The goal is not one preferred interior model, but a fast
+and readable code base for building and testing many of them. With the continued expansion
+of the physics and usability in Version 2.0, Magrathea helps the community keep up with
+the growing precision of exoplanet observations and experimental constraints on planetary
+materials.
+State of the field
+The field includes several open tools for planet interior structure modeling. We point readers
+to the large tables of tools in Acuña et al. (2025) and Baumeister et al. (2025) for a broader
+summary, and highlight four examples here to illustrate the range of current approaches.
+GASTLI (Acuña et al., 2025) focuses on volatile-rich planets and coupled interior–atmosphere
+models. ExoPlex (Unterborn et al., 2023) emphasizes the mineralogy of predominantly rocky
+Rice et al. (2026). Magrathea v2: A planetary interior modeling platform in C++. Journal of Open Source Software , 11(125), 10692.
+https://doi.org/10.21105/joss.10692.
+1
+planets. ExoInt (Wang et al., 2019) adds modules that use stellar elemental abundances and
+devolatilization relationships to constrain planetary bulk composition. PALEOS (Attia et al.,
+2026) provides multi-phase, tabulated equations of state for rapid interpolation in planetary
+structure and evolution models.
+Within this landscape, Magrathea emphasizes flexibility in constructing differentiated planet
+models and provides a growing set of run modes for different use cases. Users have explicit
+control over phase diagrams and EOS choices in each differentiated layer allowing for diverse
+planet models from sub-Earth to Neptune-mass planets. Magrathea allows users to swap
+mineral physics assumptions quickly, run forward models fast enough for large parameter sweeps,
+and test how interior assumptions propagate into inferred compositions. The combination of
+modularity and speed from the C++ implementation is the main reason we seek to build on
+Magrathea.
+Software design
+The core solver of Magrathea is a one-dimensional, spherically symmetric integrator of the
+equations of hydrostatic equilibrium, mass continuity, temperature gradient, and equation
+of state. For a user-defined planet consisting of up to four differentiated layers, the code
+integrates inward and outward solutions using a shooting-to-fitting-point method with adaptive
+Runge–Kutta–Fehlberg stepping. The solver returns the radius of the planet, the radius of each
+compositional boundary, and profiles of pressure, temperature, density, and phase as functions
+of enclosed mass. Solving one planet takes about one second for most configurations.
+A key design choice is modularity. A large variety of EOS forms are supported inEOS.cpp,
+including Birch–Murnaghan, Vinet, Holzapfel, Keane, ideal and van der Waals gases, Debye
+or Einstein thermal terms, and tabulated EOS. Parameters for each material are defined in
+a library of more than 70 EOS inEOSlist.cpp. Phase diagrams for each layer define which
+material is used at a given pressure–temperature condition inphase.cpp. Alternative phase
+diagrams are also stored in a library and can be selected at run time.
+Magrathea separates the solver from the model. The code offers nine run modes through
+human-readable .cfg files, including a full four-layer solver, isothermal and two-layer modes,
+bulk runs, two/three-layer composition finder, on-the-fly EOS modification modes, and an
+MCMC retrieval mode. This range of models and use cases makes Magrathea not just a solver
+but a platform for exploring interior models.
+Major updates in this version
+Since the initial release (Huang et al., 2022), Magrathea has undergone expansions in physics,
+solvers, and usability.
+New physical models and materials
+• Default mantle:Added upper-mantle polymorphs of Mg2SiO4 (forsterite, wadsleyite,
+ringwoodite; Dorogokupets et al., 2015), seeFigure 1.
+• Default hydrosphere:Updated H2O EOS and phase boundaries for ices (Journaux et al.,
+2020), liquid and gas (Wagner & Pruß, 2002), and supercritical water (Mazevet et al.,
+2019), largely inspired by the AQUA package (Haldemann et al., 2020), seeFigure 1.
+• Additional gas EOS:Including the solar-metallicity hydrogen/helium table from Chabrier
+& Debras (2021) and van der Waals gases.
+• Carbon mantles:EOS and phase diagrams for phases of carbon (Benedict et al., 2014;
+Lowitzer et al., 2006) and silicon carbide (Miozzi et al., 2018), seeFigure 1.
+Rice et al. (2026). Magrathea v2: A planetary interior modeling platform in C++. Journal of Open Source Software , 11(125), 10692.
+https://doi.org/10.21105/joss.10692.
+2
+• EOS library growth:Including the AQUA table (Haldemann et al., 2020), fcc- and
+bcc-iron (Dorogokupets et al., 2017), and mantle materials from Stixrude & Lithgow-
+Bertelloni (2011).
+New functionality and solvers
+• Composition finders:
+– A secant-method routine that determines the mass of a third unknown layer given
+a target mass, radius, and ratio between the other two layers, looped over layer
+ratios and mass–radius posterior draws.
+– A Markov chain Monte Carlo routine following Rogers & Seager (2010) and Dorn et
+al. (2015) for probabilistic composition inference given mass, radius, and associated
+uncertainties with the Metropolis–Hastings method.
+• Tabulated EOS: Support for tabulated 𝑃–𝑇–𝜌–∇𝑇𝑆 EOS tables using bilinear
+interpolation.
+• Modular phase diagrams:Users can store multiple phase-diagram configurations and
+call them in the configuration file, for example switching between silicate and carbon
+mantle models without recompiling.
+Usability
+• Input handling:All input parameters were moved torun/*.cfg files with descriptive
+keys.
+• Parallelization: Bulk runs and composition finder routines can exploit OpenMP in
+compfind.cpp enabling execution with multiple threads.
+• Built-innumericaltests: The ./planet --test option verifies pressure–density inversion
+for an analytical Vinet EOS and compares the structure solver for a constant-density
+planet against its analytical radius.
+• Diagnostics: More informative error messages are returned when solutions fail to converge.
+• Tutorial and documentation:A guided set of examples and practice problems resides in
+the docs/ folder withonline documentation.
+Together, these changes make Magrathea v2 a substantially expanded platform rather than a
+simple update to the default planet model.
+/uni00000014/uni00000013/uni00000017
+/uni00000014/uni00000013/uni00000015
+/uni00000014/uni00000013/uni00000013
+/uni00000014/uni00000013/uni00000015
+/uni00000033/uni00000003/uni0000000b/uni0000002a/uni00000033/uni00000044/uni0000000c
+/uni00000014/uni00000013/uni00000015
+/uni00000014/uni00000013/uni00000016
+/uni00000037/uni00000003/uni0000000b/uni0000002e/uni0000000c
+/uni00000024 /uni00000025/uni00000026
+/uni00000027 /uni00000028
+/uni00000029 /uni0000002a
+/uni00000015/uni00000013/uni00000013/uni00000003/uni0000002e
+/uni00000014/uni00000011/uni00000016/uni0000001c/uni00000003/uni00000035
+/uni00000016/uni00000013/uni00000013/uni00000003/uni0000002e
+/uni00000014/uni00000011/uni00000017/uni00000003/uni00000035
+/uni00000017/uni00000013/uni00000013/uni00000003/uni0000002e
+/uni00000015/uni00000011/uni00000014/uni0000001b/uni00000003/uni00000035
+/uni00000014/uni00000013/uni00000014
+/uni00000014/uni00000013/uni00000013
+/uni00000014/uni00000013/uni00000014
+/uni00000014/uni00000013/uni00000015
+/uni00000033/uni00000003/uni0000000b/uni0000002a/uni00000033/uni00000044/uni0000000c
+/uni00000032/uni0000004f/uni00000059
+/uni00000035/uni0000005a/uni00000047
+/uni00000025/uni00000055/uni0000004a
+/uni00000033/uni00000033/uni00000059
+/uni0000003a/uni00000047/uni00000056
+/uni00000030/uni00000048/uni0000004f/uni00000057
+/uni00000016/uni00000013/uni00000013/uni00000003/uni0000002e
+/uni00000014/uni00000011/uni00000013/uni00000019/uni00000003/uni00000035
+/uni00000014/uni00000013/uni00000013/uni00000013/uni00000003/uni0000002e
+/uni00000014/uni00000011/uni00000013/uni0000001a/uni00000003/uni00000035
+/uni00000015/uni00000013/uni00000013/uni00000013/uni00000003/uni0000002e
+/uni00000014/uni00000011/uni00000013/uni0000001b/uni00000003/uni00000035
+/uni00000014/uni00000013/uni00000014
+/uni00000014/uni00000013/uni00000013
+/uni00000014/uni00000013/uni00000014
+/uni00000014/uni00000013/uni00000015
+/uni00000014/uni00000013/uni00000016
+/uni00000033/uni00000003/uni0000000b/uni0000002a/uni00000033/uni00000044/uni0000000c
+/uni0000002a/uni00000055/uni00000053/uni00000027/uni00000050/uni00000047
+/uni00000026/uni00000010/uni00000045/uni00000046/uni0000001b
+/uni00000036/uni0000004c/uni00000026/uni00000010
+/uni00000025/uni00000014
+/uni00000036/uni0000004c/uni00000026/uni00000010
+/uni00000025/uni00000016
+/uni0000002f/uni0000004c/uni00000054/uni00000058/uni0000004c/uni00000047/uni00000056
+/uni00000031/uni00000052/uni00000057/uni00000003/uni0000002c/uni00000050/uni00000053/uni0000004f/uni00000048/uni00000050/uni00000048/uni00000051/uni00000057/uni00000048/uni00000047
+/uni00000016/uni00000013/uni00000013/uni00000003/uni0000002e
+/uni00000014/uni00000011/uni00000014/uni00000017/uni00000003/uni00000035
+/uni00000018/uni00000013/uni00000013/uni00000003/uni0000002e
+/uni00000014/uni00000011/uni00000014/uni00000017/uni00000003/uni00000035
+/uni00000014/uni00000013/uni00000013/uni00000013/uni00000003/uni0000002e
+/uni00000014/uni00000011/uni00000014/uni00000018/uni00000003/uni00000035
+/uni00000013/uni00000014/uni00000015/uni00000016
+/uni00000016/uni00000017/uni00000018/uni00000019
+/uni00000015/uni00000011/uni00000018/uni00000016/uni00000011/uni00000013/uni00000016/uni00000011/uni00000018/uni00000017/uni00000011/uni00000013
+/uni00000003/uni0000000b/uni0000004a/uni00000003/uni00000046/uni000000503/uni0000000c
+ /uni00000003/uni0000000b/uni0000004a/uni00000003/uni00000046/uni000000503/uni0000000c
+ /uni00000003/uni0000000b/uni0000004a/uni00000003/uni00000046/uni000000503/uni0000000c
+Figure 1:New phase diagrams in the code. Left, updated default hydrosphere. Center, default mantle
+with lower-pressure Mg2SiO4 phases. Right, carbon and SiC mantle phase diagrams. On each plot
+are shown the pressure–temperature conditions inside a one Earth-mass planet with different outer
+temperatures. The plotting script, model output files, and instructions used to reproduce this figure are
+available in theJOSSPhaseDiagrams directory.
+Rice et al. (2026). Magrathea v2: A planetary interior modeling platform in C++. Journal of Open Source Software , 11(125), 10692.
+https://doi.org/10.21105/joss.10692.
+3
+Research impact statement
+Magrathea has been used in published work to generate mass–radius diagrams (Taylor et
+al., 2025), infer interiors of observed planets (Desai et al., 2024; MacDonald et al., 2022),
+connect theoretical composition from formation to observables (Childs et al., 2023; Dou et
+al., 2024; Steffen et al., 2025), and test how updated high-pressure EOS measurements and
+interior assumptions change inferred structures (Huang et al., 2021; Lozovsky, 2026). The new
+composition finders are used and described in Daspute et al. (2025), Rice et al. (2025), and
+Kroft et al. (2026).
+Beyond its use in published research, Magrathea is already contributing to emerging
+intercomparison efforts in exoplanet interior modeling. Schulze et al. (2026) compares EOS
+and material choices across common rocky-planet models and shows that those choices can
+change inferred compositions at a level comparable to current observational uncertainties.
+In that context, open and modular tools like Magrathea help make differences in physical
+assumptions, EOS choices, and retrieval workflows easier to isolate and test.
+Magrathea now covers a broader set of interior assumptions, supports faster composition
+inference workflows, and makes EOS-level sensitivity studies easier to perform. These are the
+main research impacts of this version.
+AI usage disclosure
+Generative AI was not used to implement most of the updates described in this paper. Limited
+use of generative AI was explored during development of the MCMC mode. All AI-assisted
+code changes were reviewed by the authors against the existing code base, and outputs were
+tested against other non-AI retrieval modes. Generative AI was also used in drafting and
+reorganizing this manuscript. All scientific claims and software descriptions were checked and
+revised by the authors against prior publications and the broader literature.
+Acknowledgements
+We acknowledge the many researchers using the Magrathea code base; we appreciate each
+contribution to science and the code. We thank Douglas Adams for the timeless stories
+compiled in “The Hitchhiker’s Guide to the Galaxy” which inspired the name of the code. We
+acknowledge support from the College of Sciences and the Nevada Center for Astrophysics at
+the University of Nevada, Las Vegas. A.V. acknowledges support by ISF grants 770/21 and
+773/21. C.H. is sponsored by Shanghai Pujiang Program (grant No. 23PJ1414900).
+References
+Acuña, L., Kreidberg, L., Zhai, M., Mollière, P., & Fouesneau, M. (2025). GASTLI: A Python
+package for coupled interior–atmosphere modelling of volatile-rich planets.The Journal of
+Open Source Software, 10(107), 7288. https://doi.org/10.21105/joss.07288
+Attia, M., Lichtenberg, T., Jungová, E., & Sastre, M. (2026). PALEOS: Multiphase equations
+of state and mass-radius relations for exoplanet interiors.arXiv e-Prints, arXiv:2605.03741.
+https://doi.org/10.48550/arXiv.2605.03741
+Baumeister, P., Miozzi, F., Guimond, C. M., Steinmeyer, M.-L., Dorn, C., Karato, S.-I.,
+Bolmont, É., Revol, A., Thamm, A., & Noack, L. (2025). Fundamentals of interior
+modelling and challenges in the interpretation of observed rocky exoplanets.Space Science
+Reviews, 221(8), 123. https://doi.org/10.1007/s11214-025-01248-5
+Rice et al. (2026). Magrathea v2: A planetary interior modeling platform in C++. Journal of Open Source Software , 11(125), 10692.
+https://doi.org/10.21105/joss.10692.
+4
+Benedict, L. X., Driver, K. P., Hamel, S., Militzer, B., Qi, T., Correa, A. A., Saul, A., &
+Schwegler, E. (2014). Multiphase equation of state for carbon addressing high pressures and
+temperatures. Physical Review B , 89(22), 224109. https://doi.org/10.1103/PhysRevB.89.
+224109
+Chabrier, G., & Debras, F. (2021). A new equation of state for dense hydrogen-helium mixtures.
+II. Taking into account hydrogen-helium interactions.The Astrophysical Journal , 917(1),
+4. https://doi.org/10.3847/1538-4357/abfc48
+Childs, A. C., Shakespeare, C., Rice, D. R., Yang, C.-C., & Steffen, J. H. (2023). Composition
+constraints of the TRAPPIST-1 planets from their formation.Monthly Notices of the
+Royal Astronomical Society, 524(3), 3749–3768. https://doi.org/10.1093/mnras/stad2110
+Daspute, M., Wandel, A., Kopparapu, R. K., Perdelwitz, V., Teklu, J. T., & Tal-Or, L.
+(2025). Potential interior structures and habitability of super-Earth exoplanets LHS 1140
+b, K2-18 b, TOI-1452 b, and TOI-1468 c. The Astrophysical Journal , 979(2), 158.
+https://doi.org/10.3847/1538-4357/ad9ba9
+Desai, A., Turtelboom, E. V., Harada, C. K., Dressing, C. D., Rice, D. R., Murphy, J. M.
+A., Brinkman, C. L., Chontos, A., Crossfield, I. J. M., Dai, F., Hill, M. L., Fetherolf, T.,
+Giacalone, S., Howard, A. W., Huber, D., Isaacson, H., Kane, S. R., Lubin, J., MacDougall,
+M. G., … Winn, J. N. (2024). The TESS-keck survey. XVIII. A sub-Neptune and spurious
+long-period signal in the TOI-1751 system. The Astronomical Journal , 167(5), 194.
+https://doi.org/10.3847/1538-3881/ad29ee
+Dorn, C., Khan, A., Heng, K., Connolly, J. A. D., Alibert, Y., Benz, W., & Tackley, P.
+(2015). Can we constrain the interior structure of rocky exoplanets from mass and radius
+measurements? Astronomy & Astrophysics , 577, A83. https://doi.org/10.1051/0004-
+6361/201424915
+Dorogokupets, P. I., Dymshits, A. M., Litasov, K. D., & Sokolova, T. S. (2017).
+Thermodynamics and equations of state of iron to 350 GPa and 6000 k.Scientific Reports,
+7, 41863. https://doi.org/10.1038/srep41863
+Dorogokupets, P. I., Dymshits, A. M., Sokolova, T. S., Danilov, B. S., & Litasov, K. D. (2015).
+The equations of state of forsterite, wadsleyite, ringwoodite, akimotoite, MgSiO3-perovskite,
+and postperovskite and phase diagram for the Mg2SiO4 system at pressures of up to 130
+GPa. Russian Geology and Geophysics , 56(1-2), 172–189. https://doi.org/10.1016/j.rgg.
+2015.01.011
+Dou, J., Carter, P. J., & Leinhardt, Z. M. (2024). Formation of super-Mercuries via giant
+impacts. Monthly Notices of the Royal Astronomical Society , 529(3), 2577–2594. https:
+//doi.org/10.1093/mnras/stae644
+Haldemann, J., Alibert, Y., Mordasini, C., & Benz, W. (2020). AQUA: A collection of
+H2O equations of state for planetary models. Astronomy & Astrophysics , 643, A105.
+https://doi.org/10.1051/0004-6361/202038367
+Huang, C., Rice, D. R., Grande, Z. M., Smith, D., Smith, J. S., Boisvert, J. H., Tschauner,
+O., Salamat, A., & Steffen, J. H. (2021). Implications of an improved water equation of
+state for water-rich planets.Monthly Notices of the Royal Astronomical Society , 503(2),
+2825–2832. https://doi.org/10.1093/mnras/stab645
+Huang, C., Rice, D. R., & Steffen, J. H. (2022). MAGRATHEA: An open-source spherical
+symmetric planet interior structure code. Monthly Notices of the Royal Astronomical
+Society, 513(4), 5256–5269. https://doi.org/10.1093/mnras/stac1133
+Journaux, B., Brown, J. M., Pakhomova, A., Collings, I. E., Petitgirard, S., Espinoza, P., Boffa
+Ballaran, T., Vance, S. D., Ott, J., Cova, F., Garbarino, G., & Hanfland, M. (2020). Holistic
+approach for studying planetary hydrospheres: Gibbs representation of ices thermodynamics,
+elasticity, and the water phase diagram to 2,300 MPa.Journal of Geophysical Research
+Rice et al. (2026). Magrathea v2: A planetary interior modeling platform in C++. Journal of Open Source Software , 11(125), 10692.
+https://doi.org/10.21105/joss.10692.
+5
+(Planets), 125(1), e06176. https://doi.org/10.1029/2019JE006176
+Kroft, M. A., Beatty, T. G., Salzer, J. M., Zwicker, C., Triantafillides, A., Becker, J.,
+Soares-Furtado, M., Cisewski-Kehe, J., Lissauer, J. J., Armitage, T. S., Livesey, J. R.,
+Narayan, R. S., Widicus Weaver, S., Zhang, K., Bieryla, A., Ciardi, D. R., Clark, C.
+A., Felsmann, M., Fernandes, R. B., … Lund, M. B. (2026). GJ 523b is a Massive,
+170 Myr-old Mega-Earth, Likely on a Polar Orbit. arXiv e-Prints, arXiv:2603.24682.
+https://doi.org/10.48550/arXiv.2603.24682
+Lowitzer, S., Winkler, B., & Tucker, M. (2006). Thermoelastic behavior of graphite from
+in situ high-pressure high-temperature neutron diffraction. Physical Review B , 73(21),
+214115. https://doi.org/10.1103/PhysRevB.73.214115
+Lozovsky, M. (2026). The uncertainty in water mass fraction of wet planets.The Astrophysical
+Journal, 997(2), 234. https://doi.org/10.3847/1538-4357/ae2c56
+MacDonald, M. G., Feil, L., Quinn, T., & Rice, D. (2022). Confirming the 3:2 resonance
+chain of K2-138. The Astronomical Journal , 163(4), 162. https://doi.org/10.3847/1538-
+3881/ac524c
+Mazevet, S., Licari, A., Chabrier, G., & Potekhin, A. Y. (2019). Ab initio based equation of
+state of dense water for planetary and exoplanetary modeling.Astronomy & Astrophysics ,
+621, A128. https://doi.org/10.1051/0004-6361/201833963
+Miozzi, F., Morard, G., Antonangeli, D., Clark, A. N., Mezouar, M., Dorn, C., Rozel, A.,
+& Fiquet, G. (2018). Equation of state of SiC at extreme conditions: New insight into
+the interior of carbon-rich exoplanets.Journal of Geophysical Research (Planets) , 123(9),
+2295–2309. https://doi.org/10.1029/2018JE005582
+Rice, D. R., Huang, C., Steffen, J. H., & Vazan, A. (2025). Uncertainties in the inference
+of internal structure: The case of TRAPPIST-1 f.The Astrophysical Journal , 986(1), 2.
+https://doi.org/10.3847/1538-4357/add34b
+Rogers, L. A., & Seager, S. (2010). A framework for quantifying the degeneracies of exoplanet
+interior compositions. The Astrophysical Journal , 712(2), 974–991. https://doi.org/10.
+1088/0004-637X/712/2/974
+Schulze, J. G., Hinkel, N. R., Panero, W. R., & Unterborn, C. T. (2026). Toward reliable
+interpretations of small-exoplanet compositions: Comparisons and considerations of
+equations of state and materials used in common rocky planet models.The Planetary
+Science Journal, 7(2), 30. https://doi.org/10.3847/PSJ/ae2ea2
+Steffen, J. H., Shakespeare, C., Royer, R., Rice, D., & Vazan, A. (2025). Effect of galactic
+chemical evolution on exoplanet properties. The Astrophysical Journal Letters , 991(2),
+L33. https://doi.org/10.3847/2041-8213/ae0457
+Stixrude, L., & Lithgow-Bertelloni, C. (2011). Thermodynamics of mantle minerals - II. Phase
+equilibria. Geophysical Journal International, 184(3), 1180–1213. https://doi.org/10.1111/
+j.1365-246X.2010.04890.x
+Taylor, J., Radica, M., Chatterjee, R. D., Hammond, M., Meier, T., Aigrain, S., MacDonald,
+R. J., Albert, L., Benneke, B., Coulombe, L.-P., Cowan, N. B., Dang, L., Doyon, R., Flagg,
+L., Johnstone, D., Kaltenegger, L., Lafrenière, D., Pelletier, S., Piaulet-Ghorayeb, C., …
+Roy, P.-A. (2025). JWST NIRISS transmission spectroscopy of the super-Earth GJ 357b, a
+favourable target for atmospheric retention.Monthly Notices of the Royal Astronomical
+Society, 540(4), 3677–3692. https://doi.org/10.1093/mnras/staf894
+Unterborn, C. T., Desch, S. J., Haldemann, J., Lorenzo, A., Schulze, J. G., Hinkel, N. R., &
+Panero, W. R. (2023). The nominal ranges of rocky planet masses, radii, surface gravities,
+and bulk densities. The Astrophysical Journal , 944(1), 42. https://doi.org/10.3847/1538-
+4357/acaa3b
+Rice et al. (2026). Magrathea v2: A planetary interior modeling platform in C++. Journal of Open Source Software , 11(125), 10692.
+https://doi.org/10.21105/joss.10692.
+6
+Wagner, W., & Pruß, A. (2002). The IAPWS Formulation 1995 for the Thermodynamic
+Properties of Ordinary Water Substance for General and Scientific Use.Journal of Physical
+and Chemical Reference Data , 31(2), 387–535. https://doi.org/10.1063/1.1461829
+Wang, H. S., Liu, F., Ireland, T. R., Brasser, R., Yong, D., & Lineweaver, C. H. (2019).
+Enhanced constraints on the interior composition and structure of terrestrial exoplanets.
+Monthly Notices of the Royal Astronomical Society , 482(2), 2222–2233. https://doi.org/
+10.1093/mnras/sty2749
+Rice et al. (2026). Magrathea v2: A planetary interior modeling platform in C++. Journal of Open Source Software , 11(125), 10692.
+https://doi.org/10.21105/joss.10692.
+7

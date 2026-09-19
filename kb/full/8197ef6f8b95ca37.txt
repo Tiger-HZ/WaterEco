@@ -1,0 +1,213 @@
+HydroGenerate: A Python Package for Estimating the
+Technical Hydropower Potential
+Soumyadeep Nag 1*, Camilo Jose Bastidas Pacheco1*, Juan
+Gallego-Calderon 1*¶, and Bhaskar Mitra2*
+1 Idaho National Laboratory, Idaho Falls, ID, United States 2 Pacific Northwest National Laboratory,
+Richland, WA, United States ¶ Corresponding author * These authors contributed equally.
+DOI: 10.21105/joss.08972
+Software
+• Review
+• Repository
+• Archive
+Editor: Adam R. Jensen
+Reviewers:
+• @PennyHow
+• @antviro
+Submitted: 21 April 2025
+Published: 17 September 2026
+License
+Authors of papers retain copyright
+and release the work under a
+Creative Commons Attribution 4.0
+International License ( CC BY 4.0 ).
+Summary
+Conducting pre-feasibility studies on hydro power sites can be expensive, technically challenging,
+and time-consuming for a variety of stakeholders from developers to small asset owners.
+HydroGenerate is an open-source Python library designed to assist hydropower developers and
+other stakeholders in estimating the generation potential at a user-selected site, while also aiming
+to reduce the technical and financial burdens associated with the initial pre-feasibility phase.
+HydroGenerate can help reduce the above-mentioned barriers by providing realistic insights
+into a site’s technical potential and performance, thereby helping hydropower stakeholders
+make decisions confidently and move projects forward if feasible. Additionally, HydroGenerate
+can support researchers in evaluating the potential of new hydropower technologies or plant
+operating policies. Also, due to the light-weight nature of the tool, HydroGenerate can be
+used alongside third-party packages to investigate solutions to a variety of other energy system
+challenges (e.g., capacity expansion models and hybrid plant optimization). The tool can
+process historical site data (where available), estimate technical potential, and provide a
+preliminary economic analysis. Both the tool and the accompanying user guide are crafted
+to facilitate ease of use for beginners, while also offering deeper analysis capabilities for more
+experienced users.
+Statement of need
+HydroGenerate offers a modular, customizable, and well-documented ( Mitra et al., 2021 )
+tool for hydropower potential estimation, pre-design, and evaluation of various project types.
+HydroGenerate is equipped with multiple features to support this task. Example features include
+a) turbine technology selection based on hydraulic head and design flow, b) power output
+estimation using efficiency curves that are specific to turbine type and size, c) compatibility
+with United States Geological Survey (USGS) dataretrieval Python package ( Hodson et al.,
+2024) to minimize data management and user learning burdens, d) flow data processing
+for technology-based or maintenance constraints, e) head-loss calculation methods, and f)
+embedded cost estimates based on the hydropower project type (i.e., non-powered dams, new
+stream-reach, canal-conduit, pumped storage hydro with existing infrastructure, new pumped
+storage hydro, unit additions to existing hydropower units, and generator rewinds) based on
+ORNL baseline cost model ( O’Connor, 2015 ). These features also distinguish HydroGenerate
+from closed and membership-based platforms such as RETScreen ( Canada, 2025 ), which lacks
+functionality for flow data analysis and operational constraints related to practical operation,
+head loss calculation in the penstock, and initial capital cost and operation and maintenance
+estimations.
+Additionally, researchers can leverage HydroGenerate for large and small-scale hydropower
+Nag et al. (2026). HydroGenerate: A Python Package for Estimating the Technical Hydropower Potential. Journal of Open Source Software ,
+11(125), 8972. https://doi.org/10.21105/joss.08972.
+1
+problems. Consider the following example research use cases: a) Power and energy system
+researchers require power system models for different seasonal hydrological conditions to
+estimate power reserves among other capabilities of hydropower generation assets. Using
+historical data, HydroGenerate can estimate the potential for multiple sites, thereby contributing
+to the creation of more realistic power system models, b) for dynamic studies of power systems,
+dynamic models of turbines are required, which require efficiency curves. However, efficiency
+curves are not usually available as they are proprietary data. HydroGenerate can help estimate
+these efficiency curves, c) environmental researchers can utilize the tool to determine the
+impact of factors such as sedimentation, drought, or glacier recession on hydropower production
+through appropriate head and flow data input, d) turbine design researchers can use the modular
+features of HydroGenerate to quantify the technical and economic benefits and suitability of
+new turbine modules, e) market researchers can examine new operational constraints to align
+with power purchase agreements, electricity price profiles or other requirements. Apart from
+these use cases, HydroGenerate provides technical and economic potential that fits well into a
+family of multi-objective optimization problems. These use cases highlight the versatility and
+importance of HydroGenerate in various research and planning scenarios.
+Additional research has uncovered automated approaches for identifying sites with hydropower
+potential by using Geographic Information Systems (GIS) in combination with summaries
+of flow data ( Arefiev et al., 2015 ). HydroGenerate can be used in combination with tools
+implementing this or other GIS functionality, to analyze generation and plant characteristics
+once sites have been identified and expand their usability. For example, HydroGenerate was
+used to assess hydropower potential across multiple non-powered dams where head data was
+available or was estimated using remote sensing data ( Harrison-Atlas et al., 2023 ). Additionally,
+HydroGenerate is used on IrrigationViz, a GIS-based software, to assess hydropower potential
+on agricultural infrastructure, demonstrating its flexibility for supporting other analysis ( Pacific
+Northwest National Laboratory, 2024 ).
+The HydroGenerate workflow
+After the user has chosen a site for hydropower potential analysis, and collected the data
+needed (head, flow that can be procured from USGS ( 2025) and, site details that are described
+by Mitra et al. ( 2021)), they can use HydroGenerate in multiple ways. In the most common
+scenario, users will input site data, such as flow and head data to evaluate hydropower potential.
+However, they can also use the tool to evaluate site requirements for a desired amount of power
+that can lead them to understand site-development requirements. Flow data can be entered
+as a single number or a time series such as those available from the USGS. HydroGenerate
+can work with flow data collected at different temporal frequencies. In addition to flow and
+head data, there are 30 inputs available to the user e.g., turbine type, maintenance constraints,
+unit system, penstock length, allowing further customization in a project evaluation ( Mitra
+et al., 2021 ). These inputs and following procedures have been detailed in the user guide
+(Mitra et al., 2021 ). Upon execution, HydroGenerate will create an object that contains design
+parameters, performance estimates, and additional data as its attributes. The workflow of
+HydroGenerate as displayed in Figure 1, can be divided into the following steps:
+• Step 1 Input data processing: This step involves conversion of inputs to SI units when
+using US Customary Units. HydroGenerate performs all computations in SI units except
+for the cost models as these were developed in US Customary Units.
+• Step 2 Design flow, head loss, turbine selection, and turbine parameter estimation:
+– Step 2a Design flow estimation: Using the flow time-series data, HydroGenerate
+will build the flow-duration relationship from which users can select a desired design
+flow. If the user has no initial information on the design flow, HydroGenerate will
+use a default of 30 percentile of the flow duration relationship ( Alonso-Tristán et
+al., 2011 ; Canada, 2025 ; Gulliver & Arndt, 1991 ). Following this, turbine flow
+Nag et al. (2026). HydroGenerate: A Python Package for Estimating the Technical Hydropower Potential. Journal of Open Source Software ,
+11(125), 8972. https://doi.org/10.21105/joss.08972.
+2
+constraints (with maximum flow being the design flow) and scheduled maintenance
+constraints are applied.
+– Step 2b Head loss calculation: HydroGenerate performs head loss calculations using
+either the Darcy-Weisbach equation (default), or the Hazen-Williams equation (if
+selected by the user) ( Brater et al., 1996 ; Brown, 2019 ). The required input for
+this calculation is the penstock length. Users can also select penstock material,
+with steel being the default. If the penstock diameter is not known, HydroGenerate
+will calculate a diameter that will limit head losses to 10% (default) of the available
+head.
+– Step 2c Turbine selection: Using ‘Shapely’ ( Gillies et al., 2025 ; Gulliver & Arndt,
+1991), predefined polygons in (flow, head) coordinate system are created for different
+turbine types, and the polygon centroids are precalculated within HydroGenerate.
+The shapes that encompass the site-specific design-flow and head are determined
+and the best turbine type is selected based on the minimum distance between the
+defined point and the centroid of the overlapping shapes. HydroGenerate computes
+potential for the most suitable turbine. However, for the user’s convenience
+HydroGenerate also returns other suitable turbine types.
+– Step 2d Turbine parameters calculation: This step calculates the runner diameter,
+specific speed of the turbine. These are then used to calculate the efficiency curve
+using equations defined by Canada ( 2025).
+• Step 3 Power and energy calculation: HydroGenerate calculates hydropower potential
+using
+𝑃 = 𝜂 × 𝛾 × 𝑄 × 𝐻
+where, 𝑃 is the hydropower potential ( 𝑤𝑎𝑡𝑡), 𝜂 is the overall system efficiency
+(dimensionless), 𝛾 is the specific weight of water (9,810 𝑁 /𝑚3), 𝑄 is the flow ( 𝑚3/𝑠),
+and 𝐻 is the net hydraulic head ( 𝑚). For hydrokinetic applications, the hydropower
+potential is calculated using
+𝑃 = 0.295 ∗ 𝜌 ∗ 𝐴 𝑏 ∗ 𝑉 3
+where, 𝜌 is the density of water, in 𝐾𝑔/𝑚 3, 𝐴𝑏 is the swept area of blades, in 𝑚2, and
+𝑉 is the velocity of water, in 𝑚/𝑠, 59% Betz limit of energy extraction ( Betz, 1966 ).
+Niebuhr et al. ( 2019) provides a review of existing hydrokinetic turbine types. The
+overall efficiency of the system is calculated as 𝜂 = 𝑒 𝑡𝑢𝑟𝑏 × 𝑒𝑔𝑒𝑛, where 𝑒𝑡𝑢𝑟𝑏 and 𝑒𝑔𝑒𝑛
+are turbine and generator efficiencies.
+• Step 4 Economic calculations: HydroGenerate uses empirical equations to calculate the
+capital and maintenance cost of the plant as stated by O’Connor ( 2015). The capital
+cost calculation equations are separated based on the type of plant. Revenue is calculated
+using the user’s input price (can be nodal or zonal prices based on user’s preference, the
+average wholesale electricity market price from US Energy Information Administration
+(2025) is used as default).
+Nag et al. (2026). HydroGenerate: A Python Package for Estimating the Technical Hydropower Potential. Journal of Open Source Software ,
+11(125), 8972. https://doi.org/10.21105/joss.08972.
+3
+Figure 1: HydroGenerate workflow with sample inputs and outputs.
+Acknowledgements
+We thank the U.S. Department of Energy Water Power Technology Office (WPTO) for funding
+and supporting this work. This work is supported by the U.S. Department of Energy under
+the Department of Energy Idaho Operations Office Contract No. DEAC07-05ID14517. We
+are thankful to Colin Sashtav and Kyle Desomber from WPTO for providing guidance on the
+development of the tool; Jed Jorgensen and James Kershaw from Pacific Northwest National
+Laboratory and Kara Cafferty from Idaho National Laboratory for testing and validating; lastly,
+Harry Latchford from Idaho National Laboratory for developing the graphics used in this
+manuscript.
+References
+Alonso-Tristán, C., González-Peña, D., Díez-Mediavilla, M., Rodríguez-Amigo, M., & García-
+Calderón, T. (2011). Small hydropower plants in spain: A case study. Renewable and
+Sustainable Energy Reviews, 15(6), 2729–2735. https://doi.org/10.1016/j.rser.2011.03.029
+Arefiev, N., Nikonova, O., Badenko, N., Ivanov, T., & Oleshko, V. (2015). Development of
+automated approaches for hydropower potential estimations and prospective hydropower
+Nag et al. (2026). HydroGenerate: A Python Package for Estimating the Technical Hydropower Potential. Journal of Open Source Software ,
+11(125), 8972. https://doi.org/10.21105/joss.08972.
+4
+plants siting. Proceedings of the 10th International Scientific and Practical Conference , 2.
+https://doi.org/10.17770/etr2015vol2.260
+Betz, A. (1966). Introduction to the theory of flow machines (pp. 236–237). Pergamon Press.
+ISBN: 9780080114330
+Brater, E. F., King, H. W., Lindell, J. E., & Wei, C. Y. (1996). Handbook of hydraulics (7th
+ed.). McGraw-Hill.
+Brown, G. O. (2019). The history of the darcy-weisbach equation for pipe flow resistance.
+Proceedings: Environmental and Water Resources History , 113, 109240. https://doi.org/
+10.1061/40650(2003)4
+Canada, G. of. (2025). RETSCREEN. https://natural-resources.canada.ca/maps-tools-
+publications/tools-applications/retscreen
+Gillies, S., Wel, C. van der, Van den Bossche, J., Taves, M. W., Arnott, J., Ward, B. C., & others.
+(2025). Shapely (Version 2.0.7). Zenodo. https://doi.org/10.5281/zenodo.14776272
+Gulliver, J. S., & Arndt, R. E. A. (1991). Hydropower engineering handbook . McGraw-Hill.
+Harrison-Atlas, D., Murphy, C., Grue, N., Gallego-Calderon, J., Elliott, S., Mosier, T., Energy
+Efficiency, U. O. of, & Energy, R. (2023). Data on temporal complementarity of hybrid
+renewable energy systems [SWR-23-09] . https://doi.org/10.11578/dc.20230405.2
+Hodson, T. O., Hariharan, J. A., Black, S., & Horsburgh, J. S. (2024). dataretrieval (python):
+A python package for discovering and retrieving water data available from u.s. Federal
+hydrologic web services . Software release; U.S. Geological Survey. https://doi.org/10.
+5066/P94I5TX3
+Mitra, B., Gallego-Calderon, J. F., Elliott, S. N., Mosier, T. M., Bastidas Pacheco, C. J., Nag,
+S., & USDOE Office of Energy Efficiency and Renewable Energy. (2021). Hydrogenerate:
+Open source python tool to estimate hydropower generation time-series . https://doi.org/
+10.11578/dc.20211112.1
+Niebuhr, C. M., van Dijk, M., Neary, V. S., & Bhagwan, J. N. (2019). A review of hydrokinetic
+turbines and enhancement techniques for canal installations: Technology, applicability and
+potential. Renewable and Sustainable Energy Reviews , 113, 109240. https://doi.org/10.
+1016/j.rser.2019.06.047
+O’Connor, P. W. (2015). Hydropower baseline cost modeling, version 2 . Oak Ridge National
+Lab. (ORNL), Oak Ridge, TN (United States). https://doi.org/10.2172/1244193
+Pacific Northwest National Laboratory. (2024). Irrigationviz. https://irrigationviz.pnnl.gov/
+US Energy Information Administration. (2025). Wholesale electricity and natural gas market
+data. https://www.eia.gov/electricity/wholesale/
+USGS. (2025). National water information system: Web interface . https://waterdata.usgs.
+gov/nwis
+Nag et al. (2026). HydroGenerate: A Python Package for Estimating the Technical Hydropower Potential. Journal of Open Source Software ,
+11(125), 8972. https://doi.org/10.21105/joss.08972.
+5

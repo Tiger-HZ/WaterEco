@@ -1,0 +1,1243 @@
+Vol.: (0123456789)
+Cellulose 
+https://doi.org/10.1007/s10570-026-07136-7
+ORIGINAL RESEARCH
+Open‑source Rietveld refinement for cellulose crystallinity 
+using a laboratory powder X‑ray diffractometer: a hands‑on 
+tutorial
+Sunghyun Nam  · Alfred D. French · 
+Md Nayeem Hasan Kashem
+Received: 22 August 2025 / Accepted: 30 June 2026 
+This is a U.S. Government work and not under copyright protection in the US; foreign copyright protection may apply 2026
+Abstract Accurate measurement of cellulose crys-
+tallinity is essential for understanding fiber develop-
+ment, optimizing processing conditions, and improv -
+ing material performance. However, the structural 
+complexity of cellulose fibers presents significant 
+challenges in determining crystallinity, or more 
+precisely, the ratio of two discrete crystalline and 
+amorphous model phases. As a result, many stud-
+ies rely on empirical methods to estimate a crystal-
+linity index (CrI). This study presents a cellulose-
+specific workflow for quantifying crystallinity from 
+one-dimensional X-ray powder diffraction (XRD) 
+data using Rietveld refinement implemented in the 
+open-source software MAUD. The step-by-step pro-
+cedure—demonstrated using cotton fiber and tailored 
+for non-specialists—guides users through refinement 
+of ten key parameters, including a scale factor, back -
+ground, unit cell geometry, crystallite size, preferred 
+orientation, and phase composition, in four sequential 
+refinement steps. The final refinement yielded strong 
+agreement between calculated and observed diffrac-
+tion patterns and demonstrated the utility of one-
+dimensional full-pattern analysis in a workflow to 
+quantify cellulose crystallinity.
+Supplementary Information The online version 
+contains supplementary material available at https:// doi. 
+org/ 10. 1007/ s10570- 026- 07136-7.
+Alfred D. French: Retired.
+S. Nam (*) · Md. N. H. Kashem 
+Cotton Fiber Bioscience and Utilization Research Unit, 
+Southern Regional Research Center, U.S. Department 
+of Agriculture, Agricultural Research Service, 
+New Orleans, LA 70124, USA
+e-mail: sunghyun.nam@usda.gov
+A. D. French 
+Southern Regional Research Center, U.S. Department 
+of Agriculture, Agricultural Research Service, 
+New Orleans, LA 70124, USA
+ Cellulose
+Vol:. (1234567890)
+Graphical Abstract 
+Keywords Determination of crystallinity · XRD · 
+Rietveld refinement · Amorphous cellulose · 
+Preferred orientation · Cotton fibers · MAUD
+Introduction
+Cellulose fibers, in both naturally occurring and 
+regenerated forms, play essential roles in industries 
+ranging from textiles to composites and bio-based 
+materials (Ramamoorthy et  al. 2015; Wang et  al. 
+2021). Their performance characteristics, such as 
+Cellulose 
+Vol.: (0123456789)
+strength, flexibility, chemical reactivity, and moisture 
+management, are closely tied to their structural organ-
+ization at the molecular level (Ward Jr 1950). Cellu-
+lose is commonly described as a semi-crystalline pol-
+ymer composed of crystalline and amorphous regions 
+(Wakelyn et al. 2006). In crystalline domains, cellu-
+lose chains are tightly packed and aligned in parallel, 
+whereas in amorphous regions, they are disordered. 
+Molecular modeling studies, on the other hand, sug-
+gest that the nanoscale organization of cellulose may 
+also include intermediate, partially ordered regions 
+that are not cleanly classified as either fully crystal-
+line or fully amorphous (Haigler et al. 2014; Kulasin-
+ski et  al. 2014). These paracrystalline regions were 
+found to exhibit intermediate mechanical properties 
+between crystalline and amorphous phases (Kulasin-
+ski et  al. 2014). From a practical viewpoint, a two-
+phase model is possibly the closest approximation 
+to the real situation that can be obtained. Fink et al. 
+(1995) showed for example that existing lattice strains 
+have minimal effect on crystallite size measurements. 
+Nishiyama et  al. (2012) showed that larger strains 
+resulting from molecular dynamics-based distortion 
+had small effects on calculated diffraction patterns.
+During biosynthesis in the developing fiber, cel-
+lulose crystallizes predominantly in cellulose I allo-
+morph (Fang and Percy 2020), though it can be 
+converted into cellulose II, III, or IV through post-
+treatment processes, such as mercerization or ther -
+mal/chemical modification (Colom and Carrillo 2002; 
+Szabó et al. 2023). Crystallite size, which varies with 
+fiber type, development stage, and treatment history, 
+influences the specific surface area of cellulose crys-
+tallites, thereby affecting their chemical reactivity 
+and interaction with other molecules. Meanwhile, the 
+amorphous phase contributes to diffusion properties 
+and flexibility, often serving as a target for chemical 
+and enzymatic modifications (Emenike et  al. 2023). 
+Because the balance between these two phases gov -
+erns many of the fiber’s functional properties, the 
+degree of crystallization, or crystallinity, is an impor -
+tant metric in cellulose fiber science, widely used to 
+evaluate fiber development, processing conditions, 
+and application performance.
+The crystallinity of cellulose can be assessed using 
+diffraction techniques that employ sub-nanometer 
+wavelength radiation, such as X-rays, neutrons, or 
+electrons in electron microscopy. Among these, neu-
+tron and electron-based techniques are less commonly 
+employed: neutron sources are typically limited to 
+national laboratories, and electron beams can rapidly 
+degrade cellulose samples. In contrast, X-ray diffrac-
+tion (XRD) using powder diffractometers is widely 
+accessible and offers a relatively low-cost, non-
+destructive approach for examining cellulose crystal-
+linity. While diffraction remains the primary method 
+for evaluating crystallinity, alternative techniques 
+such as infrared (IR) and nuclear magnetic resonance 
+(NMR) spectroscopy are frequently employed to dis-
+tinguish between cellulose polymorphs (Lee et  al. 
+2016). However, spectroscopic methods do not detect 
+the long-range atomic order required for diffraction-
+based analysis. Instead, they imply crystallinity and 
+allomorph type from the orientations or interactions 
+of specific functional groups associated with a given 
+crystalline form of cellulose.
+Most traditional XRD studies on cellulosic materi-
+als have focused on determining a crystallinity index 
+(CrI), which estimates the relative proportion of 
+crystalline cellulose, with the remainder considered 
+amorphous. Among these empirical approaches, the 
+method of Segal et al. (1959), which is based on peak 
+height measurements, is the most widely used due to 
+its simplicity. However, the foundation of this method 
+is flawed: it presumes that the intensity minimum near 
+18° 2θ in a cellulose Iβ pattern (recorded using CuKα 
+radiation) is the result of amorphous cellulose. Later 
+studies on the shapes of diffraction peaks revealed that 
+much of the intensity in this region is the result of the 
+overlap of large adjacent peaks, together with contri-
+butions from smaller peaks (French and Santiago Cin-
+trón 2013; Nam et al. 2016). This effect can be readily 
+demonstrated by simulating diffraction patterns of cel-
+lulose Iβ from a crystal information file (cif), which 
+contains published atomic coordinates of its asym-
+metric unit (Nishiyama et  al. 2002; French and San-
+tiago Cintrón 2013) (Fig. 1A). Varying the full width 
+at half maximum (FWHM) in the simulations high-
+lights the extent of peak overlap (Fig.  1B). The Segal 
+method fails to account for the full diffraction pattern 
+and important factors such as crystallite orientation 
+and crystallite shape variations, leading to inaccurate 
+assessments of cellulose crystallinity (French 2022).
+In the present study, we introduce a method to 
+quantify crystallinity through Rietveld refinement 
+with modifications specifically adapted for cellulose 
+materials. Rietveld refinement is a full-pattern fitting 
+approach that calculates XRD diffraction intensities 
+ Cellulose
+Vol:. (1234567890)
+from known crystal structures and iteratively adjusts 
+structural and microstructural parameters of the 
+known model structure to minimize the difference 
+between the calculated and measured diffraction pat-
+terns. The method enables extraction of structural 
+information from overlapping peaks, incorporates 
+physically meaningful parameters, and can model 
+complex diffraction behavior. For cellulose materi-
+als, however, several intrinsic features complicate 
+the full application of conventional Rietveld analysis. 
+Cellulose exhibits small crystallite sizes, extensive 
+peak overlap, and a substantial amorphous contri-
+bution, and its unit cell dimensions, a, b, and γ vary 
+considerably. Under such conditions, the effective-
+ness of refinement becomes influenced by how the 
+amorphous scattering is represented (Salem et  al. 
+2023). In addition, some standard Rietveld imple-
+mentations do not fully accommodate characteristic 
+cellulose features, such as its needle-like morphology 
+with an elongated c-axis along the molecular chain 
+and shorter transverse dimensions.
+The method introduced here is based on a two-
+phase representation of cellulose consisting of crystal-
+line and amorphous cellulose components. To model 
+this amorphous contribution, we prepared amorphous 
+cellulose through mechanical treatment by high-
+impact ball-milling. The diffraction pattern from the 
+ball-milled sample was then fitted with a broad-peak 
+version of the cellulose II calculated structure. Cel-
+lulose samples from different sources and treatment 
+histories will have different unit cell dimensions. 
+We chose an FWHM of 9° corresponding to a cellu-
+lose II crystallite size of 12  Å as a representative of 
+amorphous material. This pattern was a better fit than 
+the wide peak versions of cellulose I. Apparently, the 
+action of the impact ball mill destroyed the particu-
+lar O2-H⋅⋅⋅O6 inter-residue intramolecular hydrogen 
+bonds, allowing the O6 atoms to take the gt O6 ori-
+entation that is characteristic of cellulose II and amor-
+phous cellulose. Another point mentioned in Plaza 
+et al. (2026) is that if the isotropic crystallite size of 
+the amorphous contribution is refined, it can exceed 
+the limits for amorphous material. If the crystallite 
+size exceeds 20  Å, the sample may be considered to 
+be a mixture that includes crystalline cellulose II. If 
+the refined crystallite size is less than about 8 Å, the 
+resulting calculated intensity is just compensating for 
+a deficit in the background correction. In this work, 
+the crystallite size is kept fixed at 12 Å. Therefore the 
+procedure makes use of the usual Rietveld provisions 
+to allow flexible unit cell dimensions. The approach 
+also incorporates accounting for preferred orienta-
+tion—a departure from random orientation that is 
+assumed in powder diffraction but extremely difficult 
+to avoid in cellulose samples.
+Here we present a step-by-step protocol for a cel-
+lulose-specific Rietveld refinement workflow using 
+the freely available MAUD (Materials Analysis Using 
+Diffraction) software. The procedure is demonstrated 
+using cotton fibers as a representative example. This 
+refinement approach has also been used effectively 
+with other cellulosic materials including cellulose 
+nanofibers (Easson et  al. 2024; Nam et  al. 2024a, 
+b). The protocol outlines practical guidance for 
+Fig. 1 A Asymmetric unit of cellulose Iβ from crystal infor -
+mation file (cif). B Calculated diffraction patterns for full 
+width at half maximum (FWHM) of 0.1° (red) and 1.8° 
+(green) using the Mercury software. These widths correspond 
+to crystallite sizes of approximately 900 Å and 50 Å, respec-
+tively. The intensity at 18.6° on the 900  Å pattern, is essen-
+tially 0, so the Segal CrI is 100%. For the 50  Å pattern, the 
+value of the intensity at the minimum near 18° is 1187, so 
+the Segal crystallinity index (CrI) would be 100 × (10,000-
+1187)/10000 = 88.1% and the amorphous content would be 
+11.9%, even though both patterns were calculated for perfectly 
+crystalline samples
+Cellulose 
+Vol.: (0123456789)
+non-specialists on selecting and adjusting key param-
+eters, minimizing preferred orientation effects, and 
+obtaining a structure-based measure of crystallinity. 
+Preferred orientation was handled using the March-
+Dollase function, which empirically adjusts reflection 
+intensities relative to a randomly oriented specimen. 
+This workflow is designed to address common chal-
+lenges in cellulose crystallinity analysis and to pro-
+mote fuller use of powder diffraction data beyond 
+qualitative visual inspection, pattern comparison, or 
+simple peak-based metrics. Quantifying crystallinity 
+through one-dimensional full-pattern fitting provides 
+a basis for improving fiber development, process opti-
+mization, and the evaluation of material performance.
+MAUD Rietveld software has many power -
+ful capabilities. One of its strengths is provision for 
+studying texture, the degree of preferred orientation. 
+Rietveld software in general, including MAUD, also 
+can take the place of a classical single-crystal dif-
+fraction study for determining the atomic coordinates 
+of powdered samples, especially minerals of simple 
+composition but unable to form crystals large enough 
+for neutron diffraction. However, it is absolutely inap-
+propriate to utilize any Rietveld software to attempt 
+to carry out such a structure determination for cellu-
+lose structure with powder diffraction data, as there is 
+simply not enough data to support determination of 
+so many variables.
+Materials and methods
+Materials
+Cotton fibers were obtained from cotton plants 
+grown at the Southern Regional Research Center, 
+New Orleans, LA. Methyl methacrylate, butyl meth-
+acrylate, benzoyl peroxide, and methyl ethyl ketone 
+were purchased from Sigma-Aldrich (St. Louis, MO, 
+USA) and used as received.
+Sample preparation
+To prepare samples for XRD measurement, har -
+vested cotton fibers were mechanically ground using 
+a sharp Wiley cutting mill (Arthur H. Thomas Co., 
+Philadelphia, PA) fitted with a 40-mesh screen. The 
+amorphous cellulose was prepared by further pro-
+cessing the Wiley-milled powder (approximately 
+5 g) in a custom-built vibratory ball mill operating at 
+1,750 rpm, following established procedures (Forziati 
+et al. 1950). The milling was performed in a cylindri-
+cal steel jar of 1-L capacity, filled with approximately 
+500  mL of stainless-steel balls (6.35  mm diameter) 
+as the grinding medium, and the ball-milling dura-
+tion was 2h (Nam et  al. 2020). Limitations include 
+experimental handling of the background data as 
+both a blank run and a secondary input data file in 
+what Morales et  al. (2026) call combined analysis. 
+The default parameters were used in MAUD with-
+out specification of factors that vary from the stand-
+ard setup such as variable slits instead of fixed slits 
+and goniometer radius. Mentioned previously were 
+the Caglioti parameters that were left in the default 
+state. Advanced users should take these factors into 
+consideration.
+For cross-section preparation, the ground fibers 
+were embedded in a mixture of methyl methacrylate, 
+butyl methacrylate and benzoyl peroxide and polym-
+erized using a UV cross-linker (UVP CL-1000, Ana-
+lytik Jena) following published methods (Thibodeaux 
+and Evans 1986; Boylston et  al. 1991). The polym-
+erized blocks were sectioned into slices of approxi-
+mately 300  nm thickness using a microtome (Pow -
+erTome Ultramicrotome, Boeckeler Instruments). 
+The sections were transferred to coverslips, and the 
+embedding medium was removed with methyl ethyl 
+ketone.
+Image analysis
+Optical microscopic images were captured in trans-
+mission mode using a digital microscope (KH-8700, 
+Hirox, Oradell, NJ, USA). Scanning electron micros-
+copy (SEM) images were obtained using a Phenom 
+G6 ProX SEM (Nanoscience Instruments, Phoenix, 
+AZ, USA) operated at an accelerating voltage of 10 
+kV. Prior to SEM imaging, samples were sputter-
+coated with a 5 nm-thick gold layer using a LUXOR 
+sputter coater (Aptco Technologies, Nazareth, 
+Belgium).
+XRD experiment
+XRD patterns were collected at room temperature 
+using an Empyrean diffractometer (Malvern Panalyti-
+cal, Malvern, England) with Cu Κα radiation (average 
+wavelength = 1.5418  Å) and a nickel filter to reduce 
+ Cellulose
+Vol:. (1234567890)
+Cu Kβ contributions. The instrument was operated 
+with a spinning sample holder over a 2θ range of 
+5–80° with a step size of 0.039°, employing radial 
+divergence slits during measurement. The divergence 
+slits were variable.
+The Segal CrI (%) was calculated by the following 
+equation (Segal et al. 1959):
+where It is the intensity of the 200 peak at 22.7° 2θ 
+and, Ia represents the amorphous scattering, deter -
+mined from the intensity at its lowest value near 18.6° 
+2θ.
+Software
+The open-source MAUD software (Materials Analy -
+sis Using Diffraction, version 2.9999) was obtained 
+from its official GitHub repository and installed on 
+an HP desktop computer running Microsoft Windows 
+11. MAUD is a Java-based program originally devel-
+oped for macOS and is also compatible with other 
+operating systems, including Windows and UNIX/
+Linux. Several example datasets and tutorials, includ-
+ing those distributed with the MAUD installation and 
+available online, demonstrate Rietveld refinement 
+procedure. However, they provide limited discus-
+sion of the practical issues encountered when ana-
+lyzing weak or poorly resolved cellulose diffraction 
+patterns and in quantifying its crystallinity. For this 
+tutorial, no separate calibration of the instrument was 
+performed. Instrumental calibration can be achieved 
+by measuring a standard reference material, such as 
+NIST LaB6 or silicon, under the same XRD condi-
+tions as the samples. The Caglioti and other related 
+parameters are then saved in an instrument file that is 
+used for the samples instead of the default.par file”.
+Diffraction patterns of completely periodic crys-
+tals of different sizes (as defined by the input FWHM) 
+were calculated using Mercury (version 2025.1.1, 
+Community License) (Macrae et al. 2008). A CuKα 
+weighted average wavelength of 1.5418 Å was used, 
+with Kβ radiation filtered out using a Ni filter. This 
+wavelength was specified directly within Mercury, 
+which retains the setting across sessions. To correct 
+for preferred orientation, the March-Dollase function 
+(1)CrI = It − Ia
+It
+× 100
+was applied for the {001} plane family (Dollase 
+1986).
+Results and discussion
+Main inputs to MAUD
+Load data file
+The XRD pattern was collected from cotton fibers 
+ground into powder using a Wiley mill. Segal et  al. 
+(1959) and Nelson and Conrad (1948) reported mini-
+mal decrystallization resulting from milling with this 
+type of mill. Optical microscopy shows fiber fragment 
+lengths ranging from approximately 100 μm to 1 mm 
+with random orientation (Fig.  2A). The correspond-
+ing SEM image reveals the characteristic ribbon-like 
+morphology with convolution twists typical of mature 
+cotton fibers (Fig.  2B). Cross-sectional SEM images 
+(Figs.  2C and 2D) show the expected kidney bean-
+like profile with average diameters of 21.8 ± 2.7  μm 
+and 9.2 ± 3.2 μm along the longest and shortest axes, 
+respectively. This micrometer-scale structure is built 
+from a hierarchical assembly of elementary fibrils 
+measuring roughly 3–5 nm in diameter (Wakelyn et al. 
+2006). The crystalline signal detected by XRD origi-
+nates from regions of cellulose that maintain long-
+range structural order within these nanoscale fibrils. 
+Due to the small fibril diameter, a relatively large frac-
+tion of cellulose chains is located at the fibril surface, 
+where their positional coherence is reduced compared 
+to the fibril core because of increased conformational 
+freedom. Consequently, these surface chains adopt a 
+partially ordered, paracrystalline arrangement rather 
+than a fully crystalline state, contributing to the dif-
+fuse scattering (Ioelovich et  al. 2010, Martínez-Sanz 
+et al. 2017).
+The collected XRD pattern was saved as “cotton.
+txt”, a plain text file (provided in the Supplementary 
+Information) for import into MAUD as a dataset. 
+MAUD provides tools for loading datasets, comput-
+ing theoretical diffraction patterns, and performing 
+Rietveld refinement via its user-friendly interface 
+(Fig. S1; all such supplementary figures are located in 
+the RefinementProcessGuide.pdf). Input files should 
+be formatted as two columns: 2θ (angle) and intensity. 
+It is recommended to restrict the 2θ range to 10–50°, 
+which provides a practical balance between signal 
+Cellulose 
+Vol.: (0123456789)
+intensity and fitting stability for low-crystallinity cel-
+lulose samples. Low-angle regions are often domi-
+nated by background, whereas high-angle regions 
+tend to show weaker intensities and higher sensitiv -
+ity to instrumental and structural model discrepancies 
+(Young 1993; Pecharsky and Zavalij 2003). When 
+raw intensity values exported from the diffractometer 
+are numerically large, the data can be rescaled (e.g., 
+divided by 100) to facilitate data handling within 
+MAUD without altering relative intensities.
+Once the dataset is loaded, the diffraction pattern 
+appears in MAUD’s main window. Current versions 
+of MAUD also support direct import of Panalytical 
+XRDML files and similar formats from Bruker and 
+Rigaku instruments. To load data, select the “Data-
+sets” tab and choose “Load datafile” from the File 
+menu. For visualizing the pattern, users can access 
+Plot options from the Graphic menu and select the 
+“Linear” display mode. By default, MAUD displays 
+diffraction patterns using square root intensity scaling 
+to enhance the visibility of weak peaks. This visu-
+alization helps users identify minor reflections that 
+might otherwise be obscured by high-intensity peaks. 
+Selecting “Linear” displays the raw intensities, which 
+is useful for quantitative comparisons or absolute 
+intensity analysis.
+Phases
+The phase data for cellulose Iβ is entered by select-
+ing the “Phases” tab in MAUD. Such data are typi-
+cally provided as.cif files, which are plain text files 
+commonly included in supplementary material of 
+publications or available from online crystallographic 
+Fig. 2 A Optical microscopy image and B SEM image of the longitudinal views of ground cotton fibers used for XRD analysis. Cor-
+responding SEM images of fiber cross-sections at C low magnification and D high magnification
+ Cellulose
+Vol:. (1234567890)
+databases. In this study, the crystal structure reported 
+by Nishiyama et  al. (2002) was used for cellulose 
+Iβ. They determined the unit cell dimensions as 
+a = 7.784 Å, b = 8.201 Å, c = 10.380 Å, and γ = 96.55° 
+using synchrotron X-ray and neutron fiber diffraction 
+data obtained from tunicin cellulose. The correspond-
+ing.cif file is provided in the Supporting Information. 
+To import the cellulose Iβ phase, click the cylinder 
+icon with the left-pointing arrow on the MAUD tool-
+bar. Then the “CelluloseI” will appear at the bottom 
+in the lower region of the MAUD interface (Fig. S2). 
+Additional phases can be added as needed.
+Manual input
+Manual input in MAUD enables users to adjust 
+model parameters before running a refinement. To 
+adjust the scale factor, locate the “DataFileSet_x” in 
+the lower region of the MAUD interface. Expand-
+ing this node reveals sections including “Diffraction 
+Instrument.” Within this section, locate the parameter 
+“pd_proc_intensity_incident”, which sets the initial 
+scaling of the calculated diffraction pattern relative 
+to the measured data. Adjusting this value (to 2000 
+for the example file cotton.txt with MAUD 2.9999 or 
+1000 with MAUD 2.99993) brings the calculated pat-
+tern into view for an initial comparison after clicking 
+the calculator button. The cotton.txt file features quite 
+high intensity values, with the consequent lack of vis-
+ible noise in the data. On a practical note, such high 
+counts are practical for diffractometers with "strip" 
+or "diode array" detectors. Other data will require 
+smaller or even larger values. There is no need for an 
+exact fit because the next step makes a big change. 
+The optimal value depends on the sample’s diffrac-
+tion intensity. Once the change is made, click the cal-
+culator icon to generate an initial comparison of the 
+observed and calculated diffraction patterns shown in 
+Fig. 3. Alternatively, the pattern can be computed by 
+selecting “Compute spectra” from the Analysis menu.
+When comparing the initial calculated pattern 
+to the observed pattern, two clear discrepancies are 
+apparent. First, it is notable that the main observed 
+peak from the 200 reflection at 22.7° 2θ is at a lower 
+2θ value relative to its calculated position. Second, 
+the calculated peaks are considerably narrower, sim-
+ilar to those in the pattern with 0.1° FWHM shown 
+in Fig.  1. These differences suggest that cotton cel-
+lulose Iβ has a larger unit cell a-axis and a smaller 
+crystallite size than the ideal pattern for tunicate, 
+identifying these properties as key candidates for 
+refinement. To explore the effect of modifying these 
+parameters manually, expand the "CelluloseI" and 
+locate the “_cell_length_a” parameter. Adjusting its 
+value from 7.784 to 7.9 Å and clicking the calculator 
+icon increases the a-axis length. Similarly, under the 
+same node, open the “Isotropic” and change “_riet_
+par_cryst_size” from 1000 to 80 to represent smaller 
+crystallite dimensions. After these manual inputs, the 
+calculated diffraction pattern aligned more closely 
+with the observed data (Fig. S3). However, the overall 
+intensity is, after the decreased crystallite size, lower 
+than that of the observed data, suggesting the need to 
+increase the scale factor to about 10,000 and incor -
+porate an appropriate background function in the 
+model. With the same total number of X-ray photons, 
+Fig. 3 Observed (black dia-
+monds) and calculated (red 
+line) XRD patterns prior to 
+refinement. The calculated 
+pattern is obtained based on 
+the crystallographic coor-
+dinates for tunicin cellulose 
+Iβ and a crystallite size of 
+1000 Å
+Cellulose 
+Vol.: (0123456789)
+broader reflections (because of smaller peaks) distrib-
+ute the intensity over a wider range, leading to lower 
+peak heights.
+First refinement step: linear background, scale factor, 
+a-axis, and crystallite size
+The first refinement step targets five parameters, 
+including linear background, scale factor, a -axis, and 
+crystallite size, to establish a stable starting point for 
+subsequent steps (Fig. S4). The background is the con-
+tinuous baseline intensity arising from non-sample, 
+environmental sources such as instrument, air, and 
+sample holder scattering. The scale factor adjusts the 
+overall intensity of the calculated diffraction pattern to 
+match the observed pattern. Refinement of the a -axis 
+of the cellulose Iβ unit cell adjusts peak positions, 
+while the crystallite size determines peak broadening. 
+This sequence stabilizes the refinement and reduces 
+parameter correlations, facilitating reliable adjust-
+ments in later steps. To incorporate the linear back -
+ground function, locate the parameters, “_riet_par_
+background_pol0,” and “_riet_par_background_pol1” 
+under the “DataFileSet_x,” corresponding to the zero- 
+and first-order polynomial terms, respectively. Change 
+their statuses from “Fixed” to “Refined.” For the scale 
+factor, expand the “Diffraction Instrument” under the 
+“DataFileSet_x” and change the status of “pd_proc_
+intensity_incident” from “Fixed” to “Refined” with 
+its value set to 1000. To refine the a-axis of cellulose 
+Iβ, expand the “CelluloseI” and change the status 
+of “_cell_length_a” from “Fixed” to “Refined.” For 
+the crystallite size refinement, expand the “Isotropic” 
+under the “CelluloseI” and change the status of “_riet_
+par_cryst_size” from “Fixed” to “Refined” with its 
+value set to 80. After these changes, press the “Launch 
+parameters refinement” button to start the refinement.
+To visualize the background, open the “Graphic” 
+menu, select “Plot options”, and check the box labeled 
+“Plot Background”. This displays the background line 
+on the diffraction pattern. Finally, execute the refine-
+ment by clicking the “Launch parameters refinement” 
+button (represented by a slot machine or a hammer 
+icon) on the toolbar. It may be necessary to click the 
+"hammer" or "slot machine" button more than once to 
+fully converge the refinement. The process should con-
+verge within a few seconds. Figure 4 shows the diffrac-
+tion pattern after the first refinement step. Overall, the 
+calculated pattern closely matches the observed pattern, 
+indicating the significance of the parameters chosen 
+for refinement in the first refinement step. Some misfit 
+remains, however, near the 110 , 110, and 004 reflections 
+at approximately 14.7, 16.6, and 34.8° 2θ, respectively.
+The MAUD output window displaying the numeri-
+cal results of the refinement can be expanded by drag-
+ging its borders with the system mouse (Fig. S5). The 
+window presents several indicators that assess the agree-
+ment between the observed and calculated diffraction 
+patterns. These include “sig”, “Rwp”, and “Rb”, where 
+lower values indicate a better fit. In MAUD, sig repre-
+sents the goodness-of-fit, calculated as the ratio of Rwp 
+to Rexp, where Rexp is the expected R-factor based on 
+counting statistics. Rwp (weighted profile R-factor) 
+measures how closely the calculated pattern matches the 
+observed intensities across the profile, while Rb (Bragg 
+R-factor) evaluates the agreement between calculated 
+Fig. 4 Observed (black 
+diamonds) and calculated 
+(red line) XRD patterns 
+after the first refinement 
+step, incorporating five 
+parameters: linear back-
+ground, scale factor, a-axis, 
+and crystallite size. The 
+fitted linear background line 
+is shown in the pattern
+ Cellulose
+Vol:. (1234567890)
+and observed Bragg peak intensities. When these val-
+ues stabilize across refinement steps, it usually indicates 
+that the refinement has converged and further refinement 
+will bring little improvement. In this first refinement 
+step, the obtained values were sig = 6.71, Rwp = 6.62, 
+and Rb = 4.84.
+Second refinement step: quadratic background, 
+b-axis, and γ-angle
+In a conventional powder XRD 2θ scan, the environ-
+mental background typically appears as a smoothly 
+varying curve that is elevated at low angles and grad-
+ually decreases with increasing 2θ. The noticeable 
+misfit near the 110 and 110 reflections after the first 
+refinement step indicates the need to refine the b-axis 
+and γ-angle, which affect their spacing and relative 
+intensities (Fernandes et al. 2011, Altaner et al. 2014). 
+Accordingly, in the second refinement step, the quad-
+ratic background, b-axis, γ-angle were added (Fig. 
+S6). The c-axis was left fixed as it represents the chain 
+repeat direction and is less influenced by microstruc-
+tural changes. To refine the quadratic background, 
+locate the parameter, “_riet_par_background_pol2” 
+under the “DataFileSet_x,” which represents the 
+second-order polynomial term, and change its status 
+from “Fixed” to “Refined.” To refine the b-axis and 
+γ-angle of cellulose Iβ, expand the “CelluloseI” and 
+change the statuses of “_cell_length_b” and “_cell_
+angle_gamma” from “Fixed” to “Refined.” After 
+these changes, press the “Launch parameters refine-
+ment” button to start the refinement. After the second 
+refinement step, the statistical indicators improved: 
+sig decreased from 7.05 to 6.54, Rwp from 6.47 to 
+5.99, and Rb from 4.94 to 4.32. Figure  5 shows the 
+diffraction pattern after the second refinement step. 
+Consistent with these improvements, the fit near the 
+110 and 110 reflections is clearly improved. However, 
+discrepancies persist near the 004 reflection, indicat-
+ing the need for further refinement.
+Third refinement step: preferred orientation
+The remaining misfit in the profile of the 004 reflec-
+tion, which consists of several closely spaced sub-
+peaks (Fig.  3), is typically influenced by the way 
+fibrous samples settle on the sample holder so that 
+many crystallites become aligned parallel to the 
+sample surface. To account for these preferred ori-
+entation effects, MAUD provides (among others) the 
+March-Dollase function (Fig. S7). In MAUD, this is 
+accessed by opening the “Phases” tab in the upper-
+left window and selecting the “CelluloseI.” Next, 
+click the “eye” icon labeled “Edit the special object 
+of the visible list” located below the “Special” menu 
+at the top. In the new window, go to the “Advanced 
+models” tab, locate the “Texture:” dropdown menu, 
+and select “March Dollase.” Then click “Options,” 
+followed by “Add term” (plus sign) to enable the 
+function. Confirm the changes by selecting OK in 
+both dialog boxes. After this step, the lower portion 
+of the MAUD interface will display “March-Dollase” 
+under “CelluloseI.”
+For typical cellulose samples in a diffractometer 
+with Bragg–Brentano geometry, particles with high 
+axial ratios such as fibers prefer to align with the plane 
+Fig. 5 Observed (black 
+diamonds) and calculated 
+(red line) XRD patterns 
+after the second refinement 
+step, incorporating three 
+additional parameters: 
+quadratic background, 
+b-axis, and γ-angle. The 
+fitted quadratic background 
+line is shown in the pattern
+Cellulose 
+Vol.: (0123456789)
+of the sample holder. This preferred orientation results 
+in a plurality of the (001) planes being perpendicular 
+to sample holder and beam, which keeps those fibers 
+from achieving the Bragg condition for diffraction. 
+This diminishes their intensity in the observed dif-
+fraction pattern. To model this effect in MAUD (Fig. 
+S8), expand “unknown” under “March-Dollase” and 
+change the values of “_riet_hkl_orient_plane_h” and 
+“_riet_hkl_orient_plane_k” from 1 to 0, while keep-
+ing the value of “_riet_hkl_orient_plane_l” at 1. Next, 
+change the status of “_riet_par_pref_or_coef” from 
+“Fixed” to “Refined”. After applying these changes, 
+initiate the refinement by clicking the “Launch param-
+eters refinement” button. This third refinement step 
+reduced sig to 4.1, Rwp to 3.7, and Rb to 3.0. As shown 
+in Fig. 6, introducing the preferred orientation param-
+eter improved the fit of the 004 reflection profile. It 
+is also noticeable that the high 2θ intensities and the 
+background contribution was diminished.
+Fourth refinement step: phase composition
+Based on the semi-crystalline description of cellulose, 
+the amorphous volume fraction was incorporated in the 
+fourth refinement step. The amorphous contribution 
+was modeled using cellulose amorphized by vibratory 
+ball milling. Under the established milling conditions, 
+the process effectively removes crystalline structure 
+and produces a reproducible amorphous scattering pro-
+file (Ling et  al. 2019). The ball-milled cellulose pro-
+vides an experimental approximation of the disordered 
+signal from amorphous cellulose regions and therefore 
+serves as a practical amorphous reference for quanti-
+fying the crystalline contribution. The SEM image 
+of the ball-milled material shows loss of the native 
+fibrous morphology and the formation of aggregated 
+particles (Fig.  7A). The corresponding XRD pattern 
+exhibits a single broad halo centered around 21° 2θ, 
+characteristic of amorphous cellulose (Fig.  7B). This 
+distinctive scattering profile allows the amorphous 
+contribution to be separated from the slowly varying 
+background. To simulate this amorphous cellulose, 
+the cellulose II crystal structure reported by Langan 
+et  al. (2001), with unit cell parameters, a = 8.10  Å, 
+b = 9.03  Å, c = 10.31  Å, and γ = 117.10° determined 
+from synchrotron XRD of mercerized ramie cellulose 
+II (Its.cif file is provided in the Supporting Informa-
+tion). These values are consistent with those reported 
+for cellulose II prepared by deacetylation of cellulose 
+acetate (a = 8.076  Å, b = 9.144  Å, c = 10.386  Å, and 
+γ= 117.100°). When the crystallite size of cellulose 
+II was set to 12  Å, the calculated diffraction pattern 
+closely matched the experimental diffraction of ball-
+milled cotton (Nam et al. 2016). Morales et al. (2026) 
+similarly used a small isotropic cellulose I as a model 
+of amorphous. They mentioned that their amorphous 
+model was used by Lutterotti (2012), aligned with that 
+of Le Bail (1995). Our preference is to use the cellu-
+lose II model because it better matches the experimen-
+tal amorphous material (Fig. 7B).
+To incorporate phase composition in MAUD, 
+select the “Phases” tab and click the cylinder icon 
+with the left-pointing arrow (Fig. S9). Then, expand 
+Fig. 6 Observed (black 
+diamonds) and calculated 
+(red line) XRD patterns 
+after the third refinement 
+step, incorporating a pre-
+ferred orientation parameter 
+modeled with the March-
+Dollase function
+ Cellulose
+Vol:. (1234567890)
+the “layer 1” under the “default par” and change the 
+statuses of both “Volume fraction of CelluloseI” and 
+“Volume fraction of CelluloseII” from “Fixed” to 
+“Refined” (Fig. S10). Next, under the “CelluloseII,” 
+expand “Isotropic,” set the value of “_riet_par_cryst_
+size” to 12, and keep its status as “Fixed” (Fig.. S10). 
+After applying these settings, click the “Launch 
+parameters refinement” button to start the refinement. 
+This fourth refinement step further reduced sig to 
+3.0, Rwp to 2.8, and Rb to 2.2. The drop of Rwp from 
+3.7% to 2.8% is substantial, given how close the fit 
+was already. Figure 8 shows the calculated diffraction 
+pattern, demonstrating improved fitting at the point 
+of the indicator of amorphous content in the work of 
+Segal et al. (1959). Looking back at Fig.  6, one could 
+conclude that some amorphous contribution was 
+needed to “push” the calculated intensity closer to the 
+experimental line.
+Rietveld refinement results
+Across four refinement steps, a total of eleven param-
+eters were optimized. Table 1 summarizes the refined 
+parameter values, their estimated standard deviations 
+based on the least-square covariance matrix, and fig-
+ures of merit after the fourth refinement step. The 
+refined a-axis value was 7.906 Å, which was larger 
+than the value (7.784 Å) for tunicin cellulose, a highly 
+Fig. 7 A SEM image of the ball-milled cotton sample. B Observed XRD pattern of ball-milled cotton and calculated diffraction pat-
+terns of cellulose II and cellulose Iβ generated from their CIF files using 9° FWHM in Mercury
+Fig. 8 Observed (black 
+diamonds) and calculated 
+(red line) XRD patterns 
+after the fourth refinement 
+step incorporating the vol-
+ume fractions of crystalline 
+and amorphous celluloses
+Cellulose 
+Vol.: (0123456789)
+crystalline form derived from sea tunicates (Halocyn-
+thia roretzi). In contrast, the refined b-axis (8.220 Å) 
+and γ- angle (96.157°) were close to those of tunicin 
+cellulose (8.201  Å and 96.55°, respectively). The 
+crystallite size of cotton fibers was determined to 
+be 66.35  Å. The March-Dollase coefficient refined 
+to 1.925, indicating a substantial deviation from the 
+value of 1 expected for a randomly orientated speci-
+men. A coefficient greater than 1.0 implies a decrease 
+in the fraction of hkl planes that can meet the Bragg 
+condition for reflection. This value represents an 
+apparent correction derived from a single diffraction 
+pattern rather than determination of the true orienta-
+tion distribution. Obtaining the actual orientation dis-
+tribution would require diffraction data collected over 
+multiple sample tilts or geometries, which enable 
+reconstruction of a full orientation profile (Morales 
+et al. 2026). The volume fractions of crystalline and 
+amorphous phases refined to 0.65 and 0.35, respec-
+tively, yielding a crystallinity of 65%. Their estimated 
+standard deviation values, which were derived from 
+the covariance matrix of a single refinement, are 
+large, reflecting high parameter correlations due to 
+overlapping diffraction features in cellulose. However, 
+repeated refinements under different initial conditions 
+yielded consistent phase fractions (0.650 ± 0.001 for 
+crystalline cellulose), indicating the stability of the 
+solution within the chosen model. The determined 
+crystallinity was much lower than the Segal CrI of 
+77% calculated from the height of the 200 peak and 
+the intensity minimum at about 18.6° (Fig.  9A), sup-
+porting the recognized tendency of Segal’s method to 
+overestimate CrI (Nam et  al. 2024a, b). The overes-
+timation is attributed to its simplified, peak-height-
+based approach, which does not account for the full 
+diffraction profile or overlapping peaks (French and 
+Santiago Cintrón 2013; French 2022). Moreover, the 
+Segal method fails to capture the maximum scattering 
+of the amorphous cellulose, which occurs at around 
+21° 2θ (Fig. 7B). Instead, it measures intensity at 18° 
+2θ (Eq. 1).
+Table 1 Refined parameters, estimated standard deviations, 
+and figures of merit from four Rietveld refinement steps of the 
+experimental XRD pattern of cotton fibers
+Parameters and indicators Refined values Estimated 
+standard 
+deviation
+Scale factor Intensity 10,100 200
+Background A 6317 85
+B − 114 9
+C 2.1 0.2
+Cellulose Iβ a-axis 7.906 Å 0.001
+b-axis 8.220 Å 0.005
+γ 96.16° 0.04
+Crystallite size 66.4 Å 0.4
+March-Dollase Coefficient 1.93 0.03
+Volume frac-
+tion
+Crystalline 
+phase
+0.65 6.7
+Amorphous 
+phase
+0.35 3.6
+Figures of 
+merit
+Sig 3.03% –
+Rwp 2.77% –
+Rb 2.18% –
+Fig. 9 A Measurement of Segal crystallinity index (CrI) of 
+cotton fibers from two peak intensities at 22.7° 2θ and 18° 
+2θ in the observed diffraction pattern (Eq.  1). B Diffraction 
+intensity profiles as a function of 2θ for the observed pattern 
+(Iobs), calculated pattern (I calc), and refined phase contributions 
+including cellulose Iβ (I Iβ), amorphous cellulose (I am), and 
+background (Ibkgd)
+ Cellulose
+Vol:. (1234567890)
+The intensities as a function of 2θ for all refined 
+pattern contributions can be exported to a spread-
+sheet. To do this, open the Graphic menu on the tool-
+bar and select “Plot selected dataset” to launch the 
+auxiliary MAUD window. Within this window, go 
+to the Tools menu and choose “Export experimental/
+computed data” to save the data file (Fig. S11). Fig-
+ure  9B presents the intensity profiles as a function 
+of 2θ for observed pattern, calculated pattern, and 
+refined phase contributions, including cellulose Iβ, 
+amorphous cellulose, and background.
+Figure 10 shows the variation in refinement qual-
+ity across successive refinement steps. As additional 
+parameters were introduced, the goodness-of-fit indi-
+cator (sig), and residual errors (Rwp and Rb) pro-
+gressively decreased, reflecting improved agreement 
+between the observed and calculated diffraction pat-
+terns and successful model convergence. The con-
+sistent downward trend supports the inclusion of the 
+parameters across the four refinement steps to achieve 
+a reliable fit.
+Limitations and scope
+Although this workflow provides a structured 
+approach for quantifying cellulose crystallin-
+ity using Rietveld refinement, several limitations 
+should be considered. (a) Two-phase representation. 
+The method models semi-crystalline cellulose as a 
+two-component system consisting of crystalline and 
+amorphous cellulose phases. This simplified repre-
+sentation does not explicitly include paracrystalline 
+domains. b) Choice of amorphous reference. The 
+workflow assumes that the scattering profile of ball-
+milled cellulose adequately represents the amorphous 
+cellulose and does not include non-cellulosic amor -
+phous components. (c) Background-amorphous sepa-
+ration. The background signal is treated as a smooth 
+function, whereas amorphous cellulose produces a 
+broad, non-periodic halo. The separation of these dis-
+tinct intensity profiles is not unique and depends on 
+the characteristics of the background. (d) Material-
+specific considerations. The protocol is optimized for 
+typical cellulose-rich materials. Materials with mixed 
+cellulose polymorphs, pronounced preferred orienta-
+tion, significant non-cellulosic phases may require 
+supplemental modeling. Further limitations are 
+the lack of tailoring of the MAUD software for the 
+explicit diffractometer. The crystal information file 
+resulted in an Rw based on F 2 of 42% so there must 
+be some error in the atomic positions in the model 
+structure. Some indicators of the quality of the study 
+have not been discussed, needed especially when 
+more advanced variables are considered. The order 
+of adding parameters has not been discussed beyond 
+the selection of the first five. Perhaps the amorphous 
+could be introduced third, instead of March-Dollase 
+function. If the crystalline material has preferred 00 l 
+orientation, then perhaps the amorphous material 
+does also.
+Conclusions
+To overcome limitations in cellulose crystallinity 
+measurement using traditional XRD methods and 
+to encourage more comprehensive analysis of pow -
+der diffraction data, we present a cellulose-specific 
+workflow for quantifying true crystallinity of cellu-
+lose using Rietveld refinement with the open-source 
+MAUD software. The refinement process was struc-
+tured into four sequential steps, each designed to 
+account for cellulose-specific structural character -
+istics. Ten key parameters—including scale factor, 
+background function, unit cell geometry, crystallite 
+size, preferred orientation, and phase composition—
+were systematically refined to represent the two-
+phase nature of cellulose fibers. The strong agreement 
+0123 4
+0
+2
+4
+6
+8
+10
+Refinement steps
+sig / Rb / Rwp
+sig
+Rwp
+Rb
+Fig. 10 Change in goodness-of-fit (sig), and residual errors 
+(Rb and Rwp) over successive refinement steps
+Cellulose 
+Vol.: (0123456789)
+between observed and calculated diffraction pat-
+terns reflected in the refinement-specific figures of 
+merit, supports the reliability and robustness of this 
+approach.
+Designed for accessibility, this protocol lowers 
+the barrier for researchers without prior experience 
+in crystallographic refinement to perform crystallin-
+ity measurements using the entire one-dimensional 
+powder diffraction profile analysis. Future work 
+could explore additional refinement procedures, such 
+as introducing an additional March-Dollase term 
+to account for more complex orientation distribu-
+tions, refining anisotropic crystallite sizes to capture 
+directional size effects, or expanding the amorphous 
+model to include possible alignment contributions, 
+and examining how these refinements influence crys-
+tallinity measurements. Another potential direction 
+is the application of this workflow to cellulose refer -
+ence materials across different diffractometers and 
+user groups to help establish more robust reference 
+crystallinity values. A key outstanding question is 
+whether the number of unique diffraction data points 
+is sufficient to reliably support the number of refined 
+variables. This challenge is particularly relevant 
+for cellulose samples, where broad peaks, overlap-
+ping reflections, and low crystallinity often limit the 
+amount of independent structural information avail-
+able. Indicators such as nonphysical parameter values 
+or unit cell dimensions outside reasonable limits can 
+provide a practical check on refinement reliability.
+Supplementary information
+Six individual files are provided to assist users with 
+the cellulose-specific Rietveld refinement method:
+(1) One .txt file: Supplementary Information file 
+1.txt–XRD data of cotton fiber formatted for 
+import into MAUD as a dataset.
+(2) Two .cif files: Supplementary Information file 
+2.cif and Supplementary Information file 3.cif–
+crystal information files representing the cellu-
+lose Iβ and cellulose II phases, respectively, for 
+use in MAUD. The Supplementary Information 
+file 2.cif file is based on the neutron diffraction 
+study of Nishiyama et al. (2002) that includes the 
+positions of the hydroxy hydrogen (deuterium) 
+atoms, including the observed fractional occu-
+pancies. Those atoms are not available from the 
+synchrotron X-ray results. The Supplementary 
+Information file 3.cif file was forwarded by Paul 
+Langan to ADF. Although based on Langan et al. 
+(2001), it also includes hydrogen atom positions 
+that are not available in that work. Both files were 
+part of the Supplementary Information in French 
+(2014) in a combined file that is not directly use-
+ful in MAUD.
+(3) One .par file: Supplementary Information file 
+4.par–an analysis file containing the complete 
+analysis used in this study. It can be opened in the 
+MAUD software by selecting “Open analysis” 
+from the File menu.
+(4) One .pdf file: Supplementary Information file 
+5.pdf–a document containing screenshots of the 
+MAUD interface, illustrating the sequential steps 
+of the refinement procedure.
+(5) One .xlsx file: Supplementary Information file 
+6.xlsx–spreadsheet containing refinement results 
+exported from MAUD (“Export experimental/
+calculated data”).
+The .txt, .par, and .cif files can be viewed with sim-
+ple text-editing software such as Windows Notepad or 
+Mac TextEdit.
+Acknowledgement Mention of trade names or commercial 
+products is solely for the purpose of providing specific infor -
+mation and does not imply recommendation or endorsement by 
+USDA. USDA is an equal opportunity provider and employer.
+Author contributions Sunghyun Nam: Data curation, Anal-
+ysis, Investigation, Writing-Original daft, Visualization; Alfred 
+D. French: Conceptualization, Methodology, Writing-Review 
+& Editing; Md Nayeem Hasan Kashem; Analysis, Writing-
+Review & Editing.
+Funding This research was supported by the U.S. Depart-
+ment of Agriculture, Agricultural Research Service.
+Data availability Data is provided within the manuscript and 
+supplementary information files.
+Declarations 
+Conflict of interest The authors declare no conflict of inter -
+ests.
+Open Access This article is licensed under a Creative Com-
+mons Attribution 4.0 International License, which permits 
+use, sharing, adaptation, distribution and reproduction in any 
+medium or format, as long as you give appropriate credit to the 
+original author(s) and the source, provide a link to the Crea-
+tive Commons licence, and indicate if changes were made. The 
+ Cellulose
+Vol:. (1234567890)
+images or other third party material in this article are included 
+in the article’s Creative Commons licence, unless indicated 
+otherwise in a credit line to the material. If material is not 
+included in the article’s Creative Commons licence and your 
+intended use is not permitted by statutory regulation or exceeds 
+the permitted use, you will need to obtain permission directly 
+from the copyright holder. To view a copy of this licence, visit 
+http:// creat iveco mmons. org/ licen ses/ by/4. 0/.
+References
+Altaner CM, Thomas LH, Fernandes AN, Jarvis MC (2014) 
+How cellulose stretches: synergism between covalent and 
+hydrogen bonding. Biomacromol 15:791–798. https:// doi. 
+org/ 10. 1021/ bm401 616n
+Boylston EK, Hinojosa O, Hebert JJ (1991) A quick embed-
+ding method for light and electron microscopy of textile 
+fibers. Biotech Histochem 66:122–124. https:// doi. org/ 10. 
+3109/ 10520 29910 91105 64
+Colom X, Carrillo F (2002) Crystallinity changes in lyocell 
+and viscose-type fibres by caustic treatment. Eur Polym 
+J 38:2225–2230. https:// doi. org/ 10. 1016/ S0014- 3057(02) 
+00132-5
+Dollase WA (1986) Correction of intensities for preferred 
+orientation in powder diffractometry: application of the 
+March model. J Appl Crystallogr 19:267–272. https:// doi. 
+org/ 10. 1107/ S0021 88988 60894 58
+Easson MW, Jordan JH, Edwards JV, Prevost NT, Dupre RA, 
+Hillyer MB, Lima IM, Nam S (2024) Assessment of cellu-
+lose nanofiber-based elastase biosensors to inflammatory 
+disease as a function of spacer length and fluorescence 
+response. ACS Appl Bio Mater 7:1490–1500. https:// doi. 
+org/ 10. 1021/ acsabm. 3c008 85
+Emenike EC, Iwuozor KO, Saliu OD, Ramontja J, Adeniyi AG 
+(2023) Advances in the extraction, classification, modi-
+fication, emerging and advanced applications of crystal-
+line cellulose: a review. Carbohydr Polym Technol Appl 
+6:100337. https:// doi. org/ 10. 1016/j. carpta. 2023. 100337
+DD Fang RG Percy 2020 Cotton, John Wiley Sons, Hoboken. 
+Fernandes AN, Thomas LH, Altaner CM, Callow P, For -
+syth VT, Apperley DC, Kennedy CJ, Jarvis MC (2011) 
+Nanostructure of cellulose microfibrils in spruce wood 
+Proc Natl Acad Sci 108 E1195 E1203 https:// doi. org/ 10. 
+1073/ pnas. 11089 42108
+Fink HP, Hofmann D, Philipp B (1995) Some aspects of lateral 
+chain order in cellulosics from X-ray scattering. Cellulose 
+2:51–70. https:// doi. org/ 10. 1007/ BF008 12772
+Forziati FH, Stone WK, Rowen JW, Appel WD (1950) Cot-
+ton powder for infrared transmission measurements. J Res 
+Natl Bur Stand 45:109–113. https:// doi. org/ 10. 6028/ jres. 
+045. 009
+French A (2022) How crystalline is my cellulose specimen? 
+Probing the limits of X-ray diffraction. BioResources 
+17:5557. https:// doi. org/ 10. 15376/ 17.4. 5557- 5561
+French AD, Santiago Cintrón M (2013) Cellulose polymorphy, 
+crystallite size, and the Segal crystallinity index. Cellulose 
+20:583–588. https:// doi. org/ 10. 1007/ s10570- 012- 9833-y
+Haigler CH, Grimson MJ, Gervais J, Le Moigne N, Höfte H, 
+Monasse B, Navard P (2014) Molecular modeling and 
+imaging of initial stages of cellulose fibril assembly: evi-
+dence for a disordered intermediate stage. PLoS ONE 
+9:e93981. https:// doi. org/ 10. 1371/ journ al. pone. 00939 81
+Ioelovich M, Leykin A, Figovsky O (2010) Study of cellulose 
+paracrystallinity. Bioresour 5:1393–1407
+Kulasinski K, Keten S, Churakov SV, Derome D, Carmeliet J 
+(2014) A comparative molecular dynamics study of crys-
+talline, paracrystalline and amorphous states of cellu-
+lose. Cellulose 21:1103–1116. https:// doi. org/ 10. 1007/ 
+s10570- 014- 0213-7
+Langan P, Nishiyama Y, Chanzy H (2001) X-ray structure of 
+mercerized cellulose II at 1 Å resolution. Biomacromol 
+2:410–416. https:// doi. org/ 10. 1021/ bm005 612q
+Le Bail A (1995) Modelling of silica glass structure by means 
+of microstrain-distorted crystalline models. J Non-Cryst 
+Solids 183:39–42
+Lee C, Dazen K, Kafle K, Moore A, Johnson DK, Park S, Kim 
+SH (2016) Correlations of apparent cellulose crystallinity 
+determined by XRD, NMR, IR, Raman, and SFG meth-
+ods. Cellulose chemistry and properties: fibers, nanocel-
+luloses and advanced materials. Springer International 
+Publishing, Cham, pp 115–131. https:// doi. org/ 10. 1007/ 
+12_ 2015_ 320
+Ling Z, Wang T, Makarem M, Santiago Cintrón M, Cheng HN, 
+Kang X, Bacher M, Potthast A, Rosenau T, King H, Del-
+hom CD, Nam S, Edwards JV, Kim SH, Xu F, French AD 
+(2019) Effects of ball milling on the structure of cotton 
+cellulose. Cellulose 26:305–328. https:// doi. org/ 10. 1007/ 
+s10570- 018- 02230-x
+Lutterotti L (2012) Quantitative phase analysis: method devel-
+opments. In: Dinnebier RE, Leineweber A, Evans JSO 
+(eds) Rietveld refinement: practical powder diffraction 
+analysis. Springer, Dordrecht, pp 233–242. https:// doi. org/ 
+10. 1007/ 978- 94- 007- 5580-2_ 21
+Macrae CF, Gruno IJ, Chisholm JA, Edginston PR, McCabe P, 
+Pidcock E, Rodriguez-Monge L, Taylor R, van de Streek 
+J, Wood PA (2008) Mercury CSD 2.0-new features for 
+the visualization and investigation of crystal structures. 
+J Appl Cryst 41:466–470. https:// doi. org/ 10. 1107/ S0021 
+88980 70679 08
+Martínez-Sanz M, Pettolino F, Flanagan B, Gidley MJ, Gilbert 
+EP (2017) Structure of cellulose microfibrils in mature 
+cotton fibres. Carbohydr Polym 175:450–463. https:// doi. 
+org/ 10. 1016/j. carbp ol. 2017. 07. 090
+Morales M, Gogoli K, Chateigner D, Lutterotti L, Poilâne C, 
+Gehring F, Stoclet G, Perez O (2026) X-ray diffraction 
+combined analysis method for the determination of cellu-
+lose crystal ultrastructure for free and deformed flax fibre 
+bundles. Cellulose 33:25–51. https:// doi. org/ 10. 1007/ 
+s10570- 025- 06862-8
+Nam S, French AD, Condon BD, Concha M (2016) Segal crys-
+tallinity index revisited by the simulation of X-ray diffrac-
+tion patterns of cotton cellulose Iβ and cellulose II. Car -
+bohydr Polym 135:1–9. https:// doi. org/ 10. 1016/j. carbp ol. 
+2015. 08. 035
+Nam S, Hillyer MB, Condon BD (2020) Method for identify -
+ing the triple transition (glass transition-dehydration-crys-
+tallization) of amorphous cellulose in cotton. Carbohydr 
+Cellulose 
+Vol.: (0123456789)
+Polym 228:115374. https:// doi. org/ 10. 1016/j. carbp ol. 
+2019. 115374
+Nam S, Easson MW, Jordan JH, He Z, Lima IM, Hillyer MB, 
+Ernst NE, Fang D, Islam MM (2024a) Repurposing cotton 
+gin trash for cellulose nanofibril-silver hybrid and ultra-
+light silver-infused aerogel. ACS Omega 9:38195–38204. 
+https:// doi. org/ 10. 1021/ acsom ega. 4c057 28
+Nam S, Liu Y, He Z, Hinchliffe DJ, Fang D (2024b) Assess-
+ment of the Segal method for identifying crystallinity 
+evolution in developing cotton fibers. Agric Environ Lett 
+9:e201138. https:// doi. org/ 10. 1002/ ael2. 20138
+Nelson ML, Conrad CM (1948) Improvements in the acid-
+hydrolysis method of determining the crystallinity of cel-
+lulose. Text Res J 13:155–164. https:// doi. org/ 10. 1177/ 
+00405 17548 01800 303
+Nishiyama Y, Langan P, Chanzy H (2002) Crystal structure 
+and hydrogen-bonding system in cellulose Iβ from syn-
+chrotron X-ray and neutron fiber diffraction. J Am Chem 
+Soc 124:9074–9082. https:// doi. org/ 10. 1021/ ja025 7319
+Nishiyama Y, Johnson GP, French AD (2012) Diffraction 
+from nonperiodic models of cellulose crystals. Cellulose 
+19:319–336. https:// doi. org/ 10. 1007/ s10570- 012- 9652-1
+VK Pecharsky PY Zavalij 2003 Fundamentals of powder dif-
+fraction and structural characterization of materials 
+Springer, Business Media, New York https:// doi. org/ 10. 
+1007/ b1062 42
+Plaza N, French A, Driemeier C, Duchemin B, Godinho M, 
+Honorato-Rios C, Ito K, Jordan J, Kim S, Kuznetsov O, 
+Lee J, Meija J, Pinto J, Verpaele S, Vignolini S, Wonder -
+ling N, Johnson L, Wadood Y (2026) Crystallinity deter -
+mination for cellulose nanomaterials using powder X-ray 
+diffraction coupled with Rietveld analysis: An interlabora-
+tory comparison. Submitted to Cellulose
+Ramamoorthy SK, Skrifvars M, Persson A (2015) A review 
+of natural fibers used in biocomposites: plant, animal 
+and regenerated cellulose fibers. Polym Rev 55:107–162. 
+https:// doi. org/ 10. 1080/ 15583 724. 2014. 971124
+Salem KS, Kasera NK, Rahman MA, Jameel H, Habibi 
+Y, Eichhorn SJ, French AD, Pal L, Lucia LA (2023) 
+Comparison and assessment of methods for cellulose 
+crystallinity determination. Chem Soc Rev 52:6417–6446. 
+https:// doi. org/ 10. 1039/ D2CS0 0569G
+Segal L, Creely JJ, Martin AE, Conrad CM (1959) An empiri-
+cal method for estimating the degree of crystallinity of 
+native cellulose using X-ray diffractometer. Tex Res J 
+29:786–794. https:// doi. org/ 10. 1177/ 00405 17559 02901 
+003
+Szabó L, Milotskyi R, Sharma G, Takahashi K (2023) Cellu-
+lose processing in ionic liquids from a materials science 
+perspective: turning a versatile biopolymer into the cor -
+nerstone of our sustainable future. Green Chem 25:5338–
+5389. https:// doi. org/ 10. 1039/ D2GC0 4730F
+Thibodeaux DP, Evans JP (1986) Cotton fiber maturity by 
+image analysis. Tex Res J 56:130–139. https:// doi. org/ 10. 
+1177/ 00405 17586 05600 211
+Wakelyn PJ, Bertoniere NR, French AD, Thibodeaux DP, 
+Triplett BA, Rousselle M-A, Goynes WRJ, Edwards JV, 
+Hunter L, McAlister DD, Gamble GR (2006) Cotton 
+fiber chemistry and technology. CRC Press, Boca Raton. 
+https:// doi. org/ 10. 1201/ 97814 20045 888
+Wang J, Wang L, Gardner DJ, Shaler SM, Cai Z (2021) 
+Towards a cellulose-based society: opportunities and chal-
+lenges. Cellulose 28:4511–4543. https:// doi. org/ 10. 1007/ 
+s10570- 021- 03771-4
+Ward K Jr (1950) Crystallinity of cellulose and its significance 
+for the fiber properties. Text Res J 20:363–372. https:// doi. 
+org/ 10. 1177/ 00405 17550 02000 601
+Young RA (ed) (1993) The Rietveld method. International 
+Union of Crystallography, Oxford University Press, 
+Oxford and New York. https:// doi. org/ 10. 1093/ oso/ 97801 
+98555 773. 001. 0001
+Publisher’s Note Springer Nature remains neutral with regard 
+to jurisdictional claims in published maps and institutional 
+affiliations.

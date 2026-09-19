@@ -1,0 +1,234 @@
+Image Marker
+Ryan Walker 1*, Andi Kisare 1*, and Lindsey Bleem1
+1 Argonne National Laboratory, United States * These authors contributed equally.
+DOI: 10.21105/joss.09686
+Software
+• Review
+• Repository
+• Archive
+Editor: David Stansby
+Reviewers:
+• @enourbakhsh
+• @alexlyttle
+Submitted: 24 April 2025
+Published: 17 September 2026
+License
+Authors of papers retain copyright
+and release the work under a
+Creative Commons Attribution 4.0
+International License ( CC BY 4.0 ).
+Summary
+A wide range of scientific imaging datasets benefit from human inspection for purposes ranging
+from prosaic—such as fault identification and quality inspection—to profound, enabling the
+discovery of new phenomena. As such, these datasets come in a wide variety of forms, with
+diverse inspection needs. In this paper we present a software package, Image Marker , designed
+to help facilitate human categorization of images. The software allows for quick seeking through
+images and enables flexible marking and logging of up to nine different classes of features and
+their locations in files of FITS, PNG, TIFF, and JPEG format. Additional tools are provided to
+add text-based comments to the marking logs and for displaying external mark datasets on
+images during the classification process. As our primary use case will be the identification of
+features in astronomical survey data, Image Marker also utilizes standard World Coordinate
+Systems (WCS) headers embedded in FITS headers and TIFF metadata when available. The
+lightweight software, based on the Qt Framework to build the GUI application, enables efficient
+marking of thousands of images on personal-scale computers. We provide Image Marker as a
+Python package, and as Mac and Windows 11 executables. It is available on GitHub or via pip
+installation.
+Statement of need
+The rapid advancement in detector technology across all fields of science has led to larger and
+larger datasets without an equal increase in the number of scientists available to analyze the
+data. This imbalance of available work to available workers has led to a need for developing
+more efficient methods of parsing data. In response to large datasets in astronomy, projects
+like DES Exposure Checker ( Melchior et al., 2016 ), Space Warps ( Marshall et al., 2016 ), and
+Galaxy Zoo ( Fortson et al., 2012 ) emerged to crowdsource classification and identification
+tasks in large datasets, the latter two using the Zooniverse framework ( Simpson et al., 2014 ).
+Zooniverse offers the ability to easily outsource image identification and advanced classification
+statistics through the power of citizen science. This level of sophistication is not required,
+however, for projects which may involve fewer collaborators or for low-level data or algorithmic
+phases that are not suitable for a broader audience. Zooniverse also requires an internet
+connection. FitsMap ( Hausen & Robertson, 2022 ) takes a different approach with a focus on
+large images and their associated catalogs by hosting a web client on the user’s local machine
+and displaying a reduced-scale image with catalog objects overlaid. While FitsMap has broad
+functionality, it does not contain a method for marking features in images and saving feature
+coordinates. Other software for viewing and analyzing data, like the widely-used SAO-DS9
+(Joye, 2017), handle smaller datasets best.
+Walker et al. (2026). Image Marker. Journal of Open Source Software , 11(125), 9686. https://doi.org/10.21105/joss.09686. 1
+Figure 1: Diagram of Image Marker windows highlighting main features of the application: (a) main
+window; nine different group marks are available for tagging features. Below the image users can read
+the pixel coordinates (and, if available, WCS coordinates) of the cursor. Note that a comment has
+been written in the main comment box in the center. (b) controls window; updates group and category
+names when they are customized, helping keep track of what buttons are for which group or category.
+Other shortcuts are shown as well. (c) Gaussian blur window; note that blur has not been applied to the
+example image in (a). (d) frames window; for selecting frames in multi-extension images/FITS files. (e)
+about window; displays basic information about the user’s installation of Image Marker . (f) color picker
+window; used to select the color of an imported catalog of marks. Window themes are dependent on the
+user’s operating system.
+Image Marker is a tool specifically designed for quickly scanning images and tagging locations
+in the images. It is run locally, has a user-friendly interface, a fail-safe saving mechanism,
+and also includes a suite of features and options for customization, image manipulation, and
+testing user consistency (see Figure 1 for application interface). By sharing an Image Marker
+configuration file and data with other users, Image Marker also allows joint analyses of datasets
+at the expense of requiring manual sharing of (small) files after marking is completed. These
+output files are easily aggregated and analyzed using standard coding or spreadsheet tools.
+Local analysis enables trained observers to quickly scan through images with loading times not
+limited by internet connections and thus enables faster identifications or classifications.
+Our use case
+Galaxy clusters are useful probes for peering into the early Universe. One method of connecting
+cluster observables to theoretical models requires selecting a cluster center (using e.g., weak
+gravitational lensing; see reviews in Allen et al., 2011 ; Umetsu, 2020 ), the most common
+choice being to choose the Brightest Cluster Galaxy (BCG), namely the brightest or largest,
+centralized galaxy in the cluster. However, automatic BCG selection algorithms typically fail
+10-20% of the time, so human inspection plays an important role in both validating these
+algorithms and improving centering choices when they fail ( Ding et al., 2025 ; Kelly et al.,
+2024; Rozo & Rykoff, 2014 ). The SPT-3G camera has surveyed ~10,000 square degrees of
+the Southern sky ( Prabhu et al., 2024 ; Sobrin et al., 2022 ) at millimeter-wavelengths, giving
+plenty of data to inspect. Our first use case for Image Marker is the identification of BCGs in
+the SPT-3G cluster sample (see Figure 2 ) using optical image data from DeCALS ( Dey et
+al., 2019 ). The validated BCG dataset from thousands of clusters ( > 7, 100 galaxy clusters
+expected in the SPT-3G main survey alone; Bleem et al., 2026 ) also offers the opportunity to
+Walker et al. (2026). Image Marker. Journal of Open Source Software , 11(125), 9686. https://doi.org/10.21105/joss.09686. 2
+develop and test machine learning BCG identification tools that can be applied not only to the
+SPT-3G sample but also cluster samples from other surveys (e.g., Bulbul et al., 2024 ; Hilton
+et al., 2021 ; LSST Science Collaboration et al., 2009 ).
+Figure 2: Optical grz band image of a galaxy cluster from the SPT-3G survey (Optical images from
+DeCALS; Dey et al., 2019 ). (a, Left) We display the first frame of the image file with just optical image
+data. (b, Right) The second frame of the image file, which contains the optical image data with contours
+overlaid indicating the SZ detection signal-to-noise from SPT-3G. The human-selected candidate BCG is
+denoted by the red mark in both images.
+Broader use cases
+While Image Marker was initially designed with the above use cases in mind, we have found it
+valuable as a general tool for inspecting data products and validating algorithmic development.
+As a second example usage, the ability to rapidly scan hundreds of small thumbnail cutouts in
+a matter of minutes, mark problematic locations, and easily read in lists of these locations,
+helped us to improve data cleaning for an upcoming analysis of SPT-3G data in the Euclid
+Deep Field South region. This broad applicability motivated us to publicly release the software.
+Acknowledgements
+We thank Keren Sharon, Mike Gladders, and Giulia Campitiello for helpful suggestions on
+features to include in Image Marker , Will Hicks for help with compiling Image Marker on
+an Intel based Mac, and Florian Keruzore and the JOSS referees, Erfan Nourbakhsh and
+Alex Lyttle, for providing helpful comments. This work was supported in part by the U.S.
+Department of Energy, Office of Science, Office of Workforce Development for Teachers and
+Scientists (WDTS) under the Science Undergraduate Laboratory Internships (SULI) program.
+Work at Argonne National Lab is supported by UChicago Argonne LLC, Operator of Argonne
+National Laboratory (Argonne). Argonne, a U.S. Department of Energy Office of Science
+Laboratory, is operated under contract no. DE-AC02-06CH11357. We thank the SPT-3G
+collaboration for the use of the Sunyaev Zel’dovich detection contours displayed on the image
+in Figure 2 . This work made use of Astropy: a community-developed core Python package
+and an ecosystem of tools and resources for astronomy ( Astropy Collaboration et al., 2013 ,
+2018, 2022); Pillow ( Clark, 2015 ); SciPy ( Virtanen et al., 2020 ); NumPy ( Harris et al., 2020 );
+and PyQt ( Riverbank Computing Limited, 2025 ).
+Walker et al. (2026). Image Marker. Journal of Open Source Software , 11(125), 9686. https://doi.org/10.21105/joss.09686. 3
+References
+Allen, S. W., Evrard, A. E., & Mantz, A. B. (2011). Cosmological parameters from observations
+of galaxy clusters. Annual Review of Astronomy and Astrophysics , 49(1), 409–470.
+https://doi.org/10.1146/annurev-astro-081710-102514
+Astropy Collaboration, Price-Whelan, A. M., Lim, P. L., Earl, N., Starkman, N., Bradley, L.,
+Shupe, D. L., Patil, A. A., Corrales, L., Brasseur, C. E., Nöthe, M., Donath, A., Tollerud, E.,
+Morris, B. M., Ginsburg, A., Vaher, E., Weaver, B. A., Tocknell, J., Jamieson, W., … Astropy
+Project Contributors. (2022). The Astropy Project: Sustaining and growing a community-
+oriented open-source project and the latest major release (v5.0) of the core package. The
+Astrophysical Journal , 935(2), 167. https://doi.org/10.3847/1538-4357/ac7c74
+Astropy Collaboration, Price-Whelan, A. M., Sipőcz, B. M., Günther, H. M., Lim, P. L.,
+Crawford, S. M., Conseil, S., Shupe, D. L., Craig, M. W., Dencheva, N., Ginsburg, A.,
+VanderPlas, J. T., Bradley, L. D., Pérez-Suárez, D., de Val-Borro, M., Aldcroft, T. L.,
+Cruz, K. L., Robitaille, T. P., Tollerud, E. J., … Astropy Contributors. (2018). The
+Astropy Project: Building an open-science project and status of the v2.0 core package.
+The Astronomical Journal , 156(3), 123. https://doi.org/10.3847/1538-3881/aabc4f
+Astropy Collaboration, Robitaille, T. P., Tollerud, E. J., Greenfield, P., Droettboom, M., Bray,
+E., Aldcroft, T., Davis, M., Ginsburg, A., Price-Whelan, A. M., Kerzendorf, W. E., Conley,
+A., Crighton, N., Barbary, K., Muna, D., Ferguson, H., Grollier, F., Parikh, M. M., Nair,
+P. H., … Streicher, O. (2013). Astropy: A community Python package for astronomy.
+Astronomy and Astrophysics , 558, A33. https://doi.org/10.1051/0004-6361/201322068
+Bleem, L. E., Klein, M., Kornoelje, K., Bocquet, S., Sobrin, J. A., Aguena, M., Anderes,
+E., Anderson, A. J., Andrade-Oliveira, F., Ansarinejad, B., Archipley, M., Balkenhol, L.,
+Barron, D. R., Barry, P. S., Bayliss, M., Benabed, K., Bender, A. N., Benson, B. A.,
+Bianchini, F., … Zhan, J. (2026). Galaxy Clusters Selected via the Sunyaev-Zel’dovich
+Effect in 5 year data from the SPT-3G Main Survey. arXiv e-Prints , arXiv:2607.01175.
+https://doi.org/10.48550/arXiv.2607.01175
+Bulbul, E., Liu, A., Kluge, M., Zhang, X., Sanders, J. S., Bahar, Y. E., Ghirardini, V., Artis,
+E., Seppi, R., Garrel, C., Ramos-Ceja, M. E., Comparat, J., Balzer, F., Böckmann, K.,
+Brüggen, M., Clerc, N., Dennerl, K., Dolag, K., Freyberg, M., … Zelmer, S. (2024).
+The SRG/eROSITA All-Sky Survey. The first catalog of galaxy clusters and groups
+in the Western Galactic Hemisphere. Astronomy and Astrophysics , 685, A106. https:
+//doi.org/10.1051/0004-6361/202348264
+Clark, A. (2015). Pillow (PIL fork) documentation . readthedocs. https://buildmedia.
+readthedocs.org/media/pdf/pillow/latest/pillow.pdf
+Dey, A., Schlegel, D. J., Lang, D., Blum, R., Burleigh, K., Fan, X., Findlay, J. R., Finkbeiner,
+D., Herrera, D., Juneau, S., Landriau, M., Levi, M., McGreer, I., Meisner, A., Myers, A.
+D., Moustakas, J., Nugent, P., Patej, A., Schlafly, E. F., … Zhou, Z. (2019). Overview
+of the DESI Legacy Imaging Surveys. The Astronomical Journal , 157 (5), 168. https:
+//doi.org/10.3847/1538-3881/ab089d
+Ding, J., Dalal, R., Sunayama, T., Strauss, M. A., Oguri, M., Okabe, N., Hilton, M., Monteiro-
+Oliveira, R., Sifón, C., & Staggs, S. T. (2025). Miscentring of optical galaxy clusters based
+on Sunyaev-Zeldovich counterparts. Monthly Notices of the Royal Astronomical Society ,
+536(1), 572–591. https://doi.org/10.1093/mnras/stae2601
+Fortson, L., Masters, K., Nichol, R., Borne, K. D., Edmondson, E. M., Lintott, C., Raddick,
+J., Schawinski, K., & Wallin, J. (2012). Galaxy Zoo: Morphological classification and
+citizen science. In M. J. Way, J. D. Scargle, K. M. Ali, & A. N. Srivastava (Eds.),
+Advances in machine learning and data mining for astronomy (pp. 213–236). https:
+//doi.org/10.48550/arXiv.1104.5513
+Walker et al. (2026). Image Marker. Journal of Open Source Software , 11(125), 9686. https://doi.org/10.21105/joss.09686. 4
+Harris, C. R., Millman, K. J., Walt, S. J. van der, Gommers, R., Virtanen, P., Cournapeau, D.,
+Wieser, E., Taylor, J., Berg, S., Smith, N. J., Kern, R., Picus, M., Hoyer, S., Kerkwijk,
+M. H. van, Brett, M., Haldane, A., Río, J. F. del, Wiebe, M., Peterson, P., … Oliphant,
+T. E. (2020). Array programming with NumPy. Nature, 585(7825), 357–362. https:
+//doi.org/10.1038/s41586-020-2649-2
+Hausen, R., & Robertson, B. E. (2022). FitsMap: A simple, lightweight tool for displaying
+interactive astronomical image and catalog data. Astronomy and Computing , 39, 100586.
+https://doi.org/10.1016/j.ascom.2022.100586
+Hilton, M., Sifón, C., Naess, S., Madhavacheril, M., Oguri, M., Rozo, E., Rykoff, E., Abbott,
+T. M. C., Adhikari, S., Aguena, M., Aiola, S., Allam, S., Amodeo, S., Amon, A., Annis, J.,
+Ansarinejad, B., Aros-Bunster, C., Austermann, J. E., Avila, S., … Zhang, Y. (2021). The
+Atacama Cosmology Telescope: A catalog of >4000 Sunyaev-Zel’dovich galaxy clusters.
+The Astrophysical Journal Supplement Series , 253(1), 3. https://doi.org/10.3847/1538-
+4365/abd023
+Joye, W. (2017). SAOImageDS9/SAOImageDS9 (Version v7.6b8). Zenodo. https://doi.org/
+10.5281/zenodo.1041781
+Kelly, P. M., Jobel, J., Eiger, O., Abd, A., Jeltema, T. E., Giles, P., Hollowood, D. L.,
+Wilkinson, R. D., Turner, D. J., Bhargava, S., Everett, S., Farahi, A., Romer, A. K., Rykoff,
+E. S., Wang, F., Bocquet, S., Cross, D., Faridjoo, R., Franco, J., … Collaboration, D.
+(2024). Dark Energy Survey year 3 results: Miscentring calibration and x-ray-richness
+scaling relations in redMaPPer clusters. Monthly Notices of the Royal Astronomical Society ,
+533(1), 572–588. https://doi.org/10.1093/mnras/stae1786
+LSST Science Collaboration, Abell, P. A., Allison, J., Anderson, S. F., Andrew, J. R., Angel, J.
+R. P., Armus, L., Arnett, D., Asztalos, S. J., Axelrod, T. S., Bailey, S., Ballantyne, D. R.,
+Bankert, J. R., Barkhouse, W. A., Barr, J. D., Barrientos, L. F., Barth, A. J., Bartlett, J.
+G., Becker, A. C., … Schmidt, S. (2009). LSST Science Book, Version 2.0. arXiv e-Prints ,
+arXiv:0912.0201. https://doi.org/10.48550/arXiv.0912.0201
+Marshall, P. J., Verma, A., More, A., Davis, C. P., More, S., Kapadia, A., Parrish, M., Snyder,
+C., Wilcox, J., Baeten, E., Macmillan, C., Cornen, C., Baumer, M., Simpson, E., Lintott,
+C. J., Miller, D., Paget, E., Simpson, R., Smith, A. M., … Collett, T. E. (2016). SPACE
+WARPS - I. Crowdsourcing the discovery of gravitational lenses. Monthly Notices of the
+Royal Astronomical Society , 455(2), 1171–1190. https://doi.org/10.1093/mnras/stv2009
+Melchior, P., Sheldon, E., Drlica-Wagner, A., Rykoff, E. S., Abbott, T. M. C., Abdalla, F. B.,
+Allam, S., Benoit-Lévy, A., Brooks, D., Buckley-Geer, E., Carnero Rosell, A., Carrasco Kind,
+M., Carretero, J., Crocce, M., D’Andrea, C. B., da Costa, L. N., Desai, S., Doel, P., Evrard,
+A. E., … Zhang, Y. (2016). Crowdsourcing quality control for Dark Energy Survey images.
+Astronomy and Computing , 16, 99–108. https://doi.org/10.1016/j.ascom.2016.04.003
+Prabhu, K., Raghunathan, S., Millea, M., Lynch, G. P., Ade, P. A. R., Anderes, E., Anderson,
+A. J., Ansarinejad, B., Archipley, M., Balkenhol, L., Benabed, K., Bender, A. N., Benson,
+B. A., Bianchini, F., Bleem, L. E., Bouchet, F. R., Bryant, L., Camphuis, E., Carlstrom, J.
+E., … Zebrowski, J. A. (2024). Testing the ΛCDM cosmological model with forthcoming
+measurements of the cosmic microwave background with SPT-3G. The Astrophysical
+Journal, 973(1), 4. https://doi.org/10.3847/1538-4357/ad5ff1
+Riverbank Computing Limited. (2025). PyQt documentation. https://www.riverbankcomputing.
+com/static/Docs/PyQt6/
+Rozo, E., & Rykoff, E. S. (2014). redMaPPer II: X-ray and SZ performance benchmarks for
+the SDSS catalog. The Astrophysical Journal , 783(2), 80. https://doi.org/10.1088/0004-
+637X/783/2/80
+Simpson, R., Page, K. R., & De Roure, D. (2014). Zooniverse: Observing the world’s largest
+Walker et al. (2026). Image Marker. Journal of Open Source Software , 11(125), 9686. https://doi.org/10.21105/joss.09686. 5
+citizen science platform. Proceedings of the 23rd International Conference on World Wide
+Web, 1049–1054. https://doi.org/10.1145/2567948.2579215
+Sobrin, J. A., Anderson, A. J., Bender, A. N., Benson, B. A., Dutcher, D., Foster, A., Goeckner-
+Wald, N., Montgomery, J., Nadolski, A., Rahlin, A., Ade, P. A. R., Ahmed, Z., Anderes,
+E., Archipley, M., Austermann, J. E., Avva, J. S., Aylor, K., Balkenhol, L., Barry, P. S., …
+Young, M. R. (2022). The design and integrated performance of SPT-3G. The Astrophysical
+Journal Supplement Series , 258(2), 42. https://doi.org/10.3847/1538-4365/ac374f
+Umetsu, K. (2020). Cluster-galaxy weak lensing. Astronomy and Astrophysics Reviews , 28(1),
+7. https://doi.org/10.1007/s00159-020-00129-w
+Virtanen, P., Gommers, R., Oliphant, T. E., Haberland, M., Reddy, T., Cournapeau, D.,
+Burovski, E., Peterson, P., Weckesser, W., Bright, J., van der Walt, S. J., Brett, M.,
+Wilson, J., Millman, K. J., Mayorov, N., Nelson, A. R. J., Jones, E., Kern, R., Larson, E., …
+SciPy 1.0 Contributors. (2020). SciPy 1.0: Fundamental algorithms for scientific computing
+in Python. Nature Methods , 17, 261–272. https://doi.org/10.1038/s41592-019-0686-2
+Walker et al. (2026). Image Marker. Journal of Open Source Software , 11(125), 9686. https://doi.org/10.21105/joss.09686. 6
