@@ -1,0 +1,661 @@
+eprints@whiterose.ac.uk
+https://eprints.whiterose.ac.uk
+Universities of Leeds, Sheffield and York
+Deposited via The University of Leeds.
+White Rose Research Online URL for this paper:
+https://eprints.whiterose.ac.uk/id/eprint/244446/
+Version: Accepted Version
+Proceedings Paper:
+Eskandari, A., Rezaei, M., Azarmi, M. et al. (Accepted: 2026) Pedestrian Crossing 
+Prediction for Automated Vehicles: A Geometry-aware Method Using Surface Normal. In: 
+Proceedings of the ACM/IEEE Joint Conference on Digital Libraries. AutoUI '26 - 18th 
+International ACM Conference on Automotive User Interfaces and Interactive Vehicular 
+Applications, 20-23 Sep 2026, Gothenburg, Sweden. ACM. ISSN: 1552-5996. (In Press) 
+© Owner/Author | ACM 2026. This is the author's version of the work. It is posted here for 
+your personal use. Not for redistribution.
+Reuse 
+Items deposited in White Rose Research Online are protected by copyright, with all rights reserved unless 
+indicated otherwise. They may be downloaded and/or printed for private study, or other acts as permitted by 
+national copyright laws. The publisher or other rights holders may allow further reproduction and re-use of 
+the full text version. This is indicated by the licence information on the White Rose Research Online record 
+for the item. 
+Takedown 
+If you consider content in White Rose Research Online to be in breach of UK law, please notify us by 
+emailing eprints@whiterose.ac.uk including the URL of the record and the reason for the withdrawal request. 
+Pedestrian Crossing Prediction for Automated Vehicles: A
+Geometry-aware Method Using Surface Normal
+Ali Eskandari
+Institute for Transport Studies, University of Leeds
+Leeds, United Kingdom
+qbjs9681@leeds.ac.uk
+Mahdi Rezaei
+Institute for Transport Studies, University of Leeds
+Leeds, United Kingdom
+m.rezaei@leeds.ac.uk
+Mohsen Azarmi
+Institute for Transport Studies
+Leeds, United Kingdom
+Derek R. Magee
+School of Computer Science, University of Leeds
+Leeds, England, United Kingdom
+d.r.magee@leeds.ac.uk
+Abstract
+Accurate prediction of pedestrian crossing intention is critical for 
+the safety of automated vehicles. Existing approaches mainly rely 
+on visual appearance and scene context derived from raw images 
+and semantic segmentation. We propose a geometry-aware frame-
+work that incorporates surface normal maps encoding pixel-level 
+3D surface orientation. To integrate heterogeneous information, 
+we extend a multi-stream GRUśattention architecture with surface-
+normal features. The visual branch combines surface normals, local 
+context, and segmentation overlays, while the non-visual branch in-
+cludes body pose, bounding boxes, and ego-vehicle speed. Extensive 
+ablation studies on the PIE dataset demonstrate that surface normal 
+maps provide consistent performance gains. When combined with 
+contextual features, they improve F1 score and AUC by 3.85% and 
+2.35%, respectively, and yield more stable predictions up to two 
+seconds before crossing events. These results highlight the impor-
+tance of geometry-informed features as an effective complement to 
+conventional visual inputs.
+CCS Concepts
+· Computing methodologies → Scene understanding.
+Keywords
+Pedestrian Crossing Intention Prediction, Automated Vehicles, Sur-
+face Normal, Feature Fusion, Context-aware prediction
+ACM Reference Format:
+Ali Eskandari, Mahdi Rezaei, Mohsen Azarmi, and Derek R. Magee. 2018.
+Pedestrian Crossing Prediction for Automated Vehicles: A Geometry-aware
+Method Using Surface Normal. In . ACM, New York, NY, USA, 7 pages.
+https://doi.org/XXXXXXX.XXXXXXX
+Permission to make digital or hard copies of all or part of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation
+on the first page. Copyrights for components of this work owned by others than the
+author(s) must be honored. Abstracting with credit is permitted. To copy otherwise, or
+republish, to post on servers or to redistribute to lists, requires prior specific permission
+and/or a fee. Request permissions from permissions@acm.org.
+Conference’17, Washington, DC, USA
+© 2018 Copyright held by the owner/author(s). Publication rights licensed to ACM.
+ACM ISBN 978-x-xxxx-xxxx-x/YYYY/MM
+https://doi.org/XXXXXXX.XXXXXXX
+1 Introduction
+Pedestrian crossing prediction, also known as pedestrian intention
+prediction (PIP) models, aim at forecasting whether a pedestrian
+will cross the road in the near future. This automated driving func-
+tion is a key element in the enhancement of intelligent and safe
+autonomous driving systems [ 27]. In complex urban environments,
+vehicles often encounter pedestrians whose actions must be accu-
+rately anticipated to ensure safe and timely manoeuvres. As one of
+the most vulnerable and unpredictable road users, pedestrians play
+a significant role in traffic-related incidents. Reliable prediction
+systems must therefore analyse and integrate pedestrian motion
+cues, environmental context, and interactions with the ego-vehicle
+to effectively infer crossing intentions.
+Previous studies have utilised visual and non-visual cues such as
+pedestrian bounding boxes, body pose keypoints, and vehicle dy-
+namics to infer pedestrian crossing behaviour [ 1, 11, 26]. However,
+many existing approaches rely heavily on raw frame features or se-
+mantic segmentation inputs, both prone to degradation under chal-
+lenging conditions such as poor lighting or visual ambiguity [24, 25].
+Current approaches often lack an explicit representation of physical
+scene elements, such as curbs, pavements, and road surfaces, which
+are essential factors influencing pedestrian decision-making. While
+appearance and semantic cues capture visual context, they provide
+limited insight into the physical layout of the scene, which strongly
+influences pedestrian crossing behaviour (e.g., the spatial separa-
+tion between road and sidewalk). A geometry-aware representation
+helps the model understand which parts of the scene are walkable
+or suitable for crossing.
+To address these limitations, we investigate the integration of 
+surface normal maps as a complementary geometry-aware modal-
+ity for pedestrian crossing prediction. Rather than proposing a 
+new prediction architecture, our objective is to evaluate whether 
+explicit geometric scene representations provide complementary 
+information beyond conventional appearance- and semantics-based 
+features. Surface normal maps represent the per-pixel 3D orienta-
+tion of visible scene surfaces and thus encode scene structure rather 
+than appearance. Although they are estimated from RGB frames 
+using DSINE [2], they capture geometric cues that are relatively less 
+sensitive to lighting, shadows, or texture variations [14]. Surface 
+normals have been successfully employed in various tasks, includ-
+ing 3D reconstruction and affordance prediction. However, their 
+potential for pedestrian crossing prediction remains unexplored.
+Conference’17, July 2017, Washington, DC, USA Ali Eskandari, Mahdi Rezaei, Mohsen Azarmi, and Derek R. Magee
+Unlike depth maps or Lidar-derived geometry, surface normals offer
+a compact, camera-derived representation of surface orientation
+that can be estimated directly from monocular videos.
+Inspired by prior multi-stream designs [ 1, 11, 26], the proposed
+pedestrian crossing prediction model processes six input modali-
+ties: local context, semantic segmentation (via overlaid raw-frame-
+segmentation maps), surface normal maps, bounding box, body
+pose, and ego-vehicle speed. Each modality is temporally modelled
+using a dedicated GRU-attention stream to capture its temporal
+dynamics, and the resulting features are fused using a hybrid late-
+stage strategy. Experiments on the PIE dataset [ 19], a widely used
+benchmark dataset for pedestrian behaviour analysis, demonstrate
+that incorporating surface normal maps consistently improves per-
+formance across multiple metrics. Notably, surface normals enhance
+the consistency of model predictions over different time-to-event
+(TTE) horizons. We adopt Yang et al. [ 26] multi-stream design not
+to propose a new architecture, but to systematically evaluate the in-
+fluence of adding a geometry-informed modality under a controlled,
+established baseline. Our key contributions are as follows:
+• We introduce surface normal maps as a complementary 
+geometry-aware representation for pedestrian crossing pre-
+diction, representing the first application of this modality in 
+this context.
+• We demonstrate that integrating surface normal maps into 
+an established multi-stream GRU-attention framework con-
+sistently improves pedestrian crossing prediction perfor-
+mance across Accuracy, F1 score, and AUC metrics.
+• We conduct comprehensive ablation studies and temporal 
+analyses showing that incorporating surface normals im-
+proves model robustness across longer time-to-event inter-
+vals.
+By incorporating surface normal information into crossing pre-
+diction, we introduce a complementary geometric cue that enhances
+spatial understanding of urban scenes and supports more reliable
+decision-making for autonomous systems.
+2 Related Work
+Early approaches to pedestrian crossing prediction primarily relied
+on handcrafted features or convolutional neural networks (CNNs)
+applied to RGB data [ 20, 21]. While effective in capturing visual
+appearance, these methods often overlook non-visual signals such
+as pedestrian dynamics or vehicle motion. Subsequent works ad-
+dressed this limitation by incorporating additional modalities. For
+instance, Kotseruba et al. [ 13] introduced the PCPA framework,
+which fused image features with contextual and dynamic cues. Ca-
+dena et al. proposed the Pedestrian Graph [ 4] and its enhanced ver-
+sion [3], integrating pose keypoints, image context, and ego-vehicle
+speed for richer scene understanding. Similarly, Liu et al. [ 15] mod-
+elled interactions between pedestrians and other road users using
+a graph convolutional network (GCN), capturing both spatial rela-
+tionships and temporal dependencies in dynamic scenes.
+With the advent of transformer-based architectures, several mod-
+els have advanced the field by capturing long-range dependencies
+through self-attention mechanisms. TrEP [ 28] models temporal
+relations in pedestrian behaviour while accounting for uncertainty
+via evidential learning, whereas TAMformer [ 17] employs a multi-
+modal transformer to forecast future pedestrian actions across mul-
+tiple anticipation horizons. PedFormer [ 18] introduces cross-modal
+attention and gated multi-task learning for joint trajectory and
+intention prediction.
+Alongside these developments, multi-modal fusion techniques
+have also been explored. Ham et al. [ 11] proposed MCIP, a multi-
+stream network that processes heterogeneous features in parallel
+to exploit their complementary properties. PIP-Net [ 1] integrates
+spatial and kinematic inputs using recurrent units and temporal
+attention, and introduces local motion flow and categorical depth
+features for improved visual encoding.
+Despite these advancements, most state-of-the-art models rely
+primarily on RGB appearance or 2D semantic segmentation to rep-
+resent scene context. However, such representations are sensitive
+to adverse illumination, reflections, or low-texture regions [14], and
+often lack explicit 3D geometric understanding.
+Surface normal maps provide an explicit representation of scene
+geometry by encoding the per-pixel orientation of visible surfaces.
+These geometric cues capture structural properties of the envi-
+ronment, such as surface layout, boundaries, and spatial config-
+uration, that are directly relevant to pedestrian movement and
+crossing behaviour. While surface normal estimation has been
+widely studied in geometric scene understanding and reconstruc-
+tion tasks [ 9, 10, 12, 22], its potential role in behavioural reasoning
+for pedestrian crossing prediction remains largely unexplored.
+Existing pedestrian crossing prediction approaches primarily
+rely on appearance-based or motion-related features, which may
+not explicitly represent the physical structure of the environment,
+such as road boundaries, sidewalks, or curb geometry. This work
+addresses this gap by introducing surface normal maps as a com-
+plementary geometric modality for pedestrian crossing prediction.
+The proposed approach is motivated by the hypothesis that incorpo-
+rating explicit scene geometry can support more reliable reasoning
+about pedestrian behaviour, particularly in complex urban envi-
+ronments where spatial layout and surface configuration influence
+crossing decisions.
+3 Methodology
+We address the task of pedestrian crossing prediction as follows: 
+given a sequence of 𝑚+1 consecutive frames captured by a forward-
+facing, vehicle-mounted camera, the objective is to predict whether 
+a target pedestrian 𝑖 will begin crossing the road at time 𝑡, which is 
+also known as crossing event time. A critical aspect of this predic-
+tion is the Time-to-Event (TTE), defined as the interval between 
+the last frame of the model’s observation window and the actual 
+start of the crossing event. Our model aims to make this predic-
+tion for TTE values typically ranging from 30 to 60 frames (1 to 
+2 seconds) [20]. We adopt an established inspired by prior multi-
+stream designs [1, 11, 26] enabling a controlled evaluation of the 
+contribution of surface normal maps while maintaining a consis-
+tent architectural baseline. The proposed model, shown in Figure 1, 
+utilises three primary visual input streams (local context, seman-
+tic segmentation, and surface normal maps) and three non-visual 
+modalities (body pose, bounding box, and ego-vehicle speed). The 
+main model also uses an overlaid representation for the semantic
+Pedestrian Crossing Prediction for Automated Vehicles: A Geometry-aware Method Using Surface Normal Conference’17, July 2017, Washington, DC, USA
+segmentation stream. Below, we provide more details about the
+Visual and non-visual Inputs.
+3.1 Visual Inputs
+The visual branch processes three distinct types of visual informa-
+tion to capture complementary cues:
+Local Context (𝐿𝑖 ) is obtained from the RGB frame image, which
+is cropped around each pedestrian’s bounding box, expanded by
+a factor of 1.5, and subsequently resized to 224 × 224 pixels. Local
+context represents the local appearance and surrounding scene
+elements of the target pedestrian. The temporal sequence of local
+context frames is denoted as 𝐿𝑖 = {𝑙𝑖
+𝑡 −𝑚, . . . , 𝑙𝑖
+𝑡 }.
+Semantic Segmentation information is the second visual in-
+put. Raw semantic segmentation masks ( 𝑆𝑖 ) are generated using
+DeepLabV3 [6], pretrained on the Cityscapes dataset [ 8]. These
+masks represent scene semantics, including roads, pavements, and
+vehicles, and are computed from the entire frame. The temporal
+sequence is defined as 𝑆𝑖 = {𝑠𝑖
+𝑡 −𝑚, . . . , 𝑠𝑖
+𝑡 }.
+In our main proposed model, to better balance appearance and
+semantic cues while preserving spatial coherence, we utilise Over-
+laid RGB-Segmentations (𝑆𝑂 𝑖 ) as the input for this stream. 𝑆𝑂 𝑖
+is a composite input created by overlaying the raw semantic mask
+onto the full frame with 50% opacity. The resulting sequence is
+denoted as 𝑆𝑂 𝑖 = {𝑠𝑜𝑖
+𝑡 −𝑚, . . . , 𝑠𝑜𝑖
+𝑡 }.
+Blending semantic masks with raw frames enhances spatial un-
+derstanding by retaining low-level texture and high-level structural
+information. The input 𝑆𝑂 𝑖 (or 𝑆𝑖 in ablation studies; see Section 4)
+is resized to 224 × 224 before being fed to its dedicated stream.
+Surface Normal Maps (𝑁 𝑖 ) are estimated using the approach of 
+Bae et al. [2], encoding per-pixel 3D surface orientation (e.g., road 
+planarity and curb edges). Surface normals provide geometry-
+aware priors that are comparatively less sensitive to lighting 
+variations and are computed from the entire frame. The temporal 
+sequence of surface normals is defined as 𝑁𝑖 = {𝑛𝑖
+𝑡 −𝑚, . . . , 𝑛𝑖
+𝑡 }.
+Surface normals maintain spatial consistency through piecewise
+smoothness and structural regularity, enabling the model to distin-
+guish planar surfaces (e.g., roads) from vertical ones (e.g., curbs or
+pedestrians). Sharp changes in normals at geometric boundaries
+further refine segmentation masks, ensuring alignment with the
+physical environment. While normals lack semantic identity, their
+fusion with semantic features creates a physically coherent rep-
+resentation that enhances generalisation in unpredictable urban
+settings.
+Each stream is processed through a CNNśGRUśattention pipeline
+(Section 3.3) to generate modality-specific embeddings.
+3.2 Non-visual Inputs
+In parallel with the visual branch, the non-visual branch processes
+features related to pedestrian motion and ego-vehicle dynamics.
+These include the target pedestrian’s bounding box, body pose
+keypoints, and the speed of the ego-vehicle.
+Bounding Box (𝐵𝑖 ): Each frame in the PIE dataset includes
+a 2D bounding box defined as 𝑏𝑖
+𝑡 = [𝑥1, 𝑦1, 𝑥2, 𝑦2] for the target
+pedestrian. The temporal sequence of these bounding boxes, 𝐵𝑖 =
+{𝑏𝑖
+𝑡 −𝑚, . . . , 𝑏𝑖
+𝑡 }, is used as an input to the model. For each 𝑏𝑖
+𝑡 , the
+coordinates are normalised relative to the frame resolution before
+being fed to the model. This sequence encodes the spatial position
+and trajectory of the target pedestrian over the observed window.
+Body Pose (𝑃𝑖 ): We use OpenPose [ 5] to extract 18 body key-
+points per frame, resulting in a 36-dimensional pose vector. These
+keypoints are obtained by applying the pose estimation model to the
+local context 𝐿𝑖 . The temporal pose sequence 𝑃𝑖 = {𝑝𝑖
+𝑡 −𝑚, . . . , 𝑝𝑖
+𝑡 }
+captures the posture dynamics of pedestrians over time.
+Ego-Vehicle Speed (𝑉 ): The sequence 𝑉 = {𝑣𝑡 −𝑚, . . . , 𝑣𝑡 } con-
+tains frame-wise speed values for the ego-vehicle, where each 𝑣𝑡
+represents the vehicle speed at frame 𝑡. This modality provides
+motion context for pedestrianśvehicle interaction.
+Each modality is encoded through a dedicated GRUśattention
+stream, and the resulting representations are fused using a late-
+fusion strategy for binary classification.
+3.3 Model Architecture and Feature Fusion
+Our multi-stream architecture, inspired by [ 1, 11, 26], processes vi-
+sual and non-visual modalities via dedicated streams, each employ-
+ing a GRU-attention mechanism for temporal modelling, followed
+by a hybrid fusion strategy.
+Feature Encoders. Visual streams (𝐿𝑖, 𝑆𝑂𝑖, 𝑁 𝑖 ) are processed frame-
+wise by a VGG19 [ 23] backbone. Input frames ( 224 × 224 × 3) yield
+512-dim feature vectors per frame from the fourth max-pooling
+layer (via global average pooling), forming sequences of length𝑚+1.
+These sequences, and also non-visual sequences ( 𝑃𝑖, 𝐵𝑖, 𝑉), are then
+fed into modality-specific Gated Recurrent Units (GRUs) [ 7] (hid-
+den size 256) to capture temporal dynamics, producing hidden state
+sequences 𝐻 = {ℎ1, . . . , ℎ𝑚+1}.
+Temporal Attention. A temporal attention mechanism [16] weights
+the GRU hidden states 𝐻 for each stream. Given 𝐻 and its fi-
+nal state ℎ𝑒 = ℎ𝑚+1, attention weights 𝛼𝑠 are computed as 𝛼𝑠 =
+softmax(ℎ⊤
+𝑒 W𝑠 ˜ℎ𝑠 ) over all ˜ℎ𝑠 ∈ 𝐻 . The context vector ℎ𝑐 = /summationtext.1𝛼𝑠 ˜ℎ𝑠
+and ℎ𝑒 are combined: 𝐴𝑡𝑡𝑒𝑛 = tanh(W𝑐 [ℎ𝑐 ; ℎ𝑒 ]) , yielding a fixed-
+size (e.g., 256-dim) embedding per stream. W𝑠, W𝑐 are learnable
+parameters.
+Feature Fusion and Prediction. We follow the hybrid fusion strat-
+egy introduced by Yang et al. [ 26], which separates inputs into two
+branches: a non-visual branch and a visual branch.
+In the non-visual branch, we hierarchically fuse pose keypoints,
+bounding boxes, and ego-vehicle speed. First, pose sequences are
+passed through a GRU encoder. The resulting embeddings are con-
+catenated with the bounding box sequence and fed into a second
+GRU. This output is further concatenated with the ego-vehicle
+speed sequence and processed by a final GRU. A temporal attention
+module (as described above) is applied to the last GRU’s output to
+produce a 256-dimensional non-visual embedding 𝑉kin.
+In the visual branch, each stream, local context, semantic seg-
+mentation, and surface normal maps, is encoded independently
+using the CNNśGRUśTemporal Attention pipeline described pre-
+viously, each yielding a 256-dimensional embedding. These three
+embeddings are then concatenated to form the visual embedding
+of 𝑉vis ∈ R768.
+Finally, the non-visual embedding 𝑉kin ∈ R256 and the visual em-
+bedding 𝑉vis ∈ R768 are fused using a modality attention mechanism
+before the final prediction layer. This mechanism learns to scale the
+Conference’17, July 2017, Washington, DC, USA Ali Eskandari, Mahdi Rezaei, Mohsen Azarmi, and Derek R. Magee
+Figure 1: Overview of the proposed multi-stream architecture for pedestrian crossing prediction, including visual and kinematic
+branches, attention-based feature summarisation, and late fusion.
+contribution of the aggregated visual and non-visual information.
+The fused vector is then passed through a fully connected (FC) layer
+with sigmoid activation to predict the crossing label.
+4 Experiments and Results
+We conduct a series of experiments to evaluate the impact of in-
+corporating surface normal maps into an existing pedestrian cross-
+ing prediction model. Our evaluation focuses on three aspects: (1)
+comparing various visual feature configurations through ablation
+studies, (2) analysing the temporal robustness of predictions across
+time-to-event (TTE) intervals, and (3) evaluating the contribution
+of surface normals when used alongside appearance- and semantics-
+based features.
+4.1 Experimental Setup
+We evaluate our approach on the well known PIE dataset [19] in the
+research community, which contains over six hours of annotated
+urban driving footage captured from a vehicle-mounted camera.
+The dataset includes 1,842 pedestrian instances across diverse sce-
+narios, with 512 labelled as crossing and 1,322 as non-crossing. Each
+instance is annotated with bounding boxes, crossing behaviour, and
+ego-vehicle speed.
+Following the standard protocol of Yang et al. [ 26], we use an
+observation window of 𝑚+1 = 16 frames at 30 FPS to predict
+whether the target pedestrian will begin crossing shortly after the
+final frame. Performance is evaluated using Accuracy, Precision,
+Recall, F1 score, and Area Under the ROC Curve (AUC) .
+All models are implemented in TensorFlow and trained using the
+Adam optimiser with a learning rate of 5 × 10−5 and a batch size of 2
+for 60 epochs. Binary cross-entropy serves as the loss function. We
+apply a dropout rate of 0.5 in the attention modules and L2 regular-
+isation (𝜆 = 0.001) in the final classification layer. All experiments
+follow the dataset split defined in the PIE benchmark [ 13].
+Table 1: Performance of different visual feature combinations
+on the PIE dataset. All configurations include pose, bounding
+box, and vehicle speed.
+# Visual Components Acc AUC F1 Precision Recall
+1 𝐿 + 𝑆 [26] 0.88 0.85 0.78 0.78 0.79
+2 𝐿 + 𝑆𝑂 0.89 0.86 0.80 0.79 0.80
+3 𝐿 + 𝑁 0.88 0.86 0.80 0.79 0.80
+4 𝐿 + 𝑆 + 𝑁 0.88 0.86 0.79 0.76 0.83
+5 𝐿 + 𝑆𝑂 + 𝑁 0.90 0.87 0.81 0.81 0.82
+4.2 Visual Feature Ablation Study
+We conduct an ablation study with five model configurations to
+assess contributions of various visual scene representations, partic-
+ularly semantic and geometric cues. Our baseline includes essential
+features widely used in pedestrian prediction: local context (L), body
+pose (P), bounding boxes (B), and ego-vehicle speed (V). These are
+kept constant to isolate the impact of varied visual streams. The
+study focuses on ablating two key additional visual inputs from the
+broader scene: semantic segmentation and surface normal maps. To
+isolate the contribution of geometric and semantic visual features,
+all non-visual modalities (pose, bounding box, and vehicle speed)
+were kept constant across experiments.
+The ablated features are: 𝑁 (surface normal maps), 𝑆 (raw seg-
+mentation masks), and 𝑆𝑂 (segmentation masks overlaid on RGB
+frames with 0.5 opacity).
+The ablation results in Table 1 demonstrate the progressive ben-
+efit of integrating richer visual cues. Config #2 (𝐿 + 𝑆𝑂 ) shows that
+overlaying semantic masks on RGB frames improves performance
+(e.g., +0.02 F1 over Config #1 using raw segmentation masks, likely
+by providing the VGG19 with both low-level texture and high-level
+semantic structure, enhancing spatial understanding.
+Pedestrian Crossing Prediction for Automated Vehicles: A Geometry-aware Method Using Surface Normal Conference’17, July 2017, Washington, DC, USA
+Figure 2: Qualitative results demonstrating how surface normal maps can mitigate segmentation failures in pedestrian crossing
+prediction.
+The introduction of surface normal maps ( 𝑁 ) yields further im-
+provements. When used as the sole additional visual stream along-
+side local context (Config #3: 𝐿 + 𝑁 ), surface normals achieve perfor-
+mance comparable or superior to using raw segmentation ( Config
+#1) and similar to using overlaid segmentation ( Config #2 ), high-
+lighting their substantial standalone informative value (e.g., F1 of
+0.80 for Config #3 vs. 0.78 for Config #1).
+The most notable improvements occur when surface normals
+are integrated with the overlaid segmentation maps (Config #5 :
+𝐿 +𝑆𝑂 + 𝑁 ). This setup delivers the best overall performance (Accu-
+racy 0.90, AUC 0.87, F1 0.81), surpassingConfig #2 (without normals)
+in all metrics. This indicates a synergistic relationship, where the
+strong geometric understanding from surface normals (e.g., explicit
+curb and road planarity) enhances the rich appearance and seman-
+tic information from 𝑆𝑂 , resulting in a more comprehensive and
+dependable scene representation.
+Interestingly, while adding surface normals to raw segmentation
+maps (Config #4: 𝐿 + 𝑆 + 𝑁 ) substantially boosts Recall to 0.83 (com-
+pared to 0.79 for Config #1), it results in a slight decrease in Precision
+(0.76 vs. 0.78). This indicates that while geometric cues help identify
+more true crossing instances, potentially resolving ambiguities in
+poorly segmented regions, they might also contribute to an increase
+in false positives when combined only with raw segmentation. The
+superior performance of Config #5 suggests that the richer overlaid
+RGB-segmentation (𝑆𝑂 ) input helps contextualise the geometric
+cues from surface normal maps more effectively.
+Figure 2 presents qualitative examples illustrating how surface
+normal maps are complementary in scenarios where semantic seg-
+mentation fails due to visual ambiguity. In Row 1 ( 𝐿 + 𝑆), the model
+fails to predict the pedestrian as crossing. Despite the RGB image
+containing rich visual detail, the segmentation map misidentifies
+the pedestrian, likely due to shadowing and colour similarity with
+the background, resulting in an incorrect prediction. Row 2 ( 𝐿 +𝑆𝑂 )
+overlays the segmentation mask onto the RGB image to improve
+visibility. While this aids in perceptual clarity, it does not rectify
+the underlying segmentation error, and the model still misclassifies
+the crossing.
+In contrast, Rows 3 and 4 (𝐿 +𝑆 +𝑁 and 𝐿 +𝑆𝑂 +𝑁 ) utilise surface
+normal maps, offering illumination-invariant geometric cues that
+effectively capture the shape and layout of objects. While segmen-
+tation struggles to clearly define the pedestrian in these instances,
+the surface normals maintain the pedestrian’s form, allowing the
+model to predict crossing behaviour accurately. These examples
+support our hypothesis that surface normals enhance scene under-
+standing by offering geometry-aware features that compensate for
+the limitations of appearance- and semantics-based inputs.
+4.3 Temporal Performance Analysis
+To further analyse model robustness, we evaluate its predictive
+capability across the different TTEs. Specifically, we assess how
+performance varies when the 16-frame observation window ends
+at different proximities (30 to 60 frames, or 1 to 2 seconds) to the
+actual crossing event. This tests the model’s ability to make reliable
+predictions based on observations made further in advance of the
+event. Figure 3 presents Accuracy, F1 score, and AUC for key model
+configurations across these TTE values.
+As depicted in Figure 3, the configuration combining surface
+normals with the segmentation overlay ( Config #5 : 𝐿 + 𝑆𝑂 + 𝑁 ,
+green line) consistently yields the highest or near-highest scores
+across all metrics and most TTE horizons. Notably, it maintains an
+Conference’17, July 2017, Washington, DC, USA Ali Eskandari, Mahdi Rezaei, Mohsen Azarmi, and Derek R. Magee
+Figure 3: Comparison of model performance over different TTE intervals.
+accuracy exceeding 0.90 and an F1 score surpassing 0.82 up to a TTE 
+of 48 frames (1.6 s). Crucially, its AUC exhibits the most graceful 
+degradation, remaining superior to all other configurations across 
+the entire TTE range, particularly at longer TTEs (e.g., maintaining 
+an AUC above 0.85 at TTE = 60 frames). This superior AUC per-
+formance indicates a more robust ranking of crossing likelihoods, 
+even when predictions are made earlier before the crossing event. 
+We hypothesise that the rich contextual information derived from 
+the segmentation overlay, combined with the stable geometric cues 
+provided by surface normals, contributes to improved robustness 
+across longer temporal horizons.
+In contrast, the model using raw segmentation combined with
+surface normals ( Config #4: 𝐿 + 𝑆 + 𝑁 , purple line) demonstrates
+more rapid performance degradation at longer TTEs. Although
+competitive in shorter TTEs, its AUC, for instance, drops more
+dramatically than Config #5 after TTE = 42 frames, suggesting that
+inconsistencies in raw semantic masks become more detrimental
+when observations are further removed from the event.
+The model utilising only the segmentation overlay with local
+context (Config #2 : 𝐿 + 𝑆𝑂 , orange line) also performs competi-
+tively, generally outperforming configurations relying solely on
+raw segmentation ( Config #1, red dashed line) or solely on surface
+normals with local context ( Config #3, blue line) across many TTEs.
+This validates overlaid RGB-Segmentation as a strong stand-alone
+visual representation. However, the consistent gap between Config
+#2 (orange line) and Config #5 (green line) underscores the added
+benefit of surface normals for temporal robustness. Overall, these
+temporal results confirm that the synergistic combination of ap-
+pearance (local context), rich semantics (segmentation overlay), and
+explicit geometric structure (surface normals), as in Config #5, leads
+to more generalisable and reliable pedestrian crossing predictions,
+particularly in challenging scenarios requiring decisions based on
+earlier observations (i.e., larger TTEs).
+5 Conclusion and Future Work
+This work explored the integration of geometry-aware features,
+specifically surface normal maps, into a pedestrian crossing predic-
+tion framework. Extending an existing multi-stream GRU-attention
+architecture, we incorporated surface normals as a complementary
+modality alongside RGB appearance, semantic segmentation, pose
+keypoints, bounding boxes, and ego-vehicle speed.
+Comprehensive evaluations on the PIE dataset, including abla-
+tion studies and TTE analysis, showed that surface normals consis-
+tently improve robustness, particularly in visually ambiguous or
+structurally complex scenes. The combination of surface normals
+and overlaid semantic segmentation achieved the most consistent
+gains across all evaluation metrics, especially at longer prediction
+horizons, which is critical for A V’s safe and timely manoeuvring.
+This highlights the importance of encoding geometric structure
+in a noisy road environment in order to complement traditional
+appearance and motion cues in crossing prediction tasks. Unlike
+appearance-based features, surface normals provide fine-grained
+spatial information that remains stable across lighting and texture
+changes, offering more reliable inference in challenging urban sce-
+narios.
+This study intentionally adopted a pre-existing architecture, in-
+cluding a VGG19 backbone and GRU-based temporal encoders,
+following Yang et al. [ 26], but isolated the main part of the model
+in order to conduct a fair evaluation and comparison of the surface
+normal maps’ efficiency.
+The current pipeline relies on multiple task-specific models 
+(OpenPose, DeepLabV3, and DSINE) for feature extraction, which in-
+creases computational cost and limits real-time applicability. Since 
+the primary objective of this work was to evaluate the predictive 
+contribution of geometry-aware representations under a controlled 
+experimental setting, runtime performance was not explicitly eval-
+uated. Future work will investigate lightweight end-to-end archi-
+tectures and more efficient feature extraction pipelines suitable for 
+real-time autonomous driving applications.
+This study focused on evaluating the contribution of surface
+normal representations estimated from RGB video data. Although
+surface normals can also be derived from other sensing modali-
+ties, such as LiDAR or radar, the present work deliberately adopts
+a single-modality (video-only) setup to isolate and examine the
+geometric contribution of surface orientation cues within a vision-
+centric framework.
+In addition, the evaluation was conducted exclusively on the PIE
+dataset. While PIE is a widely used benchmark for pedestrian be-
+haviour analysis, validating the proposed approach across datasets
+with different environments, viewpoints, and traffic conditions
+would provide further insight into its generalisability. Future work
+can therefore explore cross-dataset validation and investigate the
+Pedestrian Crossing Prediction for Automated Vehicles: A Geometry-aware Method Using Surface Normal Conference’17, July 2017, Washington, DC, USA
+integration of geometry-aware representations within broader sens-
+ing configurations.
+References
+[1] Mohsen Azarmi, Mahdi Rezaei, and He Wang. 2025. PIP-Net: Pedestrian Intention
+Prediction in the Wild. IEEE Trans. Intelligent Transportation Systemsh (2025).
+[2] Gwangbin Bae and Andrew J Davison. 2024. Rethinking inductive biases for
+surface normal estimation. In Proceedings of the IEEE/CVF Conference on Computer
+Vision and Pattern Recognition . 9535ś9545.
+[3] Pablo Rodrigo Gantier Cadena, Yeqiang Qian, Chunxiang Wang, and Ming Yang.
+2022. Pedestrian graph+: A fast pedestrian crossing prediction model based on
+graph convolutional networks. IEEE Transactions on Intelligent Transportation
+Systems 23, 11 (2022), 21050ś21061. doi:10.1109/tits.2022.3173537
+[4] Pablo Rodrigo Gantier Cadena, Ming Yang, Yeqiang Qian, and Chunxiang Wang.
+2019. Pedestrian graph: Pedestrian crossing prediction based on 2d pose estima-
+tion and graph convolutional networks. In 2019 IEEE Intelligent Transportation
+Systems Conference (ITSC) . IEEE, 2000ś2005. doi:10.1109/itsc.2019.8917118
+[5] Zhe Cao, Tomas Simon, Shih-En Wei, and Yaser Sheikh. 2017. Realtime multi-
+person 2D pose estimation using part affinity fields. In Proceedings of the IEEE
+conference on computer vision and pattern recognition . 7291ś7299.
+[6] Liang-Chieh Chen, George Papandreou, Florian Schroff, and Hartwig Adam. 2017.
+Rethinking atrous convolution for semantic image segmentation. arXiv preprint
+arXiv:1706.05587 (2017).
+[7] Kyunghyun Cho, Bart Van Merriënboer, Dzmitry Bahdanau, and Yoshua Ben-
+gio. 2014. On the properties of neural machine translation: Encoder-decoder
+approaches. arXiv preprint arXiv:1409.1259 (2014).
+[8] Marius Cordts, Mohamed Omran, Sebastian Ramos, Timo Rehfeld, Markus En-
+zweiler, Rodrigo Benenson, Uwe Franke, Stefan Roth, and Bernt Schiele. 2016.
+The cityscapes dataset for semantic urban scene understanding. In Proceedings of
+the IEEE conference on computer vision and pattern recognition . 3213ś3223.
+[9] David Eigen and Rob Fergus. 2015. Predicting depth, surface normals and seman-
+tic labels with a common multi-scale convolutional architecture. In Proceedings
+of the IEEE international conference on computer vision . 2650ś2658.
+[10] Silvano Galliani, Katrin Lasinger, and Konrad Schindler. 2015. Massively parallel
+multiview stereopsis by surface normal diffusion. In Proceedings of the IEEE
+international conference on computer vision . 873ś881.
+[11] Je-Seok Ham, Dae Hoe Kim, NamKyo Jung, and Jinyoung Moon. 2023. CIPF:
+Crossing Intention Prediction Network Based on Feature Fusion Modules for Im-
+proving Pedestrian Safety. In Proceedings of the IEEE/CVF Conference on Computer
+Vision and Pattern Recognition . 3665ś3674. doi:10.1109/cvprw59228.2023.00374
+[12] Yakun Ju, Junyu Dong, and Sheng Chen. 2021. Recovering surface normal and
+arbitrary images: A dual regression network for photometric stereo. IEEE Trans-
+actions on Image Processing 30 (2021), 3676ś3690.
+[13] Iuliia Kotseruba, Amir Rasouli, and John K Tsotsos. 2021. Benchmark for evalu-
+ating pedestrian action prediction. In IEEE/CVF winter conference on applications
+of computer vision . 1258ś1268.
+[14] Hoang-An Le, Anil S Baslamisli, Thomas Mensink, and Theo Gevers. 2018. Three
+for one and one for three: Flow, Segmentation, and Surface Normals. arXiv
+preprint arXiv:1807.07473 (2018).
+[15] Bingbin Liu, Ehsan Adeli, Zhangjie Cao, Kuan-Hui Lee, Abhijeet Shenoi, Adrien
+Gaidon, and Juan Carlos Niebles. 2020. Spatiotemporal relationship reasoning
+for pedestrian intent prediction. IEEE Robotics and Automation Letters 5, 2 (2020),
+3485ś3492.
+[16] Minh-Thang Luong, Hieu Pham, and Christopher D Manning. 2015. Effec-
+tive approaches to attention-based neural machine translation. arXiv preprint
+arXiv:1508.04025 (2015).
+[17] Nada Osman, Guglielmo Camporese, and Lamberto Ballan. 2023. Tamformer:
+Multi-modal transformer with learned attention mask for early intent prediction.
+In ICASSP 2023-2023 IEEE International Conference on Acoustics, Speech and Signal
+Processing (ICASSP). IEEE, 1ś5. doi:10.1109/ICASSP49357.2023.10095781
+[18] Amir Rasouli and Iuliia Kotseruba. 2023. PedFormer: Pedestrian behavior predic-
+tion via cross-modal attention modulation and gated multitask learning. In IEEE
+International Conference on Robotics and Automation (ICRA) . IEEE, 9844ś9851.
+doi:10.1109/ICRA48891.2023.10161318
+[19] Amir Rasouli, Iuliia Kotseruba, Toni Kunic, and John K Tsotsos. 2019. Pie: A
+large-scale dataset and models for pedestrian intention estimation and trajectory
+prediction. In IEEE/CVF international conference on computer vision . 6262ś6271.
+[20] Amir Rasouli and John K Tsotsos. 2019. Autonomous vehicles that interact with
+pedestrians: A survey of theory and practice. IEEE transactions on intelligent
+transportation systems 21, 3 (2019), 900ś918.
+[21] Khaled Saleh, Mohammed Hossny, and Saeid Nahavandi. 2019. Real-time intent
+prediction of pedestrians for autonomous ground vehicles via spatio-temporal
+densenet. In 2019 International Conference on Robotics and Automation (ICRA) .
+IEEE, 9704ś9710. doi:10.1109/icra.2019.8793991
+[22] Johannes L Schonberger and Jan-Michael Frahm. 2016. Structure-from-motion
+revisited. In Proceedings of the IEEE conference on computer vision and pattern
+recognition. 4104ś4113.
+[23] Karen Simonyan and Andrew Zisserman. 2014. Very deep convolutional networks
+for large-scale image recognition. arXiv preprint arXiv:1409.1556 (2014).
+[24] Diem-Phuc Tran, Van-Dung Hoang, Tri-Cong Pham, and Chi-Mai Luong. 2018.
+Pedestrian activity prediction based on semantic segmentation and hybrid of
+machines. Journal of Computer Science and Cybernetics 34, 2 (2018), 113ś125.
+[25] Hrishikesh Vachhani, Thangarajah Akilan, Yash Devmurari, Nisharaff Shaik, and
+Dhruvisha Patel. 2023. Low-light Pedestrian Detection in Visible and Infrared
+Image Feeds: Issues and Challenges. arXiv preprint arXiv:2311.08557 (2023).
+[26] Dongfang Yang, Haolin Zhang, Ekim Yurtsever, Keith A Redmill, and Ümit
+Özgüner. 2022. Predicting pedestrian crossing intention with feature fusion
+and spatio-temporal attention. IEEE Transactions on Intelligent Vehicles 7, 2 (2022),
+221ś230.
+[27] George Yannis, Dimitrios Nikolaou, Alexandra Laiou, Yvonne Achermann
+Stürmer, Ilona Buttler, and Dagmara Jankowska-Karpa. 2020. Vulnerable road
+users: Cross-cultural perspectives on performance and attitudes. IATSS research
+44, 3 (2020), 220ś229.
+[28] Zhengming Zhang, Renran Tian, and Zhengming Ding. 2023. Trep: Transformer-
+based evidential prediction for pedestrian intention with uncertainty. In AAAI
+Conference on Artificial Intelligence. 3534ś3542. doi:10.1609/aaai.v37i3.25463
