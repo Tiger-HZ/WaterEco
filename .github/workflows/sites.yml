@@ -87,6 +87,12 @@ jobs:
         continue-on-error: true
         run: python3 update.py || echo "update(1) failed, continue"
 
+      - name: 坏链自查修正（编造假链/繁体/英文版/首页占位）
+        if: always()
+        timeout-minutes: 12
+        continue-on-error: true
+        run: timeout 700 python3 fix_bad_urls.py --kb kb/kb.json --std std_index.json || echo "url fix skipped"
+
       # ④ 入库后巡检：校验已有原文真伪，把错误页/风控页/错配标记为待重取
       - name: 原文检查·入库后巡检（内容真伪）
         if: always()

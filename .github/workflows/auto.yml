@@ -104,6 +104,12 @@ jobs:
           OA_MAIL: 'water-eco-bot@users.noreply.github.com'
         run: timeout 780 python3 refetch_media.py || echo "refetch_media failed/timeout, skip"
 
+      - name: 坏链自查修正（编造假链/繁体/英文版/首页占位）
+        if: always()
+        timeout-minutes: 12
+        continue-on-error: true
+        run: timeout 700 python3 fix_bad_urls.py --kb kb/kb.json --std std_index.json || echo "url fix skipped"
+
       # —— 以下三步用 if: always()：采集异常也必须重建并部署站点，杜绝“静默停更” ——
       # —— 体积治理：PDF 分级保留 + 清理历史快照，避免仓库超过 Pages 1GB 上限 ——
       #   背景：2026-09-20 审计发现仓库已 1.21GB（kb/pdf 占 1.15GB），

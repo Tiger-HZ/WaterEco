@@ -66,6 +66,7 @@ jobs:
         env:
           LIMIT: '150'
         run: |
+          python3 fix_bad_urls.py --kb kb/kb.json --std std_index.json || echo "url fix skipped"
           python3 verify_content.py || echo "verify failed, continue"
           python3 original_finder.py --audit || echo "audit failed, continue"
           bash safe_push.sh "verify"
