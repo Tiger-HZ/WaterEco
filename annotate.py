@@ -381,6 +381,50 @@ def clean_kg(rec):
     return out[:14]
 
 
+# ---------------- 10) 知识类别 kclass ----------------
+_KCLASS = {}
+
+
+def _kclass_cfg():
+    global _KCLASS
+    if not _KCLASS:
+        try:
+            with open(os.path.join(BASE, "kclass.json"), encoding="utf-8") as f:
+                _KCLASS = json.load(f)
+        except Exception:
+            _KCLASS = {}
+    return _KCLASS
+
+
+def annotate_kclass(rec):
+    """知识类别（面向用户）：政策法规/标准规范/规划与报告/管理机制/案例实践/技术产品/
+    流域治理与工程/科研文献/数据资源/概念术语/教育科普/重要讲话/机构信息/人物专家/新闻媒体/其他
+
+    判定：① 文件层级精确归类（最可靠）→ ② 标题/摘要特征词 → ③ 多命中按 order 取优先级最高者。
+    """
+    # DOI 链接即学术文献，直接判定（避免英文文献被误归资讯/新闻）
+    u = (rec.get("url") or "").lower()
+    if "doi.org" in u or "openalex" in u or "europepmc" in u:
+        return "research"
+    cfg = _kclass_cfg()
+    order = cfg.get("order") or [c["id"] for c in cfg.get("classes", [])]
+    lv = rec.get("content_type") or ""
+    hay = " ".join([rec.get("title") or "", rec.get("summary") or "",
+                    (rec.get("content") or "")[:1500]])
+    hits = set()
+    for c in cfg.get("classes", []):
+        if lv and lv in (c.get("by_level") or []):
+            hits.add(c["id"])
+        for kw in (c.get("keywords") or []):
+            if kw and kw in hay:
+                hits.add(c["id"])
+                break
+    for cid in order:
+        if cid in hits:
+            return cid
+    return "other"
+
+
 # ---------------- 主流程 ----------------
 def main():
     ap = argparse.ArgumentParser()
@@ -400,7 +444,7 @@ def main():
 
     for r in kb:
         before = json.dumps({k: r.get(k) for k in
-                             ("topic", "topic_conf", "doc_no", "content_type", "department", "region", "waterbody", "status", "importance", "quality", "kg_terms")},
+                             ("topic", "topic_conf", "kclass", "doc_no", "content_type", "department", "region", "waterbody", "status", "importance", "quality", "kg_terms")},
                             ensure_ascii=False, sort_keys=True)
 
         topics, tscores, tconf = annotate_topics(r)
@@ -445,13 +489,15 @@ def main():
         r["importance"] = compute_importance(r)
         r["quality"] = compute_quality(r)
 
+        r["kclass"] = annotate_kclass(r)
+
         ck = clean_kg(r)
         if ck is not None and ck != r.get("kg_terms"):
             r["kg_terms"] = ck
             stat["kg_cleaned"] += 1
 
         after = json.dumps({k: r.get(k) for k in
-                            ("topic", "topic_conf", "doc_no", "content_type", "department", "region", "waterbody", "status", "importance", "quality", "kg_terms")},
+                            ("topic", "topic_conf", "kclass", "doc_no", "content_type", "department", "region", "waterbody", "status", "importance", "quality", "kg_terms")},
                            ensure_ascii=False, sort_keys=True)
         if before != after:
             changed += 1

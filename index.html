@@ -341,6 +341,7 @@
   .must-note{font-size:11.5px;color:var(--amber);margin-top:4px}
 .b-topic{background:#e8f0fe;color:#1a4b8c;border-color:#c3d6f5}
 .b-class{background:#eef2f7;color:#33475b;border-color:#d5dde7}
+.b-kc{background:#eef7f4;color:#0d5c4d;border-color:#c9e6dd;font-weight:600}
 .b-rej{background:#f6f7f9;color:#9aa3af;border-color:#e3e6ea}
 .b-wb{background:#e6f5f2;color:#0f6b5c;border-color:#bfe5dd}
 .b-on{background:#e9f7ee;color:#146b34;border-color:#c2e6ce}
@@ -429,7 +430,7 @@
       <div class="kb-main">
         <div class="kb-subbar">
           <button class="kb-nav-toggle" id="kbNavToggle" onclick="toggleKbNav()">☰ 栏目</button>
-          <span class="seg" id="kbBrowse"><button class="on" data-b="topic">按业务域</button><button data-b="category">按分类</button><button data-b="department">按部门</button><button data-b="time">按时间</button></span>
+          <span class="seg" id="kbBrowse"><button class="on" data-b="topic">按业务域</button><button data-b="category">按知识类别</button><button data-b="department">按部门</button><button data-b="time">按时间</button></span>
           <select id="kbRange" onchange="onKbRangeChange()" style="margin-left:auto">
             <option value="">全部时间</option>
             <option value="7">近 1 周</option>
@@ -626,6 +627,9 @@ const CATS  = ['policy','standard','basin_eng','management','tech','literature',
 const TOPICS = [{id:"quality_mgmt",zh:"水环境质量管理"},{id:"drinking_water",zh:"饮用水水源保护"},{id:"outfall",zh:"入河排污口监管"},{id:"black_odor",zh:"城市黑臭水体治理"},{id:"drainage",zh:"城镇排水与溢流污染"},{id:"sewage",zh:"城镇污水处理与提质增效"},{id:"industrial",zh:"工业与园区水污染源监管"},{id:"reuse",zh:"再生水利用与资源化"},{id:"rural_sewage",zh:"农村生活污水治理"},{id:"agri_runoff",zh:"农业面源与农田退水"},{id:"livestock",zh:"畜禽养殖与水产养殖污染防治"},{id:"total_nitrogen",zh:"总氮管控与富营养化防治"},{id:"aquatic_ecology",zh:"水生态监测与评价"},{id:"cyanobacteria",zh:"蓝藻水华防控"},{id:"restoration",zh:"河湖生态修复与美丽河湖"},{id:"groundwater",zh:"地下水污染防治"},{id:"coastal",zh:"近岸海域（杭州湾）生态环境保护"},{id:"water_resource",zh:"水资源与生态流量（三水统筹）"},{id:"river_chief",zh:"河湖长制与流域协同治理"},{id:"digital",zh:"数字治水与智慧监测"},{id:"emergency",zh:"环境应急与风险防控"},{id:"eod_value",zh:"EOD 与生态产品价值实现"},{id:"institution",zh:"制度机制与法治保障"}];
 const TOPIC_LABELS = {}; TOPICS.forEach(x=>TOPIC_LABELS[x.id]=x.zh);
 /* 内容类型（与 content_policy.json 对齐；由 patch_index_class.py 生成） */
+/* 知识类别（16 类，由 kclass.json 生成；patch_index_kclass.py 同步） */
+const KCLASSES = [{id:"policy",zh:"政策法规"},{id:"standard",zh:"标准规范"},{id:"plan_report",zh:"规划与报告"},{id:"management",zh:"管理机制"},{id:"case_practice",zh:"案例实践"},{id:"tech_product",zh:"技术产品"},{id:"project_eng",zh:"流域治理与工程"},{id:"research",zh:"科研文献"},{id:"data_resource",zh:"数据资源"},{id:"concept",zh:"概念术语"},{id:"education",zh:"教育科普"},{id:"speech",zh:"重要讲话"},{id:"org_info",zh:"机构信息"},{id:"expert",zh:"人物专家"},{id:"news",zh:"新闻媒体"},{id:"other",zh:"其他"}];
+const KCLASS_LABELS = {}; KCLASSES.forEach(x=>KCLASS_LABELS[x.id]=x.zh);
 const CONTENT_CLASSES = [{id:"policy_standard",zh:"政策法规标准"},{id:"report_bulletin",zh:"报告与规划"},{id:"case_practice",zh:"实践案例"},{id:"expert_org",zh:"专家机构"},{id:"tech_method",zh:"技术方法"},{id:"academic",zh:"学术文献"},{id:"news",zh:"动态资讯"}];
 const CLASS_LABELS = {}; CONTENT_CLASSES.forEach(x=>CLASS_LABELS[x.id]=x.zh);
 const STATUSES = ["有效","已修订","已废止","待核"];
@@ -827,7 +831,7 @@ function recCard(r){
     <div class="badges">
       ${r.department?`<span class="badge b-dept">${esc(r.department)}</span>`:''}
       ${clsb}
-      ${r.category?`<span class="badge b-cat">${esc(CAT_LABELS[r.category]||r.category)}</span>`:''}
+      ${r.kclass?`<span class="badge b-kc">${esc(KCLASS_LABELS[r.kclass]||r.kclass)}</span>`:''}
       ${topb}
       ${wbb}
       ${stb}
@@ -881,7 +885,7 @@ async function loadKB(){
     let arr=App.kb.slice();
     if(q) arr=arr.filter(r=>(r.title+' '+(r.summary||'')+' '+(r.content||'')).toLowerCase().includes(q.toLowerCase()));
     if(dept) arr=arr.filter(r=>r.department===dept);
-    if(cat) arr=arr.filter(r=>r.category===cat);
+    if(cat) arr=arr.filter(r=>(r.kclass||'')===cat);
     if(region) arr=arr.filter(r=>r.region===region);
     if(quality) arr=arr.filter(r=>r.quality===quality);
     if(topic) arr=arr.filter(r=>(r.topic||[]).includes(topic));
@@ -924,8 +928,8 @@ function renderKbNav(arr){
     TOPICS.forEach(o=>{ const c=cnt[o.id]; if(!c) return;
       html+='<div class="nav-i'+(curTopic===o.id?' on':'')+'" onclick="kbNavPick(\'topic\',\''+o.id+'\')">'+o.zh+' <b>'+c+'</b></div>'; });
   } else if(dim==='category'){
-    CATS.forEach(c=>{ const n=arr.filter(r=>(r.category||'other')===c).length; if(!n) return;
-      html+='<div class="nav-i'+(curCat===c?' on':'')+'" onclick="kbNavPick(\'category\',\''+c+'\')">'+(CAT_LABELS[c]||c)+' <b>'+n+'</b></div>'; });
+    KCLASSES.forEach(o=>{ const n=arr.filter(r=>(r.kclass||'other')===o.id).length; if(!n) return;
+      html+='<div class="nav-i'+(curCat===o.id?' on':'')+'" onclick="kbNavPick(\'category\',\''+o.id+'\')">'+o.zh+' <b>'+n+'</b></div>'; });
   } else if(dim==='department'){
     DEPTS.forEach(d=>{ const n=arr.filter(r=>r.department===d).length; if(!n) return;
       html+='<div class="nav-i'+(curDept===d?' on':'')+'" onclick="kbNavPick(\'department\',\''+d+'\')">'+d+' <b>'+n+'</b></div>'; });
@@ -2133,7 +2137,8 @@ async function loadKBData(){
 async function boot(){
   // 下拉填充
   fillSelect($('#kbDept'), DEPTS); fillSelect($('#graphDept'), DEPTS);
-  fillSelect($('#kbCat'), CATS, c=>CAT_LABELS[c]); fillSelect($('#graphCat'), CATS, c=>CAT_LABELS[c]);
+  fillSelect($('#kbCat'), KCLASSES.map(o=>o.id), id=>KCLASS_LABELS[id]);
+  if($('#graphCat')) fillSelect($('#graphCat'), CATS, c=>CAT_LABELS[c]);
   fillSelect($('#kbRegion'), REGIONS);
   if($('#kbTopic')) fillSelect($('#kbTopic'), TOPICS.map(o=>o.id), id=>TOPIC_LABELS[id]);
   if($('#kbStatus')) fillSelect($('#kbStatus'), STATUSES);
