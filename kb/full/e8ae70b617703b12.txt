@@ -1,0 +1,623 @@
+PAPER • OPEN ACCESS
+Efficient synthesis of proton-conducting electrolyte
+with nano-sized particle precursors: enhanced
+performance and cost reduction for protonic
+ceramic electrochemical cells
+To cite this article: Wei Tang et al 2026 Prog. Energy 8 045001
+ 
+View the article online for updates and enhancements.
+You may also like
+Elastocaloric cooling: technical challenges
+and innovative strategies toward practical
+implementation
+Ali Safari, Mahdi Soleymanzadeh,
+Mohammaderfan Nadafzadeh et al.
+-
+Quantum materials based energy
+harvesting: a comprehensive review of
+energy conversion, storage, and saving
+technologies
+Love Bansal, Subin Kaladi Chondath,
+Bhumika Sahu et al.
+-
+Sampling to analysis: simultaneous
+quantification of siloxanes and sulfur
+compounds in biogas for cleaner energy
+Ayush Agarwal, Laura Torrent, Julian
+Indlekofer et al.
+-
+This content was downloaded from IP address 20.169.75.250 on 20/09/2026 at 05:08
+Prog. Energy8 (2026) 045001 https://doi.org/10.1088/2516-1083/aea1ba
+Progress in Energy
+OPEN ACCESS
+RECEIVED
+5 April 2026
+REVISED
+27 July 2026
+ACCEPTED FOR PUBLICATION
+1 September 2026
+PUBLISHED
+15 September 2026
+Original content from
+this work may be used
+under the terms of the
+Creative Commons
+Attribution 4.0 licence.
+Any further distribution
+of this work must
+maintain attribution to
+the author(s) and the title
+of the work, journal
+citation and DOI.
+PAPER
+Efficient synthesis of proton-conducting electrolyte with
+nano-sized particle precursors: enhanced performance and cost
+reduction for protonic ceramic electrochemical cells
+W ei T ang1,2,3,4, Quanwen Sun1,2,4, W enjuan Bian1,∗, Samuel Koomson1, Michael T Benson 1,
+Zeyu Zhao1, Haixia Li1, Nicholas Kane1, Thomas F Fuerst3, Meng Zhou2, Hongmei Luo2,∗
+and Dong Ding1,∗
+1 Energy and Environment Science and T echnology, Idaho National Laboratory, Idaho Falls, ID 83415, United States of America
+2 Department of Chemical and Materials Engineering, New Mexico State University, Las Cruces, NM 88003, United States of America
+3 Fusion Safety Program, Idaho National Laboratory, Idaho Falls, ID 83415, United States of America
+4 These authors contributed equally to this work.
+∗ Authors to whom any correspondence should be addressed.
+E-mail: wenjuan.bian@inl.gov,hluo@nmsu.edu anddong.ding@inl.gov
+Keywords: nano-sized precursor, protonic ceramic electrochemical cells (PCECs), electricity generation, water electrolysis,
+technoeconomic analysis
+Supplementary material for this article is available online
+Abstract
+Protonic ceramic electrochemical cells (PCECs) are promising platforms for efficient energy con-
+version, hydrogen production, and high-value chemical synthesis at intermediate temperatures.
+However, large-scale deployment of PCECs remains constrained by the poor sinterability, high
+fabrication cost, and long processing time associated with state-of-the-art proton-conducting
+ceramic (PCC) electrolytes. Here, we report a time-efficient, ball-milling-free solid-state reaction
+approach using nano-sized precursor particles (n-SSR) to synthesize Ba (Zr,Ce,Y ,Yb)O3−δ proton-
+conducting electrolytes with enhanced manufacturability and performance. Compared with the
+conventional solid-state reaction route using micro-sized precursors (µ-SSR), the n-SSR process
+largely shortens powder fabrication time by eliminating ball-milling process while producing fine
+electrolyte particles (200–600 nm) with superior sintering activity. As a result, PCECs fabricated
+with n-SSR electrolytes exhibit lower densification temperature and markedly improved electro-
+chemical performance, delivering a 32% higher peak power density in fuel cell mode and a 40%
+higher electrolysis current density at 600 ◦C, primarily due to reduced ohmic resistance. Long-
+term stability exceeding 500 h without measurable degradation is demonstrated. Importantly,
+a techno-economic analysis reveals that the n-SSR process reduces total electrolyte fabrication
+costs by 25%–29% by minimizing comminution, calcination time, and processing complexity.
+Large-area (5 cm × 5 cm) single-cell fabrication further validates the scalability of this approach.
+These results establish n-SSR as a practical and generalizable manufacturing strategy for high-
+performance PCCs, addressing a key bottleneck for the large-scale deployment of protonic ceramic
+energy technologies.
+1.Introduction
+Protonic ceramic electrochemical cells (PCECs) have emerged as a versatile class of energy-conversion
+devices capable of operating efficiently at intermediate temperatures (400 ◦C–600 ◦C), offering lower
+operating temperatures required by conventional oxide-ion-conducting solid oxide cells, which typically
+operate above 700 ◦C. By leveraging fast proton transport in ceramic electrolytes, PCECs enable a wide
+range of energy-conversion and chemical-processing applications [ 1, 2]. In fuel cell and water electrol-
+ysis modes, PCECs can efficiently produce and utilize pure H 2, which can subsequently be converted
+back to electricity in fuel cell mode [ 3–9]. As membrane reactors, they enable the synthesis of a wide
+© 2026 The Author(s). Published by IOP Publishing Ltd
+Prog. Energy8 (2026) 045001 W T anget al
+range of chemicals, including alkane activation, CO 2 conversion, production of light olefins, ammo-
+nia, and aromatics [ 10–17]. Beyond energy and chemical manufacturing, PCECs can also be integrated
+into the fusion energy fuel cycle operations, where the hydrogen isotopes deuterium (D) and tritium (T)
+need to be processed efficiently at high temperatures, including tritium recovery, recycling, and isotope
+separations [ 18–20].
+The key to PCEC’s high performance and efficiency lies in their proton-conducting ceramic (PCC)
+electrolyte [ 21–23]. State-of-the-art PCC electrolytes are Ba (Zr, Ce)O 3-based perovskite oxides,
+such as BaZr 0.1Ce0.7Y0.1Yb0.1O3−δ (BZCYYb1711), BaZr 0.4Ce0.4Y0.1Yb0.1O3−δ (BZCYYb4411), and
+BaZr0.8Y0.2O3−δ (BZY) [ 8, 24–28]. A major challenge limiting the performance and large-scale manu-
+facturing of PCECs is the poor sinterability of Ba (Zr, Ce)O 3-based electrolytes, which usually require
+relatively high sintering temperatures of >1450 ◦C for BZCYYb and >1500 ◦C for BZY to achieve full
+densification [ 29, 30]. In the fabrication of hydrogen electrode supported half-cell (e.g. NiO + BZCYYb
+| BZCYYb), the high sintering temperature leads to NiO particle growth and Ba evaporation [ 31]. The
+growth of NiO particles significantly hinders the gas transport and reduces the number of triple phase
+boundaries in hydrogen electrode, leading to higher polarization resistance. The volatilization of Ba from
+Ba (Zr, Ce)O 3-based electrolytes disrupts the stoichiometry and cause the segregation of Y 2O3/Yb2O3,
+which consequently diminish the electrolyte’s protonic conductivity and affect its chemical stability [ 31].
+Approaches to improve sinterability and lower sintering temperature of Ba (Zr, Ce)O 3-based electrolytes
+powders include using sintering aids (e.g. NiO, ZnO, and CuO) and modifying electrolyte powder fab-
+rication processes to improve the particle surface energies [ 32]. The introduction of sintering aids has
+been shown to impact conductivities and transference numbers due to the generation of low melting
+point secondary phase impurity. For example, the introduction of Ni in BZY leads to the formation of
+BaY2NiO5 transient liquid phase, which not only decreases the bulk conductivity of BZY but also can
+be aggregated at the grain boundaries, increasing grain boundary resistance and negatively affecting the
+mechanical strength and fracture toughness [ 33, 34]. T o avoid compromising cell performance and sta-
+bility, producing finer powders provides an attractive alternative due to their larger specific surface area
+and reduced sintering energy activation, which allows a lower sintering temperature for densification
+without introducing secondary phases [ 35, 36]. Additionally, the improved sinterability promotes grain
+growth and can significantly improve electrolyte conductivity because of the reduced grain boundary
+resistance at the same sintering temperature [ 24, 37, 38].
+Fabricating small and homogeneous particle size electrolyte powder ( <1 µm) can be accomplished
+using common synthesis methods, such as the wet-chemistry method (e.g. sol–gel, combustion method)
+or the solid-state reaction method involving high-energy ball milling, but there are challenges associ-
+ated with applying these methods. The wet-chemistry method is a suitable approach to synthesize pure
+and fine electrolyte powders [ 39, 40]. However, it involves the use of costly metal nitrate precursors, par-
+ticularly rare earth element nitrates, making it economically impractical for large-scale production [ 30,
+41]. Thus, the wet-chemistry method is primarily suitable for laboratory-scale research and development
+rather than large-scale applications. The high-energy ball milling solid-state reaction method offers a
+synthetic method with significantly reduced production costs by using cheaper metal oxides/carbonates
+as precursors, which is feasible for Ba (Zr, Ce)O 3-based electrolytes powder fabrication on an industrial-
+scale. Given that solid-state reaction rates are highly dependent on particle sizes and their interactions, it
+typically requires a high-energy ball milling step to reduce precursor powder particle sizes [ 42]. However,
+the particle size reduction by ball-milling typically remains within the micron size range, making it dif-
+ficult and time-consuming to achieve submicron size. Using hard material milling jars, like alumina, zir-
+conia, agate, and stainless-steel, is more effective, but impurities will be introduced into electrolyte due
+to the abrasion between the hard milling media (usually yttrium stabilized zirconia milling balls) and
+the milling jars from high-speed collisions. T o avoid impurities, soft-walled polymer milling jars are cho-
+sen as an alternative [ 43]. However, the ball milling process with polymer milling jars is time-consuming
+(usually >24 h) to achieve an effective particle size reduction because of the insufficient dynamic colli-
+sion between the milling media and the milling jar’s soft walls. For example, the synthesis of BZCYYb
+electrolytes using micro-sized zirconia powder as a precursor requires >48 h of ball milling to reduce
+particle size, including >24 h for grinding precursors and an additional >24 h for grinding the reacted
+electrolyte powder. Thus, addressing the challenges of scale-up feasibility, quality control, and cost con-
+trol, including balancing the time-consuming and material cost, is crucial in finer powder fabrication.
+In this work, we report a modified solid-state reaction strategy utilizing nano-sized precursor par-
+ticles (n-SSR) to address these manufacturing challenges. By eliminating high-energy ball milling and
+improving precursor mixing at the nanoscale, the n-SSR approach significantly reduces processing time
+while yielding proton-conducting electrolyte powders with smaller particle size and superior sinterability.
+2
+Prog. Energy8 (2026) 045001 W T anget al
+Using Ba (Zr,Ce,Y ,Yb)O3−δ electrolytes as model systems, we demonstrate that n-SSR enables lower-
+temperature densification, enhanced electrochemical performance in both fuel cell and electrolysis
+modes, and robust long-term stability. Furthermore, through large-area cell fabrication and techno-
+economic analysis, we show that this approach offers a scalable and cost-effective pathway for produc-
+ing high-performance PCCs, directly addressing a key bottleneck in the deployment of protonic ceramic
+energy technologies.
+2.Experimental
+2.1.Electrolytepowderssynthesis
+2.1.1. µ-SSR: traditional ball-milling solid-state reaction method with micro-sized precursor particles
+µ-BZCYYb was synthesized following the flowchart shown in figure 1(a). The weighing of precursors for
+∼200 g BZCYYb electrolyte powder fabrication is shown in table S1. First, 500 ml ethanol was added to
+the micro-sized precursors including BaCO 3 (Alfa Aesar, 99.8%, ∼1 µm), CeO 2 (Sigma-Aldrich, 99.9%,
+∼5 µm), ZrO 2 (Sigma-Aldrich, 99%, ∼5 µm), Y 2O3 (Alfa Aesar, 99.9%, ∼10 µm), Yb 2O3 (Alfa Aesar,
+99.9%, ∼10 µm) with the resulting mixture transferred into a polyurethane milling jar with 10 mm zir-
+conia milling-media. The ball-milling process was carried out for 24 h at 300 rpm (performed in inter-
+vals with 25 min milling and 5 min rest). Next, the milled precursor mixture was transferred into an
+open dish, then placed on a hot plate at 100 ◦C for ∼6 h to evaporate the ethanol. The dried precursors
+were pressed into pellets (around 10 MPa) and fired in a furnace at 1100 ◦C (ramping rate: 3 oC min −1)
+for 10 h (in total of ∼24 h for the firing procedure). Finally, the pellets were ball-milled and dried into
+powders with a median particle diameter (D50) less than 1 µm. Additional calcination temperatures of
+1200 ◦C and 1300 ◦C were used for XRD analysis.
+2.1.2. N-SRR: ball-milling-free solid-state reaction method with n-SSR
+The electrolyte powders n-BZCYYb1711 and n-BZCYYb4411 using n-SSR were synthesized following the
+flowchart shown in figure 1(b). The weighing of precursors for the fabrication of ∼200 g n-BZCYYb
+electrolyte powder is shown in table S1. First, micro-sized BaCO 3 (Alfa Aesar, 99.8%, ∼1 µm) with
+stoichiometric amounts of nano-sized ZrO 2 (US Research Nanomaterials, 99 +%, ∼40 nm), CeO 2 (US
+Research Nanomaterials, 99.97%, ∼50 nm), Y 2O3 (US Research Nanomaterials, 99.99%, 30–45 nm), and
+Yb2O3 (Nanostructured & Amorphous Materials, 99.9%, 10–80 nm) were weighted and then transferred
+into a glass beaker filled with 500 ml ethanol. After mixing by sonicating along with stirring for 1 h, the
+beaker was heated on a hot plate for ∼6 h at 100 ◦C to evaporate the ethanol. The dried powder was
+pressed into pellets at ∼10 MPa and fired in a furnace at 1100 ◦C for 10 h, with a total firing proce-
+dure time of ∼24 h including heating and cooling (ramping rate: 3 ◦C min −1). After cooling to room
+temperature, the electrolyte pellet was ground into powders for analysis and use. Additional calcination
+temperatures of 1200 ◦C and 1300 ◦C were used for XRD analysis.
+2.2.Oxygenelectrodesynthesis
+PrNi0.7Co0.3O3−δ (PNC73) oxygen electrode was selected as the oxygen electrode due to its relatively low
+thermal and chemical expansion [ 44]. The PNC73 powder was synthesized using a combustion method
+following our previous work [ 27]. The corresponding precursor weights for ∼5 g PNC73 fabrication are
+shown in table S1. Pr(NO 3)3 · 6H2O (99.99%, Sigma-Aldrich), Ni(NO 3)2 · 6H2O (98%, Sigma-Aldrich),
+and Co(NO 3)2 · 6H2O (98%, Sigma-Aldrich) were dissolved in 200 ml distilled water. Glycine (99%,
+Thermo Scientific) and citric acid (99 +%, Thermo Scientific), in a ratio of 2:1, were then added to the
+nitrite solution. The solution was heated up to 400 ◦C in air, followed by combustion to form ashes. The
+resulting ash was then calcined at 1000 ◦C (ramping rate: 3 ◦C min −1) in air for 4 h to obtain PNC73
+powders.
+2.3.Cellfabrication
+Hydrogen electrode-supported cells with configuration of NiO-BZCYYb1711 | BZCYYb1711 |
+PNC73 and NiO-BZCYYb4411 | BZCYYb4411 | PNC73 were fabricated by a tape-casting process fol-
+lowing our reported work [ 28, 45, 46], which is detailed described in Supporting Information.
+2.4.Characterizations
+XRD measurements were conducted on a D8ADV ANCE/Germany Bruker x-ray diffractometer using Ni-
+filtered Cu K α radiation (wavelength: 0.154056 nm) and scanning from 20 ◦ to 80 ◦ at a scanning step
+rate of 0.05 ◦. The morphology of the surface and cross section of the sintered half cells were inspected
+3
+Prog. Energy8 (2026) 045001 W T anget al
+Figure1. Illustration of the BZCYYb1711 and BZCYYb4411 electrolyte powder fabrication process using (a) µ-SSR and (b) n-
+SSR.
+using a JEOL 6700 F scanning electron microscope (SEM). The particle size distribution of the elec-
+trolyte powder was characterized using a particle size analyzer (Litesizer 500, Anton Paar) measuring
+dynamic light scattering by distributed in ethanol. The dynamic sintering curve of the electrolyte pellet
+and half-cells were characterized using a dilatometer (DIL 402, Netzsch).
+2.5.Electrochemicalperformancemeasurement
+The electrochemical performances of the PCECs were collected using an electrochemical workstation
+(Solartron 1400) in a homemade testing fixture. Ceramic sealant (Ceramabond 552) was used to seal the
+PCECs. Before testing, the hydrogen electrode side was purged with dilute hydrogen ( ∼20%) to reduce
+the NiO in the hydrogen electrode. After the NiO was fully reduced to Ni and a stable open circuit volt-
+age (OCV) was reached, the gas condition was switched to the different testing mode. In fuel cell mode,
+the PNC73 oxygen electrode was exposed to air (40 ml min −1), and the hydrogen electrode was exposed
+to H 2 with 3% steam (20 ml min −1). At each testing temperature (500 ◦C, 550 ◦C, and 600 ◦C), before
+collecting the results, a stable OCV was observed. In electrolysis mode, the feedstock was pure H 2 for the
+hydrogen electrode and humidified air (30% steam) for the steam electrode. Electrochemical impedance
+spectroscopy (EIS) was carried out in the fuel cell mode gas condition, with air supplied to the oxygen
+electrode and wet hydrogen (3% H 2O) supplied to the hydrogen electrode. Measurements were per-
+formed over a frequency range of 100 kHz to 0.1 Hz with an AC amplitude of 20 mV at the OCV . The
+long-term operation of the PCEC in fuel cell mode was conducted at 600 ◦C under 0.75 V , with air sup-
+plied to the oxygen electrode and wet hydrogen (3% H 2O) supplied to the hydrogen electrode.
+3.Resultsanddiscussion
+The n-SSR method offers a streamlined process with significantly reduced fabrication time ( ∼33 h for
+n-SSR vs 85 h for µ-SSR) as shown in figure 1, primarily due to the elimination of the ball-milling pro-
+cess for particle size reduction. The SSR fabricated BZCYYb1711 powders at different temperatures were
+characterized by XRD, as shown in figures 1(a) and (b). Both µ-BZCYYb1711 and n-BZCYYb1711 calci-
+nated at 1100 ◦C show main peaks corresponding to the BaCeO 3 perovskite phase, along with side peaks
+observed at higher angles, which can be attributed to Zr-rich perovskite. This occurs because the high
+melting temperature ( Tm) of BaCeO 3 (Tm = 2150 ◦C) and BaZrO 3 (Tm = 2700 ◦C) hinders the forma-
+tion of a uniform solid solution at the relatively low temperature of 1100 ◦C [ 47, 48]. Even when fired
+4
+Prog. Energy8 (2026) 045001 W T anget al
+Figure2. XRD patterns of (a) µ-BZCYYb1711 and (b) n-BZCYYb1711 power calcinated at 1100 ◦C, 1200 ◦C, and 1300 ◦C, and
+(c) µ- and n-BZCYYb1711 half-cells after sintering at 1400 ◦C. (d) Particle size distributions of n- and µ-BZCYYb1711 calci-
+nated at 1100 ◦C. (e) Linear shrinkage of n-BZCYYb (red dot) and µ-BZCYYb half-cells (dark dot) at the temperature range of
+1000 ◦C-1400 ◦C with holding temperature at each temperature for 5 h in air. (f) Sintering curves for n-BZCYYb1711 (red line)
+and µ-BZCYYb1711 (dark line) bars measured by dilatometry from 600 ◦C to 1550 ◦C with a ramping rate of 3 ◦C min−1.
+at 1300 ◦C, µ-BZCYYb1711 still exhibits side peak, whereas n-BZCYYb1711 achieves a pure phase at the
+same temperature. This indicates that more uniform precursor mixing, and elemental distribution facili-
+tate solid solution formation. Upon utilizing the electrolyte powder to fabricate half-cells and subjecting
+them to sintering at 1400 ◦C, a pure perovskite phase is obtained as shown in figure 2(c), indicating that
+the solid solution is successfully achieved during the final sintering stage of PCEC’s fabrication. Similar
+behavior is observed for n-BZCYYb4411, as shown in supplementary figure S1. After firing at 1100 ◦C,
+the n-BZCYYb4411 powder exhibits low crystallinity and two distinct sets of peaks corresponding to Ce-
+rich and Zr-rich phases. A well-crystallized single-phase perovskite structure is achieved once the sinter-
+ing temperature reaches 1350 ◦C and above.
+The n-SSR fabrication process yields smaller particles as determined by particle size analysis,
+shown in figure 2(d). The n-BZCYYb1711 particles exhibit a size distribution ranging from 200 nm to
+600 nm, with a D50 value of approximately 308 nm, significantly smaller than 1 µm. In contrast, the
+µ-BZCYYb1711, processed through ball milling, displays a broader range of approximately 500 nm to
+1000 nm, with a D50 value of about 657 nm. The results suggest that the powder prepared using n-SSR
+maintains smaller particle size after firing at 1100 ◦C, with the particles remaining notably smaller than
+those produced via µ-SSR.
+The sinterability of µ-BZCYYb1711 and n-BZCYYb1711 were initially studied by measuring the
+shrinkage behavior of the NiO + BZCYYb1711 | BZCYYb1711 bilayer half-cells, which were sintering
+at target temperature ranging from 1000 ◦C to 1400 ◦C for 10 h as shown in figure 2(e). Their linear
+shrinkage ( ∆L/L0) was determined by the following equation [ 27]:
+∆L/L0 = (L0 − L) /L0 (1)
+where L0 and L denote the dimension before and after sintering, respectively. The half-cells with n-
+BZCYYb1711 and µ-BZCYYb1711 exhibit comparable linear shrinkage of approximately 4% and 6%,
+respectively, at sintering temperature of 1000 ◦C–1100 ◦C. As the sintering temperature increases to
+1200 ◦C, a noticeable difference in shrinkage is observed. The n-BZCYYb1711 demonstrates a shrink-
+age of ∼12%, whereas µ-BZCYYb1711 displays ∼8%, indicating enhanced sintering activity for the
+electrolyte prepared with n-SSR. This disparity becomes more pronounced at temperatures ⩾1300 ◦C.
+Notably, after sintering at 1300 ◦C, the n-BZCYYb1711 exhibits a diameter-directional linear shrink-
+age of approximately 20%, whereas the µ-BZCYYb1711 requires sintering at 1400 ◦C to achieve similar
+shrinkage, highlighting a difference of 100 ◦C between the two methods. Beyond 1300 ◦C, the shrinkage
+5
+Prog. Energy8 (2026) 045001 W T anget al
+Figure3. Cross-sectional SEM images of n-BZCYYb1711 half-cells sintered at (a) 1300 ◦C, (b) 1350 ◦C, and (c) 1400 ◦C, and
+µ-BZCYYb1711 half-cells sintered at (d) 1300 ◦C, (e) 1350 ◦C, and (f) 1400 ◦C. (Inset: electrolyte surface SEM images).
+of n-BZCYYb1711 gradually leveled off, reaching approximately 21% at 1400 ◦C, indicating full densifi-
+cation and complete sintering.
+Additionally, the sinterability of µ-BZCYYb1711 and n-BZCYYb1711 was directly measured via
+dilatometer, which recorded the dynamics shrinkage of the electrolyte bars. The shrinkage behavior was
+recorded from 600 ◦C to 1550 ◦C at a ramp rate of 3 ◦C min −1, using the size of the bars at room
+temperature as a baseline, as depicted in figure 2(f). The shrinkage observed in the electrolyte bar pro-
+duced with n-BZCYYb1711 exceeds that of the bar fabricated with µ-BZCYYb1711, demonstrating
+the greater densification of the powder fabricated with n-SSR. For instance, the linear shrinkage of n-
+BZCYYb1711 and µ-BZCYYb1711 is approximately 8.8% and 5.2% at 1400 ◦C and 14.5% and 9.7% at
+1500 ◦C. Similar enhancements in sintering activity are observed for n-BZCYYb4411 compared with µ-
+BZCYYb4411 electrolyte bar, as shown in supplementary figure S2. The superior sintering behavior of
+the n-SSR powder can be attributed to the reduced particle size facilitated by the initial mixing proce-
+dures, thereby reducing the element transportation energy required for sintering. Compared to the half-
+cell shrinkage illustrated in figure 2(e), the overall linear shrinkage of the electrolyte bars was lower at
+the same temperature, owing to the absence of shrinkage driven from NiO-BZCYYb1711 support layer.
+Thus, the electrolyte powder with a smaller particle size enhances the sinterability of the half-cell, lower-
+ing the firing temperature during fabrication. This is beneficial for suppressing Ba evaporation, prevent-
+ing Ni growth, and increasing grain size of the electrolyte, which subsequently improves electrochemical
+performance of PCECs. For example, to assess Ba evaporation during sintering, we conducted Energy-
+dispersive x-ray spectroscopy (EDX) analysis on n-BZCYYb1711 cells sintered from 1300 ◦C (represent-
+ing minimal Ba loss) up to 1450 ◦C for 5 h, as shown in figure S3. It shows approximately 2% Ba loss
+after sintering at 1400 ◦C, and about 2.5% Ba loss at 1450 ◦C.
+The microstructure of the µ-BZCYYb1711 (figures 3(a)–(c)) and n-BZCYYb1711 (figures 3(d)–(f))
+half-cells after sintering at temperatures of 1300 ◦C, 1350 ◦C, and 1400 ◦C were characterized by SEM.
+After sintering µ-BZCYYb1711 cell at 1300 ◦C, abundant residual pores are observed in both the elec-
+trolyte layer and the hydrogen support layer (figure 3(a)). The porosity decreases as the sintering tem-
+perature increased to 1350 ◦C and 1400 ◦C, as shown in figures 3(b) and (c). At the same sintering
+temperature, n-BZCYYb1711 cells exhibit denser structure and larger grain size than the counterpart,
+attributed to their better sinterability. The electrolyte thickness after sintering at 1400 ◦C is ∼10 µm.
+Given that hydrogen can be transferred through porous Ni particles reduced from NiO in the hydrogen
+electrode (reduced prior to use), the reduced pore structure in the hydrogen electrode support layer is
+not expected to significantly impede gas transport or electrochemical performance. Additionally, SEM
+images of the half-cell electrolyte surface demonstrate the grain growth occurring at elevated sinter-
+ing temperatures from 1300 ◦C to 1400 ◦C (insets of figures 3(a)–(f)). Fo example, the grain size of
+6
+Prog. Energy8 (2026) 045001 W T anget al
+Figure4. Electrochemical performances of n-BZCYYb1711 and µ-BZCYYb1711 PCECs at 500, 550, and 600 ◦C: (a) current–
+voltage (I–V) and current–power density ( I–P) curves in fuel cell mode; (b) I–V curve in electrolysis mode; (c) EIS measured
+under OCV condition (inset: electrolyte thickness-independent ohmic resistivity); (d) Arrhenius plot of Ro and Rp from EIS.
+n-BZCYYb1711 increases from ∼5 µm at 1300 ◦C to ∼8 µm at 1350 ◦C, and further to ∼12 µm at
+1400 ◦C. The dense electrolyte with enlarged grain size is attributed to the high sinterability.
+T o evaluate the electrochemical properties, µ- and n-BZCYYb1711 full cells were tested and com-
+pared with the result as shown in figure 4. Both µ-SSR and n-SSR cells were sintered at the same tem-
+peratures for a direct comparison of electrochemical performance. This experimental design ensures that
+the observed performance differences are attributable to the improved sintering behavior and result-
+ing microstructural characteristics of the n-SSR powders, rather than variations in the sintering condi-
+tions. As shown in figure 4(a), the OCV of both µ- and n- BZCYYb1711 cells reached 1.05 V , 1.08 V ,
+and 1.10 V at temperatures of 600 ◦C, 550 ◦C, and 500 ◦C, respectively, demonstrating that the elec-
+trolyte membranes are fully densified by sintering. The peak power densities of the µ-BZCYYb1711 cell
+were 0.79, 0.52, and 0.34 W cm −2 at 600 ◦C, 550 ◦C, and 500 ◦C, respectively. In comparison, the n-
+BZCYYb1711 cell had peak power densities of 1.04, 0.70, and 0.42 W cm −2 at 600 ◦C, 550 ◦C, and
+500 ◦C, respectively, marking a 32%, 35%, and 24% increase over the µ-BZCYYb1711 cell. The higher
+electrochemical performance is a result of the higher density electrolyte with enlarged grain size due
+to the high sinterability of n-BZCYYb1711. Following fuel cell performance testing, the gas conditions
+were altered to pure hydrogen on the hydrogen electrode side and humidified air ( ∼30% steam) on the
+oxygen electrode side for electrolysis operation. Figure 4(b) shows the n-BZCYYb1711 cells exhibited
+superior electrolysis performance compared to µ-BZCYYb1711 cells. At 1.3 V , which is close to thermal
+neutral voltage, the n-BZCYYb1711 cells achieved electrolysis current densities of 1.55, 0.80, and 0.39 A
+cm−2 at 600 ◦C, 550 ◦C, and 500 ◦C, respectively. The n-BZCYYb1711 cell current densities are signifi-
+cantly higher than that of the µ-BZCYYb1711 cell, which are −1.11, −0.63, and −0.28 A cm −2 at 1.3 V
+and 600 ◦C, 550 ◦C, and 500 ◦C, respectively. The stability of n-BZCYYb1711 cell was tested in both
+fuel cell mode and electrolysis mode for 200 h at 600 ◦C as shown in figure S4. The fuel cell mode was
+operated at 0.75 V and the electrolysis mode at 1.3 V . Both operating conditions exhibit good stability,
+with only minimal performance degradation over the 200 h test period.
+The EIS measurement of the n- and µ-BZCYYb1711 cells were conducted from 500 ◦C to 600 ◦C
+under OCV conditions as shown in figure 4(c). The high frequency interception on the real axis repre-
+sents the ohmic resistance ( Ro), primarily from the internal resistance of the electrolyte. The polarization
+resistance ( Rp) was derived by subtracting Ro from the overall resistance. The PCECs prepared using n-
+BZCYYb1711 exhibited smaller Ro and overall resistance across all testing temperatures from 500 ◦C to
+600 ◦C. Considering the difficulty of achieving identical electrolyte thickness in micro-scale fabrication
+using different particle powders, the electrolyte thickness-independent ohmic resistivity was provided
+7
+Prog. Energy8 (2026) 045001 W T anget al
+for fair comparison as shown in the inset of figure 4(c). The left intercept with the x-axis can be inter-
+preted as ohmic resistivity mainly from proton transport inside the electrolyte. Clearly, at the temper-
+ature of 500 ◦C, 550 ◦C, and 600 ◦C, the Ro of n-BZCYYb1711 cell shows lower value compared with
+that of µ-BZCYYb1711, indicating the higher conductivity of n-BZCYYb1711. The equivalent-circuit fit-
+ting results for the EIS measurements are shown in figure S5. The Rp consists of three arcs correspond-
+ing to different electrode processes: the high-frequency arc ( Rp1) reflects interfacial ionic transport, the
+medium-frequency arc ( Rp2) represents charge-transfer reactions, and the low-frequency arc ( Rp3) corre-
+sponds to mass-transport processes. Although the n-BZCYYb1711 cell exhibits a slightly smaller Rp3 and
+the µ-BZCYYb1711 cell shows a slightly smaller Rp2, the overall Rp values remain comparable across the
+different testing temperatures.
+In addition, the activation energy of the electrolyte and electrode was calculated from the measured
+Ro and Rp by the following equations [ 5]:
+Ro = Aoe−
+Ea, o
+kBT (2)
+Rp = Ape−
+Ea, p
+kBT (3)
+where A is the respective pre-exponential term; Ea is the activation energy; the subscripts o and p denote
+the ohmic and polarization resistances, respectively; kB is the Boltzmann constant, and T is the abso-
+lute temperature. The linear fitting of Ro yielded similar slopes for both n- and µ-BZCYYb1711 cells
+with calculated activation energies ( Ea) of 0.40 eV and 0.41 eV , respectively, indicating that protons are
+the primary charge carriers in the BZCYYb1711 electrolyte membrane. The Ro of the n-BZCYYb1711 is
+∼23% smaller than that of µ-BZCYYb1711, demonstrating the higher protonic conductivity of n-
+BZCYYb. The higher electrochemical performance of the n-BZCYYb1711 cell was attributed to its lower
+Ro, as the difference in Rp was negligible (figure 4(d)) due to the use of identical oxygen electrodes.
+The n-SSR process is applicable not only to BZCYYb1711 electrolytes but also to BZCYYb4411.
+BZCYYb4411 powder was synthesized using the n-SSR approach, and the performance of button cells
+with a diameter of 1 inch is presented in figure 5. T o compensate for the lower sintering behavior
+resulting from the higher Zr content in BZCYYb4411, the half-cell sintering temperature was raised
+to 1450 ◦C. In fuel cell mode (figure 5(a)), the peak power densities are 0.81 W cm −2, 0.54 W cm −2,
+and 0.31 W cm −2 at 600 ◦C, 550 ◦C, and 500 ◦C, respectively. In electrolysis mode, the electroly-
+sis current densities reach −1.23 A cm −2, −0.64 A cm −2, and −0.31 A cm −2 at 600 ◦C, 550 ◦C, and
+500 ◦C, respectively, as shown in figure 5(b). The long-term stability of the cell in fuel cell mode at
+0.75 V and 600 ◦C is shown in figure 5(c). Within more than 500 h operation ( ∼534 h), no degrada-
+tion was observed on the current density, and the Ohmic and polarization resistance show similar value
+(inset of figure 5(c), indicating the high stability of the cell. SEM images in figures 5(d) and € show the
+microstructure of the fabricated PCEC before and after long-term testing. The dense electrolyte with a
+thickness of ∼12 µm can effectively prevent gas crossover and achieve a good OCV . The branch-like
+porous PNC73 oxygen electrode structures show good attachment to the dense electrolyte, facilitat-
+ing rapid gas diffusion for PCEC operation. After testing, the NiO in the hydrogen electrode was fully
+reduced to porous Ni particles for gas transportation, as shown in figure 5(e). No cracks or delamination
+were observed after electrochemical testing, indicating a stable interface in the fabricated cell.
+A single unit cell with 5 cm × 5 cm was fabricated using n-BZCYYb4411 powder with a symmetry-
+engineered, double-sided electrolyte design [ 49], as shown in figure 5(f)–(h). Figures 5(f)–(h) show
+the half-cell before sintering, after sintering, and after application of the 4 cm × 4 cm PNC73 oxygen
+electrode. The flat surface of the full cell, without cracks and delamination, demonstrates the success-
+ful fabrication of PCEC with large surface area, which validates the scalability of the n-SSR based cells.
+Additionally, figure 5(i) shows the cross-sectional SEM image of the 5 cm × 5 cm half-cell, presenting
+well-bonded hydrogen electrode-electrolyte without delamination and cracks. The SEM image shows a
+densified electrolyte with a thickness of ∼10 µm, which is similar to the 1-inch button cells.
+T able1 displays the unit price of each precursor used in the n-SRR, and comparing with µ-SSR
+methods based on our previous work [ 50]. The estimated precursor costs and production costs for
+the electrolyte powder (BZCYYb1711 and BZCYYb4411) fabricated via n-SSR and µ-SSR are shown in
+figures 6(a) and (b). Compared with µ-SSR, the precursor material cost of n-SSR is slightly higher (e.g.
+n-SSR ∼$429 kg −1 vs µ-SSR ∼$352 kg −1 for BZCYYb1711). However, the production cost of n-SSR
+(∼$53 kg −1) including grinding and calcination processes is much lower than that of µ-SSR, which is
+∼$291 kg −1, as shown in figure 6(b). The cost of ball milling with µ-SSR ( ∼$193 kg −1) significantly
+raises the total production cost. In contrast, the production costs of n-SSR on grinding are around
+8
+Prog. Energy8 (2026) 045001 W T anget al
+Figure5. (a)–(d) Electrochemical performance and microstructure of n-BZCYYb4411 cells. (a) current–voltage ( I–V) and
+current–power density (I–P) curves in fuel cell mode and (b) I–V curves in electrolysis mode at 500, 550, and 600 ◦C. (c)
+Long-term stability at 0.75 V and 600 ◦C. The inset is the EIS before and after the long-term testing. Cross-section SEM images
+of the n-BACYYb4411 full cell (d) before and (e) after testing. (f-i) Scalability of PCECs with n-BZCYYb4411. Images of the
+5 cm × 5 cm single unit cell (f) before sintering, (g) after sintering, and (h) after application of the PNC73 oxygen electrode. (i)
+Cross-sectional SEM image of 5 cm × 5 cm half-cell.
+∼$4 kg −1. In addition to this, the calcination process for n-SSR costs approximately 50% less than that
+of µ-SSR due to the reduction in time from 48 h to 10 h. Consequently, the n-BZCYYb1711 achieves
+a 25% reduction in total costs (n-SSR ∼$482 kg −1 vs µ-SSR ∼$643 kg −1) by minimizing the com-
+minution and calcination duration, as shown in figure 6(c). Because n-BZCYYb1711 cells can be den-
+sified at lower temperatures, the overall fabrication cost can be further reduced during the sintering
+step. Similarly, the precursor costs for BZCYYb4411 electrolyte are also outlined. The lower cost of the
+BZCYYb4411 electrolyte compared to the BZCYYb1711 is attributed to its lower concentration of Ce.
+Compared with previously published studies, the electrolyte powder fabrication via n-SSR exhibits the
+shortest production time as shown in figure 6(d). Thus, implementing this ball-milling-free n-SSR pro-
+cess presents a promising strategy to further reduce costs, save time, and achieve the desired particle size
+for large-scale fabrication.
+9
+Prog. Energy8 (2026) 045001 W T anget al
+Figure6. (a) Precursor cost ($ kg −1), (b) production cost ($ kg −1), and (c) total cost ($ kg −1) of n-SRR and µ-SSR for dif-
+ferent BZCYYb compositions. (d) Comparison of the time required for electrolyte powder synthesis between this work with
+n-SSR method and other works in literature with traditional µ-SSR method: BZCYYb1711, BCZY631, BZCYYb4411, and BZY20
+[8, 51–53].
+Table1. The unit price of each precursor for electrolyte powder.
+Precursors BaCO3 ZrO2 CeO2 Y2O3 Yb2O3
+n-SSR Particle size ∼1 µm ∼40 nm ∼50 nm 30-45 nm 10-80 nm
+Price ($ kg−1) 103.2 238 658 668 1,300
+µ-SSR Particle size ∼1 µm ∼5 µm ∼5 µm ∼10 µm ∼10 µm
+Price ($ kg−1) 103.2 231 578 337 741
+4.Conclusion
+W e have developed a ball-milling-free solid-state reaction process based on n-SSR for the efficient
+synthesis of PCC electrolytes. Compared with conventional solid-state routes using micro-sized pre-
+cursors, the n-SSR approach significantly reduces fabrication time while producing finer electrolyte
+powders with enhanced sintering activity. This improved sinterability enables dense electrolyte mem-
+branes to be achieved at lower firing temperatures, mitigating common fabrication challenges such as
+barium volatilization and electrode microstructural degradation. PCECs fabricated with n-SSR elec-
+trolytes exhibit substantially improved electrochemical performance in both fuel cell and electroly-
+sis modes, primarily due to reduced ohmic resistance associated with enhanced electrolyte densifica-
+tion and grain growth. Long-term stable operation exceeding 500 h and successful fabrication of large-
+area (5 cm × 5 cm) single cells further demonstrate the robustness and scalability of this approach.
+Importantly, techno-economic analysis reveals that the n-SSR process reduces total electrolyte fabrication
+costs by up to 29% by minimizing comminution, calcination duration, and processing complexity. This
+work establishes n-SSR as a practical and generalizable manufacturing strategy for high-performance
+10
+Prog. Energy8 (2026) 045001 W T anget al
+PCCs. By addressing critical challenges in cost, processing time, and scalability, the proposed approach
+provides a viable pathway toward the large-scale deployment of protonic ceramic electrochemical tech-
+nologies for sustainable energy conversion and hydrogen-based systems. Future efforts integrating this
+approach with advanced shaping, co-sintering, and roll-to-roll–compatible processing techniques could
+further accelerate the scalable deployment of ceramic electrochemical devices in hydrogen, electricity, and
+chemical energy systems.
+Acknowledgment
+This work is supported by the U.S. Department of Energy, Office of Critical Minerals and Energy
+Innovation (CMEI), specifically Hydrogen and Fuel Cell program in Alternative Fuels and Feedstocks
+Office (AFFO), formerly Hydrogen and Fuel Cell T echnologies Office under DOE Idaho Operations
+Office under contract no. DE-AC07-05ID14517. The views expressed herein do not necessarily represent
+the views of the U.S. Department of Energy or the United States Government. T. Fuerst would like to
+acknowledge the INL Laboratory Directed Research& Development (LDRD) Program under DOE Idaho
+Operations Office Contract DE-AC07-05ID14517.
+Dataavailabilitystatement
+All data that support the findings of this study are included within the article (and any supplementary
+files).
+Supplementary data file available at https://doi.org/10.1088/2516-1083/aea1ba/data1.
+Conflictofinterest
+The authors declare no conflict of interest.
+Authorcontributions
+W ei T ang 0000-0002-0700-0965
+Formal analysis (lead), Investigation (equal), Writing – original draft (lead)
+Quanwen Sun  0000-0001-9947-8845
+Investigation (equal), Writing – original draft (supporting)
+W enjuan Bian  0000-0002-7773-6230
+Conceptualization (equal), Methodology (equal), Project administration (lead), Writing – original
+draft (equal)
+Samuel Koomson  0000-0002-3809-6373
+Data curation (equal), Investigation (equal)
+Michael T Benson  0000-0003-4927-614X
+Supervision (equal), Writing – review & editing (equal)
+Zeyu Zhao  0000-0001-8649-925X
+Data curation (equal), Methodology (equal)
+Haixia Li  0000-0002-6562-6608
+Formal analysis (equal), Investigation (equal), Writing – review & editing (equal)
+Nicholas Kane  0000-0002-8395-6088
+Data curation (equal), Writing – review & editing (equal)
+Thomas F Fuerst  0000-0002-4719-141X
+Supervision (equal), Writing – review & editing (equal)
+Meng Zhou  0000-0002-0150-445X
+Supervision (equal), V alidation (equal)
+11
+Prog. Energy8 (2026) 045001 W T anget al
+Hongmei Luo  0000-0002-9546-761X
+Project administration (equal), Supervision (lead), Conceptualization (equal)
+Dong Ding  0000-0002-6921-4504
+Funding acquisition (lead), Project administration (equal), Supervision (equal), Conceptualization (lead)
+References
+[1] Zhang H, Xu K, Xu Y , He F , Zhu F , Sasaki K, Choi Y and Chen Y 2024 In situ formed catalysts for active, durable, and thermally
+stable ammonia protonic ceramic fuel cells at 550 ◦C Energy Environ. Sci.17 3433–42
+[2] Nowicki K M, Carins G, Bayne J, T upberg C, Irvine G J and Irvine J T 2023 Characterisation of direct ammonia proton conduct-
+ing tubular ceramic fuel cells for maritime applications J. Mater. Chem. A11 352–63
+[3] Y ang G, Su C, Shi H, Zhu Y , Song Y , Zhou W and Shao Z 2020 T oward reducing the operation temperature of solid oxide fuel cells:
+our past 15 years of efforts in cathode development Energy Fuels34 15169–94
+[4] Zvonareva I, Fu X-Z, Medvedev D and Shao Z 2022 Electrochemistry and energy conversion features of protonic ceramic cells
+with mixed ionic-electronic electrolytes Energy Environ. Sci.15 439–65
+[5] Bian W et al 2022 Revitalizing interface in protonic ceramic cells by acid etch Nature604 479–85
+[6] Kim D, Jeong I, Ahn S, Oh S, Im H N, Bae H, Song S-J, Lee C-W, Jung W and Lee K T 2024 On the role of bimetal-doped
+BaCoO3-δ perovskites as highly active oxygen electrodes of protonic ceramic electrochemical cells Adv. Energy Mater.14 2304059
+[7] Li M, Hua B, Wu W, Wang L-C, Ding Y , W elander M M, Walker R A and Ding D 2022 Activating nano-bulk interplays for sustain-
+able ammonia electrosynthesis Mater. Today60 31–40
+[8] Choi S, Kucharczyk C J, Liang Y , Zhang X, T akeuchi I, Ji H-I and Haile S M 2018 Exceptional power density and stability at inter-
+mediate temperatures in protonic ceramic fuel cells Nat. Energy3 202–10
+[9] Y ang H, Wang C-A and Dong Y 2024 Energy ceramic design for robust battery cathodes and solid electrolytes Adv. Powder Mater.
+3 100185
+[10] Liu F , Ding D and Duan C 2023 Protonic ceramic electrochemical cells for synthesizing sustainable chemicals and fuels Adv. Sci.
+10 2206478
+[11] Li M, Hua B, Wang L-C, Sugar J D, Wu W, Ding Y , Li J and Ding D 2021 Switching of metal-oxygen hybridization for selective
+CO2 electrohydrogenation under mild temperature and pressure Nat. Catal.4 274–83
+[12] Wu W et al 2021 Electrochemically engineered, highly energy-efficient conversion of ethane to ethylene and hydrogen below
+550 ◦C in a protonic ceramic electrochemical cell ACS Catal.11 12194–202
+[13] Zhu P-X, Wang L-C, Stewart F , Ding D, Matz J, Dong P and Ding H 2021 Direct conversion of natural gases in solid oxide cells: a
+mini-review Electrochem. Commun.128 107068
+[14] Zhu P , Bian W, Wu W, T ang W, Duan C and Zheng S 2025 Revolutionizing methane transformation with the dual production of
+aromatics and electricity in a protonic ceramic electrocatalytic membrane reactor ACS Appl. Mater. Interfaces17 3180-7
+[15] Zhu P et al 2024 Direct conversion of methane to aromatics and hydrogen via a heterogeneous trimetallic synergistic catalyst Nat.
+Commun.15 3280
+[16] Zhang R, Meng Y , Wang L-C, Wang M, Wu W, Wu W and Ding D 2024 Boosting the performances of protonic solid oxide fuel
+cells for co-production of propylene and electricity from propane by integrating thermo-and electro-catalysis Fuel357 129685
+[17] Ding D, Zhang Y , Wu W, Chen D, Liu M and He T 2018 A novel low-thermal-budget approach for the co-production of ethylene
+and hydrogen via the electrochemical non-oxidative deprotonation of ethane Energy Environ. Sci.11 1710–6
+[18] Kawamura Y , Arita T, Isobe K, Shu W and Y amanishi T 2008 Enhancement of pumping performance of electrochemical hydrogen
+pump by modified electrode Fusion Eng. Des.83 625–33
+[19] T anaka M, Sugiyama T, Ohshima T and Y amamoto I 2011 Extraction of hydrogen and tritium using high-temperature proton
+conductor for tritium monitoring Fusion Sci. Technol.60 1391–4
+[20] Hossain M K, Y amamoto T and Hashizume K 2022 Isotopic effect of proton conductivity in barium zirconates for various
+hydrogen-containing atmospheres J. Alloys Compd.903 163957
+[21] Ding D, Li X, Lai S Y , Gerdes K and Liu M 2014 Enhancing SOFC cathode performance by surface modification through infiltra-
+tion Energy Environ. Sci.7 552–75
+[22] Ding H et al 2020 Self-sustainable protonic ceramic electrochemical cells using a triple conducting electrode for hydrogen and
+power production Nat. Commun.11 1907
+[23] Wu W, Ding H, Zhang Y , Ding Y , Katiyar P , Majumdar P K, He T and Ding D 2018 3D Self-architectured steam electrode enabled
+efficient and durable hydrogen production in a proton-conducting solid oxide electrolysis cell at temperatures lower than 600 ◦C
+Adv. Sci.5 1800360
+[24] T ang W, Bian W, Ding H, Ding Y , Zhao Z and Sun Q 2025 Sintering protonic zirconate cells with enhanced electrolysis stability
+and Faradaic efficiency Nat. Synth.4 1–11
+[25] Kim S, Kim G and Manthiram A 2021 A review on infiltration techniques for energy conversion and storage devices: from funda-
+mentals to applications Sustain. Energy Fuels5 5024–37
+[26] Guan B, Tian H, Picard Y N, Liu J, Abernathy H W, Kalapos T, Zhou L, Li X, Li W and Liu X 2024 Unraveling the conundrum of
+electronic leakage in protonic ceramic cells: operation-specific insights and rational design strategies J. Power Sources604 234454
+[27] T ang Wet al 2022 An unbalanced battle in excellence: revealing effect of ni/co occupancy on water splitting and oxygen reduction
+reactions in triple-conducting oxides for protonic ceramic electrochemical cells Small18 2201953
+[28] T ang W, Ding H, Bian W, Wu W, Li W, Liu X, Gomez J Y , Regalado V era C Y , Zhou M and Ding D 2020 Understanding of A-
+site deficiency in layered perovskites: promotion of dual reaction kinetics for water oxidation and oxygen reduction in protonic
+ceramic electrochemical cells J. Mater. Chem. A8 14600–8
+[29] Feng W, Wu W, Jin C, Zhou M, Bian W, T ang W, Gomez J Y , Boardman R and Ding D 2021 Exploring the structural uniformity
+and integrity of protonic ceramic thin film electrolyte using wet powder spraying J. Power Sources Adv.11 100067
+[30] Feng W et al 2023 Mathematical model-assisted ultrasonic spray coating for scalable production of large-sized solid oxide electro-
+chemical cells ACS Appl. Mater. Interfaces15 31430–7
+[31] Loureiro F J, Nasani N, Reddy G S, Munirathnam N and Fagg D P 2019 A review on sintering technology of proton conducting
+BaCeO3-BaZrO3 perovskite oxide materials for Protonic Ceramic fuel cells J. Power Sources438 226991
+12
+Prog. Energy8 (2026) 045001 W T anget al
+[32] Han D, Uemura S, Hiraiwa C, Majima M and Uda T 2018 Detrimental effect of sintering additives on conducting ceramics:
+yttrium-doped barium zirconate ChemSusChem11 4102–13
+[33] Han D, Otani Y , Noda Y , Onishi T, Majima M and Uda T 2016 Strategy to improve phase compatibility between proton conduc-
+tive BaZr0.8Y0.2O3-δ and nickel oxide RSC Adv.6 19288–97
+[34] Li J, Wang C, Wang X and Bi L 2020 Sintering aids for proton-conducting oxides-a double-edged sword? A mini review
+Electrochem. Commun.112 106672
+[35] Y ang K, Wang J X, Xue Y J, Wang M S, He C R, Wang Q, Miao H and Wang W G 2014 Synthesis, sintering behavior and electrical
+properties of Ba(Zr0.1Ce0.7Y0.2)O3-δ and Ba(Zr0.1Ce0.7Y0.1Yb0.1)O3-δ proton conductors Ceram. Int.40 15073–81
+[36] Nguyen N T Q and Y oon H H 2013 Preparation and evaluation of BaZr0.1Ce0.7Y0.1Yb0.1O3-δ (BZCYYb) electrolyte and BZCYYb-
+based solid oxide fuel cells J. Power Sources231 213–8
+[37] Wang Z et al 2024 New understanding and improvement in sintering behavior of cerium-rich perovskite-type protonic elec-
+trolytes Adv. Funct. Mater.34 2402716
+[38] Danilov N A, Starostina I A, Starostin G N, Kasyanova A V , Medvedev D A and Shao Z 2023 Fundamental understanding
+and applications of protonic Y-and Yb-coped Ba(Ce, Zr)O 3 perovskites: state-of-the-art and perspectives Adv. Energy Mater.
+13 2302175
+[39] Wang Y , Huang J, Su T, Liu W, Qi H and Y ang J 2015 Synthesis, microstructure and electrical properties of BaZr0.9Y0.1O3-δ:
+baCe0.86Y0.1Zn0.04O3-δ proton conductors Mater. Sci. Eng. B196 35–39
+[40] Bi L, Fabbri E, Sun Z and T raversa E 2011 Sinteractive anodic powders improve densification and electrochemical properties of
+BaZr0.8Y0.2O3-δ electrolyte films for anode-supported solid oxide fuel cells Energy Environ. Sci.4 1352–7
+[41] T ong J, Clark D, Hoban M and O’Hayre R 2010 Cost-effective solid-state reactive sintering method for high conductivity proton
+conducting yttrium-doped barium zirconium ceramics Solid State Ion.181 496–503
+[42] Luo J, Zhang J, Wang A, Liu Y , Cheng J, Zhao Y , Y an D, Jia L and Li J 2024 Influence of particle size and sintering aid on sinterabil-
+ity and conductivity of BaZr 0.1Ce0.7Y0.2O3-δ electrolyte Int. J. Hydrog. Energy56 871–9
+[43] Feng W 2023 Scalable Deposition of Solid Oxide Films for Large-Sized Protonic Ceramic Electrochemical Cells via Ultrasonic Spray
+Coating (State University of New Y ork at Binghamton)
+[44] Deng H, Sun Q, Li M, Zhao Z, Bian W, Liu B and Ding D 2026 Atomistic simulations of thermal and chemical expansions of
+PrNixCo1-xO3-δ accelerated by machine learning potentials Small Methods10 2500816
+[45] Bian W, Wu W, Gao Y , Gomez J Y , Ding H, T ang W, Zhou M and Ding D 2021 Regulation of cathode mass and charge transfer by
+structural 3D engineering for protonic ceramic fuel cell at 400 ◦C Adv. Funct. Mater.31 2102907
+[46] Zhang Y , Zhao Z, Sun Q, Li M, Deng H, Bian W, T ong J and Ding D 2026 Engineering NiO particle size in hydrogen electrode
+functional layers for enhanced performance of protonic ceramic electrochemical cells Small22 e73740
+[47] Melekh B-T, Egorov V , Baikov Y M, Kartenko N, Filin Y N, Kompan M, Novak I I, V enus G B and Kulik V B 1997 Structure, phase
+transitions and optical properties of pure and rare earth doped BaCeO 3, SrCeO3 prepared by inductive melting Solid State Ion.
+97 465–70
+[48] Y amanaka S, Fujikane M, Hamaguchi T, Muta H, Oyama T, Matsuda T, Kobayashi S-I and Kurosaki K 2003 Thermophysical prop-
+erties of BaZrO 3 and BaCeO3 J. Alloys Compd.359 109–13
+[49] Li H et al 2026 Innovative symmetrical electrolyte architecture enables ultra-flat and thermal resilient protonic ceramic electro-
+chemical cells Adv. Funct. Mater.36 e13396
+[50] Wang M, Wu W, Lin Y , T ang W, Gao G, Li H, Stewart F F , Wang L, Y ang Y and Ding D 2023 Improved solid-state reaction method
+for scaled-up synthesis of ceramic proton-conducting electrolyte materials ACS Appl. Energy Mater.6 8316–26
+[51] Y ang L, Wang S, Blinn K, Liu M, Liu Z, Cheng Z and Liu M 2009 Enhanced sulfur and coking tolerance of a mixed ion conductor
+for SOFCs: baZr0.1Ce0.7Y0.2-xYbxO3-δ Science326 126–9
+[52] Nikodemski S, T ong J, Duan C and O’Hayre R 2016 Ionic transport modification in proton conducting BaCe0.6Zr0.3Y0.1O3-δ with
+transition metal oxide dopants Solid State Ion.294 37–42
+[53] Han D and Uda T 2018 The best composition of an Y-doped BaZrO 3 electrolyte: selection criteria from transport properties,
+microstructure, and phase behavior J. Mater. Chem. A6 18571–82
+13

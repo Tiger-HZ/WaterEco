@@ -1,0 +1,1070 @@
+Modeling of the process of unsteady filtration...85
+UDC 519.6
+MODELING OF THE PROCESS OF UNSTEADY
+FILTRATION OF GROUNDW ATER WITH A FREE SURF ACE
+TAKING INTO ACCOUNT INFILTRATION FLOWS
+*Ravshanov N., Sadullaev S.
+*ravshanzade-09@mail.ru
+Digital Technologies and Artificial Intelligence Development Research Institute,
+17A, Buz-2, Tashkent, 100125 Uzbekistan
+A nonlinear mathematical model with boundary, initial and internal conditions is
+proposed for monitoring and forecasting unsteady groundwater seepage with a free sur-
+face, taking into account infiltration flows and the hydrodynamic parameters of the soil.
+To determine the main factors directly influencing groundwater level changes over time,
+a minimizing functional is presented, which allows one to determine the ranges of the
+significant parameters in which they substantially influence the infiltration process. The
+problem is solved numerically by the locally one-dimensional scheme of A. A. Samarskii;
+numerical experiments on model problems showed that the best results are achieved by
+applying the principle of symmetrization. A model problem for a symmetric domain with
+a square boundary and a square infiltration region was solved. Analysis of the results
+showed that, for a constant seepage coefficient, the infiltration front propagates abso-
+lutely symmetrically over time within the seepage domain, as expected from physical
+considerations. It was established that the locally one-dimensional scheme is effective for
+this class of problems, can be successfully applied in combination with the symmetriza-
+tion method and can be recommended for solving problems of modeling and forecasting
+the groundwater regime.
+Keywords:mathematical model, numerical algorithm, groundwater, computational ex-
+periments, hydrodynamic parameters, infiltration front
+Citation:Ravshanov N., Sadullaev S. 2026. Modeling of the process of unsteady filtra-
+tion of groundwater with a free surface taking into account infiltration flows.Problems
+of Computational and Applied Mathematics. 4(74): 85-101.
+DOI:10.71310/pcam.4_74.2026.05
+1 Introduction
+In recent years, the issue of water resource scarcity and protection from pollution
+to ensure high-quality drinking water has become particularly pressing. Statistical data
+show that only 2.5–3% of the Earth’s water resources are freshwater, of which only about
+1% is readily accessible for use, with the rest being glaciers and deep groundwater. Re-
+search has shown that approximately 2.2 billion people lack access to drinking water,
+and 2 billion live in countries with water shortages. Most of these people live in Africa,
+Asia, northeastern Mexico, the western United States, Argentina, Chile, and China. The
+majority of freshwater resources (over 60%) are concentrated in a few countries, including
+Brazil, Russia, Canada, the United States, and China. The vast majority of these global
+freshwater reserves are hidden in the glaciers of Antarctica, Greenland, and the Arctic,
+and only a small fraction (1%) is accessible for human use — in lakes, rivers, and springs.
+According to scientists, in a quarter of a century we could face a threatening situation:
+water reserves will be halved, and half of them will be polluted and unusable [1].
+86 Ravshanov N., Sadullaev S.
+The search for new sources of fresh water has, paradoxically, led scientists to the
+deep sea. Drilling in various parts of the planet has revealed that vast reserves of fresh
+water are hidden deep within the seafloor. The formation of these deposits was most
+likely caused by the Ice Age, or rather its end. During that cold period, part of the
+Earth’s territory now occupied by the World Ocean was dry land. In these areas, water
+gradually accumulated, and when the glaciers rapidly melted, the accumulated resource
+simply “sank to the bottom”, with fresh water separated from salt water by layers of clay
+and silt.
+From the analysis of long-term statistical data it is known that the water reserves
+on the globe amount to 1.4 billion km 3; of this, salt water (oceans) accounts for
+1 365 000 000 km 3 (97.5%) and fresh water for 35 000 000 km 3 (2.5%). The replenishment
+of groundwater reserves occurs due to precipitation, and the largest part of precipitation
+falls in Asia (30%) and South America (27% of the world’s total). The world’s popu-
+lation is growing rapidly, and estimates show that with current water use methods, by
+2030 there will be a 40% gap between the projected demand and the available fresh water
+reserves [2].
+As we know, the causes of the water crisis are related to the problem of water resource
+shortage; this is not a natural process but the result of human activity, and the main
+reasons are as follows:
+– the main sources of fresh water are rivers, lakes, and swamps; however, the natural dis-
+tribution of resources is, unfortunately, uneven across the globe: for example, Europe
+accounts for 20% of the planet’s population, but only 7% of its reserves;
+– the number of people on Earth is growing daily, and with them the demand for drinking
+water; therefore, if the annual population growth is 84 million, the required increase
+in water resources must be at least 60 million cubic meters;
+– inappropriate use of natural resources, i.e., pollution of water sources (industrial waste,
+emissions, fertilizer runoff from fields); for example, in America 37% of rivers and lakes
+are so polluted that they cannot even be used for irrigation or domestic needs;
+– the positive factor of agricultural development worldwide also contributes negatively
+to this problem: this sector’s water requirements account for 85% of the total, and
+therefore the price of artificially irrigated products is significantly higher;
+– one of the global causes is the greenhouse effect, as more and more gases are emitted
+into the atmosphere; the Earth’s climate is changing every year, and snowfall in hot
+climates and unnatural frosts in countries like Italy and Spain are all consequences of
+precipitation redistribution [3].
+Based on the above, effective groundwater protection and wastewater treatment re-
+quire the development of efficient methods and tools based on comprehensive studies
+of groundwater filtration processes in multilayer porous media. The inadequacy of tra-
+ditional irrigation methods and the use of salinized lands in agriculture have resulted
+in significant amounts of brackish return water resources in Uzbekistan. Experience has
+shown that surface and groundwater sources continue to be polluted by mineral fertilizers,
+pesticides, and highly mineralized and polluted drainage water used in agriculture.
+Mathematical modeling and computational experiments are effective tools for re-
+search, monitoring, forecasting, and management decision-making. Mathematical models
+of groundwater filtration in multilayer porous media are typically described by systems
+of partial differential equations with corresponding boundary and internal conditions of
+various types. Significant applied and fundamental results have already been obtained in
+the development of mathematical tools for solving such problems.
+Modeling of the process of unsteady filtration...87
+In particular, work [4] addressed the problem of unsteady groundwater filtration in the
+clay core of a high rock-and-earth dam, using the Nurek Hydroelectric Power Plant (HPP)
+dam as an example. Numerical calculations were performed on a computing system using
+the developed mathematical and software tools. A 30-year operational period of the Nurek
+HPP dam was studied. Calculations during this time showed that only the lower portion
+of the dam core was fully saturated with water. This confirmed the conclusions previously
+drawn using other methods regarding the relatively slow establishment of a quasi-static
+filtration regime in similar structures. According to the authors, the difference in results
+is explained by previously adopted assumptions and a more sophisticated filtration model
+in the Plaxis 2D software suite. The model used in this suite allows for the accounting of
+changes in soil transmissivity depending on its water saturation.
+The study [5] examines the process of modeling transient fluid flow in a reservoir sys-
+tem. A mathematical model of groundwater flow in porous media is developed based on
+parabolic partial differential equations with various initial, boundary, and internal condi-
+tions, and an analytical solution is obtained using the Laplace transform. Computational
+experiments were conducted to determine the pressure change along the length of the
+filter layers without considering the elastic regime, and it was found that the pressure in
+both layers increases exponentially. The computational experiment established that water
+flow through the interface between the filter layers depends significantly on the piezocon-
+ductivity of the highly permeable layer. The authors obtained a new generalized formula
+for well adit control and developed a mathematical framework that allows for the design
+of vertical drainage well layouts and capacity plans to protect irrigated and non-irrigated
+areas from flooding, as well as to protect groundwater from pollution sources and isolate
+already contaminated areas.
+Modeling of nonlinear groundwater filtration processes in multilayer heterogeneous
+porous media is considered in [6]. The key hydrodynamic parameters affecting ground-
+water filtration in multilayer heterogeneous porous media are analyzed, particularly the
+nonlinear nature of fluid flow and fluid transfer between different layers.
+In [7], a mathematical model is proposed for monitoring and predicting nonlinear
+groundwater filtration processes in multilayer heterogeneous porous media. This model
+represents a complex domain that integrates various mathematical and physical principles,
+the nonlinear nature of fluid flow, and the interaction between different layers of porous
+materials. The paper provides a detailed analysis of fundamental and applied research in
+the field of groundwater filtration in heterogeneous and multilayer porous media, based
+on the laws of H. Darcy, J. Dupuit, N. E. Zhukovsky, P. Forchheimer, and others.
+A numerical simulation model is proposed in [8] to assess the impact of the key hy-
+drodynamic parameters on groundwater levels over a specified period. For this purpose,
+a structured model was created for the Beijing Plain region and run using the GMS 10.6
+software with a finer grid around the reservoirs. The model’s accuracy agrees well with
+real data, and the overall average relative error is less than 20%. Comparison of the calcu-
+lated water balance with the results of numerous studies shows that the reliability of the
+equilibrium analysis results is relatively high. The numerical groundwater model is used
+to predict water levels over a 15-year period. The simulation results also demonstrate
+the impact of several projects related to the South-North Water Diversion Project, imple-
+mented to restore overexploited groundwater resources. The model predicts stabilization
+and a significant rise in groundwater levels in central Beijing.
+In [9], an analytical approach for mathematical modeling of groundwater flows in a
+vertically inclined multilayer porous medium with an unconfined aquifer was proposed. A
+88 Ravshanov N., Sadullaev S.
+mathematical toolkit was built for this approach. The analytical solution of the problem
+was obtained using the eigenfunction expansion method, which can be applied to any
+vertically multilayered soil stratification with time-varying rainfall. The authors validated
+the obtained solution using previous analytical solutions and numerical results simulated
+using the Modflow software.
+The authors of [10] proposed an effective physics-based deep learning model for solving
+multiphase flow problems in three-dimensional heterogeneous porous media, fully utilizing
+the capabilities of convolutional neural networks. The model utilizes input data, including
+porous medium properties, fluid properties, and well control parameters, and predicts
+spatiotemporal changes in pressure and saturation. While maintaining continuous fluid
+flow, the three-dimensional spatial domain is decomposed into 2D images. The model
+performs forecasting with a speedup of approximately 1400 times compared to physically
+based modeling, and the average time errors of predicted pressure and saturation values
+are 0.27% and 0.099%, respectively. Furthermore, a separate simulation model is created
+as a postprocessor for calculating well flow rates based on state variable predictions from
+the deep learning model, where water flow rates are effectively predicted with an average
+error of less than 5%. Based on the authors’ unique design for ensuring accurate fluid flow
+in porous media, the deep learning model with physically based constraints can become an
+effective predictive model for computationally complex inverse problems or other related
+processes.
+A new method for constructing hybrid macropore-Darcy models based on micro-CT
+images of microporous rocks is presented in [11]. Darcy cells effectively capture microscale
+connectivity variations absent in macroscopic networks. In this approach, the authors
+extract macropore networks using conventional methods, while microporosity is charac-
+terized using segmented phase classification and incorporated into the model as Darcy
+cells. This two-component model therefore incorporates both the traditional macroscopic
+pore structure and critical flow paths in underresolved microporous regions. The pro-
+posed workflow is thoroughly validated by comparing permeability estimates with direct
+numerical simulation (DNS) and experimental measurements. The results demonstrate
+that this hybrid approach reliably reproduces fluid flow behavior in complex porous media
+while significantly reducing computational requirements.
+In [12], the process of two-dimensional water movement under the influence of gravity
+in a heterogeneous unsaturated porous medium is modeled at various infiltration rates.
+The authors confirm that, depending on the saturation rate, the nature of moisture move-
+ment can transition from stable (diffusion) to unstable (formation of “fingers” — finger
+flow) and back. To describe these phenomena, a semi-continuum model is proposed that
+accurately reproduces the transitions between flow types and characterizes the width and
+distance between fluid flow channels. This model takes into account the phenomenon of
+“saturation overshoot” and allows for more accurate modeling of unstable water distribu-
+tion in a porous medium.
+In [13], mathematical modeling of the problem of nonlinear groundwater filtration in
+a heterogeneous porous medium is considered, taking into account evaporation and in-
+filtration from the daylight surface. The authors of this article focus on the influence
+of nonlinear effects on the distribution and dynamics of seepage flows in porous media,
+where the proposed model is described by a system of nonlinear partial differential equa-
+tions. Numerical methods, including difference schemes and iterative algorithms, were
+used to integrate the problem, ensuring the stability and convergence of calculations.
+Modeling of the process of unsteady filtration...89
+The developed numerical algorithm is implemented as software designed to solve various
+hydrogeological and land reclamation forecasting problems.
+As noted in [14], studying the hydrodynamic regime of groundwater, in particular the
+formation of new freshwater reserves and monitoring their quantitative and qualitative
+indicators, is of significant scientific and practical importance. Consequently, the authors
+of this article analyzed the main causes of groundwater level fluctuations in two-layer
+environments, including precipitation and evaporation, sources of water abstraction and
+recharge, the geological structure and permeability characteristics between layers, hy-
+draulic gradient, flow directions, irrigation infiltration, permeability coefficient, porosity,
+layer thickness, drainage, and other factors. To accurately model water level changes in
+open and confined aquifers, a mathematical model was developed that takes into account
+the physical, geological, and hydrogeological parameters of the study area. The problem
+was described using mathematical and numerical modeling of geofiltration and geomigra-
+tion processes. The model is represented by nonlinear differential equations that have no
+analytical solution due to the presence of free variables. Therefore, a fully robust numeri-
+cal solution scheme based on high-precision approximation was proposed. Solutions were
+obtained using iterative calculations and forward and backward substitution methods.
+The study also considered parameters such as soil density, effective porosity, and third-
+order open boundary conditions. As a result, the model provides reliable predictions for
+determining groundwater flow and changes in its quality, and this method offers practical
+solutions that can be applied in water resources management and planning.
+The development of a nonlinear mathematical model for studying, predicting, and
+making decisions on transient groundwater flow in a three-layer heterogeneous aquifer
+system, including a confined aquifer, a capping layer, and a low-permeability barrier, is
+discussed in [15], where the mathematical model incorporates infiltration and evaporation,
+governed by the law of M. M. Krylov and S. F. A veryanov. In the mathematical formula-
+tion, the evaporation rate depends on the critical groundwater level and takes into account
+periodic fluctuations in precipitation and evaporation, as well as the changing permeabil-
+ity of the boundaries. This approach enables realistic modeling of the dynamics of a
+multilayered aquifer under various climatic and hydrogeological conditions, offering a reli-
+able tool for sustainable groundwater management, drought risk assessment, and aquifer
+protection strategies. The authors used an implicit difference scheme for the numerical
+integration of the problem.
+As emphasized in the work [16], the method of mathematical modeling is an important
+tool for solving complex problems related to the analysis of groundwater dynamics and
+heat and mass transfer processes in them when studying their pollution from various an-
+thropogenic sources in the event of emergency spills of chemically hazardous substances,
+etc. Based on the above, the work is devoted to the development of a set of mathe-
+matical tools for monitoring and forecasting the filtration process of unconfined ground-
+water, mass transfer of impurities and the heat transfer process in groundwater, where
+the two-dimensional Boussinesq filtration equation was used for their solution. In the
+work, the freezing process of individual sections of the groundwater flow is modeled using
+the Laplace equation, and to calculate the flow velocity field in time-varying geometry a
+two-dimensional heat transfer equation in groundwater is used. Finite difference schemes
+were used to solve the model equations of groundwater dynamics and heat and mass
+transfer. The experiment confirmed the adequacy of the constructed numerical model
+of filtration of unconfined groundwater flow. An effective mathematical model has been
+developed for determining temperature fields in groundwater during the operation of a
+90 Ravshanov N., Sadullaev S.
+well used to freeze specific sections of the flow. Computer simulation results demonstrate
+the effectiveness of the developed mathematical models.
+Based on the analysis of the literature, this paper proposes a mathematical model
+for monitoring and forecasting groundwater levels, taking into account factors such as
+infiltration and evaporation and changes in the hydrodynamic parameters of the soil
+depending on the groundwater pressure.
+2 Problem statement
+The work focuses on the process of groundwater filtration in a porous medium, where
+the infiltration factor is taken into account, including an assessment of the inflow of water
+into underground horizons due to precipitation, through the use of methods for their
+balance over time and the determination of quantitative indicators of water intake and
+consumption over a certain period and in a certain area, as well as the use of geophysical,
+hydrogeological and mathematical methods for modeling the object as a whole.
+As is known, infiltration recharge is formed under the influence of natural factors that
+determine the intensity of atmospheric precipitation in the region under consideration,
+the time of year and the recharge of surface watercourses and reservoirs (Fig. 1).
+Figure 1Sources of infiltration recharge.
+Taking into account the above, in order to conduct a comprehensive study of unsteady
+filtration of groundwater with a free surface in a heterogeneous porous medium with a
+variable aquifer area, we consider the following problem, which is described by a nonlinear
+partial differential equation:
+𝑚𝜕𝐻(𝑥,𝑦,𝑡)
+𝜕𝑡 = 𝜕
+𝜕𝑥
+{︂
+κ(𝑥,𝑦,𝐻) [𝑏(𝑥,𝑦)−𝐻(𝑥,𝑦,𝑡)] 𝜕𝐻(𝑥,𝑦,𝑡)
+𝜕𝑥
+}︂
++
++ 𝜕
+𝜕𝑦
+{︂
+κ(𝑥,𝑦,𝐻) [𝑏(𝑥,𝑦)−𝐻(𝑥,𝑦,𝑡)] 𝜕𝐻(𝑥,𝑦,𝑡)
+𝜕𝑦
+}︂
+±𝜙(𝑥,𝑦,𝑡),
+(1)
+Modeling of the process of unsteady filtration...91
+where𝐻is the desired height of the free surface with respect to a certain horizontal plane
+taken as the reference plane;κis an isotropic function corresponding to the filtration
+coefficient of the heterogeneous porous medium;𝑏is the height of the aquifer bed, which
+is a function of the spatial coordinates;𝜙is the magnitude of infiltration or evaporation,
+variable over the aquifer area;𝑚is the porosity coefficient.
+To determine infiltration or evaporation, the following relationship can be used:
+𝜙(𝑥,𝑦,𝑡) =𝑞 0
+(︂
+1− ℎ−𝐻
+ℎ−𝐻 cr
+)︂𝑛
+.
+Here𝑞 0 is the intensity of evaporation (infiltration) at the daylight surface, which depends
+on weather and climate factors and the time of soil irrigation;𝐻 cr is the critical depth of
+groundwater;𝑛is an exponent;ℎis the thickness of the aquifer.
+An analysis of the literature has shown that the filtration coefficient, which is the main
+hydrodynamic parameter of the process, varies depending on the groundwater pressure.
+As indicated in [17], for small changes in groundwater pressure the filtration coefficient
+can be taken as a linear relationship
+κ(𝑥,𝑦,𝑡) =κ 0(𝑥,𝑦)
+(︀
+1−𝑎 𝑘
+(︀
+𝐻0(𝑥,𝑦)−𝐻(𝑥,𝑦,𝑡)
+)︀)︀
+,
+and for large changes in pressure — in exponential form
+κ(𝑥,𝑦,𝑡) =κ 0(𝑥,𝑦)𝑒 𝑎𝑘(𝐻0(𝑥,𝑦)−𝐻(𝑥,𝑦,𝑡)),
+whereκ 0(𝑥,𝑦)is the initial value of the filtration coefficient at𝑡= 0,𝑎 𝑘 is the coefficient
+of change in permeability.
+As noted in the work [18], for a realistic description of the mathematical model of the
+process, one can also use an empirical dependence of the form
+κ(𝑥,𝑦,𝑡) =κ 0(𝑥,𝑦)
+(︂𝑚
+𝑚0
+)︂𝑑
+,
+where𝑚 0 is the initial value of the porosity of the inhomogeneous medium,𝑑is a constant
+determined from experimental data.
+In [19], several analytical representations of the law of change in permeability due to
+changes in groundwater pressure are proposed in the form of a power law
+κ(𝑥,𝑦,𝑡) =κ 0(𝑥,𝑦)
+(︀
+1−𝑎 𝑘
+(︀
+𝐻0(𝑥,𝑦)−𝐻(𝑥,𝑦,𝑡)
+)︀)︀𝑛−1
+,
+where the index𝑛takes the values 2, 3 and 4, respectively, and in the work [20] a
+dependence of the following type was used to calculate the filtration coefficient:
+κ(𝑥,𝑦,𝑡) =κ 0(𝑥,𝑦)
+(︂𝐻
+𝐻0
+)︂𝑎𝑘
+.
+To complete the mathematical formulation of the problem, the internal boundary
+conditions on the well contours can correspond to the regime of specified withdrawals or
+groundwater levels as functions of time. As is known, another significant hydrodynamic
+parameter that influences groundwater filtration is the porosity of the aquifer, which
+varies depending on the aquifer’s internal pressure head. As the effective stress changes,
+the forces compressing each rock grain decrease as the groundwater pressure increases.
+92 Ravshanov N., Sadullaev S.
+Therefore, as the pressure head falls, the grain volume increases and the pore volume
+decreases.
+To integrate equation (1), in the first case the boundary condition is represented by
+the relationship
+𝑄𝑗(𝑡) =
+∫︁
+𝛾𝑗
+κ(𝑥,𝑦,𝑡) 𝜕𝐻(𝑥,𝑦,𝑡)
+𝜕𝑛 𝐻(𝑥,𝑦,𝑡)𝑑𝑠.(2)
+Here𝑄 𝑗 is the flow rate of the𝑗-th well,𝜕𝐻(𝑥,𝑦,𝑡)/𝜕𝑛is the derivative along the external
+normal to the circular contour𝛾 𝑗 of the𝑗-th well,𝑑𝑠is the length element of the contour.
+In the second case, the height of the free surface at the well is known, which, for design
+reasons, is constant along the entire supply contour:
+𝐻(𝑥 𝑐𝑘,𝑦𝑐𝑘) =𝜓 𝑘(𝑡).(3)
+Here𝑥 𝑐𝑘,𝑦 𝑐𝑘 are the coordinates of the𝑘-th well,𝑘=𝜈 1,𝜈 2,𝜈 1 +𝜈 2 =𝑛, where𝜈 1 or𝜈 2
+can be equal to zero, which corresponds to the conditions of given withdrawals or given
+groundwater levels at all wells.
+External boundary conditions can be of the most general form; in particular, on the
+contour𝐺the height of the free surface is known as a function of time:
+𝐻(𝑥,𝑦,𝑡)| 𝐺 =𝜓(𝑥,𝑦,𝑡).(4)
+The initial condition determines the distribution of the groundwater level in the region
+𝐺up to the boundary:
+𝐻(𝑥,𝑦,𝑡)| 𝑡=0 =𝐻 0(𝑥,𝑦).(5)
+3 Method of solution
+The most general boundary value problem under consideration in a multiply connected
+domain is complex, and therefore obtaining analytical solutions is practically impossible.
+From the formulation of the boundary value problem (1)–(5), it is clear that the mathe-
+matical difficulties encountered in solving it are due to the following circumstances:
+– the differential equation describing unsteady groundwater filtration with a free surface
+in a heterogeneous porous medium is a nonlinear, inhomogeneous partial differential
+equation with variable coefficients;
+– the integration domain of the problem has an arbitrary outer boundary with a given
+finite number of internal contours, and the external boundary conditions and the initial
+condition are represented by functional dependencies;
+– the internal conditions are non-identical functions of time (corresponding to specified
+functions or their derivatives on the contour);
+– the dimensions of the internal contours are extremely small compared to the dimen-
+sions of the outer boundary of the domain.
+Based on the above, we solve the problem using the finite difference method on a
+computer system, employing the technology proposed by A. A. Samarskii (the splitting
+method). To do this, we first pass to dimensionless variables, convenient for performing
+numerical calculations on a computer system, using the relations
+𝐻𝛿 = 𝐻
+𝐻𝑥
+,κ 𝛿 = κ
+κ𝑥
+, 𝑏 𝛿 = 𝑏
+𝐻𝑥
+, 𝜙 𝛿 = 𝐿2
+κ𝑥𝐻2
+𝑥
+𝜙, 𝑥 𝛿 = 𝑥
+𝐿, 𝑦 𝛿 = 𝑦
+𝐿, 𝑡 𝛿 = κ𝑥𝐻𝑥
+𝑚𝐿2 𝑡.
+Modeling of the process of unsteady filtration...93
+Here the index “𝛿” denotes dimensionless quantities,𝐻 𝑥 andκ 𝑥 are certain characteristic
+quantities, and𝐿is the greatest distance from the origin to the outer boundary. Then
+the differential equation under consideration takes the form
+𝜕𝐻
+𝜕𝑡 = 𝜕
+𝜕𝑥
+[︂
+κ(𝑏−𝐻) 𝜕𝐻
+𝜕𝑥
+]︂
++ 𝜕
+𝜕𝑦
+[︂
+κ(𝑏−𝐻) 𝜕𝐻
+𝜕𝑦
+]︂
+±𝜙(𝑥,𝑦,𝑡),(6)
+whereκ,𝑚,𝑏,𝑥,𝑦are positive dimensionless variables (the index𝛿is omitted).
+Approximating the derivatives in (6) by their grid analogs according to the three-
+point implicit finite-difference scheme, we obtain a system of two locally one-dimensional
+difference equations:
+Δ𝑥
+[︁
+κ𝑖,𝑗
+(︁
+˜𝐻𝑖,𝑗−𝑏𝑖,𝑗
+)︁
+∇𝑥 ˜𝐻𝑖,𝑗
+]︁
+=𝜒
+(︂Δ𝜉2
+Δ𝑡 ·Δ𝑡·𝐻 𝑖,𝑗−𝜙·Δ𝜉 2
+)︂
+;(7)
+Δ𝑦
+[︁
+κ𝑖,𝑗
+(︁ ˜˜𝐻𝑖,𝑗−𝑏𝑖,𝑗
+)︁
+∇𝑦
+˜˜𝐻𝑖,𝑗
+]︁
+= (1−𝜒)
+(︂Δ𝜉2
+Δ𝑡 ·Δ𝑡· ˜𝐻𝑖,𝑗−𝜙·Δ𝜉 2
+)︂
+.(8)
+HereΔ 𝑥,Δ 𝑦,∇ 𝑥,∇ 𝑦 are the operators of the right and left differences in the directions
+of the𝑥- and𝑦-axes, respectively (a right-handed coordinate system is used);Δ𝜉,Δ𝑡are
+the steps of the spatial and temporal grids, respectively; the grid points(𝑖,𝑗)have the
+coordinates𝑥 𝑖 =𝑖·Δ𝜉,𝑦 𝑗 =𝑗·Δ𝜉;𝜒is a parameter less than one; ˜𝐻𝑖,𝑗 and ˜˜𝐻𝑖,𝑗 are the
+desired solutions associated with𝐻 𝑖,𝑗, corresponding to the time layer𝑡 𝑛+1 = (1 +𝜒)·Δ𝑡.
+Let us first consider the method for solving the system of finite-difference equations
+(7) and (8) for a simply connected region and then generalize it to the case where there
+are internal conditions. Let the solution of the boundary value problem at the previous
+time level be known. By considering the locally one-dimensional difference equation (7)
+for each row of the spatial grid under the given boundary conditions, an intermediate
+solution ˜𝐻𝑖,𝑗 can be found. Considering the resulting solution as the initial condition and
+sequentially solving the locally one-dimensional difference equation (8) for each column of
+the spatial grid, one obtains the solution ˜˜𝐻𝑖,𝑗. With a well-chosen value of the parameter
+𝜒, for some regions the final solution can be considered the desired result at the time level
+𝑡𝑛+1 = (1 +𝜒)·Δ𝑡.
+However, as calculations on a high-speed computer show, the best results are obtained
+by applying the principle of symmetrization. This method involves performing calcula-
+tions not only in the order specified above, but also in the reverse order. If we denote
+the solution obtained by successively solving equation (7) and then equation (8) by ˜˜𝐻𝑖,𝑗,
+and the solution obtained by successively solving equation (8) and then (7) by ˜𝐻𝑖,𝑗, then,
+according to the symmetrization principle, the solution on the(𝑛+1)-th time layer should
+be taken as the combination
+𝐻𝑛+1
+𝑖,𝑗 =𝜇· ˜˜𝐻𝑖,𝑗 + (1−𝜇)· ˜𝐻𝑖,𝑗.(9)
+Experience shows that the values of the parameters𝜒and𝜇can be set to 0.5 when
+using the symmetrization principle. The actual solution of equations (7) and (8) can be
+obtained by successive application of the sweep and iteration methods. If we assume that
+the nonlinear expressions in them are known from initial approximations, then finding
+the first iteration is equivalent to solving a linear parabolic equation with given boundary
+conditions. Using the sweep method, we can refine successive approximations in the
+94 Ravshanov N., Sadullaev S.
+nonlinear expressions and find a solution of the nonlinear parabolic equation with any
+desired accuracy.
+We now turn to solving the boundary value problem with internal conditions. While
+the issues of rational use of RAM, efficient numerical approximation of the initial opera-
+tors, and saving computer time are significant for a boundary value problem in a simply
+connected domain, in a problem with internal conditions, in addition to these, the funda-
+mental problem of their approximation in the grid domain arises.
+Research on approximating internal boundary conditions is of independent interest.
+This is explained by the fact that wellbore contours cannot be approximated with any
+practically applicable grid. Therefore, research was aimed at exploring the feasibility of
+other approaches, in particular, replacing the wellbore with a point coinciding with a grid
+node. It turned out that when approximating the wellbore contour with a point, the
+desired solution at that particular node is fictitious, although the results at neighboring
+nodes are correct. Moreover, the fictitious results correspond to a certain real wellbore
+with a radius𝑅 𝜙 commensurate with the grid step and satisfying the relation
+𝑅𝜙 = 0.2·Δ𝜉.
+Thus, only the grid spacingΔ𝜉determines the radius of the enlarged fictitious well. Know-
+ing the values of the desired function on the contour of the enlarged well and considering
+them as time-varying boundary conditions of the first kind, we can further consider the
+problem of determining the desired quantities on the contour of a well with radius𝑅 𝑐 and
+in its vicinity. The problem is reduced to integrating differential equation (1) in the ring
+𝑅𝑐 <𝜁 <𝑅 𝜙, 𝜁=
+√︀
+𝑥2 +𝑦 2,
+where the wellbore conditions are described by equations (7) and (8). The latter problem
+is obviously equivalent to the problem of plane-radial, i.e., one-dimensional, flow toward
+the wellbore in a circular domain.
+To approximate the internal conditions using finite-difference relations, we proceed as
+follows. We isolate a fluid volume element with an axis of symmetry passing through
+the singular point with coordinates𝑥 𝑖 and𝑦 𝑖 and consider the continuity equation for
+this volume, whose projection onto the horizontal plane is a square with side lengthΔ𝜉.
+Summing the inflow volumes through the lateral faces in the𝑥- and𝑦-axis directions, we
+obtain the expression
+(𝐻−𝑏) 𝑖−0.5,𝑗·𝑉𝑖−0.5,𝑗·Δ𝜉−(𝐻−𝑏) 𝑖+0.5,𝑗·𝑉𝑖+0.5,𝑗·Δ𝜉+
++(𝐻−𝑏) 𝑖,𝑗−0.5·𝑉𝑖,𝑗−0.5·Δ𝜉−(𝐻−𝑏) 𝑖,𝑗+0.5·𝑉𝑖,𝑗+0.5·Δ𝜉.
+For an ordinary node, this expression should be equal to the change in the volume under
+consideration over the timeΔ𝑡taken with the opposite sign:
+−Δ𝐻av
+Δ𝑡 ·(Δ𝜉) 2,
+where𝐻 av is the average value of the desired function in the domain
+𝑥𝑖−0.5 ⩽𝑥⩽𝑥 𝑖+0.5, 𝑦 𝑗−0.5 ⩽𝑦⩽𝑦 𝑗+0.5.
+For a singular node, the flow rate𝑄 𝑖,𝑗 at the point(𝑥 𝑖,𝑦𝑖)is added to this value. Under
+conditions of infiltration or evaporation, it is necessary to add the value𝜙 𝑖,𝑗, where𝜙 𝑖,𝑗 >0
+Modeling of the process of unsteady filtration...95
+for infiltration and𝜙 𝑖,𝑗 <0for evaporation. Thus, taking into account that the filtration
+rates obey Darcy’s law, we obtain
+Δ𝑥 [κ𝑖,𝑗 (𝐻𝑖,𝑗−𝑏𝑖,𝑗)∇𝑥𝐻𝑖,𝑗] + Δ𝑦 [κ𝑖,𝑗 (𝐻𝑖,𝑗−𝑏𝑖,𝑗)∇𝑦𝐻𝑖,𝑗] =
+=
+(︂Δ𝜉
+Δ𝑡·Δ𝑡·𝐻 𝑖,𝑗 +𝜙𝑖,𝑗·Δ𝜉 2
+)︂
+−𝑄𝑖,𝑗, (10)
+where we accept that
+Δ𝐻av
+Δ𝑡 = Δ𝐻𝑖,𝑗
+Δ𝑡 .
+In relation (10) all quantities are dimensionless, and the dimensionless flow rate of the
+well is equal to
+𝑄𝛿 = 𝑄
+κ𝑥·𝐻 2
+𝑥
+.
+According to the splitting method, equation (10) must be represented in the form of
+two locally one-dimensional equations:
+Δ𝑥 [κ𝑖,𝑗 (𝐻𝑖,𝑗−𝑏𝑖,𝑗)∇𝑥𝐻𝑖,𝑗] =𝜒
+[︂Δ𝜉2
+Δ𝑡 ·Δ𝑡·𝐻 𝑖,𝑗−𝜀Δ𝜉 2−𝑄𝑖,𝑗
+]︂
+;(11)
+Δ𝑦 [κ𝑖,𝑗 (𝐻𝑖,𝑗−𝑏𝑖,𝑗)∇𝑦𝐻𝑖,𝑗] = (1−𝜒)
+[︂Δ𝜉2
+Δ𝑡 ·Δ𝑡·𝐻 𝑖,𝑗−𝜀Δ𝜉 2−𝑄𝑖,𝑗
+]︂
+.(12)
+Comparing (11) and (12) with equations (7) and (8), it is easy to see that they coincide
+when𝐷 𝑖,𝑗 = 0, i.e., equations (11) and (12) are generalizations of the approximation for
+an internal ordinary node to the case of a singular node.
+Thus, we find that the method for solving the problem under consideration with
+internal conditions represented by equation (10) is not fundamentally different from the
+method described above for a simply connected domain. In the case where the conditions
+on the internal contours are described by equations (11), the following iterative process
+can be applied. According to Dupuit’s formula, the fluid flow rate in a well under steady-
+state filtration conditions (at𝜓 𝑖,𝑗 = const) is
+𝑄𝑖,𝑗 =
+(︀
+𝐻2
+𝑖,𝑗−𝜓 2
+𝑖,𝑗
+)︀
+· κ𝑖−0.5,𝑗 +κ𝑖+0.5,𝑗 +κ𝑖,𝑗−0.5 +κ𝑖,𝑗+0.5
+− 1
+2𝜋
+(︂
+ln 𝑅𝑐
+Δ𝜉·𝜀 + 1.61
+)︂ .(13)
+Assuming𝑄 𝑖,𝑗 = ¯𝑄𝑖,𝑗 in the first approximation, one can find successively all the remaining
+approximations with a given degree of accuracy.
+4 Model problems and computational experiments
+4.1 The problem of spreading of an infiltration mound
+As a result of artificial irrigation of land or natural phenomena such as precipitation,
+a so-called infiltration mound develops. It is necessary to predict the persistent change
+in groundwater level over time under the influence of the growth of this mound. This
+problem is part of the more general problem of locating relief wells in areas likely to be
+affected by infiltration mounds, reservoirs, or natural bodies of water.
+Let us present the calculation formulas for this problem according to the algorithm
+described above. For simplicity of presentation, in (7) we set𝑏 𝑖,𝑗 = 0and write it in the
+form
+𝑎𝑖𝐻2
+𝑖−1,𝑗−𝑒𝑖𝐻2
+𝑖,𝑗 +𝑐𝑖𝐻2
+𝑖+1,𝑗 =−𝑑 𝑖,(14)
+96 Ravshanov N., Sadullaev S.
+where the coefficients are defined as
+𝑎𝑖 =κ 𝑖+0.5,𝑗;𝑒 𝑖 =κ 𝑖+0.5,𝑗 +κ𝑖−0.5,𝑗 +𝜒 Δ𝑥2
+2𝐻(2)
+𝑖,𝑗 Δ𝑡
+;
+𝑐𝑖 =κ 𝑖−0.5,𝑗;𝑑 𝑖 =𝜒 Δ𝑥2
+2𝐻(2)
+𝑖,𝑗,𝑘
+𝐻2
+𝑖,𝑗,𝑘+1 +𝜀Δ𝑥 2.
+We seek the solution of system (14) in the form
+𝐻2(𝑠+1)
+𝑖,𝑗,𝑛+1 =𝛼 𝑖𝐻2(𝑠)
+𝑖+1,𝑗,𝑘+1 +𝛽𝑖.(15)
+From equation (14), using (15), we obtain the recurrence relations
+𝛼𝑖 = 𝑐𝑖
+𝑒𝑖−𝑎𝑖𝛼𝑖−1
+, 𝛽 𝑖 = 𝑑𝑖 +𝑎𝑖𝛽𝑖−1
+𝑒𝑖−𝑎𝑖𝛼𝑖−1
+.
+Moreover, from the boundary conditions we have
+𝛼0 = 0, 𝛽 0 =𝐻 2
+0.
+A model problem was considered for a symmetric domain with a square boundary and
+a central square infiltration region (Figs. 1, 2). The filtration coefficient was assumed to
+be constant, and numerical experiments were conducted on a computing cluster. Analy-
+sis of the numerical simulations showed that the infiltration front propagates absolutely
+symmetrically over time within the considered infiltration region, as expected from phys-
+ical considerations. Computational experiments were conducted forκ 0 = 0.05m/day,
+𝜙= 0.0025m/day,𝐻 0 = 100m (Fig. 4). Based on the obtained results, it follows that
+A. A. Samarskii’s locally one-dimensional scheme is effective for this class of problems
+and can be recommended for solving modeling, forecasting, and other problems for real
+hydrogeological objects. In the future, the presented numerical algorithm will be applied
+to predicting changes in groundwater levels.
+Figure 2Change in groundwater level over time at𝜙= 0.0025m/day.
+As can be seen from the curve in Fig. 2, the groundwater level decreases over time
+depending on the change in the infiltration parameter. A significant change in the ground-
+water level is observed at𝑡>60days, after which it decreases linearly over time.
+4.2 Unsteady groundwater inflow to a well
+The objective of this problem is to conduct experimental calculations related to find-
+ing an optimal formula for approximating the well conditions in finite differences. Two
+methods for approximating the well boundary conditions were considered.
+Modeling of the process of unsteady filtration...97
+We assume that the movement toward the enlarged well occurs according to Darcy’s
+law. Then, for each moment in time, we have the following formula for the well flow rate:
+(︀
+𝐻2
+𝑖+1,𝑗−𝐻 2
+𝑖,𝑗
+)︀
+κ𝑖+0.5,𝑗 +
+(︀
+𝐻2
+𝑖−1,𝑗−𝐻 2
+𝑖,𝑗
+)︀
+κ𝑖−0.5,𝑗 +
++
+(︀
+𝐻2
+𝑖,𝑗+1−𝐻 2
+𝑖,𝑗
+)︀
+κ𝑖,𝑗+0.5 +
+(︀
+𝐻2
+𝑖,𝑗−1−𝐻 2
+𝑖,𝑗
+)︀
+κ𝑖,𝑗−0.5 =𝑄 ℓ, (16)
+where𝑄 ℓ is the water flow rate at the well. If a given production rate is maintained at the
+well, then𝑄 ℓ is a known function of time. In the case where the well pressure is known,
+the internal pressure conditions at the well can be approximated in finite differences by
+the equation (︀
+𝐻2
+𝑖+1,𝑗−𝐻 2
+𝑖,𝑗
+)︀
+κ𝑖+0.5,𝑗 +
+(︀
+𝐻2
+𝑖−1,𝑗−𝐻 2
+𝑖,𝑗
+)︀
+κ𝑖−0.5,𝑗 +
++
+(︀
+𝐻2
+𝑖,𝑗+1−𝐻 2
+𝑖,𝑗
+)︀
+κ𝑖,𝑗+0.5 +
+(︀
+𝐻2
+𝑖,𝑗−1−𝐻 2
+𝑖,𝑗
+)︀
+κ𝑖,𝑗−0.5 =
+=
+(︀
+𝐻2
+𝑖,𝑗−𝐻 2
+𝑐
+)︀
+𝐷𝑖,𝑗,𝑦 +
+(︀
+𝐻2
+𝑖,𝑗−𝐻 2
+𝑐
+)︀
+𝐷𝑖,𝑗,𝑥,
+(17)
+where
+𝐷𝑖,𝑗,𝑥 = κ𝑖+0.5,𝑗 +κ𝑖−0.5,𝑗
+− 1
+2𝜋
+(︂
+ln 𝑅𝑐
+Δ𝑥 + 1.61
+)︂, 𝐷 𝑖,𝑗,𝑦 = κ𝑖,𝑗+0.5 +κ𝑖,𝑗−0.5
+− 1
+2𝜋
+(︂
+ln 𝑅𝑐
+Δ𝑦 + 1.61
+)︂.
+Formula (17) follows from (16), where the quantity𝑄 ℓ, in accordance with the above as-
+sumption, is represented by the formula for steady plane-radial filtration. In dimensionless
+form, (16) and (17) retain their original form with the notation
+𝑄*
+ℓ = 𝑄
+𝐻2
+𝑥·κ𝑥
+,
+where𝑄 *
+ℓ is the dimensionless value of the withdrawal function.
+For definiteness, we assume that the conditions at the well are of the form (16).
+According to A. A. Samarskii’s locally one-dimensional method, we obtain the following
+equations for each direction:
+⎧
+⎪⎨
+⎪⎩
+(︀
+𝐻2
+𝑖+1,𝑗−𝐻 2
+𝑖,𝑗
+)︀
+·κ𝑖+0.5,𝑗 +
+(︀
+𝐻2
+𝑖−1,𝑗−𝐻 2
+𝑖,𝑗
+)︀
+·κ𝑖−0.5,𝑗 = 𝑄
+2 ;
+(︀
+𝐻2
+𝑖,𝑗+1−𝐻 2
+𝑖,𝑗
+)︀
+·κ𝑖,𝑗+0.5 +
+(︀
+𝐻2
+𝑖,𝑗−1−𝐻 2
+𝑖,𝑗
+)︀
+·κ𝑖,𝑗−0.5 = 𝑄
+2.
+(18)
+From (18) it is easy to obtain the sweep coefficients for a singular node:
+𝛼𝑖 = κ𝑖+0.5,𝑗
+(κ𝑖+0.5,𝑗 +κ𝑖−0.5,𝑗)−κ 𝑖−0.5,𝑗·𝛼𝑖−1
+;
+𝛽𝑖 = κ𝑖−0.5,𝑗·𝛽𝑖−1− 1
+2𝑄
+(κ𝑖+0.5,𝑗 +κ𝑖−0.5,𝑗)−κ 𝑖−0.5,𝑗·𝛼𝑖−1
+.
+For the case of a given pressure, using similar reasoning, we obtain
+𝛼𝑖 = κ𝑖+0.5,𝑗
+(κ𝑖+0.5,𝑗 +κ𝑖−0.5,𝑗)−κ 𝑖−0.5,𝑗·𝛼𝑖−1
+;𝛽 𝑖 = κ𝑖−0.5,𝑗·𝛽𝑖−1− 1
+2𝑄
+(κ𝑖+0.5,𝑗 +κ𝑖−0.5,𝑗)−κ 𝑖−0.5,𝑗·𝛼𝑖−1
+.
+A method for approximating the well conditions for a singular node was also investi-
+gated:
+𝑎𝑖 =κ 𝑖−0.5,𝑗;𝑏 𝑖 =κ 𝑖+0.5,𝑗 +κ𝑖−0.5,𝑗 +𝜒 Δ𝑥2
+2𝐻(𝑠)
+𝑖,𝑗 Δ𝑡
+;
+𝑐𝑖 =κ 𝑖−0.5,𝑗;𝑑 𝑖 =𝜒 Δ𝑥2
+2𝐻(2)
+𝑖,𝑗,𝑘
+𝐻(2)
+𝑖,𝑗,𝑘+1 +𝜀Δ𝑥 2−𝑄.
+98 Ravshanov N., Sadullaev S.
+Using the approximation methods discussed, a model problem was solved for a do-
+main with a square boundary and a single well located in the center. Based on the
+proposed numerical algorithm, computational experiments were conducted on a comput-
+ing cluster (Figs. 3–5). Preliminary calculations showed that for this class of problems,
+A. A. Samarskii’s locally one-dimensional scheme can be successfully applied in combina-
+tion with the symmetrization method. Approximating the boundary conditions at the
+well using formula (18) ensures higher accuracy of the results.
+Figure 3Change in groundwater level depending on the value of the infiltration parameter.
+The curves in Fig. 3 show that the groundwater level decreases exponentially over time
+depending on the infiltration coefficient. It is also observed that a significant decrease in
+the groundwater level occurs at𝑡>65days, depending on the infiltration parameter.
+Figure 4Change in groundwater level depending on the value of the evaporation parameter.
+Figure 5Change in groundwater level for different values of the evaporation parameter.
+Modeling of the process of unsteady filtration...99
+Numerical calculations were also performed for various values of the evaporation co-
+efficient from the daylight surface of the groundwater (Figs. 4, 5). The calculated curves
+show that the groundwater level decreases as the evaporation coefficient increases. This
+is especially noticeable at𝑡>35days.
+5 Conclusion
+In this paper, a minimizing functional is proposed for determining the values of the
+parameters𝑞 0,𝑛,𝐻 cr and the main factors directly affecting groundwater level changes
+(evaporation or infiltration).
+Numerical calculations performed for model problems revealed that the best results
+are obtained using the symmetrization principle.
+A model problem for a symmetric domain with a square boundary and a square in-
+filtration region located at the center was considered. Analysis of the results showed
+that, for a constant infiltration coefficient, the infiltration front propagates absolutely
+symmetrically in time within the considered infiltration region, as expected from physical
+considerations.
+It was established that A. A. Samarskii’s locally one-dimensional scheme is effective
+for this class of problems and can be recommended for solving modeling, forecasting, and
+other problems for real hydrogeological objects.
+Numerical calculations also showed that for this class of problems, A. A. Samarskii’s
+locally one-dimensional scheme can be successfully applied in combination with the sym-
+metrization method.
+Declarations
+Conflicts of interest.The authors declare no conflict of interest.
+Data availability .The data are available from the authors on reasonable request.
+References
+[1] World404. Mirovye zapasy presnoy vody [World reserves of fresh water]. A vailable at:
+https://world404.com/vodnye-resursy/mirovye-zapasy-presnoj-vody/.
+[2] Russian International Affairs Council. Nekhvatka presnoy vody stanovitsya krup-
+neyshey mirovoy problemoy [Fresh water shortage is becoming the biggest global prob-
+lem]. A vailable at:https://russiancouncil.ru/analytics-and-comments/comments/
+nekhvatka-presnoy-vody-stanovitsya-krupneyshey-mirovoy-problemoy/.
+[3] Rubryka. Pit’yevaya voda [Drinking water]: infographics. A vailable at:https://rubryka.
+com/ru/infographics/pytevaya-voda/.
+[4] Aniskin N. A., Sergeev S. A. 2022. Chislennye resheniya zadach neustanovivsheysya fil’tratsii
+v gidrotekhnike [Numerical solutions of unsteady seepage problems in hydraulic engineering].
+Vestnik MGSU. 17(1): 104–115. (In Russian)
+[5] Ravshanov N., Abdullaev Z. S., Khafizov O. Ya. 2020. Modelirovanie fil’tratsii podzem-
+nykh vod v mnogosloynykh poristykh sredakh [Modeling of groundwater filtration in mul-
+tilayer porous media].Stroitel’stvo unikal’nykh zdaniy i sooruzheniy. No. 7(92): Art. 9205.
+doi:https://doi.org/10.18720/CUBS.92.5. (In Russian)
+[6] Ravshanov N., Shadmanova K. 2025. Issledovanie matematicheskogo modelirovaniya prot-
+sessov fil’tratsii podzemnykh vod v mnogosloynykh neodnorodnykh poristykh sredakh
+[Study of mathematical modeling of groundwater filtration processes in multilayer hetero-
+geneous porous media].Mezhdunarodnyy zhurnal teoreticheskikh i prikladnykh voprosov
+tsifrovykh tekhnologiy. 8(1): 48–57. doi:https://doi.org/10.62132/ijdt.v8i1.232. (In
+Russian)
+100Ravshanov N., Sadullaev S.
+[7] Ravshanov N., Sadullaev S., Shadmanova K. U., Zhurabaev Kh. A. 2025. Issledovanie i
+analiz matematicheskikh modeley protsessov fil’tratsii podzemnykh vod v mnogosloynykh
+neodnorodnykh poristykh sredakh [Study and analysis of mathematical models of ground-
+water filtration processes in multilayer heterogeneous porous media].Problems of Compu-
+tational and Applied Mathematics. No. 1(63): 41–56. (In Russian)
+[8] Camara S. F., Zhou J., Zhang Y. 2025. Unstructured Modflow model for numerical simula-
+tions of groundwater flow in three-dimensional Quaternary aquifer of Beijing Plain, China.
+Water. 17(21): Art. 3162. doi:https://doi.org/10.3390/w17213162.
+[9] Hsieh P.-C., Lee P.-C. 2021. Analytical modeling of groundwater flow of vertically multi-
+layered soil stratification in response to temporally varied rainfall recharge.Applied Math-
+ematical Modelling. 95: 542–562. doi:https://doi.org/10.1016/j.apm.2021.03.030.
+[10] Yan B., Harp D. R., Chen B., Pawar R. 2021. A physics-constrained deep learning
+model for simulating multiphase flow in 3D heterogeneous porous media. arXiv preprint
+arXiv:2105.09467. doi:https://doi.org/10.48550/arXiv.2105.09467.
+[11] Petrovskyy D. [et al.] 2025. Enhanced permeability estimation in microporous rocks using
+a hybrid macropore-Darcy approach. arXiv preprint arXiv:2504.02550. doi:https://doi.
+org/10.48550/arXiv.2504.02550.
+[12] Kmec J., Šír M. 2024. Modeling 2D gravity-driven flow in unsaturated porous media for
+different infiltration rates. arXiv preprint arXiv:2412.10017. doi:https://doi.org/10.
+48550/arXiv.2412.10017.
+[13] Nazirova E. Sh., Karabaeva Kh. A. 2025. Numerical solution of the nonlinear groundwater
+and pressurized water filtration problem.Problems of Computational and Applied Mathe-
+matics. No. 3(67): 28–42. doi:https://doi.org/10.71310/pcam.3_67.2025.04.
+[14] Daliev Sh., Urakov S., Elmurodov U., Xaitov O., Abbasova M. 2025. A three-dimensional
+mathematical model for groundwater level variations in a two-layered medium.Engineering,
+Technology and Applied Science Research. 15(5): 28368–28376. doi:https://doi.org/10.
+48084/etasr.8123.
+[15] Mukhamadiyev A., Karimov M., Sattarov O., Cho J. 2026. A nonlinear model of three-layer
+groundwater flow with evaporation dependent on the critical groundwater level.Mathemat-
+ics. 14(2): Art. 256. doi:https://doi.org/10.3390/math14020256.
+[16] Biliaiev M. M., Kozachyna V. V. 2024. Modeling of filtration and heat and mass transfer
+processes in groundwater.Science and Transport Progress. No. 2(109): 45–56. doi:https:
+//doi.org/10.15802/stp2024/313664.
+[17] Basniev K. S., Kochina I. N., Maksimov V. M. 1993.Podzemnaya gidromekhanika: uchebnik
+dlya vuzov [Underground hydromechanics: a textbook for universities]. Moscow: Nedra.
+416 p. (In Russian)
+[18] Barry I. S. 1990.Flow in a deformable porous medium. Sydney: University of New South
+Wales. 148 p.
+[19] Ban A., Basniev K. S., Nikolaevskiy V. N. 1961. Ob osnovnykh uravneniyakh fil’tratsii v
+szhimaemykh poristykh sredakh [On the basic equations of filtration in compressible porous
+media].Prikladnaya mekhanika i tekhnicheskaya fizika. No. 3: 52–56. (In Russian)
+[20] Buzinov S. N., Umrikhin I. D. 1973.Gidrodinamicheskie metody issledovaniya skvazhin i
+plastov [Hydrodynamic methods of well and reservoir testing]. Moscow: Nedra. 269 p. (In
+Russian)
+Моделирование процесса нестационарной фильтрации...101
+УДК 519.6
+МОДЕЛИРОВАНИЕ ПРОЦЕССА НЕСТАЦИОНАРНОЙ
+ФИЛЬТРАЦИИ ГРУНТОВЫХ ВОД СО СВОБОДНОЙ
+ПОВЕРХНОСТЬЮ С УЧЁТОМ ИНФИЛЬТРАЦИОННЫХ
+ПОТОКОВ
+*Равшанов Н., Садуллаев С.
+*ravshanzade-09@mail.ru
+Научно-исследовательский институт развития цифровых технологий и искусственного
+интеллекта,
+100125, Узбекистан, г. Ташкент, м-в Буз-2, 17А
+Предложена нелинейная математическая модель с граничными, начальными и
+внутренними условиями для мониторинга и прогнозирования нестационарной филь-
+трации грунтовых вод со свободной поверхностью с учётом инфильтрационных пото-
+ков и гидродинамических параметров грунта. Для определения основных факторов,
+непосредственно влияющих на изменение уровня грунтовых вод во времени, пред-
+ставлен минимизируемый функционал, позволяющий определить диапазоны изме-
+нения существенных параметров, в которых они оказывают значительное влияние
+на процесс инфильтрации. Задача решается численно по локально-одномерной схе-
+ме А. А. Самарского; численные эксперименты на модельных задачах показали, что
+наилучшие результаты достигаются при применении принципа симметризации. Ре-
+шена модельная задача для симметричной области с квадратной границей и квад-
+ратной областью инфильтрации. Анализ результатов показал, что при постоянном
+коэффициенте фильтрации фронт инфильтрации распространяется во времени абсо-
+лютно симметрично в пределах рассматриваемой области фильтрации, что соответ-
+ствует физическим представлениям. Установлено, что локально-одномерная схема
+эффективна для данного класса задач, может успешно применяться в сочетании с
+методом симметризации и может быть рекомендована для решения задач модели-
+рования и прогнозирования режима грунтовых вод.
+Ключевые слова:математическая модель, численный алгоритм, грунтовые воды,
+вычислительные эксперименты, гидродинамические параметры, фронт инфильтра-
+ции
+Цитирование:Равшанов Н., Садуллаев С.Моделирование процесса нестационар-
+ной фильтрации грунтовых вод со свободной поверхностью с учётом инфильтраци-
+онных потоков // Проблемы вычислительной и прикладной математики. – 2026. –
+№ 4(74). – С. 85-101.
+DOI:10.71310/pcam.4_74.2026.05
+ПРОБЛЕМЫ ВЫЧИСЛИТЕЛЬНОЙ И
+ПРИКЛАДНОЙ МАТЕМАТИКИ
+№ 4(74) 2026
+Журнал основан в 2015 году.
+Издается 6 раз в год.
+Учредитель:
+Научно-исследовательский институт развития цифровых технологий и
+искусственного интеллекта.
+Главный редактор:
+Равшанов Н.
+Заместители главного редактора:
+Арипов М.М., Шадиметов Х.М., Ахмедов Д.Д.
+Ответственный секретарь:
+Убайдуллаев М.Ш.
+Редакционный совет:
+Азамов А.А., Алоев Р.Д., Амиргалиев Е.Н. (Казахстан), Арушанов М.Л.,
+Бурнашев В.Ф., Джумаёзов У.З., Загребина С.А. (Россия), Задорин А.И. (Россия),
+Игнатьев Н.А., Ильин В.П. (Россия), Иманкулов Т.С. (Казахстан),
+Исмагилов И.И. (Россия), Кабанихин С.И. (Россия), Курбонов Н.М., Маматов Н.С.,
+Мирзаев Н.М., Мурадов Ф.А., Назирова Э.Ш., Нормуродов Ч.Б., Нуралиев Ф.М.,
+Опанасенко В.Н. (Украина), Расулмухамедов М.М., Садуллаева Ш.А.,
+Старовойтов В.В. (Беларусь), Хаётов А.Р., Халджигитов А., Хамдамов Р.Х.,
+Хужаев И.К., Хужаеров Б.Х., Эшмаматова Д.Б., Дустмуродова Ш.Ж.,
+Чье Ен Ун (Россия), Шабозов М.Ш. (Таджикистан), Dimov I. (Болгария),
+Li Y. (США), Mascagni M. (США), Min A. (Германия), Singh M. (Южная Корея).
+Журнал зарегистрирован в Агентстве информации и массовых коммуникаций при
+Администрации Президента Республики Узбекистан.
+Свидетельство №0856 от 5 августа 2015 года.
+ISSN 2181-8460, eISSN 2181-046X
+При перепечатке материалов ссылка на журнал обязательна.
+За точность фактов и достоверность информации ответственность несут авторы.
+Адрес редакции:
+100125, г. Ташкент, м-в. Буз-2, 17А.
+Тел.: +(998) 71 263-41-98.
+Э-почта:journals@airi.uz.
+Веб-сайт:https://journals.airi.uz.
+Дизайн и вёрстка:
+Шарипов Х.Д.
+Отпечатано в типографии НИИ РЦТИИ.
+Подписано в печать 25.08.2026 г.
+Формат 60х84 1/8. Заказ № 4. Тираж 100 экз.
+PROBLEMS OF COMPUTATIONAL AND
+APPLIED MATHEMATICS
+No. 4(74) 2026
+The journal was established in 2015.
+6 issues are published per year.
+Founder:
+Digital Technologies and Artificial Intelligence Development Research Institute.
+Editor-in-Chief:
+Ravshanov N.
+Deputy Editors:
+Aripov M.M., Shadimetov Kh.M., Akhmedov D.D.
+Executive Secretary:
+Ubaydullaev M.Sh.
+Editorial Council:
+Azamov A.A., Aloev R.D., Amirgaliev E.N. (Kazakhstan), Arushanov M.L.,
+Burnashev V.F., Djumayozov U.Z., Zagrebina S.A. (Russia), Zadorin A.I. (Russia),
+Ignatiev N.A., Ilyin V.P. (Russia), Imankulov T.S. (Kazakhstan), Ismagilov I.I. (Russia),
+Kabanikhin S.I. (Russia), Kurbonov N.M., Mamatov N.S., Mirzaev N.M., Muradov F.A.,
+Nazirova E.Sh., Normurodov Ch.B., Nuraliev F.M., Opanasenko V.N. (Ukraine),
+Sadullaeva Sh.A., Starovoitov V.V. (Belarus), Khayotov A.R., Khaldjigitov A.,
+Khamdamov R.Kh., Khujaev I.K., Khujayorov B.Kh., Eshmamatova D.B.,
+Dustmurodova Sh.J., Chye En Un (Russia), Shabozov M.Sh. (Tajikistan),
+Dimov I. (Bulgaria), Li Y. (USA), Mascagni M. (USA), Min A. (Germany),
+Singh M. (South Korea).
+The journal is registered by Agency of Information and Mass Communications under the
+Administration of the President of the Republic of Uzbekistan.
+Certificate of Registration No. 0856 of 5 August 2015.
+ISSN 2181-8460, eISSN 2181-046X
+At a reprint of materials the reference to the journal is obligatory.
+Authors are responsible for the accuracy of the facts and reliability of the information.
+Address:
+100125, Tashkent, Buz-2, 17A.
+Tel.: +(998) 71 263-41-98.
+Е-mail:journals@airi.uz.
+Web-site:https://journals.airi.uz.
+Layout design:
+Sharipov Kh.D.
+DTAIRI printing office.
+Signed for print 25.08.2026
+Format 60х84 1/8. Order No. 4. Print run of 100 copies.
+Содержание
+Ахмедов Д.Д., Туркменова Р.Т.
+Моделирование мезомасштабного переноса мелкодисперсной примеси в ат-
+мосфере с учётом стохастических пульсаций ветра . . . . . . . . . . . . . . . 5
+Чжан Х., Варламова Л.П., У Б.
+Динамический анализ стохастической SICR-модели передачи раннего и
+позднего фитофтороза картофеля . . . . . . . . . . . . . . . . . . . . . . . . . 27
+Равшанов Н., Шафиев Т.Р., Бобожонова М.А., Кобилова Д.О.
+Исследование ключевых факторов, влияющих на распространение пылевых
+частиц в атмосфере . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 47
+Бердиёров Ш.Ш., Эрмонова М.У.
+Сравнение методов конечных разностей и конечных объёмов для численного
+моделирования фильтрации в цилиндрическом пористом фильтре . . . . . . 65
+Равшанов Н., Садуллаев С.
+Моделирование процесса нестационарной фильтрации грунтовых вод со сво-
+бодной поверхностью с учётом инфильтрационных потоков . . . . . . . . . . 85
+Туракулов Ж.А., Жураев И.Р., Таштемирова Н.Н., Рахматуллаева Д.О.
+Математическое моделирование фильтрации суспензии в пористых средах . 102
+Хаётов А.Р., Исмоилов С.И.
+Квадратурная формула для оптимального приближения определенных ин-
+тегралов с полиномиальным весом . . . . . . . . . . . . . . . . . . . . . . . . . 110
+Нуралиев Ф.А., Едилбекова Р.М.
+Оптимальная квадратурная формула в пространстве дифференцируемых
+функций . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 120
+Эшмаматова Д.Б., Очилова Н.К.
+Вырожденно-сингулярные эллиптические операторы: точная коэрцитивность,
+весовая корректность и методы функции Грина для моделей диффузии в
+опухолевых тканях . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 133
+Назирова Э.Ш., Мадетбаева Н.Б., Мирзаева Ф.Ш., Исломова М.Б.
+Математическая модель автоматического выделения фразеологизмов в тюрк-
+ских языках . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 152
+Ахмеджанова Д.А.
+Модель семантического связывания тюркских языков: подход с ограничени-
+ем справедливости для малоресурсных условий . . . . . . . . . . . . . . . . . 171
+Contents
+Akhmedov D.D., Turkmenova R.T.
+Modeling mesoscale transport of fine particulate matter in the atmosphere ac-
+counting for stochastic wind fluctuations . . . . . . . . . . . . . . . . . . . . . . 5
+Zhang H., Varlamova L.P., Wu B.
+Dynamical analysis of a stochastic SICR transmission model for potato early and
+late blight . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+Ravshanov N., Shafiev T.R., Bobozhonova M.A., Kobilova D.O.
+Study of the key factors affecting the dispersion of dust particles in the atmosphere 47
+Berdiyorov Sh.Sh., Ermonova M.U.
+Comparison of finite difference and finite volume methods for numerical simula-
+tion of filtration in a cylindrical porous filter . . . . . . . . . . . . . . . . . . . . 65
+Ravshanov N., Sadullaev S.
+Modeling of the process of unsteady filtration of groundwater with a free surface
+taking into account infiltration flows . . . . . . . . . . . . . . . . . . . . . . . . . 85
+Turakulov J.A., Juraev I.R., Tashtemirova N.N., Raxmatullayeva D.O.
+Mathematical modeling of suspension filtration in porous media . . . . . . . . . 102
+Hayotov A.R., Ismoilov S.I.
+Optimal quadrature for definite integrals with polynomial weight . . . . . . . . . 110
+Nuraliev F.A., Edilbekova R.M.
+Optimal quadrature formula in the space of differentiable functions . . . . . . . . 120
+Eshmamatova D.B., Ochilova N.K.
+Degenerate-singular elliptic operators: sharp coercivity, weighted well-posedness,
+and Green’s function methods for tumor-diffusion models . . . . . . . . . . . . . 133
+Nazirova E.Sh., Madetbayeva N.B., Mirzayeva F.Sh., Islomova M.B.
+A mathematical model for the automatic extraction of idioms in Turkic languages152
+Akhmedjanova D.A.
+A semantic linking model for Turkic languages: a fairness-constrained cross-
+lingual approach for low-resource settings . . . . . . . . . . . . . . . . . . . . . . 171

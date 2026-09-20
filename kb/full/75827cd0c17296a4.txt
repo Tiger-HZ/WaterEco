@@ -1,0 +1,2819 @@
+Journal of Physics D:
+Applied Physics
+       
+ACCEPTED MANUSCRIPT • OPEN ACCESS
+Development and characterization of a linear cold atmospheric pressure
+plasma jet for large-area surface treatment
+To cite this article before publication: Viktor Udachin et al 2026 J. Phys. D: Appl. Phys. in press https://doi.org/10.1088/1361-6463/aea862
+Manuscript version: Accepted Manuscript
+Accepted Manuscript is “the version of the article accepted for publication including all changes made as a result of the peer review process,
+and which may also include the addition to the article by IOP Publishing of a header, an article ID, a cover sheet and/or an ‘Accepted
+Manuscript’ watermark, but excluding any other editing, typesetting or other changes made by IOP Publishing and/or its licensors”
+This Accepted Manuscript is © 2026 The Author(s). Published by IOP Publishing Ltd.
+ 
+ As the Version of Record of this article is going to be / has been published on a gold open access basis under a CC BY 4.0 licence, this Accepted
+Manuscript is available for reuse under a CC BY 4.0 licence immediately.
+Everyone is permitted to use all or part of the original content in this article, provided that they adhere to all the terms of the licence
+https://creativecommons.org/licences/by/4.0
+Although reasonable endeavours have been taken to obtain all necessary permissions from third parties to include their copyrighted content
+within this article, their full citation and copyright line may not be present in this Accepted Manuscript version. Before using any content from this
+article, please refer to the Version of Record on IOPscience once published for full citation and copyright details, as permissions may be required.
+All third party content is fully copyright protected and is not published on a gold open access basis under a CC BY licence, unless that is
+specifically stated in the figure caption in the Version of Record.
+View the article online for updates and enhancements.
+This content was downloaded from IP address 20.169.75.250 on 20/09/2026 at 05:11
+IOP Publishing Journal Title 
+Journal XX (XXXX) XXXXXX https://doi.org/XXXX/XXXX 
+xxxx-xxxx/xx/xxxxxx 1 © xxxx IOP Publishing Ltd 
+ 
+Development and Characterization of a Linear 
+Cold Atmospheric Pressure Plasma Jet for 
+Large-Area Surface Treatment 
+ 
+Viktor Udachin*, Alexander Tillmanns, Christof Zickenheiner, Lienhard 
+Wegewitz, Henning Wiche and Wolfgang Maus-Friedrichs 
+Clausthal Center of Materials Technology, Clausthal University of Technology, Clausthal-Zellerfeld, 
+Germany 
+ 
+ 
+*E-mail: viktor.udachin@tu-clausthal.de 
+ 
+Received xxxxxx 
+Accepted for publication xxxxxx 
+Published xxxxxx 
+Abstract 
+Cold atmospheric pressure plasma jets are widely used for surface treatment and plasma-assisted processing. However, 
+simultaneous plasma transport and spatial scaling remain challenging for existing plasma jet concepts. In this work, a novel 
+linear-geometry cold atmospheric pressure plasma jet concept based on a floating metallic mesh electrode integrated into a 3D-
+printed nozzle is developed to enable spatially extended plasma generation across the slit width of 36 mm and beyond. The 
+plasma source comprises a primary discharge, which is formed between a high-voltage electrode and a metal mesh inside a 
+quartz tube, and a secondary plasma phase. This secondary phase is generated at the opposite end of the metal mesh and 
+propagates through a slit nozzle. The system was investigated under two gas atmospheres (Ar/H2 and Ar) and different substrate 
+configurations, including conductive and non-conductive surfaces. Plasma propagation behavior was analyzed using high-speed 
+imaging, while optical emission spectroscopy was employed to identify reactive species in both the primary and secondary 
+discharge regions. Electrical characterization was performed to assess discharge behavior under representative operating 
+conditions. The results demonstrate that the developed linear plasma jet enables stable plasma propagation across the nozzle 
+width. Operation in Ar/H 2 results in a more homogeneous plasma phase distributed across the entire width of the nozzle, 
+whereas pure Ar leads to more localized discharge structures. The presence of hydrogen is expected to modify ionization 
+kinetics, promoting more uniform plasma behavior. Furthermore, reactive species characteristic of both argon excitation and 
+hydrogen-related processes were detected in the Ar/H2 plasma jet, indicating its suitability for applications requiring e.g., metal 
+oxide reduction. Overall, the presented concept offers a promising approach to generating line-shaped plasma jets with 
+enhanced spatial uniformity. This makes it particularly well-suited to large-area surface treatment applications, such as material 
+modification and deoxidation processes. 
+ 
+Keywords: non-thermal plasma, linear-geometry plasma, atmospheric pressure plasma jet, metal oxide reduction 
+ 
+1. Introduction 
+Cold atmospheric pressure plasmas, particularly 
+atmospheric pressure plasma jets (APPJs), have attracted 
+considerable attention due to their ability to generate reactive 
+species at ambient temperature and pressure and deliver them 
+to a surface of interest [1–4]. This capability enables a wide 
+range of applications, including materials and surface 
+Page 1 of 20 AUTHOR SUBMITTED MANUSCRIPT - JPhysD-143841.R1
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+Journal XX (XXXX) XXXXXX Author et al 
+ 2 
+ 
+processing (e.g., metal deoxidation and polymer modification) 
+as well as plasma medicine [1,2,4–8]. 
+Indeed, for many of these applications, the effectiveness of 
+the plasma treatment depends strongly on the generation of 
+reactive species and on their ability to be transported over a 
+sufficient distance and distributed uniformly across the target 
+surface. For example, in plasma medicine, treatment of 
+complex or hard-to-reach features requires plasma reactive 
+species that can be transported over extended distances while 
+maintaining their activity [2,6,9]. Similarly, in materials 
+processing and joining applications, such as high-frequency 
+(HF) welding of longitudinal steel tubes, large surface areas 
+(often extending several tens of centimetres upstream of the 
+welding point) must be uniformly treated, shielded, and 
+deoxidized prior to welding [10–13]. In such cases, plasma jet 
+systems must not only provide sufficient spatial coverage but 
+also exhibit high stability under demanding conditions, 
+including elevated temperatures exceeding 1000 °C near the 
+welding zone. These requirements highlight the need for 
+plasma jet systems capable of stable plasma propagation and 
+uniform spatial distribution of reactive species over extended 
+treatment areas. 
+With respect to plasma transport, several strategies have 
+been investigated. A key factor is the choice of working gas, 
+which strongly influences plasma propagation behavior. In the 
+context of both plasma medicine and materials processing, 
+helium- and argon-based plasma jets are among the most 
+widely studied systems [4,6–9]. Helium-based plasma jets are 
+known to propagate over longer distances due to their 
+favorable ionization characteristics, including low breakdown 
+voltage and efficient energy transfer processes [14–16]. In 
+contrast, argon plasma jets typically exhibit shorter 
+propagation lengths and more localised discharge behaviour 
+[14,17]. However, they are often preferred due to the lower 
+cost of argon compared to helium [17]. Adding hydrogen to 
+argon further modifies the discharge characteristics, often 
+promoting a transition from filamentary to more diffuse 
+plasma modes [4,18]. H2 addition alters the ionization 
+pathways and suppresses filamentation by influencing ion 
+kinetics and electron energy distribution [4,18]. Such Ar/H 2 
+APPJs typically contain reactive hydrogen species, including 
+atomic hydrogen (H α), which is particularly beneficial for 
+materials processing applications, such as metal oxide 
+reduction processes or polymer surface modification [4,7,19]. 
+In addition to gas composition, dedicated concepts for 
+plasma transport have been developed. In particular, Kostov 
+and co-workers introduced an approach based on the use of a 
+floating (non-grounded) metallic wire, enabling plasma 
+transport through dielectric tubes [20,21]. In such systems, a 
+primary discharge is formed between the high-voltage 
+electrode and the floating wire, while a secondary discharge is 
+generated between the wire and the target surface. This 
+concept enables propagation of the discharge potential 
+through dielectric tubing, resulting in secondary plasma 
+generation outside the primary discharge region, and has been 
+mainly investigated for biomedical applications [9,20]. 
+However, its application to materials processing and large-
+area surface treatment remains limited. 
+Besides transport, the spatial distribution of the plasma 
+phase represents a second key challenge. Conventional plasma 
+jets typically produce circular localized treatment regions, 
+which are insufficient for applications requiring uniform 
+processing of extended surfaces. This limitation is linked to 
+the design of the plasma source, in particular electrode 
+configurations and nozzle geometries [22–24]. 
+Traditionally, APPJs are predominantly characterized by 
+DBD-based cylindrical or coaxial geometries. Although these 
+are effective for localised treatment, they can have restricted 
+treatment areas (typically between mm 2 and cm²) and may 
+exhibit filamentary behaviour, as well as presenting additional 
+complexity in terms of electrode alignment and thermal 
+management, which can affect scalability [4,7,22,24–27]. To 
+increase the effective treatment area, multi-jet array 
+configurations have been developed [28–32]. While such 
+systems enable scaling, they can suffer from jet-to-jet 
+interactions, leading to non-uniform plasma characteristics 
+and spatial inhomogeneities in the treated region [31–34]. 
+Recently, efforts have focused on the development of 
+alternative nozzle geometries to improve spatial uniformity 
+and extend the treatment area. For instance, conical plasma jet 
+designs have been proposed to increase the treatment footprint 
+while maintaining similar gas flow conditions, even enabling 
+simultaneous treatment of opposing surfaces of materials 
+[35,36]. Additionally, modular nozzle systems, such as those 
+developed for kINPen-type plasma jet devices, aim to tailor 
+gas flow and optimize plasma delivery for specific 
+applications, particularly in plasma medicine [37]. 
+Further development was directed towards the application 
+of linear-nozzle plasma jet geometries, which may enable 
+homogeneous treatment of extended surfaces in applications 
+where large processing widths and uniformity are 
+simultaneously required (e.g., metal joining [10,12] or 
+biomedical decontamination applications [38]). Several 
+approaches have been proposed to realize line-shaped plasma 
+jet sources. For instance, diffuse coplanar surface barrier 
+discharge (DCSBD)-based systems have been used to 
+generate linear afterglow plasma jets operating in air and 
+nitrogen atmospheres, forming a so-called “plasma curtain” 
+with a width of up to approximately 5 cm at an optimal gas 
+flow rate of approximately 30 L/min [39]. Such systems are 
+characterized by low gas temperatures (typically below 55 °C) 
+and operate in a filament-free diffuse mode, enabling highly 
+uniform treatment of temperature-sensitive materials and 
+extended width processing. The use of nitrogen as working gas 
+allows for specific surface functionalization processes [39]. 
+However, the width of such plasma jets is directly linked to 
+Page 2 of 20AUTHOR SUBMITTED MANUSCRIPT - JPhysD-143841.R1
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+Journal XX (XXXX) XXXXXX Author et al 
+ 3 
+ 
+the dimensions and design of the DCSBD electrode system, 
+which requires specifically manufactured electrode 
+geometries and dielectric structures [39]. In addition, the 
+reported afterglow plasma jet length in open air environment 
+was limited to approximately 1.2 cm. Such relatively short 
+propagation distances may restrict direct delivery of reactive 
+plasma species in applications requiring larger stand-off 
+distances. For example, operating temperatures exceeding 
+1000 °C and notable magnetic fields can be found near metal 
+welding zones in e.g., high-frequency welding [10,11], which 
+may affect the stability and integration of such plasma jet 
+system. Moreover, the proposed plasma jet system has not 
+been investigated in other gas atmospheres, such as helium or 
+argon-based plasmas, which are widely used in many 
+applications. 
+Another approach for increasing the treatment area of 
+conventional cylindrical DBD-based plasma jets was 
+investigated by Ge and co-workers [40]. In their work, an Ar-
+based plasma jet was generated using a specially designed 
+broadened quartz nozzle attached to a quartz tube with an 
+outer diameter of 6 mm. The developed nozzle geometry 
+enabled the formation of a more spatially extended plasma 
+plume with dimensions of approximately 25 mm in width and 
+7 mm in propagation length under optimized operating 
+conditions. The system demonstrated promising 
+characteristics for biomedical applications, particularly for 
+large-area plasma treatment in cancer therapy. Nevertheless, 
+as discussed previously, the relatively short propagation 
+distance of the reactive plasma phase may limit direct plasma 
+species delivery in applications requiring larger stand-off 
+distances. 
+Radio-frequency-driven plasma jets in Ar-based 
+atmospheres (as Ar, Ar/O 2, Ar/N 2) with slit-type nozzle 
+geometry have also been developed to extend the treatment 
+area beyond that of conventional cylindrical jets [41]. While 
+this design enables the formation of elongated plasma jet 
+plumes, it is often prone to filamentation, especially in the 
+presence of varying substrate geometries. This leads to non-
+uniform distribution of reactive species and limits the 
+reproducibility and effectiveness of surface treatment [41]. In 
+particular, the sensitivity of such systems to substrate 
+positioning and geometry highlights the difficulty of 
+maintaining stable and homogeneous plasma conditions over 
+extended widths. 
+These observations demonstrate that, although linear 
+plasma sources offer a promising route toward large-area 
+plasma processing, achieving stable, uniform, and scalable 
+plasma generation with extended propagation distances under 
+different gas atmospheres remains a significant challenge. 
+This highlights the need for linear-geometry plasma jet 
+concepts that enable controlled spatial expansion of the 
+plasma phase in both width and length while maintaining a 
+relatively simple design, ensuring uniform reactive species 
+delivery. 
+In this work, a linear-geometry cold atmospheric plasma jet 
+based on a floating metallic mesh electrode integrated into a 
+3D-printed nozzle is presented. In contrast to previously 
+reported plasma transport systems based on single floating 
+wires by Kostov and colleagues [21], the present approach 
+introduces, for the first time, a spatially distributed floating 
+electrode in the form of a metallic mesh specifically designed 
+for linear-geometry plasma generation. This design allows the 
+discharge to be extended in a controlled manner along the 
+entire slit width, which can be several tens of millimetres. As 
+a result, the proposed configuration allows simultaneous 
+realization of plasma transport and spatial scaling, leading to 
+the generation of a line-shaped plasma jet. Such a system is 
+particularly relevant for applications requiring treatment of 
+extended surfaces, such as the deoxidation and conditioning 
+of metallic substrates prior to industrial welding processes, as 
+well as large-area polymer surface activation and wettability 
+improvement. The study focuses on the design of the plasma 
+jet source and the experimental investigation of plasma 
+propagation behavior under two gas compositions (Ar/H 2 and 
+Ar) and different substrate conditions. 
+2. Methods 
+2.1. Experimental Setup for Linear Plasma Phase 
+Generation 
+Figure 1 schematically illustrates the developed system for 
+the generation of a non-thermal linear plasma jet using a slit 
+nozzle configuration. The system consists of two main 
+functional parts: a primary nozzle for the generation of the 
+non-thermal plasma primary discharge and a secondary slit 
+nozzle designed for the formation of a linear plasma jet 
+suitable for treatment of large areas. 
+Page 3 of 20 AUTHOR SUBMITTED MANUSCRIPT - JPhysD-143841.R1
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+Journal XX (XXXX) XXXXXX Author et al 
+ 4 
+ 
+ 
+Fig.1: Schematic representation of the experimental system 
+for the generation of a non-thermal linear plasma jet. The 
+setup for electrical characterization is also shown, including 
+the high-voltage, voltage and current probes, and the 
+capacitor. 
+ 
+The primary plasma discharge is generated inside a primary 
+quartz glass nozzle (tube) with an outer diameter of 8 mm and 
+an inner diameter of 6 mm (Figure 1). This quartz tube serves 
+simultaneously as the discharge chamber and as a gas flow 
+guide. The desired gas atmosphere for plasma generation 
+(pure Ar 5.0 as well as Ar/H 2 gas mixture, 2 vol.% of H 2, 
+Westfalen AG, Münster, Germany) is supplied through a 
+dedicated gas inlet connected to a plastic T-piece connector 
+(Swagelok, USA) mounted at the top of the quartz tube. For 
+all experiments, the working gas flow rate was maintained at 
+25 L/min, as this was found to be the minimum flow rate that 
+ensured plasma generation across the slit width. 
+A high-voltage (HV) electrode is fixed in place along the 
+central axis of the quartz tube using a specially printed 3D 
+plastic holder in the T-piece connector. The HV electrode 
+consists of a copper wire with a diameter of 1 mm, which is 
+enclosed within a ceramic tube (dielectric) with an outer 
+diameter of 3 mm and inner diameter of 1.6 mm. For this 
+purpose, a one-end-closed ceramic tube typically used for 
+thermocouples was employed (made out of Al 2O3, Kyocera 
+Fineceramics Europe GmbH, Germany). The copper wire is 
+mechanically fixed inside the ceramic tube and electrically 
+connected to brass powder located at the closed end of the 
+ceramic tube. This brass powder enhances the distribution of 
+the electric field and promotes a more homogeneous discharge 
+at the electrode tip (Figure 1) [42]. 
+To initiate the primary non-thermal plasma discharge, a 
+counter electrode is required. Following the approach 
+previously reported by Kostov et al. [21], a ground-free 
+metallic component was employed instead of a conventional 
+grounded electrode. This counter component was positioned 
+at a distance of approximately 1 mm from the HV electrode 
+tip without direct electrical contact. 
+A key novelty of the present design is the use of a metallic 
+mesh as the floating counter electrode. In contrast to the single 
+wire configurations used in previous studies by Kostov and 
+colleagues as well as by other groups [6,9,20,21], a brass mesh 
+with an opening size of 1.00 mm (distance between the wires) 
+and a wire diameter of 0.30 mm (Fohrmann-Werkzeuge 
+GmbH, Germany) was employed. The use of a metallic mesh 
+enables controlled distribution of the floating component 
+along the slit geometry and provides improved mechanical 
+stability compared to individual wire configurations, which 
+are difficult to position uniformly within elongated slit 
+nozzles. In contrast, the mesh structure allows easier 
+construction, improved reproducibility, and enhanced control 
+of discharge distribution along the slit geometry (Figure 1). 
+The brass mesh was mechanically integrated into a custom-
+designed 3D-printed slit nozzle fabricated from polylactic acid 
+(PLA). The corresponding CAD file is provided in the 
+available dataset [43]. The slit nozzle opening features a 
+rectangular form with dimensions of 36 mm in width and 
+5 mm in length. The overall nozzle width and length are 
+40 mm and 8 mm, respectively, with a total nozzle height of 
+approximately 125 mm. Inside the nozzle, specially designed 
+mechanical fixation regions allow secure placement of the 
+mesh without slippage. Additional stabilization was achieved 
+using small reusable adhesive pieces (Blu Tack, United 
+Kingdom). 
+The metallic mesh is shaped to conform to the internal 
+geometry of the slit nozzle. Near the connection to the primary 
+quartz tube, the mesh narrows, exposing only 4 parallel wires 
+in the transition region. Toward the slit opening, the mesh 
+expands to form approximately 35 parallel wires aligned along 
+the longitudinal direction of the slit opening and distributed 
+uniformly across its width (Figure 1). The mesh is positioned 
+at a distance of approximately 4 mm from the nozzle exit 
+opening. 
+Photographs of the experimental setup and plasma jet 
+operation are presented in Figure 2. 
+In Fig. 2, the assembled plasma jet system is shown. The 
+system consists of the primary quartz tube used for plasma 
+generation and the attached 3D-printed PLA slit nozzle in red 
+colour. The quartz tube is inserted into the upper part of the 
+printed nozzle, which internally contains the metallic mesh 
+acting as the floating counter electrode. 
+Page 4 of 20AUTHOR SUBMITTED MANUSCRIPT - JPhysD-143841.R1
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+Journal XX (XXXX) XXXXXX Author et al 
+ 5 
+ 
+The operating configuration during plasma treatment is 
+shown in Fig. 2b. The plasma jet was operated in an Ar/H2 gas 
+flow. As a target surface, borosilicate glass with a thickness of 
+1 mm was used and placed on a grounded metal plate. The 
+distance between the slit nozzle opening and the sample 
+surface was approximately 12 mm. Two discharge regions can 
+be observed in this figure: the primary plasma phase located 
+inside the quartz tube and the secondary plasma phase 
+emerging from the slit nozzle. The image was captured using 
+a standard mobile phone camera, yet it already illustrates the 
+spatial extension of the plasma phase corresponding to the slit 
+width. 
+A closer view of the internal primary discharge is presented 
+in Fig. 2c, where the plasma filaments formed between the HV 
+electrode and the floating metallic mesh can be observed. 
+ 
+ 
+Fig. 2: Photographs of the linear plasma jet system and its 
+operation. (a) Assembled device showing the quartz tube and 
+the 3D-printed PLA slit nozzle; (b) Plasma jet operation in 
+Ar/H2 during treatment of a borosilicate glass sample placed 
+on a grounded metal plate; (c) Close-up of the primary 
+discharge between the HV electrode and the floating metallic 
+mesh. 
+ 
+High-voltage pulsed excitation was provided by a pre-
+commercial power supply (PlasmaGreen GmbH, Clausthal-
+Zellerfeld, Germany), which first generates low-voltage 
+pulses with adjustable amplitude, frequency, and duty cycle. 
+These pulses are subsequently transformed into high-voltage 
+pulses using a step-up transformer. The applied high-voltage 
+amplitude, reported as the peak-to-peak high-voltage (kV pp), 
+was varied depending on the experimental conditions (shown 
+in Section 2.2. cf. Table 1), while the pulse repetition 
+frequency and duty cycle remained constant at 4.0 kHz and 
+95%, respectively, throughout the study. The duty cycle of the 
+pulse was inverted, meaning that at a set value of 95%, the 
+resulting pulse had an ON time of 5% and an OFF time equal 
+to the remaining pulse period, depending on the set frequency. 
+2.2. Experimental conditions and treated surfaces 
+Plasma treatment experiments using two gas atmospheres 
+(Ar/H2 and Ar) were performed on four different substrate 
+configurations (see Figure 3 for a schematic presentation) (a) a 
+borosilicate glass sample (1 mm thickness) placed directly on 
+top of a grounded metallic steel substrate, (b) a grounded 
+metallic steel plate, (c) a borosilicate glass sample, and (d) a 
+piece of paper. The first configuration (a) was selected 
+following the approach reported by Kostov and co-workers 
+[21], who investigated plasma jets using a similar substrate 
+arrangement. The additional configurations (b–d) were used 
+to investigate the influence of substrate conductivity on 
+plasma jet behavior and surface interaction. In particular, the 
+non-conductive substrates (c) and (d) allow examination of 
+how the plasma jet propagates from the nozzle toward 
+electrically insulating surfaces. 
+For configurations (a), (b), and (c), the distance between the 
+slit nozzle opening and the substrate surface was fixed at 
+12 mm. For configuration (d), a larger distance of 40 mm was 
+intentionally selected to evaluate the propagation length of the 
+generated plasma phase and to verify whether the observed 
+discharge can be classified as a plasma jet. 
+The applied high-voltage amplitudes for the respective 
+configurations were selected to ensure plasma generation and 
+visible propagation of the plasma phase along the slit opening. 
+The corresponding voltage values are summarized in Table 1. 
+It should be noted that the primary aim of this study was to 
+demonstrate the feasibility of uniform plasma generation 
+along the slit opening. The operating parameters were 
+therefore selected based on conditions providing a clearly 
+visible plasma phase. In particular, for the configurations (a) 
+and (b), a visible homogeneous plasma jet in Ar/H 2 was 
+observed at approximately 11 kV pp, while higher voltages 
+(~12 – 13 kV pp) led to increased direct discharge interactions 
+with the sample. In contrast, for pure Ar, a visible plasma 
+phase was firstly obtained only at slightly higher voltages 
+(~12 kVpp). 
+For the non-conductive configurations (c, glass) and (d, 
+paper), variations in the applied voltage were required. In 
+configuration (c), a plasma phase extending along the slit 
+opening was obtained at ~15 kV pp in an Ar/H 2 mixture, 
+whereas only localised filamentary structures were observed 
+in pure Ar. At the same time, increasing the voltage to 
+~16 kVpp led to a more spatially extended discharge in the case 
+of Ar. For configuration (d), higher voltages of approximately 
+21 to 22 kV pp were required due to the larger plasma 
+propagation distance. At these operating conditions, both gas 
+atmospheres produced a visibly continuous plasma jet phase 
+across the slit opening, although differences in the discharge 
+Page 5 of 20 AUTHOR SUBMITTED MANUSCRIPT - JPhysD-143841.R1
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+Journal XX (XXXX) XXXXXX Author et al 
+ 6 
+ 
+morphology became apparent upon high-speed imaging, as 
+discussed in the following section. In general, the aim of the 
+present study was to demonstrate the generation of a plasma 
+phase along the slit opening. A more detailed optimization of 
+the operating parameters and a comparison of discharge 
+conditions are planned in future work. 
+ 
+Fig. 3: Schematic representation of the substrate 
+configurations used for plasma jet treatment experiments: (a) 
+borosilicate glass placed on a grounded steel substrate, (b) 
+grounded steel plate, (c) borosilicate glass, and (d) paper 
+substrate used to investigate plasma jet propagation toward 
+non-conductive surfaces and at increased nozzle–substrate 
+distance. 
+Table 1: Overview of the applied kVpp under studied substrate 
+configurations (c.f. Fig. 3) and gas compositions. 
+Configuration Ar/H2, kVpp Ar, kVpp 
+(a) 11.1 11.7 
+(b) 10.9 11.6 
+(c) 14.7 15.7 
+(d) 21.9 21.5 
+2.3. High-speed imaging 
+High-speed imaging of the plasma jet was performed using 
+a nanosecond-gated ICCD camera (4 Quik E series, Stanford 
+Computer Optics, Berkeley, CA, USA). The optical system 
+was equipped with a Linos MeVis-C objective (25 mm focal 
+length, F1.6). 
+Three temporal parameters were controlled during image 
+acquisition: exposure time (ET), integration time (IT), and 
+trigger delay. The exposure time defines the duration of the 
+camera gate, i.e., the time window during which photons are 
+detected for a single frame, enabling time-resolved 
+observation of fast plasma dynamics. The integration time 
+corresponds to the total acquisition time over multiple 
+discharge cycles, allowing signal accumulation to improve 
+image intensity under low-emission conditions. 
+The exposure time was varied between 1.2 ns (minimal 
+value) and 10.0 ns to resolve fast transient plasma structures, 
+while the integration time was adjusted to 5 s to achieve a 
+sufficient signal-to-noise ratio without overexposure. 
+The trigger delay was defined relative to the beginning of 
+each discharge cycle, allowing time-resolved imaging at 
+specific phases of plasma evolution. Given the operating 
+frequency of 4 kHz (corresponding to a discharge period of 
+250 µs), images were recorded at defined delays after the onset 
+of the voltage pulse (e.g., 7 µs, 8 µs, 9 µs), enabling 
+visualization of the initiation and propagation of a plasma 
+phase within each cycle. It is important to note that the 
+position of the high-voltage signal relative to the trigger 
+exhibited a timing jitter of approximately ±37 ns (standard 
+deviation). 
+2.4. Electrical characteristics 
+For the electrical characterization of the slit plasma jet, 
+configuration (a), i.e., a borosilicate glass sample placed on a 
+grounded metallic substrate (see Figure 3), was selected. This 
+configuration was chosen to allow a comparative study with 
+the plasma transport concept reported by Kostov and co-
+workers, who investigated plasma propagation using a single 
+floating wire, including its interaction with a glass sample 
+positioned on a grounded metal surface [21]. Accordingly, all 
+electrical measurements were performed using this 
+configuration. The corresponding measurement setup is 
+schematically illustrated in Fig. 1. 
+An InfiniiVision DSOX3014T oscilloscope (Keysight 
+Technologies, USA) was used for signal acquisition. The 
+applied voltage was measured directly at the copper wire of 
+the high-voltage (HV) electrode (see Figure 1, HV Probe 1). 
+HV measurements were primarily performed using a 
+PHV4002-3-RO probe (PMK Mess- und 
+Kommunikationstechnik GmbH, Germany) with a resistance 
+of 100 MΩ and a capacitance of 3 pF. In addition, a PP-
+HVP2739 probe (Testec Elektronik GmbH, Germany) with a 
+resistance of 900 MΩ and a capacitance of 2 pF was applied. 
+The PMK probe exhibits electrical characteristics comparable 
+to those used in previous studies by Kostov and co-workers 
+[21], whereas the Testec probe is applied in other publications 
+on plasma diagnostics. Owing to its higher resistance and 
+lower capacitance, the Testec probe introduces less 
+perturbation to the plasma discharge, which will be further 
+discussed in Section 3.2. 
+The transient discharge current was measured using a 
+1147B current probe (Keysight Technologies, USA), which 
+was placed around the grounded return conductor. To 
+determine the transferred charge, the voltage drop across a 
+10 nF capacitor was recorded. The capacitor was connected 
+between the treated sample and ground, as shown in Fig. 1. 
+Based on these measurements, the plasma power was 
+calculated using the Lissajous method. 
+2.5. Optical emission spectroscopy 
+A qualitative analysis of active species in the plasma phase 
+was performed using optical emission spectroscopy (OES) 
+Page 6 of 20AUTHOR SUBMITTED MANUSCRIPT - JPhysD-143841.R1
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+Journal XX (XXXX) XXXXXX Author et al 
+ 7 
+ 
+with a fiber-optic spectrometer (AvaSpec-ULS2048CL-EVO, 
+Avantes, Netherlands), equipped with a 25 µm slit, providing 
+a spectral resolution of 1.4 nm (FWHM). The measurements 
+were conducted at room temperature using substrate 
+configuration (a), i.e., a borosilicate glass sample placed on a 
+grounded metallic substrate. Optical emission was collected 
+using a fiber probe (FC-UVIR200, Avantes, Netherlands) 
+positioned at defined locations to characterize both the 
+primary discharge and the secondary discharge (plasma jet) 
+(see Figure 4). For the primary discharge, the optical fiber 
+head was placed at a distance of 3 mm from the quartz tube 
+and aligned with the discharge region between the HV 
+electrode and the floating metallic mesh (Figure 4a). An 
+integration time of 42.290 ms was used for the primary 
+discharge measurements in both Ar and Ar/H 2 atmospheres. 
+For the secondary plasma phase, the OES head was positioned 
+at a distance of 15 mm from the plasma jet, oriented and 
+aligned along the longitudinal direction of the slit nozzle to 
+capture emissions along the full width of the plasma jet 
+(Figure 4b). For these measurements, an integration time of 
+1 s was employed. Eight spectra were recorded during plasma 
+operation and subsequently averaged into a single spectrum 
+using the “Full X Range” averaging function implemented in 
+OriginPro software (OriginLab Corporation, USA). 
+ 
+Fig. 4: Schematic overview of the optical emission 
+spectroscopy (OES) measurements for the (a) primary plasma 
+phase and (b) secondary plasma phase. 
+3. Results and discussion 
+3.1. Imaging of the generated plasma phases 
+Figure 5 presents photographs of the secondary plasma 
+phase propagating from the 3D-printed PLA linear nozzle 
+toward the four substrate configurations introduced in 
+Figure 3. Images obtained during operation in an Ar/H 2 
+atmosphere are shown in Fig. 5a–d, while operation in pure Ar 
+is presented in Fig. 5e–h. The photographs were acquired 
+using a smartphone camera and are intended solely for 
+qualitative visualization of the overall plasma appearance. The 
+aperture remained constant at F/1.8, while the exposure time 
+(ET) and ISO sensitivity were automatically adjusted by the 
+camera depending on the scene brightness and therefore varied 
+between the individual images. 
+Based on the photographs, the plasma phase generated in 
+the Ar/H 2 atmosphere appears more spatially homogeneous 
+along the slit width compared with operation in pure Ar, where 
+more pronounced filamentary discharge structures can be 
+observed. This trend is visible for all investigated substrate 
+configurations. Insight into these differences can be obtained 
+from the work of Wu and co-workers [18], who observed that 
+the addition of H 2 to Ar was associated with a change in 
+plasma morphology from a predominantly filamentary 
+appearance toward a more diffuse discharge mode. The 
+authors attributed this behavior to modifications of the 
+ionization kinetics and reaction pathways in the presence of 
+hydrogen, which may influence the formation and spatial 
+distribution of localized discharge channels [18]. 
+For the grounded configurations, namely borosilicate glass 
+placed on grounded metal (Fig. 5a, e) and the grounded metal 
+plate (Fig. 5b, f), localized filaments are more frequently 
+observed, particularly under pure Ar conditions. In contrast, 
+for the non-conductive substrates such as glass (Fig. 5c, g) and 
+paper (Fig. 5d, h), the propagating plasma effluent appears 
+more uniformly distributed and exhibits fewer distinct 
+filamentary structures. Generally, in the Ar/H2 atmosphere the 
+plasma plume appears to extend more continuously across the 
+entire width of the slit opening, suggesting a more uniform 
+spatial distribution of the generated plasma phase. This 
+observation is further investigated in the following section 
+using high-speed imaging, which provides more detailed 
+insight into the spatial evolution of the plasma jet propagation. 
+ 
+Page 7 of 20 AUTHOR SUBMITTED MANUSCRIPT - JPhysD-143841.R1
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+ 8 
+ 
+ 
+Fig. 5: Photographs of the secondary plasma phase propagating from the linear nozzle toward the substrate configurations 
+shown in Figure 3. Operation in Ar/H 2 atmosphere: (a–d); operation in pure Ar: (e–h). Substrates: (a, e) borosilicate glass on 
+grounded metal, (b, f) grounded metal plate, (c, g) borosilicate glass, and (d, h) paper. ET and ISO denote the exposure time 
+and ISO sensitivity, respectively, used for each photograph. 
+ 
+Figure 6 presents high-speed imaging of the plasma jet 
+propagating from the linear nozzle toward the glass-on-
+grounded-metal configuration. The measurements were 
+performed to obtain a more detailed characterization of the 
+spatial structure and propagation behavior of the generated 
+plasma phase. A sequence of images of the plasma jet operated 
+in an Ar/H2 atmosphere are shown in Fig. 6a, while operation 
+in pure Ar is presented in Fig. 6b. 
+The images were recorded with an exposure time of 10 ns 
+and an integration time of 5 s. Individual frames correspond to 
+different times within the discharge pulse sequence, triggered 
+approximately 7 µs after the start of the voltage pulse and 
+continuing at several time intervals. Considering the applied 
+discharge frequency of 4 kHz, the total duration of one 
+discharge cycle was 250 µs. A more detailed description of the 
+electrical excitation conditions is provided in Section 3.2. 
+The time-resolved image sequence provides insight into the 
+temporal evolution of the plasma jet within a single discharge 
+cycle. The onset of visible plasma emission is observed at 
+approximately 7 µs after the beginning of the voltage pulse, 
+which correlates with the appearance of the current peak in the 
+electrical measurements (see Figure 8). 
+For the Ar/H 2 atmosphere (Fig. 6a), the plasma phase 
+initially starts to appear at around 7 µs. With increasing time 
+(≈ 8 µs), localized channels begin to emerge, predominantly 
+near the edges and partially in the central region of the nozzle. 
+As the discharge evolves further (≈ 9–11 µs), discharge 
+channels become visible across the entire slit width, 
+suggesting the formation of a higher density of spatially 
+distributed streamers and resulting in a more homogeneous 
+plasma appearance. At later times (≥12 µs), a decrease in 
+emission intensity is observed. Here, the voltage decreases 
+after reaching its maximum value at approximately 14 µs 
+(see Figure 8). Interestingly, although several current peaks 
+can still be identified in the time interval between 14 µs and 
+70 µs (see Figure 8a), no distinct plasma structures were 
+detected under the applied high-speed imaging conditions. 
+This may be related to the sensitivity limits of the imaging 
+system and the selected acquisition parameters. Therefore, a 
+more detailed investigation of plasma propagation during this 
+period would require imaging with optimized conditions. At 
+the same time, at longer delays (≥ 70 µs), a secondary increase 
+in emission intensity can be detected, which can be associated 
+with subsequent microdischarge events observed in the 
+current signal (see Figure 8a). 
+In contrast, the temporal evolution of the plasma jet in pure 
+Ar (Fig. 6b) shows a distinctly different behavior. At early 
+times (≈ 7–9 µs), the plasma emission is mainly localized at 
+Page 8 of 20AUTHOR SUBMITTED MANUSCRIPT - JPhysD-143841.R1
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+Journal XX (XXXX) XXXXXX Author et al 
+ 9 
+ 
+two distinct regions near the edges of the slit nozzle. With 
+increasing time (up to ≈ 14 µs), additional channels appear in 
+the central region; however, the overall discharge structure 
+remains spatially non-uniform compared to the Ar/H 2 case. 
+Interestingly, at longer delays (≥ 70 µs), more pronounced 
+plasma emission can be observed than in the Ar/H 2 
+atmosphere. This behavior is consistent with the current 
+waveform shown in Fig. 8b, where discharge events remain 
+visible over a larger fraction of the excitation period. The 
+increased emission intensity at these later times can therefore 
+be associated with subsequent microdischarge events 
+observed in the current signal. 
+Indeed, the high-speed images reveal clear differences in 
+the spatial appearance of the plasma phase depending on the 
+gas atmosphere. In the Ar/H 2 atmosphere (see Fig. 6a), the 
+plasma jet appears to be more spatially homogeneous, being 
+generated along the entire width of the slit opening. In 
+contrast, operation in pure Ar (Fig. 6b) shows more 
+pronounced localized filament channels, with the plasma 
+emerging from several discrete regions along the nozzle. 
+To further analyse the fine structure of the plasma phase, 
+images with reduced exposure were examined approximately 
+9–11 µs after the voltage pulse began. The corresponding 
+insets in Fig. 6a and Fig. 6b reveal the presence of finer 
+filamentary structures in both atmospheres. Nevertheless, the 
+Ar/H2 plasma phase remains more uniformly distributed, 
+whereas the plasma generated in pure Ar is characterized by a 
+stronger filamentary nature and a more localized discharge 
+behavior. The observed differences in plasma jet appearance 
+between the Ar and Ar/H 2 atmospheres can generally be 
+associated with changes in ionization processes, plasma 
+kinetics, and energy transfer mechanisms induced by the 
+addition of hydrogen. However, due to the limited optical 
+resolution and light sensitivity of the applied imaging system, 
+a detailed characterization of individual streamer structures 
+was not possible. 
+Insights into the observed behavior can be obtained from 
+previous studies investigating Ar/H 2 plasma jets. As already 
+discussed, Wu and co-workers [18] reported a transition from 
+a predominantly filamentary to a more diffuse plasma 
+appearance after the addition of hydrogen and attributed this 
+behavior to modifications of the ionization dynamics. 
+Hydrogen introduces additional reaction pathways and energy 
+transfer processes that can alter the electron energy 
+distribution and consequently affect discharge development 
+[4,18,44]. 
+At the same time, it should be noted that the reported effects 
+of hydrogen addition on plasma morphology and discharge 
+characteristics are not always consistent across different 
+studies. While Wu and co-workers [18] observed a diffuse 
+plasma mode for Ar/H 2 mixtures containing up to 3% H 2, 
+Nascimento and co-workers [4] did not report a clear 
+transition toward diffuse discharge behavior despite observing 
+significant changes in plasma characteristics for hydrogen 
+concentrations up to 3.5%. The authors suggested that the 
+effect of hydrogen addition depends strongly on the plasma 
+source configuration and operating conditions [4]. Similar 
+discrepancies can also be found in the reported electrical and 
+plasma parameters. For example, Nascimento and co-workers 
+[4] reported an increase in electron density and discharge 
+current after hydrogen addition, whereas Wu and co-workers 
+[18] observed an opposite trend. Furthermore, Guo and 
+colleagues [44] reported a decrease in discharge current while 
+observing only minor changes in electron density. 
+In the present study, the addition of hydrogen resulted in 
+noticeable changes in both plasma appearance and electrical 
+characteristics. As discussed in the electrical characterization 
+section (see section 3.2.), the Ar/H 2 plasma jet exhibited 
+higher initial current peaks and increased power compared to 
+operation in pure Ar. Additional indirect information 
+regarding the changes in the electron density was obtained 
+from optical emission spectroscopy and is discussed in 
+Section 3.3. Nevertheless, while the present observations are 
+consistent with the assumption that hydrogen modifies the 
+ionization kinetics, the exact mechanisms responsible for the 
+observed changes in plasma morphology remain beyond the 
+scope of the present work and require further investigation. 
+ 
+ 
+Page 9 of 20 AUTHOR SUBMITTED MANUSCRIPT - JPhysD-143841.R1
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+Journal XX (XXXX) XXXXXX Author et al 
+ 10 
+ 
+ 
+Fig. 6: High-speed imaging of the plasma jet propagating from the slit nozzle toward the glass-on-grounded-metal 
+configuration. (a) Operation in Ar/H 2 and (b) operation in pure Ar. Images were recorded with an exposure time of 10 ns and 
+an integration time of 5 s at different times within the discharge pulse (starting at ~7 µs after pulse initiation). Insets show 
+magnified views highlighting the fine structure of the plasma phase at lower exposure time of 1.2 ns. 
+Figure 7 presents high-speed imaging of the plasma jet 
+propagating from the linear nozzle toward a non-conductive 
+paper substrate. The measurements were performed to further 
+investigate the propagation behavior of the plasma phase 
+under conditions where no conductive target is present. A 
+sequence of images of the plasma jet operated in an Ar/H 2 
+atmosphere is shown in Fig. 7a, while operation in pure Ar is 
+presented in Fig. 7b. 
+The images were recorded with an exposure time of 2 ns 
+and an integration time of 5 s. Individual frames correspond to 
+different times within the discharge pulse sequence, starting 
+approximately 6 µs after the onset of the voltage pulse and 
+continuing at defined time intervals within the discharge 
+cycle. 
+A clear difference between the two gas compositions can 
+be observed in the spatial distribution of the plasma jet. In the 
+Ar/H2 atmosphere (Fig. 7a), the plasma propagates relatively 
+uniformly across the entire width of the slit opening, forming 
+a continuous and spatially extended plasma phase. The 
+emission appears as a distribution of fine, dot-like features that 
+together form the overall plasma plume. This spatially 
+extended appearance can still be recognized at later stages of 
+the discharge cycle, for example at 65 µs, although the 
+emission intensity is substantially reduced compared with the 
+initial propagation at the applied imaging parameters. To 
+facilitate visualization of the weaker emission at these later 
+times, the corresponding image is presented after post-
+processing in Inset (a) of Figure 7, with the brightness and 
+exposure increased by +200 and the contrast reduced by −50 
+using the Microsoft Photos application. These adjustments 
+were applied solely for visualization purposes. 
+In contrast, operation in pure Ar (Fig. 7b) exhibits a more 
+non-uniform spatial distribution. During the initial 
+propagation of the secondary plasma phase (6–13 µs), the 
+emission is predominantly localized near the edges of the slit 
+opening, and no clearly detectable emission is observed in the 
+Page 10 of 20AUTHOR SUBMITTED MANUSCRIPT - JPhysD-143841.R1
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+Journal XX (XXXX) XXXXXX Author et al 
+ 11 
+ 
+central region under the selected imaging parameters. 
+Nevertheless, weak emission can also be identified in the 
+central part of the slit at later stages of the discharge cycle. In 
+particular, at approximately 13 µs, a weak contribution from 
+the central region can already be distinguished in addition to 
+the more intense emission at the edges, while at approximately 
+65 µs, weak emission remains visible across the central part of 
+the slit. These features are more readily observed in Inset (b) 
+of Figure 7, where the corresponding images at 13 and 65 µs 
+are shown after post-processing with the brightness and 
+exposure increased by +200 and the contrast reduced by −50 
+using the Microsoft Photos application. 
+The high-speed images therefore suggest that, although the 
+plasma emission in pure Ar is strongly concentrated at the slit 
+edges during the initial propagation, the plasma phase also 
+extends into the central region of the slit. However, the 
+emission from this region is considerably weaker than that 
+from the edges. In fact, the difference in emission intensity 
+limits the visibility of the weaker central emission under the 
+selected imaging conditions. Therefore, this observation can 
+support the corresponding smartphone photograph (Fig. 5h), 
+where the plasma phase can be better observed across the slit 
+width, including the central region, although with lower 
+apparent intensity than near the edges. 
+Consequently, compared with Ar/H 2, where the plasma 
+phase remains more continuously distributed across the slit 
+width even at later times, the Ar plasma phase exhibits a less 
+spatially uniform emission distribution. This behavior is 
+consistent with the previously discussed changes in plasma 
+kinetics induced by hydrogen addition, which may influence 
+electron energy distributions, ionization processes, and 
+consequently the spatial distribution of the plasma phase. 
+Overall, these observations further emphasize the strong 
+influence of gas composition and substrate properties on the 
+spatial distribution, stability, and propagation behavior of the 
+plasma jet. 
+ 
+ 
+ 
+Fig. 7: High-speed imaging of the plasma jet propagating from the slit nozzle toward the non-conducting paper sample. (a) 
+Operation in Ar/H2 and (b) operation in pure Ar. Images were recorded with an exposure time of 2 ns and an integration time 
+of 5 s at different times within the discharge pulse (starting at ~6 µs after pulse initiation). Insets (a) and (b) show the 
+corresponding images after software-based post-processing with adjusted brightness, exposure, and contrast. 
+ 
+Page 11 of 20 AUTHOR SUBMITTED MANUSCRIPT - JPhysD-143841.R1
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+Journal XX (XXXX) XXXXXX Author et al 
+ 12 
+ 
+3.2. Electrical characteristics 
+Electrical characterization was performed on the substrate 
+configuration using borosilicate glass placed on the grounded 
+metal plate. This configuration was selected following the 
+approach reported by Kostov and co-workers, who performed 
+electrical characterization using a similar glass-on-grounded-
+metal substrate arrangement [21]. The distance between the 
+nozzle outlet and the glass surface was 12 mm. The power 
+supply used in the experiment generates short voltage pulses 
+with an adjustable amplitude ranging from 0 to 30 V. These 
+low-voltage pulses are converted into high-voltage pulses 
+using a transformer, which excites the plasma jet setup. The 
+frequency (4.0 kHz), duty cycle (95 %) and amplitude of the 
+pulses in this experiment were kept constant as discussed in 
+the Section 2.1. 
+Excitation of the system with these high-voltage pulses 
+causes voltage oscillations within the plasma jet circuit, which 
+depend on the electrical properties of the setup. The voltage 
+and current waveforms measured for an Ar/H 2 plasma jet are 
+shown in Fig. 8(a). The amplitude of the low-voltage pulses 
+was set to 9.0 V at the generator, resulting in a high-voltage 
+waveform with a peak-to-peak amplitude of 11.1 kV pp. The 
+voltage and current waveforms for an Ar plasma jet are 
+presented in Fig. 8(b), where the low-voltage pulse amplitude 
+was set to 9.2 V, yielding a 11.7 kV pp peak-to-peak high-
+voltage waveform. Both voltage waveforms were measured at 
+the top electrode using a PMK HV-probe, while the current 
+was recorded by a current clamp placed around the system’s 
+grounded return wire. 
+The voltage waveforms of both plasma jet configurations 
+exhibit periodic excitation pulses at a frequency of 4.0 kHz, 
+corresponding to a pulse repetition period of approximately 
+250 µs. In addition to the excitation pulses, damped 
+oscillations of the electrical system can be observed. The 
+measured oscillation half-periods were 81.9 µs for the Ar/H 2 
+plasma jet and 83.0 µs for the Ar plasma jet, corresponding to 
+oscillation frequencies of approximately 6.11 kHz and 
+6.02 kHz, respectively (see Figure 8). 
+Short ripples in the current waveforms indicate plasma 
+discharges. For the Ar/H 2 plasma jet, pronounced current 
+peaks are observed immediately after the excitation pulse 
+(after 0 µs), followed by additional discharge activity 
+predominantly during the first half-cycle of the voltage 
+oscillation. In contrast, the current waveform of the pure Ar 
+plasma jet exhibits a less pronounced current peak associated 
+with the rising edge of the excitation pulse (after 0 µs). The 
+subsequent current peaks, however, are of comparable 
+magnitude to those observed in the Ar/H 2 plasma jet. 
+Furthermore, additional discharge events can be identified at 
+later times (> 70 µs), indicating that discharge activity in the 
+Ar plasma jet is distributed over a larger fraction of the 
+excitation period. This observation is in agreement with the 
+optical characterization results (Fig. 6), which showed a more 
+pronounced plasma emission and a higher density of visible 
+discharge channels during the early stage of the discharge 
+development (≥ 8 µs) for the Ar/H 2 plasma jet. At the same 
+time, the high-speed imaging revealed more pronounced 
+plasma emission at later delays (≥ 70 µs) for the Ar plasma jet, 
+which is consistent with the additional current peaks observed 
+in the electrical measurements. 
+The voltage waveforms measured for the plasma jet with 
+the other substrate configurations (metal plate, glass, and 
+paper, as shown in Figure 3) are presented in the 
+Supplementary Material as Figure S1 and exhibit the same 
+characteristic waveform shape. 
+ 
+ 
+Fig. 8: Voltage (black) and current (red) waveforms of the linear plasma jet on borosilicate glass over grounded metal with an 
+excitation frequency of 4.0 kHz. (a) with Ar/H2 and an excitation voltage amplitude of 11.1 kVpp (b) with Ar and an excitation 
+voltage amplitude of 11.7 kVpp.
+Page 12 of 20AUTHOR SUBMITTED MANUSCRIPT - JPhysD-143841.R1
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+Journal XX (XXXX) XXXXXX Author et al 
+ 13 
+ 
+In principle, the plasma power can be determined by 
+integrating the voltage and current waveforms over multiple 
+excitation cycles. However, because the plasma discharges are 
+associated with very short transient current peaks, which may 
+not be fully resolved by the current probe, particularly in the 
+case of the Ar plasma jet, this approach may lead to 
+inaccuracies in the calculated power values [45]. 
+Therefore, the Lissajous method was used to calculate the 
+plasma power by using the following equation: 
+𝑃 = 1
+𝑇 ∙ ර 𝑈௛௩(𝑡)𝑑𝑄(𝑡)
+ 
+்
+ (1) 
+where 𝑇 is the period of one excitation cycle of the high 
+voltage source. It is important to define these integration limits 
+correctly in order to integrate full periods of the excitation. 
+𝑈௛௩ is the high voltage measured at the top electrode and 𝑄 is 
+the charge on the measuring capacitor 𝐶௠௘௔௦, that can be 
+calculated with: 
+𝑄(𝑡) = 𝑈஼(𝑡) ∙ 𝐶௠௘௔௦ (2) 
+In this equation 𝑈஼ represents the voltage drop at the 
+capacitor 𝐶௠௘௔௦ with its capacity of 10 nF. 
+The power calculated using Formula (1) corresponds to the 
+area of the Lissajous figure that is formed when the charge is 
+plotted as a function of the high voltage. Figure 9 shows the 
+Lissajous figures for one excitation period from a plasma jet 
+using either Ar/H2 (a) or Ar (b). 
+In both cases, two loops can be identified within one 
+excitation period of 250 µs, reflecting the two cycles observed 
+in the voltage waveform (Fig. 8). 
+For the Ar/H2 plasma jet (Fig. 9a), one dominant loop and 
+a considerably smaller secondary loop are observed. The 
+larger loop corresponds to the first cycle following the 
+excitation pulse, whereas the smaller loop is associated with 
+the subsequent cycle. The significantly larger area enclosed by 
+the first loop indicates that most of the energy is deposited into 
+the plasma during the initial cycle, while only a minor 
+contribution arises from the second cycle. The resulting 
+plasma power determined from the combined loop area is 
+0.85 W. 
+In contrast, the Lissajous figure obtained for the Ar plasma 
+jet (Fig. 9b) exhibits two loops of comparable size. This 
+suggests that energy deposition occurs during both cycles and 
+that plasma discharges are present throughout a larger portion 
+of the excitation period. This interpretation is consistent with 
+the current waveforms shown in Fig. 8, where discharge 
+events can be identified over a broader time range for the Ar 
+plasma, whereas in the Ar/H 2 case they are predominantly 
+concentrated within the first cycle. The plasma power 
+determined for the Ar discharge was 0.19 W. 
+ 
+ 
+ 
+Fig. 9: Lissajous figure for one excitation cycle (250 µs) on borosilicate glass over grounded metal with an applied voltage 
+pulse of: (a) 9.0 V (11.1 kVpp) in Ar/H2 (b) 9.2 V (11.7 kVpp) in Ar. 
+ 
+Page 13 of 20 AUTHOR SUBMITTED MANUSCRIPT - JPhysD-143841.R1
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+Journal XX (XXXX) XXXXXX Author et al 
+ 14 
+ 
+Interestingly, during the electrical characterization, it was 
+observed that connecting a high-voltage (HV) probe to the 
+plasma jet system influenced the behavior of the secondary 
+discharge emerging from the slit nozzle. When the voltage was 
+measured at the top electrode, the primary discharge between 
+the ceramic-insulated HV electrode and the floating mesh 
+remained visibly unaffected. In contrast, the plasma phase 
+leaving the nozzle became less intense and less homogeneous. 
+This effect was observed for both gas atmospheres and was 
+more pronounced during operation in pure Ar. 
+A more pronounced effect was observed when the HV 
+probe was connected directly to the floating mesh. To take 
+measurements at the mesh, a small access hole was made in 
+the PLA slit nozzle. This allowed a copper wire, which was 
+connected to the mesh, to be guided outside the nozzle for 
+connection to the HV probe. Under these conditions, no 
+secondary plasma discharge could be generated at the nozzle 
+outlet, regardless of the gas atmosphere. A similar behavior 
+was previously reported by Kostov and co-workers, who noted 
+that the plasma jet at the end of the dielectric tube could not 
+be ignited when the HV probe was connected to the floating 
+copper wire [21]. This observation suggests that the floating-
+electrode plasma jet is highly sensitive to perturbations of the 
+electrical circuit. 
+The observed behavior can be explained by the additional 
+resistance and capacitance introduced by the HV probe, which 
+modifies the electrical configuration of the system through a 
+parallel connection to the oscilloscope. In conventional 
+dielectric barrier discharge systems, such perturbations are 
+typically negligible due to the comparatively large 
+capacitances present in the reactor. In contrast, plasma jet 
+systems employing floating electrodes appear to be 
+considerably more sensitive to such changes, particularly 
+when the floating electrode itself is contacted. While the 
+primary discharge exhibits characteristics similar to a 
+conventional DBD, the secondary discharge generated from 
+the floating electrode is strongly influenced by the floating 
+potential and the overall electrical impedance of the system. 
+The corresponding voltage waveforms measured at the top 
+electrode and the floating mesh are presented in Figures S2 
+and S3 for the Ar/H2 and Ar plasma jets, respectively. In both 
+cases, the voltage measured at the floating mesh is lower than 
+that measured at the top electrode by approximately 5 kV pp 
+peak-to-peak. A similar behaviour in the voltage drop between 
+the powered electrode and the floating electrode was reported 
+by Kostov and co-workers for plasma jet systems employing 
+a single floating copper wire [21]. The observed voltage 
+reduction, together with the sharp voltage transitions visible in 
+the waveforms, can be attributed to the primary discharge 
+occurring between the top electrode and the floating mesh, 
+which acts as an electrical load within the system and results 
+in energy dissipation before the potential is transferred to the 
+secondary discharge region. 
+It is important to mention that the measurements presented 
+in this work were primarily performed using a PMK high-
+voltage probe with a resistance of 100 MΩ and a capacitance 
+of 3 pF, as it exhibits electrical characteristics comparable to 
+those used in the previous study by Kostov and co-workers 
+[21]. Additional experiments were conducted using a Testec 
+probe with a higher resistance (900 MΩ) and lower 
+capacitance (2 pF). As shown in Figure S4, the Testec probe 
+resulted in a smaller perturbation of the plasma process when 
+connected to the top electrode, yielding higher measured 
+voltages and less pronounced changes in the secondary 
+discharge. Nevertheless, even with this probe, some influence 
+on the plasma behavior remained observable. When connected 
+to the floating mesh, the secondary discharge again 
+disappeared completely. These observations highlight the 
+importance of careful probe selection when electrically 
+characterizing plasma jet systems based on floating 
+electrodes. 
+3.3. Characterization of the reactive species 
+A qualitative characterization of the reactive species 
+present in the plasma phases was performed using optical 
+emission spectroscopy (OES), with the corresponding results 
+presented in Figure 10. The measurements were conducted 
+using substrate configuration (a), i.e., a borosilicate glass 
+sample placed on a grounded metallic substrate. First, 
+Figures 10 (a) and 10 (b) present the OES spectra of the 
+primary discharge generated inside the quartz tube between 
+the high-voltage electrode and the floating metallic mesh for 
+the Ar/H2 and Ar atmospheres, respectively. Both spectra were 
+acquired using the same integration time of 42.290 ms. 
+Both spectra are dominated by a group of characteristic 
+emission lines in the wavelength range of approximately 696–
+965 nm, which can be attributed to Ar I transitions [7,8,46,47]. 
+These emissions can originate from electron impact excitation 
+of argon atoms from the ground state to higher energy levels, 
+followed by radiative relaxation. The presence of these lines 
+indicates the formation of excited argon species as well as 
+ionization processes occurring within the primary discharge. 
+In the Ar/H2 plasma (Fig. 10a), an additional emission peak 
+at approximately 656 nm is observed and assigned to the H α 
+(Balmer) line [7,47–49]. This transition corresponds to the 
+radiative decay of excited hydrogen atoms from the energy 
+level n = 3 to n = 2 and is commonly used as an indicator of 
+excited atomic hydrogen in plasma phases. Such hydrogen 
+species are expected to be generated via dissociative excitation 
+of molecular hydrogen and through electron impact excitation 
+and ionization processes [48,49]. 
+Furthermore, a broad emission feature in the spectral range 
+of approximately 200–500 nm is detected in the Ar/H 2 
+spectrum. Interestingly, a similar feature was reported by 
+Nascimento and co-workers during the optical emission 
+spectroscopy characterization of Ar/H 2 atmospheric-pressure 
+Page 14 of 20AUTHOR SUBMITTED MANUSCRIPT - JPhysD-143841.R1
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+Journal XX (XXXX) XXXXXX Author et al 
+ 15 
+ 
+plasma jets [4]. The authors observed that the intensity of this 
+broadband emission increased with increasing H 2 
+concentration in the gas mixture from 0 to 3.5 vol.% [4]. A 
+comparable feature is not clearly observed in the spectrum of 
+the pure Ar plasma investigated here, which is consistent with 
+the observations reported in [4]. According to the 
+interpretation proposed by Nascimento and co-workers, this 
+broadband emission can be attributed to bremsstrahlung 
+radiation associated with electron-neutral collisions in the 
+plasma [4]. Consequently, the presence of this feature may 
+serve as an indicator of increased electron density in H 2-
+containing plasmas compared to pure Ar systems [4]. 
+In contrast, the spectrum of the Ar primary discharge (Fig. 
+10b) does not exhibit the H α emission or the broad feature 
+observed in the Ar/H 2 spectrum. Instead, a low-intensity 
+emission feature at approximately 309 nm, associated with 
+OH radicals, can be detected, which is likely related to residual 
+water vapour in the gas supply system or desorption from the 
+inner surfaces of the quartz tube [46,50]. It should be noted 
+that OH-related features may also be present in the Ar/H 2 
+plasma but can be masked by the broadband emission in the 
+same spectral range, hindering their direct identification in 
+that spectrum. Nevertheless, the presence of OH species can 
+also be expected in the Ar/H 2 plasma. Additionally, a low-
+intensity emission line at approximately 777 nm is observed 
+in the Ar spectrum and can be assigned to atomic oxygen, 
+indicating the presence of oxygen-containing species in the 
+primary discharge region [8,50,51]. This emission can be 
+attributed to trace amounts of residual O₂ in the argon gas used 
+in this study (Ar 5.0), which, according to the supplier's 
+specifications, contains oxygen impurities at levels of ≤2 ppm. 
+Interestingly, a corresponding emission feature at 
+approximately 777 nm could not be clearly observed in the 
+Ar/H2 spectrum. This difference may indicate that hydrogen 
+participates in reactions with oxygen-containing species, 
+potentially altering their concentration or excitation pathways 
+in the plasma. 
+The use of identical integration times allows a comparison 
+of the overall emission intensity between the two gas 
+atmospheres. Under these conditions, the characteristic 
+emission lines in the Ar/H 2 plasma generally exhibit lower 
+intensities than the emissions in pure Ar. For the primary 
+discharge, this difference may reflect changes in the discharge 
+characteristics and excitation kinetics resulting from the 
+presence of hydrogen. However, a detailed interpretation of 
+the mechanisms responsible for this difference would require 
+further investigation using e.g., improved high-speed imaging 
+conditions, such as higher-resolution optics and greater 
+magnification, to better resolve the characteristics of the 
+primary discharge. 
+ 
+Fig. 10: Optical emission spectra obtained from the primary and secondary plasma phases in Ar/H 2 and Ar atmospheres for 
+substrate configuration (a) (see Fig. 3). Primary discharge spectra measured inside the quartz tube between the high-voltage 
+electrode and the floating metallic mesh for (a) Ar/H 2 and (b) Ar at an integration time of 42.290 ms. Secondary plasma jet 
+spectra measured outside the nozzle in ambient air for (c) Ar/H 2 and (d) Ar at an integration time of 1 s. 
+Page 15 of 20 AUTHOR SUBMITTED MANUSCRIPT - JPhysD-143841.R1
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+ 16 
+ 
+The OES characterization of the secondary plasma phases 
+is presented in Fig. 10 (c) and 10 (d) for the Ar/H 2 and Ar 
+atmospheres, respectively. In both cases, the spectra were 
+measured outside the slit-shaped nozzle in ambient air using 
+an identical integration time of 1 s. Compared with the 
+primary discharge, the emission spectra of the secondary 
+plasma phase exhibit additional spectral features resulting 
+from the interaction of the plasma with the surrounding 
+atmosphere. 
+For the Ar/H2 plasma jet (Fig. 10 (c)), the characteristic Ar 
+emission lines and the H α emission at 656 nm, as well as the 
+broad emission feature in the range of approximately 200–
+500 nm, remain visible. In addition, several emission features 
+appear in the wavelength range of approximately 300–450 nm. 
+The dominant signals in this region can be attributed to 
+nitrogen-related species, such as transitions of the N 2 second 
+positive system and N 2+ first negative system [46,47,52]. 
+Furthermore, a distinct peak at around 309 nm indicated the 
+presence of OH radicals [46,50]. 
+A similar general behavior is observed for the Ar plasma 
+jet (Fig. 10 (d)), with the characteristic Ar I emission lines 
+remaining clearly visible. As expected, no hydrogen-related 
+emissions are detected. Instead, additional spectral features 
+associated with air-related species are observed, including 
+emission bands attributed to the N2 second positive system and 
+N2+ first negative system, as well as emission from OH 
+radicals and atomic oxygen [7,8,40,50,51]. 
+The appearance of these additional emission features in 
+both plasma jets demonstrates the interaction of the secondary 
+plasma phase with the surrounding air. In particular, excitation 
+and ionization of atmospheric components such as N2, O2, and 
+water vapour contribute to the observed emission spectra. 
+Such behaviour is typical for atmospheric-pressure plasma jets 
+operated in open air and has been reported for different plasma 
+jet systems [7,8,40,50,51]. 
+At the same time, when comparing the spectra obtained 
+using the same integration time of 1 s, the Ar/H 2 plasma jet 
+exhibits a lower overall emission intensity than the 
+corresponding Ar plasma jet (see Figures 10 (c) and (d)). This 
+difference may be related to the more localized and intense 
+discharge structures observed in pure Ar, as evident from the 
+photographs and high-speed imaging (see Figures 5e and 7b, 
+respectively). Such localized high-intensity structures can 
+contribute to the collected optical emission and may therefore 
+account for the higher overall emission intensity observed for 
+the Ar plasma jet. 
+Additionally, an interesting difference can be observed 
+when comparing the Ar/H2 spectra obtained from the primary 
+(Figure 10 (a)) and secondary (Figure 10 (c)) discharge 
+regions. Despite the substantially longer integration time used 
+for the secondary plasma phase (1 s) compared with the 
+primary discharge (42.290 ms), the H α emission in the 
+secondary plasma phase exhibits lower intensity and is 
+accompanied by a higher background noise level. This 
+difference can indicate that the secondary plasma phase 
+produces weaker optical emission due to its distinct discharge 
+and propagation conditions, while also suggesting that the 
+applied integration time may not be optimal for resolving the 
+Hα emission with a comparable signal quality. To further 
+support the presence of H α emission in the secondary plasma 
+phase for substrate configuration (a) (see Figure 3) and 
+provide a clearer representation of this feature under more 
+favorable measurement conditions, an additional spectrum 
+was acquired using a longer integration time of 10 s. This 
+spectrum, which provides an improved signal-to-noise ratio, 
+is included in the Supplementary Material as Figure S5. 
+To investigate the influence of the substrate configuration 
+on the secondary plasma phase, additional OES measurements 
+were performed for the four systems. Figure 11 presents the 
+spectra obtained for the Ar/H2 plasma jet at an integration time 
+of 1 s while propagating toward: (a) borosilicate glass on 
+grounded metal (Gl/Me), (b) a grounded metal plate (Me), (c) 
+borosilicate glass (Glass), and (d) paper. The spectrum for the 
+Gl/Me configuration (Fig. 11) corresponds to the secondary 
+plasma phase already characterized in Fig. 10c and is included 
+here as a reference for comparison. 
+All four configurations exhibit the characteristic emission 
+features previously identified for the secondary Ar/H 2 plasma 
+phase, including Ar-, N 2-related, and OH emission. The 
+overall emission intensities are of a similar order of 
+magnitude, with the highest intensity observed for Gl/Me and 
+the lowest for Me. A more distinct difference is observed for 
+the H α emission at approximately 656 nm: the feature is 
+resolved for the Gl/Me and Me configurations, which include 
+a grounded metallic component, but is not clearly detected for 
+the isolated glass and paper substrates. The observed 
+difference may be associated with the distinct plasma 
+structures visualized in Sections 3.1 and 3.2, where localized 
+discharge channels were more frequently observed for 
+configurations containing a grounded metal, whereas the 
+plasma propagating toward the electrically isolated substrates 
+appeared more uniformly distributed. These differences in 
+plasma structure may affect the local electric-field distribution 
+and excitation processes and, consequently, the generation and 
+excitation of atomic hydrogen. In addition, the broad emission 
+feature between approximately 200 and 500 nm is observed 
+for all four configurations, although with lower intensity for 
+the isolated substrates. 
+Since the 1 s spectra exhibit a relatively high background 
+noise level, additional measurements were performed with an 
+integration time of 10 s. The corresponding spectra are 
+provided in Supplements as Figure S6 and confirm the H α 
+emission for the Gl/Me and Me configurations, while no 
+clearly resolved Hα feature is observed for the glass and paper 
+substrates. Overall, the substrate configuration appears to 
+influence primarily the detectability of Hα rather than the types 
+Page 16 of 20AUTHOR SUBMITTED MANUSCRIPT - JPhysD-143841.R1
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+Journal XX (XXXX) XXXXXX Author et al 
+ 17 
+ 
+of the emitting species observed. The absence of a clearly 
+resolved H α feature for the glass and paper configurations, 
+however, does not exclude the presence of reactive hydrogen 
+species, since OES only detects species through their radiative 
+transitions. Complementary diagnostics would therefore be 
+required for a more comprehensive assessment of hydrogen-
+containing plasma. The detection of H α for the grounded 
+configurations is nevertheless particularly relevant for the 
+intended application of the Ar/H 2 plasma jet in the localized 
+deoxidation of metallic surfaces [7]. 
+Corresponding measurements for the secondary Ar plasma 
+phase are provided in Supplements (Figure S7). The spectrum 
+for the Gl/Me configuration corresponds to the spectrum 
+already presented in Fig. 10d. The other configurations show 
+the same characteristic emitting species, with differences 
+mainly in their overall emission intensities and generally 
+stronger N 2-related emission compared with the 
+corresponding Ar/H2 plasma phases. 
+ 
+ 
+Fig. 11: OES of the secondary Ar/H 2 plasma phase obtained 
+for the four substrate configurations shown in Figure 3 at an 
+integration time of 1 s: (a) borosilicate glass on grounded 
+metal (Gl/Me), (b) grounded metal plate (Me), (c) borosilicate 
+glass (Glass), and (d) paper. The inset shows an enlarged 
+spectral region around the Hα emission at 656 nm. 
+ 
+4. Conclusions 
+This work addressed two key challenges associated with 
+atmospheric pressure plasma jets: the transfer of reactive 
+plasma species beyond the primary discharge region, and the 
+spatial expansion of the plasma phase to enable the treatment 
+of larger surface areas. To this end, a novel slit-geometry 
+plasma jet based on a floating metallic mesh integrated into a 
+3D-printed nozzle was developed and investigated under Ar 
+and Ar/H2 (2 vol.% H2) atmospheres using different substrate 
+configurations. 
+Unlike previously reported floating-wire systems, this 
+concept combines plasma potential transfer with spatial 
+scaling. This enables the generation of a line-shaped plasma 
+phase, for example with a width of approximately 36 mm. 
+High-speed imaging revealed that the gas atmosphere 
+significantly impacts plasma morphology and discharge 
+behaviour. Specifically, Ar/H 2 produces a more uniform 
+discharge distribution across the slit width, whereas pure Ar 
+results in a more localized plasma appearance. 
+Optical emission spectroscopy (OES) confirmed the 
+presence of reactive argon species in both atmospheres, as 
+well as emission from atomic hydrogen species in the Ar/H 2 
+plasma jet propagating toward substrate configurations 
+containing grounded metallic surfaces. This indicates its 
+potential for reduction-based processes, such as metallic 
+surface deoxidation. Furthermore, the OES results provided 
+indirect evidence of differences in plasma characteristics 
+between the Ar and Ar/H 2 atmospheres, which may be 
+associated with changes in electron density. 
+At the same time, electrical characterization revealed clear 
+differences in discharge behavior between the two 
+atmospheres. Plasma power determined from the Lissajous 
+analysis amounted to 0.85 W for the Ar/H 2 plasma jet and 
+0.19 W for the Ar plasma jet under the selected operating 
+conditions. The measurements further demonstrated the high 
+sensitivity of the floating-electrode configuration to 
+perturbations introduced by high-voltage probes, emphasizing 
+the importance of careful electrical diagnostics of such plasma 
+systems. 
+From a broader perspective, the presented concept expands 
+the design possibilities of atmospheric pressure plasma jets for 
+large-area surface treatment. To further evaluate the 
+scalability of the concept, an additional slit nozzle with an 
+opening width of approximately 73 mm was fabricated and 
+operated. Under comparable Ar/H 2 plasma conditions, a 
+homogeneously distributed plasma phase could also be 
+generated across this increased width (see Supplementary 
+Information, Figure S8), demonstrating the potential of the 
+proposed design for further spatial scaling. Such systems may 
+be of interest for applications including metallic surface 
+cleaning, deoxidation, polymer activation, and other plasma-
+assisted manufacturing processes where treatment uniformity 
+and scalability are required. 
+Page 17 of 20 AUTHOR SUBMITTED MANUSCRIPT - JPhysD-143841.R1
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+Journal XX (XXXX) XXXXXX Author et al 
+ 18 
+ 
+At the same time, several aspects require further 
+investigation. In particular, the influence of hydrogen 
+concentration on plasma morphology, the relationship 
+between electrical discharge characteristics and plasma 
+uniformity, as well as the transport and distribution of reactive 
+species along the slit geometry remain open questions. 
+Furthermore, optimization of the nozzle geometry and gas 
+distribution to reduce the required gas flow rate while 
+maintaining stable plasma generation represents an important 
+direction for future work. In addition, optimization of the 
+electrical excitation conditions and more detailed optical 
+characterization using higher-resolution imaging systems will 
+be necessary to further clarify plasma propagation 
+mechanisms and evaluate the technological potential of the 
+proposed system. 
+Overall, the results demonstrate that the combination of a 
+floating metallic mesh with a slit-nozzle geometry represents 
+a promising strategy for coupling plasma transport with spatial 
+scaling, thereby providing a foundation for the development 
+of atmospheric pressure plasma jets for the uniform treatment 
+of extended surfaces. 
+Acknowledgements 
+The project was funded by the Deutsche 
+Forschungsgemeinschaft (DFG, German Research 
+Foundation) – Project-ID 394563137 – SFB1368. 
+Data availability statement 
+Data has been made available through a Zenodo-dataset at 
+https://doi.org/10.5281/zenodo.21130921 
+References 
+[1] Lu X, Laroussi M and Puech V 2012 On 
+atmospheric-pressure non-equilibrium plasma jets and plasma 
+bullets Plasma Sources Sci. Technol. 21 034005 
+[2] Laroussi M 2020 Cold Plasma in Medicine and 
+Healthcare: The New Frontier in Low Temperature Plasma 
+Applications Front. Phys. 8 
+[3] Zhang D, Xu S, Hou Z, Chang X, Wu Z and Xiong 
+Z 2024 Study of a full coaxial atmospheric pressure plasma jet 
+device and its application to the modification of 
+polytetrafluoroethylene Plasma Processes and Polymers 21 
+e2400078 
+[4] Nascimento F do, Quade A and Kostov K G 2025 
+Properties of Ar-H2 Atmospheric Pressure Plasma Jet Aimed 
+for Polymer Surface Modification Braz J Phys 56 28 
+[5] Lin L and Keidar M 2021 A map of control for cold 
+atmospheric plasma jets: From physical mechanisms to 
+optimizations Appl. Phys. Rev. 8 011306 
+[6] Soulier M, Vacek T, Géraud K and Dufour T 2025 
+Transferred plasma catheter for endotherapeutic applications: 
+A parametric study of guided streamers dynamics Phys. 
+Plasmas 32 043506 
+[7] Udachin V, Wegewitz L, Zimmermann S J, Gustus 
+R, Wiche H and Maus-Friedrichs W 2025 Shielding and oxide 
+reduction on steel surfaces using an Ar/H2 non-thermal 
+plasma jet J. Phys. D: Appl. Phys. 58 355208 
+[8] Gustus R and Wegewitz L 2025 Modification of 
+polylactic acid (PLA) surfaces by argon DBD plasma jet 
+treatment and x–ray irradiation Applied Surface Science 689 
+162589 
+[9] Decauchy H, Pavy A, Camus M, Fouassier L and 
+Dufour T 2022 Cold plasma endoscopy applied to biliary 
+ducts: feasibility risk assessment on human-like and porcine 
+models for the treatment of cholangiocarcinoma J. Phys. D: 
+Appl. Phys. 55 455401 
+[10] Ravikiran K, Xu P and Li L 2024 A critical review 
+on high-frequency electric-resistance welding of steel linepipe 
+Journal of Manufacturing Processes 124 753–77 
+[11] Ichihara H, Sumimoto D, Kimura T, Kimiya Y and 
+Yoshizawa M 1986 Manufacture of alloy steel tube by high 
+frequency electric resistance welding. ISIJ Int. 26 468–75 
+[12] Tyrala D and Pawlowski B 2021 Failure Analysis of 
+Premature Corrosion of HF Seam-Welded Steel Pipe in 
+Central Heating System J Fail. Anal. and Preven. 21 772–8 
+[13] Udachin V, Wegewitz L, Gustus R, Wiche H and 
+Maus-Friedrichs W Reduction of Oxide Inclusions During the 
+High-Frequency Welding of Steel via a Nonthermal Ar/H2 
+Plasma Jet Advanced Engineering Materials n/a e202502556 
+[14] Stepanova O, Pinchuk M, Astafiev A and Chen Z 
+2020 A streamer behavior evolution during an applied voltage 
+cycle in helium and argon atmospheric pressure plasma jets 
+fed by DBD Jpn. J. Appl. Phys. 59 SHHC03 
+[15] Javanmard S and Pouryoussefi S G 2023 
+Comparison of characteristics of atmospheric pressure plasma 
+jets using argon and helium working gases Current Applied 
+Physics 46 61–9 
+[16] Kong D, Zhu P, He F, Han R, Yang B, Wang M and 
+Ouyang J 2021 Influence of nitrogen and oxygen admixture 
+on the development of helium atmospheric-pressure plasma 
+jet J. Appl. Phys. 129 
+[17] Zhao N, Wu K, He X, Chen J, Tan X, Wu J, Ran J, 
+Jia P and Li X 2021 A diffuse argon plume generated 
+downstream of an atmospheric pressure plasma jet equipped 
+Page 18 of 20AUTHOR SUBMITTED MANUSCRIPT - JPhysD-143841.R1
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+Journal XX (XXXX) XXXXXX Author et al 
+ 19 
+ 
+with a positively biased electrode J. Phys. D: Appl. Phys. 55 
+015203 
+[18] Wu S, Lu X, Zou D and Pan Y 2013 Effects of H2 
+on Ar plasma jet: From filamentary to diffuse discharge mode 
+J. Appl. Phys. 114 043301 
+[19] Sabat K C, Rajput P, Paramguru R K, Bhoi B and 
+Mishra B K 2014 Reduction of Oxide Minerals by Hydrogen 
+Plasma: An Overview Plasma Chem Plasma Process 34 1–23 
+[20] Kostov K G, Nishime T M C, Machida M, Borges A 
+C, Prysiazhnyi V and Koga-Ito C Y 2015 Study of Cold 
+Atmospheric Plasma Jet at the End of Flexible Plastic Tube 
+for Microbial Decontamination Plasma Processes and 
+Polymers 12 1383–91 
+[21] Kostov K G, Machida M, Prysiazhnyi V and Honda 
+R Y 2015 Transfer of a cold atmospheric pressure plasma jet 
+through a long flexible plastic tube Plasma Sources Sci. 
+Technol. 24 025038 
+[22] Castro A H R, Kostov K G and Prysiazhnyi V 2015 
+Influence of Nozzle Shape on the Performance of Low-Power 
+Ar Plasma Jet IEEE Transactions on Plasma Science 43 
+3228–33 
+[23] Namous W S E, Sahli S, Benterrouche L and Bousba 
+H E 2026 Effects of electrodes configuration and nozzles 
+geometry on the performance of multi-jet plasma devices 
+Phys. Scr. 101 045601 
+[24] Lietz A M and Kushner M J 2018 Electrode 
+configurations in atmospheric pressure plasma jets: 
+production of reactive species Plasma Sources Sci. Technol. 
+27 105020 
+[25] Nascimento F do, Leal B S, Quade A and Kostov K 
+G 2022 Different Radial Modification Profiles Observed on 
+APPJ-Treated Polypropylene Surfaces according to the 
+Distance between Plasma Outlet and Target Polymers 14 
+[26] Nishime T M C, Wagner R and Kostov K G 2020 
+Study of Modified Area of Polymer Samples Exposed to a He 
+Atmospheric Pressure Plasma Jet Using Different Treatment 
+Conditions Polymers 12 
+[27] Brandenburg R 2017 Dielectric Barrier Discharges: 
+Progress on Plasma Sources and on the Understanding of 
+Regimes and Single Filaments Plasma Sources Science and 
+Technology 26 
+[28] Liu F, Zhang B, Fang Z, Wan M, Wan H and 
+Ostrikov K (Ken) 2018 Jet-to-jet interactions in atmospheric-
+pressure plasma jet arrays for surface processing Plasma 
+Processes and Polymers 15 1700114 
+[29] Li X, Liu Y, Wang L, Liu F and Fang Z 2019 
+Uniformity improvement of plumes in an atmospheric 
+pressure argon plasma jet array by electric field optimization 
+Eur. Phys. J. D 73 174 
+[30] Kim D H, Park C-S, Shin B J, Seo J H and Tae H-S 
+2019 Uniform Area Treatment for Surface Modification by 
+Simple Atmospheric Pressure Plasma Treatment Technique 
+IEEE Access 7 103727–37 
+[31] Zhang B, Guo W, Sun Y, Han W and Zhang G 2024 
+Visualization of electrical interaction among close-packed 
+atmospheric pressure plasma jets Phys. Plasmas 31 053503 
+[32] Ren Q, Liu X, Sun H, Huang C, Zhou F, Chen M 
+and Liang C 2020 XJTU: Typical Arrangements for 
+Downstream Uniformity Assessment in Atmospheric-
+Pressure Plasma Jet Arrays IEEE Access 8 92945–53 
+[33] Wan M, Liu F, Fang Z, Zhang B and Wan H 2017 
+Influence of gas flow and applied voltage on interaction of jets 
+in a cross-field helium plasma jet array Phys. Plasmas 24 
+093514 
+[34] Zheng S, Nie Q, Huang T and Hou C 2021 
+Numerical studies on downstream uniformity of atmospheric 
+pressure plasma jet array modulated by flow and electric 
+multi-field coupling control AIP Advances 11 085219 
+[35] Kodaira F V de P, Almeida A C de P L, Tavares T 
+F, Quade A, Hein L R de O and Kostov K G 2023 Study of a 
+Conical Plasma Jet with a Cloth-Covered Nozzle for Polymer 
+Treatment Polymers 15 
+[36] Kodaira F V de P, Leal B H S, Tavares T F, Quade 
+A, Hein L R de O, Chiappim W and Kostov K G 2023 
+Simultaneous Treatment of Both Sides of the Polymer with a 
+Conical-Shaped Atmospheric Pressure Plasma Jet Polymers 
+15 
+[37] Berner J, Miebach L, Herold L, Höft H, Gerling T, 
+Mattern P and Bekeschus S 2023 Gas Flow Shaping via Novel 
+Modular Nozzle System (MoNoS) Augments kINPen-
+Mediated Toxicity and Immunogenicity in Tumor Organoids 
+Cancers 15 
+[38] Ma C, Nikiforov A, De Geyter N, Morent R and 
+Ostrikov K (Ken) 2022 Plasma for biomedical 
+decontamination: from plasma-engineered to plasma-active 
+antimicrobial surfaces Current Opinion in Chemical 
+Engineering 36 100764 
+[39] Krumpolec R, Feng J, Stupavská M, Slavíček P, 
+Jurmanová J, Kováčik D and Černák M 2025 DCSBD-based 
+“exceptionally cold” linear N2 atmospheric-pressure plasma 
+jet for uniform large area surface treatments Surface and 
+Coatings Technology 515 132584 
+Page 19 of 20 AUTHOR SUBMITTED MANUSCRIPT - JPhysD-143841.R1
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+Journal XX (XXXX) XXXXXX Author et al 
+ 20 
+ 
+[40] Ge R, Shu J, Zhang J, Zhao X, Ni T, Fan R, Li Z, Qi 
+M and Xu D 2025 Investigation of the discharge 
+characteristics of a nozzle-broadened plasma jet and its 
+anticancer potential AIP Advances 15 035138 
+[41] Polášková K, Nečas D, Dostál L, Klíma M and 
+Zajíčková L 2025 Sample Thickness and Edge Proximity 
+Influence Spatial Behavior of Filaments and Treatment 
+Uniformity of RF Cold Atmospheric Pressure Plasma Jet 
+Plasma Chem Plasma Process 45 49–68 
+[42] Udachin V, Wegewitz L, Dahle S and Maus-
+Friedrichs W 2022 Reduction of copper surface oxide using a 
+sub-atmospheric dielectric barrier discharge plasma Applied 
+Surface Science 573 151568 
+[43] Udachin V 2026 Raw and analyzed data for 
+manuscript “Development and Characterization of a Linear 
+Cold Atmospheric Pressure Plasma Jet for Large-Area Surface 
+Treatment” 
+[44] Guo Q j., Ni G h., Li L, Lin Q f., Zhao P, Meng Y 
+d., Zhao Y j. and Sui S y. 2018 Characteristics of an 
+atmospheric-pressure radio frequency-driven Ar/H2 plasma 
+discharge with copper wire in tube Contributions to Plasma 
+Physics 58 252–9 
+[45] Hołub M 2012 On the measurement of plasma 
+power in atmospheric pressure DBD plasma reactors 
+International Journal of Applied Electromagnetics and 
+Mechanics 39 81–7 
+[46] Barkhordari A, Ganjovi A, Mirzaei I, Falahat A and 
+Rostami Ravari M N 2017 A pulsed plasma jet with the 
+various Ar/N2 mixtures J Theor Appl Phys 11 301–12 
+[47] Sarani A, Nikiforov A Yu and Leys C 2010 
+Atmospheric pressure plasma jet in Ar and Ar/H2O mixtures: 
+Optical emission spectroscopy and temperature measurements 
+Physics of Plasmas 17 063504 
+[48] Wang Y, Gehring T, Jin Q, Dycke J and Kling R 
+2023 Characterization of Argon/Hydrogen Inductively 
+Coupled Plasma for Carbon Removal over Multilayer Thin 
+Films Coatings 13 368 
+[49] Saikia P, Saikia B K and Bhuyan H 2016 Study on 
+the effect of hydrogen addition on the variation of plasma 
+parameters of argon-oxygen magnetron glow discharge for 
+synthesis of TiO2 films AIP Advances 6 045206 
+[50] Xiong Q, Nikiforov A Y, Lu X P and Leys C 2010 
+High-speed dispersed photographing of an open-air argon 
+plasma plume by a grating–ICCD camera system J. Phys. D: 
+Appl. Phys. 43 415201 
+[51] Rezaei F, Nikiforov A, Morent R and De Geyter N 
+2018 Plasma Modification of Poly Lactic Acid Solutions to 
+Generate High Quality Electrospun PLA Nanofibers Sci Rep 
+8 2241 
+[52] Deng X L, Nikiforov A Yu, Vanraes P and Leys Ch 
+2013 Direct current plasma jet at atmospheric pressure 
+operating in nitrogen and air Journal of Applied Physics 113 
+023305 
+ 
+Page 20 of 20AUTHOR SUBMITTED MANUSCRIPT - JPhysD-143841.R1
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
