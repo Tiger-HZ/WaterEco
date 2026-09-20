@@ -1657,14 +1657,14 @@ async function loadAutoStatus(){
     if(!t){ el.innerHTML='<span class="muted">未检测到心跳文件（工作流尚未运行或站点未含该文件）。</span>'; return; }
     const d=new Date(t); const now=new Date();
     const diffH=Math.max(0,(now-d)/3600000);
-    const ok=diffH<26;
+    const ok=diffH<20;
     const ago=diffH<1?Math.round(diffH*60)+' 分钟前':diffH.toFixed(1)+' 小时前';
     el.innerHTML=`<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
         <span class="dot" style="width:10px;height:10px;border-radius:50%;background:${ok?'#16a34a':'#dc2626'}"></span>
         <b>上次自动采集：${esc(t)}</b> <span class="muted">（约 ${ago}）</span>
-        ${ok?'':'<span style="color:#dc2626;font-weight:600">⚠ 已超过 26 小时未更新，自动化可能已停摆，请检查 GitHub Actions。</span>'}
+        ${ok?'':'<span style="color:#dc2626;font-weight:600">⚠ 已超过 20 小时未更新，自动化可能已停摆，请检查 GitHub Actions。</span>'}
       </div>
-      <div class="muted" style="font-size:11.5px;margin-top:4px">每小时 :17(UTC) 常规采集；每日 08:23(UTC) 深度采集+媒体回填。若长时间无新提交，请到仓库 Actions 查看运行记录。</div>`;
+      <div class="muted" style="font-size:11.5px;margin-top:4px">采集节奏（北京时间）：<b>09:00 / 17:00</b> 深度采集并部署 ｜ <b>11:00</b> 多站点深度采集 + 原文检查 ｜ <b>12:30</b> 原文回填。<br>若长时间无新提交，请到仓库 Actions 查看运行记录。</div>`;
   }catch(e){ el.innerHTML='<span class="muted">无法读取心跳（'+esc(e.message)+'）。</span>'; }
 }
 const QUAL_COLORS={'A':'#16a34a','B':'#2563eb','C':'#d97706','未知':'#94a3b8'};

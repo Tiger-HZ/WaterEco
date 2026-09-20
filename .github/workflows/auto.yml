@@ -1,29 +1,28 @@
-# 水生态环境知识库 · 自动采集与部署
-# 每小时 / 每日自动采集水生态环境知识：抓取原文全文 + 政策/研究配图 + 学术开放获取PDF，
-# 去重入库并部署到 GitHub Pages 固定链接（实时更新）。
+# 水生态环境知识库 · 自动采集与部署（每天 2 次深度模式）
 #
-# —— 2026-09-18 稳定性修复（针对“运行 90 分钟被杀 -> 站点停更两个月”）——
-#  诊断：每小时的“常规采集”单步耗满 90 分钟被 timeout-minutes 杀掉，导致
-#        后续的 合并/提交/部署 全部 skipped，GitHub Pages 自 2026-07-26 后未再更新。
-#  修复：
-#   1) 每个爬虫用 `timeout` 硬限时（常规 420s / 深度 600s），单个爬虫卡死不再拖垮整条流水线；
-#   2) 采集步骤去掉了 `|| echo` 之外的任何阻断，并设为 continue-on-error；
-#   3) 「合并→提交→部署」三步全部加 `if: always()`，**无论采集是否异常，站点都会重建并部署**；
-#   4) job 总超时从 90 分钟收紧到 60 分钟，避免长尾占用并让下一次调度按时进入；
-#   5) 采集步骤加 step 级 timeout-minutes 作为第二道保险。
-#  其余保留：每日心跳提交、失败开 Issue 告警、concurrency 不取消进行中任务。
+# —— 调度沿革 ——
+#   2026-07-26  站点停更（「常规采集」单步耗满 90 分钟被 timeout 杀掉，后续全部 skipped）
+#   2026-09-18  修复：每步硬超时 + 「合并/提交/部署」改 if: always()
+#   2026-09-20  发现「每小时」调度被低频重活长期挤占（近 25 次里 11 次 cancelled），
+#               且把每次采集压得很短。经确认改为：**每天 2 次深度采集**（北京 09:00 / 17:00），
+#               单次时间放宽、采集参数加深，追求「深度、全面、高质量」而非频次。
+#
+# —— 分工（彼此错峰，避免同时改写 kb/inbox.json）——
+#   auto.yml    北京 09:00 / 17:00   深度采集(5 源) + 媒体回填 + 坏链自查 + 体积治理 + 合并部署
+#   sites.yml   北京 11:00           多站点栏目深翻页 + 原文巡检 + 原文审查
+#   refill.yml  北京 12:30           全库原文分级回填（1000 条/次）
+#   bulk.yml    手动                 一次性大批量灌入
 name: 自动采集与部署
 
 on:
   schedule:
-    - cron: '17 * * * *'        # 每小时第 17 分钟（UTC）常规采集
-    - cron: '23 8 * * *'        # 每日 08:23（UTC）深度采集 + 存量媒体回填
+    - cron: '0 1,9 * * *'    # UTC 01:00 / 09:00 = 北京 09:00 / 17:00
   workflow_dispatch:
     inputs:
       intensity:
-        description: '采集强度: hourly(常规) / daily(深度)'
+        description: '采集强度: deep(默认,深度) / light(轻量,应急)'
         required: false
-        default: 'hourly'
+        default: 'deep'
 
 permissions:
   contents: write
@@ -38,7 +37,7 @@ concurrency:
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 90
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -56,84 +55,53 @@ jobs:
       - name: 安装依赖
         run: pip install --quiet requests beautifulsoup4 pypdf
 
-      # —— 每小时 / 手动常规采集（单爬虫硬限时 420s）——
-      - name: 常规采集（每小时）
-        if: ${{ github.event.schedule == '17 * * * *' || (github.event_name == 'workflow_dispatch' && inputs.intensity != 'daily') }}
-        timeout-minutes: 18
+      # —— 主采集：五路来源铺开，参数按「深度」配置 ——
+      - name: 深度采集（政策库 / 学术 / 微信 / Crossref / EuropePMC）
+        timeout-minutes: 35
         continue-on-error: true
         env:
-          PAGES: '4'
-          GOV_PAGES: '3'
+          PAGES: '8'
+          GOV_PAGES: '8'
           FETCH_IMAGES: '1'
           FETCH_PDF: '1'
           OA_MAIL: 'water-eco-bot@users.noreply.github.com'
         run: |
-          timeout 240 python3 crawl_gov.py       || echo "crawl_gov failed/timeout, skip"
-          timeout 240 python3 crawl_academic.py  || echo "crawl_academic failed/timeout, skip"
-          timeout 240 python3 crawl_weixin.py    || echo "crawl_weixin failed/timeout, skip"
-          timeout 240 python3 crawl_crossref.py  || echo "crawl_crossref failed/timeout, skip"
-          timeout 240 python3 crawl_europepmc.py || echo "crawl_europepmc failed/timeout, skip"
+          timeout 400 python3 crawl_gov.py       || echo "crawl_gov failed/timeout, skip"
+          timeout 400 python3 crawl_academic.py  || echo "crawl_academic failed/timeout, skip"
+          timeout 400 python3 crawl_weixin.py    || echo "crawl_weixin failed/timeout, skip"
+          timeout 400 python3 crawl_crossref.py  || echo "crawl_crossref failed/timeout, skip"
+          timeout 400 python3 crawl_europepmc.py || echo "crawl_europepmc failed/timeout, skip"
 
-      # —— 每日深度采集（单爬虫硬限时 600s）——
-      - name: 深度采集（每日）
-        if: ${{ github.event.schedule == '23 8 * * *' || (github.event_name == 'workflow_dispatch' && inputs.intensity == 'daily') }}
-        timeout-minutes: 24
-        continue-on-error: true
-        env:
-          PAGES: '6'
-          GOV_PAGES: '6'
-          FETCH_IMAGES: '1'
-          FETCH_PDF: '1'
-          OA_MAIL: 'water-eco-bot@users.noreply.github.com'
-        run: |
-          timeout 360 python3 crawl_gov.py       || echo "crawl_gov failed/timeout, skip"
-          timeout 360 python3 crawl_academic.py  || echo "crawl_academic failed/timeout, skip"
-          timeout 360 python3 crawl_weixin.py    || echo "crawl_weixin failed/timeout, skip"
-          timeout 360 python3 crawl_crossref.py  || echo "crawl_crossref failed/timeout, skip"
-          timeout 360 python3 crawl_europepmc.py || echo "crawl_europepmc failed/timeout, skip"
-
-      # —— 存量媒体回填（每日；可续跑、限时、失败不阻断主流程）——
-      - name: 存量媒体回填（每日，可续跑）
-        if: ${{ github.event.schedule == '23 8 * * *' || (github.event_name == 'workflow_dispatch' && inputs.intensity == 'daily') }}
+      # —— 配图/媒体回填（让详情页有图可看）——
+      - name: 存量媒体回填（配图优先）
+        if: always()
         timeout-minutes: 10
         continue-on-error: true
         env:
-          BATCH: '150'
+          BATCH: '120'
           FETCH_IMAGES: '1'
           FETCH_PDF: '1'
           OA_MAIL: 'water-eco-bot@users.noreply.github.com'
-        run: timeout 420 python3 refetch_media.py || echo "refetch_media failed/timeout, skip"
+        run: timeout 540 python3 refetch_media.py || echo "refetch_media failed/timeout, skip"
 
-      - name: 增量原文回填（轻量，每小时顺手补一批）
-        if: always()
-        timeout-minutes: 8
-        continue-on-error: true
-        env:
-          BATCH: '40'
-          SAVE_EVERY: '10'
-          MIN_TEXT: '150'
-          OA_MAIL: 'water-eco-bot@users.noreply.github.com'
-        run: timeout 420 python3 refill_all.py || echo "light refill skipped"
-
-      - name: 坏链自查修正（编造假链/繁体/英文版/首页占位）
+      # —— 质量闸门 1：坏链自查（编造链/繁体链/英文版链/首页占位链）——
+      - name: 坏链自查修正
         if: always()
         timeout-minutes: 12
         continue-on-error: true
-        run: timeout 700 python3 fix_bad_urls.py --kb kb/kb.json --std std_index.json || echo "url fix skipped"
+        run: timeout 660 python3 fix_bad_urls.py --kb kb/kb.json --std std_index.json || echo "url fix skipped"
 
-      # —— 以下三步用 if: always()：采集异常也必须重建并部署站点，杜绝“静默停更” ——
-      # —— 体积治理：PDF 分级保留 + 清理历史快照，避免仓库超过 Pages 1GB 上限 ——
-      #   背景：2026-09-20 审计发现仓库已 1.21GB（kb/pdf 占 1.15GB），
-      #   导致「上传站点产物」失败 —— 这是"站点再次停更"的新风险。
+      # —— 质量闸门 2：仓库体积治理（守住 Pages 1GB 站点上限）——
       - name: 仓库体积治理（PDF 分级保留 + 清历史快照）
         if: always()
-        timeout-minutes: 15
+        timeout-minutes: 13
         continue-on-error: true
-        run: timeout 780 python3 prune_repo.py || echo "prune skipped"
+        run: timeout 720 python3 prune_repo.py || echo "prune skipped"
 
+      # —— 以下步骤用 if: always()：采集异常也必须重建并部署站点，杜绝「静默停更」 ——
       - name: 合并 / 归一化 / 富化 / 渲染
         if: always()
-        timeout-minutes: 18
+        timeout-minutes: 20
         run: python3 update.py || echo "update failed, continue to commit what we have"
 
       - name: 提交入库数据（safe_push：并发推送自动重试，绝不阻断部署）
@@ -145,7 +113,7 @@ jobs:
         if: always()
         uses: actions/configure-pages@v5
 
-      - name: 准备站点产物（剔除 .git，避免 Pages artifact 打进 1GB+ 仓库历史）
+      - name: 准备站点产物（剔除 .git，避免 Pages artifact 打进仓库历史）
         if: always()
         run: |
           rm -rf _site && mkdir -p _site
@@ -162,7 +130,7 @@ jobs:
         if: always()
         uses: actions/deploy-pages@v4
 
-      - name: 失败告警（自动开 Issue 通知，避免静默停更）
+      - name: 失败告警（自动开 Issue，避免静默停更）
         if: failure()
         uses: actions/github-script@v7
         with:

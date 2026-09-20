@@ -20,14 +20,14 @@ on:
       batch:
         description: '单轮处理条数上限（BATCH）'
         required: false
-        default: '600'
+        default: '1000'
       rounds:
         description: '轮数（每轮处理 batch 条并提交一次）'
         required: false
         default: '1'
   schedule:
-    - cron: '37 9 * * *'      # 每天 09:37 一轮。原来「每 3 小时 x 2 轮」约占用 16h/天，
-                              # 会把每小时的采集长期挤在并发队列（表现为大量 cancelled）。
+    - cron: '30 4 * * *'      # UTC 04:30 = 北京 12:30（每天一轮，单轮 1000 条；
+                              # 处在 auto 09:00 与 17:00 之间，错峰不抢并发组）
 
 permissions:
   contents: write
@@ -42,7 +42,7 @@ concurrency:
 jobs:
   refill:
     runs-on: ubuntu-latest
-    timeout-minutes: 150
+    timeout-minutes: 200
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -74,23 +74,23 @@ jobs:
 
       - name: 第 1 轮回填并提交
         if: always()
-        timeout-minutes: 65
+        timeout-minutes: 85
         continue-on-error: true
         env:
-          BATCH: ${{ github.event.inputs.batch || '600' }}
+          BATCH: ${{ github.event.inputs.batch || '1000' }}
           SAVE_EVERY: '25'
           MIN_TEXT: '150'
           OA_MAIL: 'water-eco-bot@users.noreply.github.com'
         run: |
-          timeout 3600 python3 refill_all.py || echo "round1 failed/timeout, continue"
+          timeout 4800 python3 refill_all.py || echo "round1 failed/timeout, continue"
           bash safe_push.sh "refill-r1"
 
       - name: 第 2 轮回填并提交
         if: ${{ (github.event.inputs.rounds || '1') != '1' }}
-        timeout-minutes: 65
+        timeout-minutes: 85
         continue-on-error: true
         env:
-          BATCH: ${{ github.event.inputs.batch || '600' }}
+          BATCH: ${{ github.event.inputs.batch || '1000' }}
           SAVE_EVERY: '25'
           MIN_TEXT: '150'
           OA_MAIL: 'water-eco-bot@users.noreply.github.com'

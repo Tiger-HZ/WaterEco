@@ -21,13 +21,14 @@ on:
       max_pages:
         description: '每个栏目最多翻页数'
         required: false
-        default: '6'
+        default: '10'
       review:
         description: '本次原文审查条数上限'
         required: false
-        default: '400'
+        default: '800'
   schedule:
-    - cron: '23 4,16 * * *'   # 每天 04:23 / 16:23（错开 :17 的每小时采集，避免抢并发组）
+    # UTC 03:00 = 北京 11:00（与 auto 的 09:00/17:00 错峰，避免同时改写 kb/inbox.json）
+    - cron: '0 3 * * *'
 
 permissions:
   contents: write
@@ -42,7 +43,7 @@ concurrency:
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 180
+    timeout-minutes: 240
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -62,12 +63,12 @@ jobs:
 
       # ① 多站点栏目采集（主力来源）
       - name: 采集·多站点栏目
-        timeout-minutes: 45
+        timeout-minutes: 65
         continue-on-error: true
         env:
           MAX_PAGES: ${{ github.event.inputs.max_pages || '6' }}
           FETCH_PDF: '1'
-        run: timeout 2400 python3 crawl_sites.py || echo "crawl_sites failed/timeout, skip"
+        run: timeout 3600 python3 crawl_sites.py || echo "crawl_sites failed/timeout, skip"
 
       # ② 国家政策文件库增量（只入条目，全文交给原文检查环节）
       - name: 采集·国家政策文件库（增量）
@@ -103,13 +104,13 @@ jobs:
       # ⑤ 入库前审查：新条目若是讯息/解读，主动找回原文并标注来源
       - name: 原文检查·入库前审查（找回原文+标注来源）
         if: always()
-        timeout-minutes: 50
+        timeout-minutes: 70
         continue-on-error: true
         env:
-          LIMIT: ${{ github.event.inputs.review || '400' }}
+          LIMIT: ${{ github.event.inputs.review || '800' }}
           ORIGIN_MIN_LEN: '600'
           ORIGIN_ACCEPT: '0.55'
-        run: timeout 2700 python3 original_finder.py || echo "original_finder failed/timeout, skip"
+        run: timeout 3900 python3 original_finder.py || echo "original_finder failed/timeout, skip"
 
       # ⑥ 收尾：抽全文 / 分片 / 渲染
       - name: 整理入库（第二遍）
