@@ -73,6 +73,10 @@ for i in 1 2 3; do
   done
   rm -rf "${TMP}"
 
+  # 注意：reset --hard 会把根目录的 last_run.txt 也还原成远端旧值，
+  # 因此这里必须重新写一次心跳，否则站点的「上次采集时间」会显示不准。
+  date +%FT%T%z > last_run.txt
+
   git add -A
   if git diff --cached --quiet; then
     git commit --allow-empty -m "${TAG}: 已同步远端，无数据变更 $(date +%F-%H:%M) UTC" || true
