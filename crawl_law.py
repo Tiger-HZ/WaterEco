@@ -143,6 +143,9 @@ def main():
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--report", default="")
     a = ap.parse_args()
+    # 流水线内自动修复：LAW_APPLY=1 时默认执行抓取回填
+    if os.environ.get("LAW_APPLY") == "1":
+        a.apply = True
 
     kb = load_json(a.kb, [])
     mp = load_json(a.map, {})

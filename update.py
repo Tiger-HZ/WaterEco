@@ -30,6 +30,11 @@ run("enrich_kg.py", optional=True)
 run("extract_fulltext.py")
 # 3.5) 自动标注：业务域 topic / 文号 doc_no / 层级 / 归口部门 / 地域 / 水体 / 时效 / 重要性
 run("annotate.py", optional=True)
+# 3.52) 法规原文抓取与校核（按 law_sources.json 修复「有链接无原文」；
+#       校验含"第一条"且条文数≥15 且文本≥3000 字，不达标一律标记「暂未收录」）
+if os.path.exists(os.path.join(BASE, "crawl_law.py")):
+    os.environ["LAW_APPLY"] = "1"
+    run("crawl_law.py", optional=True)
 # 3.55) 内容准入判定：按内容类型打标（政策/报告/案例/专家/技术/学术/资讯）
 #       —— 学术文献按期刊分级准入（journal_tier），政策/案例类放宽以确保不遗漏；
 #          只打标不删除（gate_status=reject 供门户过滤与噪声治理清单）
