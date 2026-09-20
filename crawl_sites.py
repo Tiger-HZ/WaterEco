@@ -171,6 +171,8 @@ def build_record(url, title, site):
     else:
         cid = C.make_cid({"url": url, "title": title})
 
+    title = C.sanitize(title)
+    text = C.sanitize(text)
     cat = C.classify_cat(title, text[:500] if text else "")
     rhay = title + " " + site["name"]
     region = site["region"]
@@ -261,9 +263,12 @@ def main():
                 break
             time.sleep(0.3)
         print("== %s 完成，本次新增 %d" % (site["name"], got_site))
-        json.dump(inbox, open(INBOX, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+        # 落盘前清洗代理字符（否则 json.dump 会抛 UnicodeEncodeError 导致整个采集崩溃）
+        json.dump(C.sanitize_record(inbox), open(INBOX, "w", encoding="utf-8"),
+                  ensure_ascii=False, indent=1)
 
-    json.dump(inbox, open(INBOX, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    json.dump(C.sanitize_record(inbox), open(INBOX, "w", encoding="utf-8"),
+              ensure_ascii=False, indent=1)
     with_pdf = sum(1 for r in inbox if r.get("pdf"))
     print("=" * 52)
     print("crawl_sites: 新增=%d, inbox_total=%d, 其中含PDF=%d" % (added, len(inbox), with_pdf))

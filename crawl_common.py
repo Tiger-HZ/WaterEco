@@ -18,6 +18,41 @@ UA = {
     "Accept": "application/json",
 }
 
+# ——— 文本清洗：剔除 Unicode 代理对与控制字符 ———
+# 背景：部分网页正文含数学符号等超出 BMP 的字符，若被截断会留下**孤立代理码位**（如 \ud835），
+# 后续 print/JSON 写入会抛 UnicodeEncodeError，导致整个爬虫崩溃、已采条目全部丢失。
+import re as _re_san
+import sys as _sys_san
+
+_SURR_RE = _re_san.compile(r"[\ud800-\udfff]")
+
+
+def sanitize(s):
+    """清洗字符串：移除孤立代理码位与不可打印控制字符（保留换行与制表）。"""
+    if not isinstance(s, str):
+        return s
+    s = _SURR_RE.sub("", s)
+    return "".join(ch for ch in s if ch in "\n\t" or ord(ch) >= 32)
+
+
+def sanitize_record(rec):
+    """对记录中的所有字符串字段（含列表/字典）递归清洗。"""
+    if isinstance(rec, str):
+        return sanitize(rec)
+    if isinstance(rec, list):
+        return [sanitize_record(x) for x in rec]
+    if isinstance(rec, dict):
+        return {k: sanitize_record(v) for k, v in rec.items()}
+    return rec
+
+
+try:  # 让 print 遇到异常字符时不致命
+    _sys_san.stdout.reconfigure(errors="replace")
+    _sys_san.stderr.reconfigure(errors="replace")
+except Exception:
+    pass
+
+
 # ——— DOI 规范化（修复 "https://doi.org/https://doi.org/10.x" 双重前缀）———
 _DOI_PREFIX = re.compile(r"^(?:https?://(?:dx\.)?doi\.org/)+", re.I)
 
@@ -186,7 +221,7 @@ def classify_academic(title, text):
 # ——— inbox 安全追加 ———
 def append_inbox(records):
     inbox = json.load(open(INBOX, encoding="utf-8")) if os.path.exists(INBOX) else []
-    inbox.extend(records)
+    inbox.extend([sanitize_record(r) for r in records])
     os.makedirs(os.path.dirname(INBOX), exist_ok=True)
     tmp = INBOX + ".tmp"
     with open(tmp, "w", encoding="utf-8") as f:
