@@ -20,13 +20,14 @@ on:
       batch:
         description: '单轮处理条数上限（BATCH）'
         required: false
-        default: '1200'
+        default: '600'
       rounds:
         description: '轮数（每轮处理 batch 条并提交一次）'
         required: false
-        default: '2'
+        default: '1'
   schedule:
-    - cron: '37 */3 * * *'    # 每 3 小时自动推一轮，持续消化存量
+    - cron: '37 9 * * *'      # 每天 09:37 一轮。原来「每 3 小时 x 2 轮」约占用 16h/天，
+                              # 会把每小时的采集长期挤在并发队列（表现为大量 cancelled）。
 
 permissions:
   contents: write
@@ -41,7 +42,7 @@ concurrency:
 jobs:
   refill:
     runs-on: ubuntu-latest
-    timeout-minutes: 300
+    timeout-minutes: 150
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -61,7 +62,7 @@ jobs:
 
       - name: 校验存量原文（错误页/风控页/太短/标题不符 -> 标记待重取）
         if: always()
-        timeout-minutes: 30
+        timeout-minutes: 20
         continue-on-error: true
         env:
           LIMIT: '150'
@@ -73,33 +74,33 @@ jobs:
 
       - name: 第 1 轮回填并提交
         if: always()
-        timeout-minutes: 120
+        timeout-minutes: 65
         continue-on-error: true
         env:
-          BATCH: ${{ github.event.inputs.batch || '1200' }}
+          BATCH: ${{ github.event.inputs.batch || '600' }}
           SAVE_EVERY: '25'
           MIN_TEXT: '150'
           OA_MAIL: 'water-eco-bot@users.noreply.github.com'
         run: |
-          timeout 6900 python3 refill_all.py || echo "round1 failed/timeout, continue"
+          timeout 3600 python3 refill_all.py || echo "round1 failed/timeout, continue"
           bash safe_push.sh "refill-r1"
 
       - name: 第 2 轮回填并提交
-        if: ${{ (github.event.inputs.rounds || '2') != '1' }}
-        timeout-minutes: 120
+        if: ${{ (github.event.inputs.rounds || '1') != '1' }}
+        timeout-minutes: 65
         continue-on-error: true
         env:
-          BATCH: ${{ github.event.inputs.batch || '1200' }}
+          BATCH: ${{ github.event.inputs.batch || '600' }}
           SAVE_EVERY: '25'
           MIN_TEXT: '150'
           OA_MAIL: 'water-eco-bot@users.noreply.github.com'
         run: |
-          timeout 6900 python3 refill_all.py || echo "round2 failed/timeout, continue"
+          timeout 3600 python3 refill_all.py || echo "round2 failed/timeout, continue"
           bash safe_push.sh "refill-r2"
 
       - name: 整理入库（抽全文 / 分片 / 覆盖率 / 渲染）
         if: always()
-        timeout-minutes: 45
+        timeout-minutes: 25
         run: python3 update.py || echo "update failed, continue"
 
       - name: 仓库体积治理（PDF 分级保留）

@@ -27,7 +27,7 @@ on:
         required: false
         default: '400'
   schedule:
-    - cron: '23 */6 * * *'    # 每 6 小时自动一轮
+    - cron: '23 4,16 * * *'   # 每天 04:23 / 16:23（错开 :17 的每小时采集，避免抢并发组）
 
 permissions:
   contents: write
@@ -42,7 +42,7 @@ concurrency:
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 300
+    timeout-minutes: 180
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -62,28 +62,28 @@ jobs:
 
       # ① 多站点栏目采集（主力来源）
       - name: 采集·多站点栏目
-        timeout-minutes: 70
+        timeout-minutes: 45
         continue-on-error: true
         env:
           MAX_PAGES: ${{ github.event.inputs.max_pages || '6' }}
           FETCH_PDF: '1'
-        run: timeout 4080 python3 crawl_sites.py || echo "crawl_sites failed/timeout, skip"
+        run: timeout 2400 python3 crawl_sites.py || echo "crawl_sites failed/timeout, skip"
 
       # ② 国家政策文件库增量（只入条目，全文交给原文检查环节）
       - name: 采集·国家政策文件库（增量）
-        timeout-minutes: 30
+        timeout-minutes: 20
         continue-on-error: true
         env:
           BULK: '1'
           FETCH_FULL: '0'
           FETCH_IMAGES: '0'
           GOV_PAGES: '3'
-        run: timeout 1680 python3 crawl_gov.py || echo "crawl_gov failed/timeout, skip"
+        run: timeout 1080 python3 crawl_gov.py || echo "crawl_gov failed/timeout, skip"
 
       # ③ 先合并入库，让新条目进入 kb 后再审查
       - name: 合并入库（第一遍）
         if: always()
-        timeout-minutes: 40
+        timeout-minutes: 25
         continue-on-error: true
         run: python3 update.py || echo "update(1) failed, continue"
 
@@ -96,25 +96,25 @@ jobs:
       # ④ 入库后巡检：校验已有原文真伪，把错误页/风控页/错配标记为待重取
       - name: 原文检查·入库后巡检（内容真伪）
         if: always()
-        timeout-minutes: 25
+        timeout-minutes: 18
         continue-on-error: true
         run: timeout 1380 python3 verify_content.py || echo "verify failed, continue"
 
       # ⑤ 入库前审查：新条目若是讯息/解读，主动找回原文并标注来源
       - name: 原文检查·入库前审查（找回原文+标注来源）
         if: always()
-        timeout-minutes: 80
+        timeout-minutes: 50
         continue-on-error: true
         env:
           LIMIT: ${{ github.event.inputs.review || '400' }}
           ORIGIN_MIN_LEN: '600'
           ORIGIN_ACCEPT: '0.55'
-        run: timeout 4680 python3 original_finder.py || echo "original_finder failed/timeout, skip"
+        run: timeout 2700 python3 original_finder.py || echo "original_finder failed/timeout, skip"
 
       # ⑥ 收尾：抽全文 / 分片 / 渲染
       - name: 整理入库（第二遍）
         if: always()
-        timeout-minutes: 40
+        timeout-minutes: 25
         run: python3 update.py || echo "update(2) failed, continue"
 
       - name: 仓库体积治理（PDF 分级保留 + 清历史快照）

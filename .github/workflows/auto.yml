@@ -38,7 +38,7 @@ concurrency:
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 45
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -54,12 +54,12 @@ jobs:
           python-version: '3.11'
 
       - name: 安装依赖
-        run: pip install --quiet requests beautifulsoup4
+        run: pip install --quiet requests beautifulsoup4 pypdf
 
       # —— 每小时 / 手动常规采集（单爬虫硬限时 420s）——
       - name: 常规采集（每小时）
         if: ${{ github.event.schedule == '17 * * * *' || (github.event_name == 'workflow_dispatch' && inputs.intensity != 'daily') }}
-        timeout-minutes: 25
+        timeout-minutes: 18
         continue-on-error: true
         env:
           PAGES: '4'
@@ -68,16 +68,16 @@ jobs:
           FETCH_PDF: '1'
           OA_MAIL: 'water-eco-bot@users.noreply.github.com'
         run: |
-          timeout 420 python3 crawl_gov.py       || echo "crawl_gov failed/timeout, skip"
-          timeout 420 python3 crawl_academic.py  || echo "crawl_academic failed/timeout, skip"
-          timeout 420 python3 crawl_weixin.py    || echo "crawl_weixin failed/timeout, skip"
-          timeout 420 python3 crawl_crossref.py  || echo "crawl_crossref failed/timeout, skip"
-          timeout 420 python3 crawl_europepmc.py || echo "crawl_europepmc failed/timeout, skip"
+          timeout 240 python3 crawl_gov.py       || echo "crawl_gov failed/timeout, skip"
+          timeout 240 python3 crawl_academic.py  || echo "crawl_academic failed/timeout, skip"
+          timeout 240 python3 crawl_weixin.py    || echo "crawl_weixin failed/timeout, skip"
+          timeout 240 python3 crawl_crossref.py  || echo "crawl_crossref failed/timeout, skip"
+          timeout 240 python3 crawl_europepmc.py || echo "crawl_europepmc failed/timeout, skip"
 
       # —— 每日深度采集（单爬虫硬限时 600s）——
       - name: 深度采集（每日）
         if: ${{ github.event.schedule == '23 8 * * *' || (github.event_name == 'workflow_dispatch' && inputs.intensity == 'daily') }}
-        timeout-minutes: 35
+        timeout-minutes: 24
         continue-on-error: true
         env:
           PAGES: '6'
@@ -86,23 +86,34 @@ jobs:
           FETCH_PDF: '1'
           OA_MAIL: 'water-eco-bot@users.noreply.github.com'
         run: |
-          timeout 600 python3 crawl_gov.py       || echo "crawl_gov failed/timeout, skip"
-          timeout 600 python3 crawl_academic.py  || echo "crawl_academic failed/timeout, skip"
-          timeout 600 python3 crawl_weixin.py    || echo "crawl_weixin failed/timeout, skip"
-          timeout 600 python3 crawl_crossref.py  || echo "crawl_crossref failed/timeout, skip"
-          timeout 600 python3 crawl_europepmc.py || echo "crawl_europepmc failed/timeout, skip"
+          timeout 360 python3 crawl_gov.py       || echo "crawl_gov failed/timeout, skip"
+          timeout 360 python3 crawl_academic.py  || echo "crawl_academic failed/timeout, skip"
+          timeout 360 python3 crawl_weixin.py    || echo "crawl_weixin failed/timeout, skip"
+          timeout 360 python3 crawl_crossref.py  || echo "crawl_crossref failed/timeout, skip"
+          timeout 360 python3 crawl_europepmc.py || echo "crawl_europepmc failed/timeout, skip"
 
       # —— 存量媒体回填（每日；可续跑、限时、失败不阻断主流程）——
       - name: 存量媒体回填（每日，可续跑）
         if: ${{ github.event.schedule == '23 8 * * *' || (github.event_name == 'workflow_dispatch' && inputs.intensity == 'daily') }}
-        timeout-minutes: 15
+        timeout-minutes: 10
         continue-on-error: true
         env:
           BATCH: '150'
           FETCH_IMAGES: '1'
           FETCH_PDF: '1'
           OA_MAIL: 'water-eco-bot@users.noreply.github.com'
-        run: timeout 780 python3 refetch_media.py || echo "refetch_media failed/timeout, skip"
+        run: timeout 420 python3 refetch_media.py || echo "refetch_media failed/timeout, skip"
+
+      - name: 增量原文回填（轻量，每小时顺手补一批）
+        if: always()
+        timeout-minutes: 8
+        continue-on-error: true
+        env:
+          BATCH: '40'
+          SAVE_EVERY: '10'
+          MIN_TEXT: '150'
+          OA_MAIL: 'water-eco-bot@users.noreply.github.com'
+        run: timeout 420 python3 refill_all.py || echo "light refill skipped"
 
       - name: 坏链自查修正（编造假链/繁体/英文版/首页占位）
         if: always()
@@ -122,7 +133,7 @@ jobs:
 
       - name: 合并 / 归一化 / 富化 / 渲染
         if: always()
-        timeout-minutes: 20
+        timeout-minutes: 18
         run: python3 update.py || echo "update failed, continue to commit what we have"
 
       - name: 提交入库数据（safe_push：并发推送自动重试，绝不阻断部署）
@@ -166,5 +177,21 @@ jobs:
             if (!issues.data.find(i => i.title === title)) {
               await github.rest.issues.create({
                 owner: context.repo.owner, repo: context.repo.repo, title, body
+              });
+            }
+
+      - name: 成功后关闭告警 Issue
+        if: success()
+        continue-on-error: true
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = '⚠️ WaterEco 自动采集/部署工作流失败';
+            const iss = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo, state: 'open', per_page: 30
+            });
+            for (const i of iss.data.filter(i => i.title === title)) {
+              await github.rest.issues.update({
+                owner: context.repo.owner, repo: context.repo.repo, issue_number: i.number, state: 'closed'
               });
             }
