@@ -1,0 +1,702 @@
+Secure Systems Design and Technology Development. Veliko Tarnovo, Bulgaria 
+Proceedings of the International Scientific Conference, 2026. Volume III, 341-347 
+Online ISSN 3044-7771 
+https://doi.org/10.68302/std2026.vol3.96 
+© 2026 The Author(s). Published by Green Future Technologies. 
+This is an open-access article under the Creative Commons Attribution 4.0 International License. 
+341 
+Application of Fuzzy Logic in the Prediction of 
+Air Pollution in Berlin, Germany 
+ 
+Desislava Velinova 
+Development of C4I System 
+Bulgarian Defence Institute 
+“Prof. Tsvetan Lazarov” 
+Sofia, Bulgaria 
+velinova.desislava@gmail.com 
+ 
+ 
+Abstract— Air pollution is the presence of harmful 
+substances in the atmosphere that can adversely impact 
+human health and other living organisms. In urban 
+environments such as Berlin, air pollution —particularly 
+from traffic emissions and industrial activities —continues 
+to be a significant concern. The Air Quality Index (AQI) is 
+commonly used to represent the level of air quality in a 
+given area, based on the average concentrations of 
+pollutants including particulate matter (PM 10 and PM 2,5), 
+ozone (O₃), carbon dioxide (CO₂), sulphur dioxide (SO₂), 
+and nitrogen dioxide (NO₂). Accurate prediction of AQI 
+values is crucial for mitigating the negative effects of air 
+pollution on both the environment and public health. This 
+paper proposes a model for AQI prediction using a fuzzy 
+data. By applying fuzzy sets and fuzzy logic techniques, an 
+approach is presented to handle inaccurate, incomplete, or 
+subjective data, to achieve more reliable and robust air 
+quality assessments. 
+Keywords— Air pollution, Air quality index (AQI), Fuzzy 
+Inference System (FIS), Fuzzy Logic 
+ 
+I. INTRODUCTION 
+In recent years , the development of industry and 
+transportation has improved human life, but it has also led 
+to increased environmental pollution, especially air 
+pollution. Air pollution is defined as presence of harmful 
+substances in the atmosphere that adversely affect human 
+health, ecosystems, and even the climate. It arises from 
+both human -related activities – such as transportation 
+emissions, industry, energy production , b urning fossil 
+fuels, agricultural practices , and waste burning - and 
+natural sources, including wildfires, volcanic activity, dust 
+storms, and pollen. Some of the most important pollutants 
+include: 
+• Particulate matter (PM 10 and PM 2.5): tiny 
+particles that can enter the lungs and 
+bloodstream 
+• Ozone (O₃): a gas that forms wh en pollutants 
+react in sunlight 
+• Nitrogen dioxide (NO₂): mainly from traffic 
+and industry 
+• Sulfur dioxide (SO₂): from burning coal and 
+oil 
+• Carbon monoxide (CO): from incomplete 
+combustion (e.g., car engines) 
+Air pollution remains the most significant 
+environmental risk factor for health in Europe. Air 
+pollutants such as particulate matter (PM 10 and PM 2.5), 
+nitrogen dioxide (NO 2), and ozone (O 3) can lead to 
+respiratory diseases (like asthma and bronchitis), 
+cardiovascular diseases, type 2 diabetes, 
+neurodegenerative diseases (e.g., dementia), and cancer. 
+Fine particulate matter (PM 2.5) is especially dangerous 
+because they can penetrate deep into the lungs and even 
+enter the bloodstream. Sulfur dioxide (SO 2) irritates 
+mucous membranes and can cause eye irritation and 
+respiratory problems. Despite EU limits, pollution levels 
+are often exceeded, making PM 2.5 a growing global 
+concern. 
+Air pollution doesn’t just affect humans. It contributes 
+to climate change, causes acid rain, damaging forests and 
+lakes, harms wildfires and crops, reduces visibility 
+(smog). 
+Predicting pollution levels and taking preventive 
+measures—such as traffic restrictions and health 
+warnings—are key to protecting public health. Urban 
+areas are particularly affected due to industry and traffic, 
+while weather conditions can influence how pollution 
+spreads, sometimes carrying it across regions. Because of 
+this, monitoring and coordinated global action are 
+essential. 
+Desislava Velinova. Application of Fuzzy Logic in the Prediction of Air Pollution in Berlin, Germany 
+342 
+Advances in scientific research on the causes of air 
+pollution and the development of mitigation strategies are 
+essential for implementing effective control measures, 
+forecasting pollution levels, and providing timely 
+warnings to vulnerable populations when hazardous air 
+quality conditions arise. This paper presents a model for 
+predicting the Air Quality Index (AQI) busing a proposed 
+Fuzzy Inference System (FIS) model. A Mamdani -based 
+FIS was developed to evaluate AQI by considering five 
+major input pollutants: PM 10, PM2 .5, NO 2, O 3 and SO 2. 
+The second section describes the data collection process 
+and the employed methodology. The third section presents 
+the analysis of the results, discusses model improvements, 
+and the key research findings. 
+ 
+II. DATA AND METHODOLOGY 
+ 
+Data Collection 
+Hourly data on particulate matter (PM 10 and PM 2.5), 
+nitrogen dioxide (NO₂), ozone (O₃), and carbon monoxide 
+(CO) is collected from the monitoring station located in an 
+urban area on Frankfurter Allee in Berlin. A total of 2160 
+data sets are collected from 1st January to 31st March 
+2026. They were obtained from the Federal Environment 
+Agency in Germany. In this article was used only one 
+week a hourly data set 
+ 
+Air quality index (AQI) Rating Scale 
+In Europe, air quality is monitored to protect health in 
+accordance with the EU Ambient Air Quality Guideline 
+(AAQD). The new European Air Quality Directive 
+2024/2881 introduces stricter limit values for air 
+pollutants, which will become binding in the member 
+states from 2030 [1]. 
+The rating scale of the AQI status indicator consists 
+pollutant concentrations, that are classified into five index 
+categories from "very good" to "very poor" using 
+threshold values as shown in Table 1. It is based on hourly 
+average measurements of ozone (O 3), nitrogen dioxide 
+(NO2), particulate matter (PM 10 and PM 2.5), and sulfur 
+dioxide (SO 2). The values are hourly averages measured 
+in micrograms per cubic meter (µg/m³). This 
+measurement is based on classification made from the 
+Federal Environment Agency in Germany [1]. These 
+threshold values were derived based on current health 
+studies and taking into account the recommendations of 
+the World Health Organization (WHO) [8]. 
+TABLE 1 AIR QUALITY INDEX (AQI) [1] 
+Air Quality Index 
+(AQI) PM₁₀ PM₂.₅ O₃ 
+(Ozone) NO₂ SO₂ 
+Very poor over 90 over 
+50 over 240 over 
+100 
+over 
+100 
+Poor 55–90 31–50 145–240 61–100 61–100 
+Moderate 28–54 16–30 73–144 31–60 31–60 
+Good 10–27 6–15 25–72 11–30 11–30 
+Air Quality Index 
+(AQI) PM₁₀ PM₂.₅ O₃ 
+(Ozone) NO₂ SO₂ 
+Very Good 0–9 0–5 0–24 0–10 0–10 
+ 
+ 
+Data Analysis 
+Data analysis was performed using MATLAB, a 
+powerful software platform equipped with numerous 
+built-in tools for problem -solving and graphical 
+visualization. A fuzzy inference system is a principled 
+control system based on the fuzzy theory. The method 
+used to predict the Air Quality Index (AQI) through a 
+Fuzzy Inference System (FIS) consists of four main steps: 
+(I) Fuzzification of input and output variables, (II) Fuzzy 
+Inference, which involves selecting appropriate 
+membership functions for both input and output variables, 
+(III) the development of a fuzzy rule base, which defines 
+the application of logical rules, and (IV) Defuzzification, 
+where fuzzy results are converted into a crisp output value 
+[6]. The overall structure of the fuzzy system is illustrated 
+in Figure 1 [3]. 
+ 
+Fig. 1. Fuzzy Inference System [3] 
+I) Fuzzification of input and output variables 
+Fuzzification is the process of transforming crisp 
+numerical values into fuzzy values. In this step, real or 
+measured input data are interpreted as linguistic variables 
+using appropriate membership functions. These functions 
+represent human reasoning and uncertainty by assigning 
+degrees of membership to each input. Both input and 
+output variables are expressed in linguistic terms such as 
+“Very Good,” “Good,” “Moderate,” “Poor,” and “Very 
+Poor. 
+First, it was selected the system variables. The most 
+important input variables are PM10, PM2.5, O3, NO2 and 
+SO2. As the number of input variables in the system 
+increases, a larger number of fuzzy rules is required to 
+describe all possible input –output relationships. 
+Consequently, the complexity of the system increases 
+significantly. The input and output are taken in the form 
+of linguistic format. For example, PM10 = (Very Good, 
+Good, Moderate, Poor, Very Poor), PM2,5 = (Very Good, 
+Good, Moderate, Poor, Very Poor), O3 = (Very Good, 
+Good, Moderate, Poor, Very Poor), NO2 = (Very Good, 
+Good, Moderate, Poor, Very Poor), SO2 = (Very Good, 
+Good, Moderate, Poor, Very Poor. The output variable 
+AQI = (Good, Moderate, Unhealthy for Sensitive Groups, 
+Unhealthy, Very Unhealthy). 
+Secure Systems Design and Technology Development. Veliko Tarnovo, Bulgaria 
+Proceedings of the International Scientific Conference, 2026. Volume III, 341-347 
+343 
+Figure 2 shows the fuzzy inference system that 
+consists of five inputs (PM10, PM 2.5, O 3, NO 2 and SO 2) 
+and one output which is air quality index (AQI). By using 
+FIS editor and membership function editor from 
+MATLAB software all the membership functions are 
+developed. 
+ 
+Fig. 2. AQI Determination Using Fuzzy Logic 
+ 
+II) Fuzzy Infe rence – Selection of Membership 
+Functions for Input and Output Variables 
+Linguistic values are represented using fuzzy sets. 
+Each fuzzy set is characterized by a membership function 
+that defines the degree of belonging of an element to the 
+set. Triangular and trapezoidal membership functions are 
+commonly used due to their simplicity and computational 
+efficiency. In this article, it was used trapezoidal function. 
+Mathematically, the trapezoidal membership function is 
+defined as follows: 
+ (1) 
+The trapezoidal membersh ip function, shown in 
+Equation 1, is defined by a lower limit a, an upper limit d, 
+a lower support limit b, and an upper support limit c, 
+where a < b < c < d. 
+ 
+Fig. 3. Trapezoidal membership function [5] 
+This function is used to map linguistic values into the 
+range [0, 1], representing the degree of membership in the 
+fuzzy set. The membership function of input and output 
+are represented in Figure 4 and Figure 5. 
+ 
+Fig. 4(a). Membership function of PM10 
+ 
+Fig. 4(b). Membership function of PM2,5 
+ 
+Fig. 4(c). Membership function of SO2 
+ 
+Fig. 4(d). Membership function of NO2 
+ 
+Desislava Velinova. Application of Fuzzy Logic in the Prediction of Air Pollution in Berlin, Germany 
+344 
+Fig. 4(e). Membership function of O3 
+ 
+Fig. 5. Membership function of output AQI 
+Table 2 presents the trapezoidal membership function 
+parameters for each input variable (PM 10, PM2.5, O₃, NO₂, 
+SO₂), while Table 3 shows the corresponding parameters 
+for the output variable (AQI). These parameters define the 
+fuzzy sets used in the FIS for air quality evaluation. 
+TABLE 2 PARAMETERS FOR MEMBERSHIP FUNCTION OF THE INPUTS 
+AQI 
+Category 
+PM10 [a b 
+c d] 
+PM2.5 [a b 
+c d] 
+O₃ [a b c 
+d] 
+NO₂ [a b c 
+d] 
+SO₂ [a b c 
+d] 
+Very Good [0 0 9 10] [0 0 5 6] [0 0 24 25] [0 0 10 
+11] 
+[0 0 10 
+11] 
+Good [9 12 24 
+27] [5 7 13 15] [25 40 70 
+72] 
+[11 15 28 
+30] 
+[11 15 28 
+30] 
+Moderate [27 30 51 
+54] 
+[15 18 28 
+30] 
+[73 80 140 
+144] 
+[31 35 55 
+60] 
+[31 35 55 
+60] 
+Poor [54 60 85 
+90] 
+[30 35 45 
+50] 
+[145 160 
+230 240] 
+[61 65 95 
+100] 
+[61 65 95 
+100] 
+Very Poor [90 100 
+150 150] 
+[50 55 100 
+100] 
+[240 245 
+300 300] 
+[100 105 
+120 120] 
+[100 105 
+120 120] 
+ 
+TABLE 3 PARAMETERS FOR MEMBERSHIP FUNCTION OF THE OUTPUT 
+AQI Category AQI [a b c d] 
+Very Good [0 0 50 100] 
+Good [50 100 100 150] 
+Moderate [150 150 200 250] 
+Poor [250 250 300 350] 
+Very Poor [350 400 500 500] 
+ 
+III) Fuzzy Rules 
+The rules determine how the membership functions of 
+the inputs and output are used in the fuzzy inference 
+process. These rules are linguistic in nature and are 
+expressed as “IF–THEN” statements. The proposed fuzzy 
+model is based on the Mamdani fuzzy inference struc ture, 
+as described in Equation 2 [4]. 
+Ri: IF X₁ is L₁^X₂ is L₂^X3, …is LM-1^Xᴍ is L ͥᴍ 
+THEN μiR → Y (2) 
+ 
+Where i: 1,…,n 
+L` ∈ {Lj,k} j:1,…,m; k:1,…,n; n: the number of linguistic labels defined 
+for the j input variables; Ri is the i-th rule in the set of fuzzy rules: XM is 
+L`M states that the fuzzy input variable XM has a certain linguistic value 
+in L`; μiʀ → Y implies that the degree of membership μ in the rules 
+dictates the consequent fuzzy set Y. 
+ 
+Figure 6 shows the table with rules in that is set up in 
+the rule editor in MATLAB software. There are generated 
+16 rules used to evaluate the AQI by using Mamdani IF -
+THEN rules to determine whether it is good, moderate, 
+unhealthy for the sensitive groups, unhealthy and very 
+unhealthy. The rules below show an example of IF-THEN 
+rules of AQI implemented in the MATLAB software. 
+ 
+Fig. 6. The rule base coded using MATLAB software 
+ 
+IV) Defuzzification 
+Defuzzification is the process of converting fuzzy 
+values into crisp outputs. In this study, the centroid 
+method is applied, which is one of the most commonly 
+used techniques for defuzzification. Using this approach, 
+the fuzzy number is geometrically determined to produce 
+a single crisp value [4]. 
+After defining the rules, the data has been inserted in 
+the Rule Viewer and the result is generated as shown in 
+the right -end column of Figure 7. The figure visualizes 
+how input variables are processed through a Mamdani-
+type Fuzzy Inference System to produce an output value 
+for the AQI. 
+On the left side, are displayed the input variables 
+PM10, PM 2.5, O₃, NO₂, and SO₂ . Each input has a 
+numerical value at the top for every input value (e.g., 
+PM10 = 75, PM 2.5 = 50, etc.) and a set of horizontal bars 
+representing their membership in different fuzzy sets 
+(such as low, moderate, or high). The colo ured regions 
+indicate the degree to which each input belongs to a 
+particular fuzzy category. 
+Secure Systems Design and Technology Development. Veliko Tarnovo, Bulgaria 
+Proceedings of the International Scientific Conference, 2026. Volume III, 341-347 
+345 
+Each row corresponds to a fuzzy rule, and the system 
+includes 16 rules in total. These rules combine the input 
+conditions using fuzzy logic to determine their 
+contribution to the output. 
+On the right side, the output variable AQI is shown. 
+The triangular shapes represent the output membership 
+functions, and the highlighted areas indicate the 
+aggregated result after applying all active rules. The final 
+crisp AQI value (e.g., AQI = 320) is obtained through a 
+defuzzification process. 
+ 
+Fig. 7. Rule Viewer (Rules 1-16) 
+Figure 8 presents a 3D-surface plot illustrating the 
+relationship between particulate matter concentrations and 
+the proposed from FIS AQI. The two horizontal axes 
+represent input air pollutants - PM10 and PM2.5, while the 
+vertical axis represents the output variable - AQI. The 
+surface shows how variations in particulate matter levels 
+influence the predicted air quality. The colour - from dark 
+blue to yellow - indicates increasing AQI values. Lower 
+AQI values are shown in darker blue regions, while higher 
+values transition through green and orange to yellow, 
+representing poorer air quality conditions. The surface is 
+mostly flat at lower pollution levels, suggesting relatively 
+stable and lower AQI values. 
+ 
+Fig. 8. Surface view of the particulate matter in FIS 
+III. FINDINGS AND DISCUSSION 
+The proposed model consists of several sequential 
+steps for predicting and evaluating the AQI using fuzzy 
+logic. First, hourly air quality and environmental data are 
+collected from monitoring station, such as those located in 
+Berlin. The input parameters include major air pollutants 
+such as PM 2.5, PM10, NO₂, SO₂, and O₃, while the output 
+variable is the AQI. 
+Next, appropriate ranges are defined for each pollutant 
+concentration and AQI level. The pollutant concentrations 
+are categorized into linguistic terms such as Very Good, 
+Good, Moderate, Poor, and Very Poor. Similarly, AQI 
+values are classified into categories including Good, 
+Moderate, Unhealthy for Sensitive Groups, Unhealthy, 
+and Very Unhealthy. 
+In the fuzzification stage, the crisp numerical pollutant 
+values are converted into fuzzy linguistic variables. 
+Membership functions, typically triangular or trapezoidal 
+in shape, are defined to represent the degree of belonging 
+of each input value to a specific linguistic category. 
+After fuzzification, a rule base is developed using 
+expert knowledge and environmental standards. These IF–
+THEN rules establish relationships between pollutant 
+levels and the corresponding AQI category. 
+The fuzzy inference process is then carried out using a 
+FIS. Commonly used methods include the Mamdani 
+Fuzzy Inference System, which is interpretable and rule -
+based, and the Sugeno Fuzzy Model, which is more 
+suitable for optimization and computational efficiency. In 
+this study, the Mamdani Fuzzy Inference System is 
+adopted because of its simplicity and interpretability in 
+AQI prediction. 
+Following inference, defuzzification is performed to 
+convert the fuzzy output into a single crisp AQI value. 
+Several methods can be applied, including the centroid 
+method and the mean of maxima method. In this work, the 
+centroid method is used due to its wide acceptance and 
+effectiveness. 
+Finally, the output AQI values obtained from the 
+fuzzy model are evaluated by comparing the predicted 
+AQI values with the actual AQI measurements. This 
+comparison helps assess the accuracy and overall 
+performance of the proposed fuzzy logic model. 
+Table 4 presents a small set of real air quality data 
+along with a comparison between the FIS-predicted AQI 
+and the actual measured AQI. The air quality data used in 
+this study are obtained from a monitoring station located 
+in Berlin (Frankfurter Allee). The dataset includes hourly 
+measurements of the following pollutants: PM 10, PM 2.5, 
+NO2, and O 3. However, it is important to note that SO 2 
+(sulfur dioxide) measurements are not available from this 
+station. Despite this limitation, the developed fuzzy 
+inference system (FIS) includes SO 2 as one of its input 
+variables. To address this issue, a constant value of zero 
+Desislava Velinova. Application of Fuzzy Logic in the Prediction of Air Pollution in Berlin, Germany 
+346 
+(SO2 = 0) was used as a placeholder during the AQI 
+prediction process. 
+TABLE 4 RESULT OF COMPARISON BETWEEN ACTUAL AQI 
+AND FIS OUTPUT 
+Date 
+Time PM10 PM2,5 NO2 O3 SO2 
+FIS 
+AQI 
+Actual 
+AQI 
+01.03.2026 
+00:00 22 10 20 56 0 68.66 54.267 
+01.03.2026 
+01:00 16 7 14 66 0 74.98 86.933 
+01.03.2026 
+02:00 20 6 10 70 0 88.54 100 
+01.03.2026 
+03:00 14 6 17 62 0 61.45 73.867 
+01.03.2026 
+04:00 12 7 13 62 0 65.33 73.867 
+01.03.2026 
+05:00 13 8 10 65 0 74.76 83.667 
+01.03.2026 
+06:00 11 6 10 69 0 105.45 96.733 
+01.03.2026 
+07:00 9 6 15 64 0 75.16 80.4 
+01.03.2026 
+08:00 13 6 16 65 0 76.12 83.667 
+01.03.2026 
+09:00 25 8 17 66 0 81.99 86.933 
+01.03.2026 
+10:00 23 9 15 63 0 82.76 83.667 
+01.03.2026 
+11:00 21 10 16 61 0 81.54 84.863 
+01.03.2026 
+12:00 22 9 15 64 0 80.76 84.377 
+ 
+The results presented in this study are based on one 
+week of hourly measurements . The developed fuzzy 
+inference system is based on a relatively small rule base 
+consisting of 16 rules. While this limited number of rules 
+is sufficient to capture the general behavior of air quality 
+and provides reasonably accurate AQI predictions, it does 
+not fully represent all possible combinations of pollutant 
+conditions. As a result, some deviations between the FIS -
+predicted AQI and the actual AQI were observed. 
+Table 5 shows the comparison between linguistic 
+values of the FIS output and the actual AQI values from 
+Table 4. Most of the predicted AQI values were classified 
+as Moderate, which matched the actual AQI 
+classifications. The results show that the system 
+performed well in predicting the correct air quality 
+category. Out of the thirteen observations, twelve were 
+correctly classified by the FIS. Only one value showed a 
+mismatch, where the FIS predicted an AQI of 105.45 and 
+classified it as Unhealthy for Sensitive Groups , while the 
+actual AQI value was 96.733 and belonged to the 
+Moderate category. This difference occurred because the 
+predicted value slightly exceeded the threshold value of 
+100, which separates the two linguistic categories. 
+Overall, the results indicate that the FIS provides reliable 
+AQI classification and effectively handles gradual 
+transitions between air quality categories through fuzzy 
+logic reasoning. 
+TABLE 5 RESULT OF COMPARISON BETWEEN LINGUISTIC 
+VALUE OF ACTUAL AQI AND FIS OUTPUT 
+FIS 
+AQI 
+Linguistic Value Actual 
+AQI 
+Linguistic Value 
+68.66 
+Moderate 
+54.267 
+Moderate 
+74.98 
+Moderate 
+86.933 
+Moderate 
+88.54 
+Moderate 
+100 
+Moderate 
+61.45 
+Moderate 
+73.867 
+Moderate 
+65.33 
+Moderate 
+73.867 
+Moderate 
+74.76 
+Moderate 
+83.667 
+Moderate 
+105.45 
+Unhealthy for 
+Sensitive Groups 96.733 
+Moderate 
+75.16 
+Moderate 
+80.4 
+Moderate 
+76.12 
+Moderate 
+83.667 
+Moderate 
+81.99 
+Moderate 
+86.933 
+Moderate 
+82.76 
+Moderate 
+83.667 
+Moderate 
+81.54 
+Moderate 
+84.863 
+Moderate 
+80.76 
+Moderate 
+84.377 
+Moderate 
+ 
+The comparison results indicate the overall 
+performance of the model . From the total data based on 
+one week and collected within 168 hours, there are 149 
+TRUE statements and 18 FALSE statements. The level of 
+accuracy rate is calculated as follows: 
+ 
+ 
+ 
+However, t he model performance can be further 
+improved by incorporating a larger and more diverse 
+dataset. To improve the accuracy and robustness of the 
+model, the rule base can be expanded by adding more 
+fuzzy rules. A larger and more detailed rule set would 
+allow the system to better handle different pollutant 
+interactions and provide smoother and more precise AQI 
+predictions. 
+The results of comparison between the actual AQI 
+values and the FIS -predicted AQI demonstrates that the 
+fuzzy inference system provides a good approximation of 
+real air quality conditions. Furthermore, the FIS output 
+follows the same trend as the actual AQI, although slight 
+overestimations and underestimations were observed. 
+These can be reduced by incorporating more extensive 
+datasets and refining the fuzzy rule base. 
+ 
+IV. CONCLUSION 
+The main objective of this study was to accurately 
+predict the Air Quality Index (AQI) using a proposed 
+Fuzzy Inference System (FIS) model. A Mamdani -based 
+Secure Systems Design and Technology Development. Veliko Tarnovo, Bulgaria 
+Proceedings of the International Scientific Conference, 2026. Volume III, 341-347 
+347 
+FIS was developed to evaluate AQI by considering five 
+major input pollutants: PM 10, PM2 .5, NO 2, O 3 and SO 2. 
+The evaluation process follows four key steps: 
+fuzzification, fuzzy inference, application of fuzzy rules, 
+and defuzzification. The model demonstrated a good 
+accuracy rate, indicating that the proposed Mamdani FIS 
+effectively predicts AQI and provides a reliable tool for 
+assessing air quality; however, the model can be extended 
+and improved by expanding the fuzzy rule base and 
+incorporating more extensive and diverse datasets. 
+ 
+ACKNOWLEDGEMENTS 
+This work was supported by the NSP “Security and 
+defence” program, which has received funding from the 
+Ministry of Education and Science of the Republic of 
+Bulgaria under the grant agreement no. Д01 -
+74/19.05.2022. 
+ 
+REFERENCES 
+[1] Umweltbundesamt, “Der Liftqualitätsindex - 
+LQI“.[Online].Available:https://www.umweltbundesamt.de/theme
+n/luft/luftqualitaet/der-luftqualitaetsindex-lqi#der-
+luftqualittsindex-lqi-des-umweltbundesamtes [Accessed: April. 
+01, 2026]. 
+[2] Berliner Luftgütemessnetz Stationsdaten: 174 Frankfurter Alleee. 
+[Online].Available:https://luftdaten.berlin.de/station/mc174 
+[Accessed: April. 01, 2026]. 
+[3] Science Direct, “Fuzzy Inference 
+System”.[Online].Available:https://www.sciencedirect.com/topics
+/engineering/fuzzy-inference-system [Accessed: April. 01, 2026]. 
+[4] N.Shafii, N. Ramle, R.Alias,D.Nasir, “Application of Fuzzy 
+Inference System in the Prediction of Air Quality Index”, 
+September 2021. ”.[Online].Available: 
+https://www.researchgate.net/publication/354871675_Application
+_of_Fuzzy_Inference_System_in_the_Prediction_of_Air_Quality
+_Index [Accessed: April. 01, 2026]. 
+[5] Codecrucks, “What is fuzzy membership function - a complete 
+guide”, 2021.[Online].Available: https://codecrucks.com/what-is-
+fuzzy-membership-function-complete-guide/ [Accessed: Mai. 05, 
+2026]. 
+[6] S.Himanshu,Y.A.Lone, “Deep Neuro-Fuzzy Systems with 
+Python”, Apress, December 2019 
+[7] R.Saatchi, “Fuzzy Logic Concepts, Developments and 
+Imlementation”, October 2024.[Online].Available: 
+https://www.mdpi.com/2078-2489/15/10/656 [Accessed: April. 
+01, 2026]. 
+[8] World Health Organisation. [Online]. Available: 
+https://www.who.int/tools/air-quality-standards [Accessed: 
+April.08,2026] 
+[9] Z.Zulkiflee, A. Idris, “Fuzzy Inference System Model for Air 
+Quality Index Prediction” 2024.[Online].Available: 
+https://science.utm.my/procscimath/wp-
+content/uploads/sites/605/2024/09/133-143-ZULFAZLEEN-
+NATASHA-BINTI-ZULKIFLEE-A20SC0435.pdf [Accessed: 
+April. 08, 2026]. 
+[10] H. Liu., Q. Li, D. Yu., & Y. Gu.: Air quality index and air 
+pollutant concentration prediction based on machine learning 
+algorithms, 2019, Applied Sciences 
+(Switzerland).[Online].Available: 
+https://doi.org/10.3390/app9194069 [Accessed: April. 08, 2026]. 
+[11] R. Kumaravel, V. Vallinayagam.: A Fuzzy Inference System for 
+air quality in using Matlab, Chennai, India. In J. Environ. Res. 
+Develop. Journal of Environmental Research And Development 
+(Vol. 7, Issue 1). 
+[12] Matlab Hilfe Center, “Mamdani and Sugeno Fuzzy Inference 
+Logic”.[Online].Available:https://de.mathworks.com/help/fuzzy/t
+ypes-of-fuzzy-inference-systems.html [Accessed: April. 08, 
+2026]. 
+[13] H.Herpratiwi, M.Maftuh, W.Firdaus, A.Tohir, M.Daulay, 
+R.Rahim, “Implementation and Analysis of Fuzzy Mamdani 
+Logic Algorithm from Digital Platform and Electronic Resource”, 
+August 2022.[Online].Available: 
+https://www.researchgate.net/publication/363144501_Implementa
+tion_and_Analysis_of_Fuzzy_Mamdani_Logic_Algorithm_from_
+Digital_Platform_and_Electronic_Resource [Accessed: April. 08, 
+2026]. 
+[14] K.Pujaru, S.Adak, T.K.Kar, S.Patra, S.Jana, “A Mamdani fuzzy 
+inference system with trapezoidal membership functions for 
+investigation fishery production”, May 2024.[Online].Available: 
+https://www.sciencedirect.com/science/article/pii/S277266222400
+0857 [Accessed: April. 08, 2026]. 
+[15] D.Dunea, A.A.Pohoata, E.Lungru, “Fuzzy inference system for 
+estimation of air quality index”.[Online].Available: 
+https://rj.romai.ro/arhiva/2011/2/Dunea-et-al.pdf [Accessed: April. 
+08, 2026]. 
+[16] IQAir, “Air quality in Berlin”.[Online].Available: 
+https://www.iqair.com/germany/berlin/berlin [Accessed: April. 
+05, 2026]. 
+[17] Matlab Hilfe-Center, “Fuzzy Inference System 
+Modeling”.[Online].Available: 
+https://de.mathworks.com/help/fuzzy/fuzzy-inference-system-
+modeling.html [Accessed: April. 05, 2026]. 
+[18] M.Saleem, N.Shingari, M.Farooq, B.Mago, M.Khan, “Real-Time 
+Air Quality Monitoring Model using Fuzzy Inference System”, 
+2024.[Online].Available: 
+https://thesai.org/Downloads/Volume15No6/Paper_84-
+Real_Time_Air_Quality_Monitoring_Model.pdf [Accessed: 
+April. 05, 2026].

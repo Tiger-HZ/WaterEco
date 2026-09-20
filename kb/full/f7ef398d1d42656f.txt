@@ -1,0 +1,894 @@
+communications health Article
+A Nature Portfolio journal
+https://doi.org/10.1038/s44528-026-00030-5
+Short-term associations between air
+pollution and nocturnal cough frequency
+Check for updates
+Tong Xia1,2, Emil Carlsson3, Mikael Kågebäck3, Marco Montagna4,J o h nS .J i1 &C e c i l i aM a s c o l o3
+Abstract
+Background Air pollution remains a leading environmental risk factor for health, yet its short-term
+associations with early respiratory symptoms are not well characterized because population-scale
+symptom surveillance data are scarce. We aimed to quantify the association between short-term
+exposure to ﬁne particulate matter (PM 2.5) and nocturnal cough frequency using large-scale mobile
+sensing data collected across multiple countries.
+Methods We analyzed nocturnal audio recordings from users of a widely used mobile sleep application
+(Sleep Cycle). An arti ﬁcial intelligence-based cough detection model was applied to estimate nightly
+cough frequency. Data were aggregated at the city-day level across 32 cities in 12 countries over
+approximately 500 consecutive days. We used city-speci ﬁc time-series models combined through
+random-effects meta-analysis and multi-city pooled models adjusting for meteorological conditions
+and inﬂuenza activity. In addition, we conducted an event-based analysis during a major wild ﬁre
+episode to evaluate the acute respiratory impacts of extreme air pollution.
+Results Higher daily PM 2.5 concentrations were consistently associated with increased nocturnal
+cough frequency across all analytical approaches. In the city-speci ﬁc meta-analysis, each 10 μg/m3
+increase in PM 2.5 was associated with a 2.4% increase in nocturnal cough frequency (relative risk
+1.024, 95% CI: 1.013-1.035). Pooled analyses showed a nonlinear exposure-response relationship,
+with measurable increases in cough frequency observed even at relatively low PM 2.5 concentrations.
+Elevated cough frequency was also observed during the wild ﬁre episode, coinciding with substantial
+increases in ambient PM 2.5.
+Conclusions Short-term exposure to PM2.5 is associated with increased nocturnal cough frequency at
+the population level, suggesting that respiratory symptoms may respond to air pollution at lower
+exposure levels than previously recognized. Large-scale mobile sensing of respiratory symptoms
+provides a feasible digital biomarker for real-time environmental health surveillance and could
+complement traditional public health monitoring systems.
+Air pollution is a leading global health threat, contributing to an estimated
+seven million premature deaths eac h year through cardiovascular and
+respiratory pathways1. Among airborne pollutants, ﬁne particulate matter
+(PM2.5; aerodynamic diameter ≤2.5 μm) is of particular concern because
+these particles can penetrate deep into the lungs and enter the bloodstream,
+triggering systemic inﬂammation and cardiopulmonary dysfunction2.
+While long-term exposure to PM 2.5 is a well-established driver of
+cardiopulmonary morbidity and mortality3,4, the short-term respiratory
+effects of PM 2.5 remain less clearly characterized. Time-series and case-
+crossover studies have reported acut e increases in respiratory hospital
+admissions and reductions in lung function following short-term elevations
+in PM2.5 concentrations5– 7. However, these studies predominantly capture
+1Vanke School of Public Health, Tsinghua University, Beijing, China.2Department of Computer Science and Technology, University of Cambridge, Cambridge, UK.
+3Sleep Cycle AB, Gothenburg, Sweden. 4Department of Medicine, Vita-Salute San Raffaele University, Milan, Italy. e-mail: cm542@cam.ac.uk
+Communications Health | (2026) 1:27 1
+1234567890():,;
+1234567890():,;
+severe clinical outcomes and rely on hospital-based records, thereby over-
+looking early and transient respiratory responses that occur at the popula-
+tion level. Moreover, most existing evidence is derived from single-city or
+regional studies (i.e., often in Nort h America or East Asia) and typically
+relies on weekly or multi-day exp osure averages rather than daily
+measurements.
+Overall, existing studies suggest that short-term PM2.5 exposure may
+adversely affect respiratory health, yet the available evidence remains largely
+focused on severe clinical outcomes and geographically restricted settings.
+This limitation is increasingly consequential in the era ofhealth-oriented air
+pollution governance,a sr e ﬂected in the World Health Organization Air
+Quality Guidelines1, which emphasize reducing the overall population
+health burden rather than only preventing extreme clinical events8.Ak e y
+evidence gap therefore remains: whether short-term PM 2.5 exposure is
+associated with early, non-clinical respiratory symptoms across diverse real-
+world environments? Addressing this question requires high-resolution,
+population-scale data capable of capturing subtle respiratory ﬂuctuations
+with both spatial and temporal granularity, which are rarely available from
+conventional surveys or administrative health records.
+Recent advances in mobile health (mHealth) technologies offer new
+opportunities to address this challenge. The widespread adoption of
+smartphones and wearable devices enables continuous, real-world health
+monitoring across large populations9– 11. Among emerging sensing mod-
+alities, nocturnal audio monitoring provides a non-invasive and scalable
+method for detecting cough-a quantiﬁable marker of airway irritation and
+early respiratory dysfunction12,13. Modern AI algorithms can identify cough
+events from nighttime audio recordings with high accuracy, enabling large-
+scale and near-real-time assessment of respiratory activity 14– 17.B e c a u s e
+nocturnal cough may re ﬂect both environmental triggers and infection-
+related in ﬂammation, it offers a unique window into early respiratory
+responses to air pollution.
+Leveraging this opportunity, we analyzed 500 consecutive days of
+nighttime audio data collected through a widely used mobile sleep appli-
+cation (Sleep Cycle), spanning 32 citiesin 12 countries across six continents
+and PM2.5 concentrations ranging from < 5 to > 40 μg/m3.A na r t iﬁcial
+intelligence algorithm identiﬁed cough events from raw audio recordings
+and aggregated them to the city-day level. Nocturnal cough frequency
+was calculated as cough events per recorded sleep hour across all users
+in each city-day. Linking these data with daily city-level PM 2.5
+concentrations enabled us to examineshort-term associations between air
+pollution and nocturnal res piratory symptoms with ﬁne temporal and
+spatial resolution.
+Our analytical framework integrates three complementary perspec-
+tives. First, at the city level, we applied generalized additive models (GAMs)
+to estimate associations between daily PM2.5 concentrations and nocturnal
+cough frequency whileﬂexibly adjusting for meteorological conditions and
+seasonal patterns. City-speciﬁc estimates were subsequently synthesized
+using random-effects meta-analysis to assess consistency across locations.
+Second, to characterize the overall exposure-response relationship, weﬁtted
+multi-city panel models with city and dayﬁxed effects. This pooled model
+enables the evaluation of lagged andnon-linear associations between PM2.5
+and cough frequency with greater statistical power. Finally, we leveraged
+wildﬁre smoke episodes as quasi-naturalexperiments and applied an event-
+based interrupted time-series (ITS) framework to examine the short-term
+respiratory response to abrupt increases in PM2.5 concentrations.
+In conclusion, this study demonstrates that short-term exposure to
+ambient PM2.5 is associated with increase d nocturnal cough frequency.
+Across cities, a 10μg/m3 increase in PM2.5 is associated with a 2.4% increase
+in nocturnal cough frequency (relative risk 1.024, 95% CI: 1.013 – 1.035),
+with evidence of a nonlinear exposure-response relationship and detectable
+associations below the WHO 24-h guideline value. Consistentﬁndings from
+wildﬁre smoke episodes further support the robustness of this association.
+These results suggest that passivelymonitored nocturnal cough frequency
+may provide a scalable digital indicator for tracking the respiratory health
+impacts of air pollution.
+Methods
+Our analytical framework integratesthree complementary approaches, as
+s h o w ni nF i g .1. First, we estimated city-speciﬁc associations between PM2.5
+concentrations and nocturnal cough frequency using regression models and
+combined the estimates through random-effects meta-analysis, following a
+two-stage framework widely used in multi-city environmental epidemiol-
+ogy studies18,19. Second, we characterized th e overall exposure-response
+relationship using pooled multi-city panel analyses. Third, we examined
+temporal associations between PM2.5 concentrations and nocturnal cough
+frequency during wildﬁre smoke episodes, which provided a natural setting
+for evaluating changes in cough frequency under rapidly varying air pol-
+lution conditions. Data sources and analytical methods are described below.
+Data sources
+Cough data . Nighttime cough data were obtained from Sleep Cycle
+(Sleep Cycle AB, Sweden), a widely used mobile health application for
+sleep monitoring. The app passively records nighttime audio using the
+smartphone’s built-in microphone, typically between 10:00 PM and 7:00
+AM. Cough events are automatically detected and timestamped using a
+validated machine learning algorithm that has demonstrated high pre-
+cision (>90%) and recall (>85%) in previous evaluations 14,20. The basic
+unit of observation is a sleep recording session, corresponding to a user’s
+nightly sleep recording. For each session, we extracted the total number of
+detected cough events and the recording duration. To account for var-
+iation in sleep duration across individuals and nights, nocturnal cough
+frequency for city i at day t was deﬁned as:
+Coughit ¼
+P Cough EventsitP Session Hoursit
+:
+This metric represents the number of cough events per hour of
+recorded sleep and provides a standardized measure that is robust to dif-
+ferences in recording duration. Daily cough rates were subsequently
+aggregated at the city-date level for analysis. High-resolution administrative
+boundaries from the Global Administrative Areas (GADM) database were
+used for geographic mapping. All datawere collected as anonymized usage
+statistics and contained no personal identi ﬁers. Optional demographic
+information (age and sex) was self-reported and analyzed only in aggregated
+form. Additional methodological details are provided in the following
+section.
+A p pu s a g ea n du s e rd i s t r i b u t i o n. Because the dataset is aggregated at
+the city-day level rather than tracking a ﬁxed cohort, we assessed user
+engagement using activity coverage metrics. Deﬁning an active week as a
+week with at least one recorded sleep session, users contributed an average of
+5.2 sessions per active week, corresponding to 72.3% weekly coverage.
+Similarly, users recorded an averag e of 18.1 sessions per active month,
+corresponding to 60.1% monthly coverage. These ﬁndings indicate sub-
+stantial repeat participation and sugge s tt h a tt h ed a t a s e ti sn o td o m i n a t e db y
+one-time recordings.
+Cough frequency distribution. To characterize cough activity within
+the study population, we examined the d istribution of average nocturnal
+cough frequency across users. As shown in Supplementary Fig. 1, the dis-
+tribution was highly right-skewed, with the majority of users exhibiting very
+low cough frequencies during sleep. Speciﬁcally, 51.38% of users had no
+recorded cough events, 74% had fewer than 0.5 cough events per hour on
+average, and more than 90% had fewer than two cough events per hour.
+Only 0.83% of users exhibited more than 10 cough events per hour. This
+distribution is broadly consistent with previous objective nocturnal cough
+monitoring studies. For example, a controlled study comparing healthy
+subjects with patients with cysticﬁbrosis (CF) and primary ciliary dyskinesia
+(PCD) reported a median nocturnal cough frequency of 0.0 coughs/h
+among healthy participants, compared with approximately 1.3– 2.3 coughs/h
+in CF and 0.2 – 0.5 coughs/h in PCD21. Consistent with these ﬁndings, the
+median nocturnal cough frequency in our dataset was also 0 coughs/h,
+https://doi.org/10.1038/s44528-026-00030-5 Article
+Communications Health | (2026) 1:27 2
+suggesting that the study population was not substantially enriched for
+individuals with frequent nocturnal respiratory symptoms.
+PM2.5 exposure data . Ambient PM 2.5 data were obtained from the
+OpenAQ platform via its public application programming interface
+(API), which aggregates measurements from governmental monitoring
+networks worldwide. For each city, all monitoring stations with available
+PM2.5 measurements during the study period were identi ﬁed. Stations
+with sufﬁcient temporal coverage (i.e., data available for at least 500 days)
+were included to ensure reliable estimation of long-term exposure pat-
+terns. Daily city-level PM 2.5 concentrations were calculated as the mean
+of station-level daily averages across all included stations. This approach
+reduces potential selection bias and provides a more representative
+estimate of ambient PM2.5 exposure within each city. All concentrations
+were reported inμg/m3. Days were included if at least one station reported
+valid measurements.
+Other data. In addition to air pollution data, we incorporated meteor-
+ological variables-including daily mean temperature and precipitation-as
+model covariates. Because in ﬂuenza infection is a major biomedical
+driver of cough 22,i nﬂuenza incidence data were obtained from national
+surveillance systems and converted into standardized city-level
+inﬂuenza rates.
+Meteorological data. Daily meteorological variables, including average
+temperature (°F) and total precipitation (mm), were obtained from the U.S.
+National Oceanic and Atmospheric A dministration Integrated Surface
+Dataset. For each study city, we selected the nearest meteorological station
+with complete data coverage during the study period (October 2023 to April
+2025). Temperature values were converted from °F to °C prior to analysis.
+Inﬂuenza rate.D a t ao ni nﬂuenza activity were obtained from ofﬁcial
+weekly surveillance reports published by national health agencies in each
+participating country, including the China National Inﬂuenza Center, the
+UK Health Security Agency, and the Italian National Institute of Health
+(Istituto Superiore di Sanità). These data included weekly in ﬂuenza-like
+illness rates or virologically conﬁrmed case counts, reported at the regional
+or national level. Weekly values were linearly interpolated to generate daily
+estimates, which were then standardized within each country to create a
+continuous inﬂuenza activity index used in regression models.
+City-speciﬁcr e g r e s s i o n
+To estimate city-speciﬁc associations between ambient PM 2.5 concentra-
+tions and nocturnal cough frequency, weﬁtted a GAM for each city i:
+logðCoughitÞ¼ β0;i þ β1;i /C1 PM2:5;it þ f 1;iðFluRateit Þþ f 2;iðTempitÞþ f 3;iðPrecipit Þþ εit;
+where Coughit denotes the average nocturnal cough frequency in cityi on
+day t,a n dP M2.5,it is the same-day ambient PM2.5 concentration. Smooth
+functions f1,i(⋅)– f3,i(⋅) represent non-linear effects of in ﬂuenza activity,
+temperature, and precipitation, modeled with cubic regression splines. The
+intercept β0,i captures city-speciﬁc baseline cough levels, and εit is the
+residual error term. As a supplementary analysis, we additionallyﬁtted city-
+speciﬁc GAMs with a spline term for PM2.5 in a subset of cities to explore
+potential nonlinear exposure-response relationships.
+For interpretability, the estimated coefﬁcient β1 was exponentiated to
+yield the relative risk (RR) per 10μg/m3 increase in PM2.5:
+RR ¼ expðβ1 /C1 10Þ; RR95%CI ¼ exp β1 /C0 1:96 SEβ1
+/C16/C17
+/C1 10
+/C16/C17
+; exp β1 þ 1:96 SEβ1
+/C16/C17
+/C1 10
+/C16/C17hi
+:
+In addition, cluster-robust standard errors were computed at the city
+level to account for serial correlation. Models were estimated separately for
+the full year, non- ﬂus e a s o n( A p r i l– October), and ﬂus e a s o n
+(November– March) to capture seasonal variation.
+Multi-city pooled regression
+To quantify the overall multi-city association while accounting for unob-
+served heterogeneity, we employed aﬁxed-effects (within) panel regression
+Fig. 1 | Study overview and analytical framework linking PM 2.5 exposure to
+nocturnal cough frequency. Daily nocturnal cough events were passively detected
+from smartphone-based sleep recordings using an AI cough-detection algorithm
+and aggregated to the city-day level across 32 cities in 12 countries. These data were
+linked with city-level PM2.5 concentrations, meteorological variables, and in ﬂuenza
+surveillance data over a 500-day observation period. The analytical framework
+integrates three complementary components: (i) within-city associations estimated
+using GAMs, (ii) multi-city pooled analyses characterizing the exposure-response
+relationship between PM 2.5 and cough frequency, and (iii) ITS analyses examining
+respiratory responses during wild ﬁre-related pollution surges. Together, these
+analyses evaluate population-level associations between short-term PM 2.5 exposure
+and nocturnal cough frequency across diverse urban environments.
+https://doi.org/10.1038/s44528-026-00030-5 Article
+Communications Health | (2026) 1:27 3
+model. This approach controls for time-invariant city-level factors such as
+socioeconomic status, healthcare infrastructure, or baseline cough
+prevalence.
+The baseline speciﬁcation (Model 1)w a s :
+logðCoughitÞ¼ β1 /C1 PM2:5;it þ β2 /C1 FluRateit þ β3 /C1 Tempit
+þ β4 /C1 Precipit þ αi þ γt þ εit;
+where αi denotes cityﬁxed effects,γt denotes dateﬁxed effects, andεit is an
+idiosyncratic error term.
+To examine delayed associations, we additionally ﬁtted a distributed
+lag speciﬁcation (Model 2):
+logðCoughitÞ¼
+X5
+l¼0
+β1l /C1 PM2:5;i;t/C0 l þ β2 /C1 FluRateit þ β3 /C1 Tempit
+þ β4 /C1 Precipit þ αi þ γt þ εit;
+where PM2.5,i,t−l denotes ambient PM2.5 concentration at lagl days. In this
+speciﬁcation, lag-speci ﬁcc o e fﬁcients were estimated simultaneously,
+allowing the association at each lag to be interpreted conditional on the
+other lag terms. The cumulative lag 0 – 5 association was obtained by
+summing the lag-speciﬁcc o e fﬁcients.
+To explore potential non-linear associations between PM2.5 exposure
+a n dn o c t u r n a lc o u g h ,w ee x t e n d e dt h eﬁxed-effects framework by replacing
+the linear PM2.5 term with natural cubicspline basisfunctions. Speciﬁcally,
+we modeled:
+logðCoughitÞ¼
+XK
+k¼1
+γk BkðPM2:5;itÞþ β2 /C1 FluRateit þ β3 /C1 Tempit
+þ β4 /C1 Precipit þ αi þ γt þ εit;
+whereBk(⋅) denotes thekth natural spline basis function (withK = 4 degrees
+of freedom), andγk are the corresponding coefﬁcients. Knots were placed at
+empirical quantiles (10th, 50th, and 90th percentiles) of the observed PM2.5
+distribution.
+Event-based interrupted time-series analysis of the Los Angeles
+wildﬁre
+To examine the short-term respiratory impact of the January 2025 Los
+Angeles wildﬁre, we conducted an event-based ITS analysis using Los
+Angeles data only. Let PM2.5,t and Cought denote the observed daily PM2.5
+concentration and nocturnal cough frequency on day t, respectively. To
+account for seasonal background variation, we ﬁrst constructed historical
+baselines from the corresponding week of year in 2024. Speciﬁcally, for each
+week w,w ed eﬁned PM
+hist
+2:5;w and Cough
+hist
+w as the mean PM2.5 concentration
+and mean nocturnal cough frequency in Los Angeles during weekw of 2024.
+We then de ﬁned the daily deviations in 2025 relative to these historical
+seasonal baselines as:
+ΔPM2:5;t ¼ PM2:5;t /C0 PM
+hist
+2:5;wðtÞ; ΔCought ¼ Cought /C0 Cough
+hist
+wðtÞ;
+where w(t) denotes the week of year corresponding to day t. To assess
+whether the wild ﬁre onset was associated with abrupt changes in these
+deviations, weﬁtted segmented linear ITS models of the form
+ΔYt ¼ βconstant þ βtime Timet þ βpost Postt þ βafter TimeAftert þ εt ;
+where ΔYt denotes eitherΔPM2.5,t or ΔCought,T i m et is a continuous time
+index, Postt is an indicator equal to 1 on and after the wild ﬁre onset date
+(January 7, 2025) and 0 otherwise, and TimeAftert denotes the number of
+days since wildﬁre onset (set to 0 before the event). In this speciﬁcation,βpost
+captures the immediate level change after wild ﬁre onset, whereas βafter
+captures the post-event change in slope. Heteroskedasticity- and
+autocorrelation-consistent standard errors were estimated using a Newey-
+West correction. City-speciﬁc regression models wereapplied to both cough
+anomalies relative to the correspon ding period in 2024 and the original
+cough frequency, with the latter analyzed on the log scale to estimate
+relative risks.
+To further quantify the short-term association between wildﬁre-related
+PM2.5 anomalies and cough anomalies, we restricted the analysis to a narrow
+event window surrounding wild ﬁre onset and ﬁtted a distributed-lag
+regression:
+ΔCought ¼ α þ
+X4
+l¼0
+θl ΔPM2:5;t/C0 l þ ηt ;
+where ΔPM2.5,t−l d e n o t e st h ed e v i a t i o ni nP M2.5 concentration at lagl days.
+The cumulative short-term effect across lags 0 – 4w a sd e ﬁned as
+θcum ¼ P4
+l¼0 θl. This quantity represents the total change in nocturnal
+cough frequency associated with a 1 μg/m3 increase in PM 2.5 deviation
+distributed across the current day and the preceding 4 days.
+Ethics declarations
+This study was approved by the Department of Computer Science and
+Technology, University of Cambridge Research Ethics Committee [appli-
+cation number #2434]. Sleep Cycle users provide informed consent through
+the application’s terms and privacy policy, which explain that data may be
+collected and used for research and service improvement purposes. No
+personally identiﬁable information was available to the researchers. Cough
+events were detected locally on users’ devices, and only aggregated, anon-
+ymized cough-frequency measures at the city-day level were used in this
+study. Consequently, no individual-level health information or audio
+recordings were accessed by the research team. The study was conducted in
+accordance with relevant ethical guidelines and regulations.
+Results
+Descriptive statistics of the data
+We analyzed data collected over an 18-month period (October 2023 to April
+2025) across 32 cities in 12 countries spanning Asia, Europe, North
+America, South America, Oceania, and Africa, representing regions with the
+highest user activity. Cities were included if their average user rate (daily
+active users per population) exceeded 0.5 per 10,000 residents, corre-
+sponding approximately to at least one active user per 10,000 inhabitants.
+Demographic characteristics of the included populations are summarized in
+Supplementary Table 1. The dataset includes users of both genders and a
+broad age distribution across cities with diverse socio-demographic
+contexts.
+Table1 summarizes city-level descriptive statistics. The study sites span
+a broad environmental gradient-from relatively low-pollution cities such as
+Paris (mean PM2.5 <1 0 μg/m3) to highly polluted megacities such as Beijing
+(mean PM2.5 >4 0 μg/m3) and include locations in both hemispheres (e.g.,
+Melbourne, Australia). This geographic and climatic diversity provides a
+wide range of exposure conditions forevaluating the relationship between
+PM2.5 and respiratory symptoms.
+A representative time-series visualization for Los Angeles (United
+States) is shown in Supplementary Fig. 2. Visual inspection indicates that
+cough frequency broadly follows seasonal in ﬂuenza patterns, consistent
+with previous studies23,24. However, transient increases in cough frequency
+frequently coincide with short-term PM2.5 peaks, suggesting that acute air
+pollution episodes may contribute to day-to-day respiratory variability
+beyond the underlying seasonal trend.
+Positive associations between PM2.5 and nocturnal cough
+across cities
+Table 1 highlights substantial intercity variability in both air quality (mean
+PM2.5 ranging from < 5 to > 40 μg/m3) and nocturnal cough frequency
+(0.53– 0.85 events per recording hour). These differences likely reﬂect var-
+iations in socioeconomic conditions, energy use, baseline respiratory health,
+https://doi.org/10.1038/s44528-026-00030-5 Article
+Communications Health | (2026) 1:27 4
+and other contextual factors. To a ccount for this heterogeneity, we ﬁrst
+conducted city-speciﬁc analyses.
+For each city, we ﬁtted a GAM including a linear term for PM2.5 and
+spline terms for meteorological variables, temporal trend, and in ﬂuenza
+activity to estimate short-term within-city associations. This speciﬁcation
+yields a direct estimate of the relative risk (RR) associated with a 10μg/m3
+increase in PM2.5 for each city. The results are summarized in Fig.2a, where
+cities are ordered by their estimated RR. Among the 32 cities, Melbourne
+(Australia) showed the largest estimated association (RR = 1.203, 95% CI:
+1.133– 1.278). Overall, 14 of the 32 cities had RR estimates greater than 1,
+suggesting that higher same-day PM2.5 concentrations were associated with
+increased nocturnal cough frequency in a subset of cities.
+Building on the city-speci ﬁc results, we next quanti ﬁed the overall
+short-term association between PM 2.5 and nocturnal cough while
+accounting for between-city variability. We conducted a random-effects
+meta-analysis using the DerSimoni an-Laird method to pool city-level
+estimates and their standard errors25. The pooled effect estimate was 1.024
+(95% CI: 1.013– 1.035). Between-city heterogeneity was evident (I2 = 93.2%),
+although the estimated between-city variance was small (τ2 ≈ 0.00), indi-
+cating some variation in effect size across locations.
+Because inﬂuenza epidemics may confound cough-related outcomes-
+individuals tend to cough more frequently duringﬂu seasons regardless of
+air quality-we further examined the relationship during non- ﬂup e r i o d s .
+The non-ﬂus e a s o nw a sd eﬁn e da sd a y sw h e nt h ei nﬂuenza rate remained
+below 10%. During these periods, in ﬂuenza activity was consistently low
+across all cities, allowing a clearer assessment of the PM2.5-cough relation-
+ship. Positive linear relationships remained evident in 23 of the 32 cities.
+Some examples are given in Fig.2b.
+Although the above analyses used a linear PM 2.5 term to obtain
+comparable RR estimates, we did not assume that the underlying exposure-
+response relationship was strictly linear. We thereforeﬁtted more ﬂexible
+spline-based models for a subset of cities with the strongest associations. As
+shown in Supplementary Fig. 3, the exposure-response curves varied across
+locations, indicating substantial heterogeneity in shape. Nevertheless, most
+cities exhibited increasing cough risk at higher PM2.5 concentrations, sup-
+porting the positive associations observed in the main analysis.
+Table 1 | Descriptive statistics of the study population by city
+Country City PM 2.5 (μg/m3) Days Hours (h) Users Cough frequency Temp. (°C) Prec. (mm)
+Australia Brisbane 5.04 509 21801.53 3207.90 0.58 22.34 0.17
+Australia Melbourne 6.90 511 32035.59 4733.06 0.57 15.28 0.08
+Australia Sydney 5.14 497 33913.19 5077.72 0.58 18.86 0.10
+Brazil Sao Paulo 13.29 501 16205.57 2610.39 0.69 21.14 0.14
+Chile Santiago 27.85 502 3304.35 529.85 0.73 15.68 0.02
+China Beijing 40.97 487 8676.64 1361.63 0.56 10.71 0.06
+China Shanghai 33.48 386 11831.51 1823.13 0.56 15.97 0.11
+France Paris 8.67 499 23640.09 3594.38 0.64 11.98 0.09
+Germany Berlin 9.52 497 18642.77 2796.61 0.59 9.74 0.07
+Germany Leipzig 9.13 497 2110.56 316.64 0.63 9.87 0.07
+Italy Bergamo 14.70 290 808.74 122.65 0.69 13.36 0.15
+Italy Florence 11.90 402 1665.54 255.41 0.85 5.14 0.07
+Italy Milano 13.65 292 11405.31 1778.10 0.69 13.36 0.15
+Italy Monza and Brianza 12.35 289 960.34 145.09 0.87 13.36 0.15
+Italy Rome 12.97 423 6396.10 1003.14 0.77 16.20 0.07
+Japan Osaka 9.18 499 35809.11 6022.17 0.77 16.47 0.15
+Japan Tokyo 9.27 499 119307.82 19961.92 0.71 15.97 0.17
+South Africa City of Cape Town 18.37 451 2619.96 388.20 0.68 17.96 0.26
+South Africa City of Johannesburg 15.70 445 2312.30 351.26 0.73 19.05 0.25
+Sweden Uppsala 5.47 511 3782.19 542.99 0.75 5.03 0.05
+United Kingdom Birmingham 9.25 511 4966.65 754.76 0.72 10.23 0.10
+United Kingdom Cambridge 10.05 511 4289.14 615.95 0.68 13.36 0.11
+United Kingdom London 9.91 502 91261.88 13624.78 0.61 10.96 0.09
+United Kingdom Oxford 9.95 508 5090.97 726.90 0.71 9.99 0.09
+United States Chicago 9.38 511 26136.04 3944.73 0.58 8.47 0.08
+United States Columbus 8.33 497 15362.96 2353.17 0.67 17.31 0.39
+United States Los Angeles 10.56 510 52715.50 8002.03 0.60 15.43 0.03
+United States New York 7.59 511 33945.85 5248.07 0.46 12.97 0.12
+United States Phoenix 8.79 510 20510.87 3072.00 0.67 22.72 0.01
+United States Pittsburgh 9.59 511 5883.64 893.38 0.65 10.27 0.12
+United States Saint Louis 8.47 511 7093.24 1056.83 0.62 14.16 0.13
+United States Salt Lake 7.76 510 9476.04 1416.31 0.63 12.00 0.04
+PM2.5 denotes the average daily concentration of PM2.5 over the study period. Days represents the number of city-day observations with complete data on nocturnal cough frequency, PM2.5, and covariates
+included in the analysis. Hours represents the average daily recorded hours per city, and Users is the average number of users who recorded data. cough frequency indicates the average daily cough
+frequency. Temp. (∘C) and Prec. (mm) represent the average temperature and precipitation, respectively, for each city.
+https://doi.org/10.1038/s44528-026-00030-5 Article
+Communications Health | (2026) 1:27 5
+Population-level exposure-response relationship between PM2.5
+and cough
+To further investigate temporal la g patterns and potential nonlinear
+exposure-response relationships, we pooled data from all cities to ﬁtt w o -
+way ﬁxed-effects panel regression models adjusting for meteorological
+variables and in ﬂuenza activity. To maintain consistency with the city-
+speciﬁc analyses, effect estimates were expressed as RRs per 10 μg/m3
+increase in PM2.5.
+Table 2 summarizes the regression results from two model speciﬁca-
+tions: a single-lag model including on l ys a m e - d a ye x p o s u r e( l a g0 ;M o d e l1 )
+and a distributed lag model including lags 0– 5 simultaneously (Model 2).
+Short-term PM2.5 exposure was positively associated with nocturnal cough
+frequency in both speciﬁcations. In the single-lag model (Model 1), same-
+day PM2.5 was signiﬁcantly associated with higher nocturnal cough fre-
+quency (β = 0.0012,p = 0.0002), corresponding to an RR of 1.012 (95% CI:
+1.006– 1.018) per 10μg/m3 increase. In the distributed lag model (Model 2),
+the cumulative association across lags 0– 5 remained statistically signiﬁcant
+(β = 0.0024, p < 0.0001), corresponding to an RR of 1.024 (95% CI:
+1.012– 1.037) per 10 μg/m3 increase. Lag-speciﬁc RR estimates from the
+distributed lag model are shown in Fig. 3a. Point estimates of the RR per
+10 μg/m3 increase in PM2.5 were above 1 across lag days 0– 5, with the largest
+estimate at lag 1.
+Inﬂuenza activity was strongly associated with increased cough fre-
+quency in both models ( β = 0.3669 and 0.3619, respectively; both
+p < 0.0001), with higher cough frequency observed during periods of ele-
+vated inﬂuenza activity. Sensitivity analyses further examined the potential
+role of inﬂuenza activity in shaping the observed PM2.5-cough association
+(Supplementary Table 2). The estimated PM2.5 effect remained similar after
+removing inﬂuenza adjustment or introducing an interaction term between
+PM2.5 and in ﬂuenza incidence, indicating that the association between
+Fig. 2 | Associations between PM 2.5 concentrations and nocturnal cough fre-
+quency across cities. a City-speciﬁc associations between same-day PM 2.5 con-
+centrations and nocturnal cough frequency estimated using GAMs with a linear
+PM2.5 term. Each city-speciﬁc estimate was based on 289– 511 city-day observations,
+depending on data availability (Table 1). Each point represents the city-speci ﬁc
+estimated RR, and error bars represent the corresponding 95% conﬁdence intervals.
+b City-level scatter plots showing the relationship between PM2.5 concentrations and
+nocturnal cough frequency during non- ﬂu periods (in ﬂuenza rate ≤ 10%). Blue
+points represent individual city-day observations. The red line represents the ﬁtted
+linear regression, and the shaded area denotes the corresponding 95% con ﬁdence
+interval of the ﬁtted regression line. β denotes the estimated regression coef ﬁcient
+and R the Pearson correlation coef ﬁcient.
+https://doi.org/10.1038/s44528-026-00030-5 Article
+Communications Health | (2026) 1:27 6
+PM2.5 exposure and nocturnal cough frequency was robust to alternative
+model speciﬁcations. The interaction term was not statistically signiﬁcant,
+suggesting limited evidence that inﬂuenza activity substantially modiﬁed the
+PM2.5 effect. Among meteorological covariates, higher ambient temperature
+was inversely associated with cough frequency (Model 1:β = −0.0061, 95%
+CI: [−0.0075,−0.0047]; Model 2: identical estimates), whereas precipitation
+was not signi ﬁcantly associated with cough in either model. Figure 3b
+presents the partial regression relationship between PM2.5 and cough fre-
+quency after adjusting for meteorological and in ﬂuenza covariates. The
+positive slope (β = 0.0008) is consistent with the direction of most city-
+speciﬁc estimates and indicates a positive population-level association.
+A ss h o w ni nF i g .3c, the exposure-response relationship between PM2.5
+and the RR of cough was characterized by a pronounced non-linear pattern.
+Using the WHO 24-h air quality guideline (15μg/m3) as the reference level
+(RR = 1.000), we observed that the risk of cough increased most sharply at
+the lower end of the exposure spectrum. Speciﬁcally, as PM2.5 concentra-
+tions decreased from the WHO guideline to a near-zero level (2μg/m3), the
+RR signi ﬁcantly dropped to 0.945 (95% CI: 0.917 – 0.974), indicating a
+continuous health beneﬁt from further air quality improvement even below
+current global standards. Conversely, when PM2.5 rose to 30 μg/m3-twice
+the WHO limit-the RR increased to 1.035 (95% CI: 1.017 – 1.052), repre-
+senting a 3.4% excess risk. Notably, the curve exhibited a saturation effect at
+higher concentrations. While the RR continued to rise to 1.067 (95% CI:
+1.029– 1.106) at 60 μg/m3, the slope was markedly shallower than that
+observed in the 0 – 30 μg/m3 range. This steep slope at low-to-moderate
+concentrations underscores that the human respiratory system is exquisitely
+sensitive to PM2.5 ﬂuctuations in relatively clean environments, suggesting
+no evident safety threshold for PM2.5-induced cough reﬂexes.
+Wildﬁre smoke episodes reveal short-term increases in cough
+frequency
+Using the event-based ITS framework described in Methods, we compared
+deviations in PM2.5 and nocturnal cough frequency relative to their his-
+torical seasonal baselines withina ± 20-day window surrounding wildﬁre
+onset. As shown in Fig.4,w i l dﬁre onset was associated with an immediate
+increase in PM2.5 of 8.52 μg/m3 (βpost =8 . 5 2 ,p = 0.005), indicating a sub-
+stantial perturbation in ambient air quality. Nocturnal cough frequency
+increased concurrently, with an estimated level change of 0.041 relative to
+baseline (βpost = 0.041, p = 0.056). Although the latter estimate was only
+borderline signiﬁcant, the temporal alignment between the pollution spike
+and the increase in cough frequency suggests a rapid respiratory response to
+wildﬁre-related air pollution.
+We then applied the distributed-lag model within the wild ﬁre event
+window. Positive associations were observed at both lag 0 and lag 4 days (full
+results are summarized in Supplementary Table 3), indicating both
+immediate and delayed res piratory responses to PM 2.5 exposure. The
+cumulative lag 0 – 4 day effect was 0.0056 per 1 μg/m3 increase in PM 2.5
+anomaly (95% CI: 0.0045– 0.0068, p < 0.001), corresponding to an increase
+of 0.056 in nocturnal cough frequency per 10 μg/m3 increase in PM 2.5.
+When modeled on the log scale of original cough frequency and PM 2.5
+concentration, a 10 μg/m3 increase in PM 2.5 was associated with a 9.9%
+increase in nocturnal cough frequency. Notably, the wildﬁre-speciﬁc effect
+estimate exceeded the average association observed across the full multi-city
+dataset, consistent with the nonline ar exposure-response relationship
+identiﬁed in the primary analyses. Together, these ﬁndings suggest that
+extreme short-term PM2.5 exposures may produce disproportionately large
+increases in respiratory symptoms.
+Discussion
+This study provides population-scale evidence that higher short-term PM2.5
+concentrations are associated with higher nocturnal cough frequency, with
+associations detectable both on the dayo fe x p o s u r ea n dt h ef o l l o w i n gd a y .
+The association was observed across multiple cities and remained robust
+after adjustment for meteorological conditions and inﬂuenza activity. These
+ﬁndings suggest that even relatively low concentrations of PM2.5 commonly
+encountered in urban environmen ts may contribute to measurable
+respiratory symptoms, highlighting nocturnal cough as a sensitive indicator
+of airway irritation. The monotonic exposure-response relationship further
+suggests that respiratory responses may occur even at relatively low PM2.5
+concentrations, underscoring the pervasive health burden associated with
+urban air pollution.
+In our primary model, the estimated association corresponded to an
+RR of 1.012 (95% CI: 1.006 – 1.018) per 10 μg/m3 increase in PM2.5.T h i s
+magnitude is consistent with effect sizes reported in previous air pollution
+epidemiology studies for short-term health outcomes. For example, large
+multi-city time-series analyses have reported increases of approximately
+0.5– 0.7% in daily mortality per 10 μg/m3 increase in PM 2.5
+26,27. Because
+coughing represents a frequent symptomatic response rather than a rare
+endpoint such as mortality, a relative increase of approximately 1.2% per
+10 μg/m3 is epidemiologically plausible and meaningful at the
+population level.
+An important contribution of this work lies in the use of mobile health
+(mHealth) technologies for environ mental epidemiology. By capturing
+nocturnal cough through smartphone-based monitoring combined with
+machine learning algorithms, we introduce a scalable, objective, and non-
+invasive approach for quantifying early respiratory responses in real-world
+settings. This approach complement s conventional endpoints such as
+hospital admissions and mortality28– 32.O u rﬁndings suggest that the health
+burden of air pollution may be underestimated when analyses focus solely
+on severe clinical outcomes. More broadly, these results highlight the
+potential of mHealth platforms to enable continuous, high-resolution
+monitoring of environmental health impacts across populations10,11.
+Table 2 | Fixed-effects panel regression estimates of the association between PM 2.5 exposure and nocturnal cough frequency
+Variable Estimate Std. Error 95% CI RR (per 10 μg/m3) P-value
+Model 1: main results for Lag 0
+PM2.5 (Lag 0) 0.0012 0.0003 [0.0006, 0.0018] 1.012 (1.006 – 1.018) 0.0002
+Inﬂuenza rate 0.3669 0.0865 [0.1974, 0.5365] – 0.0000
+Temperature (°C) −0.0110 0.0013 [ −0.0136, −0.0084] – 0.0000
+Precipitation (mm) 0.0048 0.0054 [ −0.0058, 0.0153] – 0.8827
+Model 2: main results for distributed Lag model (Lag 0-5)
+PM2.5 (Lag 0– 5) 0.0024 0.0006 [0.0012, 0.0036] 1.024 [1.012, 1.037] 0.0001
+Inﬂuenza rate 0.3636 0.0856 [0.1941, 0.5298] – 0.0001
+Temperature (°C) −0.0069 0.0007 [ −0.0074, −0.0045] – 0.0000
+Precipitation (mm) 0.0049 0.0053 [ −0.0054, 0.0153] – 0.3501
+Estimates are from two-wayﬁxed effects models (city and dateﬁxed effects). Standard errors are clustered by both city and date. RR values represent the relative risk associated with a 10μg/m3 increase in
+PM2.5. P values are derived from two-sided t-tests based on two-way cluster-robust standard errors (clustered by city and date) in the ﬁxed-effects panel regression models.
+https://doi.org/10.1038/s44528-026-00030-5 Article
+Communications Health | (2026) 1:27 7
+Beyond its respiratory relevance, nocturnal cough may also have
+broader systemic implications. Sleep fragmentation caused by nighttime
+coughing could link air pollution exposure to cardiometabolic dysfunction,
+impaired cognitive performan ce, and neurodegenerative risk 33,34.T h u s ,
+associations between short-term particulate exposure and nocturnal cough
+may be relevant to health outcomes e xtending beyond respiratory symp-
+toms alone. This perspective shifts thefocus of air pollution research from
+overt morbidity and mortality toward earlier manifestations that may affect
+quality of life and long-term well-being.
+The wildﬁre case study provides complementary quasi-experimental
+evidence that abrupt increases in PM2.5 may be accompanied by short-term
+increases in respiratory symptoms beyond expected seasonal baselines.
+Although nocturnal cough frequency appeared to increase before the most
+pronounced rise in PM 2.5,t h i se a r l yﬂuctuation may reﬂect background
+respiratory variability associated with factors other than wildﬁre-related air
+pollution, including seasonal respiratory infections or other unmeasured
+environmental exposures. Consequently, the wildﬁre analysis should be
+interpreted as complementary evidence supporting the short-term asso-
+ciation between PM2.5 and nocturnal cough rather than de ﬁnitive causal
+evidence that the wild ﬁre itself initiated the observed increase in cough
+frequency. Nevertheless, the temporal co-occurrence of elevated PM 2.5
+and cough frequency, together with the distributed-lag analysis conducted
+within the wildﬁre period, supports a rapid respiratory response to severe
+air pollution episodes. These ﬁndings align with recent studies
+reporting increased hospitalizations during wild ﬁre smoke events 35,36.
+As climate change accelerates the frequency and intensity of wildﬁres and
+other extreme events37– 39, their contribution to acute respiratory morbidity is
+likely to increase. Integrating climate resilience and early-warning systems
+into air quality management will ther efore be essential to protect public
+health.
+Several limitations should be considered. First, our exposure assess-
+ment relied on ambient PM 2.5 concentrations measured at outdoor
+monitoring stations, whereas nocturnal cough occurs primarily in indoor
+environments. Indoor exposure levels may differ substantially from outdoor
+concentrations due to building characteristics, ventilation, and occupant
+behavior. The indoor-to-outdoor ratio of PM 2.5 can vary widely across
+settings and may be affected by factors such as air conditioning, ﬁltration
+systems, and the use of portable air puriﬁers. These factors may introduce
+exposure misclassiﬁcation and attenuate effect estimates. Future studies
+incorporating personal or indoor air quality measurements would help
+reﬁne exposure assessment and better characterize the relationship between
+indoor pollution and respiratory symptoms.
+Second, the study population consisted of users of a mobile sleep
+monitoring application, with demograp hic characteristics (e.g., age dis-
+tribution and sex ratio) and health-related behaviors that may differ from
+the general population, potentially limiting the generalizability of the
+ﬁndings. However, given that the prevalence of chronic inﬂammatory air-
+way conditions increases with age andthat such individuals are more sus-
+ceptible to airborne environmental stressors, it is plausible that the observed
+effect size of short-term PM2.5 exposure on cough may be larger in older or
+clinically vulnerable subgroups.
+Third, this study focused on PM2.5 and did not evaluate the potential
+contribution of coarse particulate matter (e.g., PM10)o ro t h e ra i rp o l l u t a n t s .
+Because larger particles are more likely to deposit in the upper airways,
+where cough receptors are concentrated, their associations with nocturnal
+cough may differ from those observed for PM2.5. Future studies incorpor-
+ating multiple pollutants could help disentangle their relative contributions
+to respiratory symptom patterns.
+Finally, cough reﬂex sensitivity is known to be reduced during sleep,
+particularly during deeper sleep stages. As a result, nocturnal cough fre-
+quency may underestimate the overa ll burden of respiratory irritation
+associated with air pollu tion exposure. Furthermore, sleep-stage-speciﬁc
+suppression of cough could contribute additional variability that was not
+captured in the present analysis. Future studies integrating physiological
+Fig. 3 | Population-level association between
+PM2.5 exposure and nocturnal cough frequency.
+a Lag-speciﬁc RRs of nocturnal cough per 10 μg/m3
+increase in PM 2.5 estimated from distributed lag
+models using 14896 city-day observations across 32
+cities. Squares indicate point estimates, and error
+bars represent the corresponding 95% con ﬁdence
+intervals. b Partial regression analysis showing the
+relationship between PM 2.5 (lag 0) and cough rate
+residuals, controlling for other factors; c Non-linear
+exposure-response curve for PM2.5 (lag 0) and cough
+frequency, where the solid line represents the ﬁtted
+RR estimated from the spline model, and the shaded
+band represents the corresponding 95% con ﬁdence
+interval.
+https://doi.org/10.1038/s44528-026-00030-5 Article
+Communications Health | (2026) 1:27 8
+sleep measurements may help clarify how sleep processes modify associa-
+tions between air pollution and nocturnal cough.
+In conclusion, ourﬁndings provide large-scale real-world evidence that
+short-term increases in PM2.5 are associated with higher nocturnal cough
+frequency across multiple cities. By leveraging mHealth data streams, this
+study demonstrates a scalable framework for monitoring early respiratory
+responses to air pollution in near real time. Integrating digital health data
+with environmental monitoring may therefore provide valuable opportu-
+nities to strengthen public health surveillance and inform air quality policy
+in an era of rapid urbanization and climate change.
+Data availability
+Nighttime cough data used in this study were obtained from the Sleep Cycle
+mobile health platform and are subject toprivacy restrictions. For research
+purposes, de-identiﬁed aggregated data may be made available upon request
+to the corresponding author, subjectto approval by the data provider. All
+other datasets, including daily PM$_{2.5}$ measurements (https://openaq.
+org/), meteorological records (https://www.ncei.noaa.gov/cdo-web/search),
+and inﬂuenza surveillance statistics (https://www.who.int/tools/ﬂunet), are
+publicly accessible from ofﬁcial repositories as described in the“Methods”
+section.
+Code availability
+The analyses were conducted in Py thon 3.9 using standard packages
+including pandas, geopandas, numpy, scipy, matplotlib, seaborn, andline-
+armodels for regressions. The code used for data processing, panel regres-
+sion, andﬁgure generation, along with the necessary data, is openly available
+from https://ﬁgshare.com/articles/online_resource/Repo/32668803.
+Received: 22 April 2026; Accepted: 23 July 2026;
+References
+1. World Health Organization. WHO Global Air Quality Guidelines:
+Particulate Matter (PM2.5 and PM10), Ozone, Nitrogen Dioxide, Sulfur
+Dioxide and Carbon Monoxide (World Health Organization, Geneva,
+2021).
+2. World Health Organization. Ambient Air Pollution: A Global
+Assessment of Exposure and Burden of Disease(WHO Press, Geneva,
+2016).
+3. Dockery, D. W. et al. An association between air pollution and
+mortality in six U.S. cities. N. Engl. J. Med. 329, 1753– 1759 (1993).
+4. Pope, C. A. et al. Lung cancer, cardiopulmonary mortality, and long-
+term exposure to ﬁne particulate air pollution. JAMA 287, 1132– 1141
+(2002).
+5. Brook, R. D. et al. Particulate matter air pollution and cardiovascular
+disease: an update to the scienti ﬁc statement from the American
+Heart Association. Circulation 121, 2331– 2378 (2010).
+6. Zhou, M. et al. Short-term exposure to ﬁne particulate matter
+associated with increased respiratory symptoms and decreased lung
+function: a panel study of healthy adults. Environ. Health Perspect.
+123, 714– 720 (2015).
+7. Schwartz, J. Air pollution and daily mortality: a review and meta
+analysis. Environ. Res. 64,3 6– 52 (1994).
+8. Brunekreef, B. et al. Air pollution and health: evidence, thresholds and
+next steps. Eur. Respir. J. 58, 2102006 (2021).
+9. Smuck, M., Odonkor, C. A., Wilt, J. K., Schmidt, N. & Swiernik, M. A.
+The emerging clinical role of wearables: factors for successful
+implementation in healthcare. npj Digital Med. 4, 45 (2021).
+10. Priyanka, N. D. et al. The effect of air pollution exposure on menstrual
+cycle health using self-reported data from a mobile health app: a
+prospective, observational study. Lancet Planet. Health9, e364– e373
+(2025).
+11. Liu, C. et al. Application of smart devices in investigating the effects of
+air pollution on atrial ﬁbrillation onset. NPJ Digital Med. 6, 42 (2023).
+12. Xia, T., Han, J. & Mascolo, C. Exploring machine learning for audio-
+based respiratory condition screening: a concise review of databases,
+methods, and open issues. Exp. Biol. Med. 247, 2053– 2061 (2022).
+13. Dang, T., Spathis, D., Ghosh, A. & Mascolo, C. Human-centred
+artiﬁcial intelligence for mobile health sensing: challenges and
+opportunities. R. Soc. Open Sci. 10, 230806 (2023).
+14. Hershey, S. et al. CNN architectures for large-scale audio classiﬁcation.
+In Proc. IEEE International Conference on Acoustics, Speech and Signal
+Processing (ICASSP),1 3 1–135, (IEEE, 2017).
+15. Amoh, J. & Odame, K. Deep neural networks for identifying cough
+sounds. IEEE Trans. Biomed. Eng. 65, 2461– 2470 (2018).
+16. Monge-Álvarez, J., Hoyos-Barceló, C., Lesso, P. & Casaseca-de-la
+Higuera, P. Robust detection of audio-cough events using local Hu
+moments. IEEE J. Biomed. Health Inform. 23, 184– 196 (2019).
+17. Orlandic, L., Roggen, D. & Bulling, A. How to count coughs: an event-
+based framework for evaluating automatic cough detection algorithm
+performance. In Proc. 2024 IEEE 20th International Conference on
+Body Sensor Networks (BSN) https://doi.org/10.1109/BSN60045.
+2024.10732959 (IEEE, 2024).
+Fig. 4 | Quasi-experiment analysis of the Los
+Angeles wildﬁre episode. a PM2.5 anomalies and
+b nocturnal cough anomalies during the 2025 Los
+Angeles wildﬁre, expressed relative to the corre-
+sponding week of year in 2024. The dashed vertical
+line marks wild ﬁre onset, and the shaded region
+indicates the subsequent smoke period. The anno-
+tated level change corresponds to the immediate
+post-wildﬁre shift βpost, whereas the pre slope and
+post slope correspond to the estimated temporal
+trends before βtime and after βtime + βafter wildﬁre
+onset, respectively.
+https://doi.org/10.1038/s44528-026-00030-5 Article
+Communications Health | (2026) 1:27 9
+18. Dominici, F., McDermott, A. & Daniels, M. Mortality among residents
+of 90 cities. J. Am. Stat. Assoc . 68, 1071– 1092 (2002).
+19. Liu, C. et al. Ambient particulate air pollution and daily mortality in 652
+cities. New Engl. J. Med . 381, 705– 715 (2019).
+20. Xia, T. et al. Covid-19 sounds: a large-scale audio dataset for digital
+respiratory screening. In Proc. Thirty-Fifth Conference on Neural
+Information Processing Systems: Datasets and Benchmarks Track
+(NeurIPS 2021) (IEEE, 2021).
+21. Radine, A. et al. Comparison of nocturnal cough analysis in healthy
+subjects and in patients with cystic ﬁbrosis and primary ciliary
+dyskinesia: a prospective observational study. Respiration 97,6 0– 69
+(2018).
+22. Timonen, K. L. & Pekkanen, J. Air pollution and respiratory health
+among children with asthmatic or cough symptoms. Am. J. Respir.
+Crit. Care Med. 156, 546– 552 (1997).
+23. Carlsson, E. & Kågebäck, M. Ai-driven live cough rate tracking for
+public health surveillance. In Proc. ESCMID Global 2025 (IEEE, 2025).
+24. Tokars, J. I., Olsen, S. J. & Reed, C. Seasonal incidence of
+symptomatic inﬂuenza in the united states. Clin. Infect. Dis. 66,
+1511– 1518 (2017).
+25. DerSimonian, R. & Laird, N. Meta-analysis in clinical trials. Control.
+Clin. Trials. 7, 177– 188 (1986).
+26. Samet, J. M., Dominici, F., Curriero, F. C., Coursac, I. & Zeger, S. L.
+Fine particulate air pollution and mortality in 20 U.S. cities, 1987– 1994.
+N. Engl. J. Med. 343, 1742– 1749 (2000).
+27. Liu, C. et al. Ambient particulate air pollution and daily mortality in 652
+cities. N. Engl. J. Med. 381, 705– 715 (2019).
+28. Peng, R. D. et al. Coarse particulate matter air pollution and hospital
+admissions for cardiovascular and respiratory diseases among
+medicare patients. JAMA 299, 2172– 2179 (2008).
+29. Bell, M. L., McDermott, A., Zeger, S. L., Samet, J. M. & Dominici, F.
+Ozone and short-term mortality in 95 US urban communities,
+1987– 2000. JAMA 292, 2372– 2378 (2004).
+30. Atkinson, R. W., Kang, S., Anderson, H. R., Mills, I. C. & Walton, H. A.
+Epidemiological time series studies of pm 2.5 and daily mortality and
+hospital admissions: a systematic review and meta-analysis. Thorax
+69, 660– 665 (2014).
+31. Slama, A. et al. Impact of air pollution on hospital admissions with a
+focus on respiratory diseases: a time-series multi-city analysis.
+Environ. Sci. Pollut. Res. 26, 16974– 16985 (2019).
+32. Martins, A. et al. Short-term association between air pollution and
+respiratory hospital admissions in Portugal (2005 – 2017). PLoS ONE
+16, e0252446 (2021).
+33. Liu, J. et al. Air pollution exposure and adverse sleep health across the
+life course: a review. Environ. Health Perspect. 128, 116002 (2020).
+34. Kim, B. et al. Ambient air pollution and the severity of Alzheimer
+disease neuropathology. JAMA Neurol. https://doi.org/10.1001/
+jamaneurol.2025.3316 (2025).
+35. Vega, S. L. Wild ﬁre smoke exposure and cause-speci ﬁc
+hospitalizations among older adults. JAMA Netw. Open 8, e2503326
+(2025).
+36. Maldarelli, M. E. Polluted air from Canadian wild ﬁres and
+cardiopulmonary disease encounters in the United States. JAMA
+Netw. Open 7, e2828029 (2024).
+37. Zhang, Q. et al. Long-range pm2.5 pollution and health impacts from
+the 2023 Canadian wildﬁres. Nature https://doi.org/10.1038/s41586-
+025-09482-1 (2025).
+38. Zhao, J. et al. Global warming ampli ﬁes wildﬁre health burden and
+reshapes inequality. Nature 647, 928– 934 (2025).
+39. Qiu, M. et al. Wild ﬁre smoke exposure and mortality burden in the US
+under future climate change. Nature 647, 935– 943 (2025).
+Acknowledgements
+We gratefully acknowledge the Sleep Cycle users who consented to
+contribute their sleep monitoring data for research purposes.
+Author contributions
+T.X. and C.M. conceived the study. T.X. conducted data processing,
+analysis, and drafted the manuscript. C.M. supervised the study, secured
+funding, and contributed to manuscript revision. E.C. and M.K. provided
+cough data and contributed to manuscript revision. M.M. contributed to
+clinical interpretation and manuscript revision. J.S.J. contributed to
+statistical method review. All authors reviewed and approved theﬁnal
+version of the manuscript. All authors had full access to the data and take
+responsibility for the integrity of the data and the accuracy of the analysis.
+Funding
+The study was supported by ERC Project 833296 (EAR), EPSRC through
+grant EP/Z53447X/1, and the Tsinghua University Vanke School of Public
+Health Research Fund (number 100020001).
+Competing interests
+E.C. and M.K. are employees of Sleep Cycle AB, the company that
+developed the Sleep Cycle application and provided the sleep monitoring
+data used in this study. The remaining authors declare no competing
+interests.
+Additional information
+Supplementary informationThe online version contains
+supplementary material available at
+https://doi.org/10.1038/s44528-026-00030-5.
+Correspondenceand requests for materials should be addressed to
+Cecilia Mascolo.
+Reprints and permissions informationis available at
+http://www.nature.com/reprints
+Publisher’s note Springer Nature remains neutral with regard to
+jurisdictional claims in published maps and institutional afﬁliations.
+Open Access This article is licensed under a Creative Commons
+Attribution 4.0 International License, which permits use, sharing,
+adaptation, distribution and reproduction in any medium or format, as long
+as you give appropriate credit to the original author(s) and the source,
+provide a link to the Creative Commons licence, and indicate if changes
+were made. The images or other third party material in this article are
+included in the article ’s Creative Commons licence, unless indicated
+otherwise in a credit line to the material. If material is not included in the
+article’s Creative Commons licence and your intended use is not permitted
+by statutory regulation or exceeds the permitted use, you will need to
+obtain permission directly from the copyright holder. To view a copy of this
+licence, visit http://creativecommons.org/licenses/by/4.0/.
+© The Author(s) 2026
+https://doi.org/10.1038/s44528-026-00030-5 Article
+Communications Health | (2026) 1:27 10

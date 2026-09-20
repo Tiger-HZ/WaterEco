@@ -1,0 +1,1947 @@
+REVIEW
+Water Conservation Science and Engineering (2026) 11:106 
+https://doi.org/10.1007/s41101-026-00568-z
+ Davids O. Raphael
+davids.raphael@wits.ac.za; rafdaolu@gmail.com
+Victor E. Akpan
+victorakpan1@students.wits.ac.za
+Adesola A. Ilemobade
+adesola.ilemobade@wits.ac.za
+1 School of Civil and Environmental Engineering, University 
+of the Witwatersrand, Private Bag 3, WITS, 
+Johannesburg 2050, South Africa
+Abstract
+Public health, infrastructural resilience, and drinking water quality are all persistently threatened by contaminant intrusion 
+into Water Distribution Systems (WDSs). There is mounting evidence that herbicides and their by-products are intruding 
+into Water Distribution Networks (WDNs) across the world. Consequently, owing to the intricate interactions that occur 
+during the intrusion, their prediction and modelling are challenging. The research community has created reaction-trans -
+port models and advection-dispersion equations in response to these problems. These typically try to capture part of the 
+reaction kinetics. Furthermore, some of these mathematical models have been integrated into simulation tools, utilising 
+the EPANET software and its EPANET-MSX extension. They have been used in scenario-based simulation studies for 
+demonstrating various interactions between the dynamic states of the parent herbicide compounds and their transformation 
+products. The goal of this review paper is to briefly review the occurrence, mechanism, fate, and significance of pesticide 
+transformation products (PTPs). A review of over 2-decade-and-a-half-long (2000–2026) of journal articles, conference 
+proceedings, technical reports, and experimental, analytical, numerical, and field-based research on contaminant intrusion 
+is presented in this publication. Importantly, this review identifies persistent gaps in the precise fate of herbicides after 
+incursion events into WDS, including pipe material interactions, the impact of residual disinfectants, biofilm-mediated 
+transformations, and hydraulic mixing/dilution effects, with parent chemical transformation into more toxic and persistent 
+metabolites. The paper provides an overview of herbicides and PTPs as contaminants of emerging concern and discusses 
+the modes of degradation of herbicides and pesticides, their properties and associated risks.
+Received: 4 August 2026 / Revised: 6 September 2026 / Accepted: 10 September 2026
+© The Author(s) 2026
+A Critical Review of Contaminant Intrusion and Dynamics of Herbicide 
+Intrusion in Water Distribution Systems
+Davids O. Raphael1  · Victor E. Akpan1  · Adesola A. Ilemobade1
+1 3
+ 106 Page 2 of 18
+Water Conservation Science and Engineering (2026) 11:106 
+Introduction
+A water distribution system (WDS) is the interconnection 
+and assemblage of pipes, hydraulic and flow-control ele -
+ments, meters and fittings, reservoirs and tanks, and other 
+water reticulation appurtenances for conveying water from 
+treatment plants to end-users at sufficient pressure. WDSs 
+are important in modern and rural communities and are con-
+sidered critical infrastructure, with public health risks if not 
+well protected against potential contaminant intrusion [1].
+The ever-increasing challenges to WDS have long 
+stemmed from growing urbanisation and climate change, 
+which affect water resources [ 2], and, more recently, the 
+intrusion of contaminants into Water Distribution Net -
+works (WDNs) through potable water pipelines. Contami -
+nant intrusion in a WDS is the incursion of wastewater, 
+pathogens, and harmful industrial and agrochemicals into 
+water supply lines. It is the entrance of contaminants after 
+treatment (for example, through negative-pressure leaks, 
+backflow/cross-connections or permeation). These compro-
+mise water quality as it flows to end-users. Contamination 
+between the Water Treatment Plant (WTP) and end users is 
+common and occurs through the distribution pipeline. Water 
+quality deterioration in WDN occurs due to inadequate 
+treatment processes in the WTP [3], deterioration within the 
+WDN [4], and contaminant intrusion [5].
+It is crucial to understand that secondary disinfection 
+in WDS is not intended to remove herbicides. Instead of 
+eliminating chemical pollutants, its purpose is to preserve 
+a residual disinfectant as a microbiological defence. Impor-
+tantly, the distribution network itself does not contain any 
+treatment units, such as membranes, sophisticated oxidation 
+processes, or granular activated carbon (GAC). As a result, 
+any herbicide that enters the network by intrusion or escapes 
+treatment at the plant will remain there, only to be acciden-
+tally transformed by residual chlorine or chloramine. These 
+interactions may result in transformation products that are 
+unregulated and unmonitored but may be more hazardous 
+or persistent than the parent chemical.
+Herbicide use in residential garden, urban green space 
+maintenance forms some of the pathways for intrusion 
+(non-point sources), which are aggravated by intense pre -
+cipitation as a means of transportation to the main water 
+source. These herbicides are mostly unremovable by con -
+ventional water treatment processes [ 6]. Water utilities can 
+better protect public health and handle the intricate, multi-
+faceted problem of herbicide contamination in water distri -
+bution systems by considering the complete process, from 
+application to tap.
+This contaminant intrusion can be malicious and deliber-
+ate, such as those from a terrorist attack [ 7]. Others may be 
+accidental due to a deficit or improper WDN operation [ 4], 
+or pipe leaks that allow contaminants to enter the pipeline 
+during periods of low pressure. This can be lethal. A typi -
+cal example was the Walkerton outbreak, which claimed the 
+lives of 7 people and made 2,300 people ill due to flood -
+ing that introduced E. coli into the drinking water supply 
+[4]. Two cases of waterborne illnesses caused by bacterial 
+Graphical Abstract
+Keywords Water distribution systems · Contaminant intrusion · EPANET-MSX · Herbicides intrusion · reactive 
+transport modelling
+1 3
+Page 3 of 18 106 
+Water Conservation Science and Engineering (2026) 11:106 
+infections were reported in Norway and California in 2019 
+[8]. Several conditions determine the susceptibility of WDN 
+to contamination intrusion. These include pressure variation 
+conditions inside the pipe, the source of contaminant, and 
+the path of intrusion [3, 9]. Water main intrusions can come 
+from contaminated soil, nearby damaged sewers, and con -
+taminated groundwater close to a high-water Tables [9, 10].
+In actuality, the examined publications’ knowledge 
+gaps exposed serious, observable hazards to public health 
+and water utilities. These gaps include hydraulic mixing, 
+biofilm effects, disinfectant responses, and pipe material 
+interactions. Collectively, these shortcomings indicate that 
+present monitoring – often restricted to grab samples at 
+treatment plant exits and a few network nodes – is severely 
+inadequate. Instead of focusing only on parent chemicals, 
+utilities should immediately switch to real-time monitoring 
+at important nodes found using hydraulic modelling. Con -
+ventional treatment approaches must give way to ones that 
+can manage herbicides and their reactive metabolites. With-
+out these adjustments, utilities are successfully controlling 
+herbicide intrusion with insufficient information, putting 
+customers at risk from chemicals they are unaware to test 
+for in each location.
+WDS as Vulnerable Infrastructure
+WDS are known to be extensive and exposed. This makes 
+them susceptible to physical attack, ageing failure and oper-
+ational factors like flow velocity, water pressure, cathodic 
+protection, improper operations, and maintenance proce -
+dures [11]. Failure of WDS pipelines can happen even when 
+they are properly designed. A backflow event or a direct 
+attack on a reservoir could introduce biological, chemical 
+or radiological agents that can affect a large population long 
+before detection [12]. Any attack or failure of WDS disrupts 
+conveniences, threatens public health, endangers firefight -
+ing ability and limits economic activities.
+The Growing Threat of Herbicide Contamination in 
+WDS
+Herbicides are becoming more frequently found in catch -
+ments and plumbing, posing new threats to ecosystems and 
+the safety of drinking water [ 13, 14]. Atrazine, simazine, 
+metolachlor, glyphosate, bentazone, 2-methyl-4-chloro -
+phenoxyacetic acid (MCPA), and other contemporary hydro-
+philic herbicides are frequently detected at low amounts 
+(ng/L to µg/L). The ingredient with the highest concentra -
+tion was glyphosate, followed by 2,4-D and MCPA, and to 
+a lesser extent by dimethomorph, fluopicolide, prothiocon -
+azole, and metolachlor (-S), according to [15]. The rationale 
+for focusing on herbicide intrusion in WDS is due to its per-
+sistence, health concerns, and ubiquity [ 16]. The key gaps 
+in WDS herbicide intrusion control are the lack of regular 
+monitoring of herbicide transformation products at low 
+chronic doses despite their greater persistence and detection 
+frequency, as well as our limited knowledge of combination 
+toxicity and sensitive life stage exposures (newborns, chil -
+dren and adults) [15, 17].
+The Evolving Threat Landscape: From Microbial to 
+Chemical Contaminants
+Historically, microbial contamination has always been the 
+primary concern in water safety and security, with patho -
+gens causing rapid and visible outbreaks of diseases [ 18, 
+19]. Recently, the threat has evolved significantly, with 
+water utilities facing complex and expanding chemical 
+contaminants with chronic and often invisible health risks 
+to our communities. A recent study defines Emerging Con -
+taminants (EC) as newly identified natural or synthetic 
+chemicals or biological agents that are present in the envi -
+ronment and are thought to be potentially dangerous. The 
+emerging chemicals of great concern, such as industrial 
+chemicals, pesticides, herbicides, pharmaceuticals, heavy 
+metals, disinfection by-products, per- and polyfluoroalkyl 
+substances (PFAS), microplastics, etc., are many, unregu -
+lated, unmonitored, non-point, and ultimately persistent 
+and bioaccumulative [ 20]. Long-term exposure typically 
+results in neurological damage, cancer, reproductive harm, 
+endocrine disruption, and chronic health problems. These 
+require advanced analytics and treatment. The evolving 
+threats from microbial to chemical contaminants are driven 
+by industrialisation, pharmaceutical consumption, agri -
+cultural intensification, ageing network infrastructures, 
+climate change, etc. The implications for water distribu -
+tion systems include an increase in intrusion risks through 
+backflow, cross-connection and permeation, persistence in 
+the network, reaction with disinfectants, and monitoring 
+challenges. A common example is Glyphosate (Herbicide), 
+which comes from agricultural runoff and urban weed-con -
+trol herbicide use, resulting in surface-water contamination 
+before the water gets to the water treatment plants. Another 
+serious risk to the WDS is pipeline infiltration by cross-
+connection during backflow events. Contaminants can be 
+drawn or forced into the WDS when there is a physical con-
+nection between the potable water supply and a possible 
+source of contamination, together with a reversal of nor -
+mal water flow [ 21]. Water distribution concerns include 
+chemical persistence in pipes, reactions with chlorine, and 
+difficulty detecting contaminants early and in real time in 
+WDS [22].
+1 3
+ 106 Page 4 of 18
+Water Conservation Science and Engineering (2026) 11:106 
+Historical Perspectives and Recent High-Profile 
+Contamination Events
+Water quality often declines between treatment plants and 
+end-users because of contaminant intrusion along the pipe -
+line, according to earlier water work experts [ 23]. One of 
+the biggest instances of environmental contamination was 
+the American Flint water disaster of 2014. Flint, Michi -
+gan, changed its drinking water supply from Lake Huron 
+water treated and supplied by the Detroit Water and Sewer-
+age Department to the Flint River in April 2014. Numerous 
+issues with water quality and public health resulted from 
+the Flint Water Treatment Plant’s improper water treatment. 
+A historic outbreak of Legionnaires’ disease occurred in 
+the summer of 2014–2015 due to low chlorine circulation, 
+which encouraged bacterial growth. Also, corrosive water 
+flow degraded the lead pipes of the infrastructure, leading 
+to systemic lead pollution [ 24]. A devastating waterborne 
+outbreak of the pathogenic germs Campylobacter jejuni and 
+E. coli O157:H7 occurred in May 2000 in the tiny Ontario 
+village of Walkerton, due to the washing of spread manure 
+from the nearby farm. The spread of the biological contami-
+nant was through the municipal water distribution system, 
+as the chlorinator #5 for one of the wells did not operate 
+properly, leading to a deadly sickness that impacted over 
+2,300 people and claimed the lives of at least seven citizens 
+[25].
+The 4-methylcyclohexylmethanol (MCHM) spill that 
+contaminated the Elk River in West Virginia, USA, on Janu-
+ary 9, 2014, is another recent high-profile incident. For four 
+days, 300,000 people’s access to drinking water was cut off 
+due to this accident. More than a month after the incident, 
+the distribution network was still being recovered, and the 
+stench of MCHM, which has a very low odour threshold, 
+was still present [ 26]. There is a compelling argument for 
+ongoing water quality monitoring across the distribution 
+network due to the possible hazards and financial repercus -
+sions. For instance, the water in Addis Ababa was found 
+to contain excessive levels of lead, with an average of 
+17.8 µg/L (above WHO’s 10 µg/L guideline), from sources 
+that serve schools. This suggests that not all tap water may 
+be considered “safe” [27].
+A study on arsenic contamination in Bangladesh dis -
+covered that the mobilisation and release of arsenic into 
+drinking water lines is likely caused by the oxidation of 
+mineral deposits, the release of arsenic from sediments due 
+to reduction, and the release of arsenic from fertilisers and 
+pesticides [ 28]. According to another study conducted in 
+Algeria, metals in surface water samples most likely came 
+from a combination of urban and industrial wastes and 
+agricultural practices [ 29]. A conventional drinking water 
+treatment plant that draws its drinking water from the Tengi 
+River became contaminated due to ongoing and growing 
+use of pesticides in Tanjung Karang, a popular rice-growing 
+area in Kuala Selangor, Malaysia [ 30]. To guarantee safe 
+drinking water, it is vital to investigate how well the treat -
+ment plant removes pesticide contaminants from the water. 
+Advanced treatment methods are required. Water bodies 
+serving treatment plants need regular testing as safety pre -
+cautions, whereas potable water should undergo advanced 
+water treatment processes as needed.
+The Critical role of Modelling in Prevention, 
+Preparedness and Response
+Contaminant intrusion into the WDS is frequently localised, 
+fleeting and challenging to identify by traditional monitor -
+ing, in contrast to source water pollution. Recent research 
+typically combines modelling and monitoring to obtain a 
+trustworthy representation of the systems and reduce the 
+costs of real-time monitoring [ 31]. To forecast the prob -
+ability of water pipe failures and contaminant intrusion fate, 
+a variety of models have been created, which are roughly 
+grouped into statistical, physical models and machine learn-
+ing [32]. An essential tool for comprehending, forecasting 
+and eventually averting these occurrences is mathematical 
+modelling. Numerous methods for simulating contamina -
+tion entry are found in the literature. Most methods consider 
+both simulation results and laboratory data.
+Optimization studies are typically used to choose moni -
+toring stations, sensor locations, and contaminant source 
+determination [3]. It’s critical to identify the best parameters 
+for contamination intrusion modelling. Modelling frame -
+works were developed by combining underlying network 
+simulation with statistical modelling, classical optimiza -
+tion techniques, evolutionary computation, graph theory, 
+heuristic approaches, greedy approaches, machine learning, 
+and other computational techniques. Three factors, such as 
+conduit characteristics, the driving force, and a contami -
+nation source, are necessary for the complicated but com -
+monly occurring contaminant incursion in a WDN. Often, 
+this information is typically incomplete, non-specific and 
+uncertain.
+Four major mechanisms for the contaminant’s intru -
+sion can be identified. These are leakage pathways, nega -
+tive pressure events, permeation through the pipe walls and 
+backflow and cross-connection [ 3, 33]. The role of model -
+ling in understanding these mechanisms is shown in Table 1.
+1 3
+Page 5 of 18 106 
+Water Conservation Science and Engineering (2026) 11:106 
+ Review Scope, Objectives and Search Methods
+The scope and goal of modelling the fate of herbicides in 
+water systems (from fields to streams and WDS) are gener-
+ally constant among research works. The major objectives 
+are:
+ ● Exposure prediction (What concentration reaches differ-
+ent nodes from the source and when [1]?
+ ● Critical hotspot identification (Which area, process and 
+mechanism dominate herbicide dispersion/export [1, 4].
+In addition to Google Scholar and ScienceDirect, searches 
+were conducted in scientific databases like Scopus, Web of 
+Science, and PubMed. All the mentioned databases were 
+employed to gather pertinent literature for this investiga -
+tion and critical review. Some articles were found using the 
+Google search engine. The collected papers were selected 
+according to their applicability to the work’s objectives, 
+considering the year of publication. Relevant articles pub -
+lished from 2000 to 2026, and others that were older but 
+still relevant and served as foundational studies in the pro -
+posed modelling works, were used for this review article. 
+Exemplary search strings included combinations such as: 
+(“water distribution system” OR WDS OR “drinking water 
+network”) AND (contamination OR “herbicides”) AND 
+(contaminant intrusion*) AND (Modelling) AND (Herbi -
+cides fate under disinfection) AND (herbicide decay).
+The primary focused areas of the manuscript are catch -
+ment intrusion in water distribution systems, herbicides and 
+pesticides transformation products and lastly the modelling 
+approaches in past studies. All these, with pipe-interaction 
+reactions and interactions, disinfectant effect, biofilm trans-
+formation, hydraulic effect, and monitoring inadequacy, are 
+gaps emphasized in the review study.
+ Physical and Hydraulic Pathways of Contamination 
+Intrusion in WDS
+When external contaminants enter WDS through hydraulic 
+or structural weaknesses, usually during low or negative 
+pressure occurrences, this is known as physical intrusion. 
+The majority of research bases intrusion on three con -
+current factors: the driving force (pressure differential, 
+typically negative main pressure), the pathway (physical 
+opening), and the contaminant source close to the pipe 
+(such as sewage or contaminated soil) [ 1, 37]. According 
+to Computational Fluid Dynamics (CFD) and experimental 
+research, intrusion starts when the internal head falls below 
+the exterior head, and the rate of intrusion is influenced 
+by surrounding media, opening shape, and pressure [ 38]. 
+Reviews highlight how pressure dynamics and physical 
+channels combine to generate a complex intrusion process; 
+even little leaks can pose a serious health concern when 
+they coincide with transitory occurrences and adjacent 
+sewage sources.
+Contaminants outside the pipe infiltrate through the pipe 
+wall or gaskets into the drinking water by permeation, a 
+material-driven incursion pathway, even when the pipe is not 
+obviously leaking. It primarily affects plastic and polymeric 
+pipes that are exposed to wildfires or placed in contaminated 
+soils. Diffusion-partition models imply that PE/PVC pipes 
+are at the highest risk in contaminated soils. The partition 
+(solubility) coefficient, external concentration/activity, pipe 
+wall thickness and diameter, and contaminant diffusivity 
+in polymer are important factors [ 39]. One of the distribu -
+tion system’s biggest threats to public health and a frequent 
+cause of epidemics is cross-connections and backflows 
+[40]. Only when hydraulic conditions momentarily “pull” 
+or “push” impurities into the pipe may they enter through 
+leaks, cracks, valves, or cross-connections. These occur -
+rences are primarily associated with transitory (unsteady) 
+flow behaviour and low or negative hydraulic conditions, 
+particularly during transients brought on by pump trips, 
+valve operations, or pipe breaks acting on pre-existing leaks 
+or openings, which allow WDS infiltration. Higher baseline 
+pressures, rapid pressure stabilisation, and effective surge/
+leak control significantly lower risk, whereas the depth and 
+length of negative pressure, the network zones impacted, 
+and leak/valve characteristics determine the severity of 
+incursion [41].
+ Synthesis of Existing Studies and case Applications
+Most of the research on herbicides and drinking water con -
+centrates on source waters and how utilities and catchment 
+management react when herbicides get into supply lines. 
+Some studies say that treated drinking water itself may 
+Table 1 Role of modelling in understanding the intrusion mechanism 
+in WDS
+Intrusion mechanism Roles of modelling
+Leakage Pathways Prediction of leak spots and pathways 
+for contaminants when external pressure 
+surpasses internal pressure [33, 34].
+Negative pressure 
+events
+Hydraulic models simulate transient 
+pressure generated by pump start /stops, 
+valve control, and identify locations with 
+falling pressure below external ground-
+water levels [35].
+Pipe wall permeation Fate and transport models help in the 
+simulation of organic contaminants like 
+hydrocarbons through plastic pipes based 
+on concentration gradient and properties 
+of the material [1].
+Backflow and 
+cross-connection
+Network models track flow directions 
+under various demand scenarios, identify-
+ing locations prone to flow reversal [36].
+1 3
+ 106 Page 6 of 18
+Water Conservation Science and Engineering (2026) 11:106 
+contain herbicides such as glyphosate in southern Brazil 
+drinking water [42]. Acid and triazine herbicides (like atra-
+zine, MCPA, simazine, terbuthylazine and metolachlor) are 
+often detected in streams, reservoirs, and private wells used 
+as sources of drinking water in agricultural catchments in 
+South Africa, frequently above or at the EU limit of 0.1 µg/L 
+for individual pesticides [43].
+The EU value of 0.1 µg/L for individual pesticides and 
+0.5 µg/L for total pesticides is a precautionary, policy-based 
+compliance standard which is a deliberately stringent value 
+designed to minimize exposure to synthetic pesticides irre -
+spective of their individual toxicity [ 44] (London et al., 
+2000). This is different from health-based guideline val -
+ues derived from toxicological data and incorporate safety 
+margins to take care of uncertainty and vulnerable popula -
+tions. While the US EPA and WHO use compound-specific 
+health-based limits that vary widely by agent toxicity, the 
+EU/UK approach sets a consistent, low “compliance” value 
+for all pesticides. The WHO/EPA regulations seek to specify 
+a level at which no significant health risk is anticipated, but 
+the EU/UK standard is purposefully conservative. It has 
+been said that South Africa’s drinking water pesticide regu-
+lations are inadequate, with few monitoring data, few stan -
+dards, capacity constraints, and no transformation product 
+coverage [45]. Studies indicate that pesticide detections in 
+South African water sources are frequently above the EU 
+0.1 µg/L parametric value but remain below WHO/EPA 
+health-based limits, underscoring the disparate outcomes of 
+implementing different regulatory philosophies [44].
+Analytical target lists for common herbicides vary from 
+the EU to US EPA and South Africa. EU covered over 100 
+pesticide parent compounds, with limited coverage of pes -
+ticide transformation products (PTPs) [46]; the US EPA has 
+an Unregulated Contaminant Monitoring Rule (UCMR) but 
+includes some pesticides and PTPs with other evolving lists 
+[47], while South Africa has no comprehensive list and lim-
+ited routine monitoring and minimal coverage.
+Due to their chemical and physical properties, polar, 
+non-volatile herbicides like glyphosate and AMPA are 
+particularly difficult to analyse [ 48]. Some of the key 
+analytical parameters for herbicides include the Limit of 
+detection(LOD)- lowest concentration distinguishable from 
+blank (e.g.,˂ 0.1 µg/L for EU compliance; Limit of Quanti-
+fication (LOQ)- lowest concentration that can be quantified 
+with acceptable precision (typically 2–5 x LOD); recovery 
+( percentage of analyte recovered from spiked samples; 
+matrix effects (interference from water matrix like ions and 
+organic matter; and sample preparation (methods to concen-
+trate/purify analytes). These parameters suggest analytical 
+techniques like LC-MS/MS(triple quadrupole), applicable 
+in routine quantification of polar herbicides and PTPs [ 49] 
+or HRMS (Q-TOF, Orbitrap) for Non-target screening and 
+identification of PTPs and degradation products [ 48] and 
+other analytical methods.
+One modelling study uses EPANET/EPANET-MSX to 
+explicitly simulate pesticide intrusion into water distribution 
+systems and its interaction with chlorine. It then uses machine 
+learning (kNN, random forest) to locate the source of con -
+tamination, achieving high localisation accuracy in scenarios 
+involving synthetic pesticide intrusion [26]. The source-path-
+way-driving force triad with nearby chemical sources (such 
+as contaminated groundwater or agricultural drains), negative 
+pressure, leaks or breaks in the main is highlighted in broader 
+intrusion reviews [50]. This is because true “intrusion” into 
+distribution mains is primarily addressed via modelling and 
+detection algorithms rather than documented field cases.
+ Key Findings from the Herbicides’ Intrusion in WDS 
+Studies and Knowledge gaps
+There are comparatively few studies on actual pipe network 
+“intrusion,” with most concentrating on herbicides travelling 
+from catchments into sources and finished drinking water. 
+When combined, they exhibit a few recurring patterns.
+a. From source to tap, herbicides are commonly used.
+b. Pesticide transformation products (PTPs) are often more 
+problematic than the parent compound or its active 
+ingredients.
+c. Intrusion is often controlled by factors like sources, 
+concentration at the sources, proximity of the source to 
+the point of entry, pipeline materials and hydraulic flow 
+within the WDS.
+d. There is a serious need to create a model that will predict 
+the fate of herbicides in WDS.
+Overall, research clearly documents herbicides in catch -
+ments and drinking water sources. Still, there is a major gap 
+in empirical and modelling work that follows herbicides 
+through treatment and real distribution system intrusions 
+to the consumer’s tap. Most studies stop at the catchment 
+and source water scale; true intrusion into distribution pipes 
+and tap-level exposure is poorly investigated. Particularly 
+for episodic peaks and “shock loads” of mobile, polar 
+herbicides, there is insufficient data to connect catchment 
+concentrations to what enters treatment plants and then the 
+network. Although commonly known, transformation prod-
+ucts (such as those of flufenacet, metazachlor, and glypho -
+sate) are nevertheless inadequately tracked along the entire 
+source-treatment-distribution cycle and are not monitored 
+in many drinking-water systems. There are very few field 
+case studies that validate such models in actual incursions; 
+1 3
+Page 7 of 18 106 
+Water Conservation Science and Engineering (2026) 11:106 
+one of the studies specifically simulates pesticide/herbicide 
+intrusion into water distribution systems and examines data-
+mining techniques to locate the source [26]. Important gaps 
+exist in soil-pipe interactions, realistic intrusion rates, leak 
+geometry, and the fate of herbicides after they enter age -
+ing chlorinated pipe networks [ 26, 51]. It is still difficult 
+to quantify mixture toxicity, long-term low-dose exposure, 
+and interactions with other stressors in drinking water [52].
+ Governing Equations for Contaminant 
+Transportation and Transformation in WDS
+Several equations are adopted for the description of trans -
+portation and transformation of contaminants in WDS, and 
+these include [53]:
+a) One-dimensional Advection-Dispersion-Reaction 
+(ADR) Equation, which is the fundamental mass balance 
+for a contaminant in a pipe under unsteady, one-dimen -
+sional flow represented by:
+∂ 𝐶𝐶
+∂ 𝑡𝑡 = −𝑢𝑢 ∂ 𝐶𝐶
+∂ 𝑥𝑥 +𝐷𝐷 ∂
+2
+𝐶𝐶
+∂ 𝑥𝑥2 +𝑅𝑅 (𝐶𝐶) (1)
+where C is the contaminant concentration (mg/L) , t is time 
+(s or day), u- average flow velocity (m/s), x- distance along 
+the pipe(m). This was simplified by the standard EP ANET to 
+advection-reaction (neglecting dispersion) as;
+∂ 𝐶𝐶
+∂ 𝑡𝑡 = −𝑢𝑢 ∂ 𝐶𝐶
+∂ 𝑥𝑥 +𝑅𝑅 (𝐶𝐶) (2)
+b) Junction and Tank Mixing Assumption: The compo -
+nents, the mixing assumptions and the mathematical 
+expression are stated as follows in Table 2:
+Default in EPANET Complete mixing for tanks and junc -
+tions. EPANET-MSX allows user-defined tank mixing 
+models. 
+1. Wall Mass-Transfer and sorption Terms: Herbicides 
+can adsorb to corrosion scales, biofilm, and pipe walls. 
+Linear equilibrium is assumed in a basic reversible sorp-
+tion model:
+where S is the Sorbed concentration on the pipe wall (per 
+unit volume of pipe), Kd- distribution coefficient (sorption 
+constant).
+The next flux to the wall is:
+𝐽𝐽𝐽𝐽 𝐽 𝐽𝐽𝐽𝐽 𝐽 𝐽𝐽𝐽 𝐽 𝐽𝐽𝐽𝐽𝐽𝐽𝐽 (4)
+where Jw is the mass flux to the wall, Kw- wall mass transfer 
+coefficient, and Ceq is the equilibrium concentration of the 
+wall.
+In EP ANET- MSX, wall species are defined with the 
+WALL keyword, and reactions are expressed using;
+𝑅𝑅𝑅𝑅𝑅𝑅𝑅𝑅 𝑅𝑅𝑅𝑅𝑅𝑅𝑅𝑅𝑅𝑅𝑅𝑅𝑅𝑅 𝑅 𝑅𝑅𝑅𝑅𝑅𝑅𝑅𝑅𝑅𝑅 𝑅 𝑅𝑅𝑅 𝑅𝑅𝑅𝑅𝑅𝑅𝑅𝑅 𝑅 𝑅𝑅𝑅𝑅𝑅𝑅𝑅 (5)
+d) Reaction Expressions
+i) First- Order Decay: Used for many herbicides, including 
+glyphosate degradation in bulk water:
+𝑅𝑅 (𝐶𝐶) = −𝐾𝐾𝐾 (𝐶𝐶) (6)
+where K1 is the first-order rate constant (day− 1):
+Half − life ∶ t1/2 = ln (2) / K1 (7)
+ii) Second-Order Reaction
+For reactions where decay depends on two species (e.g., 
+glyphosate + chlorine) as in WDS with disinfectants:
+𝑅𝑅 (𝐶𝐶) = −𝐾𝐾𝐾 𝐾 𝐶𝐶 𝐾𝐾𝐾𝐾𝐾𝐾𝐾𝐾𝐾𝐾𝐾𝐾𝐾𝐾𝐾𝐾𝐾𝐾𝐾 * 𝐶𝐶 𝐾𝐾𝐾𝐶𝐶𝐶𝐶𝐾𝐾𝐾𝐾 𝐶𝐶𝐾𝐾 (8)
+where K2 is the Second -order rate constant (L/mg. Day).
+Example (glyphosate-chlorine):
+𝑅𝑅 (𝐺𝐺𝐺𝐺𝐺𝐺 ) = −𝐾𝐾𝐾𝐾𝐺𝐺 [𝐺𝐺𝐺𝐺𝐺𝐺 ][ 𝐾𝐾𝐺𝐺𝐶)] (9)
+iii) Reversible Sorption Model
+Table 2 Junction and Tank Mixing Assumptions with mathematical expressions
+Components Mixing assumption Mathematical expression Notes
+Junction Instantaneous complete mixing 𝐶𝐶𝐶𝐶𝐶𝐶𝐶𝐶 𝐶 Σ 𝑄𝑄 𝑄𝐶𝐶𝑄𝑄 Σ 𝑄𝑄𝑄 All inflow mixes instantly at the nodes; no stor-
+age volume
+Tanks Fully mixed (ideal) 𝑉𝑉 ∂ 𝐶𝐶
+∂ 𝑡𝑡 = 𝑄𝑄𝑄𝑄𝑄𝑄 𝐶𝐶𝑄𝑄𝑄𝑄 𝑄 𝑄𝑄𝑄𝑄𝑄𝑄 𝑡𝑡 𝐶𝐶 𝑄 𝑄𝑄𝐶𝐶𝑉𝑉 Assumes uniform concentration throughout.
+Tanks Plug-flow (piston) ∂ 𝐶𝐶
+∂ 𝑡𝑡 = −𝑢𝑢 ∂ 𝐶𝐶
+∂ 𝑥𝑥 +𝑅𝑅 (𝐶𝐶) Can be approximated by multiple complete-mix 
+segments in series.
+Tanks Two-compartment mixing 𝑉𝑉𝑉 ∂ 𝐶𝐶𝑉
+∂ 𝑡𝑡 =𝑄𝑄 (𝐶𝐶𝐶𝐶𝐶𝐶 𝐶 𝐶𝐶𝑉 ) +𝐷𝐷 ( 𝐶𝐶𝐷𝐶𝐶𝐶 𝑉 ) Models short-circuiting and dead zones; used in 
+EPANET- MSX
+1 3
+ 106 Page 8 of 18
+Water Conservation Science and Engineering (2026) 11:106 
+First-Order reversible sorption 
+∂ 𝑆𝑆
+∂ 𝑡𝑡 = 𝐾𝐾𝐾𝐾𝐾𝐾𝐾𝐾 𝐾𝐾 𝐾 𝐾𝐾𝐾𝐾𝐾𝐾𝐾𝐾 𝐾 𝑆𝑆 (10)
+where Kads is the Adsorption rate constant (day − 1), Kdes is 
+the Adsorption rate constant (day− 1).
+e) Time-Varying Intrusion Boundary Conditions
+An intrusion event is represented as a time-varying mass 
+source at a node. The general form is: 
+𝐶𝐶 𝐶𝐶𝐶𝐶𝐶𝐶𝐶𝐶𝐶𝐶𝐶𝐶𝐶𝐶𝐶𝐶𝐶𝐶 (𝐶𝐶) = 𝐶𝐶 𝐶𝐶𝐶𝐶𝐶𝐶𝐶𝐶𝐶𝐶𝐶𝐶 𝐶 𝐶𝐶 (𝐶𝐶) 𝐶 𝛿𝛿 (𝑥𝑥 𝑥 𝑥𝑥 𝐶𝐶) (11)
+where Csource is the concentration of contaminant in the 
+external source (e.g., contaminated groundwater, f (t) is the 
+time-varying function (e.g., step, pulse or transient-driven), 
+and δ(𝑥-𝑥o) is the Dirac delta indicating injection at a spe -
+cific node.
+Example Functions
+Step ∶ f (t) =1 for t 0 ≤ t ≤ t1
+Pulse ∶ f(t)= exp [−k (t − t0)] (exponential decay)
+Transient − driven ∶
+f (t) = Qintrusion (t) ⋅ Csource, whereQintrusion
+is derived from transient pressure simulations .
+ Framework for Making Decisions when Choosing a 
+Solver
+The hydraulic regime, data accessibility, and chemistry 
+complexity all influence the solver selection. It is always 
+good to start with available data, then move to unknown 
+data. Table 3 presents how the three parameters above can 
+be combined in the selection of an appropriate EPANET 
+extension for solving contaminant problems in WDN.
+ Transport Dynamics of Contaminants in WDN
+The velocity field from hydraulic analysis drives most mod-
+els, which use 1-D advection–dispersion–reaction equations 
+along pipes to depict contaminant flow [ 58]. Advection is 
+bulk flow transfer that is managed by network hydraulics, 
+demand trends, and operational modifications (valve/pump 
+operations) [ 58, 59]. Diffusion and dispersion: Molecular 
+diffusion and velocity gradients disperse pollutant plumes, 
+particularly in laminar or transitional regimes and at low 
+velocities; ignoring these effects can distort the structure 
+and persistence of plumes [ 60, 61]. Reactions and wall 
+interactions: single- or multi-species reactive transport for -
+mulations are needed because pollutants may decay, react 
+(e.g., disinfectant–DBP formation), or sorb/desorb at pipe 
+walls [60].
+ Frameworks for Modelling
+Classical tools such as EPANET use a Lagrangian transport 
+algorithm assuming primarily advective plug flow, often 
+treating dispersion in a simplified way [ 1, 58]. Current 
+advancements expand on this by:
+ ● using random-walk solvers (EPANET DD) (dynamic 
+dispersion) to implement advective-diffusive-dispersive 
+transport with dynamic flow and 2D effects to better 
+capture double peaks and improve spreading under vari-
+able regimes [61].
+Table 3 Decision framework for Solver Selection for WDN contami -
+nation
+Hydraulic regime Data 
+available
+Reaction 
+complexity
+Recommended 
+EPANET extension 
+with citations
+Steady or slowly 
+varying
+Good 
+demand /
+pressure 
+data.
+Single species, 
+first-order 
+decay.
+Standard EPANET.
+[53, 54].
+Steady or slowly 
+varying
+Good 
+demand /
+pressure 
+data.
+Multi-species, 
+complex 
+reactions.
+EPANET-MSX.
+[53].
+Steady or slowly 
+varying
+Uncertain 
+pressure; 
+low-
+pressure 
+zones.
+Single or 
+multi-species.
+Pressure-Driven 
+demand (EPANET-
+PDX + MSX).
+[55].
+Rapid transients 
+(pump trips, 
+valve closure)
+Transient 
+pressure/ 
+flow data 
+available.
+Single species EPANET coupled 
+with Transient 
+model (HAMMER, 
+TSNet).
+[56].
+Rapid transients Limited 
+transient 
+data; only 
+steady-
+state 
+available.
+Multi-species Use steady-state 
+estimate of intru-
+sion volume; then 
+standard EPANET-
+MSX for transport.
+[57].
+Fully dynamic 
+(transient 
+intrusion 
++multi-species)
+High-
+resolution 
+SCADA; 
+validated 
+transient 
+and water 
+quality 
+models.
+Multi-species+ 
+wall sorption
+Fully coupled 
+transient+EPANET-
+MSX (custom 
+coupling). [1].
+1 3
+Page 9 of 18 106 
+Water Conservation Science and Engineering (2026) 11:106 
+ ● including reactive multispecies models (EPANET 
+MSX, EPANET C, and EPyT C) that simulate/replicate 
+the linked fate of disinfectants, by-products, and other 
+chemicals under hydraulic conditions and realistic, 
+time-varying demand [1, 62].
+ ● In addition to typical 1D assumptions, computational 
+fluid dynamics (CFD) is used to investigate scenarios 
+where local mixing and 3D effects significantly influ -
+ence non-reactive pollutant dispersal [63].
+ Role of Demand Variability and System Dynamics
+Patterns of consumer demand influence the velocity field, 
+which in turn influences the placement and dilution of 
+plumes. Changes in consumer behaviour during an event 
+can dramatically influence flow directions, plume trajecto -
+ries, and exposure, according to stochastic demand models 
+and agent-based frameworks [59]. Long residence times and 
+increased dispersion cause significant spatial variability in 
+concentrations in dead ends and low-flow zones [60].
+ Emerging Directions
+To simulate the fate of contaminants, including emerg -
+ing contaminants, in real time, new digital twin concepts 
+combine stochastic demand models, sophisticated hydrau -
+lic solvers, and flexible water-quality engines with sensor 
+data assimilation to enhance state estimation and source 
+tracking [ 1, 62]. In general, transport dynamics in WDNs 
+show a tightly coupled system in which human behaviour, 
+hydraulics, dispersion, and reactions all work together to 
+decide when, where, and at what concentrations contami -
+nants reach consumers. The core mechanisms and model -
+ling tools for contaminant transport in WDNs are shown 
+in Table 4.
+ Advection and Dispersion in a pipe Network
+In WDS, advection and dispersion are important mecha -
+nisms controlling the movement of solutes, including her -
+bicides. The bulk movement of water carrying dissolved 
+materials is referred to as advection, whereas the spread -
+ing of these materials because of changes in velocity and 
+molecular diffusion within pipes is referred to as dispersion. 
+Because empirical methods frequently underestimate disper-
+sion coefficients under various flow regimes, which affects 
+predictions of contaminant concentration profiles, accurate 
+modelling of longitudinal dispersion in WDS is difficult 
+[1]. Herbicide spread and persistence in water networks are 
+thus influenced by the interaction between advection and 
+dispersion, which may result in localised contamination or 
+dilution depending on flow conditions. Understanding these 
+pathways is important for controlling the hazards of herbi -
+cide incursion in WDS and enhancing water quality models 
+to more accurately forecast contaminant behaviour [1].
+ Herbicide Transformation During Treatment Stage
+Herbicides may change during drinking water treatment 
+before water reaches the distribution network. Polar herbi -
+cides can only be partially removed by processes such as 
+coagulation, flocculation, sedimentation, and filtration [ 65, 
+66]. Through reactive oxygen species (ROS) like hydroxyl 
+radicals (OH −) and sulfate radicals (SO₄ 2⁻), advanced 
+oxidation processes (AOPs) such as UV/H₂O₂, UV/TiO₂ 
+photocatalysis, ozonation, electro-Fenton, and activated 
+persulfate/peroxymonosulfate can degrade herbicides. 
+However, unless built explicitly as in-network booster sys -
+tems, these procedures are typically missing from distribu -
+tion pipes and are purposefully designed as treatment units. 
+The consequences for WDS are that the designed systems’ 
+rate constants, (e.g., k OH = 108–1010 M− 1 s− 1 kOH ≈ 10 8–10 
+10 M − 1 s − 1) are not transferable to distribution networks 
+due to significant differences in pH, oxidant dosage, water 
+matrix, and contact time. These processes don’t happen in 
+pipes unless a utility deliberately doses an oxidant into the 
+network.
+Reactions in WDS with Residual Disinfectants 
+(Chlorine, Chloramine)
+The specific behaviour of herbicides during intrusion 
+events in WDS, where conditions may differ from open 
+aquatic ecosystems due to pipe materials, residual disin -
+fectants, biofilms, and hydraulic dynamics, is still poorly 
+understood [ 67]. The main oxidant that is available once 
+water reaches the distribution system is residual chlorine 
+Table 4 The core mechanisms and modelling tools for contaminant 
+transport in WDNs
+Aspect/mechanism Brief description Citations
+Diffusion/Dispersion Spreading due to velocity gradi-
+ents, which is very common at 
+low flow.
+[61, 63].
+Reaction/ wall 
+exchange
+DBP formation, sorption or 
+desorption, Decay.
+[1, 58].
+Advection Flow-driven movement along 
+pipelines.
+[1, 58, 
+59].
+Lagrangian 1D models Standard EPANET transport 
+approach.
+[1, 58].
+Multi-species tool EPANET-C, MSX, EPyT-C 
+(EP ANET-Python) for coupled 
+fate.
+[1, 62].
+Digital twins Transport modelling and Real-
+time, sensor -driven fate.
+[62, 64].
+1 3
+ 106 Page 10 of 18
+Water Conservation Science and Engineering (2026) 11:106 
+or chloramine. These residuals may react with herbicides, 
+although the responses are usually less thorough and 
+slower than those of designed AOPs [ 68, 69]. In contrast 
+to chloramine, which reacts more slowly and may produce 
+nitrogenous disinfection by-products (DBPs) like NDMA, 
+glyphosate combines with free chlorine to produce AMPA 
+and other breakdown products. Under chlorination, atra -
+zine and other triazines undergo dealkylation and dechlori -
+nation, creating metabolites that could be more hazardous 
+or persistent [ 70]. The second-order rate constants for 
+chlorine–herbicide reactions (e.g., k app = 2–288 M− 1 s− 1) 
+should be used with caution. Only certain pH, temperature, 
+and matrix conditions allow their use. It is not suitable to 
+transfer directly to a WDS model without first confirming 
+the same pH, chlorine dose, and contact time. Microbial 
+degradation, photolysis, hydrolysis, advanced oxidation 
+processes (AOPs), and adsorption to organic matter or 
+pipeline materials are the primary processes that affect 
+herbicide decay. Different from open waters, pipe surfaces 
+and biofilms can either stimulate or hinder transforma -
+tion reactions [ 65, 71, 72]. For example, the biodegrada -
+tion of atrazine varies greatly depending on temperature, 
+pH, microbial activity, light exposure (photolysis), and 
+organic matter concentration [ 73]. Bacterial breakdown is 
+the main way that many herbicides dissipate; fungi play a 
+smaller role [ 74]. For many chemicals, degradation rates 
+follow first-order or pseudo-first-order kinetics [ 68, 71], 
+with half-lives varying from hours under ideal AOPs to 
+months or years under dark/anoxic circumstances [ 75, 76]. 
+Disinfectants may change or partially break down pollut -
+ants, but they may also produce hazardous by-products 
+[65, 71, 72]. Pesticide Transformation Products (PTPs) 
+can be more mobile or hazardous than parent molecules, 
+so degradation does not always produce harmless byprod -
+ucts according to Anagnostopoulou et al. [ 77] and [78]. In 
+WDS, oxidation and chlorination processes mainly lower 
+the concentration of parent herbicide chemicals, but this 
+does not translate into a decrease in danger. Oxidation of 
+glyphosate produces AMPA, a metabolite that is more per -
+sistent and equally hazardous. Dealkylated derivatives of 
+atrazine might still have endocrine action. Under typical 
+WDS disinfectant residuals (0.2–0.5 mg/L Cl₂, variable 
+pH, and presence of NOM), complete mineralization—the 
+conversion of organic carbon to CO₂ is rarely accom -
+plished. As a result, it is crucial to track both parent and 
+product species using a mass-balance technique. Instead 
+of evaluating the parent alone, toxicity endpoints should 
+be evaluated for the total of the parent and transformation 
+products. Without proving similar pH, dosage, matrix, 
+and contact circumstances, rate constants from laboratory 
+research (such as UV/H2O₂, electro-Fenton, and high 
+chlorine doses) shouldn’t be immediately used in WDS 
+models.
+ Dark Reactions and Hydrolysis in WDS
+Herbicides may experience dark reactions and hydroly -
+sis (reaction with water) when there is no light and little 
+oxidant residue. At pH > 8, several herbicides, includ -
+ing atrazine and other triazines, undergo base-catalysed 
+hydrolysis, which can happen in pipelines lined with 
+cement. Although this is less frequent in drinking water, 
+sulfonylureas hydrolyse more quickly at low pH [ 70]. In 
+distribution networks with lengthy residence durations, 
+these abiotic processes contribute to long-term modifi -
+cation despite their modest pace (half-lives of weeks to 
+months). Under dark conditions, biotic processes like 
+microbial breakdown in biofilms can also take place [ 39]. 
+Implication for WDS is that, although slow, hydroly -
+sis and dark reactions are important for herbicides with 
+extended hydraulic residence durations (such as dead 
+ends and storage tanks). Only when their residence period 
+is longer than the average decay half-lives can they be 
+included in fate models.
+ Herbicides Adsorption into pipe Walls and Biofilms
+Scales (mineral deposits) and biofilms (microbial layers) 
+inside pipes can both adsorb and subsequently release pol -
+lutants, changing the water quality over time. Pipe bio -
+films, which are complex microbial layers combined with 
+extracellular polymeric substances (EPS), can interact 
+significantly with herbicides that enter drinking water or 
+distribution systems [ 79]. Particularly in old or corroded 
+networks, biofilms and scales may exfoliate, releasing bac -
+teria and sorbed pollutants. Biofilm formation and sorption 
+behaviour are significantly influenced by pipe material, 
+corrosion, stagnation, and disinfectant levels. Biofilm 
+mass and its function as a contamination reservoir are both 
+affected by control techniques (disinfection, flushing, cor -
+rosion management) [ 80]. As a sink and delayed source, 
+biofilms can hold onto herbicides even after they are no 
+longer visible in the bulk water. Sorption frequently exhib -
+its significant potential accumulation capacities in the 
+biofilm matrix and is non-linear (e.g., Langmuir-type for 
+diuron) [80].
+1 3
+Page 11 of 18 106 
+Water Conservation Science and Engineering (2026) 11:106 
+ Modelling Approaches for Contaminant 
+Intrusion and Transport Within WDS
+Modelling approaches for contaminant intrusion in WDS 
+have always sought to estimate where and how much pol -
+lution enters, as well as anticipate its fate and travel across 
+the network. This is done within a water quality modelling 
+framework, which is a structured set of tools and methods 
+used in the simulation of the way pollutants move, trans -
+form and are removed in water distribution systems in space 
+and time. To reduce numerical dispersion and computation 
+time, transient hydraulic models (Eulerian) combined with 
+Lagrangian water-quality solvers are frequently employed 
+to simulate intrusion during pressure transients and subse -
+quent transit [23]. Compared to constant flow assumptions, 
+some models improve realism by directly linking intrusion 
+rate to local pressure and surrounding soil properties [ 37]. 
+Others consider terrain slope effects on spread and simulate 
+intrusion from sewers or wastewater [5].
+Risk frameworks describe intrusion potential or risk 
+across networks by combining pathway, source, and driv -
+ing force information using fuzzy logic, Dempster-Shafer 
+theory, or fuzzy-rule systems. Critical nodes are ranked, 
+and propagation risk is evaluated using EPANET simula -
+tions and complex network theory. Modelling for “pre -
+paredness–detection–management” is organised by broader 
+reviews, which emphasize uncertainty in contaminant kind 
+and source [81].
+ EPANET and Extended Period Simulation
+Hydraulic-water quality models, which monitor how a pol -
+lutant enters, travels, mixes, and decays over time, are typi-
+cally utilised to investigate the intrusion of contaminants 
+into WDS. The main open-source program for this is called 
+EPANET, and it uses extended period simulation (EPS) to 
+reflect variations in demand, operation, and water quality. 
+With inputs like source location, injection pattern, and reac-
+tion coefficients, EPANET 2.2 simulates the movement of 
+contaminants (such as chemicals, pesticides, and chlorine) 
+under hydraulic conditions [61].
+Standard EPANET tracks one chemical species (or 
+water age/source tracing) at a time, while EPANET-MSX 
+represents multiple interacting bulk and wall species. 
+EPANET-MSX uses BULK and WALL phases; wall spe -
+cies are surface-associated rather than simply ‘attached 
+and mobile.’ Other EPANET tools described in previous 
+works include EPANET-C, EPyT-C, EPANET-DD, and 
+EPANET-PMX. They are not interchangeable elements of 
+the main program; rather, they are unique, research-focused 
+extensions or wrappers built around the standard EPANET 
+hydraulic engine. An “umbrella simulation platform” called 
+EPANET-C was created to make using EPANET-MSX to 
+represent contamination occurrences in WDS easier [82]. Its 
+main goal is to make multi-species water quality modelling 
+more accessible to people without programming experience 
+by overcoming the complicated user interface and program-
+ming requirements usually associated with EPANET-MSX.
+In order to do this, EPANET-C offers pre-built and edit -
+able directories of conceptual and mathematical models 
+that explain chemical, biological, and physical reactions. It 
+combines EPANET and EPANET-MSX, simulating various 
+contamination situations with a straightforward command-
+line interface. In 2022, it was presented at the World Envi -
+ronmental and Water Resources Congress.
+A completely independent multi-species reactive trans -
+port modelling plugin for EPyT (the EPANET-Python Tool-
+kit) is called EPyT-C (where “C” refers to contaminant). 
+It was created because the regular version of EPyT only 
+allows for single-species water quality analysis.
+To perform multi-species reactive transport modelling, 
+EPyT-C uses an integrated water quality solver and invokes 
+the hydraulic solver from EPANET 2.2 [ 62]. It offers pre-
+configured modules that specify the governing equations for 
+intricate water quality factors, like the “Bacterial regrowth” 
+and “Chlorine decay and Trihalomethanes formation” mod-
+ules. Numerical accuracy, response coefficients, and input 
+modification are all possible with this tool. “EPANET-DD” 
+is the name of EPANET’s Research Extension for Pressure-
+Driven Demand. It might allude to an application of pres -
+sure-driven demand (PDD) analysis tailored to a particular 
+study. Other extensions, like WNTR (the US EPA’s Water 
+Network Tool for Resilience), provide the option to perform 
+hydraulics using PDD simulations. Additionally, it is used 
+in the EPANET-PDX extension and EPANET-PMX [ 83]. 
+An integrated network analysis model called EPANET-
+PMX (Pressure-dependent Multi-species eXtension) was 
+developed to overcome the shortcomings of current tools, 
+mainly their incapacity to perform pressure-driven analysis 
+in conjunction with multi-species water quality simulations. 
+It expands on the work of EPANET-PDX, a pressure-driven 
+extension of EPANET 2 that maintained water quality mod-
+elling for a single species but was unable to simulate several 
+chemical compounds simultaneously [55]. This is addressed 
+by EPANET-PMX, which combines the multi-species 
+modelling capabilities of EPANET-MSX with pressure-
+dependent demand analysis. This enables more accurate 
+low-pressure simulations, which are essential for evaluating 
+1 3
+ 106 Page 12 of 18
+Water Conservation Science and Engineering (2026) 11:106 
+system performance and contamination hazards during inci-
+dents like pipe bursts, power outages, and firefighting.
+To predict affected nodes, consumer doses, and the time 
+of plume arrival, it is frequently used to model purposeful or 
+accidental contamination [61]. Advanced applications com-
+bine EPANET with AI or optimization for source identifi -
+cation and risk management, such as data mining to locate 
+pesticide incursions modelled with EPANET/EPANET-
+MSX or Bayesian optimization to locate intrusion sources 
+in near real time [ 84]. Run in extended-period simulation 
+mode, EPANET is a key instrument for evaluating con -
+taminant incursion in WDS. It supports source identifica -
+tion, long- and short-term plume tracking, risk assessment, 
+and consequence management, all of which are frequently 
+improved by multi-species and sophisticated hydraulic 
+extensions. Multi-species reactions and more realistic con -
+taminant chemistry during intrusion events are made pos -
+sible by EPANET-MSX, EPANET-C, and EPANET-PMX 
+[1]. Reliable intrusion modelling depends on the stability 
+and accuracy of extended period simulation (EPS), which 
+is improved by new numerical techniques (e.g., better 
+Lagrangian/event-driven transport, EPS\GGA, DD\EPA -
+NET) [85].
+The path from a contamination source to a customer’s tap 
+in a water distribution system involves several steps. Accu-
+rate modelling calls for unique skills that deal with various 
+physical processes. While standard EPANET offers a good 
+starting point for many tasks, it is inadequate for simulating 
+the entire intrusion pathway, particularly the dynamics of 
+contaminant penetration during an event such as water ham-
+mer, because it relies on significant simplifications. Table 5 
+lists the five key capabilities required, their differences from 
+a standard EPANET, and the tools that can be used to put 
+them into practice.
+In reality, these capacities must be coupled for a true 
+mechanistic simulation of contaminant infiltration. For 
+example, a model may mimic a transient pressure wave 
+using a technology such as TSNet (Capability 3). The rate 
+of contaminant penetration would then be ascertained by 
+feeding the pressure data into an intrusion-flow calculation 
+(Capability 4). Lastly, EPANET-MSX’s ADR solver (Capa-
+bility 5) would be used to mimic this pollutant source to 
+monitor its transport and transformation along the network. 
+This methodical, comprehensive approach is necessary for 
+a precise assessment of the risk.
+ EPANET-MSX for Multi-Species Reactive Transport
+EPANET-MSX, as an extension of EPANET, enables 
+explicit simulation of multiple interacting chemical species 
+in drinking WDN, capturing interactions at pipe walls and 
+in bulk water [ 89]. With simple mathematical expressions, 
+EPANET-MSX enables users to construct any number of 
+species and specify arbitrary reaction networks (kinetic and 
+equilibrium) [90]. It combines stiff ODE solvers for reac -
+tions across the network with EPANET’s hydraulics and a 
+Lagrangian advection–reaction algorithm to solve transport 
+[91]. Realistic modelling of adsorption, biofilm/wall inter -
+actions, and multi-source water mixing is made possible by 
+Table 5 EPANET Key capacity requirements with their differences 
+from standard EPANET and implementation tools
+Capability Function How Standard 
+EPANET 
+Differs
+Software / 
+Method (with 
+Citation)
+1.Quasi-
+Steady EPS
+Simulates hydrau-
+lic and water qual-
+ity behaviour over 
+time (e.g., 24 h) 
+by assuming con-
+ditions are stable 
+at each calculation 
+time step.
+This is the core 
+functionality 
+of Standard 
+EPANET. It 
+is the baseline 
+method for net-
+work analysis.
+EPANET 2.2 
+(US EPA).
+2. Pressure-
+Driven 
+Demand 
+(PDD) 
+Analysis
+Uses a function 
+to reduce actual 
+water delivery at 
+a node when the 
+available pressure 
+is insufficient, 
+modelling “pres-
+sure-deficient” 
+conditions.
+Assumes 
+demand is 
+always fully 
+met, regardless 
+of pressure. 
+This can over-
+estimate system 
+resilience and 
+understate 
+intrusion risks 
+during low-
+pressure events.
+EPANETpdd 
+(University of 
+Exeter).
+[86, 87].
+3. Transient / 
+Water Ham-
+mer Models
+Simulates rapid 
+pressure changes 
+(surges) caused by 
+events like pump 
+trips or fast valve 
+closures, which 
+are the root cause 
+of many intrusion 
+events.
+Cannot 
+simulate these 
+rapid, unsteady 
+hydraulic 
+events, as it is 
+designed for 
+slower changes.
+TSNet (Open-
+Source), 
+WNTR 
+(US EPA), 
+MIKE+(DHI). 
+[88].
+4. Intrusion-
+Flow 
+Equations
+Calculates the 
+actual volume 
+of contaminated 
+water that enters 
+through a leak, 
+driven by the pres-
+sure difference 
+between the out-
+side environment 
+and the inside of 
+the pipe.
+A contaminant 
+injection is typ-
+ically defined 
+by the modeller 
+as a fixed input 
+(a source), not 
+as a dynamic 
+result of 
+the system 
+hydraulics.
+Custom Code 
+/ WNTR. 
+Requires 
+coupling with 
+a transient 
+model and 
+using equa-
+tions like the 
+orifice equa-
+tion. [37].
+5. Subse-
+quent Water 
+Quality 
+Transport
+Simulates how 
+the intruded con-
+taminant moves 
+through and reacts 
+within the pipe 
+network, includ-
+ing processes like 
+advection, disper-
+sion, and reaction.
+Standard EPA-
+NET can model 
+advection-reac-
+tion (movement 
+and decay) 
+but ignores 
+longitudinal 
+dispersion.
+EPANET-
+MSX (US 
+EPA) can 
+solve the full 
+Advection-
+Dispersion-
+Reaction 
+(ADR) 
+equation.
+1 3
+Page 13 of 18 106 
+Water Conservation Science and Engineering (2026) 11:106 
+the ability of species to be either attached (wall-phase) or 
+mobile (in the flow) [89]. Table 6 shows typical applications 
+of EPANET-MSX.
+ Parameterization of Herbicide Reaction Kinetics
+Parameterising herbicide kinetics means transforming 
+observed degradation, sorption, and transport behaviour into 
+numerical rate constants and model forms that can be used in 
+fate and risk models. Rate laws (first- or second-order) and 
+their reliance on pH, oxidant dose, light, and matrix compo-
+nents are commonly used to characterize the kinetics of her-
+bicide reactions in water distribution (or treatment) systems. 
+Experts can forecast herbicide degradation and byproduct 
+development along treatment trains or pipes using these 
+factors. With apparent rate constants that change with pH 
+and species (HClO vs. ClO⁻), direct reactions with disin -
+fectants such as chlorine can exhibit second-order kinetics 
+[70]. Sulfonylureas and chlorine are frequent examples of 
+these reactions: Second-order k app = 2–288 M⁻¹ s⁻¹; half-
+lives ~ 18–27 min at pH 7 and 4 mg/L Cl₂ [ 70]; kO₃ varies 
+from ~ 2 to 2190 M⁻¹ s for phenylureas with ozone/OHUV/
+PS promotion: pseudo-first-order k_obs ≈ 0.236 min⁻¹; 
+electro-Fenton 2,4-D derivative: k ≈ 0.47 min⁻¹ [ 92]; k 
+OH up to ~ 8 × 10◦ M⁻¹ s⁻¹ [ 93]. Some key water chemis -
+try controls influencing kinetic parameters under different 
+operating conditions are shown in Table 7.
+Kinetic models are frequently extended to fit many spe -
+cies at once (parent + key byproducts) and to incorporate 
+parallel/series reactions for intermediates [72].
+Risk-based treatment condition design is informed by the 
+quantification of disinfection by-products (e.g., TCM, TBM) 
+and chlorinated/oxidized intermediates, which are occasion-
+ally combined with toxicity evaluation [94]. In the distribu-
+tion and treatment of drinking water, kinetic characteristics 
+are crucial for forecasting the removal of herbicides and con-
+trolling possibly more hazardous or permanent byproducts.
+ Critical gaps and Research Challenges
+To close the knowledge gaps about the precise fate of 
+herbicides following incursion events into WDS, more 
+research is required. These include pipe material inter -
+actions, the impact of residual disinfectants, biofilm-
+mediated transformations, and hydraulic mixing/dilution 
+effects [ 67]. Most of the data that is currently accessible 
+comes from laboratory simulations or open aquatic habi -
+tats rather than actual distribution networks. Products of 
+transformation provide additional difficulties: regulatory 
+frameworks frequently lag scientific understanding of the 
+dangers associated with these metabolites; some are per -
+sistent or more toxic than the main active ingredients [ 77, 
+78]. Given the short residence times typical of WDS in 
+comparison to natural waters or treatment facilities, reme -
+diation technologies exhibit promise but must be adapted 
+to system-specific constraints [ 71].
+ EPANET-MSX for Multi-Species Reactive Transport 
+data Limitations
+A flexible engine for modelling several chemical species 
+that interact in WDNs is EPANET-MSX. Although it is a 
+potent tool for multi-species reactive transport (MSRT), its 
+application is severely constrained by performance, input 
+complexity, and data availability. However, using general 
+rate/equilibrium expressions allows users to design arbi -
+trary reaction networks at pipe walls and in bulk water 
+[77, 95]. Additionally, it allows for the simultaneous simu -
+lation of numerous species in a single run, such as DBPs, 
+chlorine, water age, haloacetic acids, arsenic species, and 
+taste/odour compounds [ 89, 96]. For better comparison 
+with experiments, the revised versions add dispersion and 
+enhanced mass-balance reporting [ 90]. Table 8 shows Key 
+data requirements in some reported EPANET-MSX (MSRT) 
+applications in real-life cases.
+Table 6 Typical applications of EPANET-MSX
+Area of Application Processes modelled Cita-
+tions
+Exotic reactions/ 
+Security
+Dispersion and Nicotine-chlo-
+rine reaction with the reactive 
+intermediate
+[90].
+Disinfection and Dis-
+infection By-Products
+Chlorine decay, chloramine, HAAs/ 
+THMs, multi-source mixing
+[61, 
+89].
+Odour and Taste Multi-species model for 2,4,6-TCP to 
+2,4,6-TCA formation
+[1].
+Contaminants and 
+Metals
+Arsenite adsorption in chlorinated 
+systems, Arsenite oxidation
+[90].
+Table 7 Effect of water chemistry and operating conditions on kinetic 
+parameters
+Factor Influence on parameterization Citations
+Temperature Higher temperature means higher 
+intrinsic k; Arrhenius behaviour
+[72].
+Speciation (HClO/
+ClO−), pH
+Strong pH-dependent intrinsic k. [70, 72].
+Background ions, 
+NOM
+Can enhance (Cl−, Br− via reactive 
+species) or scavenge radicals, 
+lowering kobs
+[94].
+Oxidant dose (Cl2, 
+O3, PS, H2O2)
+kobs increases with oxidant (within 
+practical range)
+[92, 94].
+1 3
+ 106 Page 14 of 18
+Water Conservation Science and Engineering (2026) 11:106 
+ Model Calibration, Validation, Sensitivity and mass 
+Balance
+Any WDS model’s quality assurance framework is made up 
+of these four elements. A model is just an untested math -
+ematical exercise without them. Calibration guarantees that 
+the model accurately depicts reality, validation verifies the 
+model’s predictive ability, Sensitivity indicates what to mea-
+sure, identifiability indicates what you can accurately esti -
+mate, and mass balance verifies the model’s numerical and 
+physical consistency. When combined, they offer the assur-
+ance required to make decisions using models [97]. Table 9 
+summarises how these four elements can be used to improve 
+the quality of water quality and hydraulic modelling.
+ Conclusion
+This paper included a cross-method evaluation, a critical 
+assessment of methodological strengths and limitations, 
+and a future research agenda in contrast to previous, more 
+focused assessments. The review found convergent evi -
+dence that the shape and location of leaks, the size and dura-
+tion of negative pressure episodes, and the interaction with 
+nearby soils and operational transients are the primary fac -
+tors driving intrusion risk. A systematic technique is needed 
+to develop efficient contamination intrusion, dynamics, and 
+risk assessment methods for herbicide intrusion in water 
+distribution systems. Significant differences still exist, 
+though: estimates of infiltration volumes differ depending 
+on the type of pipe material; health risk propagation through 
+chemical or microbial contaminants is still not consistently 
+quantified; and digital monitoring or early-warning tech -
+niques are still not widely used. This entails integrating 
+real-time monitoring systems, comprehending parameter 
+sensitivities, and considering the most relevant specific pol-
+lutants. Water utilities can improve public health protection 
+and effectively handle contamination situations by tackling 
+these issues.
+A thorough and critical investigation of processes 
+involved in the decay of herbicides and PTPs is important 
+in the prediction of their behaviour and fate in the WDS 
+whenever an intrusion event occurs. There is a wide and 
+persistent gap in the precise fate of herbicides and pesticides 
+after each intrusion event into WDS which includes pipe 
+material interactions, the impact of residual disinfectants, 
+biofilm-mediated transformations, and hydraulic mixing/
+dilution effects, with parent chemical transformation into 
+more toxic and persistent metabolites. Water conservation 
+and herbicide infiltration are two sides of the same coin. 
+Leaky, inadequately pressurized, and hydraulically slug -
+gish water distribution systems are prone to contamination 
+(allowing herbicide intrusion) and water inefficiency (los -
+ing water). On the other hand, a hydraulically engineered, 
+pressurized, and well-maintained network saves water and 
+shields users from herbicide exposure. Moving beyond 
+compartmentalized approaches to water quantity and water 
+quality management, this dual advantage ought to be the 
+cornerstone of utility investment, regulatory policy, and 
+research agendas.
+Acknowledgements We appreciate the University management for 
+allowing us access to the library resources. We sincerely thank the 
+esteemed reviewers for their insightful criticism and valuable com -
+ments, which significantly enhance the quality of this review work.
+Table 9 Steps in ensuring reliability of water quality and hydraulic 
+modelling
+Requirement Description Minimum 
+standard
+Calibration Modify unknown factors 
+(roughness, reaction rates, 
+sorption coefficients) to 
+match observed data (pres-
+sure, flow, concentration).
+Make use of a 
+minimum of 
+two separate 
+datasets, such as 
+calibration and 
+verification.
+Validation Test the calibrated model 
+against a separate dataset 
+that was not utilized for 
+calibration.
+Verify using lit-
+erature or bench-
+scale experiments 
+if field data is not 
+accessible.
+Sensitivity 
+Analysis
+Identify the parameters that 
+have the most impact on 
+model outputs (e.g., using 
+one-at-a-time, Morris, or 
+Sobol methods).
+Determine which 
+parameters need 
+to be measured 
+with high 
+precision.
+Identifiability Determine whether 
+parameters can be uniquely 
+identified from the data at 
+hand (e.g., using correlation 
+analysis).
+Simplify the 
+model or gather 
+more data if the 
+parameters are 
+correlated.
+Mass Balance Ensure mass conser-
+vation: Input − Out-
+put − Reaction − Accumula-
+tion = 0 across the network.
+Report mass 
+balance error; 
+should be < 1% 
+for numerical 
+models.
+Table 8 Key data requirements in some reported EPANET-MSX 
+(MSRT) applications cases
+Data type EPANET-MSX (MSRT) Applications 
+examples
+Cita-
+tions
+Boundary/operating 
+data
+Temperature, dosing strategy, source 
+concentrations, and mixing of mul-
+tiple source waters.
+[1, 82, 
+89, 
+96].
+Wall/surface 
+properties
+Pipe material, adsorption capacity 
+(e.g., arsenic on iron, wall chlorine 
+demand), and biofilm activity.
+[89, 
+95].
+Hydraulic & 
+network
+Demands, pressures, pipe diameters/
+roughness, tanks, controls.
+[1, 
+82].
+Kinetic & 
+stoichiometry
+Chlorine bulk and wall decay, DBP 
+formation, arsenite oxidation, nicotine 
+reactions, microbial Taste & Odour.
+[1, 62, 
+82, 
+89].
+1 3
+Page 15 of 18 106 
+Water Conservation Science and Engineering (2026) 11:106 
+Author Contributions Author contribution DOR.: Conceptualization, 
+Methodology, Formal analysis, Investigation, Writing – original draft, 
+Writing – editing. AAI.: Conceptualization, Supervision, Writing – 
+original draft, Writing – editing. DOR.: Data curation, Formal analy -
+sis. VEA.: Writing – original draft, Writing – editing. AAI: Supervi -
+sion, Writing – review & editing. VEA.: Writing – review & editing.
+Funding Open access funding provided by University of the Witwa -
+tersrand. No funding was received to assist with the preparation of this 
+manuscript.
+Data Availability No datasets were generated or analysed during the 
+current study.
+Declarations
+Ethics Approval and Consent to Participate The “Ethical responsibili-
+ties of Authors” declaration on the Instructions for Authors has been 
+read, comprehended, and complied with by all authors.
+Competing Interests The authors declare no competing interests.
+Open Access This article is licensed under a Creative Commons 
+Attribution 4.0 International License, which permits use, sharing, 
+adaptation, distribution and reproduction in any medium or format, 
+as long as you give appropriate credit to the original author(s) and the 
+source, provide a link to the Creative Commons licence, and indicate 
+if changes were made. The images or other third party material in this 
+article are included in the article’s Creative Commons licence, unless 
+indicated otherwise in a credit line to the material. If material is not 
+included in the article’s Creative Commons licence and your intended 
+use is not permitted by statutory regulation or exceeds the permitted 
+use, you will need to obtain permission directly from the copyright 
+holder. To view a copy of this licence, visit h t t p : / / c r e a t i v e c o m m o n s . o 
+r g / l i c e n s e s / b y / 4 . 0 / . 
+References
+1. Abhijith GR, Ostfeld A (2022a) Contaminant Fate and Transport 
+Modelling in Distribution Systems: EPANET-C. Water 14:1665. 
+https:/ /doi.or g/10.33 90/w1 4101665
+2. Ramezanianpour M, Ali A (2023) Design and simulation of a 
+reuse water system for a houseboat using EPANET. Innovative 
+Infrastructure Solutions 8(12):330. h t t p s : / / d o i . o r g / 1 0 . 1 0 0 7 / s 4 1 0 6 
+2 - 0 2 3 - 0 1 2 9 4 - 4 
+3. Islam N, Farahat A, Al-Zahrani MA, Rodriguez MJ, Sadiq R 
+(2015) Contaminant intrusion in water distribution networks: 
+review and proposal of an integrated model for decision making. 
+Environ reviews 23(3):337–352. h t t p s : / / d o i . o r g / 1 0 . 1 1 3 9 / e r - 2 0 1 4 - 
+0 0 6 9 
+4. Palma L, Hatam F, Di Nardo A, Prévost M (2024) Contamina -
+tions in water distribution systems: A critical review of detection 
+and response methods. AQUA—Water Infrastructure Ecosyst 
+Soc 73(6):1285–1302. https:/ /doi.or g/10.21 66/aq ua.2024.125
+5. Jamil R, Aziz HA, Murshed MF (2024) Predicting the spread of 
+contamination in water distribution networks laid on sloping ter -
+rains. Kuwait J Sci 51(4):100290. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . k j s . 2 0 
+2 4 . 1 0 0 2 9 0 
+6. Li Z, Wu Y , Wang CA (2023) SWMM-Based Screening Model 
+for Estimating Wastewater Treatment Burden of Pesticides on the 
+Urban Scale. Environ Manage 71:785–794. h t t p s : / / d o i . o r g / 1 0 . 1 0 
+0 7 / s 0 0 2 6 7 - 0 2 2 - 0 1 7 1 7 - 5 
+7. Gleick PH (2019) Water as a weapon and casualty of conflict: 
+Freshwater and international humanitarian law. Water Resour 
+Manage 33(5):1737–1751. h t t p s : / / d o i . o r g / 1 0 . 1 0 0 7 / s 1 1 2 6 9 - 0 1 9 - 0 
+2 2 1 2 - z 
+8. Qiu M, Salomons E, Ostfeld A (2020) A framework for real-time 
+disinfection plan assembling for a contamination event in water 
+distribution systems. Water Res 174:115625. h t t p s : / / d o i . o r g / 1 0 . 1 
+0 1 6 / j . w a t r e s . 2 0 2 0 . 1 1 5 6 2 5 
+9. Eliades DG, Vrachimis SG, Moghaddam A, Tzortzis I, Polycar -
+pou MM (2023) Contamination event diagnosis in drinking water 
+networks: A review. Annu Rev Control 55:420–441. h t t p s : / / d o i . o 
+r g / 1 0 . 1 0 1 6 / j . a r c o n t r o l . 2 0 2 3 . 0 3 . 0 1 1 
+10. Li Z, Ma W, Zhong D, Ma J, Zhang Q, Yuan Y , Zou K (2024) 
+Applications of machine learning in drinking water quality man -
+agement: A critical review on water distribution system. J Clean 
+Prod 481:144171. https:/ /doi.or g/10.10 16/j. jclepro.2024.144171
+11. Almheiri Z, Meguid M, Zayed T (2023) Review of critical fac -
+tors affecting the failure of water pipeline infrastructure. J Water 
+Resour Plan Manag 149(10):03123001. h t t p s : / / d o i . o r g / 1 0 . 1 0 6 1 / J 
+W R M D 5 . W R E N G - 5 8 9 6 
+12. Pelekanos N, Nikolopoulos D, Makropoulos C (2021) Simulation 
+and vulnerability assessment of water distribution networks under 
+deliberate contamination attacks. Urban Water J 18(4):209–222. 
+https:/ /doi.or g/10.10 80/15 73062X.2020.1864832
+13. Huang Y , Li Z (2025) Global mapping of freshwater contami -
+nation by pesticides and implications for agriculture and water 
+resource protection. IScience 28(7). h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . i s c 
+i . 2 0 2 5 . 1 1 2 8 6 1 
+14. de Lourdes Fernández-Peña M, Pérez-Vázquez A, Díaz-Rivera 
+P, Ortega-Jiménez E, López-Romero G, del Refugio Castañeda-
+Chávez M (2026) Analysis of glyphosate concentrations in the 
+water of the Jamapa River Channel, Veracruz. Environ Monit 
+Assess 198(3):230. https:/ /doi.or g/10.10 07/s1 0661-026-15072-z
+15. Navarro I, De la Torre A, Sanz P, Abrantes N, Campos I, Alaoui 
+A, Christ F, Alcon F, Contreras J, Glavan M, Pasković I (2024) 
+Assessing pesticide residues occurrence and risks in water sys -
+tems: A Pan-European and Argentina perspective. Water Res 
+254:121419. https:/ /doi.or g/10.10 16/j. watres.2024.121419
+16. Álvarez Bayona MA, Maturana Córdoba A, Gallardo Amaya 
+RJ, Muñoz Acevedo A (2022) Occurrence of glyphosate in sur -
+face and drinking water sources in Cúcuta, Norte de Santander, 
+and its removal using membrane technology. Front Environ Sci 
+10:941836. https:/ /doi.or g/10.33 89/fe nvs.2022.941836
+17. Yang T, Ge F, Hong Y , Wang Y , Zhou G, Chen H, Song N, Li 
+P (2025) Fate and risk of pesticides in drinking water: From 
+source to tap using a comprehensive analysis and prioritization 
+approach. J Environ Sci 161:320–329. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . 
+j e s . 2 0 2 5 . 0 5 . 0 3 9 
+18. Paraskevopoulos S, Vrachimis S, Kyriakou M, Eliades DG, 
+Smeets P, Polycarpou M, Medema G (2024) Modelling the health 
+impact of wastewater contamination events in drinking water net-
+works. J Clean Prod 479:143997. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . j c l e p r 
+o . 2 0 2 4 . 1 4 3 9 9 7 
+19. Wang Z, Yang X, Fu L, Li M (2025) A review of secondary con-
+tamination of drinking water quality in distribution systems: 
+sources, mechanisms, and prospects. AQUA—Water Infrastruc -
+ture Ecosyst Soc 74(1):118–141. h t t p s : / / d o i . o r g / 1 0 . 2 1 6 6 / a q u a . 2 0 
+2 4 . 2 8 4 
+20. Wang F, Xiang L, Leung KSY , Elsner M, Zhang Y , Guo Y , Pan 
+B, Sun H, An T, Ying G, Brooks BW (2024) Emerging contami-
+nants: a one health perspective. Innov 5(4). h t t p s : / / d o i . o r g / 1 0 . 1 0 1 
+6 / j . x i n n . 2 0 2 4 . 1 0 0 6 1 2 
+21. Lima IB, Boëchat IG, Fernandes MD, Monteiro JA, Rivaroli L, 
+Gücker B (2023) Glyphosate pollution of surface runoff, stream 
+water, and drinking water resources in Southeast Brazil. Environ 
+1 3
+ 106 Page 16 of 18
+Water Conservation Science and Engineering (2026) 11:106 
+Sci Pollut Res 30(10):27030–27040. h t t p s : / / d o i . o r g / 1 0 . 1 0 0 7 / s 1 1 3 
+5 6 - 0 2 2 - 2 4 1 6 7 - 2 
+22. Tahmasebi AA, Tabatabaei Z, Azhdarpoor A, Salimi Beni A 
+(2024) Evaluation of phosphate insecticides and common herbi -
+cides: monitoring and risk assessment in water treatment plants, 
+distribution networks, and underground water wells. J Water 
+Health 22(6):1088–1101. https:/ /doi.or g/10.21 66/wh .2024.076
+23. Alizadeh Tataki Afshar M, Miri M, Moghaddassi N, Abbasi S 
+(2025) A decade of research on contaminant intrusion in water 
+distribution systems: mechanisms, risks, and resilience strategies. 
+Innovative Infrastructure Solutions 10(12):584. h t t p s : / / d o i . o r g / 1 0 
+. 1 0 0 7 / s 4 1 0 6 2 - 0 2 5 - 0 2 3 6 2 - 7 
+24. Pauli BJ (2020) The Flint water crisis. Wiley Interdisciplinary 
+Reviews: Water 7(3):e1420. https:/ /doi.or g/10.10 02/wa t2.1420
+25. Fuller M, Wells E, Furatian L, Douglas I, Lane K (2023) Drinking 
+water quality management progress in Ontario, two decades after 
+Walkerton. J Water Health 21(8):1073–1085. h t t p s : / / d o i . o r g / 1 0 . 2 
+1 6 6 / w h . 2 0 2 3 . 0 9 9 
+26. Barros DB, Cardoso SM, Oliveira E, Brentan B, Ribeiro L (2022) 
+Using data mining techniques to isolate chemical intrusion in 
+water distribution systems. Environ Monit Assess 194(3):203. 
+https:/ /doi.or g/10.10 07/s1 0661-022-09867-z
+27. Endale YT, Ambelu A, Mees B, Du Laing G (2021) Exposure 
+and health risk assessment from consumption of Pb-contaminated 
+water in Addis Ababa, Ethiopia. Heliyon 7(9). h t t p s : / / d o i . o r g / 1 0 . 1 
+0 1 6 / j . h e l i y o n . 2 0 2 1 . e 0 7 9 4 6 
+28. Islam MS, Phoungthong K, Islam ARMT, Ali MM, Sarker 
+A, Kabir MH, Idris AM (2023) Present status and mitigation 
+approaches of arsenic in the environment of Bangladesh: A 
+critical review. Int J Environ Sci Technol 20(12):13883–13894. 
+https:/ /doi.or g/10.10 07/s1 3762-023-04956-z
+29. Tracy JW, Guo A, Liang K, Bartram J, Fisher M (2020) Sources 
+of and solutions to toxic metal and metalloid contamination in 
+small rural drinking water systems: a rapid review. Int J Environ 
+Res Public Health 17(19):7076. h t t p s : / / d o i . o r g / 1 0 . 3 3 9 0 / i j e r p h 1 7 1 
+9 7 0 7 6 
+30. Elfikrie N, Ho YB, Zaidon SZ, Juahir H, Tan ESS (2020) Occur-
+rence of pesticides in surface water, pesticide removal efficiency 
+in drinking water treatment plant and potential health risk to 
+consumers in Tengi River Basin, Malaysia. Sci Total Environ 
+712:136540. https:/ /doi.or g/10.10 16/j. scitotenv.2020.136540
+31. Piazza S, Sambito M, Freni G (2023) Analysis of optimal sensor 
+placement in looped water distribution networks using different 
+water quality models. Water 15(3):559. h t t p s : / / d o i . o r g / 1 0 . 3 3 9 0 / w 
+1 5 0 3 0 5 5 9 
+32. Hu Z, Zhu J, Jiao H, Zeng W, Yang Z (2025) Risk assessment of 
+water distribution networks through an integrated model based 
+on machine learning and statistical methods. Reliab Eng Syst Saf 
+264:111338. https:/ /doi.or g/10.10 16/j. ress.2025.111338
+33. Latif EF, Elansary AS (2025) Implementation of a convenient 
+method in water network simulation to maximize the benefit of 
+pressure management and reduce leakage. Water Pract Technol 
+20(1):78–90. https:/ /doi.or g/10.21 66/wp t.2024.306
+34. Jun S, Lansey KE (2023) Linear programming models for leak 
+detection and localization in water distribution networks. J Water 
+Resour Plan Manag 149(5):04023017. h t t p s : / / d o i . o r g / 1 0 . 1 0 6 1 / J 
+W R M D 5 . W R E N G - 5 7 2 
+35. Shao Y , Chu S, Dang C, Yu T (2020) Effects of leakage points on 
+intrusion volume in a simulated water distribution system. Water 
+Supply 20(1):251–258. https:/ /doi.or g/10.21 66/ws .2019.156
+36. Guleria A, Chakma S (2023) A bibliometric and visual analysis 
+of contaminant transport modeling in the groundwater system: 
+current trends, hotspots, and future directions. Environ Sci Pollut 
+Res 30(11):32032–32051. h t t p s : / / d o i . o r g / 1 0 . 1 0 0 7 / s 1 1 3 5 6 - 0 2 2 - 2 4 
+3 7 0 - 1 
+37. Palma L, Hatam F, Di Nardo A, Prévost M (2025) Design of 
+Monitoring Systems for Contaminant Detection in Water Net -
+works Under Pipe Break-Induced Events. Sensors 25(17):5320. 
+https:/ /doi.or g/10.33 90/s2 5175320
+38. Mahmoud M, Farahat A, Hamouda MA, Al-Zahrani M, Sharif 
+MN, Sadiq R (2019) Experimental investigations and CFD 
+modelling of contaminant intrusion in a water network during 
+transient events. Water 11(7):1425. https:/ /doi.or g/10.33 90/w1 
+1071425
+39. Świetlik J, Magnucka M (2024) Chemical and microbiological 
+safety of drinking water in distribution networks made of plas -
+tic pipes. Wiley Interdisciplinary Reviews: Water 11(2):e1704. 
+https:/ /doi.or g/10.10 02/wa t2.1704
+40. Viñas V , Sokolova E, Malm A, Bergstedt O, Pettersson TJ (2022) 
+Cross-connections in drinking water distribution networks: Quan-
+titative microbial risk assessment in combination with fault tree 
+analysis and hydraulic modelling. Sci Total Environ 831:154874. 
+https:/ /doi.or g/10.10 16/j. scitotenv.2022.154874
+41. Keramat A, Payesteh M, Brunone B, Meniconi S (2020) Inter -
+dependence of flow and pipe characteristics in transient-induced 
+contamination intrusion: numerical analysis. J Hydroinformatics 
+22(3):473–490. https:/ /doi.or g/10.21 66/hy dro.2020.069
+42. de Castro Lima JAM, Labanowski J, Bastos MC, Zanell R, Prestes 
+OD, De Vargas JPR, Mondamert L, Granado E, Tiecher T, Zafar 
+M, Troian A (2020) Modern agriculture transfers many pesticides 
+to watercourses: a case study of a representative rural catchment 
+of southern Brazil. Environ Sci Pollut Res 27(10):10581–10598. 
+https:/ /doi.or g/10.10 07/s1 1356-019-06550-8
+43. Mugudamani I, Oke SA, Gumede TP, Senbore S (2023) Herbi -
+cides in water sources: Communicating potential risks to the pop-
+ulation of Mangaung Metropolitan Municipality, South Africa. 
+Toxics 11(6):538. https:/ /doi.or g/10.33 90/to xics11060538
+44. London L, Dalvie MA, Cairncross E, Solomon A (2000) The 
+quality of surface and groundwater in the rural Western Cape with 
+regard to pesticides. Water Res Comm Rep 795(1):00. h t t p s : / / w w 
+w . w r c . o r g . z a / w p - c o n t e n t / u p l o a d s / m d o c s / 7 9 5 - 1 - 0 0 . p d f 
+45. London L, Dalvie MA, Nowicki A, Cairncross E (2005) 
+Approaches for regulating water in South Africa for the presence 
+of pesticides. Water SA 31(1):53–59. h t t p s : / / d o i . o r g / 1 0 . 4 3 1 4 / w s a 
+. v 3 1 i 1 . 5 1 2 1 
+46. EC (2015) EU Pesticides Database- European Commission. 
+([WWW Document]. URL) h t t p : / / e c . e u r o p a . e u / f o o d / p l a n t / p e s t i c 
+i d e s / e u - p e s t i c i d e s - d a t a b a s e / p u b l i c / ? e v e n t = a c t i v e s u b s t a n c e . s e l e c t 
+i o n & l a n g u a g e = EN (accessed 9/3/2026)
+47. US EPA O of PP (2016) Quick Links- Pesticide Type | Chemical 
+Search | Pesticides | US EPA. ([WWW Document]. URL) h t t p : / / i 
+a s p u b . e p a . g o v / a p e x / p e s t i c i d e s / f ? p = C H E M I C A L S E A R C H 
+48. Brown AK, Farenhorst A (2024) Quantitation of glyphosate, glu-
+fosinate, and AMPA in drinking water and surface waters using 
+direct injection and charged-surface ultra-high performance liq -
+uid chromatography-tandem mass spectrometry. Chemosphere 
+349:140924. https:/ /doi.or g/10.10 16/j. chemosphere.2023.140924
+49. Cappiello A, Termopoli V , Palma P, Famiglini G, Saeed M, Perry 
+S, Navarro P (2022) Liquid chromatography–electron capture 
+negative ionization–tandem mass spectrometry detection of pes -
+ticides in a commercial formulation. J Am Soc Mass Spectrom 
+33(1):141–148. https:/ /doi.or g/10.10 21/ja sms.1c00307
+50. Boindala SP, Jaykrishnan G, Ostfeld A (2025) Booster disinfec -
+tion scheduling under uncertainty in water distribution systems: 
+Approximate robust reformulation approach. J Water Resour Plan 
+Manag 151(2):04024070. h t t p s : / / d o i . o r g / 1 0 . 1 0 6 1 / J W R M D 5 . W R 
+E N G - 6 5 5 5 
+51. Fumani S (2015) Contaminant intrusion in water distribution sys-
+tems: advanced modelling approaches. h t t p s : / / d o i . o r g / 1 0 . 1 4 2 8 8 / 1 
+. 0 0 7 3 6 2 6 
+1 3
+Page 17 of 18 106 
+Water Conservation Science and Engineering (2026) 11:106 
+52. Jorfi S, Rahim F, Rahmani A, Jaafarzadeh N, Ghaedrahmat Z, 
+Almasi H, Zahedi A (2021) Herbicide residues in water resources: 
+a scoping review. Avicenna J Environ Health Eng 8(2). h t t p s : / / d o 
+i . o r g / 1 0 . 3 4 1 7 2 / a j e h e . 2 0 2 1 . 1 6 
+53. Shang F, Rossman LA, Uber JG (2023) EPANET-MSX 2.0 user 
+manual. US Environmental Protection Agency, Cincinnati, Ohio. 
+www.epa.gov/research
+54. Rossman LA, U.S. Environmental Protection Agency (2000) 
+EPANET 2 user’s manual,. Water Supply and Water Resources 
+Division, National Risk Management Research Laboratory, Cin-
+cinnati, OH, 45268. EPA/600/R-00/057
+55. Seyoum AG, Tanyimboh TT (2017) Integration of hydraulic and 
+water quality modelling in distribution networks: EPANET-PMX. 
+Water Resour Manage 31(14):4485–4503. h t t p s : / / d o i . o r g / 1 0 . 1 0 0 
+7 / s 1 1 2 6 9 - 0 1 7 - 1 7 6 0 - 0 
+56. Xing L, Sela L (2020) Transient simulations in water distribution 
+networks: TSNet python package. Adv Eng Softw 149:102884. 
+https:/ /doi.or g/10.10 16/j. advengsoft.2020.102884
+57. Shang F, Woo H, Burkhardt JB, Murray R (2021) Lagrang -
+ian method to model advection-dispersion-reaction transport 
+in drinking water pipe networks. J Water Resour Plan Manag 
+147(9):04021057. h t t p s : / / d o i . o r g / 1 0 . 1 0 6 1 / ( A S C E ) W R . 1 9 4 3 - 5 4 5 
+2 . 0 0 0 1 4 2 1 
+58. Laucelli DB, Enríquez L, Saldarriaga J, Giustolisi O (2024) 
+Using symbolic machine learning to assess and model substance 
+transport and decay in water distribution networks. Sci Rep 
+14(1):3194. https:/ /doi.or g/10.10 38/s4 1598-024-53746-1
+59. Adedoja OS, Hamam Y , Khalaf B, Sadiku R (2019) Development 
+of a Contaminant Distribution Model for Water Supply Systems. 
+Water 11(7):1510. https:/ /doi.or g/10.33 90/w1 1071510
+60. Piazza S, Blokker EM, Freni G, Puleo V , Sambito M (2020) 
+Impact of diffusion and dispersion of contaminants in water 
+distribution networks: modelling and monitoring. Water Supply 
+20(1):46–58. https:/ /doi.or g/10.21 66/ws .2019.131
+61. Piazza S, Sambito M, Freni G (2022) A novel EPNET integra -
+tion for the diffusive–dispersive transport of contaminants. Water 
+14(17):2707. https:/ /doi.or g/10.33 90/w1 4172707
+62. Abhijith GR, Steffelbauer DB, Ostfeld A (2023) Toward digital 
+twins for emerging contaminants in water distribution systems. 
+In World environmental and water resources congress, 047–1057. 
+https:/ /doi.or g/10.10 61/97 80784484852.096
+63. Wéber R, Sándor L, Horváth Á, Barakka G, Abhijith GR, Ostfeld 
+A (2024) Predicting Contamination Spreading in Water Distribu-
+tion Networks. Eng Proc 69(1):96. h t t p s : / / d o i . o r g / 1 0 . 3 3 9 0 / e n g p r 
+o c 2 0 2 4 0 6 9 0 9 6 
+64. Kim MG, Bartos M (2023) New contaminant transport model 
+for urban and natural drainage networks: unsteady advection-
+reaction-diffusion equation paired with a full dynamic hydraulic 
+model. In Novatech 2023 11e Conférence internationale sur l’eau 
+dans la ville. https:/ /hal.sc ience/h al-04 184778v1
+65. Brillas E (2023) Activation of persulfate and peroxymonosulfate 
+for the removal of herbicides from synthetic and real waters and 
+wastewaters. J Environ Chem Eng 11(5):110380. h t t p s : / / d o i . o r g / 
+1 0 . 1 0 1 6 / j . j e c e . 2 0 2 3 . 1 1 0 3 8 0 
+66. Zhang C, Ding N, Pan Y , Fu L, Zhang Y (2024) The degradation 
+pathways of contaminants by reactive oxygen species generated in 
+the Fenton/Fenton-like systems. Chin Chem Lett 35(10):109579. 
+https:/ /doi.or g/10.10 16/j. cclet.2024.109579
+67. Morton PA, Fennell C, Cassidy R, Doody D, Fenton O, Mellander 
+PE, Jordan P (2020) A review of the pesticide MCPA in the land-
+water environment and emerging research needs. Wiley Interdis-
+ciplinary Reviews: Water 7(1):e1402. h t t p s : / / d o i . o r g / 1 0 . 1 0 0 2 / w a t 
+2 . 1 4 0 2 
+68. Feng D, Soric A, Boutin O (2020) Treatment technologies and 
+degradation pathways of glyphosate: A critical review. Sci Total 
+Environ 742:140559. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . s c i t o t e n v . 2 0 2 0 1 4 0 
+5 5 9 G e t rights and content
+69. Li ZM, Kannan K (2025) Occurrence and distribution of glypho-
+sate and aminomethylphosphonic acid in surface water, drinking 
+water, wastewater and other water types from New York State, 
+USA. Water Res 124232. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . w a t r e s . 2 0 2 5 . 1 
+2 4 2 3 2 
+70. De Gerónimo E, Mosca A, Cabrerizo F, Vargas R (2025) Insights 
+into chlorination-induced degradation of sulfonylurea herbicides: 
+Unravelling kinetics and intermediates during water treatment. 
+Water Res 280:123513. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . w a t r e s . 2 0 2 5 . 1 2 
+3 5 1 3 
+71. Brillas E (2021) Recent development of electrochemical advanced 
+oxidation of herbicides. A review on its application to wastewater 
+treatment and soil remediation. J Clean Prod 290:125841. h t t p s : / / 
+d o i . o r g / 1 0 . 1 0 1 6 / j . j c l e p r o . 2 0 2 1 . 1 2 5 8 4 1 
+72. Zhou W, Li M, Achal V (2025) A comprehensive review on envi-
+ronmental and human health impacts of chemical pesticide usage. 
+Emerg Contaminants 11(1):100410. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . e m 
+c o n . 2 0 2 4 . 1 0 0 4 1 0 
+73. Muhammad F, Yakasai HM (2023) Biodegradation of atrazine 
+herbicide: A mini-review. J Biochem Microbiol Biotechnol 
+11(1):1–6. https:/ /doi.or g/10.54 987/j obimb.v11i1.791
+74. Ruuskanen S, Fuchs B, Nissinen R, Puigbò P, Rainio M, Saik -
+konen K, Helander M (2023) Ecosystem consequences of her -
+bicides: the role of microbiome. Trends Ecol Evol 38(1):35–43. 
+https:/ /doi.or g/10.10 16/j. tree.2022.09.009
+75. Li J, Zhang W, Lin Z, Huang Y , Bhatt P, Chen S (2021) Emerg-
+ing strategies for the bioremediation of the phenylurea herbicide 
+diuron. Front Microbiol 12:686509. h t t p s : / / d o i . o r g / 1 0 . 3 3 8 9 / f m i c 
+b . 2 0 2 1 . 6 8 6 5 0 9 
+76. Hong J, Boussetta N, Enderlin G, Merlier F, Grimi N (2022) Deg-
+radation of residual herbicide atrazine in agri-food and washing 
+water. Foods 11(16):2416. h t t p s : / / d o i . o r g / 1 0 . 3 3 9 0 / f o o d s 1 1 1 6 2 4 1 6 
+77. Anagnostopoulou K, Nannou C, Evgenidou E, Lambropoulou D 
+(2022) Overarching issues on relevant pesticide transformation 
+products in the aquatic environment: a review. Sci Total Environ 
+815:152863. https:/ /doi.or g/10.10 16/j. scitotenv.2021.152863
+78. Mitra S, Saran RK, Srivastava S, Rensing C (2024) Pesticides 
+in the environment: Degradation routes, pesticide transformation 
+products and ecotoxicological considerations. Sci Total Environ 
+935:173026. https:/ /doi.or g/10.10 16/j. scitotenv.2024.173026
+79. Stefan DS, Bosomoiu M, Teodorescu G (2023) The behaviour of 
+polymeric pipes in drinking water distribution system—Compari-
+son with other pipe materials. Polymers 15(19):3872. h t t p s : / / d o i . 
+o r g / 1 0 . 3 3 9 0 / p o l y m 1 5 1 9 3 8 7 2 
+80. Oliveira IM, Gomes IB, Simões LC, Simões M (2024) A review 
+of research advances on disinfection strategies for biofilm control 
+in drinking water distribution systems. Water Res 253:121273. 
+https:/ /doi.or g/10.10 16/j. watres.2024.121273
+81. Alaggio J, Barros DB, Brentan B, Meirelles G (2024) Compara -
+tive Risk Evaluation of Contaminant Intrusion in Water Dis -
+tribution Networks via Complex Network Analysis. Eng Proc 
+69(1):65. https:/ /doi.or g/10.33 90/en gproc2024069065
+82. Abhijith GR, Ostfeld A (2022b) EPANET-C—An Umbrella Sim-
+ulation Tool for Water Distribution System Quality Analysis. In 
+World Environmental and Water Resources Congress 2022 (pp. 
+981–999). https:/ /doi.or g/10.10 61/97 80784484258.092
+83. Seyoum AG, Tanyimboh TT (2016) Investigation into the pres -
+sure-driven extension of the EPANET hydraulic simulation 
+model for water distribution systems. Water Resour Manage 
+30(14):5351–5367. https:/ /doi.or g/10.10 07/s1 1269-016-1492-6
+84. Alnajim K, Abokifa AA (2024) Bayesian optimization for con -
+tamination source identification in water distribution networks. 
+Water 16(1):168. https:/ /doi.or g/10.33 90/w1 6010168
+1 3
+ 106 Page 18 of 18
+Water Conservation Science and Engineering (2026) 11:106 
+85. Nnaji CC, Ekwule OR, Nnaji C (2025) An extended period mod-
+elling of water supply systems using hydraulic simulators. Envi -
+ron Dev Sustain 27(6):12797–12825. h t t p s : / / d o i . o r g / 1 0 . 1 0 0 7 / s 1 0 
+6 6 8 - 0 2 3 - 0 4 4 3 1 - 2 
+86. Morley MS, Tricarico C (2008) Pressure-driven demand exten -
+sion for EPANET (EPANETpdd). https:/ /hdl.ha ndle.ne t/108 
+71/14721
+87. Abokifa AA, Xing L, Sela L (2020) Investigating the Impacts 
+of Water Conservation on Water Quality in Distribution Net -
+works Using an Advection-Dispersion Transport Model. Water 
+12(4):1033. https:/ /doi.or g/10.33 90/w1 2041033
+88. Dimas P, Nikolopoulos D, Pelekanos N, Bouziotas D, Makropou-
+los C (2023) Water Distribution Network performance and device 
+placement location schemes assessment under multiple hydrau -
+lic transient generative scenarios, EGU General Assembly 2023, 
+Vienna, Austria, 24–28 Apr 2023, EGU23-3890. h t t p s : / / d o i . o r g / 1 
+0 . 5 1 9 4 / e g u s p h e r e - e g u 2 3 - 3 8 9 0 , 2023
+89. Fisher IH (2023) Integrated EPANET-MSX process models of 
+chlorine and its by‐products in drinking water distribution sys -
+tems. Water Environ Res 95(12):e10949. h t t p s : / / d o i . o r g / 1 0 . 1 0 0 2 / 
+w e r . 1 0 9 4 9 
+90. Burkhardt JB, Burkhart B, Shang F (2023) Modelling nicotine-
+induced chlorine loss in drinking water using updated EPANET-
+MSX. J Environ Eng 149(12):04023086. h t t p s : / / d o i . o r g / 1 0 . 1 0 6 1 / 
+J O E E D U . E E E N G - 7 4 3 3 
+91. Elsherif SM, Wang S, Taha AF, Sela L, Giacomoni MH, Abokifa 
+AA (2023) Control-theoretic modelling of multi-species water 
+quality dynamics in drinking water networks: Survey, methods, 
+and test cases. Annu Rev Control 55:466–485. h t t p s : / / d o i . o r g / 1 0 . 
+1 0 1 6 / j . a r c o n t r o l . 2 0 2 2 . 0 8 . 0 0 3 
+92. Dolatabadi M, Ghaneian MT, Wang C, Ahmadzadeh S (2021) 
+Electro-Fenton approach for highly efficient degradation of the 
+herbicide 2, 4-dichlorophenoxyacetic acid from agricultural 
+wastewater: Process optimization, kinetic and mechanism. J Mol 
+Liq 334:116116. https:/ /doi.or g/10.10 16/j. molliq.2021.116116
+93. Lim S, Shi JL, von Gunten U, McCurry DL (2022) Ozonation of 
+organic compounds in water and wastewater: A critical review. 
+Water Res 213:118053. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . w a t r e s . 2 0 2 2 . 1 1 
+8 0 5 3 
+94. Hu CY , Liu H, Xu L, Lin YL, Wang QB, Huang DD, Wu YH, 
+Dong ZY , Ji SJ (2024) Degradation of prometryn during UV/per-
+sulfate process: Kinetics and disinfection by-product formation. J 
+Water Process Eng 60:105246. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . j w p e . 2 0 
+2 4 . 1 0 5 2 4 6 
+95. Fisher I, Kastl G, Sathasivan A (2017) New model of chlorine-
+wall reaction for simulating chlorine concentration in drinking 
+water distribution systems. Water Res 125:427–437. h t t p s : / / d o i . o 
+r g / 1 0 . 1 0 1 6 / j . w a t r e s . 2 0 1 7 . 0 8 . 0 6 6 
+96. Pavlou P, Kyriakou M, Vrachimis SG, Eliades DG (2024) A com-
+prehensive virtual testbed for modelling disinfection byproduct 
+formation in water distribution networks. Eng Proc 69(1):33. 
+https:/ /doi.or g/10.33 90/en gproc2024069033
+97. Rocha JS, Uchôa JGS, Brentan BM, Lima Neto IE (2026) A 
+Review of Water Distribution System Modeling and Calibration: 
+Insights into Desalinated Water Integration. Water 18(12):1389. 
+https: //w ww.m dpi .com /2 07 3- 44 41/18/12/1389
+Publisher’s Note Springer Nature remains neutral with regard to juris-
+dictional claims in published maps and institutional affiliations.

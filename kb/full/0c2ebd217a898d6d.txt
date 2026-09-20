@@ -1,0 +1,823 @@
+npj | clean air Article
+https://doi.org/10.1038/s44407-026-00100-6
+Meteorology shapes urban particle
+nucleation, while pollution-related factors
+modulate growth
+Check for updates
+Shi Yin1 ,S h i y uZ h a n1,Y a d o n gW a n g1, Mingrui Jiang1,Y u n x iL u1,Y o n g j u nH u1,C h r i s t i a nG e o r g e2,3,
+Hartmut Herrmann2,4,L i nD u2 &M a o f aG e5
+Urban new particle formation (NPF) is shaped by meteorology and pollution, yet their stage-speci ﬁc
+roles across particle sizes remain difﬁcult to quantify. Here we combine size-resolved particle number
+size distributions from polluted Beijing and cleaner coastal Qingdao with XGBoost modeling and
+SHAP attribution to resolve environmental contributions across 10–500 nm particles and three modes.
+The models reproduced observed particle number concentrations with high skill (mean testR² = 0.95 in
+Beijing and 0.88 in Qingdao), enabling size- and mode-speci ﬁc attribution of model predictions.
+Meteorological variables, especially relative humidity and solar radiation, accounted for the largest
+share of nucleation-mode variability (~56–58%), and their contributions intensiﬁed during NPF events,
+reaching ~70% in Qingdao. By contrast, pollution-related variables gained importance in growth-
+related size modes, with city-speci ﬁc differences. These results show that meteorological conditions
+were most strongly associated with observable nucleation-mode bursts, whereas pollution-related
+conditions gained importance during subsequent growth, providing observational benchmarks for
+urban aerosol formation and size-resolved aerosol-model sensitivities.
+New particle formation (NPF) converts gaseous precursors into atmo-
+spheric particles and is an important source of urban ultraﬁne particles and
+climate-relevant aerosol populations 1–5. Although NPF is episodic, its
+impact on urban particle burdens can be substantial: long-term urban
+observations have reported localized formation-and-growth processes on
+about 7% of days, with ultraﬁne particle number concentrations reaching
+60 × 10³ cm⁻³6. The atmospheric relevance of NPF therefore depends not
+only on the appearance of nanometer-sized particles, but also on their
+persistence and growth into larger size ranges. NPF is thus a coupled
+formation-and-growth process, not only an event-occurrence problem.
+The formation and growth stages are in ﬂuenced by related but dis-
+tinct processes. Nucleation involves molecular clusters formed from
+precursors such as sulfuric acid, amines and low-volatility organic com-
+pounds, whereas subsequent growth depends on condensable vapors,
+coagulation and interactions with pre-existing particles 7–13. This distinc-
+tion is central because newly formed particles must grow rapidly enough
+to avoid scavenging by larger aerosols, especially in the smallest size
+ranges, before they can contribute to larger aerosol populations12,13. Field
+observations have linked NPF events to strong solar radiation, low relative
+humidity, low background aerosol loading and changes in trace gases such
+as NO₂,O ₃, and SO₂14–18. These observations show that both meteorology
+and atmospheric composition are relevant, but they do not directly
+quantify how their relative roles vary across particle sizes and stages. Large
+observational analyses have identi ﬁed several common environmental
+conditions associated with NPF. For example, a study covering more than
+85 site-years at 16 European sites identi ﬁed 1952 NPF events and exam-
+ined their frequency, formation rate and growth rate in relation to
+meteorology and atmospheric composition 14. Solar radiation, tempera-
+ture and pressure were generally positively associated with event fre-
+quency, whereas relative humidity was generally negatively associated;
+however, exceptions occurred among sites, and both the magnitude and
+direction of some relationships varied with local conditions. These ﬁnd-
+ings show that the ﬁeld has moved beyond asking whether meteorology
+and composition matter. The more speci ﬁc question is how their
+1 MOE Key Laboratory of Laser Life Science and Institute of Laser Life Science, College of Biophotonics, School of Optoelectronic Science and Engineering, South
+China Normal University, Guangzhou, China. 2Qingdao Key Laboratory for Prevention and Control of Atmospheric Pollution in Coastal Cities, School of Envir-
+onmental Science and Engineering, Shandong University, Qingdao, China. 3IRCELYON, CNRS, Universite Claude Bernard Lyon 1, Villeurbanne, France.
+4Atmospheric Chemistry Department (ACD), Leibniz Institute for Tropospheric Research (TROPOS), Leipzig, Germany. 5State Key Laboratory for Structural
+Chemistry of Unstable and Stable Species, Beijing National Laboratory for Molecular Sciences (BNLMS), Institute of Chemistry, Chinese Academy of S ciences,
+Beijing, China. e-mail: yinshi@m.scnu.edu.cn; lindu@sdu.edu.cn; gemaofa@iccas.ac.cn
+npj Clean Air | (2026) 2:57 1
+1234567890():,;
+1234567890():,;
+contributions are partitioned across particle sizes, particle modes and
+urban environments with different pollution backgrounds.
+This question is difﬁcult to answer because urban NPF is nonlinear, size-
+dependent and embedded in covarying atmospheric conditions. Meteor-
+ological variables can affect photochemistry, humidity-dependent sinks and
+dilution, while pollution-related variables can serve as proxies for precursor
+availability, oxidant chemistry, emissions and pre-existing particle sinks19–26.
+Event classiﬁcation, correlation analysis and formation- or growth-rate
+diagnostics provide essential constraints on NPF occurrence and develop-
+ment27,28. However, these approaches usually summarize NPF using event
+labels or a small number of process metrics, and are less suited to assigning
+measured environmental contributions continuously across the 10–500 nm
+size range and across nucleation, Aitken and accumulation modes.
+Interpretable machine learning provides one route to this attribution
+problem, provided that its outputs are interpreted within the limits of
+observational data. Nonlinear models can reproduce complex relationships
+among atmospheric variables, while interpretation methods can decompose
+model predictions into variable-level contributions29–32. Recent studies using
+physically informed or interpretable learning have shown how predictive
+models can be linked to process-relevant variables rather than used as black
+boxes33–36. Here, SHapley Additive exPlanations (SHAP) is used not as a
+causal test, but as a quantitative tool for comparing how measured
+meteorological and pollution-related variables contribute to modeled par-
+ticle number concentrations across sizes and atmospheric states31,32.
+Here we apply a size- and stage-resolved explainable machine-learning
+approach to urban NPF using particle number size distributions measured in
+two contrasting urban environments in China: polluted Beijing and cleaner
+coastal Qingdao (Fig. S1). XGBoost models were trained to predict particle
+number concentrations across 10–500 nm and within nucleation, Aitken and
+accumulation modes37; SHAP was then used to attribute model predictions to
+meteorological variables, trace gases andb a c k g r o u n dp a r t i c u l a t em a t t e r .T h i s
+approach allows us to ask how environmental contributions shift from
+nucleation to growth, how they differ between urban backgrounds and how
+they change during NPF event periods. Weﬁnd that meteorological variables,
+especially relative humidity and solar radiation, account for the largest share
+of model-explained nucleation-mode variability, whereas pollution-related
+variables gain importance in Aitken and accumulation-mode particles. By
+resolving these contributions across particle size, formation stage and event
+condition, this study provides an interpretable basis for urban aerosol for-
+mation and observational benchmarks for size-resolved aerosol-model
+sensitivities.
+Results
+Size-resolved models provide a reliable basis for interpretable
+attribution
+Urban NPF rapidly redistributes particle number concentrations (PNCs)
+across a broad size range, making size-resolved prediction a necessaryﬁrst
+step before environmental attribut ion. We therefore trained separate
+m o d e l sf o rP N C sa c r o s s1 0–500 nm using minute-scale observations of 13
+environmental variables, including meteorological parameters, trace gases
+and background particulate matter (Fig. 1 and Table S1). Four modeling
+approaches were evaluated using the same predictor set: Ridge regression,
+fully connected neural networks, Random Forest and XGBoost. XGBoost
+provided the best balance of predictive skill and stability, with mean testR²
+values averaged across size-bin models of 0.95 in Beijing and 0.88 in
+Qingdao, and lower RMSE values acrossmost particle sizes than the other
+models (Tables S2 and S3).
+Prediction errors were largest in s ize ranges associated with rapid
+nucleation and early growth, particularly 9–60 nm in Beijing and 20–80 nm
+in Qingdao (Figs. S2 and S3). This pattern is expected because these size bins
+exhibit the strongest short-term variability during NPF events. Even under
+these conditions, the XGBoost model s reproduced the observed particle
+number size distributions with highﬁdelity (Figs. S4 and S5). On active NPF
+days, absolute errors in individual size bins remained below 1000 cm⁻³i n
+Beijing and 5000 cm⁻³ in Qingdao. Given that peak event-day PNCs were
+typically ~5 × 10⁴–8×1 0 ⁴ cm⁻³, these errors correspond to approximate
+relative errors below ~2% and ~8%, respectively. These results show that the
+models capture the main size-resolved PNC variability during both back-
+ground and event conditions, providing a suitable basis for SHAP-based
+attribution of model predictions.
+Fig. 1 | Observation-to-attribution work ﬂow for
+size-resolved urban particle formation. Time-
+resolved meteorological variables, trace gases, and
+background particulate matter were used as pre-
+dictors in XGBoost models trained for individual
+particle-size bins and operational particle modes.
+Model outputs were interpreted with SHapley
+Additive exPlanations (SHAP) to attribute predicted
+particle number concentrations (PNCs) to indivi-
+dual predictors and grouped predictor classes. The
+workﬂow resolves how meteorological and
+pollution-related contributions vary with particle
+size, particle mode and event condition.
+https://doi.org/10.1038/s44407-026-00100-6 Article
+npj Clean Air | (2026) 2:57 2
+Meteorological and pollution-related contributions partition
+strongly by particle size
+We next applied SHAP to each size-resolved XGBoost model to quantify
+how the 13 environmental variables contributed to modeled PNC variability
+across 10–500 nm (Fig. 2). The attribution patterns showed strong size
+dependence and clear differences between the two cities. In Qingdao, rela-
+tive humidity (RH) was a leading con tributor to the smallest particles,
+accounting for ~20–24% of model-explained variability in the 10 –25 nm
+range, but its contribution dropped to <8% above 25 nm. In contrast, NO₂
+showed a pronounced contribution between 60 and 180 nm, reaching
+~40%, while remaining <10% outside this interval. In Beijing, RH also
+contributed strongly at small sizes, with relative importance of ~10 –27%
+below 20 nm, but it remained inﬂuential over a wider size range and reached
+56.8% across 100–500 nm. SO₂ was negligible in Qingdao, with contribu-
+tions ≤5% across sizes, but exceeded ~10% near 15 nm and again around
+80 nm in Beijing.
+To clarify how individual variables combine into broader environ-
+mental categories, we grouped predictors into meteorological variables,
+trace gases and background particulate matter. The grouped SHAP
+contributions revealed a consistent size-dependent partitioning.
+Meteorological variables accounted for the largest contribution at the
+smallest sizes, reaching ~55 –80% below 50 nm. Pollution-related vari-
+ables, including trace gases and particulate matter, became more
+important in larger size ranges, especially near the transition from Aitken
+to accumulation-mode sizes. In Qingdao, RH, pressure and temperature
+were the leading contributors below 50 nm, whereas O ₃,N O₂ and PM₂.₅
+became more important above 50 nm. In Beijing, RH and solar radiation
+remained important across a broader size range, while O ₃,N O ₂ and
+PM₂.₅ contributed most strongly within a narrower mid-size window.
+These results show that the relative importance of meteorology and
+pollution-related variables is not ﬁxed, but shifts systematically with
+particle size.
+Together, the size-resolved results show that urban PNC variability
+cannot be explained by a single dominant environmental factor. Instead, the
+attribution pattern changes with particle diameter: meteorological variables
+are most inﬂuential in the smallest size range associated with nucleation and
+early growth, whereas pollution-related variables gain importance as par-
+ticles grow into larger modes. This size dependence provides theﬁrst layer of
+evidence that meteorological and pollution-related in ﬂuences partition
+differently across the NPF sequence.
+Fig. 2 | Size-resolved environmental attribution of particle number concentra-
+tions in Qingdao and Beijing. a , b Show SHAP-based relative importance of
+individual predictors for particle number concentration (PNC) across particle-size
+bins in Qingdao and Beijing, respectively. c, d Show the dominant predictor in each
+size bin and the cumulative relative importance of three predictor groups: meteor-
+ological variables, trace gases and background particulate matter. Relative impor-
+tance was calculated from mean absolute SHAP values and is expressed as a
+percentage of the total attribution within each size-bin model.
+https://doi.org/10.1038/s44407-026-00100-6 Article
+npj Clean Air | (2026) 2:57 3
+Mode-resolved attribution separates nucleation-mode variability
+from growth-mode variability
+To connect the size-resolved results to the NPF formation –growth
+sequence, we further grouped particles into nucleation, Aitken and accu-
+mulation modes and trained separate XGBoost models for each mode in
+both cities (Fig. 3 and Table S4). This mode-based analysis condenses the
+continuous size-resolved pattern into process-relevant particle classes and
+enables direct comparison of environmental contributions during nuclea-
+tion and subsequent growth.
+In the nucleation mode, meteorological variables accounted for the
+largest share of model-explained variability in both cities. Their combined
+contribution was ~58% in Qingdao and ~56% in Beijing (Fig.3a, b). RH was
+consistently the leading meteorolog ical contributor, although its effect
+depended on humidity level. Low RH was associated with positive SHAP
+contributions to nucleation-mode PNCs, whereas higher RH was associated
+with smaller or negative contributions, with suppression beginning above
+~50% RH in Qingdao and above ~20% RH in Beijing (Figs. S6 and S7). Solar
+radiation was also important in Beijing, ranking second with a relative
+contribution of ~16%, consistent w ith the role of photochemistry in
+producing low-volatility vapors. These results indicate that meteorological
+variability provides the strongest mod el-attributed signal in nucleation-
+mode PNCs.
+The attribution pattern changed in the Aitken and accumulation
+modes. In Qingdao, the leading contributors to Aitken-mode PNCs inclu-
+ded NO ₂, temperature, NO and PM ₂.₅ (Figs. 3ca n dS 8 ) .I nB e i j i n g ,
+meteorological variables explained only ~39% of Aitken-mode variability,
+while pollution-related variables, mainly PM ₂.₅,O ₃ and NO ₂, together
+accounted for ~61% (Figs.3d and S9). In the accumulation mode, Qingdao
+showed an even clearer pollution-related signal: NO ₂ alone explained
+~37.8% of the modeled variability, with CO and PM ₂.₅ also contributing
+substantially (Figs.3e and S10). Beijing differed from Qingdao in that RH
+remained the largest contributor t o accumulation-mode variability,
+accounting for 51%, while NO₂,S O₂ and O₃ also made positive contribu-
+tions (Figs. 3f and S11).
+These mode-resolved results re ﬁne the size-resolved pattern. In
+Qingdao, attribution shifted clearlyf r o mm e t e o r o l o g y -dominated nuclea-
+tion-mode variability to pollution-related accumulation-mode variability.
+In Beijing, meteorological variables remained important across a wider size
+Fig. 3 | Mode-resolved environmental attribution
+of particle number concentrations in Qingdao and
+Beijing. a, c, e Show SHAP-based relative impor-
+tance of individual predictors for nucleation-mode,
+Aitken-mode and accumulation-mode particle
+number concentrations (PNCs) in Qingdao,
+respectively. b, d, f Show the corresponding results
+for Beijing. Percentages in each panel summarize the
+cumulative relative importance of meteorological
+variables, trace gases and background particulate
+matter within the corresponding mode. The
+nucleation mode is deﬁned operationally as particles
+smaller than 25 nm; the operational nucleation-
+mode ranges were 5.6 –25 nm in Beijing and
+10.8–25 nm in Qingdao.
+https://doi.org/10.1038/s44407-026-00100-6 Article
+npj Clean Air | (2026) 2:57 4
+range, while pollution-related variables were most prominent in selected
+growth-related modes. Thus, the central result is not a universal switch from
+meteorology to pollution, but a stage-dependent redistribution of envir-
+onmental contributions whose expression depends on urban background
+conditions.
+Meteorological contributions intensify during NPF event periods
+The preceding analyses describe average size- and mode-resolved
+attribution across the full datasets. To examine whether these patterns
+became more pronounced during active NPF periods, we analyzed
+representative event days using 30 min averaged SHAP time series for
+nucleation-mode PNC (Fig. 4). Meteorological variables accounted for
+approximately 59 –70% of nucleation-mode attribution across the
+representative Qingdao events (Fig. 4m and S12). RH was frequently the
+leading contributor. On 13 November, RH below 50% was associated
+with positive SHAP contributions of up to approximately +5000 cm⁻³
+(Fig. 4b), whereas pressure was the leading meteorological contributor
+on several other Qingdao event days (Fig. S13). In Beijing, meteor-
+ological variables similarly accounted for approximately 56 –63% of
+nucleation-mode attribution during the representative events, with RH
+Fig. 4 | Time-resolved SHAP attribution during representative urban particle-
+burst events. a –l Show 30 min averaged SHAP values of the leading predictors for
+nucleation-mode particle number concentrations (PNCs) during representative
+NPF events in Qingdao and Beijing. Positive SHAP values indicate contributions
+that increase the modeled PNC relative to the model baseline, whereas negative
+values indicate decreasing contributions. For each event, the adjacent box plot
+summarizes the distribution of signed SHAP values for the displayed predictors,
+which are ordered by their mean absolute SHAP values; boxes indicate the inter-
+quartile range, center lines indicate medians, circles indicate means, and whiskers
+extend to 1.5 times the interquartile range. m, n Show the cumulative relative
+importance of meteorological variables, trace gases and background particulate
+matter for nucleation-mode PNC on each event day in Qingdao and Beijing,
+respectively.
+https://doi.org/10.1038/s44407-026-00100-6 Article
+npj Clean Air | (2026) 2:57 5
+and surface net solar radiation among the leading contributors (Figs. 4n
+and S14).
+Pollution-related variables also contributed during individual
+events, but their importance was more event dependent. In Qingdao,
+PM₂.₅ ranked among the three leading predictors on 18 November and 2
+December, although particle-loading variables together accounted for
+less than 25% of the total attribution. Combined with the negative PM ₂.₅
+contributions to nucleation-mode PNC shown by the SHAP dependence
+analysis (Fig. S6), this pattern is consistent with an in ﬂuence of pre-
+existing particle and vapor sinks under higher aerosol-loading condi-
+tions. However, PM ₂.₅ may also represent a broader polluted-air-mass
+state that covaries with precursor availability and atmospheric mixing. In
+Beijing, SO₂ ranked among the leading event-day predictors, whereas it
+did not show comparable importance in Qingdao, consistent with the
+higher sulfur-related background represented by the Beijing campaign.
+These interpretations remain attribution based and should be regarded as
+process-consistent associations rather than direct evidence of individual
+chemical pathways.
+The event –non-event comparison further supports a stronger
+meteorological signal during classiﬁed NPF events. In Qingdao, the mean
+absolute SHAP value of RH was 754 cm⁻³ on event days, 134% higher than
+on non-event days; the corresponding values for SNSR and PM₂.₅ increased
+by 49% and 86%, respectively (Fig.5a ) .I nB e i j i n g ,t h em e a na b s o l u t eS H A P
+values of RH and SNSR increased by 35% and 41%, respectively, on event
+days (Fig. 5b). The mean signed SHAP value of RH also shifted from
+negative on non-event days to positive on event days at both sites (Fig.5c, d).
+This sign change should not be inter preted as a reversal of a single RH-
+dependent mechanism. Rather, it indicates that RH was embedded in dif-
+ferent combinations of boundary-lay er conditions, pre-existing particle
+sinks, hygroscopic responses, and pre cursor-related atmospheric states
+during event and non-event periods.
+Because primary combustion particles can also contribute to
+nucleation-mode PNC in urban environments, we further strati ﬁed the
+SHAP values by event status and operationally deﬁned local-time windows
+to examine this potential inﬂuence (Fig. S15). NO and NO₂ retained mea-
+surable model attribution during some commuting-time windows, whereas
+RH and SNSR generally remained among the leading predictors during
+midday periods on NPF event days. This result indicates that combustion-
+related atmospheric conditions were associated with part of the nucleation-
+mode variability, but the available proxies do not permit source-resolved
+separation of primary trafﬁc particles from secondary particles formed in
+the atmosphere.
+Finally, to complement the attribution-based analyses with a conven-
+tional event-level descriptor, apparentparticle growth rates were calculated
+for all classiﬁed NPF events (Table S5). Apparent GR values ranged from
+2.91 to 3.96 nm h⁻¹ for the three Beijing events and from 0.73 to 3.25 nm h⁻¹
+for the ﬁve Qingdao events. These estimates provide a quantitative
+description of the observed modal displacement but do not identify the
+vapors or processes responsible for particle growth. Because only eight
+events were available and the campaigns differed in season, instrumenta-
+tion, and atmospheric background, the GR values are interpreted descrip-
+tively rather than as evidence for a statistically general relationship between
+particle growth and any individual environmental variable. Taken together,
+the event-level analyses show that meteorological variables, particularly RH
+and solar radiation, were most stro ngly associated with observable
+nucleation-mode enhancements, whereas pollution-related variables con-
+tributed more conditionally during individual events and became more
+important during later modal development and at larger particle sizes.
+Discussion
+This study provides a size- and stage-resolved attribution of environmental
+controls on urban NPF. Across two contrasting urban environments,
+Fig. 5 | Event –non-event differences in SHAP attribution for nucleation-mode
+particle number concentrations. a , b Show mean absolute SHAP values of indi-
+vidual predictors for nucleation-mode particle number concentration (PNC) on
+event and non-event days in Qingdao and Beijing, respectively. c, d Show the cor-
+responding mean SHAP values, which indicate the direction and magnitude of
+predictor contributions relative to the model baseline. Positive mean SHAP values
+indicate net positive contributions to modeled nucleation-mode PNC, whereas
+negative values indicate net negative contributions. Event and non-event classi ﬁ-
+cations followed the operational criteria described in “Methods,” requiring the
+emergence of a distinct mode within the smallest instrumentally resolved interval
+below 25 nm and its coherent displacement toward larger diameters over sev-
+eral hours.
+https://doi.org/10.1038/s44407-026-00100-6 Article
+npj Clean Air | (2026) 2:57 6
+meteorological variables, particularlyrelative humidity and solar radiation,
+accounted for the largest share of model-explained variability in nucleation-
+mode particles, and their contributions increased during NPF event periods.
+In contrast, pollution-related variables, including NO₂,O ₃,P M₂.₅ and CO,
+gained importance in Aitken and accumulation-mode particles, although
+the strength and size range of this transition differed between Qingdao and
+Beijing. These results show that the relative importance of meteorology and
+pollution is notﬁxed across the particle size distribution. Instead, urban NPF
+is best interpreted as a stage-dependent process in which meteorological
+conditions shape the appearance of nucleation-mode bursts, whereas
+pollution-related environmental states modulate subsequent growth.
+These ﬁndings support and reﬁne previous ﬁeld observations. Earlier
+studies have shown that NPF occurrence is often favored by strong solar
+radiation, low relative humidity and low background aerosol loading, while
+growth rates and particle survival depend on condensable vapors and pre-
+existing particle sinks12–14,21. Large multi-site analyses have also emphasized
+that the direction and magnitude of meteorological and compositional
+effects vary among locations14. Our contribution is to move beyond event-
+level associations by quantifying how these environmental contributions
+partition continuously across particle sizes and particle modes. The results
+do not overturn the established view that NPF requires chemical precursors;
+rather, they clarify when and where measured meteorological and pollution-
+related variables become most important in explaining observed particle
+number variability.
+We use “gatekeeper” in an observational sense: favorable meteor-
+ological states mark the conditions under which precursor chemistry is
+more likely to appear as an observable nucleation-mode particle burst.
+Low relative humidity can reduce particle- and vapor-sink effects and is
+frequently associated with conditions favorable for NPF, whereas strong
+solar radiation enhances photochemical production of low-volatility
+vapors that can participate in cluster formation and early growth 14–18.I n
+our analysis, these conditions were re ﬂected by large positive SHAP
+contributions from RH- and radiation-related variables during
+nucleation-mode events. This interpretation should be understood as
+process-consistent attribution rather than direct causal proof. The che-
+mical basis of nucleation remains essential, including sulfuric acid, bases
+and low-volatility organic compounds 7–13. The present results therefore
+suggest that meteorology helps set the conditions under which available
+precursor chemistry becomes expressed as an observable particle burst,
+rather than replacing precursor chemistry itself.
+The increasing importance of pollution-related variables at larger
+particle sizes is consistent with current understanding, but it should not be
+interpreted as evidence for a single particle-growth pathway. NO₂,O ₃,C O ,
+and PM₂.₅ are not direct measurements of the molecular species responsible
+for particle growth; rather, they provide indirect information on emissions,
+oxidative conditions, combustion inﬂuence, atmospheric aging, and pre-
+existing aerosol loading (Table S6). The meteorology–pollution grouping is
+therefore analytical rather than mechanistic, because meteorological and
+chemical processes remain closely coupled in the atmosphere. Accordingly,
+the larger SHAP contributions of pollution-related variables in the Aitken
+and accumulation modes indicate that model predictions at these sizes were
+more sensitive to pollution-related atmospheric states than were predictions
+of nucleation-mode PNC. This pattern is consistent with studies showing
+that urban emissions can supply condensable organic vapors and that
+combustion-related chemistry may contribute to nanoparticle growth and
+survival21–26. Conversely, PM₂.₅ showed predominantly negative contribu-
+tions to nucleation-mode PNC in the SHAP dependence analysis. Because
+PM₂.₅ is a bulk aerosol-loading proxy rather than a direct measure of con-
+densation or coagulation sink, this result is consistent with stronger pre-
+existing particle and condensable-vapor sinks but does not establish either
+process independently. Together, these patterns point to competing size-
+dependent in ﬂuences: polluted atmospheric states may coincide with
+stronger sinks that limit the observable emergence of new particles, while
+also providing precursor- and oxidati on-rich conditions associated with
+particle growth at larger sizes.
+Primary ultraﬁne particles introduce an additional interpretive con-
+straint for nucleation-mode PNC. Because direct traf ﬁc counts, black-
+carbon measurements, and source-r esolved particle composition were
+unavailable, NO and NO₂ were treated as trafﬁc- and combustion-related
+proxies, whereas CO was interpreted as a longer-lived indicator of com-
+bustion inﬂuence, regional background, anddilution rather than as a trafﬁc-
+speciﬁct r a c e r .T h et i m e - w i n d o w - s t r a t iﬁed analysis showed that NO and
+NO₂ retained measurable model attribution during some operationally
+deﬁned commuting-time windows, whileRH and surface net solar radiation
+generally remained among the leadingpredictors duringmidday periods on
+NPF event days. This analysis therefore indicates a possible combustion-
+related inﬂuence but does not permit source-resolved separation of primary
+trafﬁc particles from secondary particles formed in the atmosphere. The
+apparent growth-rate analysis provi des a complementary quantitative
+description of event-level modal displacement. Differences in apparent GR
+may reﬂect the combined effects of condensable-vapor availability, oxida-
+tion chemistry, humidity, pre-existing particle sinks, mixing, and air-mass
+evolution. However, the limited number of events and the differences in
+season, instrumentation, and atmospheric background between the two
+campaigns do not support attributing the observed GR differences to any
+individual meteorological or pollution-related variable. Overall, Table S6
+and the event-level analyses provide process-consistent context for the size-
+and mode-resolved attribution, but they do not isolate individual molecular
+pathways. Direct mechanistic conﬁrmation would require measurements of
+sulfuric acid, basic compounds, oxygenated organic molecules, particle
+chemical composition, and size-resolved condensation sink.
+The contrasting attribution patterns in Qingdao and Beijing indicate
+that the meteorology–pollution balance was context dependent rather than
+uniform across particle sizes. In the Qingdao campaigns, which generally
+represented lower-pollution coasta l conditions, the attribution shifted
+relatively clearly from meteorology-dominated nucleation-mode variability
+to stronger pollution-related contr ibutions in the accumulation mode.
+Beijing showed a different size dependence: meteorological variables
+dominated the nucleation mode, pollution-related variables accounted for
+the larger share of attribution in theAitken mode, and RH again became the
+leading predictor in the accumulation mode. The two datasets therefore
+provide useful contrasting observational cases, but the differences should
+not be interpreted as a controlled city-to-city response to pollution
+background alone.
+Campaign-level statistics show that the datasets differed in modal
+PNCs, pollutant concentrations, RH, surface net solar radiation, season,
+observation year, measurement duration, and particle-sizing instrumenta-
+tion (Table S7). The observed contrasts may therefore reﬂect the combined
+inﬂuence of precursor availability, pre- existing particle sinks, boundary-
+layer conditions, transport, and campaign-speciﬁc sampling characteristics.
+Changes in wind and dilution may also have altered the sampled atmo-
+spheric background, precursor-related conditions, and particle loading,
+although air-mass origins cannot be r esolved without back-trajectory or
+source-resolved transport analysis (Fig s .S 1 2a n dS 1 4 ) .S i m i l a r l y ,t h eh i g h e r
+SO₂ attribution in Beijing is consistent with a stronger sulfur-related
+atmospheric inﬂuence during that campaign, but it does not demonstrate
+sulfuric-acid-driven nucleation in the absence of direct H₂SO₄ or molecular-
+cluster measurements. Accordingly, the Beijing –Qingdao comparison is
+used to examine size- and stage-dependent attribution under contrasting
+atmospheric settings, while the seasonal statistics are used to de ﬁne the
+observational context rather than to isolate a season-only effect. The central
+conclusion is therefore restricted to the measured campaign space and does
+not separate independent effects of location, season, instrumentation, or
+pollution background. This interpretation is consistent with broader evi-
+dence that NPF and particle-growth pathways vary substantially among
+atmospheric environments2.
+The results provide observational benchmarks for interpreting urban
+aerosol observations and evaluating size-resolved aerosol-model sensitiv-
+ities. First, they show that total par ticle number concentration or binary
+event classiﬁcation alone is insufﬁcient to describe urban NPF. The same
+https://doi.org/10.1038/s44407-026-00100-6 Article
+npj Clean Air | (2026) 2:57 7
+environmental variable can differ in importance across nucleation, Aitken,
+and accumulation modes, and its contribution may change between event
+and non-event states. Second, the size-resolved SHAP framework provides a
+way to compare modeled particle-number variability with physically
+interpretable environmental variables. Such information can help assess
+whether size-resolved aerosol model s show the expected sensitivities to
+meteorology and pollution-related proxies, even before all molecular
+pathways are simulated explicitly. Third, the results suggest that anticipating
+nucleation bursts requires high-qual ity meteorological information,
+whereas interpreting subsequent growth requires better representation of
+emissions, oxidation chemistry, and pre-existing particle sinks. These
+implications are best viewed as process-level constraints for observation-
+based interpretation and model sensitivity evaluation, not as a direct forecast
+system or a direct estimate of climate effects.
+Several limitations de ﬁne the scope of these conclusions. SHAP
+quantiﬁes how measured variables contribute to the predictions of a trained
+model; it does not establish causal pathways on its own 31,32. The available
+covariates also do not include several key molecular precursors and growth
+agents, such as sulfuric acid, ammonia,amines, iodine species, highly oxy-
+genated organic molecules or size-resolved condensation sink. As a result,
+the pollutant variables used here should be interpreted as proxies for broader
+chemical and physical environments. In addition, the Beijing and Qingdao
+datasets differ in observation perio d, instrumentation and urban back-
+ground, which limits direct generalization to all cities. Direct trafﬁc counts,
+black-carbon measurements, size-resolved condensation-sink estimates
+and air-mass back trajectories were not available. The present analysis
+therefore cannot provide trafﬁc-source apportionment, isolate individual
+molecular growth pathways or quantitatively separate local processing from
+regional transport. These limitations do not weaken the central attribution
+result, but they deﬁne its proper interpretation: the study identiﬁes robust,
+size- and stage-dependent statistic al contributions within the measured
+environmental space.
+Future work can build on this framework in three directions. First,
+coupling size-resolved explainable ML with direct measurements of H₂SO₄,
+NH₃, amines, VOCs, oxygenated organic molecules and condensation sink
+would help connect environmental attribution with molecular mechanisms.
+Second, applying the same framework to longer multi-city datasets would
+test whether the meteorology-to-pollution transition identi ﬁed here is
+common across urban environments or speciﬁc to particular pollution and
+climate regimes. Third, integrating SHAP-based environmental sensitivities
+with process models could help assess whether aerosol microphysical
+models reproduce not only particle number concentrations, but also the
+correct size-dependent responses to meteorology and emissions. Such
+integration would make explainable ML a complement to mechanistic
+modeling rather than a replacement for it.
+Overall, this work shows that the environmental controls of urban NPF
+are best understood as size- and stage-dependent attributions rather than a
+single meteorology-versus-pollution rule. Meteorology provides the stron-
+gest model-explained signal for obs ervable nucleation-mode bursts,
+whereas pollution-related condit ions become more important during
+growth, with city-speciﬁc expression. This attrib ution framework offers
+observational benchmarks for size-re solved aerosol-model sensitivities
+while linking routine urban observations to process-level interpretation.
+Methods
+Sampling sites and measurements
+Measurements were conducted at an urban site in Beijing (116.31°E,
+39.99°N) and at two suburban sites in Qingdao (Site A: 120.69°E, 36.37°N;
+Site B: 120.67°E, 36.35°N) (Fig. S16). These datasets represent two con-
+trasting urban atmospheric regimes: a heavily polluted inland megacity and
+a cleaner coastal urban environment. In Beijing, PNSDs were measured with
+a Fast Mobility Particle Sizer (FMPS; 5.6–560 nm) at 1-s resolution. After
+data-quality screening and synchronization with the environmental mea-
+surements, the analysis retained observations from 16 and 21–23 December
+2011 and from 13–25 April 2012, excluding 20 and 24 April. In Qingdao,
+PNSDs were measured with a Scanning Mobility Particle Sizer (SMPS;
+10–500 nm) at 4-min resolution. The analysis retained observations from
+Site A on 30 July and 1–2, 4, 6–7, and 13 August 2019, and from Site B on 10
+November, 12–30 November, and 1–31 December 2019, 1 January 2020,
+and 6–30 June 2020. Instrument details and calibration are provided in the
+Supporting Information.Because the Beijing and Qingdao campaigns were
+asynchronous and used different pa rticle-sizing instruments, the two
+datasets are treated as contrasting observational cases rather than as a
+controlled inter-city experiment. Campaign-speciﬁc particle, pollutant and
+meteorological statistics are provided in Table S7.
+Meteorological variables included temperature (T), RH, pressure (P),
+wind speed (WS), wind direction (WD), and solar radiation (SNSR).
+Concurrent pollutant measurements included SO ₂, NO, NO ₂,C O ,O ₃,
+PM₂.₅ and PM₁₀.B o t hN Oa n dN O₂ were retained because they re ﬂect
+different aspects of urban nitrogen chemistry and combustion in ﬂuence.
+NO and NO₂ were interpreted as trafﬁc- and combustion-related nitrogen
+oxide proxies, whereas CO was treat ed as a longer-lived proxy for com-
+bustion inﬂuence, regional background and dilution rather than as a trafﬁc-
+speciﬁct r a c e r .B o t hP M₂.₅ and PM₁₀ were retained becauseﬁne- and coarse-
+mode background aerosols can affect particle dynamics differently through
+condensation, coagulation and deposition.
+Event classiﬁcation and operational size modes
+Daily time-resolved PNSD contour plots were examined over the complete
+observation day using the same conceptual classi ﬁcation criteria at both
+sites. A day was classiﬁed as an NPF event only when both of the following
+conditions were satisﬁed: (i) a distinct particle mode emerged within the
+smallest instrumentally resolved size interval below 25 nm, corresponding
+to 5.6 –25 nm in Beijing and 10 –25 nm in Qingdao; and (ii) the modal
+diameter subsequently exhibited a co herent and sustained shift toward
+larger sizes over several hours, consistent with established observational
+criteria27,28. Short-lived particle-number concentration spikes, enhance-
+ments conﬁned to approximately constant diameters, and small-particle
+increases without a continuous growth trajectory were classi ﬁed as non-
+events. A banana-shaped trajectory in the PNSD contour plot was regarded
+as a characteristic pattern supportingsustained modal growth, rather than
+as an independent classiﬁcation criterion.
+Because event identiﬁcation was limited by the lower detection dia-
+meter of each instrument, this procedure identiﬁes formation-and-growth
+events only after the developing particle mode enters the measured size
+range. Nucleation episodes that rema in below the lower detection limit
+cannot be detected, and molecular nucleation itself is therefore not directly
+observed. Representative NPF even t and non-event days are shown in
+Fig. S17, and the numbers of valid observation days and classiﬁed NPF event
+days are summarized in Table S7. For th e mode-based analyses, particles
+were grouped into three operational size ranges: nucleation mode, deﬁned as
+5.6–25 nm in Beijing and 10–25 nm in Qingdao; Aitken mode, deﬁned as
+25–100 nm; and accumulation mode, deﬁned as 100–500 nm. Throughout
+this study, “nucleation-mode particles” therefore refers to the smallest
+instrumentally measured particle-size range and does not imply direct
+o b s e r v a t i o no ft h em o l e c u l a rn u c l e a t i o ns t e p .
+Machine learning framework
+We modeled particle number concentration in each size bin using 13
+environmental predictors (Table S1). Four algorithms were evaluated: Ridge
+regression, a fully connected neural network, Random Forest, and XGBoost.
+Data were divided into training (80%) and testing (20%) subsets. Hyper-
+parameters for Ridge regression, Random Forest, and XGBoost were opti-
+mized by grid search with 3-fold cross-validation within the training data.
+The neural network included two hidden layers with 256 and 128 nodes.
+Model performance was evaluated using R² and root-mean-square error
+(RMSE) on the test data. Because the train–test split evaluates out-of-sample
+reconstruction within the observed campaigns, the reported skill should not
+be interpreted as prospective forecasting performance under independent
+future conditions.
+https://doi.org/10.1038/s44407-026-00100-6 Article
+npj Clean Air | (2026) 2:57 8
+Separate models were trained for each size channel, yielding 109
+models for Qingdao and 31 models for Beijing. Additional XGBoost models
+were trained for the total number concentrations of the nucleation, Aitken
+and accumulation modes in each city. Models were implemented in Python
+using scikit-learn, Keras, and XGBoost libraries37–39. The Random Forest
+models followed the algorithm of Breiman40.
+SHAP-based interpretation
+Because XGBoost showed the best overall predictive performance and sta-
+bility, it was selected for interpret ation. SHAP was used to quantify the
+contribution of each predictor to each model output 31,32.F o rap r e d i c t e d
+concentration yᵢ,
+yi ¼ Φ0 þ
+XM
+j¼1Φi;j ð1Þ
+whereΦ₀ is the mean prediction andΦi,j is the SHAP value of predictorj for
+sample i. Positive SHAP values indicate that a predictor increases the pre-
+dicted concentration relative to the baseline, whereas negative values indi-
+cate the opposite. Global importance Ij for predictor j was calculated as
+Ij ¼
+Xn
+i¼1 Φi;j
+/C12/C12/C12
+/C12/C12/C12 ð2Þ
+and relative importance RIj was deﬁned as
+RIj ¼ Ij=
+XM
+m¼1
+Im ð3Þ
+where n is the number of samples andm is the number of predictors. In this
+study,“driver” refers to the dominant environmental correlate in the model
+attribution rather than a directly isolated mechanistic agent. We therefore
+interpret SHAP results as stage-dependent statistical dominance within the
+observed environmental space, no ta sd i r e c tc a u s a lp r o o fo fas p e c iﬁc
+physicochemical pathway. The resulting global and relative importance
+metrics, de ﬁned in Eqs. 1–3, were used for all subsequent attribution
+analyses. For correlated predicto rs, SHAP values distribute model
+attribution among covarying variables; therefore, individual feature
+rankings are interpreted together with grouped categories and physical
+context rather than as isolated causal effects.
+Data availability
+The data supporting theﬁndings of this study are available within the paper
+and its Supporting Information. Raw data and code used for the machine-
+learning analysis are publicly available at Zenodo:https://doi.org/10.5281/
+zenodo.18536490.
+Received: 20 May 2026; Accepted: 7 August 2026;
+References
+1. Kirkby, J. et al. Atmospheric new particle formation from the CERN
+CLOUD experiment. Nat. Geosci. 16, 948–957 (2023).
+2. Zhao, B. et al. Global variability in atmospheric new particle formation
+mechanisms. Nature 631,9 8–105 (2024).
+3. Lehtipalo, K. et al. How the understanding of atmospheric new particle
+formation has evolved along with the development of measurement
+and analysis methods. J. Aerosol Sci. 184, 106494 (2025).
+4. Sun, J. et al. Measurement report: contribution of atmospheric new
+particle formation to ultra ﬁne particle concentration, cloud
+condensation nuclei, and radiative forcing — results from 5-year
+observations in central Europe. Atmos. Chem. Phys. 24,
+10667–10687 (2024).
+5. Schraufnagel, D. E. The health effects of ultra ﬁne particles. Exp. Mol.
+Med. 52, 311–317 (2020).
+6. Salma, I., Weidinger, T., Rohonczy, J. & Vörösmarty, M. Types of
+regional and localised new aerosol particle formation and growth
+processes: atmospheric Banana Atlas. npj Clim. Atmos. Sci. 8, 261
+(2025).
+7. Yao, L. et al. Atmospheric new particle formation from sulfuric acid
+and amines in a Chinese megacity. Science 361, 278–281 (2018).
+8. Cai, R. et al. The missing base molecules in atmospheric acid-base
+nucleation. Natl. Sci. Rev. 9, nwac137 (2022).
+9. Lehtipalo, K. et al. Multicomponent new particle formation from
+sulfuric acid, ammonia, and biogenic vapors. Sci. Adv. 4, eaau5363
+(2018).
+10. He, X.-C. et al. Iodine oxoacids enhance nucleation of sulfuric acid
+particles in the atmosphere. Science 382, 1308–1314 (2023).
+11. Shen, J. et al. New particle formation from isoprene under upper-
+tropospheric conditions. Nature 636, 115–123 (2024).
+12. Stolzenburg, D. et al. Atmospheric nanoparticle growth. Rev. Mod.
+Phys. 95, 045002 (2023).
+13. Stolzenburg, D. et al. Incomplete mass closure in atmospheric
+nanoparticle growth. npj Clim. Atmos. Sci. 8, 75 (2025).
+14. Bousiotis, D. et al. The effect of meteorological conditions and
+atmospheric composition in the occurrence and development of new
+particle formation (NPF) events in Europe. Atmos. Chem. Phys. 21,
+3345–3370 (2021).
+15. Wu, H. et al. The impact of the atmospheric turbulence-development
+tendency on new particle formation: a common ﬁnding on three
+continents. Natl. Sci. Rev. 8, nwaa157 (2021).
+16. Zhu, Y. et al. Simultaneous measurements of new particle formation at
+1 s time resolution at a street site and a rooftop site. Atmos. Chem.
+Phys. 17, 9469–9484 (2017).
+17. Sorribas, M. et al. A long-term study of new particle formation in a
+coastal environment: meteorology, gas phase and solar radiation
+implications. Sci. Total Environ. 511, 723–737 (2015).
+18. Hamed, A. et al. The role of relative humidity in continental new particle
+formation. J. Geophys. Res. Atmos. 116, D03202 (2011).
+19. Zhu, Y. et al. Investigation of particle number concentrations and new
+particle formation with largely reduced air pollutant emissions at a
+coastal semi-urban site in northern China. J. Geophys. Res. Atmos.
+126, e2021JD035419 (2021).
+20. Zhou, Y. et al. Variation of size-segregated particle number
+concentrations in wintertime Beijing. Atmos. Chem. Phys. 20,
+1201–1216 (2020).
+21. Li, X. et al. Insuf ﬁcient condensable organic vapors lead to slow
+growth of new particles in an urban environment. Environ. Sci.
+Technol. 56, 9936–9946 (2022).
+22. Presto, A. A., Huff Hartz, K. E. & Donahue, N. M. Secondary organic
+aerosol production from terpene ozonolysis. 2. Effect of NOx
+concentration. Environ. Sci. Technol. 39, 7046–7054 (2005).
+23. Zhao, D. et al. Effects of NOx and SO2 on the secondary organic
+aerosol formation from photooxidation of α-pinene and limonene.
+Atmos. Chem. Phys. 18, 1611–1628 (2018).
+24. Yan, C. et al. Size-dependent in ﬂuence of NOx on the growth rates of
+organic aerosol particles. Sci. Adv. 6, eaay4945 (2020).
+25. Mishra, S. et al. Rapid night-time nanoparticle growth in Delhi driven
+by biomass-burning emissions. Nat. Geosci. 16, 224–230 (2023).
+26. Brean, J. et al. Road traf ﬁc emissions lead to much enhanced new
+particle formation through increased growth rates. Environ. Sci.
+Technol. 58, 10664–10674 (2024).
+27. Dal Maso, M. et al. Formation and growth of fresh atmospheric
+aerosols: eight years of aerosol size distribution data from SMEAR II,
+Hyytiälä, Finland. Boreal Environ. Res. 10, 323–336 (2005).
+28. Kulmala, M. et al. Measurement of the nucleation of atmospheric
+aerosol particles. Nat. Protoc. 7, 1651–1667 (2012).
+29. Zhong, S. et al. Machine learning: new ideas and tools in
+environmental science and engineering. Environ. Sci. Technol. 55,
+12741–12754 (2021).
+https://doi.org/10.1038/s44407-026-00100-6 Article
+npj Clean Air | (2026) 2:57 9
+30. Zhu, J.-J., Yang, M. & Ren, Z. J. Machine learning in environmental
+research: common pitfalls and best practices. Environ. Sci. Technol.
+57, 17671–17689 (2023).
+31. Lundberg, S. M. et al. From local explanations to global understanding
+with explainable AI for trees. Nat. Mach. Intell. 2,5 6–67 (2020).
+32. Chen, H. et al. Algorithms to estimate Shapley value feature
+attributions. Nat. Mach. Intell. 5, 590–601 (2023).
+33. Song, C. et al. Understanding sources and drivers of size-resolved
+aerosol in the high Arctic islands of Svalbard using a receptor model
+coupled with machine learning.Environ. Sci. Technol.56, 11189–11198
+(2022).
+34. Li, L. et al. Improving air quality assessment using physics-inspired
+deep graph learning. npj Clim. Atmos. Sci. 6, 152 (2023).
+35. Wang, N. et al. Interpretable ensemble learning unveils main aerosol
+optical properties in predicting cloud condensation nuclei number
+concentration. npj Clim. Atmos. Sci. 8, 302 (2025).
+36. Yang, C. et al. New insights on the formation of nucleation mode
+particles in a coastal city based on a machine learning approach.
+Environ. Sci. Technol. 58, 1187–1198 (2024).
+37. Chen, T. & Guestrin, C. XGBoost: a scalable tree boosting system. In
+Proc. 22nd ACM SIGKDD International Conference on Knowledge
+Discovery and Data Mining 785–794 (ACM, 2016).
+38. Pedregosa, F. et al. Scikit-learn: machine learning in Python. J. Mach.
+Learn. Res. 12, 2825–2830 (2011).
+39. Ketkar, N. Introduction to Keras. In Deep Learning with Python: A
+Hands-on Introduction 97–111 (Apress, 2017).
+40. Breiman, L. Random forests. Mach. Learn. 45,5 –32 (2001).
+Acknowledgements
+We sincerely thank Professor Xiaohong Yao at Ocean University of China
+and Professor Likun Xue and Associate Researcher Yujiao Zhu at Shandong
+University for providing the particle number size distribution datasets from
+the Beijing and Qingdao sites used in this study. This work was supported by
+the National Natural Science Foundation of China (22476057, 42427802,
+U25A20787 and 42130606) and the GuangDong Basic and Applied Basic
+Research Foundation (2024A1515010395).
+Author contributions
+All authors contributed to the work presented in this paper. S.Y. and L.D.
+conceived the study. S.Y., S.Y.Z., M.R.J., Y.D.W., and Y.X.L. carried out the
+machine-learning and SHAP analyses. S.Y., S.Y.Z., C.G., H.H., M.F.G., L.D.,
+and YJ.H. analyzed and interpreted the data. S.Y., C.G., H.H., M.F.G., and L.D.
+contributed to scientiﬁc discussions. S.Y. and S.Y.Z. wrote the initial draft, and
+all authors contributed to revision. L.D., Y.J.H., and M.F.G. supervised the
+project. M.F.G., C.G., H.H., and L.D. reviewed the manuscript.
+Competing interests
+The authors declare no competing interests.
+Additional information
+Supplementary informationThe online version contains
+supplementary material available at
+https://doi.org/10.1038/s44407-026-00100-6.
+Correspondenceand requests for materials should be addressed to Shi Yin,
+Lin Du or Maofa Ge.
+Reprints and permissions informationis available at
+http://www.nature.com/reprints
+Publisher’s noteSpringer Nature remains neutral with regard to jurisdictional
+claims in published maps and institutional afﬁliations.
+Open Access This article is licensed under a Creative Commons
+Attribution-NonCommercial-NoDerivatives 4.0 International License,
+which permits any non-commercial use, sharing, distribution and
+reproduction in any medium or format, as long as you give appropriate
+credit to the original author(s) and the source, provide a link to the Creative
+Commons licence, and indicate if you modi ﬁed the licensed material. You
+do not have permission under this licence to share adapted material
+derived from this article or parts of it. The images or other third party
+material in this article are included in the article ’s Creative Commons
+licence, unless indicated otherwise in a credit line to the material. If material
+is not included in the article’s Creative Commons licence and your intended
+use is not permitted by statutory regulation or exceeds the permitted use,
+you will need to obtain permission directly from the copyright holder. To
+view a copy of this licence, visit http://creativecommons.org/licenses/by-
+nc-nd/4.0/.
+© The Author(s) 2026
+https://doi.org/10.1038/s44407-026-00100-6 Article
+npj Clean Air | (2026) 2:57 10

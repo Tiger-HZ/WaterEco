@@ -1,0 +1,989 @@
+Environ Res Tec, Vol. 9, Issue 5, pp. 886-895, October 2026 
+ This is an open access article under the CC BY-NC license (http://creativecommons.org/licenses/by-nc/4.0/). 
+ 
+ 
+ 
+ 
+Environmental Research & Technology 
+https://ertjournal.org/index.php 
+DOI: https://doi.org/10.35208/ert.1760134 
+ 
+ 
+RESEARCH ARTICLE 
+ 
+Time series approaches for air pollution forecasting in Çanakkale: A performance comparison of 
+ETS and Box-Jenkins models 
+ 
+Tuğba SÖKÜT AÇAR 1 *, 
+ 
+1 Çanakkale Onsekiz Mart University, Department of Statistics, 17100 Çanakkale, Turkiye 
+ 
+ 
+ARTICLE INFO 
+Article history 
+Received: 07 August 2025 
+Revised: 05 November 2025 
+Accepted: 24 November 2025 
+ A B S T R A C T 
+Air pollution is a complex process that requires statistical modeling and forecasting due to 
+the temporal variability in the concentrations of different pollutant components in the 
+atmosphere. This study analyzes monthly concentrations of PM 10, PM2.5, SO2, NO2, and O 3 
+measured in Çanakkale between 2019 and 2024 using time series methods to generate 
+future forecasts. Factor analysis was first applied to identify the underlying structure 
+among pollutants and to select the most influential variables for modeling; as a result, PM10 
+and SO 2 were found to load most strongly on the primary factor associated with air 
+pollution in the region. For these two pollutants, which w ere examined in terms of 
+stationarity, trend, and seasonal components, forecasting models were developed based 
+on Exponential Smoothing techniques (Simple, Holt, Damped, Holt –Winters additive and 
+multiplicative) and the Box –Jenkins methodology (ARIMA, SARI MA). Model performance 
+was evaluated using RMSE, MAE and MAPE for both in-sample and out-of-sample periods. 
+The Holt –Winters multiplicative model achieved the highest forecasting accuracy, with 
+MAPE values of 11.040% for PM₁₀ and 20.253% for SO₂ by effectively capturing trend and 
+proportional seasonality. This study is distinctive in that it provides a comparative 
+evaluation of ETS and Box –Jenkins approaches for multiple air pollutants and develops 
+region-specific forecasting models for Çanakkale, thereby o ffering novel methodological 
+and practical insights for air quality assessment in Türkiye. 
+ 
+Cite this article as: Söküt Açar T. Time series approaches for air pollution forecasting in 
+Çanakkale: A performance comparison of ETS and Box -Jenkins models . Environmental 
+Research and Technology, 2026, 9 (5), 877-885. 
+Key words: 
+Air quality modeling, Box-
+Jenkins, environmental 
+statistics, exponential 
+smoothing 
+ 
+INTRODUCTION 
+ 
+Air pollution is recognized as one of the most critical 
+environmental issues worldwide due to its adverse impacts 
+on human health and ecosystems. According to the World 
+Health Organization, pollutants such as particulate matter 
+(PM), nitrogen dioxide (NO 2), sulfur dioxide (SO 2), carbon 
+monoxide (CO), and ozone (O3) are among the leading causes 
+of respiratory and cardiovascular diseases, contributing to 
+millions of premature deaths [1]. Air quality is not only a key 
+determinant of public health but also plays a significant role 
+in climate change, agricultural productivity, and ecosystem 
+balance [2]. Therefore, modeling pollutant concentrations 
+and forecasting their future levels is of paramou nt 
+importance for both scientific research and environmental 
+planning. 
+In Turkey, air quality management is regulated under the Air 
+Quality Assessment and Management Regulation, which sets 
+limit values aimed at protecting public health. Çanakkale is 
+among the regions requiring regular monitoring due to 
+emissions from industrial activities, heating, and traffic, as it 
+is strategically located at the intersection of road, air, and sea 
+transport between the Marmara and Aegean regions and 
+ 
+* Corresponding Author: t.sokut@comu.edu.tr (Tuğba Söküt Açar) 
+hosts numerous industrial facilities operating in sectors such 
+as food, furniture, metal, chemical, plastic, tobacco, and 
+machinery manufacturing. These characteristics make 
+Çanakkale a strategically important area where both regional 
+transport of pollutants and local emission sources interact, 
+and therefore a suitable case study for air pollution modeling. 
+Data from the Marmara Clean Air Center and Continuous 
+Monitoring Stations in Çanakkale indicate periodic increases 
+in parameters such as PM10 and NOx [2, 3]. 
+Among the pollutants examined in this study, PM 10 and PM2.5 
+belong to the particulate matter class and pose significant 
+health risks to the respiratory system. NO 2 formed primarily 
+from fossil fuel combustion, are nitrogen oxide compounds 
+that play an important role in atmospheric chemistry and the 
+formation of secondary pollutants. SO 2 is mainly released 
+during coal-based energy production and industrial activities 
+and is a major contributor to acid rain. O3, when formed at the 
+tropospheric level, acts as a harmful pollu tant and tends to 
+increase during summer months due to photochemical 
+reactions [4, 5]. The concentrations of these pollutants are 
+strongly influenced by meteorological factors such as 
+temperature, humidity, pressure, wind speed, precipitation, 
+and sunshine duration. Since air pollution can result from 
+887 Environ Res Tec, Vol. 9, Issue 5, pp. 886-895, October 2026 
+ 
+ 
+multiple factors, it is essential to examine and analyze the 
+origins of air pollutants and the relationships among them [6]. 
+Recent studies on air pollutants in Çanakkale province were 
+also examined. For the Çanakkale region, Aydın and Menteşe 
+[7] investigated air quality in the Gelibolu district based on 
+VOC measurements and examined both spatial and temporal 
+(daily and seasonal) variations, showing that routine road 
+traffic and ferry -related vehicle loading s ubstantially 
+increased VOC levels. In addition, Akyürek [8] analyzed the 
+forest fire that occurred in Çanakkale between 22–24 August 
+2023 using Sentinel -2 and Sentinel -5P satellite images and 
+Geographic Information Systems, and reported that the fire 
+affected an area of 4191.93 hectares and significantly 
+increased atmospheric NO₂ concentrations, thereby 
+deteriorating air quality. At the local scale, these recent 
+studies have mainly focused on monitoring air quality, 
+mapping its spatial distribution and iden tifying emission 
+sources; by contrast, studies providing a comprehensive 
+framework based on statistical time series modelling and 
+forecasting remain relatively scarce. 
+In the literature on air pollution forecasting, both classical 
+time series models and ar tificial intelligence -based 
+approaches have been employed. The Box -Jenkins 
+methodology (ARIMA, SARIMA) is widely recognized as a 
+robust statistical approach for modeling series with trend and 
+seasonality [9]. Existing literature shows that classical time 
+series models such as ARIMA and SARIMA are widely applied 
+for forecasting environmental and climate -related variables. 
+Several studies have demonstrated the effectiveness of 
+SARIMA models in capturing seasonality and improving 
+forecast accuracy for climate variables such as temperature 
+and precipitation [10]. Temiz and Turgut [11] performed a 
+time series analysis of PM₁₀ concentrations in Ankara using 
+the Box –Jenkins methodology and identified an ARIMA 
+(3,0,0) model as the most appropriate specification for 
+forecasting future PM 10 levels. In a comprehensive national -
+level study, Cekim [12] compared ARIMA, ETS, and Singular 
+Spectrum Analysis (SSA) models to forecast PM₁₀ 
+concentrations across Turkey’s most polluted cities. The 
+results demonstrated that while E TS provided satisfactory 
+forecasts in some regions, non -parametric SSA achieved the 
+lowest overall prediction errors, highlighting the importance 
+of comparing traditional and state -space approaches in air 
+quality modeling. 
+Exponential smoothing methods, su ch as Holt -Winters, have 
+also proven effective, particularly for short - and medium -
+term forecasts [13]. For instance, Wu et al. [14] applied the 
+Holt-Winters method for predicting the Air Quality Index in 
+China and demonstrated its capability in capturing seasonal 
+components. Similarly, Setiawan [15] utilized ARIMA for PM 
+forecasting in Madrid, while Hansun et al. [16] implemented 
+modified exponential smoothing techniques for Jakarta. 
+Studies conducted in Turkey have generally focused on either 
+a single pollutant or a single modeling approach [4, 5, 17, 18]. 
+Comprehensive studies that simultaneously compare ETS 
+and ARIMA methods across multiple pollutants remain 
+limited in the existing literature. 
+The objective of this study is to model the major air pollutants 
+measured in Çanakkale (PM10, PM2.5, SO2, NO2, and O3) for the 
+period 2019–2024 using time series methods and to produce 
+forecasts for future periods. For this purpose, the study was 
+organized as follows: First, time series plots of air quality 
+variables were generated, and the variables were 
+descriptively analyzed. Next, factor analysis was applied to 
+identify the most influential pollution parameters in 
+Çanakkale. Based on the results of the factor analysis, selected 
+pollutants were modeled using both Exponential Smoothing 
+and Box -Jenkins methodologies. In this context, the central 
+research question of the study is whether, owing to their 
+more flexible treatment of trend and especially seasonal 
+components, ETS models outperform Box –Jenkins models in 
+forecasting the air pollutions. The performance of the 
+resulting models was then evaluated using various error 
+metrics to identify the best-performing models. This study is 
+distinctive in that it comparatively examines multiple 
+pollutants using both ETS and B ox-Jenkins approaches and 
+provides forecasts for the Çanakkale region —a topic rarely 
+addressed in the Turkish literature. In this context, the 
+research stands out as one of the first comprehensive studies 
+to compare the performance of two different classic al time 
+series approaches in detail. 
+ 
+MATERIALS AND METHODS 
+ 
+In this study, future forecasts were generated using major air 
+pollutants (PM 10, PM 2.5, SO 2, NO 2, and O 3) measured in 
+Çanakkale between 2019 and 2024. The forecasting process 
+involved a comparative application of two classical time 
+series approaches: ETS methods and the Box -Jenkins 
+methodology. During the modeling phase, the stationarity of 
+the series was examined using the Augmen ted Dickey-Fuller 
+(ADF) test, and trend and seasonality components were 
+analyzed. The predictive performance of the models was 
+evaluated using metrics such as RMSE, MAE and MAPE. 
+All statistical analyses and forecasting procedures in this 
+study were condu cted using R statistical software (RStudio 
+IDE, version 2024.04.1 Build 748), with relevant packages for 
+time series modeling and visualization, including forecast (for 
+auto.arima(), ets(), and accuracy() functions), tseries (for 
+adf.test()) and ggplot2 (for graphical representation of time 
+series and forecasts). 
+ 
+Forecasting with Exponential Smoothing Methods 
+ 
+Exponential smoothing methods are highly effective and 
+widely used approaches for forecasting in time series 
+analysis. The fundamental principle of these methods is to 
+assign greater weights to more recent observations in the 
+series when predicting future values. In this way, the most 
+recent data points are considered more significant, thereby 
+improving forecast accuracy. The main types of exponential 
+smoothing methods include: Simple Exponential Smoothing 
+(SES), Holt’s Exponential Smoothing, Damped Exponen tial 
+Smoothing, and Holt-Winters Exponential Smoothing. 
+ 
+Simple exponential smoothing, SES 
+ 
+SES used when the time series does not contain components 
+such as trend or seasonality. In other words, the goal of this 
+method is to predict the current level of t he time series in 
+cases where there is no general trend or seasonal effect. For 
+future forecasts, greater weight is assigned to the most recent 
+observations of the series. 
+In a time series with 𝑇 observations, let the observed value at 
+time 𝑡 be 𝑦𝑡. The forecast for ℎ periods ahead made at time 𝑡 
+is given by: 
+Forecast Equation: 𝑦̂𝑡+ℎ|𝑡 = ℓ𝑡 
+Level Equation: ℓ𝑡 = 𝛼𝑦𝑡 + (1 − 𝛼)ℓ𝑡−1 
+The initial forecast value is taken as the arithmetic mean of 
+the series. Here, 𝛼 is the smoothing parameter, which takes a 
+value between 0 and 1, and its optimal value is determined by 
+minimizing the mean squared error (MSE). 
+Environ Res Tec, Vol. 9, Issue 5, pp. 886-895, October 2026 888 
+Holt exponential smoothing 
+ 
+If the time series to be forecasted contains only a trend 
+component, this method is preferred. In addition to the 
+Simple Exponential Smoothing model, a trend term is 
+included in the forecasting model since the data exhibit a 
+trend. This method uses two smo othing parameters, both 
+ranging between 0 and 1, which are determined by 
+minimizing the mean squared error [19]. To enable 
+forecasting of trend -containing data, Holt extended the 
+simple exponential smoothing method as follows: 
+Forecast Equation: 𝑦̂𝑡+ℎ|𝑡 = ℓ𝑡 + ℎ𝑏𝑡 
+Level Equation: ℓ𝑡 = 𝛼𝑦𝑡 + (1 − 𝛼)(ℓ𝑡−1 + 𝑏𝑡−1) 
+Trend Equation: 𝑏𝑡 = 𝛽(ℓ𝑡 − ℓ𝑡−1) + (1 − 𝛽)𝑏𝑡−1 
+Here, 𝛼 and 𝛽 are the smoothing parameters, and 𝑏𝑡 
+represents an estimate of the trend (slope) at time t. In this 
+model, 𝛼 controls the smoothing of the level, while 𝛽 controls 
+the smoothing of the trend. Both parameters are optimized 
+within the range (0,1) by minimizing the mean squared error 
+[20]. The initial values for level and trend are typically 
+obtained using parameter estimates from a simple linear 
+regression applied to the series [21]. 
+ 
+Damped exponential smoothing 
+ 
+Proposed by Gardner and McKenzie [22], damped 
+exponential smoothing extends Holt’s method by introducing 
+a damping parameter that gradually reduces the influence of 
+the trend over time. This approach allows for more stable and 
+reliable forecasts in the long term. Particularly for 
+multiplicative models, where the trend is expected to 
+diminish or exhibit dynamic changes over time, the damped 
+method often produces more robust results [23]. In addition 
+to the smoothing parameters, this method incorporates a 
+damping parameter, 𝜃, which lies within the interval 0 < 𝜃 <
+1 [24]. 
+Forecast Equation: 𝑦̂𝑡+ℎ|𝑡 = ℓ𝑡 + (𝜃 + 𝜃2 + ⋯ + 𝜃ℎ)𝑏𝑡 
+Level Equation: ℓ𝑡 = 𝛼𝑦𝑡 + (1 − 𝛼)(ℓ𝑡−1 + 𝜃𝑏𝑡−1) 
+Trend Equation:𝑏𝑡 = 𝛽(ℓ𝑡 − ℓ𝑡−1) + (1 − 𝛽)𝜃𝑏𝑡−1 
+ 
+It is evident that when 𝜃 = 1, the model reduces to Holt’s 
+linear exponential smoothing method. 
+ 
+Holt-Winters exponential smoothing 
+ 
+The Holt-Winters method is an extension of the simple and 
+Holt exponential smoothing methods, specifically designed 
+for time series with seasonality. To account for seasonal 
+effects, this method can be applied using two different models 
+depending on the structure of the series: additive and 
+multiplicative seasonal models. In the additive model, 
+seasonal fluctuations remain constant regardless of the 
+overall level of the series, while in the multiplicative model, 
+the magnitude of seasonal variations depends on the level of 
+the series [25]. A key feature of the Holt -Winters method is 
+that it involves three smoothing parameters: 𝛼 (level), 𝛽 
+(trend), and 𝛾 (seasonality). These parameters are optimized 
+to minimize the forecast error of the model [26]. 
+Here, 𝑚 denotes the length of the seasonal cycle, and 𝑆𝑡−𝑚 
+represents the seasonal component from the corresponding 
+period in the previous cycle. Additionally, 𝑘 refers to the 
+integer part of (ℎ − 1)/𝑚, which ensures that the seasonal 
+indices used in the forecasts correspond to those from the 
+most recent seasonal cycle in the sample [27]. In Winters 
+models, the seasonal components are normalized, meaning 
+that the seasonal factors are adjusted so that their average 
+equals 1. This implies that the sum of the seasonal 
+components is equal to 1, ensuring that seasonal effects are 
+appropriately scaled to the overall level of the series [28]. 
+In summary, the four exponential smoothing methods differ 
+mainly in the components they account for. The SES model 
+considers only the level component and is suitable for series 
+without trend or seasonality. The Holt method extends SES by 
+including a trend component, allowing forecasts for data 
+exhibiting a systematic increase or decrease. The Damped 
+trend model further refines Holt’s approach by introducing a 
+damping parameter that gr adually reduces the trend effect 
+over time, providing more stable long-term forecasts. Finally, 
+the Holt –Winters model incorporates both trend and 
+seasonality, with additive and multiplicative formulations 
+depending on whether seasonal fluctuations remain constant 
+or vary in proportion to the series level. 
+ 
+ 
+Table 1. Holt-Winters equations (additive vs. multiplicative) 
+ Additive Model Multiplicative Model 
+Forecast Equation 𝑦̂𝑡+ℎ|𝑡 = ℓ𝑡 + ℎ𝑏𝑡 + 𝑆𝑡+ℎ−𝑚(𝑘+1) 𝑦̂𝑡+ℎ|𝑡 = (ℓ𝑡 + ℎ𝑏𝑡)𝑆𝑡+ℎ−𝑚(𝑘+1) 
+Level Equation ℓ𝑡 = 𝛼(𝑦𝑡 − 𝑆𝑡−𝑚) + (1 − 𝛼)(ℓ𝑡−1 + 𝑏𝑡−1) ℓ𝑡 = 𝛼 ( 𝑦𝑡
+𝑆𝑡−𝑚
+) + (1 − 𝛼)(ℓ𝑡−1 + 𝑏𝑡−1) 
+Trend Equation 𝑏𝑡 = 𝛽(ℓ𝑡 − ℓ𝑡−1) + (1 − 𝛽)𝑏𝑡−1 𝑏𝑡 = 𝛽(ℓ𝑡 − ℓ𝑡−1) + (1 − 𝛽)𝑏𝑡−1 
+Seasonality Equation 𝑆𝑡 = 𝛾(𝑦𝑡 − ℓ𝑡−1 − 𝑏𝑡−1) + (1 − 𝛾)𝑆𝑡−𝑚 𝑆𝑡 = 𝛾 ( 𝑦𝑡
+ℓ𝑡−1 + 𝑏𝑡−1
+) + (1 − 𝛾)𝑆𝑡−𝑚 
+ 
+Forecasting with Box-Jenkins Methods 
+ 
+Box-Jenkins models are considered a generalized form of 
+exponential smoothing methods. While exponential 
+smoothing focuses on modeling trend and seasonality 
+components in the data, Box -Jenkins models aim to capture 
+the autocorrelation structure within the series. These models 
+are categorized as either seasonal or non -seasonal. Non -
+seasonal Box-Jenkins models are expressed as ARIMA(p,d,q), 
+where p represents the order of the autoregressive (AR) 
+component, d denotes the degree of differencing required to 
+achieve stationarity, and q indicates the order of the movin g 
+average (MA) component. Seasonal Box -Jenkins models are 
+expressed as SARIMA(p, d, q)(P, D, Q)m, where P, D, and Q 
+represent the seasonal autoregressive, seasonal differencing, 
+and seasonal moving average orders, respectively, and 𝑚 
+denotes the seasonal period. 
+For Box-Jenkins models to be applicable, the time series must 
+be stationary, meaning it s hould be free from trend and 
+seasonal fluctuations. To achieve stationarity in the mean, 
+differencing is applied, while variance stationarity is typically 
+addressed using logarithmic or power transformations [9]. 
+889 Environ Res Tec, Vol. 9, Issue 5, pp. 886-895, October 2026 
+ 
+ 
+Non-seasonal Box-Jenkins models 
+ 
+Non-seasonal Box-Jenkins models include the autoregressive 
+model (AR(p)), the moving average model (MA(q)), and their 
+combination, ARMA(p,q). For non -seasonal series, if the 
+series is not stationary (i.e., exhibits a trend), differencing is 
+applied to achi eve stationarity. In such cases, an integrated 
+component I(d) is added to the model, resulting in the general 
+form ARIMA(p,d,q). 
+p-th Order Autoregressive Model, AR(p) 
+Assuming the series is stationary, the general form of a p -th 
+order autoregressive process (AR(p)) can be expressed as: 
+𝑦𝑡 = 𝜙1𝑦𝑡−1 + 𝜙2𝑦𝑡−2 + ⋯ + 𝜙𝑝𝑦𝑡−𝑝 + 𝜀𝑡 
+where 𝜀𝑡 represents the white noise error term. 
+q-th Order Moving Average Model, MA(q) 
+The general form of a q -th order moving average process 
+(MA(q)) is: 
+𝑦𝑡 = 𝜀𝑡 − 𝜃1𝜀𝑡−1 − 𝜃2𝜀𝑡−2 − ⋯ − 𝜃𝑞𝜀𝑡−𝑞 
+ARMA(p,q) Model: Autoregressive (p) and Moving Average (q) 
+Components 
+For a stationary series, the ARMA(p,q) model combines AR(p) 
+and MA(q) components as: 
+𝑦𝑡 = 𝜙1𝑦𝑡−1 + 𝜙2𝑦𝑡−2 + ⋯ + 𝜙𝑝𝑦𝑡−𝑝 + 𝜀𝑡 − 𝜃1𝜀𝑡−1 − 𝜃2𝜀𝑡−2
+− ⋯ − 𝜃𝑞𝜀𝑡−𝑞 
+Here, 𝑝 and 𝑞 represent the orders of the AR and MA 
+components, respectively, and 𝑑 denotes the number of 
+differences required for stationarity. To determine 
+appropriate values for 𝑝 and 𝑞, the autocorrelation function 
+(ACF) and partial autocorrelation function (PACF) plots are 
+widely used [6]. 
+ 
+Seasonal Box-Jenkins 
+ 
+Seasonal variations can be effectively modeled using the 
+SARIMA approach proposed within the Box -Jenkins 
+framework. This model extends the standard ARIMA 
+structure by incorporating seasonal components and is 
+represented as SARIMA(p, d, q)(P, D, Q)s. In this notation, p, d, 
+and q denote the non-seasonal autoregressive (AR) order, the 
+number of non -seasonal differences, and the non -seasonal 
+moving average (MA) order, respectively; while P, D, and Q 
+represent the seasonal AR, seasonal differencing, and 
+seasonal MA orders, and 𝑠 indicates the length of the seasonal 
+period [ 29]. The general mathematical form of the 
+SARIMA(p, d, q)(P, D, Q)s model is as follows [30]: 
+(1 − 𝜙1𝐵 − 𝜙2𝐵2 − ⋯ − 𝜙𝑝𝐵𝑝)(1 − Φ1𝐵𝑠 − Φ2𝐵2𝑠 − ⋯ −
+Φ𝑃𝐵𝑠𝑃)(1 − 𝐵)𝑑(1 − 𝐵𝑠)𝐷𝑦𝑡 = (1 − 𝜃1𝐵 − 𝜃2𝐵2 − ⋯ −
+𝜃𝑞𝐵𝑞)(1 − Θ1𝐵𝑠 − Θ2𝐵2𝑠 − ⋯ − Θ𝑄𝐵𝑠𝑄)𝜀𝑡. 
+In order to evaluate the forecasting performance of the 
+models described above on the relevant dataset, several error 
+metrics will be applied. The key performance indicators used 
+for this purpose are presented below. Let 𝑦𝑡; denote the 
+actual observed value at time 𝑡, and 𝑦̂𝑡 denote the forecasted 
+value at time 𝑡. 
+Root Mean Square Error (RMSE): 
+RMSE is a frequently used statistic that calculates the average 
+squared difference between the actual and anticipated values, 
+squared as a root. Better model performance in terms of 
+prediction accuracy is shown by lower RMSE, values: 
+𝑅𝑀𝑆𝐸 = √∑ (𝑦𝑡 − 𝑦̂𝑡)2𝑇
+𝑡=1
+𝑇 
+Mean Absolute Error (MAE): 
+𝑀𝐴𝐸 =
+∑ |𝑦𝑡 − 𝑦̂𝑡|𝑇
+𝑡=1
+𝑇 
+Mean Absolute Percentage Error (MAPE) 
+𝑀𝐴𝑃𝐸 = 100
+𝑇 ∑ |𝑦𝑡 − 𝑦̂𝑡
+𝑦𝑡
+|
+𝑇
+𝑡=1
+ 
+A low RMSE value indicates that the model is less sensitive to 
+large deviations and demonstrates a higher overall 
+forecasting performance. Similarly, a low MAE value suggests 
+that the model’s predictions are generally close to the actual 
+values and reflect consistent predictive power. A low MAPE 
+percentage shows that the predictions are relatively close to 
+the actual values, thus indicating higher accuracy. When these 
+three-error metrics are considered together, they provide a 
+comprehensive assessmen t of the model’s absolute and 
+relative accuracy. 
+ 
+RESULTS AND DISCUSSION 
+ 
+In this study, air quality data for Çanakkale were obtained 
+from continuous monitoring stations under the Marmara 
+Clean Air Center Directorate. The study covers the period 
+from January 2019 to June 2024. The raw data were collected 
+on a daily basis and converted into monthly averages for 
+analysis and modeling. The air pollutants considered in the 
+study include PM10, PM2.5, SO2, NO2, and O3. Time series plots 
+and boxplots for these pollutants are presented in Figure 1. 
+ 
+ 
+Figure 1. Monthly boxplots and time series plots of air 
+pollutants observed in Çanakkale (2019–2024) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Environ Res Tec, Vol. 9, Issue 5, pp. 886-895, October 2026 890 
+Among the air pollutants examined over the 2019 –2024 
+period, the most evident trend structure was observed in the 
+SO2 series. SO 2 levels exhibited a steady decline over time, 
+reaching minimum values particularly in 2023 and 2024, 
+indicating a potential reduction in emissions from heating 
+and industrial activities. On the other hand, the most 
+prominent seasonal pat tern was identified in the O 3 series. 
+Ozone concentrations showed a regular increase during the 
+summer months each year, reflecting the influence of 
+photochemical reactions driven by sunlight (Figure 1). 
+Table 2 presents the basic descriptive statistics fo r the 
+observed air pollutants in Çanakkale for the period 2019 –
+2024. The results are compared with the threshold values 
+specified in the Turkish Air Quality Assessment and 
+Management Regulation. PM 10 concentrations ranged 
+between 24.556 μg/m³ and 56.668 μg /m³, with an average 
+value of 38.171 μg/m³. This value is very close to the annual 
+limit (40 μg/m³) specified in the regulation, indicating that 
+the threshold was exceeded during certain periods. For PM2.5, 
+the mean concentration was 14.270 μg/m³, generall y 
+remaining below the limit value of 20 μg/m³. SO₂ 
+concentrations ranged from 2.466 μg/m³ to 15.058 μg/m³, 
+with an average of 7.476 μg/m³. These results demonstrate 
+that SO 2 levels remained well below both annual and daily 
+limit values. The average NO 2 concentration was 17.782 
+μg/m³, with a maximum of 31.309 μg/m³, which is below the 
+annual limit of 42 μg/m³; however, periodic increases related 
+to traffic and heating sources are noteworthy. For O 3, the 
+average value was 51.259 μg/m³, while the maximum was 
+recorded as 84.928 μg/m³, remaining below the 8 -hour limit 
+(120 μg/m³) defined by Turkish regulations. To identify the 
+relationships among pollutants and uncover potential 
+common source structures, factor analysis was applied. The 
+analysis employed the prin cipal components method, and 
+factor loadings were made interpretable using varimax 
+rotation. 
+ 
+Table 2. Descriptive statistics for observed air pollutants of Çanakkale city 
+ 
+Threshold Values of the Turkish 
+Air Quality Directive Min. Max. Mean Std. Err. of 
+Mean 
+95% Confidence 
+Interval Mean 
+Lower Upper 
+PM10 40a μg/m.- 50b μg/m. 24.556 56.668 38.171 0.942 36.290 40.052 
+PM2.5 20d μg/m. 7.610 23.059 14.270 0.420 13.431 15.109 
+SO2 20a μg/m.- 125b μg/m. 2.466 15.058 7.476 0.367 6.743 8.209 
+NO2 42a μg/m. 2.196 31.309 17.782 0.919 15.947 19.618 
+O3 120c μg/m. 20.034 84.928 51.259 2.061 47.143 55.374 
+a: annual ,b :24-hour, c:8-hour, d:annual accrding to EU Directive 
+ 
+Prior to conducting the factor analysis presented in Table 3, 
+the Kaiser -Meyer-Olkin (KMO) test and Bartlett’s test of 
+sphericity were applied to assess the suitability of the data for 
+factor analysis. The KMO value was found to be 0.531, 
+indicating a borderline adequacy for factor analysis. Bartlett’s 
+test of sphericity yielded χ² = 57.876 with p < 0.01, confirming 
+the presence of statistically significant correlations among 
+variables and supporting the appropriateness of factor 
+analysis. The factor analys is resulted in two components 
+explaining approximately 64.3% of the total variance. The 
+first component (Component 1) exhibited high loadings for 
+PM10 (0.85) and SO 2 (0.81), which can be interpreted as 
+pollutants associated with residential heating and ind ustrial 
+activities. The second component (Component 2) had positive 
+loadings for PM 2.5 (0.81) and NO 2 (0.61), while O 3 showed a 
+strong negative loading (-0.73). This pattern suggests that the 
+second factor represents pollutants related to traffic 
+emissions and photochemical processes. These findings 
+indicate that air pollution in Çanakkale is influenced by 
+multiple sources. The dominance of PM 10 and SO 2 during 
+winter months supports the impact of heating and industrial 
+emissions, whereas the prominence of O 3 in summer reflects 
+the influence of photochemical reactions. The co -occurrence 
+of NO 2 and PM 2.5 within the same factor highlights the 
+significance of traffic -related emissions. Overall, the factor 
+analysis results reveal that PM 10 and SO 2 play the most 
+prominent role in Çanakkale’s air pollution. Their high 
+loadings on the same factor emphasize shared source effects, 
+particularly from heating and industrial activities. Therefore, 
+the forecasting models in this study were developed based on 
+PM10 and SO2. 
+ 
+Table 3. Factor analysis results 
+ Component 1 Component 2 
+PM10 0.85035 
+SO2 0.81359 
+PM2.5 0.80945 
+NO2 0.60821 
+O3 -0.73299 
+% of Variance %32.319 %31.996 
+ 
+A heatmap illustrating the number of days these two 
+pollutants exceeded the limit values specified in the Turkish 
+Air Quality Regulation is presented in Figure 2. 
+As shown in Figure 2, during the period 2019–2024, the total 
+number of days in which PM 10 concentrations in Çanakkale 
+exceeded the limit value specified in the Turkish Air Quality 
+Regulation was 679, while for SO 2 it was 54. For PM 10, the 
+highest exceedance occurred in 2019 (157 days) and 2020 
+(156 days). A notable decrease was observed in 2021 (93 
+days), followed by an increase in 2022 (133 days). In 2023 
+and 2024, a downward trend in PM 10 exceedance days 
+became evident. Regarding SO 2, the highest exceedance was 
+recorded in 2019 (35 days), while in subsequent years the 
+frequency of exceedance d eclined significantly, with no 
+exceedance observed in 2024. 
+In time series modeling, it is crucial to determine whether the 
+series is stationary to ensure that the assumptions of the 
+applied methods are satisfied. Stationarity is defined as the 
+condition in which the mean and variance of the series remain 
+constant over time, and the autocovariances depend only on 
+891 Environ Res Tec, Vol. 9, Issue 5, pp. 886-895, October 2026 
+ 
+ 
+the lag length. When working with a non -stationary time 
+series, regression analysis involving such series may lead to 
+the problem of spurious or m eaningless regression [3 1]. 
+Although stationarity can be preliminarily assessed through 
+graphical analysis, more advanced detection methods involve 
+the use of autocorrelation functions (ACF), partial 
+autocorrelation functions (PACF), and unit root tests (such as 
+the Augmented Dickey-Fuller test). In this study, stationarity 
+analysis was performed using the ADF test. The hypotheses 
+for the ADF test were formulated as follows: H 0: The series is 
+non-stationary, H 1: The series is stationary. Failure to reject 
+the null hypothesis (when 𝑝 ≥ 0.05 at a Type I error level of 
+0.05) indicates that the series is non-stationary. The results of 
+the ADF test are presented in Table 4. 
+According to the ADF test results, the PM₁₀ series was found 
+to be non -stationary (p≥0.05), whereas the SO 2 series was 
+considered stationary at the 95% confidence level, as its p -
+value was below 0.05 (Table 4). For the non-stationary series, 
+first-order differencing was applied to achieve stationarity, 
+and the transformed series were then incorp orated into the 
+modeling stage. 
+Following the stationarity analysis, time series forecasting 
+was performed for PM 10 and SO 2, which play the most 
+dominant role in air pollution in Çanakkale. For this purpose, 
+two classical time series approaches were employed in a 
+comparative framework: Exponential Smoothing (SES, Holt, 
+Damped, Holt –Winters additive and multiplicative) and the 
+Box–Jenkins methodology (non -seasonal ARIMA and 
+seasonal SARIMA). Forecasts were generated for both in -
+sample (January 2019 –June 2024) and out -of-sample (July–
+December 2024) periods, and model performance was 
+evaluated using RMSE, MAE, and MAPE. The resulting best -
+performing models and their parameter specifications for 
+PM10 and SO2 are summarized in Tables 5-8. 
+ 
+ 
+Figure 2. Heatmap of PM₁₀ and SO2 daily limit exceedances 
+ 
+ 
+Table 4. ADF unit root test results 
+Variable Test Statistic p-value Decision Differencing Order 
+PM10 -2.992 0.173 Non-stationary 1 
+SO2 -3.779 0.025 Stationary 0 
+ 
+Table 5. Comparison of forecasting performance of ETS and Box-Jenkins models for PM10 
+PM10 RMSE MAE MAPE Optimal Parameter 
+ETS 
+SES 7.105 5.646 15.295 𝛼 = 0.287 
+Holt 7.095 5.633 15.126 𝛼 =0.271, 𝛽 =0.0004 
+Damped 7.048 5.670 15.472 𝛼 =0.264, 𝛽 = 0.0002, 𝜃 = 0.8 
+Hold-Winter (Add.) 6.608 5.384 14.613 𝛼 =0.297, 𝛽 = 0.0001, 𝛾 = 0.0001 
+Holt-Winter (Mult.) 6.525 5.207 14.073 𝜶 =0.443, 𝜷 = 𝟎. 𝟎𝟎𝟎𝟕, 𝜸 = 𝟎. 𝟎𝟎𝟎𝟏 
+Box-Jenkins 
+ARIMA(1,1,1) 6.847 5.413 14.658 
+SARIMA 6.847 5.413 14.658 
+ 
+ 
+ 
+Environ Res Tec, Vol. 9, Issue 5, pp. 886-895, October 2026 892 
+According to the error metrics presented in Table 5, the Holt-
+Winters methods, particularly the model incorporating a 
+multiplicative seasonal component, demonstrated the best 
+performance in forecasting PM 10 concentrations. This model 
+achieved lower error rates by effectively capturing both trend 
+and seasonality. The additive Holt -Winters model ranked as 
+the second -best performing method. In contrast, the SES 
+model, which accounts only for the level component , 
+produced higher error values compared to the other 
+approaches. These findings highlight the significant role of 
+the seasonal component in forecasting the PM 10 series. 
+However, when evaluating the Box -Jenkins methodology, no 
+performance difference was obs erved between the 
+ARIMA(1,1,1) and SARIMA models. This indicates that the 
+seasonal fluctuations in the PM₁₀ series are not statistically 
+strong or consistent enough to improve forecasting accuracy 
+through the addition of seasonal terms. ETS methods can 
+flexibly incorporate trend and seasonality as separate 
+components, which allows them to capture even weak 
+seasonal effects, leading to better predictive performance. In 
+contrast, within the Box -Jenkins framework, seasonality 
+contributes to the model only if it is pronounced and regular; 
+therefore, the SARIMA model did not provide additional 
+benefits over the non-seasonal ARIMA model. 
+After examining the results obtained for the PM10 series in the 
+in-sample period (January 2019 –June 2024) presented in 
+Table 5, the analyses conducted to evaluate the performance 
+of the models on the end -of-period data (July 2024 –
+December 2024) are presented in Table 6. 
+According to the out-of-sample forecasting results presented 
+in Table 6, the lowest error values for the PM₁₀ ser ies were 
+obtained from the Holt -Winters (multiplicative) model. This 
+finding indicates that the model maintained its superior 
+performance in both the in-sample and out-of-sample periods 
+by effectively capturing trend and seasonality components. 
+The Holt-Winters (additive) model achieved the second -best 
+performance, further confirming the substantial contribution 
+of modeling seasonality to forecasting accuracy. In contrast, 
+the seasonal fluctuations in the PM₁₀ series are not 
+sufficiently strong or consisten t within the Box –Jenkins 
+framework to meaningfully enhance forecasting accuracy. 
+Following the out-of-sample forecasting results presented in 
+Table 6, Figure 3 illustrates the forecasts obtained from the 
+Holt-Winters (multiplicative) model for the PM10 series, along 
+with the 95% confidence intervals and the actual values for 
+the corresponding period. 
+Figure 3 presents the PM10 forecasts obtained using the Holt–
+Winters (multiplicative) model for the period July–December 
+2024, along with the 80% (dark blue) a nd 95% (light blue) 
+confidence intervals. These intervals reflect the uncertainty 
+range of the model’s predictions, with the actual observed 
+values largely falling within these bounds. 
+ 
+Table 6. Out-of-sample forecasting performance of ETS and Box–Jenkins models for PM10 
+PM10 RMSE MAE MAPE 
+ETS 
+SES 4.789 3.999 5.963 
+Holt 4.275 3.289 13.337 
+Damped 4.869 4.094 16.320 
+Hold-Winter (Add.) 4.245 3.822 14.873 
+Holt-Winter (Mult.) 3.275 2.823 11.040 
+Box-Jenkins ARIMA(1,1,1) 6.352 5.940 23.071 
+SARIMA 6.352 5.940 23.071 
+ 
+ 
+Figure 3. PM10 forecast vs actual values using Holt-Winters (Multiplicative) model 
+ 
+ 
+893 Environ Res Tec, Vol. 9, Issue 5, pp. 886-895, October 2026 
+ 
+ 
+According to the error metrics presented in Table 7, among 
+the ETS methods, the Holt -Winters (additive) model 
+demonstrated the best performance for the SO 2 series. This 
+model achieved the lowest RMSE (1.731) and MAPE (20.15%) 
+values by accounting for both trend and weak seasonality 
+effects. Although the Holt -Winters (multiplicative) model 
+exhibited similar performance, its error rates were higher 
+compared to the additive model. In contrast, the SES model, 
+which only incorporates the level component, produce d the 
+highest error values among the ETS methods. For the Box -
+Jenkins methodology, the ARIMA(1,1,0) and SARIMA models 
+yielded identical performance metrics. This indicates that the 
+SO₂ series does not exhibit a strong seasonal pattern and 
+adding seasonal components to the model does not improve 
+forecasting accuracy. Furthermore, although the ADF test 
+suggested that the SO 2 series was stationary (Table 4), the 
+ARIMA(1,1,0) model, selected based on information criteria, 
+showed that applying first -order differ encing slightly 
+improved model fit. Overall, ETS methods outperformed the 
+Box-Jenkins approach, and the Holt -Winters method, which 
+accounts for trend and weak seasonality components, was 
+identified as the most appropriate model for forecasting the 
+SO2 series. 
+Following the in -sample (January 2019 –June 2024) 
+forecasting results for the SO₂ series presented in Table 7, the 
+analyses evaluating the models’ out -of-sample (July 2024 –
+December 2024) performance are provided in Table 8. 
+ 
+ 
+Table 7. In-sample forecasting performance of ETS and Box–Jenkins models for SO2 
+SO2 RMSE MAE MAPE Optimal Parameter 
+ETS 
+SES 1.832 1.489 22.596 𝛼 = 0.688 
+Holt 1.834 1.485 22.365 𝛼 = 0.671, 𝛽 =0.0001 
+Damped 1.780 1.445 22.277 𝛼 = 0.648, 𝛽 = 0.0001, 𝜃 = 0.8 
+Hold-Winter (Add.) 1.731 1.339 20.154 𝜶 = 0.651, 𝜷 = 𝟎. 𝟎𝟎𝟎𝟏, 𝜸 = 𝟎. 𝟎𝟎𝟎𝟏 
+Holt-Winter (Mult.) 1.838 1.436 22.105 𝛼 = 0.581, 𝛽 = 0.0017, 𝛾 = 0.0762 
+Box-Jenkins ARIMA(1,1,0) 1.799 1.469 22.184 
+SARIMA 1.799 1.469 22.184 
+ 
+Table 8. Out-of-sample forecasting performance of ETS and Box–Jenkins models for SO2 
+SO2 RMSE MAE MAPE 
+ETS 
+SES 1.535 1.250 23.107 
+Holt 1.703 1.361 24.844 
+Damped 1.552 1.258 23.174 
+Hold-Winter (Add.) 1.768 1.412 26.447 
+Holt-Winter (Mult.) 1.241 1.048 20.253 
+Box-Jenkins 
+ARIMA(1,1,0) 1.593 1.263 22.875 
+SARIMA 1.593 1.263 22.875 
+ 
+ 
+Figure 4. SO2 forecast vs actual values using Holt-Winters (Multiplicative) model 
+ 
+Environ Res Tec, Vol. 9, Issue 5, pp. 886-895, October 2026 894 
+ 
+An examination of the out -of-sample results presented in 
+Table 8 reveals that the lowest error values for the SO2 series 
+were obtained from the Holt-Winters (multiplicative) model. 
+While the Holt -Winters (additive) model produced better 
+results during the in-sample period, the multiplicative model 
+outperformed it in the out-of-sample period primarily due to 
+changes i n the amplitude of the seasonal fluctuations. The 
+additive model assumes that seasonal effects remain constant 
+in magnitude, whereas the multiplicative model allows these 
+effects to vary in proportion to the series level. During the test 
+period, the increa se in SO 2 levels was accompanied by a 
+proportional increase in the magnitude of seasonal 
+fluctuations. Consequently, the multiplicative model was 
+better able to capture this changing amplitude pattern, 
+resulting in lower error values. Therefore, the Holt -Winters 
+(multiplicative) model, which effectively accounts for both 
+trend and proportional seasonality components, was 
+ultimately identified as the most suitable model for 
+forecasting the SO2 series. 
+Following the out-of-sample forecasting performance results 
+presented in Table 8, Fig ure 4 illustrates the forecasts 
+obtained from the Holt-Winters (multiplicative) model for the 
+SO2 series, along with the 80% and 95% confidence intervals, 
+in comparison with the actual values for the corresponding 
+period. 
+An examination of Figure 4 reveals that the values forecasted 
+by the Holt-Winters (multiplicative) model align closely with 
+the actual SO 2 observations for the July –December 2024 
+period. In the graph, the light blue area represents the 95% 
+confidence interval, while the dark blue area corresponds to 
+the 85% confidence interval. The forecasts generally fall 
+within these bounds, indicating that the model’s predictions 
+are statistically reliable. 
+Overall, while direct numerical comparison with previous 
+studies such as Temiz and Turgut [11] is not feasible due to 
+differences in data scope and modeling frameworks, the 
+present findings conceptually complement earlier Box –
+Jenkins–based research by expanding the analysis to multiple 
+pollutants and confirming the consisten t superiority of the 
+Holt–Winters multiplicative model in capturing both trend 
+and proportional seasonality. Moreover, the results are in line 
+with those of Cekim [12], who compared ETS and ARIMA 
+models for PM₁₀ forecasting across Turkey’s most polluted 
+cities and found that ETS models could outperform ARIMA 
+under certain urban conditions. In this sense, the present 
+study contributes uniquely to the Turkish air quality 
+literature by providing a detailed ETS –Box–Jenkins 
+comparison for both PM₁₀ and SO₂ speci fically in the 
+Çanakkale region, thereby offering a region –focused 
+statistical framework that can serve as a reference for future 
+local air pollution forecasting studies. 
+ 
+CONCLUSIONS 
+ 
+This study conducted a comprehensive comparison of 
+Exponential Smoothing and Box -Jenkins models for 
+forecasting air pollution in Çanakkale, focusing on PM 10 and 
+SO2, which were identified as the most influential pollutants 
+through factor analysis. Stationarity tests revealed that PM₁₀ 
+required first-order differencing, while SO2 was stationary at 
+level. The forecasting results demonstrated that ETS methods 
+generally outperformed Box -Jenkins models in terms of 
+predictive accuracy. For PM₁₀, the Holt -Winters 
+multiplicative model achieved the lowest RMSE and MAPE 
+values, effectively capturing both trend and seasonal 
+variations. Similarly, for SO 2, the Holt-Winters multiplicative 
+model provided the best performance, indicating that even 
+weak seasonal components, when modeled appropriately, 
+enhance forecast accuracy. Conversely, the Box -Jenkins 
+methodology showed no difference between ARIMA and 
+SARIMA models, highlighting the limited role of seasonality in 
+these series. Overall, the findings emphasize that ETS 
+methods offer greater flexibility in incorporating trend and 
+seasonal patterns, making them superior for forecasting air 
+pollutant concentrations in regions with complex temporal 
+dynamics. 
+ 
+ACKNOWLEDGMENT 
+This study was supported by the Scientific Research Pr ojects 
+Coordination Unit of Çanakkale Onsekiz Mart University 
+under project number FBA-2024-4536. 
+Special thanks to the Marmara Clean Air Center Directorate 
+for supplying the dataset and supporting this research. 
+ 
+DATA AVAILABILITY STATEMENT 
+The authors confirm that the data that supports the findings 
+of this study are available within the article. Raw data that 
+support the finding of this study are available from the 
+corresponding author, upon reasonable request. 
+ 
+CONFLICT OF INTEREST 
+The authors declare that there is no conflict of interest with 
+any individual, institution, or organization in the preparation, 
+evaluation, or publication of this study. 
+ 
+USE OF AI FOR WRITING ASSISTANCE 
+Not declared. 
+ 
+ETHICS 
+There are no ethical issues with t he publication of this 
+manuscript. 
+ 
+REFERENCES 
+ 
+[1]. B. Chen, and H. Kan, “Air pollution and population health: 
+a global challenge,” Environmental Health and Preventive 
+Medicine, vol. 13, pp. 94–101, 2008. 
+[2]. S. Mentese, and B. Selçuk, “Assessment of ambient air 
+quality, meteorological parameters, and emission source 
+characteristics of Çanakkale, Turkey,” International 
+Journal of Environmental Science and Technology , vol. 
+19(2), pp. 1025–1040, 2022. 
+[3]. S. Mentese, C. Bakar, N. A. Mirici, S. Oymak, and M. T. 
+Otkun, “Associations between respiratory health and 
+ambient air quality in Canakkale, Turkey: a long -term 
+cohort study,” Environmental Science and Pollution 
+Research, vol. 25, pp. 12915–12931, 2018. 
+[4]. Y. Gültepe, “Makine öğrenmesi algoritmaları ile hava 
+kirliliği tahmini üzerine karşılaştırmalı bir 
+değerlendirme,” Avrupa Bilim ve Teknoloji Dergisi, vol. 16, 
+pp. 8–15, 2019. 
+[5]. S. Ünaldı and N. Yalçın, “Hava kirliliğinin makine 
+öğrenmesi tabanlı tahmini: Başakşehir örneği,” 
+Mühendislik Bilimleri ve Araştırmaları Dergisi, vol. 4, no. 1, 
+pp. 35–44, 2022. 
+[6]. J. Delaram and M. Khedmati, “Forecasting ambient air 
+pollutants by box -Jenkins stochastic models in Tehran,” 
+Scientia Iranica, vol. 28, no. 6, pp. 3551–3568, 2021. 
+[7]. M. Aydın and S. Menteşe, “Gelibolu hava kalitesin in 
+belirlenmesi”, Environmental Toxicology and Ecology , 
+4(1), 11-25, 2024. 
+895 Environ Res Tec, Vol. 9, Issue 5, pp. 886-895, October 2026 
+ 
+ 
+[8]. Ö. Akyürek, “Orman yangını sonrası oluşan hasarın ve 
+hava kirletici parametrelerin izlenmesi: Çanakkale 
+yangını örneği”, Doğal Afetler ve Çevre Dergisi, 10(1), 103-
+112, 2024. 
+[9]. S. Makridakis and M. Hibon, “ARMA models and the Box –
+Jenkins methodology,” Journal of Forecasting , vol. 16, no. 
+3, pp. 147–163, 1997. 
+[10]. T. Dimri, S. Ahmad, and M. Sharif, “Time series analysis 
+of climate variables using seasonal ARIMA approach,” 
+Journal of Eart h System Science , vol. 129, no. 1, p. 149, 
+2020. 
+[11]. İ. Temiz and D. Turgut, “Time series analysis and 
+forecasting for air pollution in Ankara: a Box -Jenkins 
+approach”, Alphanumeric Journal, 3(2), 131-138, 2015. 
+[12]. H. O. Cekim, “Forecasting PM10 concentrations us ing 
+time series models: a case of the most polluted cities in 
+Turkey”, Environmental Science and Pollution 
+Research, 27(20), 25612-25624, 2020. 
+[13]. C. C. Holt, “Forecasting Seasonals and Trends by 
+Exponentially Weighted Moving Averages,” ONR 
+Memorandum, vol. 5 2, Carnegie Institute of Technology, 
+Pittsburgh, 1957. Available from the Engineering Library, 
+University of Texas, Austin. 
+[14]. L. Wu, X. Gao, Y. Xiao, S. Liu, and Y. Yang, “Using grey 
+Holt–Winters model to predict the air quality index for 
+cities in China,” Natural Hazards, vol. 88, pp. 1003 –1012, 
+2017. 
+[15]. I. Setiawan, “Time series air quality forecasting with R 
+Language and R Studio,” Journal of Physics: Conference 
+Series, vol. 1450, no. 1, p. 012064, Feb. 2020. 
+[16]. S. Hansun, A. Wicaksana, and M. B. Kristanda, 
+“Prediction of Jakarta City air quality index: modified 
+double exponential smoothing approaches,” International 
+Journal of Innovative Computing, Information and Control, 
+vol. 17, no. 4, pp. 1363–1371, 2021. 
+[17]. Y. Fırat, “NARX modellerini kullanarak hava kalitesi 
+tahmin analizinin uygulanması,” Gümüşhane Üniversitesi 
+Fen Bilimleri Dergisi, vol. 10, no. 2, pp. 442–455, 2020. 
+[18]. C. B. Karakuş, and S. Yıldız, “Hava kalite indeksi ile 
+meteorolojik parametreler arasındaki ilişkinin çoklu 
+regresyon yöntemi ile belirlenmesi, ” Niğde Ömer 
+Halisdemir Üniversitesi Mühendislik Bilimleri Dergisi , vol. 
+8, no. 2, pp. 698–711, 2019. 
+[19]. P. Newbold, W. L. Carlson, and B. M. Thorne, Statistics for 
+Business and Economics. Pearson, 2013. 
+[20]. A. L. S. Maia and F. D. A. de Carvalho, “Holt’s exponential 
+smoothing and neural network models for forecasting 
+interval-valued time series,” International Journal of 
+Forecasting, vol. 27, no. 3, pp. 740–759, 2011. 
+[21]. C. Kadılar and H. Öncel -Çekim, SPSS ve R Uygulamalı 
+Zaman Serileri Analizine Giriş . Ankara: Seçkin Yayıncılık, 
+2020, pp. 1–379. 
+[22]. E. S. Gardner Jr. and E. D. McKenzie, “Forecasting trends 
+in time series,” Management Science, vol. 31, no. 10, pp. 
+1237–1246, 1985. 
+[23]. G. Sbrana and A. Silvestrini, “Forecasting with the 
+damped trend model using the structural approach,” 
+International Journal of Production Economics, vol. 226, p. 
+107654, 2020. 
+[24]. J. W. Taylor, “Exponential smoothing with a damped 
+multiplicative trend,” International Journal of Forecasting, 
+vol. 19(4), pp. 715–725, 2003. 
+[25]. P. S. Kalekar , “Time series forecasting using Holt -
+Winters exponential smoothing,” Kanwal Rekhi School of 
+Information Technology , vol. 4329008(13), pp. 1 –13, 
+2004. 
+[26]. C. C. Holt and P. Winters, “Forecasting seasonal 
+movements,” Journal of the American Statistical 
+Association, vol. 55, no. 290, pp. 345–368, 1960. 
+[27]. R. J. Hyndman and G. Athanasopoulos, Forecasting: 
+Principles and Practice. OTexts, 2018. 
+[28]. R. A. Yaffee and M. McGee, An Introduction to Time Series 
+Analysis and Forecasting: With Applications of SAS and 
+SPSS. Elsevier, 2000. 
+[29]. J. N. M. Farimani, P. Parsafar, and S. Mohammadi, 
+“Evaluation performance of time series methods in 
+demand forecasting: Box -Jenkins vs artificial neural 
+network (Case study: Automotive Parts industry),” 
+Journal of Statistical Computation and Simu lation, vol. 92, 
+no. 17, pp. 3639–3658, 2022. 
+[30]. E. Eğrioğlu and E. Baş, Zaman serileri ve öngörü 
+yöntemleri (R uygulamalı). Nobel, 2020. 
+[31]. D. Gujarati, Econometrics by example . Bloomsbury 
+Publishing, 2015.

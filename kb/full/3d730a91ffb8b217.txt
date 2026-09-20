@@ -1,0 +1,2070 @@
+Earth Syst. Sci. Data, 18, 6885–6911, 2026
+https://doi.org/10.5194/essd-18-6885-2026
+© Author(s) 2026. This work is distributed under
+the Creative Commons Attribution 4.0 License.
+GloSVeT: a global 0.05° monthly mean surface soil and
+vegetation component temperature dataset (2003–2023)
+Xiangyang Liu1, Zhao-Liang Li 2,3, Chen Ru 1, Si-Bo Duan 1, and Pei Leng 1
+1State Key Laboratory of Efﬁcient Utilization of Arable Land in China, Institute of Agricultural Resources and
+Regional Planning, Chinese Academy of Agricultural Sciences, Beijing 100081, China
+2Hebei International Joint Research Center for Remote Sensing of Agricultural Drought Monitoring/
+School of Land Science and Space Planning, Hebei GEO University, Shijiazhuang 050031, China
+3State Key Laboratory of Resources and Environment Information System, Institute of Geographic Sciences
+and Natural Resources Research, Chinese Academy of Sciences, Beijing 100101, China
+Correspondence: Zhao-Liang Li (lizhaoliang@caas.cn)
+Received: 12 November 2025 – Discussion started: 9 March 2026
+Revised: 23 August 2026 – Accepted: 27 August 2026 – Published: 16 September 2026
+Abstract. Current satellite-derived land surface temperature (LST) products represent a mixed radiative sig-
+nal that integrates soil and vegetation contributions, obscuring the physical mechanisms controlling surface
+energy partitioning and ecosystem functioning. To overcome this limitation, this study developed the Global
+Soil and Vegetation Temperature dataset (GloSVeT), the ﬁrst global product that simultaneously provides sur-
+face soil and vegetation component temperatures at 0.05° spatial resolution for the period 2003–2023. GloSVeT
+was generated using the multisource data fusion-based global surface soil and vegetation temperature retrieval
+(FuSVeT) method, which integrates multi-temporal MODIS observations with ERA5-Land reanalysis to im-
+prove spatial completeness, retrieval accuracy, and computational efﬁciency. Its performance was extensively
+assessed through a comprehensive evaluation framework combining internal closure check, ﬂux-tower vali-
+dation at 72 representative sites, triple collocation (TC) analysis, and physical consistency assessments. Re-
+sults show that GloSVeT largely preserves the original MODIS mixed-pixel LST constraint, and achieves re-
+liable accuracy with coefﬁcients of determination mostly at or above 0.9 and root mean square errors gener-
+ally around 2 K for both components. TC analysis further demonstrates globally consistent performance, with
+advantages in humid tropics and transitional ecosystems compared with reanalysis products. In addition, soil
+temperature anomalies are predominantly negatively correlated with soil moisture whereas vegetation tem-
+perature aligns with solar-induced ﬂuorescence along a clear gradient from energy-limited to water-limited
+biomes, indicating the physical consistency of GloSVeT. Over pixels where soil and vegetation temperatures
+are simultaneously available, both components exhibit evident warming trends during 2003–2023, with rates
+of 0.44± 0.04 K per decade for soil temperature and 0 .39± 0.04 K per decade for vegetation temperature.
+In summary, GloSVeT provides a physically consistent, observation-driven depiction of surface thermal dy-
+namics, offering new opportunities for quantifying land–atmosphere energy exchange, monitoring ecosystem
+hydrothermal responses, and improving the representation of land surface processes in Earth system mod-
+els. GloSVeT is publicly available at https://doi.org/10.11888/RemoteSen.tpdc.303317 (Liu and Li, 2026a) and
+https://doi.org/10.5281/zenodo.22724289 (Liu and Li, 2026b).
+Published by Copernicus Publications.
+6886 X. Liu et al.: GloSVeT: global soil and vegetation temperatures
+1 Introduction
+Land surface temperature (LST) is a key boundary variable
+governing the exchange of energy and water between the
+land surface and the atmosphere (Li et al., 2023). It captures
+a broad range of surface and ecological processes, including
+plant physiological activity and soil moisture dynamics (Li et
+al., 2021; Prentice et al., 2024), and has been widely applied
+in drought monitoring, urban heat island assessment, climate
+change analysis, and ecosystem modeling (Blyth et al., 2021;
+Wan et al., 2021; Wang et al., 2025). However, satellite-based
+LST products, owing to their limited spatial resolution, gen-
+erally represent a mixed radiometric signal that combines
+temperature contributions from multiple components within
+each pixel (Li et al., 2013). This mixture obscures the het-
+erogeneity of surface thermal conditions and constrains our
+understanding of how different land components, particu-
+larly soil and vegetation, regulate surface energy and wa-
+ter ﬂuxes. In contrast, separating LST into soil and vegeta-
+tion component temperatures provides a more physical and
+mechanistic representation of land–atmosphere interactions
+(Zhan et al., 2013; Liu et al., 2020b). Component temper-
+ature datasets thus serve as essential inputs for two-source
+energy balance modeling (Song et al., 2020), evapotranspira-
+tion partitioning (Jiang et al., 2022), vegetation stress diagno-
+sis (Doughty et al., 2023), and studies of climate–ecosystem
+coupling (García-García et al., 2023).
+Over the past decades, considerable efforts have been
+made to estimate soil temperature at global and regional
+scales, resulting in two main types of products: reanaly-
+sis products and machine-learning-based datasets. Reanal-
+ysis products, such as ERA5-Land (Muñoz-Sabater et al.,
+2021) and GLDAS (Rodell et al., 2004), which rely on data
+assimilation techniques and land surface modelling, provide
+spatially continuous soil temperature information at multi-
+ple depths and temporal scales. Their main advantage lies in
+long-term continuity, global coverage, and physically consis-
+tent representation of land surface process. However, these
+products are generally provided at relatively coarse spatial
+resolutions, typically ranging from 0.10 to 0.625°, and their
+performance can be affected by land surface model struc-
+ture, parameterization schemes, and forcing uncertainties.
+With the recent advances in artiﬁcial intelligence and the ex-
+pansion of in situ observational networks, several machine-
+learning–based soil temperature datasets have been devel-
+oped (Wang et al., 2026; Baumberger et al., 2024; Lem-
+brechts et al., 2022). Compared with reanalysis products,
+these datasets can better exploit observational constraints and
+environmental covariates, and often achieve higher spatial
+resolutions, such as 1 km. Nevertheless, they are generally
+limited in regional coverage or representation of only cli-
+matological averages (Lembrechts et al., 2022; Wang et al.,
+2026), which constrains their broader applicability. A sum-
+mary of representative soil temperature products, including
+their spatial and temporal coverage, resolution, target depth,
+methodology, and access information, is provided in Ta-
+ble A1. In contrast to soil temperature, no operational global
+product currently exists for vegetation temperature. In re-
+gions with dense vegetation cover, air temperature is often
+used as a proxy because of its strong coupling with canopy
+temperature (Li et al., 2001; Zhan et al., 2011; Rutter et al.,
+2023), while some studies have directly substituted LST for
+vegetation temperature when deriving vegetation physiologi-
+cal parameters such as evapotranspiration (Ma et al., 2022) or
+gross primary productivity (GPP) (Sims et al., 2008; Tang et
+al., 2021). Consequently, there remains a lack of long-term,
+high-resolution datasets that simultaneously provide soil and
+vegetation component temperatures over the same regions
+under diverse environmental conditions.
+In the context of thermal infrared (TIR) remote sensing,
+component temperature separation enables the decomposi-
+tion of the LST of a mixed pixel into the temperatures of
+its constituent land surface components (Zhan et al., 2013).
+These component temperatures have a speciﬁc radiometric
+meaning: they represent the thermal states of the visible veg-
+etation and soil/background surfaces within the sensor ﬁeld
+of view. Because real land surfaces have complex three di-
+mensional structures, these radiometric temperatures are not
+necessarily equivalent to the thermal state of shaded soil be-
+neath canopies or to that of the entire canopy. Neverthe-
+less, they provide an effective and physically interpretable
+way for constructing a dataset that simultaneously character-
+izes the thermal behavior of soil and vegetation components.
+Methodologically, this process involves solving an ill-posed
+problem, i.e., estimating soil and vegetation component tem-
+peratures from a single retrieved apparent LST. Accordingly,
+a variety of algorithms have been developed to exploit addi-
+tional temporal (Zhao et al., 2014), spatial (Song et al., 2015;
+Zhan et al., 2011), angular (Li et al., 2001; Lu et al., 2025),
+or spectral (Lundquist et al., 2018) information from satel-
+lite observations. Given the inherent limitations of each indi-
+vidual approach, several hybrid methods (Bian et al., 2020;
+Liu et al., 2020b) have been proposed to make full use of
+the complementary advantages of different types of informa-
+tion, advancing component temperature retrieval from the-
+oretical algorithm development toward practical large-scale
+implementations. To further overcome the observational con-
+straints of satellite data, Liu et al. (2025) developed a mul-
+tisource data Fusion-based global surface Soil and Vege-
+tation Temperature retrieval (FuSVeT) method, which inte-
+grates multi-temporal MODIS observations to increase the
+number of equations and incorporates ERA5-Land reanaly-
+sis data to reduce the unknown parameters. As a result, the
+FuSVeT framework delivers higher retrieval accuracy, more
+complete spatial coverage, and markedly improved compu-
+tational efﬁciency compared with previous satellite-only ap-
+proaches, providing a promising foundation for producing
+long-term global soil and vegetation component temperature
+datasets.
+Earth Syst. Sci. Data, 18, 6885–6911, 2026 https://doi.org/10.5194/essd-18-6885-2026
+X. Liu et al.: GloSVeT: global soil and vegetation temperatures 6887
+A further challenge in producing reliable component
+temperature products lies in the lack of effective val-
+idation strategies. Widely used ground-based measure-
+ment networks, such as the Surface Radiation Budget
+Network (SURFRAD, https://www.esrl.noaa.gov/gmd/grad/
+surfrad/, last access: 25 June 2026), the AmeriFlux net-
+work (https://ameriﬂux.lbl.gov/, last access: 25 June 2026)
+and the Karlsruhe Institute of Technology stations (KIT,
+https://www.imkasf.kit.edu/english/skl_stations.php, last ac-
+cess: 25 June 2026), generally record either surface skin or
+air temperature rather than distinct soil and canopy com-
+ponents (He et al., 2025). Consequently, pixel-scale obser-
+vations of soil and vegetation temperatures are extremely
+scarce, making direct evaluation of satellite-derived results
+nearly impossible. Some studies have attempted to iden-
+tify pure pixels from higher resolution satellite data and
+used their LSTs as reference values to assess coarse reso-
+lution retrievals (Liu et al., 2020a, 2025). However, due to
+the sparse distribution of pure pixels, such localized com-
+parisons cannot provide a comprehensive or statistically ro-
+bust evaluation at continental or global scales. Examination
+of the spatiotemporal coherence of other temperature prod-
+ucts, for instance through spatial gradients or temporal vari-
+ation trends (Liu et al., 2025; Wang et al., 2026), offers an
+alternative means of cross-validation, but these approaches
+generally yield only qualitative assessments. In contrast, ro-
+bust non-reference validation frameworks have been devel-
+oped to evaluate dataset reliability without relying on abso-
+lute ground truth. Among them, the triple collocation (TC)
+provides a practical tool for quantifying the relative errors
+and mutual consistency among three independent datasets
+that observe the same target variable (Gruber et al., 2016;
+Park et al., 2023; Stoffelen, 1998; Wei et al., 2024). Although
+TC was originally designed for other geophysical variables
+such as soil moisture and precipitation, its demonstrated ro-
+bustness and scalability make it particularly promising for
+evaluating component temperature products, offering a path-
+way toward large-scale, physically consistent assessments of
+spatiotemporal stability, internal coherence, and overall ap-
+plicability.
+To address these challenges, this study presents GloSVeT,
+the ﬁrst global dataset of monthly mean surface soil and
+vegetation component temperatures from 2003 to 2023 at
+0.05° spatial resolution. The dataset is generated using
+the previously developed FuSVeT framework, which is ex-
+panded from algorithm development to global implemen-
+tation through multi-source integration and large-scale au-
+tomated processing. Beyond dataset production, this study
+further establishes a comprehensive evaluation strategy tai-
+lored to component temperature products, combining inter-
+nal closure check of the decomposition–reconstruction pro-
+cess, site-based validation against in situ temperature ob-
+servations from a comprehensive network, TC analysis in-
+corporating reanalysis soil and air temperatures, indicator-
+based consistency assessment with soil moisture and solar-
+induced ﬂuorescence (SIF), and examination of seasonal spa-
+tiotemporal consistency. This multi-perspective assessment
+helps address the long standing difﬁculty of evaluating com-
+ponent temperatures in the absence of direct global ground
+truth. As the ﬁrst long-term, high-resolution global prod-
+uct that simultaneously represents soil and vegetation com-
+ponent temperatures, GloSVeT provides a valuable foun-
+dation for quantifying land–atmosphere energy exchange,
+partitioning evapotranspiration, and improving ecosystem
+and climate models. The dataset is freely available at
+https://doi.org/10.11888/RemoteSen.tpdc.303317 (Liu and
+Li, 2026a) and https://doi.org/10.5281/zenodo.22724289
+(Liu and Li, 2026b).
+2 Data
+2.1 Data used for GloSVeT generation
+To generate the GloSVeT, multiple datasets from satellite ob-
+servations and reanalysis products were jointly employed to
+provide thermal, structural, and ancillary information (Ta-
+ble 1). These inputs ensure the physical consistency and
+global completeness of the GloSVeT production framework.
+The long-term MODIS record provides more than two
+decades of globally consistent observations, making it one of
+the most widely used and physically robust datasets for moni-
+toring land surface thermal dynamics (Li et al., 2023). There-
+fore, this study employs the MODIS Collection 6.1 monthly
+LST products, namely MOD11C3 (Terra) and MYD11C3
+(Aqua), which provide global monthly mean LSTs at nom-
+inal observation times of 10:30/22:30 local solar time for
+Terra and 13:30/01:30 for Aqua, respectively, with a spa-
+tial resolution of 0.05°. Both datasets are generated using the
+standard day/night algorithm (Wan and Li, 1997) and further
+ﬁlled with data derived from the generalized split window
+algorithm (Wan and Dozier, 1996) to enhance spatial com-
+pleteness. Within the FuSVeT framework, these two products
+serve as the primary thermal inputs, providing four represen-
+tative instantaneous observations per month. These observa-
+tions, together with the continuous diurnal cycle information
+derived from ERA5-Land hourly skin temperature, are used
+to construct the monthly mean diurnal cycle (MDC) model,
+which forms the basis for separating soil and vegetation com-
+ponent temperatures.
+To support the global generation of GloSVeT, the skin tem-
+perature variable from the ERA5-Land reanalysis dataset was
+employed to simplify model parameters and constrain the re-
+trieval of soil and vegetation component temperatures. The
+ERA5-Land product provides physically consistent and spa-
+tially continuous estimates of the surface thermal state, de-
+rived through data assimilation and land surface modeling
+(Muñoz-Sabater et al., 2021). It offers hourly skin temper-
+ature ﬁelds aggregated into monthly averages at a spatial
+resolution of 0.10°, with long-term continuity from 1950 to
+the present, ensuring complete temporal coverage and global
+https://doi.org/10.5194/essd-18-6885-2026 Earth Syst. Sci. Data, 18, 6885–6911, 2026
+6888 X. Liu et al.: GloSVeT: global soil and vegetation temperatures
+Table 1. Data used for the generation of the GloSVeT product.
+Variable Dataset Spatial Temporal Resolution Period Purpose
+Resolution
+Land surface
+temperature
+MOD11C3/
+MYD11C3
+0.05° Monthly mean at four
+overpass times
+2003–2023 Input thermal observations for
+constructing the separation model
+Skin
+temperature
+ERA5-Land 0.10° Monthly mean at 24 hourly
+time steps
+2003–2023 Model parameter simpliﬁcation and
+constraint
+Fractional
+vegetation cover
+GLASS FVC 0.05° 8 d composite 2003–2023 Pixel-scale structural
+parameterization for decomposition
+Land cover MCD12C1 0.05° Yearly 2003–2023 Deﬁnition of the valid retrieval
+domain
+consistency. In this study, the ERA5-Land skin temperature
+data were resampled to 0.05° using the nearest neighbour
+method to maintain spatial consistency with the MODIS LST
+inputs.
+Fractional Vegetation Cover (FVC) was used to charac-
+terize the sub-pixel composition of soil and vegetation com-
+ponents, which is essential for temperature decomposition.
+The Global Land Surface Satellite (GLASS) FVC product
+is derived from MODIS surface reﬂectance data using high-
+spatial-resolution reference FVC and the general regression
+neural network approach (Jia et al., 2015). This product has
+been extensively validated and demonstrates accuracy com-
+parable to other global FVC datasets, while offering supe-
+rior spatial and temporal continuity. In this study, the 8 d
+0.05° GLASS FVC product was employed and aggregated to
+monthly means to represent pixel-level vegetation structure,
+ensuring spatiotemporal consistency with the MODIS LST
+inputs and facilitating the global generation of GloSVeT.
+Since the ERA5-Land product provides seamless global
+coverage without explicit distinction between land and non-
+land surfaces, additional land cover information was required
+to deﬁne the valid retrieval domain and to identify sur-
+faces that warrant cautious interpretation (Liu et al., 2025).
+To ensure consistency with the MODIS-based inputs, this
+study employed the MODIS Collection 6.1 Land Cover Type
+Yearly Global 0.05° product (MCD12C1), which provides
+annual global land cover classiﬁcation derived from MODIS
+surface reﬂectance data using the International Geosphere
+Biosphere Programme (IGBP) scheme (Sulla-Menashe et al.,
+2019). Pixels identiﬁed as water bodies (IGBP type = 17) or
+permanent snow/ice (IGBP type = 15) were excluded based
+on the MCD12C1 land cover map. By contrast, urban and
+built-up pixels (IGBP type = 13) were retained for spatial
+completeness, since such pixels may contain mixed vege-
+tation and non-vegetation background signals at the 0.05°
+scale.
+2.2 Data used for GloSVeT evaluation
+To evaluate the accuracy, consistency, and physical relia-
+bility of the GloSVeT dataset, multiple independent data
+sources were employed, including ground-based observa-
+tions, reanalysis products, and environmental indicators (Ta-
+ble 2). These datasets support three complementary vali-
+dation strategies: site-based comparison, TC analysis, and
+indicator-based consistency assessment.
+The temperature-based validation approach is the most
+straightforward means of assessing the accuracy of tempera-
+ture products, as it directly compares satellite-retrieved tem-
+peratures with concurrent ground measurements (Li et al.,
+2023). Using random forest modelling and Landsat LST data,
+He et al. (2025) systematically evaluated the spatial represen-
+tativeness of 211 ﬂux sites from ﬁve observation networks
+worldwide, and identiﬁed 46, 36, 49, and 62 sites with strong
+spatial representativeness across multiple scales (1, 3, 5, and
+10 km) for spring, summer, autumn, and winter, respectively.
+Detailed information on the selected sites and their spatial
+distribution can be found in Table II and Fig. 6 of He et
+al. (2025). Following their ﬁndings, this study adopted these
+season-speciﬁc site sets and collected available upward and
+downward longwave radiation records from 2003 to 2023 for
+the union of these sites, comprising 72 unique ﬂux sites in to-
+tal. The collected radiation records were then used to calcu-
+late site-level instantaneous LST according to the following
+equation (Xing et al., 2021).
+Ti=
+[Lu− (1−εb)×Ld
+σ×εb
+]1/4
+(1)
+where Ti is the instantaneous temperature; Lu and Ld
+are the upwelling and downwelling longwave radia-
+tion, respectively; σ is the Stefan–Boltzmann constant
+(5.670373× 10−8 W m−2 K−4); and εb is the broad-
+band emissivity, calculated using spectral emissivities
+from the Cooperative Institute for Meteorological Satel-
+lite Studies (CIMSS) baseline-ﬁt emissivity database
+(http://cimss.ssec.wisc.edu/iremis/, last access: 24 August
+Earth Syst. Sci. Data, 18, 6885–6911, 2026 https://doi.org/10.5194/essd-18-6885-2026
+X. Liu et al.: GloSVeT: global soil and vegetation temperatures 6889
+Table 2. Data used for the evaluation of the GloSVeT product.
+Variable Dataset Spatial Temporal Period Purpose
+Resolution Resolution
+Longwave
+radiation
+Five ﬂux observation
+networks (He et al., 2025)
+Point (∼ 40–80 m
+footprint)
+Instantaneous 2003–2023 Site-based validation using
+ﬂux tower radiation data
+Normalized
+difference
+vegetation index
+Landsat Collection 2 Tier 1
+NDVI composite
+30 m 8 d 2003–2023 Determination of ﬂux site
+surface type (soil, vegetation,
+or mixed)
+Top-layer soil
+temperature
+JRA-3Q/GLDAS 0.375°/0.25° Monthly 2003–2023 TC analysis for soil
+temperature
+Air temperature JRA-3Q/GLDAS 0.375°/0.25° Monthly 2003–2023 TC analysis for vegetation
+temperature
+Soil moisture ESA CCI SM 0.25° Daily 2003–2023 Indicator-based assessment of
+soil temperature consistency
+Solar-induced
+ﬂuorescence
+GOSIF 0.05° 8 d 2003–2023 Indicator-based assessment of
+vegetation temperature
+consistency
+2025) as input, following a linear conversion method
+(Cheng et al., 2013). Subsequently, all instantaneous LST
+estimates, regardless of clear-sky or cloudy conditions, were
+averaged to derive the true monthly mean LST (Xing et al.,
+2021). This tower-derived radiometric LST was used as an
+approximate component temperature reference only when
+the tower footprint was dominated by either bare soil or
+vegetation. Typically, the effective observational footprints
+of these ﬂux towers range from 40 to 80 m in diameter. To
+identify near pure surface conditions, we additionally used
+the Landsat Collection 2 Tier 1 Level-2 8 d 30 m normalized
+difference vegetation index (NDVI) composite (https:
+//developers.google.com/earth-engine/datasets/catalog/
+LANDSAT_COMPOSITES_C02_T1_L2_8DAY_NDVI,
+last access: 26 August 2025). Speciﬁcally, the 8 d NDVI
+values at each site were aggregated to monthly means. The
+corresponding tower-derived LST records were used as soil
+temperature references when NDVI≤ 0.1 and as vegetation
+temperature references when NDVI≥ 0.7, whereas records
+with intermediate NDVI values were excluded from the
+component temperature validation.
+Because long-term, observation-based soil and vegetation
+temperature datasets with global coverage are currently un-
+available, two reanalysis datasets, JRA-3Q (Kosaka et al.,
+2024) and GLDAS (Rodell et al., 2004), were used as
+physically related comparison datasets for the TC analy-
+sis. The JRA-3Q product provides monthly averaged vari-
+ables at a spatial resolution of 0.375°, while GLDAS of-
+fers 0.25° resolution. To maximize consistency with the
+GloSVeT soil temperature, only the top-layer soil tempera-
+ture was used from both datasets. Speciﬁcally, the monthly
+mean soil temperature at level 1 layer (0–2 cm) from JRA-
+3Q and the SoilTMP0_10cm_inst variable (0–10 cm) from
+GLDAS were employed. Although these variables differ in
+their effective soil depth and are not identical to the TIR sur-
+face soil component temperature retrieved by GloSVeT, they
+are physically related near-surface soil thermal variables and
+can therefore serve as reasonable proxy datasets for evaluat-
+ing relative consistency within the TC framework. For veg-
+etation temperature, near-surface air temperature was used
+as a proxy in densely vegetated regions, given the strong
+coupling between canopy temperature and near-surface air
+temperature through land–atmosphere heat exchange (Li et
+al., 2001; Zhan et al., 2011; Rutter et al., 2023). Accord-
+ingly, the monthly mean 2 m air temperature from JRA-3Q
+and the Tair_f_inst variable from GLDAS were used for
+the vegetation-temperature TC analysis. For consistency in
+spatial support, GloSVeT soil and vegetation temperatures,
+GLDAS soil temperature and air temperature, and GLASS
+FVC were aggregated to the 0.375° JRA-3Q grid using an
+area-weighted method. The aggregated GLASS FVC was
+further used to identify densely vegetated pixels (FVC≥ 0.8)
+for the evaluation of vegetation temperature.
+To evaluate the physical consistency of GloSVeT, we ex-
+amined the relationships between soil temperature and soil
+moisture, as well as between vegetation temperature and SIF.
+These analyses were designed to assess whether the spa-
+tial and temporal variations in GloSVeT are consistent with
+the expected energy–water–carbon interactions derived from
+theory and independent observations. For this purpose, we
+used the European Space Agency Climate Change Initia-
+tive Soil Moisture (ESA CCI SM) product, which provides
+a long-term, quality-controlled global record (1978–present)
+generated through a multi-sensor merging algorithm (Dorigo
+et al., 2017; Gruber et al., 2019). The dataset offers daily
+global coverage at 0.25° spatial resolution. In this study, the
+https://doi.org/10.5194/essd-18-6885-2026 Earth Syst. Sci. Data, 18, 6885–6911, 2026
+6890 X. Liu et al.: GloSVeT: global soil and vegetation temperatures
+SM data were averaged to monthly means, and the GloSVeT
+soil temperatures were aggregated to 0.25° to ensure spatial
+comparability. For vegetation, we used the GOSIF dataset, a
+global SIF product derived from discrete OCO-2 soundings,
+MODIS observations, and meteorological reanalysis inputs
+using a data-driven approach (Li and Xiao, 2019). GOSIF
+provides 8 d SIF estimates at 0.05° resolution for the period
+2000–2024 and shows strong agreement with GPP from 91
+FLUXNET sites, i.e., the coefﬁcient of determination ( R2)
+= 0.73 and p< 0.001. In this study, the SIF data were ag-
+gregated to monthly means to match the temporal scale of
+GloSVeT and used to examine the correspondence between
+vegetation temperature and photosynthetic activity.
+3 Method
+3.1 FuSVeT
+In the FuSVeT framework, the temporal variations of soil and
+vegetation temperatures at the monthly scale are described
+using an MDC model. In this study, the well-established
+GOT09 model (Göttsche and Olesen, 2009) was adopted to
+represent sub-daily temperature dynamics, as expressed in
+Eqs. (2)–(6).
+
+
+
+Tday(t)=
+T0+Ta cos(θz)cos−1(θz,min)·e[mmin−m(θz)]τ, t<t s
+Tnight(t)=
+T0+δT+
+[
+Ta cos(θzs)cos−1(θz,min)
+·e[mmin−m(θzs)]τ−δT
+]
+e
+−12
+πk (θ−θs), t≥ts
+(2)
+θ= π
+12(t−tm) (3)
+θz= arccos(sin(δ)sin(φ)+ cos(δ)cos(φ)cos(θ)) (4)
+m(θz)=−RE
+H cos(θz)+
+√[RE
+H cos(θz)
+]2
++ 2RE
+H + 1 (5)
+k= 12
+π dθz(θs)
+dθ
+cos(θzs)−δT
+Ta
+cos(θz,min)
+e(mmin−m(θzs))τ
+sin(θzs)+τ cos(θzs)∂m(θzs)
+∂θz
+(6)
+whereTday(t) andTnight(t) denote the day and night temper-
+ature variations at timet, respectively;T0 is the temperature
+around sunrise;Ta is the diurnal temperature amplitude;tm is
+the time of maximum temperature;ts is the time marking the
+onset of free attenuation, representing the transition between
+daytime heating and nighttime cooling;τ is the atmospheric
+transmittance;δT is the day-to-day change of residual tem-
+perature;θ is the thermal hour angle; θz is the solar zenith
+angle;θz,min is the minimum solar zenith angle and can be
+calculated using Eq. (4) at θ= 0;m is the relative air mass;
+mmin is the minimum relative air mass, and can be obtained
+using Eq. (5) at θz=θz,min;θs is the thermal hour angle for
+t=ts ;θzs is the thermal zenith angle derived from Eq. (4)
+atθ=θs ;RE is the radius of the Earth, and H is the scale
+height of the atmosphere. This model contains six free pa-
+rameters:T0,Ta,tm,ts,δT , andτ.
+Based on geometrical theory and the MDC model, the rela-
+tionship between LST and two component temperatures can
+be expressed as:
+T (t)=
+
+
+fvc·εv·
+[
+MDC
+(
+T0,v,T a,v,t m,v,t s,v,δT v,τ
+)]4
++(1− fvc)·εs·
+[
+MDC
+(
+T0,s,T a,s,t m,s,t s,s,δT s,τ
+)]4
+fvc·εv+ (1− fvc)·εs
+
+
+0.25
+(7)
+whereT is the LST for a mixed pixel; the subscripts s and v
+represent the MDC parameters for soil temperature and vege-
+tation temperature, respectively;εv andεs are the broadband
+emissivities for vegetation component and soil component,
+set to 0.98 and 0.95 in this study; fvc is the fractional vege-
+tation cover. Accordingly, the retrieval of soil and vegetation
+temperatures becomes equivalent to solving for the eleven
+MDC parameters, i.e.,T0,s,Ta,s,tm,s,ts,s,δTs,T0,v,Ta,v,tm,v,
+ts,v,δTv, andτ.
+The core principle of FuSVeT is to partition all MDC
+parameters into seven temperature-independent ( tm,s, ts,s,
+δTs, tm,v, ts,v, δTv, and τ) and four temperature-dependent
+groups (T0,s, Ta,s, T0,v, and Ta,v), and solve them through
+a multi-source data fusion strategy to ensure physical con-
+sistency and spatial completeness. Speciﬁcally, temporally
+dense reanalysis data are used both to directly estimate
+the temperature-independent parameters and to provide ini-
+tial values and physical constraints for the temperature-
+dependent parameters. The temperature-dependent param-
+eters are subsequently optimized using temporally sparse
+satellite observations. Further methodological details can be
+found in Liu et al. (2025).
+3.2 Generation of GloSVeT using the FuSVeT method
+The overall technical workﬂow for generating the GloSVeT
+dataset is illustrated in Fig. 1. First, the parameter initializa-
+tion was conducted at 0.10° spatial resolution using ERA5-
+Land skin temperature and monthly GLASS FVC data after
+spatial and temporal upscaling. These datasets were jointly
+employed to estimate seven temperature-independent and
+four temperature-dependent parameters within the original
+MDC model. To ensure physical realism, a temperature dif-
+ference constraint between soil and vegetation components
+(−10 to 30 K) was imposed. Considering this constraint and
+the need for robust parameter estimation, the parameters
+were solved using a Bayesian optimization algorithm rather
+than the conventional Levenberg–Marquardt method (Liu
+et al., 2020b). The retrieved parameters were subsequently
+mapped to the 0.05° grid by uniformly assigning each 0.10°
+estimate to its corresponding 2× 2 ﬁner pixels. Then, model
+Earth Syst. Sci. Data, 18, 6885–6911, 2026 https://doi.org/10.5194/essd-18-6885-2026
+X. Liu et al.: GloSVeT: global soil and vegetation temperatures 6891
+Figure 1. Workﬂow for generating the GloSVeT dataset using the FuSVeT method.
+calibration was performed to further introduce satellite ob-
+servation constraints and improve the retrieval accuracy of
+soil and vegetation component temperatures. Because only
+four MODIS LST retrievals at the overpass times are avail-
+able for each month, directly solving all 11 parameters of
+the MDC model would lead to underdetermination and in-
+stability. Therefore, parameter reduction was applied by re-
+taining the seven temperature independent parameters initial-
+ized from ERA5-Land, while only the four temperature de-
+pendent parameters were optimized using the 0.05° GLASS
+FVC and the MOD11C3/MYD11C3 monthly LST retrievals.
+The temperature difference constraint and the Bayesian opti-
+mization algorithm were also imposed during the calibration
+process. This step enables the resulting MDC model to retain
+the continuous diurnal cycle shape information provided by
+ERA5-Land as well as being directly constrained by MODIS
+LST in terms of temperature level. Finally, using this cali-
+brated model, 24 hourly temperature steps were simulated to
+derive instantaneous soil and vegetation temperatures, which
+were then averaged temporally to obtain the ﬁnal monthly
+mean component temperatures (Hong et al., 2022).
+To enhance computational efﬁciency and retrieval accu-
+racy, several technical reﬁnements were implemented. First,
+the MCD12C1 land cover dataset was used to exclude non-
+vegetated pixels such as water bodies and permanent snow or
+ice, thereby reducing computational load and improving the
+robustness of the results. Second, Bayesian optimization is
+computationally intensive since it needs to iteratively build a
+probabilistic surrogate of the objective function and sequen-
+tially sample promising regions of the parameter space to
+identify the parameter set that minimizes the reconstruction
+error (Pelikan, 2005). To determine an appropriate iteration
+https://doi.org/10.5194/essd-18-6885-2026 Earth Syst. Sci. Data, 18, 6885–6911, 2026
+6892 X. Liu et al.: GloSVeT: global soil and vegetation temperatures
+number, we conducted a convergence test using the July 2023
+data across different FVC bins. The result from 10 000 itera-
+tions was used as the reference solution, and the retrievals
+obtained with fewer iterations were compared against this
+reference. As shown in Fig. A1, after 2000 iterations, fur-
+ther increasing the iteration number led only to gradual im-
+provements. Therefore, the iteration number was set to 2000
+as a practical balance between retrieval stability and compu-
+tational efﬁciency. Finally, because errors in the MYD11C3
+nighttime viewing time are known to introduce artiﬁcial pat-
+terns over the region of 20–30° E (see Figs. 8a and 9a in Liu
+et al., 2025), a correction was applied to the nighttime view-
+ing time layer. Speciﬁcally, when the nighttime viewing time
+exceeded its theoretical range of 00:00–03:00 LT, it was re-
+placed by the corresponding daytime viewing time shifted
+by 12 h under the 24 h clock. This correction was applied
+only to the viewing time information and did not modify the
+MYD11C3 LST values.
+3.3 Evaluation and consistency analysis
+To examine whether GloSVeT preserves the original mixed-
+pixel LST signal and to quantify potential structural residuals
+introduced during the separation process, an internal closure
+check was ﬁrst performed. Speciﬁcally, based on Eq. (7), the
+calibrated MDC model was used to reconstruct mixed-pixel
+LSTs at the four MODIS overpass times. The closure resid-
+ual was deﬁned as the difference between the reconstructed
+LST and the corresponding original MODIS LST. For each
+month and each MODIS overpass time during 2003–2023,
+global RMSE and bias were calculated using all valid pix-
+els. The resulting monthly global RMSE and bias statistics
+were used to assess the long-term internal closure of the
+decomposition–reconstruction process and its dependence on
+MODIS overpass time, rather than to provide an independent
+validation of component temperature accuracy.
+The TC analysis was applied to quantify the relative ran-
+dom uncertainties in soil and vegetation temperatures with-
+out relying on in situ measurements. This method assumes
+that three independent datasets describe the same geophys-
+ical variable through linear relationships and that their ran-
+dom errors are mutually uncorrelated (Gruber et al., 2016;
+Park et al., 2023; Stoffelen, 1998). By exploiting the co-
+variance structure among the three datasets, TC estimates
+dataset-speciﬁc random errors and their relative consistency
+with respect to an unknown target signal. In this study,
+TC was implemented to evaluate the reliability of GloSVeT
+against JRA-3Q and GLDAS for both soil and vegetation
+component temperatures. The analysis was conducted on a
+monthly basis from 2003 to 2023 using deseasonalized and
+detrended monthly anomalies for each dataset, obtained by
+removing the multi-year climatological mean for each cal-
+endar month and then the linear trend from each time se-
+ries. This preprocessing minimized the inﬂuence of seasonal
+cycles and long-term trends, thereby emphasizing temporal
+co-variability among datasets. The resulting TC-based cor-
+relation coefﬁcients provide spatially explicit diagnostics of
+relative reliability and spatiotemporal stability. It should be
+noted that these TC-based correlation coefﬁcients are not di-
+rect measures of absolute accuracy against a known ground
+truth, but rather indicators of where GloSVeT shows stronger
+or weaker agreement with independent datasets under the TC
+assumptions.
+An anomaly based correlation analysis was conducted to
+assess whether the temporal dynamics of GloSVeT are phys-
+ically consistent with hydrological processes and photosyn-
+thetic activity. For the soil component, correlations were cal-
+culated between soil temperature anomalies and soil mois-
+ture anomalies for seven monthly lag conditions, namely−3,
+−2,−1, 0,+1,+2, and+3 months. Positive lags were de-
+ﬁned as soil temperature anomalies preceding soil moisture
+anomalies, whereas negative lags indicate the opposite tem-
+poral ordering. These lagged correlations were used to iden-
+tify the monthly window in which the two variables showed
+the strongest association, rather than to estimate an exact
+physical response time. For each valid pixel, only lagged
+correlations passing the signiﬁcance test (p< 0.05) were re-
+tained as candidates. If only one candidate lag was identiﬁed,
+it was selected directly. If multiple candidate lags were iden-
+tiﬁed, the lag with the largest absolute correlation coefﬁcient
+was selected as the best lag only when its absolute correlation
+exceeded the second largest absolute correlation by at least
+0.05. The retained best lag and its corresponding correlation
+coefﬁcient were then used in the subsequent analyses. For the
+vegetation component, correlations between vegetation tem-
+perature anomalies and SIF anomalies were examined to de-
+termine whether temperature ﬂuctuations correspond to vari-
+ations in photosynthetic activity. The analysis was restricted
+to the growing season, deﬁned as the period when the cli-
+matological mean SIF exceeded its 30th percentile within
+the annual cycle and persisted for at least two consecutive
+months. This restriction ensures that the temperature–SIF re-
+lationships reﬂect periods of active vegetation functioning.
+4 Results
+4.1 Internal closure check
+Figure 2 summarizes the internal closure check for GloSVeT.
+Overall, the reconstructed mixed-pixel LSTs were reason-
+ably consistent with the original MODIS LST values at the
+four overpass times. The monthly global RMSEs generally
+ranged from approximately 1.2 to 2.0 K, while the bias values
+mostly remained within about±1 K. The relatively compact
+boxplots further suggest that the closure errors were tempo-
+rally stable during 2003–2023, with RMSE variations gener-
+ally within about 0.2–0.5 K and bias variations within about
+0.4–0.6 K.
+The closure residuals also exhibited clear overpass-time
+dependence. In terms of RMSE, MYD11C3_Nighttime (i.e.,
+Earth Syst. Sci. Data, 18, 6885–6911, 2026 https://doi.org/10.5194/essd-18-6885-2026
+X. Liu et al.: GloSVeT: global soil and vegetation temperatures 6893
+Figure 2. Internal closure check of GloSVeT. Boxplots show the distributions of monthly global (a) RMSE and (b) Bias between recon-
+structed mixed-pixel LST and the corresponding original MODIS LST during 2003–2023 at the four MODIS overpass times. Stars denote
+the mean values, and the dashed line in panel (b) indicates zero Bias.
+01:30 nominal local time) yielded the smallest closure
+error, with a median RMSE of about 1.24 K, whereas
+MOD11C3_Daytime (i.e., 10:30 nominal local time) had
+the largest error, with a median RMSE close to 1.94 K.
+MYD11C3_Daytime (i.e., 13:30 nominal local time) and
+MOD11C3_Nighttime (i.e., 22:30 nominal local time) had
+intermediate RMSEs, both around 1.61 K. The bias statis-
+tics revealed a broadly consistent overpass-dependent pat-
+tern. MOD11C3_Daytime and MYD11C3_Nighttime had
+negative median biases of−1.04 and−0.64 K, respectively,
+whereas MYD11C3_Daytime and MOD11C3_Nighttime
+had positive median biases of 0.92 and 0.56 K, respectively.
+Although the biases were not uniformly negative, the neg-
+ative residuals were slightly larger in magnitude than the
+positive residuals, suggesting a weak overall negative ten-
+dency in the closure residuals. This overpass-dependent be-
+havior may be partly related to the uneven temporal distri-
+bution of MODIS sampling times (Liu et al., 2025). In par-
+ticular, the long interval between the MYD11C3_Nighttime
+and MOD11C3_Daytime overpasses spans the nocturnal
+minimum, sunrise transition, and morning warming period,
+but this key transition phase is not directly constrained by
+MODIS. As a result, the ﬁtted MDC curve may still con-
+tain residual uncertainties in phase and morning warming
+dynamics, which can lead to overpass-dependent closure bi-
+ases. Overall, the closure check suggests that GloSVeT can
+largely reproduce the original MODIS mixed-pixel LST sig-
+nal, while systematic overpass-dependent residuals remain.
+4.2 Site-based validation
+The accuracy of GloSVeT soil and vegetation temperatures
+was evaluated against ground-based measurements from ﬂux
+tower networks over the period 2003–2023 (Fig. 3). For soil
+temperature (Ts), the R2 ranged from 0.84 to 0.98, with bi-
+ases between−1.0 and−1.9 K and RMSE values of 1.6–
+2.2 K. For vegetation temperature (Tv), the performance was
+similarly robust, withR2 values of 0.90–0.96, biases of−1.1
+to−1.9 K, and RMSE values of 1.7–3.0 K. Across all sites
+and seasons, GloSVeT exhibited a consistent underestima-
+tion of approximately 1–2 K for both components. Similar
+to the result of internal closure check, this systematic offset
+may result from the uneven temporal distribution of satel-
+lite observations, especially the lack of direct constraints near
+sunrise, which can lead to insufﬁcient representation of near-
+sunrise temperature conditions in the ﬁtted monthly mean di-
+urnal cycle (Liu et al., 2025).
+Seasonal variations in accuracy are evident. For soil tem-
+perature, performance was slightly lower in summer ( R2=
+0.84, RMSE= 2.2 K), likely due to the weaker constraint on
+the soil component under dense vegetation cover (Liu et al.,
+2020b; Zhan et al., 2011, 2013). In contrast, vegetation tem-
+perature retrievals showed larger errors in winter (RMSE =
+3.0 K), which may be attributed to the reduced contribution
+of the vegetation component to the mixed-pixel thermal sig-
+nal under sparse canopy conditions. The highest agreement
+occurred in autumn for both components, when vegetation
+and atmospheric conditions were relatively stable, resulting
+in minimal uncertainty during component separation. In ad-
+dition, it should be noted that the seasonal amplitude of veg-
+etation temperature was less pronounced than that of soil
+temperature. Further examination shows that the soil tem-
+perature validation records were almost entirely from mid-
+latitude sites in all seasons, with 159/161, 66/66, 86/90, and
+158/160 records in spring, summer, autumn, and winter, re-
+spectively. By contrast, the vegetation temperature validation
+records included a relatively high proportion of low-latitude
+samples, with 33/94, 37/121, 27/174, and 37/83 records in
+the four seasons, respectively. Because vegetation tempera-
+ture in low-latitude regions generally has weaker seasonal
+variability and may remain relatively high even in winter, it is
+reasonable that the seasonal amplitude and magnitude range
+https://doi.org/10.5194/essd-18-6885-2026 Earth Syst. Sci. Data, 18, 6885–6911, 2026
+6894 X. Liu et al.: GloSVeT: global soil and vegetation temperatures
+Figure 3. Validation of GloSVeT against in situ measurements across different seasons. Panels (a)–(d) show soil temperature (Ts), and
+panels (e)–(h) show vegetation temperature (Tv). The dashed line represents the 1: 1 reference line. The Count value in each panel denotes
+the number of matched site-month records, and the corresponding numbers of independent sites for panels (a)–(h) are 14, 5, 12, 16, 16, 13,
+20, and 15, respectively.
+of vegetation temperature were less distinct than those of soil
+temperature in the validation samples.
+Overall, these results indicate that GloSVeT achieves con-
+sistent and physically reasonable performance across sea-
+sons, with strong correlations (R2≥ 0.9 in most cases) and
+RMSE values generally around 2 K except for the larger win-
+ter error in vegetation temperature, effectively reproducing
+surface component temperatures at the monthly scale.
+4.3 TC-based uncertainty evaluation
+Figure 4 shows the results of the TC-based correlation ( R)
+for soil temperature. In general, the three products exhibit
+largely consistent spatial patterns (Fig. 4a–c) and latitudinal
+variation (Fig. 4d). High correlations ( R> 0.7) are found
+mainly in the Northern Hemisphere high latitudes and the
+humid tropics, whereas low correlations ( R< 0.5) appear
+in many mid-latitude transitional regions. This spatial co-
+herence across independent datasets indicates that the ma-
+jor large-scale thermal variations are consistently captured
+among the different data sources, and further supports the
+physical plausibility of the GloSVeT retrievals.
+Although their patterns are broadly similar, some differ-
+ences can be observed among the three datasets. Overall,
+the inter-product differences are more evident in the North-
+ern Hemisphere than in the Southern Hemisphere (Fig. 4d).
+JRA-3Q shows the highest correlations over regions north of
+30° N, but shows the weakest performance across much of
+the remaining areas, particularly in tropical regions between
+10 and 30° N (Fig. 4d). Its distribution contains a larger
+share of both very high ( R> 0.8) and very low ( R< 0.4)
+correlations (Fig. 4e and f), reﬂecting spatial heterogene-
+ity and less stable behaviour at global scale. In contrast,
+GLDAS and GloSVeT achieve more equivalent performance
+(Fig. 4e and f). GLDAS shows a distribution concentrated
+around moderate-to-highR values (R between 0.6 and 0.8),
+whereas GloSVeT presents a smoother distribution and main-
+tains more concentrated distribution toward higher R values
+(Fig. 4a and e). In particular, GloSVeT shows locally higher
+or comparableR values in humid tropical and subtropical re-
+gions, such as southern China, the Amazon and the Congo
+Basin, underscoring its advantage in these environmentally
+sensitive and data-scarce areas. By contrast, its correlations
+are lower at high latitudes. This may occur because JRA-3Q
+and GLDAS represent layer-averaged subsurface soil tem-
+peratures, whereas GloSVeT soil temperature represents the
+radiometric temperature of the visible surface and is more
+sensitive to snow cover and radiative inversions (Cao et al.,
+2023; Liu et al., 2025). Taken together, the TC-based eval-
+uation suggests that reanalyses perform better in high lati-
+tude regions, whereas GloSVeT shows a relatively more bal-
+anced performance across latitudes and retains certain advan-
+tages in humid tropical regions. These results indicate that
+GloSVeT provides reliable surface soil temperature estimates
+and serves as a useful complement to conventional reanalysis
+soil temperature products for large-scale applications.
+Earth Syst. Sci. Data, 18, 6885–6911, 2026 https://doi.org/10.5194/essd-18-6885-2026
+X. Liu et al.: GloSVeT: global soil and vegetation temperatures 6895
+Figure 4. TC-based correlation (R) for soil temperature. Panels(a)–(c) illustrate the spatial distributions for GloSVeT, JRA-3Q, and GLDAS,
+respectively, with light gray and medium gray indicating the ocean and land backgrounds; (d) shows the zonal-mean R as a function of
+latitude; and panels (e) and (f) present the probability density and cumulative distribution functions, respectively.
+To extend the assessment from a global view to ecosys-
+tem contexts, this study further compared TC-based corre-
+lations for soil temperature across 14 biome types (Fig. 5).
+In general, the three datasets show higher median correla-
+tions (R≈ 0.7–0.9) in cold high-latitude and humid tropical
+ecosystems, such as temperate coniferous and mixed forests,
+boreal forests, tundra (Fig. 5e, f, and k), and tropical moist
+broadleaf forests and mangroves (Fig. 5a and n). In con-
+trast, lower correlations (R≈ 0.5) with larger spreads are ob-
+served in Mediterranean, arid, and temperate grassland sys-
+tems (Fig. 5l, m, and h). This cross-biome consistency rein-
+forces that large-scale soil thermal variations are physically
+coherent across independent datasets.
+Among the three products, JRA-3Q shows the largest
+inter-biome variability. It performs best in cold and mid-
+latitude forest ecosystems, such as boreal forests, tundra,
+montane grasslands, and temperate mixed or coniferous
+forests (Fig. 5f, k, j, d, and e), but its correlations drop
+markedly in tropical and semi-arid regions. Its boxplots also
+display wider interquartile ranges, indicating higher spatial
+heterogeneity and weaker internal consistency. By contrast,
+GloSVeT and GLDAS exhibit more comparable performance
+across most biomes. GLDAS generally shows moderate-to-
+high correlations, whereas GloSVeT maintains relatively bal-
+anced correlations across biome types and performs particu-
+larly well in tropical dry broadleaf forests, tropical/subtropi-
+cal grasslands, savannas and shrublands, ﬂooded grasslands,
+deserts/xeric shrublands, and Mangrove (Fig. 5b, g, i, m,
+and n), highlighting its ability to capture surface soil ther-
+mal variability under complex vegetation and moisture con-
+ditions. Overall, the biome-speciﬁc comparison supports the
+global results in Fig. 4, indicating that reanalysis products
+tend to perform better in cold and high-latitude ecosystems,
+whereas GloSVeT provides a relatively robust performance
+across diverse biome types with advantages in humid tropi-
+cal and moisture-variable environments.
+https://doi.org/10.5194/essd-18-6885-2026 Earth Syst. Sci. Data, 18, 6885–6911, 2026
+6896 X. Liu et al.: GloSVeT: global soil and vegetation temperatures
+Figure 5. TC-based correlation (R) for soil temperature across 14 major biomes. Boxplots show the distributions ofR for GloSVeT (orange),
+JRA-3Q (blue), and GLDAS (dark gray). Stars denote the mean values. T/ST, MBF, DBF, CF, Temp, BMF, F/T, GSS, GS, Med, FWS, and
+XS, are the abbreviations of “Tropical/subtropical”, “moist broadleaf forests”, “dry broadleaf forests”, “coniferous forests”, “Temperate”,
+“broadleaf and mixed forests”, “forests/taiga”, “grasslands, savannas and shrublands”, “grasslands and savannas”, “Mediterranean”, “forests,
+woodlands and scrub or sclerophyll forests”, and “xeric shrublands”, respectively.
+Figures 6 and 7 present the TC-based correlations for
+vegetation temperature. Since the analysis was restricted to
+densely vegetated pixels, and only pixels with more than
+100 matched pairs were included to ensure the reliability
+of TC estimation, the resulting coverage was concentrated
+mainly over tropical and subtropical regions. Similar to the
+soil component, the three datasets display broadly consistent
+spatial and latitudinal patterns, yet GloSVeT systematically
+exhibits higher correlations and a narrower spread. As shown
+in Fig. 6a–d, across South America, Africa, and Southeast
+Asia, GloSVeT achieves stronger and more spatially uniform
+correlations (R> 0.8) than JRA-3Q and GLDAS. The prob-
+ability density and cumulative distribution curves (Fig. 6e
+and f) further indicate that GloSVeT contains a greater frac-
+tion of highR pixels and fewer lowR outliers, reﬂecting im-
+proved temporal coherence and spatial stability. When com-
+pared across major vegetation types (Fig. 7), GloSVeT shows
+the highest or comparable median correlations in tropical/-
+subtropical moist broadleaf forests, tropical/subtropical dry
+broadleaf forests, and temperate broadleaf and mixed forests
+(Fig. 7a–c). In tropical/subtropical grasslands, JRA-3Q ex-
+hibits slightly higher median correlations, but GloSVeT re-
+mains close to JRA-3Q and clearly higher than GLDAS
+(Fig. 7d). These results underscore the superior performance
+of GloSVeT in representing canopy thermal dynamics across
+diverse hydroclimatic conditions.
+4.4 Physical consistency assessment
+Figure 8 illustrates the correlation between GloSVeT soil
+temperature anomalies and ESA CCI soil moisture anoma-
+lies for the best lag. At the global scale (Fig. 8a), negative
+correlations dominate the selected results (77.6 %; blue shad-
+ing), indicating that wetter soil conditions are generally as-
+sociated with lower soil temperatures. This spatially perva-
+sive inverse relationship reﬂects the fundamental energy par-
+titioning mechanism, where increased soil moisture enhances
+latent heat ﬂux at the expense of sensible heating, leading to
+surface cooling. This mechanism has been well documented
+in both modeling and satellite-based studies (Benson and
+Dirmeyer, 2021; Gurung and Chen, 2024; Seneviratne et al.,
+2010). In contrast, positive correlations (22.4 %; red shading)
+are also evident in several dryland regions, particularly across
+the Sahara, West and Central Asia, and northwestern China,
+as well as in parts of high latitude and coastal areas, indi-
+cating that the soil temperature and soil moisture relation-
+ship is not uniformly characterized by evaporative cooling.
+In cold regions, these positive associations may be related
+to snowmelt, freeze thaw transitions, and snow insulation ef-
+fects, through which warmer ground conditions can coincide
+with increases in liquid soil moisture (Hu et al., 2006; Jiang
+et al., 2023). In arid and semi-arid regions, where persis-
+tent evaporative cooling is often constrained by limited water
+availability, positive correlations may reﬂect episodic rain-
+Earth Syst. Sci. Data, 18, 6885–6911, 2026 https://doi.org/10.5194/essd-18-6885-2026
+X. Liu et al.: GloSVeT: global soil and vegetation temperatures 6897
+Figure 6. TC-based correlation (R) for vegetation temperature. Panels (a)–(c) illustrate the spatial distributions for GloSVeT, JRA-3Q, and
+GLDAS, respectively, with light gray and medium gray indicating the ocean and land backgrounds;(d) shows the zonal-meanR as a function
+of latitude; and panels (e) and (f) present the probability density and cumulative distribution functions, respectively.
+Figure 7. TC-based correlation (R) for vegetation temperature across four major biomes. Boxplots show the distributions ofR for GloSVeT
+(orange), JRA-3Q (blue), and GLDAS (dark gray). Stars denote the mean values. T/ST, MBF, DBF, Temp, BMF, and GSS, are the ab-
+breviations of “Tropical/subtropical”, “moist broadleaf forests”, “dry broadleaf forests”, “Temperate”, “broadleaf and mixed forests”, and
+“grasslands, savannas and shrublands”, respectively.
+fall, irrigation, or warm season wetting events (Kong and Hu-
+ber, 2023; Manzoni et al., 2020). In coastal and wetland en-
+vironments, hydrological regulation, inundation, and coupled
+water and energy dynamics may further complicate the soil
+temperature and soil moisture relationship (Yu et al., 2024).
+Across biome types (Fig. 8b–o), the proportion of pixels
+with an identiﬁed best lag and the corresponding strength of
+soil temperature–moisture correlations exhibit distinct eco-
+logical patterns. Overall, the fraction of signiﬁcant correla-
+tions is highest in montane grasslands (71.3 %) and trop-
+ical/subtropical coniferous forests (69.5 %), followed by
+Mediterranean woodlands (67.4 %), tropical dry broadleaf
+forests (64.1 %), and tropical/subtropical grasslands and sa-
+vannas (60.1 %). Intermediate proportions ( ≈ 50 %–55 %)
+are observed in temperate grasslands and ﬂooded grasslands,
+whereas high-latitude biomes such as boreal forests (38.0 %)
+and tundra (31.7 %) show much lower ratios. Mangroves
+have the lowest value (18.8 %), likely due to their limited
+spatial extent and the strong inﬂuence of coastal hydrody-
+namics. This spatial gradient suggests that in topographically
+complex or hydrothermally contrasting mid- and low-latitude
+systems, soil moisture exerts a more coherent and consis-
+tent control on soil temperature (Seneviratne et al., 2010;
+Williams et al., 2009), while in cold regions the coupling is
+weakened by snow, permafrost, and heterogeneous freeze–
+thaw processes (Zhao et al., 2022).
+https://doi.org/10.5194/essd-18-6885-2026 Earth Syst. Sci. Data, 18, 6885–6911, 2026
+6898 X. Liu et al.: GloSVeT: global soil and vegetation temperatures
+Figure 8. Correlation between GloSVeT soil temperature anomalies and ESA CCI soil moisture anomalies for the best lag. Panel (a) shows
+the spatial distribution of correlations for pixels with an identiﬁed best lag, where red and blue indicate positive and negative relationships,
+respectively. Panels (b)–(o) present the distributions of these correlations across 14 major biomes. Boxplots with different colors denote the
+identiﬁed lag months from−3 to+3. The numbers above each box indicate the percentage of pixels assigned to each identiﬁed lag month
+within the corresponding biome, with darker colors and larger font sizes representing higher proportions. N denotes the total number of
+pixels in each biome category.
+Regarding correlation strength and lag dependence, Fig. 8
+reveals a clear hierarchy in the soil temperature and soil
+moisture association. The dominant pattern is the prevalence
+of 0 month lags. In several mid and low latitude biomes,
+such as tropical seasonal forests and savannas, montane
+grasslands, Mediterranean shrublands, and arid ecosystems
+(Fig. 8c, d, h, k, m, and n), 0 month lags account for ap-
+proximately 40 %–60 % of the pixels. A weaker but still ev-
+ident 0 month dominance is also found in humid tropical
+forests, temperate forests and grasslands, and ﬂooded grass-
+lands (Fig. 8b, e, f, i, and j), where the 0 month lag remains
+the largest category but accounts for about 20 %–30 % of the
+pixels. These patterns indicate that the strongest monthly as-
+sociation between soil temperature and soil moisture anoma-
+Earth Syst. Sci. Data, 18, 6885–6911, 2026 https://doi.org/10.5194/essd-18-6885-2026
+X. Liu et al.: GloSVeT: global soil and vegetation temperatures 6899
+Figure 9. Correlation between GloSVeT vegetation temperature anomalies and GOSIF SIF anomalies. Panel(a) shows the spatial distribution
+of signiﬁcant correlations (p< 0.05), where red and blue indicate positive and negative relationships, respectively. Panel (b) presents the
+distribution of signiﬁcant correlations across 14 major biomes. Panel (c) summarizes the proportion of signiﬁcant pixels within each biome.
+In panel (c), the numbers above the bars indicate the total number of pixels in each biome category, and the percentages indicate the
+corresponding proportion of signiﬁcant pixels.
+lies most commonly occurs within the same month. Together
+with the generally negative median correlations and rela-
+tively compact spreads, this synchronous dominance is con-
+sistent with contemporaneous energy and water partition-
+ing between soil moisture and surface thermal conditions.
+Beyond this overall synchronous pattern, nonzero lags re-
+veal biome dependent differences in temporal ordering. In
+tropical and wetland related ecosystems, including tropical
+broadleaf forests, tropical savannas, and ﬂooded grasslands
+(Fig. 8b, c, h, and j), negative lags are relatively more fre-
+quent than positive lags of the same length. This pattern in-
+dicates that soil moisture anomalies tend to precede soil tem-
+perature anomalies in part of these regions, suggesting that
+antecedent moisture conditions may remain linked to the sub-
+sequent monthly soil thermal state through soil water mem-
+ory and rainfall driven drying and rewetting dynamics (Man-
+zoni et al., 2020). In contrast, temperate and high latitude
+biomes, including temperate forests and grasslands, boreal
+forests, and tundra (Fig. 8e, f, g, i, and l), show relatively
+higher proportions of positive lags, indicating that soil tem-
+perature anomalies more often precede soil moisture anoma-
+lies. This temperature leading association may be related to
+cold season thermal transitions, during which seasonal snow
+cover and snow insulation strongly modulate ground surface
+temperature and complicate its monthly relationship with soil
+moisture (Cao et al., 2023). Collectively, these biome speciﬁc
+patterns suggest that GloSVeT soil temperature anomalies
+are linked to independent soil moisture anomalies through
+a physically interpretable temporal structure, characterized
+by dominant synchronous coupling, more evident moisture
+leading associations in tropical and wetland related ecosys-
+tems, and more evident temperature leading associations in
+https://doi.org/10.5194/essd-18-6885-2026 Earth Syst. Sci. Data, 18, 6885–6911, 2026
+6900 X. Liu et al.: GloSVeT: global soil and vegetation temperatures
+temperate and high latitude regions. These results further
+support the physical consistency of GloSVeT in representing
+soil hydrothermal variability across diverse climatic regimes.
+At the growing season scale, the relationship between
+GloSVeT vegetation temperature and SIF (Fig. 9) exhibits
+clear large-scale regularities. As shown in Fig. 9a, signiﬁcant
+negative correlations dominate much of the subtropics and
+monsoon margins where soil moisture ﬂuctuates strongly, in-
+dicating that warmer-than-normal canopies coincide with re-
+duced photosynthetic activity. In contrast, positive correla-
+tions emerge mainly in energy-limited high latitude regions,
+where warmer growing season canopy conditions may bring
+vegetation closer to its photosynthetic thermal optimum and
+coincide with stronger physiological activity. These contrast-
+ing patterns align well with the classical framework of wa-
+ter versus energy limited canopy functioning (Alkama and
+Cescatti, 2016).
+Regarding different biome types (Fig. 9b and c), the
+correlation strength follows a distinct gradient from cold
+and energy limited regimes to warm and water limited
+regimes. Boreal and temperate coniferous forests show the
+strongest positive correlations (∼ 0.3) with compact distri-
+butions and high fractions of signiﬁcant pixels (79.4 % and
+61.0 %), indicating that warmer vegetation conditions dur-
+ing the growing season are associated with higher SIF in
+ecosystems where low temperature or limited energy sup-
+ply can constrain photosynthetic activity (Pan et al., 2024).
+Tundra exhibits similarly positive but less consistent corre-
+lations (34.1 %), as snow and permafrost may dampen the
+thermal–photosynthetic response. Transitional systems such
+as montane grasslands, temperate grasslands, and mangrove
+have around near-zero medians (absolute value < 0.2) with
+broad variability and limited signiﬁcance ( < 30 %), reﬂect-
+ing mixed thermal, moisture, and hydrological controls on
+vegetation activity. The strongest negative couplings occur in
+ﬂooded grasslands, tropical/subtropical dry broadleaf forests,
+tropical/subtropical grasslands–savannas, and deserts/xeric
+shrublands (median∼− 0.3 to−0.4), where canopy warm-
+ing accompanies photosynthetic downregulation associated
+with water stress and stomatal closure (Doughty et al., 2023).
+Among these, tropical/subtropical savannas and dry forests
+show the most coherent relationships, while ﬂooded and arid
+systems exhibit more dispersed patterns due to hydrologi-
+cal and edaphic heterogeneity. Collectively, these ﬁndings
+demonstrate that GloSVeT captures a biome dependent con-
+tinuum between canopy thermal dynamics and photosyn-
+thetic activity.
+4.5 Spatiotemporal variability and trends
+A unique advantage of the GloSVeT dataset is that it provides
+soil and vegetation temperatures simultaneously, enabling
+consistent evaluation of their co-variability and long-term
+evolution. Figure 10 illustrates the temporal trends of glob-
+ally averaged component temperatures for the pixels where
+both soil temperature and vegetation temperature are avail-
+able. These two time series exhibit highly synchronous vari-
+ations across sub-seasonal to interannual scales, with peaks
+and troughs closely aligned, indicating that soil and vegeta-
+tion temperature changes are dynamically coupled. In terms
+of long-term trends, both components show pronounced
+warming over 2003–2023, with slopes of 0.44± 0.04 K per
+decade for soil temperature and 0.39± 0.04 K per decade for
+vegetation temperature (bothp< 0.001), suggesting slightly
+faster warming in the soil layer than in the canopy (García-
+García et al., 2023; Trew et al., 2024). The number of valid
+pixels ranges from 4 .6× 106 to 5.2× 106, with a mean of
+5.0× 106 and a standard deviation of 0.1× 106, conﬁrming
+that the trend analysis is based on a stable and representa-
+tive sample. The pixel count also exhibits a clear seasonal
+pattern, i.e., higher from June to October and lower in other
+months, which is consistent with vegetation growth cycles.
+All of these features highlight the robustness and physical
+consistency of the GloSVeT-derived temporal analysis.
+To further investigate the spatial heterogeneity of these
+temporal trends, the linear slopes were mapped for repre-
+sentative cold (January) and warm (July) months (Figs. 11
+and 12). In January, the majority of pixels showed posi-
+tive trends, accounting for 68.4 % of soil temperature pix-
+els and 62.3 % of vegetation temperature pixels, indicat-
+ing a widespread tendency toward wintertime warming. Pro-
+nounced warming occurs across North America, Europe, and
+southeastern China, whereas localized cooling is evident in
+northern Eurasia and the high Asian interior (Bartusek et
+al., 2022; Qiao et al., 2025). However, only 6.7 % of soil
+temperature pixels and 7.0 % of vegetation temperature pix-
+els passed the 0.05 signiﬁcance test. These signiﬁcant pixels
+were not randomly distributed, but were mainly concentrated
+in regions with relatively strong warming or cooling signals,
+indicating that the most pronounced trend centres are more
+statistically robust. The large fraction of non-signiﬁcant pix-
+els is likely related to the limited number of annual samples
+for each calendar month (21 values during 2003–2023) and
+strong interannual variability. Therefore, the non-signiﬁcant
+regions should be interpreted as areas with weak or uncer-
+tain pixel-level trends, rather than as evidence of no thermal
+change. Compared with soil temperature, vegetation trends
+are generally weaker, consistent with the effects of snow
+masking, stronger canopy–air coupling during cold seasons,
+and the thermal buffering imposed by canopy structure and
+aerodynamic resistance (Forzieri et al., 2017). In the South-
+ern Hemisphere, January trends are weaker and more hetero-
+geneous, reﬂecting the smaller land area, weaker continen-
+tal thermal contrast, and stronger oceanic modulation during
+austral summer. In July, warming becomes more spatially ex-
+tensive covering 74.8 % of soil temperature and 70.7 % of
+vegetation temperature pixels, but the overall rate is slightly
+lower. Broad warming is observed across the Northern Hemi-
+sphere mid-latitudes, particularly in western North Amer-
+ica, the Mediterranean–Middle East, Central Asia, and north-
+Earth Syst. Sci. Data, 18, 6885–6911, 2026 https://doi.org/10.5194/essd-18-6885-2026
+X. Liu et al.: GloSVeT: global soil and vegetation temperatures 6901
+Figure 10. Global monthly anomalies of soil (Ts, red) and vegetation (Tv, blue) temperatures from 2003–2023. Dots show monthly means,
+dashed lines indicate linear trends, and grey bars (right axis) denote the number of valid pixels used each month.
+Figure 11. Linear trends of GloSVeT component temperatures in January for (a) soil and (b) vegetation during 2003–2023. Black dots
+indicate pixels with statistically signiﬁcant trends (p< 0.05).
+eastern China, whereas parts of Europe display moderate
+cooling. The proportion of statistically signiﬁcant pixels in-
+creased in July, reaching 16.6 % for soil temperature and
+10.8 % for vegetation temperature, indicating a stronger and
+more spatially coherent warm-season trend signal than in
+January. Consistent with the cold-season behaviour, soil tem-
+perature trends exceed those of vegetation temperature, re-
+ﬂecting the greater sensitivity of the soil skin to net radia-
+tion and the reduced evaporative buffering from vegetation
+(Qiao et al., 2023). In summary, these distinct seasonal be-
+https://doi.org/10.5194/essd-18-6885-2026 Earth Syst. Sci. Data, 18, 6885–6911, 2026
+6902 X. Liu et al.: GloSVeT: global soil and vegetation temperatures
+haviours, including stronger winter contrasts at high latitudes
+and widespread summer warming over continental interiors,
+suggest that GloSVeT captures meaningful large-scale struc-
+tures of surface thermal change, while pixel-level interpreta-
+tions in non-signiﬁcant regions should be made with caution.
+5 Discussion
+5.1 Inﬂuence of ﬁxed emissivity
+In GloSVeT, the broadband emissivities of soil and veg-
+etation were uniformly set to 0.95 and 0.98, respectively.
+For a global product, such ﬁxed emissivity assumptions in-
+evitably introduce uncertainty, particularly for soil compo-
+nent (García-Santos et al., 2015). Therefore, we conducted an
+emissivity sensitivity analysis to evaluate the potential inﬂu-
+ence of this assumption on the retrieved soil and vegetation
+component temperatures. Speciﬁcally, nine soil–vegetation
+emissivity combinations were tested, with soil emissivity set
+to 0.90, 0.93, and 0.95, and vegetation emissivity set to 0.97,
+0.98, and 0.99. Based on the 12 monthly datasets in 2023,
+the global valid pixels were stratiﬁed into FVC bins at an
+interval of 0.1, and 1000 valid samples were randomly se-
+lected from each FVC bin for each month. Soil and veg-
+etation component temperatures were then recalculated un-
+der each emissivity combination. Taking the baseline setting
+used in GloSVeT (εs= 0.95 andεv= 0.98) as the reference,
+the mean absolute error (MAE) induced by the other eight
+emissivity perturbation scenarios was calculated.
+Figure 13 presents the distribution of MAE across FVC
+bins, where each boxplot contains 96 MAE statistics derived
+from 12 months and 8 emissivity perturbation scenarios. The
+results reveal that sensitivity to emissivity assumptions is
+strongly dependent on FVC: as FVC increases, the emissiv-
+ity sensitivity of soil component temperature gradually in-
+creases, whereas that of vegetation component temperature
+decreases. Without separating FVC conditions, the median
+MAEs of Ts andTv are 1.16 and 1.26 K, respectively, sug-
+gesting that the overall inﬂuence of the ﬁxed emissivity as-
+sumption remains within a relatively limited range. A more
+detailed FVC-dependent analysis further indicates that emis-
+sivity uncertainty has a smaller impact on the dominant com-
+ponent within a mixed pixel. When FVC is below 0.5, the
+soil component dominates the mixed-pixel thermal signal,
+and the MAE ofTs is generally below 1 K. Conversely, when
+FVC exceeds 0.5, the vegetation component is more strongly
+constrained, and the MAE of Tv is typically below 1 K. In
+contrast, under very low or very high FVC conditions, the
+weakly represented component contributes less to the mixed-
+pixel thermal signal and therefore becomes more sensitive to
+emissivity perturbations. Therefore, the ﬁxed emissivity as-
+sumption does not substantially weaken the overall ability of
+GloSVeT to represent the dominant component temperature,
+but the non-dominant component temperature under extreme
+FVC conditions should be interpreted with caution.
+5.2 Application potential
+Based on extensive validation and consistency assessments,
+the GloSVeT dataset demonstrates reliable accuracy and
+strong physical consistency, offering broad potential for ap-
+plications in land–atmosphere interaction studies, ecosys-
+tem monitoring, and model integration. First, by explic-
+itly resolving the thermal contrast between soil and vege-
+tation, GloSVeT facilitates the separation of energy parti-
+tioning between soil evaporation and vegetation transpira-
+tion under varying vegetation covers. This capability is valu-
+able for diagnosing surface–atmosphere coupling strength
+and improving the parameterization of energy balance mod-
+els from regional to global scales (Li et al., 2023; Song
+et al., 2020). Second, the vegetation–soil temperature dif-
+ference (1T ) derived from GloSVeT is a physically based
+indicator that shows higher sensitivity to evaporative stress
+and canopy water deﬁcit than the traditional canopy–air tem-
+perature difference (Luan and Vico, 2021). By linking 1T
+dynamics with soil moisture and vegetation optical indices,
+GloSVeT enables consistent detection of ecosystem drought
+responses and recovery trajectories across climatic gradients.
+Third, through the retrieval of spatially explicit and phys-
+ically consistent vegetation temperatures, GloSVeT estab-
+lishes key biophysical constraints for simulating crop pro-
+ductivity and terrestrial carbon exchange. Consequently, it
+can act as a robust alternative to conventional LST for cou-
+pling with photosynthetic metrics such as GPP to diagnose
+thermal stress impacts on crop performance and vegetation
+carbon assimilation (Prentice et al., 2024). Finally, owing to
+its global coverage, multi-decade record, and physically in-
+terpretable design, GloSVeT constitutes a valuable forcing or
+evaluation dataset for land surface and biogeochemical mod-
+els. For instance, it can be incorporated into or benchmarked
+within modeling frameworks to improve the representation
+of surface thermal inertia, soil–canopy coupling, and energy–
+carbon feedbacks.
+5.3 Limitations
+Despite the broad application potential of GloSVeT, its phys-
+ical meaning and applicability need to be clearly deﬁned.
+First, the soil and vegetation temperatures in GloSVeT are
+separated from TIR LST, and represent the radiative thermal
+states of the visible surfaces within the sensor ﬁeld of view.
+Therefore, under dense canopy or seasonal snow cover con-
+ditions, the retrieved soil temperature does not necessarily
+correspond to the actual soil temperature beneath the canopy
+or snowpack. Second, the current two-component framework
+approximates the land surface as a combination of vegetation
+and soil components. However, over complex surfaces such
+as urban or mountainous regions, the so-called soil compo-
+nent temperature may include impervious surfaces, exposed
+rocks, or other non-vegetation materials, and should there-
+fore be interpreted as a non-vegetation background compo-
+Earth Syst. Sci. Data, 18, 6885–6911, 2026 https://doi.org/10.5194/essd-18-6885-2026
+X. Liu et al.: GloSVeT: global soil and vegetation temperatures 6903
+Figure 12. Linear trends of GloSVeT component temperatures in July for (a) soil and (b) vegetation during 2003–2023. Black dots indicate
+pixels with statistically signiﬁcant trends (p< 0.05).
+nent temperature in these areas. This simpliﬁcation also does
+not explicitly distinguish between sunlit and shaded frac-
+tions. Temperature differences among vegetation, sunlit soil,
+and shaded soil can be substantial and represent an impor-
+tant source of thermal radiation directionality (Ermida et al.,
+2014; Liu et al., 2020a; Qin et al., 2025; Lu et al., 2025). As a
+result, the conventional two-component framework adopted
+in GloSVeT may overlook sub-pixel thermal heterogeneity,
+especially for the soil component. Finally, TIR observations
+correspond to the thermal state of a very shallow layer, typ-
+ically on the order of 1–100 µm (Li et al., 2023), rather than
+the soil thermal state at a certain depth or the complete three
+dimensional thermal state inside the canopy. Consequently,
+GloSVeT is more suitable for characterizing the surface ra-
+diative thermal states of visible soil/background and vege-
+tation components. For applications involving under-canopy
+soil temperature, sub-snow soil temperature, urban back-
+ground thermal states, or vertical heat transfer processes,
+GloSVeT should be interpreted cautiously in combination
+with land cover, snow cover, topographic, or canopy struc-
+tural information. Future developments could further inte-
+grate more detailed surface component structure information,
+soil heat diffusion models, and canopy energy transfer mod-
+els to extend GloSVeT surface component temperatures to-
+ward more explicit vertical soil and canopy thermal states
+(Cao et al., 2023; Lundquist et al., 2018).
+A second limitation arises from the clear-sky nature of TIR
+satellite observations and uncertainties in related input data.
+The MODIS LST observations used in GloSVeT are avail-
+able only under clear-sky conditions, whereas the intended
+monthly mean component temperatures are expected to rep-
+resent the average thermal state under all-weather conditions
+within each month. Although ERA5-Land provides continu-
+ous all-sky diurnal thermal information and helps constrain
+the monthly mean diurnal cycle, the retrieved component
+temperatures are still ultimately constrained by clear-sky
+TIR observations. This mismatch between clear-sky observa-
+tion and the all-weather monthly mean target may introduce
+sampling biases, especially in persistently cloudy regions or
+during periods when cloudy-sky and clear-sky surface ther-
+https://doi.org/10.5194/essd-18-6885-2026 Earth Syst. Sci. Data, 18, 6885–6911, 2026
+6904 X. Liu et al.: GloSVeT: global soil and vegetation temperatures
+Figure 13. Sensitivity of GloSVeT to emissivity perturbations across FVC gradients for soil temperature(a) and vegetation temperature (b).
+Boxplots summarize the MAE distributions derived from 12 monthly datasets in 2023 and eight emissivity perturbation scenarios relative to
+the baseline emissivity setting used in GloSVeT.
+mal conditions differ systematically. Such uncertainty could
+be reduced by incorporating cloud-contaminated LST re-
+construction algorithms (Jia et al., 2024; Du et al., 2025)
+or by directly using advanced all-weather LST products.
+For example, GHA-LST (Jia et al., 2023), a global, hourly,
+5 km, and all-weather LST dataset, provides a promising
+data source for improving the temporal completeness and
+all-weather representativeness of component temperature re-
+trievals. A related input data issue is the orbital drift of the
+Terra and Aqua satellites during the later MODIS period, es-
+pecially after 2021, which may introduce temporal sampling
+uncertainty because the actual overpass times deviate from
+the nominal MODIS overpass times. Although this effect is
+partly mitigated by monthly scale processing and the use of
+ERA5-Land diurnal cycle information, it may still inﬂuence
+the results toward the end of the data record. This issue could
+be further addressed by incorporating orbit drift correction
+(Julien and Sobrino, 2025; Liu et al., 2019) or by introducing
+additional sensors, such as VIIRS, within the FuSVeT frame-
+work.
+The validation strategy also has inherent limitations. Al-
+though the TC analysis provides an effective way to eval-
+uate GloSVeT in the absence of globally available long-
+term observations of soil and vegetation temperatures, its
+results should be interpreted within the context of proxy-
+based comparison. The reanalysis soil temperatures used
+in TC represent near-surface soil thermal states at speciﬁc
+depths, which are physically related to but not identical to the
+TIR-constrained surface radiometric temperature retrieved
+by GloSVeT (Cao et al., 2023; Liu et al., 2025). Similarly,
+near-surface air temperature was used as an auxiliary proxy
+for vegetation temperature in densely vegetated regions (Li
+et al., 2001; Zhan et al., 2011; Rutter et al., 2023), but it
+is not equivalent to vegetation temperature. Therefore, the
+TC-based correlations mainly indicate the relative temporal
+consistency between GloSVeT and physically related inde-
+pendent datasets, rather than absolute accuracy against true
+soil or vegetation component temperatures. More direct and
+spatially representative observations of surface soil and veg-
+etation temperatures would help further strengthen the inde-
+pendent validation of GloSVeT and reduce the uncertainty
+associated with proxy-based comparisons.
+Finally, GloSVeT relies on the GOT09-based MDC model,
+which assumes a relatively regular diurnal temperature cy-
+cle characterized by daytime warming and nighttime cool-
+ing. This assumption can be weakened or violated in high-
+latitude regions during polar day and polar night, when
+the conventional diurnal heating and cooling cycle becomes
+weak or absent (Hong et al., 2018). Under such conditions,
+GloSVeT retrievals may have larger uncertainties and there-
+fore require cautious interpretation. Further reﬁnements to
+GloSVeT should consider diurnal temperature cycle formu-
+Earth Syst. Sci. Data, 18, 6885–6911, 2026 https://doi.org/10.5194/essd-18-6885-2026
+X. Liu et al.: GloSVeT: global soil and vegetation temperatures 6905
+lations that are better suited to polar illumination condi-
+tions and irregular diurnal temperature cycles. In addition,
+GloSVeT is currently produced at a monthly temporal res-
+olution and reports monthly mean surface component tem-
+peratures. This design reﬂects a balance among input data
+availability, computational efﬁciency, and the intended use of
+the dataset for climate scale analyses. However, monthly data
+cannot resolve short term thermal responses to rainfall, irri-
+gation, soil water saturation, heatwaves, or rapid vegetation
+stress events. Extending GloSVeT to daily or sub monthly
+scales would increase its value for near-real-time monitor-
+ing and process level modeling, particularly for evaluating
+the immediate coupling between soil moisture and soil/back-
+ground temperature (Li et al., 2022). Furthermore, the cur-
+rent product provides mean component temperatures, while
+other thermal metrics derived from diurnal temperature cy-
+cle models, such as diurnal range, maximum temperature,
+and minimum temperature, would better characterize ther-
+mal variability and climate extremes (Li et al., 2023; Liu et
+al., 2023; Zhao et al., 2025). These extensions would further
+improve the utility of GloSVeT for land surface modeling,
+agricultural monitoring, drought assessment, and ecosystem
+stress diagnosis.
+6 Code and data availability
+The global 0.05° monthly mean surface soil and veg-
+etation component temperature dataset (GloSVeT) cov-
+ering the period 2003–2023 is publicly available at
+https://doi.org/10.11888/RemoteSen.tpdc.303317 (Liu and
+Li, 2026a) and https://doi.org/10.5281/zenodo.22724289
+(Liu and Li, 2026b). Data are provided as GeoTIFF ﬁles
+in UInt16 format with a scale factor of 0.02, expressed in
+Kelvin (K), and a ﬁll value of 65 535. The current GloSVeT
+release does not include separate pixel-level quality control
+layers or recommended reliability ﬂags. Users who need ad-
+ditional screening information can refer to the original input
+datasets, including the Clear_sky_days and Clear_sky_nights
+layers in MxD11C3 for clear-sky MODIS sampling, GLASS
+FVC for component dominance, and MCD12C1 land cover
+for identifying surface types that require cautious interpre-
+tation. The dataset can be directly accessed and used with-
+out any specialized software. The main code used for dataset
+generation, uncertainty evaluation, physical consistency val-
+idation, trend analysis, and ﬁgure reproduction is also avail-
+able in the same Zenodo archive (Liu and Li, 2026b).
+7 Conclusions
+Using the FuSVeT method adapted for global implementa-
+tion, this study produced the ﬁrst global dataset of soil and
+vegetation component temperatures (GloSVeT), providing
+monthly means at 0.05° spatial resolution for 2003–2023. To
+ensure reliability, a comprehensive multi-perspective evalua-
+tion was performed, integrating internal closure check, ﬂux-
+tower validation, triple collocation analysis, physical con-
+sistency assessment, and spatiotemporal trend examination.
+The internal closure check showed that GloSVeT can largely
+reproduce the original MODIS mixed-pixel LST signal, in-
+dicating that the component temperature separation remains
+consistent with the input radiometric constraint. Validation
+against ﬂux-tower measurements demonstrated high accu-
+racy for both components ( R2≥ 0.9 and RMSE ∼ 2 K in
+most cases), with a minor, physically interpretable cool bias
+linked to the diurnal sampling of satellite observations. The
+triple collocation analysis further conﬁrmed strong temporal
+coherence and spatial robustness, showing globally consis-
+tent performance with strengths in humid tropics and tran-
+sitional environments, while reanalysis products performed
+relatively better at high latitudes. Physical consistency as-
+sessments revealed clear process-based relationships: soil
+temperature anomalies were predominantly negatively cor-
+related with soil moisture, consistent with evaporative cool-
+ing as the dominant pattern, whereas vegetation tempera-
+ture exhibited biome-dependent coupling with SIF, transi-
+tioning from positive correlations in energy-limited regions
+to negative ones in water-limited ecosystems. Spatiotempo-
+ral analyses showed pronounced warming trends in both soil
+(0.44± 0.04 K per decade) and vegetation (0.39± 0.04 K per
+decade) components during 2003–2023, with seasonally in-
+terpretable patterns characterized by stronger winter con-
+trasts at high latitudes and widespread summer warming over
+continental interiors. Collectively, these results demonstrate
+that GloSVeT achieves physically consistent, spatially coher-
+ent, and dynamically realistic performance across diverse cli-
+matic regimes. Therefore, this new dataset is expected to pro-
+vide a valuable foundation for quantifying land–atmosphere
+energy exchange, monitoring ecosystem hydrothermal dy-
+namics, and improving the representation of surface pro-
+cesses in Earth system models.
+https://doi.org/10.5194/essd-18-6885-2026 Earth Syst. Sci. Data, 18, 6885–6911, 2026
+6906 X. Liu et al.: GloSVeT: global soil and vegetation temperatures
+Appendix A: Supplementary tables and ﬁgures
+Table A1. Summary of representative soil temperature products.
+Product Spatial Temporal Spatial Temporal Depth Methodology Access
+coverage coverage resolution resolution
+GLDAS Global 1948–2014
+(GLDAS-2.0);
+2000–present
+(GLDAS-2.1)
+0.25°× 0.25° 3-hourly 0–10, 10–40, 40–100,
+100–200 cm
+Land surface
+modeling
+https://ldas.gsfc.nasa.gov/gldas
+(last access: 18 July 2026)
+ERA5-Land Global 1950–present 0 .1°× 0.1° Hourly 0–7, 7–28, 28–100,
+100–289 cm
+Reanalysis https://cds.climate.copernicus.
+eu/datasets/reanalysis-era5-land
+(last access: 18 July 2026)
+MERRA-2 Global 1980–present 0 .5°× 0.625° Hourly 0–9.88, 9.88–19.52,
+19.52–38.59,
+38.59–76.26,
+76.26–150.71,
+150.71–1000 cm
+Reanalysis https://disc.gsfc.nasa.gov/
+datasets/M2T1NXLND_5.12.4/
+summary (last access: 18 July
+2026)
+JRA-3Q Global 1947–present 0 .375°× 0.375° 6-hourly 0–2, 2–7, 7–19, 19–49,
+49–99, 99–199,
+199–349 cm
+Reanalysis https://gdex.ucar.edu/datasets/
+d640000/dataaccess/ (last access:
+18 July 2026)
+Lembrechts
+et al. (2022)
+Global Climatology 1 km × 1 km Monthly
+climatology
+0–5, 5–15 cm Machine
+learning
+https://zenodo.org/record/4558732
+(last access: 18 July 2026)
+Wang et al.
+(2026)
+China 2010–2020 1 km × 1 km Daily 0, 5, 10, 15, 20, and
+40 cm
+Machine
+learning
+https://doi.org/
+10.11888/Terre.tpdc.302333
+Figure A1. Convergence test of Bayesian optimization across FVC bins. Using the July 2023 data, valid pixels were stratiﬁed into ten FVC
+bins, and 1000 samples were randomly selected from each bin. Bayesian optimization was performed with 500, 1000, 1500, 2000, 3000,
+5000, 7000, and 9000 iterations, and the result from 10 000 iterations was used as the reference solution. The MAE values of retrieved soil
+temperature (a) and vegetation temperature (b) were calculated relative to this reference solution. Different lines represent different FVC
+bins.
+Earth Syst. Sci. Data, 18, 6885–6911, 2026 https://doi.org/10.5194/essd-18-6885-2026
+X. Liu et al.: GloSVeT: global soil and vegetation temperatures 6907
+Author contributions. XL and ZL developed the methodology
+and designed the experimental framework. XL processed the data
+and produced the dataset. CR and PL assisted with data analysis
+and validation. ZL and SD provided guidance on method reﬁne-
+ment and result interpretation. XL drafted the original manuscript,
+and all authors contributed to scientiﬁc discussions and manuscript
+revisions.
+Competing interests. The contact author has declared that none
+of the authors has any competing interests.
+Disclaimer. Publisher’s note: Copernicus Publications remains
+neutral with regard to jurisdictional claims made in the text, pub-
+lished maps, institutional afﬁliations, or any other geographical rep-
+resentation in this paper. The authors bear the ultimate responsibil-
+ity for providing appropriate place names. Views expressed in the
+text are those of the authors and do not necessarily reﬂect the views
+of the publisher.
+Acknowledgements. We would like to thank National
+Aeronautics and Space Administration for providing us the
+MOD11C3/MYD11C3, MCD12C1 and GLDAS data, European
+Centre for Medium-Range Weather Forecasts for providing
+ERA5-Land data, Japan Meteorological Agency for providing
+JRA-3Q data, Global Land Surface Satellite for providing FVC
+data, United States Geological Survey for providing Landsat NDVI
+data, European Space Agency for providing SM data, Xing Li for
+providing GOSIF product, and ﬁve ﬂux networks, i.e., AmeriFlux,
+SURFRAD, Euroﬂux, OzFlux, and AsiaFlux for providing in situ
+measurements.
+Financial support. This research has been supported by the Na-
+tional Natural Science Foundation of China (grant nos. 42571430,
+42101371, and 42401442), and the Central Public-interest Scientiﬁc
+Institution Basal Research Fund (grant no. Y2024QC17).
+Review statement. This paper was edited by Dalei Hao and re-
+viewed by Aolin Jia and two anonymous referees.
+References
+Alkama, R. and Cescatti, A.: Biophysical climate impacts of re-
+cent changes in global forest cover, Science, 351, 600–604,
+https://doi.org/10.1126/science.aac8083, 2016.
+Bartusek, S., Kornhuber, K., and Ting, M.: 2021 North Amer-
+ican heatwave ampliﬁed by climate change-driven non-
+linear interactions, Nat. Clim. Change, 12, 1143–1150,
+https://doi.org/10.1038/s41558-022-01520-4, 2022.
+Baumberger, M., Haas, B., Sivakumar, S., Ludwig, M., Meyer,
+N., and Meyer, H.: High-resolution soil temperature and
+soil moisture patterns in space, depth and time: An inter-
+pretable machine learning modelling approach, Geoderma, 451,
+https://doi.org/10.1016/j.geoderma.2024.117049, 2024.
+Benson, D. O. and Dirmeyer, P. A.: Characterizing the Rela-
+tionship between Temperature and Soil Moisture Extremes
+and Their Role in the Exacerbation of Heat Waves over
+the Contiguous United States, J. Climate, 34, 2175–2187,
+https://doi.org/10.1175/JCLI-D-20-0440.1, 2021.
+Bian, Z., Li, H., Gottsche, F. M., Li, R., Du, Y ., Ren, H.,
+Cao, B., Xiao, Q., and Liu, Q.: Retrieving soil and veg-
+etation temperatures from dual-angle and multipixel satel-
+lite observations, IEEE J. Sel. Top. Appl., 13, 5536–5549,
+https://doi.org/10.1109/jstars.2020.3024190, 2020.
+Blyth, E. M., Arora, V . K., Clark, D. B., Dadson, S. J., De Kauwe,
+M. G., Lawrence, D. M., Melton, J. R., Pongratz, J., Turton, R.
+H., and Yoshimura, K.: Advances in land surface modelling, Cur-
+rent Climate Change Reports, 7, 45–71, 2021.
+Cao, B., Wang, S., Hao, J., Sun, W., and Zhang, K.: Inconsistency
+and correction of manually observed ground surface tempera-
+tures over snow-covered regions, Agr. Forest Meteorol., 338,
+https://doi.org/10.1016/j.agrformet.2023.109518, 2023.
+Cheng, J., Liang, S., Yao, Y ., and Zhang, X.: Estimating the opti-
+mal broadband emissivity spectral range for calculating surface
+longwave net radiation, IEEE Geosci. Remote S., 10, 401–405,
+https://doi.org/10.1109/LGRS.2012.2206367, 2013.
+Dorigo, W., Wagner, W., Albergel, C., Albrecht, F., Balsamo, G.,
+Brocca, L., Chung, D., Ertl, M., Forkel, M., Gruber, A., Haas, E.,
+Hamer, P. D., Hirschi, M., Ikonen, J., de Jeu, R., Kidd, R., La-
+hoz, W., Liu, Y . Y ., Miralles, D., Mistelbauer, T., Nicolai-Shaw,
+N., Parinussa, R., Pratola, C., Reimer, C., van der Schalie, R.,
+Seneviratne, S. I., Smolander, T., and Lecomte, P.: ESA CCI Soil
+Moisture for improved Earth system understanding: State-of-the
+art and future directions, Remote Sens. Environ., 203, 185–215,
+https://doi.org/10.1016/j.rse.2017.07.001, 2017.
+Doughty, C. E., Keany, J. M., Wiebe, B. C., Rey-Sanchez, C.,
+Carter, K. R., Middleby, K. B., Cheesman, A. W., Goulden,
+M. L., da Rocha, H. R., Miller, S. D., Malhi, Y ., Fauset,
+S., Gloor, E., Slot, M., Oliveras Menor, I., Crous, K. Y .,
+Goldsmith, G. R., and Fisher, J. B.: Tropical forests are ap-
+proaching critical temperature thresholds, Nature, 621, 105–111,
+https://doi.org/10.1038/s41586-023-06391-z, 2023.
+Du, W., Li, Z.-L., Qin, Z., Fan, J., Liu, X., Zhao, C., and
+Cao, K.: Reconstruction of Cloudy Land Surface Tempera-
+ture by Combining Surface Energy Balance Theory and Solar-
+Cloud-Satellite Geometry, IEEE T. Geosci. Remote, 63, 1–13,
+https://doi.org/10.1109/tgrs.2025.3532446, 2025.
+Ermida, S. L., Trigo, I. F., DaCamara, C. C., Göttsche, F. M., Ole-
+sen, F. S., and Hulley, G.: Validation of remotely sensed sur-
+face temperature over an oak woodland landscape – The problem
+of viewing and illumination geometries, Remote Sens. Environ.,
+148, 16–27, https://doi.org/10.1016/j.rse.2014.03.016, 2014.
+Forzieri, G., Alkama, R., Miralles, D. G., and Cescatti, A.:
+Satellites reveal contrasting responses of regional climate to
+the widespread greening of Earth, Science, 356, 1180–1184,
+https://doi.org/10.1126/science.aal1727, 2017.
+García-García, A., Cuesta-Valero, F. J., Miralles, D. G., Mahecha,
+M. D., Quaas, J., Reichstein, M., Zscheischler, J., and Peng,
+J.: Soil heat extremes can outpace air temperature extremes,
+Nat. Clim. Change, https://doi.org/10.1038/s41558-023-01812-
+3, 2023.
+García-Santos, V ., Coll, C., Valor, E., Niclòs, R., and Caselles, V .:
+Analyzing the anisotropy of thermal infrared emissivity over arid
+https://doi.org/10.5194/essd-18-6885-2026 Earth Syst. Sci. Data, 18, 6885–6911, 2026
+6908 X. Liu et al.: GloSVeT: global soil and vegetation temperatures
+regions using a new MODIS land surface temperature and emis-
+sivity product (MOD21), Remote Sens. Environ., 169, 212–221,
+https://doi.org/10.1016/j.rse.2015.07.031, 2015.
+Göttsche, F.-M. and Olesen, F.-S.: Modelling the effect
+of optical thickness on diurnal cycles of land surface
+temperature, Remote Sens. Environ., 113, 2306–2316,
+https://doi.org/10.1016/j.rse.2009.06.006, 2009.
+Gruber, A., Su, C. H., Zwieback, S., Crow, W., Dorigo, W.,
+and Wagner, W.: Recent advances in (soil moisture) triple
+collocation analysis, Int. J. Appl. Earth Obs., 45, 200–211,
+https://doi.org/10.1016/j.jag.2015.09.002, 2016.
+Gruber, A., Scanlon, T., van der Schalie, R., Wagner, W., and
+Dorigo, W.: Evolution of the ESA CCI Soil Moisture climate
+data records and their underlying merging methodology, Earth
+Syst. Sci. Data, 11, 717–739, https://doi.org/10.5194/essd-11-
+717-2019, 2019.
+Gurung, T. R. and Chen, L.: Understanding the inﬂuence
+of soil moisture on heatwave characteristics in the con-
+tiguous United States, Environ. Res. Lett., 19, 064070,
+https://doi.org/10.1088/1748-9326/ad4dbb, 2024.
+He, X., Liu, X., Ru, C., Deng, X., Zhao, R., and Yu, W.: Evaluating
+Spatial Representativeness Across Multiple Scales for a Compre-
+hensive Ground Validation Network Using Landsat Land Surface
+Temperature Data and Random Forest, IEEE T. Geosci. Remote,
+63, 1–14, https://doi.org/10.1109/tgrs.2025.3570685, 2025.
+Hong, F., Zhan, W., Göttsche, F.-M., Liu, Z., Zhou, J.,
+Huang, F., Lai, J., and Li, M.: Comprehensive assessment of
+four-parameter diurnal land surface temperature cycle mod-
+els under clear-sky, ISPRS J. Photogramm., 142, 190–204,
+https://doi.org/10.1016/j.isprsjprs.2018.06.008, 2018.
+Hong, F., Zhan, W., Göttsche, F.-M., Liu, Z., Dong, P., Fu, H.,
+Huang, F., and Zhang, X.: A global dataset of spatiotempo-
+rally seamless daily mean land surface temperatures: generation,
+validation, and analysis, Earth Syst. Sci. Data, 14, 3091–3113,
+https://doi.org/10.5194/essd-14-3091-2022, 2022.
+Hu, H., Ye, B., Zhou, Y ., and Tian, F.: A land surface model incor-
+porated with soil freeze/thaw and its application in GAME/Tibet,
+Sci. China Ser. D, 49, 1311–1322, 2006.
+Jia, A., Liang, S., Wang, D., Ma, L., Wang, Z., and Xu, S.:
+Global hourly, 5 km, all-sky land surface temperature data from
+2011 to 2021 based on integrating geostationary and polar-
+orbiting satellite data, Earth Syst. Sci. Data, 15, 869–895,
+https://doi.org/10.5194/essd-15-869-2023, 2023.
+Jia, A., Liang, S., Wang, D., Mallick, K., Zhou, S., Hu, T., and
+Xu, S.: Advances in methodology and generation of all-weather
+land surface temperature products from polar-orbiting and geo-
+stationary satellites: A comprehensive review, IEEE Geoscience
+and Remote Sensing Magazine, 12, 218–260, 2024.
+Jia, K., Liang, S., Liu, S., Li, Y ., Xiao, Z., Yao, Y ., Jiang,
+B., Zhao, X., Wang, X., Xu, S., and Cui, J.: Global
+Land Surface Fractional Vegetation Cover Estimation Us-
+ing General Regression Neural Networks From MODIS Sur-
+face Reﬂectance, IEEE T. Geosci. Remote, 53, 4787–4796,
+https://doi.org/10.1109/tgrs.2015.2409563, 2015.
+Jiang, K., Pan, Z., Pan, F., Teuling, A. J., Han, G., An, P., Chen,
+X., Wang, J., Song, Y ., Cheng, L., Zhang, Z., Huang, N., Ma, S.,
+Gao, R., Zhang, Z., Men, J., Lv, X., and Dong, Z.: Combined
+inﬂuence of soil moisture and atmospheric humidity on land sur-
+face temperature under different climatic background, iScience,
+26, 106837, https://doi.org/10.1016/j.isci.2023.106837, 2023.
+Jiang, Y ., Tang, R., and Li, Z.-L.: A framework of cor-
+recting the angular effect of land surface temperature
+on evapotranspiration estimation in single-source energy
+balance models, Remote Sens. Environ., 283, 113306,
+https://doi.org/10.1016/j.rse.2022.113306, 2022.
+Julien, Y . and Sobrino, J. A.: Introducing the Drift Ampli-
+tude Metric (DAM) to assess drift inﬂuence on surface tem-
+perature time series, Remote Sens. Environ., 328, 114880,
+https://doi.org/10.1016/j.rse.2025.114880, 2025.
+Kong, Q. and Huber, M.: Regimes of soil moisture–wet-bulb tem-
+perature coupling with relevance to moist heat stress, J. Climate,
+36, 7925–7942, 2023.
+Kosaka, Y ., Kobayashi, S., Harada, Y ., Kobayashi, C., Naoe, H.,
+Yoshimoto, K., Harada, M., Goto, N., Chiba, J., and Miyaoka,
+K.: The JRA-3Q reanalysis, J. Meteorol. Soc. Jpn. Ser. II, 102,
+49–109, https://doi.org/10.2151/jmsj.2024-004, 2024.
+Lembrechts, J. J., van den Hoogen, J., Aalto, J., Ashcroft, M. B.,
+De Frenne, P., Kemppinen, J., Kopecký, M., Luoto, M., Maclean,
+I. M. D., Crowther, T. W., Bailey, J. J., Haesen, S., Klinges, D.
+H., Niittynen, P., Scheffers, B. R., Van Meerbeek, K., Aartsma,
+P., Abdalaze, O., Abedi, M., Aerts, R., Ahmadian, N., Ahrends,
+A., Alatalo, J. M., Alexander, J. M., Allonsius, C. N., Altman,
+J., Ammann, C., Andres, C., Andrews, C., Ardö, J., Arriga, N.,
+Arzac, A., Aschero, V ., Assis, R. L., Assmann, J. J., Bader, M.
+Y ., Bahalkeh, K., Baranˇcok, P., Barrio, I. C., Barros, A., Barthel,
+M., Basham, E. W., Bauters, M., Bazzichetto, M., Marchesini, L.
+B., Bell, M. C., Benavides, J. C., Benito Alonso, J. L., Berauer,
+B. J., Bjerke, J. W., Björk, R. G., Björkman, M. P., Björnsdóttir,
+K., Blonder, B., Boeckx, P., Boike, J., Bokhorst, S., Brum, B. N.
+S., Br˚ una, J., Buchmann, N., Buysse, P., Camargo, J. L., Cam-
+poe, O. C., Candan, O., Canessa, R., Cannone, N., Carbognani,
+M., Carnicer, J., Casanova-Katny, A., Cesarz, S., Chojnicki, B.,
+Choler, P., Chown, S. L., Cifuentes, E. F., ˇCiliak, M., Contador,
+T., Convey, P., Cooper, E. J., Cremonese, E., Curasi, S. R., Cur-
+tis, R., Cutini, M., Dahlberg, C. J., Daskalova, G. N., de Pablo,
+M. A., Della Chiesa, S., Dengler, J., Deronde, B., Descombes,
+P., Di Cecco, V ., Di Musciano, M., Dick, J., Dimarco, R. D.,
+Dolezal, J., Dorrepaal, E., Dušek, J., Eisenhauer, N., Eklundh,
+L., Erickson, T. E., Erschbamer, B., Eugster, W., Ewers, R. M.,
+Exton, D. A., Fanin, N., Fazlioglu, F., Feigenwinter, I., Fenu,
+G., Ferlian, O., Fernández Calzado, M. R., Fernández-Pascual,
+E., Finckh, M., Higgens, R. F., Forte, T. a. G. W., Freeman,
+E. C., Frei, E. R., Fuentes-Lillo, E., García, R. A., García, M.
+B., Géron, C., Gharun, M., Ghosn, D., Gigauri, K., Gobin, A.,
+Goded, I., Goeckede, M., Gottschall, F., Goulding, K., Govaert,
+S., Graae, B. J., Greenwood, S., Greiser, C., Grelle, A., Gué-
+nard, B., Guglielmin, M., Guillemot, J., Haase, P., Haider, S.,
+Halbritter, A. H., Hamid, M., Hammerle, A., Hampe, A., Hau-
+gum, S. V ., Hederová, L., Heinesch, B., Helfter, C., Hepenstrick,
+D., Herberich, M., Herbst, M., Hermanutz, L., Hik, D. S., Hof-
+frén, R., Homeier, J., Hörtnagl, L., Høye, T. T., Hrbacek, F., Hy-
+lander, K., Iwata, H., Jackowicz-Korczynski, M. A., Jactel, H.,
+Järveoja, J., Jastrz˛ ebowski, S., Jentsch, A., Jiménez, J. J., Jóns-
+dóttir, I. S., Jucker, T., Jump, A. S., Juszczak, R., Kanka, R., Kaš-
+par, V ., Kazakis, G., Kelly, J., Khuroo, A. A., Klemedtsson, L.,
+Klisz, M., Kljun, N., Knohl, A., Kobler, J., Kollár, J., Kotowska,
+M. M., Kovács, B., Kreyling, J., Lamprecht, A., Lang, S. I., Lar-
+Earth Syst. Sci. Data, 18, 6885–6911, 2026 https://doi.org/10.5194/essd-18-6885-2026
+X. Liu et al.: GloSVeT: global soil and vegetation temperatures 6909
+son, C., Larson, K., Laska, K., le Maire, G., Leihy, R. I., Lens,
+L., Liljebladh, B., Lohila, A., Lorite, J., Loubet, B., Lynn, J.,
+Macek, M., Mackenzie, R., Magliulo, E., Maier, R., Malfasi, F.,
+Máliš, F., Man, M., Manca, G., Manco, A., Manise, T., Manolaki,
+P., Marciniak, F., Matula, R., Mazzolari, A. C., Medinets, S.,
+Medinets, V ., Meeussen, C., Merinero, S., Mesquita, R. d. C. G.,
+Meusburger, K., Meysman, F. J. R., Michaletz, S. T., Milbau, A.,
+Moiseev, D., Moiseev, P., Mondoni, A., Monfries, R., Montag-
+nani, L., Moriana-Armendariz, M., Morra di Cella, U., Mörsdorf,
+M., Mosedale, J. R., Mufﬂer, L., Muñoz-Rojas, M., Myers, J. A.,
+Myers-Smith, I. H., Nagy, L., Nardino, M., Naujokaitis-Lewis, I.,
+Newling, E., Nicklas, L., Niedrist, G., Niessner, A., Nilsson, M.
+B., Normand, S., Nosetto, M. D., Nouvellon, Y ., Nuñez, M. A.,
+Ogaya, R., Ogée, J., Okello, J., Olejnik, J., Olesen, J. E., Opedal,
+Ø. H., Orsenigo, S., Palaj, A., Pampuch, T., Panov, A. V ., Pär-
+tel, M., Pastor, A., Pauchard, A., Pauli, H., Pavelka, M., Pearse,
+W. D., Peichl, M., Pellissier, L., Penczykowski, R. M., Penue-
+las, J., Petit Bon, M., Petraglia, A., Phartyal, S. S., Phoenix,
+G. K., Pio, C., Pitacco, A., Pitteloud, C., Plichta, R., Porro, F.,
+Portillo-Estrada, M., Poulenard, J., Poyatos, R., Prokushkin, A.
+S., Puchalka, R., Pus,cas,, M., Radujkovi´c, D., Randall, K., Ratier
+Backes, A., Remmele, S., Remmers, W., Renault, D., Risch, A.
+C., Rixen, C., Robinson, S. A., Robroek, B. J. M., Rocha, A. V .,
+Rossi, C., Rossi, G., Roupsard, O., Rubtsov, A. V ., Saccone, P.,
+Sagot, C., Sallo Bravo, J., Santos, C. C., Sarneel, J. M., Scharn-
+weber, T., Schmeddes, J., Schmidt, M., Scholten, T., Schuchardt,
+M., Schwartz, N., Scott, T., Seeber, J., Segalin de Andrade, A.
+C., Seipel, T., Semenchuk, P., Senior, R. A., Serra-Diaz, J. M.,
+Sewerniak, P., Shekhar, A., Sidenko, N. V ., Siebicke, L., Siegwart
+Collier, L., Simpson, E., Siqueira, D. P., Sitková, Z., Six, J., Smil-
+janic, M., Smith, S. W., Smith-Tripp, S., Somers, B., Sørensen,
+M. V ., Souza, J. J. L. L., Souza, B. I., Souza Dias, A., Spasoje-
+vic, M. J., Speed, J. D. M., Spicher, F., Stanisci, A., Steinbauer,
+K., Steinbrecher, R., Steinwandter, M., Stemkovski, M., Stephan,
+J. G., Stiegler, C., Stoll, S., Svátek, M., Svoboda, M., Tagesson,
+T., Tanentzap, A. J., Tanneberger, F., Theurillat, J.-P., Thomas,
+H. J. D., Thomas, A. D., Tielbörger, K., Tomaselli, M., Treier,
+U. A., Trouillier, M., Turtureanu, P. D., Tutton, R., Tyystjärvi, V .
+A., Ueyama, M., Ujházy, K., Ujházyová, M., Uogintas, D., Ur-
+ban, A. V ., Urban, J., Urbaniak, M., Ursu, T.-M., Vaccari, F. P.,
+Van de V ondel, S., van den Brink, L., Van Geel, M., Vandvik,
+V ., Vangansbeke, P., Varlagin, A., Veen, G. F., Veenendaal, E.,
+Venn, S. E., Verbeeck, H., Verbrugggen, E., Verheijen, F. G. A.,
+Villar, L., Vitale, L., Vittoz, P., Vives-Ingla, M., von Oppen, J.,
+Walz, J., Wang, R., Wang, Y ., Way, R. G., Wedegärtner, R. E. M.,
+Weigel, R., Wild, J., Wilkinson, M., Wilmking, M., Wingate, L.,
+Winkler, M., Wipf, S., Wohlfahrt, G., Xenakis, G., Yang, Y ., Yu,
+Z., Yu, K., Zellweger, F., Zhang, J., Zhang, Z., Zhao, P., Ziem-
+bli´nska, K., Zimmermann, R., Zong, S., Zyryanov, V . I., Nijs, I.,
+and Lenoir, J.: Global maps of soil temperature, Global Change
+Biol., 28, 3110–3144, https://doi.org/10.1111/gcb.16060, 2022.
+Li, J., Li, Z.-L., Wu, H., and You, N.: Trend, seasonality, and abrupt
+change detection method for land surface temperature time-series
+analysis: Evaluation and improvement, Remote Sens. Environ.,
+280, 113222, https://doi.org/10.1016/j.rse.2022.113222, 2022.
+Li, X. and Xiao, J.: A Global, 0.05-Degree Product of Solar-
+Induced Chlorophyll Fluorescence Derived from OCO-2,
+MODIS, and Reanalysis Data, Remote Sens.-Basel, 11, 517,
+https://doi.org/10.3390/rs11050517, 2019.
+Li, Z.-L., Stoll, M. P., Zhang, R., Jia, L., and Su, Z.:
+On the separate retrieval of soil and vegetation tempera-
+tures from ATSR data, Sci. China Ser. D, 44, 97–111,
+https://doi.org/10.1007/BF02879653, 2001.
+Li, Z.-L., Tang, B.-H., Wu, H., Ren, H., Yan, G., Wan, Z., Trigo, I.
+F., and Sobrino, J. A.: Satellite-derived land surface temperature:
+Current status and perspectives, Remote Sens. Environ., 131, 14–
+37, https://doi.org/10.1016/j.rse.2012.12.008, 2013.
+Li, Z.-L., Leng, P., Zhou, C., Chen, K.-S., Zhou, F.-C., and Shang,
+G.-F.: Soil moisture retrieval from remote sensing measurements:
+Current knowledge and directions for the future, Earth-Sci. Rev.,
+218, https://doi.org/10.1016/j.earscirev.2021.103673, 2021.
+Li, Z.-L., Wu, H., Duan, S.-B., Zhao, W., Ren, H., Liu, X., Leng,
+P., Tang, R., Ye, X., Zhu, J., Sun, Y ., Si, M., Liu, M., Li, J.,
+Zhang, X., Shang, G., Tang, B.-H., Yan, G., and Zhou, C.: Satel-
+lite Remote Sensing of Global Land Surface Temperature: Def-
+inition, Methods, Products, and Applications, Rev. Geophys.,
+61, e2022RG000777, https://doi.org/10.1029/2022RG000777,
+2023.
+Liu, X. and Li, Z.-L.: GloSVeT: a global 0.05° monthly
+mean surface soil and vegetation component tem-
+perature dataset (2003–2023), National Tibetan
+Plateau/Third Pole Environment Data Center [data set],
+https://doi.org/10.11888/RemoteSen.tpdc.303317, 2026a.
+Liu, X. and Li, Z.-L.: GloSVeT: a global 0.05° monthly
+mean surface soil and vegetation component tem-
+perature dataset (2003–2023), Zenodo [data set],
+https://doi.org/10.5281/zenodo.22724289, 2026b.
+Liu, X., Tang, B.-H., Yan, G., Li, Z.-L., and Liang, S.: Re-
+trieval of Global Orbit Drift Corrected Land Surface Temperature
+from Long-term A VHRR Data, Remote Sens.-Basel, 11, 2843,
+https://doi.org/10.3390/rs11232843, 2019.
+Liu, X., Tang, B.-H., Li, Z.-L., Zhang, X., and Shang, G.: On the
+Derivation of Geometric Optical Kernels for Directional Ther-
+mal Radiation, Earth and Space Science, 7, e2019EA000895,
+https://doi.org/10.1029/2019EA000895, 2020a.
+Liu, X., Tang, B.-H., Li, Z.-L., Zhou, C., Wu, W., and Rasmussen,
+M. O.: An improved method for separating soil and vegeta-
+tion component temperatures based on diurnal temperature cy-
+cle model and spatial correlation, Remote Sens. Environ., 248,
+111979, https://doi.org/10.1016/j.rse.2020.111979, 2020b.
+Liu, X., Li, Z.-L., Li, J.-H., Leng, P., Liu, M., and Gao, M.:
+Temporal upscaling of MODIS 1 km instantaneous land sur-
+face temperature to monthly mean value: Method evaluation
+and product generation, IEEE T. Geosci. Remote, 5001214,
+https://doi.org/10.1109/TGRS.2023.3247428, 2023.
+Liu, X., Li, Z.-L., Duan, S.-B., Leng, P., and Si, M.: Re-
+trieval of global surface soil and vegetation temperatures
+based on multisource data fusion, Remote Sens. Environ., 318,
+https://doi.org/10.1016/j.rse.2024.114564, 2025.
+Lu, Y ., Bian, Z., Roujean, J.-L., Li, H., Göttsche, F. M., Huang, Y .,
+Fan, T., Cao, B., Du, Y ., and Xiao, Q.: Improved satellite-scale
+land surface temperature components retrieval with hotspot ef-
+fect correction and temperature difference constraints, Remote
+Sens. Environ., 326, https://doi.org/10.1016/j.rse.2025.114794,
+2025.
+Luan, X. and Vico, G.: Canopy temperature and heat stress are in-
+creased by compound high air temperature and water stress and
+reduced by irrigation – a modeling analysis, Hydrol. Earth Syst.
+https://doi.org/10.5194/essd-18-6885-2026 Earth Syst. Sci. Data, 18, 6885–6911, 2026
+6910 X. Liu et al.: GloSVeT: global soil and vegetation temperatures
+Sci., 25, 1411–1423, https://doi.org/10.5194/hess-25-1411-2021,
+2021.
+Lundquist, J. D., Chickadel, C., Cristea, N., Currier, W.
+R., Henn, B., Keenan, E., and Dozier, J.: Separating
+snow and forest temperatures with thermal infrared re-
+mote sensing, Remote Sens. Environ., 209, 764–779,
+https://doi.org/10.1016/j.rse.2018.03.001, 2018.
+Ma, Y ., Zhou, J., Liu, S., Zhang, W., Zhang, Y ., Xu, Z.,
+Song, L., and Zhao, H.: Estimation of evapotranspira-
+tion using all-weather land surface temperature and vari-
+ational trends with warming temperatures for the River
+Source Region in Southwest China, J. Hydrol., 613, 128346,
+https://doi.org/10.1016/j.jhydrol.2022.128346, 2022.
+Manzoni, S., Chakrawal, A., Fischer, T., Schimel, J. P., Porpo-
+rato, A., and Vico, G.: Rainfall intensiﬁcation increases the con-
+tribution of rewetting pulses to soil heterotrophic respiration,
+Biogeosciences, 17, 4007–4023, https://doi.org/10.5194/bg-17-
+4007-2020, 2020.
+Muñoz-Sabater, J., Dutra, E., Agustí-Panareda, A., Albergel, C.,
+Arduini, G., Balsamo, G., Boussetta, S., Choulga, M., Harri-
+gan, S., Hersbach, H., Martens, B., Miralles, D. G., Piles, M.,
+Rodríguez-Fernández, N. J., Zsoter, E., Buontempo, C., and
+Thépaut, J.-N.: ERA5-Land: a state-of-the-art global reanalysis
+dataset for land applications, Earth Syst. Sci. Data, 13, 4349–
+4383, https://doi.org/10.5194/essd-13-4349-2021, 2021.
+Pan, L., Xiao, X., Yao, Y ., Pan, B., Yin, C., Meng, C., Qin, Y ., and
+Zhang, C.: Site-speciﬁc apparent optimum air temperature for
+vegetation photosynthesis across the globe, Scientiﬁc Data, 11,
+758, https://doi.org/10.1038/s41597-024-03603-7, 2024.
+Park, J., Baik, J., and Choi, M.: Triple collocation-
+based multi-source evaporation and transpira-
+tion merging, Agr. Forest Meteorol., 331, 109353,
+https://doi.org/10.1016/j.agrformet.2023.109353, 2023.
+Pelikan, M.: Bayesian Optimization Algorithm, in: Hierarchi-
+cal Bayesian Optimization Algorithm: Toward a new Gen-
+eration of Evolutionary Algorithms, edited by: Pelikan,
+M., Springer Berlin Heidelberg, Berlin, Heidelberg, 31–48,
+https://doi.org/10.1007/978-3-540-32373-0_3, 2005.
+Prentice, I. C., Balzarolo, M., Bloomﬁeld, K. J., Chen, J. M.,
+Dechant, B., Ghent, D., Janssens, I. A., Luo, X., Morfopoulos,
+C., Ryu, Y ., Vicca, S., and van Hoolst, R.: Principles for satellite
+monitoring of vegetation carbon uptake, Nature Reviews Earth &
+Environment, 5, 818–832, https://doi.org/10.1038/s43017-024-
+00601-6, 2024.
+Qiao, L., Zuo, Z., Zhang, R., Piao, S., Xiao, D., and Zhang, K.: Soil
+moisture–atmosphere coupling accelerates global warming, Nat.
+Commun., 14, 4908, https://doi.org/10.1038/s41467-023-40641-
+y, 2023.
+Qiao, L., Zuo, Z., Zhang, R., Mei, W., Chen, D., Chang, M., and
+Zhang, K.: Extreme Dry-Hot in North America and Europe: The
+Ampliﬁed Role of Warming-Enhanced Land-Air Coupling, Natl.
+Sci. Rev., nwaf435, https://doi.org/10.1093/nsr/nwaf435, 2025.
+Qin, B., Chen, S., Cao, B., Yu, Y ., Yu, P., Na, Q., Hou, E., Li,
+D., Jia, K., Yang, Y ., Hu, T., Bian, Z., Li, H., Xiao, Q., and
+Liu, Q.: Angular normalization of GOES-16 and GOES-17 land
+surface temperature over overlapping region using an extended
+time-evolving kernel-driven model, Remote Sens. Environ., 318,
+114532, https://doi.org/10.1016/j.rse.2024.114532, 2025.
+Rodell, M., Houser, P., Jambor, U., Gottschalck, J., Mitchell, K.,
+Meng, C.-J., Arsenault, K., Cosgrove, B., Radakovich, J., and
+Bosilovich, M.: The global land data assimilation system, B. Am.
+Meteorol. Soc., 85, 381–394, 2004.
+Rutter, N., Essery, R., Baxter, R., Hancock, S., Horton, M.,
+Huntley, B., Reid, T., and Woodward, J.: Canopy Struc-
+ture and Air Temperature Inversions Impact Simulation
+of Sub-Canopy Longwave Radiation in Snow-Covered Bo-
+real Forests, J. Geophys. Res.-Atmos., 128, e2022JD037980,
+https://doi.org/10.1029/2022JD037980, 2023.
+Seneviratne, S. I., Corti, T., Davin, E. L., Hirschi, M.,
+Jaeger, E. B., Lehner, I., Orlowsky, B., and Teuling,
+A. J.: Investigating soil moisture–climate interactions in a
+changing climate: A review, Earth-Sci. Rev., 99, 125–161,
+https://doi.org/10.1016/j.earscirev.2010.02.004, 2010.
+Sims, D. A., Rahman, A. F., Cordova, V . D., El-Masri, B. Z., Bal-
+docchi, D. D., Bolstad, P. V ., Flanagan, L. B., Goldstein, A. H.,
+Hollinger, D. Y ., and Misson, L.: A new model of gross primary
+productivity for North American ecosystems based solely on the
+enhanced vegetation index and land surface temperature from
+MODIS, Remote Sens. Environ., 112, 1633–1646, 2008.
+Song, L., Liu, S., Kustas, W., Zhou, J., and Ma, Y .: Using the surface
+temperature-albedo space to separate regional soil and vegetation
+temperatures from ASTER data, Remote Sens.-Basel, 7, 5828–
+5848, https://doi.org/10.3390/rs70505828, 2015.
+Song, L., Bian, Z., Kustas, W. P., Liu, S., Xiao, Q., Nieto, H.,
+Xu, Z., Yang, Y ., Xu, T., and Han, X.: Estimation of sur-
+face heat ﬂuxes using multi-angular observations of radia-
+tive surface temperature, Remote Sens. Environ., 239, 111674,
+https://doi.org/10.1016/j.rse.2020.111674, 2020.
+Stoffelen, A.: Toward the true near-surface wind speed: Error mod-
+eling and calibration using triple collocation, J. Geophys. Res.-
+Oceans, 103, 7755–7766, 1998.
+Sulla-Menashe, D., Gray, J. M., Abercrombie, S. P., and Friedl, M.
+A.: Hierarchical mapping of annual global land cover 2001 to
+present: The MODIS Collection 6 Land Cover product, Remote
+Sens. Environ., 222, 183–194, 2019.
+Tang, Y ., Xu, X., Zhou, Z., Qu, Y ., and Sun, Y .: Es-
+timating global maximum gross primary productivity of
+vegetation based on the combination of MODIS green-
+ness and temperature data, Ecol. Inform., 63, 101307,
+https://doi.org/10.1016/j.ecoinf.2021.101307, 2021.
+Trew, B. T., Edwards, D. P., Lees, A. C., Klinges, D. H., Early,
+R., Svátek, M., Plichta, R., Matula, R., Okello, J., Niessner, A.,
+Barthel, M., Six, J., Maeda, E. E., Barlow, J., do Nascimento, R.
+O., Berenguer, E., Ferreira, J., Sallo-Bravo, J., and Maclean, I.
+M. D.: Novel temperatures are already widespread beneath the
+world’s tropical forest canopies, Nat. Clim. Change, 14, 753–
+759, https://doi.org/10.1038/s41558-024-02031-0, 2024.
+Wan, W., Liu, Z., Li, K., Wang, G., Wu, H., and Wang, Q.:
+Drought monitoring of the maize planting areas in Northeast
+and North China Plain, Agr. Water Manage., 245, 106636,
+https://doi.org/10.1016/j.agwat.2020.106636, 2021.
+Wan, Z. and Dozier, J.: A generalized split-window algorithm for
+retrieving land-surface temperature from space, IEEE T. Geosci.
+Remote, 34, 892–905, https://doi.org/10.1109/36.508406, 1996.
+Wan, Z. and Li, Z.-L.: A physics-based algorithm for re-
+trieving land-surface emissivity and temperature from EOS/-
+Earth Syst. Sci. Data, 18, 6885–6911, 2026 https://doi.org/10.5194/essd-18-6885-2026
+X. Liu et al.: GloSVeT: global soil and vegetation temperatures 6911
+MODIS data, IEEE T. Geosci. Remote, 35, 980–996,
+https://doi.org/10.1109/36.602541, 1997.
+Wang, S., Zhan, W., Zhou, B., Tong, S., Chakraborty, T., Wang, Z.,
+Huang, K., Du, H., Middel, A., and Li, J.: Dual impact of global
+urban overheating on mortality, Nat. Clim. Change, 15, 497–504,
+https://doi.org/10.1038/s41558-025-02303-3, 2025.
+Wang, X., He, L., Li, P., Ma, J., Shi, Y ., Tian, Q., Zhao, G., He,
+J., Feng, H., Shi, H., and Yu, Q.: Spatially adaptive estima-
+tion of multi-layer soil temperature at a daily time-step across
+China during 2010–2020, Earth Syst. Sci. Data, 18, 97–116,
+https://doi.org/10.5194/essd-18-97-2026, 2026.
+Wei, L., Jiang, S., Dong, J., Ren, L., Yong, B., Yang, B., Li, X.,
+and Duan, Z.: A combined extended triple collocation and cu-
+mulative distribution function merging framework for improved
+daily precipitation estimates over mainland China, J. Hydrol.,
+641, 131757, https://doi.org/10.1016/j.jhydrol.2024.131757,
+2024.
+Williams, C. J., McNamara, J. P., and Chandler, D. G.: Con-
+trols on the temporal and spatial variability of soil mois-
+ture in a mountainous landscape: the signature of snow and
+complex terrain, Hydrol. Earth Syst. Sci., 13, 1325–1336,
+https://doi.org/10.5194/hess-13-1325-2009, 2009.
+Xing, Z., Li, Z.-L., Duan, S.-B., Liu, X., Zheng, X., Leng,
+P., Gao, M., Zhang, X., and Shang, G.: Estimation of
+daily mean land surface temperature at global scale us-
+ing pairs of daytime and nighttime MODIS instanta-
+neous observations, ISPRS J. Photogramm., 178, 51–67,
+https://doi.org/10.1016/j.isprsjprs.2021.05.017, 2021.
+Yu, X., Xu, X., Zhan, L., Cheng, H., and Xin, P.: Seasonal Tem-
+perature Distributions and Variations in Salt Marshes: Field
+Investigation and Numerical Simulation, Water Resour. Res.,
+60, e2023WR037016, https://doi.org/10.1029/2023WR037016,
+2024.
+Zhan, W., Chen, Y ., Zhou, J., and Li, J.: An algorithm for separating
+soil and vegetation temperatures with sensors featuring a single
+thermal channel, IEEE T. Geosci. Remote, 49, 1796–1809, 2011.
+Zhan, W., Chen, Y ., Zhou, J., Wang, J., Liu, W., V oogt, J.,
+Zhu, X., Quan, J., and Li, J.: Disaggregation of remotely
+sensed land surface temperature: Literature survey, taxonomy,
+issues, and caveats, Remote Sens. Environ., 131, 119–139,
+https://doi.org/10.1016/j.rse.2012.12.014, 2013.
+Zhao, E., Qu, N., Wang, Y ., Gao, C., and Zeng, J.: TEBS:
+Temperature–Emissivity–Driven band selection for thermal in-
+frared hyperspectral image classiﬁcation with structured State-
+Space model and gated attention, Int. J. Appl. Earth Obs., 142,
+104710, https://doi.org/10.1016/j.jag.2025.104710, 2025.
+Zhao, W., Li, A., Bian, J., Jin, H., and Zhang, Z.: A synergetic al-
+gorithm for mid-morning land surface soil and vegetation tem-
+peratures estimation using MSG-SEVIRI products and TERRA-
+MODIS products, Remote Sens.-Basel, 6, 2213–2238, 2014.
+Zhao, Z., De Frenne, P., Peñuelas, J., Van Meerbeek, K., Fornara,
+D. A., Peng, Y ., Wu, Q., Ni, X., Wu, F., and Yue, K.: Ef-
+fects of snow cover-induced microclimate warming on soil
+physicochemical and biotic properties, Geoderma, 423, 115983,
+https://doi.org/https://doi.org/10.1016/j.geoderma.2022.115983,
+2022.
+https://doi.org/10.5194/essd-18-6885-2026 Earth Syst. Sci. Data, 18, 6885–6911, 2026

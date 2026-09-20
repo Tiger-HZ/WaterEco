@@ -1,0 +1,930 @@
+Volume 11, Issue 9, September– 2026 International Journal of Innovative Science and Research Technology 
+ISSN No:-2456-2165 https://doi.org/10.38124/ijisrt/26sep092 
+ 
+ 
+IJISRT26SEP092 www.ijisrt.com 250 
+Stability of Poiseuille Flow of a Weakly 
+Viscoelastic Fluid Through a Horizontal 
+Cylindrical Pipe Subjected to a Longitudinal 
+Surface Current Density 
+ 
+ 
+Ibrahima Kama1; Fadel Diop2; Alpha Malick Ndiaye3; Fallou Sarr4; 
+Cheikh Mbow5 
+ 
+1,2,3,4,5Fluid Mechanics and Transfer Laboratory, Physic Department, Faculty of Science and Technology, 
+Cheikh Anta DIOP University of Dakar, Senegal 
+ 
+Publication Date: 2026/09/16 
+ 
+ 
+Abstract: In this article, we study the stability of the Poiseuille flow of a weakly viscoelastic diamagnetic fluid through a 
+horizontally oriented cylind rical pipe. The pipe in question is traversed by a longitudinal surface current density. The 
+problem obtained is an eigenvalue problem which we will attempt to solve using the Q -Z algorithm. A Fourrier Petrov 
+Galerkin spectral method is described for high accuracy computation of linearized dynamics for flow in a circular pipe. 
+The code used here is based on solenoidal velocity variables and is written in PYTHON. The study will be conducted by 
+manipulating certain flow parameters, such as the dimensionless numbers or the delay parameter . The flow is considered 
+unstable if when the real part of at least on of the eigenvalues is positive, and stable otherwise. 
+ 
+How to Cite: Ibrahima Kama; Fadel Diop; Alpha Malick Ndiaye; Fallou Sarr; Cheikh Mbow (2026) Stability of Poiseuille Flow 
+of a Weakly Viscoelastic Fluid Through a Horizontal Cylindrical Pipe Subjected to a Longitudinal Surface Current Density. 
+International Journal of Innovative Science and Research Technology, 11(9), 250-258. 
+https://doi.org/10.38124/ijisrt/26sep092 
+ 
+I. INTRODUCTION 
+ 
+Linear flow stability refers to the fluid's ability to 
+maintain its regime in the face of small disturbances. When 
+disturbances dampen over time, the flow is said to be stable. 
+It is said to be unstable when disturbances amplify. The 
+main purpose of studying stability is to determine the 
+precise moment when the flow regime changes. 
+ 
+For a Newtonian fluid, this change in regime is 
+determined by the Reynolds number Re and occurs from Re 
+= 2000 in experimental studies. However, this flow is 
+theoretically and numerically stable regardless of the value 
+of Re. These two facts constitute w hat is known as the 
+Reynolds paradox. 
+ 
+In our study, where the fluid is weakly viscoelastic and 
+immersed in a magnetic field, other control parameters such 
+as the Weissenberg number and the new dimensionless 
+number will be considered. We derive from elasti city and 
+Ne from the magnetic field. Both regimes (stability or 
+instability) are of technical interest in industry. 
+ 
+Regarding stability, for example, it helps reduce 
+energy losses because laminar flow significantly reduces 
+friction against the walls. It c an also help reduce pressure 
+losses, thus lowering the power required by pumps in 
+pipelines. Instability, on the other hand, allows for better 
+and more continuous fluid mixing, and it also promotes 
+thermal efficiency in heat exchangers. 
+ 
+ 
+The flows in the pipes are presented in several 
+industrial applications such as heat exchangers, chemical 
+rectors, gas turbine cooling and heating systems and 
+combustion chambers or mixing systems. 
+ 
+Magnetic body forces act on all materials but are 
+generally very weak for paramagnetic and diamagnetic 
+materials. These forces derive from a specific magnetic 
+energy acquired by the material in the presence of an 
+applied magnetic field. 
+ 
+The effects of intense magnetic fields on matter are 
+indeed multiple and arouse the curiosity of researchers. 
+Quantum [1], thermodynamic [2], mechanical [3,4] effects 
+that are imperceptible at low fields are observed in matter 
+under strong magnetic fields. The term magneto -science is 
+sometimes used to group together all the fields application. 
+ 
+One of the fields of magneto -science is the study of 
+fluids under intense magnetic fields. The outstanding 
+Volume 11, Issue 9, September– 2026 International Journal of Innovative Science and Research Technology 
+ISSN No:-2456-2165 https://doi.org/10.38124/ijisrt/26sep092 
+ 
+ 
+IJISRT26SEP092 www.ijisrt.com 251 
+applications generally concern magnetohydrodynamics and 
+magnetic levitation. In the first case, the fluid is necessarily 
+driver. Currents that flow through fluid placed in magnetic 
+fields intense generate Laplace forces allowing the 
+movement of the fluid. In the second case, the fluid used has 
+no magnetic or el ectrical properties particular. Volume 
+magnetic forces created by magnetic devices make it 
+possible to locally compensate for gravity and thus to 
+maintain in levitation a fluid over a given volume. 
+ 
+The magnetic volume force will be able to act on the 
+flow of the liquid provided that the term associated with the 
+volume forces is of the same order of magnitude as the other 
+terms of the equation. We will carry out a dimensionless 
+study of this problem to show that it is possible to act on the 
+flow of the flui d which we will consider as being 
+viscoelastic and not conductive. 
+ 
+Existing superconducting devices that act on 
+diamagnetic or paramagnetic non -conductive liquids are 
+system designs for magnetic levitation. They most often 
+result from a problem of inverse synthesis: starting from a 
+desired force field (the uniformity of the force field over the 
+largest volume is often the greatest objective), the magnetic 
+field is determined as well as associated magnetic field 
+sources. We will be interested in the effects that volumetric 
+forces can have on the flow of a fluid and more particularly 
+on the stability of the flow of such a fluid. 
+ 
+II. EVALUATION OF THE STRESS OF 
+MAGNETIC FIELD 
+ 
+The fluid being neither charged nor conductive, we 
+have the relation 𝑟𝑜𝑡𝐵⃗ = 0⃗ , knowing that 𝐵⃗ = 𝑟𝑜𝑡𝐴 , 
+A
+ 
+being the vector potential. 
+ 
+(1) 
+ 
+ 
+Fig 1 Infinite Cylinder Through which Our Fluid Flows 
+ 
+We are using a stationary current distribution here. 
+The Lorenz’s gauge condition entails 𝑑𝑖𝑣𝐴 = 0. We can 
+then determine 𝐴 using the relation 
+0A
+ . The solenoid 
+is considered very thin, it’s radius R and the surface current 
+density is of the form: 
+ 
+ (2) 
+The problem is invariant by translatio n following 𝑒 𝑧. 
+The magnetic and mechanical quantities therefore only 
+depend on r and 𝜃. any plane containing 𝑒 𝑧 and 𝑒 𝜃 is an 
+antisymmetric plane. The potential vector 𝐴 is perpendicular 
+to the antisymmetry planes and will therefore be according 
+to 𝑒 𝑧 only. We will denote it 𝐴 𝑧. The magnetic field belongs 
+to the antisymmetry planes and will consequently have 
+components according to 𝑒 𝑟 and 𝑒 𝜃. 
+ 
+In cylindrical coordinate: 
+ 
+(3) 
+ 
+As 
+ 
+We will denote by “ int “ the inside of the solenoid 
+and by “ ext “ the outside. 
+ 
+1 zz
+r
+AAB e err
+
+
+ 
+ 
+ 
+The continuity of the normal component of the 
+magnetic field at 𝑟 = 𝑅 is written: 
+ 
+ (4) 
+ 
+The discontinuity of the tangential component of the 
+magnetic field at 𝑟 = 𝑅 imposes 
+ 
+ (5) 
+ 
+The vector potential is in the form: 
+ 
+      
+11
+11
+pp
+zA r r cos p sin p       
+ 
+ 
+α, β, γ and 𝜅 are constants that will be determined by 
+boundary conditions and the matching conditions. 
+ 
+On obtient après calculs: 
+ 
+ 
+1
+1
+00
+112
+p
+zint z p
+J rA sin p epR
+ 
+ 
+ 
+ 
+1
+1
+1
+00
+1
+2
+p
+zext z p
+J RA sin p epr
+ 
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+Volume 11, Issue 9, September– 2026 International Journal of Innovative Science and Research Technology 
+ISSN No:-2456-2165 https://doi.org/10.38124/ijisrt/26sep092 
+ 
+ 
+IJISRT26SEP092 www.ijisrt.com 252 
+Either: 
+ 
+ 
+ 
+1
+1
+1
+00
+1
+1
+00
+1
+2
+2
+0
+p
+p
+int
+J r cos pR
+J rB sin p R
+ 
+ 
+
+
+  
+   
+
+
+
+ 
+ 
+ 
+Fig 2 Magnitude of B (up) and Magnetic Field Lines 
+(Down) with 
+5
+0 10 /J A Cm , R=10Cm and 
+1 2p  
+ 
+The volume magnetic force inside the solenoid is: 
+ 
+ 
+1222
+0 0 1 1
+4
+p
+int
+mv r
+jp rfe rR
+
+
+  
+ 
+On the outside, it is given by: 
+ 
+ 
+1222
+0 0 1 1
+4
+p
+ext
+mv r
+jp Rfe rr
+
+
+  
+ 
+ 
+ 
+Fig 3 Magnetic Vector Field with 
+5
+0 10 /J A Cm , 
+R=10Cm , 
+610  and 
+1 2p  
+ 
+The tensor of the magnetic actions in the solenoid is 
+given by: 
+ 
+     
+     
+122 2
+1120
+0 2
+11
+22, , , 228
+p
+int i
+cos p sin prT e J i r sin p sin pR
+ 
+     
+ 
+On the Outside 
+ 
+     
+     
+122 2
+1120
+0 2
+11
+22, , , 228
+p
+ext i
+cos p sin prT e J i r sin p sin pR
+ 
+    
+ 
+We can therefore see that it is inside or outside the 
+solenoid, the tensor of the magnetic actions always 
+comprises a tangential component. This tensor is also 
+symmetrical. 
+ 
+ 
+122
+20
+01 28
+p
+r
+int
+rT J sin p R
+  
+
+ 
+ 
+ 
+ 
+122
+20
+01 28
+p
+r
+ext
+rT J sin p R
+  
+
+ 
+ 
+ 
+Volume 11, Issue 9, September– 2026 International Journal of Innovative Science and Research Technology 
+ISSN No:-2456-2165 https://doi.org/10.38124/ijisrt/26sep092 
+ 
+ 
+IJISRT26SEP092 www.ijisrt.com 253 
+ 
+Fig 4 Tensor of Magnetic Actions with p1=2 
+ 
+III. EQUATIONS GOVERNING THE 
+FLOW AND STUDY STRATEGY 
+ 
+To fully account for the effects generated by the stress 
+of magnetic actions, we will first consider the flow of 
+laminar viscoelastic fluid in absence of magnetic field. The 
+equations governing such flow are given by the system 
+below. 
+ 
+ (6) 
+ 
+Secondly, we apply a surface and longitudinal current 
+density to the surface of the cylinder 𝑗 = 𝑗(𝜃).𝑒𝑧⃗⃗⃗ . 
+ 
+Assuming that the stress of the magnetic actions has a 
+longitudinal component, one can imagine a modification of 
+the velocity 𝑢⃗ and pressure p fields such as 𝑢⃗ 𝑚 = 𝑢⃗ + 𝑢⃗ ′, 
+𝑝𝑚 = 𝑝 + 𝑝′ and 𝜎𝑚 = 𝜎 + 𝜎′The equations governing this 
+new flow are as follows: 
+ 
+ (7) 
+ 
+By subtracting from this system, that satisfied by th e 
+viscoelastic fluid not subjected to any magnetic field, it 
+comes: 
+ 
+ (8) 
+ 
+In order to generalize the study to several situations, 
+we introduce the dimensionless parameters. 
+ 
+; ; ; ; ; ; tup u r z Bp u r z t Ru u R R R B        0
+2
+0 0 0
+B
+ 
+By replacing each variable by its expression in the 
+previous system, we obtain the following dimensionless 
+equations: 
+ 
+ (9) 
+ 
+Taking into account certain simplifying assumptions 
+due to the linearity of the problem, system (9) yields : 
+ 
+ (10) 
+ 
+0
+e
+uRR 
+
+is the Reynolds’ number. It is the ratio of 
+inertia effects to viscous effects. 
+ 
+2
+0
+2
+00
+e
+BN u
+
+
+ is a dimensionless quantity, ratio 
+between the magnetic effects and the effects of inertia. 
+ 
+0uWe R
+
+ is the Weissenberg’s number. It is ratio of 
+elastic effect and the effects of inertia. 
+ 
+Inside the cylinder, the projection of the cons ervation 
+equation on the axis gives: 
+ 
+Volume 11, Issue 9, September– 2026 International Journal of Innovative Science and Research Technology 
+ISSN No:-2456-2165 https://doi.org/10.38124/ijisrt/26sep092 
+ 
+ 
+IJISRT26SEP092 www.ijisrt.com 254 
+ (11) 
+ 
+IV. PROCEDURE AND NUMERICAL BASE 
+ 
+We consider that the variation of the perturbation of 
+the fields of velocity, pressure is periodic along the 
+azimuthal and axial directions. These considerations make it 
+possible to approximate u in the following form. 
+ 
+ (12) 
+ 
+This approximation was used by Meseguer & 
+Trefethen 2001[5]. 
+ 
+The continuity equation leads to a linear dependence 
+between the three components of u(𝑟,𝜃,𝑧) leading to a 
+system with two degrees of freedom. Therefore, we note: 
+ 
+ (13) 
+ 
+For 𝑗 = (1,2), the substitution of the expression of 
+su 
+in the equation (1 0) the problem result in a system of 
+ordinary differential equations of coefficients 
+  
+j
+m t . It 
+should be noted that the expression of 
+  
+j
+m t for a at long 
+times is 
+Cte ., where 
+ric c ic 
+ 
+This substitution is followed by a projection based on 
+the scalar product: 
+ 
+ (14) 
+ 
+Where 𝑓∗ designates the conjugated function of 𝑓. 
+ 
+The basic functions will be chosen so that integrand is 
+even, which will result in: 
+ 
+ (15) 
+ 
+The basic functions are also chosen so that the 
+projection of the pressure and magnetic terms are zero. For 
+this purpose functions based on Chebyshev polynomial were 
+considered. This choice imposes two essential criteria. The 
+first consists of choosing wei ghts associated with 
+Chebyshev polynomials, which makes it easier to calculate 
+the scalar product. The second criterion relates to the 
+approximation of the integral by a Gauss - Chebyshev- 
+Lobatto quadrature of the form: 
+ 
+(16) 
+ 
+   1,2 1,2
+, , , ,m n l m n landfg 
+ 
+ 
+We define, 
+ 
+   
+2
+2 ,1mmh r r T
+ 
+ 
+   
+22
+21mmg r r T
+ 
+ 
+2  mT
+ is the Chebyshev polynomial defined by 
+ 
+2 cos(2 )mTm 
+ 
+ 
+The basic functions and tests were proposed by 
+Leonard & Wray 1982 [ 6] then used by Meseguer & 
+Trefethen 2001 [5] and are defined as follows: 
+ 
+ Basic Functions 
+ 
+1st case: 𝑛 = 0 
+ 
+   
+ 
+ 
+ 
+0
+12
+, , , ,
+0
+( ) ; 0
+0 ( ) 0
+0
+m
+m l n m l n
+m
+m
+ik lrg r
+rhm r
+D rg r si l
+h r si l
+
+
+
+
+ 
+      
+ 
+ 
+2nd case: 𝑛 ≠ 0 
+ 
+ 
+ 
+ 
+1
+1
+,,
+0
+m
+m l n m
+inr g r
+D r g r
+
+
+
+
+
+  
+, 
+   
+ 
+2 1
+, , 0
+0
+m l n m
+m
+ik lr h r
+inr h r
+
+
+ 
+
+
+ 
+ 
+2
+1
+if nis even
+if nis odd 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Volume 11, Issue 9, September– 2026 International Journal of Innovative Science and Research Technology 
+ISSN No:-2456-2165 https://doi.org/10.38124/ijisrt/26sep092 
+ 
+ 
+IJISRT26SEP092 www.ijisrt.com 255 
+ Test Functions 
+ 
+1st case: 𝑛 = 0 
+ 
+   
+1
+,, 2
+0
+1
+10
+m l n m hr
+r
+
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+2
+0
+2
+,, 2
+23
+l
+10
+1
+0
+m
+m l n
+mm
+m
+ik r g r
+r
+D r g r r h r if l
+rh r
+
+
+
+
+ 
+
+   
+ 
+ 
+2nd case: 𝑛 ≠ 0 
+ 
+ 
+ 
+   
+,, 2
+12
+1 10
+1
+m
+m l n
+mm
+inr g r
+rD r g r r h r
+
+
+
+
+ 
+
+   
+ 
+ 
+   
+ 
+ 
+1
+2 2
+, , 0 2
+1
+0
+1
+10
+0
+m l n m
+m
+m
+ik lr h r
+rinr h r si l
+r h r si l
+
+
+
+ 
+
+
+
+
+
+  
+ 
+ 
+0
+1
+if nis even
+if nis odd 
+
+ 
+ 
+Using the Fourier representation, the continuity 
+equation becomes: 
+ 
+ (17) 
+ 
+1DD r
+ 
+ 
+ 
+V. NUMERICAL IMPLEMENTATION 
+ 
+(18) 
+ 
+Replacing u⃗ by the basic functions and projecting on 
+the basis of the test functions, it comes: 
+ 
+ (19) 
+The numerical method chosen is adapted from work in 
+the early 1980 by Leonard and Wray [6]. With this Petrov-
+Galerkin procedure that was then used by Meseguer & 
+Trefethen 2000 [8] and Meseguer & Mellibovsky 2007 [ 7], 
+we obtain: 
+ 
+(20) 
+ 
+Where 
+ 
+     
+1,2 1,2
+,,. . , b b m n lc u W W u    
+ 
+ 
+The matrix 𝑐1,2 derives from the projection of the 
+nonlinear terms and can be calculated with a pseudo-spectral 
+method by Fast Fourier Transform (FFT). 
+ 
+Let the linear case where the nonlinear terms can be 
+neglected, the problem obtained after projection is a 
+problem with the generalized eigenvalues (𝐴𝑣 = 𝑐𝐵𝑣) that 
+will be solve numerically with QZ algorithm used by J. P. 
+Berlioz [ 8]. To implement this method, we will use 
+Housholder’s unitary reflection matrices and Givens rotation 
+matrices (A. Quarteroni, R. Sacco and F. Saleri [9]) and (L. 
+Amodei and J.P. Dedieu [10] ). 
+ 
+VI. RESULTS AND DISCUSSION 
+ 
+ One-Dimensional Disturbance (n=0, k0=0) 
+ 
+ 
+ 
+Volume 11, Issue 9, September– 2026 International Journal of Innovative Science and Research Technology 
+ISSN No:-2456-2165 https://doi.org/10.38124/ijisrt/26sep092 
+ 
+ 
+IJISRT26SEP092 www.ijisrt.com 256 
+ 
+Fig 5 One-Dimensional Disturbance (n=0, k0=0) 
+ 
+ Homogeneous Disturbance (n≠0, k0=0) 
+ 
+ 
+ 
+ 
+Fig 6 Homogeneous Disturbance (n≠0, k0=0) 
+ Axisymmetric Disturbance (n=0, k0≠0) 
+ 
+ 
+ 
+ 
+ 
+ 
+Volume 11, Issue 9, September– 2026 International Journal of Innovative Science and Research Technology 
+ISSN No:-2456-2165 https://doi.org/10.38124/ijisrt/26sep092 
+ 
+ 
+IJISRT26SEP092 www.ijisrt.com 257 
+ 
+Fig 7 Axisymmetric Disturbance (n=0, k0≠0) 
+ 
+ Three-Dimensional Disturbance (n≠0, k0≠0) 
+ 
+ 
+ 
+ 
+Fig 8 Three-Dimensional Disturbance (n≠0, k0≠0) 
+ 
+Analysis of the various results from our simulations, as 
+shown in the figures, reveals that the elastic effects are 
+closely linked to the variation of instability along the 
+longitudinal direction. Indeed, when k=0, the flow is the 
+same for different values of We, with the other parameters 
+fixed. However, when k≠0, the flow pattern changes with 
+the Weissenberg number and, consequently, with the 
+elasticity. For this flow (k=0), the eigenvalue spectrum 
+shows three zones: 
+ 
+ A zone where the growth rate 𝐶𝑟 is less than 0.4. In this 
+zone, the effect of elasticity is negligible. The viscous 
+modes are stable, and the two spectra for we = 0 and We 
+= 0.3 coincide. 
+ A second zone (-0.4 < 𝐶𝑟< -0.2) where the modes of the 
+Newtonian fluid are separated from those of the 
+viscoelastic fluid, and where the points of the 
+viscoelastic fluid spectrum are above those of the 
+Newtonian fluid. We can therefore say that elasticity has 
+a destabilizing effect, meaning that it increases the 
+growth rate. 
+ In the third zone (𝐶𝑟 > -0.2), a “Y”-shaped bifurcation is 
+observed for both spectra , but the viscoelastic fluid is 
+still less damped. 
+ 
+It is worth noting that these simulations were 
+performed for Re=4000 and Re=8000, and the results are the 
+same. To observe the effect of varying the perturbation 
+along the longitudinal direction, we also studied the spectra 
+of a viscoelastic fluid for two values of the axial 
+wavenumber (k=1 and k=1.2). We clearly observe two 
+separate branches. For k=1, we have a plateau at ci=0.65, 
+and for k=1.2, a plateau at ci=1. However, in both cases, the 
+growth rate is negative, and therefore the flow is stable. We 
+also note that for the same given frequency ci, the growth 
+rate of the viscoelastic flow is higher than, or at least as high 
+as, that of the Newtonian flow. Magnetic force and pressure 
+have no effect on fl ow stability. Indeed, the gradient 
+functions cancel out when projected onto functions with 
+zero divergence. As for the longitudinal wave number k, its 
+influence is due partly to the inertial term, which causes 
+energy exchanges between the base flow and the 
+disturbances, and partly to the fact that the fluid is more 
+stretched along the axis of the cylinder, which is in fact the 
+principal direction of the base flow. 
+ 
+VII. CONCLUSION 
+ 
+The flow of a weakly viscoelastic diamagnetic fluid 
+through a horizontally orient ed cylindrical pipe is linearly 
+stable at least up to Re=8000. The action of a magnetic field 
+induced by a longitudinal surface current density along this 
+cylinder has no effect on the stability of such a flow; 
+however, elasticity can have a destabilizing effect, with 
+perturbations varying with the longitudinal component z. To 
+expect instabilities, a high Reynolds number and strong or 
+moderate elasticity would be necessary. 
+ 
+ 
+ 
+Volume 11, Issue 9, September– 2026 International Journal of Innovative Science and Research Technology 
+ISSN No:-2456-2165 https://doi.org/10.38124/ijisrt/26sep092 
+ 
+ 
+IJISRT26SEP092 www.ijisrt.com 258 
+REFERENCES 
+ 
+[1]. Matsuzaki et S. Nagakura. « Magnetic quenching of 
+fluorescence observed with carbon disulfide and 
+glyoxal ». Dans : Journal of Luminescence 12 –13 
+(mar. 1976), p. 787–791. issn : 0022-2313 
+[2]. T. Kakeshita et al. « Composition dependence of 
+magnetic field -induced mar -tensitic transformations 
+in Fe –Ni alloys ». Dans : Acta Metallurgica 33.8 
+(1985), p. 1381–1389 
+[3]. R. Aogaki, K. Fueki et T. Mukaibo. « Application of 
+Magnetohydrodynamic Effect to the Analysis of 
+Electrochemical Reactions. 2. Diffusion Process in 
+MHD Forced Flow of Electrolyte solution ». Dans : 
+Denki Kagaku 43.9 (1975), p. 509– 514 
+[4]. J. Torbet, J. -M. Freyssinet et G. Hudry -Clergeon. « 
+Oriented fibrin gels formed by polymerization in 
+strong magnetic fields. » In : Nature 289.5793 (1981), 
+p. 91 
+[5]. Meseguer, A. and Trefethen, L.N. (2003) Linearized 
+Pipe Flow to Reynolds N umber 107 . Journal 
+of Computational Physics, 186, 178-197. 
+[6]. Zikanov, O.Yu. (1996) On the Instability of Pipe 
+Poiseuille Flow. Physics of Fluids, 8, 2923. 
+[7]. Bergstrom, L. (1997) Optimal Growth of Small 
+Disturbances in Pipe Poiseuille Flow. Physics o f 
+Fluids, 9, 1043. 
+[8]. Leonard, A. and Wray, A. (1982) A New Numerical 
+Method for the Simulation of Three -Dimensional 
+Flow in a Pipe. In: Krause, E., Ed., Proceedings of the 
+8th International Conference on Numerical Methods 
+in Fluid Dynamics on Numerical Metho in Fluid 
+Dynamics, Springer, Berlin, 335 -342. 
+https://doi.org/10.1007/3-540-11948-5_40 
+[9]. Schmid, P.J. and Henningson, D.S. (1994) Optimal 
+Energy Grothin Hagen -Poiseuille Flow.Journal of 
+Fluid Mechanics , 277, 197. 
+https://doi.org/10.1017/S0022112094002739 
+[10]. Trefethen, A.E., Trefethen, L.N. and Schmid, P.J. 
+(1999) Spectra and Pseudospectra for pipe Poiseuille 
+Flow. Computer Methods in Applied Mechanics and 
+Engineering, 175, 413 -420. 
+https://doi.org/10.1016/S0045-7825(98)00364-8 
+[11]. Berlioz, J.P. (1979) A propos de l’algorithme QZ. 
+RAIRO-Analyse Numérique , 13,21 -30. 
+https://doi.org/10.1051/m2an/1979130100211 
+[12]. Quarteroni, A., Sacco, R. and Saleri, F. (2004) 
+Méthodes Numériques: Algorithmes, analyse et 
+applications. Springer-Verlag, Italia, Milano. 
+[13]. Amodei, L. and Dedieu, J.P. (2008) Analyse 
+numérique matricielle: Cours et exercices corrigés 
+détaillés. Dunod, Paris 2008, SMAI (Société de 
+Mathématiques Appliquées et Industrielle).

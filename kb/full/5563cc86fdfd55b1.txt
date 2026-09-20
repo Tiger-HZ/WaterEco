@@ -1,0 +1,2377 @@
+Cheng et al. Microsystems & Nanoengineering (2026) 12:320 Microsystems & Nanoengineeringhttps://doi.org/10.1038/s41378-026-01344-8 www.nature.com/micronano
+ARTICLE Open Access
+High-precision temperature-strain composite
+sensing based on a single resonator-type surface
+acoustic wave sensor using machine learning
+algorithms
+Chunlong Cheng1,2,Y a n x i nL i u1,2,J i n g w e nY a n g1,2, Tianyao Luo1,2, Tong Tong1,2, Cai Luo1,2,X i a o r uL i1,2,
+Xudong Fang 3✉ and Qingqing Ke1,2✉
+Abstract
+Surface acoustic wave (SAW) sensors are extensively employed for temperature/strain measurement. However, precise
+temperature/strain sensing remains challenging under complex conditions involving simultaneous mechanical strains
+and temperature ﬂuctuations, due to the inherent cross-sensitivity between temperature and strain. To address this
+challenge, we developed a single resonator-type SAW sensor operable up to 600 °C and integrated machine learning
+techniques for temperature-strain multiphysics decoupling. Six machine learning models are implemented and
+evaluated using normalized root mean square error ( NRMSE), root mean square error ( RMSE), mean absolute error
+(MAE), coefﬁcient of determination ( R²), and execution time ( ET) metrics. Results demonstrate that the extreme gradient
+boosting (XGBoost) model achieves optimal predictive performance from 22 to 160 °C and applied strains of 0 με to
+800 με. For temperature/strain predictions respectively, R² values reach 99.97% and 99.23%, simultaneously enabling
+high-precision temperature and strain sensing. Our study presents an effective solution for simultaneous temperature
+and strain sensing using a single resonator-type SAW sensor operating in a single acoustic wave mode.
+Introduction
+Temperature/strain sensors are highly required in ﬁelds
+such as healthcare, aerospace, infrastructure, and energy/
+power systems 1–4. Among various measurement techni-
+ques, surface acoustic wave (SAW) sensors are widely
+employed for temperature/strain monitoring due to their
+advantages of passive wireless sensing capability, fast
+response speed, and high stability, etc 5–8. However, under
+real-world conditions, SAW sensors not only respond
+simultaneously to temperature and strain, but also exhibit
+inherent temperature-strain cross-sensitivity 9,10. This
+characteristic will further amplify the interference of
+coupled parameter changes on measurement results,
+which keeps a great challenge for high-precision tem-
+perature/strain sensing 6.
+In recent years, a variety of schemes for temperature-
+strain multiphysics decoupling in SAW sensors are pro-
+posed. Guangyao Pei et al. 11 developed a SAW tempera-
+ture sensor with a strain-isolation structure, which is
+capable of reducing cross-strain sensitivities from 176.1 to
+2.5 Hz/με. Within the temperature range of 80 –850 °C,
+the temperature detection error remains below 0.5 ‰ ,
+achieving high-precision temperature sensing perfor-
+mance. However, this kind of decoupling scheme com-
+pletely relies on strain-isolation structure design, which
+leads to a complex sensor architecture and signi ﬁcant
+development challenges. For high-precision strain sen-
+sing, common decoupling schemes mainly include dual-
+© The Author(s) 2026
+Open AccessThis article is licensed under a Creative CommonsAttribution-NonCommercial-NoDerivatives 4.0 International License, which permits any non-commercial
+use, sharing, distribution and reproduction in any medium or format, as long as you give appropriate credit to the original author(s) and the source, provide a link to the
+Creative Commons licence, and indicate if you modiﬁed the licensed material. You do not have permission under this licence to share adapted material derived from this article or parts of it.
+The images or other third party material inthis article are included in the article’s Creative Commons licence, unless indicated otherwise in a credit line to the material. If material is not included
+in the article’s Creative Commons licence and your intended use isnot permitted by statutory regulation or exceeds the permitted use, you will need to obtain permission directly from the
+copyright holder. To view a copy of this licence, visithttp://creativecommons.org/licenses/by-nc-nd/4.0/.
+Correspondence: Xudong Fang ( dongfangshuo30@xjtu.edu.cn)o r
+Qingqing Ke ( keqingq@mail.sysu.edu.cn)
+1School of Microelectronics Science and Technology, Sun Yat-sen University,
+Zhuhai 519082, China
+2Zhuhai Key Laboratory of Micro-Nano Sensing Technology and Intelligent
+Detection, Sun Yat-sen University, Zhuhai 519082, China
+Full list of author information is available at the end of the article
+These authors contributed equally: Chunlong Cheng, Yanxin Liu
+1234567890():,;1234567890():,;
+1234567890():,;
+1234567890():,;
+resonator beat frequency and dual-mode beat frequency.
+The dual-resonator beat frequency scheme typically
+requires integrating two independent resonant units on
+the same substrate, and strain measurement is achieved
+through frequency difference calculation 12,13. Its structure
+needs to strictly control the consistency of the two reso-
+nators in the lithography process to avoid introducing
+additional frequency drift due to excessive deviation of the
+interdigital transducers. In addition, an additional isola-
+tion layer needs to be designed to reduce crosstalk
+between units, resulting in an increase in sensor size.
+More critically, this scheme often ignores the in ﬂuence of
+temperature on strain sensitivity, thereby hindering
+complete temperature compensation and making it dif ﬁ-
+cult to meet the requirements of high-precision scenar-
+ios14,15. The dual-mode beat frequency scheme uses only
+a single resonator-type SAW sensor, and realizes
+temperature-strain decoupling through the frequency
+difference of exciting two different propagation modes,
+which signi ﬁcantly reduces the structural complexity 16.
+However, not all acoustic wave modes are suitable for
+achieving ideal signal decoupling through beat frequency
+processing. Studies by Zhang et al. 17 have shown that the
+effectiveness of dual-mode beat frequency decoupling
+highly depends on the consistency of the temperature
+response of the two modes. Only when the two modes of
+the same sensor have the same temperature coef ﬁcient
+and strain transfer ratio can the frequency difference
+operation offset the temperature-induced frequency drift
+and the strain transfer ratio variation caused by the soft-
+ening of the adhesive layer. In practical applications, it is
+difﬁcult to accurately match the temperature coef ﬁcients
+of different types of acoustic wave modes, and the exci-
+tation of multiple acoustic wave modes relies on speci ﬁc
+structural designs, which further limits the universality of
+the dual-mode beat frequency scheme. In particular, this
+processing may usually reduce the strain sensitivity 17,18.
+For high-precision temperature-strain composite sen-
+sing, general decoupling methods mostly involve inte-
+grating temperature-sensitive units into SAW strain
+sensors, or utilizing multi-resonator beat frequency. The
+former routine requires complete strain isolation in the
+temperature-sensitive unit to achieve high-precision
+temperature detection. Subsequently, high-precision
+strain detection is achieved through beat frequency pro-
+cessing with the SAW strain sensor or by identifying the
+resonant frequency-strain response curve at the speci ﬁc
+operating temperature19,20. While this decoupling method
+needs a complex sensor structure, a key technical chal-
+lenge in practical applications remains the dif ﬁculty of
+achieving complete strain isolation within the
+temperature-sensitive unit. The latter requires three SAW
+resonators fabricated based on different piezoelectric
+materials to achieve high-precision simultaneous
+measurement of temperature and strain via pairwise beat
+frequency processing 21. The sensor structure is complex
+and ignores the in ﬂuence of temperature on strain sen-
+sitivity. At present, the single acoustic wave mode-excited
+single resonator-type SAW sensor remains the main-
+stream approach, so there is an urgent need to develop a
+solution for its temperature-strain multiphysics
+decoupling.
+Recently, researchers proposed to integrate machine
+learning techniques with sensors to achieve accurate
+detection of physical quantities 22,23. From 2022 to 2025,
+the research team at Hunan University conducted
+extensive work on the signal decoupling of SAW sensors
+using machine learning models. Key contributing work
+includes ultraviolet light-temperature decoupling 10, strain
+direction-magnitude decoupling 24, precise ultraviolet
+detection25 and temperature detection 26 under strain
+interference. However, little research was reported on
+temperature-strain multiphysics decoupling for SAW
+sensors.
+In this work, we developed a high-temperature SAW
+sensor operable up to 600 °C, demonstrating excellent
+temperature sensing characteristics. Temperature/strain
+sensing tests were conducted under 22 –160 °C and
+0–800 µε loading conditions. We theoretically analyzed the
+temperature-strain cross-sensitivity of SAW sensors and
+introduced six machine learning algorithms, including
+ridge regression (RR), polynomial regression (PR), multiple
+linear regression (MLR), extreme gradient boosting
+(XGBoost), random forest regression (RFR), and decision
+tree regression (DTR), to establish regression models for
+temperature-strain multiphysics decoupling. Feature
+information was extracted from S11 spectra under varying
+temperature and strain loading conditions. Feature
+importance was quanti ﬁed, and the impact of different
+input feature combinations on predictions of temperature
+and strain was evaluated using the normalized root mean
+square error ( NRMSE), root mean square error ( RMSE),
+mean absolute error ( MAE), coef ﬁcient of determination
+(R²) and execution time (ET) metrics. As shown in Table 1,
+compared with the methods reported in existing literature
+for decoupling SAW sensing signals based on machine
+learning models, the temperature-strain decoupling model
+constructed in this study can simultaneously achieve high-
+precision and accurate evaluation of both temperature and
+strain signals. This scheme provides a precise extraction
+path for temperature and strain signals for single-resonator
+SAW sensors excited by a single acoustic wave mode.
+Fabrication and testing of high-temperature SAW
+sensors
+Fabrication of high-temperature SAW sensors
+We developed a single resonator-type high-temperature
+SAW sensor, primarily composed of 128° Y-cut lithium
+Cheng et al. Microsystems & Nanoengineering (2026) 12:320 Page 2 of 16
+niobate (LN), interdigital transducer (IDT), re ﬂective
+gratings (RG) at both ends, and an aluminum nitride
+(AlN) protective layer. To enable the ﬁrst-order Rayleigh
+SAW (RSAW) of the sensor to operate within the com-
+mercial ISM (industrial, scienti ﬁc, and medical) bands, the
+period of IDT was set to 8.48 μm based on previous
+research results 27, with detailed structural parameters
+provided in Table 2.
+The fabrication process ﬂow of the high-temperature
+SAW sensor is shown in Fig. 1a, mainly including dicing,
+magnetron sputtering deposition of metal electrode ﬁlms,
+photolithographic patterning, etching, deposition of an
+AlN protective layer, and post-annealing. To meet high-
+temperature testing requirements, we selected chromium
+(Cr) and platinum (Pt) as electrode materials for the high-
+temperature SAW sensor due to their stability and high
+electrical conductivity in the high-temperature condi-
+tions. Detailed process parameters for the deposition of
+Cr and Pt metal ﬁlms are listed in Table S1 of the
+Supporting Information. Subsequently, we spin-coated a
+layer of photoresist onto the metal thin ﬁlm and trans-
+ferred the pre-designed electrode pattern onto the pho-
+toresist layer via photolithography. Next, ion beam
+etching was performed using the patterned photoresist as
+a mask. After stripping off the residual photoresist, the
+electrode morphology of the SAW sensor was character-
+ized, with the results presented in Fig. 1b. This image
+clearly demonstrates that the electrodes exhibit well-
+deﬁned pro ﬁles, uniform width and no abnormal
+interconnections.
+However, the SAW sensor electrodes are likely to be
+oxidized in the high-temperature environment, and may
+even exhibit recrystallization and agglomeration phe-
+nomena, leading to IDT fracture and subsequent sensor
+failure. Additionally, Li + volatilization in LN further
+degrades performance of the sensor. In this work, we
+masked the Pad of the high-temperature SAW sensor by
+applying ink and deposited the AlN protective layer using
+the DC magnetron sputtering process. The speci ﬁc pro-
+cess parameters are listed in Table S2 of the supplemen-
+tary material. With a melting point of approximately
+2200 °C, AlN exhibits high thermal stability, excellent
+compactness, electrical insulation, and chemical stability,
+enabling effective protection of metal electrodes and the
+LN piezoelectric substrate in the high-temperature
+environment. Furthermore, as an excellent piezoelectric
+material, AlN maintains stable piezoelectric performance
+even at 1150 °C 28. Therefore, it serves both as a protective
+layer and enhances electromechanical coupling to
+improve SAW sensor performance. The cross-sectional
+scanning electron microscopy (SEM) image of the high-
+temperature SAW sensor is shown in Fig. 1c, clearly
+revealing that the deposited Cr and Pt metal electrode
+Table 1 Comparison with the results of machine learning decoupling of surface acoustic wave sensing signals reported
+in the literature
+Method Target Parameter Range Evaluation Metrics
+SVM
+RFR
+10
+Temperature
+UV
+30– 50 °C
+0.033– 0.403 mW/cm²
+(Temperature) MAE: 0.25 °C, RMSE: 0.34 °C, R²: 99.6%
+(UV) MAE: 0.011 mW/cm², RMSE: 0.0136 mW/cm²,
+R²: 95.9%
+XGBoost
+24
+Strain intensity
+Strain direction
+0– 1888 με
+0– 90 deg
+(Strain intensity) RMSE: 0.035 με, R²: 98.6%
+(Strain direction) RMSE:0.054 deg, R²: 98%
+XGBoost
+25
+UV
+Strain
+0– 13.05 mW/cm²
+0– 1160 με
+R²: 99.6%
+NRMSE: 0.019
+XGBoost
+26
+Temperature
+Off-axis bending strain
+0– 80 °C
+0– 1000 με
+NRMSE <1 %
+R² > 99.7%
+XGBoost
+(This work)
+Temperature
+Strain
+22– 160 °C
+0– 800 με
+(Temperature) R²: 99.97%, NRMSE: 0.0059,
+RMSE: 0.82 °C, MAE: 0.35 °C
+(Strain) R²: 99.23%, NRMSE: 0.0283,
+RMSE: 22.65 με, MAE: 8.42 με
+Table 2 Structural parameters of the high-temperature
+SAW sensor working in the ISM frequency band
+Structural parameters Value
+Wavelength, λ (μm) 8.48
+Metallization ratio 0.5
+Acoustic aperture (mm) 0.848
+Thickness of LN (mm) 0.5
+The number of IDT electrode pairs 60
+The number of RG pairs 60
+Distance between IDT and RG ( μm) 2.12
+Cheng et al. Microsystems & Nanoengineering (2026) 12:320 Page 3 of 16
+ﬁlms have thicknesses of 52 nm and 168 nm, respectively,
+and the AlN protective layer has a thickness of 277 nm.
+After all the preparation processes are completed, the
+sample is annealed in a nitrogen atmosphere. The
+annealing process involves heating the sample to 600 °C at
+a rate of 5 °C/min, holding it at this temperature for
+30 min, and then cooling it naturally to room tempera-
+ture. This treatment improves the interface quality
+between the electrode material and the substrate, pro-
+motes the recrystallization of the metal thin- ﬁlm electrode
+to enhance conductivity, and eliminates the internal stress
+accumulated in the thin ﬁlm during fabrication, thereby
+improving the performance, service life, and operational
+stability of the sensor. The photograph of the prepared
+high-temperature SAW sensor is shown in Fig. 1d.
+The temperature-strain composite sensing test system
+The temperature-strain composite sensing test system is
+shown in Fig. 2, comprising of the following components,
+including the high-temperature SAW sensor, an extens-
+ometer, a test piece, a tensile testing machine, a high-
+temperature furnace, a network analyzer (E5071B, Key-
+sight, USA), and a computer. The tensile testing machine
+applies strain to the test piece, while the high-temperature
+furnace controls the test temperature. During testing, the
+high-temperature SAW sensor is bonded to the test piece
+using adhesive, then electrically connected to a printed
+circuit board (PCB), ultimately interfacing with the
+network analyzer through an SMA connector on the PCB.
+An EFSS self-clamping axial high-temperature extens-
+ometer with a 50 mm gauge length, ﬁxed at both ends of
+the SAW sensor, calibrates strain of the test piece, and its
+measurement error is ≤±0.15%. Test temperature is cali-
+brated using a thermocouple with a measurement error
+of ≤±1 °C. The network analyzer characterizes the S11
+spectra of the SAW sensor, which connects to the
+Dicing Magnetron
+sputtering
+Spin-coating 
+photoresist Ion beam etching Removing glue
+3D structural diagramInk coatingSputtering the AlNRemove the inkAnnealing
+52 nm
+168 nm
+277 nm
+Cr
+Pt
+AlN
+12 mm
+10 mm
+Lithography
+LN Cr Pt Photoreist Ink AlN
+/g79/g79 = 8.48 /g80m 
+a
+b c d
+Fig. 1 Fabrication Process and Morphological Structure of High-Temperature SAW Sensor. a The fabrication process ﬂow; b The
+metallographic microscope image of the electrode surface; c The cross-sectional SEM image and d the physical drawing of the high-temperature
+SAW sensor
+Temperature Controller
+Network Analyzerre
+Force
+Extensometer
+Heating furnace
+Clamp
+SAW sensor
+Test piece
+Tensile testing machine
+LabVIEW
+Fig. 2 The temperature-strain composite sensing test system
+Cheng et al. Microsystems & Nanoengineering (2026) 12:320 Page 4 of 16
+computer via data cables. Automated measurement of S11
+parameters and resonant frequency extraction are
+achieved through LabVIEW-based programming.
+Analyses of temperature/strain sensing characteristics
+The fabricated high-temperature SAW sensor was
+bonded to the test piece using adhesive glue (3M-CA40H)
+and electrically connected to the PCB via twisted-pair
+wires using conductive silver paste and solder paste for
+testing of temperature/strain sensing characteristic. The
+S11 spectrum of the sensor under room temperature
+(22 °C) and no-strain-loading conditions are shown in Fig.
+3a. A distinct resonant peak is observed at 430.02 MHz,
+exhibiting good quality with a quality factor ( Q) of 662,
+which indicates that the developed high-temperature
+SAW sensor has excellent resolution and a longer wire-
+less transmission distance. The Q is calculated using the
+following formula 29:
+Q ¼ f 0
+Bw
+ð1Þ
+where f0 is the resonant frequency and Bw is the
+bandwidth at 3 dB. A minor deviation exists between
+the resonant frequency and the theoretically calculated
+433 MHz, which may be attributed to the in ﬂuence of the
+AlN protective layer on the propagation velocity of the
+ﬁrst-order RSAW. The resonant frequency-strain
+response characteristics of the high-temperature SAW
+sensor during strain loading and unloading at 22 °C are
+shown in Fig. 3b. It demonstrates ideal strain sensing
+characteristics with high strain sensitivity ( −245.63 Hz/
+µε) and linearity (99.8%). Additionally, it exhibits a low
+maximum hysteresis error ( ΔHm) of 1.84%. ΔHm denotes
+the maximum deviation of the output resonant frequency
+during strain loading and unloading within the testing
+range, and is de ﬁned as 30:
+ΔHm ¼ Δf m
+Y FS
+´ 100% ð2Þ
+where Δfm is the maximum deviation of the resonant
+frequency at the same strain, and the YFS is the resonant
+frequency range of the sensor output. Within the
+temperature range of 22 –160 °C and strain loading
+conditions of 0 –800 µε, the test results of the high-
+temperature SAW sensor are shown in Fig. 3c. It shows
+that the resonant frequency versus strain exhibits
+excellent linear response characteristics across tempera-
+tures, with a linearity range of 99.8 –99.91%. This indicates
+its high strain detection accuracy and minor errors in
+repeated measurements. Based on the test data shown in
+428.8 429.6 430.4 431.2
+−21
+−18
+−15
+−12
+S11 (dB)
+Frequency (MHz)
+Frequency (MHz)Sensitivity (Hz//g80/g72/g80/g72)
+Frequency: 430.02 MHz
+Q: 662
+0 200 400 600 800
+429.825
+429.880
+429.935
+429.990
+430.045
+Reference strain (/g80/g72/g80/g72)
+Load
+Unload
+/g39Hm = 1.84%
+0 200 400 600 800
+427
+428
+429
+430
+431 22 ℃ 40 ℃ 60 ℃
+80 ℃ 100 ℃ 120 ℃
+140 ℃ 160 ℃
+40 80 120 160
+427
+428
+429
+430
+Resonant frequencies
+Sensitivity
+Linear fitting
+Temperature (℃)
+Equation y = a + b*x
+Intercept 4.30651E8 /g11482,491.9121
+Slope –23,069.09632 /g114 816.3715
+R2 0.99254
+–248
+–217
+–186
+–155
+414.0 418.5 423.0 427.5 432.0
+−18
+−15
+−12
+−9
+−6 20 ℃ 50 ℃ 100 ℃ 150 ℃
+200 ℃ 250 ℃ 300 ℃
+350 ℃ 400 ℃ 450 ℃
+500 ℃ 550 ℃ 600 ℃
+0.0285 dB
+Q: 1600
+4.1 dB
+0 150 300 450 600
+414.0
+418.5
+423.0
+427.5
+432.0
+Resonant frequency
+Linear fitting
+Equation y = a + b*x
+Intercept 4.3225E8 /g11411,7622.88025
+Slope –29,490.51165 /g114332.64681
+0.9986
+Frequency (MHz)
+Reference strain (/g80/g72/g80/g72)
+Frequency (MHz)
+S11(dB)
+Frequency (MHz)
+Frequency (MHz) Temperature (℃)
+R2
+a b c
+d e f
+Fig. 3 Test Results of Temperature-Strain Sensing Characteristics of High-Temperature SAW Sensors. a The S11 spectra of the high-
+temperature SAW sensor under 22 °C and no-strain-loading conditions; b The resonant frequency-strain response characteristics of the high-
+temperature SAW sensor during strain loading and unloading at 22 °C; c Under the temperature range of 22 – 160 °C and strain loading conditions of
+0– 800 με, the test results of the high-temperature SAW sensor; d The variation curves of strain sensitivity and resonant frequency of the high-
+temperature SAW sensor with temperature; e The ﬁrst-order RSAW resonant peaks and f the resonant frequency-temperature response curve of the
+developed high-temperature SAW sensor under the temperature range of 20 – 600 °C
+Cheng et al. Microsystems & Nanoengineering (2026) 12:320 Page 5 of 16
+Fig. 3c, we extracted the variation curves of strain
+sensitivity and resonant frequency of the sensor with
+temperature, and the results are shown in Fig. 3d. It shows
+that the strain sensitivity exhibits strong temperature-
+dependent ﬂuctuations, while the resonant frequency-
+temperature response curve demonstrates linear variation
+characteristics with approximately 99.3% linearity and a
+sensitivity of −23069 Hz/°C. This also demonstrates the
+cross-sensitivity characteristics of the SAW sensor to
+temperature and strain. Therefore, it needs signal
+decoupling to obtain accurate temperature and strain
+information.
+To validate the temperature/strain sensing character-
+istics of the high-temperature SAW sensor under higher
+environmental temperatures, we adopt new electrical
+connection and installation processes. First, the high-
+temperature SAW sensor was bonded to a TC4 test piece
+using ceramic adhesive (GT-900-H). Then, it was elec-
+trically connected to a PCB via a dual-core thermocouple
+wire using high-temperature conductive silver paste. The
+dual-core thermocouple wire is long enough to ensure
+that the electrical signals from the sensor can be routed
+out of the high-temperature environment, allowing the
+PCB to remain in the room-temperature zone. Figure 3e
+shows the ﬁrst-order RSAW resonant peaks of the
+developed high-temperature SAW sensor under con-
+trolled temperatures from 20 to 600 °C using a heating
+stage. As temperature increases, the amplitude of reso-
+nant peak gradually decreases and the resonant peak
+gradually broadens, reaching only 0.0285 dB at 600 °C.
+Additionally, the temperature-dependent resonant fre-
+quencies extracted from these resonant peaks are linearly
+ﬁtted, as shown in Fig. 3f, achieving a temperature
+sensitivity of −29,490.5 Hz/°C with 99.86% linearity. This
+result con ﬁrms the sensor ’s operational capability and
+excellent temperature sensing performance within
+20–600 °C. However, validation of its strain sensing cap-
+ability remains incomplete due to insuf ﬁcient strain
+transfer through the ceramic adhesive and a 0.5 mm-thick
+LN substrate. Therefore, subsequent temperature-strain
+multiphysics decoupling is conducted based on data
+obtained under 22 –160 °C and 0 –800 µε strain loading
+conditions.
+Decoupling methods using machine
+learning models
+Temperature-strain cross-sensitivity characteristics in SAW
+sensors
+The raw data for temperature-strain multiphysics
+decoupling of the high-temperature SAW sensor is shown
+in Fig. 4a. The temperature test points include 8 values:
+22 °C, 40 °C, 60 °C, 80 °C, 100 °C, 120 °C, 140 °C, and
+160 °C. The strain test points consist of 9 values: 0 µ ε,
+100 µε, 200 µ ε, 300 µ ε, 400 µ ε, 500 µ ε, 600 µ ε, 700 µ ε, and
+800 µε. This con ﬁguration results in 72 distinct target
+variables. Each target variable corresponds to a frequency
+response dataset containing 8000 data points centered at
+the resonant frequency. The data points are sampled at
+intervals of 125 Hz, with 4000 points symmetrically
+extended on each side of the resonant frequency, resulting
+in a total bandwidth of 1 MHz. Collectively, the 72 target
+variables comprise 576,000 data points, forming the
+foundational dataset for machine learning-based tem-
+perature-strain multiphysics decoupling. Figure 4b illus-
+trates the resonant peak frequency and S₁₁ value of the
+high-temperature SAW sensor under different
+Heating
+160
+140 120 100 80 60 40 22Temperature (℃)
+–14
+–16
+–18
+–20
+S11 (dB)
+S11 (dB)
+426 427 428 429 430
+Frequency (MHz)
+800600400200 St
+rain 
+/g11/g80/g72/g80/g72/g12
+22 °C 40 °C 60 °C 80 °C 100 °C 120 °C 140 °C 160 °C 
+–13.2
+–16.5
+–19.8
+–23.1
+–430.3
+429.0
+427.7
+426.4
+Frequency (MHz)
+Frequency (MHz)
+0 100,000 200,000 300,000 400,000 500,000 600,000
+Point
+0 100 200 300 400 500 600 700 800
+0 100 200 300400 500600 700 800
+Strain /g11/g80/g72/g80/g72/g12
+Strain /g11/g80/g72/g80/g72/g12
+430.54
+430.16
+429.78
+429.40
+0 15000 30000 45000 60000
+Point
+–16.32
+–17.00
+–17.68
+–18.36
+510000 525000 540000 555000 570000
+Point
+S11 (dB)
+a b
+ε1111
+Fig. 4 Raw Data of Temperature-Strain Coupling and Variation of Resonant Signals. a The raw data for temperature-strain multiphysics
+decoupling of the high-temperature SAW sensor; b The frequencies and S11 values of the high-temperature SAW sensor ’s resonant peaks under
+various temperature-strain conditions
+Cheng et al. Microsystems & Nanoengineering (2026) 12:320 Page 6 of 16
+temperature-strain loading conditions. These parameters
+vary regularly with temperature and strain, exhibiting a
+distinct coupling effect. When temperature rises, the
+resonant frequency decreases, and simultaneously, the
+frequency-reducing effect induced by increasing strain
+becomes more pronounced with elevated temperatures.
+The amplitude variation of S₁₁ is the combined result of
+temperature and strain. Higher temperatures attenuate
+the S₁₁ amplitude, whereas larger strain levels enhance it,
+ultimately yielding ﬂuctuation characteristics that stem
+from the superposition of these two factors. Speci ﬁcally,
+the resonant frequency decreases with increasing tem-
+perature and strain, while the amplitude of | S₁₁| declines
+as temperature rises but generally increases with growing
+strain. This phenomenon primarily arises from the fact
+that both temperature and strain induce alterations in the
+IDT period of SAW sensors, thereby modifying the
+wavelength of SAW. Additionally, these factors also affect
+parameters such as the density and elastic modulus of
+piezoelectric materials 31, leading to changes in SAW
+propagation velocity. These combined effects ultimately
+lead to the changes in the resonant frequency, which
+cause shifts in the impedance matching point, ultimately
+affecting the S11 values. In summary, both temperature
+and strain affect the output frequency signals of SAW
+sensors, demonstrating signi ﬁcant coupling effects
+between the two parameters.
+Feature extraction
+Machine learning models analyze training data
+through speci ﬁed algorithms to uncover latent patterns
+and relationships, which are then used to predict new
+data32. In this work, machine learning models are
+employed to predict the temperature and strain
+information detected by the high-temperature SAW
+sensor, where each input dataset corresponds to a known
+output target variable (i.e., the calibration temperature
+and strain). The objective of the models is to identify the
+underlying relationships between input data and output
+target variables, which typically requires ﬁrst extracting
+features from the raw input data to establish input-
+output mapping relationships 33.H o w e v e r ,o n l yt w o
+features can be directly obtained from the SAW sensor ’s
+resonant peaks: resonant frequency ( fr) and its corre-
+sponding S11 value, which are insuf ﬁcient for con-
+structing effective input-output mappings relationships
+to achieve temperature-strain multiphysics decoupling.
+To further enhance the prediction accuracy of machine
+learning models, we extract six new features based on the
+frequency characteristics of the high-temperature SAW
+sensor’s resonant peaks, including bandwidth ( Bw), Q,
+minimum cutoff frequency ( fmin), maximum cutoff fre-
+quency ( fmax), mean S 11,a n d S11 skewness. Their values
+under different temperature-strain loading conditions
+are shown in Fig. 5.A ss h o w ni nF i g . 5,t h ev a r i a t i o n
+trends of the cutoff frequencies ( fmin, fmax)a r ef u l l y
+synchronized with that of the fr. Speci ﬁcally, an increase
+in temperature or strain induces a low-frequency shift of
+fr, which consequently drives a synchronous decrease in
+both fmin and fmax. The difference between the two is the
+bandwidth Bw. Among them, high temperature will
+increase the internal friction of the piezoelectric mate-
+rial, resulting in the broadening of Bw and the decrease of
+the Q;w h i l et h ei nﬂuence of strain on Bw is very weak,
+which only causes small ﬂuctuations in the Q value by
+changing the propagation uniformity of SAW. The mean
+S11 provides a global measure of S11 values, re ﬂecting the
+energy attenuation characteristics of the SAW sensor
+Strain (
+/g80/g72/g80/g72)
+0200400600800
+–18.5
+–19.0
+–19.5
+–20.0
+–20.5
+S
+11 (d
+B)
+0200400600800
+Temperature (°C)
+180
+150120906030
+Temperature (°C)
+180
+150120906030
+Temperature (°C)
+180
+150120906030
+Tem
+perature (°C)
+180
+150120906030
+Tempera
+ture (°C)
+180
+150120906030
+Temperature (°C)
+180
+150120906030
+Temperature (°C)
+180
+150120906030
+Temperature (°C)
+180
+150120906030
+0200400600800
+0200400600800
+0200400600800
+0200400600800
+0200400600800
+0200400600800
+fm
+ax (M
+Hz
+)
+430.2
+429.6
+429.0
+428.4
+427.8
+427.2
+fm
+in (MHz
+)
+429.6
+429.0
+428.4
+427.8
+426.6
+427.2
+426.0
+fr (MHz
+)
+430.2
+429.6
+429.0
+428.4
+427.2
+427.8
+426.6
+–16.2
+–16.5
+–16.8
+–17.1
+–17.4
+mean S
+11 (dB)
+0.92
+0.88
+0.84
+0.80
+0.76
+S
+11
+ ske
+wnes
+s
+800
+750
+700
+650
+600
+B
+w (kHz)
+750
+700
+650
+600
+550
+Q
+Strain (
+/g80/g72/g80/g72)
+Strain (
+/g80/g72/g80/g72)
+Strain (
+/g80/g72/g80/g72)
+Strain (
+/g80/g72/g80/g72)
+Strain (
+/g80/g72/g80/g72)
+Strain (
+/g80/g72/g80/g72)
+Strain (
+/g80/g72/g80/g72)
+Fig. 5 The values of fr, S11, Bw, Q, fmin, fmax, mean S 11, and S11 skewness under different temperature and strain loading conditions
+Cheng et al. Microsystems & Nanoengineering (2026) 12:320 Page 7 of 16
+under speci ﬁc conditions. It is de ﬁned as:
+mean S11 ¼ 1
+n
+Xn
+i¼1
+S11i ð3Þ
+where n represents the total number of datasets, and S11i
+denotes the S11 value of the i-th dataset. Compared with
+the S11 value of a single resonance peak, the mean S11 can
+suppress noise interference in the original signal and
+more accurately re ﬂect the global energy loss caused by
+temperature. In terms of numerical changes, the mean S11
+decreases signi ﬁcantly as the temperature rises. The S11
+skewness is a statistical metric describing the symmetry of
+data distribution, de ﬁned as 34:
+S11 skewness ¼
+1
+n
+Pn
+i¼1
+S11i /C0 S11i
+/C0/C1 3
+1
+n
+Pn
+i¼1
+S11i /C0 S11i
+/C0/C1 2
+/C18/C19 3=2 ð4Þ
+When under lower temperatures and smaller strain loads,
+the S11 spectrum shows a symmetric normal distribution,
+with the skewness close to 0. However, when the tem-
+perature rises or the strain increases, the impedance
+matching state of the sensor becomes imbalanced, causing
+the spectrum to shift in a certain direction, which in turn
+leads to positive and negative ﬂuctuations in skewness. This
+feature can capture subtle asymmetric changes in the ori-
+ginal signal that are dif ﬁcult to observe directly, providing
+additional basis for judging the temperature-strain coupling
+state. Additionally, six polynomial product-form features
+are introduced in this work, includingBw², Q², fr², S11², fr*S11
+and Bw*S11.T h e s ea d d i t i o n ss i g n iﬁcantly improve the
+model’s predictive performance.
+Feature importance evaluation
+After performing feature extraction on the original
+input data, it is necessary to further verify whether there is
+redundancy or multicollinearity among the features. The
+Pearson correlation coef ﬁcient matrix plot, which re ﬂects
+the linear correlation between features, is shown in Fig. 6.
+The value range of the correlation coef ﬁcient is [ −1, 1];
+the closer the absolute value is to 1, the stronger the linear
+correlation between features. A positive value indicates a
+positive correlation, and a negative value indicates a
+negative correlation. It can be seen from Fig. 6 that the
+absolute values of the correlation coef ﬁcients for most
+feature pairs are close to 1, showing a signi ﬁcant linear
+correlation. Among them, the strong correlation between
+the original features and their own polynomial terms is an
+inherent mathematical relationship in polynomial
+expansion, while the strong correlation between different
+original features re ﬂects the linear dependence of the
+features themselves. However, the impact of such strong
+correlations on subsequent analysis varies depending on
+1.00 −0.96 −0.97 0.98 −0.97 0.97 −0.96 0.99 0.97 1.00 −0.97 −0.45
+−0.96 1.00 0.99 −0.99 1.00 −0.98 1.00 −0.98 −1.00 −0.96 1.00 0.62
+−0.97 0.99 1.00 −1.00 1.00 −0.99 1.00 −0.99 −1.00 −0.97 0.99 0.59
+0.98 −0.99 −1.00 1.00 −0.99 1.00 −0.99 1.00 0.99 0.98 −0.99 −0.53
+−0.97 1.00 1.00 −0.99 1.00 −0.98 0.99 −0.98 −1.00 −0.97 1.00 0.61
+0.97 −0.98 −0.99 1.00 −0.98 1.00 −0.99 1.00 0.98 0.97 −0.98 −0.53
+−0.96 1.00 1.00 −0.99 0.99 −0.99 1.00 −0.98 −1.00 −0.96 0.99 0.62
+0.99 −0.98 −0.99 1.00 −0.98 1.00 −0.98 1.00 0.98 0.99 −0.98 −0.50
+0.97 −1.00 −1.00 0.99 −1.00 0.98 −1.00 0.98 1.00 0.97 −1.00 −0.61
+1.00 −0.96 −0.97 0.98 −0.97 0.97 −0.96 0.99 0.97 1.00 −0.97 −0.45
+−0.97 1.00 0.99 −0.99 1.00 −0.98 0.99 −0.98 −1.00 −0.97 1.00 0.60
+−0.45 0.62 0.59 −0.53 0.61 −0.53 0.62 −0.50 −0.61 −0.45 0.60 1.00
+fr S11 
+Bw Q
+fr*S11 
+Bw*S
+11 
+Bw
+2
+Q
+2
+S11
+2
+fr
+2
+mean S
+11 
+S11 
+skewness
+fr
+S11 
+Bw
+Q
+fr*S11 
+Bw*S11 
+Bw2
+Q2
+S11
+2
+fr
+2
+mean S11 
+S11 skewness −1.00
+−0.60
+−0.20
+0.20
+0.60
+1.00
+Fig. 6 Pearson correlation coef ﬁcient matrix of extracted features
+Cheng et al. Microsystems & Nanoengineering (2026) 12:320 Page 8 of 16
+the type of model. For linear models (RR, PR, MLR),
+multicollinearity may interfere with the stability of coef-
+ﬁcient estimation, and the subsequent ranking of feature
+importance is more dependent on the strength of linear
+correlation. For tree-based models (XGBoost, RFR, DTR),
+by contrast, they are less sensitive to multicollinearity, and
+polynomial features can just help capture the nonlinear
+relationships between temperature/strain and SAW sig-
+nals. This in turn can provide richer information for the
+model and is crucial for improving prediction accuracy.
+To quantify the contribution of individual input feature
+labels to the predictive performance of the models, this
+study calculated and ranked the feature importance of six
+machine learning models (RR, PR, MLR, XGBoost, RFR,
+DTR). The detailed calculation process is provided in the
+supplementary materials, and the results are shown in Fig.
+7. When constructing machine learning models, prior-
+itizing high-importance features while removing low-
+importance ones retains critical variables, reduces noise
+interference, and enhances computational ef ﬁciency and
+model generalization capability 10. Due to the SAW sen-
+sor’s higher sensitivity to temperature, temperature exerts
+signiﬁcant interference on strain detection. For the reso-
+nant frequency, its temperature sensitivity is two orders of
+magnitude higher than its strain sensitivity. Therefore, for
+temperature-strain multiphysics decoupling, precise
+temperature information becomes more readily extrac-
+table. To enable machine learning models to achieve
+accurate predictions for both temperature and strain, we
+designated strain as the output target variable.
+As can be seen from Fig. 7 there are signi ﬁcant dif-
+f e r e n c e si nt h ef e a t u r ei m p o r tance distribution among
+the 6 machine learning models. Linear models focus
+more on features that have a linear correlation with the
+target variable, and the feature importance is measured
+by the absolute value of the coef ﬁcient. The value dis-
+tribution is relatively concentrated without extreme
+differences. This is because linear models can only cap-
+ture the linear relationship between features and the
+target and cannot handle complex nonlinear interac-
+tions. Therefore, they pay less attention to polynomial
+product-type features, and only PR assigns a certain
+weight to some product features due to the introduction
+of polynomial terms. Tree-based models exhibit a more
+scattered distribution of feature importance and attach
+greater importance to statistical or nonlinear features
+such as S11 skewness and Q². This is because tree-based
+models achieve iterative optimization through node
+splitting, which can independently explore nonlinear
+correlations and complex in teraction effects between
+features. They are more sensitive to features that re ﬂect
+data distribution characteristics ( S11 skewness)o rh i g h -
+order correlations (such as square terms and product
+terms). In addition, because the DTR model has a single-
+tree structure, the model ’ss e l e c t i o no ff e a t u r e si sm o r e
+direct, which leads to signi ﬁcant ﬂuctuations in the
+importance of features. In contrast, XGBoost and RFR
+reduce the dependence on a single feature by integrating
+multiple trees, resulting in a relatively more balanced
+distribution of feature importance, but they still focus
+primarily on nonlinear features. This difference essen-
+tially stems from the algori thmic logic of different
+models: linear models rely on the linear correlation
+between features and the target, while tree-based models
+rely on the ability of features to reduce the impurity of
+data partitioning. Consequently, the criteria for
+546,585
+190,432
+88,982
+36,635
+34,110
+7255
+1679
+212
+−523,671
+−225,238
+−192,341
+−87,298
+−31,754
+−4629
+3.90 × 10−1
+2.28 × 10−1
+1.05 × 10−1
+9.22 × 10−2
+7.30 × 10−2
+5.49 × 10−2
+2.30 × 10−2
+1.87 × 10−2
+1.63 × 10−2
+5.40 × 10−5
+0.363
+0.0633
+0.0631
+0.062
+0.0611
+0.0575
+0.0428
+0.0427
+0.0418
+0.0417
+0.0417
+0.0416
+0.0396
+0.0384
+−3200
+−3467
+−4933
+−6400
+−7867
+−13,067
+−19,600
+−20,267
+−44,267
+−83,067
+−3.92 × 10−1
+−2.13 × 10−1
+−1.91 × 10−1
+−1.40 × 10−1
+−2.77 × 10−4
+−2.25 × 10−5
+−1.60 × 10−5
+−3.19 × 10−7
+2.01 × 10−1
+5.05 × 10−3
+3.33 × 10−4
+3.64 × 10−5
+3.85 × 10−7
+2.34 × 10−10
+3.85 × 101
+1.41 × 101
+1.12 × 101
+4.59 × 100
+2.90 × 10−1
+1.53 × 10−1
+1.46 × 10−1
+1.02 × 10−1
+7.29 × 10−2
+6.86 × 10−2
+1.48 × 10−2
+2.63 × 10−7
+3.30 × 10−10
+fr *S11
+fr
+2
+Bw
+fr
+2
+fr
+2
+fr
+Bw
+2
+Q
+S11
+2
+Q2
+Bw *S11
+fmin
+fmax
+mean S11
+S11 skewness
+Importance
+Feature
+PR 
+Feature
+XGBoost
+Importance
+Feature
+Importance
+Feature
+RFR
+Importance
+Feature
+DTR
+Importance
+MLR
+10
+−10
+10
+−7
+10
+−4
+10
+−1
+10
+2
+10
+5
+–10
+9
+–10
+5
+–10
+1
+10
+1
+01 0
+9
+10
+5
+Importance
+Feature
+RR
+S11S11 skewness
+Q
+mean S11
+fr
+S11
+Q2
+S11
+Bw
+fmin
+fmax
+Bw *S11
+fr *S11
+fr *S11
+Bw
+2
+Bw
+2
+fr
+2
+fr *S11
+Bw
+2
+mean S11
+S11 skewness
+S11
+2
+Q
+Bw *S11
+Q2
+fmin
+fmax
+fr
+Bw
+–10
+5
+–10
+2
+01 0
+2
+10
+5
+10
+–4
+10
+–3
+10
+–2
+10
+–1
+10
+1
+10
+0
+10
+–5
+10
+–4
+10
+–3
+10
+–2
+10
+–1
+10
+1
+10
+0
+–10
+6
+–10
+4
+–10
+2
+–10
+0
+0
+fmax
+Bw
+S11
+S11
+2
+S11
+Bw *S11
+fmin
+fr
+S11 skewness
+Q
+mean S11
+Q2
+fr *S11
+S11
+2
+S11
+Bw
+2
+Q2
+mean S11
+Q
+Bw
+Q2
+Bw *S11
+fmax
+fmin
+fr
+2
+S11 skewness
+S11 skewness
+fr
+fmax
+Bw
+S11
+Bw *S11
+mean S11
+Bw
+2
+fr
+2
+Q2
+fr *S11
+fmin
+S11
+2
+Q
+Fig. 7 Six machine learning models ’ feature importance evaluation
+Cheng et al. Microsystems & Nanoengineering (2026) 12:320 Page 9 of 16
+determining the importance of input features are com-
+pletely different.
+Evaluation metrics of model performance
+We employed three evaluation metrics for compre-
+hensive performance assessment, namely ET, NRMSE,
+MAE, RMSE and R². The NRMSE is a standardized
+measure quantifying the error magnitude between pre-
+dicted and calibration values in regression models. A
+smaller NRMSE value denotes higher predictive accuracy
+of the model, with predicted values closer to the calibra-
+tion values. The de ﬁnition of NRMSE is as follows 26:
+NRMSE ¼
+ﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃ
+1
+l
+Xl
+i¼1 yi /C0 ^yiðÞ 2
+q
+max yðÞ /C0 min yðÞ
+ð5Þ
+where yi and ŷi are the calibration target value and
+predicted target value of the i-th sample, respectively, and
+l denotes the total number of samples in the test set. The
+max(y) and min(y) represent the maximum and minimum
+of the predicted target values in the test set, respectively.
+After normalization, its values range between 0 and 1. The
+closer the value is to 0, the more accurate the model
+prediction; conversely, the closer it is to 1, the poorer the
+model prediction.
+The MAE quantiﬁes the average magnitude of the
+absolute differences between predicted and calibration
+values, without considering the direction of errors. A
+smaller MAE indicates that the predicted values are closer
+to the true values. Its de ﬁnition is as follows 33:
+MAE ¼ 1
+l
+Xl
+i¼1
+yi /C0 ^yi
+/C12/C12 /C12/C12 ð6Þ
+The RMSE reﬂects the square root of the average of
+squared differences between predicted and calibration
+values. It ampli ﬁes the impact of large errors, making it
+more sensitive to outliers. A smaller value denotes higher
+prediction accuracy. Its de ﬁnition is 33:
+RMSE ¼
+ﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃ
+1
+l
+Xl
+i¼1
+yi /C0 ^yiðÞ 2
+vuut ð7Þ
+The R² reﬂects the degree to which the model interprets
+the target variable, indicating its goodness of ﬁt to data
+ﬂuctuations. Its value ranges between 0 and 1. Values
+closer to 1 indicate superior model ﬁt, characterized by
+smaller discrepancies between predicted and calibration
+values, demonstrating enhanced capability to explain data
+variability. Conversely, values approaching 0 signify
+poorer model ﬁt and diminished capacity to account for
+data variability. The de ﬁnition of R² is given by 25:
+R2 ¼ 1 /C0
+Pl
+i¼1
+yi /C0 ^yiðÞ 2
+Pl
+i¼1
+yi /C0 yðÞ 2
+ð8Þ
+where y denotesy the mean of the calibration target value.
+The ET of machine learning models serves as a critical
+metric for assessing model ef ﬁciency and practical uti-
+lity23. Optimizing ET not only accelerates model training
+and prediction but also enhances system responsiveness
+in practical applications.
+Stratiﬁed data splitting strategy
+In machine learning models, the training set constitutes
+the data collection used for model training, encompassing
+both feature labels and corresponding target variables.
+Through the training set, models establish mapping
+relationships between inputs and outputs by learning the
+patterns in the data to adjust internal parameters, thereby
+minimizing prediction error. While larger training set
+enhances a model’s capacity to capture complex mappings
+between input feature labels and output target variables,
+but it is also prone to over ﬁtting. The training set typically
+comprises 70 –80% of the total data. The validation set is
+an intermediate data partition between the training set
+and the test set, speci ﬁcally used for hyperparameter
+tuning and model complexity optimization, it neither
+participates in the update of model parameters during the
+training process nor serves as unseen data for the ﬁnal
+generalization evaluation. Its core function is to prevent
+overﬁtting caused by improper hyperparameter settings
+and help select the optimal model structure. The test set
+serves as the data collection for evaluating model per-
+formance and this data has never been used at all during
+the model training process. Its function is to assess gen-
+eralization capability of the model, that is, to determine
+how the model performs on unencountered data.
+To address the adjacent sample leakage bias that may
+occur when randomly splitting data from the same device
+and batch, and to enhance the rationality of data dis-
+tribution and generalization reliability, we divided the
+data into training, validation, and test sets in an 8:1:1 ratio.
+Considering that temperature has a more signi ﬁcant
+impact on the sensing performance of SAW sensors, we
+performed strati ﬁed sampling based on temperature
+intervals. Speci ﬁcally, we divided the temperature range
+into 3 equal-frequency intervals, ensuring that the pro-
+portion of samples in each temperature interval within the
+training, validation, and test sets remains consistent. This
+avoids data distribution imbalance caused by excessive
+concentration of samples in speci ﬁc temperature ranges.
+Finally, we ﬁxed the random seed during the splitting
+Cheng et al. Microsystems & Nanoengineering (2026) 12:320 Page 10 of 16
+process to ensure the consistency and reproducibility of
+data division, eliminating result ﬂuctuations caused by
+random splitting.
+Results and discussion
+We employed six machine learning models: RR, PR,
+MLR, XGBoost, RFR, and DTR, for predicting both
+temperature and strain. Following the feature importance
+ranking illustrated in Fig. 8, features were sequentially
+incorporated into model training in descending order of
+importance. Predictive performance was evaluated using
+the NRMSE, MAE and RMSE evaluation metrics con-
+currently. Notably, models demonstrated generally infer-
+ior performance with fewer than four input features.
+Consequently, only results with four or more input fea-
+tures are presented in this study.
+Temperature prediction performance
+Figure 8 shows the prediction performance of six
+machine learning models on the temperature signals of
+SAW sensors. It can be seen from the ﬁgure that there are
+signiﬁcant differences in the number of features required
+for various models to achieve optimal prediction results,
+which intuitively re ﬂects the inherent differences in the
+logic of feature information capture and processing
+among different algorithms. When the number of features
+is less than 4, the RR model has a high prediction error
+due to insuf ﬁcient coverage of effective information; as
+the number of features increases, the dimension of
+effective information is supplemented, and the prediction
+error decreases signi ﬁcantly. In addition, thanks to the
+regularization mechanism of the RR model, which can
+effectively suppress the interference of redundant fea-
+tures, when the number of features further increases, the
+prediction error only ﬂuctuates slightly; when the number
+of features reaches 14, the effective information is
+sufﬁcient to support high-precision prediction without
+overﬁtting, and the model error reaches the minimum at
+this time, the MAE is 56.39 °C, the RMSE is 69.21 °C, and
+the NRMSE is 0.0865. The performance change trend of
+the MLR model is basically consistent with that of the RR
+model. When the number of features is 14, its MAE is as
+low as 0.44 °C, and the introduction of redundant features
+does not signi ﬁcantly increase the model error. The error
+ﬂuctuation range of the PR model under different num-
+bers of features is relatively large. This is because the
+change in the number of features directly affects the order
+and quantity of polynomial terms. That is, if the non-
+linear correlation between the newly added features and
+the target variable is weak, the polynomial redundancy
+will increase sharply, leading to an increase in error; while
+a reduction in the number of features will cause a con-
+traction in the polynomial dimension, resulting in
+underﬁtting of the model and an increase in error as well.
+The model achieves the optimal prediction effect when
+the number of features increases to 8, with a corre-
+sponding MAE of 0.42 °C, RMSE of 0.55 °C, and NRMSE
+of 0.004. The XGBoost model can independently mine the
+correlation between features through the splitting process
+of decision trees, and its dependence on the number of
+features is signi ﬁcantly lower than that of linear models. It
+only needs 10 features to capture the core information of
+the data. At this time, the MAE of the model is 0.34 °C, the
+RMSE is 0.78 °C, and the NRMSE is 0.0057. The sub-
+sequent addition of redundant features is dif ﬁcult to
+further improve the model performance. The perfor-
+mance of the RFR model is particularly prominent. When
+the number of features is only 5, its MAE is as low as
+0.1 °C, and the model information quickly reaches a
+saturated state. The subsequent increase in the number of
+features only brings a small ﬂuctuation in the error; when
+the number of features is 13, the MAE further drops to
+4 6 8 10 12 14
+0.4
+0.6
+0.8
+1.0
+1.2
+ MAE (℃)
+ RMSE (℃)
+ NRMSE
+Number of features
+MAE (℃)
+0.54
+0.72
+0.90
+1.08
+1.26
+RMSE (℃)
+0.004
+0.006
+0.008
+0.010
+NRMSE
+PR
+4 6 8 10 12 140.0
+0.7
+1.4
+2.1
+2.8
+MAE (℃)
+Number of features
+MLR
+ MAE (℃)
+ RMSE (℃)
+ NRMSE
+0.6
+1.2
+1.8
+2.4
+3.0
+3.6
+RMSE (℃)
+0.000
+0.006
+0.012
+0.018
+0.024
+0.030
+NRMSE
+4 6 8 10 12 14
+0.34
+0.36
+0.38
+0.40
+MAE (℃)
+Number of features
+ MAE (℃)
+ RMSE (℃)
+ NRMSE
+0.78
+0.84
+0.90
+0.96
+RMSE (℃)
+0.0056
+0.0060
+0.0064
+0.0068
+0.0072
+NRMSE
+XGBoost
+4 6 8 10 12 14
+0.08
+0.12
+0.16
+0.20
+MAE (℃)
+Number of features
+RFR
+ MAE (℃)
+ RMSE (℃)
+ NRMSE
+0.24
+0.32
+0.40
+0.48
+RMSE (℃)
+0.0015
+0.0020
+0.0025
+0.0030
+0.0035
+NRMSE
+4 6 8 10 12 14
+9.70
+9.75
+9.80
+9.85
+9.90
+MAE (℃)
+Number of features
+ MAE (℃)
+ RMSE (℃)
+ NRMSE
+9.76
+9.84
+9.92
+10.00
+RMSE (℃)
+0.070
+0.075
+0.080
+0.085
+0.090
+NRMSE
+DTR
+4 6 8 10 12 14
+0.5
+1.0
+1.5
+2.0
+2.5
+MAE (℃)
+Number of features
+ MAE (℃)
+ RMSE (℃)
+ NRMSE
+0.8
+1.6
+2.4
+3.2
+RMSE (℃)
+0.006
+0.012
+0.018
+0.024
+NRMSE
+RR
+Fig. 8 Predictive performance of six machine learning models for the temperature signals of the SAW sensor using NRMSE, MAE and RMSE as
+evaluation metrics across varying numbers of input features
+Cheng et al. Microsystems & Nanoengineering (2026) 12:320 Page 11 of 16
+0.08 °C, which is the lowest error among the six models.
+The prediction error of the DTR model in the entire
+feature range is at a relatively high level (the MAE is
+9.75 °C), and changes in the number of features can hardly
+improve its prediction performance, which indicates that
+the ﬁtting ability of this algorithm for such temperature
+signals is relatively weak.
+Figure 9 shows the temperature prediction results of six
+models under the optimal input feature conditions. It can
+be seen from Fig. 9a that the RFR model has the best
+training effect. The MAE and RMSE values of its training
+set are signi ﬁcantly lower than those of other models, and
+the NRMSE is close to 0, re ﬂecting its accurate ﬁtting
+ability to the temperature training data. In addition, it can
+be seen from Fig. 9b that the difference between RMSE
+and MAE of the RFR model is extremely small. Among
+them, the MAE of the test set is 0.11 °C, the RMSE is
+0.07 °C, and the difference between the two is only about
+0.04 °C. This means that there are few extreme errors in
+the prediction results, and the prediction results of the
+model are more stable. In addition, the error gap between
+the validation set and the test set of the RFR model is also
+very small, indicating that the model has strong general-
+ization ability, and the prediction effect on new data is
+consistent with that in the training stage.
+Figure 9c presents the calibration scatter plots of the 6
+models in the temperature prediction task, showing the
+ﬁtting relationship between the predicted temperature and
+40 80 120 160
+40
+80
+120
+160
+40 80 120 160
+40
+80
+120
+160
+40 80 120 160
+40
+80
+120
+160
+40 80 120 160
+40
+80
+120
+160
+40 80 120 160
+40
+80
+120
+160
+0 40 80 120 160
+0
+40
+80
+120
+160
+200
+PR
+Linear fit of predicted temperature
+95% Confidence band of predicted temperature
+95% Prediction band of predicted temperature
+Predicted temperature (°C)Predicted temperature (°C)
+Predicted temperature (°C) Predicted temperature (°C)
+Predicted temperature (°C)Predicted temperature (°C)
+Intercept -0.0198 /g1140.2244
+Slope 0.9994 /g1140.0022
+Pearson'sr 0.9998
+R² 0.9997
+RR
+Linear fit of predicted temperature
+95% Confidence band of predicted temperature
+95% Prediction band of predicted temperature
+Intercept 0.2000 /g1140.2300
+Slope 0.9976 /g1140.0023
+Pearson'sr 0.9998
+R² 0.9996
+MLR
+ Linear fit of predicted temperature
+ 95% Confidence band of predicted temperature
+ 95% Prediction band of predicted temperature
+Intercept 0.2000 /g1140.2300
+Slope 0.9976 /g1140.0023
+Pearson'sr 0.9998
+R² 0.9996
+XGBoost
+ Linear fit of predicted temperature
+ 95% Confidence band of predicted temperature
+ 95% Prediction band of predicted temperature
+Calibration temperature (°C)
+Calibration temperature (°C) Calibration temperature (°C) Calibration temperature (°C)
+Calibration temperature (°C) Calibration temperature (°C)
+Intercept 0.1099 /g1140.2809
+Slope 1.0019 /g1140.0028
+Pearson'sr 0.9997
+R² 0.9995
+RFR
+Linear fit of predicted temperature
+95% Confidence band of predicted temperature
+95% Prediction band of predicted temperature
+Intercept 0.0731 /g1140.0627
+Slope 0.9993 /g1146.2097E-4
+Pearson'sr 0.99999
+R² 0.99997
+DTR
+ Linear fit of predicted temperature
+ 95% Confidence band of predicted temperature
+ 95% Prediction band of predicted temperature
+Intercept 3.9742 /g1142.5250
+Slope 0.9505 /g1140.0250
+Pearson'sr 0.9767
+R² 0.9539
+RR PR MLR
+XGBoost
+RFR DTR
+0
+3
+6
+9
+MAE (℃)
+MAE (℃)
+RMSE (℃)
+NRMSE
+Model
+0
+2
+4
+6
+8
+10
+RMSE (℃)
+Training set error
+0.00
+0.02
+0.04
+0.06
+0.08
+NRMSE
+0.94 0.75 0.54 0.58 0.39
+10.21
+0.63
+1.32
+0.54
+2.27
+0.11
+10.17
+0.71 0.7 0.46 0.37 0.25
+10.18
+0.41 1.01 0.42
+1.97
+0.07
+10.11
+0.0068 0.0064 0.0046 0.0042 0.0039
+0.074
+0.0063 0.0096 0.0039
+0.0193
+0.0008
+0.0737
+RR PR MLR
+XGBoost
+RFR DTR
+0
+3
+6
+9
+12
+RMSE (℃)
+Model
+Validation set error Test set error
+0
+4
+8
+12
+16
+MAE (℃)
+−0.3
+−0.2
+−0.1
+0.0
+0.1
+NRMSE
+a b
+c
+Fig. 9 Comparison of Temperature Prediction Performance Among Six Machine Learning Models. Under the optimal number of features for
+the SAW sensor a comparison of errors in the training set of the temperature prediction model; b Error distribution of the validation set and test set
+of the temperature prediction model; c Scatter plots of temperature prediction by six machine learning models
+Cheng et al. Microsystems & Nanoengineering (2026) 12:320 Page 12 of 16
+the calibrated temperature of each model. Each data point
+in the ﬁgure corresponds to a set of predicted value —
+calibrated value pairs. The blue straight line is the linear
+ﬁtting line of the two, and the blue area represents the 95%
+conﬁdence/prediction interval. Among them, the 95%
+conﬁdence interval means that there is a 95% probability
+that the true ﬁtting line of the model falls within this area,
+and the 95% prediction interval means that there is a 95%
+probability that the predicted value of a new sample falls
+within this area. A narrower interval means lower uncer-
+tainty in the model ’s prediction and more stable results.
+From the perspective of ﬁtting effect, except for the DTR
+model, the prediction results of the other models are
+excellent. Their prediction points are closely ﬁtted to the
+ﬁtting line, the intercept is close to the ideal value of 0, the
+slope is close to the ideal value of 1, and both the corre-
+lation coef ﬁcient and the coef ﬁcient of determination
+reach more than 0.99, indicating a strong consistency
+between the predicted values and the true values. The
+ﬁtting performance of the DTR model is slightly weaker.
+Not only do the prediction points deviate from the ﬁtting
+line, but the intercept and slope also deviate signi ﬁcantly
+from the ideal values, and the coef ﬁcient of determination
+is relatively low. Furthermore, in the supplementary
+materials, we further provide scatter plots with Y error
+bars corresponding to Fig. 9c, which can intuitively re ﬂect
+the absolute error between the predicted value of each
+model and the calibration target value.
+Strain prediction performance
+Figure 10 shows the prediction performance of 6
+machine learning models on the strain signals of SAW
+sensors. Since the sensitivity of the sensor to strain is
+lower than that to temperature, the NRMSE of the strain
+prediction results is generally higher than the deviation
+level of temperature prediction. At the same time, the
+performance of different models shows signi ﬁcant differ-
+ences. Among them, the RR model and MLR model show
+cross-task consistency in the strain prediction task, that is,
+when the number of input features exceeds 4, the model
+prediction error decreases rapidly, and when the number
+of features increases to 14, the prediction error reaches
+the global minimum. However, the prediction error of the
+PR model still ﬂuctuates under the in ﬂuence of the
+number of features, which is mainly because the number
+of features will change the complexity of the polynomial.
+The model achieves the optimal performance when the
+number of features is 7, with a corresponding MAE of
+33.84 µε, RMSE of 44.25 µ ε, and NRMSE of 0.0553. In
+contrast, the XGBoost model still shows low dependence
+on the number of features. When the number of features
+is 9, its strain prediction error drops to the lowest among
+the six models, with MAE of 8.42 µ ε, RMSE of 22.65 µ ε,
+and NRMSE of 0.0283. In addition, the MAE of the RFR
+model has dropped to 54.21 µ ε when the number of fea-
+tures is 7, but as the number of features continues to
+increase, redundant information causes over ﬁtting, lead-
+ing to a gradual rise in the model ’s prediction error. The
+DTR model maintains a high prediction error in the entire
+feature range, indicating that its ﬁtting ability for such
+strain signals is relatively weak.
+Figure 11 shows the strain prediction results of 6
+models under the optimal input feature conditions. In
+terms of ﬁtting effect, the XGBoost model has the best
+training effect, with the MAE of 0.13 με, the RMSE of
+0.29 με, and the NRMSE of 0.0021 for the training set.
+Since strain prediction involves the coupled nonlinear
+relationships of multiple factors such as temperature and
+sensor spectral characteristics, XGBoost, through the
+integrated structure of gradient boosting trees, can ﬁt
+468 1 0 1 2 1 4
+45
+60
+75
+90
+105
+MAE (/g80/g72/g80/g72) 
+ 
+ NRMSE
+Number of features
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+60
+75
+90
+105
+120
+135
+0.08
+0.10
+0.12
+0.14
+0.16
+0.18
+NRMSE
+RR 
+468 1 0 1 2 1 4
+54
+56
+58
+60
+62
+64
+Number of features
+RFR
+75
+80
+85
+90
+95
+100
+0.10
+0.11
+0.12
+NRMSE
+468 1 0 1 2 1 4
+54
+57
+60
+63
+66
+Number of features
+DTR
+70
+75
+80
+85
+90
+95
+0.09
+0.10
+0.11
+0.12
+NRMSE
+468 1 0 1 2 1 4
+32
+40
+48
+56
+64
+Number of features
+PR
+45
+60
+75
+90
+0.06
+0.09
+0.12
+0.15
+0.18
+NRMSE
+468 1 0 1 2 1 4
+30
+60
+90
+120
+150
+180
+ 
+ 
+ 
+Number of features
+ 
+ 
+ 
+35
+70
+105
+140
+175
+210
+0.05
+0.10
+0.15
+0.20
+0.25
+NRMSE
+MLR
+468 1 0 1 2 1 4
+8
+9
+10
+11
+12
+Number of features
+XGBoost
+21
+24
+27
+30
+33
+RMSE (/g80/g72/g80/g72)
+0.025
+0.030
+0.035
+0.040
+NRMSE
+MAE (/g80/g72/g80/g72)
+RMSE (/g80/g72/g80/g72)
+MAE (/g80/g72/g80/g72)MAE (/g80/g72/g80/g72)
+MAE (/g80/g72/g80/g72)MAE (/g80/g72/g80/g72)
+RMSE (/g80/g72/g80/g72)RMSE (/g80/g72/g80/g72)
+RMSE (/g80/g72/g80/g72)RMSE (/g80/g72/g80/g72)
+MAE (/g80/g72/g80/g72)
+RMSE (/g80/g72/g80/g72)
+NRMSE
+MAE (/g80/g72/g80/g72)
+RMSE (/g80/g72/g80/g72)
+NRMSE
+MAE (/g80/g72/g80/g72)
+RMSE (/g80/g72/g80/g72)
+NRMSE
+MAE (/g80/g72/g80/g72)
+RMSE (/g80/g72/g80/g72)
+NRMSE
+MAE (/g80/g72/g80/g72)
+RMSE (/g80/g72/g80/g72)
+NRMSE
+MAE (/g80/g72/g80/g72)
+RMSE (/g80/g72/g80/g72)
+Fig. 10 Predictive performance of six machine learning models for the strain signals of the SAW sensor using NRMSE, MAE and RMSE as evaluation
+metrics across varying numbers of input features
+Cheng et al. Microsystems & Nanoengineering (2026) 12:320 Page 13 of 16
+residuals layer by layer and accurately capture the com-
+plex mapping between features and strain, which is dif ﬁ-
+cult to achieve with linear models. In addition, as can be
+seen from Fig. 11b, the XGBoost model also outperforms
+other models in the validation set and test set, with an
+NRMSE of 0.0459 for the validation set and only 0.0404
+for the test set. The numerical difference between the two
+is extremely small, which not only re ﬂects strong ﬁtting
+ability but also good generalization stability. Overall, the
+XGBoost model has more prominent overall prediction
+accuracy and reliability.
+Figure 11c presents the calibration scatter plots of 6
+models in the strain prediction task, showing the ﬁtting
+relationship between the predicted strain and the cali-
+brated strain of each model. The red straight line is the
+linear ﬁtting line of the two, and the pink area represents
+the 95% con ﬁdence/prediction interval. In terms of ﬁtting
+effect, the XGBoost model performs the best. Its predic-
+tion points are closely the ﬁtting line, with the intercept of
+4.98 is close to the ideal value of 0, and the slope of 0.99 is
+close to the ideal value of 1, and both the correlation
+coefﬁcient and the coef ﬁcient of determination reaching
+above 0.99, indicating a very strong consistency between
+the predicted values and the true values. The PR and MLR
+models are the next, with both having a coef ﬁcient of
+determination of 0.97, and their ﬁtting effects are rela-
+tively stable. The ﬁtting performance of the RR and DTR
+models is slightly weaker, with coef ﬁcients of determina-
+tion of 0.93 and 0.92 respectively, and the dispersion
+degree of the prediction points is slightly higher. The RFR
+0 200 400 600 800
+0
+200
+400
+600
+800
+0 200 400 600 800
+0
+200
+400
+600
+800
+0 200 400 600 800
+0
+200
+400
+600
+800
+1000
+0 200 400 600 800
+0
+200
+400
+600
+800
+0 200 400 600 800 1000
+0
+200
+400
+600
+800
+1000
+0 200 400 600 800 1000
+0
+200
+400
+600
+800
+1000 PR
+ Linear fit of "predicted strain"
+ 95% Confidence and of "predicted strain"
+ 95% Prediction and of "predicted strain"
+18.40 /g114 9.50
+0.96 /g114 0.02
+0.99
+0.97
+6.45 /g114 9.76
+0.98 /g114 0.02
+0.98
+0.97
+MLR
+ Linear fit of "predicted strain"
+ 95% Confidence and of "predicted strain"
+ 95% Prediction and of "predicted strain"
+XGBoost
+ Linear fit of "predicted strain"
+ 95% Confidence and of "predicted strain"
+ 95% Prediction and of "predicted strain"
+Calibration strain (/g80/g72/g80/g72)
+Calibration strain (/g80/g72/g80/g72) Calibration strain ( /g80/g72/g80/g72) Calibration strain ( /g80/g72/g80/g72)
+Calibration strain (/g80/g72/g80/g72) Calibration strain (/g80/g72/g80/g72)
+Intercept
+Slope
+Pearson's r 0.9953
+RFR
+ Linear fit of "predicted strain"
+ 95% Confidence and of "predicted strain"
+ 95% Prediction and of "predicted strain"
+Intercept 100.86 /g114 14.59
+Slope 0.74 /g114 0.03
+Pearson's r 0.95
+R² 0.89
+DTR
+ Linear fit of "predicted strain"
+ 95% Confidence and of "predicted strain"
+ 95% Prediction and of "predicted strain"
+32.20 /g114 15.60
+0.90 /g114 0.03
+0.96
+0.92
+Predicted strain (/g80/g72/g80/g72)
+Intercept
+Slope 0.87 /g114 0.03
+Pearson's r 0.97
+R² 0.93
+RR
+ Linear fit of "predicted strain"
+ 95% Confidence and of "predicted strain"
+ 95% Prediction and of "predicted strain"
+RR PR MLR
+XGBoost
+RFR DTR
+0
+15
+30
+45
+60
+Training set error
+MAE (/g80/g72/g80/g72)
+MAE (/g80/g72/g80/g72)
+RMSE (/g80/g72/g80/g72)
+NRMSE
+Model
+0
+20
+40
+60
+80
+RMSE (/g80/g72/g80/g72)
+0.00
+0.03
+0.06
+0.09
+NRMSE
+66.44 69.58 68.05 65.96
+231.92
+115.34
+26.73 22.19 19.45 28.27 32.26
+85.7
+55.09 55.23 60.11 53.3
+191.78
+96.43
+21.88 17.86 17.22 24.64 24.83
+68.75
+0.083 0.0994 0.0972
+0.1649
+0.2899
+0.1922
+0.0334 0.0277 0.0243 0.0404 0.0645 0.1071
+60
+120
+180
+240
+300
+360
+RMSE (/g80/g72/g80/g72)
+RR PR MLR
+XGBoost
+RFR DTR
+80
+160
+240
+320
+MAE (/g80/g72/g80/g72)
+Validation set error Test set error
+Model
+−1.0
+−0.8
+−0.6
+−0.4
+−0.2
+0.0
+0.2
+0.4
+NRMSE
+Predicted strain (/g80/g72/g80/g72)
+Predicted strain (/g80/g72/g80/g72)Predicted strain (/g80/g72/g80/g72)
+Predicted strain (/g80/g72/g80/g72)Predicted strain (/g80/g72/g80/g72)
+a b
+c
+Intercept
+Slope
+Pearson's r
+R²
+Intercept
+Slope
+Pearson's r
+R²
+Intercept
+Slope
+Pearson's r
+R²
+4.98 /g114 5.49
+0.99
+0.99 /g114 0.01
+R²
+50.44 /g114 13.26
+Fig. 11 Comparison of Strain Prediction Performance Among Six Machine Learning Models. Under the optimal number of features for the
+SAW sensor a comparison of errors of the strain prediction model training set; b Error distribution of the validation set and test set of the strain
+prediction model; c Scatter plots of strain prediction by six machine learning models
+Cheng et al. Microsystems & Nanoengineering (2026) 12:320 Page 14 of 16
+model performs the worst: not only do the prediction
+points obviously deviate from the ﬁtting line, but the
+intercept of 100.86 and the slope of 0.74 both deviate
+signiﬁcantly from the ideal values, and the coef ﬁcient of
+determination is only 0.89. The core difference in this
+result stems from the characteristics of the models.
+XGBoost achieves accurate modeling through the inte-
+gration strategy of layer-by-layer ﬁtting of residuals and
+can effectively capture the complex relationships between
+features. In contrast, linear models such as RR and MLR
+can only ﬁt linear relationships and are dif ﬁcult to handle
+nonlinear interactions of features. The RFR model has
+insufﬁcient generalization ability and the DTR model has
+limited ﬁtting accuracy, which ultimately leads to poor
+prediction effects. For more details on the scatter plot of
+strain predictions with Y error bars, please refer to the
+supplementary materials.
+Table 3 compares the ETs of six machine learning models
+for predictions of temperature and strain signals in SAW
+sensors under optimal input feature conditions. It can be
+seen that compared with models such as RR, PR, MLR, and
+DTR, which take only about 1 ms for prediction, the pre-
+diction time of XGBoost is relatively longer (1566.6 ms for
+temperature prediction and 595.8 ms for strain prediction).
+However, in this study’s task of predicting temperature and
+strain signals of SAW sensors, the XGBoost model has
+shown outstanding advantages in prediction accuracy and
+is the model with the best comprehensive performance in
+terms of accuracy in this experiment. Overall, although this
+model is slightly insuf ﬁcient in execution ef ﬁciency, its
+excellent prediction accuracy makes it more suitable for
+application scenarios with high accuracy requirements and
+relatively loose real-time requirements.
+Conclusions
+In this work, we developed an LN-based single
+resonator-type SAW sensor and broadened its operational
+temperature to 600 °C by introducing an AlN protective
+layer. Under environments with no temperature ﬂuctua-
+tions or strain interference, the sensor exhibits excellent
+strain/temperature sensing characteristics. To address the
+cross-sensitivity issue between temperature and strain
+signals in SAW sensors, we introduce machine learning
+technology. By extracting the features of S11 spectra under
+varying temperature and strain loading conditions,
+machine learning algorithms are used to establish map-
+ping relationships between input feature labels and output
+target variables, thereby enabling temperature/strain
+prediction. We investigate the performance of six
+machine learning models in predicting temperature/strain
+under different input feature conditions. Experimental
+results demonstrate that the XGBoost model achieved the
+best overall prediction performance. The R² values for
+temperature and strain reached 99.97% and 99.23%
+respectively, the NRMSEs were as low as 0.0283 and
+0.0059 respectively, the RMSEs were 0.82 °C and 22.65 µ ε
+respectively, and the MAEs were 0.35 °C and 8.42 µ ε
+respectively. The research realizes high-precision tem-
+perature-strain composite sensing under complex envir-
+onmental conditions, and provides a new method for
+multi-parameter information acquisition using monolithic
+SAW sensors. In future work, this method can be
+extended to directions such as multi-parameter decou-
+pling, models adapted to lightweight edge computing,
+dynamic condition robustness optimization, and spatial
+multi-variable inversion based on sensor arrays, so as to
+further improve the universality and applicability of the
+SAW sensing system.
+Acknowledgements
+The work was supported by the Guangdong Province International Science
+and Technology Cooperation Research Project (2023A0505050101),
+Guangdong Province Guangdong-Hong Kong-Macao Joint Innovation Field
+Project (2024A0505090012).
+Author details
+1School of Microelectronics Science and Technology, Sun Yat-sen University,
+Zhuhai 519082, China. 2Zhuhai Key Laboratory of Micro-Nano Sensing
+Table 3 ETs of 6 machine learning models for predictions of temperature and strain signals in the SAW sensor under
+optimal input feature conditions
+Models ET of temperature prediction (ms) ET of strain prediction (ms) Input features
+RR 1 1 fr, Bw, S11, Q, fmin, fmax, S11 skewness, mean S11, fr², Bw², S11², Q², fr * S11,
+Bw * S11
+PR 1 1 S11, fr * S11, fr², Bw, fr, Bw², Q
+MLR 1 1 Bw, fr, fmin, fmax, Q², Bw * S11, Q, S11², S11 skewness, mean S11, fr * S11, Bw²,
+S11, fr²
+XGBoost 1566.6 595.8 Q², S11 skewness, fr, fmin, mean S 11, Q, Bw * S11, S11, S11²
+RFR 209.9 243.5 S11 skewness, fr², fmin, fr, fmax, Bw * S11, Bw
+DTR 1 1 S11 skewness, fr, fmax, Bw, S11, Bw * S11, mean S11, Bw², fr², Q², fr * S11, fmin,
+S11²
+Cheng et al. Microsystems & Nanoengineering (2026) 12:320 Page 15 of 16
+Technology and Intelligent Detection, Sun Yat-sen University, Zhuhai 519082,
+China. 3School of Mechanical Engineering, Xi ’an Jiaotong University, Xian
+710049, China
+Conﬂict of interest
+The authors declare no competing interests.
+Supplementary information The online version contains supplementary
+material available at https://doi.org/10.1038/s41378-026-01344-8.
+Received: 24 July 2025 Revised: 24 December 2025 Accepted: 6 March 2026
+References
+1. Wang, Y. et al. Ultra-thin highly sensitive electronic skin for temperature
+monitoring.Polymers 16, 2987 (2024).
+2 . G e o r g e ,T . ,S o n ,K . - A . ,P o w e r s ,R .A . ,C a s t i l l o ,L .Y .D .&O k o j i e ,R .H a r s he n v i r -
+onment microtechnologies for NASA and terrestrial applications. In IEEE
+Sensors 1253– 1258. https://doi.org/10.1109/ICSENS.2005.1597934(IEEE, Irvine,
+C A ,U S A ,2 0 0 5 ) .
+3. Keller, E. & Ray, A. Real-time health m onitoring of mechanical structures.Struct.
+Health Monit. 2, 191– 203 (2003).
+4. Leff, D., Maskay, A. & Da Cunha, M. P. Wireless interrogation of high tem-
+perature surface acoustic wave dynamic strain sensor. In 2020 IEEE Interna-
+tional Ultrasonics Symposium (IUS)1– 4. https://doi.org/10.1109/IUS46767.2020.
+9251428 (IEEE, Las Vegas, NV, USA, 2020).
+5. Zhou, Z., Wang, H., Chen, M., Zhang, L. & Lou, L. Design and characterization of
+SAW-based wireless and passive temperature sensing system.J. Phys. Conf. Ser.
+2822, 012098 (2024).
+6. Zhou, J. et al. Flexible and wearable acoustic wave technologies. Appl. Phys.
+Rev. 10, 021311 (2023).
+7 . X i a o ,Q .e ta l .H i g h - p e r f o r m a n c eS AWR strain sensor with piston-mode
+operation.IEEE Sens. J. 21, 10514– 10521 (2021).
+8 . W a n g ,W .e ta l .D e v e l o p m e n to faw i reless and passive temperature-
+compensated SAW strain sensor.Sens. Actuators A Phys. 308, 112015 (2020).
+9 . M a s k a y ,A .&P e r e i r aD aC u n h a ,M .H i g h - t e m p e r a t u r es t a t i cs t r a i nl a n g a s i t e
+SAWR sensor: Temperature compensation and numerical calibration for direct
+strain reading.Sens. Actuators A Phys. 259,3 4– 43 (2017).
+10. Tan, K. et al. Machine learning empowered thin ﬁlm acoustic wave sensing.
+Appl. Phys. Lett. 122, 014101 (2023).
+11. Pei, G., Ma, B., Luo, J. & Deng, J. High temperature surface acoustic wave sensor
+with strain isolation structure. In 2021 21st International Conference on Solid-
+State Sensors, Actuators and Microsystems (Transducers)1194– 1197. https://doi.
+org/10.1109/Transducers50396.2021.9495398(IEEE, Orlando, FL, USA, 2021).
+12. Stoney, R., Geraghty, D. & O ’Donnell, G. E. Characterization of differentially
+measured strain using passive wirele ss surface acoustic wave (SAW) strain
+sensors. IEEE Sens. J. 14,7 2 2– 728 (2014).
+13. Hu, F. et al. Enhanced sensitivity of wireless and passive SAW-based strain
+sensor with a differential structure.IEEE Sens. J. 21, 23911– 23916 (2021).
+14. Hu, F. et al. Chip-level orthometric surface acoustic wave device with AlN/
+metal/Si multilayer structure for sensing strain at high temperature. Sens.
+Actuators A Phys. 333, 113298 (2022).
+15. Dou, S. et al. Dual-resonator Lamb wave strain sensor with temperature
+compensation and enhanced sensitivity.Appl. Phys. Lett. 113, 093502 (2018).
+16. Cheng, C. et al. Highly sensitive lithi um niobate-based SAW strain sensor with
+on-chip temperature compensation. In2025 IEEE 38th International Conference
+on Micro Electro Mechanical Systems (MEMS)677– 680. https://doi.org/10.1109/
+MEMS61431.2025.10918044(IEEE, 2025).
+17. Xu, H. et al. Flexible dual-mode surface acoustic wave strain sensor based on
+crystalline LiNbO3 thin ﬁlm. J. Micromech. Microeng.29, 025003 (2019).
+18. Zhang, J. et al. High temperature effects on surface acoustic wave strain
+sensor. Sens. Actuators A: Phys. 338, 113464 (2022).
+19. Fischerauer, A., Schwarzmuller, C. & Fischerauer, G. Experimental investigation
+of a novel SAW strain sensor with inbuilt temperature measurement cap-
+ability. In 2013 IEEE International Ult rasonics Symposium (IUS) 1949– 1952
+https://doi.org/10.1109/ULTSYM.2013.0497(IEEE, Prague, Czech Republic,
+2013).
+2 0 . L i ,X . ,T a n ,Q . ,Q i n ,L . ,Y a n ,X .&L i a n g ,X .N o v e ls u r f a c ea c o u s t i cw a v e
+temperature-strain sensor based on LiNbO3 for structural health monitoring.
+Micromachines13, 912 (2022).
+21. Guo, D. et al. Temperature and stress-strain state monitoring of isolation
+switch based on surface acoustic wave sensing technology.Appl. Acoust. 43,
+421– 426 (2024).
+22. Erdo ğan, E., Hayber, ŞE. & Saraço ğlu, ÖG. A novel method for UV measure-
+ment using PLA-based photochromic material and machine learning models.
+IEEE Sens. J. 25,3 7 6 1– 3771 (2025).
+23. Hayasaka, T. et al. An electronic nose using a single graphene FET and
+machine learning for water, methanol, and ethanol.Microsyst. Nanoeng.6,5 0
+(2020).
+24. Ji, Z. et al. Omnidirectional strain sensing using single ﬂexible acoustic wave
+device with machine-learning algorithm.Appl. Phys. Lett. 123, 054104 (2023).
+25. Ji, Z. et al. Achieving consistency of ﬂexible surface acoustic wave sensors with
+artiﬁcial intelligence.Microsyst. Nanoeng.10,9 4( 2 0 2 4 ) .
+26. Ji, Z. et al. Minimizing off-axis bending effects on ﬂexible surface acoustic wave
+sensing powered by integratedmachine learning algorithms.IEEE Trans. Ind.
+Electron.72, 3194– 3201 (2025).
+27. Cheng, C. et al. The strain transfer characteristics of SAW strain sensors and
+their impact on the sensor performance.Sens. Actuators A Phys. 389, 116575
+(2025).
+28. Akiyama, M. et al. Enhancement of piezoelectric response in scandium alu-
+minum nitride alloy thin ﬁlms prepared by dual reactive cosputtering. Adv.
+Mater. 21, 593– 596 (2009).
+29. Lamanna, L., Rizzi, F., Giudo, F. & De Vi ttorio, M. Flexible dual-wave mode AlN-
+based surface acoustic wave device on polymeric substrate. IEEE Electron
+Device Lett. 41,1 6 9 2– 1695 (2020).
+3 0 . S h u ,L .e ta l .H i g ht e m p e r a t u r ec h a r a c t e r i s t i c so fA l Nﬁlm SAW sensor inte-
+grated with TC4 alloy substrate. Sens. Actuators A Phys. 249,5 7– 61 (2016).
+31. Nalamwar, A. L. & Epstein, M. Surface acoustic waves in strained media.J. Appl.
+Phys. 47,4 3– 48 (1976).
+32. Salama, M. Optimization of regression models using machine learning: a
+comprehensive study with scikit-learn.IUSRJ 5,1 1 9– 129 (2024).
+33. Xia, Y. et al. Machine learning powered multiple cross-interference suppression
+strategy for surface acoustic wave sensing platform.Sens. Actuators B Chem.
+432, 137464 (2025).
+34. Sanchez, S. R., Bachilo, S. M., Kadria-V ili, Y. & Weisman, R. B. Skewness analysis in
+variance spectroscopy measures nanoparticle individualization.J. Phys. Chem.
+Lett. 8,2 9 2 4– 2929 (2017).
+Cheng et al. Microsystems & Nanoengineering (2026) 12:320 Page 16 of 16

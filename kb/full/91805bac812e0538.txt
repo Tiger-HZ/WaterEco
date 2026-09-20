@@ -1,0 +1,1483 @@
+Discover AtmosphereSrisaringkarn and Aruga Discover Atmosphere (2026) 4:24 
+https://doi.org/10.1007/s44292-026-00092-8
+RESEARCH Open Access
+Aerosol pollution and economic growth 
+in Thailand with a machine learning analysis 
+of the environmental Kuznets Curve
+Thanakhom Srisaringkarn1 and Kentaka Aruga1*
+*Correspondence:
+Kentaka Aruga
+aruga@mail.saitama-u.ac.jp
+1Graduate School of Humanities 
+and Social Sciences, Saitama 
+University, 255 Shimo-Okubo, 
+Sakura-ku, Saitama 338-8570, Japan
+© The Author(s) 2026. Open Access This article is licensed under a Creative Commons Attribution 4.0 International License, which permits use, 
+sharing, adaptation, distribution and reproduction in any medium or format, as long as you give appropriate credit to the original author(s) and the 
+source, provide a link to the Creative Commons licence, and indicate if changes were made. The images or other third party material in this article 
+are included in the article’s Creative Commons licence, unless indicated otherwise in a credit line to the material. If material is not included in the 
+article’s Creative Commons licence and your intended use is not permitted by statutory regulation or exceeds the permitted use, you will need to 
+obtain permission directly from the copyright holder. To view a copy of this licence, visit http://creativecommons.org/licenses/by/4.0/.
+Abstract
+Aerosol pollution is a chronic air pollution problem that occurs every year in 
+Thailand. It is mostly caused by human activities and climate conditions, and has 
+severe negative impacts on both human health and the economy. This study 
+investigates the relationship between aerosol pollution and various economic and 
+environmental factors using the Environmental Kuznets Curve (EKC) framework. 
+Additionally, it forecasts aerosol pollution through 2050 by applying four machine 
+learning approaches and comparing their accuracy and predictive performance. 
+The results indicate that the Random Forest (RF) model provided the most accurate 
+estimation across the train, validation, and test periods. The study found an inverted 
+U-shape relationship between aerosol pollution and economic growth, consistent 
+with an EKC pattern. This suggests that as Thailand’s economy expands, aerosol 
+pollution is projected to decline at an average annual rate of − 0.0569% to − 0.0636% 
+from 2000 to 2050, except for the Southern region (R4), which shows an increasing 
+rate. Furthermore, environmental features, specifically regional characteristics (R), 
+Normalized Difference Vegetation Index (NDVI), rainfall, and wind speed, strongly 
+influence aerosol pollution levels. Among economic features, population density 
+was found to positively influence aerosol pollution. The study’s findings indicate that 
+population density and GPP per capita remain primary drivers of aerosol pollution 
+in high-activity regions. Consequently, although not directly analyzed in our models, 
+we propose introducing green finance instruments as a strategic mechanism to 
+decouple economic activity from environmental degradation.
+Keywords Aerosol pollution, Environmental Kuznets Curve, Machine learning, Remote 
+sensing, Thailand
+JEL classifications C38, Q53, Q54, Q56
+1 Introduction
+Increases in aerosol pollution concentrations, such as dust, PM10, PM2.5, and smog, 
+have significant impacts on the global economy by increasing healthcare costs associated 
+with air pollution exposure. These costs were estimated at approximately USD 300 bil -
+lion, based on assessments of the willingness to pay to reduce global air pollution in 2015 
+Page 2 of 29
+Srisaringkarn and Aruga Discover Atmosphere (2026) 4:24 
+[40, 63]. Furthermore, it is projected that by 2060, air pollution will result in economic 
+costs equivalent to 1% of global GDP , affecting sectors such as health, the environment, 
+agriculture, and the global tourism industry. In West Africa, dust pollution was found 
+to reduce economic growth by 3% over two years and to reduce agricultural yields by an 
+average of 2% annually [ 17]. Additionally, a study conducted in Almería, Spain, found 
+that dust contamination reduced the power output of a photovoltaic plant by an aver -
+age of 5%, resulting in annual economic losses of more than €150,000 for the industrial 
+facility [3]. In China, total emissions reached 11.9 billion tons in 2021, accounting for a 
+33% global share, and 34% of cities did not show a significant decline in PM2.5 concen -
+trations [70]. In Ho Chi Minh City, Vietnam, it was found that road dust from vehicles 
+contains heavy metal components such as lead and manganese, causing health prob -
+lems in children and an increased risk of cancer in adults. In addition, a study in Hanoi 
+showed that increases in PM1, PM2.5, and PM10 concentrations were associated with 
+2.5%, 2.2%, and 1.4% increases, respectively, in hospitalizations for respiratory diseases 
+[14, 58]. Finally, in India, it was found that air pollution problems caused a high cost of 
+illness. This total loss of $36.8 billion was equivalent to 1.36% of India’s gross domestic 
+product (GDP) [43, 49].
+ 
+Thailand’s insufficient attention to environmental issues has led to worsening annual 
+air pollution, resulting in high economic costs. In 2019, environmental management 
+agencies received just 0.4% of the national budget, or 0.05% of GDP , well below alloca -
+tions in regions such as the European Union, South America, and China [6]. This chronic 
+underfunding contributes directly to a rising toll: World Bank [65] estimated 31,173 pre-
+mature deaths from air pollution in 1990, rising to 48,819 by 2013, and economic costs 
+rising from 210,603 billion Baht to 871,300 billion Baht over that period. Attavanich, [ 6] 
+found that PM2.5 pollution alone caused economic damage totaling 2.173 million Baht 
+to Thai households in 2019. Each year, severe PM2.5 pollution peaks in winter and sum -
+mer, harming transportation, public health, and the economy. The negative impacts of 
+PM2.5 include: reduced labor productivity due to illness; increased costs for self-protec -
+tion; exacerbated social inequality as low-income groups struggle to protect themselves; 
+diminished quality of life and restricted outdoor activities; decreased real estate values in 
+high-pollution areas; and increased government spending to address the problem [55].
+Fig. 1 a Average annual PM2.5 2019 in Rural, b Average annual PM2.5 2019 in Urban. Source: WHO [63] Moreover. 
+Comparing PM2.5 concentrations across ASEAN countries in 2019, Thailand ranked among the top countries in the 
+region, with both urban and rural areas showing high levels, as shown in Fig. 1.
+ 
+Page 3 of 29
+Srisaringkarn and Aruga Discover Atmosphere (2026) 4:24 
+Additionally, we present the spatiotemporal trends of aerosol pollution across 76 Thai 
+provinces from 2000 to 2023 (Fig. 2). In this study, we do not include Buengkan province 
+[48] because we cannot obtain the previous dataset of this province from 2000 to 2011 
+(Table 1).
+It is evident that aerosol pollution is severe in Thailand’s Northern, Northeastern, and 
+Central regions. These areas are agricultural, densely populated, and industrial. They are 
+Table 1 Thai provinces and regions
+Regions Provinces
+Bangkok and vicinities, cen-
+tral, western, eastern (R1)
+Bangkok Metropolis, Samut Prakan, Pathum Thani, Samut Sakhon, Nakhon 
+Pathom, Nonthaburi, Saraburi, Singburi, Chai Nat, Ang Thong, Lop Buri, Phra 
+Nakhon Sri Ayuthaya, Ratchaburi, Kanchanaburi, Phachuap Khiri Khan, Phetcha-
+buri, Suphan Buri, Samut Songkhram, Chon Buri, Chachoengsao, Rayong, Trat, 
+Chanthaburi, Nakhon Nayok, Prachin Buri, Sa Kaew
+Northeastern (R2) Khon Kaen, Udon Thani, Loei, Nong Khai, Mukdahan, Nakhon Phanom, Sakon Na-
+khon, Kalasin, Nakhon Ratchasima, Chaiyaphum, Yasothon, Ubon Ratchathani, Roi 
+Et, Buri Ram, Surin, Maha Sarakham, Si Sa Ket, Nongbua Lamphu, Amnat Chareon
+Northern (R3) Chiang Mai, Lampang, Uttaradit, Mae Hong Son, Chiang Rai, Phrae, Lamphun, 
+Nan, Phayao, Nakhon Sawan, Phitsanulok, Kam Phaeng Phet, Uthai Thani, Sukho-
+thai, Tak, Phichit, Phetchabun
+Southern (R4) Phuket, Surat Thani, Ranong, Phangnga, Krabi, Chumphon, Nakhon Si Thamma-
+rat, Songkhla, Satun, Yala, Trang, Narathiwat, Phatthalung, Pattani
+Source: Authors
+Fig. 2 a Average annual aerosol pollution in Thailand 2000, b Average annual aerosol pollution in Thailand 2013, c 
+Average annual aerosol pollution in Thailand 2023, d Change detection of aerosol pollution in Thailand 2000–2023. 
+Source: Author’s calculation
+ 
+Page 4 of 29
+Srisaringkarn and Aruga Discover Atmosphere (2026) 4:24 
+also affected by aerosol pollution blown from neighboring countries, which results from 
+agricultural waste burning and wildfire, as shown in Fig. 2.
+1.1 Using machine learning to predict aerosol pollution in conjunction with the EKC 
+theory
+Determining the relationship between aerosol pollution and economic growth remains a 
+significant challenge because governments can use these findings to inform decisions on 
+environmental policies and related matters in advance. Moreover, machine learning is a 
+powerful tool for finding patterns in data and predicting trends with larger, more com -
+plex datasets. These tools can be used to build real-time forecasting models that require 
+no human input. As we mentioned before, this study uses the Environmental Kuznets 
+Curve (EKC) analysis framework to find the relationship between aerosol pollution and 
+economic growth. This will reveal the direction of the relationship, specifically whether 
+the aerosol pollution problem follows an inverted U or a U-shaped curve as the economy 
+grows. The analysis is conducted using four machine learning algorithms: Linear Regres-
+sion (LM), Multivariate Adaptive Regression Splines (MARS), Random Forest (RF), 
+and Support Vector Regression (SVR). This is because machine learning can identify 
+non-linear relationships, which can be applied alongside EKC theory as an alternative 
+to econometric models. Furthermore, machine learning is highly effective at predicting 
+future trends in aerosol pollution [ 30]. Moreover, this study employs popular interpre -
+table machine learning methods, using Shapley Values and Partial Dependence Plots to 
+interpret the model and explore the relationship [22].
+The objectives of this study are: (1) to apply four currently popular machine learning 
+algorithms within the Environmental Kuznets Curve (EKC) analysis framework to find 
+the relationship between aerosol pollution and economic growth, as well as other fea -
+tures affecting changes in aerosol pollution in each region of Thailand; (2) to test the 
+performance of these four machine learning algorithms in forecasting aerosol pollu -
+tion and identifying future trends based on the specified model; and (3) to compare the 
+performance of Linear Regression (LM) against other popular machine learning algo -
+rithms used in this study. The research contributions of this study include using new 
+machine learning algorithms to forecast aerosol pollution in Thailand and utilizing 
+provincial-level satellite data (Remote sensing) collected via the Google Earth Engine 
+platform, as well as secondary data from government agencies. This alternative data -
+set is derived from satellite image processing rather than official Thai government data 
+(e.g., aerosol pollution, wind speed, temperature, and precipitation). It also builds new 
+knowledge regarding data analysis using machine learning algorithms in conjunction 
+with Environmental Kuznets Curve (EKC) analysis as an alternative to using economet -
+ric models, such as in the studies of Maneejuk et al., [ 34], Phadkantha and Yamaka [44], 
+Phrakhruopatnontakitti et al. [46], Shahzad and Aruga [50], Srisaringkarn and Aruga [51, 
+52]. The model developed in this study can then be applied to larger and more complex 
+datasets for future environmental policy planning in Thailand. Additionally, the feature 
+contributions identified here provide a guide for selecting variables in future advanced 
+machine learning and econometric models. Because our machine learning approach 
+indicates feature importance and forecasting rather than exact causal effects and magni -
+tudes, this foundational knowledge is essential for building robust models that can yield 
+deeper economic insights into the aerosol pollution issue. The novelty of this study lies 
+Page 5 of 29
+Srisaringkarn and Aruga Discover Atmosphere (2026) 4:24 
+in being the first to analyze regional heterogeneity in aerosol pollution in Thailand using 
+machine learning forecasting and Environmental Kuznets Curve (EKC) framework. Fur -
+thermore, it integrates environmental indicators (such as NDVI and climate) with eco -
+nomic drivers to provide long-term aerosol pollution projections (up to 2050) for policy 
+planning. We analyze aerosol pollution trends using machine learning approaches (e.g., 
+MARS, RF, and SVR) because they perform better at capturing non-linear relationships 
+and are easier to implement. These capabilities are highly valuable for future policy plan-
+ning aimed at mitigating Thailand’s aerosol pollution problem. However, a notable limi -
+tation of these machine learning approaches is their inability to clearly explain the causal 
+relationships between aerosol pollution and its contributing factors.
+In the next section, we discuss the theoretical framework. The third section describes 
+the analytical methods, and the fourth section presents the empirical results and discus -
+sion. Finally, we provide the conclusion and policy implications in the last section.
+2 Literature reviews
+The Kuznets Curve was originally proposed by Kuznets [ 31] to examine the relation -
+ship between economic growth and income inequality. Decades later, Grossman and 
+Krueger [20] extended this concept to develop the Environmental Kuznets Curve (EKC). 
+This theory postulates a relationship between various indicators of environmental 
+degradation and per capita income. In the early stages of economic growth, pollution 
+emissions increase and environmental quality declines. However, beyond a specific per 
+capita income threshold (which varies by environmental indicator), the trend reverses: 
+at higher income levels, further economic growth leads to environmental improve -
+ment. Consequently, the theory suggests that environmental impacts or per capita emis-
+sions follow an inverted U-shaped relationship with per capita income [ 20, 42, 53, 54]. 
+Although empirical evidence supports the EKC hypothesis for certain countries, it is 
+not universally applicable to all forms of environmental degradation, income levels, or 
+national contexts.
+The EKC relationship in this study is categorized into five patterns: (1) an increas -
+ing monotonic relationship; (2) a decreasing monotonic relationship; (3) an inverted 
+U-shaped pattern; (4) a U-shaped pattern, which is in direct contrast to the EKC; and (5) 
+a flat pattern, indicating that emissions are not influenced by income levels.
+2.1 Air pollution policies
+According to UNEP [ 59], there is no global legal framework for Ambient Air Quality 
+Standards (AAQS). Similarly, a clear legal commitment to specific AAQS compatible 
+with human life, health, and the natural environment does not yet exist in public inter -
+national law. However, some key regional legal instruments on air quality—particularly 
+in the EU—require individual signatory countries to develop relatively robust legal sys -
+tems for air quality control. Currently, 66% of countries are subject to constitutional legal 
+requirements that may, over time, be interpreted as requiring legally mandated accept -
+able air quality. Examples of AAQS enforcement mechanisms are shown in Table 2.
+ 
+Moreover, for the technological innovation to improve environmental and air qual -
+ity Hassan et al. [ 23] indicates that most countries must invest more in R&D to drive 
+technical innovation and support renewable energy, thus enabling the energy transition. 
+Page 6 of 29
+Srisaringkarn and Aruga Discover Atmosphere (2026) 4:24 
+Previous research has highlighted how research spending and renewable deployment 
+affect environmental degradation [ 24, 36]. However, these studies have not addressed 
+the impact of energy transition and research spending on technological innovation. 
+Some academics contend that more funding for R&D improves environmental quality 
+and reduces emissions. For example, Fernández Fernández et al. [ 16], and Zafar et al. 
+[68] found that technological innovation lessened pollution in industrialized countries 
+via rebound and spillover effects. Moreover, developing renewable energy technologies 
+helps achieve carbon neutrality [69]. In contrast, Danish et al. [13] reported that techno-
+logical advances may raise CO2 emissions.
+At present, Thailand has to update air pollution control laws and environmental 
+innovation technologies to align with the international regulation standard [ 47]. Con -
+sequently, Thailand urgently needs to enact more updated air pollution control act to 
+establish better air quality standards in the future.
+2.2 Application of EKC and ML
+Currently, machine learning algorithms are being applied alongside the Environmental 
+Kuznets Curve (EKC) theory to compare the estimation performance of econometric 
+models using popular machine learning methods. The results vary depending on the 
+data characteristics and the models used. We have compiled examples of recent research 
+that applies machine learning algorithms to the issues of air pollution and economic 
+growth, as shown in Table 3.
+ 
+Table 3 summarizes findings from studies using machine learning algorithms, such 
+as Random Forest and Support Vector Regression, and shows that results vary depend -
+ing on data characteristics and the analytical methods used. However, an examination 
+of the dependent (Target variable) and independent variables (Features) reveals a high 
+degree of consistency across studies, with a common focus on the relationships between 
+air pollution and economic variables such as GDP per capita, population density, trade 
+openness, and urbanization, as well as environmental variables such as wind speed and 
+Table 2 The world ambient air quality standards enforcement mechanisms
+Country Ambient air quality standard (AAQS) Type of in-
+strument
+All EU member 
+states
+If an enforcement case is brought before the Court of Justice of the European 
+Union (formerly the European Court of Justice, or CJEU) for the infringement of 
+EU air quality laws, the individual EU Member State can be held accountable 
+for failing to achieve legally mandated AAQS, and financial sanctions may be 
+imposed as a result of persistent non-compliance.
+Other 
+primary 
+legislation
+Japan When urgently necessary to prevent damage to human health from air pollu-
+tion, the Minister of the Environment may issue necessary instructions regard-
+ing air quality to a prefectural governor or the mayor of a city (including special 
+wards) specified by a Cabinet Order.
+Policy/
+guidance
+United States of 
+America
+Federal action can be taken against states: the US Environmental Protection 
+Agency (EPA) can issue sanctions against a state and, if necessary, take over 
+enforcement of the US Clean Air Act within that state.
+Secondary 
+legislation
+China Under laws that took effect in 2015, falsifying air quality monitoring data has be-
+come a crime as severe as creating the pollution itself, though there have been 
+few high-profile prosecutions to date. However, according to a court ruling in 
+the central city of Xian, two district environmental protection branch heads 
+were recently imprisoned for ordering staff at national monitoring stations to 
+falsify data.
+Policy/
+guidance
+Source: UNEP [59]
+Page 7 of 29
+Srisaringkarn and Aruga Discover Atmosphere (2026) 4:24 
+Table 3 Reviews on the relationship between economic growth and pollution from a machine 
+learning approaches
+Authors Periods Country/region Methodology Depen-
+dent 
+variable
+Independent 
+variables
+Findings
+Nguyen 
+et al. [39]
+1977–2019 Vietnam Autoregressive 
+Distributed 
+Lag (ARDL) and 
+Back-Propagation 
+Neural Networks 
+(BPN)
+CO2 GDP , Energy 
+Consumption, 
+Urbanization
+N shaped
+Jabeur et 
+al. [25]
+2007–2018 86 countries Natural Gradi-
+ent Boosting 
+(NGBoost)
+CO2 GDP per capita, 
+Annual gross capital 
+formation, Energy 
+Use, Governance, 
+Business Environ-
+ment, Education, 
+Personal Freedom
+U-shaped 
+and 
+Inverted 
+U-shaped
+Padhan 
+et al. [41]
+1990–2019 BRICS-T Kernel 
+Regularized Least 
+Squares (KRLS)
+Ecological 
+footprint 
+indicator
+Renewable en-
+ergy consumption, 
+Agriculture value 
+added, Forest area, 
+GDP per capita, Ex-
+port diversification, 
+Eco-innovations
+Inverted 
+U-shaped
+Yao and 
+Li [66]
+1973–2021 Zimbabwe, Cam-
+eroon, Eritrea, Ghana
+SHAP algorithm Air visibility GDP per capita, 
+Wind direction, 
+Wind speed, relative 
+humidity, trade 
+openness
+Inverted 
+N- shaped
+Han and 
+Lin [22]
+1990–2018 118 countries Artificial Neural 
+Network (ANN)
+CO2 GDP per capita, 
+Population size, 
+Country specific 
+features
+Inverted 
+U-shaped
+Krish-
+nendu 
+and 
+Patra [30]
+1980–2022 20 countries Ridge, LASSO, 
+Elastic Net 
+and Kernel 
+Regularized Least 
+Squares (KRLS)
+CO2 
+Emissions 
+per capita, 
+Internal 
+freshwater 
+resources 
+per capita, 
+Forest 
+Cover Area 
+per capita
+GDP per capita, 
+Population, Urban 
+population, 
+Agricultural output, 
+Industrial output, 
+Per capita energy 
+consumption, Per 
+capita renewable 
+energy consump-
+tion, Trade open-
+ness, Institutional 
+quality
+Inverted 
+U-shaped 
+and M- 
+shaped
+Guliyev 
+[21]
+1995–2018 147 countries Classifier-Lasso 
+Method
+Load 
+Capacity 
+Factor
+GDP , Industrial 
+structure, Foreign 
+Direct Investment, 
+Globalization Index
+U-shaped 
+and 
+Inverted 
+U-shaped
+Boateng 
+et al. [10]
+1991–2023 West Africa Linear regres-
+sion, Random 
+Forest, Gradient 
+Boosting, and 
+Support Vector 
+Regression
+GDP per 
+capita
+CO2, Renewable 
+energy, Freshwater 
+resources, PM25, 
+Forest resources, 
+Water usage, 
+Population
+U-shaped
+Ali et al. 
+[2]
+1980–2022 Canada Autoregressive 
+Distributed Lag 
+(ARDL) and Ker-
+nel Regularized 
+Least Squares 
+(KRLS)
+CO2 GDP per capita, 
+geopolitical risks, 
+energy consump-
+tion, FDI, trade 
+openness, financial 
+development, ICT 
+development
+Inverted 
+U-shaped
+Source: Authors
+Page 8 of 29
+Srisaringkarn and Aruga Discover Atmosphere (2026) 4:24 
+precipitation. Therefore, this study selects aerosol pollution data obtained from the 
+Google Earth Engine (GEE) platform as the dependent variable (Target variable), and 
+uses economic and environmental variables such as GDP per capita, population density, 
+NDVI, precipitation, and wind speed collected from government agencies and GEE as 
+independent variables (Features). The study specifically focuses on the provincial level 
+in Thailand, which addresses an existing gap. Most previous studies used country-level 
+or continent-level data, whereas this study uses provincial-level data. This will yield find-
+ings useful for policymaking and contribute to the body of knowledge on the application 
+of new analytical techniques in the Thai context.
+The rationale for selecting these machine learning methods is their robust ability to 
+model complex, non-linear relationships. Algorithms such as Support Vector Regres -
+sion (SVR) employ kernel functions to evaluate data similarity, enabling them to identify 
+underlying patterns and generate accurate non-linear predictions. Additionally, Multi -
+variate Adaptive Regression Splines (MARS) and Random Forest (RF) operate as Adap -
+tive Basis Function Models (ABM). Because they are non-linear in their parameters, 
+these models frequently yield significantly better predictive performance than linear 
+approaches. Furthermore, ABM bypasses a common limitation of kernel-based meth -
+ods: the inherent difficulty of specifying an optimal kernel function for complex datas -
+ets. Ultimately, these techniques build on foundational linear regression concepts while 
+automatically capturing non-linear dynamics. This eliminates the need to manually engi-
+neer polynomial features, resulting in a more highly accurate analytical framework [38].
+2.3 Stochastic impacts by regression on population, affluence, and technology model 
+(STIRPAT)
+In this study, we utilize the STIRPAT model developed by York et al., [ 67] as our core 
+mathematical framework. In conjunction with the EKC theory, we use this model to 
+examine the relationship between aerosol pollution, economic growth, and other signifi-
+cant variables. The STIRPAT equation is expressed as follows:
+ 𝐼𝐼𝑖𝑖 = 𝑎𝑎𝑎𝑎 𝑏𝑏
+𝑖𝑖 𝐴𝐴𝑐𝑐
+𝑖𝑖 𝑇𝑇𝑑𝑑
+𝑖𝑖 𝑒𝑒𝑖𝑖 (1)
+In this equation, the constant a act as the scaling factor. The variables b, c, and d rep -
+resent the exponents of P , A, and T, respectively, which must be empirically estimated, 
+while e denotes the error term. Specifically, P represents population, A denotes affluence 
+(captured by GPPpc and GPPpc2), and T accounts for all factors influencing environmen-
+tal impact beyond population and affluence (e.g., NDVI, rainfall, wind speed, daytime 
+land surface temperature, and region-specific features). These variables are the changes 
+in consumption and production of goods and services, and their associated environmen-
+tal impacts, resulting from changes in economic variables driven by improvements in 
+service efficiency [ 61, 67]. Ultimately, the STIRPAT model and EKC framework guide 
+the empirical analysis and conclusions presented throughout this study.
+3 Methodology
+3.1 Model setting
+ In this study, we employ machine learning algorithms to forecast long-term aerosol pol-
+lution and analyze its relationship with economic growth. This analysis is grounded in 
+the Environmental Kuznets Curve (EKC) hypothesis and utilizes the STIRPAT model as 
+Page 9 of 29
+Srisaringkarn and Aruga Discover Atmosphere (2026) 4:24 
+the core mathematical framework. Feature selection is informed by the literature review 
+presented in Sect. 2, allowing us to construct the empirical model as follows:
+ 𝐷𝐷𝐷𝐷𝐷𝐷𝐷𝐷 = 𝐷𝐷𝐷𝐷𝐷𝑎𝑎𝑎𝑎𝐷𝐷𝐷𝐷𝐷 𝐷𝐷𝑎𝑎𝑎𝑎𝐷𝐷𝐷𝐷 2𝐷 𝑎𝑎𝑃𝑃𝐷𝐷𝑃𝑃𝑒𝑒𝑃𝑃 𝐷𝐷𝐷 𝑃𝑃𝐷𝐷𝑃𝑃𝐼𝐼𝐷 𝑃𝑃𝑎𝑎𝑃𝑃𝑃𝑃 𝐷𝐷𝑎𝑎𝑃𝑃𝑃𝑃𝐷 𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝐷𝐷𝐷𝐷𝑒𝑒𝑒𝑒𝑃𝑃𝐷 𝑃𝑃𝑃𝑃𝑇𝑇_𝐷𝐷𝑎𝑎𝐷𝐷𝐷 𝑃𝑃𝐷 (2)
+𝐷𝐷𝐷𝐷𝐷𝐷𝐷𝐷 is the log of aerosol pollution in each province, 𝐷𝐷𝑎𝑎𝑎𝑎𝐷𝐷𝐷𝐷 is the log of GPP per capita 
+in each province, 𝐷𝐷𝑎𝑎𝑎𝑎𝐷𝐷𝐷𝐷 2 is its squared term, 𝑎𝑎𝑃𝑃𝐷𝐷𝑃𝑃𝑒𝑒𝑃𝑃𝐷𝐷 is the log of population density 
+in each province, 𝑃𝑃𝐷𝐷𝑃𝑃𝐼𝐼 is the log of Normalized Difference Vegetation Index (dense 
+and healthy green vegetation) in each province, 𝑃𝑃𝑎𝑎𝑃𝑃𝑃𝑃𝐷𝐷𝑎𝑎𝑃𝑃𝑃𝑃 is the log of precipitation in 
+each province, 𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝑃𝐷𝐷𝐷𝐷𝑒𝑒𝑒𝑒𝑃𝑃 is the log of windspeed in each province, 𝑃𝑃𝑃𝑃𝑇𝑇_𝐷𝐷𝑎𝑎𝐷𝐷 is the log 
+of land surface temperature at daytime in each province, and R represents region spe -
+cific features by using dummy variables. Including the squared 𝐷𝐷𝑎𝑎𝑎𝑎𝐷𝐷𝐷𝐷 term (or 𝐷𝐷𝑎𝑎𝑎𝑎𝐷𝐷𝐷𝐷 2
+) allows the model to capture the EKC’s potential turning point, where economic growth 
+shifts from increasing to decreasing aerosol pollution. Indeed, some machine learning 
+algorithms, such as Random Forest (RF), can capture nonlinear relationships without 
+explicitly introducing the squared term of 𝐷𝐷𝑎𝑎𝑎𝑎𝐷𝐷𝐷𝐷 . By introducing the squared term a 
+priori, the algorithm can more easily detect diminishing effects, even with a limited sam-
+ple size. We also consider a model without the region-specific feature to compare and 
+demonstrate the extent to which this feature contributes to the prediction. The analytical 
+flowchart is shown in Fig. 3. In this study, we use aerosol pollution as a proxy for dust, 
+smog, PM2.5, and PM10, because ‘aerosol pollution’ is a broader technical term than 
+these specific types of air pollution. We use aerosol pollution as the dependent variable, 
+which has a 67% accuracy in measuring real-world ambient air conditions in the study 
+areas [33, 35].
+3.2 Data
+In this study, we use data from 76 provinces in Thailand from 2000 to 2023, divided 
+by region: BANGKOK AND VICINITIES, CENTRAL, WESTERN, EASTERN (R1), 
+NORTHEASTERN (R2), NORTHERN (R3), and SOUTHERN (R4). The data were col -
+lected from both the GEE platform and Thai government agencies. Using remote sensing 
+data from the GEE platform helps overcome the limitations of environmental data avail -
+ability, which is otherwise restricted and does not cover all areas of Thailand. However, 
+this study does not include Buengkan province due to limited data from 2000 to 2011.
+Additionally, based on Table  4, we describe the data sources used in the study. The 
+descriptive statistics shown are log-transformed and presented in Table 5.
+Fig. 3 Analytical flowchart. Source: Authors
+ 
+Page 10 of 29
+Srisaringkarn and Aruga Discover Atmosphere (2026) 4:24 
+Table 4 Data sources
+Features Satellite/dataset Resolution Frequency Years Units Sources
+Aerosol Pol-
+lution (Dust) 
+(Optical_Depth_047)
+MCD19A2.061: 
+Terra & Aqua 
+MAIAC Land Aero-
+sol Optical Depth 
+Daily 1 km
+1000 m 1 Day 2000–
+2023
+Max/Min h t t p s : / / d e v e l o 
+p e r s . g o o g l e . c o 
+m / e a r t h - e n g i n 
+e / d a t a s e t s / c a t 
+a l o g / M O D I S _ 0 
+6 1 _ M C D 1 9 A 2 
+_ G R A N U L E S # d 
+e s c r i p t i o n 
+Normalized Differ-
+ence Vegetation 
+Index (NDVI)
+MOD13A1.061 
+Terra Vegetation 
+Indices 16-Day 
+Global 500 m
+500 m 16 Days 2000–
+2023
+Max/Min h t t p s : / / d e v e l o 
+p e r s . g o o g l e . c o 
+m / e a r t h - e n g i n 
+e / d a t a s e t s / c a t 
+a l o g / M O D I S _ 0 
+6 1 _ M O D 1 3 A 1 
+# d e s c r i p t i o n 
+Rainfall CHIRPS Daily: 
+Climate Hazards 
+Center InfraRed 
+Precipitation With 
+Station Data (Ver-
+sion 2.0 Final)
+5566 m 1 Day 2000–
+2023
+Millimeters 
+per day 
+(mm/d)
+ h t t p s : / / d e v e l 
+o p e r s . g o o g l e . 
+c o m / e a r t h - e n 
+g i n e / d a t a s e t s 
+/ c a t a l o g / U C S 
+B - C H G _ C H I R P 
+S _ D A I L Y # d e s c r 
+i p t i o n 
+Windspeed GLDAS-2.1: Global 
+Land Data Assimi-
+lation System
+27,830 m 3 h 2000–
+2023
+Meters per 
+second 
+(m/s)
+ h t t p s : / / d e v e l o 
+p e r s . g o o g l e . c o 
+m / e a r t h - e n g i n 
+e / d a t a s e t s / c a t 
+a l o g / N A S A _ G L 
+D A S _ V 0 2 1 _ N O 
+A H _ G 0 2 5 _ T 3 H 
+# d e s c r i p t i o n 
+Land Surface Tem-
+perature at DayTime 
+(LST_Day)
+MOD11A1.061 
+Terra Land Surface 
+Temperature and 
+Emissivity Daily 
+Global 1 km
+1000 m 1 Day 2000–
+2023
+Kelvin (K) h t t p s : / / d e v e l o 
+p e r s . g o o g l e . c o 
+m / e a r t h - e n g i n 
+e / d a t a s e t s / c a t 
+a l o g / M O D I S _ 0 
+6 1 _ M O D 1 1 A 1 
+# d e s c r i p t i o n 
+Gross Provincial 
+Product (GPPpc)
+Office of the 
+National Economic 
+and Social Devel-
+opment Council 
+(NESDC)
+– Annual 2000–
+2023
+Baht per 
+Person
+ h t t p s : / / w w w . n 
+e s d c . g o . t h / i n f 
+o / g r o s s - r e g i o n 
+a l - a n d - p r o v i n c 
+i a l - p r o d u c t / 
+Population Density 
+(Popdens)
+Office of the 
+National Economic 
+and Social Devel-
+opment Council 
+(NESDC)
+– Annual 2000–
+2023
+Person per 
+Km2
+ h t t p s : / / w w w . n 
+e s d c . g o . t h / i n f 
+o / g r o s s - r e g i o n 
+a l - a n d - p r o v i n c 
+i a l - p r o d u c t / 
+Source: Google Earth Engine and NESDC
+Table 5 Descriptive statistics
+LnDust LnGPPpc LnGPPpc2 LnPopdens LnNDVI LnRainfall LnWindspeed LnLST_Day
+Mean 5.856 11.438 131.434 4.904 8.671 1.522 0.732 9.628
+Std 0.254 0.779 18.144 0.919 0.139 0.321 0.270 0.006
+Max 6.470 13.874 192.497 8.664 8.985 2.481 1.603 9.644
+Min 4.889 9.636 92.851 2.769 8.137 0.682 − 0.003 9.610
+Source: Author’s calculation
+Page 11 of 29
+Srisaringkarn and Aruga Discover Atmosphere (2026) 4:24 
+In this study, the dataset covering the interval from 2000 to 2018 (train and validation 
+dataset) is used for model development. The subsequent period, from 2019 to 2023, is 
+used as the test dataset to assess model performance on unseen data by fixing the year, 
+for example, 2000–2013 for training, 2014–2018 for validation, and 2019–2023 for test -
+ing, by using a chronological split of years with the same dataset. This approach allows 
+us to evaluate the accuracy and generalizability of our predictions. Finally, we forecasted 
+aerosol pollution trends through 2050 based on the training and validation datasets. 
+In other words, we build a baseline model and extend the LnDust forecast out to 2050. 
+Excluding 2019–2023 because of the COVID-19 pandemic is the outlier data.
+3.3 Machine learning techniques
+In this study, four Machine Learning algorithms are used in conjunction with an inter -
+pretable approach: Shapley Values and Partial Dependence Plots.
+3.3.1 Linear regression (LM)
+Linear Regression, a staple of classical statistical modeling, is one of the fundamental 
+algorithms for supervised learning. While primarily used to model linear relationships, 
+it can be extended to model nonlinear relationships when augmented with kernels or 
+basis function expansions. Additionally, by replacing the Gaussian output assumption 
+with a Bernoulli or multinomial distribution, the framework can be adapted for clas -
+sification tasks [ 38]. Fundamentally, linear regression is a statistical technique used to 
+quantify the relationship between variables; specifically, in machine learning, it models 
+the relationship between input features and a target label [37, 38, 62].
+ 𝐷𝐷 𝐷 𝐷𝐷| 𝑥𝑥𝐷 𝜃𝜃 𝐷 = 𝑃𝑃𝐷𝐷𝐷 | 𝑤𝑤𝑇𝑇 𝜑𝜑 𝐷𝑥𝑥𝐷 𝐷 𝜎𝜎 2𝐷 (3)
+by 
+ 𝜑𝜑 𝐷𝑥𝑥𝐷 = [1𝐷 𝑥𝑥𝐷 𝑥𝑥2𝐷… 𝐷𝑥𝑥 𝑑𝑑 ] (4)
+or, we can explain the simple formula:
+ 𝐷𝐷=𝑦𝑦+𝑤𝑤 1𝑥𝑥1 +𝑤𝑤 2𝑥𝑥2 +𝑤𝑤 3𝑥𝑥2
+2 +… +𝑤𝑤 𝑛𝑛𝑥𝑥𝑛𝑛 +𝑤𝑤 𝑛𝑛𝑛1𝑥𝑥𝑑𝑑
+𝑛𝑛𝑛1 (5)
+𝐷𝐷 is the predicted label, the output, 𝑦𝑦 is the bias of the model. Bias is the same con -
+cept as the y-intercept in the algebraic equation for a line. In Machine Learning, bias is 
+sometimes referred to as 𝑤𝑤0. Bias is a parameter of the model and is calculated during 
+training, 𝑤𝑤1is the weight of the feature. Weight is the same concept as the slope 𝑚𝑚 in the 
+algebraic equation for a line. Weight is a parameter of the model and is calculated during 
+training, 𝑥𝑥1 is a feature, the input, x2
+2 is squared term of nonlinear relationship.
+Where the adaptive basis function model (ABM), which is a model of the form:
+ 𝐷𝐷 𝐷𝑥𝑥𝐷 =𝑤𝑤 0 + ∑ 𝑀𝑀
+𝑚𝑚𝑚1𝑤𝑤𝑚𝑚𝜑𝜑 𝑚𝑚 𝐷𝑥𝑥𝐷 (6)
+Equation  (6) this adaptive basis function model (ABM) framework is applied to both 
+Multivariate Adaptive Regression Splines (MARS) and Random Forest (RF).
+3.3.2 Multivariate adaptive regression splines (MARS)
+The basis equation of MARS is as follow:
+Page 12 of 29
+Srisaringkarn and Aruga Discover Atmosphere (2026) 4:24 
+ 𝐷𝐷 𝐷𝑥𝑥𝐷 = 𝛽𝛽 0 + ∑ 𝐷𝐷
+𝑗𝑗𝑚1 𝐷𝐷𝑗𝑗 𝐷𝑥𝑥𝑗𝑗 𝐷+ ∑
+𝑗𝑗𝑗𝑗𝑗
+𝐷𝐷𝑗𝑗𝑗𝑗 𝐷𝑥𝑥𝑗𝑗 𝐷𝑥𝑥 𝑗𝑗 𝐷+ ∑ 𝑗𝑗𝑗𝑗𝑗𝑗𝑗𝑗 𝐷𝐷𝑗𝑗𝑗𝑗𝑗𝑗 𝐷𝑥𝑥𝑗𝑗 𝐷𝑥𝑥 𝑗𝑗 𝐷𝑥𝑥 𝑗𝑗 𝐷+… (7)
+Where
+ 𝐷𝐷 𝐷𝑥𝑥1𝐷𝑥𝑥 2𝐷 = 𝛽𝛽 0 + ∑ 𝑚𝑚𝛽𝛽 1𝑚𝑚𝐷𝑥𝑥1 𝑎𝐷𝐷 1𝑚𝑚𝐷𝑛 + ∑ 𝑚𝑚𝛽𝛽 2𝑚𝑚𝐷𝐷𝐷2𝑚𝑚 𝑎𝑥𝑥 2𝐷𝑛 + ∑ 𝑚𝑚𝛽𝛽 12𝑚𝑚𝐷𝑥𝑥1 𝑎𝐷𝐷 1𝑚𝑚𝐷𝑛𝐷𝐷𝐷2𝑚𝑚 𝑎𝑥𝑥 2𝐷𝑛 (8)
+Multivariate Adaptive Regression Splines (MARS) offers a flexible approach for model -
+ing nonlinear relationships by partitioning data via cutpoints, or ‘knots, ’ similar to step 
+functions [18]. The algorithm evaluates every distinct data point for each predictor as a 
+potential knot, constructing a linear regression model using the candidate features. For 
+instance, considering the non-linear, non-monotonic relationship 𝐷𝐷=𝐷𝐷 𝐷𝑥𝑥𝐷. The MARS 
+algorithm identifies the optimal split point across the range of 𝑥𝑥 that minimizes error 
+(e.g., Sum of Squared Errors) between two distinct linear segments. The resulting basis 
+function is termed a hinge function ℎ𝐷𝑥𝑥 𝑎 𝑎𝑎𝐷 , where a represents the cutpoint value [11]. 
+For a single knot (Eq. (9)), the hinge function ℎ𝐷𝑥𝑥 𝑎 𝑎𝑎𝐷 , is defined such that the piecewise 
+linear models for 𝐷𝐷 are
+ 
+𝐷𝐷= { 𝛽𝛽 0 + 𝛽𝛽 1 𝐷𝑎𝑎𝑎𝑥𝑥 𝐷 𝑥𝑥 𝑥 𝑎𝑎𝐷
+𝛽𝛽 0 + 𝛽𝛽 1 𝐷𝑥𝑥𝑎𝑎𝑎 𝐷 𝑥𝑥 𝑥𝑎𝑎 (9)
+Once the first knot has been found, the search continues for a second knot, which is 
+found at 𝑥𝑥=𝑦𝑦 (Eq. (10)). This results in three linear models for y:
+ 
+𝐷𝐷= {
+𝛽𝛽 0 + 𝛽𝛽 1 𝐷𝑎𝑎𝑎𝑥𝑥 𝐷 𝑥𝑥 𝑥𝑎𝑎
+𝛽𝛽 0 + 𝛽𝛽 1 𝐷𝑥𝑥𝑎𝑎𝑎 𝐷 𝑥𝑥 𝑥 𝑎𝑎 𝑎𝑎𝑃𝑃𝑃𝑃 𝑥𝑥 𝑥 𝑦𝑦𝐷
+𝛽𝛽 0 + 𝛽𝛽 1 𝐷𝑦𝑦𝑎𝑥𝑥 𝐷 𝑥𝑥 𝑥𝑦𝑦
+ (10)
+We proceed in this way until the model becomes very large (we may impose an upper 
+bound on the order of interactions). Then, we prune backward, at each step eliminating 
+the basis function that causes the smallest increase in the residual error, until the cross-
+validation (CV) error stops improving [38].
+3.3.3 Random forest (RF)
+Random Forest is an ensemble learning method that aggregates predictions from mul -
+tiple decision trees to yield more accurate and stable results. As a supervised learning 
+algorithm, it is applicable to both classification and regression tasks [ 12]. This approach 
+is particularly advantageous because individual decision trees often exhibit high vari -
+ance and are prone to overfitting, especially when dealing with complex datasets. How -
+ever, by averaging predictions across multiple trees, Random Forest effectively mitigates 
+this variance, thereby enhancing prediction accuracy and improving the model’s overall 
+generalization [38].
+ 𝐷𝐷𝑅𝑅𝑅𝑅 𝐷𝑥𝑥𝐷 = 1
+𝑀𝑀 ∑ 𝑀𝑀
+𝑚𝑚𝑚1𝐷𝐷𝑚𝑚 𝐷𝑥𝑥𝐷 (11)
+𝐷𝐷𝑅𝑅𝑅𝑅 𝐷𝑥𝑥𝐷 is final Random Forest regression predictor, 𝐷𝐷𝑚𝑚 𝐷𝑥𝑥𝐷 is prediction of the b-th 
+regression tree for input 𝑥𝑥, 𝑀𝑀 is total number of trees in the forest [7].
+3.3.4 Support vector regression (SVR)
+Fundamentally, Support Vector Machines (SVMs) identify a separating hyperplane 
+within an enlarged feature space, typically resulting in a nonlinear decision boundary in 
+Page 13 of 29
+Srisaringkarn and Aruga Discover Atmosphere (2026) 4:24 
+the original feature space that offers robust generalization. This high-dimensional space 
+is constructed using specific functions known as kernel functions. The principle behind 
+Support Vector Regression (SVR) is analogous: it seeks an optimal hyperplane in the 
+kernel-induced feature space that achieves strong generalization (measuring the similar-
+ity between objects). While various variants of SVR exist, this study employs the most 
+prevalent formulation: 𝜖𝜖-insensitive loss regression [11].
+The corresponding objective function is usually written in the following form [38].
+ 𝐽𝐽=𝐽𝐽 ∑ 𝑁𝑁
+𝑖𝑖𝑚1 𝑃𝑃𝜖𝜖𝐷𝐷𝐷𝑖𝑖 𝐷 ̂𝐷𝐷𝑖𝑖 𝐷+ 1
+2 ?𝑤𝑤?2
+ (12)
+where ̂𝐷𝐷𝑖𝑖 =𝐷𝐷 𝐷𝑋𝑋𝑖𝑖 𝐷 =𝑤𝑤 0 +𝑃𝑃 𝑇𝑇 𝑋𝑋𝑖𝑖 , 𝐽𝐽= 1
+𝜆𝜆 is a regularization constant and ˆ𝑤𝑤 =∑ 𝑖𝑖 𝛼𝛼 𝑖𝑖 𝑋𝑋𝑖𝑖
+. This objective is convex and unconstrained but not differentiable due to the absolute 
+value function in the loss term. 𝑤𝑤 is the solution vector. The epsilon-insensitive loss 
+function, defined by
+ 
+𝑃𝑃𝜖𝜖 𝐷𝐷𝐷𝐷 ̂𝐷𝐷𝐷 ≜ { 0 𝑃𝑃𝐷𝐷 |𝐷𝐷𝑎 ̂𝐷𝐷| 𝑥 𝜖𝜖
+∶ |𝐷𝐷𝑎 ̂𝐷𝐷| 𝑎 𝜖𝜖 𝑃𝑃𝐷𝐷ℎ𝑒𝑒𝑜𝑜𝑤𝑤 𝑃𝑃𝐷𝐷𝑒𝑒 (13)
+This means that any point lying inside an 𝜖𝜖-tube around the prediction is not penalized.
+3.3.5 Shapley values (SHAP)
+The concept of Shapley Values is grounded in cooperative game theory. It posits that 
+the feature values of an individual observation collaborate to shift the model’s prediction 
+away from its expected base value. The method decomposes this total shift, distribut -
+ing it among features based on their marginal contributions across all possible subsets, 
+ensuring a ‘fair’ allocation. To do so, Shapley Values assess every combination of predic -
+tors to determine each predictor’s impact. Focusing on feature 𝑥𝑥𝑗𝑗 , the approach will test 
+the accuracy of every combination of features not including 𝑥𝑥𝑗𝑗 and then test how adding 
+𝑥𝑥𝑗𝑗 to each combination improves the accuracy [11, 22]. The additivity property of Shap-
+ley Values is expressed in the following equation:
+ 𝐷𝐷𝑆𝑆𝑆𝑆𝑆𝑆𝑆𝑆 𝐷𝑥𝑥𝐷 = 𝐸𝐸[ 𝐷𝐷𝐷 𝐷𝑥𝑥𝐷] + ∑ 𝑀𝑀
+𝑗𝑗𝑚1 ∅ 𝑗𝑗 𝐷𝐷𝐷𝐷 𝑥𝑥𝐷 (14)
+While 𝐸𝐸[𝐷𝐷𝐷 𝐷𝑥𝑥𝐷] is baseline expected value.
+In the context of forecasting aerosol pollution, Shapley Values quantify the marginal 
+contribution of predictors such as GDP per capita and regional characteristics to the 
+model’s output. Specifically, a high positive Shapley Value for GDP per capita indicates 
+that the observed economic features drive the model to predict higher aerosol pollution 
+relative to the baseline average. This interpretation allows us to infer the extent to which 
+specific economic features influence environmental outcomes.
+3.3.6 Partial dependence plots (PDPs)
+Partial dependence plots (PDPs) illustrate the relationship between a target response and 
+a specific set of input features by marginalizing over the values of all other input features 
+(known as ‘complement’ features). Intuitively, partial dependence can be interpreted as 
+the expected target response as a function of these input features. Given the limits of 
+human perception, the feature set must be kept small (typically one or two dimensions); 
+Page 14 of 29
+Srisaringkarn and Aruga Discover Atmosphere (2026) 4:24 
+consequently, the features of interest are usually selected from the most important ones 
+[19].
+3.3.7 Training, validation, testing and performance measurement
+In this study, to tune the best machine learning algorithm for analyzing this dataset, we 
+use the Grid Search method for hyperparameter optimization before analyzing the data 
+with various methods. The Grid Search method tunes hyperparameters for our data -
+set, yielding the best values, the highest accuracy, and the lowest error. We applied Grid 
+Search to each algorithm individually. This method is used for learning on training data, 
+and the accuracy of each algorithm can be checked on a validation dataset, which shows 
+the accuracy of the algorithm tuned by Grid Search. Afterward, the algorithm is truly 
+tested on the testing dataset. Table 11 in the Appendix, in the last section, shows the 
+best Grid Search tuning for each algorithm.
+To evaluate each algorithm’s performance on train, validation, and test datasets, we 
+will use R 2, MAE, MSE, and RMSE. The equations for these indicators are shown in 
+Table 12 in Appendix at the last section. Table  6 lists the machine learning algorithms 
+and their package names used in this study.
+4 Results and discussions
+Section  4.1 compares the performance of each machine learning algorithm, detailing 
+how their forecasting accuracy differs. Section 4.2 presents the analysis and interpreta -
+tion of the Shapley Values for each feature and explains the EKC patterns by using Par -
+tial Dependence Plots. Finally, Sect. 4.3 shows the aerosol pollution forecast until 2050 
+by comparing the results of each machine learning model.
+4.1 Comparison of machine learning algorithm performance
+Based on Table  7, which shows the train, validation, and test performance of all algo -
+rithms used to forecast aerosol pollution trends, it is evident that all algorithms dem -
+onstrate satisfactory performance. However, on the test dataset (unseen data), RF 
+(R2 = 0.729) performs well. Although the LM method (R 2 = 0.748) performed best during 
+the test period, when considering R2, MAE, MSE, and RMSE across the train and valida -
+tion periods, LM is not as effective as RF. Therefore, RF is considered the most robust 
+algorithm for forecasting in this study, followed by SVR (0.703) and MARS (0.685). This 
+indicates that the models used in this study can accurately forecast aerosol pollution in 
+Thailand.
+Table 6 List of R packages used in machine learning computations
+Methods Package’s name Sources
+LM lm h t t p s : / / c r a n . r p r o j e c t . o r g / w e b / p a c k a g e s / t i d y p r e d i c t / v i g n e t t 
+e s / l m . h t m l 
+MARS earth https://cra n.r-project .org/web/pa ckages/e arth/earth.pdf
+RF ranger https://cra n.r-project .org/web/pa ckages/r anger/ranger.pdf
+SVR kernlab https://cra n.r-project .org/web/pa ckages/k ernlab/kernlab.pdf
+Shapley Values fastshap h t t p s : / / c r a n . r - p r o j e c t . o r g / w e b / p a c k a g e s / f a s t s h a p / f a s t s h a p 
+. p d f 
+Partial Dependence Plots pdp h t t p s : / / c r a n . r - p r o j e c t . o r g / w e b / p a c k a g e s / p d p / v i g n e t t e s / p d 
+p - i n t r o . p d f 
+Source: The Comprehensive R Archive Network (CRAN)
+Page 15 of 29
+Srisaringkarn and Aruga Discover Atmosphere (2026) 4:24 
+Table 7 Model with and without region- specific features on training, validation and test results
+Model with region features Train Validation Test
+Dust = f GPPpc, GPPp c2, Popdens, NDVI, Rainfall, Windspeed, LST_Day, R MAE MSE RMSE R2 MAE MSE RMSE R2 MAE MSE RMSE R2
+LM 0.112 0.019 0.139 0.711 0.095 0.015 0.123 0.656 0.108 0.020 0.140 0.748
+MARS 0.100 0.016 0.126 0.765 0.103 0.018 0.133 0.597 0.125 0.024 0.156 0.685
+RF 0.098 0.015 0.123 0.776 0.078 0.010 0.101 0.769 0.114 0.021 0.145 0.729
+SVR 0.078 0.011 0.103 0.842 0.098 0.016 0.127 0.637 0.123 0.023 0.152 0.703
+Model without region features Train Validation Test
+Dust = f GPPpc, GPPp c2, Popdens, NDVI, Rainfall, Windspeed, LST_Day MAE MSE RMSE R2 MAE MSE RMSE R2 MAE MSE RMSE R2
+LM 0.124 0.025 0.158 0.627 0.117 0.023 0.151 0.481 0.124 0.025 0.159 0.674
+MARS 0.113 0.020 0.142 0.701 0.107 0.019 0.139 0.561 0.126 0.026 0.161 0.664
+RF 0.108 0.019 0.136 0.722 0.081 0.012 0.108 0.737 0.128 0.027 0.163 0.657
+SVR 0.073 0.010 0.102 0.846 0.112 0.021 0.146 0.518 0.134 0.030 0.172 0.617
+Source: Author’s calculation
+Page 16 of 29
+Srisaringkarn and Aruga Discover Atmosphere (2026) 4:24 
+However, comparing the performance with and without region features, as shown in 
+Table 7, it is clear that during testing on unseen data without the region feature model, 
+the RF algorithm provides a high R 2 value (0.657) as high as LM (0.674). Furthermore, 
+during train and validation, it’s R2, MAE, MSE, and RMSE values are more efficient than 
+those of all other algorithms, including the LM algorithm. Nevertheless, compared to 
+the region feature model, it is evident that all algorithms, including RF, perform signifi -
+cantly worse without it (RF with region features: R 2 = 0.729; RF without region features: 
+R2 = 0.657). Therefore, we can conclude that region features directly affect the accuracy 
+of aerosol pollution forecasting. The aerosol pollution problem in Thailand varies by 
+region, depending on topography, environmental factors (such as rainfall, wind speed, 
+and temperature), and economic factors (such as population density and economic 
+activities). Regarding R1, this region is typically most severely affected by aerosol pollu -
+tion during the winter (January–April). Sources include heavy traffic, vehicles, industrial 
+factories, construction, and early-season burning, combined with stagnant air. However, 
+the annual average aerosol pollution is generally lower than in the Northern region. 
+Notably, R1 shows no effect on aerosol pollution because this study used average annual 
+data rather than focusing on the most severe pollution periods; this methodology may 
+yield correlation patterns that do not align with findings from other studies [ 32, 45]. R2 
+experiences its most severe aerosol pollution from February to April. Sources originate 
+from the burning of agricultural materials for land clearing during the sugarcane har -
+vesting season, as well as transboundary pollution drifting from the Northern region. 
+R3 typically faces its most severe aerosol pollution during the dry season (November–
+April). The main causes are open burning, agricultural waste burning, stagnant air, and 
+transboundary haze from neighboring countries. Additionally, the region’s topography, 
+characterized by mountains and basins, traps pollutants, resulting in severe air pollu -
+tion. R4 generally has better air quality than others due to the influence of sea breezes 
+and fewer aerosol pollution sources, as the region’s economy is primarily focused on the 
+service and tourism industries [ 15, 56, 57]. Therefore, environmental conditions and 
+topography are important factors that affect aerosol pollution levels in each region.
+From Fig. 4, we compared the performance of all algorithms in forecasting aerosol pol-
+lution during the Testing period (2019–2023). It can be seen that the R 2 for all algo -
+rithms decreases as the forecast horizon increases. Therefore, we can conclude that if all 
+algorithms are used to predict the next 27 years, the forecasting accuracy will gradually 
+decrease. Thus, the new dataset should be updated and new forecasts made continu -
+ously to ensure the most accurate aerosol pollution predictions. We do not include the 
+2021 dataset in the R 2 prediction because during this period, the COVID-19 pandemic 
+was an outlier that could have caused unexpected R2 patterns.
+4.2 SHAP analysis interpretation
+We analyzed the feature influence on aerosol pollution using SHAP values from the 
+RF model, as it demonstrated better performance in forecasting aerosol pollution than 
+the other algorithms. This makes RF suitable for forecasting the complex data in this 
+study. We calculated the Shapley Values using data from the train and validation periods 
+(2000–2018) because the test period (2019–2023) included the COVID-19 pandemic, 
+which could introduce outliers and reduce the interpretability of the results. Figure  5 
+Page 17 of 29
+Srisaringkarn and Aruga Discover Atmosphere (2026) 4:24 
+shows the SHAP summary plot for the RF model, which summarizes the Shapley Values 
+analysis for the dataset.
+4.2.1 Each feature contributions
+From Fig. 5, it can be seen that the region feature (R4) has a negative influence on aero -
+sol pollution, indicating that this region is associated with lower aerosol pollution levels. 
+Environmental features (e.g., NDVI, rainfall, and windspeed) also negatively influence 
+aerosol pollution; thus, areas with high values for these features (indicated in yellow) 
+tend to have lower aerosol pollution. In contrast, Land Surface Temperature at DayTime 
+(LST_Day) and population density both positively influence aerosol pollution. Accord -
+ing to UNEP [ 60], the household sector is a major source of air pollution compared to 
+Fig. 5 SHAP summary plot for RF model which summarizes the Shapley Values from validation dataset. This figure 
+shows the results of the SHAP summary plot. Upper features have a stronger effect on the predictive model, while 
+lower features have a weaker effect. Source: Author’s calculation
+ 
+Fig. 4 R 2 comparison across models over testing period (2019–2023). We compare the R 2 performance across 
+Machine Learning Models by using test dataset which is the unseen data. Source: Author’s calculation
+ 
+Page 18 of 29
+Srisaringkarn and Aruga Discover Atmosphere (2026) 4:24 
+other sectors. However, other economic features (e.g., GPPpc and GPPpc 2) show that 
+if these features are low, aerosol pollution will be high (dark blue color). On the other 
+hand, they show a negative influence on aerosol pollution when these features are high, 
+meaning that if these features have high values (yellow color), aerosol pollution will be 
+lower. This result shows an inverted U-shaped relationship between aerosol pollution 
+and economic growth.
+4.2.2 EKC analysis based on RF model
+The Shapley Values analysis reveals that both LnGPPpc and LnGPPpc 2 have positive 
+effects on aerosol pollution when these feature values are low, but negative effects when 
+they are high. Consequently, the relationship between aerosol pollution and economic 
+growth exhibits an inverted U-shaped pattern; this implies that as the Thai economy 
+continues to grow, aerosol pollution is expected to decrease. This finding aligns with 
+the Environmental Kuznets Curve (EKC) framework, as illustrated in Fig.  6. Figure  6a, 
+b display the EKC patterns derived from the LM model. They clearly indicate that 
+when LnGPPpc is low, aerosol pollution is low, but it increases as LnGPPpc rises. Con -
+versely, when LnGPPpc2 is high, aerosol pollution levels decline. Figure  6c presents the 
+results from the RF model, which clearly demonstrates an inverted U-shaped pattern as 
+LnGPPpc and LnGPPpc 2 increase. The EKC turning point is identified at an LnGPPpc 
+of 11.492, or international $9,335 (adjusted by Thailand PPP at 2024). This turning point 
+value is derived using the LOESS (Locally Estimated Scatterplot Smoothing) method. 
+LOESS is a nonparametric method for smoothing a series of data. A smooth function 
+is a function that attempts to capture general patterns in stressor-response relation -
+ships while reducing the noise and it makes minimal assumptions about the relationship 
+among variables.
+Table 8 presents evidence for the Environmental Kuznets Curve: the base value is 
+positive, and the slope is negative, indicating an inverted U-shaped relationship. How -
+ever, R2 is relatively low (0.1810 and 0.2010). It is well understood that bivariate EKC 
+relationships often have low explanatory power because climatic factors (wind, rain, 
+Fig. 6 Partial Dependence Plots for LM and RF models which summarizes EKC turning point: ( a, b) EKC pattern 
+from LM, ( c) EKC pattern from RF. These results show an inverted U-shaped relationship with aerosol pollution 
+(SHAP value) and economic growth. Both RF and LM results align together. Source: Author’s calculation
+ 
+Page 19 of 29
+Srisaringkarn and Aruga Discover Atmosphere (2026) 4:24 
+temperature) and regional heterogeneity generate substantial variance. We also confirm 
+the inverted U-shaped relationship from the regression analyses, as shown in Table 13 in 
+the Appendix.
+Figure 7a shows a box plot of the distribution of GPPpc relative to aerosol pollution, 
+obtained from the Shapley Values analysis. It is evident that R1 exhibits significant vari -
+ability and is a key feature determining the influence of GPPpc on aerosol pollution. 
+Figure 7b displays the distribution of population density (Popdens); it is clear that R1 
+remains the primary driver of population density’s influence on aerosol pollution. Fig -
+ure 7c illustrates the distribution of NDVI. Here, R3 and R4 are identified as important 
+features driving the negative influence of NDVI. This is supported by the descriptive sta-
+tistics in Table 10 in the Appendix at the last section, which show that R3 and R4 have 
+higher NDVI values than other regions. Figure  7d presents the distribution of Rainfall, 
+Table 8 Evidence of the environmental Kuznets Curve statistical results
+Target variable (LnDust) Base value Slope R2
+Features (Input Variables) LnGPPpc 0.0806 − 0.0064 0.1810
+LnGPPpc2 0.0442 − 0.0003 0.2010
+Source: Author’s calculation
+Fig. 7 Shapley Values of region features by ( a) GPP per capita, ( b) Population density, ( c) Normalized Difference 
+Vegetation Index (NDVI), ( d) Rainfall and ( e) Windspeed (f) LST_Day. These figures show the magnitude of each 
+region’s impact on aerosol pollution forecasting models. Source: Author’s calculation
+ 
+Page 20 of 29
+Srisaringkarn and Aruga Discover Atmosphere (2026) 4:24 
+indicating that R4 is a significant factor contributing to the negative influence of Rainfall, as 
+it experiences higher rainfall than other regions (see Table 10 in the Appendix section). Fig-
+ure 7e shows the distribution of Wind Speed. It can be seen that R1 and R2 are the primary 
+drivers of the negative influence of Wind Speed, as these regions record higher wind speeds 
+than others (see Table 10 in the Appendix section). Finally, Fig. 7f shows the distribution of 
+Land Surface Temperature during the daytime. It can be seen that R1 and R2 are the primary 
+drivers of LST_Day’s positive influence.
+From the summary above, it is clear that we have explained the results of the Shapley Val-
+ues analysis, which identify the sources of influence for each regional feature and show that 
+region-specific factors clearly affect the aerosol pollution forecast.
+4.3 Forecasting long run aerosol pollution (until 2050)
+We forecast aerosol pollution through 2050 using a train and validation dataset from 2000 
+to 2018. We selected 2050 as the endpoint because Thailand aims to achieve net-zero green-
+house gas (GHG) emissions by then. This involves supporting green finance, promoting the 
+use of low-emission vehicles, implementing carbon credit mechanisms, and adopting alter-
+native energy sources (KASIKORN RESEARCH CENTER, [26]). Therefore, we used 2050 as 
+the forecast limit. However, since forecasting accuracy naturally decreases over such a long 
+period, new data analysis should be performed continuously to ensure the forecast remains 
+as accurate as possible.
+The results of the aerosol pollution forecast are shown in Fig. 8, broken down by regions 
+R1–R4. R1 is the region with the highest economic activity, high urbanization, and large 
+industrial areas. R2, R3, and R4 are mostly agricultural areas with some industrial factories, 
+and also focus on the tourism and service sectors. Therefore, economic activity in these 
+regions is lower than in R1. As shown in Fig. 8, the RF model has the highest accuracy in 
+forecasting, performing very close to the LM model and other models (e.g., MARS and SVR). 
+It should be noted that the RF model is not predicting novel “out-of-bounds” low-dust values 
+Fig. 8 Log value of Dust predictions across region features. a Dust prediction of R1 region (BANGKOK AND VICINI-
+TIES, CENTRAL, WESTERN, EASTERN), (b) R2 region (NORTHEASTERN), (c) R3 region (NORTHERN) and ( d) R4 region 
+(SOUTHERN). These figures show the predicted trend in aerosol pollution (Dust) based on economic- aerosol pol-
+lution models from 2024 to 2050. Source: Author’s calculation
+ 
+Page 21 of 29
+Srisaringkarn and Aruga Discover Atmosphere (2026) 4:24 
+for the future; rather, it forecasts that future extrapolated variables will consistently route 
+to the leaf nodes containing the lowest historically observed dust values. Because the other 
+independent models (such as MARS and LM, which can extrapolate linearly) show a simi-
+lar downward trajectory, we have confidence that the RF trend is robust and not merely an 
+artifact of its terminal leaf nodes. However, as shown in Table 7 (with region features), RF 
+outperforms all models, as evidenced by the R2, MAE, MSE, and RMSE values across train, 
+validation, and test periods. Nevertheless, the forecast for aerosol pollution in R4 appears to 
+be the most volatile. This is because the number of observations for the R4 region is less than 
+for other regions, which may lead to greater forecast volatility. This is because RF is suitable 
+for a moderate sample size, skewed, and noisy data. While other algorithms are quite sensi-
+tive to sample size and noisy data, leading to overestimation [9, 38].
+From Table 9, it can be seen that the annual growth rate of aerosol pollution by region 
+from 2000 to 2050 has a diminished downward trend in most regions. Starting with R2, it 
+decreases by − 0.0569% to − 0.0990%, with an approximate average of − 0.0826% per year, 
+making it the region where aerosol pollution is trending down the most. This is followed by 
+R3, which decreases by an average of − 0.0749% per year, and by R1, which decreases by an 
+average of − 0.0679% per year. In contrast, the R4 region shows an upward trend, averaging 
+0.0409% per year. It is evident that the RF model produces an average annual growth rate 
+close to the overall average across all algorithms, demonstrating its high efficiency relative 
+to other algorithms. In summary, while R4 shows a slight increase, regions R1–R3 show a 
+diminished downward trend in aerosol pollution continuing until 2050.
+5 Conclusions and policy implications
+This study investigated the relationship between aerosol pollution on economic and environ-
+mental features using the Environmental Kuznets Curve (EKC) framework. It also forecasted 
+aerosol pollution through 2050 to identify future trends, applying four machine learning 
+approaches and comparing their predictive accuracy and performance.
+The study found that the RF model provided the most accurate estimation throughout 
+the train, validation, and test periods compared to other machine learning algorithms. As 
+detailed in Table 11 of the Appendix, the Random Forest (RF) grid search was configured 
+with a minimum terminal node (leaf) size of 1, a sample fraction of 0.8, and bootstrap sam-
+pling disabled (False). Consequently, the algorithm learned from the data until each leaf con-
+tained only a single observation, permitting the trees to grow to their maximum depth. The 
+0.8 sample fraction split the training dataset into 80% for each individual tree, reserving the 
+remaining 20% for error evaluation. Furthermore, disabling bootstrap sampling ensured that 
+the algorithm did not draw duplicate data points during tree construction. Finally, the num-
+ber of predictors evaluated at each split was restricted to 2, meaning the algorithm consid-
+ered only two randomly chosen features to determine the optimal branching path. Because 
+of these characteristics, RF can seamlessly accommodate mixed discrete and continuous 
+Table 9 Average annual growth rate of aerosol pollution by region features from 2000 to 2050
+Regions LM MARS RF SVR Average
+R1 − 0.0639 − 0.0990 − 0.0616 − 0.0469 − 0.0679
+R2 − 0.0630 − 0.0990 − 0.0569 − 0.1113 − 0.0826
+R3 − 0.0622 − 0.0966 − 0.0636 − 0.0770 − 0.0749
+R4 − 0.0670 0.1277 0.0279 0.0748 0.0409
+Source: Author’s calculation
+Page 22 of 29
+Srisaringkarn and Aruga Discover Atmosphere (2026) 4:24 
+inputs, perform automatic variable selection, and remain highly robust to outliers [10, 27, 28, 
+64]. In contrast, the other evaluated models exhibited specific limitations. Linear Regression 
+inherently fails to capture non-linear interactions. Support Vector Regression (SVR) proved 
+highly sensitive to scaling because its regularization parameter (C = 4) determines the pen-
+alty for data points falling outside the epsilon tube. While SVR ignores small errors within 
+this threshold, it remains susceptible to outliers depending on the specific C value. Addi-
+tionally, the SVR model used an RBF kernel with a sigma (𝜎𝜎 ) of 0.109, increasing the risk 
+of overfitting to this dataset. Lastly, the Multivariate Adaptive Regression Splines (MARS) 
+model was restricted by a maximum interaction degree of 2. Because it was strictly limited to 
+two-way interactions, the MARS model could not effectively capture the complex, multivari-
+able dynamic driving forces behind aerosol pollution levels [9, 38]. Thus, RF is the best model 
+in terms of both accuracy and forecasting performance in this context. Additional studies 
+should be conducted to affirm our findings. Furthermore, environmental features such as 
+region-specific conditions (R), NDVI, rainfall, and wind speed strongly influence changes in 
+aerosol pollution. Meanwhile, economic feature such as population density positively influ-
+ences aerosol pollution.
+This study identifies an inverted U-shaped relationship consistent with the Environmental 
+Kuznets Curve (EKC) align with [1]. By employing the Random Forest (RF) machine learn-
+ing algorithm to detect these patterns, this study offers a supportive conclusion aligned with 
+econometric models (e.g., Linear Regression (LM). This means that as Thailand’s economy 
+grows, aerosol pollution levels will gradually decrease. According to Fig. 6c, the EKC turning 
+point is at 11.492 or international $9335 (adjusted by Thailand PPP at 2024) (also confirm 
+by regression analyses in Table 13 in the Appendix). Certainly, economic factors are clearly 
+causes of aerosol pollution [60], including urbanization, population density, and economic 
+growth [71]. However, because aerosol pollution is highly sensitive to environmental con-
+ditions such as wind speed, rainfall, and topography, which can reduce aerosol or blow it 
+elsewhere, some areas in Thailand experience more severe aerosol pollution than others. 
+As illustrated in Fig. 5, region-specific features have the most impact on aerosol pollution 
+levels. This implies that aerosol pollution is a transboundary problem that requires urgent 
+regional collaboration. The central government should collaborate with local governments in 
+each region to address aerosol pollution through measures such as preventing the improper 
+burning of agricultural materials and controlling wildfires during the dry season. Although 
+aerosol pollution is declining, the average annual rate of decline is marginal (less than 1%). 
+Consequently, it can be concluded that aerosol pollution will remain a persistent issue for 
+Thailand without appropriate mitigation strategies, with the potential to intensify in the 
+future.
+5.1 Policy implications
+Recognizing RF as a robust methodological instrument for assessing the influence of aerosol 
+pollution on economic growth within the EKC framework and for constructing forecasting 
+models is advisable. The government may draw on the empirical insights generated by this 
+study to develop economic–aerosol pollution forecasting systems or to employ the model’s 
+feature contribution metrics to evaluate prospective causal impacts on economic perfor-
+mance. In this analytical context, the RF model demonstrates superior efficiency and meth-
+odological suitability.
+Page 23 of 29
+Srisaringkarn and Aruga Discover Atmosphere (2026) 4:24 
+Furthermore, the analyses showed that aerosol pollution exhibits a slightly downward 
+trend. However, the government should plan long-term prevention measures to minimize 
+the severity of future aerosol pollution and ensure sustainability. Examples include control-
+ling industrial areas that cause environmental problems to minimize their impact on the 
+public, such as zoning industrial areas according to wind direction and topography so that 
+aerosol pollution is carried away from the public. This is because regional characteristics 
+(R) and environmental condition features—specifically NDVI, wind speed, precipitation, 
+and Land Surface Temperature at Daytime—have the greatest impact on aerosol pollution. 
+Therefore, the government must keep these factors in mind when establishing industrial 
+zones. To protect surrounding communities, these zones should be established in spa -
+cious areas with adequate air circulation and sound environmental conditions. Additional 
+approaches to address these region-specific factors include preventing the inappropriate 
+burning of agricultural waste and improving wildfire management, as these activities con-
+tribute significantly to transboundary pollution in neighboring regions. The study’s findings 
+indicate that population density and GPP per capita remain primary drivers of aerosol pollu-
+tion in high-activity regions. Consequently, although not directly analyzed in our models, we 
+propose introducing green finance instruments as a strategic mechanism to decouple eco-
+nomic activity from environmental degradation [5]. Such instruments could provide the nec-
+essary capital for manufacturing industries and business firms to adopt cleaner technologies, 
+thereby addressing the persistent pollution issues identified in the long-run forecast through 
+2050. Moreover, support should be given to the enactment of a Climate Change Act and a 
+Clean Air Act in Thailand. This serves as an integrated solution to air pollution—including 
+transboundary pollution—and promotes stricter environmental legislation in the country.
+5.2 Limitations of the study
+This study has four limitations. Firstly, it did not include other important factors such as 
+industrial density, environmental pollution control laws in Thailand, technological advance-
+ment, transboundary transport, wildfire management, agricultural burning, etc. This may 
+limit the scope of policy recommendations and reduce the accuracy of aerosol pollution 
+forecasting. As indicated in previous studies [8], these variables directly affect variations in 
+aerosol pollution across regions. However, since this study utilizes provincial-level data in 
+Thailand, the aforementioned variables could not be incorporated into the analysis. Sec -
+ondly, this study used provincial-level data of Thailand, which may lead to inaccuracies in 
+future aerosol pollution forecasts. Therefore, using more granular data, such as at the sub-
+district level, would make the forecast more accurate. Thirdly, if the scope of the study could 
+be expanded, for example, by comparing with neighboring countries, it would lead to better 
+policy recommendations and would also increase the number of observations used to train 
+the machine learning algorithm. Fourthly, this study uses annual-average aerosol pollution 
+data, which are influenced by topography and environmental conditions (such as wind speed, 
+rainfall, etc.) throughout the year. Therefore, if we use seasonal data of aerosol pollution, we 
+will see the apparent pattern of aerosol pollution in Thailand because we can control the 
+environmental conditions that are not consistent for the whole year, but focus only on 
+the timing of the severe aerosol pollution period [4, 29]. Moreover, while machine learn-
+ing approaches cannot report statistically significant results for each feature used in the 
+model, this limitation underscores the importance of using machine learning alongside 
+Page 24 of 29
+Srisaringkarn and Aruga Discover Atmosphere (2026) 4:24 
+an econometric model (as shown in Table 13 in the Appendix) or another machine 
+learning approach, such as Causal Forests.
+5.3 Future studies
+For the next study, researchers should focus specifically on the district or sub-district 
+level, given differences in topography and environmental factors. This will make the 
+study results more accurate. Furthermore, the use of spatial econometrics remains 
+important, as it enables the quantification of the spatial effects of aerosol pollution. 
+Based on our analysis, we recommend incorporating our findings into advanced machine 
+learning (e.g., Causal Forests) and econometric models of the Thai economy and aerosol 
+pollution, as they are significant drivers of aerosol pollution levels in Thailand.
+Appendix
+See Tables 10, 11, 12 and 13.
+Table 10 Descriptive statistics by region-specific
+Variables Statistics R1 R2 R3 R4
+LnDust Mean 5.896 5.952 6.026 5.443
+Std 0.181 0.111 0.163 0.146
+Max 6.313 6.270 6.470 5.822
+Min 5.335 5.638 5.541 4.889
+LnGPPpc Mean 12.036 10.805 11.161 11.523
+Std 0.766 0.513 0.484 0.510
+Max 13.874 11.834 12.374 12.954
+Min 10.366 9.636 10.152 10.250
+LnGPPpc2 Mean 145.445 117.015 124.801 133.035
+Std 18.584 11.013 10.772 11.817
+Max 192.497 140.044 153.121 167.815
+Min 107.445 92.851 103.063 105.055
+LnPopdens Mean 5.482 4.779 4.181 4.878
+Std 1.148 0.308 0.496 0.665
+Max 8.664 5.703 4.930 7.012
+Min 3.654 3.922 2.769 3.935
+LnNDVI Mean 8.626 8.568 8.716 8.840
+Std 0.133 0.086 0.080 0.078
+Max 8.860 8.845 8.869 8.985
+Min 8.137 8.360 8.470 8.585
+LnRainfall Mean 1.426 1.461 1.342 2.002
+Std 0.262 0.212 0.174 0.209
+Max 2.351 2.236 1.753 2.481
+Min 0.682 0.935 0.823 1.481
+LnWindspeed Mean 0.782 0.890 0.459 0.758
+Std 0.204 0.222 0.187 0.285
+Max 1.272 1.418 0.947 1.603
+Min 0.355 0.231 − 0.003 0.190
+LnLST_Day Mean 9.630 9.632 9.625 9.623
+Std 0.004 0.004 0.007 0.003
+Max 9.644 9.642 9.644 9.632
+Min 9.619 9.617 9.610 9.616
+Obs 624 456 408 336
+Total Obs 1824
+Source: Author’s calculation
+Page 25 of 29
+Srisaringkarn and Aruga Discover Atmosphere (2026) 4:24 
+Models 2 and 3 of the LM demonstrate a statistically significant, inverted U-shaped 
+relationship between LnDust pollution and economic growth (represented by LnGPPpc 
+and LnGPPpc 2). The FE specifications (Models 4 and 5) also indicate an inverted 
+U-shaped relationship, although this is only statistically significant in Model 5. Similarly, 
+the RE specifications (Models 6, 7, and 8) display an inverted U-shaped relationship, with 
+Models 7 and 8 yielding statistically significant results. The Hausman test rejects the null 
+hypothesis (H0), indicating that the FE model is the more appropriate specification
+Table 11 Optimal hyperparameter (Grid Search)
+Parameters Optimal hyperparameter
+Model with region features Model 
+without 
+region 
+features
+MARS
+Maximum degree of interaction(degree) 2 3
+Maximum number of terms(nprune) 23 23
+Algorithm Caret Caret
+RF
+Number of predictors (features) 2 1
+Minimum number of observations in a terminal node (leaf ) 1 1
+Bootstrap sampling FALSE FALSE
+Sample Fraction 0.8 0.8
+SVR
+C (regularization parameter) 4 8
+Sigma 0.109137 0.2202771
+Kernel RBF RBF
+Source: Author’s calculation
+Table 12 Evaluation metrics
+Metrics Equation Description
+MAE 𝑀𝑀𝑆𝑆𝑀𝑀 𝑚 1
+𝑛𝑛 ∑
+1
+𝑖𝑖𝑖1
+||𝑦𝑦𝑖𝑖 𝑛 ˆ𝑦𝑦𝑖𝑖|| MAE offers an intuitive measure of average predic-
+tion error magnitude, presenting a clear and direct 
+interpretation of model accuracy.
+MSE 𝑀𝑀𝑆𝑆𝑀𝑀 𝑚 1
+𝑛𝑛 ∑
+1
+𝑖𝑖𝑖1
+(𝑦𝑦𝑖𝑖 𝑛 ˆ𝑦𝑦𝑖𝑖)
+2 MSE extends this by squaring the errors before averag-
+ing, placing greater emphasis on larger errors, making 
+it sensitive to outliers.
+RMSE
+𝑅𝑅𝑀𝑀𝑆𝑆𝑀𝑀 𝑚 √ 1
+𝑛𝑛 ∑
+1
+𝑖𝑖𝑖1
+(𝑦𝑦𝑖𝑖 𝑛 ˆ𝑦𝑦𝑖𝑖)
+2 RMSE, the square root of MSE, scales the errors back to 
+their original units, complementing MAE by offering a 
+view of error distribution.
+R2
+𝑅𝑅2 𝑚1𝑛
+∑
+𝑛𝑛
+𝑖𝑖𝑖1(𝑦𝑦𝑖𝑖 𝑛 ˆ𝑦𝑦𝑖𝑖)
+2
+∑
+𝑛𝑛
+𝑖𝑖𝑖1(𝑦𝑦𝑖𝑖𝑛
+−
+𝑦𝑦)
+2
+R2 measures the variance in Aerosol pollution that 
+is predictable from independent variables like GDP , 
+population density and region features
+Source: Authors
+Page 26 of 29
+Srisaringkarn and Aruga Discover Atmosphere (2026) 4:24 
+Table 13 Regression analyses and robustness checks
+Variables/Models LM FE RE
+Dependent Variable: LnDust 1 2 3 4 5 6 7 8
+LnGPPpc − 0.345 ** 0.897 *** 1.079 *** 0.212 * 0.327 ** 0.232 ** 0.398 *** 0.476 ***
+(− 2.11) (8.29) (11.22) (1.77) (2.53) (1.97) (3.35) (4.17)
+LnGPPpc2 0.013 * − 0.038 *** − 0.046 *** − 0.007 − 0.011 * − 0.008 − 0.014 *** − 0.018 ***
+(1.91) (− 8.13) (− 11.13) (− 1.32) (− 1.85) (− 1.53) (− 2.63) (− 3.49)
+LnPopdens − 0.046 *** 0.021 *** 0.011 − 0.039 *** 0.005
+(− 7.76) (3.36) (0.50) (− 2.93) (0.42)
+LnNDVI − 1.150 *** − 0.522 *** − 0.574 *** − 0.782 *** − 0.521 ***
+(− 24.03) (− 10.18) (− 6.40) (− 10.39) (− 6.66)
+LnRainfall − 0.345 *** − 0.159 *** − 0.157 *** − 0.202 *** − 0.157 ***
+(− 24.23) (− 10.16) (− 8.27) (− 11.34) (− 8.64)
+LnWindspeed − 0.257 *** − 0.123 *** − 0.166 *** − 0.175 *** − 0.160 ***
+(− 15.35) (− 7.27) (− 8.86) (− 9.58) (− 8.81)
+LnLST_Day − 1.831 * − 0.110 3.509 *** 2.445 ** 3.318 ***
+(− 1.95) (− 0.13) (3.00) (2.17) (3.03)
+R1-R4 No No Yes No Yes No No Yes
+Cons 8.040 *** 29.103 *** 5.498 4.353 *** − 24.997 ** 4.260 *** − 13.019 − 24.603 **
+(8.47) (3.18) (0.67) (6.49) (− 2.16) (6.43) (− 1.17) (− 2.27)
+Obs 1,824 1,824 1,824 1,824 1,824 1,824 1,824 1,824
+R-squared 0.012 0.634 0.718 0.011 0.399 0.012 0.550 0.694
+Adj R-squared 0.011 0.633 0.716
+F-test 11.23 449.14 460.6 34.72 43.66
+Chi-squared 63.26 470.95 704.41
+Hausman Test Reject H0
+Significant level: * 0.10, ** 0.05, *** 0.01
+(1) LM: 𝐿𝐿𝑛𝑛𝐷𝐷𝐿𝐿𝐿𝐿𝐿𝐿 𝑖𝑖𝑖𝑖 𝑚 𝐿𝐿𝑛𝑛𝐿𝐿𝑆𝑆𝑆𝑆𝐿𝐿𝑐𝑐 𝑖𝑖𝑖𝑖 𝑛 𝐿𝐿𝑛𝑛𝐿𝐿𝑆𝑆𝑆𝑆𝐿𝐿𝑐𝑐 2
+𝑖𝑖𝑖𝑖 𝑛 𝐿𝐿𝑛𝑛𝑆𝑆𝐿𝐿𝐿𝐿𝑑𝑑𝐿𝐿𝑛𝑛𝐿𝐿 𝑖𝑖𝑖𝑖 𝑛 𝐿𝐿𝑛𝑛𝑁𝑁𝐷𝐷𝐿𝐿𝐿𝐿 𝑖𝑖𝑖𝑖 𝑛 𝐿𝐿𝑛𝑛𝑅𝑅𝐿𝐿𝑖𝑖𝑛𝑛𝐿𝐿𝐿𝐿𝑗𝑗𝑗𝑗 𝑖𝑖𝑖𝑖 𝑛 𝐿𝐿𝑛𝑛𝐿𝐿𝑖𝑖𝑛𝑛𝑑𝑑𝐿𝐿𝐿𝐿𝐿𝐿𝐿𝐿𝑑𝑑 𝑖𝑖𝑖𝑖 𝑛 𝐿𝐿𝑛𝑛𝐿𝐿𝑆𝑆𝑇𝑇 _𝐷𝐷𝐿𝐿𝑦𝑦 𝑖𝑖𝑖𝑖 𝑛𝑅𝑅 1−4 𝑛 𝜖𝜖 𝑖𝑖𝑖𝑖
+(2) FE: 𝐿𝐿𝑛𝑛𝐷𝐷𝐿𝐿𝐿𝐿𝐿𝐿 𝑖𝑖𝑖𝑖 𝑚 𝐿𝐿𝑛𝑛𝐿𝐿𝑆𝑆𝑆𝑆𝐿𝐿𝑐𝑐 𝑖𝑖𝑖𝑖 𝑛 𝐿𝐿𝑛𝑛𝐿𝐿𝑆𝑆𝑆𝑆𝐿𝐿𝑐𝑐 2
+𝑖𝑖𝑖𝑖 𝑛 𝐿𝐿𝑛𝑛𝑆𝑆𝐿𝐿𝐿𝐿𝑑𝑑𝐿𝐿𝑛𝑛𝐿𝐿 𝑖𝑖𝑖𝑖 𝑛 𝐿𝐿𝑛𝑛𝑁𝑁𝐷𝐷𝐿𝐿𝐿𝐿 𝑖𝑖𝑖𝑖 𝑛 𝐿𝐿𝑛𝑛𝑅𝑅𝐿𝐿𝑖𝑖𝑛𝑛𝐿𝐿𝐿𝐿𝑗𝑗𝑗𝑗 𝑖𝑖𝑖𝑖 𝑛 𝐿𝐿𝑛𝑛𝐿𝐿𝑖𝑖𝑛𝑛𝑑𝑑𝐿𝐿𝐿𝐿𝐿𝐿𝐿𝐿𝑑𝑑 𝑖𝑖𝑖𝑖 𝑛 𝐿𝐿𝑛𝑛𝐿𝐿𝑆𝑆𝑇𝑇 _𝐷𝐷𝐿𝐿𝑦𝑦 𝑖𝑖𝑖𝑖 𝑛𝑅𝑅 1−4 𝑛 𝛼𝛼 𝑖𝑖 𝑛 𝜖𝜖 𝑖𝑖𝑖𝑖 (3) 
+RE: 𝐿𝐿𝑛𝑛𝐷𝐷𝐿𝐿𝐿𝐿𝐿𝐿 𝑖𝑖𝑖𝑖 𝑚 𝐿𝐿𝑛𝑛𝐿𝐿𝑆𝑆𝑆𝑆𝐿𝐿𝑐𝑐 𝑖𝑖𝑖𝑖 𝑛 𝐿𝐿𝑛𝑛𝐿𝐿𝑆𝑆𝑆𝑆𝐿𝐿𝑐𝑐 2
+𝑖𝑖𝑖𝑖 𝑛 𝐿𝐿𝑛𝑛𝑆𝑆𝐿𝐿𝐿𝐿𝑑𝑑𝐿𝐿𝑛𝑛𝐿𝐿 𝑖𝑖𝑖𝑖 𝑛 𝐿𝐿𝑛𝑛𝑁𝑁𝐷𝐷𝐿𝐿𝐿𝐿 𝑖𝑖𝑖𝑖 𝑛 𝐿𝐿𝑛𝑛𝑅𝑅𝐿𝐿𝑖𝑖𝑛𝑛𝐿𝐿𝐿𝐿𝑗𝑗𝑗𝑗 𝑖𝑖𝑖𝑖 𝑛 𝐿𝐿𝑛𝑛𝐿𝐿𝑖𝑖𝑛𝑛𝑑𝑑𝐿𝐿𝐿𝐿𝐿𝐿𝐿𝐿𝑑𝑑 𝑖𝑖𝑖𝑖 𝑛 𝐿𝐿𝑛𝑛𝐿𝐿𝑆𝑆𝑇𝑇 _𝐷𝐷𝐿𝐿𝑦𝑦 𝑖𝑖𝑖𝑖 𝑛𝑅𝑅 1−4 𝑛 𝜇𝜇 𝑖𝑖 𝑛 𝜖𝜖 𝑖𝑖𝑖𝑖 . LM = linear regression model; FE = fixed effects model; RE = random effects model. For the LM 
+(Models 1–3) and RE (Models 6–8) specifications, the models represent the baseline model, the model with control variables but no region-specific effects, and the model with both control variables and region-specific 
+effects, respectively. For the FE specification, Models 4 and 5 represent the baseline model and the model with control variables and region-specific effects, respectively. Source: Author’s calculations
+Page 27 of 29
+Srisaringkarn and Aruga Discover Atmosphere (2026) 4:24 
+Acknowledgements
+We appreciate The Government of Thailand for providing the data used.
+Author contributions
+Thanakhom Srisaringkarn: Writing—original draft, Visualization, Validation, Data curation, Methodology, 
+Conceptualization. Kentaka Aruga: Validation, Supervision, Writing—review and editing, Methodology, Funding 
+Acquisition, Conceptualization.
+Funding
+This research received no external funding.
+Data availability
+The datasets used and analyzed during the current study are available from the corresponding author upon reasonable 
+request.
+Declarations
+Ethics approval and consent to participate
+Not applicable.
+Competing interests
+The authors declare no competing interests.
+Received: 2 June 2026 / Accepted: 4 September 2026
+References
+1. Abbasi KR, Kirikkaleli D, Altuntaş M. Carbon dioxide intensity of GDP and environmental degradation in an emerging 
+country. Environ Sci Pollut Res. 2022;29(56):84451–9. https://doi.org/10.1007/s11356-022-21679-9.
+2. Ali MI, Rahaman MA, Ali MJ, Rahman MF. The growth–environment nexus amid geopolitical risks: cointegration and 
+machine learning algorithm approaches. Discover Sustain. 2025;6(1):78. https://doi.org/10.1007/s43621-025-00872-z.
+3. Alonso-Montesinos J, Martínez FR, Polo J, Martín-Chivelet N, Batlles FJ. Economic effect of dust particles on photovoltaic 
+plant production. Energies. 2020;13(23):6376. https://doi.org/10.3390/en13236376.
+4. Amnuaylojaroen T. Prediction of PM2. 5 in an urban area of northern Thailand using multivariate linear regression model. 
+Adv Meteorol. 2022;2022(1):3190484.
+5. Aruga K. Are retail investors willing to buy green bonds? A case for Japan. J Sustainable Finance Invest. 
+2025;15(2):388–402.
+6. Attavanich W. Costs to Thai society from air pollution and countermeasures (aBRIDGE No. 7/2019). 2019. h t t p s : / / w w w . p i e r . 
+o r . t h / a b r i d g e d / 2 0 1 9 / 0 7 / . 
+7. Biau G, Scornet E. A random forest guided tour. Test. 2016;25(2):197–227. https://doi.org/10.1007/s11749-016-0481-7.
+8. Birjandi-Feriz M, Yousefi K. When the dust settles: productivity and economic losses following dust storms. 2017. Available 
+SSRN 3230265.
+9. Bishop CM. Pattern recognition and machine learning (information science and statistics). Springer New York; 2007.
+10. Boateng SA, Xi J, Fumey MP , Kumi JK. Exploring the Nonlinear Relationship of Environmental Sustainability Factors and 
+Economic Growth in West Africa: novel Machine Learning Evidence. Sustain Dev. 2025. https://doi.org/10.1002/sd.70216.
+11. Boehmke B, Greenwell BM. Hands-on machine learning with R. Chapman Hall/CRC. 2019. h t t p s : / / d o i . o r g / 1 0 . 1 2 0 1 / 9 7 8 0 3 6 
+7 8 1 6 3 7 7 . 
+12. Breiman L. Random forests. Mach Learn. 2001;45(1):5–32. https://doi.org/10.1023/A:1010933404324.
+13. Danish, Ulucak R, Erdogan S. The effect of nuclear energy on the environment in the context of globalization: consump-
+tion vs production-based CO2 emissions. Nuclear Eng Technol. 2022;54(4):1312–20. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . n e t . 2 0 2 1 . 1 0 . 0 
+3 0 . 
+14. Dat ND, Nguyen LSP , Vo T-D-H, Van Nguyen T, Do TTL, Tran ATK, Hoang NT-T. Pollution characteristics, associated risks, and 
+possible sources of heavy metals in road dust collected from different areas of a metropolis in Vietnam. Environ Geochem 
+Health. 2023;45(11):7889–907. https://doi.org/10.1007/s10653-023-01696-4.
+15. Department of Climate Change and Environment. The PM 2.5 Crisis: a Critical Challenge in the Age of Climate Change. 
+Department of Climate Change and Environment; 2025. https://www.dcce.go.th/6009/.
+16. Fernández Fernández Y, Fernández López MA, Olmedillas Blanco B. Innovation for sustainability: the impact of R&D spend-
+ing on CO2 emissions. J Clean Prod. 2018;172:3459–67. https://doi .org/10.101 6/j.jclepro .2017.11 .001.
+17. Foreman T. The Effects of Dust Storms on Economic Development. The Effects of Dust Storms on Economic Development. 
+2020.
+18. Friedman JH. Multivariate adaptive regression splines. annals Stat. 1991;19(1):1–67. h t t p s : / / d o i . o r g / 1 0 . 1 2 1 4 / a o s / 1 1 7 6 3 4 7 9 
+6 3 . 
+19. Friedman JH. Greedy function approximation: a gradient boosting machine. Ann Stat. 2001;1189–232.
+20. Grossman GM, Krueger AB. Economic Growth and the Environment. Q J Econ. 1995;110(2):353–77. h t t p s : / / d o i . o r g / 1 0 . 2 3 0 7 
+/ 2 1 1 8 4 4 3 . 
+21. Guliyev H. Using Machine Learning Techniques to Test the Load Capacity Curve Hypothesis: a Classifier-Lasso Application 
+on Global Panel Data. Biophys Econ Sustain. 2025;10(1):1. https://doi.org/10.1007/s41247-025-00123-9.
+22. Han TTT, Lin C-Y. Exploring long-run CO2 emission patterns and the environmental Kuznets Curve with machine learning 
+methods. Innov Green Dev. 2025;4(1):100195. https://doi.org/10.1016/j.igd.2024.100195.
+Page 28 of 29
+Srisaringkarn and Aruga Discover Atmosphere (2026) 4:24 
+23. Hassan ST, Danish, Gong B. China’s blueprint for a sustainable energy future: analyzing the factors behind the climate 
+change and globalized knowledge-based technological policies. Energy. 2025;316:134550. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . e n e r g 
+y . 2 0 2 5 . 1 3 4 5 5 0 . 
+24. Hassan ST, Khan D, Zhu B, Batool B. Is public service transportation increase environmental contamination in China? The 
+role of nuclear energy consumption and technological change. Energy. 2022;238:121890. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . e n e r g y . 
+2 0 2 1 . 1 2 1 8 9 0 . 
+25. Jabeur SB, Ballouk H, Arfi WB, Khalfaoui R. Machine learning-based modeling of the environmental degradation, institu-
+tional quality, and economic growth. Environ Model Assess. 2022;27(6):953–66. h t t p s : / / d o i . o r g / 1 0 . 1 0 0 7 / s 1 0 6 6 6 - 0 2 1 - 0 9 8 0 
+7 - 0 . 
+26. Kasikorn Research Center. Thailand officially announced its commitment to achieving net-zero greenhouse gas emissions 
+by 2050 at the COP30 conference. KASIKORN RESEARCH CENTER. 2025. h t t p s : / / w w w . k a s i k o r n r e s e a r c h . c o m / t h / a n a l y s i s / k - s 
+o c i a l - m e d i a / P a g e s / N e t - Z e r o - C O P 3 0 - C I S 3 6 2 3 - F B - 2 0 2 5 - 1 1 - 1 9 . a s p x . 
+27. Kawichai S, Sripan P , Rerkasem A, Rerkasem K, Srisukkham W. Long-Term Retrospective Predicted Concentration of PM2.5 
+in Upper Northern Thailand Using Machine Learning Models. Toxics. 2025;13(3):170.
+28. Khempunjakul T, Phosri A, Sangkharat K, Thongphunchung K, Kanchanasuta S, Patthanaissaranukool W. Mortality and 
+economic burden of PM2.5 and NO2 in Thailand using satellite remote sensing and Random Forest algorithms. Environ 
+Challenges. 2025;21:101366. https://doi.org/10.1016/j.envc.2025.101366.
+29. Kliengchuay W, Srimanus R, Srimanus W, Niampradit S, Preecha N, Mingkhwan R, Worakhunpiset S, Limpanont Y, Moonsri 
+K, Tantrakarnapa K. Particulate matter (PM10) prediction based on multiple linear regression: a case study in Chiang Rai 
+Province, Thailand. BMC Public Health. 2021;21(1):2149.
+30. Krishnendu J, Patra B. Environmental impacts of economic growth: a STIRPAT analysis using machine learning algorithms. 
+Sustainable Futures. 2025;9:100404. https://doi.org/10.1016/j.sftr.2024.100404.
+31. Kuznets S. International differences in capital formation and financing. Capital formation and economic growth. Princeton 
+University Press; 1955. pp. 19–111.
+32. Leong S, Muttamara S, Laortanakul P . Air pollution and traffic measurements in Bangkok streets. Asian J Energy Environ. 
+2002;3(3–4):185–213.
+33. Lyapustin A, Wang Y, Korkin S, Huang D. MODIS Collection 6 MAIAC algorithm. Atmos Meas Tech. 2018;11(10):5741–65. 
+https://doi.org/10.5194/amt-11-5741-2018.
+34. Maneejuk N, Ratchakom S, Maneejuk P , Yamaka W. Does the environmental Kuznets curve exist? An international study. 
+Sustainability. 2020;12(21):9117. https://doi.org/10.3390/su12219117.
+35. Martins VS, Lyapustin A, de Carvalho LAS, Barbosa CCF, Novo EMLM. Validation of high-resolution MAIAC aerosol product 
+over South America. J Geophys Research: Atmos. 2017;122(14):7537–59. https://doi.org/10.1002/2016JD026301.
+36. Mazzucato M, Semieniuk G. Financing renewable energy: who is financing what and why it matters. Technol Forecast Soc 
+Chang. 2018;127:8–22. https://doi .org/10.101 6/j.techfor e.2017.0 5.021.
+37. Montgomery DC, Peck EA, Vining GG. Introduction to linear regression analysis. Wiley; 2021.
+38. Murphy KP . Machine learning: a probabilistic perspective. MIT Press; 2012.
+39. Nguyen A-T, Lu S-H, Nguyen PTT. Validating and forecasting carbon emissions in the framework of the environmental 
+Kuznets curve: the case of Vietnam. Energies. 2021;14(11):3144. https://doi.org/10.3390/en14113144.
+40. OECD. The economic consequences of outdoor air pollution. 2016. h t t p s : / / w w w . o e c d . o r g / e n v i r o n m e n t / i n d i c a t o r s - m o d e l l 
+i n g - o u t l o o k s / P o l i c y - H i g h l i g h t s - E c o n o m i c - c o n s e q u e n c e s - o f - o u t d o o r - a i r - p o l l u t i o n - w e b . p d f . 
+41. Padhan H, Ghosh S, Hammoudeh S. Renewable energy, forest cover, export diversification, and ecological footprint: a 
+machine learning application in moderating eco-innovations on agriculture in the BRICS-T economies. Environ Sci Pollut 
+Res. 2023;30(35):83771–91. https://doi.org/10.1007/s11356-023-27973-4.
+42. Panayotou T. Demystifying the environmental Kuznets curve: turning a black box into a policy tool. Environ Dev Econ. 
+1997;2(4):465–84. https://doi.org/10.1017/S1355770X97000259.
+43. Pandey A, Brauer M, Cropper ML, Balakrishnan K, Mathur P , Dey S, Turkgulu B, Kumar GA, Khare M, Beig G, Gupta T, 
+Krishnankutty RP , Causey K, Cohen AJ, Bhargava S, Aggarwal AN, Agrawal A, Awasthi S, Bennitt F, Dandona L. Health and 
+economic impact of air pollution in the states of India: the Global Burden of Disease Study 2019. Lancet Planet Health. 
+2021;5(1):e25–38. https://doi.org/10.1016/S2542-5196(20)30298-9.
+44. Phadkantha R, Yamaka W. The nonlinear impact of electricity consumption on economic growth: evidence from Thailand. 
+Energy Rep. 2022;8:1315–21. https://doi.org/10.1016/j.egyr.2022.03.02.
+45. Phosri A, Ueda K, Phung VLH, Tawatsupa B, Honda A, Takano H. Effects of ambient air pollution on daily hospital admis-
+sions for respiratory and cardiovascular diseases in Bangkok, Thailand. Sci Total Environ. 2019;651:1144–53.
+46. Phrakhruopatnontakitti P , Watthanabut B, Jermsittiparsert K. Energy consumption, economic growth and environmental 
+degradation in 4 Asian Countries: Malaysia, Myanmar, Vietnam and Thailand. Int J Energy Econ Policy. 2020;10(2):529–39. 
+https://doi.org/10.32479/ijeep.9229.
+47. Prutipinyo C. Laws on air pollution control. J Health Policy Law Adm. 2017;3(3):401–24.
+48. Puttanapong N, Luenam A, Jongwattanakul P . Spatial analysis of inequality in Thailand: applications of satellite data and 
+spatial statistics/econometrics. Sustainability. 2022;14(7):3946.
+49. Sarkar S, Chauhan A, Kumar R, Singh RP . Impact of deadly dust storms (May 2018) on air quality, meteorological, and atmo-
+spheric parameters over the northern parts of India. GeoHealth. 2019;3(3):67–80. https://doi.org/10.1029/2018GH000170.
+50. Shahzad Q, Aruga K. Spatial effect of economic performance on the ecological footprint: evidence from Asian countries. 
+Environ Dev Sustain. 2024. https://doi.org/10.1007/s10668-024-05134-y.
+51. Srisaringkarn T, Aruga K. Economic Growth and Energy Consumption in Thailand: evidence from the Energy Kuznets 
+Curve Using Provincial-Level Data. Energies. 2025a;18(15):3980. https://doi.org/10.3390/en18153980.
+52. Srisaringkarn T, Aruga K. The Spatial Impact of PM2. 5 Pollution on Economic Growth from 2012 to 2022: evidence from 
+Satellite and Provincial-Level Data in Thailand. Urban Sci. 2025;9(4):110. https://doi.org/10.3390/urbansci9040110.
+53. Stern DI. The rise and fall of the environmental Kuznets curve. World Dev. 2004;32(8):1419–39. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . w o 
+r l d d e v . 2 0 0 4 . 0 3 . 0 0 4 . 
+54. Stern DI. The environmental Kuznets curve after 25 years. J Bioecon. 2017;19:7–28. h t t p s : / / d o i . o r g / 1 0 . 1 0 0 7 / s 1 0 8 1 8 - 0 1 7 - 9 2 
+4 3 - 1 . 
+Page 29 of 29
+Srisaringkarn and Aruga Discover Atmosphere (2026) 4:24 
+55. The Government Public Relations Department. The economic and social impacts of PM 2.5. The Government Public Rela-
+tions Department; 2025. https://www .prd.go.th/ th/content/ category /detail/id/31/iid/382990.
+56. The Government Public Relations Department. What are the main causes of PM 2.5 in Thailand? The Government Public 
+Relations Department; 2025. https://www .prd.go.th/ th/content/ category /detail/id/31/iid/422588#:~:text=,5%20.
+57. The Government Public Relations Department. Which part of Thailand has the highest PM 2.5 levels?. 2025. h t t p s : / / w w w . p 
+r d . g o . t h / t h / c o n t e n t / c a t e g o r y / d e t a i l / i d / 3 1 / i i d / 3 6 4 8 3 2 # : ~ : t e x t = % 2 0 P M 2 . 5 % 2 0 . 
+58. Thi AP , Shukurov I, Van LP , Shukurova L. Investigation of air dust and fine dust of an urbanizing environment. IOP Confer-
+ence Series: Materials Science and Engineering. 2021.
+59. UNEP . Regulating Air Quality: the First Global Assessment of Air Pollution Legislation. 2021. h t t p s : / / w e d o c s . u n e p . o r g / i t e m s 
+/ f 0 7 5 6 8 9 0 - 1 2 d 2 - 4 7 3 9 - 9 2 e 6 - d 3 9 d 3 4 2 0 a e 3 f . 
+60. UNEP . Pollution Action Note. 2023. Retrieved 20 October 2025 from Available online: h t t p s : / / w w w . u n e p . o r g / i n t e r a c t i v e s / a i 
+r - p o l l u t i o n - n o t e / . 
+61. Vélez-Henao J-A, Vivanco F, D., Hernández-Riveros J-A. Technological change and the rebound effect in the STIRPAT model: 
+a critical view. Energy Policy. 2019;129:1372–81. https://doi.org/10.1016/j.enpol.2019.03.044.
+62. Weisberg S. Applied linear regression. Volume 528. Wiley; 2005.
+63. WHO. Concentrations of fine particulate matter (PM2.5). World Health Organization. 2022. Retrieved 22 September 2025 
+from https://www .who.int/da ta/gho/data /themes/ air-pollution/who-air-quality-database.
+64. Wongnakae P , Chitchum P , Sripramong R, Phosri A. Application of satellite remote sensing data and random for-
+est approach to estimate ground-level PM2.5 concentration in Northern region of Thailand. Environ Sci Pollut Res. 
+2023;30(38):88905–17. https://doi.org/10.1007/s11356-023-28698-0.
+65. World Bank. The cost of air pollution: Strengthening the economic case for action. 2016. h t t p s : / / d o c u m e n t s 1 . w o r l d b a n k . o 
+r g / c u r a t e d / e n / 7 8 1 5 2 1 4 7 3 1 7 7 0 1 3 1 5 5 / p d f / 1 0 8 1 4 1 - R E V I S E D - C o s t - o f - P o l l u t i o n W e b C O R R E C T E D fi l e . p d f . 
+66. Yao T, Li J. Environmental sustainability performance assessment in relation to visibility in African regions with interpre-
+table machine learning. J Clean Prod. 2023;428:139414. https://doi .org/10.101 6/j.jclepro .2023.13 9414.
+67. York R, Rosa EA, Dietz T. STIRPAT, IPAT and ImPACT: analytic tools for unpacking the driving forces of environmental 
+impacts. Ecol Econ. 2003;46(3):351–65. https://doi.org/10.1016/S0921-8009(03)00188-5.
+68. Zafar MW, Saud S, Hou F. The impact of globalization and financial development on environmental quality: evidence 
+from selected countries in the Organization for Economic Co-operation and Development (OECD). Environ Sci Pollut Res. 
+2019;26(13):13246–62. https://doi.org/10.1007/s11356-019-04761-7.
+69. Zaidi SAH, Zafar MW, Shahbaz M, Hou F. Dynamic linkages between globalization, financial development and carbon 
+emissions: evidence from Asia Pacific Economic Cooperation countries. J Clean Prod. 2019;228:533–43. h t t p s : / / d o i . o r g / 1 0 . 
+1 0 1 6 / j . j c l e p r o . 2 0 1 9 . 0 4 . 2 1 0 . 
+70. Zhang Y, Ran C. Effect of digital economy on air pollution in China? New evidence from the National Big Data Compre-
+hensive Pilot Area policy. Econ Anal Policy. 2023;79:986–1004. https://doi.org/10.1016/j.eap.2023.07.007.
+71. Zhou R, Abbasi KR, Salem S, Almulhim AI, Alvarado R. Do natural resources, economic growth, human capital, and urban-
+ization affect the ecological footprint? A modified dynamic ARDL and KRLS approach. Resour Policy. 2022;78:102782. 
+https://doi .org/10.101 6/j.resourp ol.2022. 102782.
+Publisher’s Note
+Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional affiliations.

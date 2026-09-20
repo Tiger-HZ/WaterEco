@@ -1,0 +1,1045 @@
+Environ Res Tec, Vol. 9, Issue 5, pp. 983-992, October 2026 
+ This is an open access article under the CC BY-NC license (http://creativecommons.org/licenses/by-nc/4.0/). 
+ 
+ 
+ 
+ 
+Environmental Research & Technology 
+https://ertjournal.org/index.php 
+DOI: https://doi.org/10.35208/ert.1800086 
+ 
+ 
+RESEARCH ARTICLE 
+ 
+Post-treatment of pretreated paper mill effluent via the electro-persulfate process: Optimization 
+with response surface methodology approach 
+ 
+Abdulkadir CAGLAK 1, , Ali Dogancan DOGAN 1, , Narin KARA 1, , Hanife SARI ERKAN 1 *, , 
+Guleda ONKAL ENGIN 1, 
+ 
+1 Yildiz Technical University Environmental Engineering Department, 34220 Esenler, Istanbul, Turkiye 
+ 
+ 
+ARTICLE INFO 
+Article history 
+Received: 10 October 2025 
+Revised: 23 December 2025 
+Accepted: 29 December 2025 
+ A B S T R A C T 
+This study examined the post -treatment of pre-treated paper industry wastewater 
+obtained via electrocoagulation (EC) using Fe –Fe electrodes. The pre-treated wastewater 
+was further treated with peroxymonosulfate (PMS) activation using platinium 
+(Pt)/titanium dioxide (TiO2) anode and graphite cathod e. Process optimization was 
+conducted using a response surface methodology (RSM) based on a Box –Behnken design 
+(BBD) to systematically evaluate the effects of applied current, initial pH, PMS dosage, and 
+reaction time on COD removal efficiency and energy c onsumption. The ANOVA results 
+confirmed the statistical significance and strong predictive ability of the developed model. 
+The model exhibited high R² values (R² = 0.9615 and Adj R² = 0.9230), an adequate signal-
+to-noise ratio, and a non -significant lack o f fit. The optimization results of the electro -
+persulfate (EP) process show that the main parameters influencing COD removal and 
+specific energy consumption (SEC) are the applied current and time. These results indicate 
+that the model reliably optimizes CO D removal. Optimal conditions for maximizing COD 
+removal were predicted to be a current of 4.32 A, a pH of 8, a PMS dose of 16.3 mM, and a 
+reaction time of 80 min. These conditions were expected to achieve 99.9% COD removal. 
+However, the experimental resul ts showed 92.3% ± 2.3% COD removal, 86.3% ± 2.8% 
+tannin/lignin removal, and 57.2% ± 6.03% additional color removal. These results 
+underscore the EP process's effectiveness and flexibility for industrial wastewater post -
+treatment, allowing for adjustments in treatment performance and energy requirements. 
+ 
+Cite this article as: Caglak A, Dogan AD, Kara N, Sari Erkan H, Onkal Engin G. Post-
+treatment of pretreated paper mill effluent via the electro -persulfate process: 
+Optimization with response surface methodology approach. Environmental Research and 
+Technology, 2026, 9 (5), 983-992. 
+Key words: 
+Paper mill effluent, 
+electrooxidation, electro-
+persulfate process, oxone, 
+COD removal, wastewater 
+treatment 
+ 
+INTRODUCTION 
+ 
+The paper industry produces cardboard, paper, and other 
+cellulose-based products from lignocellulosic materials, such 
+as wood and recycled paper. Paper mills are a significant and 
+important global industry with high production and demand 
+potential. Therefore, it is a crucial sector to consider in terms 
+of environmental impact, particularly with regard to the 
+consumption of natural resources such as wood and water, 
+energy usage, and wastewater production. A significant 
+amount of wastewater is produced in this industry during the 
+production process, typically ranging from 75 to 275 m³ per 
+ton of product. Depending on the raw material, product type, 
+and applied process, this volume includes 20-25 m³ from the 
+pulping process and 80 -100 m³ from the bleaching proc ess. 
+While these values are subject to variation, it is important to 
+note that they are well -established and widely accepted 
+within the industry [1, 2]. 
+Wastewater generated during post-production contains high 
+levels of organic matter, suspended solids, and color. 
+ 
+* Corresponding Author: hsari@yildiz.edu.tr (Hanife Sarı Erkan) 
+Wastewater leaving the production line contains highly toxic 
+and recalcitrant compounds, such as phenols, chlorinated 
+lignosulfonic acids, tannins, lignins, fatty acids, resin acids, 
+absorbable organic halides, xenobiotics, hydrocarbons, 
+dibenzodioxins, and dibenzofurans. According to several 
+sources, polymerized tannins, lignins, and their derivatives 
+are not biodegradable and are the main cause of color in 
+wastewater [3-6]. Additionally, tannins have been found to 
+absorb hea t and light, which can lead to a decrease in 
+dissolved oxygen (DO) and have a negative impact on the 
+flora and fauna in the aquatic environment [7]. Furthermore, 
+it has been observed that some substances, such as resin 
+acids, long chain fatty acids and organochlorides, can be 
+harmful to aquatic organisms and accumulate in the aquatic 
+food chain [7]. Hence, it is imperative to process wastewater 
+to eliminate these per sistent pollutants and avert their 
+detrimental impact on the environment prior to releasing 
+them into the receiving media. Proper treatment of these 
+pollutants is necessary before discharge to prevent their 
+984 Environ Res Tec, Vol. 9, Issue 5, pp. 983-992, October 2026 
+negative impact on the biodegradability of wastew ater and 
+the aquatic environment [8, 9]. 
+Conventional methods used for the treatment of i ndustrial 
+wastewater from paper mills, such as primary treatment, 
+leaching and aerobic biological treatment [10], are not 
+sufficient to remove recalcitrant substances and impurities 
+related to decomposition -resistant lignin [11]. Common 
+physical treatment methods (eg, adsorption, filtration, 
+leaching, sedimentation) remove only a small portion of the 
+organic material and do not completely degrade it [12]. 
+Conventional treatment approaches are therefore supported 
+by advanced oxidation processes (AOPs) to meet emission 
+standards and improve water quality and biodegradabi lity. 
+Electrochemical methods are preferable for removing 
+suspended solids and colloidal substances, as classical 
+methods are inadequate. This is a crucial step towards a more 
+sustainable and environmentally friendly paper mill industry. 
+Electrochemical tr eatment technologies have been 
+extensively researched as a viable alternative and have been 
+proven to be highly effective in treating wastewaters 
+containing recalcitrant and resistant organic pollutants [13-
+15]. In recent years, iron (Fe) has emerged as one of the most 
+suitable substances for application in wastewater treatment 
+due to its abundance and versatile role as both a catalyst and 
+coagulant in ele ctrochemical processes. Electrochemical 
+processes based on Fe are classified as electrocoagulation 
+(EC), electro-Fenton (EF) or a combination of both [16, 17]. 
+Electro-oxidation (EO) is an advanced electrochemical 
+treatment process in which organic pollutants degrade 
+through direct electron transfer at the anode surface or 
+indirectly via in situ generated oxidizing species [18]. This 
+process primarily relies on the formation of hydroxyl radicals 
+(•OH) on the surface of insoluble anodes with a high oxygen 
+overpotential. These highly reactive radicals can promote the 
+partial degradation or complete mineralization of organic 
+contaminants in wastewater [19]. In recent years, sulfate 
+radical-based electro -oxidation, generally called electro -
+persulfate process, has gained attentio n as a method of 
+driving pollutant degradation. In this process, sulfate radicals 
+(SO₄•⁻) are generated, either independently or in 
+combination with hydroxyl radicals [20]. 
+Electro-persulfate processes involve the electrochemical 
+activation of persulfate species, such as peroxymonosulfate 
+(PMS, HSO₅⁻, E° = 1.82 V) and per oxydisulfate (PDS, S₂O₈²⁻, 
+E° = 2.01 V), to produce highly reactive sulfate radicals 
+(SO₄•⁻) [21]. Both PMS and PDS contain an O –O peroxide 
+bond that can be cleaved through electron transfer, resulting 
+in the formation of sulfate radicals (Eqs. (1) and (2)) [22, 23]. 
+Persulfate (PS) can be added to the system externally or 
+generated in situ via elect rochemical reactions. Whether 
+produced electrochemically or added externally, PS generates 
+sulfate radicals (SO₄•⁻) upon activation. These radicals are 
+highly oxidizing and possess a higher redox potential than 
+hydroxyl radicals. This enables the non-selective and efficient 
+degradation of various organic compounds. The longer half -
+life of SO₄•⁻ compared to •OH improves mass transfer and 
+contact with pollutants. Secondary radicals formed from 
+SO₄•⁻ reactions with water, such as •OH, further enhance the 
+overall oxidation efficiency [21, 22] . In this process, a 
+persulfate can be activated using a metal electrode, such as 
+iron, silver, zinc, copper, or manganese, to form a sulfate 
+radical. However, iron is the most preferred anode material 
+due to its lower cost and relative nontoxicity. When sacrificial 
+iron anodes are used, iron (II) ions (Fe²⁺) are generated via 
+anodic dissolution, as described by Eqs. (3 -5) [20]. Due to 
+their high oxidation potential and chemical stability, platinum 
+(Pt) anodes have been used in electro-persulfate processes to 
+treat various industrial wastewater , washing machine 
+effluent dyeing [24], military ammunition plants, and 
+washing machines [25], as well as other polluted waters [26]. 
+ 
+HSO5- + e- → SO4•- + HO- (1) 
+S2O82- + e- → SO4•- + SO42- (2) 
+Fe0 → Fe2+ + e- (3) 
+HSO5- + Fe2+ → SO4•- +OH- + Fe3+ (4) 
+S2O82- + Fe2+ → SO4•- + SO42- + Fe3+ (5) 
+ 
+Despite extensive studies on electrochemical and electro -
+oxidation processes for industrial wastewater treatment, 
+limited research has focused on the integration of iron-based 
+electrocoagulation as a pretreatment step followed by 
+electro-persulfate activation using TiO₂/Pt anodes for paper 
+mill wastewater. To the best of our knowledge, no previous 
+study has systematically investigated the integration of Fe–Fe 
+electrocoagulation pretreatment with PMS-activated electro-
+oxidation using TiO₂/Pt anodes for the t reatment of paper 
+industry wastewater. Therefore, the main objective of this 
+study is to investigate the efficiency of an integrated 
+electrochemical treatment process for the removal of 
+recalcitrant organic pollutants from paper industry 
+wastewater. The pr oposed treatment configuration aims to 
+enhance COD removal efficiency, offering a technically 
+effective and scalable alternative for the treatment of 
+recalcitrant paper industry effluents. 
+ 
+MATERIALS AND METHODS 
+ 
+Paper Mill Wastewater Characterization 
+ 
+In this study, paper mill effluent was collected from a waste 
+paper board manufacturing plant in Istanbul. The raw 
+effluent was initially treated by EC process (achieving 35.7% 
+COD removal efficiency with Fe -Fe electrodes under 2 A 
+applied current, pH 6, 70 min, 0.12 M NaCl) and as it did not 
+meet the discharge criteria to the receiving environment and 
+sewerage, a post-treatment study was carried out using PMS 
+supported EO process. Table 1 shows the characteristics of 
+the EC pre-treated effluent. 
+All analyses except for tannin/lignin were conducted in 
+accordance with Standard Methods [27]. Colour and 
+tannin/lignin concentrations were measured using a Hach 
+Lange DR 5000 spectrophotometer, colour at a wavelength of 
+550 nm and tannin/lignin after the addition of Hach TanniVer 
+3 reagent. All chemicals used throughout the study were of 
+analytical grade. 
+ 
+Table 1. EC-pretreated paper mill wastewater 
+characterization 
+Parameter Average value ± 
+Standard deviation 
+pH 9.82±0.2 
+Conductivity (mS/cm) 17.71±0.2 
+COD (mg/L) 3002±55 
+Tannin/Lignin (mg/L) 4.75±1.3 
+Color (Pt-Co) 86.5±3 
+ 
+ 
+Environ Res Tec, Vol. 9, Issue 5, pp. 983-992, October 2026 985 
+ 
+ 
+Experimental Set-up 
+ 
+The pre -treated wastewater was further treated by EP 
+process using a TiO 2/ Pt anode and a graphite cathode. 
+Graphite was chosen as the cathode material because of its 
+high electrical conductivity, chemical stability, and inert 
+behavior under electr ochemical conditions. Unlike metal 
+cathodes, graphite does not dissolve or become passivated, 
+which ensures stable electrochemical performance and lower 
+energy consumption [28]. Graphite cathodes are widely used 
+in electroche mical oxidation and electro -persulfate systems 
+because they minimize parasitic reactions and electrode 
+fouling [29]. Batch experiments were carried out in a 
+Plexiglas reactor (75 × 75 × 35 mm) with a working volume 
+of 100 mL. Continuous mixing was maintained using a 
+magnetic stirrer. A digital DC power supply (ADC-3306D) was 
+used to apply the current and the electrodes were placed 2 cm 
+apart inside the reactor. The setup of the EP reactor is shown 
+in Fig ure 1. During the experiments, samples were taken 
+periodically from the reactor to evaluate the COD removal 
+performance. The study investigated the influence of several 
+operating parameters, including applied current (1 -5 A), 
+initial pH (2 -10), PMS dosage (5 -25 mM) and reaction time 
+(10-90 min). The pH range of 2–6–10 was chosen to evaluate 
+the effects of acidic, neutral, and alkaline conditions on 
+persulfate activation a nd oxidation performance. Acidic 
+conditions (pH ≈ 2) favor the stability and reactivity of sulfate 
+radicals (SO₄•⁻). Near -neutral conditions (pH ≈ 6), which 
+represent the characteristics of typical paper mill wastewater 
+and practical operating conditions, were also included. 
+Alkaline conditions (pH ≈ 10) were included to evaluate the 
+shift from sulfate radical -dominated oxidation to hydroxyl 
+radical-dominated pathways resulting from radical 
+conversion reactions. Thus, this pH range allows for a 
+comprehensive evaluation of oxidation kinetics, dominant 
+radical species, and process efficiency under different 
+operational environments. 
+ 
+ 
+Figure 1. Schematic diagrams of EP post-treatment of EC pre-
+treated paper mill effluent 
+ 
+ 
+ 
+ 
+Experimental design and statistical analysis 
+ 
+RSM is a statistical and mathematical tool used to develop 
+predictive models, design experiments, evaluate the influence 
+of key factors and identify optimal operating conditions. In 
+this study, RSM was used to optimise the EP process after EC 
+pretreatment. A four-factor, three-level experimental design 
+was used to investigate the influence of key operating 
+parameters, including applied current (A), initial pH (B), PMS 
+concentration (C) and reaction time (D). In addition, the 
+response variables considered in the study were COD 
+removal efficiency (Y 1) and specific energy consumption 
+(SEC) (Y2). Table 2 presents both the actual and coded values 
+of the operating parameters used in the experimental design. 
+ 
+Table 2. Experimental design matrix and factor levels for the 
+EO process combined with PMS 
+Symbol and 
+variables 
+Coded factors 
+-1 0 1 
+A: Applied current (A) 1 3 5 
+B: Initial pH 2 6 10 
+C: PMS dosage (mM) 5 15 25 
+D: Time (min) 10 50 90 
+ 
+The experimental data were analyzed with the quadratic 
+equation given in Eq. 6. 
+ 
+𝑌 = 𝛽0 + ∑ 𝛽𝑖𝑋𝑖 + ∑ 𝛽𝑖𝑖 𝑋𝑖
+2 + ∑ ∑ 𝛽𝑖𝑗𝑋𝑖𝑋𝑗𝑗𝑖 (6) 
+ 
+In Eq. (6), Y represents the response variable of the design, β₀ 
+denotes the intercept or constant term, while βᵢ, βᵢᵢ, and βᵢⱼ 
+correspond to the linear, quadratic, and interaction 
+coefficients, respectively. X i and X j are the independent 
+operating parameters. COD removal efficiencies were 
+calculated using the Eq. (7). 
+ 
+𝑅𝑒𝑚𝑜𝑣𝑎𝑙 𝑒𝑓𝑓𝑖𝑐𝑖𝑒𝑛𝑐𝑦, % =
+𝐶0−𝐶𝑡
+𝐶0
+ (7) 
+ 
+where C 0 and C t are the initial and final COD concentrations 
+after a reaction time of t. 
+ 
+Specific Energy Consumption 
+ 
+In order to assess the cost -effectiveness of the process, SEC 
+values were determined under the optimum operating 
+conditions identified in the study. Energy consumption was 
+calculated using Eq. 8. 
+ 
+𝑆𝐸𝐶 = 
+U× I× t
+V (8) 
+ 
+where, U is the cell voltage (V), I is the applied current (A) and 
+t is the electrolysis time (h), while V is the volume of treated 
+wastewater in cubic metres (m³). 
+ 
+ 
+ 
+ 
+ 
+986 Environ Res Tec, Vol. 9, Issue 5, pp. 983-992, October 2026 
+RESULTS AND DISCUSSION 
+ 
+Experimental Design and Model Development of COD 
+Removal 
+ 
+The BBD results showed a maximum COD removal efficiency 
+of 98.9% for EC pre -treated paper mill effluent. Notably, 
+moderate values of SEC (481.5 kWh/m 3) was also observed 
+at the experimental condition corresponding to run 11, where 
+this highest removal efficiency was achieved. On the other 
+hand, the l owest COD removal efficiency (23.1%) was 
+obtained in run 26 with the lowest SEC (13 kWh/m 3) (Table 
+3). 
+Analysis of variance (ANOVA) was performed to evaluate the 
+relationships between the independent variables and the 
+response outcomes (Table 4). The coef ficient of 
+determination (R²) was used to assess the fit of the 
+polynomial model to the data, and the Fisher F-test was used 
+to determine the statistical significance of the model. As seen 
+in Table 4, the R 2 and adjusted R 2 (Adj-R2) values for COD 
+removal efficiency were 0.9615 and 0.9230, respectively. The 
+“Predicted R2” value of 0.7956 is in good agreement with the 
+“Adj R2” value of 0.9230, which indicates that the model has a 
+strong predictive capability. With an F -value of 24.98, the 
+model produces a st atistically significant result, suggesting 
+that it is highly reliable. There is only a 0.01% chance that 
+such a high F -value would occur by chance or due to 
+experimental noise. Model terms with "Prob > F" values less 
+than 0.0500 are considered statistically significant. The "Lack 
+of Fit F -value" of 3.33 indicates that the lack of fit is not 
+statistically significant when compared to the pure error. This 
+means there is a 12.90% probability that such a value could 
+arise due to random variation (noise). A non -significant lack 
+of fit is desirable, as it suggests that the model adequately fits 
+the experimental data well. The significance of a model can be 
+evaluated using the adequate precision and coefficient of 
+variation (CV%) values. The “Adequate Precision” va lue, 
+which reflects the signal -to-noise ratio, is 19.363. As a ratio 
+above 4 is considered acceptable, this high value confirms 
+that the model has sufficient signal strength and can be 
+reliably used to explore and optimise the design space. While 
+acceptable thresholds for C.V.% may vary depending on the 
+field of study, in general, values below 10% indicate excellent 
+model reliability. Values between 20% and 30% are 
+considered acceptable, while values exceeding 30% suggest 
+poor model precision and are typically deemed unacceptable 
+[30, 31]. In this study, the C.V.% for COD removal efficiency 
+was calculated as 9.55, indicating a high level of model 
+reliability. 
+The results presented in Table 4 also show the p -values of 
+each independent variable (A, B, C and D), as well as their 
+quadratic (A², B², C² and D²) and two -factor (AB, AC, AD, BC, 
+BD and CD) terms. In this analysis, terms A and D were found 
+to b e highly significant, as were A², C² and D². Conversely, 
+'Prob > F' values greater than 0.1000 indicate non-significant 
+term. The other independent variables (B and C), all of the 
+two-factor variables, and the quadratic term of B² were found 
+to be insignif icant. The equation derived from the ANOVA 
+results for COD removal efficiency, expressed in terms of the 
+coded factors, is given by Eq. (9). 
+ 
+𝐶𝑂𝐷 (%)𝑓𝑜𝑟 𝑐𝑜𝑑𝑒𝑑 𝑓𝑎𝑐𝑡𝑜𝑟𝑠 = +82.38 + 19.34 𝐴 − 0.18 𝐵 +
+1.74 𝐶 + 24.72 𝐷 + 0.20 𝐴 𝐵 + 0.17 𝐴 𝐶 + 2.27 𝐴 𝐷 +
+0.67 𝐵 𝐶 − 2.03 𝐵 𝐷 + 0.13 𝐶 𝐷 − 12.96 𝐴2 − 2.93𝐵2 −
+10.13 𝐶2 − 12.93 𝐷2 (9) 
+ 
+Figure 2 shows the experimental and predicted values of COD 
+removal efficiencies for EP process, indicating the adequacy 
+of the normal probability model. The discrepancies between 
+the predicted and actual results indicated that the quadratic 
+regression model, wh ich displayed a linear distribution 
+pattern, was acceptable. 
+The contour plots and response surface graphs for COD 
+removals are presented in Fig ure 3. As can be seen from the 
+contour plots (Fig ures 3a, 3c and 3e), the COD removal 
+efficiency increased as the applied current rose from 1 A to 3 
+A. However, increasing the current beyond 3 A did not 
+significantly improve COD removal efficiency. Conversely, no 
+improvement in COD removal efficiency was observed as the 
+initial pH increased, suggesting that the init ial pH did not 
+affect COD removal in the EP process (Fig ure 3a and b). 
+Similarly, increasing the PMS dosage and initial pH did not 
+improve COD removal efficiency (Fig ure 3c and d). It can be 
+said that the midpoint PMS dosage (15 mM) slightly improved 
+the C OD removal efficiency. As previously indicated, the 
+process time was also found to be a highly significant 
+parameter according to the quadratic model, with an increase 
+in COD removal efficiency observed as the time increased 
+from 10 to 90 min (Figures 3e and f). 
+In EO processes, especially those coupled with PMS 
+activation, the efficiency of COD removal is heavily dependent 
+on operational parameters. The applied current is critical 
+because it governs the generation rate of reactive oxidants, 
+such as •OH and SO₄•⁻ radicals, at the electrode surface. While 
+increasing the current density generally promotes higher 
+COD removal by enhancing the formation of these species, 
+excessively high current levels may trigger competing side 
+reactions, such as oxygen evolutio n. This lowers the overall 
+current efficiency [32]. The pH of the solution strongly 
+influences the speciation and stability of the generated 
+oxidants. Under acidic conditions, sulfate radicals (SO₄•⁻) are 
+preferentially formed, whereas hydroxyl radicals (•OH) 
+dominate in neutral to alkaline media. Therefore, the most 
+effective COD removal is generally achieved within slightly 
+acidic to neutral pH ranges depending on the predominant 
+oxidation pathway [20, 33, 34]. Prolonging the reaction time 
+usually improves COD removal because it allows more time 
+for the complete oxidation of organic contaminants. However, 
+beyond a certain point, improvement tends to plateau, due to 
+factors such as depleted oxidants or mass transfer constraints 
+[35]. During electrochemical activation, PMS acts as a 
+precursor to generate sulfate radicals. Increasing the PMS 
+dosage increases radical availability, promoting more 
+effective COD degradation. However, excessive dosing can 
+lead to radical quenching and increased che mical 
+consumption, which diminishes the process's overall 
+efficiency. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Environ Res Tec, Vol. 9, Issue 5, pp. 983-992, October 2026 987 
+ 
+ 
+ 
+Figure 2. The experimental and predicted values of COD removal for EO combined with PMS 
+ 
+Table 3. Experimental conditions and responses (COD removal, SEC and SECCOD values) 
+Run A: Applied 
+current (A) B: Initial pH C: PMS (mM) D: Time 
+(min) 
+Y1: COD 
+removal (%) Voltage (V) Y2: SEC value 
+(kWh/m3) 
+1 5 6 25 50 82.7 12.8 533.3 
+2 5 6 15 10 54.9 12.6 105.0 
+3 5 6 15 90 97.0 19.7 1477.5 
+4 3 2 15 90 95.4 10.7 481.5 
+5 3 10 5 50 70.3 11.9 297.5 
+6 3 6 15 50 82.7 10.0 250.0 
+7 3 2 5 50 74.8 11.6 290.0 
+8 5 2 15 50 88.1 13.8 575.0 
+9 3 6 15 50 76.8 10.9 272.5 
+10 3 2 25 50 69.5 9.6 240.0 
+11 3 10 15 90 98.9 10.7 481.5 
+12 5 10 15 50 82.9 14.3 595.8 
+13 1 6 5 50 35.8 7.5 62.5 
+14 1 10 15 50 42.3 0.7 5.8 
+15 3 6 25 90 86.4 10.4 468.0 
+16 3 6 15 50 87.7 11.9 297,5 
+17 3 6 5 90 79.1 12.6 567.0 
+18 1 6 15 90 56.2 7.4 111.0 
+19 3 10 25 50 67.8 9.7 242.5 
+20 3 6 5 10 30.4 13.4 67.0 
+21 1 6 25 50 42.8 7.3 60.8 
+22 1 2 15 50 48.3 6.8 56.7 
+23 5 6 5 50 75.0 14.2 591.7 
+24 3 10 15 10 41.3 12.0 60.0 
+25 3 6 15 50 82.5 11.2 280.0 
+26 1 6 15 10 23.1 7.8 13.0 
+27 3 6 15 50 82.2 9.9 247.5 
+28 3 6 25 10 37.1 10.9 54.5 
+29 3 2 15 10 29.7 11.9 59.5 
+ 
+988 Environ Res Tec, Vol. 9, Issue 5, pp. 983-992, October 2026 
+Table 4. ANOVA for Response Surface Quadratic Model for COD removal 
+Source Sum of Squares df Mean Square F Value p-value 
+Prob > F 
+Model 14003.65 14 1000.26 24.98 < 0.0001 
+A-Applied current 4490.49 1 4490.49 112.13 < 0.0001 
+B-Initial pH 0.40 1 0.40 0.9219 
+C-PMS 36.20 1 36.20 0,90 0.3579 
+D-Time 7331.29 1 7331.29 183,07 < 0.0001 
+AB 0.17 1 0.17 0.9494 
+AC 0.11 1 0.11 0.9583 
+AD 20.56 1 20.56 0,51 0.4854 
+BC 1.82 1 1.82 0.045 0.8343 
+BD 16.44 1 16,44 0,41 0.5321 
+CD 0.071 1 0.071 0.9670 
+A2 1089.41 1 1089.41 27,20 0.0001 
+B2 55.84 1 55.84 1,39 0.2573 
+C2 665.96 1 665.96 16.63 0.0011 
+D2 1084.50 1 1084.50 27.08 0.0001 
+Residual 560.64 14 40.05 
+Lack of Fit 500.45 10 50.05 3.33 0.1290 
+Pure Error 60.19 4 15.05 
+Cor Total 14564.29 28 
+ 
+ 
+Table 5. ANOVA for Response Surface Quadratic Model for SEC 
+Source Sum of Squares df Mean Square F Value p-value 
+Prob > F 
+Model 2.408E+006 14 1.720E+005 23.02 < 0.0001 
+A-Applied current 1.061E+006 1 1.061E+006 142.02 < 0.0001 
+B-Initial pH 31.69 1 31.69 4.241E-003 0.9490 
+C-PMS 398.19 1 398.19 4.241E-003 0.3714 
+D-Time 8.681E+005 1 8.681E+005 116.17 < 0.0001 
+AB 1284.03 1 1284.03 0.17 0.6848 
+AC 802.78 1 802.78 0.11 0.7479 
+AD 4.061E+005 1 4.061E+005 54.35 < 0.0001 
+BC 6.25 1 6.25 8.364E-004 0.9773 
+BD 0.063 1 0.063 8.364E-006 0.9977 
+CD 1870.56 1 1870.56 0.25 0.6246 
+A2 37850.35 1 37850.35 5.07 0.0410 
+B2 3706.01 1 3706.01 0.50 0.4928 
+C2 1059.06 1 1059.06 0.14 0.7122 
+D2 13758.58 1 13758.58 1.84 0.1963 
+Residual 1.046E+005 14 7472.17 
+Lack of Fit 1.028E+005 10 10284.29 23.27 0.0041 
+Pure Error 1767.50 4 441.88 
+Cor Total 1.570E+005 28 
+ 
+Environ Res Tec, Vol. 9, Issue 5, pp. 983-992, October 2026 989 
+ 
+ 
+ 
+Figure 3. Response surface graphs showing the COD removal efficiency of the EP process 
+ 
+Experimental design and model development of SEC 
+ 
+Electrochemical treatment processes, such as EC and EO, are 
+energy-intensive technologies that have a significant impact 
+on overall energy consumption costs. The energy 
+consumption of the EP post-treatment process was evaluated 
+by calculating related SEC values for each batch tested in this 
+study. The results of the ANOVA are presented in Table 5. The 
+R2 value of the quadratic model was found to be 0.9584. The 
+Pred R2 of 0.7632 is in reasonable agreement with the Adj R 2 
+of 0.9167, with both measures indicating a high degree of fit. 
+The model's F -value of 23.02 suggests that the model is 
+statistically significant. It is thought that a "Model F -Value" 
+this large could only occur due to noise in 0.01% of cases. 
+Values of 'Prob > F' below 0. 0001 indicate that the model 
+terms are highly significant. "Adeq Precision" is evaluated by 
+the signal -to-noise ratio, with values above 4 being 
+considered desirable. With a ratio of 20.458, the signal is 
+strong, confirming that the model is suitable for exploring and 
+optimising the design space. The C.V. for the model was 
+determined to be 28.34%, indicating a moderate level of 
+variability in the data relative to the mean, which may suggest 
+ (a) 
+ 
+(b) 
+ 
+(c) 
+ 
+(d) 
+ 
+(e) 
+ 
+(f) 
+ 
+ 1 
+Design-Expert® Softw are
+COD
+Design Points
+98.9042
+23.0776
+X1 = A: Applied current
+X2 = B: Initial pH 
+Actual Factors
+C: PMS = 15.00
+D: Time = 50.00
+1.00 2.00 3.00 4.00 5.00
+2.00
+4.00
+6.00
+8.00
+10.00
+COD
+A: Applied current
+B: Initial pH 
+53.896
+61.0365
+68.1771
+75.3176 82.458255555
+Design-Expert® Softw are
+COD
+98.9042
+23.0776
+X1 = A: Applied current
+X2 = B: Initial pH 
+Actual Factors
+C: PMS = 15.00
+D: Time = 50.00
+ 1.00
+ 2.00
+ 3.00
+ 4.00
+ 5.00
+2.00 
+4.00 
+6.00 
+8.00 
+10.00 
+42 
+54 
+66 
+78 
+90 
+ COD 
+ A: Applied current B: Initial pH 
+Design-Expert® Softw are
+COD
+Design Points
+98.9042
+23.0776
+X1 = A: Applied current
+X2 = C: PMS
+Actual Factors
+B: Initial pH = 6.00
+D: Time = 50.00
+1.00 2.00 3.00 4.00 5.00
+5.00
+10.00
+15.00
+20.00
+25.00
+COD
+A: Applied current
+C: PMS
+46.9268
+46.9268
+55.4782 64.0296 72.5809
+81.1323
+55555
+Design-Expert® Softw are
+COD
+98.9042
+23.0776
+X1 = A: Applied current
+X2 = C: PMS
+Actual Factors
+B: Initial pH = 6.00
+D: Time = 50.00
+ 1.00
+ 2.00
+ 3.00
+ 4.00
+ 5.00
+5.00 
+10.00 
+15.00 
+20.00 
+25.00 
+35 
+48.75 
+62.5 
+76.25 
+90 
+ COD 
+ A: Applied current C: PMS 
+Design-Expert® Softw are
+COD
+Design Points
+98.9042
+23.0776
+X1 = A: Applied current
+X2 = D: Time
+Actual Factors
+B: Initial pH = 6.00
+C: PMS = 15.00
+1.00 2.00 3.00 4.00 5.00
+10.00
+30.00
+50.00
+70.00
+90.00
+COD
+A: Applied current
+D: Time
+29.442
+44.1884
+58.9347
+73.681
+88.4273
+55555
+Design-Expert® Softw are
+COD
+98.9042
+23.0776
+X1 = A: Applied current
+X2 = D: Time
+Actual Factors
+B: Initial pH = 6.00
+C: PMS = 15.00
+ 1.00
+ 2.00
+ 3.00
+ 4.00
+ 5.00
+10.00 
+30.00 
+50.00 
+70.00 
+90.00 
+14 
+36.5 
+59 
+81.5 
+104 
+ COD 
+ A: Applied current D: Time 
+990 Environ Res Tec, Vol. 9, Issue 5, pp. 983-992, October 2026 
+potential improvement areas in model precision. With a "lack 
+of fit F-value" of 23.27, there is only a 0.41% probability that 
+such a high value could result from random variation (noise), 
+indicating a statistically significant lack of fit. This suggests 
+that the model does not accurately represent the data, which 
+is undes irable as a good fit is essential for making reliable 
+predictions. 
+The Prob > F values for the independent variable, its 
+quadratic term and its two-factor term can be seen in Table 5. 
+In this case A, D, AD, A 2 were found significant model terms. 
+As is well known, values greater than 0.1000 suggest that the 
+model terms are insignificant. Therefore, none of the other 
+parameters significantly affect SEC values. The equation 
+derived from the ANOVA results for SEC is given by Eq. (10). 
+𝑆𝐸𝐶 (𝑘𝑊ℎ
+𝑚3 ) 𝑓𝑜𝑟 𝑐𝑜𝑑𝑒𝑑 𝑓𝑎𝑐𝑡𝑜𝑟𝑠 = +269.50 + 297.38 𝐴 −
+1.63 𝐵 − 23.04 𝐶 + 268.96 𝐷 + 17.92 𝐴𝐵 − 14.17 𝐴𝐶 +
+318.63 𝐴𝐷 − 1.25 𝐵𝐶 − 0.13 𝐵𝐷 − 21.63 𝐶𝐷 + 76.39 𝐴2 −
+23.90 𝐵2 − 12.78 𝐶2 + 46.06𝐷2 (10) 
+ 
+Figure 4 shows the experimental and predicted values of SEC 
+values for the combined EO -PMS treatment process, 
+demonstrating the normal probability model's suitability. 
+The close agreement between the two sets of values suggests 
+that the quadratic regression mode l, with its linear 
+distribution trend, provides an acceptable fit to the data. 
+Figure 5 shows contour and 3D response surface graphs for 
+the SEC values in the EO -PMS process. As can be seen in 
+Figure 5a-b and 5c-d, the applied current has a strong, direct 
+influence on SEC values: energy consumption increases 
+substantially as the current increases. In contrast, the effect 
+of the initial pH or PMS concentration on the SEC is relatively 
+minor across the investigated range. Fig ure 5e-f shows how 
+the applied cur rent and reaction time interact to affect SEC. 
+The surface plot shows that SEC increases sharply with 
+increasing applied current and extended reaction time. The 
+curvature of the surface indicates that these two parameters 
+influence energy consumption syner gistically, with the 
+highest SEC values occurring at the maximum current and the 
+longest reaction time. Therefore, minimising both current 
+intensity and treatment duration is essential for achieving 
+energy-efficient operation in the EP process. 
+ 
+ 
+Figure 4. The experimental and predicted values of SEC 
+values for EP process 
+ 
+ 
+Figure 5. Response surface graphs showing the SEC values of the EO-PMS process 
+Environ Res Tec, Vol. 9, Issue 5, pp. 983-992, October 2026 991 
+ 
+Determination of the Optimized Conditions and 
+Verification Experiments 
+ 
+The optimization results of the EP process demonstrate how 
+process parameters influence COD removal efficiency and 
+SEC when treating paper industry wastewater. Setting the 
+goal to maximize COD removal y ielded optimal conditions of 
+a current of 4.32 A, a pH of 8, a PMS dose of 16.3 mM and a 
+reaction time of 80 minutes, with a predicted COD removal of 
+99.9% and a desirability value of 1.000 (Table 6). In practice, 
+a COD removal efficiency of 92.3% ± 2.3 wa s achieved, 
+alongside 86.3% ± 2.8 tannin/lignin removal and 57.2% ± 
+6.03 additional colour removal in the post -treatment. While 
+the experimental COD removal efficiency was slightly lower 
+than the model prediction, these results confirm the 
+effectiveness of the optimised conditions, particularly with 
+regard to degrading organic compounds. The overall COD 
+removal efficiency was found to be 95.05% using hybrite EC 
+and EO with PMS. On the other hand, the SEC values at pre - 
+and post-treatment stages were calculated at 57.75 kWh/m³ 
+and 790 kWh/m³, respectively. The higher SEC observed 
+during the post -treatment stage can be attributed to 
+persulfate activation and the use of Pt -based anodes, which 
+are known to promote strong oxidative conditions. However, 
+the substa ntial COD reduction (>95%) indicates that the 
+increased energy input in the post-treatment stage effectively 
+enhances the degradation of recalcitrant organic compounds, 
+justifying the energy expenditure. 
+ 
+Table 6. Optimum operating conditions and results of verification experiment in the post-treatment 
+Optimum process parameter Value Desirability Predicted Experimental 
+Goal: Maximize COD 
+Applied current (A) 4.32 
+1.000 COD: 99.9% 
+removal 
+COD: 92.3%±2.3 
+Tannin/Lignin: 
+86.3%±2.8 
+Color: 57.2%±6.03 
+Initial pH 8 
+PMS dose (mM) 16.3 
+Time (min) 80 
+ 
+CONCLUSION 
+ 
+The findings of this study show that the EP process, when 
+optimized through response surface methodology, is a very 
+effective post -treatment strategy for pre -treated paper 
+industry wastewater. The process achieved substantial 
+removal of COD, tannin/lignin, and color. This was done 
+under optimised conditions. This confirms its potential for 
+the degradation of complex and recalcitrant organic 
+pollutants. While a trade -off between treatment efficiency 
+and energy consumption was observed, the optimization 
+results suggest that the EP process can be adjusted according 
+to treatment priorities, whether the goal is to maximize 
+pollutant removal or minimize energy requirements. In 
+addition, the statistical validation of the developed model 
+shows that it is reliable fo r predicting and improving 
+processes. These results show that EP post -treatment can be 
+added to industrial wastewater treatment plans. This can 
+help protect the environment more and meet the standards 
+for discharging wastewater. Future studies could focus on 
+how to use this technology on a larger scale and the costs and 
+benefits of doing so to help companies use it. 
+ 
+DATA AVAILABILITY STATEMENT 
+The authors confirm that the data that supports the findings 
+of this study are available within the article. Raw data that 
+support the finding of this study are available from the 
+corresponding author, upon reasonable request. 
+ 
+CONFLICT OF INTEREST 
+The authors declare that there is no conflict of interest with 
+any individual, institution, or organization in the preparation, 
+evaluation, or publication of this study. 
+ 
+USE OF AI FOR WRITING ASSISTANCE 
+Grammar and proof editing were refined using QuillBot and 
+Grammarly in accordance with ethical writing standards. 
+ 
+ETHICS 
+There are no ethical issues with the publication of this 
+manuscript. 
+ 
+REFERENCES 
+ 
+[1]. S. Camcioglu, B. Ozyurt, and H. Hapoglu, "Effect of process 
+control on optimization of pulp and paper mill 
+wastewater treatment by electrocoagulation," Process 
+Safety and Environmental Protection, vol. 111, pp. 300 -
+319, 2017. 
+[2]. P. K. Tewari, V. Batra, and M. Balakrishnan, "Efficient 
+water use in industries: cases from the Indian agro-based 
+pulp and paper mills," Journal of Environmental 
+management, vol. 90, pp. 265-273, 2009. 
+[3]. P. Bajpai and P. K. Bajpai, "Biological colour removal of 
+pulp and paper mill wastew aters," Journal of 
+Biotechnology, vol. 33, pp. 211-220, 1994. 
+[4]. A. Singhal and I. S. Thakur, " Decolourization and 
+detoxification of pulp and paper mill effluent by 
+Emericella nidulans var. nidulans," Journal of Hazardous 
+Materials, vol. 171, pp. 619-625, 2009. 
+[5]. G. Yuliani, A. L. Chaffee, and G. Garnier, "UV -induced 
+colour generation of pulp and paper mill effluents as a 
+proxy of ligno-cellulosic biorefinery wastewater," Journal 
+of Water Process Engineering, vol. 29, p. 100781, 2019. 
+[6]. N. Klidi, F. Proietto, F. V icari, A. Galia, S. Ammar, A. Gadri , 
+et al. , "Electrochemical treatment of paper mill 
+wastewater by electro -Fenton process," Journal of 
+Electroanalytical Chemistry, vol. 841, pp. 166-171, 2019. 
+[7]. D. Wagle, C.-J. Lin, T. Nawaz, and H. J. Shipley, "Evaluation 
+and optimization of electrocoagulation for treating Kraft 
+paper mill wastewater," Journal of Environmental 
+Chemical Engineering, vol. 8, p. 103595, 2020. 
+[8]. S. Kumar, T. Saha, and S. Sharma, "Treatment of pulp and 
+paper mill effluents using novel biodegradable polymeric 
+flocculants based on anionic polysaccharides: a new way 
+992 Environ Res Tec, Vol. 9, Issue 5, pp. 983-992, October 2026 
+to treat the waste water," Int Res J Eng Technol, vol. 2, pp. 
+1-14, 2015. 
+[9]. H. Vashi, O. Iorhemen, and J. Tay, "Extensive studies on the 
+treatment of pulp mill wastewater using aerobic granular 
+sludge (AGS) technology," Chemical Engineering Journal, 
+vol. 359, pp. 1175-1194, 2019. 
+[10]. A. Raj, M. K. Reddy, and R. Chandra, "Decolourisation 
+and treatment of pulp and paper mill effluent by lignin‐
+degrading Bacillus sp," Journal of Chemical Technology & 
+Biotechnology: International Research in Process, 
+Environmental & Clean Technology, vol. 82, pp. 399 -406, 
+2007. 
+[11]. D. Hermosilla, N. Merayo, A. Gascó, and Á. Blanco, "The 
+application of advanced oxidation technologies to the 
+treatment of effluents from the pulp and paper industry: 
+a review," Environmental Science and Pollution Research, 
+vol. 22, pp. 168-191, 2015. 
+[12]. A. R. Shawwa, D. W. Smith, and D. C. Sego, "Color and 
+chlorinated organics removal from pulp mills wastewater 
+using activated petroleum coke," Water Research, vol. 35, 
+pp. 745-749, 2001. 
+[13]. A. Caglak, H. Sari -Erkan, and G. Onkal Engin, "Chemical 
+oxygen demand and tannin/lignin removal from paper 
+mill wastewater by electrocoagulation combined with 
+peroxide and hypochlorite treatments," Environmental 
+Technology, vol. 45, pp. 3076-3094, 2024. 
+[14]. C. A. Martínez -Huitle and M. Panizza, "Electrochemical 
+oxidation of organic pollutants for wastewater 
+treatment," Current Opinion in Electrochemistry, vol. 11, 
+pp. 62-71, 2018. 
+[15]. C. A. Martínez-Huitle and E. Brillas, "Decontamination of 
+wastewaters containing synthetic organic dyes by 
+electrochemical methods: a general review," Applied 
+Catalysis B: Environmental, vol. 87, pp. 105-145, 2009. 
+[16]. M. Zhao, X. Ma, R. Li, J. Mei, T. Rao, G. Ren , et al., "In-situ 
+slow production o f Fe2+ to motivate electro -Fenton 
+oxidation of bisphenol A in a flow through dual -anode 
+reactor using current distribution strategy: Advantages, 
+CFD and toxicity assessment," Electrochimica Acta, vol. 
+411, p. 140059, 2022. 
+[17]. A. Eslami, M. K. Kashani, A. Khod adadi, G. Varank, A. 
+Kadier, P. Ma, et al., "Sono-peroxi-coagulation (SPC) as an 
+effective treatment for pulp and paper wastewater: focus 
+on pH effect, biodegradability, and toxicity, J. Water 
+Process Eng. 44 (2021) 102330," ed, 2021. 
+[18]. B. Fil, C. Elgün, and S. Uzuner, "Application of 
+electrooxidation technology in the treatment of paper 
+industry wastewater: the effect of ph and current 
+density," in International Conference on Scientific and 
+Academic Research, 2023, pp. 148-152. 
+[19]. E. Brillas and C. A. Martínez-Huitle, "Decontamination of 
+wastewaters containing synthetic organic dyes by 
+electrochemical methods. An updated review," Applied 
+catalysis b: environmental, vol. 166, pp. 603-643, 2015. 
+[20]. A. Fernandes, M. J. Nunes, A. S. Rodrigues, M. J. Pacheco, 
+L. Ciríaco, and A. Lopes, "Electro-persulfate processes for 
+the treatment of complex wastewater matrices: Present 
+and future," Molecules, vol. 26, p. 4821, 2021. 
+[21]. J. Wang and S. Wang, "Activation of persulfate (PS) and 
+peroxymonosulfate (PMS) and application for the 
+degradation of emerging contaminants," Chemical 
+Engineering Journal, vol. 334, pp. 1502-1517, 2018. 
+[22]. D. Zhi, Y. Lin, L. Jiang, Y. Zhou, A. Huang, J. Yang , et al. , 
+"Remediation of persistent organic pollutants in aqueous 
+systems by electrochemical activation of persulfates: A 
+review," Journal of Environmental Management, vol. 260, 
+p. 110125, 2020. 
+[23]. S.-Q. Yang, Y. -H. Cui, Y. -Y. Liu, Z. -Q. Liu, and X. -Y. Li, 
+"Electrochemical generation of persulfate and its 
+performance on 4 -bromophenol treatment," Separation 
+and Purification Technology, vol. 207, pp. 461-469, 2018. 
+[24]. P. Chanikya, P. Nidheesh, D. S. Babu, A. Gopinath, and M. 
+S. Kumar, "Treatment of dyeing wastewater by co mbined 
+sulfate radical based electrochemical advanced oxidation 
+and electrocoagulation processes," Separation and 
+Purification Technology, vol. 254, p. 117570, 2021. 
+[25]. W.-S. Chen, Y. -C. Jhou, and C. -P. Huang, "Mineralization 
+of dinitrotoluenes in industrial wastewater by electro -
+activated persulfate oxidation," Chemical Engineering 
+Journal, vol. 252, pp. 166-172, 2014. 
+[26]. H.-H. Chen, S. -Y. Shen, Y. -C. Chen, T. -M. Nguyen, Y. -C. 
+Feng, C. -S. Huang , et al. , "Electrochemical activation of 
+persulfate for the degradation of 1, 4-dioxane: single-and 
+two-compartment systems," Journal of Industrial and 
+Engineering Chemistry, 2025. 
+[27]. W. E. Federation and A. Association, "Standard methods 
+for the examination of water and wastewater," American 
+Public Health Association (APHA): Washington, DC, USA, 
+vol. 21, 2005. 
+[28]. G. Chen, "Electrochemical technologies in wastewater 
+treatment," Separation and purification Technology, vol. 
+38, pp. 11-41, 2004. 
+[29]. E. Brillas, I. Sirés, and M. A. Oturan, "Electro -Fenton 
+process and related electrochemical technologies based 
+on Fenton’s reaction chemistry," Chemical reviews, vol. 
+109, pp. 6570-6631, 2009. 
+[30]. J. P. Maran, S. Manikandan, K. Thirugnanasambandham, 
+C. V. Nivetha, and R. Dinesh, "Box –Behnken design based 
+statistical modeling for ultrasound -assisted extraction of 
+corn silk polysaccharide," Carbohydrate polymers, vol. 92, 
+pp. 604-611, 2013. 
+[31]. J. E. Silveira, J. A. Zazo, G. Pliego, E. D. Bidóia, and P. B. 
+Moraes, "Electrochemical oxidation of landfill leachate in 
+a flow reactor: optimization using response surface 
+methodology," Environmental Science and Pollution 
+Research, vol. 22, pp. 5831-5841, 2015. 
+[32]. F. Liu, J. Zhao, Y. Ma, Z. Liu, Y. Xu, and H. Zhang, "Removal 
+of diesel from soil washing effluent by electro -enhanced 
+Fe2+ activated persulfate process," Journal of 
+Electroanalytical Chemistry, vol. 906, p. 115995, 2022. 
+[33]. C. K. Lin, M. J. Bashir, S. S. Abu Amr, and L. C. Sim, "Post-
+treatment of palm oil mill effluent (POME) using 
+combined persulphate with hydrogen peroxide 
+(S2O82−/H2O2) oxidation," Water Science and 
+Technology, vol. 74, pp. 2675-2682, 2016. 
+[34]. T. Asha, R. Gandhimathi, S. Ramesh, and P. Nidheesh, 
+"Treatment of stabilized leachate by ferrous -activated 
+persulfate oxidative system," Journal of Hazardous, Toxic, 
+and Radioactive Waste, vol. 21, p. 04016012, 2017. 
+[35]. E. Kattel and N. Dulova, "Ferrous ion -activated 
+persulphate process for landfill leachate treatmen t: 
+removal of organic load, phenolic micropollutants and 
+nitrogen," Environmental technology, vol. 38, pp. 1223 -
+1231, 2017.

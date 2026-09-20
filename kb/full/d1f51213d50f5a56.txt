@@ -1,0 +1,675 @@
+Volume 13, Number 2, 2026, 101–114 journal homepage: region.ersa.org
+DOI: 10.18335/region.v13i2.672 ISSN: 2409-5370
+Population Density and Air Pollution: Should Incen-
+tives Be the Same Across U.S. Cities and States?
+Y uval Arbel1
+1 Western Galilee College, Acre, Israel
+Received: 13 February 2026/Accepted: 23 August 2026
+Abstract.Population concentration generates both economic benefits and environmen-
+tal costs through agglomeration-related spatial externalities. This paper examines how
+population density shapes fine particulate matter (PM2.5) concentrations across U.S.
+states over the period 2000–2023, conceptualizing density as a structural driver of non-
+linear environmental externalities within regional systems. Using a panel of all fifty
+states, I estimate fixed-effects models in which logged PM2.5 is modeled as a flexible
+quadratic function of logged population density, allowing coefficients to evolve over time
+and across density regimes.
+The results reveal a convex relationship between population density and PM2.5, indi-
+cating that the environmental externalities of agglomeration increase at an accelerating
+rate over much of the density distribution. However, the strength of this nonlinear effect
+has weakened over time, consistent with regulatory adaptation and technological diffu-
+sion. A split-regime analysis further shows that the curvature of the density-pollution
+relationship differs systematically between low- and high-density states, suggesting het-
+erogeneity in regional externality structures.
+These findings contribute to the regional science literature by demonstrating that the
+environmental consequences of population concentration are nonlinear, heterogeneous,
+and dynamic within an advanced economy context. More broadly, the results highlight
+the importance of incorporating spatial externalities and governance scale into density-
+sensitive regional policy design, particularly in transportation investment, land-use plan-
+ning, and environmental regulation.
+Key words:Population density; PM2.5; Spatial externalities; Agglomeration; Nonlinear
+effects; Regional heterogeneity
+1 Introduction
+This paper examines how population density affects PM2.5 concentrations across U.S.
+states over the period 2000–2023. Specifically, it asks whether the relationship between
+population density and air pollution is nonlinear, whether it differs across density regimes,
+and how it evolves over time. Using a panel of all fifty states, I estimate fixed-effects
+models in which logged PM2.5 is modeled as a quadratic function of logged population
+density, with coefficients allowed to vary over time. The results reveal a convex relation-
+ship, indicating that environmental externalities increase at an accelerating rate with
+101
+102 Y. Arbel
+density, although this effect weakens over time and differs across low- and high-density
+states.
+Population concentration is a defining feature of modern economic geography. Ag-
+glomeration generates productivity gains through knowledge spillovers, labor-market
+pooling, infrastructure sharing, and input–output linkages. At the same time, it intensi-
+fies congestion, energy consumption, transportation flows, and environmental pressures.
+These opposing forces imply that population density is not merely a demographic char-
+acteristic but a source of spatial externalities whose magnitude and incidence may vary
+across regional systems. This paper explicitly conceptualizes population density as a
+structural driver of nonlinear environmental externalities.
+Fine particulate matter (PM2.5) provides a particularly relevant lens through which
+to examine these spatial externalities. Particles small enough (≤2.5 micrometers) can
+penetrate deep into the lungs and enter the bloodstream, increasing the risk of cardiovas-
+cular and respiratory disease. Beyond its health effects, PM2.5 also plays an important
+role in atmospheric dynamics and climate processes (IPCC 2021, WHO 2025).
+Despite extensive research, the relationship between population density and PM2.5
+remains theoretically ambiguous and empirically unsettled. On one hand, higher density
+may amplify pollution through congestion and scale effects. On the other hand, density
+may facilitate cleaner transport, stricter regulation, and technological upgrading.
+This paper addresses these issues by focusing on state-level regional systems, which
+capture both within-region dynamics and broader spatial spillovers under unified policy
+frameworks. Empirically, I estimate fixed-effects panel models with nonlinear and time-
+varying specifications and examine heterogeneity across density regimes.
+The contribution is threefold. First, the paper conceptualizes population density as
+a source of nonlinear environmental externalities. Second, it documents heterogeneity
+across density regimes. Third, it shows that these effects evolve over time.
+The remainder of the paper is structured as follows. Section 2 gives literature review.
+Section 3 describes the data and presents descriptive statistics. Section 4 outlines the
+empirical methodology and model specifications. Section 5 presents the results, includ-
+ing pooled, regime-specific, and time-varying effects. Section 6 concludes with policy
+implications and directions for future research.
+2 Literature Review
+The relationship between urbanization and PM2.5 has been widely studied, but results
+remain mixed. A global panel study of 135 countries finds that the impact of urban-
+ization depends on development stage (Wang et al. 2019). In Eastern China, PM2.5
+exposure declined despite continued urban growth, reflecting regulatory improvements
+(Zhang et al. 2022). These findings suggest that the density–pollution relationship is
+context-dependent and evolves over time. Recent global evidence, such as the 2025
+IQAir World Air Quality Report (https://www.iqair.com/world-air-quality-report), con-
+firms persistent cross-country variation in PM2.5 levels and highlights ongoing challenges
+in meeting recommended standards.
+City-level evidence further highlights complexity. In Shanghai, density is positively
+associated with PM2.5 (Han, Sun 2019). Mobility-based studies show unequal exposure
+across populations (Fan et al. 2022). However, most existing studies are localized and
+do not fully capture regional spillovers and governance structures.
+Two key gaps emerge. First, much of the literature relies on cross-sectional or city-
+level data, limiting its ability to capture interregional externalities (LeSage, Pace 2009,
+Kahn, Walsh 2015). Second, many studies assume linear relationships and short time
+horizons. As a result, nonlinear and dynamic aspects of the density–pollution relationship
+remain underexplored.
+This study contributes by providing a unified panel analysis at the state level, incorpo-
+rating nonlinearities, temporal dynamics, and regional heterogeneity within a consistent
+institutional framework.
+REGION: Volume 13, Number 2, 2026
+Y. Arbel 103
+Table 1: Descriptive Statistics
+Variable Details Obs Mean Median Std. Dev. Min Max
+PM2.5 24-hour average concen-
+tration of fine particles
+in the air that are 2.5
+micrometers in diame-
+ter or smaller, measured
+inµg/m 3.
+1,170 23.6091 22.6667 9.77688 1 151.286
+Density Total population di-
+vided by land area in
+square kilometers
+1,170 76.3118 39.15676 101.043 0.42489 492.447
+Year 1,170 2011.56 2012 6.927 2000 2023
+Notes: PM2.5 data exclude exceptional events such as wildfires and dust storms. A human hair is
+approximately 70µm in diameter, compared to≤2.5µm for PM2.5 particles.
+3 Description of Data
+3.1 Data Sources
+Data on PM2.5 concentrations for the period 2000 to 2023 were obtained from the U.S.
+Environmental Protection Agency (EPA 2025). For each year, I downloaded individ-
+ual CSV files containing 24-hour PM2.5 measurements in micrograms per cubic meter
+(µg/m3) from specific monitoring locations. To obtain state-level measurements, I se-
+lected the “County” option to aggregate monitoring data. To ensure that our analysis
+reflects typical air quality conditions, I specifically excluded data corresponding to ex-
+ceptional events, such as wildfires, dust storms, or other unusual pollution episodes, by
+selecting the “Exclude exceptional events data” option in the EPA dataset interface. I
+then calculated the average PM2.5 level for each U.S. state and subsequently merged
+these state-level averages into a single dataset.
+Population density (people per square kilometer) was calculated using population
+and land area data. Population figures were obtained from the Tauberer (2025) GitHub
+repository, based on U.S. Census Bureau estimates compiled by the Federal Reserve Bank
+of St. Louis for 1900–2024. State land area data were retrieved from the U.S. Census
+Bureau.
+3.2 Descriptive Statistics
+Table 1 presents summary statistics for the main variables used in the analysis, cov-
+ering 1,170 observations across the 50 U.S. states from 2000 to 2023. The dependent
+variable, PM2.5, represents the 24-hour average concentration of fine particulate matter
+(particles with a diameter of≤2.5µm, compared to about 70µm for a human hair),
+measured in micrograms per cubic meter (µg/m 3). The mean PM2.5 concentration is
+23.61µg/m 3 and the median is 22.67µg/m 3, suggesting a slightly right-skewed distri-
+bution. Dispersion is substantial, with a standard deviation of 9.78µg/m 3 and values
+ranging from 1µg/m 3 to 151.29µg/m 3. These figures reflect typical state-level variation
+over time, after excluding exceptional events such as wildfires and dust storms. The
+highest average PM2.5 concentration was observed in Oregon in 2020, while the lowest
+was recorded in South Dakota in 2015. Under normal conditions, this variation likely
+reflects differences in population density, industrial activity, transportation intensity, and
+local meteorological conditions.
+To formally assess how observed concentrations compare with the commonly recom-
+mended benchmark of 15µg/m 3, Table 2 reports the results of two complementary
+statistical tests. Panel A presents a one-sample t-test of whether the mean PM2.5
+concentration equals 15µg/m 3. The null hypothesis of equality is strongly rejected
+(t= 23.60914−15
+9.776881/√1,170≈30.12,p <0.001), indicating that average PM2.5 concentrations
+in the sample are statistically significantly higher than the benchmark. Panel B reports
+a one-sample Wilcoxon signed-rank test for the median. The null hypothesis that the
+median equals 15µg/m 3 is also strongly rejected (z= 24.90,p<0.001). Consistent with
+REGION: Volume 13, Number 2, 2026
+104 Y. Arbel
+Table 2: Tests of PM2.5 Levels Against the WHO Benchmark (15µg/m 3)
+Panel A:One-sample t-test (Mean)
+Variable Obs. Mean Std. Dev Std. Err t-statistic 95% CI p-value
+PM2.5 1,170 23.6091 9.77688 0.28583 30.12 [23.05, 24.17]<0.001
+Reject H0(Mean=15µg/m 3)
+Panel B:Wilcoxon Signed-Rank Test (Median)
+positive Negative Zero z-statistics p-value
+1,009 151 10 24.90<0.001
+Reject H0(Median=15µg/m 3)
+this result, 1,009 out of the 1,170 observations exceed the benchmark level, confirming
+that both the mean and the median PM2.5 concentrations in the sample lie significantly
+above the recommended threshold.
+Table 1 also reports descriptive statistics for population density, defined as total
+population divided by land area in square kilometers. Population density exhibits a
+highly skewed distribution: the mean is 76.31 people per km 2, while the median is only
+39.16 people per km2, reflecting the influence of a few very densely populated states. The
+standard deviation of 101.04 further illustrates the substantial variation across states,
+with values ranging from 0.42 to 492.45 people per km 2. This range highlights the stark
+contrast between sparsely populated states such as Alaska and highly urbanized states
+such as New Jersey. In 2023, New Jersey was the most densely populated state (492.45
+people per km 2), whereas Alaska was the least densely populated in 2000 (0.42 people
+per km 2).
+Finally, Table 1 shows that the Year variable ranges from 2000 to 2023, with a mean
+of 2011.56 and a median of 2012. The relatively low standard deviation of 6.93 reflects
+the time coverage of the panel.
+Overall, the descriptive evidence points to considerable heterogeneity in both PM2.5
+levels and population density across states and over time. This heterogeneity motivates
+the use of a quadratic specification to capture potential nonlinear effects of density on
+PM2.5, as high-density states may experience different pollution dynamics than low-
+density states. In addition, the panel structure of the data, with repeated observations
+for each state over multiple years, justifies the use of fixed-effects regression models to
+control for time-invariant unobserved heterogeneity across states while estimating the
+effects of population density and its interactions over time.
+4 Methodology
+4.1 Model specification: Pooled Sample
+I model the natural logarithm of 24-hour PM2.5 [yit = ln (PM2.5it)] as a flexible quadratic
+function of the natural logarithm of population density [x it = ln(Density it)], allowing
+curvature, slope, and intercept to vary over time. The log-log transformation allows
+coefficients to be interpreted as elasticities (e.g., Wooldridge 2009) and the quadratic
+form captures potential nonlinear effects of population density on PM2.5. The sample
+includes all 50 U.S. states (i= 1,...,50) for the years 2000–2023 (t= 2000,...,2023).
+For clarity, Table 3 summarizes the notation used in the empirical model.
+Table 3: Definitions of Variables
+Symbol Definition
+ln(PM2.5) Log pollution
+ln(Density) Log population density
+tTime index (years)
+τt year-2000
+FE State fixed effects (time-invariant heterogeneity)
+REGION: Volume 13, Number 2, 2026
+Y. Arbel 105
+To capture time variation, I define a time variableτ t = (year-2000), so that the
+intercept corresponds to the base year 2000. This improves the interpretability of the
+intercepts and reduces multicollinearity among time-related terms. Without centering,
+the intercepts would correspond to the expected level of PM2.5 in the non-existent year
+zero (Ramanathan 2002, p. 147-148, Hoaglin 2016a,b) 1. Coefficients of the quadratic,
+linear, and intercept terms are allowed to evolve linearly with time, while the error term
+captures unobserved variation in PM2.5.
+I estimate a time-varying interaction model, where the final specification is given by:
+ln(PM2.5) =a 11[ln(Density)]2 +a 12[year−2000]∗[ln(Density)] 2+
++b 11 ln(Density) +b 12[year−2000]∗ln(Density) +c 11+
++c 12[year−2000] +µ 1 (1)
+wherea 11,a 12,b 11,b 12,c 11,c 12 are parameters to be estimated andµ 1 is the error term.
+This specification allows both the linear and nonlinear effects of population density on
+PM2.5 to vary over time. In particular, the interaction terms with (year-2000) capture
+how the slope and curvature of the relationship evolve throughout the sample period.
+For completeness, the full derivation and alternative parameterizations are provided in
+Appendix A.1.
+To clarify the interpretation of the interaction terms, consider the marginal effect of
+population density on PM2.5. Taking the first derivative with respect to ln(Density), we
+obtain:
+∂ln(PM2.5)
+∂ln(Density) =b 11 +b 12[year−2000] + 2a 11 ln(Density) + 2a12[year−2000] ln(Density).
+This expression shows that the marginal effect of population density on PM2.5 is
+not constant but depends both on the level of density and on time. In particular, the
+interaction terms imply that the slope and curvature of the relationship evolve over the
+sample period, allowing the impact of density to strengthen or weaken over time. More
+generally, this reflects the role of interaction effects, where the influence of one variable
+depends on the value of another variable rather than remaining fixed.
+4.2 Model specification: Density Regime Split
+To examine heterogeneity in the density–pollution relationship, I extend the baseline
+specification by allowing the effects of population density to differ across density regimes.
+Specifically, the sample is divided into below- and above-median density states, and a
+regime indicator (D AD) is introduced to capture these differences.D AD is 1 when the
+density is above the median and 0 otherwise.
+The empirical model retains the quadratic specification in log population density while
+allowing the intercept, slope, and curvature to vary both across density regimes and over
+time. This flexible formulation enables the marginal effect of density on PM2.5 to differ
+systematically between low- and high-density states, while also evolving throughout the
+sample period.
+Formally, the model is specified as:
+1Hoaglin (2016a) emphasizes that reusing the same letters in models with different sets of predictors
+can obscure the individual contribution of each predictor to the coefficients. For instance, if the model
+2x+ 5tfits the data onywell, then the model [−3x+ 5(t+x)] will fit the data equally well, since both
+produce identical predicted values (p. 7).
+REGION: Volume 13, Number 2, 2026
+106 Y. Arbel
+ln(PM2.5) =a 21[ln(Density)]2 +a 22DAD∗[ln(Density)] 2+
++a 23[year−2000]∗[ln(Density)] 2+
++a 24DAD∗[year−2000]∗[ln(Density)] 2+
++b 21 ln(Density) +b 22DAD∗ln(Density)+
++b 23[year−2000]∗ln(Density)+
++b 24DAD∗[year−2000]∗ln(Density) +c 21+
++c 22DAD +c 23[year−2000]+
++c 24DAD∗[year−2000] +µ 2
+wherea 21,···,a 24,b 21,···,b 24,c 21,···,c 24 are parameters to be estimated andµ 2 is the
+error term. The coefficients are allowed to vary by regime and time, and the error term
+captures unobserved variation in PM2.5 not explained by density, regime classification,
+or time dynamics.
+This specification implies that both the level and the shape of the density–pollution
+relationship may differ across regimes. In particular, it allows the marginal effect of
+population density – and the location of potential turning points – to vary between
+low- and high-density states. For completeness, the full expansion of the model and the
+derivation of marginal effects are provided in Appendix A.2.
+The marginal effect of population density is given by:
+∂ln(PM2.5)
+∂ln(Density) =b 21 +b 22DAD +b 23[year−2000] +b 24DAD[year−2000]+
++2
+(︂
+a21 +a 22DAD +a 23[year−2000] +a 24DAD[year−2000]
+)︂
+∗ln(Density)
+This expression shows that the marginal effect of density depends on both time and the
+density regime.
+I estimate our models using fixed-effects regressions to account for time-invariant dif-
+ferences across states. Formally, for a single explanatory variablex it, the fixed-effects
+(within) transformation isy it−¯yi =β(x it−¯xi) + (uit−¯ui), where ¯yi and ¯xi are state-
+specific averages over time (Wooldridge 2009, p. 481-482). This approach can be general-
+ized to multiple predictors, allowing consistent estimation of linear and quadratic terms,
+as well as interactions, while controlling for unobserved, time-invariant heterogeneity.
+5 Results
+Table 4 presents the fixed-effects regression estimates of the relationship between popula-
+tion density and PM2.5 concentrations for the 50 U.S. states over the period 2000–2023.
+The dependent variable in all specifications is the natural logarithm of 24-hour average
+PM2.5 concentrations.
+5.1 Baseline Density Effects and Time Trends
+Across all three specifications in Table 4, the coefficient on the time trend (year-2000)
+is negative and statistically significant at the 1% level, indicating a systematic decline
+in PM2.5 concentrations over time, holding other factors constant. In column (2), for
+example, the estimated coefficient of -0.0234 implies an average annual reduction of
+approximately 2.3%, which is consistent with long-run improvements in air quality driven
+by tighter environmental regulation and technological progress.
+In column (1), which includes both linear and quadratic terms in log population
+density and their interactions with time, neither the linear density term nor the quadratic
+term is statistically significant. This suggests that, once state fixed effects and time
+dynamics are controlled for, the relationship between population density and PM2.5 is
+not well captured by a static quadratic specification.
+REGION: Volume 13, Number 2, 2026
+Y. Arbel 107
+Table 4: Fixed-Effects Estimates of PM2.5 and Population Density (2000–2023), Includ-
+ing Nonlinear Effects
+(1) (2) (3)
+fixed-effect fixed-effect fixed-effect
+Variables ln(PM2.5) ln(PM2.5) ln(PM2.5)
+ln(Density)2 0.0846 - 0.0991***
+(0.116) - (0.0373)
+(year-2000)*ln(Density)2 -0.000378 - -0.00104***
+(0.000499) - (0.000153)
+ln(Density) 0.225 0.820*** -
+(0.816) (0.269) -
+(year-2000)*ln(Density) -0.00437 -0.00555*** -
+(0.00402) (0.00105) -
+Constant 1.500 0.626 2.076***
+(1.398) (0.933) (0.522)
+(year-2000) -0.0186** -0.0203*** -0.0234***
+(0.00931) (0.00496) (0.00300)
+Observations 1,170 1,170 1,170
+R-squared 0.369 0.368 0.368
+F(5,1115) 130.46*** - -
+F(3,1117) - 217.08*** -
+F(3,1117) - - 216.65***
+Number of States 50 50 50
+Notes: Numbers in parentheses are standard errors. ***p<0.01
+When the model is simplified in column (3) to highlight the nonlinear effect of density,
+a clearer pattern emerges. The coefficient on the squared log-density term, [ln(Density)]2,
+is positive and highly significant (0.0991,p <0.01), indicating that the marginal effect
+of population density on PM2.5 increases at an accelerating rate. This implies a convex
+relationship between density and pollution.
+The estimated convex curve begins at the point [ln(1),2.076] = [0,2.076], correspond-
+ing to the model’s constant term and representing the predicted log PM2.5 concentration
+in the year 2000 when ln (Density) = 0 (i.e., density = 1 person per square kilometer). On
+the original scale, this corresponds to a predicted concentration of exp(2.076)≈7.97µg,
+which is below the WHO 24-hour benchmark of 15µg/m 3. According to the estimates,
+this benchmark is reached in the year 2000 at a population density of approximately 12.5
+persons per square kilometer (see Appendix A.3 for the detailed calculation).
+The interaction term between squared log-density and time is negative and statisti-
+cally significant (-0.00104,p<0.01), indicating that the strength of this nonlinear effect
+has weakened over time. Overall, these results suggest that although densely populated
+states historically experienced disproportionately higher PM2.5 concentrations, the en-
+vironmental penalty associated with very high density has gradually declined, likely
+reflecting the effects of stricter regulation and cleaner production technologies.
+5.2 Time-Varying Density Effects
+Columns (1) and (2) further allow for the effect of population density to vary over
+time through interactions with the time trend. In column (2), the interaction between
+year−2000 and [ln(Density)] 2 is negative and statistically significant, indicating that the
+curvature of the density–pollution relation has flattened over the sample period.
+Although high-density states continue to exhibit higher PM2.5 concentrations on
+average, the gap between low- and high-density states has narrowed over time. This
+convergence suggests that technological improvements and regulatory interventions may
+have been adopted earlier or more intensively in denser states, where political pressure
+and exposure to pollution tend to be stronger.
+Taken together, these results provide evidence that the impact of population density
+on air quality is not only nonlinear, but also time-varying. The environmental cost of
+urban density, while still present, has become less steep over time, reflecting broader
+structural changes in pollution control and production technologies.
+REGION: Volume 13, Number 2, 2026
+108 Y. Arbel
+5.3 Split-Regime Sample: Low- versus High-Density States
+To examine whether the relationship between population density and PM2.5 differs across
+density regimes, the sample is divided at the median population density. Separate effects
+are then estimated for states below and above this threshold. Table 5 presents the results
+using both fixed-effects and stepwise specifications.
+Table 5: Nonlinear and Threshold Effects of Population Density on PM2.5 (2000–2023)
+(1) (2)
+Fixed-effect Stepwise
+Variables ln(PM2.5) ln(PM2.5)
+ln(Density)2 0.567** 0.0518***
+(0.245) (0.0112)
+DAD * ln(Density)2 -0.405 -0.0419***
+(0.482) (0.0113)
+(year-2000) * ln(Density)2 -0.00192 -0.000939***
+(0.00154) (0.000174)
+DAD * (year-2000) * ln(Density) 2 -0.000164
+(0.00473)
+ln(Density) -2.185 -0.133***
+(1.335) (0.0419)
+DAD * ln(Density) 1.279 0.136***
+(3.974) (0.0391)
+(year-2000) * ln(Density) -0.00632
+(0.00640)
+DAD * (year-2000) * ln(Density) 0.0196
+(0.0453)
+Constant 4.128** 3.339***
+(1.810) (0.0550)
+DAD 0.719
+(8.440)
+(year-2000) -0.000189 -0.0211***
+(0.0124) (0.00299)
+DAD * (year-2000) -0.0607
+(0.111)
+Observations 1,170 1,170
+R-squared 0.373 0.307
+F(11,1109) 59.88***
+F(6, 1163) 85.79***
+Number of States 50 50
+Notes: Numbers in parentheses are standard errors. ***p<0.01
+In both models, the quadratic term in log population density is positive and statis-
+tically significant for low-density states. This indicates that even among less densely
+populated states, PM2.5 concentrations increase at an accelerating rate as density rises.
+In high-density states, the interaction termD AD×[ln(Density)] 2 is negative and signif-
+icant in the stepwise model, implying that the rate at which pollution increases with
+density is lower in these states compared with low-density states. In other words, the
+marginal environmental cost of additional density diminishes at very high population
+densities.
+The interactions with time reveal a gradual flattening of the density–pollution rela-
+tionship over the period 2000–2023. The coefficient on [year−2000]×[ln(Density)] 2 is
+negative and statistically significant, indicating that nonlinear effects have weakened over
+time. While this decline is observed in both regimes, it is slightly smaller in high-density
+states, suggesting slower convergence in extremely dense environments.
+Overall, the split-regime analysis confirms that the density–pollution relationship is
+both nonlinear and heterogeneous. While a convex pattern is evident in both groups,
+it is stronger among low-density states and is gradually converging over time. The
+implications of these differences for predicted pollution levels are illustrated in Figure 2,
+discussed in Section 5.5.
+REGION: Volume 13, Number 2, 2026
+Y. Arbel 109
+5.4 Goodness of Fit
+All models explain a similar proportion of within-state variation in logged PM2.5 con-
+centrations, with R²values around 0.307–0.373. The F-statistics are large and highly
+significant, confirming that the models jointly explain a substantial share of variation in
+air pollution levels over time within states.
+5.5 Visualization of Nonlinear Effects
+Figure 1 illustrates the convex relationship between population density and predicted
+PM2.5 concentrations based on column (3) of Table 4. Predicted values are exponen-
+tiated to improve interpretability in micrograms per cubic meter. At low to moderate
+population densities, predicted PM2.5 levels increase gradually, while at higher densities
+the increase becomes more pronounced, reflecting the positive and significant quadratic
+term.
+Figure 2 presents the heterogeneous effects across low- and high-density regimes based
+on the stepwise estimates in column (2) of Table 5. The predictions are computed for the
+mean year of the sample, 2011, and displayed on the original PM2.5 scale. The WHO
+24-hour benchmark of 15µg/m 3 is included as a reference line.
+Notes: Based on column (3) of Table 4. The horizontal axis represents population density per square
+kilometer, and the vertical axis represents the projected level of 24-hour PM2.5 inµg/m 3. According to
+WHO (2021), the 24-hours recommended PM2.5 level is up to 15µg/m 3.
+Figure 1: Quadratic Effect of Density on Predicted PM2.5 Levels (Exponentiated Scale)
+Across the entire density distribution, predicted PM2.5 concentrations remain above
+the WHO benchmark. The curve reaches its minimum at approximately 20µg/m 3, in-
+dicating that even at the most favorable point of the distribution, predicted pollution
+levels exceed recommended exposure limits. In the low-density regime, PM2.5 concen-
+trations increase sharply with rising population density, reflecting the strong nonlinear
+effect estimated in Table 5. In the high-density regime, predicted concentrations are
+higher overall, but the slope of the curve becomes flatter at very high densities. This
+suggests that further increases in density at already high levels have a smaller marginal
+effect on pollution.
+These results highlight that, even at the midpoint of the sample period, popula-
+tion density is associated with systematically elevated PM2.5 concentrations across both
+regimes. The fact that the minimum predicted value exceeds the WHO benchmark
+underscores the persistence of air quality challenges in both low- and high-density envi-
+ronments, despite overall improvements over time.
+REGION: Volume 13, Number 2, 2026
+110 Y. Arbel
+Notes: Based on column (2) of Table 5. The horizontal axis represents population density per square
+kilometer, and the vertical axis represents the projected level of 24-hour PM2.5 inµg/m 3. According to
+WHO (2021), the 24-hours recommended PM2.5 level is up to 15µg/m 3.
+Figure 2: Heterogeneous Effects of Population Density on Predicted PM2.5 Levels
+5.6 Summary of Main Findings
+PM2.5 concentrations have declined significantly across U.S. states over time. Population
+density exhibits a convex relationship with PM2.5, with pollution increasing dispropor-
+tionately at higher densities, although this effect has weakened, indicating convergence
+between high- and low-density states. The split-regime analysis shows that the convex
+pattern is stronger in low-density states, while in high-density states, additional increases
+in population have a smaller marginal effect. Despite improvements, predicted PM2.5
+levels remain above the WHO benchmark for the entire density distribution. These re-
+sults highlight the importance of accounting for nonlinear and time-varying effects when
+evaluating the environmental consequences of population density and urbanization.
+6 Summary and Conclusions
+This study examines how population density shapes PM2.5 concentrations across U.S.
+states from 2000 to 2023 using EPA monitoring data that exclude exceptional events and
+population measures based on Census Bureau estimates. The descriptive analysis shows
+that PM2.5 levels are consistently above the commonly used 15µg/m3 benchmark in most
+states, while population density varies sharply—from extremely sparse regions to highly
+urbanized areas. Fixed-effects regressions reveal a nonlinear, convex relationship between
+density and pollution, with the marginal effect of density rising at an accelerating rate.
+However, this nonlinear effect has weakened over time, indicating convergence between
+low- and high-density states. A split-regime analysis confirms that density increases
+pollution more steeply in low-density states, while high-density states exhibit a flatter
+marginal profile, likely due to earlier regulatory action and technology adoption. Despite
+steady improvements, predicted PM2.5 levels remain above the WHO benchmark across
+the entire density range. These improvements are likely associated with specific policy
+and technological changes, including stricter emissions standards, the expansion of public
+transportation systems, and increased electrification. In addition, behavioral factors such
+as rising environmental awareness may have contributed to the observed improvements
+in air quality.
+An important consideration in interpreting these results is the role of regulatory het-
+erogeneity and spatial spillovers. Environmental regulation and enforcement vary across
+states, and while fixed effects control for time-invariant differences, time-varying policy
+changes may contribute to the observed convergence in PM2.5 levels. In addition, PM2.5
+REGION: Volume 13, Number 2, 2026
+Y. Arbel 111
+can travel across state boundaries through atmospheric transport. Therefore, the esti-
+mated relationships capture both local emissions and interregional spillovers, consistent
+with spatial externalities.
+The broader significance of PM2.5 extends beyond public health. Fine particles ex-
+ert both warming and cooling climate effects: components such as black carbon absorb
+sunlight, darken snow surfaces, and warm the lower atmosphere, while sulfates and or-
+ganic aerosols scatter sunlight and influence cloud properties, thereby exerting cooling
+effects (Climate Change Academy 2025). Aerosols also shape global biogeochemical cy-
+cles. Mineral dust, marine aerosols, and anthropogenic particles deliver iron, phosphorus,
+and other nutrients to terrestrial and ocean ecosystems, stimulating primary productiv-
+ity and affecting carbon uptake (Ito et al. 2023, Hird et al. 2024). Ocean–atmosphere
+feedbacks further link aerosol chemistry to cloud formation and long-term radiative forc-
+ing (Sellegri et al. 2024, Mahowald 2011). Because PM2.5 emissions often coincide with
+fossil-fuel CO2 emissions, reducing fine particulate pollution – especially black carbon –
+offers near-term benefits for both climate mitigation and human health.
+The findings suggest several priority areas for policy action. Targeted mitigation is
+especially important in states with low population density, because nonlinear effects are
+strongest there and even modest increases in population or economic activity can lead
+to sharp increases in pollution. These regions would benefit from enhanced monitoring,
+stricter emissions standards for industry and transport, and early adoption of clean tech-
+nologies. Stronger controls are also needed in highly populated environments. Although
+the marginal effects of density are flatter in these areas, overall pollution levels remain
+high, which makes the expansion of public transportation, faster progress on electrifica-
+tion, the development of green infrastructure in cities, and firm enforcement of industrial
+standards particularly important.
+A further policy consideration concerns relocation incentives. In practice, many gov-
+ernments already offer incentives and subsidies that encourage relocation to specific areas.
+Incorporating environmental criteria into these programs could be especially valuable.
+The state may increasingly prioritize relocation toward regions with lower environmental
+impact or reduced air pollution rather than toward areas that experience substantial en-
+vironmental stress. Such policies could serve as a complementary tool for safeguarding air
+quality, reducing the long-term burden of particulate emissions, and supporting broader
+climate goals, including reducing ozone-related harm and fostering a more sustainable
+spatial distribution of population and economic activity.
+It is also essential to integrate air-quality policy with climate policy. Reductions in
+PM2.5 and in emissions that contribute to climate change, especially black carbon, offer
+substantial shared benefits, so federal and state governments should coordinate strate-
+gies that address both challenges simultaneously. Improving monitoring and harmonizing
+data remains a key priority as well. Continued refinement of emissions inventories, expan-
+sion of monitoring networks, and the inclusion of aerosol–climate interactions in urban
+planning will strengthen the reliability of future assessments.
+The manuscript has several notable strengths. It draws on a long panel that covers
+all fifty states over a period of twenty-four years, and it employs fixed-effects models that
+account for unobserved characteristics specific to each state. The study also identifies
+nonlinear and time-varying relationships that earlier work has often overlooked, and it
+effectively links its empirical results to the broader literature on aerosols and climate.
+At the same time, the analysis has important limitations. It does not include several
+potentially influential covariates, such as industry composition, patterns of energy use,
+and meteorological conditions, all of which may shape the relationship between popula-
+tion density and pollution. The functional form is restricted to a quadratic specification,
+even though more flexible approaches, such as splines or machine learning, could reveal
+additional nonlinearities. Aggregating data at the state level also conceals substantial
+variation within states, particularly in metropolitan areas where exposure patterns can
+differ sharply. Finally, although the manuscript discusses interactions between climate
+and aerosols, it does so at a conceptual level and does not incorporate these processes
+directly into the empirical model.
+REGION: Volume 13, Number 2, 2026
+112 Y. Arbel
+Overall, the findings highlight that while U.S. air quality has improved substantially,
+population density remains a central determinant of PM2.5 levels, and pollution remains
+above recommended thresholds across the full density distribution. Given the dual public-
+health and climate implications of fine particulate matter, effective policy must combine
+targeted local interventions, environmentally informed relocation and incentive strate-
+gies, and integrated national approaches that reduce fossil-fuel reliance and curb PM2.5
+emissions in both low- and high-density environments.
+References
+Climate Change Academy (2025) Aerosols and climate change: Dual roles in warming
+and cooling. Web page. Available at https://climatechange.academy/introduction-to-
+climate-change/aerosols-climate-change-warming-cooling
+EPA – U.S. Environmental Protection Agency (2025) Air quality statistics report. Re-
+trieved November 27, 2025, from https://www.epa.gov/outdoor-air-quality-data/air-
+quality-statistics-report
+Fan C, Chien YH, Mostafavi A (2022) Human mobility disproportionately extends
+PM2.5 emission exposure for low-income populations. Preprint, arXiv. Available at
+https://arxiv.org/abs/2205.15381
+Han S, Sun B (2019) Impact of population density on PM2.5 concentrations: A case
+study in Shanghai, China.Sustainability11. CrossRef
+Hird C, Perron MMG, Holmes TM, Meyerink S, Nielsen C, Townsend AT, Caritat P,
+Strzelec M, Bowie AR (2024) On the use of lithogenic tracer measurements in aerosols
+to constrain dust deposition fluxes to the ocean southeast of Australia.Aerosol Re-
+search2: 315–327. CrossRef
+Hoaglin D (2016a) Regressions are commonly misinterpreted.Stata Journal16: 5–22.
+CrossRef
+Hoaglin D (2016b) Regressions are commonly misinterpreted: A rejoinder.Stata Jour-
+nal16: 30–36. CrossRef
+IPCC – Intergovernmental Panel on Climate Change (2021) Short-lived climate forcers.
+In: Masson-Delmotte V (ed),Climate Change 2021: The Physical Science Basis. Con-
+tribution of Working Group I to the Sixth Assessment Report of the IPCC. Cambridge
+University Press, Cambridge UK
+Ito A, Miyazaki Y, Taketani F, Iwamoto Y, Kanaya Y (2023) Marine aerosol feedback
+on biogeochemical cycles and the climate in the anthropocene: Lessons learned from
+the Pacific Ocean.Environmental Science: Atmospheres3: 782–798. CrossRef
+Kahn ME, Walsh R (2015) Cities and the environment. In: Duranton G, Henderson
+JV, Strange WC (eds),Handbook of regional and urban economics, Volume 5. Elsevier
+Science, Amsterdam NL, 405–465. CrossRef
+LeSage J, Pace RK (2009)Introduction to Spatial Econometrics(1st ed.). Chapman and
+Hall/CRC, New York NY. CrossRef
+Mahowald NM (2011) Aerosol indirect effect on biogeochemical cycles and climate.Sci-
+ence334: 794–796. CrossRef
+Ramanathan R (2002)Introductory Econometrics with Applications(Fifth ed.). South-
+Western Thomson Learning, Mason OH
+REGION: Volume 13, Number 2, 2026
+Y. Arbel 113
+Sellegri K, Sim´ o R, Wang B, Alpert P, Altieri K, Burrows S, Hopkins F, Koren I, McCoy
+I, Ovadnevaite J, Salter M, Schmale J (2024) Influence of open ocean biogeochemistry
+on aerosol and clouds: Recent findings and perspectives.Elementa: Science of the
+Anthropocene12: 00058. CrossRef
+Tauberer J (2025) Historical population of the U.S. States - Spreadsheet (CSV). Github
+repository. Retrieved November 27, 2025, from https://github.com/JoshData/histori-
+cal-state-population-csv
+Wang Q, Kwan MP, Zhou K, Fan J, Wang Y, Zhan D (2019) The impacts of urbaniza-
+tion on fine particulate matter (PM2.5) concentrations: Empirical evidence from 135
+countries worldwide.Environmental Pollution247: 989–998. CrossRef
+WHO – World Health Organization (2021) What are the WHO air quality guide-
+lines? https://www.who.int/news-room/feature-stories/detail/what-are-the-who-air-
+quality-guidelines
+WHO – World Health Organization (2025)Health and air quality co-benefits of climate
+change mitigation: Technical brief. World Health Organization
+Wooldridge JM (2009)Introductory econometrics: A modern approach(5th ed.). South-
+Western/Cengage Learning, Mason OH
+Zhang Y, Zhou Q, Chang K (2022) Long term variation of population exposure to
+PM2.5 in Eastern China: A perspective from SDG 11.6.2. Preprint. available at
+https://arxiv.org/abs/2208.14275
+A Appendix:
+A.1 Full Model Derivation and Time-Varying Parameterization
+Formally, the model is:
+yit =A 1(τt)x2
+it +B 1(τt)xit +C 1(τt) +ε 1,it
+where
+A1(τt) =a 11 +a 12τt,
+B1(τt) =b 11 +b 12τt,
+C1(τt) =c 11 +c 12τt,
+(2)
+andε 1,it – is the random disturbance term.
+Substituting these expressions into equation (1) gives the expanded form:
+yit =a 11x2
+it +a 12τtx2
+it +b 11xit +b 12τtxit +c 11 +c 12τt +ε 1,it
+or, equivalently, written in a more intuitive notation (indices omitted for convenience):
+ln(PM2.5) =a 11[ln(Density)]2 +a 12[year−2000]∗[ln(Density)] 2+
++b 11 ln(Density) +b 12[year−2000]∗ln(Density)+
++c 11 +c 12[year−2000] +µ 1
+Here,µ 1 is the error term, capturing unobserved variation in PM2.5 not explained by
+density or time trends.
+REGION: Volume 13, Number 2, 2026
+114 Y. Arbel
+A.2 Density-Regime Model
+Formally, the density-regime model is:
+ln(PM2.5) =A t[ln(Density)]2 +B t ln(Density) +C t +µ 2
+where the coefficients vary by time and density regime:
+At =a 21 +a 22[year−2000] +a 23DAD +a 24DAD∗[year−2000]
+Bt =b 21 +b 22[year−2000] +b 23DAD +b 24DAD∗[year−2000]
+Ct =c 21 +c 22[year−2000] +c 23DAD +c 24DAD∗[year−2000]
+whereD AD = 1 for above-median density states andD AD = 0 otherwise. Substituting
+these expressions into the baseline equation gives the full interaction model:
+ln(PM2.5) =
+[a21 +a 22[year−2000] +a 23DAD +a 24DAD∗[year−2000]][ln(Density)] 2+
++[b21 +b 22[year−2000] +b 23DAD +b 24DAD∗[year−2000]] ln(Density)+
++[c21 +c 22[year−2000] +c 23DAD +c 24DAD∗[year−2000]] +µ 2
+A.3 Calculation of Population Density Corresponding to the PM2.5 Benchmark
+Using the estimates from column (3) of the main model, I can calculate the population
+density at which the PM2.5 benchmark of 15µg/m 3 is reached in the year 2000. The
+model specification in 2000 is:
+ln(PM2.5) = Constant +β[ln(Density)] 2
+From column (3) we know that Constant = 2.076, andβ(for [ln(Density)] 2) = 0.0991
+Setting PM2.5 to the benchmark value of 15µg/m 3, we have:
+ln(15) = 2.076 + 0.0991·[ln(Density)] 2
+2.708 = 2.076 + 0.0991·[ln(Density)] 2
+[ln(Density)]2 = 2.708−2.076
+0.0991 ≈6.376
+ln(Density) =
+√
+6.376≈2.525
+Density =e 2.525≈12.5 people per square kilometer
+Thus, in the year 2000, a population density of approximately 12.5 people per square
+kilometer corresponds to a PM2.5 concentration of 15µg/m 3 according to the estimated
+model.
+©2026 by the authors. Licensee: REGION – The Journal of ERSA, European
+Regional Science Association, Milan, Italy. This article is distributed under the
+terms and conditions of the Creative Commons Attribution (CC BY) license
+(http://creativecommons.org/licenses/by/4.0/).
+REGION: Volume 13, Number 2, 2026

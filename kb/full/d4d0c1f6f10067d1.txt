@@ -1,0 +1,1201 @@
+Received: 17 December 2025 | Revised: 30 June 2026 | Accepted: 19 August 2026 | Published online: 16 September 2026
+Journal of Optics and Photonics Research
+2026, V ol. 00(00) 1⚶12
+DOI: 10.47852/bonviewJOPR62028826
+RESEARCH ARTICLE
+Numerical Optimization of a
+Divergence-Beam Surface Plasmon
+Resonance Sensor with CaF 2/ZnO/Ag/ZnTe
+Multilayers for Alpha-Fetoprotein-Associated
+Refractive Index Sensing
+Jordan H. Hossea1,*, Athuman Mfinanga 1 and Vitalis Mwinyi 2
+1Department of Electronics and Telecommunications Engineering, Dar es Salaam Institute of Technology, United Republic
+of Tanzania
+2Department of Legal and Industrial Metrology, College of Business Education, United Republic of Tanzania
+Abstract: This study presents a numerical investigation of a five-lay er surface plasmon resonance (SPR) sensor employing a
+CaF2/ZnO/Ag/ZnTe configuration, optimized through the transfer matrix method at an excitation wa velength of 633 nm. The pr i-
+mary objective is to numerically maximize angular refractive index (RI) sensitivity relevant to alpha-fetoprotein (AFP)-associated RI
+sensing. Unlike conventional SPR configurations, the proposed structure employs a sub-conventional silver film thic kness of 40 nm
+combined with a 4 nm ZnTe protective/field-enhancing capping layer and a 6 nm ZnO adhesion layer. A rigorous theoretical anal-
+ysis shows that, within the ZnO/ZnTe multilayer environmen t, 40 nm is the optimum Ag thickness that simultaneously mini mizes
+ohmic losses and maximizes radiative coupling efficiency , rather than the conventional 50 nm associated with single-l ayer configu-
+rations. The simulation predicts a maximum angular sensitivity of 575.715°/RIU (RI unit), a figure of merit (FOM) of 125 RIU−1,
+and a theoretical digitization-limited resolution of 3.55× 10−10 RIU (an ideal lower bound under noise-free conditions) using a 3648-
+pixel charge-coupled device detector with a 12-bit analog to digital converter. The modeled RI range (1.3300⚶1.3353) corresponds to
+AFP concentrations of 0⚶125 ng/mL, following established bulk RI calibration references. A divergence-beam (Powell lens) interroga-
+tion system eliminates mechanical scanning by capturing all angles simultaneously . The sensor numerically indicatesstrong potential
+for high RI sensitivity in the AFP-relevant range; experime ntal validation with functionalized surfaces and noise cha racterization is
+required to establish real-world performance.
+Keywords: surface plasmon resonance, Powell lens, divergence beam, alpha-fetoprotein, hepatocellular carcinoma
+1. Introduction
+Alpha-fetoprotein (AFP) is a serum biomarker for hepato-
+cellular carcinoma (HCC), the predominant form of primary liver
+cancer , which accounts for 70⚶85% of reported cases worldwide
+[1–3]. AFP is a glycoprotein generated in the liver during embry-
+onic development [ 1], and elevated serum AFP concentrations
+signify the severity of chronic liver inflammation, regene ration,
+cirrhosis, and malignancy [ 3, 4]. The WHO ranks liver can-
+cer as the sixth most prevalent malignancy and third leading
+cause of cancer-related mortality; in Tanzania, it ranks th ird
+among cancer-related mortality , accounting for 11.3% and 5.1%
+of cancer fatalities in males and females, respectively [ 5]. The
+*Corresponding author: Jordan H. Hossea, Department of Electronics and
+Telecommunications Engineering, Dar es Salaam Institute of Technology,
+United Republic of Tanzania. Email: jordan.hossea@dit.ac.tz
+clinically significant AFP threshold for early-stage HCC d etec-
+tion is approximately 25 ng/mL, a level at which many a vailable
+biomedical instruments show inadequate sensitivity [1, 6].
+T raditional HCC diagnostics include ultrasound, com-
+puted tomography (CT), electrochemiluminescence immunoassay
+(ECLIA), enzyme-linked immunosorbent assay (ELISA), and
+fluorescence immunoassay [7–9]. These methods offer weak sen-
+sitivity below 25 ng/mL, ha ve long processing times, and require
+labeling agents. Surface plasmon resonance (SPR) biosensing is a
+label-free alternative with high sensitivity , fast response, and real-
+time capability suitable for low HCC concentrations [ 1, 10, 11].
+SPR occurs when incident evanescent wa ves couple into surface
+plasmon polaritons (SPPs) at a metal/dielectric interface, produc-
+ing a sharp resonance angle exquisitely sensitive to the ref ractive
+index (RI) of the adjacent medium, making SPR a powerful tool
+P d f_ F o l i o : 1
+© The Author(s) 2026. Published by BON VIEW PUBLISHING PTE. L TD. This is an open access article under the CC BY License (https://creativecommons.org/
+licenses/by/4.0/).
+01
+Journal of Optics and Photonics Research Vol. 00 Iss. 00 2026
+for detecting low-level biomarker proteins that induce minor RI
+perturbations.
+This phenomenon enables direct monitoring of biomarker
+surface interactions at extremely low concentrations [ 1, 10, 11].
+Resonance occurs when the evanescent wa ve’ s horizontal propa-
+gation constant matches that of the surface plasmon wa ve; hence,
+the resonance position depends on the RI of metal, prism, and
+sample. Only metals with a high real-to-imaginary permittiv ity
+ratio efficiently excite SPR ⚶ silver (Ag) outperforms gold (Au)
+in this regard, though Au is often chosen for corrosion resis -
+tance despite its broader full-width at half-maximum (FWHM )
+and reduced detection accuracy [1]. Recent designs therefore add a
+protective overlayer atop Ag to prevent oxidation while enhancing
+performance [12–14].
+Advanced photonic approaches such as metasurface-based
+biosensors and band-folding mechanisms ha ve shown remarkable
+capabilities for cancer cell detection and sub-terahertz p heno-
+typing [15]. Nevertheless, angle-interrogated SPR systems retain
+practical advantages in cost, compactness, and biochemica l
+versatility .
+SPR supports real-time, label-free AFP quantification with
+minimal sample volume [10, 11]. Owing to its high accuracy , reli-
+ability , and sensitivity to minute RI changes, SPR has been widely
+applied to DNA hybridization [12, 13], glucose sensing [ 16], for-
+malin detection in food [17, 18], and pathogen detection including
+dengue, malaria, chikungunya, and cancer [19].
+Multiple multilayer SPR configurations ha ve been numeri-
+cally investigated for AFP detection. Srivasta va et al. [20] reported
+a CaF 2/Ag/Si3N4/Ni/BP structure achieving 403.92°/RIU with
+a 45 nm Ag film at 633 nm, while Bahador and Aliakbari
+[1] built a six-layer BK7/Al/Ni/Si/BP sensor with 480°/RIU
+sensitivity using 38 nm Al at 633 nm. Vasimalla et al. [ 11] pro-
+posed a BK7/Ag/ZnTe/SiC/BP structure (Ag = 50 nm) reaching
+480.46°/RIU at 633 nm, and a CaF 2/Ag/TiO2/PbTiO3 design
+achieved 486°/RIU with 54 nm Ag at 1000 nm [ 21], although
+the latter’ s use of invisible light and expensive detectors is
+impractical. Collectively , these motivate further optimization of
+Kretschmann-configuration SPR sensors in the visible regime.
+Many existing SPR biosensors for AFP at 25 ng/mL suffer
+from inadequate sensitivity and resolution. Low sensitivi ty typ-
+ically arises from high-index prisms such as BK7 or from Ag
+thicknesses in the 45 ⚶55 nm range [ 22]. At 45 ⚶55 nm in mul-
+tilayer designs, the effective sensor thickness grows, att enuating
+the evanescent wa ve and weakening its interaction with the s ur-
+face plasmon. Although 45⚶55 nm balances radiative and intrinsic
+damping in single-layer sensors, multilayer designs require reop-
+timization: our analysis indicates Ag should lie below 45 nm (but
+not below 30 nm) to preserve strong mode confinement while
+reducing ohmic loss [22].
+Low resolution stems from mechanical-scanning implemen-
+tations limited by the stepper motor’ s 0.001° step [ 23]. The
+proposed biosensor uses a Powell-lens-produced diverged b eam
+that ensures uniform angular distribution and eliminates mechan-
+ical rotation. Its resolution is instead set by charge-coupled device
+(CCD) pixel count, analog to digital converter (ADC) bit dep th,
+and sensor sensitivity . With a 3648-pixel CCD and 12-bit ADC,
+the theoretical digitization-limited angular resolutionis finer than
+conventional motor-driven scanning though it remains an id eal
+lower bound achievable only under noise-free conditions. F or
+an RI range of 1.3300 ⚶1.3353 [ 1] and Δ𝜃res = 3°, the result-
+ing angular resolution is far smaller than that of mechanica l
+scanning [24, 25].
+Prior studies ha ve proposed adhesion materials between
+prism and Ag. Zinc oxide (ZnO) provides good adhesion and,
+unlike Cr or Ti, can be deposited in larger thicknesses with-
+out degrading performance, since Cr/Ti ha ve complex refractive
+indices that lower sensitivity by broadening the resonance curve
+[26, 27]. Their required thinness also increases interface roughness
+[28]. ZnO has a purely real, high RI, supporting charge trans-
+fer without visible-light absorption; larger ZnO thicknes ses also
+facilitate smooth deposition of Au or Ag [26, 27].
+Zinc telluride (ZnTe) is a semiconductor exhibiting pro-
+nounced SPR effects owing to its high RI [ 29, 30]. Com-
+bining optimized Ag thickness with ZnTe roughly doubles
+SPR sensitivity relative to conventional designs, and ZnTe ’ s
+chemical stability provides substantial protection again st Ag
+oxidation.
+In summary , reliance on Ag thicknesses of 45 ⚶55 nm is
+a major limitation of traditional multilayer SPR sensors th at
+range suited single-layer configurations balancing radia tive and
+ohmic damping, but adhesion/protective dielectric overlayers alter
+the boundary conditions and effective optical path, shifti ng the
+optimum. Additionally , motor-driven angular scanning lim its
+resolution to the 0.001° step [ 23]. This study addresses these
+limitations by (i) systematic transfer matrix method (TMM) -
+based optimization of a CaF 2/ZnO/Ag/ZnTe multilayer at 633
+nm, showing via loss-balance analysis that 40 nm is optimal
+in this multilayer context; (ii) implementing a divergence -beam
+(Powell-lens) interrogation with a 3648-pixel CCD that eli mi-
+nates mechanical scanning; (iii) evaluating sensitivity , FWHM,
+FOM, detection accuracy , and theoretical digitization lim ited
+resolution (TDLR) across the AFP-relevant RI range; and
+(iv) numerical robustness analysis quantifying sensitivity to fab-
+rication tolerances. All results are purely numerical—no e xperi-
+mental fabrication, functionalization, or biological measurements
+were performed.
+2. Methodology
+2.1. Theoretical model
+Figure 1 shows the proposed SPR sensor comprises five
+layers in the Kretschmann configuration, namely , (1) CaF 2
+prism (RI = 1.43290 at 633 nm [ 31])), (2) ZnO adhesion layer ,
+(3) Ag plasmonic film, (4) ZnTe protective/field-enhancing layer ,
+and (5) aqueous sensing medium. All simulations use 𝜆 = 633
+nm with the optical constants in Table 1. Sensing-medium RI
+spans ns = 1.3300 (deionized water) to 1.3353, corresponding to
+AFP concentrations of 0 ⚶125 ng/mL from the bulk RI calibra-
+tion of Bahador and Aliakbari [ 1], as summarized in Table 2,
+where progressive AFP addition yields cumulative Δn = 0.0053
+over 0⚶125 ng/mL. Practical SPR-based AFP sensing would addi-
+tionally require surface functionalization (e.g., anti-AFP antibody
+immobilization) to capture binding-induced local RI changes; the
+present study models bulk-RI sensing only and does not inclu de
+binding kinetics or surface bio-recognition layers.
+It is assumed that the reflected diverged beam is captured by
+the CCD sensor (TCD1304AP) 8-bits controlled by ATmega1284
+with12-bits ADC of the controller , respectively . The number of
+pixels of 3648 pixels imbedded to the microcontroller , whic h
+has 12-bit ADC converter. Finally , the last layer is the sens ing
+medium, ranging from the pure water with RI of ns = 1.33 to
+1.3353 depending on the AFP concentration, which varies 0 to
+125 ng/ml, respectively , as shown in Table2 [1].
+P d f_ F o l i o : 202
+Journal of Optics and Photonics Research Vol. 00 Iss. 00 2026
+Figure 1
+Schematic diagram of the designed SPR biosensor
+Silver
+ZnTe
+Sensing sample
+CaF2
+P-polarized 
+laser source
+λ = 633 nm
+Powell lens
+ZnO2 6 d nm
+3 40 d nm
+z
+x
+4 4 d nm
+Table 1
+Optical parameters used in the TMM simulation (at Wavelength
+𝜆 = 633 nm)
+Layer Material
+Refractive
+index (n) Reference
+Prism CaF 2 1.43290 [ 31]
+Adhesion ZnO 1.9800 [ 32]
+Plasmonic Ag 0.0561 + 4.2760i [ 33]
+Protective ZnTe 2.9887 [ 34]
+Medium
+(water)
+H2O 1.3300 ⚶
+Table 2
+Modeled bulk RI of AFP-containing medium at different
+concentrations
+S. No
+Alpha-fetoprotein (AFP)
+concentration (ng/mL) AFP associated RI [ 1]
+1 0 1.3300
+2 25 1.3310
+3 50 1.3321
+4 75 1.3332
+5 100 1.3343
+6 125 1.3353
+2.2. Reflectance computation for the multilayers
+The matrix method is the simple method for computing
+electromagnetic fields in multilayer with high accuracy [32]. The
+first layer P-polarized field (P) for the electric and magne tic
+fields E0
+x1 and H0
+y1 and last layer E0
+x4 and H0
+y4 were related by
+Equation (1).
+[
+H0
+y1
+−E0
+x1
+] = Mi j [
+H0
+y4
+−E0
+x4
+] , (1)
+Equations (2), (3), and ( 4) computes evanescent wa ve along
+x-component in ZnO, Ag and ZnTe layer , respectively
+[
+H0
+yZnO
+−E0
+xZnO
+] = MZnO [
+HyZnO (z)
+−ExZnO (z)
+]
+= (
+cos 𝛽Zn0 − ( i
+qZnO
+) sin 𝛽Zn0
+−iqZnO sin 𝛽Zn0 cos 𝛽Zn0
+)
+[
+HyZnO (z)
+−ExZnO (z)
+]
+(2)
+[
+H0
+yAg
+−E0
+xAg
+] = MAg [
+HyAg (z)
+−ExAg (z)
+]
+= (
+cos 𝛽Ag − ( i
+qAg
+) sin 𝛽Ag
+−iqAg sin 𝛽Ag cos 𝛽Ag
+)
+[
+HyAg (z)
+−ExAg (z)
+]
+(3)
+[
+H0
+yZnTe
+−E0
+xZnTe
+] = MZnTe [
+HyZnTe (z)
+−ExZnTe (z)
+]
+= (
+cos 𝛽ZnTe − ( i
+qZnTe
+) sin 𝛽ZnTe
+−iqZnTe sin 𝛽ZnTe cos 𝛽ZnTe
+)
+[
+HyZnTe (z)
+−ExZnTe (z)
+]
+(4)
+P d f_ F o l i o : 3 03
+Journal of Optics and Photonics Research V ol. 00 Iss. 00 2026
+Mi j = (
+cos 𝛽Zn0 − ( i
+qZnO
+) sin 𝛽Zn0
+−iqZnO sin 𝛽Zn0 cos 𝛽Zn0
+)
+(
+cos 𝛽Ag − ( i
+qAg
+) sin 𝛽Ag
+−iqAg sin 𝛽Ag cos 𝛽Ag
+)
+× (
+cos 𝛽ZnTe − ( i
+qZnTe
+) sin 𝛽ZnTe
+−iqZnTe sin 𝛽ZnTe cos 𝛽ZnTe
+)
+(5)
+Mi
+j = (
+M11 M12
+M21 M22
+) (6)
+qk =
+(n2
+k − (n p sin 𝛽i)
+2
+)
+n2
+k
+1
+2
+(7)
+𝛽k = 2𝜋dk
+𝜆 (n2
+k − n2
+p sin2 𝜃i)
+1
+2 (8)
+w
+here Mi j is the matrix relates the wa ve propagation for each
+layer in which qk, 𝛽k, and dk are wa ve impedance factor , phase
+shift factor , and thickness of the kth layer , respectively . Based on
+designed SPR sensor k stand for ZnO layer , silver (Ag) layer , and
+ZnT e layer. The total reflection coefficient for the transverse mag-
+netic field for the wa ve propagation through multilayer media and
+is expressed by Equation (9) as follows:
+rTM =
+Hr
+y
+Hi
+y
+=
+(M11 + M12qsam
+ple) q1 − (M21 + M22qsample)
+(M11 + M12qsam ple) q1 + (M21 + M22qsample)
+(9)
+qsample =
+(n2
+sample − (n p sin 𝜃i)
+2
+)
+n2
+sam ple
+1
+2
+(10)
+F
+inally , the TM reflectance power is computed by
+R = ||rTM||
+2
+(11)
+2.3. Electromagnetic field distribution
+The algorithm for TM wa ve (H x = Hz = 0 and Ey = 0)
+propagation was derived by Ibrahim with multiple layers stacked
+vertically [ 32]. The algorithm computes the evanescent field
+d
+istribution in prism layer and is expressed as:
+Hy1 (x, z, t) = Hy1 (z) exp [j (k0n1 sin 𝜃1x − 𝜔t)] (12)
+Ex1 (x, z, t) = Ex1 (z) exp [j (k0n1 sin 𝜃1x − 𝜔t)] (13)
+Ez j (x, z, t) = Ez j (z) exp [j (k0n j sin 𝜃jx − 𝜔t)] (14)
+where by Hy1 (z), Ex1 (z), and Ez1 (z) maximum magnetic,
+electric fields in their appropriate direction, andk0 = 2𝜋
+𝜆 . Hy j (z)
+is the amplitude of magnetic field in y - direction, Ex j (z) and
+Ez j (z), electric field amplitude x- and z-directions in j layer.𝜃j is
+the propagation angle and k0 = 2𝜋
+𝜆0
+t he wa ve number in vacuum.
+From Snell’ s law n j sin 𝜃j = n0 sin 𝜃0 and trigometric identity
+property . The magnetic and electric field propagated in ZnO,
+Ag, and ZnT e layer is given by Equation ( 15), ( 16), and (17 ),
+r
+espectively:
+[
+HyZnO (z)
+−ExZnO (z)
+]
+= [
+cos (k0nZnOz cos 𝜃ZnO) i
+qZn0
+sin (k0nZnOz cos 𝜃ZnO)
+iqZn0 sin (k0nZnOz cos 𝜃ZnO) cos (k0nZnOz cos 𝜃ZnO)
+]
+[
+1 + rTM
+qZnO (1 − rTM)
+] Hi
+y
+(15)
+[
+H yAg (z)
+−ExAg (z)
+]
+= [
+cos (k0nAg (2z − dZnO) cos 𝜃Ag)
+i
+qAg
+sin (k0nZnTe (2z − dZnO) cos 𝜃Ag)
+iqAg sin (k0nAg (2z − dZnO) cos 𝜃Ag) cos (k0nAg (2z − dZnO) cos 𝜃Ag)
+]
+× [
+H yZnO (z)
+−ExZnO (z)
+]
+(16)
+[
+H yZnTe (z)
+−ExZnTe (z)
+]
+=
+⎡
+⎢
+⎢
+⎣
+cos (k0nZnTe (2z − (dZnO + dAg)) cos 𝜃ZnTe)
+i
+q ZnTe
+sin (k0nZnTe (2z − (dZnO + dAg)) cos 𝜃ZnTe)
+iqZnTe sin (k0nZnTe (2z − (dZnO + dAg)) cos 𝜃ZnTe) cos (k0nZnTe (2z − (dZnO + dAg)) cos 𝜃ZnTe)
+⎤
+⎥
+⎥
+⎦
+× [
+H yAg (z)
+−ExAg (z)
+]
+(17)
+I
+n which 𝜽𝒁𝒏𝑶, 𝜽𝑨𝒈, and 𝜽𝒁𝒏𝑻𝒆 are the incident angle at
+prism/ZnO, ZnO/Ag, and Ag/ZnT e interface, respectively .𝑯𝒊𝒚 is
+the incident magnetic field, which was assumed as unity . Inci-
+dent electric field is mathematically related to incident magnetic
+field 𝑬𝒊𝒙 = 𝒒𝒑𝒓𝒊𝒔𝒎𝑯𝒊𝒚, where 𝒒𝒑𝒓𝒊𝒔𝒎 is the wa ve impedance due
+to prism.
+2.4. Performance parameters
+2.4.1. Sensitivity, FWHM, detection accuracy, and figure of
+merit
+Sensitivity is the specificity of the ratio of the variation of the
+resonance angle (Δ𝜃res) to the RI of the measured sample (Δn s)
+as expressed by Equation 18 [35, 36].The FWHM is the angular
+w
+idth at half of full power of the SPR reflectivity spectrum, which
+is computed as per Equation (19). The narrower the FWHM the
+better. It is primary parameter that defines two secondary param-
+eters: detection accuracy (DA) and figure of merit (FOM). DA
+is another crucial metric that indicates how well the sensor can
+measure RI changes [ 35, 36]. The DA is inverse proportional
+t
+o the FWHM [35 , 36]. However , most of the published paper
+P d f_ F o l i o : 404
+Journal of Optics and Photonics Research V ol. 00 Iss. 00 2026
+assumes thatRmin t hat why its formula is written asDA = 1
+FWHM
+i
+t is incorrect because practicallyRmin. The quality factor (QF) is
+the product of sensitivity and DA. The relation is defined of DA
+as Equation (20).
+S = Δ𝜃res
+Δns
+(18)
+FWHM = 1
+2 (𝜃max − 𝜃min) (19)
+DA = 1 − Rmin
+FWHM (20)
+FOM = S.DA (21)
+2.4.2.
+Resolution
+The diverged-beam SPR sensor uses a linear CCD or CMOS
+to capture the reflected beam. Its angular resolution depends on
+the total pixel count covered by the beam, the ADC bit depth,
+and the sensor sensitivity [24, 25]. Therefore, the number of pixels
+c
+overed by the reflected beam and number of bits of ADC gives
+the angular resolution 𝜎s
+𝜎s = Δ𝜃res
+N pixel
+× 1pixel
+(2n − 1) (22)
+w
+here N pixel, n, and Δ𝜃res are the CCD total pixel covered
+the entire reflected, number of bits of ADC converter , and shift
+resonance from lower concentration of AFP to the next concen-
+tration of AFP . Thus, TDLR can be calculated, as shown in
+Equation (23) [24]
+R
+esolution(𝜎RI) = 𝜎s
+Sensitivity
+R
+esolution(𝜎RI) =
+∆𝜃res
+N pixel
+× 1pixel
+(2n−1)
+∆𝜃res
+∆ns
+R
+esolution(𝜎RI) = Δns
+N pixel
+× 1pixel
+(2n − 1) (23)
+E
+quation (23) defines the TDLR as the ideal lower-bound
+r
+esolution under noise-free conditions with perfect digitization;
+the experimentally achievable resolution will exceed the TDLR
+and must be determined by full noise characterization includ-
+ing detector noise, source fluctuations, mechanical vibration,
+fabrication imperfections, and signal-processing uncertainty .
+3. Results and Discussion
+3.1. Optimizing the thickness silver film layer for
+single layer
+The impact of Ag thickness (30⚶ 60 nm) on the SPR res-
+onance was first evaluated in the CaF 2/Ag/sensing medium
+configuration (without ZnO or ZnT e) to establish a single-
+layer baseline. SPR performance depends critically on the metal
+film, with thickness governing plasmon excitation and damping.
+The resonance curves sharpen considerably from 30 to 50 nm
+(Figure 2): the shallow , broad dip at 30 nm reflects a radia-
+tively damped regime with weak resonance, while beyond 50 nm
+Figure 2
+SPR reflectivity curve at different thicknesses of Ag for single
+layer
+(55, 60 nm) the minimum reflectance rises again and FWHM
+b
+roadens, indicating ohmic absorption dominance in thicker
+metal films [37, 38]. The increased absorption in the thicker metal
+l
+ayer dampens the plasmon resonance, producing a wider , less
+defined curve [22]. Thus, 50 nm is optimal in the single-layer con-
+f
+iguration; however , in multilayer , there is optimum shifts once
+adhesion and protective dielectric overlayers are introduced.
+Progression to a deeper dip with increasing thickness up to
+50 nm signifies improved mode confinement and more efficient
+photon-to-plasmon coupling [22].
+A
+t 55 and 60 nm, performance degrades; the reflectance dip
+becomes shallower as ohmic (absorption) losses dominate thicker
+metal forces the field through more material, dissipating energy
+as heat [ 22]. The 50 nm film thus balances radiative and absorp-
+t
+ive losses optimally in the single-layer case. However , when ZnO
+adhesion and ZnT e protective layers are added, this balance shifts;
+the study therefore adopts 40 nm Ag, which improves energy
+coupling and sensitivity in the multilayer stack.
+3.2. Electric field enhancement the thickness silver
+film layer
+Figure 3 shows the x-component of the electric field through
+a single Ag layer of varying thickness. At 35 nm, strong
+radiative damping poorly confines the plasmon and the evanes-
+cent field leaks into the prism, reducing sensitivity . At 45⚶55 nm,
+light couples efficiently into the SPP mode and the field is strongly
+enhanced at the Ag/analyte interface. At 60 nm, the evanescent
+field decays within the Ag before reaching the opposite interface,
+localizing the SPP at the prism/metal side and reducing analyte
+interaction. Although Ag has lower ohmic loss than Au in the visi-
+ble, thicker Ag still increases attenuation and shortens the effective
+interaction volume
+3.3. Optimizing of ZnO adhesion layer
+Table 3 and Figure 4 indicate that, when the ZnO thickness
+is increased in 2 nm steps, the sensitivity increases only marginally
+by 2˚/RIU per step, which suggests that ZnO primarily acts as an
+adhesion layer and does not substantially enhance sensitivity . The
+minimum reflectance dip nevertheless reduces by 0.02 per 2 nm
+increase in ZnO thickness, which indicates progressively improved
+P d f_ F o l i o : 5 05
+Journal of Optics and Photonics Research Vol. 00 Iss. 00 2026
+Figure 3
+Electric field enhancement in x-component at different
+thicknesses of Ag for single layer
+optical energy coupling. A ZnO thickness of 6 nm was selected
+as a balance between adequate adhesion, smooth Ag deposition,
+and improved energy coupling.
+3.4. Combined ZnO/Ag/ZnTe optimization and
+sensitivity
+Figure 5(a)⚶(d) shows SPR reflectance curves for four Ag
+thicknesses (40, 45, 50, and 55 nm), each combined with ZnTe
+of 0, 2, or 4 nm, with ZnO fixed at 6 nm. The results confirm
+Section 3.3: the ZnTe cap progressively sharpens and deepens the
+dip for 40 nm Ag (Figure5(a)), approaching near-critical coupling
+at ZnTe = 4 nm. F or thicker Ag (50 and 55 nm), increasing ZnTe
+to 4 nm degrades performance (higher R_min, lower S) since these
+configurations are already over-damped and additional dielectric
+redistribution further suppresses radiative coupling.
+F or 40 nm Ag combined with 0, 2, and 4 nm ZnTe, the
+resonance shifts are 1.08°, 1.42°, and 3.00°, respectively , the
+corresponding minimum dips are 0.28415, 0.22110, and 0.06815,
+and the resulting sensitivities are 203.77, 267.92, and 566.04°/RIU.
+F or 45 nm Ag, the shifts (1.12°, 1.52°, and 1.76°) and sensiti vi-
+ties (211.32, 286.79, and 332.08°/RIU) follow a similar butweaker
+trend. F or 50 nm Ag, the 4 nm ZnTe configuration is clearly over-
+damped (sensitivity drops to 96.23°/RIU) and for 55 nm Ag, th e
+sensitivity at 4 nm ZnTe falls to 52.83°/RIU. These results i ndi-
+cate that the highest sensitivity in the multilayer system is achieved
+Figure 4
+SPR reflectivity curve at different ZnO thicknesses
+at Ag = 40 nm with ZnTe = 4 nm, where an optical coupling
+efficiency of 93.19% is reached.
+F or 45 nm Ag (Figure 5(b)), ZnTe = 0, 2, and 4 nm yields
+resonance shifts of 1.12°, 1.52°, and 1.76°, minimum dips of
+0.11605, 0.06325, and 0.3105 and sensitivities of 211.32, 2 86.79,
+and 332.08°/RIU ( Δn = 0.0053). The 2 nm ZnTe gives the
+deepest dip. Sensor improvement stems from ZnTe’ s high RI
+(2.9881) acting as a field-enhancing cap that concentrates the
+evanescent field at the sensing interface [39].
+F or 50 nm Ag (Figure 5(c)), ZnTe = 0, 2, 4 nm gives reso-
+nance shifts of 1.15°, 1.61°, and 0.51°, minimum dips of 0.01435,
+1.29 × 10−3 and 0.51035, and sensitivities of 216.98, 304.77, and
+96.23°/RIU.
+F or 55 nm Ag (Figure 5(d)), ZnTe = 0, 2, 4 nm yields shift
+of 1.17°, 1.67°, and 0.28°, minimum dips of 0.01245, 0.05285 ,
+and 0.69035 and sensitivities of 220.75, 315.09, and 52.83° /RIU.
+Although 55 nm Ag provides better field confinement, ohmic
+losses grow; its maximum sensitivity (315.09°/RIU) exceeds that
+of 50 nm (304.77°/RIU) but is surpassed by the 45 nm/4 nm
+ZnTe combination (332.08°/RIU). Overall, the highest sens itiv-
+ity is obtained at Ag = 40 nm and ZnTe = 4 nm (566.04°/RIU)
+with an a verage minimum dip of 0.06815 and optical coupling
+efficiency of 93.19%.
+Adding a 2 nm ZnTe layer sharply narrows the SPR dip
+and deepens R_min. The high-RI ZnTe (RI = 2.9881) reconcen-
+trates the electromagnetic field at the external interface, enhancing
+analyte interaction and mitigating field loss in adjacent layers [40].
+This yields a sharper plasmon resonance with narrower FWHM
+Table 3
+Variation of sensitivity and average minimum dip at different ZnO thickness
+S. No
+Thickness
+of ZnO(nm)
+Resonance
+shift(Δ𝜃res)
+Sensitivity
+S =
+∆𝜃res
+∆ns
+(
+∘
+RIU
+)
+A verage minimum
+dip(Rmin())
+Energy coupling
+efficiency (%)
+1 0 1.05 198 0.34 66
+2 2 1.06 200 0.32 68
+3 4 1.07 202 0.3 70
+4 6 1.08 204 0.28 72
+5 8 1.08 204 0.27 73
+6 10 1.09 206 0.25 75
+P d f_ F o l i o : 606
+Journal of Optics and Photonics Research Vol. 00 Iss. 00 2026
+Figure 5
+SPR reflectivity curve at different thicknesses of ZnTe
+(a)
+(c) (d)
+(b)
+and deeper minimum dip compensating for the suboptimal
+performance of the 40 nm Ag layer alone [ 40].
+3.5. Electric field distribution in each layer
+ZnO/Ag/ZnTe
+Figure 6 shows the x-component of the electric field (| Ex|)
+for Ag thicknesses of 40, 45, 50, and 55 nm combined with ZnTe
+of 0, 2, or 4 nm (ZnO = 6 nm). By continuity of Ex across
+boundaries, this component interacts with the surface plas mon
+wa ve along the sample/Ag interface. The normalized |Ex| curves
+(Equation 17) show a peak of 930.6 at Ag = 40 nm versus 53.5
+at Ag = 55 nm about a 17 × enhancement. When Ag decreases
+to 35 nm, | Ex| drops to 468.4, indicating that field enhancement
+degrades on either side of the 40 nm optimum. These results con-
+firm that in a multilayer SPR sensor with adhesion and capping
+layers, the Ag thickness must be reoptimized relative to thesingle
+layer 45⚶55 nm range.
+Figure 6
+Electric field distribution curve at different thicknesses of Ag
+P d f_ F o l i o : 7 07
+Journal of Optics and Photonics Research Vol. 00 Iss. 00 2026
+3.6. The application and performance of designed
+SPR biosensor in detection AFP-associated RI
+3.6.1. SPR biosensor reflectivity of AFP-associated RI at
+different concentrations
+Figure 7 shows simulated SPR reflectance curves for the
+modeled AFP concentrations. At 0, 25, and 120 ng/mL the min-
+imum dip is approximately 0.09 arbitrary unit (a.u.); at 50, 75,
+and 100 ng/mL it approaches zero, indicating highly efficie nt
+photon-to-plasmon coupling and easy resonance identifica tion.
+A clear resonance-angle shift accompanies each 25 ng/mL
+increment, indicating that the proposed configuration res olves
+small AFP-induced RI variations, while the FWHM remains
+approximately constant.
+Figure 7
+SPR reflectance curves at different concentrations of AFP
+3.6.2. Sensitivity and FWHM
+Figure 8 indicates sensitivity increases from 500 to 574.42°
+/RIU as concentration increases from 25 to 100 ng/mL and then
+slightly decreases to 566.04°/RIU at 125 ng/mL. This indicates that
+the sensor is most sensitive in the range of 75 ⚶100 ng/mL. When
+AFP concentration is less than 75 ng/mL, the sensitivity is low .
+FWHM initially rises from 4.55° to 4.72° as concentration
+increases from 0 to 75 ng/mL, then falls to 4.38° at 125 ng/mL.
+Narrower FWHM enables more precise resonance-angle detec-
+tion; the narrowest FWHM is 4.38° at 125 ng/mL, within
+acceptable limits and somewhat lower than several existingworks.
+Figure 8
+Sensitivity and FWHM at different AFP concentrations (ng/mL)
+Rmin is the minimum reflectivity at the resonance angle; an
+ideal SPR sensor drives Rmin toward 0 for perfect coupling into
+the surface plasmon. Rmin decreases from 0.0691 to 0.0044 at
+75 ng/mL, then rises to 0.0672 at 125 ng/mL, giving the most
+efficient coupling at 75 ng/mL and 100 ng/mL ( Rmin = 0.0050)
+(Table4). Energy coupling efficiency , (1 −Rmin) × 100%, exceeds
+93% for all concentrations and peaks at 99.56% at 75 ng/mL.
+Thus, the proposed SPR converts photon-to-plasmonic energ y
+with up to ~99.56% efficiency , simplifying the resonance-a ngle
+localization algorithm across all AFP concentrations.
+3.6.3. Regression analysis for computing overall sensitivity of
+SPR sensor
+Figure 9 shows correlation coefficients R2 of 0.9992 and
+0.9982 for modeled bulk RI of AFP and AFP concentration in
+relation to resonance angle. Because R2 is close to unity implies
+that modeled bulk RI of AFP and AFP concentration is lin-
+early related to resonance angle with the regression equati on of
+𝜃res = 575.715ns ⚶ 680.737 and 𝜃res = 0.0245C(ng/mL) + 84.9486.
+These linear equation gives bulk sensitivity in terms of mode led
+bulk RI of AFP and AFP concentration of 𝜕𝜃res
+𝜕ns
+= 575.7154∘
+RIU and
+𝜕𝜃res
+𝜕C = 0.0247∘
+ng
+mL
+, respectively , which are computed from the slope
+of the regression linear equation. Therefore, an overall sensitivity
+of the proposed SPR sensor is 575.72 °/RIU.
+3.6.4. Detection accuracy and figure of merits
+Figure 10 shows DA increases from 0.205 to 0.218/° as con-
+centration rises from 0 to 100 ng/mL, then decreases slightl y to
+Table 4
+SPR biosensor performance at different AFP concentrations
+AFP concentration
+(ng/ml) RI
+𝜃res (°) Δ𝜃res (°) Sensitivity
+(
+°
+RIU
+)
+Rmin (1−Rmin)
+FWHM(°)
+0 1.3300 85.02 ⚶ ⚶ 0.0691 0.9309 4.55
+25 1.3310 85.52 0.50 500.00 0.0481 0.9519 4.62
+50 1.3321 86.11 1.09 519.05 0.0243 0.9757 4.68
+75 1.3332 86.78 1.76 550.00 0.0044 0.9956 4.72
+100 1.3343 87.49 2.47 574.42 0.0050 0.9950 4.57
+125 1.3353 88.02 3.00 566.04 0.0672 0.9328 4.38
+P d f_ F o l i o : 808
+Journal of Optics and Photonics Research Vol. 00 Iss. 00 2026
+Figure 9
+Linear regression fit of resonance angle against (a) modeled bulk
+AFP RI and (b) AFP concentration (ng/mL)
+2
+575.71 680.7371
+0.9992
+res s n
+R
+2
+0.0247 ( ) 84.9486
+0.9986
+gs e r Conc n mL
+R
+(a)
+(b)
+0.213 at 125 ng/mL; higher DA is better , giving the best DA at
+100 ng/mL. FOM (= S × DA) represents overall performance
+excluding detector resolution, rising from 103 to 125.22 as con-
+centration increases from 25 to 100 ng/mL and then decreasin g
+to 120.57 at 125 ng/mL. The highest FOM is at 100 ng/mL.
+3.6.5. Theoretical digitization limited resolution of SPR
+sensor
+Table 5 lists the TDLR at each modeled AFP concentra-
+tion. TDLR remains essentially constant at 3.55 × 10−10 RIU
+across all concentrations becauseΔ𝜃res and N_pix × 2n are fixed
+system parameters and sensitivity varies by <15%. TDLR is an
+ideal theoretical lower bound under noise-free conditions with
+perfect digitization it should not be interpreted as an achi ev-
+able system resolution. A realistic value requires full experimental
+noise characterization (CCD dark current, shot noise, sour ce
+drift, mechanical vibration, fabrication tolerance, and s ignal-
+processing uncertainty) and is expected to be one or more orders
+of magnitude higher. The small TDLR is a consequence of the
+divergence-beam architecture, which captures the entire a ngular
+fan without mechanical rotation and is not constrained by th e
+0.001° step of a stepper motor.
+Figure 10
+FOM and DA at different AFP concentrations (ng/mL)
+3.7. Robustness and sensitivity analysis
+A numerical robustness analysis perturbed key struc-
+tural parameters within realistic fabrication tolerances . Table 6
+summarizes sensitivity variation under ±2 nm perturbations of
+Ag and ZnO thickness, ±1 nm of ZnTe, and ±5% in the imagi-
+nary part of the Ag RI. Key findings; (i) sensitivity is moderately
+sensitive to ±2 nm variation in Ag thickness ( ≈12⚶15%), which
+is feasible with DC magnetron sputtering that routinely achieves
+sub-nanometre control; (ii) ZnO thickness has negligible i mpact
+(<1%), consistent with its adhesion only role; (iii) ZnTe th ick-
+ness is the most sensitive parameter , with +1 nm over-deposition
+reducing sensitivity by ~45%, indicating that atomic-layer depo-
+sition (ALD) with sub-nanometre control is recommended; an d
+(iv) ±5% perturbation in the optical constants (typical
+measurement uncertainty) produces only≈1.8% change, indicat-
+ing robustness to material-property uncertainty .
+3.8. A comparative analysis of the proposed with a
+recently published paper
+Table 7 compares the proposed sensor with recently pub-
+lished numerical SPR biosensors targeting AFP or HCC
+biomarkers. All compared structures are purely numerical simula-
+tions; no experimental measurements are included, and sensitivity
+values are compared at the same wa velength (633 nm) where
+possible. Within comparable Kretschmann configuration an gu-
+lar interrogation SPR sensors at 633 nm, the proposed struct ure
+achieves the highest reported numerical sensitivity (575.72°/RIU)
+roughly a 20% improvement over the next best comparable result
+(480.46°/RIU; [ 1]). Direct sensitivity comparison across stud-
+ies must nevertheless account for differences in prism, met al,
+operating wa velength, and RI sensing range.
+3.9. Steps to experimental validation
+Since the present results are purely numerical, experimen-
+tal validation is required before any clinical or analytica l claims.
+A realistic validation programme should include (i) deposi tion
+of the CaF 2/ZnO/Ag/ZnTe stack by RF sputtering (ZnO), DC
+magnetron sputtering (Ag) and atomic layer deposition (ZnT e),
+with in situ thickness monitoring within Table 6 tolerances;
+(ii) surface and optical characterization via AFM (roughne ss),
+P d f_ F o l i o : 9 09
+Journal of Optics and Photonics Research V ol. 00 Iss. 00 2026
+Table 5
+Theor
+etical digitization-limited resolution at each AFP concentration (3648-pixel CCD,
+12-bit ADC)
+AFP concentration
+(ng/mL)
+RI DA FOM
+Resolution
+(×10–10 RIU)
+0 1.3300 0.205 0 0
+25
+1.3310 0.206 103.00 3.55
+50 1.3321 0.208 107.96 3.55
+75 1.3332 0.211 116.05 3.55
+100 1.3343 0.218 125.22 3.55
+125 1.3353 0.213 120.57 3.55
+Table 6
+Numerical
+robustness analysis sensitivity variation with fabrication parameter perturbations
+Parameter varied Perturbation Computed sensitivity (°/RIU)
+Change
+in sensitivity (ΔS)
+from nominal
+Ag thickness (nominal 40 nm) 38 nm (–2 nm) 498 –68 (–12.0%)
+Ag
+thickness (nominal 40 nm) 42 nm (+2 nm) 481 –85 (–15.0%)
+ZnO thickness (nominal 6 nm) 4 nm (–2 nm) 562 –4 (–0.7%)
+ZnO thickness (nominal 6 nm) 8 nm (+2 nm) 570 +4 (+0.7%)
+ZnTe thickness (nominal 4 nm) 3 nm (–1 nm) 430 –136 (–24.0%)
+ZnTe thickness (nominal 4 nm) 5 nm (+1 nm) ~10 –256 (–45.2%)
+Ag RI (±5% in Im(n)) 4.062i → 4.490i ~560 → ~572 ±10 (±1.8%)
+Table 7
+Compar
+ative analysis with recently published numerical SPR biosensor studies
+Structure
+Metal/Thickness
+(nm) 𝜆 (nm)
+Sensiti
+vity
+(°/RIU)
+FOM
+(RIU–1)
+LOD
+(ng/mL) Refs.
+CaF2/Ag/Si3N4/Ni/BP Ag/45 633 403.92 ⚶ ⚶ [20]
+BK7/Al/Ni/Si/BP
+Al/38 633 480.00 ⚶ 25 [1]
+BK7/Ag/ZnTe/SiC/BP Ag/50 633 480.46 ⚶ ⚶ [11]
+CaF2/Ag/TiO2/PbTiO3 Ag/54 1000 486.00 ⚶ ⚶ [21]
+CaF2/ZnO/Ag/ZnTe (This work) Ag/40 633 574.42 125 25* ⚶
+Note: The reported LOD corresponds to the minimum modeled concentration; thus, a true experimental LOD requires noise
+characterization and is not provided here.
+spectroscopic ellipsometry (wa velength-dependent RI) and X-
+ray reflectivity (thicknesses); (iii) integration of the Powell lens
+divergence-beam head with the 3648-pixel CCD and 12-bit ADC
+followed by full noise characterization (dark noise, shot noise,
+source drift, and mechanical vibration) to quantify the experi-
+mentally achievable resolution versus the Section3.7; (iv) covalent
+i
+mmobilization of anti-AFP antibodies on the ZnT e surface
+using established silane⚶ EDC/NHS chemistry with characteri-
+zation of coverage and orientation; and (v) calibration of the
+functionalized sensor against AFP-spiked buffer and serum in the
+0⚶125 ng/mL clinical range to validate the bulk-RI⚶AFP map-
+ping and determine the true experimental LOD. Completing
+stages (i)⚶(v) would convert the present numerical predictions into
+experimentally substantiated performance figures.
+4. Conclusion
+This study presents a comprehensive numerical optimization
+of a CaF 2/ZnO/Ag/ZnT e multilayer SPR sensor for RI sensitivity
+relevant to AFP detection, conducted through TMM simulations
+at 𝜆 = 633 nm. The work is purely numerical; no experimental
+fabrication, functionalization, or biological measurements were
+performed.
+The central contribution is a rigorous theoretical justification
+for a nonconventional optimal Ag thickness of 40 nm well below
+the traditional 45⚶ 55 nm range. Loss-balance analysis shows
+that the ZnO adhesion layer adds an equivalent effective optical
+path to the photon-tunneling barrier , while the ZnT e protective
+layer reduces the exit-side radiation damping rate; both shift the
+critical-coupling condition toward thinner Ag films. At Ag = 40
+nm, ZnT e = 4 nm, and ZnO = 6 nm, the structure achieves near-
+critical coupling with 93.18% optical coupling efficiency versus
+only 48.96% at the conventional 50 nm thickness in the same
+multilayer context.
+The optimized sensor predicts a maximum angular sensitivity
+of ~575.715°/RIU at the RI corresponding to 100 ng/mL AFP ,
+FOM > 120 RIU −1 within the AFP-relevant RI range, >93%
+optical coupling efficiency across the modeled AFP RI range, and
+a TDLR of 3.55 × 10−10 RIU under ideal noise-free conditions.
+The TDLR in particular is an ideal lower bound, not an achievable
+P d f_ F o l i o : 1 010
+Journal of Optics and Photonics Research Vol. 00 Iss. 00 2026
+system resolution. This numerical sensitivity outperformsrecently
+published AFP-targeted SPR designs by approximately 20%.
+The divergence-beam (Powell lens) interrogation architecture
+eliminates mechanical angular scanning, with resolution bounded
+by detector digitization rather than motor step angle, offe ring
+a significant theoretical resolution advantage over conve ntional
+motor-driven systems.
+Future work will pursue the experimental validation
+steps, including fabrication of the CaF 2/ZnO/Ag/ZnTe stack,
+integration and noise characterization of the Powell lens, anti-
+AFP functionalization of the ZnTe surface, and calibration
+against AFP spiked buffer and serum. Experimental verification
+will be essential before any clinical or analytical performa nce
+claims can be made.
+Ethical Statement
+This study does not contain any studies with human or
+animal subjects performed by any of the authors.
+Conflicts of Interest
+The authors declare that they ha ve no conflicts of interest to
+this work.
+Data Availability Statement
+Data sharing is not applicable to this article as no new data
+were created or analyzed in this study .
+Author Contribution Statement
+Jordan H. Hossea: Conceptualization, Methodology , Soft-
+ware, Writing ⚶ original draft, Supervision. Athuman Mfinanga:
+Validation, F ormal analysis, Investigation, Data curation, Writ-
+ing ⚶ review & editing, Visualization. Vitalis Mwinyi: Validation,
+F ormal analysis, Resources, Data curation, Writing ⚶ review &
+editing, Visualization, Project administration.
+References
+[1] Bahador , H., & Aliakbari, N. (2025). High-sensitivity
+plasmonic biosensor utilizing black phosphorus-silicon
+heterostructures for early detection of alpha-fetoprotei n
+biomarker. Plasmonics, 20(8), 6419 ⚶6426. https://doi.org/10.
+1007/s11468-025-02849-0
+[2] Bray , F ., Ferlay , J ., Soerjomataram, I., Siegel, R. L., T orre,
+L. A., & Jemal, A. (2018). Global cancer statistics 2018:
+GLOBOCAN estimates of incidence and mortality worldwide
+for 36 cancers in 185 countries. CA: A Cancer Journal for
+Clinicians, 68(6), 394⚶424. https://doi.org/10.3322/caac.21492
+[3] Zhang, J ., Chen, G., Zhang, P ., Zhang, J ., Li, X., Gan, D.,
+. . . , & Y e, Y . (2020). The threshold of alpha-fetoprotein (AFP)
+for the diagnosis of hepatocellular carcinoma: A systemati c
+review and meta-analysis.PLOS One, 15(2), e0228857.https://
+doi.org/10.1371/journal.pone.0228857
+[4] Olaniyan, M., Ajiboye, K., Ochagu, O. R., Olaniyan,
+T ., Adeniran, M., Tijani, W ., . . . , & Odegbemi, O. B.
+(2024). Alpha-fetoprotein as a predictor of liver disease
+progression in HBV patients with HIV and HCV co-
+infections. Journal of Current Oncology and Medical Sci-
+ences, 4(3), 896 ⚶906. http://submission.journalofcoms.com/
+index.php/JCOMS/article/view/241
+[5] Lyimo, E. P ., Rumisha, S. F ., Mremi, I. R., Mangu, C. D.,
+Kishamawe, C., Chiduo, M. G., . . . , & Mboera, L. E. G.
+(2020). Cancer mortality patterns in tanzania: A retrospec -
+tive hospital-based study , 2006⚶2015. JCO Global Oncology,
+6, 224⚶232. https://doi.org/10.1200/JGO.19.00270
+[6] Qiang, Z., Y uan, R., Chai, Y ., W ang, N., Zhuo, Y ., Zhang,
+Y ., & Li, X. (2006). A new potentiometric immunosensor
+for determination of 𝛼-fetoprotein based on improved
+gelatin⚶silver complex film. Electrochimica Acta , 51(18),
+3763⚶3768. https://doi.org/10.1016/j.electacta.2005.10.039
+[7] Jiao, Y ., Du, C., Zong, L., Guo, X., Han, Y ., Zhang, X.,
+. . . , & Huang, W . (2020). 3D vertical-flow paper-based device
+for simultaneous detection of multiple cancer biomarkers b y
+fluorescent immunoassay .Sensors and Actuators B: Chemical,
+306, 127239. https://doi.org/10.1016/j.snb.2019.127239
+[8] Liang, G., Liu, S., Zou, G., & Zhang, X. (2012). Ultrasensitive
+immunoassay based on anodic near-infrared electrochemi-
+luminescence from dual-stabilizer-capped cdte nanocryst als.
+Analytical Chemistry, 84(24), 10645⚶10649. https://doi.org/10.
+1021/ac302236a
+[9] Huang, X., Zhao, Y ., Li, H., Xiao, R., Ma, B., Chen, J .,
+. . . , & Lei, G. (2026). Screening and SPR-guided maturation
+of anti-ricin cyclononapeptide for high-sensitivity fluorescent
+LF A integrated with ultracompact handheld reader.T alanta,
+309, 130005. https://doi.org/10.1016/j.talanta.2026.130005
+[10] Fattahi, Z., Khosroushahi, A. Y ., & Hasanzadeh, M. (2020).
+Recent progress on developing of plasmon biosensing of
+tumor biomarkers: Efficient method towards early stage
+recognition of cancer. Biomedicine & Pharmacotherapy, 132,
+110850. https://doi.org/10.1016/j.biopha.2020.110850
+[11] Vasimalla, Y ., Chilukuri, S. S. M., Ben Khalifa, S., Chebaane,
+S., & Ghodhbani, R. (2025). A novel label-free plasmonic
+biosensor for afp detection employing zinc telluride and si l-
+icon carbide. Plasmonics, 20(10), 8707⚶8718. https://doi.org/
+10.1007/s11468-025-02909-5
+[12] Mondal, H. S., Ahmed, K. A., Birbilis, N., & Hossain, M. Z .
+(2023). Machine learning for detecting DNA attachment on
+SPR biosensor.Scientific Reports, 13(1), 3742. https://doi.org/
+10.1038/s41598-023-29395-1
+[13] Kukanskis, K., Elkind, J ., Melendez, J ., Murphy , T ., Miller ,
+G., & Garner , H. (1999). Detection of dna hybridization using
+the tispr-1 surface plasmon resonance biosensor. Analytical
+Biochemistry, 274(1), 7 ⚶17. https://doi.org/10.1006/abio.1999.
+4241
+[14] Y u, X.-Y ., Qian, X.-D., & Xie, J . (2026). Theoretical analysis
+of the sensitivity limit for monolayer metal film based surface
+plasmon resonance sensor. Optical and Quantum Electronics,
+58(5), 217. https://doi.org/10.1007/s11082-026-08811-6
+[15] Xu, Z., Hua, Y ., Kong, X., Wu, H., Chang, J ., W an, B., . . . ,
+& Cui, T . J . (2026). Band folding unlocks high-density hidden
+modes for sub-terahertz cancer cell phenotyping. PhotoniX,
+7(1), 9. https://doi.org/10.1186/s43074-026-00229-3
+[16] Mustafizur Rahman, K., Nayan, F ., Ahmed, R., &
+Rahman, M. (2025). Design and development of high sensitive
+surface plasmon resonance biosensors for glucose detec-
+tion. Plasmonics, 20(4), 2305 ⚶2319. https://doi.org/10.1007/
+s11468-024-02463-6
+[17] Vasimalla, Y ., & Singh, L. (2023). Design and analysis
+of planar wa veguide-based SPR sensor for formalin detec-
+tion using Ag-Chloride-BP structure. IEEE Transactions on
+NanoBioscience, 22(2), 365⚶374. https://doi.org/10.1109/TNB.
+2022.3191971
+P d f_ F o l i o : 1 1 11
+Journal of Optics and Photonics Research Vol. 00 Iss. 00 2026
+[18] Karki, B., Uniyal, A., Sharma, T ., Pal, A., & Srivas-
+ta va, V . (2022). Indium phosphide and black phosphorus
+employed surface plasmon resonance sensor for formalin
+detection: Numerical analysis. Optical Engineering , 61(1),
+017101. https://doi.org/10.1117/1.OE.61.1.017101
+[19] R umi, R. B., Paul, A. K., Alyami, S. A., & Moni, M. A.
+(2024). Multi-disease detection using a prism-based surfa ce
+plasmon resonance sensor: A TMM and FEM approach.
+IEEE Transactions on NanoBioscience, 23(1), 51 ⚶62. https://
+doi.org/10.1109/TNB.2023.3286269
+[20] Srivasta va, S., Y ada v , S., Mishra, A. C., Singh, S., Lohia, P .,
+Dwivedi, D. K., . . . , & Hossain, M. K. (2024). Ultra-sensitive
+surface plasmon resonance biosensor for liver metastases
+and hepatocellular carcinoma detection using silicon nitr ide
+and black phosphorus nanomaterial. Plasmonics, 19(2),
+1031⚶1041. https://doi.org/10.1007/s11468-023-02059-6
+[21] Jaiswal, L., Mishra, A. C., Y ada v , S., Lohia, P ., Dwivedi, D.
+K., Y ada v , R. K., . . . , & Hossain, M. K. (2025). TiO 2 and
+PbTiO3 assisted SPR biosensor for detection of malignancy
+in human-liver tissue with high sensitivity and figure of merit.
+Journal of Computational Electronics, 24(1), 39. https://doi.org/
+10.1007/s10825-025-02277-7
+[22] Akowuah, E. K., Gorman, T ., & Haxha, S. (2009). Design
+and optimization of a novel surface plasmon resonance
+biosensor based on Otto configuration. Optics Express ,
+17(26), 23511⚶23521. https://doi.org/10.1364/OE.17.023511
+[23] Mohanty , B. C., & Kasiviswanathan, S. (2005). T wo-pris m
+setup for surface plasmon resonance studies. Review of Sci-
+entific Instruments, 76(3), 033103. https://doi.org/10.1063/1.
+1865853
+[24] W ang, C. (2019). A partial-dip observation mechanism for the
+resolution improvement of spectrum-like surface plasmon res-
+onance wa veforms.IEEE Access, 7, 40516⚶40524. https://doi.
+org/10.1109/ACCESS.2019.2905600
+[25] Johansen, K., Stålberg, R., Lundström, I., & Liedberg, B.
+(2000). Surface plasmon resonance: Instrumental resoluti on
+using photo diode arrays. Measurement Science and T echnol-
+ogy, 11(11), 1630⚶1638. https://doi.org/10.1088/0957-0233/11/
+11/313
+[26] Phiri, I. K., & Zekriti, M. (2024). Sensitivity and performance
+enhancement of an SPR biosensor using a gold-silver alloy ,
+zinc oxide and graphene. Optical and Quantum Electronics ,
+56(8), 1332. https://doi.org/10.1007/s11082-024-07227-4
+[27] Kumar , S., Y ada v , A., & Malomed, B. A. (2023). High per-
+formance surface plasmon resonance based sensor using black
+phosphorus and magnesium oxide adhesion layer. Frontiers
+in Materials, 10, 1131412. https://doi.org/10.3389/fmats.2023.
+1131412
+[28] Hossea, J . (2025). Improving the interface roughness o f the
+multilayer based on divergence beam surface plasmon reso-
+nance sensor using Whittaker filter. Authorea. https://doi.org/
+10.22541/au.176284458.85290706/v1
+[29] Agarwal, S., Kumar , R., Pal, S., Prajapati, Y . K., & Saini, J .
+P . (2025). Magnesium fluoride and black phosphorus medi-
+ated long-range surface plasmon resonance biosensor for
+enhanced sensing of SARS-CoV -2 virus. Journal of Optics ,
+54(3), 986⚶998. https://doi.org/10.1007/s12596-024-01772-7
+[30] Bouandas, H., Slimani, Y ., Ayadi, K., Ghebouli, M. A.,
+Djemli, A., Fatmi, M., . . . , & Sillanpää, M. (2025). Sensitivity
+enhancement of biosensor (SPR) with PtSe 2 using Au-Si-Au
+thin films.Journal of Optics, 54(3), 1043⚶1051. https://doi.org/
+10.1007/s12596-024-01807-z
+[31] Panda, A., & Pukhrambam, P . D. (2022). Modeling of high-
+performance SPR refractive index sensor employing novel
+2D materials for detection of malaria pathogens. IEEE
+Transactions on NanoBioscience, 21(2), 312 ⚶319. https://doi.
+org/10.1109/TNB.2021.3115906
+[32] Emon, W ., Nayan, M. F ., Salehin, S., Chaki, A., Tuba, S.,
+& Ishtiak, K. M. (2024). Highly sensitive ZnO/Ag/BaTiO 3
+/MoS2 hybrid structure-based surface plasmon biosensor for
+the detection of mycobacterium tuberculosis bacteria. Optics
+Continuum, 3(3), 495 ⚶512. https://doi.org/10.1364/OPTCON.
+518074
+[33] Das, S., Pra va Mondal, T ., Kumar R oy , K., Reza
+Mahmud, R., Shariful Islam, M., & Barua, B. (2025). Design
+and optimization of an SPR-based biosensor with ultra-high
+sensitivity using a hybrid structure for accurate dengue vi rus
+detection.Plasmonics, 20(11), 10243⚶10262. https://doi.org/10.
+1007/s11468-025-03107-z
+[34] Utshob, Md. A. A. I., Juwel, M. B., Sabiha, R., Rahman, A. ,
+Safayat-Al, Imam., & Ishtiak, K. M. (2025). Design of a highly
+sensitive SPR biosensor for rapid malaria detection based on
+zinc telluride and blue phosphorus/tungsten disulfide material.
+Biosensors and Bioelectronics: X, 27, 100709. https://doi.org/
+10.1016/j.biosx.2025.100709
+[35] Rahman, M. M., Rana, M. M., Rahman, M. S., Anower , M.
+S., Mollah, M. A., & Paul, A. K. (2020). Sensitivity enhance-
+ment of SPR biosensors employing heterostructure of PtSe 2
+and 2D materials. Optical Materials, 107, 110123. https://doi.
+org/10.1016/j.optmat.2020.110123
+[36] Karki, B., Ramya, K. C., Sandhya Devi, R. S., Sri-
+vasta va, V ., & Pal, A. (2022). Titanium dioxide, black
+phosphorus and bimetallic layer-based surface plasmon
+biosensor for formalin detection: Numerical analysis.Optical
+and Quantum Electronics, 54(7), 451. https://doi.org/10.1007/
+s11082-022-03875-6
+[37] Liu, L., Liu, Z., Zhang, Y ., & Liu, S. (2022). Multi-
+channel optical fiber surface plasmon resonance sensor wit h
+narrow fwhm, high figure of merit, and wide detection
+range. Plasmonics, 17(5), 2235⚶2244. https://doi.org/10.1007/
+s11468-022-01713-9
+[38] Sun, L., Y ang, Z., Ma, W ., W ang, H., Zhang, B., Y an, S.,
+& Ma, J . (2024). Dual-parameter fiber optic surface plasmon
+resonance sensor with narrow FWHM based on an incidence
+angle adjusting method.Optics Express, 32(21), 37480⚶37491.
+https://doi.org/10.1364/OE.538596
+[39] Singh, S., Singh, S., Singh, P . K., Y ada v , R. K., Lohia,
+P ., & Dwivedi, D. K. (2023). Theoretical study of malaria
+detection in blood samples using bimetal layer and zinc tel-
+luride nanomaterial-based surface plasmon resonance biosen-
+sor. Plasmonics, 18(6), 2125 ⚶2136. https://doi.org/10.1007/
+s11468-023-01913-x
+[40] Ashrafi, T . M. S., & Mohanty , G. (2025). Surface plasmon
+resonance sensors: A critical review of recent advances, market
+analysis, and future directions.Plasmonics, 20(8), 6825⚶6845.
+https://doi.org/10.1007/s11468-024-02740-4
+How to Cite: Hossea, J . H., Mfinanga, A., & Mwinyi, V . (2026).
+Numerical Optimization of a Divergence-Beam Surface Plasm on Reso-
+nance Sensor with CaF 2/ZnO/Ag/ZnT e Multilayers for Alpha-Fetoprotein-
+Associated Refractive Index Sensing.Journal of Optics and Photonics Research.
+https://doi.org/10.47852/bonviewJOPR62028826
+P d f_ F o l i o : 1 212

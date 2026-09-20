@@ -1,0 +1,964 @@
+10.24425/acs.2026.5981
+Archives of Control Sciences
+Volume36(LXXII), 2026
+No.3, pages 587–611
+Pollution control for a spatially structured
+economic growth system
+Sebastian ANIŢAo
+ , Vincenzo CAPASSO and Simone SCACCHIo
+In this paper investigations by the same authors on environmental issues concerning the
+controlofthepollutionproducedbyhumanactivitieshavebeenextendedtoincludecostsrelated
+to environmental interventions.
+The proposed model consists of a spatially structured dynamic model which takes into
+account the level of pollution induced by human activities and possible environmental inter-
+ventions, including taxation. An optimal harvesting control problem has been discussed, with
+an objective function composed of four terms, namely the intertemporal utility of the decision
+maker, the space-time average of the level of pollution in the habitat, the disutility due to the
+imposition of taxation and the cost of environmental interventions.
+Aspecificnoveltyinthemodelproposedhereisthelocalizationofthepossibleinterventions
+to a subregion of the whole habitat.
+Computationalexperimentshavebeencarriedouttoexemplifytheoutcomesoftheproposed
+model.
+Key words:geographicaleconomics,environmentalpollution,reaction-diffusionsystems,non-
+local interactions, optimal control, regional control, generalized production functions
+1. Introduction
+In this paper we introduce an environmental issue concerning the control of
+the pollution produced by human activities.
+Standardmacroeconomicsandenvironmentaleconomicshavebeentwocom-
+pletely independent research areas for a long time. The seminal paper by Gross-
+Copyright © 2026. The Author(s). This is an open-access article distributed under the terms of the Creative Com-
+mons Attribution-NonCommercial-NoDerivatives License (CC BY-NC-ND 4.0 https://creativecommons.org/licenses/
+by-nc-nd/4.0/), which permits use, distribution, and reproduction in any medium, provided that the article is properly
+cited, the use is non-commercial, and no modifications or adaptations are made.
+S. Aniţa is with Faculty of Mathematics, “Alexandru Ioan Cuza” University of Iaşi, Iaşi 700506,
+Romania; “Octav Mayer” Institute of Mathematics of the Romanian Academy, Iaşi 700505, Romania.
+V. Capasso (corresponding author) is with ADAMSS (Interdisciplinary Centre for Advanced Applied
+Mathematical and Statistical Sciences), Università degli Studi di Milano, Italy.
+S. Scacchi is with Dipartimento di Matematica, Università degli Studi di Milano, Italy.
+S. Scacchi acknowledges support by INdAM-GNCS (Italy).
+Received 30 November 2025. Revised 17 April 2026. Accepted 24 May 2026.
+588 S. ANIŢA, V. CAPASSO, S. SCACCHI
+man and Kruger [21] has stimulated considerable interest in the relationship
+between environmental pollution and economic development. The role of taxa-
+tionforcontrollingpollutionisthekeyissueofthereport[24](seealsoreferences
+therein) issued by the International Monetary Fund. In view of these policy de-
+velopments, some recent works tend to develop a global theory combining the
+above mentioned two branches of literature (see [14] and [11]).
+Herewepresentanextensionofourownresultsconcerningtheimpactofpol-
+lutiondiffusionontheeconomicandenvironmentaljointdynamics,andconsider
+theoptimalcontrolproblemoftherelevantsystemsubjecttocapitalconsumption,
+totaxationbasedontheamountofproducedpollution,andpossibleenvironmen-
+tal interventions.
+A key issue of this paper is the localization of possible interventions to a
+subregion of the whole habitat, in order to reduce costs of the intervention itself
+and those due to logistic peculiarities (see [6], and references therein).
+In [2] and [3] the authors introduced a reaction-diffusion system modelling
+the impact of environmental pollution on an economic growth system. In partic-
+ular, in [2] the authors analyzed the large-time behavior of a spatially structured
+economic growth model coupling physical capital accumulation and pollution
+diffusion: this model extends other results in the literature along different direc-
+tions. Furthermore, a negative feedback to the production function was added,
+in order to describe the (negative) impact of pollution on capital accumulation.
+In[5]theimpactoftaxationonproductionwasfaced;anoptimalcontrolproblem
+was analyzed with a cost functional including taxation as opposed to economic
+growth. This includes taxation on all activities that may have a huge impact on
+pollution emissions.
+In the literature other contributions which explore the spatial dimension in
+environmentalandresourceeconomicscanbefoundin[7,15,16,29].Ofinterest
+it might be also [10], concerning the optimal control of age dependent systems.
+The inclusion of a spatial dimension in economic analysis has recently in-
+creasedrelevanceandinterest.Thefirststudiesineconomicgeographygobackto
+Beckerman[9]andPuu[25],whostudyregionalproblemsbasedsimplyonflow
+equations. Starting from these works, a new economic geography arises adopt-
+ing general equilibrium models to analyze the peculiarities of local and global
+markets,andthemobilityofproductionfactors(see[19,22]).Morerecently,this
+geographical approach has been introduced in economic growth models to study
+the implications between accumulation and diffusion of capital on economic
+dynamics (see [12,13,17]). The Solow model [27] with a continuous spatial
+dimension has been extensively studied. In [17] the authors analyze problems of
+convergenceacrossregionswhencapitalismobile,while[13]considersthecase
+in which both capital and labor are mobile. The Ramsey model [26] has been
+POLLUTION CONTROL FOR A SPATIALLY STRUCTURED ECONOMIC GROWTH SYSTEM589
+extendedtoaspatialdimensionin[13]and[12],respectivelyinaverageandtotal
+utilitarianism version. In [18], alongside the classical Cobb–Douglas production
+function, the authors have proposed a larger class of convex–concave production
+functions, thus allowing a larger variety of dynamical scenarios, including the
+existence of poverty traps. For a recent review see [8].
+In addition to the impact of taxation on the production as emerged in [5], in
+this paper we consider the role of additional costs due to possible environmental
+interventions.
+Forreactionmodelswithnonlocalreactiontermsinmathematicalbiologythe
+reader may refer to [6,20,28].
+As for a large amount of mathematical models, it is rather hard to identify
+real parameters; scope of our presentation is to evidence, within a conceptual
+setting, as already proposed in existing literature, that direct reduction of pollu-
+tion has a clear positive impact on both environmental quality and production.
+The hope is that the outcomes emerging from this manuscript can inspire deci-
+sion makers/public environmental agencies to implement adequate environmen-
+tal practices. As an additional remark, the authors hope that interested readers
+in environmental issues may design suitable experiments inspired by our model,
+so to possibly identify real parameters, leading to more realistic computational
+experiments.
+In Section 3 the optimal control problem is presented, by acting on both
+consumption, taxation, and environmental interventions. Since the search of the
+optimal control is not an easy analytical task, we have proposed a computational
+algorithm for the search by the gradient method. To this aim, in the same Sec-
+tion 3 the evaluation of the directional derivative of the cost functional with
+respect to the three controls has been presented. In Section 4 a numerical al-
+gorithm that allows to solve the system (4), (8), (9) of four forward-backward
+reaction-diffusion equations, subject to the relevant initial/final and boundary
+conditions, has been reported, together with a set of computational experiments
+(see Section 5). A discussion on the outcomes of the computational experiments
+is presented in Section 6.
+2. A spatially structured model
+By following our previous literature on the subject (see [5], and references
+therein),weshallconsiderthefollowingspatiallystructuredmodel.Asfarasthe
+evolutionofthestockcapitalisconcerned,let 𝑘(𝑥,𝑡)denotethecapitalstockheld
+by the representative household located at𝑥∈Ω (a nonempty bounded domain
+in R𝑛, 𝑛 = 1, 2 with a sufficiently smooth boundary), at time𝑡 ∝§}∇⌉⊣⊔⌉∇⌉⨿⊓⊣↕0. The time
+590 S. ANIŢA, V. CAPASSO, S. SCACCHI
+evolution of the physical capital is modelled by
+𝜕𝑘
+𝜕𝑡(𝑥,𝑡)=𝑑1Δ𝑘(𝑥,𝑡)+ 𝐴(𝑥,𝑡)𝑓  𝑘(𝑥,𝑡)−𝛿1𝑘(𝑥,𝑡)− 𝑐(𝑥,𝑡)𝑘(𝑥,𝑡), (1)
+for(𝑥,𝑡)∈ Ω×( 0,+∞).
+Here 𝐴(𝑥,𝑡) denotes the technological progress available at𝑥∈Ω, and time
+𝑡 ∝§}∇⌉⊣⊔⌉∇⌉⨿⊓⊣↕0. The parameter𝛿1 takes into account the depreciation of the capital.𝑐(𝑥,𝑡)
+describesthelevelofconsumptionperunitofphysicalcapital 𝑘(𝑥,𝑡);thequantity
+(1−𝑐(𝑥,𝑡))𝑘(𝑥,𝑡) describes the saved capital after consumption.
+Equation (1) is complemented by an initial capital distribution,𝑘(𝑥, 0), and
+suitable boundary conditions. If we assume that there is no capital flow through
+the boundary𝜕Ω, we impose homogeneous Neumann boundary conditions, i.e.
+𝜕𝑘
+𝜕𝑛(𝑥,𝑡)= 0, 𝑥 ∈𝜕Ω, 𝑡 >0.
+The production function𝑓 can be taken of the following form (see [18], and
+references therein)
+𝑓(𝑟)= 𝛼1𝑟𝛾
+1+𝛼2𝑟𝛾 ,
+where𝛼1∈( 0,+∞),𝛼2∈[ 0,+∞),𝛾∈[ 1,+∞).
+Asfaraspollutiondiffusionisconcerned,ifwedenoteby 𝑝(𝑥,𝑡)thepollution
+stock faced by a representative household located at𝑥∈ Ω, at time𝑡 ∝§}∇⌉⊣⊔⌉∇⌉⨿⊓⊣↕0, we
+assume the following model
+𝜕𝑝
+𝜕𝑡(𝑥,𝑡)=𝑑2Δ𝑝(𝑥,𝑡)+ 𝜃
+∫
+Ω
+𝑓(𝑘(𝑥′,𝑡))𝜑(𝑥′,𝑥) d𝑥′−𝛿2𝑝(𝑥,𝑡). (2)
+Thefirstterm,includingtheLaplaceoperator,maymodeltherandomdispersal
+of the pollutant in the relevant habitat. Via the integral term in Equation (2), we
+may see the impact of the economy on pollution production. At any point𝑥∈Ω
+pollution is generated due to the production𝑓(𝑘(𝑥,𝑡)). In our model we have
+supposedthatanypoint 𝑥′∈Ωmayhaveanimpactonenhancingpollutionatany
+otherpoint𝑥∈Ω,byanyotherpossiblemechanismthanrandomdispersalalready
+described by the Laplace operator. Such mechanisms are described by a kernel
+𝜑 which satisfies the following hypotheses:𝜑∈ 𝐿∞(Ω×Ω), and𝜑(𝑥′,𝑥) ∝§}∇⌉⊣⊔⌉∇⌉⨿⊓⊣↕0
+a.e.(𝑥′,𝑥)∈ Ω×Ω. As a limiting case one may reduce the kernel𝜑 to a Dirac
+Delta function, to mean the impact of production on pollution at the same point
+𝑥. The parameter𝜃 takes into account the “efficiency” of the economic system
+with respect to pollution production. The parameter𝛿2 accounts for the natural
+decay of pollution.
+POLLUTION CONTROL FOR A SPATIALLY STRUCTURED ECONOMIC GROWTH SYSTEM591
+Equation (2) has to be complemented by suitable initial and boundary condi-
+tions.
+Wehaverequiredthatthemodeltakesintoaccountthenegativefeedbackdue
+to the impact of pollution on production. The quantity𝑔(𝑝) can be interpreted
+as a factor inhibiting the performance of the economy, due to a possible negative
+impact of the pollution on the production process, and/or to a self regulation
+of the rate of production for reducing pollution taxes (see our papers [2–5],
+and [23,30]); an interesting general discussion on this topic can be found in [1].
+As a consequence in [5] we modified Equation (1) as follows
+𝜕𝑘
+𝜕𝑡(𝑥,𝑡)=𝑑1Δ𝑘(𝑥,𝑡)
++ 𝐴(𝑥,𝑡)
+𝑔(𝑝(𝑥,𝑡)) 𝑓(𝑘(𝑥,𝑡))− 𝛿1𝑘(𝑥,𝑡)− 𝑐(𝑥,𝑡)𝑘(𝑥,𝑡). (3)
+All parameters,𝐴,𝑑 1,𝑑 2,𝛿 1,𝛿 2, which characterize a specific economic/
+ecological system are assumed strictly positive.
+The function𝑔 :[0,+∞)→( 0,+∞) models the negative impact of pollution
+on the production; usual assumptions on𝑔 are
+i) 𝑔 is continuously differentiable and monotonically increasing;
+ii) 𝑔(0)= 1and lim
+𝑝→+∞
+𝑔(𝑝)=+∞.
+As a typical choice for the function𝑔, later we shall adopt the expression
+𝑔(𝑝)= 1+𝜒𝑝 2, 𝑝 ∝§}∇⌉⊣⊔⌉∇⌉⨿⊓⊣↕0.
+In the sequel it will be kept𝜒= 1, as a typographical simplification.
+3. An optimal control problem
+We plan to study our eco-economic system on a finite time horizon[0,𝑇].
+We shall denote by
+𝑄𝑇 =Ω×( 0,𝑇); Σ𝑇 =𝜕Ω×( 0,𝑇).
+Inordertocontrolpollutionemissionsbyproductionprocesses,localauthori-
+tiesmayimposetaxesproportionaltothelevelofproduction.Apossibleapproach
+mightbetoimposetaxesrelatedtointerventionsonpollutionabatementpolicies
+implementedonlyintheareasofinterest,whichwehaveindicatebyasubregion
+𝜔⊂ Ω of the whole habitat. We shall denote by𝜏(𝑥,𝑡) the environmental taxa-
+tion rate. By taking all this into account, we need to modify System (3)–(2) as
+592 S. ANIŢA, V. CAPASSO, S. SCACCHI
+follows (see [5,14]):
+ 
+
+𝜕𝑘
+𝜕𝑡(𝑥,𝑡)=𝑑1Δ𝑘(𝑥,𝑡)+ 𝐴(𝑥,𝑡)
+1+𝑝(𝑥,𝑡)2𝑓  (1− I𝜔(𝑥)𝜏(𝑥,𝑡))𝑘(𝑥,𝑡)
+− 𝛿1𝑘(𝑥,𝑡)− 𝑐(𝑥,𝑡)𝑘(𝑥,𝑡),
+𝜕𝑝
+𝜕𝑡(𝑥,𝑡)=𝑑2Δ𝑝(𝑥,𝑡)+ 𝜃
+∫
+Ω
+𝑓    1− I𝜔(𝑥′)𝜏(𝑥′,𝑡)𝑘(𝑥′,𝑡)𝜑(𝑥′,𝑥) d𝑥′
+− 𝛿2𝑝(𝑥,𝑡)− I𝜔(𝑥)𝜉(𝑥,𝑡)𝑝(𝑥,𝑡),
+(4)
+for(𝑥,𝑡)∈ 𝑄𝑇, where𝜔 is a nontrivial open subset ofΩ. System (4) shall be
+complemented by initial and boundary conditions to be precised later.
+The term(1−𝜏(𝑥,𝑡))𝑘(𝑥,𝑡) accounts for the amount of the physical capital
+left to be used in the gross domestic production. An increase in the level of
+taxation allows the implementation of practices leading to an abatement of the
+level of pollution emissions, so that we may interpret it as a “green” taxation
+policy. By𝜉(𝑥,𝑡) we have denoted the rate of pollution abatement by suitable
+environmental interventions.
+In this case the optimal control problem would be
+Maximize
+(𝑐,𝜏,𝜉)∈ e𝑈,
+𝜔⊂Ω
+ 
+
+𝑇∫
+0
+∫
+Ω
+𝑐(𝑥,𝑡)𝑘(𝑥,𝑡) d𝑥 d𝑡−𝛽0
+𝑇∫
+0
+∫
+Ω
+𝑝(𝑥,𝑡) d𝑥 d𝑡
+− 𝛽1
+𝑇∫
+0
+∫
+𝜔
+𝜏(𝑥,𝑡)𝑘(𝑥,𝑡) d𝑥 d𝑡
+−𝛽2
+𝑇∫
+0
+∫
+𝜔
+𝜉(𝑥,𝑡)𝑝(𝑥,𝑡) d𝑥 d𝑡
+ 
+
+,
+subject to System (4) and the initial and boundary conditions given below.
+It is clear that the solutions of the above problems would depend upon the
+geographical distribution of the potentially polluting production activities; in
+this respect we may expect a crucial role played by the functional parameter
+𝐴(𝑥,𝑡). This fact would confirm the relevance of spatially structured models in
+geographical economics.
+POLLUTION CONTROL FOR A SPATIALLY STRUCTURED ECONOMIC GROWTH SYSTEM593
+ForsimplicitywemayconsiderhomogeneousNeumannboundaryconditions
+𝜕𝑘
+𝜕𝑛(𝑥,𝑡)= 𝜕𝑝
+𝜕𝑛(𝑥,𝑡)= 0, (𝑥,𝑡)∈ Σ𝑇, (5)
+and initial conditions
+𝑘(𝑥, 0)=𝑘0(𝑥), 𝑝(𝑥, 0)= 𝑝0(𝑥), 𝑥 ∈Ω, (6)
+where𝑇 >0is fixed and𝑘0,𝑝 0∈ 𝐿∞(Ω),𝑘0(𝑥) ∝§}∇⌉⊣⊔⌉∇⌉⨿⊓⊣↕0,𝑝0(𝑥) ∝§}∇⌉⊣⊔⌉∇⌉⨿⊓⊣↕0 a.e.𝑥∈Ω.
+We impose the constraints
+1−𝑐(𝑥,𝑡)− 𝜏(𝑥,𝑡) ∝§}∇⌉⊣⊔⌉∇⌉⨿⊓⊣↕𝑠, 𝑐(𝑥,𝑡),𝜏(𝑥,𝑡) ∝§}∇⌉⊣⊔⌉∇⌉⨿⊓⊣↕0, a.e. (𝑥,𝑡)∈ 𝑄𝑇, (7)
+where𝑠 >0isthesavingfactor.Inaddition,wemayassumethat 0 ∝§↕⌉∫∫⌉⨿⊓⊣↕𝜉(𝑥,𝑡) ∝§↕⌉∫∫⌉⨿⊓⊣↕𝐿,
+a.e.𝑥∈𝜔,𝑡 ∈( 0,𝑇), for a given constant𝐿.
+If we denote by𝑈 ={(𝑐,𝜏)∈ 𝐿∞(𝑄𝑇)× 𝐿∞(𝑄𝑇) : (𝑐,𝜏) satisfies(7)}, the
+set of controls ise𝑈 :=𝑈×{𝜉∈ 𝐿∞(𝜔×( 0,𝑇)) : 0 ∝§↕⌉∫∫⌉⨿⊓⊣↕𝜉(𝑥,𝑡) ∝§↕⌉∫∫⌉⨿⊓⊣↕𝐿, a.e.(𝑥,𝑡)∈
+𝜔×( 0,𝑇)} and𝛽0, 𝛽1, 𝛽2 arepositiveconstants; (𝑘,𝑝) isthesolutionto(4)–(6)
+corresponding to𝑄𝑇 andΣ𝑇. The objective function is composed of four terms
+that we hereby describe:
+T1: theterm
+𝑇∫
+0
+∫
+Ω
+𝑐(𝑥,𝑡)𝑘(𝑥,𝑡) d𝑥 d𝑡,tobemaximized,describestheintertem-
+poral utility of the decision maker,
+T2: the second term𝛽0
+𝑇∫
+0
+∫
+Ω
+𝑝(𝑥,𝑡) d𝑥 d𝑡, to be minimized, represents an av-
+erage of the total level of pollution across space and time,
+T3: the third term 𝛽1
+𝑇∫
+0
+∫
+Ω
+𝜏(𝑥,𝑡)𝑘(𝑥,𝑡) d𝑥 d𝑡, to be minimized, takes into
+account the disutility due to imposition of taxation.
+T4: the fourth term𝛽2
+𝑇∫
+0
+∫
+Ω
+𝜉(𝑥,𝑡)𝑝(𝑥,𝑡) d𝑥 d𝑡, to be minimized, takes into
+account the costs due to environmental interventions.
+The following modifications occur when we deal with an optimal control
+problem related to a system of two parabolic equations (with linear diffusions),
+like ours, with respect to the related optimal control problem associated to the
+corresponding ordinary differential system: due to the presence of𝐴1𝑘 in the
+594 S. ANIŢA, V. CAPASSO, S. SCACCHI
+first equation of the primal system (the equation satisfied by𝑘) and to𝐴2𝑝 in
+the second equation of the primal system (the equation satisfied by𝑝), where𝐴1
+and 𝐴2 are linear elliptic operators with homogeneous boundary conditions, we
+have to add−𝐴∗
+1𝜆𝑘 in the right-hand side of the first costate equation and−𝐴∗
+2𝜆𝑝
+in the right-hand side of the second co-state equation. Here𝐴∗
+𝑗 is the adjoint of
+𝐴𝑗, 𝑗 ∈{ 1, 2}. Since in our case𝐴𝑗 = 𝑑𝑗Δ and the boundary conditions are
+of Neumann type we get the presence of−𝑑1Δ𝜆𝑘 in the right-hand side of the
+first co-state equation, of−𝑑2Δ𝜆𝑝 in the right-hand side of the second co-state
+equation and of the Neumann boundary conditions.
+As a consequence, the costate equations for the previous optimal control
+problem are:
+𝜕𝜆𝑘
+𝜕𝑡 (𝑥,𝑡)=−𝑑1Δ𝜆𝑘(𝑥,𝑡)− 𝑐(𝑥,𝑡)+ 𝛽1I𝜔(𝑥)𝜏(𝑥,𝑡)
+− 𝜆𝑘(𝑥,𝑡)
+𝐴(𝑥,𝑡)( 1− I𝜔(𝑥)𝜏(𝑥,𝑡))
+1+𝑝(𝑥,𝑡)2
+× 𝑓′ (1− I𝜔(𝑥)𝜏(𝑥,𝑡))𝑘(𝑥,𝑡)−𝛿1−𝑐(𝑥,𝑡)
+
+−( 1− I𝜔(𝑥)𝜏(𝑥,𝑡))
+× 𝑓′ (1− I𝜔(𝑥)𝜏(𝑥,𝑡))𝑘(𝑥,𝑡)𝜃
+∫
+Ω
+𝜆𝑝(𝑥′,𝑡)𝜑(𝑥,𝑥′) d𝑥′, (8)
+𝜕𝜆𝑝
+𝜕𝑡 (𝑥,𝑡)=−𝑑2Δ𝜆𝑝(𝑥,𝑡)+ 𝛽0+𝛽2I𝜔(𝑥)𝜉(𝑥,𝑡)
++ 𝜆𝑘(𝑥,𝑡) 2𝐴(𝑥,𝑡)𝑝(𝑥,𝑡)
+(1+𝑝(𝑥,𝑡)2)2 𝑓  (1− I𝜔(𝑥)𝜏(𝑥,𝑡))𝑘(𝑥,𝑡)
++ 𝛿2𝜆𝑝(𝑥,𝑡)+ I𝜔(𝑥)𝜉(𝑥,𝑡)𝜆𝑝(𝑥,𝑡) (9)
+together with homogeneous Neumann boundary conditions and zero final data.
+As in [4] it follows the well posedness of the initial/boundary problem for
+System (4). Moreover it follows in the same manner that there exists at least one
+optimal control(𝑐∗,𝜏∗,𝜉∗).
+Let us now proceed with the construction of a computational algorithm for
+the search of an optimal control by the gradient method.
+POLLUTION CONTROL FOR A SPATIALLY STRUCTURED ECONOMIC GROWTH SYSTEM595
+For the sake of clarity we shall use the notation𝑘𝑢, 𝑝𝑢,𝜆𝑢
+𝑘,𝜆𝑢
+𝑝 for𝑘, 𝑝,𝜆𝑘,
+𝜆𝑝, where𝑢=(𝑥,𝜏,𝜉 )∈ e𝑈 when some danger of confusion occurs. Denote by
+𝐼(𝑢)=
+𝑇∫
+0
+∫
+Ω
+𝑐(𝑥,𝑡)𝑘𝑢(𝑥,𝑡) d𝑥 d𝑡−𝛽0
+𝑇∫
+0
+∫
+Ω
+𝑝𝑢(𝑥,𝑡) d𝑥 d𝑡
+− 𝛽1
+𝑇∫
+0
+∫
+Ω
+I𝜔(𝑥)𝜏(𝑥,𝑡)𝑘𝑢(𝑥,𝑡) d𝑥 d𝑡−𝛽2
+𝑇∫
+0
+∫
+Ω
+I𝜔(𝑥)𝜉(𝑥,𝑡)𝑝𝑢(𝑥,𝑡) d𝑥 d𝑡
+the value of the cost functional corresponding to𝑢=(𝑐,𝜏,𝜉).
+Consideranarbitrary 𝑣=(𝑣1,𝑣 2,𝑣 3)∈ 𝐿∞(𝑄𝑇)×𝐿∞(e𝑄𝑇)×𝐿∞(e𝑄𝑇)(where
+e𝑄𝑇 =𝜔×( 0,𝑇))suchthat 𝑢+𝜀𝑣∈ e𝑈forany𝜀 >0sufficientlysmall.Let (𝑧𝑘,𝑧 𝑝)
+be the solution to
+ 
+
+𝜕𝑧𝑘
+𝜕𝑡 =𝑑1Δ𝑧𝑘+ 𝐴
+1+( 𝑝𝑢)2
+
+𝑓′(( 1− I𝜔𝜏)𝑘𝑢)( 1− I𝜔𝜏)𝑧𝑘
+− 𝑓′(( 1− I𝜔𝜏)𝑘𝑢)I𝜔𝑘𝑢𝑣2
+
+−𝛿1𝑧𝑘−𝑐𝑧𝑘−𝑣1𝑘𝑢
+− 2𝐴𝑝𝑢𝑧𝑝
+(1+( 𝑝𝑢)2)2𝑓(( 1− I𝜔𝜏)𝑘𝑢),
+𝜕𝑧𝑝
+𝜕𝑡 =𝑑2Δ𝑧𝑝+𝜃
+∫
+Ω
+𝑓′(( 1− I𝜔(𝑥′)𝜏(𝑥′,𝑡))𝑘𝑢(𝑥′,𝑡))
+×[( 1− I𝜔(𝑥′)𝜏(𝑥′,𝑡))𝑧𝑘(𝑥′,𝑡)− I𝜔(𝑥′)𝑣2(𝑥′,𝑡)𝑘𝑢(𝑥′,𝑡)]
+×𝜑(𝑥′,𝑥) d𝑥′
+− 𝛿2𝑧𝑝− I𝜔𝜉𝑧𝑝− I𝜔𝑣3𝑝𝑢,
+(10)
+for(𝑥,𝑡)∈ 𝑄𝑇 together with homogeneous Neumann boundary conditions and
+zero initial data. One may prove in a standard way the following auxiliary result.
+Lemma 1. The following convergences hold for any𝑢∈ e𝑈
+(i) 𝑘𝑢+𝜀𝑣−→𝑘𝑢, 𝑝𝑢+𝜀𝑣−→𝑝𝑢 in𝐿2(𝑄𝑇), as𝜀→ 0+;
+(ii) 𝑘𝑢+𝜀𝑣−𝑘𝑢
+𝜀 −→𝑧𝑘, 𝑝𝑢+𝜀𝑣−𝑝𝑢
+𝜀 −→𝑧𝑝 in𝐿2(𝑄𝑇), as𝜀→ 0+.
+One may compute now the directional derivative of𝐼:
+596 S. ANIŢA, V. CAPASSO, S. SCACCHI
+Theorem 1.
+𝑑𝐼(𝑢)(𝑣)=
+∫
+𝑄𝑇
+𝑘𝑢(𝑥,𝑡)[𝑣1(𝑥,𝑡)( 1−𝜆𝑘(𝑥,𝑡))− I𝜔(𝑥)𝑣2(𝑥,𝑡)𝛽∗(𝑥,𝑡)] d𝑥 d𝑡
+−
+∫
+𝑄𝑇
+𝑝𝑢(𝑥,𝑡)𝑣3(𝑥,𝑡)I𝜔(𝑥)(𝛽2+𝜆𝑝(𝑥,𝑡)) d𝑥 d𝑡,
+where
+𝛽∗(𝑥,𝑡)=𝛽1
++𝑓′(( 1− I𝜔(𝑥)𝜏(𝑥,𝑡))𝑘𝑢(𝑥,𝑡)) '›
+«
+𝐴(𝑥,𝑡)𝜆𝑘(𝑥,𝑡)
+1+𝑝𝑢(𝑥,𝑡)2 +𝜃
+∫
+Ω
+𝜆𝑝(𝑥′,𝑡)𝜑(𝑥,𝑥′) d𝑥′“ﬁ
+‹
+.
+Sketch of the proof.For any𝜀 >0sufficiently small we have that
+𝐼(𝑢+𝜀𝑣)− 𝐼(𝑢)=
+∫
+𝑄𝑇
+
+(𝑐+𝜀𝑣 1)𝑘𝑢+𝜀𝑣−𝑐𝑘𝑢
+d𝑥 d𝑡
+−
+∫
+𝑄𝑇
+n
+𝛽0
+
+𝑝𝑢+𝜀𝑣−𝑝𝑢
++𝛽1I𝜔
+
+(𝜏+𝜀𝑣 2)𝑘𝑢+𝜀𝑣−𝜏𝑘𝑢o
+d𝑥 d𝑡
+−
+∫
+𝑄𝑇
+n
+𝛽2I𝜔
+
+(𝜉+𝜀𝑣 3)𝑝𝑢+𝜀𝑣−𝜏𝑝𝑢o
+d𝑥 d𝑡.
+Bydividingtheaboveby 𝜀 andpassingtothelimit( 𝜀→ 0+),thenusing (𝑖),(𝑖𝑖)
+in the lemma we get that
+𝑑𝐼(𝑢)(𝑣)=
+∫
+𝑄𝑇
+[𝑣1𝑘𝑢+𝑐𝑧𝑘] d𝑥 d𝑡−𝛽0
+∫
+𝑄𝑇
+𝑧𝑝 d𝑥 d𝑡
+−𝛽1
+∫
+𝑄𝑇
+I𝜔[𝑣2𝑘𝑢+𝜏𝑧𝑘] d𝑥 d𝑡−𝛽2
+∫
+𝑄𝑇
+I𝜔[𝑣3𝑝𝑢+𝜉𝑧𝑝] d𝑥 d𝑡. (11)
+POLLUTION CONTROL FOR A SPATIALLY STRUCTURED ECONOMIC GROWTH SYSTEM597
+IfwemultiplyEquation(8)by 𝑧𝑘 andintegrateover 𝑄𝑇 anduse(10),thenwe
+get that
+−
+∫
+𝑄𝑇
+
+−𝑑1∇𝜆𝑘(𝑥,𝑡)·∇ 𝑧𝑘(𝑥,𝑡)
++ 𝐴(𝑥,𝑡)𝜆𝑘(𝑥,𝑡)
+1+𝑝2(𝑥,𝑡) [𝑓′(( 1− I𝜔(𝑥)𝜏(𝑥,𝑡))𝑘(𝑥,𝑡))( 1− I𝜔(𝑥)𝜏(𝑥,𝑡))𝑧𝑘(𝑥,𝑡)
+− 𝑓′(( 1− I𝜔(𝑥)𝜏(𝑥,𝑡))𝑘(𝑥,𝑡))𝑘(𝑥,𝑡)I𝜔(𝑥)𝑣2(𝑥,𝑡)]
+−𝜆𝑘(𝑥,𝑡)(𝛿1𝑧𝑘(𝑥,𝑡)+𝑐𝑧𝑘(𝑥,𝑡)+𝑣1(𝑥,𝑡)𝑘(𝑥,𝑡))
+− 2𝐴(𝑥,𝑡)𝑝(𝑥,𝑡)𝑧𝑝(𝑥,𝑡)𝜆𝑘(𝑥,𝑡)
+(1+𝑝2(𝑥,𝑡)) 2 𝑓(( 1− I𝜔(𝑥)𝜏(𝑥,𝑡))𝑘(𝑥,𝑡))
+
+d𝑥 d𝑡
+=
+𝑇∫
+0
+∫
+Ω
+
+𝑑1∇𝜆𝑘(𝑥,𝑡)·∇ 𝑧𝑘(𝑥,𝑡)− 𝑐𝑧𝑘(𝑥,𝑡)+ 𝛽1I𝜔(𝑥)𝜏(𝑥,𝑡)𝑧𝑘(𝑥,𝑡)
+−𝜆𝑘(𝑥,𝑡)𝑧𝑘(𝑥,𝑡)
+𝐴(𝑥,𝑡)( 1− I𝜔(𝑥)𝜏(𝑥,𝑡))
+1+𝑝2(𝑥,𝑡) 𝑓′(( 1− I𝜔(𝑥)𝜏(𝑥,𝑡))𝑘(𝑥,𝑡))−𝛿1−𝑐
+
+−𝑧𝑘(𝑥,𝑡)( 1− I𝜔(𝑥)𝜏(𝑥,𝑡))
+× 𝑓′(( 1−𝜏(𝑥,𝑡))𝑘(𝑥,𝑡))𝜃
+∫
+Ω
+𝜆𝑝(𝑥′,𝑡)𝜑(𝑥,𝑥′) d𝑥′
+
+d𝑥 d𝑡.
+It follows that
+∫
+𝑄𝑇
+(𝑐𝑧𝑘(𝑥,𝑡)− 𝛽1I𝜔(𝑥)𝜏(𝑥,𝑡)𝑧𝑘(𝑥,𝑡)) d𝑥 d𝑡
+=−
+∫
+𝑄𝑇
+∫
+Ω
+𝑧𝑘(𝑥,𝑡)( 1− I𝜔(𝑥)𝜏(𝑥,𝑡))
+× 𝑓′(( 1− I𝜔(𝑥)𝜏(𝑥,𝑡))𝑘(𝑥,𝑡))𝜃𝜆𝑝(𝑥′,𝑡)𝜑(𝑥,𝑥′) d𝑥′d𝑥 d𝑡
+−
+∫
+𝑄𝑇
+𝐴(𝑥,𝑡)𝜆𝑘(𝑥,𝑡)
+(1+𝑝2(𝑥,𝑡)) 2𝑓′(( 1− I𝜔(𝑥)𝜏(𝑥,𝑡))𝑘(𝑥,𝑡))𝑘(𝑥,𝑡)I𝜔(𝑥)𝑣2(𝑥,𝑡)
++𝜆𝑘(𝑥,𝑡)𝑣1(𝑥,𝑡)𝑘(𝑥,𝑡)
++ 2𝐴(𝑥,𝑡)𝑝(𝑥,𝑡)𝑧𝑝(𝑥,𝑡)𝜆𝑘(𝑥,𝑡)
+(1+𝑝2(𝑥,𝑡)) 2 𝑓(( 1− I𝜔(𝑥)𝜏(𝑥,𝑡))𝑘(𝑥,𝑡))
+
+d𝑥 d𝑡. (12)
+598 S. ANIŢA, V. CAPASSO, S. SCACCHI
+IfwemultiplyEquation(9)by 𝑧𝑝 andintegrateover 𝑄𝑇 anduse(10),thenwe
+get that
+−
+∫
+𝑄𝑇
+
+−𝑑2∇𝜆𝑝(𝑥,𝑡)·∇ 𝑧𝑝(𝑥,𝑡)+ 𝜆𝑝(𝑥,𝑡)𝜃
+∫
+Ω
+𝑓′(( 1− I𝜔(𝑥′)𝜏(𝑥′,𝑡))𝑘(𝑥′,𝑡))
+×
+
+(1− I𝜔(𝑥′)𝜏(𝑥′,𝑡))𝑧𝑘(𝑥′,𝑡)− 𝑘(𝑥′,𝑡)I𝜔(𝑥′)𝑣2(𝑥′,𝑡)
+
+𝜑(𝑥′,𝑥) d𝑥′
+−𝛿2𝜆𝑝(𝑥,𝑡)𝑧𝑝(𝑥,𝑡)
+− I𝜔(𝑥)𝜉(𝑥,𝑡)𝜆𝑝(𝑥,𝑡)𝑧𝑝(𝑥,𝑡)− I𝜔(𝑥)𝑣3(𝑥,𝑡)𝑝(𝑥,𝑡)𝜆𝑝(𝑥,𝑡)
+
+d𝑥 d𝑡
+=
+∫
+𝑄𝑇
+
+𝑑2∇𝜆𝑝(𝑥,𝑡)·∇ 𝑧𝑝(𝑥,𝑡)+ 𝛽0𝑧𝑝(𝑥,𝑡)+ 𝛽2I𝜔(𝑥)𝜉(𝑥)𝑧𝑝(𝑥,𝑡)
++𝜆𝑘(𝑥,𝑡)𝑧𝑝(𝑥,𝑡) 2𝐴(𝑥,𝑡)𝑝(𝑥,𝑡)
+(1+𝑝2(𝑥,𝑡)) 2 𝑓  (1− I𝜔(𝑥)𝜏(𝑥,𝑡))𝑘(𝑥,𝑡)+𝛿2𝜆𝑝(𝑥,𝑡)𝑧𝑝(𝑥,𝑡)
++ I𝜔(𝑥)𝜉(𝑥,𝑡)𝜆𝑝(𝑥,𝑡)𝑧𝑝(𝑥,𝑡)
+
+d𝑥 d𝑡.
+(13)
+It follows that
+−
+∫
+𝑄𝑇
+𝛽0𝑧𝑝(𝑥,𝑡) d𝑥 d𝑡−𝛽2
+∫
+𝑄𝑇
+I𝜔(𝑥)𝜉(𝑥,𝑡)𝑧𝑝(𝑥,𝑡) d𝑥 d𝑡
+=
+∫
+𝑄𝑇
+𝜆𝑘(𝑥,𝑡)𝑧𝑝(𝑥,𝑡) 2𝐴(𝑥,𝑡)𝑝(𝑥,𝑡)
+(1+𝑝2(𝑥,𝑡)) 2 𝑓(( 1− I𝜔(𝑥)𝜏(𝑥,𝑡))𝑘(𝑥,𝑡)) d𝑥 d𝑡
++ 𝜃
+∫
+𝑄𝑇
+∫
+Ω
+𝜆𝑝(𝑥,𝑡)𝑓′(( 1− I𝜔(𝑥′)𝜏(𝑥′,𝑡))𝑘(𝑥′,𝑡))
+×[( 1− I𝜔(𝑥′)𝜏(𝑥′,𝑡))𝑧𝑘(𝑥′,𝑡)− 𝑘(𝑥′,𝑡)I𝜔(𝑥′)𝑣2(𝑥′,𝑡)]𝜑(𝑥′,𝑥) d𝑥′d𝑥 d𝑡
+−
+∫
+𝑄𝑇
+I𝜔(𝑥)𝑣3(𝑥,𝑡)𝑝(𝑥,𝑡)𝜆𝑝(𝑥,𝑡) d𝑥 d𝑡. (14)
+POLLUTION CONTROL FOR A SPATIALLY STRUCTURED ECONOMIC GROWTH SYSTEM599
+By (12) and (14) we get that
+𝑇∫
+0
+∫
+Ω
+(𝑐𝑧𝑘(𝑥,𝑡)− 𝛽0𝑧𝑝(𝑥,𝑡)− 𝛽1I𝜔(𝑥)𝜏(𝑥,𝑡)𝑧𝑘(𝑥,𝑡)
+− 𝛽2I𝜔(𝑥)𝜉(𝑥,𝑡)𝑧𝑝(𝑥,𝑡)) d𝑥 d𝑡
+=
+∫
+𝑄𝑇
+
+− 𝐴(𝑥,𝑡)𝜆𝑘(𝑥,𝑡)
+1+𝑝2(𝑥,𝑡) 𝑓′(( 1− I𝜔(𝑥)𝜏(𝑥,𝑡))𝑘(𝑥,𝑡))𝑘(𝑥,𝑡)I𝜔(𝑥)𝑣2(𝑥,𝑡)
+− 𝑣1(𝑥,𝑡)𝑘(𝑥,𝑡)𝜆𝑘(𝑥,𝑡)
+
+d𝑥 d𝑡
+− 𝜃
+∫
+𝑄𝑇
+∫
+Ω
+𝜆𝑝(𝑥,𝑡)𝑓′(( 1− I𝜔(𝑥′)𝜏(𝑥′,𝑡))𝑘(𝑥′,𝑡))𝑘(𝑥′,𝑡)
+× I𝜔(𝑥′)𝑣2(𝑥′,𝑡)𝜑(𝑥′,𝑥) d𝑥′d𝑥 d𝑡−
+∫
+𝑄𝑇
+I𝜔(𝑥)𝑣3(𝑥,𝑡)𝑝(𝑥,𝑡)𝜆𝑝(𝑥,𝑡) d𝑥 d𝑡. (15)
+By (11) and (15) we get that
+𝑑𝐼(𝑢)(𝑣)=
+∫
+𝑄𝑇
+𝑘(𝑥,𝑡)[𝑣1(𝑥,𝑡)( 1−𝜆𝑘(𝑥,𝑡))− 𝑣2(𝑥,𝑡)I𝜔(𝑥)𝛽∗(𝑥,𝑡)] d𝑥 d𝑡
+−
+∫
+𝑄𝑇
+𝑝(𝑥,𝑡)𝑣3(𝑥,𝑡)I𝜔(𝑥)(𝛽2+𝜆𝑝(𝑥,𝑡)) d𝑥 d𝑡,
+and so we get the conclusion of the theorem.
+In Paragraph 3.1 we describe the conceptual gradient-type algorithm for the
+optimal control procedure. In Section 4 we describe the numerical methods
+adopted for the solutions of System (4) and (8)-(9) with the above mentioned
+boundary and initial/final conditions. In Section 5 we report and discuss the
+computational results.
+3.1. Conceptual algorithm
+STEP 0: Set 𝑖𝑡𝑒𝑟 := 0, Choose maxiter,𝛿 >0.
+STEP 1: Initialize (𝑐(𝑖𝑡𝑒𝑟),𝜏(𝑖𝑡𝑒𝑟),𝜉(𝑖𝑡𝑒𝑟))∈ e𝑈.
+STEP 2: Compute 𝑘(𝑖𝑡𝑒𝑟),𝑝(𝑖𝑡𝑒𝑟),𝜆(𝑖𝑡𝑒𝑟)
+𝑘 ,𝜆(𝑖𝑡𝑒𝑟)
+𝑝 ,(𝛽∗)(𝑖𝑡𝑒𝑟) corresponding to
+(𝑐(𝑖𝑡𝑒𝑟),𝜏(𝑖𝑡𝑒𝑟),𝜉(𝑖𝑡𝑒𝑟)), and𝐼(𝑖𝑡𝑒𝑟) =𝐼(𝑐(𝑖𝑡𝑒𝑟),𝜏(𝑖𝑡𝑒𝑟),𝜉(𝑖𝑡𝑒𝑟)).
+600 S. ANIŢA, V. CAPASSO, S. SCACCHI
+STEP 3: Choose (𝑣1,𝑣 2,𝑣 3)∈ 𝐿∞(𝑄𝑇)× 𝐿∞(e𝑄𝑇)× 𝐿∞(e𝑄𝑇) such that
+(𝑐(𝑖𝑡𝑒𝑟),𝜏(𝑖𝑡𝑒𝑟),𝜉(𝑖𝑡𝑒𝑟))+ 𝜀0(𝑣1,𝑣 2,𝑣 3)∈ e𝑈(𝜀0 ∝§}∇⌉⊣⊔⌉∇⌉⨿⊓⊣↕0) and that
+𝑣1(1−𝜆(𝑖𝑡𝑒𝑟)
+𝑘 ) ∝§}∇⌉⊣⊔⌉∇⌉⨿⊓⊣↕0,−𝑣2I𝜔(𝛽∗)(𝑖𝑡𝑒𝑟) ∝§}∇⌉⊣⊔⌉∇⌉⨿⊓⊣↕0,−𝑣3I𝜔(𝛽2+𝜆(𝑖𝑡𝑒𝑟)
+𝑝 ) ∝§}∇⌉⊣⊔⌉∇⌉⨿⊓⊣↕0 a.e.
+(𝑥,𝑡)∈ 𝑄𝑇.
+STEP 4: Compute
+(𝑐(𝑛𝑒𝑤),𝜏(𝑛𝑒𝑤),𝜉(𝑛𝑒𝑤)) :=(𝑐(𝑖𝑡𝑒𝑟),𝜏(𝑖𝑡𝑒𝑟),𝜉(𝑖𝑡𝑒𝑟))+ 𝜀0(𝑣1,𝑣 2,𝑣 3).
+STEP 5: Compute 𝜂0 which maximizes
+𝐼(𝜂(𝑐(𝑖𝑡𝑒𝑟),𝜏(𝑖𝑡𝑒𝑟),𝜉(𝑖𝑡𝑒𝑟))+( 1−𝜂)(𝑐(𝑛𝑒𝑤),𝜏(𝑛𝑒𝑤),𝜉(𝑛𝑒𝑤))),for𝜂∈[ 0, 1].
+Set(𝑐(𝑖𝑡𝑒𝑟+1),𝜏(𝑖𝑡𝑒𝑟+1),𝜉(𝑖𝑡𝑒𝑟+1))=𝜂0(𝑐(𝑖𝑡𝑒𝑟),𝜏(𝑖𝑡𝑒𝑟),𝜉(𝑖𝑡𝑒𝑟))
++(1−𝜂0)(𝑐(𝑛𝑒𝑤),𝜏(𝑛𝑒𝑤),𝜉(𝑛𝑒𝑤)).
+STEP 6: If 𝐼(𝑖𝑡𝑒𝑟+1)−𝐼(𝑖𝑡𝑒𝑟) <𝛿 , then
+(𝑐∗,𝜏∗,𝜉∗) :=(𝑐(𝑖𝑡𝑒𝑟),𝜏(𝑖𝑡𝑒𝑟),𝜉(𝑖𝑡𝑒𝑟))
+elseif𝑖𝑡𝑒𝑟 >𝑚𝑎𝑥𝑖𝑡𝑒𝑟 , then
+(𝑐∗,𝜏∗,𝜉∗) :=(𝑐(𝑖𝑡𝑒𝑟),𝜏(𝑖𝑡𝑒𝑟),𝜉(𝑖𝑡𝑒𝑟))
+else
+𝑖𝑡𝑒𝑟 :=𝑖𝑡𝑒𝑟+ 1 and GO TO STEP 3.
+In the numerical tests, we will use:
+𝑣1(𝑥,𝑡)∈ 𝑠𝑔𝑛(1−𝜆(𝑖𝑡𝑒𝑟)
+𝑘 (𝑥,𝑡)),
+𝑣2(𝑥,𝑡)∈− 𝑠𝑔𝑛(𝛽∗(𝑥,𝑡))(𝑖𝑡𝑒𝑟), 𝑣 3(𝑥,𝑡)∈− 𝑠𝑔𝑛(𝛽2+𝜆(𝑖𝑡𝑒𝑟)
+𝑝 (𝑥,𝑡)),
+a.e.(𝑥,𝑡)∈ 𝑄𝑇, and a.e.(𝑥,𝑡)∈ e𝑄𝑇, respectively.
+4. Numerical methods
+Equations(4)and(8)–(9)arediscretizedbyfiniteelementsinspaceandfinite
+differences in time.
+4.1. Space discretization
+We first apply a standard Galerkin procedure to the weak formulations of
+systems(4)and(8)–(9),withtheassociatedboundaryandinitial/finalconditions,
+respectively. The two-dimensional setΩ =[−1, 1]2 is discretized by a uniform
+gridof 64× 64bilinearfiniteelements( Q1),yieldingatotalamountof 𝑁 = 4225
+discretization nodes. The stiffness matrix is computed exactly, whereas the mass
+matrix is obtained by applying the mass lumping technique.
+In the following, we describe in detail this procedure applied to System (4),
+being the treatment of equations (8)–(9) analogous.
+POLLUTION CONTROL FOR A SPATIALLY STRUCTURED ECONOMIC GROWTH SYSTEM601
+Let us first denote by𝑉 the Sobolev space𝐻1(Ω), by(·,·) the 𝐿2− inner
+product and by𝑎1(·,·), 𝑎2(·,·) :𝑉×𝑉→ R the bilinear forms
+𝑎1(𝑢,𝑣) :=
+∫
+Ω
+𝑑1∇𝑢·∇𝑣 d𝑥, for all𝑢,𝑣 ∈𝑉,
+𝑎2(𝑢,𝑣) :=
+∫
+Ω
+𝑑2∇𝑢·∇𝑣 d𝑥, for all𝑢,𝑣 ∈𝑉.
+Then, using Green’s formula, the variational formulation of problem (4) reads:
+given(𝑐, 𝜏)∈ 𝑈, find𝑘, 𝑝such that
+ 
+
+𝜕
+𝜕𝑡(𝑘(𝑡),𝜙)+ 𝑎1(𝑘(𝑡),𝜙)=(𝐺1(𝑘(𝑡),𝑝(𝑡),𝑐(𝑡),𝜏(𝑡)),𝜙), for all𝜙∈𝑉,
+𝜕
+𝜕𝑡(𝑝(𝑡),𝜙)+ 𝑎2(𝑝(𝑡),𝜙)=(𝐺2(𝑘(𝑡),𝑝(𝑡),𝑐(𝑡),𝜏(𝑡)),𝜙), for all𝜙∈𝑉,
+(16)
+subjecttotheinitialconditionson 𝑘 and𝑝,andwhere 𝐺1 and𝐺2 arethereaction
+terms in (4).
+Let us now introduce theP1 finite element space𝑉ℎ, associated to a partition
+of the one-dimensional domainΩinto𝑁− 1subintervals of sizeℎ.
+The space semi-discretization of problem (16) then reads:
+find𝑘ℎ, 𝑝ℎ :[0,𝑇]→ 𝑉ℎ such that
+ 
+
+𝜕
+𝜕𝑡(𝑘ℎ(𝑡),𝜙 ℎ)+ 𝑎1(𝑘ℎ(𝑡),𝜙 ℎ)=(𝐺1(𝑘ℎ(𝑡),𝑝 ℎ(𝑡),𝑐 ℎ(𝑡),𝜏ℎ(𝑡)),𝜙 ℎ),
+𝜕
+𝜕𝑡(𝑝ℎ(𝑡),𝜙 ℎ)+ 𝑎2(𝑝ℎ(𝑡),𝜙 ℎ)=(𝐺2(𝑘ℎ(𝑡),𝑝 ℎ(𝑡),𝑐 ℎ(𝑡),𝜏ℎ(𝑡)),𝜙 ℎ),
+for all𝜙ℎ ∈ 𝑉ℎ, where 𝑐ℎ, 𝜏ℎ : [0,𝑇] →𝑉ℎ are convenient finite element
+approximations of𝑐 and𝜏. The previous variational equation is equivalent to
+ 
+
+𝜕
+𝜕𝑡(𝑘ℎ(𝑡),𝜙𝑖)+ 𝑎1(𝑘ℎ(𝑡),𝜙𝑖)=(𝐺1(𝑘ℎ(𝑡),𝑝 ℎ(𝑡),𝑐 ℎ(𝑡),𝜏ℎ(𝑡)),𝜙𝑖),
+𝜕
+𝜕𝑡(𝑝ℎ(𝑡),𝜙𝑖)+ 𝑎2(𝑝ℎ(𝑡),𝜙𝑖)=(𝐺2(𝑘ℎ(𝑡),𝑝 ℎ(𝑡),𝑐 ℎ(𝑡),𝜏ℎ(𝑡)),𝜙𝑖),
+(17)
+for all𝑖= 1,...,𝑁 , where𝜙𝑖,𝑖= 1,...,𝑁 , are thehat basis functionsof theP1
+finite element space𝑉ℎ.
+Let us remind that hat basis functions are finite element functions (thus
+piecewise bilinear) that are equal to one at a given mesh node and decrease
+linearly to zero at neighboring points.
+602 S. ANIŢA, V. CAPASSO, S. SCACCHI
+Expandingtheunknowns 𝑘ℎ(𝑥,𝑡), 𝑝ℎ(𝑥,𝑡) and𝑐ℎ(𝑥,𝑡), 𝜏ℎ(𝑥,𝑡) withrespect
+to the basis{𝜙𝑖}𝑁
+𝑖=1, we have
+𝑘ℎ(𝑥,𝑡)=
+𝑁∑︁
+𝑗=1
+𝐾𝑗(𝑡)𝜙𝑗(𝑥), 𝑝 ℎ(𝑥,𝑡)=
+𝑁∑︁
+𝑗=1
+𝑃𝑗(𝑡),
+𝑐ℎ(𝑥,𝑡)=
+𝑁∑︁
+𝑗=1
+𝐶𝑗(𝑡)𝜙𝑗(𝑥), 𝜏 ℎ(𝑥,𝑡)=
+𝑁∑︁
+𝑗=1
+𝑇𝑗(𝑡),
+(18)
+where𝐾𝑗, 𝑃𝑗 :[0,𝑇]→ R are unknown scalar functions to be determined, and
+we assume that𝐶𝑗, 𝑇𝑗 :[0,𝑇]→ R are given.
+Denoting byA1, A2 the stiffness matrices associated with the bilinear forms
+𝑎1(·,·), 𝑎2(·,·), byM the lumped mass matrix, and substituting the expressions
+(18) into system (17), the semi-discrete problem then reads:
+find K, P :[0,𝑇]→ R𝑁 such that
+ 
+
+M dK
+d𝑡(𝑡)+ A1K(𝑡)= MG1(K(𝑡), P(𝑡), C(𝑡), T(𝑡)),
+M dP
+d𝑡(𝑡)+ A2P(𝑡)= MG2(K(𝑡), P(𝑡), C(𝑡), T(𝑡)),
+(19)
+where
+K(𝑡) =
+
+...,𝐾 𝑗(𝑡),...
+𝑇
+,
+P(𝑡) =
+
+...,𝑃 𝑗(𝑡),...
+𝑇
+,
+C(𝑡) =
+
+...,𝐶 𝑗(𝑡),...
+𝑇
+,
+T(𝑡) =
+
+...,𝑇 𝑗(𝑡),...
+𝑇
+,
+G1(K(𝑡), P(𝑡), C(𝑡), T(𝑡)) =
+
+...,𝐺 1(𝐾𝑗(𝑡),𝑃 𝑗(𝑡),𝐶 𝑗(𝑡),𝑇𝑗(𝑡)),...
+𝑇
+,
+G2(K(𝑡), P(𝑡), C(𝑡), T(𝑡)) =
+
+...,𝐺 2(𝐾𝑗(𝑡),𝑃 𝑗(𝑡),𝐶 𝑗(𝑡),𝑇𝑗(𝑡)),...
+𝑇
+.
+4.2. Time discretization
+Afterspacediscretizationbyfiniteelements,weobtainthesemi-discreteprob-
+lem (19) that consists of a system of ODEs. We solve this system by employing
+a first order semi-implicit finite difference scheme, where the linear diffusion
+and reaction terms are approximated by Backward Euler, whereas the non-linear
+reaction terms are approximated by Forward Euler.
+POLLUTION CONTROL FOR A SPATIALLY STRUCTURED ECONOMIC GROWTH SYSTEM603
+In formulae, denoting byΔ𝑡 the time step size, at the generic time step𝑛,
+given K𝑛, P𝑛, we have to findK𝑛+1, P𝑛+1 such that
+ 
+
+M K𝑛+1− K𝑛
+Δ𝑡 + A1K𝑛+1= MG1(K𝑛, P𝑛, C𝑛, T𝑛),
+MP𝑛+1− P𝑛
+Δ𝑡 + A2P𝑛+1= MG2(K𝑛, P𝑛, C𝑛, T𝑛).
+As a result, at each time step it is required the solution of the linear system of
+algebraic equations
+
+1
+Δ𝑡 M+ A1 0
+0 1
+Δ𝑡 M+ A2
+
+"
+K𝑛+1
+P𝑛+1
+#
+=
+
+1
+Δ𝑡 MK𝑛+ MG1(K𝑛, P𝑛, C𝑛, T𝑛)
+1
+Δ𝑡 MP𝑛+ MG2(K𝑛, P𝑛, C𝑛, T𝑛)
+
+,
+which in our specific case has the dimension of8450 degrees of freedom. The
+linear system is solved by the Gaussian elimination with the built-in function of
+MATLAB. The time step size isΔ𝑡= 0.05.
+5. Numerical simulations
+Let us use the above algorithm with the following parameters’ values𝑑1= 1,
+𝑑2 = 1,𝛿1 = 0.05,𝛿2 = 0.03, 𝐴 = 1,𝑠 = 0.6,𝜃 = 2,𝛼1 = 0.7,𝛼2 = 1,𝛾 = 4,
+𝜑= 0.3, and initial conditions
+𝑘0(𝑥1,𝑥 2)= 0.1 exp
+−(𝑥1− 0.5)2−(𝑥2− 0.5)2
+0.1
+
+and
+𝑝0(𝑥1,𝑥 2)= exp{𝑥1+𝑥2};
+see Fig. 1. We have taken𝛽0=𝛽1=𝛽2= 1and𝐿= 0.5.
+We consider the following four scenarios; as time horizon for the control we
+have taken𝑇 = 5:
+• case 0: no control is applied;
+• case 1: the control region𝜔 is the small circle displayed in Fig. 2 (left);
+604 S. ANIŢA, V. CAPASSO, S. SCACCHI
+Figure 1: Initial distributions (at𝑡= 0) of state variables𝑘(𝑥,𝑡) (left) and𝑝(𝑥,𝑡) (right)
+Figure 2: Control regions𝜔: small (case 1, left) and big (case 2, right)
+• case 2: the control region𝜔 is the big circle displayed in Fig. 2 (right);
+• case 3: the control region𝜔 is the whole domainΩ= [−1, 1]2.
+The numerical results/tests agree with what intuition tells us. However, be-
+sides of what agrees with the intuition, we get additional information. Note that
+the numerical results give also an evaluation of the optimal control magnitude
+(𝑐∗, 𝜏∗, 𝜉∗) and of the corresponding states𝑘∗(𝑥,𝑡),𝑝∗(𝑥,𝑡).
+Figure4.Sinceourmaingoalistogetamaximalvalueofthecostfunctionalit
+isnaturalnoticingadecreaseofthecapitalwhentimeincreases(becausethereis
+nointerestinkeepingahighreserveof 𝑘 fortimelargerthanthetimehorizon 𝑇).
+Figure5.Theleveloftheoptimalconsumptionperunitofcapital, 𝑐∗,becomes
+maximalwhentimeisclosetothehorizon 𝑇. Theoptimalenvironmentaltaxation
+POLLUTION CONTROL FOR A SPATIALLY STRUCTURED ECONOMIC GROWTH SYSTEM605
+Figure 3:Case 0, no control. Space distributions of state variables𝑘(𝑥,𝑡) (first row) and𝑝(𝑥,𝑡)
+(second row) at three time instants
+Figure 4:Case 1, small control region. Space distributions of the optimal state variables𝑘(𝑥,𝑡)
+(first row) and𝑝(𝑥,𝑡) (second row) at three time instants
+rateandtheoptimalpollutionabatementapproach 0astimeapproachesthetime
+horizon𝑇. Note that𝑐∗+𝜏∗= 1−𝑠 for any𝑥∈𝜔 and𝑡∈( 0,𝑇).
+The same remarks are true for the other cases.
+Moreover, in Case 2 (the large control region) we get a higher level of capital
+and a lower level of pollution.
+Figure 8 (corresponding to Case 3) shows an important diminishment of
+𝑘(𝑥,𝑡) as𝑡→𝑇. On the other hand, Figure 9 shows that in this case𝜏∗(𝑥,𝑡) is
+606 S. ANIŢA, V. CAPASSO, S. SCACCHI
+Figure5: Case 1,smallcontrolregion.Spacedistributionsoftheoptimalcontrolvariables 𝑐(𝑥,𝑡)
+(first row),𝜏(𝑥,𝑡) (second row) and𝜉(𝑥,𝑡) (third row) at three time instants
+Figure 6: Case 2, big control region. Space distributions of the optimal state variables𝑘(𝑥,𝑡)
+(first row) and𝑝(𝑥,𝑡) (second row) at three time instants
+POLLUTION CONTROL FOR A SPATIALLY STRUCTURED ECONOMIC GROWTH SYSTEM607
+Figure 7:Case 2, big control region. Space distributions of the optimal control variables𝑐(𝑥,𝑡)
+(first row),𝜏(𝑥,𝑡) (second row) and𝜉(𝑥,𝑡) (third row) at three time instants
+Figure8: Case 3,thecontrolregionisthewholedomain.Spacedistributionsoftheoptimalstate
+variables𝑘(𝑥,𝑡) (first row) and𝑝(𝑥,𝑡) (second row) at three time instants
+608 S. ANIŢA, V. CAPASSO, S. SCACCHI
+Figure9: Case 3,thecontrolregionisthewholedomain.Spacedistributionsoftheoptimalcontrol
+variables𝑐(𝑥,𝑡) (first row),𝜏(𝑥,𝑡) (second row) and𝜉(𝑥,𝑡) (third row) at three time instants
+big for𝑥 close to the region with initial high level of pollution if𝑡 is small and it
+is small for large𝑡 or for𝑥 far from this region.
+6. Concluding remarks
+Thestudypresentedaspatiallystructuredeconomicgrowthmodelthatincor-
+porates pollution dynamics, environmental taxation, and localized intervention
+strategies.Byformulatingandanalyzinganoptimalcontrolproblemwithmultiple
+interacting objectives – maximizing intertemporal utility, minimizing pollution,
+and accounting for both taxation disutility and intervention costs – we have ex-
+tended previous frameworks in environmental economics and control theory to
+includethespatiallocalizationofenvironmentalpolicies.Numericalsimulations
+evidencethatrestrictingpollutioncontrolactionstooptimallychosensubregions
+can effectively reduce pollution diffusion in the whole eco-system while main-
+taining a satisfactory level of production. The results emphasize the importance
+of spatial heterogeneity in designing efficient environmental policies: targeted
+POLLUTION CONTROL FOR A SPATIALLY STRUCTURED ECONOMIC GROWTH SYSTEM609
+interventions, rather than uniform controls, yield better trade-offs between eco-
+nomic growth and ecological sustainability. Beyond its computational findings,
+the proposed framework highlights the potential of regional control theory as a
+valuable tool for eco-economic systems. Future research will explore more com-
+plexspatialdomains,dynamicinterventioncosts,andstochasticfactorsaffecting
+bothproductionandpollutiondynamics,tofurthersupportevidence-basedenvi-
+ronmental management in geographically distributed economic systems.
+Credit author statement. All authors have contributed in an equal manner to
+the development of the research project reported in this manuscript. In addition,
+Simone Scacchi has been responsible for the numerical software.
+References
+[1] K.B. Ajeigbe and F. Ganda: The impact of pollution and carbon emission control on
+financial development, environmental quality, and economic growth: a global analysis.
+Sustainability, 16, (2024), 8748, DOI: 10.3390/su16208748
+[2] S. Aniţa, V . Capasso, H. Kunzeand D. La Torre:Optimalcontrolandlong-rundynamics
+foraspatialeconomicgrowthmodelwithphysicalcapitalaccumulationandpollutiondiffu-
+sion.Applied Mathematics Letters, 26, (2013), 908–912, DOI: 10.1016/j.aml.2013.04.002
+[3] S. Aniţa, V . Capasso, H. Kunze and D. La Torre : Dynamics and optimal control in
+a spatially structured economic growth model with pollution diffusion and environmental
+taxation.AppliedMathematicsLetters , 42,(2015),36–40,DOI:10.1016/j.aml.2014.11.001
+[4] S. Aniţa, V . Capasso, H. Kunzeand D. La Torre: Dynamics and control of an integro-
+differentialsystemofgeographicaleconomics. AnnalsoftheAcademyofRomanianScien-
+tists: Series on Mathematics and its Applications, 7, (2015), 8–26.
+[5] S. Aniţa, V . Capasso, H. Kunze and D. La Torre: Optimizing environmental taxation
+on physical capital for a spatially structured economic growth model including pollution
+diffusion. Vietnam Journal of Mathematics, 45, (2017), 199–206, DOI: 10.1007/s10013-
+016-0215-x
+[6] S. Aniţa, V . Capasso and S. Scacchi: Mathematical Modeling and Control in Life and
+Environmental Sciences. Regional Control Problems. Birkhäuser, New York, N.Y. 2024.
+[7] S. Athanassoglouand A. Xepapadeas:Pollutioncontrolwithuncertainstockdynamics:
+when,andhow,tobeprecautious. JournalofEnvironmentalEconomicsandManagement ,
+63, (2012), 304–320, DOI: 10.1016/j.jeem.2011.11.001
+[8] E. Augeraud-Veron, R. Boucekkineand V .M. Veliov:Distributedoptimalcontrolmod-
+elsinenvironmentaleconomics:areview. MathematicalModellingofNaturalPhenomena ,
+14, (2019), 106, DOI: 10.1051/mmnp/2019016
+[9] W . Beckerman: Economic growth and the environment: Whose growth? Whose environ-
+ment?World Development, 20, (1992), 481–496, DOI: 10.1016/0305-750X(92)90038-W
+610 S. ANIŢA, V. CAPASSO, S. SCACCHI
+[10] A.O. Belyakovand V . Veliov: Constant versus periodic fishing: age structured optimal
+controlapproach. MathematicalModellingofNaturalPhenomena , 9,(2014),20–37,DOI:
+0.1051/mmnp/20149403
+[11] L. Bertinelli, E. Strobl, and B. Zo u: Sustainable economic development and the
+environment: theory and evidence. Energy Economics, 34, (2012), 1105–1114, DOI:
+10.1016/j.eneco.2011.09.007
+[12] R. Boucekkine, C. Camacho and B. Zou: Bridging the gap between growth theory and
+the new economic geography: the spatial Ramsey model.Macroeconomic Dynamics, 13,
+(2009), 20–45, DOI: 10.1017/S1365100508070442
+[13] P . Brito: The dynamics of growth and distribution in a spatially heterogeneous world.
+UECE-ISEG, Technical University of Lisbon, 2004.
+[14] W .A. Brockand M.S. Taylor: The Green Solow model.Journal of Economic Growth,
+15, (2010), 127–153, DOI: 10.1007/s10887-010-9051-0
+[15] W . Brock and A. Xepapadeas: Diffusion-induced instability and pattern formation in
+infinite horizon recursive optimal control.Journal of Economic Dynamics and Control,
+32, (2008), 2745–2787, DOI: 10.1016/j.jedc.2007.08.005
+[16] W . Brockand A. Xepapadeas: Pattern formation, spatial externalities and regulation in
+coupledeconomic-ecologicalsystems. JournalofEnvironmentalEconomicsandManage-
+ment, 59, (2010), 149–164, DOI: 10.1016/j.jeem.2009.07.003
+[17] C. Camachoand B. Zou:ThespatialSolowmodel. EconomicsBulletin, 18,(2004),1–11.
+[18] V . Capasso, R. Engbers and D. La Torre : On the spatial Solow model with techno-
+logical diffusion and nonconcave production function.Nonlinear Analysis: Real World
+Applications, 11, (2010), 3858–3876, DOI: 10.1016/j.nonrwa.2010.01.016
+[19] M. Fujita, P . Krugmanandand A. Venables:TheSpatialEconomy.Cities,Regionsand
+International Trade. MIT Press, Cambridge, MA 1999.
+[20] S. Genieys, V . Volpert and P . Auger: Pattern and waves for a model in population
+dynamics with nonlocal consumption of resources.Mathematical Modelling of Natural
+Phenomena, 1 , (2006), 65–82, DOI: 10.1051/mmnp:2006004
+[21] G.M. Grossman and A.B. Krueger: Economic growth and the environment.Quarterly
+Journal of Economics, 110, (1995), 353–377, DOI: 10.2307/2118443
+[22] P . Krugman: Increasing returns and economic geography.Journal of Political Economy.
+99, (1991), 483–499.
+[23] D. La Torre, D. Liuzzi, T. Malik, O. Sharomi and R. Zaki: Dynamics and optimal
+control for a spatially-structured environmental- economic model.Electronic Journal of
+Differential Equations, 2015, (2015), 1–15.
+[24] J. Norregard and V . Reppelin-Hill: Taxes and tradable permits as instruments for con-
+trolling pollution: theory and practice.IMF Working Paper 00/13, January 2000(2000).
+http://www.imf.org/external/pubs/cat/longres.cfm?sk=3411.0
+[25] T. Puu:Outlineofatradecyclemodelincontinuousspaceandtime. GeographicalAnalysis,
+14, (1982), 1–9.
+[26] F.P . Ramsey: A mathematical theory of saving.Economic Journal, 38, (1928), 543–559.
+POLLUTION CONTROL FOR A SPATIALLY STRUCTURED ECONOMIC GROWTH SYSTEM611
+[27] R.M. Solow: A contribution to the theory of economic growth.Quarterly Journal of
+Economics, 70, (1956), 65–94.
+[28] V . Volpertand S. Petrovskii: Reaction-diffusion waves in biology.Physics of Life Rev.,
+6, (2009), 267–310, DOI: 10.1016/j.plrev.2009.10.002
+[29] A. Xepapadeas : The spatial dimension in environmental and resource economics.
+Environmental Development Economics, 15, (2010), 747–758, DOI: 10.1017/S1355
+770X10000355
+[30] J.D. Zivin and M. Neidell: The Impact of Pollution on Worker Productivity.American
+Economic Review, 102, (2012), 3652–3673, DOI: 10.1257/aer.102.7.3652

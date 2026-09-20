@@ -1,0 +1,639 @@
+ARTICLE | Article in Press
+Scientific Reports https://doi.org/10.1038/s41598-026-70828-4
+Scientific Reports
+This Article in Press is shared early to give you faster access to new research. It is citable and carries a permanent DOI. 
+The final edited version will replace it automatically.
+Integrating HEC-RAS with machine learning and deep 
+learning models as a rapid tool for river water level 
+prediction
+Ali haghizadeh · Leila Ghasemi · Sanaz Vahidimanesh
+Received: 2 July 2026 / Accepted: 4 September 2026
+© The Author(s) 2026
+Abstract
+For flood management, accurate water surface elevation predictions are necessary. hydraulic models such as 
+HEC-RAS produces detailed water surface elevation predictions but requires extensive input data and com -
+putational time. This study tested a hybrid approach on the Khorram Abad River in Lorestan Province, Iran, 
+combining HEC-RAS with machine learning and deep learning models. HEC-RAS version 6.0 generated 856 
+records from 167 cross-sections and eight return periods (2 to 500 years). The dataset was split by cross-section 
+(74 for training, 33 for testing) to prevent information leakage. Four models were trained: Random Forest (RF), 
+Support Vector Machine (SVM), Deep Neural Network (DNN), and Recurrent Neural Network (RNN). RF 
+had the highest accuracy in testing, with an R 2 of 0.9909, an RMSE of 0.619 meters, and an MAE of 0.446 
+meters. Channel bed elevation accounted for 32% of the prediction importance, and log-transformed discharge 
+accounted for 24%. RF maintained its accuracy across all return periods. Repeated cross-validation gave a 
+mean R2 of 0.9933 with a standard deviation of 0.0029. The Wilcoxon test showed RF outperformed SVM (p = 
+0.000), DNN, and RNN (p < 0.001) with statistical significance. Bootstrap uncertainty analysis produced 95% 
+confidence intervals for RMSE [0.5546, 0.8363] meters and R 2 [0.9834, 0.9927]. The framework provides a 
+faster alternative to HEC-RAS for this river and may be useful for design flood estimation and hazard mapping. 
+Testing on other rivers and under unsteady flow conditions is needed before operational flood warning use.
+Keywords Water level prediction · Machine learning · Deep learning · Surrogate model · HEC-RAS · 
+Khorram Abad River
+Introduction
+Riverine areas are suitable for human habitation, but residents there have historically been vulnerable to flooding 
+from rising water levels 1. Floods are among the most destructive natural disasters, causing significant damage 
+worldwide every year2. As climate change intensifies, flood-related damage is increasing 3. Accurate prediction 
+of water surface elevation in rivers is a primary method for flood risk assessment. Traditional methods fall into 
+two categories: hydrological (e.g., the Muskingum-Cunge method4) and hydraulic (e.g., the HEC RAS method5. 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-70828-4
+These models have a strong physical basis, but they require substantial input data and considerable computational 
+time6. Data-driven approaches have emerged as an alternative 7. Machine learning and deep learning algorithms 
+can identify complex, nonlinear patterns. Several studies have applied these models to flood prediction. Gao et 
+al.8 used an enhanced Random Forest model to estimate rating curves and achieved high accuracy8. Sharafkhani 
+et al.9 compared four models—MLP, LSTM, Transformer, and LSTNet—for multi-step-ahead water level fore -
+casting at 20 river gauging stations. The LSTNet model outperformed the others under data drift conditions, 
+achieving a median RMSE of 0.00724 for 4-step-ahead predictions, with each step corresponding to 30 minutes9.
+Kılıçarslan et al.10 used a machine learning surrogate model to improve flood inundation mapping. They used 
+the HAND FIM method as the baseline and HEC RAS outputs as the target data. The surrogate model reduced 
+false alarms by 18% and improved the Critical Success Index by 26%. The authors note the approach is fast 
+and low-cost, which makes it useful for areas with limited data and resources 10. Yükseler11 compared Random 
+Forest with HEC RAS and found Random Forest had better accuracy 11. Duangkhwan et al12 developed an inte-
+grated deep learning framework with LSTM for water level prediction and CNN for flood inundation mapping. 
+The framework replaces the HEC RAS 1D/2D model. They trained the models on observed hydrological data 
+and HEC RAS outputs. The LSTM predicted water levels with satisfactory accuracy, and the CNN converted 
+those predictions into flood depth maps that matched HEC RAS outputs closely12.Kordi Karimabadi et al.13 used 
+LSTM for streamflow forecasting over a 20-year horizon. They then put the extracted peak discharge values into 
+HEC RAS 2D to produce flood inundation and hazard maps. The LSTM model had R 2 values of 0.98 during 
+training and 0.92 during testing. The study used a 40-year daily time series from the Nesa River in Iran. Estimated 
+reservoir inflow volumes for 25-, 100-, and 500-year return periods were 76.26, 148.73, and 149.22 million cubic 
+meters13. Alamu et al.14 reviewed AI and machine learning surrogate models in Computational Fluid Dynamics. 
+The review covered Reduced Order Models, Physics Informed Neural Networks, Neural Operators, Transform -
+ers, and Generative Models14. Haces Garcia et al.15 showed that Deep Neural Networks (Feedforward, Bayesian, 
+Physics Informed, and LSTM) work as surrogate models for 2D HEC RAS simulations. The models achieved 
+speedups of 15 to 52 times over conventional models. Median RMSE for cell flooding depths reached as low as 
+2 mm after fine-tuning15.
+Holmberg et al.16 developed a recurrent neural operator surrogate for HEC RAS that accelerates simulation 
+speed16. Feng et al.17 used a CNN-LSTM-ATT architecture to predict flood depth and inundation extent 17. Sal-
+isu et al.18 reviewed 30 studies and found that machine learning models, especially Random Forest and LSTM, 
+consistently outperform traditional hydrological methods for flood prediction 18. Qu et al.19 proposed a dynamic 
+framework for chain risk assessment of floods. The framework integrates the HiPIMS hydrodynamic model, a 
+physics-informed deep learning network (PG-ST-MoE), and complex network theory. The authors report the 
+framework is effective for identifying hidden systemic risks in data-scarce regions19. Lee and Chang20 introduced 
+MC-PINN, a modular coupled physics-informed neural network with a 1D PINN for sewer flow and a 2D PINN 
+for surface flow. The network enforces mass and momentum conservation through physics-based loss func -
+tions20. Oluwadare et al.21 integrated an ensemble model (Random Forest, SVM, and XGBoost) with HEC RAS 
+2D and achieved an AUC of 0.97921. In their systematic review, Maddodi et al.22 confirmed that machine learn-
+ing models outperform traditional methods. Most of these studies were conducted in data-rich basins22. Regions 
+with limited data, such as the Khorram Abad River basin, have received less attention23. The area has consistent 
+flood risk from its topography and torrential rainfall, but has few active hydrometric stations.Recently, hybrid 
+approaches combining physically based hydraulic models with machine learning have gained attention. Pour -
+saeid24 studied water level fluctuations in Miqan Lake in Iran using an optimized SLFFN model with evolution-
+ary algorithms (PSO, GA, ICA) and RROC/PDF uncertainty analysis. That study focused on a lake system. The 
+present research addresses riverine flood prediction, which involves different hydraulic dynamics Poursaeid 24 
+relied on field observations, while the present study uses HEC RAS simulations as the physics-based data source. 
+This approach enables systematic scenario generation and is useful for data-scarce regions where continuous field 
+records are not available24.Hybrid approaches combining HEC RAS and machine learning have been applied in 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-70828-4
+other river systems10. The present study has four specific methodological features: a validation framework with 
+cross-validation, Wilcoxon test, and bootstrap analysis; longitudinal and spatial hydraulic analyses; application 
+to the data-scarce Khorramabad region; and a systematic comparison of four machine learning algorithms with 
+evidence-based model selection. The study predicts water surface elevation using peak flood discharge, channel 
+bed elevation, energy slope, section widths, and Manning''s roughness coefficient as inputs. It uses the validation 
+and spatial analysis framework described above.
+Materials and methods
+Study area introduction
+The Khorramabad watershed is in Lorestan Province in western Iran. It covers 2,351 km2 and is part of the larger 
+Karkheh River basin, which drains into the Persian Gulf and the Gulf of Oman 23,25. The Khorram Abad River 
+starts at the confluence of the Robat and Karganeh rivers in the center of Khorram Abad city and is a major 
+tributary of the Kashkan River. The studied section of the Khorram Abad River runs about 10 km between the 
+Bahramju and Cham Anjir hydrometric stations (Fig. 1).
+Research methodology
+This applied developmental study aimed to provide a hybrid framework for predicting water surface elevation in 
+the Khorram Abad River. Fig. 2 summarizes the main steps. The framework uses HEC RAS to simulate flow and 
+generate hydraulic data. Machine learning algorithms, particularly Random Forest, are then trained to identify 
+patterns in the data and predict water surface elevation rapidly. The hybrid approach combines the accuracy of 
+the physical model with the computational speed of the data-driven models.
+Data collection and preparation
+The required data were collected in three categories: hydrological, geometric, and hydraulic. The hydrological 
+data included peak flood discharge for eight return periods from 2 to 500 years (Table 1). The geometric data 
+consisted of 167 cross sections with boundary conditions of a normal slope (0.008 upstream and 0.001 down -
+stream) and a subcritical flow regime.After screening for missing values, outliers, and hydraulic inconsistencies, 
+60 cross-sections were excluded, leaving 107 cross-sections with complete and reliable data for the final machine 
+learning analysis. Manning''s roughness coefficient was set to 0.01 for the main channel and 0.01 for the flood -
+plains, with some cross sections set to 0.015. All data were integrated within a GIS environment. The HEC RAS 
+outputs included water surface elevation, velocity, Froude number, shear stress, and flow power for each cross 
+section and return period. Before feature engineering, the data were screened for outliers and missing values.
+Hydraulic simulation and database generation using HEC-RAS
+Version 6.0 of the HEC RAS hydraulic model was used for flow simulation and to generate training data. A one-
+dimensional geometric model was constructed with 167 cross sections, Manning''s roughness coefficients, and 
+boundary conditions. Compared to 2D models, 1D HEC RAS is faster26, which allowed generation of a compre-
+hensive training dataset across eight return periods (2 to 500 years). The choice of 1D HEC-RAS is supported by 
+the predominantly longitudinal flow conditions observed in the study reach (Section " Analysis of Longitudinal 
+Hydraulic Behavior of the River"). Local water authorities also use 1D models for flood forecasting.A total of 856 
+data records were generated. The main output was water surface elevation at each cross section for each return 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-70828-4
+period. Additional hydraulic parameters—discharge, channel bed elevation, energy grade elevation, energy slope, 
+section widths, and roughness coefficients—were extracted and recorded for feature engineering.
+Feature engineering and final data preparation
+Before normalization, the Shapiro-Wilk test was run on the numerical features. Only 20% of the features followed 
+a normal distribution (p > 0.05); most did not. Instead of StandardScaler, which assumes normality, RobustScaler 
+was used. RobustScaler uses the median and interquartile range, which makes it less sensitive to outliers and 
+suited to skewed hydrological data.
+.=/
+Fig. 1 Geographical Location of the Study Area **Maps generated using ArcGIS 10.8.1 (https://www.esri.com) and Google 
+Earth Pro (Version 7.3.6.10201) [Desktop Software]. **
+ 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-70828-4
+Eight new features were created: water depth, the logarithm of discharge, the logarithm of the return period, 
+energy head, the depth-to-energy-head ratio, the slope ratio, total width, and the weighted roughness coefficient. 
+In total, 33 input variables were used.
+The dataset was split by cross section rather than random sampling. Seventy-four cross sections (70%) went to 
+training and 33 (30%) to testing. This keeps all eight return periods for each cross section together in one set. The 
+model cannot learn from similar cross sections during training and then be tested on them. This gives a realistic 
+measure of how well the model generalizes to cross sections it has not seen.
+Return period Discharge 
+(m3/s)
+Water surface 
+elevation (m)
+Velocity (m/s) Froude number Cross-
+sectional 
+area 
+(m2)
+T2 49.90 1196.75 3.10 1.00 17.26
+T5 80.06 1197.071 3.50 1.00 23.16
+T10 127.90 1197.711 3.26 0.79 47.35
+T25 225.44 1198.202 3.72 0.80 75.85
+T50 313.88 1198.552 4.06 0.81 100.85
+T100 417.78 1198.892 4.29 0.80 130.11
+T250 573.90 1199.232 4.76 0.84 162.18
+T500 704.67 1199.523 4.96 0.84 190.13
+Table 1 Hydraulic param-
+eter values at the cross-
+section near the Cham Anjir 
+station for different return 
+periods.
+ 
+Data 
+Collection Hydrological data
+Geometric data 
+Hydraulic data
+Data Collection
+HEC-RAS 
+Simulation
+Database Generation
+Preprocessing and Feature 
+Engineering
+RF
+Model Training
+SVM DNN RNN
+R²
+Evaluation MetricRMSE
+MAE
+Longitudinal and Spatial 
+Analysis
+Final 
+Prediction
+Fig. 2 Flowchart of the research 
+steps for predicting water surface 
+elevation in the Khorram Abad 
+River.
+ 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-70828-4
+Modeling and performance evaluation
+Four algorithms were trained to predict water surface elevation: RF, SVM, DNN, and RNN. The RF model used 
+200 trees with a maximum depth of seven. The SVM model used an RBF kernel with C = 100 and gamma = 
+''scale''. The DNN had three hidden layers with 32, 16, and 8 neurons and a ReLU activation function. The RNN 
+had one recurrent layer with 64 units and a ReLU activation function. Model performance was evaluated using 
+R2, RMSE, and MAE.
+Longitudinal and spatial analysis
+Longitudinal profiles of the channel bed and water surface were plotted for the eight return periods. The water 
+surface gradient was calculated as S = ΔH/ΔL. A heatmap of water surface elevation as a function of longitudinal 
+position and return period was generated. All analyses used HEC RAS outputs and Python.
+Results
+Results of hydraulic modeling with HEC-RAS
+Running HEC RAS for eight return periods (T2 to T500) across 167 cross sections produced 856 records of 
+hydraulic data. Calibration using data from the Bahramju station gave a Nash-Sutcliffe efficiency of 0.89 for the 
+25-year return period. As discharge increased, the hydraulic parameters showed systematic variations (Table 1). 
+At the downstream cross section (Cham Anjir), the Froude number went from critical (around 1) for small floods 
+to subcritical (around 0.8) for large floods. The energy slope along the river ranged from 0.0003 to 0.008. For 
+more than 90% of the cross sections and for return periods greater than T10, the Froude number was below 1, 
+indicating subcritical flow under flood conditions.
+Quantitative evaluation of predictive models
+Four machine learning models were evaluated for predicting water surface elevation: Random Forest, Support 
+Vector Machine, Deep Neural Network, and Recurrent Neural Network. The dataset was split by cross section to 
+prevent data leakage, with 74 sections (70%, 592 samples) used for training and 33 sections (30%, 264 samples) 
+for testing. Model performance was assessed using R 2, RMSE, and MAE (Table 2).A repeated cross-validation 
+strategy was used to evaluate the Random Forest model''s stability. Five-fold cross-validation with 10 repeti -
+tions (50 evaluations total) was run on the training data. The mean R 2 was 0.9933 with a standard deviation of 
+0.0029, and values ranged from 0.9816 to 0.9970. The low standard deviation indicates the model is stable and 
+not sensitive to the training-test split.Random Forest outperformed the other models on the test set, with an R2 of 
+0.9909, an RMSE of 0.6192 meters, and an MAE of 0.4464 meters. Training performance was R2 = 0.9979, and 
+test performance was R2 = 0.9909, so the model generalizes well without overfitting. SVM ranked second with 
+an R2 of 0.9872 and an RMSE of 0.7341 meters. DNN and RNN performed worse, with test R2 values of 0.7381 
+and 0.9230, respectively.
+Table 2 Comparison of machine learning model performance.
+Model R2 (Train) R2 (Test) RMSE (Train) RMSE (Test) MAE (Train) MAE (Test)
+Random forest 0.9979 0.9909 0.2950 0.6192 0.1816 0.4464
+Support vector machine 0.9957 0.9872 0.4175 0.7341 0.3595 0.5480
+Deep neural network 0.5313 0.7381 4.3638 3.3194 1.8208 2.4053
+Recurrent neural network 0.9613 0.9230 1.2539 1.7993 0.6189 1.3218
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-70828-4
+The hyperparameters of the DNN and RNN models were optimized using a manual grid search for a fair com-
+parison. The best DNN configuration had 32 neurons in the first hidden layer with a dropout rate of 0.1 and a 
+learning rate of 0.001. The best RNN configuration had 64 units with a learning rate of 0.005. Both deep learning 
+models still performed worse than Random Forest. The dataset has 856 records, which is small for deep learning. 
+Random Forest is an ensemble method and works well with small to medium datasets.The Wilcoxon signed rank 
+test was run on the absolute prediction errors to check if the performance differences were statistically significant. 
+Random Forest outperformed SVM (p = 0.0000), DNN (p < 0.001), and RNN (p < 0.001). The differences are 
+not due to random chance Table 3.
+We ran bootstrap analysis with 1000 iterations on the test dataset to quantify prediction uncertainty. Fig. 3 
+shows the 95% prediction interval from the bootstrap resampling as a shaded area, with the actual water surface 
+elevations in blue and the mean predictions in red. The prediction intervals give the range where future predic -
+tions are expected to fall with 95% probability. The bootstrap results gave a mean RMSE of 0.6790 meters with 
+a 95% confidence interval of [0.5546, 0.8363] meters, and a mean R 2 of 0.9889 with a 95% confidence interval 
+of [0.9834, 0.9927].
+Analysis of input variable importance in the optimal model
+Variable importance analysis was run on the Random Forest model. Among the 19 input variables, three were 
+most influential. Minimum channel elevation accounted for 35% of the total, making it the most important factor. 
+Fig. 3 Predictions with 95% confidence interval (Bootstrap) random forest.
+ 
+Comparison p-value Significant (p < 0.05) Winner
+RF vs SVM 0.0000 Yes RF
+RF vs DNN < 0.001 Yes RF
+RF vs RNN < 0.001 Yes RF
+Table 3 Results of Wilcoxon 
+signed-rank test for model 
+comparison.
+ 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-70828-4
+The logarithm of discharge was second at 25%. Return period was third at 12%. The remaining 16 features 
+together accounted for 28%.
+Validation analysis and error pattern of the best model
+The Random Forest model''s accuracy was assessed against other models using diagnostic plots. Fig. 4 shows 
+the actual versus predicted values. The two lines are close, with small differences at most points. The model per-
+formed satisfactorily on the Khorram Abad River.
+Fig. 5 shows the residual plot. The residuals are scattered randomly around the zero line. Most fall within ±0.5 
+meters. There is no evident pattern. The random distribution indicates the model is properly trained and has no 
+systematic bias.
+Fig. 6 shows the relative feature importance plot. Minimum channel elevation (Min_Ch_Elm) has the highest 
+importance at about 0.32. The logarithm of discharge (Log_Q) is next at around 0.24. Return period, energy head, 
+and water depth are also notable contributors.
+Fig. 7 compares R2 scores across the four models. Random Forest has the highest score, near 1.0 on training 
+data and about 0.99 on testing data. The small gap between training and testing scores indicates overfitting is not 
+a problem for this model.
+Fig. 8 shows the RMSE values for the four models on the test data. Random Forest has the lowest error at about 
+0.61 meters. SVM is next at approximately 0.73 meters. DNN has an RMSE of about 3.31 meters. RNN is not 
+shown in the described results.
+Fig. 9 shows the relationship between absolute prediction error and return period. The errors for return periods 
+T2 through T500 fall within a similar range, roughly 0 to 1.5 meters. There is no clear upward or downward trend 
+as the return period increases. The model''s accuracy appears consistent across the different return periods.
+Fig. 4 Comparison of observed and predicted water surface elevation using RF, SVM, DNN, and RNN models in the Khor-
+ram Abad River.
+ 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-70828-4
+Fig. 10 shows the rating curve for the river reach. As the return period increases from T2 to T500, water surface 
+elevation rises continuously. The actual and predicted values align closely, indicating the model can generate reli-
+able rating curves.
+Fig. 11 shows the relationship between absolute prediction error and discharge. The errors are scattered across 
+a wide discharge range, from about 50 to 300 m 3/s. There is no clear trend as discharge increases. The model''s 
+accuracy does not vary systematically with discharge magnitude.
+Fig. 12 shows the distribution of residuals from the Random Forest model. The residuals are centered around 
+zero with a narrow range. The distribution is approximately normal, which suggests the errors are random and the 
+model is properly calibrated. The mean is close to zero, confirming no systematic bias.
+Fig. 6 Relative feature importance 
+in the random forest model for the 
+Khorram River.
+ 
+Fig. 5 .Residual plot of the random 
+forest model in the Khorram Abad 
+River.
+ 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-70828-4
+Analysis of longitudinal hydraulic behavior of the river
+To confirm uniformity of flow conditions and the significance of the observed patterns, statistical tests were used. 
+The Kruskal-Wallis test compared water surface elevations across return periods using all cross-sections together. 
+It found no significant differences (H = 7.6005, p = 0.1074). The spatial variability in water surface elevation 
+between cross-sections (1167 m to 1198 m) is much larger than the rise from a T2 to a T500 event at a single 
+section (about 3 m). So when all cross-sections are pooled, the return period effect does not show up statistically, 
+even though it is clearly visible at individual cross-sections (Table 1). A one-way ANOV A examined variations in 
+Fig. 8 Comparison of root mean 
+square error of machine learning 
+models in the Khorram Abad River.
+ 
+Fig. 7 Comparison of the coef-
+ficient of determination (R2) of 
+machine learning models in the 
+Khorram Abad River.
+ 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-70828-4
+water surface elevation between cross sections. The results showed significant differences between sections (F = 
+16.3114, p < 0.001). The spatial variations are statistically meaningful and not random.
+Longitudinal profile of bed and water surface for different return periods
+Spatial and longitudinal analyses of the Khorram River study area provided a clear picture of the river''s hydraulic 
+behavior. Fig. 13 shows the longitudinal profile. The riverbed has a gentle, nearly linear slope. The water surface 
+lines for all return periods run parallel to the riverbed at a constant distance. The increase in discharge from differ-
+ent return periods has a uniform effect along the entire river length. The system''s hydraulic behavior is consistent.
+Fig. 10 Discharge-stage rating 
+curve at the index cross-section of 
+the Khorram Abad River.
+ 
+Fig. 9 Relationship between abso-
+lute prediction error and return 
+period in the Khorram Abad River.
+ 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-70828-4
+Scatter of water surface elevation as a function of longitudinal position
+Fig. 14 shows water surface elevation as a function of longitudinal position (river station). The red regression line 
+has the equation y = 0.004562x + 1174.191, indicating a positive linear relationship. The points cluster closely 
+around the line, which demonstrates the accuracy of the relationship.
+Water surface variation between cross-sections
+Fig. 15 shows the change in water surface elevation between adjacent cross sections for the 100-year return 
+period. Most changes fall between 0.2 and 0.4 meters, with few positive or negative outliers. The water surface 
+rises relatively uniformly along the river.
+Fig. 12 Frequency distribution 
+of residuals from machine learn-
+ing models in the Khorram Abad 
+River.
+ 
+Fig. 11 Scatter of prediction error 
+versus discharge in the Khorram 
+Abad River.
+ 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-70828-4
+Water surface gradient along the river
+Fig. 16 shows the water surface gradient along the river for various return periods. The lines largely overlap, 
+indicating the gradient is independent of discharge and return period. Gradient values range from -0.01 to +0.07 
+m/m. Negative values occur in some sections, meaning the water surface slope reverses and elevation increases 
+in the flow direction.
+Fig. 14 Scatter of water surface 
+elevation as a function of longi-
+tudinal position in the Khorram 
+Abad River.
+ 
+Fig. 13 Longitudinal profile of bed 
+and water surface in the Khorram 
+Abad River.
+ 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-70828-4
+Water depth variation along the river
+Fig. 17 shows water depth along the river for different return periods. The lines for higher return periods sit at 
+higher levels, indicating greater depths for larger discharges. The lines are nearly horizontal, suggesting water 
+depth remains relatively consistent along the river.
+Fig. 16 Water surface gradient 
+along the Khorram Abad River.
+ 
+Fig. 15 Water surface variation 
+between consecutive cross-sec-
+tions in the Khorram Abad River 
+(100-year return period).
+ 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-70828-4
+Fig. 18 is a heatmap of water surface elevation as a function of longitudinal position (horizontal axis) and 
+return period (vertical axis). As the return period increases from T2 to T500, the color shifts from purple to yel -
+low, indicating higher water surface elevations. The color change is more pronounced vertically (with return 
+period) than horizontally (with position). Return period has a greater influence on water surface elevation than 
+longitudinal position. For a fixed return period, elevation increases with longitudinal position (moving right), 
+which indicates a positive bed slope and uniform flow along the river.
+Fig. 18 Heatmap of water surface 
+elevation as a function of longitu-
+dinal position and return period in 
+the Khorram Abad River.
+ 
+Fig. 17 Water depth variation 
+along the Khorram River.
+ 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-70828-4
+Discussion
+Combining HEC RAS and Random Forest in a hybrid approach can predict water surface elevation in the Khor-
+ram Abad River accurately. Physical models like HEC RAS require extensive input data and substantial compu-
+tational time5. This study used HEC RAS outputs as ground truth to train a Random Forest model. The Random 
+Forest model achieved an R 2 of 0.991, with accuracy comparable to the physical model but with near-instanta -
+neous execution, which is useful for rapid flood warning systems.
+Zhou et al. 27 also found tree-based decision models effective for predicting water levels 27. Kılıçarslan et al. 
+(2025) reduced flood inundation prediction error by 18% 10. Feature importance analysis (Fig. 6) showed chan-
+nel bed elevation (35%) and the logarithm of discharge (25%) were the two most important predictors. This 
+matches fundamental hydraulic principles. The feature importance analysis shows that channel bed elevation and 
+discharge are the main variables controlling water surface elevation in the HEC-RAS simulations. These are the 
+physically meaningful variables one would expect to matter. The model identified them as the most important 
+features. This suggests the surrogate model learned the dominant physical controls in the training data, not spuri-
+ous correlations.
+Regarding data preprocessing, the Shapiro-Wilk test showed that most hydrological parameters (River_Sta, 
+Q_Total_m3/s, Min_Ch_Elm, and W.S._Elevm) do not follow a normal distribution. Hydrological data are often 
+skewed due to the stochastic nature of flood events and variable riverbed topography. RobustScaler was used 
+instead of standard Z-score normalization. Z-score normalization relies on the mean and standard deviation and 
+assumes normality. RobustScaler uses the median and interquartile range, which handles outliers and non-normal 
+distributions better.
+Superiority of the hybrid framework and model stability
+One finding from this study is the stability of the Random Forest model''s accuracy across a range of hydrologi -
+cal conditions. The model produced consistent error rates for both common floods (T10 and T25) and rare floods 
+(T500) (Fig. 9). This has two implications. A model that predicts extreme floods as accurately as moderate ones 
+is useful for crisis management. The stability comes from the coverage of eight return periods in the HEC RAS 
+database and from Random Forest''s robustness against overfitting.The Random Forest model also generalized 
+well. Training accuracy was R2 = 0.9979 and test accuracy was R 2 = 0.9909. The small difference suggests the 
+model is not tied to a specific training set.A repeated cross-validation strategy was used to check stability. Five-
+fold cross-validation with 10 repetitions (50 evaluations total) was run on the training data. The mean R 2 was 
+0.9933 with a standard deviation of 0.0029, and values ranged from 0.9816 to 0.9970. The low standard deviation 
+confirms the model is stable and not sensitive to the training-test split. The cross-validation mean (0.9933) and 
+test performance (0.9909) are consistent, which supports the model''s robustness and generalizability. The boot -
+strap uncertainty analysis supports the Random Forest model''s reliability. The 95% prediction intervals in Fig. 
+3 cover the actual water surface elevations in the test dataset. The model gives reliable predictions with uncer -
+tainty that is well characterized. The 95% confidence intervals for the performance metrics were narrow: RMSE 
+between 0.5546 and 0.8363 meters, and R2 between 0.9834 and 0.9927. These intervals indicate that the model''s 
+accuracy is stable. The framework works well for rapid scenario simulation, design flood estimation, and hazard 
+mapping when steady-state assumptions hold. For operational flood warning systems that need real-time hydro -
+graph predictions, the framework would need to be extended to handle unsteady flow conditions. The Wilcoxon 
+signed rank test confirmed the statistical superiority of Random Forest over SVM (p = 0.0000), DNN (p < 0.001), 
+and RNN (p < 0.001). The performance differences are not due to random variation.
+The Random Forest model is computationally efficient, with a prediction time of 42.9 milliseconds for 264 
+test samples (0.1625 ms per sample). This is much faster than HEC RAS simulations and makes the framework 
+practical for operational flood warning. The DNN and RNN models performed well during training but their 
+accuracy dropped during testing (Table 2). This shows the advantage of ensemble methods like Random Forest 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-70828-4
+for problems with limited data. Deep learning models typically need large datasets, often thousands to millions 
+of samples, to generalize well. With only 856 records, the DNN and RNN models struggled. Random Forest, 
+as a tree-based ensemble, is robust to overfitting and performs well with limited data 28. This suggests ensemble 
+methods may be preferable to deep learning for hydrological applications where data are often scarce.Random 
+Forest was selected as the final model for its accuracy (R2 = 0.9909), stability (cross-validation mean R2 = 0.9933, 
+standard deviation = 0.0029), computational efficiency (0.2227 ms per sample), and interpretability through fea-
+ture importance analysis.
+The feature importance analysis
+Feature importance analysis showed minimum channel elevation (32%), the logarithm of discharge (24%), and 
+water depth (14%) were the most influential predictors. These results are consistent with the understanding that 
+bed topography and discharge primarily control water surface elevation. Minimum channel elevation represents 
+the bed topography and provides the baseline for all water surface elevations, which makes it the dominant pre -
+dictor. The logarithm of discharge had a strong influence, not raw discharge. The stage-discharge relationship in 
+open channels follows a power law. For a wide, shallow rectangular channel, the relationship is a power function 
+where the coefficient depends on roughness, width, and energy slope, and the exponent is 5.329. Taking the loga-
+rithm transforms this nonlinear relationship into a linear form, which the Random Forest model can capture more 
+effectively. This follows standard hydrometric practice; logarithmic transformation is a special case of the Box-
+Cox transformation30, commonly used for calibrating rating curves and producing normally distributed residuals.
+Interpretation of river hydraulic behavior and practical implications
+The longitudinal analysis showed the flow in the study reach is predominantly uniform and subcritical. This is 
+supported by the parallelism of the water surface lines with the riverbed (Fig. 13) and the consistency of water 
+depth along the river (Fig. 17). At some cross sections, the water surface gradient had negative values, likely 
+from bed constriction or downstream boundary conditions (Fig. 16). Uniform flow simplifies the relationship 
+between discharge and water surface elevation, which is why the machine learning model predicted it accurately. 
+The high importance of channel bed elevation (35%) suggests that accurate cross-section surveying and moni -
+toring of riverbed changes are needed for accurate prediction.Statistical tests on the longitudinal data confirmed 
+that water surface elevation does not vary significantly across return periods (Kruskal-Wallis, p = 0.1074), but 
+there are significant differences between cross sections (ANOV A, p < 0.001). The hydraulic behavior of the river 
+remains consistent across flood events, while cross-sectional geometry determines local water surface elevations.
+The framework performed well for the Khorram Abad River case study, but the findings are based on a single 
+river system with 107 cross sections and eight return periods. The practical implications apply primarily to simi-
+lar river systems. Further studies on diverse river systems are needed to determine broader applicability for flood 
+crisis management and hazard mapping at regional or national scales.
+Limitations and future research
+1. The training dataset was generated entirely from HEC RAS simulations. The Random Forest model is a surro-
+gate for HEC RAS, not an independent predictor. The approach preserves HEC RAS''s physical accuracy but 
+reduces computation time from hours to milliseconds. This makes it useful for rapid scenario-based assess -
+ments where steady-state assumptions hold, such as design flood estimation for specific return periods. The 
+model''s accuracy depends on the quality and precision of the underlying HEC RAS simulations. Incorporat -
+ing field measurements and observed hydrological data in future work could make the model more indepen -
+dent and better suited to real-world conditions.
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-70828-4
+2. The proposed framework was developed and evaluated using a limited dataset of 856 records from a single 
+river system, the Khorram Abad River in Iran. The model showed high accuracy and stability for this case 
+study, but its generalizability to other rivers with different hydraulic characteristics, geometries, and flow 
+regimes has not been validated. The dataset size limits the application of more complex models, especially 
+deep learning approaches, which need larger datasets. Future research should apply the methodology to mul-
+tiple rivers with diverse conditions—steep slopes, meandering channels, tidally influenced reaches, and flood-
+plain interactions—using larger datasets to assess transferability and robustness.
+3. Spatial dimension and flow dimensionality: study used one-dimensional modelling. Extending to two-dimen-
+sional (HEC RAS 2D) or three-dimensional models would make the approach applicable to floodplains and 
+urban areas.
+4. Temporal dimension and unsteady conditions: The current framework predicts water surface elevation for 
+steady-state conditions. This limits its use for real-time forecasting systems that need continuous hydrograph 
+predictions. The steady-state approach works for design flood estimation and hazard mapping. Future work 
+should extend the framework to unsteady conditions by including temporal dynamics.
+Conclusion
+This study developed a hybrid framework combining HEC RAS with machine and deep learning models to pre-
+dict water surface elevation in the Khorram Abad River. Random Forest was the most effective model, with an 
+R2 of 0.9909 and an RMSE of 0.6192 meters. Feature importance analysis showed channel bed elevation (35%) 
+and the logarithm of discharge (25%) were the most significant predictors. The model maintained accuracy across 
+all return periods (2 to 500 years). Longitudinal and spatial analyses indicated uniform and subcritical flow in 
+the study reach. Integrating HEC RAS with Random Forest combines the accuracy of the physical model (R 2 ≈ 
+0.9909) with near-instantaneous predictions (42.9 ms for 264 test samples), a substantial reduction in computa -
+tional time compared to HEC RAS alone. For the Khorram River case study, the framework shows potential as a 
+quick, cost-effective tool for simulating flood scenarios in similar river systems. Further validation across diverse 
+river systems is needed to establish general applicability. The framework is designed for steady-state conditions, 
+suitable for design flood estimation and hazard mapping. Extending to unsteady flow conditions would be needed 
+for real-time hydrograph prediction in operational warning systems.
+Author contributions Ali Haghizadeh: Supervision, Conceptualization, Project administration, Visualization, Validation, 
+Methodology, review & editing, Investigation, Data curation. Leila Ghasemi: Methodology, Software, review & editing, 
+Formal analysis, Data curation. Sanaz vahidimanesh: Writing – original draft, Visualization, Formal analysis, Data curation.
+Funding This research did not receive any specific grant from funding agencies in the public, commercial, or not-for-profit 
+sectors.
+Data availability Code and output are available. https://github.com/ghasemi9170/Rever_Water_Level.
+Declarations
+Competing interest The authors declare no competing interests.
+Open Access This article is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 Interna-
+tional License, which permits any non-commercial use, sharing, distribution and reproduction in any medium or format, as 
+long as you give appropriate credit to the original author(s) and the source, provide a link to the Creative Commons licence, 
+and indicate if you modified the licensed material. You do not have permission under this licence to share adapted material 
+derived from this article or parts of it. The images or other third party material in this article are included in the article’s Cre-
+ative Commons licence, unless indicated otherwise in a credit line to the material. If material is not included in the article’s 
+Creative Commons licence and your intended use is not permitted by statutory regulation or exceeds the permitted use, you 
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-70828-4
+will need to obtain permission directly from the copyright holder. To view a copy of this licence, visit h t t p : / / c r e a t i v e c o m m o 
+n s . o r g / l i c e n s e s / b y - n c - n d / 4 . 0 / . 
+References
+ 1. Rajabi, A. M., Rajaee, T. & Fallah Tafti, A. Flood zoning of Chalus basin using hydrologic model of HEC-RAS and 
+Geographic Information System. Sci. Q. J. Iran. Assoc. Eng. Geol. 11(2), 45-60 (2018).
+ 2. Clement, A. R. An application of geographic information system in mapping flood risk zones in a North Central City in 
+Nigeria. Afr. J. Environ. Sci. Technol.7(5), 365–371. https://doi.org/10.5897/AJEST12.180 (2013).
+ 3. Zabihi, O., Siamaki, M., Gheibi, M., Akrami, M. & Hajiaghaei-Keshteli, M. A smart sustainable system for flood damage 
+management with the application of artificial intelligence and multi-criteria decision-making computations. Int. J. 
+Disaster Risk Reduct.84, 103470. https://doi.org/10.1016/j.ijdrr.2022.103470 (2023).
+ 4. Tewolde, M. H. & Smithers, J. C. Flood routing in ungauged catchments using Muskingum methods. Water SA32(3), 
+379–388. https://doi.org/10.4314/wsa.v32i3.5266 (2006).
+ 5. Brunner, G. W. HEC-RAS, River Analysis System hydraulic reference manual (Version 6.0). U.S. Army Corps of 
+Engineers (2021).
+ 6. Chow, V . T., Maidment, D. R. & Mays, L. W. Applied Hydrology (McGraw-Hill, 1988).
+ 7. Brunton, S. L. & Kutz, J. N. Data-Driven Science and Engineering: Machine Learning, Dynamical Systems, and Control 
+(Cambridge University Press, 2022). https://doi.org/10.1017/9781009089517.
+ 8. Gao, Y ., Jiang, Z. & Wang, Y . Research on stage–discharge relationship model based on random forest algorithm. Proc. 
+Inst. Civ. Eng. Water Manag.177(6), 375–382. https://doi.org/10.1680/jwama.23.00029 (2024).
+ 9. Sharafkhani, F., Corns, S. & Holmes, R. Multi-step ahead water level forecasting using deep neural networks. Water16(21), 
+3153 (2024).
+ 10. Kilicarslan, B. M. et al. Improving the fidelity and performance of a conceptual flood inundation mapping approach using 
+a machine learning-based surrogate model. Environ. Model. Softw.194, 106664. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . e n v s o f t . 2 0 2 5 . 1 
+0 6 6 6 4 (2025).
+ 11. Yükseler, U. Effective method selection for flood disaster management: a decision support approach based on river type. 
+Bitlis Eren Univ. Fen Bilim. Derg.14(4), 2336–2356. https://doi.org/10.17798/bitlisfen.1730824 (2025).
+ 12. Duangkhwan, W. et al. Enhancing flood forecasting with deep learning: A scalable alternative to traditional hydrodynamic 
+models. Environ. Model. Softw. 106841 (2025).
+ 13. Kordi-Karimabadi, F., Fadaei-Kermani, E., Ghaeini-Hessaroeyeh, M. & Farhadi, H. Integrating numerical models with 
+deep learning techniques for flood risk assessment. Sci. Rep.15(1), 8913. https://doi.org/10.1038/s41598-025-93456-8 
+(2025).
+ 14. Alamu, R. et al. AI-augmented computational fluid dynamics: surrogate models for real-time simulation. Appl. Sci.15(3), 
+2332–2345 (2025).
+ 15. Haces-Garcia, F. et al. Rapid 2D hydrodynamic flood modeling using deep learning surrogates. J. Hydrol.651, 132561 
+(2025).
+ 16. Holmberg, E. et al. Accelerating HEC-RAS: A Recurrent Neural Operator for Rapid River Forecasting. arXiv preprint 
+arXiv:2507.15614 (2025). https://doi.org/10.48550/arXiv.2507.15614
+ 17. Feng, X., Lin, K., Zhuang, L., Xu, Y . & Li, T. A rapid flood inundation integrated surrogate model based on a CNN-
+LSTM-ATT deep learning framework. J. Hydrol. Reg. Stud.64, 103166 (2026).
+ 18. Salisu, J. A. et al. advancing flood prediction and classification: a systematic literature review. J. Soft Comput. Data 
+Min.7(1), 152–184 (2026).
+ 19. Qu, Z., Kou, M. & Zhang, K. From inundation to systemic collapse: a dynamic flood risk assessment framework coupling 
+hydro-deep learning with cascading failure analysis (No. EGU26-908). Copernicus Meetings (2026).
+ 20. Lee, B. J. & Chang, Y . S. A modular coupled physics-informed neural network framework for urban flood prediction. J. 
+Water Clim. Change17(2), 426–439 (2026).
+ 21. Oluwadare, T. S., Chen, D. & McGrath, H. Integrating remote sensing indices and ensemble machine learning model 
+with independent HEC-RAS 2D model for enhanced flood prediction and risk assessment in the Ottawa River watershed. 
+Appl. Sci.16(1), 70. https://doi.org/10.3390/app16010070 (2026).
+ 22. Maddodi, B. S. et al. Advances and challenges in Artificial Intelligence-driven flood and drought risk management: a 
+comprehensive review. Eng. Appl. Artif. Intell.164, 113354 (2026).
+ 23. Karimi Sangchini, E., Mosaffaie, J. & Salehpour Jam, A. Prioritizing of causal–effect factors affecting flood occurrence 
+in Khorramabad watershed. J. Watershed Manag. Res.13(25), 1–10. https://doi.org/10.52547/jwmr.13.25.1 (2022).
+ 24. Poursaeid, M. Modeling of wetlands storage instabilities using an optimized SLFFN machine learning using evolutionary 
+computation considering the RROC analysis and PDF techniques. Earth Sci. Inform.17, 3137–3148. h t t p s : / / d o i . o r g / 1 0 . 1 
+0 0 7 / s 1 2 1 4 5 - 0 2 4 - 0 1 3 3 4 - 2 (2024).
+Article in Press
+Scientific Reports
+https://doi.org/10.1038/s41598-026-70828-4
+ 25. Vaghefi, S. A., Mousavi, S. J., Abbaspour, K. C., Srinivasan, R. & Yang, H. Integration of hydrologic and water allocation 
+models in basin-scale water resources management considering crop pattern and climate change: Karkheh River Basin in 
+Iran. Reg. Environ. Change15, 475–484. https://doi.org/10.1007/s10113-013-0573-9 (2015).
+ 26. Hartman, B. J. Composite 1-Dimensional Modeling of the Expanded Small Scale Mississippi River Model. Master''s 
+thesis, Louisiana State University (2015).
+ 27. Zhou, J. et al. The comparative study of machine learning agent models in flood forecasting for tidal river reaches. Sci. 
+Rep.15(1), 19130. https://doi.org/10.1038/s41598-024-83585-z (2025).
+ 28. Scornet, E., Biau, G. & Vert, J.-P. Consistency of random forests. Ann. Stat.43(4), 1716–1741 (2015).
+ 29. Qiu, J., Liu, B., Yang, Z. & Peng, W. Uncertainty analysis of estimated discharge based on stage-discharge rating curves. 
+Adv. Water Sci.31(2), 214–223. https://doi.org/10.14042/j.cnki.32.1309.2020.02.007 (2020).
+ 30. Shao, Q., Dutta, D., Karim, F. & Petheram, C. A method for extending stage-discharge relationships using a hydrodynamic 
+model and quantifying the associated uncertainty. J. Hydrol.556, 154–172. https://doi.org/10.1016/j.jhydrol.2017.11.01 
+(2018).
+Publisher''s note Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional 
+affiliations.
+Authors and Affiliations
+Ali haghizadeh1 · Leila Ghasemi1 · Sanaz Vahidimanesh1
+ Ali haghizadeh
+Haghizadeh.a@lu.ac.ir
+1 Department of Watershed Management Engineering, Faculty of Natural Resources, Lorestan University, 
+Khorramabad, Iran
