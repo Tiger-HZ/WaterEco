@@ -1,0 +1,107 @@
+{
+ "version": "2026.09",
+ "name": "内容采集与准入策略（按内容类型）",
+ "principle": [
+  "政策/规范/标准/报告/案例优先且不遗漏 —— 这是水生态环境处的业务依据，是第一优先级",
+  "学术文献仍要收，但按期刊水平与主题相关性分级准入（中高水平 SCI + 国内核心）",
+  "各地好做法要有借鉴意义或创新性才收，避免变成『新闻堆砌』",
+  "总量可控：按配比控制各类内容在推荐位/必知必会中的占比，保证有限精力看到最齐全且高质量的内容"
+ ],
+
+ "classes": [
+  {
+   "id": "policy_standard",
+   "zh": "政策法规标准",
+   "gate": "water_related",
+   "priority": 1,
+   "display_quota": 0.35,
+   "sources": ["生态环境部各政策/法规/标准栏目", "浙江省人大", "浙江省政府", "国务院政策文件库", "生态环境部标准库"],
+   "rule": "凡属法规/规章/规范性文件/国家与行业标准/地方标准，且与水生态环境相关，**一律收**，不设相关性阈值",
+   "note": "确保『不能遗漏』：这是处室行政行为的直接依据"
+  },
+  {
+   "id": "report_bulletin",
+   "zh": "报告·公报·规划",
+   "gate": "water_rel_ge_0.5",
+   "priority": 1,
+   "display_quota": 0.15,
+   "sources": ["生态环境状况公报", "地表水环境质量月报", "水生态环境保护规划", "环境质量报告", "人大执法检查报告"],
+   "rule": "公报、规划、评估报告、质量月报类，水相关度 ≥0.5 即收；含具体数据的优先"
+  },
+  {
+   "id": "case_practice",
+   "zh": "管理机制与实践案例",
+   "gate": "borrowable",
+   "priority": 1,
+   "display_quota": 0.20,
+   "sources": ["美丽河湖优秀案例", "各地生态环境部门案例栏目", "河湖长制典型经验", "污水零直排/黑臭治理实践"],
+   "rule": "须同时满足：① 命中借鉴性词（经验/做法/示范/试点/创新/典型/案例/模式等）≥1；② 强水生态语义词命中 ≥1；③ 排除会议/培训/招标/人事类噪声",
+   "note": "收集各地好的管理与技术做法，服务『了解动态、参考借鉴』"
+  },
+  {
+   "id": "expert_org",
+   "zh": "专家·机构·团队",
+   "gate": "water_related",
+   "priority": 2,
+   "display_quota": 0.05,
+   "sources": ["标准与规划的起草/编制单位", "论文作者机构（高水平期刊）", "省级环科院/水科院动态", "学会与专业委员会"],
+   "rule": "机构/团队信息以『标准编制单位、规划编制单位、高水平论文通讯作者机构』为主；个人专家仅收公开的权威身份信息（如署名文章、标准起草人）",
+   "note": "避免采集个人隐私信息；只收公开政务与学术场景中的机构与专家署名"
+  },
+  {
+   "id": "tech_method",
+   "zh": "技术方法与工程",
+   "gate": "water_rel_ge_0.6",
+   "priority": 2,
+   "display_quota": 0.10,
+   "sources": ["技术导则", "工程技术规范", "技术指南", "工艺与装备介绍"],
+   "rule": "技术导则与规范全收；工艺技术类需水相关度 ≥0.6 且有可操作性内容"
+  },
+  {
+   "id": "academic",
+   "zh": "学术文献",
+   "gate": "academic_qualified",
+   "priority": 3,
+   "display_quota": 0.10,
+   "sources": ["Crossref", "OpenAlex", "EuropePMC", "Unpaywall", "DataCite", "国内核心期刊"],
+   "rule": "见 journal_tier.json：① 期刊须属 top（领域顶刊）或 core_cn（国内核心）→ 直接收；② 其他期刊须同时满足『命中业务域 core 词』且『水相关度 ≥0.7』；③ 命中拒收学科模式（体育/食品/医学/材料/教育/经济/心理等）→ 一律拒收；④ 须有 DOI 或摘要 ≥150 字",
+   "note": "按用户要求：学术仍要采，但提升到中高水平 SCI 与国内核心期刊，并确保主题相关"
+  },
+  {
+   "id": "news",
+   "zh": "动态资讯",
+   "gate": "water_rel_ge_0.7",
+   "priority": 4,
+   "display_quota": 0.05,
+   "sources": ["部委与地方新闻栏目", "行业媒体"],
+   "rule": "水相关度 ≥0.7 且非纯会议通知；仅作动态参考，不计入必知必会"
+  }
+ ],
+
+ "borrowable_keywords": ["经验", "做法", "实践", "示范", "试点", "创新", "典型", "案例", "模式", "举措",
+                         "探索", "样板", "先进", "成效", "领先", "首创", "推广", "复制", "借鉴", "亮点"],
+ "borrowable_min_hits": 1,
+ "borrowable_require_water": true,
+
+ "case_noise_patterns": ["会议通知", "培训通知", "招标", "中标", "采购公告", "询价", "竞争性磋商",
+                          "人事", "任免", "公示公告", "放假", "值班", "招聘", "征询意见稿的函"],
+
+ "academic_quality": {
+  "min_water_rel_unknown_journal": 0.7,
+  "min_abstract_chars": 150,
+  "require_doi_or_core": true
+ },
+
+ "diversity_rule": {
+  "zh": "来源多样性约束",
+  "max_per_source_per_run": 120,
+  "max_academic_share": 0.25,
+  "note": "单次运行内同一来源/同一期刊入库量设上限；学术类整体占比不超过 25%，防止淹没政策与案例类"
+ },
+
+ "display_priority": {
+  "zh": "门户展示优先级（重要性与排序用）",
+  "order": ["policy_standard", "report_bulletin", "case_practice", "expert_org", "tech_method", "academic", "news"],
+  "note": "必知必会仅收前四类中的权威条目；学术文献不进入必知必会"
+ }
+}

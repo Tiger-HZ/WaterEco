@@ -7,6 +7,7 @@
 import os, sys, json, re, datetime, urllib.parse
 import crawl_common as C
 import media  # 学术 OA 全文 PDF 入库
+import academic_filter as af  # 学术源头准入（期刊分级）
 
 MAIL = os.environ.get("OA_MAIL", "water-eco-bot@users.noreply.github.com")
 PAGES = int(os.environ.get("PAGES", "2"))
@@ -99,6 +100,7 @@ def main():
     recs = []
     min_date = until
     added = 0
+    acad_rejected = 0
     for q in QUERIES:
         qrecs = []
         for pg in range(PAGES):
@@ -121,6 +123,12 @@ def main():
                 if not title:
                     continue
                 abstract = strip_xml(it.get("abstract"))
+                # —— 学术源头准入 ——
+                jname = (it.get("container-title") or [""])[0]
+                okj, jtier, jwhy = af.journal_ok(jname, title, abstract)
+                if not okj:
+                    acad_rejected += 1
+                    continue
                 d = date_parts(it)
                 if not d:
                     continue
@@ -146,6 +154,8 @@ def main():
                     "title": title.strip(),
                     "url": it.get("URL") or ("https://doi.org/" + doi),
                     "source": (it.get("container-title") or ["Crossref 学术文献"])[0] or "Crossref 学术文献",
+                    "journal": jname,
+                    "journal_tier": jtier,
                     "date": d,
                     "category": cat,
                     "department": "科技",
@@ -170,7 +180,8 @@ def main():
         C.save_cursor(cur)
         print("crossref 游标推进 -> %s" % min_date)
     total = len(json.load(open(C.INBOX, encoding="utf-8")) if os.path.exists(C.INBOX) else [])
-    print("crawl_crossref: added=%d, inbox_total=%d" % (added, total))
+    print("crawl_crossref: added=%d, inbox_total=%d, 源头拒收=%d"
+          % (added, total, acad_rejected))
 
 
 if __name__ == "__main__":

@@ -340,6 +340,8 @@
   .must-sum{font-size:12.9px;color:var(--sub);line-height:1.68}
   .must-note{font-size:11.5px;color:var(--amber);margin-top:4px}
 .b-topic{background:#e8f0fe;color:#1a4b8c;border-color:#c3d6f5}
+.b-class{background:#eef2f7;color:#33475b;border-color:#d5dde7}
+.b-rej{background:#f6f7f9;color:#9aa3af;border-color:#e3e6ea}
 .b-wb{background:#e6f5f2;color:#0f6b5c;border-color:#bfe5dd}
 .b-on{background:#e9f7ee;color:#146b34;border-color:#c2e6ce}
 .b-rev{background:#fff4e0;color:#8a5a00;border-color:#f0dcb0}
@@ -416,7 +418,9 @@
       <select id="kbTopic" title="按水生态环境业务域筛选"><option value="">全部业务域</option></select>
       <select id="kbQuality"><option value="">全部质量</option><option value="A">A 高</option><option value="B">B 中</option><option value="C">C 低</option></select>
       <select id="kbStatus" title="按文件时效性筛选"><option value="">全部时效</option></select>
+      <select id="kbClass" title="按内容类型筛选"><option value="">全部内容类型</option></select>
       <label class="chk"><input type="checkbox" id="kbFull"> 仅全文</label>
+      <label class="chk" title="隐藏未达期刊门槛或主题不相关的文献（不影响库中存在，仅不显示）"><input type="checkbox" id="kbNoNoise" checked> 只看高相关</label>
       <span class="seg" id="kbSort"><button class="on" data-s="importance">按重要性</button><button data-s="date">按时间</button></span>
       <button onclick="kbFilter()">筛选</button>
     </div>
@@ -621,6 +625,9 @@ const CATS  = ['policy','standard','basin_eng','management','tech','literature',
 /* 业务域受控词表（由 taxonomy.json 生成，勿手改；改词表后重跑 patch_index_taxonomy.py） */
 const TOPICS = [{id:"quality_mgmt",zh:"水环境质量管理"},{id:"drinking_water",zh:"饮用水水源保护"},{id:"outfall",zh:"入河排污口监管"},{id:"black_odor",zh:"城市黑臭水体治理"},{id:"drainage",zh:"城镇排水与溢流污染"},{id:"sewage",zh:"城镇污水处理与提质增效"},{id:"industrial",zh:"工业与园区水污染源监管"},{id:"reuse",zh:"再生水利用与资源化"},{id:"rural_sewage",zh:"农村生活污水治理"},{id:"agri_runoff",zh:"农业面源与农田退水"},{id:"livestock",zh:"畜禽养殖与水产养殖污染防治"},{id:"total_nitrogen",zh:"总氮管控与富营养化防治"},{id:"aquatic_ecology",zh:"水生态监测与评价"},{id:"cyanobacteria",zh:"蓝藻水华防控"},{id:"restoration",zh:"河湖生态修复与美丽河湖"},{id:"groundwater",zh:"地下水污染防治"},{id:"coastal",zh:"近岸海域（杭州湾）生态环境保护"},{id:"water_resource",zh:"水资源与生态流量（三水统筹）"},{id:"river_chief",zh:"河湖长制与流域协同治理"},{id:"digital",zh:"数字治水与智慧监测"},{id:"emergency",zh:"环境应急与风险防控"},{id:"eod_value",zh:"EOD 与生态产品价值实现"},{id:"institution",zh:"制度机制与法治保障"}];
 const TOPIC_LABELS = {}; TOPICS.forEach(x=>TOPIC_LABELS[x.id]=x.zh);
+/* 内容类型（与 content_policy.json 对齐；由 patch_index_class.py 生成） */
+const CONTENT_CLASSES = [{id:"policy_standard",zh:"政策法规标准"},{id:"report_bulletin",zh:"报告与规划"},{id:"case_practice",zh:"实践案例"},{id:"expert_org",zh:"专家机构"},{id:"tech_method",zh:"技术方法"},{id:"academic",zh:"学术文献"},{id:"news",zh:"动态资讯"}];
+const CLASS_LABELS = {}; CONTENT_CLASSES.forEach(x=>CLASS_LABELS[x.id]=x.zh);
 const STATUSES = ["有效","已修订","已废止","待核"];
 const CAT_LABELS = {policy:'政策法规',standard:'标准规范',basin_eng:'流域治理与工程',management:'管理机制与实践',tech:'技术产品',literature:'研究文献',intl_region:'国际与区域经验'};
 const CAT_COLORS = {policy:'#0f766e',standard:'#1a7f5a',basin_eng:'#2563eb',management:'#7c3aed',tech:'#0891b2',literature:'#be185d',intl_region:'#475569'};
@@ -804,6 +811,9 @@ function recCard(r){
   const origb = r.origin_status==='原文已核'
       ? '<span class="badge b-full" title="原文已核实来源">✔ 原文已核</span>'
       : (r.origin_status==='暂未收录' ? '<span class="badge b-miss" title="暂未收集到原文全文">⚠ 暂未收录原文</span>' : '');
+  const clsb = r.content_class ? ((r.gate_status==='reject')
+      ? '<span class="badge b-rej" title="未达准入门槛（可隐藏）">'+esc(CLASS_LABELS[r.content_class]||r.content_class)+'</span>'
+      : '<span class="badge b-class" title="内容类型">'+esc(CLASS_LABELS[r.content_class]||r.content_class)+'</span>') : '';
   const topb = (r.topic&&r.topic.length)? r.topic.slice(0,2).map(x=>`<span class="badge b-topic" title="业务域">${esc(TOPIC_LABELS[x]||x)}</span>`).join('') : '';
   const stCls = r.status==='已废止'?'b-dead':(r.status==='已修订'?'b-rev':'b-on');
   const stb = r.status? `<span class="badge ${stCls}" title="文件时效性">${esc(r.status)}</span>` : '';
@@ -816,6 +826,7 @@ function recCard(r){
     <div class="sum">${esc(r.summary||'')}${r.content&&!r.summary?' '+esc(String(r.content).slice(0,120)):''}</div>
     <div class="badges">
       ${r.department?`<span class="badge b-dept">${esc(r.department)}</span>`:''}
+      ${clsb}
       ${r.category?`<span class="badge b-cat">${esc(CAT_LABELS[r.category]||r.category)}</span>`:''}
       ${topb}
       ${wbb}
@@ -850,7 +861,8 @@ function pageBtns(page,total,size,varName,fn){
 async function loadKB(){
   const q=$('#kbQ').value, dept=$('#kbDept').value, cat=$('#kbCat').value, region=$('#kbRegion').value,
         quality=$('#kbQuality').value, only_full=$('#kbFull').checked,
-        topic=$('#kbTopic')?$('#kbTopic').value:'', status=$('#kbStatus')?$('#kbStatus').value:'';
+        topic=$('#kbTopic')?$('#kbTopic').value:'', status=$('#kbStatus')?$('#kbStatus').value:'',
+        cls=$('#kbClass')?$('#kbClass').value:'', noNoise=$('#kbNoNoise')?$('#kbNoNoise').checked:false;
   if(App.mode==='backend'){
     try{
       let url='/api/records?q='+encodeURIComponent(q)+'&dept='+encodeURIComponent(dept)+'&cat='+encodeURIComponent(cat)+
@@ -874,6 +886,8 @@ async function loadKB(){
     if(quality) arr=arr.filter(r=>r.quality===quality);
     if(topic) arr=arr.filter(r=>(r.topic||[]).includes(topic));
     if(status) arr=arr.filter(r=>r.status===status);
+    if(cls) arr=arr.filter(r=>(r.content_class||'')===cls);
+    if(noNoise) arr=arr.filter(r=>!(r.gate_status==='reject'));
     if(only_full) arr=arr.filter(r=>r.content_fetched);
     arr=filterByRange(arr, App.kbRange, App.kbFrom, App.kbTo);
     if(sort==='date'){ arr.sort((a,b)=> effDate(b).localeCompare(effDate(a))); }
@@ -2123,6 +2137,7 @@ async function boot(){
   fillSelect($('#kbRegion'), REGIONS);
   if($('#kbTopic')) fillSelect($('#kbTopic'), TOPICS.map(o=>o.id), id=>TOPIC_LABELS[id]);
   if($('#kbStatus')) fillSelect($('#kbStatus'), STATUSES);
+  if($('#kbClass')) fillSelect($('#kbClass'), CONTENT_CLASSES.map(o=>o.id), id=>CLASS_LABELS[id]);
 
   // 模式探测
   try{ const r=await fetch(SITE_BASE+'api/health',{cache:'no-store'}); if(r.ok){ const j=await r.json(); App.mode='backend'; App.health=j; } }

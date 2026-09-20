@@ -8,6 +8,7 @@
 import os, sys, json, re, datetime, urllib.parse
 import crawl_common as C
 import media  # 学术 OA 全文 PDF 入库
+import academic_filter as af  # 学术源头准入（期刊分级）
 
 PAGES = int(os.environ.get("PAGES", "2"))
 ROWS = 200
@@ -73,6 +74,7 @@ def main():
 
     recs = []
     added = 0
+    acad_rejected = 0
     for q in QUERIES:
         qrecs = []
         cursor = "*"
@@ -92,6 +94,12 @@ def main():
                 if not title:
                     continue
                 abstract = (it.get("abstractText") or "").strip()
+                # —— 学术源头准入 ——
+                jname = ((it.get("journalInfo") or {}).get("journal") or {}).get("title") or ""
+                okj, jtier, jwhy = af.journal_ok(jname, title, abstract)
+                if not okj:
+                    acad_rejected += 1
+                    continue
                 d = (it.get("firstPublicationDate") or "")[:10]
                 doi = it.get("doi") or ""
                 key_title = title.strip().lower()
@@ -118,6 +126,8 @@ def main():
                     "title": title.strip(),
                     "url": final_url,
                     "source": (it.get("journalInfo") or {}).get("journal", {}).get("title") or "Europe PMC 学术文献",
+                    "journal": jname,
+                    "journal_tier": jtier,
                     "date": d or ("%d-01-01" % year),
                     "category": cat,
                     "department": "科技",
@@ -149,7 +159,8 @@ def main():
     C.save_cursor(cur)
     print("europepmc 年份游标推进 -> %d" % nxt_year)
     total = len(json.load(open(C.INBOX, encoding="utf-8")) if os.path.exists(C.INBOX) else [])
-    print("crawl_europepmc: added=%d, inbox_total=%d" % (added, total))
+    print("crawl_europepmc: added=%d, inbox_total=%d, 源头拒收=%d"
+          % (added, total, acad_rejected))
 
 
 if __name__ == "__main__":

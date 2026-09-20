@@ -6,6 +6,7 @@ OpenAlex 为完全开放的学术图谱 API（无需密钥），可按关键词/
 import os, sys, json, time, ssl, urllib.request, urllib.parse, re, datetime
 import crawl_common as C
 import media  # 学术 OA 全文 PDF 入库
+import academic_filter as af  # 学术源头准入（期刊分级）
 
 FETCH_PDF = os.environ.get("FETCH_PDF", "1") == "1"
 BASE = os.path.dirname(os.path.abspath(__file__))
@@ -117,6 +118,7 @@ def main():
     extra = sys.argv[1:]
     queries = QUERIES + extra
     added = 0
+    acad_rejected = 0   # 源头准入拒收计数（无关学科 / 未达门槛）
     # 回溯游标：每次抓取比上一次“更旧”的批次，单调增长、零重复
     cur = C.load_cursor()
     until = (cur.get("openalex") or {}).get("until") or datetime.date.today().isoformat()
@@ -144,6 +146,12 @@ def main():
                 if date and date > until: continue
                 if date and date < min_date: min_date = date
                 abs = abstract_text(w.get("abstract_inverted_index"))
+                # —— 学术源头准入：无关学科刊直接拒；未分级刊需主题强相关（journal_tier.json）——
+                jname = af.journal_name_of(w)
+                okj, jtier, jwhy = af.journal_ok(jname, title, abs)
+                if not okj:
+                    acad_rejected += 1
+                    continue
                 concepts = [c["display_name"] for c in (w.get("concepts") or [])[:6] if c.get("display_name")]
                 # 机构国家 → 地域
                 cn = False
@@ -166,6 +174,9 @@ def main():
                     "title": title.strip(),
                     "url": link,
                     "source": ((w.get("primary_location") or {}).get("source") or {}).get("display_name") or "OpenAlex 学术文献",
+                    "journal": jname,
+                    "journal_tier": jtier,
+                    "gate_reason": jwhy,
                     "date": date,
                     "category": cat,
                     "department": dept,
@@ -189,7 +200,9 @@ def main():
         C.save_cursor(cur)
         print("openalex 游标推进 -> %s" % min_date)
     total = C.append_inbox(inbox)
-    print("crawl_academic: added=%d, inbox_total=%d" % (added, total))
+    print("crawl_academic: added=%d, inbox_total=%d, 源头拒收=%d（无关学科/未达门槛）"
+          % (added, total, acad_rejected))
+    print(af.stats_line())
 
 if __name__ == "__main__":
     main()

@@ -1,0 +1,91 @@
+{
+ "version": "2026.09",
+ "name": "学术文献期刊分级表（水生态环境领域）",
+ "purpose": "学术文献不再『有水就收』，而是按期刊水平分级准入：只收水生态环境领域的中高水平 SCI 与国内核心期刊；明显无关学科刊一律拒收。",
+ "policy": "用户要求：学术论文仍要采，但要高相关、高水平（中高水平 SCI、国内核心）；同时政策/标准/报告/案例要更多采集。本表服务于『学术提质』这一半。",
+ "tiers": {
+  "top": {
+   "zh": "领域顶刊",
+   "weight": 10,
+   "keep": true,
+   "journals": [
+    "Water Research", "Water Research X", "Environmental Science & Technology",
+    "Environmental Science & Technology Letters", "Nature Water", "Nature Sustainability",
+    "Water Resources Research", "Journal of Cleaner Production",
+    "Science of the Total Environment", "Environmental Pollution",
+    "Journal of Hydrology", "Water Environment Research",
+    "Environmental Science: Water Research & Technology", "npj Clean Water",
+    "Limnology and Oceanography", "Freshwater Biology", "Hydrobiologia",
+    "Journal of Hazardous Materials", "Environment International", "Chemosphere",
+    "Environmental Research Letters", "Global Change Biology", "Water Resources Management",
+    "Journal of Environmental Management", "Ecological Engineering", "Ecological Indicators",
+    "Agricultural Water Management", "Journal of Environmental Sciences",
+    "Environmental Science and Pollution Research", "Aquatic Sciences", "Inland Waters",
+    "River Research and Applications", "Ecohydrology", "Biogeochemistry",
+    "Water, Air, & Soil Pollution", "Environmental Monitoring and Assessment",
+    "International Journal of Water Resources Development", "Water Policy",
+    "Environmental Management", "Sustainability of Water Quality and Ecology"
+   ]
+  },
+  "core_cn": {
+   "zh": "国内核心期刊",
+   "weight": 9,
+   "keep": true,
+   "journals": [
+    "环境科学", "中国环境科学", "环境科学学报", "环境科学研究", "环境化学",
+    "生态学报", "应用生态学报", "生态学报", "湖泊科学", "水科学进展",
+    "水利学报", "中国给水排水", "给水排水", "环境工程学报", "环境工程",
+    "中国环境监测", "水资源保护", "长江流域资源与环境", "湿地科学",
+    "生态与农村环境学报", "农业环境科学学报", "自然资源学报", "地理学报",
+    "水生生物学报", "生物多样性", "水生态学杂志", "中国农村水利水电",
+    "水利水电技术", "人民长江", "人民黄河", "中国水利", "水资源与水工程学报",
+    "环境科学与技术", "环境污染与防治", "中国人口·资源与环境",
+    "中国环境管理", "环境保护", "中华环境", "中国水利水电科学研究院学报",
+    "南水北调与水利科技", "水利水电科技进展", "河海大学学报",
+    "浙江大学学报", "环境生态学"
+   ]
+  },
+  "ok": {
+   "zh": "一般合格（需强相关才收）",
+   "weight": 6,
+   "keep": true,
+   "note": "未在 top/core_cn/reject 名单中的期刊：需同时满足『命中业务域 core 词』且『摘要水相关度 ≥0.7』才收，标记 tier=ok",
+   "journals": []
+  }
+ },
+ "reject_domains": {
+  "zh": "明显无关学科（一律拒收）",
+  "weight": 0,
+  "keep": false,
+  "note": "按期刊名匹配即拒；这些领域的论文对水生态环境处业务无参考价值",
+  "patterns": [
+   "Sport", "Sports", "Athletic", "Physical Education", "体育",
+   "Food Science", "Food Chemistry", "Food Engineering", "Nutrition", "食品",
+   "Dentistry", "Nursing", "Medicine", "Medical", "Clinical", "Pharmacy", "医学", "临床",
+   "Materials Science", "Materials Letters", "Alloys", "Metallurgy", "材料",
+   "Textile", "纺织", "Polymer", "Nanomaterials", "Coating",
+   "Education", "Educational", "Pedagogy", "教育", "教学",
+   "Marketing", "Accounting", "Finance", "Banking", "Management Science",
+   "Economics Letters", "Business", "Commerce", "经济", "金融", "会计",
+   "Psychology", "Psychiatry", "Sociology", "心理", "社会",
+   "Agriculture Economics", "Veterinary", "Animal Husbandry", "畜牧", "兽医",
+   "Computer Science", "Software", "Information Technology", "Computing",
+   "Artificial Intelligence Review", "Neural Computing", "Electronics", "Telecommunications",
+   "Mathematics", "Statistics", "Physics", "Astronomy", "数学", "物理",
+   "Architecture", "Civil Engineering Research", "Building", "建筑",
+   "Tourism", "Hospitality", "Leisure", "旅游", "休闲",
+   "Energy Policy", "Fuel", "Combustion", "燃料", "燃烧"
+  ]
+ },
+ "cn_authority_words": {
+  "zh": "国内权威刊识别辅助词（来源不含刊名时用）",
+  "patterns": ["中国科学院", "生态环境部", "中国环境科学研究院", "中国水利水电科学研究院", "河海大学", "清华大学", "北京大学", "浙江大学", "同济大学", "南京大学"]
+ },
+ "rules": {
+  "match": "对 source（期刊名）做不区分大小写的包含匹配；先查 reject_domains，再查 top/core_cn，均不命中则归 ok",
+  "doi_required": "学术条目须有 DOI 或 doi.org 链接，否则视为来源不明（除国内核心刊）",
+  "min_abstract": "摘要（或正文）长度 ≥ 150 字，过短视为只有题录、信息量不足",
+  "water_relevance": "必须命中至少 1 个业务域 core 词（见 taxonomy.json），确保主题确属水生态环境",
+  "quota_note": "学术条目在门户『推荐/必知必会』中的占比应 ≤10%（见 content_policy.json），避免淹没政策与案例类"
+ }
+}
