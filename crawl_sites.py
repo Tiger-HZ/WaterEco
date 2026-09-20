@@ -43,9 +43,34 @@ STRONG = ["水生态", "水环境", "地表水", "饮用水源", "饮用水水�
           "水域", "河道", "湖泊", "水污染", "水十条", "碧水", "海洋生态", "近岸海域"]
 WEAK_STRONG = len(STRONG)
 
+# 从 URL 提取发布日期（t20260817_xxx / /202608/ / W020260817…）
+URL_DATE_RE = re.compile(r"(?:t|W0)(\d{4})(\d{2})(\d{2})")
+
+
+def date_from_url(u):
+    m = URL_DATE_RE.search(u or "")
+    if m:
+        y, mo, d = m.group(1), m.group(2), m.group(3)
+        if 2000 <= int(y) <= 2100 and 1 <= int(mo) <= 12 and 1 <= int(d) <= 31:
+            return "%s-%s-%s" % (y, mo, d)
+    m = re.search(r"/(20\d{2})(\d{2})/", u or "")
+    if m:
+        return "%s-%s-01" % (m.group(1), m.group(2))
+    # Hanweb CMS：/col/col1692364/art/2026/art_<hash>.html -> 仅知年份
+    m = re.search(r"/art/(20\d{2})/", u or "")
+    if m:
+        return "%s-01-01" % m.group(1)
+    return ""
+
+
 DATE_IN_HREF = re.compile(r"(t\d{8}_|/20\d{2}[-/]?\d{0,2}/|content_\d{6,}|W020\d{12,})")
 TAG_RE = re.compile(r"<[^>]+>")
 ANCHOR_RE = re.compile(r'<a\s[^>]*href=["\']([^"\']+)["\'][^>]*>(.*?)</a>', re.S | re.I)
+# 源码中的文章路径（兼容 JS 渲染站：如浙江省人大 /202609/t20260918_265081.shtml，
+# 页面没有可用的 <a href>，但路径字符串在脚本里；亦覆盖 Hanweb CMS 的 art_<hash>.html）
+ART_PATH_RE = re.compile(
+    r"(/[A-Za-z0-9_\-./]*(?:t\d{8}_\d+|art_[0-9a-f]{16,}|content_\d{6,})\.s?html)", re.I)
+ZH_TITLE_RE = re.compile(r"[\u4e00-\u9fa5][\u4e00-\u9fa5，、（）《》“”：；·\-—0-9A-Za-z\s]{7,60}")
 NOISE_TXT = re.compile(r"^(更多|首页|上一页|下一页|尾页|返回|登录|注册|网站地图|联系我们|English|"
                        r"简体|繁体|无障碍|打印|关闭|分享|收藏|下载|查看|详情|>>|«|»)")
 
@@ -94,6 +119,26 @@ def extract_items(html, page_url, site):
             continue
         seen.add(u)
         out.append((u, txt))
+    # —— 通道 B：源码文章路径（无 <a> 标签的 JS 渲染站）——
+    if len(out) < 3:
+        base_host = urlparse(site["url"]).netloc
+        for m in ART_PATH_RE.finditer(html or ""):
+            path = m.group(1)
+            u = urljoin(site["url"], path)
+            if urlparse(u).netloc != base_host:
+                continue
+            if u in seen:
+                continue
+            # 就近取中文标题（路径前后 300 字符窗口内最长的中文串）
+            a, b = max(0, m.start() - 300), min(len(html or ""), m.end() + 300)
+            win = TAG_RE.sub(" ", html[a:b])
+            cands = [c.strip() for c in ZH_TITLE_RE.findall(win)]
+            cands = [c for c in cands if 8 <= len(c) <= 70 and not NOISE_TXT.match(c)]
+            title = max(cands, key=len) if cands else ""
+            if not title:
+                continue
+            seen.add(u)
+            out.append((u, title))
     return out
 
 
@@ -137,7 +182,7 @@ def build_record(url, title, site):
         "title": title,
         "url": url,
         "source": site["name"].split("·")[0],
-        "date": "",
+        "date": date_from_url(url),
         "category": cat,
         "content_type": "政策文件",
         "department": site["dept"],
