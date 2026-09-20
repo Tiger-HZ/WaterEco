@@ -105,34 +105,40 @@ jobs:
         run: timeout 780 python3 refetch_media.py || echo "refetch_media failed/timeout, skip"
 
       # —— 以下三步用 if: always()：采集异常也必须重建并部署站点，杜绝“静默停更” ——
+      # —— 体积治理：PDF 分级保留 + 清理历史快照，避免仓库超过 Pages 1GB 上限 ——
+      #   背景：2026-09-20 审计发现仓库已 1.21GB（kb/pdf 占 1.15GB），
+      #   导致「上传站点产物」失败 —— 这是"站点再次停更"的新风险。
+      - name: 仓库体积治理（PDF 分级保留 + 清历史快照）
+        if: always()
+        timeout-minutes: 15
+        continue-on-error: true
+        run: timeout 780 python3 prune_repo.py || echo "prune skipped"
+
       - name: 合并 / 归一化 / 富化 / 渲染
         if: always()
         timeout-minutes: 20
         run: python3 update.py || echo "update failed, continue to commit what we have"
 
-      - name: 提交入库数据（每日必提交心跳，保持仓库活跃且停更可被察觉）
+      - name: 提交入库数据（safe_push：并发推送自动重试，绝不阻断部署）
         if: always()
-        run: |
-          git config user.email "bot@water-eco.local"
-          git config user.name "WaterEco Bot"
-          date +%FT%T%z > last_run.txt
-          git add -A
-          if git diff --cached --quiet; then
-            echo "无新增知识"
-            git commit --allow-empty -m "auto: 心跳 $(date +%F-%H:%M) UTC（无新增知识）" && git push
-          else
-            git commit -m "auto: 自动采集 $(date +%F-%H:%M) UTC" && git push
-          fi
+        continue-on-error: true
+        run: bash safe_push.sh auto
 
       - name: 配置 Pages
         if: always()
         uses: actions/configure-pages@v5
 
+      - name: 准备站点产物（剔除 .git，避免 Pages artifact 打进 1GB+ 仓库历史）
+        if: always()
+        run: |
+          rm -rf _site && mkdir -p _site
+          tar -cf - --exclude=./.git --exclude=./_site . | (cd _site && tar -xf -)
+
       - name: 上传站点产物
         if: always()
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
 
       - name: 部署到 GitHub Pages
         id: deployment

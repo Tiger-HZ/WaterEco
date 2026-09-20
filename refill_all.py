@@ -286,28 +286,41 @@ def refill_web(rec, weixin=False):
 
 
 def write_coverage(kb):
-    from collections import Counter as C
-    kinds = C(kind_of(r.get("url") or "") for r in kb)
-    got = C((r.get("content_kind") or "未回填") for r in kb)
-    by_kind_tot = C()
-    by_kind_ok = C()
-    for r in kb:
-        k = kind_of(r.get("url") or "")
-        by_kind_tot[k] += 1
-        if r.get("content_fetched"):
-            by_kind_ok[k] += 1
-    cov = {
-        "generated_at": time.strftime("%Y-%m-%dT%H:%M:%S"),
-        "total": len(kb),
-        "fetched": sum(1 for r in kb if r.get("content_fetched")),
-        "with_pdf": sum(1 for r in kb if r.get("pdf")),
-        "content_kind": dict(got),
-        "url_kind_total": dict(by_kind_tot),
-        "url_kind_fetched": dict(by_kind_ok),
-    }
-    cov["coverage_pct"] = round(100.0 * cov["fetched"] / max(1, cov["total"]), 2)
-    json.dump(cov, open(COV, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-    return cov
+    """统一走 coverage.py 的真实口径（按内容有效性，而非 content_fetched 标记）。
+
+    旧口径的问题（2026-09-20 复盘）：content_fetched 长期不可信 ——
+    我介入前的原始库就有 97.9% 标着"已抓全文"而 content 全空；
+    回填后 88.78% 里 5127 条其实"未回填"也被算作已抓。
+    """
+    try:
+        import coverage as COV_MOD
+        cov = COV_MOD.main(do_print=False)
+        # 兼容旧字段，避免门户/其他脚本读不到
+        cov["fetched"] = cov["fulltext"] + cov["pdf_only"]
+        cov["content_kind"] = {
+            "正文全文/pdf全文": cov["fulltext"],
+            "仅PDF": cov["pdf_only"],
+            "仅摘要": cov["abstract_only"],
+            "未回填": cov["missing"],
+        }
+        cov["url_kind_total"] = cov["by_url_kind"]
+        json.dump(cov, open(COV, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+        return cov
+    except Exception as e:
+        print("[refill_all] coverage 模块不可用(%r)，回退简易口径" % (e,))
+        from collections import Counter as C
+        n = len(kb)
+        ft = sum(1 for r in kb if r.get("content_fetched") and (r.get("content") or ""))
+        cov = {
+            "generated_at": time.strftime("%Y-%m-%dT%H:%M:%S"),
+            "total": n, "fetched": ft, "fulltext": ft,
+            "with_pdf": sum(1 for r in kb if r.get("pdf")),
+            "content_kind": dict(C((r.get("content_kind") or "未回填") for r in kb)),
+        }
+        cov["coverage_pct"] = round(100.0 * ft / max(1, n), 2)
+        cov["origin_covered_pct"] = cov["coverage_pct"]
+        json.dump(cov, open(COV, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+        return cov
 
 
 def main():

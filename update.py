@@ -16,6 +16,9 @@ runpy.run_path(os.path.join(BASE, "enrich_kg.py"), run_name="__main__")
 runpy.run_path(os.path.join(BASE, "extract_fulltext.py"), run_name="__main__")
 # 3.6) 分片：kb.json -> kb/shards/* + meta.json + terms.json（支撑百万级、按需加载）
 runpy.run_path(os.path.join(BASE, "shard.py"), run_name="__main__")
+# 3.7) 覆盖率看板：按"内容有效性"统计原文覆盖（严格口径 fulltext/total），写 kb/coverage.json
+if os.path.exists(os.path.join(BASE, "coverage.py")):
+    runpy.run_path(os.path.join(BASE, "coverage.py"), run_name="__main__")
 # 4) 渲染站点（index.html 运行时 fetch kb.json，render 生成静态索引/图谱数据）
 runpy.run_path(os.path.join(BASE, "render.py"), run_name="__main__")
 

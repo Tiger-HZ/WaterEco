@@ -111,25 +111,32 @@ jobs:
         timeout-minutes: 40
         run: python3 update.py || echo "update(2) failed, continue"
 
-      - name: 提交并推送
+      - name: 仓库体积治理（PDF 分级保留 + 清历史快照）
         if: always()
-        run: |
-          git config user.email "bot@water-eco.local"
-          git config user.name "WaterEco Bot"
-          date +%FT%T%z > last_run.txt
-          git add -A
-          git diff --cached --quiet && git commit --allow-empty -m "sites: 无变更 $(date +%F-%H:%M) UTC" || git commit -m "sites: 多站点采集+原文检查 $(date +%F-%H:%M) UTC"
-          git push || echo "push skipped"
+        timeout-minutes: 15
+        continue-on-error: true
+        run: timeout 780 python3 prune_repo.py || echo "prune skipped"
+
+      - name: 提交并推送（safe_push）
+        if: always()
+        continue-on-error: true
+        run: bash safe_push.sh sites
 
       - name: 配置 Pages
         if: always()
         uses: actions/configure-pages@v5
 
+      - name: 准备站点产物（剔除 .git，避免 Pages artifact 打进 1GB+ 仓库历史）
+        if: always()
+        run: |
+          rm -rf _site && mkdir -p _site
+          tar -cf - --exclude=./.git --exclude=./_site . | (cd _site && tar -xf -)
+
       - name: 上传站点产物
         if: always()
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
 
       - name: 部署到 GitHub Pages
         id: deployment
