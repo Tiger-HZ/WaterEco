@@ -1,0 +1,153 @@
+# 水生态环境知识库 · 多站点采集 + 原文检查（两段式闸门）
+#
+# 一、多站点栏目采集（crawl_sites.py，栏目配置见 sites.json）
+#     直接逐栏目翻页抓 生态环境部（政策文件/部令/规范性文件/水生态环境司/新闻发布）、
+#     浙江省生态环境厅、住建部、农业农村部 的政策与公文，补足 crawl_gov 覆盖面不足的问题。
+#
+# 二、原文检查系统（两段闸门，original_finder.py + content_guard.py）
+#     入库前：新条目先做"原文审查"——若只是讯息/报道/解读，自动去检索被指向的原文
+#             （多源：国务院政策文件库 + 页内原文链接），按「权威性40% + 完整度30% + 对应性30%」
+#             打分择优，标注原文来源与备选出处；找不到则标注「暂未收录原文」。
+#     入库后：verify_content 校验正文真伪（错误页/风控页/太短/标题不符/非中文），
+#             不合格的标记重取；original_finder --audit 对缺原文条目继续补收。
+#
+# 三、所有"采集/审查"步骤都 continue-on-error，最后的「整理→提交→部署」用 if: always()，
+#     保证任何一步异常都不会导致站点停更。
+name: 多站点采集与原文检查
+
+on:
+  workflow_dispatch:
+    inputs:
+      max_pages:
+        description: '每个栏目最多翻页数'
+        required: false
+        default: '6'
+      review:
+        description: '本次原文审查条数上限'
+        required: false
+        default: '400'
+  schedule:
+    - cron: '23 */6 * * *'    # 每 6 小时自动一轮
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+  issues: write
+
+concurrency:
+  group: water-eco-collect
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 安装依赖
+        run: pip install --quiet requests beautifulsoup4 pypdf
+
+      # ① 多站点栏目采集（主力来源）
+      - name: 采集·多站点栏目
+        timeout-minutes: 70
+        continue-on-error: true
+        env:
+          MAX_PAGES: ${{ github.event.inputs.max_pages || '6' }}
+          FETCH_PDF: '1'
+        run: timeout 4080 python3 crawl_sites.py || echo "crawl_sites failed/timeout, skip"
+
+      # ② 国家政策文件库增量（只入条目，全文交给原文检查环节）
+      - name: 采集·国家政策文件库（增量）
+        timeout-minutes: 30
+        continue-on-error: true
+        env:
+          BULK: '1'
+          FETCH_FULL: '0'
+          FETCH_IMAGES: '0'
+          GOV_PAGES: '3'
+        run: timeout 1680 python3 crawl_gov.py || echo "crawl_gov failed/timeout, skip"
+
+      # ③ 先合并入库，让新条目进入 kb 后再审查
+      - name: 合并入库（第一遍）
+        if: always()
+        timeout-minutes: 40
+        continue-on-error: true
+        run: python3 update.py || echo "update(1) failed, continue"
+
+      # ④ 入库后巡检：校验已有原文真伪，把错误页/风控页/错配标记为待重取
+      - name: 原文检查·入库后巡检（内容真伪）
+        if: always()
+        timeout-minutes: 25
+        continue-on-error: true
+        run: timeout 1380 python3 verify_content.py || echo "verify failed, continue"
+
+      # ⑤ 入库前审查：新条目若是讯息/解读，主动找回原文并标注来源
+      - name: 原文检查·入库前审查（找回原文+标注来源）
+        if: always()
+        timeout-minutes: 80
+        continue-on-error: true
+        env:
+          LIMIT: ${{ github.event.inputs.review || '400' }}
+          ORIGIN_MIN_LEN: '600'
+          ORIGIN_ACCEPT: '0.55'
+        run: timeout 4680 python3 original_finder.py || echo "original_finder failed/timeout, skip"
+
+      # ⑥ 收尾：抽全文 / 分片 / 渲染
+      - name: 整理入库（第二遍）
+        if: always()
+        timeout-minutes: 40
+        run: python3 update.py || echo "update(2) failed, continue"
+
+      - name: 提交并推送
+        if: always()
+        run: |
+          git config user.email "bot@water-eco.local"
+          git config user.name "WaterEco Bot"
+          date +%FT%T%z > last_run.txt
+          git add -A
+          git diff --cached --quiet && git commit --allow-empty -m "sites: 无变更 $(date +%F-%H:%M) UTC" || git commit -m "sites: 多站点采集+原文检查 $(date +%F-%H:%M) UTC"
+          git push || echo "push skipped"
+
+      - name: 配置 Pages
+        if: always()
+        uses: actions/configure-pages@v5
+
+      - name: 上传站点产物
+        if: always()
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: 部署到 GitHub Pages
+        id: deployment
+        if: always()
+        uses: actions/deploy-pages@v4
+
+      - name: 失败告警
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = '⚠️ WaterEco 多站点采集/原文检查失败';
+            const body = '任务在 ' + new Date().toISOString() + ' (UTC) 失败，请检查 Actions 日志。';
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo, state: 'open', per_page: 30
+            });
+            if (!issues.data.find(i => i.title === title)) {
+              await github.rest.issues.create({
+                owner: context.repo.owner, repo: context.repo.repo, title, body
+              });
+            }

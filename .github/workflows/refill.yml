@@ -59,16 +59,19 @@ jobs:
       - name: 安装依赖
         run: pip install --quiet requests beautifulsoup4 pypdf
 
-      - name: 校验存量原文（把错误页/风控页/太短/标题不符的标记为待重取）
+      - name: 校验存量原文（错误页/风控页/太短/标题不符 -> 标记待重取）
         if: always()
-        timeout-minutes: 20
+        timeout-minutes: 30
         continue-on-error: true
+        env:
+          LIMIT: '150'
         run: |
           python3 verify_content.py || echo "verify failed, continue"
+          python3 original_finder.py --audit || echo "audit failed, continue"
           git config user.email "bot@water-eco.local"
           git config user.name "WaterEco Bot"
           git add -A
-          git diff --cached --quiet || git commit -m "verify: 原文内容校验 $(date +%F-%H:%M) UTC"
+          git diff --cached --quiet || git commit -m "verify: 原文内容校验与巡检 $(date +%F-%H:%M) UTC"
           git push || echo "push skipped"
 
       - name: 第 1 轮回填并提交

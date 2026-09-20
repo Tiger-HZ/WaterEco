@@ -339,6 +339,11 @@
   .must-meta{font-size:12px;color:var(--sub);margin-bottom:5px;display:flex;gap:9px;flex-wrap:wrap;align-items:center}
   .must-sum{font-size:12.9px;color:var(--sub);line-height:1.68}
   .must-note{font-size:11.5px;color:var(--amber);margin-top:4px}
+  /* 原文核查 */
+  .badge.b-miss{background:#fef2f2;border:1px solid #fecaca;color:#b91c1c}
+  table.orig-t{border-collapse:collapse;font-size:12.6px;width:100%}
+  table.orig-t th{width:88px;text-align:left;color:var(--sub);font-weight:600;padding:3px 8px 3px 0;vertical-align:top}
+  table.orig-t td{padding:3px 0;color:var(--ink)}
 </style>
 </head>
 <body>
@@ -784,6 +789,9 @@ function recCard(r){
   const q = r.quality||'';
   const full = r.content_fetched ? '<span class="badge b-full">全文</span>' : '';
   const pdfb = r.pdf ? '<span class="badge b-full">📄 原文PDF</span>' : '';
+  const origb = r.origin_status==='原文已核'
+      ? '<span class="badge b-full" title="原文已核实来源">✔ 原文已核</span>'
+      : (r.origin_status==='暂未收录' ? '<span class="badge b-miss" title="暂未收集到原文全文">⚠ 暂未收录原文</span>' : '');
   const realDate=(r.date||'').slice(0,10);
   const d=effDate(r);
   const futureMark = (realDate && realDate>todayStr()) ? ' <span class="badge b-future" title="文献预发表：原文发表 '+esc(realDate)+'，统计时间以入库日计">预发表</span>' : '';
@@ -797,6 +805,7 @@ function recCard(r){
       ${q?`<span class="badge b-q">质量${esc(q)}</span>`:''}
       ${full}
       ${pdfb}
+      ${origb}
       ${impHtml}
       <span class="muted" style="margin-left:auto">${esc(d)}</span>${futureMark}
     </div>
@@ -1022,6 +1031,33 @@ async function delAnn(id,aid){
 }
 
 /* ===================== 详情（静态回退） ===================== */
+/* 原文核查信息块：标注原文来源、完整度、权威性等级与备选出处 */
+function originBlock(r){
+  const st=r.origin_status||'待审查';
+  const badge = st==='原文已核'
+    ? '<span class="badge b-full">✔ 原文已核</span>'
+    : (st==='暂未收录' ? '<span class="badge b-miss">⚠ 暂未收录原文</span>' : '<span class="badge b-q">待审查</span>');
+  const rows=[];
+  if(r.origin_title) rows.push(['原文标题', r.origin_title]);
+  if(r.origin_source) rows.push(['原文来源', r.origin_source]);
+  if(r.origin_kind) rows.push(['取得方式', r.origin_kind + (r.origin_len? ('　约 '+Number(r.origin_len).toLocaleString()+' 字') : '')]);
+  if(r.origin_authority) rows.push(['权威性等级', r.origin_authority]);
+  if(r.origin_score) rows.push(['综合评分', Number(r.origin_score).toFixed(3)+'　（0.40×权威性 + 0.30×完整度 + 0.30×对应性）']);
+  let html='<div class="sub-card" style="margin-top:14px"><h3 style="font-size:14px;margin:0 0 8px">🔎 原文核查 '+badge+'</h3>';
+  if(rows.length){
+    html+='<table class="orig-t"><tbody>'+rows.map(([k,v])=>'<tr><th>'+esc(k)+'</th><td>'+esc(String(v))+'</td></tr>').join('')+'</tbody></table>';
+    if(r.origin_url) html+='<p style="margin:6px 0 0;font-size:12.5px">原文出处：<a href="'+esc(r.origin_url)+'" target="_blank" rel="noopener">'+esc(r.origin_domain||r.origin_url)+' ↗</a></p>';
+  }
+  if(r.origin_alternatives && r.origin_alternatives.length){
+    html+='<details style="margin-top:8px"><summary style="cursor:pointer;font-size:12.5px;color:var(--sub)">其他候选出处 '+r.origin_alternatives.length+' 个（已比对，择优采用上方出处）</summary><ul style="margin:6px 0 0;padding-left:18px;font-size:12.5px">'
+      + r.origin_alternatives.map(a=>'<li>'+esc(a.domain||'')+' ｜ '+esc((a.title||'').slice(0,48))+' ｜ '+(a.len||0)+' 字 ｜ 评分 '+(a.score||0)+' ｜ '+esc(a.authority||'')+'</li>').join('')
+      + '</ul></details>';
+  }
+  if(r.origin_note) html+='<p class="muted" style="font-size:11.5px;margin:8px 0 0">检索记录：'+esc(r.origin_note)+'</p>';
+  if(st==='暂未收录') html+='<p class="muted" style="font-size:12px;margin:6px 0 0">本条<b>暂未收集到原文全文</b>，系统会持续重试检索；如你能提供原文，欢迎补充。</p>';
+  html+='</div>';
+  return html;
+}
 function loadDetailStatic(idx){
   const r=App.kb[idx]; if(!r) return;
   const tags=(r.tags||[]).map(t=>`<span class="kw">${esc(t)}</span>`).join('');
@@ -1061,6 +1097,7 @@ function loadDetailStatic(idx){
       </div>
     </div>
     ${r.pdf?`<div class="sub-card" style="margin-top:14px"><h3 style="font-size:14px;margin:0 0 6px">📄 原文 PDF</h3><a class="pdfbtn" href="${/^https?:/i.test(r.pdf)?esc(r.pdf):(SITE_BASE+esc(r.pdf))}" target="_blank" rel="noopener">⬇ 在线阅读 / 下载原文 PDF</a><p class="muted" style="font-size:11.5px;margin:4px 0 0">已抓取的标准/法规/规划原文 PDF，随知识库一同入库（离线可用）</p></div>`:''}
+    ${originBlock(r)}
     <div class="mmap-card"><h3 style="font-size:13.5px;margin:0 0 8px">思维导图 · 实体与关系</h3>${buildMindMapHtml(r)}</div>`;
   $('#mask').classList.add('on');
   GraphViz.mount('localCanvas', localNodes, localEdges);
