@@ -77,6 +77,18 @@ for i in 1 2 3; do
   # 因此这里必须重新写一次心跳，否则站点的「上次采集时间」会显示不准。
   date +%FT%T%z > last_run.txt
 
+  # ——— 数据护栏：绝不用明显缩水的数据覆盖远端 ———
+  # 背景：2026-09-20 曾出现 kb.json 被提交为空数组、线上条目由 5519 骤降至 556 的事故。
+  # 规则：本地 kb.json 条目数 < 远端 80% 时，拒绝本次数据提交（只保留代码改动）。
+  if [ -f kb/kb.json ]; then
+    _local_n=$(python3 -c "import json;print(len(json.load(open('kb/kb.json'))))" 2>/dev/null || echo 0)
+    _remote_n=$(git show "origin/${BRANCH}:kb/kb.json" 2>/dev/null | python3 -c "import sys,json;print(len(json.load(sys.stdin)))" 2>/dev/null || echo 0)
+    if [ "${_remote_n:-0}" -gt 200 ] && [ "${_local_n:-0}" -lt $((_remote_n * 80 / 100)) ]; then
+      echo "!! [数据护栏] 本地 kb.json=${_local_n} 条 < 远端 ${_remote_n} 条的 80%，拒绝提交数据以免覆盖线上"
+      echo "!! 代码改动仍会保留；请检查流水线是否产出空数据"
+      git checkout -- kb/kb.json 2>/dev/null || true
+    fi
+  fi
   git add -A
   if git diff --cached --quiet; then
     git commit --allow-empty -m "${TAG}: 已同步远端，无数据变更 $(date +%F-%H:%M) UTC" || true
