@@ -82,7 +82,7 @@ for i in 1 2 3; do
   # 规则：本地 kb.json 条目数 < 远端 80% 时，拒绝本次数据提交（只保留代码改动）。
   if [ -f kb/kb.json ]; then
     _local_n=$(python3 -c "import json;print(len(json.load(open('kb/kb.json'))))" 2>/dev/null || echo 0)
-    _remote_n=$(git show "origin/${BRANCH}:kb/kb.json" 2>/dev/null | python3 -c "import sys,json;print(len(json.load(sys.stdin)))" 2>/dev/null || echo 0)
+    _remote_n=$(git show "origin/${BR}:kb/kb.json" 2>/dev/null | python3 -c "import sys,json;print(len(json.load(sys.stdin)))" 2>/dev/null || echo 0)
     if [ "${_remote_n:-0}" -gt 200 ] && [ "${_local_n:-0}" -lt $((_remote_n * 80 / 100)) ]; then
       echo "!! [数据护栏] 本地 kb.json=${_local_n} 条 < 远端 ${_remote_n} 条的 80%，拒绝提交数据以免覆盖线上"
       echo "!! 代码改动仍会保留；请检查流水线是否产出空数据"
