@@ -1,0 +1,335 @@
+ТЕХНІЧНІ НАУКИ ТА ТЕХНОЛОГІЇ № 3(45), 2026 
+ 
+TECHNICAL SCIENCES AND TECHNOLOGIES 
+248 
+DOI: https://doi.org/10.25140/2411-5363-2026-3(45)-248-256 
+УДК 528.88:528.94:556.531(477.51) 
+Сергій Миколайович Заворотний1, Юлія Володимирівна Щербак2 
+1кандидат технічних наук, старший викладач, завідувач кафедри геодезії, картографії та землеустрою 
+Національний університет «Чернігівська політехніка» (Чернігів, Україна) 
+E-mail: zavorotnyiserhii@ukr.net. ORCID: https://orcid.org/0000-0002-2139-8877. ResearcherlD: NRY-3592-2025 
+2старший викладач кафедри геодезії, картографії та землеустрою 
+Національний університет «Чернігівська політехніка» (Чернігів, Україна). 
+E-mail: Shch.Yu15@gmail.com. ORCID: http://orcid.org/0000-0002-3439-3792 
+КАРТОГРАФУВАННЯ КАЛАМУТНОСТІ ВОДИ Р. СТРИЖЕНЬ 
+В М. ЧЕРНІГІВ ЗА ДОПОМОГОЮ СУПУТНИКОВИХ ЗНІМКІВ 
+SENTINEL-2 
+У роботі можливість виконання супутникових знімків Sentinel-2 для картографування каламутності води малих 
+річок на прикладі ділянки р. Стрижень у м. Чернігів за допомогою опрацювання просторових даних у середовищі 
+Google Earth Engine, що включає виконання попередньої фільтрації хмарності, субпіксельний ресемплінг до роздільної 
+здатності 10 м. Для отримання картографічних матеріалів було виконано автоматичне виділення дзеркала води за 
+допомогою нормалізованого диференційного індексу вологості (NDWI) та оцінку просторової неоднорідності розпо-
+ділу зважених речовин на основі індексу каламутності (NDTI). 
+У результаті виконаного дослідження встановлено, що русло річки є оптично неоднорідним: у північній частині 
+водойми № 2 та № 3 (район Ялівщини) виявлено стійкі аномалії високої каламутності, що свідчить про процеси за-
+мулення, мілководдя у застійних зонах. 
+Ключові слова: дистанційне зондування Землі; Sentinel-2; каламутність води; NDWI; NDTI; Google Earth Engine; 
+картографування. 
+Рис.: 9. Бібл.: 8. 
+Актуальність теми. Моніторинг стану малих річок в умовах урбанізованих терито-
+рій є одним із пріоритетних завдань екологічної безпеки. Річка Стрижень, що протікає 
+через місто Чернігів, піддається значному антропогенному навантаженню, що призво-
+дить до замулення та зміни гідрохімічних показників, зокрема каламутності. Традиційні 
+методи наземного моніторингу є високовитратними та не дають цілісної картини розпо-
+ділу забруднювачів по всій довжині русла. Використання даних дистанційного зонду-
+вання Землі (ДЗЗ), зокрема супутників серії Sentinel-2, дозволяє отримувати оперативну 
+та просторово безперервну інформацію про стан водних об’єктів, що робить дане дослі-
+дження актуальним для сталого управління водними ресурсами регіону. 
+Постановка проблеми. Річка Стрижень є важливою водною артерією м. Чернігова, 
+проте вона роками потерпає від значного забруднення. Проблема полягає в неконтрольо-
+ваних скидах стічних вод, змивах з приватних секторів та замуленні русла. Висока кала-
+мутність є прямим індикатором цих процесів, що призводить до деградації екосистеми, 
+цвітіння води та погіршення санітарно-гігієнічних показників у межах міста. Класичний 
+відбір проб води на гідропостах має суттєві недоліки: 
+1. Дискретність: вимірювання проводяться лише в окремих точках, що не дає повної 
+картини по всій довжині річки (особливо в межах водосховищ та застійних зон). 
+2. Висока вартість та тривалість: лабораторні аналізи потребують часу та ресурсів, 
+що унеможливлює оперативний щотижневий моніторинг. 
+З метою попереднього загального аналізу з отриманням картографічних матеріалів 
+каламутності води було обрано метод картографування за допомогою супутникової місії 
+Sentinel-2. 
+Хоча супутники Sentinel-2 мають досить високу частоту зйомки, існує проблема про-
+сторової роздільної здатності. 
+1. Ширина русла Стрижня в багатьох місцях є невеликою, що спричиняє появу "змі-
+шаних пікселів" (коли в один піксель 10×10 м потрапляє і вода, і берег). 
+2. Необхідно обґрунтувати можливість використання спектральних каналів Sentinel-2 
+для коректного вилучення значень каламутності саме для вузьких водних об'єктів. 
+ С. М. Заворотний, Ю. В. Щербак, 2026 
+ТЕХНІЧНІ НАУКИ ТА ТЕХНОЛОГІЇ № 3(45), 2026 
+ 
+TECHNICAL SCIENCES AND TECHNOLOGIES 
+249 
+Дослідження має вирішити задачу адаптації спектральних індексів та встановлення 
+кореляції між супутниковими даними (наприклад, червоним та ближнім інфрачервоним 
+каналами) і реальними показниками каламутності у мг/л або одиницях мутності для кон-
+кретної водойми. 
+Аналіз останніх досліджень і публікацій. У 2006 році ДП „Водземпроект” ВАТ 
+„Чернігівводпроект” розроблено техніко-економічне обґрунтування заходів з 
+поліпшення екологічного стану р.Стрижень у м.Чернігів [1]. При цьому було визначено 
+комплекс технічних заходів, котрі дали б можливість досягти максимального ефекту в 
+поліпшенні екологічного стану р.Стрижень [1]. 
+В дослідженні [2] виконано оцінку потенціалу супутникового дистанційного зонду-
+вання для доповнення традиційного моніторингу прибережних вод Лос-Анджелеса шля-
+хом аналізу взаємозв'язку між даними про каламутність, отриманими супутниковими да-
+ними. Польові вимірювання були виконані з липня 2021 року по березень 2024 року для 
+створення синхронних наборів даних. 
+Автори [3] представили надійну, глобально-застосовну модель оцінки каламутності 
+з використанням зображень Sentinel -2 та підходу машинного навчання, розроблену на 
+основі гармонізованих глобальних наборів даних з відкритим кодом (GLORIA та 
+MAGEST; діапазон каламутності: 0–2200 FNU), що охоплюють 68 озер, 2 річки, 2 есту-
+арії та 11 прибережних океанів у 17 країнах. 
+В [4] представлено розроблений багатоумовний алгоритм вимірювання каламутно-
+сті, який може отримувати значення каламутності від 0 до 600 FNU, використовуючи 
+червоні та red-edge смуги Sentinel-2. Реалізовано чотири основні кроки: корекція атмос-
+ферних та сонячних відблисків даних Sentinel-2 рівня 1C, спектральний аналіз для різних 
+рівнів каламутності води, регресійне моделювання між каламутністю та коефіцієнтом 
+відбиття дистанційного зондування (Rrs) для розробки алгоритму та перевірка найкра-
+щої моделі. 
+У дослідженні [5] використовуються мультиспектральні дані Sentinel -2 для оцінки 
+змін каламутності річки під час карантину COVID-19, поблизу священного міста Аллаха-
+бад, Індія. У роботі детально описані кроки для вимірювання зміни каламутності за до-
+помогою ArcGIS API для Python. 
+Виділення не вирішених раніше частин загальної проблеми. Зважаючи, що у за-
+повідній зоні Парку допускається проведення робіт з відновлення гідрологічного режиму 
+то такі роботи можуть проводитися і в інших функціональних зонах, тобто роботи з еко-
+логічного покращення гідрологічного режиму та санітарного стану водойми № 3 у районі 
+вул. Стрілецької у м.Чернігові яка знаходиться на території Регіонального ландшафтного 
+парку «Ялівщина» можуть здійснюватися, за умови недопущення заподіяння шкоди при-
+родним комплексам та об’єктам, що охороняються та у встановленому порядку [1]. 
+У межах виконання «Екологічного покращення гідрологічного режиму та санітарного 
+стану водойми № 3 у районі вул. Стрілецької у м. Чернігові» [1] було виконано топоргафо-
+геодезичні вишукування водойми № 3 дослідження водойми № 2 не виконувалось. 
+Мета статті дослідити можливість виконання супутникових знімків Sentinel -2 для 
+картографування каламутності води малих річок на прикладі ділянки р. Стрижень у 
+м. Чернігів. 
+Виклад основного матеріалу. Річка Стрижень, мала річка, належить до басейну р. 
+Десна і є її правобережною притокою першого порядку. Протікає річка по території Че-
+рнігівської області [1]. (рисунок 1). 
+ТЕХНІЧНІ НАУКИ ТА ТЕХНОЛОГІЇ № 3(45), 2026 
+ 
+TECHNICAL SCIENCES AND TECHNOLOGIES 
+250 
+ 
+Рис. 1. Географічне розташування р. Стрижень [2] 
+Довжина р. Стрижень становить 32,4 км, площа водозбору – 158 км2, довжина в ме-
+жах м. Чернігів – 8,25 км, на якій розташовані три водойми [1]: 
+1. Водойма № 1 в гирлі р. Стрижень; 
+2. Водойма № 2 район вул. Героїв Чорнобиля; 
+3. Водойма № 3 район вул. Єськова. 
+Особливістю річки є її русло, яке в межах міста Чернігів сильно зарегульоване сис-
+темою з двох водойм № 2 та № 3 (Шахтне, водойма №2 у районі Ялівщини), що суттєво 
+уповільнює течію та сприяє накопиченню каламуті. 
+Для дослідження було обрано водойму № 2 та № 3 – район Ялівщини вул. Героїв 
+Чорнобиля (рис. 2), оскільки враховуючи роздільну здатність зображень, вони є найбіль-
+шими (рис. 2). 
+ 
+Рис. 2. Водойма № 2 – район Ялівщини (вул. Героїв Чорнобиля) 
+ТЕХНІЧНІ НАУКИ ТА ТЕХНОЛОГІЇ № 3(45), 2026 
+ 
+TECHNICAL SCIENCES AND TECHNOLOGIES 
+251 
+З метою виконання картографування та аналізу каламутності було обрано матеріали 
+знімків Sentinel-2 періоді з 2017 по 2025 рр. 
+Для виконання картографування була використана методика картографування кала-
+мутності води [5] яка схематично наведена на рисунку 2. 
+ 
+Рис. 3. Загальна схема картографування каламутності води [5] 
+Для аналізу була обрана група зображень Sentinel -2 B2, B3, B4, B8. Кожне зобра-
+ження має власний спектр, розмір пікселів та довжину хвилі. Властивості групи зобра-
+жень Sentinel-2 B2, B3, B4, B8 (рис. 9, 10) наведені в таблиці 4. 
+Таблиця 4 – Властивості групи зображень Sentinel-2 B2, B3, B4, B8 
+Група Спектр Розмір пікселя Довжина хвилі 
+B2 Синій 10 м 496,6 нм (S2A) / 492,1 нм (S2B) 
+B3 Зелений 560 нм (S2A) / 559 нм (S2B) 
+B4 Червоний 664,5 нм (S2A) / 665 нм (S2B) 
+B8 ІЧ-спектр 835,1 нм (S2A) / 833 нм (S2B) 
+Дані зображення містять понад 500 елементів у цьому регіоні. Відображені властивості 
+допомагають застосовувати різні фільтри для гнучкого налаштування системи аналізу. 
+ТЕХНІЧНІ НАУКИ ТА ТЕХНОЛОГІЇ № 3(45), 2026 
+ 
+TECHNICAL SCIENCES AND TECHNOLOGIES 
+252 
+Для більш детального вивчення нами був обраний період спостереження з 2010 по 
+2025 рр. Але перед цим нам необхідно встановити декілька фільтрів з метою видалення 
+зображень які містять понад 10 відсотків покриву хмар. Для калькуляції нормального 
+стану було застосовано каналів комбінацію B8’, ‘B4’, ‘B3’відновідно: ІЧ-спектр, Черво-
+ний, Зелений відповідно. 
+Дані спектри чутливі до води і відображають найбільш точну інформацію (рис. 4). 
+ 
+Рис. 4. Відображення спектрів 
+Картографування нормалізованого диференційного індексу вологості (NDWI). 
+Дослідження виконувалось на основі показника індексу NDWI - нормалізований дифе-
+ренційний індекс вологості. Визначення індексів виконувалось за формулою 1 [3]: 
+ 
+(1) 
+Використовуючи спектри зображень та властивості індексу NDWI, було отримано 
+гістограму (рис. 5) та кортограму, на яких відображені позитивні та негативні значення 
+індексу (рис. 6). 
+Для формування створення шару була використана команда: 
+var. Ndwi = sen.normalizedDifference ([‘B4’, ‘B3’]). rename (‘ndwi’). 
+ 
+Рис. 5. Гістограма нормалізованого диференційного індексу вологості (NDWI) 
+ 
+ТЕХНІЧНІ НАУКИ ТА ТЕХНОЛОГІЇ № 3(45), 2026 
+ 
+TECHNICAL SCIENCES AND TECHNOLOGIES 
+253 
+ 
+Рис. 6. Картографування нормалізованого диференційного індексу вологості (NDWI) 
+Картографування індексу каламутності (NDTI). 
+NDTI (Normalized Difference Turbidity Index) — це нормалізований різницевий індекс кала-
+мутності. NDTI - індекс каламутності визначається за формулою 2 [4]: 
+ 
+(2)
+ 
+де Pred - середня властивість відбиття води у червоному спектральному діапазоні 0,5625 нм; 
+Pred - середня властивість відбиття води у зеленому спектральному діапазоні 0,655 нм. 
+Для відображення даного індексу були внесені зміни комбінації спектрів для відо-
+б
+раження пікселів які відповідають тільки воді (рис. 7). 
+ 
+Рис. 7. Комбінація спектрів для відображення пікселів води 
+Створивши нову змінну: var. ndti = sen_mask.normalizedDifference ([‘B4’, ‘B3’]). 
+rename (‘ndti’), та виконавши картографування: [‘blue’,’green’,’yellow,’red’]},’ ndti’,false) 
+(рис. 8) було отримано картограма індексу NDTI (рис. 9). 
+ТЕХНІЧНІ НАУКИ ТА ТЕХНОЛОГІЇ № 3(45), 2026 
+ 
+TECHNICAL SCIENCES AND TECHNOLOGIES 
+254 
+ 
+Рис. 8. Картографування індексу NDTI 
+ 
+Рис. 9. Картографування індексу NDTI 
+Відповідно отриманих картографічних матеріалів спектральний аналіз показав, що во-
+дна поверхня неоднорідна і розділена на зони, що свідчить про градацію певного індексу 
+каламутності. 
+Відповідно синій та темно -зелений кольори які переважають у нижній (південній) 
+частині та на самих краях північної ділянки вказують на ділянки водойми, яка має більш 
+низький рівень каламутності води, тобто менші фонові значення з низькою концентра-
+цією зважених речовин / водоростей. 
+У свою чергу жовтий, оранжевий та яскраво- червоний кольори які зосереджені у 
+верхній (північній) частині водойми №2 свідчать про найбільшу аномалію де фіксується 
+високий рівень каламутності , що свідчить про критичне значення: максимальну каламу-
+тність, сильне засмічення, мілководдя або інтенсивне цвітіння води в цій застійній зоні. 
+Висновки. Дослідження доводить, що супутникові знімки Sentinel -2 (з роздільною 
+здатністю 10 м) є ефективним інструментом для попередньої оцінки стану зарегульова-
+них ділянок малих річок (таких як розширені водойми р. Стрижень), де ширина водного 
+дзеркала достатня для уникнення впливу «змішаних пікселів». 
+ТЕХНІЧНІ НАУКИ ТА ТЕХНОЛОГІЇ № 3(45), 2026 
+ 
+TECHNICAL SCIENCES AND TECHNOLOGIES 
+255 
+Використання індексу каламутності NDTI дозволило чітко розмежувати акваторію 
+Водойми № 2 за ступенем забруднення. Північна частина водойми піддається найбіль-
+шому замуленню та інших негативних факторів , що збільшують індекс каламутності, 
+внаслідок поверхневого стоку й уповільнення течії. 
+Отримані картографічні матеріали та використана методика дозволяють проводити 
+систематичний безкоштовний моніторинг динаміки каламутності в часі без необхідності 
+залучення значних лабораторних ресурсів. Це може надити можливість екологічним слу-
+жбам попередньо визначати, аналізувати та коригувати планові заходи щодо розчищення 
+русла та захисту річки. 
+Для підвищення точності супутникових моделей у майбутньому доцільно провести 
+калібрування – порівняти отримані супутникові значення NDTI з реальними лаборатор-
+ними вимірюваннями каламутності (у мг/дм³ або NTU/FNU), відібраними синхронно з 
+виконаними супутниковими знімками Sentinel-2 в комбінації з безпілотними літальними 
+системами. 
+Список використаних джерел 
+1. Клименко, А. С. (2019). Звіт з оцінки впливу на довкілля: Реконструкція об'єкту «Еколо-
+гічне покращення гідрологічного режиму та санітарного стану водойми № 3 в районі вул. Стрі-
+лецької у м. Чернігові». ТОВ «Водпроект Чернігів». 
+https://eco.cg.gov.ua/web_docs/2145/2019/02/docs/cf839505c358af8fe1174eab998f69e7%20%D0%B
+7%D0%B2%D1%96%D1%82%20%D1%81%D1%82%D1%80%D0%B8%D0%B6%D0%B5%D0%
+BD%D1%8C.pdf 
+2. Kong, Y ., Jimenez, K., Lee, C. M., Winter, S., Summers-Evans, J., Cao, A., Menczer, M., Han, R., 
+Mills, C., McCarthy, S., Blatzheim, K., & Jay , J. A. (2025). Monitoring coastal water turbidity using 
+sentinel2—a case study in los angeles. Remote Sensing, 17(2), 201. https://doi.org/10.3390/rs17020201 
+3. Chowdhury, M., de la Calle, I., Laiz, I., & Ruescas, A. B. (2025). Near -Real-Time turbidity 
+monitoring at global scale using sentinel- 2 data and machine learning techniques. Remote 
+Sensing, 17(22), 3716. https://doi.org/10.3390/rs17223716 
+4. Chowdhury, M., Vilas, C., van Bergeijk, S., Navarro, G., Laiz, I., & Caballero, I. (2023). 
+Monitoring turbidity in a highly variable estuary using Sentinel 2- A/B for ecosystem management 
+applications. Frontiers in Marine Science, 10. https://doi.org/10.3389/fmars.2023.1186441. 
+5. Chowdhury, M., de la Calle, I., Laiz, I., & Ruescas, A. B. (n.d.). River turbidity estimation using 
+Sentinel-2 data. ArcGIS API for Python: Esri Developer. 
+https://developers.arcgis.com/python/latest/samples/river-turbidity-estimation-using-sentinel2-data-/ 
+6. Проект організації території регіонального ландшафтного парку «Ялівщина», охорони, 
+відтворення та рекреаційного використання його природних комплексів та об'єктів. (2025). 
+https://chor.gov.ua/images/Razdely/Norm_docum/Rishennia/8_sklykannia/24/Dodatok_13.pdf 
+7. Khalifeh Soltanian, F., Abbasi, M., & Riyahi Bakhtyari, H. R. (2019). Flood monitoring using 
+NDWI and MNDWI spectral indices: A case study of Aghqala flood-2019, Golestan Province, Iran. The 
+International Archives of the Photogrammetry, Remote Sensing and Spatial Information Sciences, XLII-
+4/W18, 347–353. https://isprs-archives.copernicus.org/articles/XLII-4-W18/605/2019/isprs-archives-
+XLII-4-W18-605-2019.pdf 
+8. Drebot, O., Zubova, O. V ., Khant, G. O., Lukianenko, O., Cherniak, Y. V ., & Savchuk, O. I. 
+(2020). Geodesy, cartography, and aerial photography. Geodesy, Cartography, and Aerial 
+Photography, 91,2020(91), 51–58. https://doi.org/10.23939/istcgcap2020.91.051 
+References 
+1. Klymenko, А. S. (2019). Zvit z otsinky vplyvu na dovkillia: Rekonstruktsiia obiektu 
+«Ekolohichne pokrashchennia hidrolohichnoho rezhymu ta sanitarnoho stanu vodoimy № 3 v raioni vul. 
+Striletskoi u m. Chernihovi». [Environmental Impact Assessment Report: Reconstruction of the facility 
+"Ecological improvement of the hydrological regime and sanitary condition of reservoir No. 3 in the 
+area of Striletska Street in Chernihiv"] . TOV «Vodproekt Chernihiv» – LLC "V odproekt Chernihiv". 
+https://eco.cg.gov.ua/web_docs/2145/2019/02/docs/cf839505c358af8fe1174eab998f69e7%20%D0%B
+7%D0%B2%D1%96%D1%82%20%D1%81%D1%82%D1%80%D0%B8%D0%B6%D0%B5%D0%
+BD%D1%8C.pdf 
+ТЕХНІЧНІ НАУКИ ТА ТЕХНОЛОГІЇ № 3(45), 2026 
+ 
+TECHNICAL SCIENCES AND TECHNOLOGIES 
+256 
+2. Kong, Y ., Jimenez, K., Lee, C. M., Winter, S., Summers-Evans, J., Cao, A., Menczer, M., Han, R., 
+Mills, C., McCarthy, S., Blatzheim, K., & Jay, J. A. (2025). Monitoring coastal water turbidity using 
+sentinel2—a case study in los angeles. Remote Sensing, 17(2), 201. https://doi.org/10.3390/rs17020201 
+3.Chowdhury, M., de la Calle, I., Laiz, I., & Ruescas, A. B. (2025). Near -Real-Time turbidity 
+monitoring at global scale using sentinel -2 data and machine learning techniques. Remote Sensing , 
+17(22), 3716. https://doi.org/10.3390/rs17223716 
+4. Сhowdhury, M., Vilas, C., van Bergeijk, S., Navarro, G., Laiz, I., & Caballero, I. (2023). 
+Monitoring turbidity in a highly variable estuary using Sentinel 2- A/B for ecosystem management 
+applications. Frontiers in Marine Science, 10. https://doi.org/10.3389/fmars.2023.1186441. 
+5. Chowdhury, M., de la Calle, I., Laiz, I., & Ruescas, A. B. (n.d.). River turbidity estimation using 
+Sentinel-2 data. ArcGIS API for Python: Esri Developer. 
+https://developers.arcgis.com/python/latest/samples/river-turbidity-estimation-using-sentinel2-data-/ 
+6. Proekt orhanizatsii terytorii rehionalnoho landshaftnoho parku «Yalivshchyna», okhorony, 
+vidtvorennia ta rekreatsiinoho vykorystannia yoho pryrodnykh kompleksiv ta obiektiv. (2025). [Project 
+for the organization of the territory of the regional landscape park "Yalivshchyna", protection, 
+restoration and recreational use of its natural complexes and objects] . 
+https://chor.gov.ua/images/Razdely/Norm_docum/Rishennia/8_sklykannia/24/Dodatok_13.pdf 
+7. Khalifeh Soltanian, F., Abbasi, M., & Riyahi Bakhtyari, H. R. (2019). Flood monitoring using 
+NDWI and MNDWI spectral indices: A case study of Aghqala flood-2019, Golestan Province, Iran. The 
+International Archives of the Photogrammetry, Remote Sensing and Spatial Information Sciences, XLII-
+4/W18, 347–353. https://isprs-archives.copernicus.org/articles/XLII-4-W18/605/2019/isprs-archives-
+XLII-4-W18-605-2019.pdf. 
+8. Drebot, O., Zubova, O. V ., Khant, G. O., Lukianenko, O., Cherniak, Y. V., & Savchuk, O. I. 
+(2020). Geodesy, cartography, and aerial photography. Geodesy, Cartography, and Aerial 
+Photography, 91,2020(91), 51–58. https://doi.org/10.23939/istcgcap2020.91.051 
+Дата першого надходження статті до видання: 20.07.2026 
+Дата прийняття статті до друку після рецензування: 12.08.2026 
+UDC 528.88:528.94:556.531(477.51) 
+Sergii Zavorotnyi1, Yulia Shcherbak2 
+1PhD in Technical Sciences, senior teacher departments of geodesy, cartography and land management 
+Chernihiv Polytechnic National University (Chernihiv, Ukraine) 
+E-mail: zavorotnyiserhii@ukr.net. ORCID: https://orcid.org/0000-0002-2139-8877. ResearcherlD: NRY-3592-2025 
+2lecturer of the Department of Geodesy, Cartography and Land Management, 
+Chernihiv Polytechnic National University (Chernihiv, Ukraine) 
+E-mail: Shch.Y u15@gmail.com. ORCID: http://orcid.org/0000-0002-3439-3792 
+MAPPING OF WATER TURBIDITY OF THE STRIZHEN RIVER IN THE CITY 
+OF CHERNIHIV USING IMAGES OF THE SENTINEL-2 SATELLITE MISSION 
+This article is devoted to the development and justification of the methodology for automated monitoring and mapping 
+of water turbidity of small rivers in urbanized areas using the example of the Stryzhen River in the city of Chernihiv, Chernihiv 
+region, using remote sensing (RS) data. The object of study was selected as reservoirs No. 2 and No. 3 of the Stryzhen River 
+within the administrative boundaries of the city of Chernihiv, which do not have appropriate research and, according to visual 
+observations, have significant anthropogenic loads over the past 15 years due to the development of residential areas. The 
+spectral channels of the Sentinel-2 satellite (B2, B3, B4, B8) for the period from 2017 to 2025 were analyzed. 
+The paper proposes the algorithm for processing spatial data in the Google Earth Engine environment, which includes 
+performing preliminary cloud filtering, subpixel resampling to a resolution of 10 m. To obtain cartographic materials, auto-
+matic separation of the water surface was performed using the normalized differential humidity index (NDWI) and an assess-
+ment of the spatial heterogeneity of the distribution of suspended solids based on the turbidity index (NDTI). 
+As a result of the study, it was found that the riverbed is optically heterogeneous: in the northern part of reservoirs No. 
+2 and No. 3 (Yalivshchyna ditsrict), persistent anomalies of high turbidity were detected, which indicates the processes of 
+siltation, shallow water and eutrophication in stagnant zones. Taking into account the obtained mapping results, it will be 
+determined that the use of satellite information to overcome the discreteness of classical ground-based hydrochemical moni-
+toring of narrow and regulated water bodies. 
+Keywords: Earth remote sensing; Sentinel-2; water turbidity; NDWI; NDTI; Google Earth Engine; mapping. 
+Fig.: 9. References: 8. 
+ 
+Заворотний С. М., Щербак Ю. В. Картографування каламутності води р. Стрижень в м. Чернігів за допомогою супутникових знімків 
+SENTINEL-2. Технічні науки та технології, 2026. № 3(45). С. 248-256. DOI: https://doi.org/10.25140/2411-5363-2026-3(45)-248-256.
