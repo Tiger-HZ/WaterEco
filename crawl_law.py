@@ -27,6 +27,45 @@ import sys
 import time
 import urllib.request
 
+
+# ——— 原子安全写 JSON（自动注入，勿手改）———
+# 背景：直接用 open(path,"w") + json.dump 有两个致命问题：
+#   ① open("w") 会**先清空文件**，若写入中抛异常（如遇到孤立 Unicode 代理码位 \ud835），
+#      会留下**半截无效 JSON**；下一步读取失败若又兜底为 []，就会把整库写成空数组（两次线上事故的根因）。
+#   ② 非原子写，并发/中断都可能损坏文件。
+# 本函数：清洗代理码位与控制字符 → 写临时文件 → os.replace 原子替换。原文件要么不变，要么完整。
+def _safe_dump(path, obj):
+    import json as _j, os as _o, re as _r, tempfile as _t
+    _SURR = _r.compile(r"[\ud800-\udfff]")
+
+    def _clean(x):
+        if isinstance(x, str):
+            return "".join(c for c in _SURR.sub("", x) if c in "\n\t" or ord(c) >= 32)
+        if isinstance(x, list):
+            return [_clean(i) for i in x]
+        if isinstance(x, tuple):
+            return [_clean(i) for i in x]
+        if isinstance(x, dict):
+            return {k: _clean(v) for k, v in x.items()}
+        return x
+
+    obj = _clean(obj)
+    d = _o.path.dirname(_o.path.abspath(path)) or "."
+    fd, tmp = _t.mkstemp(dir=d, suffix=".tmp")
+    try:
+        with _o.fdopen(fd, "w", encoding="utf-8") as f:
+            _j.dump(obj, f, ensure_ascii=False, indent=1)
+        _o.replace(tmp, path)
+    except Exception:
+        try:
+            _o.unlink(tmp)
+        except Exception:
+            pass
+        raise
+# ——— 注入结束 ———
+
+
+
 BASE = os.path.dirname(os.path.abspath(__file__))
 UA = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36",
       "Accept-Language": "zh-CN,zh;q=0.9"}
@@ -148,6 +187,10 @@ def main():
         a.apply = True
 
     kb = load_json(a.kb, [])
+    # ——— 读取失败保护：宁可中止，绝不把库写空 ———
+    import os as _os_g
+    if not kb and _os_g.path.exists(a.kb) and _os_g.path.getsize(a.kb) > 500:
+        raise SystemExit("!! kb.json 存在但解析失败（可能被写坏），拒绝继续以免覆盖数据：%s" % a.kb)
     mp = load_json(a.map, {})
     sources = mp.get("sources", {})
 
@@ -248,7 +291,7 @@ def main():
 
     print("\n[law] 完成：成功 %d，未通过 %d" % (fixed, failed))
     if a.apply:
-        json.dump(kb, open(a.kb, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+        _safe_dump(a.kb, kb)
         print("[law] 已写回 %s" % a.kb)
 
 

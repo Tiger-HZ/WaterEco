@@ -16,6 +16,45 @@ import crawl_gov
 import crawl_weixin
 import crawl_crossref
 
+
+# ——— 原子安全写 JSON（自动注入，勿手改）———
+# 背景：直接用 open(path,"w") + json.dump 有两个致命问题：
+#   ① open("w") 会**先清空文件**，若写入中抛异常（如遇到孤立 Unicode 代理码位 \ud835），
+#      会留下**半截无效 JSON**；下一步读取失败若又兜底为 []，就会把整库写成空数组（两次线上事故的根因）。
+#   ② 非原子写，并发/中断都可能损坏文件。
+# 本函数：清洗代理码位与控制字符 → 写临时文件 → os.replace 原子替换。原文件要么不变，要么完整。
+def _safe_dump(path, obj):
+    import json as _j, os as _o, re as _r, tempfile as _t
+    _SURR = _r.compile(r"[\ud800-\udfff]")
+
+    def _clean(x):
+        if isinstance(x, str):
+            return "".join(c for c in _SURR.sub("", x) if c in "\n\t" or ord(c) >= 32)
+        if isinstance(x, list):
+            return [_clean(i) for i in x]
+        if isinstance(x, tuple):
+            return [_clean(i) for i in x]
+        if isinstance(x, dict):
+            return {k: _clean(v) for k, v in x.items()}
+        return x
+
+    obj = _clean(obj)
+    d = _o.path.dirname(_o.path.abspath(path)) or "."
+    fd, tmp = _t.mkstemp(dir=d, suffix=".tmp")
+    try:
+        with _o.fdopen(fd, "w", encoding="utf-8") as f:
+            _j.dump(obj, f, ensure_ascii=False, indent=1)
+        _o.replace(tmp, path)
+    except Exception:
+        try:
+            _o.unlink(tmp)
+        except Exception:
+            pass
+        raise
+# ——— 注入结束 ———
+
+
+
 BASE = os.path.dirname(os.path.abspath(__file__))
 KB = os.path.join(BASE, "kb", "kb.json")
 CTX = ssl.create_default_context(); CTX.check_hostname = False; CTX.verify_mode = ssl.CERT_NONE
@@ -59,7 +98,7 @@ def oa_pdf_for_doi(doi):
 
 def save_kb(kb):
     """增量落盘：超时/被杀也能保留已处理的进度（下次运行靠幂等跳过，自然续跑）。"""
-    json.dump(kb, open(KB, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    _safe_dump(KB, kb)
 
 
 def main():

@@ -3,9 +3,42 @@
 供定时任务/回填任务一键调用。
 用法：python update.py
 """
-import os, runpy
+import os, runpy, json, shutil, time
 
 BASE = os.path.dirname(os.path.abspath(__file__))
+KB = os.path.join(BASE, "kb", "kb.json")
+KB_BAK = os.path.join(BASE, "kb", "kb.json.guard")
+
+
+def _kb_count(path=KB):
+    try:
+        with open(path, encoding="utf-8") as f:
+            return len(json.load(f))
+    except Exception:
+        return -1
+
+
+def _guard_check(stage, before):
+    """kb 完整性护栏：条目数骤降或损坏则从备份恢复（防写坏/清空）"""
+    after = _kb_count()
+    if before > 200 and (after < 0 or after < before * 0.5):
+        print("!! [kb护栏] %s 后条目数异常（%d -> %d），从备份恢复" % (stage, before, after))
+        try:
+            shutil.copy(KB_BAK, KB)
+            print("  已恢复，当前 %d 条" % _kb_count())
+        except Exception as e:
+            print("  恢复失败：%s" % repr(e)[:80])
+        return _kb_count()
+    return after
+
+
+# 起始备份
+if os.path.exists(KB):
+    try:
+        shutil.copy(KB, KB_BAK)
+        print("[update] kb 起始 %d 条，已备份" % _kb_count())
+    except Exception as e:
+        print("[update] 备份失败：%s" % repr(e)[:80])
 
 
 def run(name, optional=False):
@@ -16,7 +49,11 @@ def run(name, optional=False):
             return
         raise FileNotFoundError(p)
     print("\n===== update: %s =====" % name)
-    runpy.run_path(p, run_name="__main__")
+    _before = _kb_count()
+    try:
+        runpy.run_path(p, run_name="__main__")
+    finally:
+        _guard_check(name, _before)
 
 
 # 1) 字段归一化（region/department 受控词表 + DOI 规范化）
