@@ -1,0 +1,156 @@
+Package ‘maposm’
+September 17, 2026
+Type Package
+Title Get Map Layers from 'OpenStreetMap'
+Version 0.5.1
+Description The 'OpenStreetMap' database provides a wide range of highly
+detailed geographic layers on a global scale. To obtain synthetic
+information for cartographic purposes, layers must be selected, simplified,
+merged, or modified. 'maposm' downloads 'OpenStreetMap' extracts and performs
+these operations to create a set of composite layers of urban areas,
+buildings, green spaces, main roads, secondary roads, railways, and water
+bodies.
+URL https://codeberg.org/riatelab/maposm,
+https://riatelab.r-universe.dev/maposm
+BugReports https://codeberg.org/riatelab/maposm/issues
+License GPL-3
+Depends R (>= 4.2.0)
+Imports sf, lwgeom, tools, mapsf, graphics, osmextract
+Suggests tinytest
+Encoding UTF-8
+Language en-US
+Config/roxygen2/version 8.1.0
+NeedsCompilation no
+Author Timothée Giraud [cre, aut] (ORCID:
+<https://orcid.org/0000-0002-1932-3323 >),
+Matthieu Viry [ctb] (ORCID: <https://orcid.org/0000-0002-0693-8556 >),
+Louis Laurian [ctb] (ORCID: <https://orcid.org/0009-0002-7275-5536 >)
+Maintainer Timothée Giraud <timothee.giraud@cnrs.fr>
+Repository CRAN
+Date/Publication 2026-09-17 13:00:02 UTC
+1
+2 maposm
+Contents
+maposm . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+om_get . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+om_map . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+om_read . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+om_write . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+Index 6
+maposm Package description
+Description
+The OpenStreetMap database provides a wide range of highly detailed geographic layers on a global
+scale. To obtain synthetic information for cartographic purposes, layers must be selected, simplified,
+merged, or modified. maposm downloads OpenStreetMap extracts and performs these operations to
+create a set of composite layers of urban areas, buildings, green spaces, main roads, secondary
+roads, railways, and water bodies.
+om_get is used to download, merge and simplify the geographic layers.
+om_map is used to map the layers. Several themes are available to map the layers ("light", "dark",
+"grey" and "pizza").
+om_write can be used to write the layers to a geopackage file.
+om_read can be used to read these geopackages.
+Author(s)
+Maintainer: Timothée Giraud <timothee.giraud@cnrs.fr> (ORCID)
+Authors:
+• Timothée Giraud <timothee.giraud@cnrs.fr> (ORCID)
+Other contributors:
+• Matthieu Viry (ORCID) [contributor]
+• Louis Laurian (ORCID) [contributor]
+See Also
+Useful links:
+• https://codeberg.org/riatelab/maposm
+• https://riatelab.r-universe.dev/maposm
+• Report bugs at https://codeberg.org/riatelab/maposm/issues
+om_get 3
+om_get Get map layers
+Description
+Download various OpenStreetMap features to create map layers.
+Usage
+om_get(
+x,
+r,
+download_directory = tempdir(),
+force_download = FALSE,
+max_file_size = 20,
+force_building = FALSE,
+quiet = FALSE
+)
+Arguments
+x an sf or sfc object, or a couple of coordinates (lon/lat, EPSG:4326)
+r radius of the extraction if x is an sf POINT or a couple of coordinates
+download_directory
+directory to store the file containing raw OpenStreetMap data
+force_download if TRUE, the OpenSteetMap file is updated even if it has already been down-
+loaded.
+max_file_size the maximum file size to download without asking in interactive mode, in megabytes
+(default to 20 MB)
+force_building force the extraction of buildings in zones larger than 20 km²
+quiet if FALSE, the function prints informative messages
+Value
+A list of map layers is returned :
+• zone, the extraction zone;
+• urban, urban areas;
+• building, buildings (if the extraction zone area is below 20 km² or force_building = TRUE);
+• green, green spaces;
+• road, main roads;
+• street, secondary roads;
+• railway, railways (line);
+• water, water bodies
+If x uses an unprojected CRS (lon/lat, EPSG:4326), ouput uses Web Mercator CRS (EPSG:3857),
+it uses x CRS otherwise.
+4 om_read
+Examples
+res = om_get(c(-61.070, 14.605), r = 600)
+om_map(res, title = "Fort-de-France town centre")
+om_map Map layers
+Description
+Display a map of the downloaded layers.
+Usage
+om_map(x, title = "Data from OpenStreetMap", theme = "light")
+Arguments
+x a list of map layers
+title map title
+theme cartographic theme; "light", "dark", "grey" or "pizza"
+Value
+Nothing is returned. A map is displayed.
+Examples
+res = om_get(c(-61.070, 14.605), r = 600)
+om_map(res, title = "Fort-de-France town centre", theme = "light")
+om_read Import a list of map layers
+Description
+Read and import a list of layers.
+Usage
+om_read(filename)
+Arguments
+filename a geopackage file
+om_write 5
+Value
+A list of map layers is returned.
+Examples
+res = om_get(c(-61.070, 14.605), r = 600)
+om_map(res, title = "Fort-de-France town centre")
+om_write(res, file.path(tempdir(), "f2f.gpkg"))
+r = om_read(file.path(tempdir(), "f2f.gpkg"))
+om_map(r, theme = "grey")
+om_write Save map layers to a file
+Description
+Write a list a map of layers to a geopackage file.
+Usage
+om_write(x, filename)
+Arguments
+x a list of map layers produce with om_get
+filename a geopackage file
+Value
+The layers are saved to a geopackage file. Nothing is returned.
+Examples
+res = om_get(c(-61.070, 14.605), r = 600)
+om_map(res, title = "Fort-de-France town centre")
+(om_write(res, file.path(tempdir(), "f2f.gpkg")))
+Index
+maposm, 2
+maposm-package (maposm), 2
+om_get, 2, 3
+om_map, 2, 4
+om_read, 2, 4
+om_write, 2, 5
+6
