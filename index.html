@@ -430,7 +430,7 @@
       <div class="kb-main">
         <div class="kb-subbar">
           <button class="kb-nav-toggle" id="kbNavToggle" onclick="toggleKbNav()">☰ 栏目</button>
-          <span class="seg" id="kbBrowse"><button class="on" data-b="topic">按业务域</button><button data-b="category">按知识类别</button><button data-b="department">按部门</button><button data-b="time">按时间</button></span>
+          <span class="seg" id="kbBrowse"><button class="on" data-b="topic">按业务域</button><button data-b="category">按知识类别</button><button data-b="region">按地域</button><button data-b="department">按部门</button><button data-b="time">按时间</button></span>
           <select id="kbRange" onchange="onKbRangeChange()" style="margin-left:auto">
             <option value="">全部时间</option>
             <option value="7">近 1 周</option>
@@ -910,10 +910,11 @@ function kbNavPick(dim,val){
   if(dim==='category'){ $('#kbCat').value=val||''; }
   else if(dim==='department'){ $('#kbDept').value=val||''; }
   else if(dim==='topic'){ $('#kbTopic').value=val||''; }
+  else if(dim==='region'){ $('#kbRegion').value=val||''; }
   else if(dim==='time'){ App.kbRange=val||''; $('#kbRange').value=App.kbRange; $('#kbCustom').style.display='none'; }
   App.kbExpanded={}; App.kbPage=1; closeKbNav(); loadKB();
 }
-function clearKbNav(){ App.kbExpanded={}; $('#kbCat').value=''; $('#kbDept').value=''; if($('#kbTopic'))$('#kbTopic').value=''; if($('#kbStatus'))$('#kbStatus').value=''; App.kbRange=''; $('#kbRange').value=''; $('#kbCustom').style.display='none'; App.kbPage=1; closeKbNav(); loadKB(); }
+function clearKbNav(){ App.kbExpanded={}; $('#kbCat').value=''; $('#kbDept').value=''; if($('#kbTopic'))$('#kbTopic').value=''; if($('#kbStatus'))$('#kbStatus').value=''; if($('#kbRegion'))$('#kbRegion').value=''; App.kbRange=''; $('#kbRange').value=''; $('#kbCustom').style.display='none'; App.kbPage=1; closeKbNav(); loadKB(); }
 function toggleKbNav(){ const n=$('#kbNav'), m=$('#kbNavMask'); if(n) n.classList.toggle('open'); if(m) m.classList.toggle('on'); }
 function closeKbNav(){ const n=$('#kbNav'), m=$('#kbNavMask'); if(n) n.classList.remove('open'); if(m) m.classList.remove('on'); }
 function renderKbNav(arr){
@@ -925,11 +926,18 @@ function renderKbNav(arr){
   html+='<div class="nav-i'+(!curCat&&!curDept&&!curRange&&!curTopic&&!curStatus?' on':'')+'" onclick="clearKbNav()">全部</div>';
   if(dim==='topic'){
     const cnt={}; arr.forEach(r=>(r.topic||[]).forEach(x=>cnt[x]=(cnt[x]||0)+1));
+    const tot0=arr.length||1;
     TOPICS.forEach(o=>{ const c=cnt[o.id]; if(!c) return;
-      html+='<div class="nav-i'+(curTopic===o.id?' on':'')+'" onclick="kbNavPick(\'topic\',\''+o.id+'\')">'+o.zh+' <b>'+c+'</b></div>'; });
+      html+='<div class="nav-i'+(curTopic===o.id?' on':'')+'" onclick="kbNavPick(\'topic\',\''+o.id+'\')">'+o.zh+' <b>'+c+'</b> <span class="muted">'+Math.round(100*c/tot0)+'%</span></div>'; });
   } else if(dim==='category'){
+    const tot=arr.length||1;
     KCLASSES.forEach(o=>{ const n=arr.filter(r=>(r.kclass||'other')===o.id).length; if(!n) return;
-      html+='<div class="nav-i'+(curCat===o.id?' on':'')+'" onclick="kbNavPick(\'category\',\''+o.id+'\')">'+o.zh+' <b>'+n+'</b></div>'; });
+      html+='<div class="nav-i'+(curCat===o.id?' on':'')+'" onclick="kbNavPick(\'category\',\''+o.id+'\')">'+o.zh+' <b>'+n+'</b> <span class="muted">'+Math.round(100*n/tot)+'%</span></div>'; });
+  } else if(dim==='region'){
+    const tot=arr.length||1, regs=['杭州','浙江','流域','长三角','全国','国际'];
+    const cnt={}; arr.forEach(r=>{ const k=r.region||'其他'; cnt[k]=(cnt[k]||0)+1; });
+    regs.concat(Object.keys(cnt).filter(k=>regs.indexOf(k)<0)).forEach(k=>{ const n=cnt[k]; if(!n) return;
+      html+='<div class="nav-i'+($('#kbRegion').value===k?' on':'')+'" onclick="kbNavPick(\'region\',\''+k+'\')">'+k+' <b>'+n+'</b> <span class="muted">'+Math.round(100*n/tot)+'%</span></div>'; });
   } else if(dim==='department'){
     DEPTS.forEach(d=>{ const n=arr.filter(r=>r.department===d).length; if(!n) return;
       html+='<div class="nav-i'+(curDept===d?' on':'')+'" onclick="kbNavPick(\'department\',\''+d+'\')">'+d+' <b>'+n+'</b></div>'; });
@@ -2015,19 +2023,30 @@ const MUST_RANK_LABEL = [
   [950,999,'十一、杭州市政府规章 · 市级规划 · 公报报告'],
 ];
 function mustRankLabel(n){ n=Number(n)||999; for(const [a,b,l] of MUST_RANK_LABEL){ if(n>=a&&n<=b) return l; } return '十二、其他'; }
-/* 入选规则：核心=数据中带 must_know 标记；高分补充=A级政策/标准类且水相关度高、重要性达标 */
+/* 入选规则（2026-09-23 优化）
+   核心必知 = 数据中带 must_know 标记（人工逐条核实并核定层级）
+   高分补充 = 按【知识类别】判定（原用旧 category 字段 + water_rel≥0.9 过严阈值，漏掉大量政策/规划）：
+     · 政策法规/标准规范/规划与报告/管理机制 → 重要性 ≥8.5
+     · 杭州本地 ≥8.0、浙江省级 ≥8.2（本单位重点，放宽）
+     · 权威实践案例（A 级）≥8.0
+   这样既补全重要内容，又不会让必知必会泛滥成灾。 */
 function mustMatch(r){
   if(r.must_know) return 'core';
-  const cat=r.category||'';
-  const rel=Number(r.water_rel)||0, imp=Number(r.importance)||0;
-  if(r.quality==='A' && (cat==='policy'||cat==='standard') && rel>=0.9 && imp>=7.0) return 'auto';
+  const kc=r.kclass||'', imp=Number(r.importance)||0, q=r.quality||'', reg=r.region||'';
+  if(kc==='policy'||kc==='standard'||kc==='plan_report'||kc==='management'){
+    if(imp>=8.5) return 'auto';
+    if(reg==='杭州' && imp>=8.0) return 'auto';
+    if(reg==='浙江' && imp>=8.2) return 'auto';
+  }
+  if(kc==='case_practice' && q==='A' && imp>=8.0) return 'auto';
   return null;
 }
 async function loadMust(){
   if(!App.kb || !App.kb.length){ try{ await loadKBData(); }catch(e){} }
   if(!App.mustReady){
-    const kinds=[]; (App.kb||[]).forEach(r=>{ if(mustMatch(r) && r.content_type && kinds.indexOf(r.content_type)<0) kinds.push(r.content_type); });
-    const sel=$('#mustKind'); if(sel){ kinds.forEach(k=>{ const o=document.createElement('option'); o.value=k; o.textContent=k; sel.appendChild(o); }); }
+    // 按【知识类别】聚合选项（比内部层级值更贴近业务语言）
+    const kinds=[]; (App.kb||[]).forEach(r=>{ if(mustMatch(r) && r.kclass && kinds.indexOf(r.kclass)<0) kinds.push(r.kclass); });
+    const sel=$('#mustKind'); if(sel){ kinds.forEach(k=>{ const o=document.createElement('option'); o.value=k; o.textContent=(typeof KCLASS_LABELS!=='undefined'&&KCLASS_LABELS[k])||k; sel.appendChild(o); }); }
     App.mustReady=true;
   }
   mustRender();
@@ -2049,7 +2068,10 @@ function mustCard(r, idx){
     + '<div class="must-rank">'+(idx+1)+'</div>'
     + '<div class="must-body">'
     +   '<h3>'+(url?'<a href="'+esc(url)+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">'+esc(r.title)+'</a>':esc(r.title))+'</h3>'
-    +   '<div class="must-meta">'+(r.content_type?'<span class="badge b-cat">'+esc(r.content_type)+'</span>':'')
+    +   '<div class="must-meta">'
+    +     (r.kclass?'<span class="badge b-kc">'+esc(KCLASS_LABELS[r.kclass]||r.kclass)+'</span>':'')
+    +     ((r.topic&&r.topic.length)?r.topic.slice(0,2).map(x=>'<span class="badge b-topic">'+esc(TOPIC_LABELS[x]||x)+'</span>').join(''):'')
+    +     (r.content_type?'<span class="badge b-cat">'+esc(r.content_type)+'</span>':'')
     +     (r.region?'<span class="badge b-region">'+esc(r.region)+'</span>':'')
     +     badges
     +     '<span>'+meta.join(' · ')+'</span></div>'
@@ -2065,7 +2087,7 @@ function mustRender(){
     const t=mustMatch(r); if(!t) return;
     if(q && (((r.title||'')+' '+(r.summary||'')).toLowerCase().indexOf(q)<0)) return;
     if(reg && r.region!==reg) return;
-    if(kind && (r.content_type||'')!==kind) return;
+    if(kind && (r.kclass||'')!==kind) return;
     (t==='core'?core:auto).push(r);
   });
   core.sort((a,b)=> (Number(a.must_rank)||999)-(Number(b.must_rank)||999)
