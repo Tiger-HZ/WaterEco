@@ -1,0 +1,2504 @@
+
+
+
+
+<!DOCTYPE html>
+
+<html lang="en" class="no-js">
+
+<head>
+    <!-- charset must appear in the first 1024 bytes of the document -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Women and nature in the Danube Delta: a water’s edge perspective | Journal of Organizational Ethnography | Emerald Publishing</title>
+        
+
+
+
+        <script src="https://cookie-cdn.cookiepro.com/scripttemplates/otSDKStub.js" type="text/javascript" charset="UTF-8" data-domain-script="0197c624-2c4e-797f-8a8e-d7b514495009" class="cookiepro-otsdkstub"></script>
+    <script type="text/javascript">
+        function OptanonWrapper() {
+            // Get initial OnetrustActiveGroups ids
+            if (typeof OptanonWrapperCount == "undefined") {
+                otGetInitialGrps();
+            }
+
+            //Delete cookies
+            otDeleteCookie(otIniGrps);
+
+            // Assign OnetrustActiveGroups to custom variable
+            function otGetInitialGrps() {
+                OptanonWrapperCount = '';
+                otIniGrps = OnetrustActiveGroups;
+            }
+
+            function otDeleteCookie(iniOptGrpId) {
+                var otDomainGrps = JSON.parse(JSON.stringify(Optanon.GetDomainData().Groups));
+                var otDeletedGrpIds = otGetInactiveId(iniOptGrpId, OnetrustActiveGroups);
+                if (otDeletedGrpIds.length != 0 && otDomainGrps.length != 0) {
+                    for (var i = 0; i < otDomainGrps.length; i++) {
+                        //Check if CustomGroupId matches
+                        if (otDomainGrps[i]['CustomGroupId'] != '' && otDeletedGrpIds.includes(otDomainGrps[i]['CustomGroupId'])) {
+                            for (var j = 0; j < otDomainGrps[i]['Cookies'].length; j++) {
+                                // console.log("otDeleteCookie",otDomainGrps[i]['Cookies'][j]['Name'])
+                                //Delete cookie
+                                eraseCookie(otDomainGrps[i]['Cookies'][j]['Name']);
+                            }
+                        }
+
+                        //Check if Hostid matches
+                        if (otDomainGrps[i]['Hosts'].length != 0) {
+                            for (var j = 0; j < otDomainGrps[i]['Hosts'].length; j++) {
+                                //Check if HostId presents in the deleted list and cookie array is not blank
+                                if (otDeletedGrpIds.includes(otDomainGrps[i]['Hosts'][j]['HostId']) && otDomainGrps[i]['Hosts'][j]['Cookies'].length != 0) {
+                                    for (var k = 0; k < otDomainGrps[i]['Hosts'][j]['Cookies'].length; k++) {
+                                        //Delete cookie
+                                        eraseCookie(otDomainGrps[i]['Hosts'][j]['Cookies'][k]['Name']);
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                }
+                otGetInitialGrps(); //Reassign new group ids
+            }
+
+            //Get inactive ids
+            function otGetInactiveId(customIniId, otActiveGrp) {
+                //Initial OnetrustActiveGroups
+                // console.log("otGetInactiveId",customIniId)
+                customIniId = customIniId.split(",");
+                customIniId = customIniId.filter(Boolean);
+
+                //After action OnetrustActiveGroups
+                otActiveGrp = otActiveGrp.split(",");
+                otActiveGrp = otActiveGrp.filter(Boolean);
+
+                var result = [];
+                for (var i = 0; i < customIniId.length; i++) {
+                    if (otActiveGrp.indexOf(customIniId[i]) <= -1) {
+                        result.push(customIniId[i]);
+                    }
+                }
+                return result;
+            }
+
+            //Delete cookie
+            function eraseCookie(name) {
+                //Delete root path cookies
+                domainName = window.location.hostname;
+                document.cookie = name + '=; Max-Age=-99999999; Path=/;Domain=' + domainName;
+                document.cookie = name + '=; Max-Age=-99999999; Path=/;';
+
+                //Delete LSO incase LSO being used, cna be commented out.
+                localStorage.removeItem(name);
+
+                //Check for the current path of the page
+                pathArray = window.location.pathname.split('/');
+                //Loop through path hierarchy and delete potential cookies at each path.
+                for (var i = 0; i < pathArray.length; i++) {
+                    if (pathArray[i]) {
+                        //Build the path string from the Path Array e.g /site/login
+                        var currentPath = pathArray.slice(0, i + 1).join('/');
+                        document.cookie = name + '=; Max-Age=-99999999; Path=' + currentPath + ';Domain=' + domainName;
+                        document.cookie = name + '=; Max-Age=-99999999; Path=' + currentPath + ';';
+                        //Maybe path has a trailing slash!
+                        document.cookie = name + '=; Max-Age=-99999999; Path=' + currentPath + '/;Domain=' + domainName;
+                        document.cookie = name + '=; Max-Age=-99999999; Path=' + currentPath + '/;';
+
+
+                    }
+                }
+
+            }
+        }
+    </script>
+                
+
+
+<script type="text/javascript" src="https://play.cadmore.media/js/CADMORE_ALL_JS.js"></script>
+
+
+
+        <script type='text/plain' defer src='//js.trendmd.com/trendmd.min.js' data-trendmdconfig='{"journal_id":"63116","element":"#trendmd-suggestions"}' class='optanon-category-C0004'></script>
+
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>
+<script>window.jQuery || document.write('<script src="//emer.silverchair-cdn.com/Themes/Silver/app/js/jquery.3.4.1.min.js" type="text/javascript">\x3C/script>')</script>
+<script src="//emer.silverchair-cdn.com/Themes/Silver/app/vendor/v-639241669668653874/jquery-migrate-3.1.0.min.js" type="text/javascript"></script>
+
+    <script type='text/plain' src='https://platform-api.sharethis.com/js/sharethis.js#property=643701de45aa460012e1032e&amp;product=sop' async='async' class='optanon-category-C0004'></script>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=10" />
+
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <!-- Turn off telephone number detection. -->
+    <meta name="format-detection" content="telephone=no" />
+    
+<!-- Bookmark Icons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="//emer.silverchair-cdn.com/Themes/Client/app/img/favicons/v-639241669139024968/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="//emer.silverchair-cdn.com/Themes/Client/app/img/favicons/v-639241669139162229/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="//emer.silverchair-cdn.com/Themes/Client/app/img/favicons/v-639241669139125092/favicon-16x16.png" sizes="16x16">
+  <link rel="mask-icon" href="//emer.silverchair-cdn.com/Themes/Client/app/img/favicons/v-639241669139339813/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="icon" href="//emer.silverchair-cdn.com/Themes/Client/app/img/favicons/v-639241669139202028/favicon.ico" sizes="32x32">
+  <link rel="manifest" href="//emer.silverchair-cdn.com/Themes/Client/app/img/favicons/v-639241669139389987/site.webmanifest">
+  <meta name="msapplication-config" content="//emer.silverchair-cdn.com/Themes/Client/app/img/favicons/v-639241669139075060/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+
+
+    
+
+
+  <link rel="stylesheet" type="text/css" href="//emer.silverchair-cdn.com/Themes/Client/app/css/v-639255519713170050/site.min.css" />
+  <link rel="stylesheet" type="text/css" href="//emer.silverchair-cdn.com/Themes/Silver/app/icons/v-639241669638796373/style.css" />
+  <link rel="stylesheet" type="text/css" href="//emer.silverchair-cdn.com/Themes/Client/app/css/v-639241669138274992/bg_img.css" />
+
+<link rel="stylesheet" href="https://use.typekit.net/xpl0ais.css">
+
+
+        <link href="//emer.silverchair-cdn.com/data/SiteBuilderAssetsOriginals/Live/CSS/umbrella/v-639255966847812818/umbrella.css" rel="stylesheet" type="text/css" />
+            <link href="//emer.silverchair-cdn.com/data/SiteBuilderAssetsOriginals/Live/data/SiteBuilderAssets/CSS/basesite/site.css" rel="stylesheet" type="text/css" />
+
+            <script>
+                (function (w, d, s, l, i) {
+                    w[l] = w[l] || []; w[l].push({
+                        'gtm.start':
+                            new Date().getTime(), event: 'gtm.js'
+                    }); var f = d.getElementsByTagName(s)[0],
+                        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+                        j.setAttribute('type', 'text/plain');
+                            j.setAttribute('class', 'optanon-category-C0002');
+                        j.async = true; j.src =
+                        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+                })(window, document, 'script', 'dataLayer', 'GTM-W9XTGPJQ');
+            </script>
+
+    
+
+        <script type="text/javascript">
+            var App = App || {};
+            App.LoginUserInfo = {
+                isInstLoggedIn: 1,
+                isIndividualLoggedIn: 0
+            };
+
+            App.CurrentSubdomain = 'joe';
+            App.SiteURL = 'www.emerald.com/joe';
+            App.EnableAdobeAnalytics = false;
+        </script>
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+
+    <meta name="citation_author" content="Teampău, Petruța Mădălina" /><meta name="citation_author_institution" content="Research Institute of the University of Bucharest (ICUB), University of Bucharest, Bucharest, Romania" /><meta name="citation_author_institution" content="Faculty of Political, Administrative and Communication Sciences, Babeș-Bolyai University, Cluj-Napoca, Romania" /><meta name="citation_title" content="Women and nature in the Danube Delta: a water’s edge perspective" /><meta name="citation_firstpage" content="1" /><meta name="citation_lastpage" content="15" /><meta name="citation_doi" content="10.1108/JOE-11-2025-0154" /><meta name="citation_journal_title" content="Journal of Organizational Ethnography" /><meta name="citation_journal_abbrev" content="Journal of Organizational Ethnography" /><meta name="citation_reference" content="citation_author=Alexandrescu  I.; citation_publisher=Comitetul Regional de Artă şi Cultură Dobrogea, Constanța;  citation_title=Delta. The Treasury of the Danube;  citation_year=1966; " /><meta name="citation_reference" content="citation_title=Hydrofeminism on the Coastline: an interview with Astrida Neimanis; citation_author=Bezan  S.; citation_author=Neimanis  A.;  citation_journal_title=Anthropocenes - Human, Inhuman, Posthuman;  citation_year=2022;  citation_volume=3;  citation_issue=1; " /><meta name="citation_reference" content="citation_author=Buechler  S.; citation_author=Hanson  A.; citation_publisher=Routledge, London;  citation_title=A Political Ecology of Women, Water and Global Environmental Change;  citation_year=2015; " /><meta name="citation_reference" content="citation_author=Chen  C.; citation_author=MacLeod  J.; citation_author=Neimanis  A.; citation_publisher=McGill-Queen's University Press, Montreal, Quebec;  citation_title=Thinking with Water;  citation_year=2013; " /><meta name="citation_reference" content="citation_title=Feminist reclaiming of water metaphors; citation_author=Coady  A.; citation_publisher=Université Jean Moulin, ;  citation_year=2024; " /><meta name="citation_reference" content="citation_author=Dorondel  S.; citation_author=Mitroi  V.; citation_author=Graf von Harderberg  W.; citation_author=Kelly  M.; citation_author=Leal  C.M.; citation_author=Wakild  E.; citation_publisher=Routledge, London and New York;  citation_title=The Nature State: Rethinking the History of Conservation;  citation_year=2017;  citation_pages=194-212; " /><meta name="citation_reference" content="citation_title=Nature/culture/seawater; citation_author=Helmreich  S.;  citation_journal_title=American Anthropologist;  citation_year=2011;  citation_volume=113;  citation_issue=1;  citation_pages=132-144; " /><meta name="citation_reference" content="citation_title=Tourism and protected areas: political ecology of the rural tourism in Romanian Danube Delta; citation_author=Iorga  A.;  citation_journal_title=Revista de turism - studii si cercetari in turism/Journal of tourism - studies and research in tourism;  citation_year=2015;  citation_volume=20;  citation_issue=20;  citation_pages=34-41; " /><meta name="citation_reference" content="citation_title=We make more money now, but We Don't talk to each other anymore’: on new tourism and capitalism in the Danube Delta; citation_author=Ivan  O.;  citation_journal_title=Journal of Tourism and Cultural Change;  citation_year=2017;  citation_volume=15;  citation_issue=2;  citation_pages=122-135; " /><meta name="citation_reference" content="citation_title=Half of century of household tourism: on winnings, losings and transformations in a Danube Delta fishing village; citation_author=Ivan  O.;  citation_journal_title=Journal of Tourism and Cultural Change;  citation_year=2025;  citation_volume=23;  citation_issue=6;  citation_pages=662-675; " /><meta name="citation_reference" content="citation_title=Waves, floods, currents: the politics and poetics of water in social movement analysis; citation_author=Matthews  J.;  citation_journal_title=Antiopode;  citation_year=2023;  citation_volume=55;  citation_issue=6;  citation_pages=1822-1840; " /><meta name="citation_reference" content="Moşilă A. and Bălan M. ( 2025 ), “ Women, human security, and environmental change in the Danube Delta's village Sfântu Gheorghe ”, available at:   Link to the website " /><meta name="citation_reference" content="citation_author=Richardson  T.; citation_author=Bozovic  M.; citation_author=Miller  M.; citation_publisher=Academic Studies Press, Boston;  citation_title=Watersheds: The Poetics and Politics of the Danube River;  citation_year=2016; " /><meta name="citation_reference" content="citation_title=The terrestrialization of amphibious life in a Danube Delta ’Town on water; citation_author=Richardson  T.;  citation_journal_title=Suomen Antropologi: Journal of the Finnish Anthropological Society;  citation_year=2019;  citation_volume=43;  citation_issue=2;  citation_pages=3-29; " /><meta name="citation_reference" content="citation_title=The community and the stranger between fishing and tourism. The case of the village of Hezra (Danube Delta - Romania); citation_author=Stoica  G.;  citation_journal_title=Social Anthropology and ethnology. Université de Nanterre - Paris X;  citation_year=2010; " /><meta name="citation_reference" content="citation_title=The human ecology of the Danube Delta: a historical and cartographic perspective; citation_author=Tănăsescu  M.; citation_author=Constantinescu  S.;  citation_journal_title=Journal of Environmental Management;  citation_year=2020;  citation_volume=262; " /><meta name="citation_reference" content="citation_title=Trouble in paradise: competing discourses and complex governance in the Romanian Danube Delta; citation_author=Teampău  P.;  citation_journal_title=Marine Policy;  citation_year=2020;  citation_volume=112; " /><meta name="citation_reference" content="citation_author=Teampău  P.; citation_publisher=PUC: Cluj, ;  citation_title=Sulina cosmopolită;  citation_year=2022; " /><meta name="citation_reference" content="citation_title=Women of the sea; citation_author=Tincu  V.;  citation_journal_title=Femeia;  citation_year=1977;  citation_volume=August;  citation_pages=6-7; " /><meta name="citation_reference" content="citation_title=Traumatic natures of the swamp: concepts of nature in the Romanian Danube Delta; citation_author=Van Assche  K.; citation_author=Bell  S.; citation_author=Teampău  P.;  citation_journal_title=Environmental Values;  citation_year=2012;  citation_volume=21;  citation_issue=2;  citation_pages=163-183; " /><meta name="citation_reference" content="citation_title=Role of women in Romanian fisheries; citation_author=Zaharia  T.; citation_author=Romieu  V.; citation_author=Souidi  S.; citation_author=Brugere  C.;  citation_journal_title=Cercetări Marine;  citation_year=2019;  citation_issue=49;  citation_pages=141-157; " /><meta name="citation_pdf_url" content="https://www.emerald.com/joe/article-pdf/doi/10.1108/JOE-11-2025-0154/11753466/joe-11-2025-0154en.pdf" />
+
+<meta name="citation_xml_url" content="https://www.emerald.com/joe/article-xml/doi/10.1108/JOE-11-2025-0154/1388176" />
+    <meta name="description" content="Purpose. The purpose of this ethnographic research is to describe the under-articulated relationship between women and water in the specific">
+
+
+    <link rel="canonical" href="https://www.emerald.com/joe/article/doi/10.1108/JOE-11-2025-0154/1388176/Women-and-nature-in-the-Danube-Delta-a-water-s" />
+
+
+
+
+
+
+    <meta name="publish_date" content="2026-07-21" />
+
+    <meta name="publish_image" content="//emer.silverchair-cdn.com/data/SiteBuilderAssetsOriginals/Live/Images/joe/Journal_of_Organizational_Ethnography_Header.svg" />
+
+
+
+    <meta name="product_code" content="EMANC_KBART" />
+    <meta name="product_code" content="EMAN_KBART" />
+    <meta name="product_code" content="ECPREM_KBART" />
+    <meta name="product_code" content="ECMAN_KBART" />
+    <meta name="product_code" content="EHRLOS" />
+    <meta name="product_code" content="EMXP_KBART" />
+    <meta name="product_code" content="ECMANC_KBART" />
+    <meta name="product_code" content="ECPREM__06012026__05312027" />
+    <meta name="product_code" content="EMAN__06012026__05312027" />
+    <meta name="product_code" content="ECMANC__06012026__05312027" />
+    <meta name="product_code" content="CCOL_KBART" />
+    <meta name="product_code" content="EHRLOS__06012026__05312027" />
+    <meta name="product_code" content="EBA_CP" />
+    <meta name="product_code" content="ECPREM__05012026__04302027" />
+    <meta name="product_code" content="CAPES2__06012026__05312027" />
+    <meta name="product_code" content="STK_ALLJOURNALS" />
+    <meta name="product_code" content="EMANC__05012026__04302027" />
+    <meta name="product_code" content="EMANC__06012026__05312027" />
+    <meta name="product_code" content="SWCE2021" />
+    <meta name="product_code" content="EMAN" />
+    <meta name="product_code" content="EPREM_KBART" />
+    <meta name="product_code" content="EPREM__06012026__05312027" />
+    <meta name="product_code" content="ALL_CONTENT" />
+    <meta name="product_code" content="JOE" />
+    <meta name="product_code" content="EOOSC" />
+    <meta name="product_code" content="EMFOS" />
+    <meta name="product_code" content="EMFOOSC" />
+    <meta name="product_code" content="MikeAllJournals" />
+    <meta name="product_code" content="ECHRLOS" />
+    <meta name="product_code" content="EPREM__07012026__06302027" />
+    <meta name="product_code" content="ECPREM__07012026__06302027" />
+    <meta name="product_code" content="EMAN__07012026__06302027" />
+    <meta name="product_code" content="EPREM" />
+    <meta name="product_code" content="EHRLOS__07012026__06302027" />
+    <meta name="product_code" content="EPREM__01012026__01012027" />
+    <meta name="product_code" content="EMFPSZ" />
+    <meta name="product_code" content="SWUNCG2021" />
+    <meta name="product_code" content="EMAN__05012026__04302027" />
+    <meta name="product_code" content="EMANC" />
+    <meta name="product_code" content="EAMANCA" />
+    <meta name="product_code" content="ECMAN__05012026__04302027" />
+    <meta name="product_code" content="EHRLOS_KBART" />
+    <meta name="product_code" content="ECMANC__07012026__06302027" />
+    <meta name="product_code" content="PPVJOURNALST1" />
+    <meta name="product_code" content="ECHRLOS_KBART" />
+    <meta name="product_code" content="ALLJOURNALS_KBART" />
+    <meta name="product_code" content="ECHRLOS__05012026__04302027" />
+    <meta name="product_code" content="CAPES" />
+    <meta name="product_code" content="ECMANC__05012026__04302027" />
+    <meta name="product_code" content="EMANC__07012026__06302027" />
+    <meta name="product_code" content="ECMAN__04012026__03312027" />
+    <meta name="product_code" content="EPREM__05012026__04302027" />
+    <meta name="product_code" content="CCCOL" />
+    <meta name="product_code" content="ECPREM" />
+    <meta name="product_code" content="EMXP" />
+    <meta name="product_code" content="EMXOS" />
+    <meta name="product_code" content="EHRLOS__07012026__12312027" />
+    <meta name="product_code" content="ERP2000" />
+    <meta name="product_code" content="ERP1000" />
+    <meta name="product_code" content="ERP500" />
+    <meta name="product_code" content="ECMANC" />
+    <meta name="product_code" content="ERP250" />
+    <meta name="product_code" content="ECMAN" />
+    <meta name="product_code" content="ECMAN__07012026__06302027" />
+    <meta name="product_code" content="ERP100" />
+    <meta name="product_code" content="CAPES2" />
+    <meta name="product_code" content="EPREM__01012022__12312026" />
+    <meta name="product_code" content="EAPREMA" />
+    <meta name="product_code" content="J_1388176" />
+    <meta name="product_code" content="I_0" />
+
+    <script type="application/ld+json">
+        {"@context":"https://schema.org","@type":"ScholarlyArticle","@id":"https://www.emerald.com/joe/article/doi/10.1108/JOE-11-2025-0154/1388176/Women-and-nature-in-the-Danube-Delta-a-water-s","name":"Women and nature in the Danube Delta: a water’s edge perspective","datePublished":"2026-07-21","isPartOf":{"@id":"https://www.emerald.com/joe","@type":"Periodical","name":"Journal of Organizational Ethnography","issn":["2046-6757"]},"url":"https://dx.doi.org/10.1108/JOE-11-2025-0154","keywords":["Nature","Tourism","Women","Biosphere reserve","Danube Delta","Hydrofeminism"],"inLanguage":"en","copyrightHolder":"Emerald Publishing","copyrightYear":"2026","publisher":"","sameAs":["https://dx.doi.org/10.1108/JOE-11-2025-0154"],"author":[{"name":"Teampău, Petruța Mădălina","affiliation":"Research Institute of the University of Bucharest (ICUB), University of Bucharest ,   Bucharest ,  Romania   Faculty of Political, Administrative and Communication Sciences,  Babeș-Bolyai University ,   Cluj-Napoca ,  Romania","@type":"Person","sameAs":"https://orcid.org/0000-0002-4819-5981"}],"description":"Purpose. The purpose of this ethnographic research is to describe the under-articulated relationship between women and water in the specific socio-geographic context of the Romanian Danube Delta.Design/methodology/approach. I conducted a series of narrative interviews with women from different age cohorts in two locations of the Danube Delta, supported by extensive anthropological fieldwork. Additionally, I gathered data through participant observation of various community events and activities.Findings. Women possess distinct, gendered ways of understanding and relating to nature and aquatic environments. Women's relationship with water is shaped by the particularities of their life cycles and their interconnected roles within the community. Immersive engagement with everyday practices and social relations offers insight into how women mobilize social capital and networks not only for their own livelihoods, but also for sustaining community cohesion.Research limitations/implications. The sample of respondents is limited, using a snowball method, which may limit the diversity of experiences captured. Additionally, local people often take their natural surroundings for granted, making it challenging to articulate their implicit relationship with the environment.Practical implications. Understanding women's relationship to nature can inform ongoing discussions on local knowledge and culture, the effects of nature-protection policies on communities and the significance of embodied connections to the environment. Such insights may also encourage the meaningful inclusion of women and their gendered experiences as stakeholders in these debates.Originality/value. Research focused on women's lives and livelihoods in the Romanian Danube Delta is, with few notable exceptions, still scarce; approaching this topic through the theoretical lens of hydro-feminism increases the value of this contribution.","pageStart":"1","pageEnd":"15","siteName":"Emerald Publishing","thumbnailURL":"//emer.silverchair-cdn.com/Themes/Silver/app/img/generic-cover.png","headline":"Women and nature in the Danube Delta: a water’s edge perspective","image":"//emer.silverchair-cdn.com/Themes/Silver/app/img/generic-cover.png","image:alt":""}
+    </script>
+    <script type="application/ld+json">
+        {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Emerald Publishing","item":"https://www.emerald.com"},{"@type":"ListItem","position":2,"name":"Journal of Organizat…","item":"https://www.emerald.com/joe"}]}
+    </script>
+<meta property="og:site_name" content="Emerald Publishing" />
+<meta property="og:title" content="Women and nature in the Danube Delta: a water’s edge perspective" />
+<meta property="og:description" content="Purpose. The purpose of this ethnographic research is to describe the under-articulated relationship between women and water in the specific socio-geographic context of the Romanian Danube Delta.Design/methodology/approach. I conducted a series of narrative interviews with women from different age cohorts in two locations of the Danube Delta, supported by extensive anthropological fieldwork. Additionally, I gathered data through participant observation of various community events and activities.Findings. Women possess distinct, gendered ways of understanding and relating to nature and aquatic environments. Women's relationship with water is shaped by the particularities of their life cycles and their interconnected roles within the community. Immersive engagement with everyday practices and social relations offers insight into how women mobilize social capital and networks not only for their own livelihoods, but also for sustaining community cohesion.Research limitations/implications. The sample of respondents is limited, using a snowball method, which may limit the diversity of experiences captured. Additionally, local people often take their natural surroundings for granted, making it challenging to articulate their implicit relationship with the environment.Practical implications. Understanding women's relationship to nature can inform ongoing discussions on local knowledge and culture, the effects of nature-protection policies on communities and the significance of embodied connections to the environment. Such insights may also encourage the meaningful inclusion of women and their gendered experiences as stakeholders in these debates.Originality/value. Research focused on women's lives and livelihoods in the Romanian Danube Delta is, with few notable exceptions, still scarce; approaching this topic through the theoretical lens of hydro-feminism increases the value of this contribution." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dx.doi.org/10.1108/JOE-11-2025-0154" />
+<meta property="og:updated_time" content="" />
+<meta property="og:image" content="https://emer.silverchair-cdn.com/Themes/Silver/app/img/generic-cover.png" />
+<meta property="og:image:url" content="https://emer.silverchair-cdn.com/Themes/Silver/app/img/generic-cover.png" />
+<meta property="og:image:secure_url" content="https://emer.silverchair-cdn.com/Themes/Silver/app/img/generic-cover.png" />
+<meta property="og:image:alt" content="" />
+
+
+
+
+    
+
+
+
+    <script type="text/plain" async="async" src="https://securepubads.g.doubleclick.net/tag/js/gpt.js" class='optanon-category-C0004'></script>
+
+    <script>
+        var SCM = SCM || {};
+        SCM.pubGradeAdsEnabled = false;
+    </script>
+
+
+<script>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+
+    googletag.cmd.push(function () {
+    googletag.setConfig({ disableInitialLoad: true });
+
+    
+
+    });
+</script>
+    
+
+
+    
+
+
+
+
+
+
+    <script src="https://scholar.google.com/scholar_js/casa.js" async></script>
+</head>
+
+<body data-sitename="journaloforganizationalethnography" class="off-canvas pg_Article pg_article   " theme-joe data-sitestyletemplate="Journal" >
+                <noscript>
+                    <iframe  src="https://www.googletagmanager.com/ns.html?id=GTM-W9XTGPJQ"
+                            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+                </noscript>
+            <nav aria-label="Skip navigation">
+                <a href="#skipNav" class="skipnav">Skip to Main Content</a>
+            </nav>
+<input id="hdnSiteID" name="hdnSiteID" type="hidden" value="1000627" /><input id="hdnAdDelaySeconds" name="hdnAdDelaySeconds" type="hidden" value="3000" /><input id="hdnAdConfigurationTop" name="hdnAdConfigurationTop" type="hidden" value="basic" /><input id="hdnAdConfigurationRightRail" name="hdnAdConfigurationRightRail" type="hidden" value="basic" />
+    <div class="ad-banner js-ad-revealer ad-banner-revealer" role="region" aria-label="Advertisement" aria-hidden="true">
+    <div class="widget-AdBlock widget-instance-HeaderRevealerAd" 
+         data-widget-name="AdBlock" 
+         data-widget-instance="HeaderRevealerAd">
+        
+ 
+    </div>
+
+    </div>
+    
+
+
+
+
+<section class="master-header row vt-site-header" role="banner">
+
+    <div class="ad-banner js-ad-banner">
+    <div class="widget-AdBlock widget-instance-HeaderAd" 
+         data-widget-name="AdBlock" 
+         data-widget-instance="HeaderAd">
+        
+ 
+    </div>
+
+    </div>
+
+    <div class="widget-SitePageHeader widget-instance-SitePageHeader" 
+         data-widget-name="SitePageHeader" 
+         data-widget-instance="SitePageHeader">
+            <div class="site-theme-header">
+        <div class="site-theme-header_contents global-nav-base">
+
+
+<div class="global-nav">
+            <div class="collapsed-view">
+            <a class="js-dropdown-trigger global-nav-trigger" href="javascript:;">
+                <picture>
+                        <source media="(max-width: 600px)" srcset="//emer.silverchair-cdn.com/data/SiteBuilderAssetsOriginals/Live/images/umbrella/umbrella-logo-mobile.svg">
+                    <source media="(min-width: 601px)" srcset="//emer.silverchair-cdn.com/data/SiteBuilderAssetsOriginals/Live/Images/umbrella/umbrella-logo.svg">
+                    <img class="logo-JournalofOrganizationalEthnography site-theme-header-image" src="//emer.silverchair-cdn.com/data/SiteBuilderAssetsOriginals/Live/Images/umbrella/umbrella-logo.svg" alt="Emerald Insight logo" />
+                </picture>
+                    <i class="icon-general_arrow-down arrow-icon"></i>
+            </a>
+            <nav class="navbar-menu global-nav-dropdown js-dropdown">
+                <div class="site-theme-header-logo">
+                    <a href="/" class="site-theme-header-image-wrap">
+                            <picture>
+                                    <source media="(max-width: 600px)" srcset="//emer.silverchair-cdn.com/data/SiteBuilderAssetsOriginals/Live/images/umbrella/umbrella-logo-mobile.svg">
+                                <source media="(min-width: 601px)" srcset="//emer.silverchair-cdn.com/data/SiteBuilderAssetsOriginals/Live/Images/umbrella/umbrella-logo.svg">
+                                <img class="logo-JournalofOrganizationalEthnography site-theme-header-image" src="//emer.silverchair-cdn.com/data/SiteBuilderAssetsOriginals/Live/Images/umbrella/umbrella-logo.svg" alt="Emerald Insight logo" />
+                            </picture>
+                    </a>
+                    <a href="javascript:;" class="icon-general-close menu-close js-menu-close"><span class="screenreader-text">Close</span></a>
+                </div>
+                        <ul class="site-menu site-menu-lvl-0 js-theme-dropdown">
+                <li class="site-menu-item site-menu-lvl-0 site-menu-item-Emerald-Insight " id="site-menu-item-39598">
+                        <a href="https://www.emerald.com/insight/" class="nav-link">
+                            Emerald Insight                         </a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-0 site-menu-item-About-us " id="site-menu-item-39599">
+                        <a href="https://www.emerald.com/about-us" class="nav-link">
+                            About us                         </a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-0 site-menu-item-Publish " id="site-menu-item-39600">
+                        <a href="https://www.emerald.com/publish-with-us" class="nav-link">
+                            Publish                         </a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-0 site-menu-item-Research-Services " id="site-menu-item-39601">
+                        <a href="https://www.emerald.com/research-services" class="nav-link">
+                            Research Services                         </a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-0 site-menu-item-Bookstore " id="site-menu-item-39602">
+                        <a href="https://bookstore.emerald.com/" class="nav-link">
+                            Bookstore                         </a>
+
+                    
+                </li>
+        </ul>
+
+            </nav>
+        </div>
+    <div class="expanded-view">
+        <a href="/" class="global-nav_link-wrap">
+            <picture>
+                    <source media="(max-width: 600px)" srcset="//emer.silverchair-cdn.com/data/SiteBuilderAssetsOriginals/Live/images/umbrella/umbrella-logo-mobile.svg">
+                <source media="(min-width: 601px)" srcset="//emer.silverchair-cdn.com/data/SiteBuilderAssetsOriginals/Live/Images/umbrella/umbrella-logo.svg">
+                <img class="logo-JournalofOrganizationalEthnography site-theme-header-image" src="//emer.silverchair-cdn.com/data/SiteBuilderAssetsOriginals/Live/Images/umbrella/umbrella-logo.svg" alt="Emerald Insight logo" />
+            </picture>
+        </a>
+                <ul class="site-menu site-menu-lvl-0 js-theme-dropdown">
+                <li class="site-menu-item site-menu-lvl-0 site-menu-item-Emerald-Insight " id="site-menu-item-39598">
+                        <a href="https://www.emerald.com/insight/" class="nav-link">
+                            Emerald Insight                         </a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-0 site-menu-item-About-us " id="site-menu-item-39599">
+                        <a href="https://www.emerald.com/about-us" class="nav-link">
+                            About us                         </a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-0 site-menu-item-Publish " id="site-menu-item-39600">
+                        <a href="https://www.emerald.com/publish-with-us" class="nav-link">
+                            Publish                         </a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-0 site-menu-item-Research-Services " id="site-menu-item-39601">
+                        <a href="https://www.emerald.com/research-services" class="nav-link">
+                            Research Services                         </a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-0 site-menu-item-Bookstore " id="site-menu-item-39602">
+                        <a href="https://bookstore.emerald.com/" class="nav-link">
+                            Bookstore                         </a>
+
+                    
+                </li>
+        </ul>
+
+    </div>
+</div>
+
+
+
+    <input type="hidden" class="hfEnableEnhancedAutoSuggest" value="false" name="searchScope" aria-hidden="true" />
+        <div class="mobile-menu-trigger_wrap mobile-search_wrap">
+            <button type="button"
+                    class="mobile-search_toggle at-search-toggle"
+                    aria-expanded="false"
+                    data-theme-dropdown-trigger="search-dropdown"><i class="icon-menu_search" aria-hidden="true"></i><span class="screenreader-text">Search Dropdown Menu</span></button>
+        </div>
+    <div class="navbar-search-container mobile-dropdown search-dropdown" data-theme-dropdown="search-dropdown">
+        <div class="navbar-search">
+            <form class="microsite-search js-MicrositeSearch" aria-label="header search" role="search">
+                <fieldset class="searchbar-fieldset">
+                    <legend><span class="screenreader-text">header search</span></legend>
+                    <div class="navbar-search-input_wrap">
+                        
+                        <input class="navbar-search-input microsite-search-term at-microsite-search-term search-term-autosuggest"
+                               data-autosuggest-hint="micrositeSearchTermInputHint-SitePageHeader"
+                               data-autosuggest-results="micrositeAutoCompleteResults-SitePageHeader"
+                               data-autosuggest-id="MicrositeSearchTerm-SitePageHeader"
+                               data-searchfilter="search-filter-SitePageHeader"
+                               placeholder="Search..."
+                               aria-label="Search..."
+                               type="text" maxlength="255"
+                                 autocomplete="off"                                 id="MicrositeSearchTerm-SitePageHeader">
+                        
+                        <input type="hidden" name="hfAutoCompleteMaxResults" class="hfAutoCompleteMaxResults" value="6" aria-hidden="true" />
+                        <input type="hidden" name="hfSolrAutoSuggestMinimumCharactersLength" class="hfSolrAutoSuggestMinimumCharactersLength" value="2" aria-hidden="true" />
+                        <input type="hidden" name="hfSolrJournalName" class="hfSolrJournalName" value="" aria-hidden="true" />
+                        <input type="hidden" name="hfSolrJournalID" class="hfSolrJournalID" value="" aria-hidden="true" />
+                        <label for="micrositeSearchTermInputHint-SitePageHeader" aria-hidden="true">
+                            <span class="screenreader-text">Search input auto suggest</span>
+                        </label>
+                        <input type="text"
+                               id="micrositeSearchTermInputHint-SitePageHeader"
+                               data-autosuggest-id="micrositeSearchTermInputHint-SitePageHeader"
+                               class="microsite-search-term-input-hint"
+                               autocomplete="off"
+                               tabindex="-1"
+                               aria-hidden="true"
+                               disabled />
+                        
+                        <ul data-autosuggest-id="micrositeAutoCompleteResults-SitePageHeader" role="presentation" class="term-list hidden"></ul>
+                    </div>
+                        <div class="navbar-search-filter_wrap">
+                            <label for="navbar-search-filter-site-SitePageHeader">
+                                <span class="screenreader-text">filter your search</span>
+                            </label>
+                            <select class="navbar-search-filter navbar-search-filter-site at-navbar-search-filter" id="navbar-search-filter-site-SitePageHeader" data-autosuggest-id="search-filter-SitePageHeader">
+<option class="header-search-bar-filters-item" value="/search-results?page=1&q={searchQuery}" data-siteid="0" >All Content</option><option class="header-search-bar-filters-item" value="/journals/search-results?page=1&q={searchQuery}&fl_SiteID=3&allJournals=1" data-siteid="3" >All Journals</option><option class="header-search-bar-filters-item selected" value="/joe/search-results?page=1&q={searchQuery}&fl_SiteID=1000627" data-siteid="1000627" selected>Journal of Organizational Ethnography</option>                            </select>
+                        </div>
+                    <div class="navbar-search-submit_wrap">
+                        
+                        <button type="button" class="microsite-search-icon navbar-search-submit icon-menu_search"><span class="screenreader-text">Search</span></button>
+                    </div>
+                </fieldset>
+            </form><!-- /#MicrositeSearch -->
+        </div><!-- /.navbar-search -->
+<div class="navbar-search-advanced">
+    <a href="/advanced-search" class="advanced-search">Advanced Search</a>
+</div>    </div><!-- /.navbar-search-container -->
+
+<input type="hidden" name="parentSiteName" class="hfParentSiteName" value="Journals Gateway" aria-hidden="true" />
+<input type="hidden" class="hfSolrMaxAllowSearchChar" value="100" aria-hidden="true" />
+<input type="hidden" class="hfJournalShortName" value="" aria-hidden="true" />
+<input type="hidden" class="hfSearchPlaceholder" value="" aria-hidden="true" />
+<input type="hidden" name="hfGlobalSearchSiteURL" class="hfGlobalSearchSiteURL" value="" aria-hidden="true" />
+<input type="hidden" name="hfSearchSiteURL" id="hfSiteURL" value="www.emerald.com/joe" aria-hidden="true" />
+<input type="hidden" class="hfQuickSearchUrl" value="/joe/search-results?page=1&amp;q={searchQuery}&amp;fl_SiteID=1000627" aria-hidden="true" />
+<script type="text/javascript">
+    (function () {
+        var hfSiteUrl = document.getElementById('hfSiteURL');
+        var siteUrl = hfSiteUrl.value;
+        var subdomainIndex = siteUrl.indexOf('/');
+
+        hfSiteUrl.value = location.host + (subdomainIndex >= 0 ? siteUrl.substring(subdomainIndex) : '');
+    })();
+</script>
+
+                <div class="tablet-menu-trigger_wrap">
+        <!-- MOBILE SHOPPING CART ICON -->
+
+<div class="site-theme-header-menu-item view-cart-wrap">
+    <a href="https://www.emerald.com/store/cart" class="view-cart" rel="nofollow" aria-label="Cart">
+        <span class="text-cart">Cart</span>
+        <i class="access-icon icon-availability_cart" aria-hidden="true"></i>
+            <span class="items-in-cart" aria-live="polite"></span>
+    </a>
+</div>        <button type="button"
+           class="btn-reset tablet-sign-in"
+           data-theme-dropdown-trigger="tablet-user-dropdown"
+           aria-controls="tablet-user-dropdown"
+           aria-expanded="false"><i class="icon-menu_account"><span class="screenreader-text">User Tools Dropdown</span></i></button>
+    </div>
+<div class="site-theme-header-menu-item_wrap tablet-menu" id="tablet-user-dropdown" data-theme-dropdown="tablet-user-dropdown">
+    <!-- DESKTOP SHOPPING CART ICON -->
+
+<div class="site-theme-header-menu-item view-cart-wrap">
+    <a href="https://www.emerald.com/store/cart" class="view-cart" rel="nofollow" aria-label="Cart">
+        <span class="text-cart">Cart</span>
+        <i class="access-icon icon-availability_cart" aria-hidden="true"></i>
+            <span class="items-in-cart" aria-live="polite"></span>
+    </a>
+</div>
+    <!-- DESKTOP REGISTRATION -->
+        <div class="site-theme-header-menu-item"><a href="/my-account/register?siteId=1000627&amp;returnUrl=%2fjoe%2farticle-abstract%2fdoi%2f10.1108%2fJOE-11-2025-0154%2f1388176%2fWomen-and-nature-in-the-Danube-Delta-a-water-s%3fredirectedFrom%3dPDF" class="register at-register js-register-user-modals">Register</a></div>
+
+    <!-- ACCESS THROUGH INSTITUTION -->
+
+    <!-- DESKTOP INSTITUTIONS -->
+        <div class="site-theme-header-menu-item">
+            
+                <button type="button"
+                   class="btn-reset dropdown-toggle institution at-institution"
+                   data-theme-dropdown-trigger="institution-dropdown"
+                   aria-controls="institution-dropdown"
+                   aria-expanded="false">Xi'an University of Architecture and Technology <i class="icon-general_arrow-down arrow-icon"></i></button>
+            <div class="dropdown-panel dropdown-panel-institution" id="institution-dropdown" data-theme-dropdown="institution-dropdown">
+                <div class="dropdown-menu">
+                            <div class="dropdown-institution-item">
+                                Xi&#39;an University of Architecture and Technology
+                            </div>
+
+                        <div class="dropdown-institution-item">
+                                <a href="/institutional-login?returnUrl=https://www.emerald.com/joe/article-abstract/doi/10.1108/JOE-11-2025-0154/1388176/Women-and-nature-in-the-Danube-Delta-a-water-s?redirectedFrom=PDF" id="Config_InstitutionOverrideLoginLink" target="">Sign in as different institution</a>
+                        </div>
+                                    </div><!-- /.dropdown-menu -->
+            </div><!-- /.dropdown-panel .dropdown-panel-institution -->
+        </div><!-- /.site-theme-header-menu-item .desktop -->
+
+        <!-- DESKTOP SIGN IN -->
+        <div class="site-theme-header-menu-item not-authenicated">
+                <button type="button"
+                    class="btn-reset dropdown-toggle signin at-signin-dropdown at-signin-username"
+                    id="header-account-info-user-fullname"
+                    data-login-location="/SignIn/LoginForm/LoginFormPopup?returnUrl="
+                    data-theme-dropdown-trigger="sign-in-dropdown"
+                    aria-controls="sign-in-dropdown"
+                    aria-expanded="false"
+                    rel=nofollow>
+                    
+Sign In                    <i class="icon-general_arrow-down arrow-icon"><span class="screenreader-text">Open Menu</span></i>
+                </button>
+                <div class="dropdown-panel dropdown-panel-signin dropdown-panel-form at-signin-dropdown-panel" id="sign-in-dropdown" data-theme-dropdown="sign-in-dropdown">
+                    <div class="spinner"></div>
+                </div><!-- /.dropdown-panel -->
+        </div>
+
+</div>
+        </div><!-- /.site-theme-header_content -->
+    </div><!-- /.site-theme-header- -->
+
+
+    <div class="journal-header journal-bg">
+        <div class="journal-header_content ">
+    <div class="journal-logo_wrap">
+        <a href="//www.emerald.com/joe" class="journal-logo-link">
+
+Journal of Organizational Ethnography        </a>
+    </div>
+
+            
+
+
+<div class="navbar-menu_wrap">
+            <a class="mobile-site-menu-toggle" data-theme-dropdown-trigger="microsite-nav-menu" aria-controls="microsite-nav-menu" aria-expanded="false" href="javascript:;"><i class="icon-menu_hamburger"><span class="screenreader-text">Toggle Menu</span></i><span class="tablet-menu-label">Menu</span></a>
+            <nav class="navbar-menu" id="microsite-nav-menu" data-theme-dropdown="microsite-nav-menu" aria-label="Primary navigation">
+                    <ul class="site-menu site-menu-lvl-0 js-theme-dropdown">
+<li class="site-menu-item site-menu-lvl-0 " id="site-menu-item-33645">
+        <a href="/joe" class="nav-link" >Journal Home</a>
+    </li> <li class="site-menu-item site-menu-lvl-0 " id="site-menu-item-33646">
+        <a href="/joe/issue" class="nav-link" >Issues</a>
+    </li> <li class="site-menu-item site-menu-lvl-0 " id="site-menu-item-33647">
+        <a href="/joe/earlycite" class="nav-link" >Earlycite Articles</a>
+    </li> <li class="site-menu-item site-menu-lvl-0 " id="site-menu-item-33644">
+        <button type="button" class="btn-reset nav-link js-theme-dropdown-trigger" aria-expanded="false">About this Journal<i class="nav-arrow icon-general_arrow-down arrow-icon"><span class="screenreader-text">Open Menu</span></i></button>
+        <ul class="site-menu site-menu-lvl-1 js-theme-dropdown">
+<li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-33648">
+        <a href="/joe/pages/about" class="nav-link" >About this journal</a>
+    </li> <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-33649">
+        <a href="/joe/pages/editorial-board" class="nav-link" >Editorial board</a>
+    </li> <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-33650">
+        <a href="https://www.emerald.com/journals/author-guidance/1627/emerald-publishing-author-guidelines" class="nav-link" >Author guidelines</a>
+    </li> <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-33651">
+        <a href="/joe/pages/indexing-and-metrics" class="nav-link" >Indexing and metrics</a>
+    </li>     </ul>
+ </li>     </ul>
+ 
+            </nav>
+</div><!-- /.navbar -->
+
+        </div><!-- /.center-inner-row -->
+
+    </div><!-- /.journal-header -->
+
+
+<input id="routename" name="RouteName" type="hidden" value="joe" />
+
+ 
+    </div>
+
+</section>
+
+<div id="main" class="content-main js-main ui-base" role="main">
+    <section class="master-main row">
+        <div class="content-main_content">
+            <span id="skipNav" tabindex="-1"></span>
+            
+
+
+
+
+
+<div class="page-column-wrap article-browse_content ">
+<div id="InfoColumn" class="page-column page-column--left">
+
+    <div class="info-inner-wrap can-stick empty">
+
+        <button type="button" class="btn-as-icon toggle-left-col__close icon-general-close">
+            <span class="screenreader-text">Close navigation menu</span>
+        </button>
+        <div class="responsive-nav-title">Article navigation</div>
+
+        <div class="info-widget-wrap">
+            
+            
+
+
+
+        </div>
+    </div>
+</div> 
+        
+
+    <div id="ContentColumn" class="page-column page-column--center center-content can-stick">
+        <div class="article-browse_content-wrap js-content-standard">
+                <div class="widget-ArticleMainView widget-instance-Article_ArticleMainViewWrapper" 
+         data-widget-name="ArticleMainView" 
+         data-widget-instance="Article_ArticleMainViewWrapper">
+        <div class="article-browse-top article-browse-mobile-nav empty">
+    <div class="article-browse-mobile-nav-inner">
+        <button type="button" class="btn toggle-left-col toggle-left-col__article">Article Navigation</button>
+    </div>
+</div>
+
+<div class="content-inner-wrap">
+    
+
+    <div class="widget-ArticleTopInfo widget-instance-ArticleTopInfo" 
+         data-widget-name="ArticleTopInfo" 
+         data-widget-instance="ArticleTopInfo">
+        <div class="module-widget article-top-widget content-metadata_wrap">
+
+
+<div class="article-groups left-flag">
+        <span class="article-client_type">Research Article</span><span class="pipe">|</span>
+        <span class="article-date">July 21 2026</span>
+
+</div>
+
+
+    <div class="widget-items">
+    <h1 class="wi-article-title article-title-main" id="aria1388176">
+
+        Women and nature in the Danube Delta: a water’s edge perspective
+
+    <span data-resource-id-access="1388176"><i class="js-access-icon-placeholder"></i></span>
+    </h1>
+
+
+<div class="wi-authors">
+    <div class="al-authors-list">
+
+        <input type="hidden" id="js-hdn-enable-corresponding-author-icon" value="True" />
+                <div class="al-author-name">
+
+                                    <a rel="nofollow" class="linked-name js-linked-name stats-author-info-trigger" href="javascript:;" aria-haspopup="dialog" aria-expanded="false" aria-controls="author-info-3576103">Petruța Mădălina Teampău</a>                    <div class="al-orcid-info-wrap">
+                        <a href="https://orcid.org/0000-0002-4819-5981" class="al-orcid-url">
+                            <img class="orchid-icon" alt="ORCID logo" src="//emer.silverchair-cdn.com/Themes/Silver/app/img/mini-icon.png" />
+                        </a>
+                        <span class="al-orcid-id">
+                            <a href="https://orcid.org/0000-0002-4819-5981" class="al-orcid-url">
+                                0000-0002-4819-5981
+                            </a>
+                        </span>
+                    </div>
+
+
+                    <div id="author-info-3576103" class="al-author-info-wrap arrow-up stats-author-info-panel" role="dialog" aria-label="Author information for Petruța Mădălina Teampău">
+                        <button class="js-author-info-close al-author-info-close" type="button"><i class="icon-general-close" aria-hidden="true"></i><span class="screenreader-text">Close author information for Petruța Mădălina Teampău</span></button>
+<div class="info-card-author authorInfo_ArticleTopInfo">
+    <div class="name-role-wrap">
+        <div class="info-card-name">
+    Petruța Mădălina Teampău
+</div>
+
+    </div>
+
+    <div class="info-card-affilitation">
+        <div class="aff"><div class="institution">Research Institute of the University of Bucharest (ICUB), University of Bucharest</div>,  <span class="city">Bucharest</span>, <div class="country">Romania</div></div><div class="aff">Faculty of Political, Administrative and Communication Sciences, <div class="institution">Babeș-Bolyai University</div>,  <span class="city">Cluj-Napoca</span>, <div class="country">Romania</div></div>
+    </div>
+
+    <div class="info-card-search-label">
+        Search for other works by this author on:
+    </div>
+
+<div class="info-card-search info-card-search-internal">
+    <a href="/joe/search-results?f_AllAuthors=Petru%c8%9ba+M%c4%83d%c4%83lina+Teamp%c4%83u" rel="nofollow">This Site</a>
+</div>
+
+    <div class="info-card-search info-card-search-pubmed">
+        <a href="http://www.ncbi.nlm.nih.gov/pubmed?cmd=search&amp;term=Petruța Mădălina Teampău">PubMed</a>
+    </div>
+    <div class="info-card-search info-card-search-google">
+        <a href="http://scholar.google.com/scholar?q=author:\&quot;Petruța Mădălina Teampău\&quot;">Google Scholar</a>
+    </div>
+</div>                    </div>
+                </div>
+    </div>
+</div>
+
+
+    <div class="js-author-expand-collapse-metadata-wrap author-expand-collapse-metadata-wrap stats-article-metadata-trigger-wrap">
+        <a href="javascript:;" class="js-expand-collapse-metadata author-expand-collapse-metadata stats-article-metadata-trigger" aria-expanded="false">
+            <i class="js-metadata-toggle-icon icon-general-add"></i>Author &amp; Article Information
+        </a>
+    </div>
+<div class="js-metadata-wrap metadata">
+            <div class="wi-footnotes">
+                    <div>
+                        <div class="article-footnote">
+                            Petruța Mădălina Teampău can be contacted at: <a href="/cdn-cgi/l/email-protection#e595809197909184cb91808488958490a59087878689908fcb978a" target="_blank"><span class="__cf_email__" data-cfemail="7c0c19080e09081d5208191d110c1d093c091e1e1f100916520e13">[email&#160;protected]</span></a>
+                        </div>
+                    </div>
+            </div>
+            <div class="metadata-publisher">
+                Publisher: Emerald Publishing
+            </div>
+            <div class="metadata-pubhistory">
+                    <div class="pubhistory-entry">
+                        <span class="pubhistory-state">Received:</span>
+                        <span class="pubhistory-date">November 23 2025</span>
+                    </div>
+                    <div class="pubhistory-entry">
+                        <span class="pubhistory-state">Revision Received:</span>
+                        <span class="pubhistory-date">May 06 2026</span>
+                    </div>
+                    <div class="pubhistory-entry">
+                        <span class="pubhistory-state">Accepted:</span>
+                        <span class="pubhistory-date">June 19 2026</span>
+                    </div>
+
+            </div>
+            <div class="metadata-issn">
+                    <div class="metadata-issn-online">Online ISSN: 2046-6757</div>
+                                    <div class="metadata-issn-print">Print ISSN: 2046-6749</div>
+            </div>
+<div class="metadata-funding">
+    <div class="metadata-funding-caption">Funding</div>
+            <div class="metadata-funding-funder">
+                <div class="funding-group"><strong>Funding Group: </strong><ul><li><div class="award-group"><strong>Award Group: </strong><div class="award-group-info"><ul><li><strong>Funder(s): </strong><div class="funding-source"> Romanian Ministry of Research, Innovation and Digitalization</div></li><li><strong>Award Id(s): </strong><div class="award-id">760054 -JUST4MPA (PNRR-III-C9-2022–I8 call).</div></li></ul></div></div></li><li><strong>Funding Statement(s): </strong><div class="funding-statement"> <em>Funding:</em> This research was supported by the Romanian Ministry of Research, Innovation and Digitalization (#760054-JUST4MPA), within the PNRR-III-C9-2022–I8 call.</div></li></ul></div>
+            </div>
+
+</div>
+            <div class="metadata-copyright">
+                <div class="copyright copyright-statement">© Emerald Publishing Limited</div><div class="copyright copyright-year">2026</div><div class="copyright copyright-holder">Emerald Publishing Limited</div><div class="license "><div class="license-p">Licensed re-use rights only</div></div>
+            </div>
+
+</div>
+
+
+<div class="pub-history-wrap clearfix">
+
+            <div class="pub-history-row clearfix">
+            <div class="ww-citation-primary">Journal of Organizational Ethnography 1–15.</div>
+        </div>
+        <div class="pub-history-row citation-wrap-row clearfix">
+                <div class="ww-citation-wrap-doi">
+                    <div class="citation-doi">
+                        <a href="https://doi.org/10.1108/JOE-11-2025-0154">https://doi.org/10.1108/JOE-11-2025-0154</a>
+                    </div>
+                </div>
+
+                <div class="ww-citation-history-wrap js-history-dropdown-wrap">
+                    <a href="javascript:;" class="history-label js-history-dropdown-trigger">
+                        <span>Article history</span><i class="icon-history-small"></i>
+                    </a>
+
+                    <div class="ww-history js-history-entries-wrap">
+                            <div class="history-entry">
+                                <div class="wi-state">Received:</div>
+                                <div class="wi-date">November 23 2025</div>
+                            </div>
+                            <div class="history-entry">
+                                <div class="wi-state">Revision Received:</div>
+                                <div class="wi-date">May 06 2026</div>
+                            </div>
+                            <div class="history-entry">
+                                <div class="wi-state">Accepted:</div>
+                                <div class="wi-date">June 19 2026</div>
+                            </div>
+                    </div>
+                </div>
+        </div>
+
+</div>
+
+
+
+    </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    $(document).ready(function () {
+        $('.article-top-widget').on('click', '.ati-toggle-trigger', function () {
+            $(this).find('.icon-general-add, .icon-minus').toggleClass('icon-minus icon-general-add');
+            $(this).siblings('.ati-toggle-content').toggleClass('hide');
+        });
+
+        // In Chrome, an anchor tag with target="_blank" and a "mailto:" href opens a new tab/window as well as the email client
+        // I suspect this behavior will be corrected in the future
+        // Remove the target="_blank"
+        $('ul.wi-affiliationList').find('a[href^="mailto:"]').each(function () {
+            $(this).removeAttr('target');
+        });
+    });
+</script>
+
+ 
+    </div>
+    <div class="widget-ArticleLinks widget-instance-ArticleLinks" 
+         data-widget-name="ArticleLinks" 
+         data-widget-instance="ArticleLinks">
+         
+    </div>
+
+
+    <div class="widget-ArticleMainView widget-instance-ArticleMainView_Abstract" 
+         data-widget-name="ArticleMainView" 
+         data-widget-instance="ArticleMainView_Abstract">
+        
+
+
+<div class="toolbar-wrap vt-toolbar-wrap" role="navigation">
+    <div class="toolbar-inner-wrap">
+<div class="toolbar-inner-wrap ">
+    <ul id="Toolbar" class="debug js-toolbar toolbar">
+
+<li class="toolbar-item item-with-dropdown item-views js-item-views hide">
+  <a href="javascript:;" class="js-toolbar-dropdown" data-dropdown="FilterDrop" role="button" aria-expanded="false">
+    <i class="icon-menu_views"><span class="screenreader-text">Views Icon</span></i>
+    <span class="toolbar-label">
+      <span class="toolbar-text">Views</span>
+      <i class="icon-general_arrow-down arrow-icon js-toolbar-arrow-icon"><span class="screenreader-text">Open Menu</span></i>
+    </span>
+  </a>
+  <ul id="ViewsDrop" class="f-dropdown js-dropdown-content" data-dropdown-content>
+      <li class="article-content-filter js-content-filter hide" data-content-filter="article-content"><a href="javascript:;" rel=nofollow><span>Article contents</span></a></li>
+      <li class="article-content-filter js-content-filter hide" data-content-filter="figures-tables"><a href="javascript:;" rel=nofollow><span>Figures &amp; tables</span></a></li>
+      <li class="article-content-filter js-content-filter hide" data-content-filter="video"><a href="javascript:;" rel=nofollow><span>Video</span></a></li>
+      <li class="article-content-filter js-content-filter hide" data-content-filter="audio"><a href="javascript:;" rel=nofollow><span>Audio</span></a></li>
+      <li class="article-content-filter js-content-filter hide" data-content-filter="supplementary-data"><a href="javascript:;" rel=nofollow><span>Supplementary Material</span></a></li>
+      <li class="article-content-filter js-content-filter hide" data-content-filter="peer-review"><a href="javascript:;" rel=nofollow><span>Peer Review</span></a></li>
+  </ul>
+</li>
+
+
+    <li class="toolbar-item item-with-dropdown item-share">
+        <a href="javascript:;" class="drop-trigger js-toolbar-dropdown at-ShareButton" data-dropdown="ShareDrop" role="button" aria-expanded="false">
+            <i class="icon-menu_share"><span class="screenreader-text">Share Icon</span></i>
+            <span class="toolbar-label">
+                <span class="toolbar-text">Share</span>
+                <i class="arrow-icon icon-general_arrow-down js-toolbar-arrow-icon"></i>
+            </span>
+        </a>
+        <ul id="ShareDrop" class="addthis_toolbox addthis_default_style addthis_20x20_style f-dropdown js-dropdown-content" data-dropdown-content>
+
+    <li>
+        <a class="st-custom-button addthis_button_facebook js-share-link"
+           data-network="facebook"
+           data-title="Women and nature in the Danube Delta: a water’s edge perspective"
+           data-url="https://www.emerald.com/joe/article-abstract/doi/10.1108/JOE-11-2025-0154/1388176/Women-and-nature-in-the-Danube-Delta-a-water-s"
+           data-email-subject="Women and nature in the Danube Delta: a water’s edge perspective"
+           href="javascript:;"
+           rel=nofollow><span>Facebook</span></a>
+    </li>
+    <li>
+        <a class="st-custom-button addthis_button_twitter js-share-link"
+           data-network="twitter"
+           data-title="Women and nature in the Danube Delta: a water’s edge perspective"
+           data-url="https://www.emerald.com/joe/article-abstract/doi/10.1108/JOE-11-2025-0154/1388176/Women-and-nature-in-the-Danube-Delta-a-water-s"
+           data-email-subject="Women and nature in the Danube Delta: a water’s edge perspective"
+           href="javascript:;"
+           rel=nofollow><span>X</span></a>
+    </li>
+    <li>
+        <a class="st-custom-button addthis_button_bluesky js-share-link"
+           data-network="bluesky"
+           data-title="Women and nature in the Danube Delta: a water’s edge perspective"
+           data-url=" https://www.emerald.com/joe/article-abstract/doi/10.1108/JOE-11-2025-0154/1388176/Women-and-nature-in-the-Danube-Delta-a-water-s"
+           data-email-subject="Women and nature in the Danube Delta: a water’s edge perspective"
+           href="javascript:;"
+           rel=nofollow><span>Bluesky</span></a>
+    </li>
+    <li>
+        <a class="st-custom-button addthis_button_linkedin js-share-link"
+           data-network="linkedin"
+           data-title="Women and nature in the Danube Delta: a water’s edge perspective"
+           data-url="https://www.emerald.com/joe/article-abstract/doi/10.1108/JOE-11-2025-0154/1388176/Women-and-nature-in-the-Danube-Delta-a-water-s"
+           data-email-subject="Women and nature in the Danube Delta: a water’s edge perspective"
+           href="javascript:;"
+           rel=nofollow><span>LinkedIn</span></a>
+    </li>
+    <li>
+        <a class="st-custom-button addthis_button_email js-share-link"
+           data-network="email"
+           data-title="Women and nature in the Danube Delta: a water’s edge perspective"
+           data-url="https://www.emerald.com/joe/article-abstract/doi/10.1108/JOE-11-2025-0154/1388176/Women-and-nature-in-the-Danube-Delta-a-water-s"
+           data-email-subject="Women and nature in the Danube Delta: a water’s edge perspective"
+           href="javascript:;"
+           rel=nofollow><span>Email</span></a>
+    </li>
+
+
+
+        </ul>
+    </li>
+<li class="toolbar-item item-tools">
+    <div class="widget-ToolboxPermissions widget-instance-ToolboxPermissions_Abstract" 
+         data-widget-name="ToolboxPermissions" 
+         data-widget-instance="ToolboxPermissions_Abstract">
+            <div class="module-widget">
+        <a href="https://marketplace.copyright.com/rs-ui-web/mp/search/all/10.1108%2FJOE-11-2025-0154" id="PermissionsLink" role="button" rel=nofollow>
+            <span class="toolbar-label text">
+                <span class="toolbar-text normalize permission">Get Permissions</span>
+            </span>
+        </a>
+    </div>
+ 
+    </div>
+
+</li>
+<li class="search-dropdown-trigger_wrap toolbar-item">
+    <a href="javascript:;" data-theme-dropdown-trigger="toolbar-search-dropdown" aria-controls="toolbar-search-dropdown" aria-expanded="false">
+        <i class="icon-menu_search"></i>
+        <span class="site-search-text">Search Site</span>
+    </a>
+</li>
+
+<li class="toolbar-item item-with-dropdown item-cite">
+<a href="javascript:;" class="js-toolbar-dropdown" data-dropdown="CiteDrop" role="button" aria-expanded="false">
+    <i class="icon-cite"></i>
+    <span class="toolbar-label">
+        <span class="toolbar-text">Cite</span>
+        <i class="icon-general_arrow-down arrow-icon js-toolbar-arrow-icon"><span class="screenreader-text">Open Menu</span></i>
+    </span>
+</a>
+<ul id="CiteDrop" class="f-dropdown js-dropdown-content" data-dropdown-content>
+    <li>
+        <a class="stats-get-citation at-CiteButton" href="javascript:;" data-modal-source-id="toolbox-get-citation" rel=nofollow>View This Citation</a>
+    </li>
+    <li>
+
+<a id="aria1388176citation"
+   href="javascript:;" class="js-add-to-citation-download-manager"
+   data-resource-id="1388176"
+   data-resource-type-id="3"
+   aria-labelledby="aria1388176citation"
+   role="button"
+   rel="nofollow">Add to Citation Manager <span class="screenreader-text">for </span></a>
+
+    </li>
+</ul>
+    </li>
+
+    </ul>
+</div>
+
+<div id="getCitation" data-content-id="toolbox-get-citation" class="modal-only-content vt-citation-modal">
+  <div class="modal-title">Citation</div>
+  <p>Teampău PM (2026;), "Women and nature in the Danube Delta: a water’s edge perspective". <em>Journal of Organizational Ethnography</em>, Vol. ahead-of-print No. ahead-of-print. <a href="https://doi.org/10.1108/JOE-11-2025-0154">https://doi.org/10.1108/JOE-11-2025-0154</a></p>
+  <p class="citation-label">Download citation file:</p>
+  <ul>
+      <li><a href="/Citation/Download?resourceId=1388176&amp;resourceType=3&amp;citationFormat=0" rel="nofollow">Ris (Zotero)</a></li>
+          <li><a href="/Citation/Download?resourceId=1388176&amp;resourceType=3&amp;citationFormat=0" rel="nofollow">Reference Manager</a></li>
+          <li><a href="/Citation/Download?resourceId=1388176&amp;resourceType=3&amp;citationFormat=0" rel="nofollow">EasyBib</a></li>
+          <li><a href="/Citation/Download?resourceId=1388176&amp;resourceType=3&amp;citationFormat=0" rel="nofollow">Bookends</a></li>
+
+      <li><a href="/Citation/Download?resourceId=1388176&amp;resourceType=3&amp;citationFormat=0" rel="nofollow">Mendeley</a></li>
+
+      <li><a href="/Citation/Download?resourceId=1388176&amp;resourceType=3&amp;citationFormat=0" rel="nofollow">Papers</a></li>
+
+      <li><a href="/Citation/Download?resourceId=1388176&amp;resourceType=3&amp;citationFormat=1" rel="nofollow">EndNote</a></li>
+          <li><a href="/Citation/Download?resourceId=1388176&amp;resourceType=3&amp;citationFormat=3" rel="nofollow">RefWorks</a></li>
+          <li><a href="/Citation/Download?resourceId=1388176&amp;resourceType=3&amp;citationFormat=2" rel="nofollow">BibTex</a></li>
+          </ul>
+</div>
+
+
+        <div class="toolbar-search" id="toolbar-search-dropdown" data-theme-dropdown="toolbar-search-dropdown">
+            <fieldset>
+                <legend class="screenreader-text">toolbar search</legend>
+
+    <div class="widget-SitePageHeader widget-instance-SiteSearch_ArticleMainView_Abstract" 
+         data-widget-name="SitePageHeader" 
+         data-widget-instance="SiteSearch_ArticleMainView_Abstract">
+        
+
+    <input type="hidden" class="hfEnableEnhancedAutoSuggest" value="false" name="searchScope" aria-hidden="true" />
+        <div class="mobile-menu-trigger_wrap mobile-search_wrap">
+            <button type="button"
+                    class="mobile-search_toggle at-search-toggle"
+                    aria-expanded="false"
+                    data-theme-dropdown-trigger="search-dropdown"><i class="icon-menu_search" aria-hidden="true"></i><span class="screenreader-text">Search Dropdown Menu</span></button>
+        </div>
+    <div class="navbar-search-container mobile-dropdown search-dropdown" data-theme-dropdown="search-dropdown">
+        <div class="navbar-search">
+            <form class="microsite-search js-MicrositeSearch" aria-label="toolbar search" role="search">
+                <fieldset class="searchbar-fieldset">
+                    <legend><span class="screenreader-text">toolbar search</span></legend>
+                    <div class="navbar-search-input_wrap">
+                        
+                        <input class="navbar-search-input microsite-search-term at-microsite-search-term search-term-autosuggest"
+                               data-autosuggest-hint="micrositeSearchTermInputHint-SiteSearch_ArticleMainView_Abstract"
+                               data-autosuggest-results="micrositeAutoCompleteResults-SiteSearch_ArticleMainView_Abstract"
+                               data-autosuggest-id="MicrositeSearchTerm-SiteSearch_ArticleMainView_Abstract"
+                               data-searchfilter="search-filter-SiteSearch_ArticleMainView_Abstract"
+                               placeholder="Search..."
+                               aria-label="Search..."
+                               type="text" maxlength="255"
+                                 autocomplete="off"                                 id="MicrositeSearchTerm-SiteSearch_ArticleMainView_Abstract">
+                        
+                        <input type="hidden" name="hfAutoCompleteMaxResults" class="hfAutoCompleteMaxResults" value="6" aria-hidden="true" />
+                        <input type="hidden" name="hfSolrAutoSuggestMinimumCharactersLength" class="hfSolrAutoSuggestMinimumCharactersLength" value="2" aria-hidden="true" />
+                        <input type="hidden" name="hfSolrJournalName" class="hfSolrJournalName" value="" aria-hidden="true" />
+                        <input type="hidden" name="hfSolrJournalID" class="hfSolrJournalID" value="" aria-hidden="true" />
+                        <label for="micrositeSearchTermInputHint-SiteSearch_ArticleMainView_Abstract" aria-hidden="true">
+                            <span class="screenreader-text">Search input auto suggest</span>
+                        </label>
+                        <input type="text"
+                               id="micrositeSearchTermInputHint-SiteSearch_ArticleMainView_Abstract"
+                               data-autosuggest-id="micrositeSearchTermInputHint-SiteSearch_ArticleMainView_Abstract"
+                               class="microsite-search-term-input-hint"
+                               autocomplete="off"
+                               tabindex="-1"
+                               aria-hidden="true"
+                               disabled />
+                        
+                        <ul data-autosuggest-id="micrositeAutoCompleteResults-SiteSearch_ArticleMainView_Abstract" role="presentation" class="term-list hidden"></ul>
+                    </div>
+                        <div class="navbar-search-filter_wrap">
+                            <label for="navbar-search-filter-site-SiteSearch_ArticleMainView_Abstract">
+                                <span class="screenreader-text">filter your search</span>
+                            </label>
+                            <select class="navbar-search-filter navbar-search-filter-site at-navbar-search-filter" id="navbar-search-filter-site-SiteSearch_ArticleMainView_Abstract" data-autosuggest-id="search-filter-SiteSearch_ArticleMainView_Abstract">
+<option class="header-search-bar-filters-item" value="/search-results?page=1&q={searchQuery}" data-siteid="0" >All Content</option><option class="header-search-bar-filters-item" value="/journals/search-results?page=1&q={searchQuery}&fl_SiteID=3&allJournals=1" data-siteid="3" >All Journals</option><option class="header-search-bar-filters-item selected" value="/joe/search-results?page=1&q={searchQuery}&fl_SiteID=1000627" data-siteid="1000627" selected>Journal of Organizational Ethnography</option>                            </select>
+                        </div>
+                    <div class="navbar-search-submit_wrap">
+                        
+                        <button type="button" class="microsite-search-icon navbar-search-submit icon-menu_search"><span class="screenreader-text">Search</span></button>
+                    </div>
+                </fieldset>
+            </form><!-- /#MicrositeSearch -->
+        </div><!-- /.navbar-search -->
+<div class="navbar-search-advanced">
+    <a href="/advanced-search" class="advanced-search">Advanced Search</a>
+</div>    </div><!-- /.navbar-search-container -->
+
+ 
+    </div>
+
+            </fieldset>
+        </div>
+    </div><!-- /.toolbar-inner-wrap -->
+</div><!-- /.toolbar-wrap -->
+
+<div class="article-body">
+    <div id="articleMainView-articleId" class="js-articleMainView-articleId" data-articleid="1388176" style="display: none;"></div>
+    <div id="ContentTab" class="content active">
+    <div class="widget-ArticleFulltext widget-instance-ArticleFulltext_Abstract" 
+         data-widget-name="ArticleFulltext" 
+         data-widget-instance="ArticleFulltext_Abstract">
+        <input type="hidden" name="js-hfArticleLinksReferencesDoiRegex" id="js-hfArticleLinksReferencesDoiRegex" value="" />
+
+<div class="module-widget">
+    <div class="widget-items" data-widgetname="ArticleFulltext">
+        <span id="sr-fig-viewer-action" hidden="">Open figure viewer</span>
+        
+
+
+
+
+
+                <div id="115790855-content" class="article-section-wrapper js-article-section js-content-section  " data-section-parent-id="0">
+                    
+                    <section class="abstract" aria-label="Main abstract"><section class="sec"><div class="title">Purpose</div><p>The purpose of this ethnographic research is to describe the under-articulated relationship between women and water in the specific socio-geographic context of the Romanian Danube Delta.</p></section><section class="sec"><div class="title">Design/methodology/approach</div><p>I conducted a series of narrative interviews with women from different age cohorts in two locations of the Danube Delta, supported by extensive anthropological fieldwork. Additionally, I gathered data through participant observation of various community events and activities.</p></section><section class="sec"><div class="title">Findings</div><p>Women possess distinct, gendered ways of understanding and relating to nature and aquatic environments. Women's relationship with water is shaped by the particularities of their life cycles and their interconnected roles within the community. Immersive engagement with everyday practices and social relations offers insight into how women mobilize social capital and networks not only for their own livelihoods, but also for sustaining community cohesion.</p></section><section class="sec"><div class="title">Research limitations/implications</div><p>The sample of respondents is limited, using a snowball method, which may limit the diversity of experiences captured. Additionally, local people often take their natural surroundings for granted, making it challenging to articulate their implicit relationship with the environment.</p></section><section class="sec"><div class="title">Practical implications</div><p>Understanding women's relationship to nature can inform ongoing discussions on local knowledge and culture, the effects of nature-protection policies on communities and the significance of embodied connections to the environment. Such insights may also encourage the meaningful inclusion of women and their gendered experiences as stakeholders in these debates.</p></section><section class="sec"><div class="title">Originality/value</div><p>Research focused on women's lives and livelihoods in the Romanian Danube Delta is, with few notable exceptions, still scarce; approaching this topic through the theoretical lens of hydro-feminism increases the value of this contribution.</p></section></section>
+                </div>
+                    <div class="article-metadata-panel clearfix rs_skip">
+    <div class="widget-SolrResourceMetadata widget-instance-ContentMetadata_ArticleFulltext_Article" 
+         data-widget-name="SolrResourceMetadata" 
+         data-widget-instance="ContentMetadata_ArticleFulltext_Article">
+        
+
+
+        <div class="content-metadata-keywords article-metadata">
+            <strong class="content-metadata-keywords-title">Keywords:</strong>
+                    <a class="content-metadata--item" href="/joe/search-results?qb={&quot;Keywords1&quot;:&quot;Nature&quot;}">Nature</a><span>,</span>
+                    <a class="content-metadata--item" href="/joe/search-results?qb={&quot;Keywords1&quot;:&quot;Tourism&quot;}">Tourism</a><span>,</span>
+                    <a class="content-metadata--item" href="/joe/search-results?qb={&quot;Keywords1&quot;:&quot;Women&quot;}">Women</a><span>,</span>
+                    <a class="content-metadata--item" href="/joe/search-results?qb={&quot;Keywords1&quot;:&quot;Biosphere+reserve&quot;}">Biosphere reserve</a><span>,</span>
+                    <a class="content-metadata--item" href="/joe/search-results?qb={&quot;Keywords1&quot;:&quot;Danube+Delta&quot;}">Danube Delta</a><span>,</span>
+                    <a class="content-metadata--item" href="/joe/search-results?qb={&quot;Keywords1&quot;:&quot;Hydrofeminism&quot;}">Hydrofeminism</a>
+        </div>
+ 
+    </div>
+
+                    </div>
+        <!-- /foreach -->
+
+
+            <div class="article-metadata-standalone-panel clearfix"></div>
+
+
+
+
+        
+
+
+        <div class="permissionstatement-section-wrapper ">
+            
+            <div class="copyright copyright-statement">© Emerald Publishing Limited</div><div class="copyright copyright-year">2026</div><div class="copyright copyright-holder">Emerald Publishing Limited</div><div class="license "><div class="license-p">Licensed re-use rights only</div></div>
+        </div>
+<!-- /foreach -->
+
+
+        <span id="UserHasAccess" data-userHasAccess="False"></span>
+
+    </div><!-- /.widget-items -->
+    </div><!-- /.module-widget --> 
+    </div>
+                <div class="article-top-info-user-restricted-options">You do not currently have access to this content.</div>
+
+        <div id="ContentTabFilteredView"></div>
+
+    </div>
+</div>
+
+ 
+    </div>
+
+
+</div>
+ 
+    </div>
+<div class="user-comments-wrap js-userComments">
+    <div class="widget-UserCommentBody widget-instance-UserCommentBody" 
+         data-widget-name="UserCommentBody" 
+         data-widget-instance="UserCommentBody">
+         
+    </div>
+    <div class="widget-UserComment widget-instance-UserComment" 
+         data-widget-name="UserComment" 
+         data-widget-instance="UserComment">
+         
+    </div>
+
+</div>
+
+            <div>    <a id="FullTextLink"></a></div>
+
+<div id="unauth" class="unauth-wrap">
+                <div class="unauth-row clearfix">
+                <h2 class="unauth-signin-title">Sign in</h2>
+    <div class="register-ribbon-wrap">
+        <div class="register-ribbon-text">
+            Don&#39;t already have an account? <a class="register-ribbon-link" href="/my-account/register?siteId=1000627&amp;returnUrl=https%3a%2f%2fwww.emerald.com%2fjoe%2farticle-abstract%2fdoi%2f10.1108%2fJOE-11-2025-0154%2f1388176%2fWomen-and-nature-in-the-Danube-Delta-a-water-s%3fredirectedFrom%3dPDF">Register</a>
+        </div>
+    </div>
+            <!-- /.register-ribbon-wrap -->
+        <div class="unauth-column-wrap">
+                <div class="unauth-column">
+    <div class="widget-LoginForm widget-instance-ArticlePage_LoginForm" 
+         data-widget-name="LoginForm" 
+         data-widget-instance="ArticlePage_LoginForm">
+            <div class="signin-form">
+
+        <div class="preloader-wrap hide">
+            <div class="preloader">
+                <div class="spinner"></div>
+            </div>
+        </div>
+
+        
+        <div class="login-form__section-wrap">
+                <form class="login-form__section">
+                    <div class="login-form__heading">
+                        <h3>Client Account</h3>
+                    </div>
+                    <!-- Errors -->
+                    <div id="LoginErrorMessage" class="error at-error" data-default-message="You could not be signed in. Please check your email address / username and password and try again.">
+                    </div>
+                    <div class="login-form__row">
+                        <label for="user_ArticlePage_LoginForm" class="login-form__label">
+                            <span class="login-form__label-text">Email address / Username</span>
+                            <a class="question-icon" href="#" data-reveal-id="modalSignInEmail"><span>?</span></a>
+                        </label>
+                        <input id="user_ArticlePage_LoginForm" type="text" class="username at-username" autocomplete="username"
+                               aria-required="true" aria-describedby="LoginErrorMessage"/>
+                    </div>
+                    <div class="login-form__row">
+                        <label for="pass_ArticlePage_LoginForm" class="login-form__label-text">Password</label>
+                        <input id="pass_ArticlePage_LoginForm" type="password" class="password at-password" autocomplete="current-password" 
+                               aria-required="true" aria-describedby="LoginErrorMessage" />
+                    </div>
+                    
+                    <input type="hidden" id="enableReCaptcha" name="enableReCaptcha" value="True" />
+                        <div class="login-form__row">
+                            <div class="login-form-captcha">
+    <div class="widget-ReCaptcha widget-instance-login-form-captcha" 
+         data-widget-name="ReCaptcha" 
+         data-widget-instance="login-form-captcha">
+                <div class="js-recaptcha-wrap">
+            <p class="screenreader-text">This verification must be submitted within 1 minute of completing it.</p>
+            <div id="captcha" data-captchakey="6Lf7rgMqAAAAAIfWa_UB36Srh_z7a-YQa9NlPxEQ" data-fallback-captcha-key="6Lf7rgMqAAAAAIfWa_UB36Srh_z7a-YQa9NlPxEQ"
+                 data-encoded-served-hostname="d3d3LmVtZXJhbGQuY29t"
+                 data-token-lifetime-seconds="60"
+                 data-expiry-warning-lead-seconds="20"></div>
+            <div class="captchaAlert" style="color: #c60f13; display: none">
+                Could not validate captcha.  Please try again.
+            </div>
+            <div class="js-captcha-expiry-warning captcha-timing-message hide" role="alert" aria-live="polite">
+                <span>Your verification will expire soon. Select refresh to keep going.</span>
+                <button type="button" class="js-captcha-refresh-button">Refresh verification</button>
+            </div>
+            <div class="js-captcha-expired-message captcha-timing-message hide" role="alert" aria-live="polite">
+                <span>Your verification has expired. Please verify again.</span>
+                <button type="button" class="js-captcha-refresh-button">Refresh verification</button>
+            </div>
+        </div>
+            <script type="text/javascript">
+                var onloadCallback = function() {
+                    SCM.Captcha.Init('6Lf7rgMqAAAAAIfWa_UB36Srh_z7a-YQa9NlPxEQ');
+                };
+            </script>
+            <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit&hl=en"
+                    async defer>
+            </script>
+    <input type="hidden" id="recaptchaWidgetInstance" value="login-form-captcha" />
+    <input type="hidden" id="recaptchaUseV3" value="False" />
+ 
+    </div>
+
+                            </div>
+                        </div>
+
+                    <div class="login-form__row">
+                        <button type="button" class="signin-button btn at-signin-button">Sign In</button>
+                        <div class="login-form__link-wrap">
+                            <a class="logged-out-link at-reset-link" href="/my-account/reset-password" rel=nofollow>Reset password</a>
+                        </div>
+                        <div class="login-form__link-wrap">
+                            <a class="logged-out-link at-register-link js-register-user-modals" href="/my-account/register?siteId=1000627&amp;returnUrl=https%3a%2f%2fwww.emerald.com%2fjoe%2farticle-abstract%2fdoi%2f10.1108%2fJOE-11-2025-0154%2f1388176%2fWomen-and-nature-in-the-Danube-Delta-a-water-s%3fredirectedFrom%3dPDF" data-target="register" rel=nofollow>Register</a>
+                        </div>
+                    </div>
+
+                    <!-- /.login-form-section -->
+                </form>
+
+    <div class="widget-ExternalLogin widget-instance-loginForm_ExternalLogin" 
+         data-widget-name="ExternalLogin" 
+         data-widget-instance="loginForm_ExternalLogin">
+        
+    <div class="login-form__section">
+        <div class="external-login-provider">
+
+
+                <h3>ICE Member Sign In</h3>
+                <a class="externalLoginLink js-externalLogin-link at-externalLoginLink button-call-to-action" href="https://www.emerald.com/ExternalAuthentication/OIDCLogin?returnUrl=https%3a%2f%2fwww.emerald.com%2fjoe%2farticle-abstract%2fdoi%2f10.1108%2fJOE-11-2025-0154%2f1388176%2fWomen-and-nature-in-the-Danube-Delta-a-water-s%3fredirectedFrom%3dPDF" rel=nofollow>
+                    Log in
+                </a>
+        </div>
+            </div>
+ 
+    </div>
+
+    <div class="widget-SeamlessAccess widget-instance-LoginForm_SeamlessAccess" 
+         data-widget-name="SeamlessAccess" 
+         data-widget-instance="LoginForm_SeamlessAccess">
+        
+<script src="https://service.seamlessaccess.org/thiss.js"></script>
+<div id='seamlessAccessLogin' class="seamless-access-button"></div>
+<script>
+    window.onload = function () {
+        var loginUrl = 'https://' + window.location.host + '/Shibboleth.sso/Login';
+        thiss.DiscoveryComponent.render({
+            loginInitiatorURL: loginUrl,
+        }, '#seamlessAccessLogin');
+    }
+</script> 
+    </div>
+
+
+
+        </div>
+    </div>
+ 
+    </div>
+
+                </div>
+    <div class="widget-RestoreGuestAccess widget-instance-ArticlePage_RestoreGuestAccess" 
+         data-widget-name="RestoreGuestAccess" 
+         data-widget-instance="ArticlePage_RestoreGuestAccess">
+            <div class="restore-access-form">
+        <div class="restore-access-form__heading">
+            <p class="restore-access-info-text">Purchased this content as a guest? Enter your email address to restore access.</p>
+        </div>
+        <div id="restoreGuestEmailFormatError" class="error at-error" role="alert">
+            Please enter valid email address.
+        </div>
+        <div id="restoreGuestEmailLengthError" class="error js-error-length at-error" role="alert">
+            Email address must be 94 characters or fewer.
+        </div>
+        <div class="restore-access-form__row">
+            <label for="guestEmailAddress" class="restore-access-form__label">Email Address</label>
+            <input id="guestEmailAddress" class="restore-guest-email" type="email" autocomplete="off" aria-describedby="restoreGuestEmailFormatError restoreGuestEmailLengthError" aria-invalid="false" data-max-length="94" />
+        </div>
+        <div class="restore-access-form__row">
+            <button type="button" class="js-btn-restore-guest-access btn">Restore access</button>
+        </div>
+    </div>
+ 
+    </div>
+                    <input type="hidden" id="resourceId" value="1388176" />
+                    <input type="hidden" id="resourceTypeId" value="3" />
+                <!-- /.unauth-column -->
+                            <div class="unauth-column entities">
+                        <div class="unauth-society-row">
+
+                        </div>
+                                    </div><!-- /.unauth-column -->
+
+        </div><!-- /.unauth-signin-col-wrap -->
+        </div>
+    <div class="product-type_wrap">
+    <div class="widget-BuyThisResourceLink widget-instance-ArticlePage_BuyThisResourceLink" 
+         data-widget-name="BuyThisResourceLink" 
+         data-widget-instance="ArticlePage_BuyThisResourceLink">
+                <div id="dvPurchaseButton" class="ppv-wrap">
+                            <div class="ppv_price_wrap">
+                        <div class="price_left_text">Pay-Per-View Access</div>
+                                            <div class="display_price_buy_resource">$41.00</div>
+                </div>
+                            <div id="buyThisResourceLink" class="buyThisResourceLink ppv box">
+    <a class="store-link js-add-to-cart" href="https://www.emerald.com/store/add/1388176/3" rel="nofollow"
+       data-article-doi=""
+       data-article-title=""
+       data-article-type=""
+       data-journal-short-name=""
+       data-currency="USD"
+       data-price="41.00">
+        <i class="icon-availability_cart"></i> <span>Buy This Article</span>
+    </a>
+    <div class="widget-ExternalProductLink widget-instance-BuyThisResource" 
+         data-widget-name="ExternalProductLink" 
+         data-widget-instance="BuyThisResource">
+          
+    </div>
+
+                </div>
+
+        </div>
+
+
+ 
+    </div>
+            </div>
+    <div class="widget-BuyOrUseTokensLink widget-instance-ArticlePage_BuyOrUseTokensLink" 
+         data-widget-name="BuyOrUseTokensLink" 
+         data-widget-instance="ArticlePage_BuyOrUseTokensLink">
+         
+    </div>
+</div><!-- /.unauth-wrap -->
+
+    <div class="widget-DeepDyve widget-instance-ArticlePage_DeepDyveLink" 
+         data-widget-name="DeepDyve" 
+         data-widget-instance="ArticlePage_DeepDyveLink">
+        
+<div class="js-deep-dyve-container">
+    <div class="deep-dyve-title">
+        Rental
+    </div>
+
+    <div class="deep-dyve-link">
+        <span class="deep-dyve-sc-message">
+            This article is also available for rental through DeepDyve.
+        </span>
+
+        <span class="js-deepdyve-link" data-apiurl="https://www.deepdyve.com/rental-link?docId=10.1108/JOE-11-2025-0154&amp;journal=2046-6749&amp;fieldName=journal_doi&amp;affiliateId=EMER&amp;format=json">
+            <a href="https://www.deepdyve.com/doc-view?docId=10.1108/JOE-11-2025-0154&amp;fieldName=journal_doi&amp;affiliateId=EMER">
+                <img src="//www.deepdyve.com/assets/images/deepdyve-link-button.svg" style="border:none" alt="Read this now at DeepDyve"/>
+            </a>
+        </span>
+    </div>
+
+</div> 
+    </div>
+            
+        </div>
+    </div> 
+    <div id="Sidebar" class="page-column page-column--right">
+        <input type="hidden" class="js-sidebar-stick-only-last-ad" value=true>
+
+    <div class="widget-AdBlock widget-instance-ArticlePageTopSidebar" 
+         data-widget-name="AdBlock" 
+         data-widget-instance="ArticlePageTopSidebar">
+        
+ 
+    </div>
+
+
+        <div class="sidebar-widget_wrap">
+    <div class="widget-DynamicWidgetLayout widget-instance-Article_RightRail" 
+         data-widget-name="DynamicWidgetLayout" 
+         data-widget-instance="Article_RightRail">
+        <div class="widget widget-dynamic " data-count="1">
+    
+
+    <div class="widget-dynamic-inner-wrap">
+
+    <div class="widget-DynamicWidgetLayout widget-instance-Article_RightRailB0" 
+         data-widget-name="DynamicWidgetLayout" 
+         data-widget-instance="Article_RightRailB0">
+        <div class="widget widget-dynamic right-rail" data-count="9">
+    
+
+    <div class="widget-dynamic-inner-wrap">
+
+    <div class="widget-DynamicWidgetLayout widget-instance-Article_RightRailB0B0" 
+         data-widget-name="DynamicWidgetLayout" 
+         data-widget-instance="Article_RightRailB0B0">
+        <div class="widget widget-dynamic article-article-level-metrics article-level-metrics" data-count="1">
+    
+
+    <div class="widget-dynamic-inner-wrap">
+
+    <div class="widget-ArticleLevelMetrics widget-instance-Article_RightRailB0B0article-article-level-metrics" 
+         data-widget-name="ArticleLevelMetrics" 
+         data-widget-instance="Article_RightRailB0B0article-article-level-metrics">
+        
+
+
+
+    <div class="artmet-wrapper horizontal-artmet">
+<div class="artmet-condensed-wrap clearfix">
+    <div class="artmet-condensed-stats clearfix">
+            <div class="artmet-item artmet-views">
+                <span class="artmet-number">75</span>
+                <span class="artmet-text">Views</span>
+            </div>
+
+
+            <div class="artmet-item artmet-badges-wrap">
+                    <div class="artmet-item artmet-altmetric">
+    <div class="widget-AltmetricLink widget-instance-ArticleLevelMetrics_AltmetricLinkSummary" 
+         data-widget-name="AltmetricLink" 
+         data-widget-instance="ArticleLevelMetrics_AltmetricLinkSummary">
+            <!-- Altmetrics -->
+    <div id="altmetricEmbedId"
+         runat="server"
+         class='altmetric-embed'
+         data-badge-type="donut"
+         data-hide-no-mentions="false"
+         data-doi="10.1108/JOE-11-2025-0154"
+
+                    
+                data-link-target="_blank"
+            
+
+
+        ></div>
+         <script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></script>
+ 
+    </div>
+
+                    </div>
+
+                    <div class="artmet-item artmet-dimensions">
+    <div class="widget-DimensionsBadge widget-instance-ArticleLevelMetrics_DimensionsBadge" 
+         data-widget-name="DimensionsBadge" 
+         data-widget-instance="ArticleLevelMetrics_DimensionsBadge">
+        <span class="__dimensions_badge_embed__" 
+      data-doi="10.1108/JOE-11-2025-0154" 
+      data-legend="never" 
+      data-style="small_circle" 
+      data-hide-zero-citations="true"></span>
+<script async src="https://badge.dimensions.ai/badge.js" charset="utf-8"></script>
+ 
+    </div>
+
+                    </div>
+            </div>
+    </div>
+        <div class="artmet-modal-trigger-wrap clearfix">
+            <a href="javascript:;" role="button" class="artmet-modal-trigger js-artmet-modal-trigger at-alm-metrics-modal-trigger" data-article-id="1388176" aria-haspopup="dialog" aria-expanded="false" aria-controls="MetricsModal" rel=nofollow><i class="icon-metrics"></i><span>View Metrics</span></a>
+        </div>
+</div>
+
+
+            <div class="artmet-modal js-artmet-modal" id="MetricsModal" role="dialog" aria-modal="true" aria-hidden="true" aria-live="assertive" aria-labelledby="widget-title-1-id" tabindex="-1">
+                <div class="artmet-modal-contents js-metric-modal-contents at-alm-modal-contents" id="MetricsModalContents">
+                    <a href="javascript:;" role="button" class="artmet-close-modal js-artmet-close-modal">
+                        <span aria-hidden="true">&#215;</span>
+                        <span class="screenreader-text">Close metrics modal</span>
+                    </a>
+                </div>
+            </div>
+    </div>
+
+ 
+    </div>
+
+    </div>
+
+</div> 
+    </div>
+    <div class="widget-DynamicWidgetLayout widget-instance-Article_RightRailB0B1" 
+         data-widget-name="DynamicWidgetLayout" 
+         data-widget-instance="Article_RightRailB0B1">
+        <div class="widget widget-dynamic articlelistnewandpopular article-list-new-popular" data-count="1">
+    
+
+    <div class="widget-dynamic-inner-wrap">
+
+    <div class="widget-ArticleListNewAndPopular widget-instance-Article_RightRailB0B1Article_ArticleNewPopularCombined" 
+         data-widget-name="ArticleListNewAndPopular" 
+         data-widget-instance="Article_RightRailB0B1Article_ArticleNewPopularCombined">
+            <div class="vt-new-and-popular-combined new-and-popular-combined">
+        <h2 class="screenreader-text">New and popular articles</h2>
+        <ul class="articleListNewAndPopularCombinedView">
+                <li>
+                    <a href="javascript:;" class="js-new-and-popular-mode active" data-mode="MostRecent" data-instanceName="Article_RightRailB0B1Article_ArticleNewPopularCombined" aria-label="View Latest articles">Latest</a>
+                </li>
+                <li>
+                    <a href="javascript:;" class="js-new-and-popular-mode " data-mode="MostRead" data-instanceName="Article_RightRailB0B1Article_ArticleNewPopularCombined" aria-label="View Most Read articles">Most Read</a>
+                </li>
+                <li>
+                    <a href="javascript:;" class="js-new-and-popular-mode " data-mode="MostCited" data-instanceName="Article_RightRailB0B1Article_ArticleNewPopularCombined" aria-label="View Most Cited articles">Most Cited</a>
+                </li>
+        </ul>
+            <section class="js-new-and-popular-content js-new-and-popular-content-MostRecent hasContent">
+
+
+
+
+    <div id="newPopularList-Article_RightRailB0B1Article_ArticleNewPopularCombined" class="fb new-and-popular vt-new-and-popular-Article_RightRailB0B1Article_ArticleNewPopularCombined">
+
+
+        <div class="widget-dynamic-entry-wrap">
+<div class="widget-dynamic-entry">
+    <div class="fb-item-title">
+                <a href="/joe/article/doi/10.1108/JOE-04-2025-0049/1394594/Informal-leadership-as-distributed-task">Informal leadership as distributed task orchestration in addiction services</a>
+
+
+    </div>
+</div>
+<div class="widget-dynamic-entry">
+    <div class="fb-item-title">
+                <a href="/joe/article/doi/10.1108/JOE-11-2025-0150/1391519/Submerged-methodologies-underwater-ethnography">Submerged methodologies: underwater ethnography contributing to hydrofeminist justice</a>
+
+
+    </div>
+</div>
+<div class="widget-dynamic-entry">
+    <div class="fb-item-title">
+                <a href="/joe/article/doi/10.1108/JOE-11-2025-0159/1391045/Water-grabbing-and-the-Vizhinjam-sea-port-care">Water grabbing and the Vizhinjam sea port: care, ownership, resistance and the way forward</a>
+
+
+    </div>
+</div>
+<div class="widget-dynamic-entry">
+    <div class="fb-item-title">
+                <a href="/joe/article/doi/10.1108/JOE-11-2025-0151/1389147/R-existing-in-a-saturated-water-body-hydrofeminist">R-existing in a saturated water body: hydrofeminist textile approach to Mallolafken, Chile</a>
+
+
+    </div>
+</div>
+        </div>
+    </div>
+            </section>
+            <section class="js-new-and-popular-content js-new-and-popular-content-MostRead hide">
+            </section>
+            <section class="js-new-and-popular-content js-new-and-popular-content-MostCited hide">
+            </section>
+        <div class="spinner hide"></div>
+    </div>
+ 
+    </div>
+
+    </div>
+
+</div> 
+    </div>
+    <div class="widget-DynamicWidgetLayout widget-instance-Article_RightRailB0B2" 
+         data-widget-name="DynamicWidgetLayout" 
+         data-widget-instance="Article_RightRailB0B2">
+        <div class="widget widget-dynamic article-alerts alerts" data-count="1">
+    
+
+    <div class="widget-dynamic-inner-wrap">
+
+    <div class="widget-Alerts widget-instance-Article_RightRailB0B2article-alerts" 
+         data-widget-name="Alerts" 
+         data-widget-instance="Article_RightRailB0B2article-alerts">
+            <div id="alerts" class="widget widget-alerts rail-widget_wrap vt-widget-alerts">
+        <h2 class="alerts-widget-header">Email Alerts</h2>
+        <div class="widget-links_wrap">
+                    <div class="userAlert alertType-1">
+                            <a href="#alert-1"
+                               class="js-open-alert-modal"
+                               role="button"
+                               data-user-logged-in="False"
+                               data-alert-type="1"
+                               data-eissn=""
+                               rel=nofollow>Article Activity Alert</a>
+                    </div>
+                    <div class="userAlert alertType-3">
+                            <a href="#alert-3"
+                               class="js-open-alert-modal"
+                               role="button"
+                               data-user-logged-in="False"
+                               data-alert-type="3"
+                               data-eissn=""
+                               rel=nofollow>Earlycite Alert</a>
+                    </div>
+                    <div class="userAlert alertType-23">
+                            <a href="#alert-23"
+                               class="js-open-alert-modal"
+                               role="button"
+                               data-user-logged-in="False"
+                               data-alert-type="23"
+                               data-eissn=""
+                               rel=nofollow>Closed Issue Alert</a>
+                    </div>
+                    <div class="userAlert alertType-30">
+                            <a href="#alert-30"
+                               class="js-open-alert-modal"
+                               role="button"
+                               data-user-logged-in="False"
+                               data-alert-type="30"
+                               data-eissn=""
+                               rel=nofollow>Latest Published Articles Alert</a>
+                    </div>
+                                    <div class="userAlertSignUpModal reveal-modal small"
+     data-bypass-confirmation="false"
+     data-enable-guest-signup="false"
+     data-reveal
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-live="assertive"
+     aria-label="Alert sign-up"
+     aria-labelledby="userAlertSignUpModalTitle">
+    <div class="userAlertSignUp"></div>
+    <a href="javascript:;" role="button" class="close-reveal-modal js-close-modal">
+        <i class="icon-general-close" aria-hidden="true"></i>
+        <span class="screenreader-text">Close alert sign-up modal</span>
+    </a>
+</div>
+
+        </div>
+    </div>
+ 
+    </div>
+
+    </div>
+
+</div> 
+    </div>
+    <div class="widget-DynamicWidgetLayout widget-instance-Article_RightRailB0B3" 
+         data-widget-name="DynamicWidgetLayout" 
+         data-widget-instance="Article_RightRailB0B3">
+        <div class="widget widget-dynamic article-related-content-solr-articles related-content-solr" data-count="1">
+    
+
+    <div class="widget-dynamic-inner-wrap">
+
+    <div class="widget-RelatedContentSolr widget-instance-Article_RightRailB0B3Article_RightRail_RelatedContentArticles" 
+         data-widget-name="RelatedContentSolr" 
+         data-widget-instance="Article_RightRailB0B3Article_RightRail_RelatedContentArticles">
+            <div class="vt-related-content related-content_wrap rail-widget_wrap">
+        <h2>Suggested Reading</h2>
+
+        <div class="widget-links_wrap">
+                <div class="article-title">
+                    <a href="/ijmhsc/article/16/4/359/139962/Immigrant-women-nature-and-mental-health">Immigrant women, nature and mental health</a>
+    <div class="content-meta"><span class="j-name">International Journal of Migration, Health and Social Care</span> <span class="j-date">(December,2020)</span></div>
+
+                </div>
+                <div class="article-title">
+                    <a href="/joe/article/doi/10.1108/JOE-11-2025-0151/1389147/R-existing-in-a-saturated-water-body-hydrofeminist">R-existing in a saturated water body: hydrofeminist textile approach to Mallolafken, Chile</a>
+    <div class="content-meta"><span class="j-name">Journal of Organizational Ethnography</span> <span class="j-date">(July,2026)</span></div>
+
+                </div>
+                <div class="article-title">
+                    <a href="/cbth/article/21/1/171/1271679/Transforming-Voices-reimagining-organizational">Transforming Voices: reimagining organizational vulnerabilities of Mexican women in tourism through experimental audio-visual research</a>
+    <div class="content-meta"><span class="j-name">Consumer Behavior in Tourism and Hospitality</span> <span class="j-date">(August,2025)</span></div>
+
+                </div>
+                <div class="article-title">
+                    <a href="/joe/article/doi/10.1108/JOE-11-2025-0158/1386048/Guardians-of-Fierro-Urku-indigenous-women-s">Guardians of Fierro Urku: indigenous women's struggle and collective resistance in Saraguro's anti-mining movement</a>
+    <div class="content-meta"><span class="j-name">Journal of Organizational Ethnography</span> <span class="j-date">(July,2026)</span></div>
+
+                </div>
+                <div class="article-title">
+                    <a href="/jtf/article/doi/10.1108/JTF-10-2023-0227/1256352/Operationalising-branding-through-a-sense-of-place">Operationalising branding through a sense of place toolkit</a>
+    <div class="content-meta"><span class="j-name">Journal of Tourism Futures</span> <span class="j-date">(December,2024)</span></div>
+
+                </div>
+        </div>
+    </div>
+ 
+    </div>
+
+    </div>
+
+</div> 
+    </div>
+    <div class="widget-DynamicWidgetLayout widget-instance-Article_RightRailB0B4" 
+         data-widget-name="DynamicWidgetLayout" 
+         data-widget-instance="Article_RightRailB0B4">
+        <div class="widget widget-dynamic article-related-content-solr-chapters related-content-solr" data-count="1">
+    
+
+    <div class="widget-dynamic-inner-wrap">
+
+    <div class="widget-RelatedContentSolr widget-instance-Article_RightRailB0B4Article_RightRail_RelatedContentChapters" 
+         data-widget-name="RelatedContentSolr" 
+         data-widget-instance="Article_RightRailB0B4Article_RightRail_RelatedContentChapters">
+            <div class="vt-related-content related-content_wrap rail-widget_wrap">
+        <h2>Related Chapters</h2>
+
+        <div class="widget-links_wrap">
+                <div class="article-title">
+                    <a href="https://www.emerald.com/books/edited-volume/21396/chapter/112099187/An-Empirical-Analysis-on-Exploring-Sustainable">An Empirical Analysis on Exploring Sustainable Development Goals Through Nature-based Health Tourism in India</a>
+    <div class="content-meta"><span class="b-name">Travel and Wellness: A Renaissance of Nature-based Health Tourism</span></div>
+
+                </div>
+                <div class="article-title">
+                    <a href="https://www.emerald.com/books/edited-volume/17345/chapter/94310412/Women-and-Sustainable-Tourism-Experiences-of">Women and Sustainable Tourism: Experiences of Environmental Protection and Conservation in the Philippines</a>
+    <div class="content-meta"><span class="b-name">Revisiting Sustainable Tourism in the Philippines: Towards a Better Normal</span></div>
+
+                </div>
+                <div class="article-title">
+                    <a href="https://www.emerald.com/books/edited-volume/21371/chapter/110636723/Empowering-Sustainability-The-Pivotal-Role-of">Empowering Sustainability: The Pivotal Role of Women in Sustainable Tourism</a>
+    <div class="content-meta"><span class="b-name">International Handbook of Sustainable Tourism Economy: Theories, Practices and Applications</span></div>
+
+                </div>
+        </div>
+    </div>
+ 
+    </div>
+
+    </div>
+
+</div> 
+    </div>
+    <div class="widget-DynamicWidgetLayout widget-instance-Article_RightRailB0B5" 
+         data-widget-name="DynamicWidgetLayout" 
+         data-widget-instance="Article_RightRailB0B5">
+        <div class="widget widget-dynamic article-user-affinity-recommendations user-affinity-recommendations" data-count="1">
+    
+
+    <div class="widget-dynamic-inner-wrap">
+
+    <div class="widget-UserAffinityRecommendations widget-instance-Article_RightRailB0B5article-user-affinity-recommendations" 
+         data-widget-name="UserAffinityRecommendations" 
+         data-widget-instance="Article_RightRailB0B5article-user-affinity-recommendations">
+        
+
+<div class="user-affinity-recommendations related-content_wrap rail-widget_wrap">
+    <h2>Recommended for you</h2>
+    <div id="user-affinity-recommendations-Article_RightRailB0B5article-user-affinity-recommendations" class="user-affinity-recommendation-items widget-links_wrap"></div>
+    <div class="privacy-policy">These recommendations are informed by your reading behaviors and indicated interests.</div>
+</div>
+<script>
+    $(function () {
+        SCM.SharedWidgets.UserPersonalization.GetUserAffinityRecResults('user-affinity-recommendations-Article_RightRailB0B5article-user-affinity-recommendations', 'Article_RightRailB0B5article-user-affinity-recommendations', 1000627);
+    });
+</script> 
+    </div>
+
+    </div>
+
+</div> 
+    </div>
+    <div class="widget-DynamicWidgetLayout widget-instance-Article_RightRailB0B6" 
+         data-widget-name="DynamicWidgetLayout" 
+         data-widget-instance="Article_RightRailB0B6">
+        <div class="widget widget-dynamic article-article-cited-by article-cited-by" data-count="1">
+    
+
+    <div class="widget-dynamic-inner-wrap">
+
+    <div class="widget-ArticleCitedBy widget-instance-Article_RightRailB0B6article-article-cited-by" 
+         data-widget-name="ArticleCitedBy" 
+         data-widget-instance="Article_RightRailB0B6article-article-cited-by">
+        <div class="rail-widget_wrap vt-articles-cited-by">
+    <h2 class="article-cited-title">Cited By</h2>
+    <div class="widget-links_wrap">
+                    <div class="article-cited-link-wrap google-scholar-url">
+                <a href="http://scholar.google.com/scholar?q=link:https%3A%2F%2Fwww.emerald.com%2Fjoe%2Farticle%2Fdoi%2F10.1108%2FJOE-11-2025-0154%2F1388176" target="_blank" rel="nofollow">Google Scholar</a>
+            </div>
+            </div>
+</div> 
+    </div>
+
+    </div>
+
+</div> 
+    </div>
+    <div class="widget-DynamicWidgetLayout widget-instance-Article_RightRailB0B7" 
+         data-widget-name="DynamicWidgetLayout" 
+         data-widget-instance="Article_RightRailB0B7">
+        <div class="widget widget-dynamic article-self-serve" data-count="1">
+    
+
+    <div class="widget-dynamic-inner-wrap">
+
+
+    </div>
+
+</div> 
+    </div>
+    <div class="widget-DynamicWidgetLayout widget-instance-Article_RightRailB0B8" 
+         data-widget-name="DynamicWidgetLayout" 
+         data-widget-instance="Article_RightRailB0B8">
+        <div class="widget widget-dynamic " data-count="1">
+    
+
+    <div class="widget-dynamic-inner-wrap">
+
+    <div class="widget-TrendMD widget-instance-Article_RightRailB0B8trendmd" 
+         data-widget-name="TrendMD" 
+         data-widget-instance="Article_RightRailB0B8trendmd">
+        
+<div id="trendmd-suggestions"></div>
+
+<div class="options" data-suppress-if-hum-is-present="True"></div> 
+    </div>
+
+    </div>
+
+</div> 
+    </div>
+
+    </div>
+
+</div> 
+    </div>
+
+    </div>
+
+</div> 
+    </div>
+
+        </div>
+
+    <div class="widget-AdBlock widget-instance-ArticlePageTopMainBodyBottom" 
+         data-widget-name="AdBlock" 
+         data-widget-instance="ArticlePageTopMainBodyBottom">
+        
+ 
+    </div>
+
+
+
+
+    </div> 
+</div>
+
+    <div class="widget-UserAffinityTracking widget-instance-PersonalizedContent_UserAffinityTracking_Article" 
+         data-widget-name="UserAffinityTracking" 
+         data-widget-instance="PersonalizedContent_UserAffinityTracking_Article">
+        <div class="SCM-SharedWidgets-LocalStorage-UserAffinityTracking" data-resource-id="1388176" data-resource-type="Article" data-days-to-retain="90"></div> 
+    </div>
+
+
+    <div class="widget-Lockss widget-instance-Article_Lockss" 
+         data-widget-name="Lockss" 
+         data-widget-instance="Article_Lockss">
+         
+    </div>
+
+
+
+
+    <div class="widget-VideoListAccess widget-instance-Article_VideoListAccess" 
+         data-widget-name="VideoListAccess" 
+         data-widget-instance="Article_VideoListAccess">
+         
+    </div>
+
+
+    <div class="widget-ArticleListAccess widget-instance-Article_AccessIconData" 
+         data-widget-name="ArticleListAccess" 
+         data-widget-instance="Article_AccessIconData">
+        
+
+
+
+    <script type="text/javascript">
+        var SCM = SCM || {};
+        SCM.AccessIcons = SCM.AccessIcons || [];
+        SCM.AccessIcons = SCM.AccessIcons.concat([{"id":1388176,"icon":"icon-availability_cart","title":"Available to Purchase"}]);
+
+        SCM.SiteJS.setAccessIcons(SCM.AccessIcons);
+
+    </script>
+ 
+    </div>
+
+
+
+        </div><!-- /.content-main_content -->
+    </section>
+</div>
+<div class="mobile-mask">
+</div>
+<section class="footer_wrap vt-site-footer" role="contentinfo">
+    
+
+
+<div class="ad-banner js-ad-banner ad-banner-footer">
+    <div class="widget-AdBlock widget-instance-FooterAd" 
+         data-widget-name="AdBlock" 
+         data-widget-instance="FooterAd">
+        
+ 
+    </div>
+
+</div>
+
+<div class="sticky-footer-ad js-sticky-footer-ad">
+    <div class="widget-AdBlock widget-instance-StickyAd" 
+         data-widget-name="AdBlock" 
+         data-widget-instance="StickyAd">
+        
+ 
+    </div>
+
+</div>
+
+
+    <div class="widget-SitePageFooter widget-instance-SitePageFooter" 
+         data-widget-name="SitePageFooter" 
+         data-widget-instance="SitePageFooter">
+            <div class="journal-footer journal-bg">
+        <div class="journal-footer_content clearfix foot-right">
+    <div class="journal-footer-menu">
+        
+            <ul>
+                <li class="link-0">
+                    <a href="/joe/pages/about">About this Journal</a>
+                </li>
+                <li class="link-1">
+                    <a href="/joe/pages/editorial-board">Editorial Team</a>
+                </li>
+                <li class="link-2">
+                    <a href="https://mc.manuscriptcentral.com/joe">Write for this Journal</a>
+                </li>
+                <li class="link-3">
+                    <a href="https://www.emerald.com/journals/author-guidance/1627/emerald-publishing-author-guidelines">Author Guidelines</a>
+                </li>
+            </ul>
+        
+
+    </div>
+    <div class="journal-footer-affiliations aff-right">
+        <!-- <h3>Affiliations</h3> -->
+            <a href="/" target="">
+                <img id="footer-logo-JournalofOrganizationalEthnography" class="journal-footer-affiliations-logo" src="//emer.silverchair-cdn.com/data/SiteBuilderAssets/Live/Images/joe/Journal_of_Organizational_Ethnography-1997281136.svg" alt="Journal of Organizational Ethnography" />
+            </a>
+    </div>
+        </div>
+    <div class="journal-footer-colophon">
+        <ul>
+                <li><span>Online ISSN</span> 2046-6757</li>
+                            <li><span>Print ISSN</span> 2046-6749</li>
+                    </ul>
+    </div>
+    </div>
+ 
+    </div>
+
+
+
+<div class="site-theme-footer">
+        <div class="site-theme-footer_content">
+    <div class="widget-SelfServeContent widget-instance-UmbrellaFooterSelfServe" 
+         data-widget-name="SelfServeContent" 
+         data-widget-instance="UmbrellaFooterSelfServe">
+        
+
+
+
+    <input type="hidden" class="SelfServeContentId" value="GlobalFooter_Links" />
+    <input type="hidden" class="SelfServeVersionId" value="0" />
+
+<div class="theme-footer">
+<div class="flex-row">
+<div class="col-4 footer-branding">
+<div class="footer-logo">
+<a href="#"><img alt="Emerald Publishing logo" src="https://emer.silverchair-cdn.com/ImageLibrary/emerald-footer-logo.png?versionId=9651" /></a>
+</div>
+<div class="social-icons-wrap">
+<ul class="social-icons-list">
+    <li><a class="social-link" href="https://bsky.app/profile/emeraldpublishing.bsky.social" target="_blank"><span class="icon-social-bluesky"></span><span class="screenreader-text">Bluesky</span></a></li>
+    <li>
+    <a class="social-link" href="https://www.facebook.com/EmeraldPublishingImpact/" target="_blank"><span class="icon-social-facebook"></span><span class="screenreader-text">Facebook</span></a>
+    </li>
+    <li>
+    <a class="social-link" href="https://www.linkedin.com/company/emeraldpublishing/" target="_blank"><span class="icon-social-linkedin"></span><span class="screenreader-text">LinkedIn</span></a>
+    </li>
+    <li>
+    <a class="social-link" href="https://www.youtube.com/user/EmeraldPublishing67" target="_blank"><span class="icon-social-youtube"></span><span class="screenreader-text">YouTube</span></a>
+    </li>
+    <li>
+    <a class="social-link" href="https://www.instagram.com/emerald_publishing/" target="_blank"><span class="icon-social-instagram"></span><span class="screenreader-text">Instagram</span></a>
+    </li>
+</ul>
+</div>
+<div class="tag-copy">
+© 2026 Emerald Publishing Limited
+</div>
+</div>
+<div class="col-8 footer-nav">
+<div class="flex-row">
+<div class="col-3">
+<div class="footer-links-group">
+<ul class="list-lvl-0">
+    <li class="list-lvl-0">
+    <a href="https://www.emerald.com/insight">Emerald Insight</a>
+    </li>
+    <li class="list-lvl-0">
+    <a href="https://www.emerald.com/about-us">About Emerald</a>
+    </li>
+    <li class="list-lvl-0">
+    <a href="https://bookstore.emerald.com/" target="_blank">Emerald Bookstore</a>
+    </li>
+</ul>
+</div>
+</div>
+<div class="col-4">
+<div class="footer-links-group">
+<ul class="list-lvl-0">
+    <li class="list-lvl-0">
+    <a href="/open-access">Open Access</a>
+    </li>
+    <li class="list-lvl-0">
+    <a href="https://www.emerald.com/emerald-publishing-services">Emerald Publishing Services</a>
+    </li>
+    <li class="list-lvl-0">
+    <a href="https://www.emerald.com/research-services">Research Services</a>
+    </li>
+</ul>
+</div>
+</div>
+<div class="col-3">
+<div class="footer-links-group">
+<ul class="list-lvl-0">
+    <li class="list-lvl-0">
+    <a href="https://www.emerald.com/contact-emerald">Contact us</a>
+    </li>
+    <li class="list-lvl-0">
+    <a href="https://emeraldpublishinggroup.freshdesk.com/support/home" target="_blank">Emerald Support Portal</a>
+    </li>
+    <li class="list-lvl-0">
+    <a href="https://www.emerald.com/about-us/pages/start-your-new-chapter">Working for Emerald</a>
+    </li>
+    <li class="list-lvl-0">
+    <a href="https://emer.silverchair-cdn.com/data/sitemap/sitemap.xml">Sitemap</a>
+    </li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="legal-links-content">
+<div class="legal-links-wrap">
+<ul class="legal-links">
+    <li>
+    <a href="/pages/cookie_policy">Cookie Policy</a>
+    </li>
+    <li>
+    <a href="https://www.emerald.com/pages/accessibility-statement">Accessibility</a>
+    </li>
+    <li>
+    <a href="/pages/site_policies">Site policies</a>
+    </li>
+    <li>
+    <a href="/pages/privacy_notice">Privacy notice</a>
+    </li>
+    <li>
+    <a href="/pages/modern_slavery_act">Modern Slavery Act</a>
+    </li>
+    <li class="copyright">© 2026 Emerald Publishing Limited</li>
+</ul>
+</div>
+</div>
+
+
+
+ 
+    </div>
+
+
+
+        </div><!-- /.center-inner-row -->
+</div><!-- /.site-theme-footer -->
+<div class="ss-ui-only">
+
+    <div class="widget-SelfServeContent widget-instance-SSuiOnlySelfServe" 
+         data-widget-name="SelfServeContent" 
+         data-widget-instance="SSuiOnlySelfServe">
+        
+
+
+
+    <input type="hidden" class="SelfServeContentId" value="SSuiOnly" />
+    <input type="hidden" class="SelfServeVersionId" value="0" />
+
+<style type="text/css">
+    .kwd-group {
+    border-top: 1px solid #9e9e9e !important;
+    }
+    div#book-info__abstract {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+    border-top: none !important;
+    }
+    .content-suppressed {
+    padding: 1rem;
+    }
+    div[class*=-about-this] p a {
+    color: #1c696a !important;
+    font-weight: 300 !important;
+    text-decoration: none !important;
+    }
+    .widget-SelfServeContent[class*=publisher-info] a {
+    color: #1c696a !important;
+    font-weight: 300 !important;
+    text-decoration: none !important;
+    }
+    .widget-SitePageFooter .journal-footer .journal-footer_content .journal-footer-affiliations a img {
+    height: fit-content !important;
+    max-height: none !important;
+    width: 100% !important;
+    max-width: 200px !important;
+    }
+    .widget-IssueSupplementalLinks a:link, .widget-AllIssuesLink a:link {
+    color: #0E4751 !important;
+    }
+    .badge-bar .resource-links-info div.item a {
+    color: #0E4751 !important;
+    }
+    .badge-bar .resource-links-info div.item a.pdf span, .item-container .item-info .badge-bar .resource-links-info div.item a.pdf span {
+    color: #0E4751 !important;
+    }
+    .badge-bar .resource-links-info div.item a.pdf i[class*=icon-], .item-container .item-info .badge-bar .resource-links-info div.item a.pdf i[class*=icon-] {
+    color: #0E4751 !important;
+    }
+    .badge-bar .resource-links-info div.item a i[class*=icon-], .item-container .item-info .badge-bar .resource-links-info div.item a i[class*=icon-] {
+    color: #0E4751 !important;
+    display: inline-block;
+    align-items: center;
+    }
+    .sri-type {
+    color: #000000 !important;
+    }
+    .article-groups.left-flag {
+    color: #000000 !important;
+    }
+    .chapter-groups.left-flag {
+    color: #000000 !important;
+    }
+    .pg_AdvancedSearch .search-module.expanded .limit-results-search .range-select .labels, .pg_CitationSearch .search-module.expanded .limit-results-search .range-select .labels {
+    font-size: 13px;
+    color: #000000 !important;
+    }
+    .content-meta {
+    color: #000000 !important;
+    }
+    .book-series.left-flag {
+    color: #000000 !important;
+    }
+    .citation-manager .citation-manager-container .cdm-item-list-group tfoot .items-wrap button.disabled, .citation-manager .citation-manager-container .cdm-item-list-group thead .items-wrap button.disabled {
+    color: #000000 !important;
+    }
+    .cart-items-wrap .header-row li
+    {
+    color: #000000 !important;
+    }
+    .cart-items-wrap li {
+    color: #000000 !important;
+    }
+    .widget-UserAffinityRecommendations .user-affinity-recommendations .user-affinity-recommendation-items .user-affinity-rec-item-head {
+    color: #000000 !important;
+    }
+    input.btn-edit-userprofile
+    {
+    cursor: pointer;
+    background: #0e4751 !important;
+    border: 1px solid #0e4751 !important;
+    display: inline-block !important;
+    font-family: museo-sans, sans-serif !important;
+    font-size: .75rem !important;
+    font-weight: 300 !important;
+    padding: .5rem 1rem !important;
+    text-align: center !important;
+    text-decoration: none;
+    transition: all .25s ease-in-out !important;
+    border-radius: 22px;
+    }
+    input.btn-edit-userprofile:hover
+    {
+    cursor: pointer;
+    background: #0e4751 !important;
+    border: 1px solid #0e4751 !important;
+    color: #fff !important;
+    }
+    .customer-details [class$=-label], .order-details [class$=-label] {
+    color: #000000 !important;
+    }
+    .summary-list-wrap .summary-list-heading-row li {
+    color: #000000 !important;
+    }
+    .summary-list-wrap li {
+    color: #000000 !important;
+    }
+    .al-article-clienttype, .al-article-series-title, .articleClientType, .left-flag, .sri-type {
+    color: #000000 !important;
+    }
+    .journal-header .site-menu .nav-link {
+    color: #000000 !important
+    }
+    .site-theme-header {
+    background: #fff;
+    )
+</style>
+
+
+
+ 
+    </div>
+
+</div>
+
+<div class="ad-banner js-ad-interstitial">
+    <div class="widget-AdBlock widget-instance-Interstitial" 
+         data-widget-name="AdBlock" 
+         data-widget-instance="Interstitial">
+        
+ 
+    </div>
+
+</div>
+</section>
+
+
+
+
+
+    
+
+
+
+    <div class="widget-SiteWideModals widget-instance-SiteWideModals" 
+         data-widget-name="SiteWideModals" 
+         data-widget-instance="SiteWideModals">
+        <div id="revealModal" class="reveal-modal" data-reveal aria-hidden="true" aria-live="assertive" tabindex="-1">
+    <div id="revealContent"></div>
+    
+    <a class="close-reveal-modal" href="javascript:;"><i class="icon-general-close" aria-hidden="true"></i><span class="screenreader-text">Close dialog</span></a>
+</div>
+
+<div id="globalModalContainer" class="modal-global-container"
+     role="dialog"
+     aria-hidden="true"
+     aria-live="assertive"
+     tabindex="-1">
+    <div id="globalModalContent">
+        <div class="js-globalModalPlaceholder"></div>
+    </div>
+    
+    <a href="javascript:;" class="close-modal js-close-modal" role="button">
+        <i class="icon-general-close" aria-hidden="true"></i>
+        <span class="screenreader-text">Close dialog</span>
+    </a>
+</div>
+<div id="globalModalOverlay" class="modal-overlay js-modal-overlay"></div>
+
+    <div id="NeedSubscription" class="reveal-modal small" data-reveal>
+            <div class="subscription-needed">
+                <div class="modal-heading">This Feature Is Available To Subscribers Only</div>
+                <p><a class="btn modal-sign_in-btn" href="/sign-in?returnUrl=%2fjoe%2farticle-abstract%2fdoi%2f10.1108%2fJOE-11-2025-0154%2f1388176%2fWomen-and-nature-in-the-Danube-Delta-a-water-s%3fredirectedFrom%3dPDF">Sign In</a> or <a class="modal-register-link" href="/my-account/register?siteId=1000627&amp;returnUrl=%2fjoe%2farticle-abstract%2fdoi%2f10.1108%2fJOE-11-2025-0154%2f1388176%2fWomen-and-nature-in-the-Danube-Delta-a-water-s%3fredirectedFrom%3dPDF">Create an Account</a></p>
+            </div>
+
+
+        <a class="close-reveal-modal" href="javascript:;"><i class="icon-general-close" aria-hidden="true"></i><span class="screenreader-text">Close subscription notice</span></a>
+    </div>
+
+
+<div id="noAccessReveal" class="reveal-modal tiny" data-reveal>
+    <a class="close-reveal-modal" href="javascript:;"><i class="icon-general-close" aria-hidden="true"></i><span class="screenreader-text">Close access options</span></a>
+    <div id="noAccessForm">
+        <div class="spinner"></div>
+    </div>
+</div>
+
+
+<div id="cookieShareModal" class="cookie-share-modal-content" hidden>
+    <h2 id="cookieShareModalTitle" class="js-modal-label">Sharing Unavailable</h2>
+    <p>Sharing content requires targeting cookies to be enabled. Please update your cookie preferences to use this feature.</p>
+    <div class="cookie-share-modal__actions">
+        <button type="button" class="btn btn-primary js-share-cookie-prefs-btn">Update Cookie Preferences</button>
+        <button type="button" class="btn js-close-modal">Cancel</button>
+    </div>
+</div> 
+    </div>
+
+    
+
+
+
+
+
+
+<script type="text/javascript">
+    MathJax = {
+        tex: {
+            inlineMath: [['|$', '$|'], ['\\(', '\\)']]
+        }    };
+</script>
+<script id="MathJax-script" async src="//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+    <!-- CookiePro Default Categories -->
+    <!-- When the Cookie Compliance code loads, if cookies for the associated group have consent...
+         it will dynamically change the tag to: script type=text/JavaScript...
+         the code inside the tags will then be recognized and run as normal. -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script type="text/javascript" src="//emer.silverchair-cdn.com/Themes/Client/app/jsdist/v-639255519848030860/site.min.js"></script>
+
+
+    
+    
+    <script defer src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+
+
+
+
+
+
+    
+
+        <script type="text/javascript">
+        $(document).ready(function () {
+            App.SearchAutoComplete.init(["Keywords"]);
+        });
+        </script>
+    
+    
+
+
+
+
+    <div class="ad-banner js-ad-riser ad-banner-riser" role="region" aria-label="Advertisement">
+    <div class="widget-AdBlock widget-instance-RiserAd" 
+         data-widget-name="AdBlock" 
+         data-widget-instance="RiserAd">
+        
+ 
+    </div>
+
+    </div>
+
+
+
+            
+    <div class="end-of-page-js"></div>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3ffb9666a812e05',t:'MTc5MDIzMTI1Ng=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+
