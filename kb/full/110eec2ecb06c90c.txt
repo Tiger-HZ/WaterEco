@@ -1,0 +1,703 @@
+A Satellite-based Approach to Investigating Eutrophication in Lakes 
+Receiving Wastewater Treatment Effluent: A Case Study of Lake 
+Windermere 
+Sabbir Delowara,1,*, Mark Scrimshaw1 
+1 Brunel University London, UK 
+* Correspondence: sabbir.d.arnob@gmail.com 
+ORCID: https://orcid.org/0009-0005-7666-5468 
+This manuscript is a non-peer reviewed preprint submitted to EcoEvoRxiv. It has not 
+been submitted to a peer-reviewed journal for publication and should not be regarded 
+as a final or published version of the work. 
+ 
+ 
+ 
+ABSTRACT 
+Excessive phosphorus from the sewer systems in the UK is a major contributor to 
+eutrophication in freshwater bodies. Chlorophyll-a levels are widely used as a reliable 
+indicator of phosphorus driven eutrophication, and satellite remote sensing provides an 
+effective means of monitoring these dynamics at high spatial and temporal resolution. 
+This study evaluated the utility of Sentinel-2 imagery in capturing the dynamics of 
+eutrophication in Lake Windermere from 2017 to 2022. The Normalized Difference 
+Chlorophyll Index (NDCI), calculated from the Sentinel-2 satellite imagery of the lake, 
+was employed as a predictor for chlorophyll-a concentration. Statistical analysis 
+revealed no significant temporal trend in NDCI values during the time period, indicating 
+persistent eutrophication. Spatially, the southern parts of the lake showed elevated 
+NDCI values, driven by the higher retention time and the presence of several treated 
+sewage effluents along the lake’s length. Notably, the NDCI values were positively 
+correlated with the phosphorus content in the treated effluent from Ambleside WwTW, 
+while the storm overflow showed a negative correlation, attributed to dilution effects 
+from rainwater entering the combined sewer system. 
+1. INTRODUCTION 
+Lake eutrophication is a natural process of lake ageing; however, it can be accelerated 
+by human activities such as pollution, which can ultimately shorten the life expectancy 
+of the body of water. Eutrophication of aquatic ecosystems, defined as an increase in 
+nutrient loading leading to the proliferation of primary producers such as 
+phytoplankton, aquatic plants, and cyanobacteria, is a major cause of ecological 
+degradation in inland and coastal waters worldwide (le Moal, Gascuel-Odoux, 
+Ménesguen, Souchon, Étrillard, Levain, Moatar, Pannard, Souchu, & Lefebvre, 2019; 
+Moss, 2012; Takolander et al., 2017; Yao et al., 2018). There is a also growing 
+appreciation of the importance of Harmful Algal Blooms (HABs) and HAB-related 
+illnesses to public health (Glibert et al., 2005). One of the major factors that contribute 
+to water eutrophication is nutrient enrichment (Yang et al., 2008). Excessive nutrient 
+input, particularly phosphorus, can lead to eutrophication and blooms of toxic 
+cyanobacteria in freshwater systems and proliferation of green macroalgae in coastal 
+areas (le Moal, Gascuel-Odoux, Ménesguen, Souchon, Étrillard, Levain, Moatar, 
+Pannard, Souchu, & Lefebvre, 2019). Water residence time also plays a crucial role in 
+the eutrophication process (Schindler, 2006). Controlling algal blooms and other 
+eutrophication symptoms depends on reducing phosphorus inputs and control of point 
+sources of phosphorus, such as discharge from wastewater treatment facilities 
+(Schindler, 2006; Schindler et al., 2016b). Studies have demonstrated that the 
+discharge of phosphorus from the UK sewer system into freshwater bodies may pose a 
+greater risk to eutrophication compared to agricultural sources of phosphorus (Jarvie et 
+al., 2006). 
+The measurement of chlorophyll-a levels has been widely recognised as an indicator of 
+the presence and concentration of phosphorus (Dillon & Rigler, 1974; Filstrup & 
+Downing, 2017; Jones & Bachmann, 1976). Therefore, measuring chlorophyll -a levels in 
+a freshwater body can provide an indication of the presence and concentration of 
+phosphorus in the water. Remote sensing technology, specifically the use of satellite 
+imagery, is a valuable tool that can be utilized for monitoring chlorophyll levels in 
+freshwater bodies (Ansper & Alikas, 2018; Chen et al., 2017; Kislik et al., 2022; Molkov 
+et al., 2019; Pahlevan et al., 2020; Wang et al., 2020). Chlorophyll-a is commonly used 
+as an indicator of phytoplankton biomass in remote sensing as it absorbs light in the 
+blue and red regions of the electromagnetic spectrum (Porcar-Castell et al., 2014). 
+Sentinel-2 constellation is serving as a polar-orbiting optical mission for land and 
+coastal region monitoring and emergency services. It offers a significant improvement 
+in resolution compared to other freely available imagery such as SPOT and Landsat 
+(Drusch et al., 2012). This comparatively high spatial and spectral resolution imagery 
+can be used to detect changes in chlorophyll-a levels and identify areas of high 
+chlorophyll-a concentration, which can help the management and conservation efforts 
+of freshwater bodies (Ansper & Alikas, 2018; Bramich et al., 2021; Chen et al., 2017; 
+Kislik et al., 2022; Molkov et al., 2019; Pahlevan et al., 2020; Quang et al., 2022; Wang et 
+al., 2020) . 
+The Normalized Difference Chlorophyll Index (NDCI) has been used as an approach for 
+estimating Chlorophyll-a concentration from remote sensing data (D. R. Mishra et al., 
+2014; S. Mishra & Mishra, 2012). The NDCI has been successfully used to predict 
+chlorophyll-a concentration with a low overall bias of approximately 12% (S. Mishra & 
+Mishra, 2012). In addition, the NDCI can be used to detect algal blooms in remote 
+coastal waters where ground truth data is not available. It is a promising tool for 
+monitoring chlorophyll-a concentration, and its potential applications in remote 
+sensing studies of water quality and algal blooms are significant. 
+Lake Windermere, the biggest freshwater lake in England, was chosen as the study area 
+for this study because of its ecological importance and the increasing concern over 
+eutrophication due to the nutrient input in the lake coming from wastewater treatment 
+effluents. This study aims to investigate the potential link between eutrophication and 
+WwTW effluent in Lake Windermere. The objectives of this research include analysing 
+changes in chlorophyll-a content over a period of six years in different parts of the lake 
+using satellite data and determining the correlation between chlorophyll-a in the lake 
+and both phosphorus content in the final treated effluent and storm overflow from the 
+Ambleside WwTW. The results of this research can be used to inform management 
+decisions and develop strategies for mitigating eutrophication in Lake Windermere and 
+potentially other freshwater bodies. 
+2. DATA AND METHODOLOGY 
+3. Data 
+The present study utilized Sentinel-2 Multi-Spectral Instrument (MSI) Level-2A data 
+from the period of 2017 to 2022, covering the months of July and August (Table 1). These 
+two months were selected for this study because these months are typically 
+considered the warmest with higher levels of eutrophication in freshwater bodies in the 
+UK. The S2 cloud probability dataset, a widely utilized dataset in a multitude of 
+academic studies, was also used for cloud detection (de Luca et al., 2022; Rahman et 
+al., 2022; Roca et al., 2022). 
+Table 1: Number of images used. 
+Year No. of images 
+2017 22 
+2018 48 
+2019 48 
+2020 52 
+2021 50 
+2022 50 
+The phosphorus data used in this study was obtained from the Environment Agency's 
+water quality data archive, which contains information on the phosphorus content in 
+the final effluent of the Ambleside Wastewater Treatment Work (WwTW). The data 
+contains 95 samples collected between September 2016 and August 2022. The sample 
+point is identified by the sampling point ID of NW-88004161. 
+The data for the overflow from the Ambleside WwtW were collected from multiple 
+sources. Following a Freedom of Information Act request, Environment Agency 
+provided yearly data for the years 2018-2021 (hours). The data (hours) for the year 2017 
+was obtained from the water quality archive of the Environment Agency. The sampling 
+point referred to as "Ambleside STW Storm Tank Effluent" with the ID "NW-88009612". 
+4. Image Processing and Calculation of NDCI: 
+The Google Earth Engine platform (Gorelick et al., 2017) was employed to process all 
+the images in this study. 
+4.1.1. Cloud Masking and Compositing 
+Firstly, the entire image collection was retrieved and filtered for the area of interest and 
+the months of July and August. A scene-level cloud cover threshold of ≤65% was used 
+to ensure adequate image availability, with residual clouds removed using the S2 cloud 
+probability mask and median compositing to minimise contamination. The composite 
+image was created by taking each pixel’s median value, resulting in a single, 
+representative image that could be used for further analysis. 
+4.1.2. Water Masking and NDCI Calculation 
+After the images had been pre-processed, the Normalized Difference Water Index 
+(NDWI) was utilized to extract and crop the water's surface. It is widely utilized as a 
+method for detecting water bodies in the field of remote sensing (Ali et al., 2019; Eid et 
+al., 2020; Özelkan, 2020). The NDWI value for each pixel was calculated using Equation 
+1 (McFeeters, 1996), which allowed for the identification of water surfaces in the 
+images. Upon completion of the water surface extraction process, the NDCI was 
+computed utilizing Equation 2 (Buma & Lee, 2020; S. Mishra & Mishra, 2012; Shi et al., 
+2022). 
+ Equation 1: Normalized Difference Water Index 
+𝑁𝐷𝑊𝐼 = (𝐵3 − 𝐵8)
+(𝐵3 + 𝐵8) 
+Equation 2: Normalized Difference Chlorophyll Index 
+𝑁𝐷𝐶𝐼 = (𝐵5 − 𝐵4)
+(𝐵5 + 𝐵4) 
+Here, 
+B3 or Band 3, central wavelength is 0.560 µm, 
+B4 or Band 4, central wavelength is 0.665 µm, 
+B5 or Band 5, central wavelength is 0.705 µm, 
+B8 or Band 8, central wavelength is 0.842 µm. 
+4.1.3. Spatial Segmentation 
+Finally, six yearly median composite images were exported and processed using QGIS 
+version 3.22.3-Białowieża (QGIS Development Team, 2022) to cut each image into five 
+sections from north to south (Figure 1). 
+ 
+Figure 1: Studied sections of Lake Windermere 
+5. Statistical analysis 
+5.1.1. Temporal and Spatial Trend Analysis 
+The methodology for statistical data analysis involved the use of RStudio version 
+2022.7.1.554 (RStudio Team, 2022). For temporal trend analysis, the mean NDCI value 
+for each year (Y17- Y22) in each section (S1-S5) was calculated (Table 2). Later, Pearson's, 
+Spearman's Rank, and Mann-Kendall (MK) tests were conducted to determine if there 
+was any parametric, monotonic, non-parametric trend over the years for any of the 
+sections. The same tests were performed on the combined mean of all five sections 
+(S0), representing the entire lake, to determine the overall trend of the lake over the 
+years. Additionally, hypothesis testing was done to find any variations in mean NDCI 
+across the years. The means of the five sections were used to run the Shapiro-Wilk 
+goodness of fit normality test and Leven’s homogeneity of variance test. Based on the 
+result of these tests, a one-way ANOVA or the Kruskal-Wallis test was performed on the 
+data to see if there was any evidence of a difference in mean between the years. 
+Table 2: NDCI Data structure for spatial and temporal analysis. Each year’s data (ex. S117- S517) represents one single image. 
+ 
+2017 
+mean 
+(Y17) 
+2018 
+mean 
+(Y18) 
+2019 
+mean 
+(Y19) 
+2020 
+mean 
+(Y20) 
+2021 
+mean 
+(Y21) 
+2022 
+mean 
+(Y22) 
+Average 
+combined 
+mean 
+Section 
+data (Y0) 
+Section 1 
+mean 
+(S1) 
+S117 S118 S119 S120 S121 S122 
+Average 
+mean of 
+Section 1 
+Section 2 
+mean 
+(S2) 
+S217 S218 S219 S220 S221 S222 
+Average 
+mean of 
+Section 2 
+Section 3 
+mean 
+(S3) 
+S317 S318 S319 S320 S321 S322 
+Average 
+mean of 
+Section 3 
+Section 4 
+mean 
+(S4) 
+S417 S418 S419 S420 S421 S422 
+Average 
+mean of 
+Section 4 
+Section 5 
+mean 
+(S5) 
+S517 S518 S519 S520 S521 S522 
+Average 
+mean of 
+Section 5 
+Average 
+combined 
+mean 
+yearly data 
+(S0) 
+Average 
+mean 
+of 2017 
+Average 
+mean 
+of 2018 
+Average 
+mean 
+of 2019 
+Average 
+mean of 
+2020 
+Average 
+mean 
+of 2021 
+Average 
+mean 
+of 2022 
+ 
+A similar approach was taken to identify any spatial trend in the lake. The data from the 
+five sections were combined into a single dataset for each year and analysed using 
+same statistical tests described above to determine if there was any trend from north to 
+south, as well as for the combined mean of all six years to determine the overall trend 
+of NDCI in the lake from north to south. 
+5.1.2. Correlation Analysis: 
+The phosphorus data were collected by utilizing the Environment Agency's API 
+(Application Programming Interface) from the RStudio platform and integrated into the 
+yearly NDCI dataset. Phosphorus measurements were reported in mg/L and collected 
+irregularly throughout the year. To ensure consistency with the annual NDCI 
+composites, phosphorus concentrations were aggregated to a yearly mean for each 
+year between 2017 and 2022. These annual means were then matched with the yearly 
+mean NDCI values for correlation analysis. In addition to that, overflow data was also 
+integrated into the dataset. Overflow was also aggregated at the yearly scale and paired 
+with the corresponding annual mean NDCI values for each year. No sub-annual 
+analysis was conducted due to the unavailability of higher-frequency data. Pearson's, 
+Spearman's Rank, and Mann-Kendall (MK) tests were performed to evaluate the 
+correlation between these variables. 
+The first set of analyses aimed at evaluating the correlation between Phosphorus and 
+NDCI, as well as between Overflow and NDCI. The second set of analyses aimed at 
+evaluating the relationship between Phosphorus and Overflow. The results from these 
+tests were used to determine the significance of the relationship between the variables 
+and to provide insight into the potential underlying mechanisms driving the trends 
+observed in the data. 
+6. RESULTS 
+Because the statistical analyses in this study were based on annual mean values (six 
+years) and a small number of spatial units (five sections), the correlation coefficients 
+and trend statistics should be interpreted with caution. Small sample sizes reduce 
+statistical power, increase uncertainty in correlation estimates, and make p-values less 
+reliable. The findings presented here should therefore be considered indicative rather 
+than conclusive, and future studies incorporating higher-frequency in-situ or satellite-
+derived chlorophyll measurements would allow more robust statistical inference. 
+7. Temporal Analysis: 
+The results of the Pearson and Spearman tests revealed negligible correlations for the 
+north side of the lake in Sections 1 and 2. Nevertheless, they showed moderate 
+negative correlations for the south side of the lake in Sections 3 to 5 and the combined 
+data (Figure 2). However, the Mann-Kendall test only showed a moderate negative 
+correlation for Section 5 and insignificant correlations for all other sections and the 
+combined data. Despite the correlations being moderate in some cases, none of the p-
+values of these tests were less than 0.05 (Table 3). Based on this, it was concluded that 
+the observed decrease in NDCI value was not statistically significant enough to be 
+recognized. 
+ 
+Figure 2: Temporal correlation of mean NDCI values 
+Table 3: Correlation coefficient and -values for all sections: 
+Section Mann-Kendall Pearson Spearman 
+tau p-value r p-value rho p-value 
+Section 1 0.2 0.707 0.2 0.705 0.314 0.564 
+Section 2 0.2 0.707 -0.033 0.951 0.143 0.803 
+Section 3 -0.333 0.452 -0.551 0.257 -0.486 0.356 
+Section 4 -0.333 0.452 -0.526 0.283 -0.486 0.356 
+Section 5 -0.467 0.26 -0.573 0.235 -0.543 0.297 
+Combined -0.333 0.452 -0.472 0.345 -0.486 0.356 
+Additionally, the Shapiro-Wilk goodness-of-fit test was carried out on the combined 
+data, and the obtained p-value was 0.681, indicating the normal distribution of the data 
+across all sections. Furthermore, Levene's test for homogeneity of variance was 
+conducted and the p-value obtained was 0.024, indicating the presence of unequal 
+variance in at least one of the sections. The Kruskal-Wallis test was then carried out to 
+examine any notable differences in mean NDCI values between the years. However, the 
+results showed no statistically significant difference between the years, with a p-value 
+of 0.104. This is further reinforced by the boxplot of the yearly combined data (Figure 3), 
+and a p-value of 0.064 from the One-Way ANOVA. Suggesting that there was no 
+statistically significant difference in chlorophyll-a concentration between the years. 
+The statistical analysis revealed a lack of temporal trend in the chlorophyll index of the 
+lake and established that there was no statistically significant difference between the 
+mean NDCI values from 2017 to 2022. This suggests that the eutrophication conditions 
+in the lake have remained unchanged over this time period. 
+ 
+Figure 3: Boxplot for combined yearly NDCI data. 
+8. Spatial Analysis 
+The results of the spatial trend analysis of the NDCI between different years and 
+sections of the lake revealed that the average NDCI value tends to increase from the 
+northern (S1) to the southern (S5) part of the lake, indicating a rise in chlorophyll-a 
+concentration towards the lake's southern region. The trend was determined by 
+conducting Pearson, Spearman, and Mann-Kendall tests (Table 4). This positive 
+correlation, indicating an increasing mean NDCI (chlorophyll-a concentration) value 
+towards the south side of the lake, was found to be strong for the years 2017, 2018, and 
+2022. However, a strong negative correlation, indicating a decreasing mean NDCI value 
+(chlorophyll-a concentration) towards the south side of the lake was observed for the 
+year 2019. In 2020, the Spearman test showed a moderate positive correlation, while 
+the other two tests showed no significant correlation. For the year 2021, the correlation 
+was moderate to strong and positive in nature, suggesting an increase in chlorophyll-a 
+concentration towards the south. Similarly, the combined data analysis revealed that 
+both Pearson and Spearman tests showed a strong positive correlation, while the 
+Mann-Kendall test showed a positive moderate correlation, suggesting an increase in 
+chlorophyll-a concentration towards the south. Nevertheless, none of the Mann-
+Kendall tests had a statistically significant p-value (less than 0.05). On the other hand, 
+the Pearson test showed significant p-values for the years 2017 and 2022, while the 
+combined data had significant p-values for both Pearson and Spearman correlation. 
+Table 4: Correlation coefficient and -values for all years 
+Year Mann-Kendall Pearson Spearman 
+tau p-value r p-value rho p-value 
+2017 0.8 0.086 0.957 0.011 0.9 0.083 
+2018 0.8 0.086 0.821 0.088 0.9 0.083 
+2019 -0.8 0.086 -0.759 0.137 -0.9 0.083 
+2020 0.2 0.806 0.298 0.626 0.5 0.45 
+2021 0.6 0.221 0.705 0.184 0.8 0.133 
+2022 0.8 0.086 0.95 0.013 0.9 0.083 
+Combined 0.6 0.221 1 0 1 0.017 
+In addition, the Shapiro-Wilk goodness of fit test was conducted for all years of 
+combined data with a p-value of 0.961, suggesting that the data was normally 
+distributed. Levene's test for homogeneity of variance was performed with a p-value of 
+0.035, indicating that there were differences in the variance of the data across the 
+sections. The Kruskal-Wallis test was performed to determine any significant 
+differences between the sections. The One-Way ANOVA test was also performed to 
+reinforce the finding from the Kruskal-Wallis test. The results of the Kruskal-Wallis test 
+showed a p-value of 0.05, while the ANOVA showed a p-value of 0.03. Due to unequal 
+variances, ANOVA results should be interpreted cautiously; the Kruskal–Wallis test 
+provides a more robust assessment. These results suggest that the null hypothesis 
+should be rejected, indicating that there was a statistically significant difference in 
+chlorophyll-a concentration between the sections. Although the test suggested a 
+statistically borderline difference, visual inspection shows substantial overlap between 
+section distributions (Figure 4). 
+ 
+Figure 4: Boxplot for sections NDCI data 
+The results of the spatial analysis imply that the southern part of the lake is more 
+vulnerable to eutrophication than the northern part. This phenomenon might be a result 
+of the elongated geometry of the lake, with the south end connected to Morecambe Bay 
+through a narrow river, Leven. The observed trend could be caused by multiple sources 
+of treated sewage discharge effluent introduced into the lake from both water 
+companies and private entities along its length, along with the downstream flow of 
+dissolved and suspended phosphorus towards the lake’s discharge point at the 
+southern end. Nevertheless, spatial correlation patterns varied between years, 
+suggesting high inter-annual variability and the need for cautious ecological 
+interpretation. 
+9. Correlation of NDCI data, Phosphorus data, and overflow data: 
+The yearly data analysis revealed a robust positive correlation between Phosphorus and 
+mean NDCI across all three correlation tests, suggesting the association between the 
+chlorophyll-a concentration of the lake and the effluent of phosphorus from the 
+Ambleside WwTW final treated effluent. The findings also indicated a negative 
+correlation between Ambleside WwTW storm overflow and mean NDCI, which was 
+observed to be strong with Pearson and Spearman and moderate with Mann-Kendall. 
+Notably, the Pearson correlation showed the strongest correlation for all three pairs of 
+variables and produced only statistically significant results among the three tests 
+(Table 5). These findings suggest that the Pearson correlation method was most 
+appropriate for analysing the relationship between the variables in this study. 
+The correlation test between NDCI, the phosphorus released in the Ambleside 
+wastewater effluent, and the Ambleside WwTW storm overflow indicated that they are 
+interconnected. As the phosphorus increases, so does the NDCI, directly affecting the 
+eutrophication condition of the lake. However, an intriguing observation was made 
+regarding the relationship between overflow, phosphorus, and NDCI values. A negative 
+correlation was observed, with an increase in overflow leading to a decrease in both 
+NDCI and phosphorus values, implying an inverse relationship between the overflow 
+and chlorophyll-a concentration. A possible explanation for this could be the mixed 
+plant used in the Ambleside WwTW. When overflow occurs due to heavy rainfall, the 
+sewer gets diluted with all the rainwater coming in from other sources in the mixed 
+tank, which could explain the negative relationship between effluent phosphorus and 
+overflow. Additionally, because of the heavy load of water, a large proportion of the 
+water coming from the plant runs off to the Leven river, which may further decrease the 
+phosphorus concentration in the lake and in turn reduces the chlorophyll-a content. 
+However, this interpretation is speculative and requires hydrodynamic data to confirm. 
+Additionally, the extremely high correlation may be influenced by the small sample size 
+and monotonic sampling structure; therefore, it should not be over-interpreted. 
+Table 5: Correlation tests between NDCI, Phosphorus, and Overflow 
+Variable Mann-Kendall Pearson Spearman 
+tau p-value r p-value rho p-value 
+Phosphorus vs 
+NDCI 
+0.733 0.06 0.909 0.012 0.829 0.058 
+Overflow vs 
+NDCI 
+-0.6 0.221 -0.89 0.043 -0.7 0.233 
+Overflow vs 
+Phosphorus 
+-0.8 0.086 -0.997 0 -0.9 0.083 
+10. DISCUSSION 
+Satellite data has become an increasingly valuable tool for lake management and 
+monitoring. Remote sensing of water quality using satellite data is effective and used 
+extensively in providing frequent and spatially extensive measurements of key water 
+quality parameters (Banks et al., 2012; Coimbra et al., 2021; Dörnhöfer et al., 2018; 
+Gons et al., 2008; Huang et al., 2014; Xu et al., 2020). This has allowed for the 
+identification of trends and patterns in water quality and has been used to inform 
+management decisions for a variety of lakes around the world. Many researchers and 
+organizations have used satellite data for lake monitoring, including NASA (Dörnhöfer et 
+al., 2018; Ferral et al., 2018; Gons et al., 2008; Huang et al., 2014; Sayers et al., 2016; 
+Zilioli et al., 1994). However, there are still limitations to the use of satellite data, such 
+as issues with spatial resolution and the need for ground truthing. Further research and 
+development in this area are needed to fully exploit the potential of satellite data for 
+lake management and monitoring. 
+The analysis conducted on the NDCI data from Lake Windermere reveals several 
+interesting insights into the state of eutrophication in the lake. One key finding is that 
+there is a moderate negative correlation between the amount of overflow from the 
+Ambleside WwTW and both the NDCI and phosphorus content in the final treated 
+effluent from the Ambleside WwTW facility. Specifically, the increase in overflow from 
+the Ambleside WwTW coincided with the decrease in both the level of phosphorus in 
+the final treated effluent and the level of eutrophication as measured by NDCI. 
+However, the study did not make use of field data to validate the accuracy of the NDCI 
+in measuring the chlorophyll-a concentration in the water body. This means that the 
+results of the study may not accurately reflect the true amount of chlorophyll-a in the 
+water. Additionally, it is important to note that while Ambleside is a significant 
+treatment plant in the region, treated sewage discharge from other private and water 
+company sources also contributes to the overall phosphorus content and, thus, have 
+an impact on the lake's eutrophication. Furthermore, the study did not consider other 
+factors that could impact the changes in NDCI. These factors could include changes in 
+water level or the presence of other water bodies in the vicinity, which could affect the 
+NDCI readings and the results of the study. Nevertheless, this observation indicates 
+that as the overflow from Ambleside WwTW increases, both the level of phosphorus 
+and the level of eutrophication decreases. This outcome aligns with a prior 
+investigation, which detected a negative relationship between rainfall duration and 
+depth with phosphorus levels in an Italian lake, using both the Kendall rank correlation 
+coefficient and Pearson linear correlation (Barone et al., 2019). The study also 
+emphasizes the crucial role of WwTW in shaping the eutrophication status of Lake 
+Windermere by introducing phosphorus through the final treated effluent, as previously 
+suggested by Moorhouse et al., 2018. Furthermore, a 40-year overview of the water 
+quality and phytoplankton trends in Grasmere lake, a small lake located north of Lake 
+Windermere, indicated a threefold increase in annual areal phosphorus loading and a 
+twofold increase in maximum chlorophyll-a concentrations after the commissioning of 
+a wastewater treatment plant (Reynolds et al., 2012). Similarly, Little Mere, a small, 
+hypertrophic, shallow lake, experienced a rapid decline of 92% in phosphorus 
+concentration within three years following the diversion of sewage effluents (Beklioglu 
+et al., 1999). 
+In addition to the correlation between NDCI, overflow, and phosphorus, the results of 
+the analysis of the NDCI data from Lake Windermere also provide some important 
+insights into the eutrophication condition of the lake. The analysis showed that there 
+was no significant change in the NDCI values of the lake over the studied time, 
+indicating that the state of eutrophication has remained unchanged since 2017. This 
+finding is consistent with previous research that found little change in the phosphorus 
+levels in the lake from 2015 to 2018 (LWA, 2018). Nonetheless, the study acknowledges 
+that the limited temporal coverage of the dataset analyzed may not yield a 
+comprehensive understanding of long-term trends. As the data analyzed spanned only 
+seven years, it may not be adequate to infer trends that persist beyond this duration. 
+Moreover, the spatial analysis of the NDCI data revealed a distinct pattern, with 
+increasing NDCI values from north to south of the lake. The utilization of directional 
+analysis in this study facilitated a more comprehensive examination of NDCI data. 
+Zhang et al. utilized this technique to investigate the spatial dependence of land 
+surface temperature change data, to identify any potential spatial patterns or hot spots 
+(Zhang et al., 2019). In this study such patterns of NDCI values contributed to a deeper 
+understanding of eutrophication in the lake, thereby fostering a more comprehensive 
+and refined perspective. The directional analysis technique was also implemented in 
+several studies of lake Windermere (Fielding et al., 2020; LWA, 2018). In one such 
+study, monthly samples were collected between April and August 2018, similar to the 
+present study it found that the southern side of the lake had the highest mean 
+phosphorus concentration, while the northern side had the lowest (LWA, 2018). A 
+potential explanation for the increase chlorophyll-a concentration towards the 
+southern section of the lake is the existence of multiple outlets that discharge treated 
+sewage, thereby introducing dissolved and suspended phosphorus along the length of 
+the lake, which subsequently flows downstream towards the south. In addition, the 
+prolonged retention time of the elongated lake, which is connected to Morecambe Bay 
+via the narrow Leven River, may contribute to this trend. Retention time has been 
+identified as a significant contributor to eutrophication, which is known to introduce 
+spatial heterogeneity in phytoplankton biomass (Soares et al., 2012). Additionally, 
+retention time is a crucial factor in lake recovery, as higher retention times can impede 
+the time required for the lake to recover (Scharf, 1998). 
+The management of phosphorus sources and delivery from WwTW represents a 
+fundamental approach to controlling eutrophication in lakes. A key measure in this 
+regard involves the reduction of phosphorus at the source, including in household 
+products and diets (le Moal, Gascuel-Odoux, Ménesguen, Souchon, Étrillard, Levain, 
+Moatar, Pannard, Souchu, Lefebvre, et al., 2019). This approach recognizes the 
+importance of minimizing external nutrient inputs that can fuel excessive algal growth 
+and ultimately lead to negative ecological consequences. As such, reducing 
+phosphorus input represents a crucial step in mitigating the effects of eutrophication in 
+lakes. In addition to regulating the amount of phosphorus entering the lake, it is crucial 
+to introduce and sustain particular species in the lake to facilitate the recovery from 
+eutrophication (Ibelings et al., 2007). The diversion of effluents from water bodies is 
+also a viable strategy, but its implementation is dependent on the availability of an 
+appropriate location for effluent disposal (Ahlgren, 1978; Beklioglu et al., 1999; 
+Edmondson & Lehman, 1981). 
+The results of this study demonstrated that Ambleside WwTW plays a crucial role in the 
+eutrophication of Lake Windermere and the introduction of treated effluent from the 
+Ambleside WwTW is potentially a major factor influencing the chlorophyll-a 
+concentration in the lake. These findings have significant implications for lake 
+management and monitoring, emphasizing the need for a more holistic approach that 
+considers the impacts of wastewater treatment plants on the lake ecosystem. In 
+addition, the study highlights the potential of satellite data for monitoring and managing 
+water quality in lakes, providing valuable information to inform management decisions. 
+ 
+11. References 
+Ahlgren, I. (1978). Response of Lake Norrviken to reduced nutrient loading: With 3 figures and 1 table in the text. Internationale Vereinigung Für Theoretische 
+Und Angewandte Limnologie: Verhandlungen, 20(2), 846–850. 
+Ali, M. I., Dirawan, G. D., Hasim, A. H., & Abidin, M. R. (2019). Detection of changes in surface water bodies urban area with NDWI and MNDWI methods. 
+International Journal on Advanced Science Engineering Information Technology, 9(3), 946–951. 
+Anneville, O., & Pelletier, J. P. (2000). Recovery of Lake Geneva from eutrophication: quantitative response of phytoplankton. Arch. Hydrobiol, 148, 607–
+624. 
+Ansper, A., & Alikas, K. (2018). Retrieval of chlorophyll a from Sentinel-2 MSI data for the European Union water framework directive reporting purposes. 
+Remote Sensing, 11(1), 64. 
+Aráoz, R., Molgó, J., & de Marsac, N. T. (2010). Neurotoxic cyanobacterial toxins. Toxicon, 56(5), 813–828. 
+Badjeck, M.-C., Allison, E. H., Halls, A. S., & Dulvy, N. K. (2010). Impacts of climate variability and change on fishery-based livelihoods. Marine Policy, 
+34(3), 375–383. 
+Baker, D. B., Confesor, R., Ewing, D. E., Johnson, L. T., Kramer, J. W., & Merryfield, B. J. (2014). Phosphorus loading to Lake Erie from the Maumee, 
+Sandusky and Cuyahoga rivers: The importance of bioavailability. Journal of Great Lakes Research, 40(3), 502–517. 
+Banks, A. C., Prunet, P., Chimot, J., Pina, P., Donnadille, J., Jeansou, E., Lux, M., Petihakis, G., Korres, G., Triantafyllou, G., Fontana, C., Estournel, C., 
+Ulses, C., & Fernandez, L. (2012). A satellite ocean color observation operator system for eutrophication assessment in coastal waters. Journal of Marine Systems, 
+94(SUPPL.), S2–S15. https://doi.org/10.1016/J.JMARSYS.2011.11.001 
+Barone, L., Pilotti, M., Valerio, G., Balistrocchi, M., Milanesi, L., Chapra, S. C., & Nizzoli, D. (2019). Analysis of the residual nutrient load from a combined 
+sewer system in a watershed of a deep Italian lake. Journal of Hydrology, 571, 202–213. https://doi.org/10.1016/J.JHYDROL.2019.01.031 
+BBC. (2022, August 17). Windermere: Harmful algae spreads across lake in heatwave. BBC. 
+Beklioglu, M., Carvalho, L., & Moss, B. (1999). Rapid recovery of a shallow hypertrophic lake following sewage effluent diversion: lack of chemical 
+resilience. Hydrobiologia, 412, 5–15. 
+Bramich, J., Bolch, C. J. S., & Fischer, A. (2021). Improved red-edge chlorophyll-a detection for Sentinel 2. Ecological Indicators, 120, 106876. 
+Buma, W. G., & Lee, S.-I. (2020). Evaluation of sentinel-2 and landsat 8 images for estimating chlorophyll-a concentrations in lake Chad, Africa. Remote 
+Sensing, 12(15), 2437. 
+Carmichael, W. W. (1988). Naming of cyclic heptapeptide toxins of cyanobacteria (blue-green algae). Toxicon, 26, 971–973. 
+Carmichael, W. W. (1997). The cyanotoxins. In Advances in botanical research (Vol. 27, pp. 211–256). Elsevier. 
+CEC. Council of European Communities. (1991). Council Directive of 21. May 1991 concerning urban waste water treatment (91/271/EEC). Official Journal 
+of the European Communities, L, 135(30.5). 
+ 
+Chen, J., Zhu, W., Tian, Y. Q., Yu, Q., Zheng, Y., & Huang, L. (2017). Remote estimation of colored dissolved organic matter and chlorophyll-a in Lake 
+Huron using Sentinel-2 measurements. Journal of Applied Remote Sensing, 11(3), 036007. 
+Coimbra, K. T. O., Alcântara, E., & de Souza Filho, C. R. (2021). Satellite evidence for pervasive water eutrophication in the Doce River reservoirs following 
+the collapse of the Fundao dam in Brazil☆. Environmental Pollution, 272, 116014. https://doi.org/10.1016/J.ENVPOL.2020.116014 
+de Luca, G., MN Silva, J., di Fazio, S., & Modica, G. (2022). Integrated use of Sentinel-1 and Sentinel-2 data and open-source machine learning algorithms for 
+land cover mapping in a Mediterranean region. European Journal of Remote Sensing, 55(1), 52–70. 
+Dillon, P. J., & Rigler, F. H. (1974). The phosphorus‐chlorophyll relationship in lakes 1, 2. Limnology and Oceanography, 19(5), 767–773. 
+Dodds, W. K. (2006). Eutrophication and trophic state in rivers and streams. Limnology and Oceanography, 51(1part2), 671–680. 
+Dörnhöfer, K., Klinger, P., Heege, T., & Oppelt, N. (2018). Multi-sensor satellite and in situ monitoring of phytoplankton development in a eutrophic-
+mesotrophic lake. Science of The Total Environment, 612, 1200–1214. https://doi.org/10.1016/J.SCITOTENV.2017.08.219 
+ Dove, A., & Chapra, S. C. (2015). Long‐term trends of nutrients and trophic response variables for the G reat L akes. Limnology and Oceanography, 60(2), 
+696–721. 
+Drusch, M., del Bello, U., Carlier, S., Colin, O., Fernandez, V., Gascon, F., Hoersch, B., Isola, C., Laberinti, P., & Martimort, P. (2012). Sentinel-2: ESA’s 
+optical high-resolution mission for GMES operational services. Remote Sensing of Environment, 120, 25–36. 
+Edmondson, W. T., & Lehman, J. T. (1981). The effect of changes in the nutrient income on the condition of Lake Washington 1. Limnology and 
+Oceanography, 26(1), 1–29. 
+Eid, A. N. M., Olatubara, C. O., Ewemoje, T. A., El-Hennawy, M. T., & Farouk, H. (2020). Inland wetland time-series digital change detection based on SAVI 
+and NDWI indecies: Wadi El-Rayan lakes, Egypt. Remote Sensing Applications: Society and Environment, 19, 100347. 
+Estévez, J., Salinero-Delgado, M., Berger, K., Pipia, L., Rivera-Caicedo, J. P., Wocher, M., Reyes-Muñoz, P., Tagliabue, G., Boschetti, M., & Verrelst, J. 
+(2022). Gaussian processes retrieval of crop traits in Google Earth Engine based on Sentinel-2 top-of-atmosphere data. Remote Sensing of Environment, 273, 112958. 
+Fastner, J., Abella, S., Litt, A., Morabito, G., Vörös, L., Pálffy, K., Straile, D., Kümmerlin, R., Matthews, D., & Phillips, M. G. (2016). Combating 
+cyanobacterial proliferation by avoiding or treating inflows with high P load—experiences from eight case studies. Aquatic Ecology, 50(3), 367–383. 
+Ferral, A., Luccini, E., Solis, V., Frery, A., Aleksinko, A., Bernasconi, I., & Scavuzzo, C. M. (2018). IN-SITU and SATELLITE MONITORING of the 
+WATER QUALITY of A EUTROPHIC LAKE INTERVENED with A SYSTEM of ARTIFICIAL AIREATION. IEEE Latin America Transactions, 16(2), 627–633. 
+https://doi.org/10.1109/TLA.2018.8327422 
+Fielding, J. J., Croudace, I. W., Kemp, A. E. S., Pearce, R. B., Cotterill, C. J., Langdon, P., & Avery, R. (2020). Tracing lake pollution, eutrophication and 
+partial recovery from the sediments of Windermere, UK, using geochemistry and sediment microfabrics. Science of The Total Environment, 722, 137745. 
+Filstrup, C. T., & Downing, J. A. (2017). Inland Waters Relationship of chlorophyll to phosphorus and nitrogen in nutrient-rich lakes. 
+https://doi.org/10.1080/20442041.2017.1375176 
+Giguet-Covex, C., Arnaud, F., Poulenard, J., Enters, D., Reyss, J.-L., Millet, L., Lazzaroto, J., & Vidal, O. (2010). Sedimentological and geochemical records 
+of past trophic state and hypolimnetic anoxia in large, hard-water Lake Bourget, French Alps. Journal of Paleolimnology, 43(1), 171–190. 
+Glibert, P. M., Anderson, D. M., Gentien, P., Granéli, E., & Sellner, K. G. (2005). The global, complex phenomena of harmful algal blooms. 
+Gons, H. J., Auer, M. T., & Effler, S. W. (2008). MERIS satellite chlorophyll mapping of oligotrophic and eutrophic waters in the Laurentian Great Lakes. 
+Remote Sensing of Environment, 112(11), 4098–4106. https://doi.org/10.1016/J.RSE.2007.06.029 
+Gorelick, N., Hancher, M., Dixon, M., Ilyushchenko, S., Thau, D., & Moore, R. (2017). Google Earth Engine: Planetary-scale geospatial analysis for everyone. 
+Remote Sensing of Environment. https://doi.org/10.1016/j.rse.2017.06.031 
+Greeson, P. E. (1969). LAKE EUTROPHICATION–A NATURAL PROCESS 1. JAWRA Journal of the American Water Resources Association, 5(4), 16–30. 
+Huang, C., Wang, X., Yang, H., Li, Y., Wang, Y., Chen, X., & Xu, L. (2014). Satellite data regarding the eutrophication response to human activities in the 
+plateau lake Dianchi in China from 1974 to 2009. Science of The Total Environment, 485–486(1), 1–11. https://doi.org/10.1016/J.SCITOTENV.2014.03.031 
+Hudnell, H. K. (2008). Cyanobacterial harmful algal blooms: state of the science and research needs. 
+Ibelings, B. W., Portielje, R., Lammens, E. H. R. R., Noordhuis, R., van den Berg, M. S., Joosse, W., & Meijer, M. L. (2007). Resilience of alternative stable 
+states during the recovery of shallow lakes from eutrophication: Lake Veluwe as a case study. Ecosystems, 10(1), 4–16. https://doi.org/10.1007/S10021-006-9009-
+4/FIGURES/6 
+Jarvie, H. P., Neal, C., & Withers, P. J. A. (2006). Sewage-effluent phosphorus: a greater risk to river eutrophication than agricultural phosphorus? Science of 
+the Total Environment, 360(1–3), 246–253. 
+Jenny, J.-P., Arnaud, F., Dorioz, J.-M., Covex, C. G., Frossard, V., Sabatier, P., Millet, L., Reyss, J.-L., Tachikawa, K., & Bard, E. (2013). A spatiotemporal 
+investigation of varved sediments highlights the dynamics of hypolimnetic hypoxia in a large hard‐water lake over the last 150 years. Limnology and Oceanography, 58(4), 
+1395–1408. 
+Jeppesen, E., Søndergaard, M., Jensen, J. P., Lauridsen, T. L., Howard-Williams, C., & Kelly, D. (2003). Recovery from Eutrophication. Freshwater 
+Management, 135–175. https://doi.org/10.1007/978-4-431-68436-7_5 
+Jones, J. R., & Bachmann, R. W. (1976). Prediction of phosphorus and chlorophyll levels in lakes. Journal (Water Pollution Control Federation), 2176–2182. 
+Kane, D. D., Conroy, J. D., Richards, R. P., Baker, D. B., & Culver, D. A. (2014). Re-eutrophication of Lake Erie: Correlations between tributary nutrient 
+loads and phytoplankton biomass. Journal of Great Lakes Research, 40(3), 496–501. 
+ Karaman, M. (2021). Comparison of thresholding methods for shoreline extraction from Sentinel-2 and Landsat-8 imagery: Extreme Lake Salda, track of 
+Mars on Earth. Journal of Environmental Management, 298, 113481. https://doi.org/10.1016/J.JENVMAN.2021.113481 
+Karaman, M., & Özelkan, E. (2022). Comparative assessment of remote sensing–based water dynamic in a dam lake using a combination of Sentinel-2 data 
+and digital elevation model. Environmental Monitoring and Assessment, 194(2), 1–20. https://doi.org/10.1007/S10661-021-09703-W/FIGURES/14 
+ 
+Khan, F. A., & Ansari, A. A. (2005). Eutrophication: an ecological vision. The Botanical Review, 71(4), 449–482. 
+Kislik, C., Dronova, I., Grantham, T. E., & Kelly, M. (2022). Mapping algal bloom dynamics in small reservoirs using Sentinel-2 imagery in Google Earth 
+Engine. Ecological Indicators, 140, 109041. 
+Landsat Science. (n.d.). Retrieved January 24, 2023, from https://landsat.gsfc.nasa.gov/# 
+le Moal, M., Gascuel-Odoux, C., Ménesguen, A., Souchon, Y., Étrillard, C., Levain, A., Moatar, F., Pannard, A., Souchu, P., & Lefebvre, A. (2019). 
+Eutrophication: a new wine in an old bottle? Science of the Total Environment, 651, 1–11. 
+le Moal, M., Gascuel-Odoux, C., Ménesguen, A., Souchon, Y., Étrillard, C., Levain, A., Moatar, F., Pannard, A., Souchu, P., Lefebvre, A., & Pinay, G. (2019). 
+Eutrophication: A new wine in an old bottle? Science of The Total Environment, 651, 1–11. https://doi.org/10.1016/J.SCITOTENV.2018.09.139 
+Lehane, L., & Lewis, R. J. (2000). Ciguatera: recent advances but the risk remains. International Journal of Food Microbiology, 61(2–3), 91–125. 
+LWA, L. W. A. (2018). Lake Windermere Community Based Water Quality Monitoring Program. 
+McFeeters, S. K. (1996). The use of the Normalized Difference Water Index (NDWI) in the delineation of open water features. International Journal of Remote 
+Sensing, 17(7), 1425–1432. 
+Michalak, A. M., Anderson, E. J., Beletsky, D., Boland, S., Bosch, N. S., Bridgeman, T. B., Chaffin, J. D., Cho, K., Confesor, R., & Daloğlu, I. (2013). 
+Record-setting algal bloom in Lake Erie caused by agricultural and meteorological trends consistent with expected future conditions. Proceedings of the National Academy 
+of Sciences, 110(16), 6448–6452. 
+Mishra, D. R., Schaeffer, B. A., & Keith, D. (2014). Performance evaluation of normalized difference chlorophyll index in northern Gulf of Mexico estuaries 
+using the Hyperspectral Imager for the Coastal Ocean. GIScience & Remote Sensing, 51(2), 175–198. 
+Mishra, S., & Mishra, D. R. (2012). Normalized difference chlorophyll index: A novel model for remote estimation of chlorophyll-a concentration in turbid 
+productive waters. Remote Sensing of Environment, 117, 394–406. 
+Molkov, A. A., Fedorov, S. v, Pelevin, V. v, & Korchemkina, E. N. (2019). Regional models for high-resolution retrieval of chlorophyll a and TSM 
+concentrations in the Gorky Reservoir by Sentinel-2 imagery. Remote Sensing, 11(10), 1215. 
+Moorhouse, H. L., McGowan, S., Taranu, Z. E., Gregory‐Eaves, I., Leavitt, P. R., Jones, M. D., Barker, P., & Brayshaw, S. A. (2018). Regional versus local 
+drivers of water quality in the Windermere catchment, Lake District, United Kingdom: The dominant influence of wastewater pollution over the past 200 years. Global 
+Change Biology, 24(9), 4009–4022. 
+Moss, B. (2012). Cogs in the endless machine: lakes, climate change and nutrient cycles: a review. Science of the Total Environment, 434, 130–142. 
+Müller, B., Gächter, R., & Wüest, A. (2014). Accelerated water quality improvement during oligotrophication in peri-alpine lakes. Environmental Science & 
+Technology, 48(12), 6671–6677. 
+Mutanga, O., & Kumar, L. (2019). Google Earth Engine Applications. Remote Sensing 2019, Vol. 11, Page 591, 11(5), 591. 
+https://doi.org/10.3390/RS11050591 
+Özelkan, E. (2020). Water body detection analysis using NDWI indices derived from landsat-8 OLI. Polish Journal of Environmental Studies, 29(2), 1759–
+1769. 
+ 
+Pahlevan, N., Smith, B., Schalles, J., Binding, C., Cao, Z., Ma, R., Alikas, K., Kangro, K., Gurlin, D., Hà, N., Matsushita, B., Moses, W., Greb, S., Lehmann, 
+M. K., Ondrusek, M., Oppelt, N., & Stumpf, R. (2020). Seamless retrievals of chlorophyll-a from Sentinel-2 (MSI) and Sentinel-3 (OLCI) in inland and coastal waters: A 
+machine-learning approach. Remote Sensing of Environment, 240, 111604. https://doi.org/10.1016/J.RSE.2019.111604 
+Perga, M., Maberly, S. C., Jenny, J., Alric, B., Pignol, C., & Naffrechoux, E. (2016). A century of human‐driven changes in the carbon dioxide concentration 
+of lakes. Global Biogeochemical Cycles, 30(2), 93–104. 
+Pidd, H. (2022, August 17). ‘It stinks’: Windermere plagued by blue-green algae as ‘toxic as cobra venom.’ The Guardian. https://www.theguardian.com/uk-
+news/2022/aug/24/it-stinks-lake-windermere-plagued-by-blue-green-algae-as-toxic-as-cobra-venom 
+Porcar-Castell, A., Tyystjärvi, E., Atherton, J., van der Tol, C., Flexas, J., Pfündel, E. E., Moreno, J., Frankenberg, C., & Berry, J. A. (2014). Linking 
+chlorophyll a fluorescence to photosynthesis for remote sensing applications: mechanisms and challenges. Journal of Experimental Botany, 65(15), 4065–4095. 
+https://doi.org/10.1093/JXB/ERU191 
+Pratchett, M. S., Munday, P. L., Wilson, S. K., Graham, N. A. J., Cinner, J. E., Bellwood, D. R., Jones, G. P., Polunin, N. V. C., & McClanahan, T. R. (2008). 
+Effects of climate-induced coral bleaching on coral-reef fishes—ecological and economic consequences. In Oceanography and marine biology (pp. 257–302). CRC Press. 
+Prestigiacomo, A. R., Effler, S. W., Gelda, R. K., Matthews, D. A., Auer, M. T., Downer, B. E., Kuczynski, A., & Walter, M. T. (2016). Apportionment of 
+bioavailable phosphorus loads entering Cayuga Lake, New York. JAWRA Journal of the American Water Resources Association, 52(1), 31–47. 
+QGIS Development Team. (2022). QGIS Geographic Information System (3.22.3-Białowieża). QGIS Association. https://www.qgis.org/ 
+Quang, N. H., Nguyen, M. N., Paget, M., Anstee, J., Viet, N. D., Nones, M., & Tuan, V. A. (2022). Assessment of Human-Induced Effects on Sea/Brackish 
+Water Chlorophyll-a Concentration in Ha Long Bay of Vietnam with Google Earth Engine. Remote Sensing, 14(19), 4822. 
+Rahman, M. M., Robson, A., & Brinkhoff, J. (2022). Potential of Time-Series Sentinel 2 Data for Monitoring Avocado Crop Phenology. Remote Sensing, 
+14(23), 5942. 
+Reynolds, C. S., Maberly, S. C., Parker, J. E., & de Ville, M. M. (2012). Forty years of monitoring water quality in Grasmere (English Lake District): 
+separating the effects of enrichment by treated sewage and hydraulic flushing on phytoplankton ecology. Freshwater Biology, 57(2), 384–399. 
+https://doi.org/10.1111/J.1365-2427.2011.02687.X 
+Roca, M., Navarro, G., García-Sanabria, J., & Caballero, I. (2022). Monitoring Sand Spit Variability Using Sentinel-2 and Google Earth Engine in a 
+Mediterranean Estuary. Remote Sensing, 14(10), 2345. 
+RStudio Team. (2022). RStudio: Integrated Development for R. RStudio (2022.7.1.554). RStudio, PBC. http://www.rstudio.com/ 
+Sarma, T. A. (2012). CHAPTER CYANOBACTERIAL TOXINS. In Handbook of Cyanobacteria (pp. 497–615). CRC Press. 
+Sayers, M., Fahnenstiel, G. L., Shuchman, R. A., & Whitley, M. (2016). Cyanobacteria blooms in three eutrophic basins of the Great Lakes: a comparative 
+analysis using satellite remote sensing. International Journal of Remote Sensing, 37(17), 4148–4171. 
+Scavia, D., Allan, J. D., Arend, K. K., Bartell, S., Beletsky, D., Bosch, N. S., Brandt, S. B., Briland, R. D., Daloğlu, I., & DePinto, J. v. (2014). Assessing and 
+addressing the re-eutrophication of Lake Erie: Central basin hypoxia. Journal of Great Lakes Research, 40(2), 226–246. 
+Scharf, B. W. (1998). Eutrophication history of Lake Arendsee (Germany). Palaeogeography, Palaeoclimatology, Palaeoecology, 140(1–4), 85–96. 
+https://doi.org/10.1016/S0031-0182(98)00033-9 
+Schindler, D. W. (2006). Recent advances in the understanding and management of eutrophication. Limnology and Oceanography, 51(1part2), 356–363. 
+ Schindler, D. W. (2009). Lakes as sentinels and integrators for the effects of climate change on watersheds, airsheds, and landscapes. Limnology and 
+Oceanography, 54(6part2), 2349–2358. 
+Schindler, D. W. (2012). The dilemma of controlling cultural eutrophication of lakes. Proceedings of the Royal Society B: Biological Sciences, 279(1746), 
+4322–4333. 
+Schindler, D. W., Carpenter, S. R., Chapra, S. C., Hecky, R. E., & Orihel, D. M. (2016a). Reducing Phosphorus to Curb Lake Eutrophication is a Success. 
+https://doi.org/10.1021/acs.est.6b02204 
+ Schindler, D. W., Carpenter, S. R., Chapra, S. C., Hecky, R. E., & Orihel, D. M. (2016b). Reducing phosphorus to curb lake eutrophication is a success. 
+Environmental Science & Technology, 50(17), 8923–8929. 
+ Schindler, D. W., Hecky, R. E., Findlay, D. L., Stainton, M. P., Parker, B. R., Paterson, M. J., Beaty, K. G., Lyng, M., & Kasian, S. (2008). Eutrophication of 
+lakes cannot be controlled by reducing nitrogen input: results of a 37-year whole-ecosystem experiment. Proceedings of the National Academy of Sciences, 105(32), 11254–
+11258. 
+Shi, J., Shen, Q., Yao, Y., Li, J., Chen, F., Wang, R., Xu, W., Gao, Z., Wang, L., & Zhou, Y. (2022). Estimation of chlorophyll-a concentrations in small water 
+bodies: comparison of fused Gaofen-6 and Sentinel-2 sensors. Remote Sensing, 14(1), 229. 
+Soares, M. C. S., Marinho, M. M., Azevedo, S. M. O. F., Branco, C. W. C., & Huszar, V. L. M. (2012). Eutrophication and retention time affecting spatial 
+heterogeneity in a tropical reservoir. Limnologica, 42(3), 197–203. https://doi.org/10.1016/J.LIMNO.2011.11.002 
+SPOT 7 - Earth Online. (n.d.). Retrieved January 24, 2023, from https://earth.esa.int/eogateway/missions/spot-7 
+Takolander, A., Cabeza, M., & Leskinen, E. (2017). Climate change can cause complex responses in Baltic Sea macroalgae: A systematic review. Journal of 
+Sea Research, 123, 16–29. 
+Toming, K., Kutser, T., Laas, A., Sepp, M., Paavel, B., & Nõges, T. (2016). First experiences in mapping lake water quality parameters with Sentinel-2 MSI 
+imagery. Remote Sensing, 8(8), 640. 
+ User Guides - Sentinel-2 MSI. (n.d.). Retrieved January 24, 2023, from https://sentinels.copernicus.eu/web/sentinel/user-guides/sentinel-2-msi 
+Wang, L., Xu, M., Liu, Y., Liu, H., Beck, R., Reif, M., Emery, E., Young, J., & Wu, Q. (2020). Mapping freshwater chlorophyll-a concentrations at a regional 
+scale integrating multi-sensor satellite observations with Google earth engine. Remote Sensing, 12(20), 3278. 
+Wetzel, R. G. (2001). Limnology: lake and river ecosystems. gulf professional publishing. 
+ Xu, J., Lei, S., Bi, S., Li, Y., Lyu, H., Xu, J., Xu, X., Mu, M., Miao, S., Zeng, S., & Zheng, Z. (2020). Tracking spatio-temporal dynamics of POC sources in 
+eutrophic lakes by remote sensing. Water Research, 168, 115162. https://doi.org/10.1016/J.WATRES.2019.115162 
+Yang, X., Wu, X., Hao, H., & He, Z. (2008). Mechanisms and assessment of water eutrophication. Journal of Zhejiang University Science B, 9(3), 197–209. 
+Yao, X., Zhang, Y., Zhang, L., & Zhou, Y. (2018). A bibliometric review of nitrogen research in eutrophic lakes and reservoirs. Journal of Environmental 
+Sciences, 66, 274–285. 
+Zhang, Y., Wang, X., Balzter, H., Qiu, B., & Cheng, J. (2019). Directional and zonal analysis of urban thermal environmental change in Fuzhou as an indicator 
+of urban landscape transformation. Remote Sensing, 11(23), 2810. 
+Zilioli, E., Brivio, P. A., & Gomarasca, M. A. (1994). A correlation between optical properties from satellite data and some indicators of eutrophication in 
+Lake Garda (Italy). Science of the Total Environment, 158, 127–133.

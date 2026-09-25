@@ -1,0 +1,773 @@
+Impacts of hydraulic structures 
+on lake water quality deterioration and eutrophication 
+in Malaysia 
+Sin Poh Lim*1),2) 
+ , Fang Yenn Teo* 1) 
+ , Christopher Gibbins1) 
+ , 
+Andy Chan1) 
+ , Tengku Marzuki Tengku Ismail 3) 
+1) University of Nottingham Malaysia, Faculty of Science and Engineering, Jalan Broga, Semenyih, 43500, Selangor, Malaysia 
+2) Global Water Consultants Malaysia, Bandar Tasik Selatan, 57000, Kuala Lumpur, Malaysia 
+3) Perbadanan Putrajaya, Environment, Lake & Wetland Division, 62675, Putrajaya, Malaysia 
+* Corresponding author 
+RECEIVED 13.05.2025 ACCEPTED 19.08.2025 AVAILABLE ONLINE 12.12.2025 
+Abstract: Reservoirs serve many essential purposes, including water resource, flood mitigation, recreation, and 
+hydropower generation. However, these reservoirs created by constructing hydraulic structures across the waterways 
+encounter substantial challenges in water quality. One of the issues is eutrophication, which demands attention in 
+reservoir management. This study employs a two-dimensional (2D) depth-averaged hydrodynamic model, utilising 
+Delft3D, to analyse the spatial distributions and hydro-environmental processes occurring in Putrajaya Lake, Malaysia. 
+The model effectively simulates various scenarios for both dry and wet seasons. Calibration and validation were 
+performed using measured data from 72 points within the lake. The water quality modelling focuses on key parameters 
+(i.e. phosphate, nitrate, and chlorophyll a). The results indicate higher phosphate concentrations during dry seasons, 
+ranging from 0.1 to 0.4 mg∙dm −3, compared to wet seasons, suggesting a higher risk of eutrophication during dry 
+seasons. In assessing lake eutrophication, a modified Lamparelli index was developed and adopted to evaluate the lake’s 
+eutrophication status. The findings indicate that increasing phosphorus concentration to 0.35 mg∙dm−3 at the upstream 
+inflow will likely trigger eutrophication in Putrajaya Lake. We recommend this phosphorus concentration as a critical 
+threshold value at all drainage inlets as the best management practice to prevent eutrophication. A detailed assessment 
+of water quality can be established from this finding as one of the design criteria for any hydraulic structures that could 
+jeopardise water quality, rather than an afterthought. Addressing water quality problems through rehabilitation after 
+they arise can be costly and often irreversible. 
+Keywords: eutrophication, numerical modelling, Putrajaya, tropical lake, water quality 
+INTRODUCTION 
+Natural eutrophication is part of the ecological succession where 
+lakes evolve from oligotrophic (nutrient-poor) to eutrophic 
+(nutrient-rich) states over time (Safwan Miswan et al., 2019). 
+Human activities, such as agriculture and urbanisation, signifi-
+cantly accelerate eutrophication by increasing nutrient runoff into 
+water bodies. In many regions, anthropogenic activities have 
+heavily impacted lakes and reservoirs, leading to frequent harmful 
+algal blooms (Sulastri, Henny and Susanti, 2020). 
+Phosphorus promotes algal blooms that deplete oxygen and 
+can create dead zones (Sheela, Letha and Joseph, 2011). During 
+blooms, oxygen consumption exceeds production, and the 
+breakdown of dead algae further depletes oxygen, risking fish 
+and aquatic life mortality (Anda de et al., 2022). Paudel’s et al. 
+(2024) study on Ghodaghodi Lake Complex (GLC) and associated 
+lakes in Nepal identifies nutrient loading from surrounding 
+agriculture and domestic wastes as the lake complex’s most 
+pressing eutrophication problem, elevating phosphate while 
+lowering dissolved oxygen and threatening aquatic life. Timalsi-
+JOURNAL OF WATER AND LAND DEVELOPMENT 
+e-ISSN 2083-4535 
+Polish Academy of Sciences (PAN) Institute of Technology and Life Sciences – National Research Institute (ITP – PIB) 
+JOURNAL OF WATER AND LAND DEVELOPMENT 
+DOI: 10.24425/jwld.2025.156994 
+2025, Special Issue: 64–74 
+© 2025. The Authors. Published by Polish Academy of Sciences (PAN) and Institute of Technology and Life Sciences – National Research Institute (ITP – PIB). 
+This is an open access article under the CC BY-NC-ND license (https://creativecommons.org/licenses/by-nc-nd/4.0/) 
+na’s et al. (2025) study on Phewa Lake, Nepal identified fertiliser- 
+laden agricultural runoff and untreated domestic sewage driven 
+nutrients to eutrophic warning levels. 
+Eutrophication, particularly in tropical lakes, is an emerging 
+concern due to high rainfall, elevated temperatures, and 
+uncontrolled nutrient inputs from both point and nonpoint 
+sources (Liu et al., 2021), such as agricultural runoff and urban 
+discharge (Sperling von, 1997). Putrajaya Lake, a tropical artificial 
+lake in Malaysia, has been subject to increasing nutrient 
+enrichment, raising concerns about water quality and ecological 
+health. Managing eutrophication in such environments requires 
+a comprehensive understanding of hydrodynamic flows and 
+water quality processes, as these factors directly influence nutrient 
+transport and algal dynamics (Sharip et al., 2020). There is no 
+specific threshold value of phosphorus concentration established 
+yet in monitoring Putrajaya Lake. The objective of this study is to 
+establish a threshold value of phosphorus to be adopted in 
+monitoring Putrajaya Lake as a preventive action for lake 
+eutrophication. 
+Various models used in recent studies on lakes and 
+reservoirs show that while regions face similar eutrophication 
+challenges, different modelling techniques were deployed. In 
+Poyang Lake, seasonal changes in nutrient concentration are 
+linked to hydrological flows (Li et al., 2018), while Putrajaya 
+Lake’s pollution patterns are significantly impacted by high-wind 
+events that affect pollutant dispersion (Sharip, Yanagawa and 
+Terasawa, 2016). Mokhtar et al. (2020) did not test the lake- 
+specific threshold; their findings in Bukit Merah Reservoir 
+showed that even modest phosphorus concentrations (e.g., 
+0.0158 mg∙dm−3 orthophosphate) were associated with changes 
+in chlorophyll a and water quality parameters, supporting the 
+sensitivity of lake systems to phosphorus enrichment. Khwair-
+akpam’s et al. (2021) study eutrophication risk in Loktak Lake in 
+India, focusing on phosphorus concentrations as well, using the 
+MIKE 21 ECO Lab model. This study deployed a two-dimen-
+sional (2D) numerical modelling approach to investigate the 
+spatial distribution of hydrodynamic conditions and water quality 
+in Putrajaya Lake. Numerical modelling is a valuable tool that 
+complements water quality sampling works, which are often 
+limited by high costs and logistical constraints, particularly in 
+large water bodies (Ho et al., 2021). By integrating hydrodynamic 
+and water quality modelling, this study provides a detailed 
+assessment of the lake’s eutrophication status, supporting 
+effective lake management strategies. 
+MATERIALS AND METHODS 
+STUDY AREA 
+Putrajaya Lake was formed by damming Sungai Chuau in 2002, as 
+shown in Figure 1. The dam is considered a large dam, with 
+a height of from 18 to 30 m and a length of 750 m. It straddles the 
+waterway of Sungai Chuau, Sungai Bisa, and three other small 
+tributaries to form the lake. The lake has a surface area of 400 ha 
+with a 38 km shoreline and 26.5 mln m 3 of water storage (PPJ, 
+© 2025. The Authors. Published by Polish Academy of Sciences (PAN) and Institute of Technology and Life Sciences – National Research Institute (ITP – PIB). 
+This is an open access article under the CC BY-NC-ND license (https://creativecommons.org/licenses/by-nc-nd/4.0/) 
+Fig. 1. Domain of the study area, Putrajaya Lake; source: Global Water Consultants and University of Nottingham Malaysia 
+Impacts of hydraulic structures on lake water quality deterioration and eutrophication in Malaysia 65 
+1999; PPJ, 2000). The lake can be divided into three parts for ease 
+of discussion, following its features named Putrajaya Lake north 
+(PLN), Putrajaya Lake east (PLE), Putrajaya Lake south (PLS) and 
+Putrajaya Lake west (PLW) as shown in Figure 1. The PLE starts 
+from the Central Wetland overflow weir, which separates the 
+wetland upstream and the lake downstream. The weir level is 
+23.5 m m.s.l., dropping to a lake level of 21.0 m m.s.l., which is 
+controlled by a weir at the dam. The PLW started from Upper 
+Bisa weir, which separated the wetland upstream and the lake 
+downstream of this area, meeting the PLS at precinct 4. The weir 
+level is also at 23.5 m m.s.l., dropping into the lake at 21.0 m m.s.l. 
+The PLS covers the main lake area, starting where PLE ends 
+toward the southeast before discharging from the lake at the dam 
+spillway (Akashah et al., 2015). The PPJ (Ind.: Perbadanan 
+Putrajaya) has recorded a long-term water quality monitoring 
+program since its lake formation in 2002. The PPJ has provided 
+12 years of data from 2010 to 2021 for this research study. Water 
+quality measurement and sampling were conducted fortnightly at 
+17 stations since the dam was constructed. Catchment changes at 
+the upper catchment happen in the early years, and the changes in 
+the catchment in recent years are rather minimal. 
+NUMERICAL MODELLING 
+Numerical modelling was employed in this study to simulate 
+the hydrodynamics and eutrophication processes in Putrajaya 
+Lake using the Delft3D modelling suite. The methodology 
+consisted of two primary components: hydrodynamic modelling 
+using Delft3D-FLOW and water quality modelling using Delft3D- 
+WAQ (Delft, 2025a; Delft, 2025b). Delft3D-FLOW simulated 
+water circulation within Putrajaya Lake, capturing essential 
+hydrodynamic parameters such as water levels, current velocities, 
+and flow directions. These parameters are critical for under-
+standing the movement of nutrients and the dynamics of algal 
+growth within the lake (Sharip, Yanagawa and Terasawa, 2016). 
+The water quality module, Delft3D-WAQ, was applied to 
+model the concentrations of phosphorus and chlorophyll a, 
+primary indicators of eutrophication. Additional water quality 
+parameters, including temperature, dissolved oxygen (DO), 
+ammonia (NH3), nitrate (NO3), phosphate (PO4), pH, biological 
+oxygen demand (BOD), and chemical oxygen demand (COD), 
+were incorporated to represent the existing environmental 
+conditions better. Based on records, the water temperature 
+during dry weather is in the order of 30°C, as compared to wet 
+weather in the order of 28.5°C. The hydrodynamic outputs from 
+Delft3D-FLOW provided boundary conditions for Delft3D- 
+WAQ, ensuring a dynamic and accurate representation of water 
+quality conditions within the lake (Delft, 2025a; Delft, 2025b). 
+MODEL SETUP 
+The model of Putrajaya Lake was set up with a computational 
+grid, which covers an area of approximately 400 ha and has 
+a resolution of 10 × 10 m. The fine grid resolution was necessary 
+to capture the complex current field resulting from interactions 
+between wind and various structures within the lake. Bathymetric 
+data collected in 2011 by PPJ, as shown in Figure 2a, were used to 
+set up the model bathymetry. The bathymetry invert level refers 
+to the mean sea level as datum, with the lowest value in the 
+southern part and the highest value in the northern part. The 
+bathymetry data indicated that the southern part is deeper than 
+the northern part. For example, the invert level +5 m is deeper 
+than the invert level of +30 m. Therefore, in terms of depth in 
+Figure 2, the southern part is deeper than the northern part. 
+Three open boundaries were defined for the model: the 
+inflow from the Central Wetland (CW) weir, the inflow from the 
+Upper Bisa (UB) weir, and the downstream boundary represent-
+ing the outflow at the Putrajaya dam weir. Water level data for 
+these boundaries were sourced from PPJ and applied as input in 
+this study. These boundary conditions are crucial for accurately 
+Fig. 2. Study area: a) model coverage and bathymetry, b) current measurement points; source: Global Water Consultants and University of Nottingham 
+Malaysia 
+66 Sin Poh Lim, Fang Yenn Teo, Christopher Gibbins, Andy Chan, Tengku Marzuki Tengku Ismail 
+© 2025. The Authors. Published by Polish Academy of Sciences (PAN) and Institute of Technology and Life Sciences – National Research Institute (ITP – PIB). 
+This is an open access article under the CC BY-NC-ND license (https://creativecommons.org/licenses/by-nc-nd/4.0/) 
+simulating the hydrodynamic behaviour of the lake and the 
+associated water quality processes. The drainage discharge point 
+represents drainage inflow to the reservoir, primarily from 
+stormwater and surface runoff originating from the surrounding 
+urban catchment areas. In the model, this inflow was assumed to 
+be constant during each simulation period. 
+MODEL CALIBRATION AND VALIDATION 
+The numerical model was calibrated and verified by comparing 
+the simulated results with the measured water level, current 
+speed, and current direction. To achieve this, field measurements 
+were carried out in 2021 under dry and wet weather conditions. 
+Water level and current data for dry weather were collected in 
+September, while wet weather data were obtained in December 
+using an acoustic Doppler current profiler (ADCP). The ADCP 
+was deployed at 72 locations across Putrajaya Lake to ensure 
+comprehensive spatial coverage to produce an accurate model. 
+Figure 2b illustrates the locations of the ADCP measurements. 
+Based on the rainfall data recorded at the dam site station, 
+Weather Monitoring Station No. 2 (WMS 02), the rainfall 
+amount during the dry weather period is 19.8 mm. The average 
+rainfall during this month, February 2021, is less than 100 mm, 
+which is the driest month. The total 14-day rainfall during the wet 
+period is 246.6 mm, which is the wettest month in 2021, the 
+highest in December 2021, with an average total monthly rainfall 
+of 700 mm. The Manning roughness coefficient was kept constant 
+for both dry and wet periods in the simulation. A value of 0.02 
+was applied throughout the model domain to represent bottom 
+roughness. This value was selected based on literature for similar 
+lakebed conditions and was validated during the model calibra-
+tion process. The time step adopted in all simulations is 30 s. 
+MODEL SCENARIOS 
+The study encompassed four distinct simulation cases, as shown in 
+Table 1, to evaluate the hydrodynamic and water quality 
+characteristics of Putrajaya Lake under varying conditions. Each 
+modelling case provided valuable insights into the lake’s behaviour, 
+helping to assess its response to different hydrological and climatic 
+factors. The water levels in the reservoirs were configured to 
+remain constant during the simulation for cases 1 and 2, as there is 
+no variation of water level within a single day. For cases 3 and 4, 
+the water level at the boundary varies according to the recorded 
+water level. Water levels differ between the dry and wet periods. 
+During the dry period, the water level at the dam spillway ranges 
+from 21 m (which is the spillway crest level) to 21.02 m, 
+corresponding to a flow of 0.22 m 3∙s−1 to 1.43 m3∙s−1. During the 
+wet period, the water level at the spillway ranges from 20.01 m to 
+21.11 m, with a flow range from 0.32 m 3∙s−1 to 46.4 m3∙s−1. 
+IMPACT OF PHOSPHORUS ON EUTROPHICATION 
+Trophic state indices (TSIs) are widely used tools for assessing 
+lake eutrophication by quantifying the trophic state based on 
+selected water quality parameters (Alprol et al., 2021; Sui et al., 
+2022). Among the various TSIs, the Lamparelli index is regarded 
+as the most accurate for representing the trophic state of 
+Putrajaya Lake. While this index provides a stable and realistic 
+classification, it can be further refined to reflect the specific 
+environmental conditions of the lake. To address this, a modified 
+version of the Lamparelli index, known as the SPLim trophic state 
+index (SPLimTSI), was developed under this study. 
+Chlorophyll a (CHL) and phosphorus (P) are the index’s key 
+parameters. Phosphorus acts as a nutrient that fuels algal growth, 
+thereby influencing chlorophyll a concentrations. The SPLimTSI 
+map of Putrajaya Lake for dry and wet weather was established. In 
+order to study the impact of phosphorus on eutrophication, 
+phosphorus loading at the upstream boundary was varied. This 
+helps to identify the threshold at which increased phosphorus 
+loading may trigger eutrophication in the lake. Three scenarios 
+were simulated, i.e., scenario 1 (P = 0.05 mg∙dm −3), scenario 
+2 (P = 0.35 mg∙dm −3), and scenario 3 (P = 0.42 mg∙dm −3). 
+Scenario 1 was carried out by starting with a phosphorus 
+value following the Putrajaya Lake water quality standard 
+(PLWQS) of 0.05 mg∙dm −3. Setting this value also implied that 
+the lake should be in a healthy condition in terms of 
+eutrophication status. Various values of phosphorus were 
+simulated, but only the values of 0.35 and 0.42 mg∙dm −3 are 
+presented in this paper, as 0.35 mg∙dm −3 starts to indicate 
+eutrophication in some areas, and 0.42 mg∙dm −3 indicates 
+extensive eutrophication in the lake. 
+The TSI values for Putrajaya Lake were calculated for each 
+scenario, and the eutrophication status was evaluated using the 
+classification system presented in Table 2. The TSI value is 
+computed using the SPLimTSI formula developed under the 
+study, as indicated below (Eq. 1), modified based on the 
+Lamparelli index. 
+Table 1. Model cases 
+Model case Description 
+Model calibration the goal of this scenario was to ensure that the simulated water levels, current speeds, and directions matched the actual 
+conditions observed at the site during wet weather conditions 
+Model validation this scenario was run using the calibrated model parameters to validate the simulation results; it was conducted in dry 
+weather conditions, and the simulated results were compared with the observed data to verify the model’s accuracy 
+Wet weather condi-
+tions simulate over a 14-day period to study hydrodynamic characteristics and water quality during wet weather conditions 
+Dry weather condi-
+tions simulate over a 14-day period to study hydrodynamic characteristics and water quality during dry weather conditions 
+Source: Global Water Consultants and University of Nottingham Malaysia. 
+Impacts of hydraulic structures on lake water quality deterioration and eutrophication in Malaysia 67 
+© 2025. The Authors. Published by Polish Academy of Sciences (PAN) and Institute of Technology and Life Sciences – National Research Institute (ITP – PIB). 
+This is an open access article under the CC BY-NC-ND license (https://creativecommons.org/licenses/by-nc-nd/4.0/) 
+SPLimTSI¼TSI CHLð Þ þ 0:75TSI Pð Þ
+2 ð1Þ
+where: SPLimTSI = new index proposed under the study 
+(Lamparelli index, SPLim trophic state index), CHL = chlorophyll 
+a, P = phosphorus. 
+The same TSI classification, as indicated by the Lamparelli 
+index in Table 2, was adopted. 
+RESULTS AND DISCUSSION 
+WET WEATHER HYDRODYNAMIC SIMULATION 
+Model calibration was essential to ensure the simulation’s 
+accuracy in reproducing observed hydrodynamic behaviour. Lake 
+hydrodynamic simulation was carried out for wet weather 
+conditions on December 09, 2021 and served as model 
+calibration. Key parameters such as roughness coefficients and 
+eddy viscosity were fine-tuned within acceptable limits to match 
+acoustic Doppler current profiler (ADCP) measured data. 
+In Figure 3, simulated current speeds and directions are 
+shown under wet weather conditions. The colour gradient 
+indicates velocity, with blue as the lowest (0 m∙s −1) and dark 
+red as the highest (>0.45 m∙s−1). Velocities above 0.3 m∙s−1 appear 
+in narrow, shallow upstream channels in Putrajaya Lake east 
+(PLE) and most of Putrajaya Lake west (PLW), where the flow 
+drops 2.5 m from the Central Wetland weir before heading 
+downstream toward the dam. Conversely, velocities decline to 
+0.1−0.3 m∙s−1 in deeper regions of Putrajaya Lake south (PLS), 
+and to below 0.1 m∙s −1 in fringe areas and the dam’s left flank 
+(viewed downstream). High velocities occur upstream of the dam 
+spillway, where flow accelerates down from 21 m m.s.l. to 
+downstream via the 135 m length labyrinth spillway. 
+Flow arrows indicate a dominant north-to-south direction 
+from the Central Wetland and Upper Bisa weirs toward the dam 
+spillway, driven by increased inflow during wet periods. Local 
+recirculation is evident near PLS’s fringes and shallow zones, 
+aligning with patterns noted by Sharip, Yanagawa and Terasawa 
+(2016). 
+In Figure 4, simulated and measured current speeds are 
+shown. The model successfully captures the general trend and 
+reproduces key peaks and troughs, indicating its ability to simulate 
+flow changes due to channel geometry and bathymetry. However, 
+it slightly underestimates stations 36–41 and 67–69 speeds, likely 
+due to underestimated inflow from nearby drainage discharges. 
+The different spikes occasionally at some measurement points are 
+mainly due to localised site conditions or activities, which are not 
+possible to capture in the numerical model. However, overall, the 
+results are within an acceptable magnitude and trend. 
+DRY WEATHER HYDRODYNAMIC SIMULATION 
+A simulation was conducted under dry weather conditions on 
+September 07, 2021, to verify the hydrodynamic model. In 
+Figure 5, the current speed and flow direction are shown. While 
+Table 2. Lamparelli index, SPLim trophic state index (SPLimTSI) 
+classification 
+Index SPLimTSI 
+Ultraoligotrophic TSI < 47 
+Oligotrophic [47; 52) 
+Mesotrophic [52; 59) 
+Eutrophic [59; 63) 
+Supereutrophic [63; 67) 
+Hypereutrophic TSI ≥ 67 
+Source: Global Water Consultants and University of Nottingham 
+Malaysia. 
+Fig. 3. Simulated current speed and direction during wet weather 
+conditions; source: Global Water Consultants and University of Notting-
+ham Malaysia 
+Fig. 4. Measured and simulated current speed during wet weather conditions; source: Global Water Consultants and University of Nottingham Malaysia 
+68 Sin Poh Lim, Fang Yenn Teo, Christopher Gibbins, Andy Chan, Tengku Marzuki Tengku Ismail 
+© 2025. The Authors. Published by Polish Academy of Sciences (PAN) and Institute of Technology and Life Sciences – National Research Institute (ITP – PIB). 
+This is an open access article under the CC BY-NC-ND license (https://creativecommons.org/licenses/by-nc-nd/4.0/) 
+the overall velocity pattern is similar to that in wet weather, with 
+faster flows in narrow channels and slower flows in wider areas, 
+a key difference is observed in the drainage discharge zone, where 
+velocities are higher during dry weather. 
+This increase is due to reduced external inflows, which shift 
+the system’s hydrodynamic balance. Unlike wet weather, when 
+stormwater inputs cause broader flow dispersion and lower 
+localised velocities, dry conditions reduce water volume and 
+lower water levels (Chow, Yusop and Teo, 2016). According to 
+the continuity equation (Eq. 2), velocity rises when the cross- 
+sectional area narrows, thus increasing flow speed in confined 
+channels. 
+Q¼A�V ð2Þ
+where: Q = volumetric flow rate through a pipe or conduit, 
+A = cross-sectional area, V = average fluid velocity. 
+In Figure 6, measured and simulated current speeds during 
+dry conditions are compared. The model replicates the general 
+trend well, accurately reflecting major peaks and troughs. 
+However, some discrepancies exist. Notably, simulated speeds 
+exceed measured values at stations 1–10 near the confluence of 
+flows from the Central Wetland and drainage discharge. These 
+differences may stem from field data uncertainty or unaccounted- 
+for inflows/outflows in hydraulically complex areas. 
+Results indicated that the dry periods showed higher 
+differences between the measured and calculated velocity values. 
+This could be due to lower current speed during dry periods, with 
+a flow range between 0.1 and 0.2 m∙s −1, as compared to wet 
+periods of 0.3 and 0.5 m∙s −1. Any local site conditions, such as 
+a boat passing through, will create a larger difference during dry 
+periods. Overall, the model effectively captures the lake’s 
+hydrodynamic behaviour and is considered reliable. The Nash– 
+Sutcliffe efficiency (NSE) and root mean square error (RMSE) for 
+calibration are 0.72 and 0.047 m∙s −1. While the validation 
+model has an NSE of 0.45 and an RMSE of 0.061 m∙s −1, its 
+outputs will be integrated into the water quality model to simulate 
+phosphorus and chlorophyll a concentrations, which are the 
+indicators of eutrophication, enhancing the prediction of nutrient 
+dynamics and ecological impacts on Putrajaya Lake. 
+STAGNANT FLOW AREAS IN THE LAKE 
+It is important to note that although the dam successfully created 
+a visually appealing lake with an extensive water surface area 
+(Wong et al., 2022), water quality issues are likely to emerge over 
+time, particularly in areas with limited flow, as highlighted in 
+Figures 1 and 2. The Putrajaya dam design, which only allows 
+water to flow downstream at the surface layer of the water column 
+from the spillway at elevation 21.0 m m.s.l., results in near- 
+stagnant conditions at the bottom layers of the lake, where the 
+invert lies around 5.0 m m.s.l. This stratification can lead to 
+deterioration in water quality, especially in the lower depths. 
+Stagnant water conditions can lead to the accumulation of 
+nutrients such as nitrogen and phosphorus, which are often 
+derived from agricultural runoff, wastewater, and aquaculture 
+activities (Wojewódka-Przybył et al., 2024). These nutrients can 
+promote eutrophication, which results in excessive algal blooms 
+which deteriorate water quality by depleting oxygen levels and 
+releasing toxins (Montero et al., 2021). 
+Internal phosphorus recycling (IPR) from the benthic layer 
+of a lake system can present significant challenges. Elevated rates 
+of IPR can perpetuate eutrophication by continuously supplying 
+phosphorus, even after external nutrient inputs are reduced, 
+thereby complicating lake restoration efforts (Tay et al., 2022b). 
+Since its construction in 2001, Putrajaya Lake has likely 
+Fig. 5. Simulated current speed and direction during dry weather 
+conditions; source: Global Water Consultants and University of Notting-
+ham Malaysia 
+Fig. 6. Measured and simulated current speed during dry weather conditions; source: Global Water Consultants and University of Nottingham Malaysia 
+Impacts of hydraulic structures on lake water quality deterioration and eutrophication in Malaysia 69 
+© 2025. The Authors. Published by Polish Academy of Sciences (PAN) and Institute of Technology and Life Sciences – National Research Institute (ITP – PIB). 
+This is an open access article under the CC BY-NC-ND license (https://creativecommons.org/licenses/by-nc-nd/4.0/) 
+experienced substantial sediment accumulation at its bottom. 
+Over time, this deposited sediment, combined with organic 
+matter, settles and forms a benthic layer capable of releasing 
+phosphorus back into the water column, further exacerbating 
+water quality issues. The persistence of IPR can undermine 
+restoration efforts, as it may continue to supply phosphorus even 
+after external inputs are reduced (Navarrete et al., 2019). The 
+subsequent results of the water quality modelling highlight the 
+threat of eutrophication to Putrajaya Lake if the nutrient loading 
+is uncontrolled. 
+WATER QUALITY MODELLING 
+Water quality modelling is crucial in understanding the complex 
+interactions between physical, chemical, and biological pro-
+cesses in aquatic systems. Water quality modelling enables the 
+simulation of interactions among nutrients, phytoplankton, and 
+dissolved oxygen, capturing the dynamics of eutrophication and 
+nutrient cycles in water bodies (Ho et al., 2021). In the context 
+of Putrajaya Lake, water quality modelling is essential for 
+assessing the impact of various environmental factors on key 
+indicators of eutrophication, such as phosphorus and chloro-
+phyll a concentrations. 
+Phosphate 
+Phosphate (PO 4
+3−) is an essential nutrient that is crucial in 
+eutrophication within aquatic ecosystems. In many freshwater 
+systems, phosphate acts as the primary limiting factor for the 
+growth of algae and aquatic plants. Elevated phosphate 
+concentrations can trigger excessive algal growth, resulting in 
+dense algal blooms that reduce water clarity and restrict sunlight 
+penetration. This process disrupts submerged aquatic vegetation 
+and alters the ecological balance of the water body (Sulastri, 
+Henny and Susanti, 2020). 
+Water quality modelling was carried out for both dry and 
+wet weather conditions. The external phosphorus loading is set as 
+a boundary condition at the upstream. While the internal 
+phosphorus loads are considered within the model by defining 
+parameters related to sediment-water exchange, i.e., release rates 
+and equilibrium concentrations. 
+In Figure 7, the spatial distribution of phosphate concen-
+trations in Putrajaya Lake during dry and wet weather conditions 
+is illustrated. The concentration levels, represented by a col-
+our gradient, range from low values (blue, approximately 
+0.0 mg∙dm −3) to higher concentrations (red, approximately 
+0.5 mg∙dm−3). During the simulated dry weather covering 14 days 
+from February 1, 2021, to February 14, 2021, phosphate 
+accumulation is more pronounced, particularly in upstream 
+sections and narrow channel regions, where concentrations range 
+between 0.3 and 0.5 mg∙dm −3 (yellow to red zones). This value is 
+much higher than the phosphorus concentration value of 
+0.05 mg∙dm −3 according to the Putrajaya Lake water quality 
+standard (PLWQS). These findings align with those reported by 
+Zahari et al. (2018), who studied phosphorus distribution in the 
+Putrajaya Wetland and Central Wetland. Their study indicated 
+that phosphorus levels in the wetland reached close to 1 mg∙dm −3 
+at the highest, while the Central Wetland exhibited lower 
+concentrations, ranging from 0 to 0.5 mg∙dm −3. During the dry 
+season, reduced water inflow and limited mixing contribute to 
+phosphate retention in specific areas. The lack of flushing leads to 
+nutrient accumulation, increasing the risk of eutrophication. 
+Simulation for 14 days of wet weather conditions from December 
+15, 2021, to December 31, 2021, indicated that phosphate 
+concentrations are significantly lower, as shown in Figure 7b, 
+with most areas showing levels below 0.05 mg∙dm −3 (blue 
+regions), which is within the PLWQS limit. 
+The most important spatial pattern is that during dry 
+weather conditions, phosphate accumulation is more pro-
+nounced, particularly in upstream sections of PLW and narrow 
+channel regions of PLE, where concentrations range between 0.3 
+and 0.5 mg∙dm−3 (yellow to red zones). These results highlighted 
+the areas of concern, especially during dry weather conditions. 
+Fig. 7. Phosphate (PO4) concentrations during: a) dry weather conditions, b) wet weather conditions; source: Global Water Consultants and University 
+of Nottingham Malaysia 
+70 Sin Poh Lim, Fang Yenn Teo, Christopher Gibbins, Andy Chan, Tengku Marzuki Tengku Ismail 
+© 2025. The Authors. Published by Polish Academy of Sciences (PAN) and Institute of Technology and Life Sciences – National Research Institute (ITP – PIB). 
+This is an open access article under the CC BY-NC-ND license (https://creativecommons.org/licenses/by-nc-nd/4.0/) 
+Unlike the dry season, where localised phosphate accumula-
+tion is evident, the wet season exhibits a more uniform 
+distribution with minimal high-concentration zones. Increased 
+water inflow and enhanced flushing rates contribute to the 
+dilution of phosphate, preventing excessive accumulation. More 
+excellent hydrodynamic activity facilitates nutrient dispersion, 
+reducing the likelihood of localised eutrophication. 
+The above results highlight a higher risk of eutrophication 
+during dry weather conditions, especially at the upper part 
+of PLE and the middle part of PLW, as shown in Figure 7a. 
+Wet weather conditions help mitigate phosphate accumula-
+tion through natural dilution, whereas dry periods create 
+conditions that favour nutrient retention, increasing eutrophica-
+tion risks. 
+Chlorophyll a 
+High chlorophyll a concentrations are linked to increased total 
+phosphorus (TP) and total nitrogen (TN), which are critical 
+factors in evaluating eutrophication (Sui et al., 2022). As an 
+indicator of algal biomass, high chlorophyll a levels often suggest 
+increased phytoplankton activity and eutrophication risks. In 
+Figure 8, the spatial distribution of chlorophyll a in Putrajaya 
+Lake under dry and wet weather conditions is presented. Colour 
+gradients represent concentrations from low (~0 mg∙dm −3, blue) 
+to high (~15 mg∙dm −3, red). 
+Elevated chlorophyll a levels with values exceeding 
+10 mg∙dm−3 are concentrated in upstream sections and narrow 
+channels, while downstream areas show lower concentrations. 
+Notably, wet and dry weather levels exceed the PLWQS threshold 
+of 0.7 mg∙dm−3. 
+Hydrodynamic and environmental factors drive this spatial 
+pattern. Narrow channels facilitate nutrient build-up due to 
+restricted flow, encouraging algal growth. Shallower upstream 
+areas allow greater sunlight penetration, further promoting 
+photosynthesis. Conversely, expansive and deeper downstream 
+regions experience better water mixing and lower light avail-
+ability, limiting phytoplankton proliferation. 
+Seasonally, chlorophyll a concentrations are higher during 
+dry weather. Limited water movement and longer residence times 
+in stagnant zones enable algae accumulation. In contrast, the wet 
+season brings higher flow and mixing, enhancing flushing and 
+reducing algal retention, resulting in lower chlorophyll a levels. 
+These findings underscore how hydrodynamics and seasonal flow 
+variations influence algal distribution and the potential for 
+eutrophication. 
+IMPACTS OF PHOSPHORUS ON EUTROPHICATION 
+Three scenarios were simulated to evaluate the impact of 
+phosphorus on eutrophication in Putrajaya Lake, and the results 
+were presented as trophic state index (TSI) maps using the 
+SPLimTSI formula (Fig. 9). In scenario 1, the phosphorus 
+concentration was set at 0.05 mg∙dm −3 following the PLWQS. 
+The value of 0.05 mg∙dm −3 is slightly higher than that of 0.035 
+mg∙dm−3 according to the national lake water quality criteria and 
+standards (NAHRIM and NRE, 2015). With 0.05 mg∙dm −3 of 
+upstream boundary inflow into the lake, the lake remains in 
+a healthy state, with ultraoligotrophic conditions (TSI < 47) in the 
+upstream area and oligotrophic conditions (TSI 47–51) down-
+stream. This suggests balanced nutrient levels, preventing 
+excessive algal growth, and the value of 0.05 mg∙dm −3 is suitable 
+according to PLWQS. 
+At 0.35 mg∙dm −3 phosphorus (scenario 2), where the 
+phosphorus modelling shows it can happen during dry weather 
+(see Fig. 9), eutrophic conditions expand beyond Upper Bisa to 
+stagnant zones in the lower reaches of the lake. Areas near 
+drainage outlets, curved riverbanks, and narrow channels with 
+restricted flow show increased phosphorus accumulation, exacer-
+bating eutrophication risks. To mitigate this, phosphorus loading 
+should be limited to 0.35 mg∙dm −3 at all drainage inlets. 
+Fig. 8. Chlorophyll a concentration during: a) dry weather conditions, b) wet weather conditions; source: Global Water Consultants and University of 
+Nottingham Malaysia 
+Impacts of hydraulic structures on lake water quality deterioration and eutrophication in Malaysia 71 
+© 2025. The Authors. Published by Polish Academy of Sciences (PAN) and Institute of Technology and Life Sciences – National Research Institute (ITP – PIB). 
+This is an open access article under the CC BY-NC-ND license (https://creativecommons.org/licenses/by-nc-nd/4.0/) 
+In the worst-case scenario (scenario 3), where 0.42 mg∙dm −3 
+phosphorus concentration reaches 0.42 mg∙dm −3, nearly the 
+entire lake transitions to eutrophic conditions, posing severe risks 
+to water quality. This level of nutrient enrichment exceeds the 
+lake’s capacity to assimilate phosphorus, increasing the likelihood 
+of algal blooms and oxygen depletion. External phosphorus 
+loading (EPL) is primarily from industrial effluents, agricultural 
+runoff, and urban sewage, contributing significantly to lake 
+nutrient enrichment. The interplay between EPL and internal 
+phosphorus recycling (IPR) creates complex dynamics that 
+require careful management. High IPR can lead to unexpected 
+increases in algal concentrations and reduce the resilience of lakes 
+(Tay et al., 2022a). Effective phosphorus control strategies to 
+control EPL and IPL are crucial to prevent such deterioration. 
+CONCLUSIONS 
+The simulation results reveal a strong link between phosphorus 
+loading and eutrophication in Putrajaya Lake, highlighting the 
+need for proactive phosphorus management. 
+At a baseline concentration of 0.05 mg∙dm −3, the lake 
+remains in an oligotrophic state, indicating that natural flushing 
+and nutrient cycling effectively regulate phosphorus levels. At 
+0.35 mg∙dm−3, eutrophic conditions expand into stagnant zones, 
+where limited water circulation exacerbates nutrient accumula-
+tion. These high-risk areas require mitigation measures such as 
+improved water exchange and localised nutrient management to 
+prevent further deterioration. In the worst-case scenario 
+(0.42 mg∙dm −3), widespread eutrophication severely degrades 
+Fig. 9. Trophic state index maps under different phosphorus (P) 
+loading scenarios: a) P = 0.05 mg∙dm −3, b) P = 0.35 mg∙dm −3, c) P = 
+0.42 mg∙dm−3; source: Global Water Consultants and University of 
+Nottingham Malaysia 
+72 Sin Poh Lim, Fang Yenn Teo, Christopher Gibbins, Andy Chan, Tengku Marzuki Tengku Ismail 
+© 2025. The Authors. Published by Polish Academy of Sciences (PAN) and Institute of Technology and Life Sciences – National Research Institute (ITP – PIB). 
+This is an open access article under the CC BY-NC-ND license (https://creativecommons.org/licenses/by-nc-nd/4.0/) 
+water quality, increasing the likelihood of harmful algal blooms 
+and oxygen depletion. To prevent this, phosphorus levels should 
+be maintained below 0.30 mg∙dm −3, with stricter controls in 
+stagnant zones and inflow points. 
+This study presents an innovative approach for managing 
+phosphorus loading and mitigating eutrophication in tropical 
+lakes through numerical modelling techniques. While the 
+approach was applied to Putrajaya Lake, its methodology is 
+adaptable to other tropical lakes by calibrating site-specific 
+hydrodynamic and nutrient parameters. The findings highlight 
+the critical role of proactive phosphorus management in 
+maintaining lake water quality and preventing eutrophication. 
+Compared with other trophic state indices (TSI), the new index 
+developed under the study (SPLimTSI) provides a more accurate 
+assessment of the trophic state for Putrajaya Lake and is 
+recommended for adoption in the Putrajaya Lake assessment. 
+The index is also recommended for use in other lakes or 
+reservoirs in Malaysia and other tropical lakes. By using this 
+index, lake managers and environmental agencies can more 
+accurately assess the trophic status of their water bodies. 
+It is also recommended that policymakers or lake managers 
+establish the threshold value of their lake based on the same 
+approaches. Immediate action to control the inflow of the 
+identified critical water quality parameters is required by 
+installing gross pollutant traps (GPTs) at drainage inlets to the 
+lake as one of the practical control measures. Nutrient reduction 
+is the most urgent control measure. It is also recommended that 
+wetlands be installed along the lake shoreline to filter nonpoint 
+sources of pollutants from entering the lake via surface runoff. 
+The research highlights that the configuration of the 
+hydraulic structures is critical in preventing the deterioration of 
+water quality in a man-made reservoir. It is essential to conduct 
+detailed and comprehensive water quality modelling to assess the 
+potential risk of eutrophication during the study and design 
+stages. Further research is needed on the internal phosphorus 
+loading impact, the influence of water temperature, the benthic 
+layer, longer simulation periods and mitigation measures, etc. 
+Other possible confounding factors, such as catchment manage-
+ment, inflow variability, and unmonitored input sources, should 
+also be considered in the research. 
+Water quality should be addressed in the early stages of the 
+design process and included as a key design criterion for hydraulic 
+structures, rather than being considered an afterthought, since post- 
+construction rehabilitation work is often costly and irreversible. 
+ACKNOWLEDGEMENTS 
+The authors thank Perbadanan Putrajaya (PPJ), Malaysia, for 
+providing the necessary data for this research study. 
+FUNDING 
+Global Water Consultants funded this research study together 
+with the University of Nottingham Malaysia. 
+CONFLICT OF INTERESTS 
+All authors declare that they have no conflict of interests. 
+REFERENCES 
+Akashah, M. et al. (2015) Biodiversity in an urban ecosystem: Putrajaya 
+Lake and Wetland. Putrajaya: Perbadanan Putrajaya. 
+Alprol, A.E. et al. (2021) “Assessment of water quality, eutrophication, 
+and zooplankton community in lake Burullus, Egypt,” Diversity, 
+13(6), 268. Available at: https://doi.org/10.3390/d13060268. 
+Anda de, J. et al. (2022) “Seasonal and long-term behavior of TN:TP 
+ratio in Lake Cajititlán and its environmental implications,” 
+Water, Air, and Soil Pollution, 233(3). Available at: https://doi. 
+org/10.1007/s11270-022-05566-0. 
+Chow, M.F., Yusop, Z. and Teo, F.Y. (2016) “Evaluation of stormwater 
+runoff quality during monsoon and inter-monsoon seasons at 
+tropical urban catchments,” International Journal of River Basin 
+Management. 14, pp. 75–82. Available at: https://doi.org/10.1080/ 
+15715124.2015.1082479. 
+Delft (2025a) Delft3D-Flow user manual. Delft: Deltares. 
+Delft (2025b) Delft3D-WAQ – Technical Reference manual. Delft: 
+Deltares. 
+Ho, H. et al. (2021) “Numerical study of hydro-environmental 
+processes of Poyang Lake subject to engineering control,” 
+Hydrology Research, 52(3), pp. 760–786. Available at: https:// 
+doi.org/10.2166/nh.2021.184. 
+Khwairakpam, E. et al. (2021) “Water quality assessment of Loktak 
+Lake, Northeast India using 2-D hydrodynamic modelling,” SN 
+Applied Sciences, 3(4), 422. Available at: https://doi.org/10.1007/ 
+s42452-021-04440-8. 
+Li, B. et al. (2018) “Hydrodynamic and water quality modeling of 
+a large floodplain lake (Poyang Lake) in China,” Environmental 
+Science and Pollution Research, 25(35), pp. 35084–35098. 
+Available at: https://doi.org/10.1007/s11356-018-3387-y. 
+Liu, W. et al. (2021) “Risk assessment of non-point source pollution 
+based on landscape pattern in the Hanjiang River basin, China,” 
+Environment Science and Pollution Research, 28, pp. 64322– 
+64336. Available at: https://doi.org/10.1007/s11356-021-15603-w. 
+Mokhtar, M.Z. et al. (2020) “Water quality assessment of Bukit Merah 
+Reservoir, Malaysia using mathematical modeling,” IOP Con-
+ference Series: Earth and Environmental Science, 535(1), 012023. 
+Available at: https://doi.org/10.1088/1755-1315/535/1/012023. 
+Montero, E. et al. (2021) “Seasonal variation of Microcystis aeruginosa 
+and factors related to blooms in a deep warm monomictic lake in 
+Mexico,” Journal of Limnology, 80(2). Available at: https://doi. 
+org/10.4081/JLIMNOL.2021.2013. 
+NAHRIM and NRE (2015) National lake water quality criteria and 
+standards. Seri Kembangan: National Hydraulic Research In-
+stitute of Malaysia Ministry of Natural Resources and Environ-
+ment. 
+Navarrete, I.A. et al. (2019) “Towards integrated management of 
+a shallow tropical lake: assessment of water quality, sediment 
+geochemistry, and phytoplankton diversity in Lake Palakpakin, 
+Philippines,” Environmental Monitoring and Assessment, 191(8), 
+485. Available at: https://doi.org/10.1007/s10661-019-7617-7. 
+Paudel, G. et al. (2024) “Hydrochemical dynamics and water quality 
+assessment of the Ramsar-listed Ghodaghodi Lake complex: 
+Unveiling the water-environment nexus,” Water (Switzerland), 
+16(23), 3373. Available at: https://doi.org/10.3390/w16233373. 
+PPJ (1999) Putrajaya lake management guide. Putrajaya: Perbadan 
+Putrajaya. 
+PPJ (2000) Catchment development and management plan for Putrajaya 
+Lake, Putrajaya. Putrajaya: Perbadan Putrajaya. 
+Safwan Miswan, M. et al. (2019) “Preliminary assessment of Teknologi 
+lake quality status at Universiti Tun Hussein Onn Malaysia 
+(UTHM) campus in Parit Raja, Johor, Malaysia,” IOP Conference 
+Impacts of hydraulic structures on lake water quality deterioration and eutrophication in Malaysia 73 
+© 2025. The Authors. Published by Polish Academy of Sciences (PAN) and Institute of Technology and Life Sciences – National Research Institute (ITP – PIB). 
+This is an open access article under the CC BY-NC-ND license (https://creativecommons.org/licenses/by-nc-nd/4.0/) 
+Series: Materials Science and Engineering, 601(1), 012013. 
+Available at: https://doi.org/10.1088/1757-899X/601/1/012013. 
+Sharip, Z. et al. (2020) “Application of an effective microorganism 
+product as a cyanobacterial control and water quality improve-
+ment measure in Putrajaya Lake, Malaysia,” Earth Systems and 
+Environment, 4(1), pp. 213–223. Available at: https://doi.org/ 
+10.1007/s41748-019-00139-4. 
+Sharip, Z., Yanagawa, R. and Terasawa, T. (2016) “Eco-hydrodynamic 
+modelling of Chini Lake: Model description,” Environmental 
+Modeling and Assessment, 21(2), pp. 193–210. Available at: 
+https://doi.org/10.1007/s10666-015-9464-4. 
+Sheela, A.M., Letha, J. and Joseph, S. (2011) “Environmental status of 
+a tropical lake system,” Environmental Monitoring and Assess-
+ment, 180(1–4), pp. 427–449. Available at: https://doi.org/ 
+10.1007/s10661-010-1797-5. 
+Sperling von, E. (1997) “The process of biomass formation as the key 
+point in the restoration of tropical eutrophic lakes,” in L. Kufel, 
+A. Prejs and J.I. Rybak (eds.) Shallow Lakes ’95. Developments in 
+Hydrobiology, 119. Dordrecht: Springer. Available at: https://doi. 
+org/10.1007/978-94-011-5648-6_36. 
+Sui, Q. et al. (2022) “Seasonal water quality changes and the 
+eutrophication of Lake Yilong in southwest China,” Water 
+(Switzerland), 14(21), 3385. Available at: https://doi.org/10.3390/ 
+w14213385. 
+Sulastri, S., Henny, C. and Susanti, E. (2020) “Phytoplankton 
+composition and abundance in the floating treatment wetlands 
+(FTWs) system of Lake Maninjau, Indonesia,” IOP Conference 
+Series: Earth and Environmental Science, 535(1), 012014. Avail-
+able at: https://doi.org/10.1088/1755-1315/535/1/012014. 
+Tay, C.J. et al. (2022a) “Internal phosphorus recycling promotes rich 
+and complex dynamics in an algae-phosphorus model: Implica-
+tions for eutrophication management,” Journal of Theoretical 
+Biology, 532, 110913. Available at: https://doi.org/10.1016/j.jtbi. 
+2021.110913. 
+Tay, C.J. et al. (2022b) “Assessing the role of internal phosphorus 
+recycling on eutrophication in four lakes in China and Malaysia,” 
+Ecological Informatics, 72, 101830. Available at: https://doi.org/ 
+10.1016/j.ecoinf.2022.101830. 
+Timalsina, R. et al. (2025) “An assessment of seasonal water quality in 
+Phewa Lake, Nepal, by integrating geochemical indices and 
+statistical techniques: A sustainable approach,” Water (Switzer-
+land), 17(2), 238. Available at: https://doi.org/10.3390/w170 
+20238. 
+Wojewódka-Przybył, M. et al. (2024) “Exploring spatial dynamics of 
+water quality in a tropical lake affected by aquaculture,” Water 
+(Switzerland), 16(21), 3079. Available at: https://doi.org/10.3390/ 
+w16213079. 
+Wong, C.F. et al. (2022) “Hazard identification risk assessment and risk 
+control (HIRARC) for Mengkuang Dam construction,” Civil 
+Engineering and Architecture, 10(3), pp. 762–770. Available at: 
+https://doi.org/10.13189/cea.2022.100302. 
+Zahari, N.M. et al. (2018) “The study of phosphorus distribution at 
+Putrajaya Wetland,” IOP Conference Series: Materials Science and 
+Engineering, 342(1), 012092. Available at: https://doi.org/10.1088/ 
+1757-899X/342/1/012092. 
+74 Sin Poh Lim, Fang Yenn Teo, Christopher Gibbins, Andy Chan, Tengku Marzuki Tengku Ismail 
+© 2025. The Authors. Published by Polish Academy of Sciences (PAN) and Institute of Technology and Life Sciences – National Research Institute (ITP – PIB). 
+This is an open access article under the CC BY-NC-ND license (https://creativecommons.org/licenses/by-nc-nd/4.0/)
