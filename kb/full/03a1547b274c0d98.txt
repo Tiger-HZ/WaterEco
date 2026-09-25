@@ -1,0 +1,1398 @@
+REVIEW PAPER
+Circular Economy and Sustainability (2026) 6:332 
+https://doi.org/10.1007/s43615-026-01064-1
+An ISO-Informed Methodological Audit of Life Cycle 
+Assessment Practices in Recycled Aggregate Concrete
+Namila Hewage1  · Yulin Patrisia1,2  · Chamila Gunasekara1  · David W. Law1  · 
+Sujeeva Setunge1
+Received: 28 May 2026 / Accepted: 8 July 2026
+© The Author(s) 2026
+Abstract
+Concrete waste recycling is increasingly recognized as a strategy for reducing the 
+environmental burdens associated with end-of-life construction materials, landfilling, 
+and virgin material extraction. Within the transition to a circular economy, recycled 
+concrete aggregate has gained growing attention as a secondary aggregate resource for 
+concrete production. However, before recycled aggregate concrete (RAC) can be widely 
+promoted as an environmentally preferable alternative, its environmental performance 
+must be evaluated through rigorous, transparent, and standardized life cycle assessments 
+(LCAs). This paper presents a PRISMA-guided systematic review of 37 RAC LCA studies 
+and conducts an ISO-informed methodological audit across the four phases of the ISO 
+14040/44 framework. The review identifies recurring limitations: 82% of system boundary 
+instances were limited to cradle-to-gate, constraining full life cycle evaluation; 50% of 
+functional unit instances adopted a volumetric unit of 1 m³ of concrete, which may not 
+fully capture functional equivalence; and 65% of studies did not report how allocation and 
+multifunctionality were handled, limiting transparency and reproducibility. Additional gaps 
+were observed in inventory data representativeness, impact assessment method reporting 
+and justification, interpretation practices, and data quality analysis. By linking identified 
+limitations to ISO-aligned recommendations, this review provides practical guidance for 
+improving the robustness, transparency, comparability, and credibility of future RAC LCA 
+studies and circularity claims.
+Keywords Life cycle assessment · ISO 14040/44 · Recycled aggregate concrete · 
+Construction and demolition waste · Circular economy · Methodological audit
+Introduction
+Construction and demolition waste (CDW) remains one of the largest waste streams, 
+accounting for a substantial share of total solid waste in many regions [ 1, 2]. CDW 
+comprises a heterogeneous mix of inert and non-inert materials, as well as hazardous and 
+non-hazardous streams, typically including concrete, clay bricks, mortar, wood, plastics, 
+Extended author information available on the last page of the article
+1 3
+ 332 Page 2 of 32
+Circular Economy and Sustainability (2026) 6:332 
+and steel [3]. CDW generation varies across regions, with China, the United States, India, 
+and the European Union as the dominant contributors [ 4]. With population growth, rapid 
+urbanization, and continued infrastructure expansion, CDW management is expected to 
+remain a critical challenge in the coming decades [5].
+Recent policy frameworks increasingly promote the reduction, reuse, and recycling of 
+CDW to reduce the extraction of virgin materials and lower the environmental impacts asso-
+ciated with primary production and transportation [ 5]. Given the high global demand for 
+concrete [6] and the high repurposing potential of CDW [ 7], incorporating recycled CDW 
+into concrete offers a promising sustainable pathway to support circular construction. A key 
+advantage of CDW recycling is reduced extraction of natural aggregate (NA), thereby limit-
+ing new mining [ 8, 9]. CDW recycling also contributes to waste diversion and can reduce 
+the environmental burdens associated with landfilling [10, 11].
+The majority of CDW consists of concrete waste (CW), typically exceeding 70% 
+(Fig. 1). Consequently, CDW recycling primarily involves CW recycling. In this context, 
+research and practical applications have predominantly focused on recycled coarse 
+aggregate (RCA) as a substitute for natural coarse aggregate (NCA) [ 9, 12]. Existing 
+technical standards predominantly provide guidance for RCA use in concrete, while 
+providing limited provisions for recycled fine aggregate (RFA) or recycled concrete 
+powder (RCP) [ 13]. Therefore, recycled aggregate concrete (RAC) incorporating 
+RCA provides a practical and comparatively mature reference case for refining and 
+harmonizing methodological practices in life cycle assessment (LCA) studies of recycled 
+concrete products.
+ 
+LCA is widely used as a systematic approach for quantifying the environmental 
+impacts of a product system [ 15]. In construction, LCA is increasingly used to inform 
+early-stage design decisions and to evaluate end-of-life (EOL) strategies, including 
+Fig. 1 Overall CDW waste composition, based on data reported by Peiris et al. [14]
+ 
+1 3
+Page 3 of 32 332 
+Circular Economy and Sustainability (2026) 6:332 
+recycling, reuse, and disposal [ 5, 16, 17]. Applications of LCA to RAC have a relatively 
+long research history, with studies demonstrating that the environmental performance 
+of RCA substitution is highly sensitive to LCA modeling assumptions. For example, 
+early studies have shown that system boundary definition, transport distance, allocation 
+approach, avoided-burden modeling, functional equivalence, recycling system design, and 
+recycling-loop representation can substantially influence LCA outcomes [ 18–21]. These 
+early contributions indicate that methodological variability is not a recent issue, but a 
+long-standing challenge in RAC LCA studies.
+Despite this long research history, RAC LCA outcomes remain insufficiently robust to 
+support confident investment in high-quality RCA production for upcycling CW for appli -
+cation in new concrete rather than downcycling into road base or fill [ 9]. While RAC mix 
+design and mechanical performance have been extensively investigated, environmental 
+assessment has received comparatively less attention, and studies that apply LCA often 
+consider only a limited number of mix designs [22].
+Although LCA has been standardized by the International Organization for 
+Standardization (ISO), ISO 14040:2006 [ 23] and ISO 14044:2006 [ 24] provide a 
+general LCA framework rather than prescriptive rules for key methodological choices, 
+including functional unit (FU) definition, system boundary selection, life-cycle stage 
+inclusion or exclusion, allocation approaches, and interpretation [ 25, 26]. Consequently, 
+LCA practitioners often apply diverse methodological assumptions, creating ambiguity 
+regarding the comparative environmental performance of RAC systems [ 25]. This issue is 
+particularly important in the context of the circular economy (CE), where the distinction 
+between closed-loop and open-loop recycling can substantially influence the interpretation 
+of LCA results.
+Reflecting these challenges, previous review studies have examined LCA practices 
+in CDW management, CW recycling, and RAC systems, revealing significant 
+methodological inconsistencies. Zhang et al. [ 27] identified key sources of variability 
+in RAC LCA studies, including mix design method, FU definition, inventory 
+allocation, CO₂ uptake through carbonation, and transport distance. Xing et al. [ 28] 
+similarly highlighted that RAC LCA outcomes are strongly influenced by variations 
+in the mix design and LCA modeling mechanisms. Marinković et al. [ 26] further 
+emphasized the need to connect the sustainability assessment of RAC systems with 
+LCA methodologies, standards, and design practice. Broader CDW and CW recycling 
+reviews have also reported inconsistencies in FU definition, system boundary 
+selection, impact category selection, life cycle impact assessment (LCIA) methods, 
+CE integration, allocation modeling, inventory data quality, and recycled material 
+quality considerations [ 5, 25, 29, 30].
+Existing reviews have primarily focused on identifying variations in methodologi -
+cal choices and comparing their influence on LCA. Limited attention has been given to 
+critically evaluating whether the adopted methodological choices in RAC LCA studies 
+are transparently reported, adequately justified, consistently applied, and reproducible in 
+accordance with the widely acknowledged ISO 14040 [ 23] and ISO 14044 [24] principles. 
+This represents an important gap as studies may claim ISO compliance yet provide insuffi -
+cient methodological detail to support reproducibility, comparability, and decision-relevant 
+interpretation.
+1 3
+ 332 Page 4 of 32
+Circular Economy and Sustainability (2026) 6:332 
+To address this gap, the present study conducts an ISO-informed methodological audit 
+of RAC LCA studies, evaluating key methodological components including FUs, system 
+boundaries, allocation and multifunctionality handling, inventory development, LCIA 
+methodologies, software tool use, interpretation practices, and data quality assessment. 
+The audit identifies persistent inconsistencies in the operationalization of ISO 14040/44 
+principles across RAC LCA studies. Building on these findings, the study develops 
+ISO-aligned and RAC-specific methodological guidance to support more transparent, 
+consistent, reproducible, and decision-relevant LCA outcomes for circular concrete 
+systems.
+Methods
+This research employs a systematic review approach to critically examine contemporary 
+LCA practices for RAC. The review followed the PRISMA (Preferred Reporting Items 
+for Systematic Reviews and Meta-Analyses) framework to guide screening, selection, and 
+reporting, as it is widely used in systematic reviews to ensure transparent and systematic 
+evidence reporting [31–33].
+Literature Search Strategy
+The literature search was primarily conducted using the Scopus database, which is one of 
+the world’s largest curated databases of high-quality peer-reviewed research [ 34]. A com-
+prehensive search query was developed for the literature search process using key terms 
+including ‘construction and demolition waste’, ‘life cycle assessment’, and ‘recycl*’, 
+together with related keywords (Supplementary Information S1).
+Study Selection Criteria and Screening Process
+The review included peer-reviewed English-language journal articles published between 
+January 2015 and May 2025 to capture contemporary LCA practice and recent method -
+ological advances. The initial Scopus search yielded 302 records, and three additional 
+studies were identified through backward and forward snowballing. The title and keyword 
+screening stage focused on retaining studies that explicitly addressed CDW management 
+and recycled concrete with an LCA focus, resulting in 224 records. The abstract screening 
+stage focused on retaining studies that appeared to assess RCA integration in concrete from 
+an LCA perspective, yielding 140 records. During full-text screening, 103 records were 
+excluded where detailed review showed that they did not focus on recycled concrete LCA, 
+did not incorporate RCA as a recycled input material, or lacked core LCA methodological 
+information, including the FU, system boundary, and LCIA, to enable meaningful extrac -
+tion, classification, and comparison within the audit framework. The full screening and eli-
+gibility criteria are provided in Supplementary Table S1. Following systematic screening 
+and eligibility assessment, 37 studies were retained for in-depth review and are listed in 
+Supplementary Table S2. The full screening process is summarized in the PRISMA flow 
+diagram (Fig. 2).
+1 3
+Page 5 of 32 332 
+Circular Economy and Sustainability (2026) 6:332 
+Data Extraction, Organization, Counting, and Reporting Conventions
+Data Extraction and Organization
+The final dataset was systematically extracted to capture descriptive and methodological 
+information from the reviewed studies. Key extracted variables included study descriptors, 
+such as keywords, publication year, and geographic region, as well as LCA methodological 
+elements, including FUs, system boundaries, allocation and multifunctionality handling, 
+life cycle inventory (LCI) data sources, LCIA methods, impact categories, software tools, 
+interpretation practices, and data quality analysis. This structured extraction process formed 
+the evidence base for the descriptive overview, quantitative summary, and qualitative 
+methodological synthesis.
+Fig. 2 PRISMA flow diagram for study identification, screening, eligibility assessment, and inclusion
+ 
+1 3
+ 332 Page 6 of 32
+Circular Economy and Sustainability (2026) 6:332 
+Counting and Reporting Convention (Study-Level vs. Instance-Level)
+Because some methodological elements were reported more than once within a single study 
+(e.g., multiple FUs), both study-level and instance-level counts were used in the quantita -
+tive synthesis. Accordingly, percentages were calculated using the appropriate denominator, 
+and the terminology (“studies” vs. “instances”) is used consistently throughout the paper. 
+For study-level reporting, the default denominator was N = 37. For instance-level reporting, 
+the denominator varies with the total number of reported instances for the relevant element. 
+These totals are clearly indicated in the relevant text, tables, and figures.
+Descriptive Overview and ISO-Informed Methodological Audit
+Following the systematic identification, screening, and selection of relevant RAC LCA 
+studies, the analysis combined a descriptive overview of the reviewed studies with an ISO-
+informed methodological audit. The descriptive overview briefly summarized publication 
+years, keyword patterns, and geographic distribution to contextualize the reviewed studies 
+and provide a general overview of research patterns.
+The ISO-informed methodological audit examined RAC LCA methodological practices, 
+structured around the four phases defined in ISO 14040 and ISO 14044: goal and scope defi-
+nition, life cycle inventory analysis, life cycle impact assessment, and life cycle interpreta -
+tion [23, 24]. The audit focused on whether LCA methodological choices were explicitly 
+reported, adequately justified, consistently applied, and sufficiently transparent to support 
+reproducibility and comparison across RAC LCA studies. This combined approach enabled 
+the review to integrate a transparent systematic review process, a concise contextual over -
+view, and a detailed qualitative synthesis of key methodological practices, reporting pat -
+terns, ISO-informed gaps, and ISO-aligned recommendations.
+Results
+Descriptive Overview of the Reviewed Studies
+Figure 3 illustrates the temporal distribution of RAC LCA studies published over the past 
+decade. Most studies (25) were published between 2021 and 2025, indicating a notable 
+increase in the acceptance and application of LCA as a tool for assessing the environmen -
+tal sustainability of recycled concrete systems. According to the geographical distribution 
+shown in Fig. 4, China leads with 8 studies, followed by Italy and Spain, each with 4 studies. 
+Other countries, including the USA, India, Australia, and Turkey, contributed 3 studies each, 
+while several additional countries are also represented with fewer studies.
+Figure 5 presents the keyword co-occurrence map of the reviewed studies, highlighting 
+the most prominent and interconnected research themes. Keyword co-occurrence analysis is 
+useful for identifying relationships among frequently used terms and for revealing thematic 
+patterns within the literature [ 35]. Larger nodes indicate higher keyword frequency, links 
+represent co-occurrence relationships, and different colors indicate thematic clusters. The 
+most frequently occurring author keywords were “life cycle assessment”, “construction and 
+1 3
+Page 7 of 32 332 
+Circular Economy and Sustainability (2026) 6:332 
+demolition waste”, “recycled aggregate”, “recycled concrete aggregate”, and “sustainabil -
+ity”, confirming that the reviewed studies are strongly centered on environmental assess -
+ment of recycled concrete and CDW recovery pathways.
+Fig. 5 Keyword co-occurrence map of the reviewed studies (studies, N = 37). The map was generated 
+using VOSviewer based on extracted author keywords with a minimum keyword occurrence threshold 
+of two
+ 
+Fig. 4 Geographical distribution of the reviewed RAC LCA studies (studies, N = 37)
+ 
+1 3
+ 332 Page 8 of 32
+Circular Economy and Sustainability (2026) 6:332 
+LCA Methodological Practices
+LCA is defined by ISO as the “compilation and evaluation of the inputs, outputs, and the potential 
+environmental impacts of a product system throughout its life cycle” [23]. In accordance with 
+ISO 14040 and ISO 14044, an LCA consists of four phases: (i) goal and scope definition, (ii) life 
+cycle inventory analysis, (iii) life cycle impact assessment, and (iv) life cycle interpretation [23, 
+24]. To enhance the paper’s thematic coherence and analytical clarity, the findings are structured 
+around these phases. Where relevant, reference is also made to the EN 15804:2012+A2:2019 
+standard, as it provides specific guidance for LCA of construction products [36].
+Goal and Scope Definition
+The goal of an LCA should define the intended application, the rationale for undertaking the 
+LCA, the target audience, and whether the findings will be used in comparative assertions 
+disclosed to the public [ 23]. The scope of an LCA encompasses a wide range of aspects. 
+This review focuses on four principal elements: system approach, FU, system boundary, and 
+allocation and multifunctionality handling.
+System Approach (Attributional/Consequential) The two main system approaches used in LCA 
+are attributional LCA (ALCA) and consequential LCA (CLCA) [37]. ALCA assesses a product’s 
+environmental impacts within the current system and is commonly used to compare products 
+or processes under existing conditions. In contrast, CLCA assesses the environmental conse-
+quences of a decision or change in the product system (e.g., an increase in RCA demand) [25].
+Among the reviewed studies, none explicitly stated the system approach adopted. However, based 
+on the background databases used, the FUs defined, and the reported LCA outcomes, 30 studies 
+can reasonably be classified as ALCA studies. The remaining seven studies [9, 22, 38–42] applied 
+a substitution-based approach using avoided-burden credits to address recycling-related multi-
+functionality. This is generally interpreted as an implementation of system expansion. Although 
+some authors interpret the use of system expansion as an indicator of CLCA [43], Schaubroeck 
+Fig. 3 Annual distribution of reviewed RAC LCA studies published between January 2015 and May 2025 
+(studies, N = 37)
+ 
+1 3
+Page 9 of 32 332 
+Circular Economy and Sustainability (2026) 6:332 
+et al. [37] argue that the system-expansion approach applies to both ALCA and CLCA. Conse-
+quently, these seven studies present some ambiguity in classification. Nonetheless, aside from the 
+use of substitution-based avoided-burden modeling, the background databases, FUs, and reported 
+LCA outcomes of these studies also align well with the ALCA system approach.
+Functional Unit (FU) ISO defines the FU as “quantified performance of a product system 
+for use as a reference unit” [23]. It provides the basis for quantifying all inputs and outputs 
+associated with the product system [25]. Therefore, the FU must be consistent with the goal 
+and scope definition of the study [23]. In this review, six different FUs have been identified 
+(see Table 1). The volumetric FU (1 m³ of concrete) was the most frequently applied (21 
+instances), followed by the strength-based FU (11 instances). The complete list of refer -
+ences corresponding to each FU category is provided in Supplementary Table S3.
+System Boundary Concrete undergoes several life-cycle phases, including the production, 
+construction, use, EOL, and material recovery. Consequently, system boundary selection 
+must be carefully aligned with the study goal and scope, as it determines which stages 
+are included in the LCA modeling [ 23]. The most common system boundaries in concrete 
+LCAs are cradle-to-gate, cradle-to-grave, and cradle-to-cradle. Cradle-to-gate covers unit 
+processes from raw material extraction to concrete production. Cradle-to-grave extends the 
+scope to include use and maintenance phases and EOL processes (e.g., demolition, trans -
+port, and disposal). Cradle-to-cradle further extends the boundary by including EOL recov-
+ery and the reintegration of recovered materials into a subsequent product system, thereby 
+enabling CE-related benefits and burdens to be represented. In this review, 31 instances 
+were limited to cradle-to-gate, while cradle-to-grave (4 instances) and cradle-to-cradle (3 
+instances) boundaries were explored minimally (see Fig. 6(a)).
+However, the sustainability of RAC systems cannot be evaluated solely on a cradle-to-gate 
+basis. Given the role of RCA use as a CE strategy, greater attention is needed to extend sys-
+tem boundaries beyond EOL to incorporate cradle-to-cradle scenarios. In such cases, a key 
+challenge is determining how environmental burdens and potential credits should be shared 
+between the previous concrete life cycle and the subsequent life cycle in which recovered 
+CW is processed into RCA and used to produce RAC. This directly relates to the broader 
+discussion of allocation and multifunctionality handling.
+Table 1 Functional units identified in the reviewed studies (instances, N = 4 2 )
+FU Code FU Type No. of 
+Instances
+Description
+FU1 V olumetric FU 21 1 m³ of concrete, irrespective of performance properties
+FU2 Strength-based FU 11 1 m³ of concrete with equivalent compressive strength
+FU3 Strength-workability 
+FU
+3 1 m³ of concrete with equivalent compressive strength 
+and workability
+FU4 Strength-durability 
+FU
+3 1 m³ of concrete with equivalent compressive strength 
+and durability
+FU5 Performance-normal-
+ized impact FU
+3 Environmental impact normalized by performance pa-
+rameters (e.g., impact per MPa of compressive strength)
+FU6 Mass-based FU 1 1 ton of concrete, irrespective of performance properties
+Totals are reported as instances because some studies reported multiple functional units
+1 3
+ 332 Page 10 of 32
+Circular Economy and Sustainability (2026) 6:332 
+Allocation and Multifunctionality Handling CW recycling commonly generates multiple out-
+puts, with RCA being only one co-product. Where subdivision or system expansion is not feasi-
+ble, this multifunctionality requires environmental burdens to be allocated among co-products 
+[25]. In addition, CW recycling introduces a system-level multifunctionality, as burdens and 
+potential credits may need to be distributed across consecutive life cycles when recovered CW 
+is processed into RCA and used in new concrete. To handle cross-life-cycle multifunctionality, 
+the primary approaches are cut-off and substitution-based avoided-burden, while approaches 
+based on physical relationships or economic value are less frequently applied. In contrast, allo-
+cation within multi-output processes is typically based on measurable physical relationships 
+(e.g., mass, volume, or energy content) or the economic value of co-products [25].
+In this review, most studies (24 of 37) did not report how allocation and multifunctional -
+ity were handled, creating uncertainty regarding how environmental burdens and potential 
+credits were assigned between co-products and/or across life cycles. Among the studies 
+that specified an approach for cross-life-cycle multifunctionality handling, the substitution-
+based avoided-burden approach was applied in seven instances, the cut-off approach in 
+seven instances, and economic allocation in one instance. Only one instance addressed 
+multi-output allocation using mass allocation. The distribution of these approaches is shown 
+in Fig. 6(b), while the principles of each approach are summarized in Table 2, and the asso-
+ciated references are listed in Supplementary Table S4.
+Life Cycle Inventory (LCI) Analysis
+LCI analysis is the second phase of an LCA [23]. This phase quantifies all inputs and outputs 
+of unit processes within the system boundary, expressed relative to the FU. A robust LCI 
+Fig. 6 Distribution of (a) system boundary selections among the reviewed studies (instances, N = 38) and 
+(b) approaches for allocation and multifunctionality handling in the reviewed studies (instances, N = 40). 
+Totals are reported as instances because some studies reported multiple system boundaries and/or alloca-
+tion and multifunctionality-handling approaches
+ 
+1 3
+Page 11 of 32 332 
+Circular Economy and Sustainability (2026) 6:332 
+depends on both system definition and the quality and completeness of underlying data. 
+The inventory should include datasets representing resource inputs and emission outputs 
+for each unit process [30], and data quality remains a key determinant of reliability.
+In the studies reviewed, inventory data were typically derived from multiple types of 
+data sources. Since individual studies often used more than one inventory data source, 
+the reported counts are not mutually exclusive. Overall, 21 studies used primary data, 
+26 studies used literature-derived data, and 20 studies used the Ecoinvent database. Less 
+frequently used secondary databases included ELCD, CLCD, and GEMIS. The inventory 
+data sources used in each reviewed study are summarized in Supplementary Table S5.
+Primary data were mainly obtained through site-specific measurements, interviews, surveys, 
+case studies, monitoring analyses, and direct data collection at concrete production and recy-
+cling facilities. Several studies collected context-specific data from recycling facilities, particu-
+larly where established databases did not provide sufficient information for RCA production and 
+processing [6, 11]. Some studies also used laboratory-scale recycling experiments and scaled 
+the results to represent industrial equipment or full-scale recycling processes [3, 40]. Secondary 
+data were obtained primarily from proprietary databases, published literature, government and 
+industry reports, and public datasets. Literature-derived inventory data were widely used, while 
+Ecoinvent was the most frequently adopted proprietary database. Some studies also incorpo-
+rated region-specific electricity grid datasets to improve contextual relevance [44, 45].
+Life Cycle Impact Assessment (LCIA)
+LCIA is the third phase of an LCA [23], and focuses on selecting impact categories, category 
+indicators, and characterization models [ 25]. In this phase, classification means assigning 
+LCI results to the selected impact categories, while characterization means converting those 
+results into category indicator outcomes relating to the defined FU [23, 24].
+Table 2 Reported approaches for allocation and cross-life-cycle multifunctionality handling in the reviewed 
+studies (instances, N = 16)
+Category Approach No. of 
+Instances
+Description
+Cross-
+life-cycle 
+multifunc-
+tionality 
+handling
+Substitu-
+tion-based 
+avoided-burden
+7 The system boundary is expanded to account for displaced 
+equivalent virgin material production and, where appli-
+cable, avoided waste-management processes, with avoided-
+burden credits assigned to the assessed RAC system
+Cut-off 7 The previous product system bears the burden of primary 
+material production, while the RAC system bears only the 
+recycling-related impacts. Recycled materials enter the 
+subsequent life cycle burden-free
+Economic 
+allocation
+1 Environmental impacts from both the original and recycling 
+stages are shared between the previous and subsequent 
+product systems according to their relative economic value
+Multi-
+output 
+allocation
+Mass allocation 1 Environmental burdens from multi-output unit processes 
+are apportioned according to the mass fraction of each co-
+product (e.g., RCA, fines, recovered steel)
+This table summarises only explicitly reported approaches for allocation and multifunctionality handling. 
+Totals are reported as instances because some studies reported multiple approaches. The broader 
+distribution of these approaches is presented in Fig. 6(b)
+1 3
+ 332 Page 12 of 32
+Circular Economy and Sustainability (2026) 6:332 
+Life Cycle Impact Assessment Approach LCIA commonly uses two modeling approaches. 
+The midpoint (problem-oriented modeling) approach evaluates impacts at an intermediate 
+stage along the cause-effect chain and typically includes indicators such as global warming 
+potential (GWP), ozone depletion potential (ODP), acidification potential (AP), and can 
+include more than 15 other indicators [ 30, 46]. The endpoint (damage-oriented modeling) 
+approach links impacts further down the cause-effect chain to areas of protection such as 
+human health, ecosystem quality, or resource depletion [ 46]. Among the reviewed studies, 
+20 did not report the LCIA modeling approach used. However, based on the LCIA methods 
+and the impact categories used, these can be classified as midpoint studies. In addition, 15 
+studies explicitly reported using a midpoint approach, one reported an endpoint approach, 
+and one used a combined midpoint-endpoint approach. 
+Life Cycle Impact Assessment Methods A wide range of LCIA methods are available, each 
+relying on distinct characterization models that link emissions or resource use to the poten-
+tial impact categories. In this review, 9 studies (out of 37) did not report the LCIA method 
+used. Among the reported LCIA methods, variations of the CML method were used in 11 
+instances. Other widely used methods included the IPCC (6 instances), TRACI (4 instances), 
+ReCiPe (3 instances), and IMPACT 2002+ (2 instances). Two instances reported the use 
+of the Environmental Product Declaration (EPD) 2018 [ 47] and EN 15804:2012+A2:2019 
+[48] methods. However, these are not typically considered as stand-alone LCIA methods in 
+the same sense as CML or ReCiPe, but rather reporting/standardization frameworks. The 
+mapping of LCIA methods to individual studies is provided in Supplementary Table S6, and 
+their overall distribution is shown in Fig. 7.
+A wide range of impact categories is available in LCIA. However, most studies selected 
+a limited set of core categories. The distribution of the frequently used impact categories 
+is shown in Fig. 8. The impact categories and LCIA methods reported in each reviewed 
+Fig. 7 LCIA methods and reporting frameworks identified in the reviewed studies (instances, N = 38). 
+Totals are reported as instances because some studies reported multiple impact assessment methods
+ 
+1 3
+Page 13 of 32 332 
+Circular Economy and Sustainability (2026) 6:332 
+study are presented in Supplementary Table S6. Since multiple energy-related indicators 
+were identified across the studies, the supplementary table records only whether an energy-
+related indicator was included in each study.
+As shown in Fig. 8, GWP was assessed in all the studies, while other frequently 
+assessed categories include eutrophication potential (EP), AP, photochemical ozone 
+creation potential (POCP), ODP, and abiotic depletion potential (ADP). In addition to 
+standard midpoint categories such as GWP, ODP, and AP, many LCA practitioners also 
+applied standalone indicators to capture energy-related impacts. These include energy 
+demand (ED) [ 49], cumulative energy demand (CED) [ 13, 50, 51], energy consumption 
+(EC) [38, 52], and embodied energy (EE) [ 53, 54]. Another standalone method used was 
+AWARE [13, 55] to assess water scarcity potential. In addition, two studies [ 45, 56] used 
+mineral resources depletion, while three other studies each adopted waste generation 
+[45], raw material input [ 55], and eco-cost [ 57] as standalone indicators.
+In line with ISO recommendations, the LCIA phase may also include four optional 
+elements: normalization, weighting, grouping, and data quality analysis [ 24]. Only a few 
+studies incorporated these additional steps. This review primarily focuses on data quality 
+analysis, which is presented in a dedicated section.
+LCA Software Tools LCA practitioners use a range of LCA software platforms for inventory 
+modeling and impact assessment (Fig. 9). The most frequently used tool was SimaPro 
+(versions 8.0, 8.4, 9.1, 9.2, and 9.4), reflecting its well-established role as a commercial 
+LCA platform. GaBi was used in 4 instances. A limited number of instances reported 
+the use of customized Excel-based tools (e.g., the modified Gursel 2014 framework) or 
+specialized open-source tools, including openLCA, Activity Browser, and the Athena 
+Impact Estimator for Buildings. The GreenConcrete LCA tool developed by Gursel 
+and Horvath was used in 2 instances. Notably, 11 studies (out of 37) did not mention 
+the software used. An overview of the use of LCA software in the reviewed studies is 
+provided in Supplementary Table S7.
+Fig. 8 Frequently reported midpoint impact categories in the reviewed studies (studies, N = 37)
+ 
+1 3
+ 332 Page 14 of 32
+Circular Economy and Sustainability (2026) 6:332 
+Life Cycle Interpretation
+According to ISO standards, the interpretation phase of an LCA involves three core ele -
+ments: (i) identification of significant issues emerging from the LCI analysis and LCIA, (ii) 
+evaluation of the study through completeness, sensitivity, and consistency checks, and (iii) 
+drawing of conclusions, limitations, and recommendations [23, 24].
+In the reviewed studies, the interpretation phase was generally used to identify 
+environmental hotspots and to compare the environmental performance of RAC with that 
+of conventional concrete (CC). Cement production was most frequently identified as the 
+dominant contributor to environmental impacts, particularly for GWP, while transportation 
+was also highlighted as an influential process in several studies [ 26, 41, 50, 56]. For RAC 
+systems, the interpretation of results was commonly linked to RCA replacement level, 
+transport distance, RCA processing method, cement adjustment, and allocation approach 
+[22, 56].
+The comparative findings showed that RAC did not consistently perform better than 
+CC across all impact categories [ 9, 22]. Environmental benefits were more commonly 
+reported when RCA replaced NCA without requiring significant additional cement, when 
+RCA transport distances were relatively short, and when avoided landfill disposal was 
+considered [ 9, 56]. In contrast, the environmental advantage of RAC was reduced or 
+reversed when additional cement was needed to maintain functional equivalence, when 
+RCA processing was energy-intensive, or when longer transport distances were assumed 
+[22, 41]. Therefore, the environmental performance of RAC should be interpreted as 
+highly scenario- and method-dependent, rather than assumed to be universally beneficial, 
+highlighting the importance of transparent and carefully justified methodological decisions 
+in RAC LCA studies.
+Fig. 9 Distribution of LCA software tools reported in the reviewed studies (instances, N = 38). Totals are 
+reported as instances because some studies reported multiple software tools
+ 
+1 3
+Page 15 of 32 332 
+Circular Economy and Sustainability (2026) 6:332 
+Data Quality Analysis
+To enhance the robustness and reliability of LCA outcomes, additional analyses such as 
+sensitivity and uncertainty analyses are often recommended. These analyses help assess 
+the stability of LCA outcomes and the level of confidence with which conclusions can be 
+drawn [25, 30].
+Sensitivity analysis examines how changes in input data, assumptions, and methodologi-
+cal choices influence LCA outcomes [ 24]. In this review, 10 studies conducted sensitivity 
+analysis as presented in Supplementary Table S8. The most frequently examined param -
+eter was transport distance (for RCA or NA), while other parameters included mix design 
+factors (e.g., additional cement demand, RCA proportion, cement type), recycling process 
+configurations (e.g., fixed versus mobile treatment facilities), energy system (electricity grid 
+composition, kiln fuel, renewable sources), different allocation approaches, transport mode/
+type, and CO₂ uptake through carbonation.
+Uncertainty analysis assesses how variability in input data and model assumptions prop-
+agates through the LCA model and affects the reliability of outcomes. In this review, only 
+two studies incorporated an uncertainty analysis. Mostert et al. [55] applied it at the building 
+level, while Mistri et al. [58] used a Monte Carlo simulation to assess the influence of input 
+variability in the context of developing India-specific LCA databases. Overall, the limited 
+use of sensitivity and uncertainty analyses suggests that the robustness of RAC LCA conclu-
+sions was often only partially evaluated, a point to consider when interpreting the reported 
+environmental benefits and trade-offs.
+Discussion
+Emerging Trends in RAC LCA Practice
+The analysis revealed a gradual increase in RAC LCA studies over the past decade, with 
+68% of studies published between 2021 and 2025. This reflects the increasing recognition 
+of LCA as a tool for assessing the environmental sustainability of recycled materials, in line 
+with global shifts toward CE.
+Geographical analysis indicates that China, Italy, and Spain are leading contributors to 
+RAC LCA literature, suggesting that countries with high CDW generation and/or more 
+established regulatory frameworks are shaping current LCA practice. While Europe and 
+East Asia dominate the research landscape, African nations (except Egypt) and most parts 
+of South America, Central and Eastern Europe, and the Middle East are underrepresented. 
+Limited contributions from North America and large parts of the Asia–Pacific region fur -
+ther indicate that the evidence base is largely Euro–Sino–centric. This concentration may 
+constrain methodological diversity and limit the contextual transferability of LCA findings.
+The keyword co-occurrence map shows strong thematic clustering around core environ-
+mental CE topics. The prevalence of terms such as “life cycle assessment”, “construction 
+and demolition waste”, “recycled aggregate”, “recycled concrete aggregate”, and “sustain -
+ability” reflects an emphasis on environmental evaluation of material recovery pathways in 
+recycled concrete production. However, the relative absence of keywords related to social 
+1 3
+ 332 Page 16 of 32
+Circular Economy and Sustainability (2026) 6:332 
+or economic sustainability, policy integration, data harmonization, or regional adaptation 
+indicates that most studies remain focused on the environmental dimension of sustainability. 
+Future research could therefore benefit from more multidimensional approaches, including 
+stronger integration of socio-economic considerations, context-specific datasets, and policy 
+linkages to support broader sustainability appraisal.
+Methodological Gaps and Reporting Inconsistencies in RAC LCA Practice
+This section discusses the key methodological gaps and reporting inconsistencies identified 
+across the reviewed studies. These issues relate to system approach selection, FU definition, 
+system boundary selection, allocation and multifunctionality handling, inventory analysis, 
+impact assessment, software usage, interpretation, and data quality analysis. In the context 
+of CE implementation, these gaps are important because they affect how reliably RAC LCA 
+studies can represent material recovery, functional equivalence, cross-life-cycle burden 
+sharing, waste diversion, avoided use of virgin materials, and EOL recycling. Therefore, the 
+identified methodological limitations should be understood not only as reporting issues, but 
+also as factors that may affect the credibility of CE claims for RAC systems. A summary 
+of these limitations is provided in Supplementary Table S9, while detailed discussions are 
+presented in the following subsections.
+System Approach Selection (Attributional/Consequential)
+Although ISO standards emphasize the importance of clearly reporting and justifying the 
+choice between an attributional and a consequential approach, none of the reviewed studies 
+explicitly stated their system approach. Given that the selected approach can substantially 
+influence the interpretation of LCA outcomes [25], clearer reporting would improve meth -
+odological clarity and comparability.
+The dominance of attributional modeling reflects a prevailing focus on representing 
+existing production processes, rather than explicitly exploring market or behavioral con -
+sequences of RCA integration. This may reflect the status of RCA integration into concrete 
+as a developing rather than fully mainstream market, where most LCA frameworks are 
+designed to compare product-level environmental performance under existing conditions. 
+While ALCA provides a robust baseline for assessing and comparing environmental perfor-
+mance, it offers limited insight into the dynamic effects of policy interventions, technology 
+adoption, or market substitution linked to increased RCA use. Consequently, the limited 
+application of CLCA approaches suggests an opportunity for system-level modeling that 
+captures feedback mechanisms such as shifts in aggregate demand, transport logistics, and 
+waste management practices to better inform environmental management and CE decision-
+making for recycled construction materials.
+Functional Unit (FU) Definition
+Among the reported FU instances ( N = 42), the volumetric FU (1 m³ of concrete) was the 
+most common (50% of instances). However, this FU may not fully capture functional equiv-
+alence between RAC and CC [22]. ISO 14040/44 requires that the FU define the product’s 
+intended function and quantify it in terms of relevant performance characteristics [ 23, 24]. 
+1 3
+Page 17 of 32 332 
+Circular Economy and Sustainability (2026) 6:332 
+In addition, the EN 15804:2012+A2:2019 standard, which is widely applied in EPDs for 
+construction products, classifies volumetric measures such as 1 m³ of concrete as declared 
+units and recommends their use primarily when the product’s function or application is not 
+fully defined [36].
+Even where performance differences exist, volumetric comparisons may remain appro -
+priate for applications such as non-structural filling or bulk use, where functional require -
+ments are relatively uniform. However, this approach becomes more problematic for 
+higher-value structural concrete applications, where performance equivalence is critical. 
+In such contexts, functional requirements are typically predefined by design specifications 
+(e.g., a specified strength grade for columns). Therefore, continued reliance on volumetric 
+FU without integrating performance parameters into the FU definition may limit compara -
+bility across studies and reduce the decision relevance of comparative LCA conclusions.
+This issue is less critical for materials such as steel, where closed-loop recycling and 1:1 
+substitution are generally feasible without compromising functional performance compared 
+with virgin material. However, in concrete, many studies have shown that a 1:1 volumet -
+ric replacement of NCA with RCA often reduces functional performance [ 42]. If such dif-
+ferences are not considered explicitly, comparative LCAs may be affected by functional 
+inequivalence.
+To achieve equivalent performance, RAC mixtures typically require higher cement con-
+tent or superplasticizers, which alter mix design and influence the overall LCA outcome 
+[44, 45]. Accordingly, defining an FU that integrates performance parameters supports more 
+technically meaningful and environmentally robust comparisons between RAC and CC sys-
+tems [41].
+Performance metrics typically integrated into the FU of RAC LCA studies include com-
+pressive strength, workability, and durability [41, 56]. Accordingly, several studies adopted 
+FUs that more closely aligned with ISO principles: strength-based FU (26% of instances), 
+strength–workability FU (7% of instances), and strength–durability FU (7% of instances) 
+(Table 1). In other studies (7% of instances), the environmental impact of 1 m³ of concrete 
+was normalized to predefined performance parameters. In this review, studies that initially 
+defined a volumetric FU but subsequently ensured functional equivalence through mix 
+design adjustments were categorized accordingly, as their comparative assessments were 
+ultimately performance-consistent. Nevertheless, explicitly defining the intended functional 
+FU Type Suitable Applications
+V olumetric FU Preliminary screening, generic mix comparison, 
+hotspot analysis, and non-structural applications 
+where functional requirements are relatively 
+uniform
+Strength-based 
+FU
+Structural-grade comparison, material substitu-
+tion, and mix optimization, where strength 
+equivalence is the main requirement
+Strength-durabil-
+ity FU
+Exposure-sensitive structural applications requir-
+ing both mechanical and durability equivalence
+Strength-durabili-
+ty-service life FU
+Decision-grade LCA, infrastructure planning, 
+and whole-life assessment requiring long-term 
+functional equivalence
+Table 3 Proposed tiered func-
+tional unit selection approach for 
+RAC LCA research
+ 
+1 3
+ 332 Page 18 of 32
+Circular Economy and Sustainability (2026) 6:332 
+performance within the FU definition is recommended by ISO standards to improve clarity, 
+transparency, and interpretability [23, 24].
+Among the performance metrics identified, workability is a fresh-state property and does 
+not directly reflect the in-service performance of concrete. In contrast, compressive strength 
+is a key determinant of structural performance, and durability strongly influences life-cycle 
+impacts through differences in maintenance, repair, and service life [ 41]. Furthermore, 
+EN 15804 standard requires the inclusion of a reference service life within the FU defini -
+tion to support functional equivalence [ 36]. Therefore, where sufficient data are available, 
+a strength–durability-service life FU (e.g., 1 m³ of concrete with equivalent compressive 
+strength, durability, and reference service life) provides a more robust basis for comparing 
+the environmental performance of RAC and CC systems. Based on these considerations, 
+Table 3 presents a tiered FU selection approach for RAC LCA studies, from simple volu -
+metric units to performance- and service-life-integrated FUs.
+This tiered approach highlights that FU selection should reflect the intended application, 
+decision context, and availability of data. While volumetric FUs may be sufficient for pre -
+liminary or non-structural comparisons, performance-integrated FUs are more appropriate 
+for structural and exposure-sensitive RAC environmental assessments, particularly where 
+CW upcycling is intended.
+Mass-based FUs and performance-normalized impact FUs are not emphasized in this 
+tiered framework. Mass-based FUs have limited relevance for RAC comparison because 
+concrete is normally specified and used by volume and performance rather than by mass. 
+Similarly, impact-normalized results, for instance, as impacts normalized by compressive 
+strength, can support interpretation but do not necessarily define an equivalent concrete 
+function unless the FU itself specifies the required strength, durability, exposure condition, 
+and reference service life. Moreover, such normalization may implicitly assume a linear 
+relationship between environmental impact and the selected performance parameter, even 
+though the functional value of concrete may not scale proportionally with that parameter. 
+Therefore, if mass-based or performance-normalized impact FUs are adopted, their selec -
+tion should be explicitly justified, and comparative results should be interpreted cautiously.
+System Boundary Definition
+Among the instances of a reported system boundary ( N = 38), 82% were cradle-to-gate, 
+while 10% were cradle-to-grave and 8% were cradle-to-cradle. In most cases, cradle-to-
+gate studies considered recycling substitution only at the material input stage and excluded 
+further recycling scenarios. This tendency may reflect ongoing uncertainties regarding the 
+recyclability of RAC at EOL, as material quality has been reported to decline with succes -
+sive cycles.
+The predominance of cradle-to-gate boundaries is justified by several studies based on 
+the following rationale. Some studies assume functional equivalence, suggesting that RAC 
+and CC systems perform similarly during the construction, use, and demolition phases [ 6, 
+11]. Others argue that for concretes designed for the same application, evaluating only the 
+production phase is sufficient, as subsequent life-cycle stages are expected to have limited 
+influence on LCA outcomes [56, 59, 60]. In some studies, the later stages were excluded pri-
+marily as a system boundary choice [52, 57, 61]. Additionally, certain authors contend that 
+post-gate emissions are minor relative to those from raw material extraction and production 
+1 3
+Page 19 of 32 332 
+Circular Economy and Sustainability (2026) 6:332 
+phases [11], while others excluded later phases due to data limitations or unavailability [62]. 
+While such simplifications reduce LCA modeling complexity, they can limit insight into 
+service-life and EOL sustainability trade-offs.
+More importantly, the dominance of the cradle-to-gate boundary can influence how RAC is 
+interpreted as a CE strategy. When only production-stage burdens are considered, RAC benefits 
+are often predominantly represented through reduced virgin aggregate extraction and the inte-
+gration of RCA as an input material. However, this boundary may exclude several mechanisms 
+that are central to circularity, including differences in durability and maintenance requirements 
+during use, carbonation uptake during service and after demolition, EOL crushing and recovery 
+processes, residual waste disposal, and potential avoided landfill burdens. As a result, cradle-to-
+gate studies may either overstate RAC benefits by ignoring possible service-life or maintenance 
+penalties or understate benefits by excluding carbonation uptake, future material recovery, and 
+avoided disposal impacts. Therefore, CE claims based solely on cradle-to-gate results should 
+be interpreted with caution unless the study’s goal is limited to a production-stage comparison 
+and functional equivalence between RAC and CC is clearly justified.
+Only a minority of studies attempted full life cycle coverage, including those adopting a 
+cradle-to-grave system boundary. For example, Colangelo et al. [ 44] omitted the construc-
+tion, use, and maintenance phases and considered only the demolition stage. Pavlů et al. [6] 
+modeled two use cycles of RAC within an open-loop system, considering demolition and 
+landfill at the end. Alberto López Ruiz et al. [13] omitted the construction, renovation, and 
+use stages, modeling only the waste-disposal stage. Similarly, Aman et al. [ 63] restricted 
+their assessment to landfill processes and the associated emissions occurring during the 
+EOL stage. Collectively, these examples indicate that even where cradle-to-grave boundar-
+ies are adopted, construction and use stages are often excluded, which may limit interpretive 
+depth and the identification of environmental sustainability trade-offs.
+RAC can differ from CC in several aspects that may affect these frequently omitted life-
+cycle stages. RAC typically exhibits higher carbon sequestration potential due to greater 
+porosity and residual cement paste [ 49, 64], and this potential can vary with RA treatment 
+methods [14, 22]. Durability performance may also vary with exposure conditions [ 41]. 
+Nevertheless, most LCA studies assume identical service lives under non-aggressive envi -
+ronmental conditions for both RAC and CC [11, 49]. Such assumptions may be reasonable 
+for specific applications where equivalent performance has been demonstrated, but they may 
+also overlook material-specific degradation mechanisms, maintenance requirements, and 
+carbonation behavior. This can lead to simplified representations of the long-term environ -
+mental performance of RAC, particularly in structural or exposure-sensitive applications.
+There also remains ambiguity in how cradle-to-cradle boundaries are defined and applied. 
+In principle, a cradle-to-cradle boundary should extend beyond the current product life cycle 
+and explicitly represent EOL recovery and the reintegration of recovered materials into a 
+subsequent product system. However, in several reviewed studies, the term cradle-to-cradle 
+was used even when the model primarily represented recycled-material inputs at the produc-
+tion stage. For example, Pu et al. [49] presented their system boundary as cradle-to-cradle; 
+however, the construction, service, and demolition phases were excluded. In practice, the 
+model primarily represented concrete production using RA, including aggregate treatment 
+processes, transport, concrete mixing, and carbonation uptake, rather than a fully modeled 
+cradle-to-cradle concrete life cycle. Therefore, the adopted system boundary appears to 
+align more closely with a cradle-to-gate framework incorporating RCA recycling input.
+1 3
+ 332 Page 20 of 32
+Circular Economy and Sustainability (2026) 6:332 
+A similar interpretation appears in Aman et al. [ 63], which framed the RCA integration 
+modeling scenario as a cradle-to-cradle approach. However, the operational model for this 
+scenario ended at the concrete batching plant due to a lack of data on downstream construc-
+tion-site transport and CDW incorporation. Thus, although the study conceptually invoked 
+a cradle-to-cradle framework, the modeled system more closely reflects a cradle-to-gate 
+approach incorporating RCA input.
+Ding et al. [56] described their study as a closed-loop cradle-to-cradle LCA because CW 
+was modeled as either being landfilled or recycled into RAC. Unlike previous studies that 
+incorporated RCA as a recycled input at the production stage, Ding et al. [ 56] explicitly 
+included waste-disposal and recycling-related processes at EOL, including landfill burdens 
+and RCA recovery. However, the construction, service, and demolition phases were omitted 
+for modeling simplicity, as they were assumed to be equivalent for CC and RAC under non-
+aggressive exposure conditions.
+These observations indicate that cradle-to-cradle terminology is applied inconsistently 
+across RAC LCA studies. In some studies, it primarily reflects recycled material input at 
+the production stage, while in others it represents partial closed-loop modeling that includes 
+selected EOL or recovery processes. However, these approaches do not always fully rep -
+resent the broader closed-loop logic typically implied by cradle-to-cradle framing. These 
+inconsistencies highlight the need for clearer and more standardized boundary definitions 
+and reporting, particularly when CE perspectives are invoked.
+Allocation and Multifunctionality Handling
+Allocation and multifunctionality handling are among the most challenging methodologi -
+cal aspects in contemporary LCA practice [27, 65]. In principle, closed-loop recycling can 
+often reduce or avoid the need for cross-life-cycle multifunctionality handling, provided 
+that the recycled material displaces an equivalent virgin material and maintains functional 
+equivalence [15]. However, most concrete recycling frameworks are open-loop in nature, 
+with RCA often entering different concrete production systems or being downcycled to 
+lower-grade applications due to reduced material performance [ 49, 63]. In such cases, 
+transparent treatment of cross-life-cycle burdens and potential credits is required to assign 
+responsibility between the original and subsequent life cycles, as CE systems imply shared 
+responsibility for material recovery. Additional complexity arises from multi-output recy -
+cling processes, where several co-products (e.g., RAs, steel, fines, and residual waste) are 
+generated, potentially requiring multi-output allocation.
+RAC inherently involves at least two interlinked life cycles and therefore requires a 
+transparent treatment of cross-life-cycle burdens and credits. Despite this, nearly two-thirds 
+of the reviewed studies did not explicitly specify how allocation and multifunctionality 
+were handled. Such omissions can reduce interpretability and transparency, as the selected 
+approach can substantially influence LCA outcomes and comparative conclusions [41]. This 
+transparency gap highlights persistent challenges in ISO-aligned LCA reporting among 
+RAC studies [23, 24].
+ISO recommends avoiding allocation where possible, either by dividing unit processes 
+into two or more sub-processes and collecting input–output data for each sub-process, or by 
+expanding the product system boundary (system expansion) to include additional functions 
+related to co-products [24]. Consequently, although system expansion is often discussed in 
+1 3
+Page 21 of 32 332 
+Circular Economy and Sustainability (2026) 6:332 
+literature alongside allocation, it is formally an allocation-avoiding approach. When alloca-
+tion cannot be avoided, it should preferably be based on physical relationships that reflect 
+actual input–output changes. Where such physical relationships cannot be established, allo-
+cation may instead be based on alternative criteria, such as economic value [ 24]. ISO fur-
+ther requires consistent allocation rules across comparable processes, with mass and energy 
+balances maintained between inputs and outputs. These principles also extend to reuse and 
+recycling systems, where clear differentiation between closed-loop and open-loop recycling 
+is needed to ensure methodological consistency and integrity [ 24]. Whether the method -
+ological issue concerns cross-life-cycle burden and credit sharing or multi-output recy -
+cling, the processes subject to allocation, the allocation basis adopted, and the treatment of 
+avoided burdens should be reported transparently to avoid skewed claims about circularity.
+To clarify the suitability of commonly used allocation and multifunctionality-handling 
+approaches in RAC LCA, Table 4 summarises their application according to the recycling 
+scenario and type of multifunctionality being addressed.
+Among studies that reported allocation or multifunctionality-handling approaches, cut-
+off and substitution-based avoided-burden approaches were dominant (see Table 2). The 
+cut-off approach considers that the recycled material enters the next life cycle burden-free, 
+with only the recycling-related impacts assigned to the RAC production system [ 40, 66]. 
+This approach is useful for attributional modeling, particularly when the displaced product 
+is uncertain. However, from a CE perspective, this approach does not explicitly account for 
+shared responsibility between consecutive life cycles or the potential benefits of material 
+substitution, which may limit its ability to represent circular material flows.
+Conversely, the substitution-based avoided-burden approach credits the system for 
+avoiding virgin material production and related transport in an alternative or subsequent life 
+Approach Suitable RAC Recycling Scenario
+Substitution-based 
+avoided-burden
+Suitable for high-quality recycling where RCA 
+functionally displaces NCA or another clearly 
+defined material. Requires justification of 
+the displaced product, substitution ratio, and 
+avoided processes
+Cut-off Suitable for attributional modeling of open-
+loop recycling where RCA enters a subsequent 
+product system without carrying previous-
+life-cycle burdens. Useful when the displaced 
+product or avoided processes are uncertain
+Economic 
+allocation
+Suitable for multi-output recycling or cross-
+life-cycle burden sharing where allocation is 
+based on the relative market value of outputs. 
+Most appropriate when co-products have 
+established and clearly differentiated markets, 
+but results should be interpreted carefully due 
+to price variability
+Mass allocation Suitable for multi-output recycling where bur-
+dens are distributed among co-products based 
+on measurable physical flows. Applicable 
+when mass provides a reasonable proxy for 
+the relationship between outputs and environ-
+mental burdens
+Table 4 Suitability of common 
+approaches for allocation and 
+cross-life-cycle multifunctional-
+ity handling in RAC recycling 
+scenarios
+ 
+1 3
+ 332 Page 22 of 32
+Circular Economy and Sustainability (2026) 6:332 
+cycle [9]. This aligns more closely with the CE principles by recognizing the environmen -
+tal benefits of material substitution. This approach typically reduces the net environmental 
+impacts attributed to recycled systems, thereby favoring recycling-oriented solutions. How-
+ever, its implementation is sensitive to boundary definitions, substitution ratios, recycling 
+rates, and assumptions about the displaced product. Avoided landfill credits may also be 
+included, but only when recycled CDW would otherwise be landfilled in the absence of 
+recycling into concrete. Where CDW is already diverted to established secondary applica -
+tions, landfill-avoidance credits may overestimate benefits and inflate the apparent circular-
+ity of the RAC system.
+Mass and economic allocation approaches provide relatively straightforward burden-
+sharing mechanisms, distributing impacts according to the physical mass or market value. 
+These approaches are most commonly applied to multi-output recycling processes, although 
+they may also be used for cross-life-cycle multifunctionality handling when physical or 
+economic relationships are explicitly adopted. However, these approaches do not explic -
+itly account for functional differences between RCA and NCA and, when applied without 
+performance-based justification, can lead to conceptually weak or oversimplified alloca -
+tions [25, 27].
+Life Cycle Inventory (LCI) Analysis
+The findings indicate that RAC LCA studies commonly rely on mixed inventory data 
+sources, reflecting both the complexity of RAC systems and the limited availability of stan-
+dardized datasets for recycling-related processes. The use of primary data in approximately 
+57% of studies suggests that context-specific data are increasingly recognized as important, 
+particularly for key foreground processes such as waste collection, transport, sorting, crush-
+ing, screening, and RCA production.
+However, the continued reliance on literature-derived inventory data, used in approxi -
+mately 70% of studies, raises concerns regarding contextual accuracy and regional repre -
+sentativeness. Several studies were based entirely on literature-derived datasets [ 22, 41, 
+52, 53, 61, 63], which may limit their ability to represent specific technologies, operational 
+conditions, regional transport options, the mix of electricity, the specific energy demand and 
+practices of the recycling plant, the composition of the cement, and variability in the quality 
+of RCA. These factors should be considered methodological sensitivity points, as varia -
+tions can substantially influence comparative LCA outcomes for RAC and CC. As noted by 
+Colangelo et al. [44], relying solely on literature or secondary data can be a methodological 
+limitation of LCA when such datasets are not aligned with the actual system being assessed.
+The frequent use of proprietary databases, particularly Ecoinvent, can improve com -
+patibility with major LCA software and provide broad data coverage. However, restricted 
+access to the underlying inventory datasets in proprietary databases may reduce transpar -
+ency, reproducibility, and cross-study comparability of RAC LCA outcomes. In contrast, 
+the use of regional or public datasets remains comparatively limited, despite their impor -
+tance for improving geographical representativeness, particularly for electricity genera -
+tion, transport systems, aggregate production, supply chains, and recycling technologies. 
+Overall, these findings suggest that inventory data quality remains a critical methodological 
+challenge in RAC LCA studies, and that key inventory parameters should be interpreted as 
+sensitivity drivers of LCA rather than only as reporting items.
+1 3
+Page 23 of 32 332 
+Circular Economy and Sustainability (2026) 6:332 
+Life Cycle Impact Assessment (LCIA)
+The findings indicate that RAC LCA studies are strongly dominated by midpoint-based 
+impact assessment, while endpoint and combined midpoint–endpoint approaches remain 
+comparatively underutilized. This pattern is methodologically understandable, as mid -
+point methods are generally considered more transparent, scientifically robust, and asso -
+ciated with lower uncertainty, whereas endpoint methods provide greater interpretability 
+for decision-makers by translating impacts into damage categories such as human health, 
+ecosystem quality, and resource depletion [67, 68]. However, limited adoption of endpoint 
+modeling may reduce the decision relevance of LCA conclusions, particularly in policy-ori-
+ented applications. This is increasingly important because European standards such as EN 
+15804:2012+A2:2019 recommend a combined midpoint–endpoint perspective to capture 
+both potential environmental pressures and damage to areas of protection [36].
+Transparency in LCIA reporting remains a key limitation. Approximately 24% of the 
+studies did not report the LCIA method used. This omission is important because the different 
+LCIA methods assign different characterization factors and impact units to the same impact 
+category. In addition, LCIA methods are developed based on different modeling assumptions, 
+regional scope, midpoint or endpoint structure, and level of uncertainty [69]. When the chosen 
+LCIA method is not clearly reported or justified, these methodological uncertainties may be 
+overlooked, potentially reducing the reliability, transparency, and comparability of the LCA 
+outcome. This is particularly relevant because different characterization models can generate 
+divergent results for the same inventory data, highlighting the influence of LCIA method 
+selection on LCA outcomes [25, 69]. Therefore, cross-study comparison becomes challenging 
+unless the LCIA method is explicitly stated and aligned with the study’s goal and scope. Overall, 
+limited disclosure of LCIA methods constrains both the interpretation of individual study results 
+and the development of consistent methodological benchmarks for RAC LCA research.
+Among the reported methods, CML (midpoint-oriented) was the most widely used, fol -
+lowed by IPCC, which focuses on climate change using the GWP indicator. Other LCIA 
+methods, including TRACI, ReCiPe, and IMPACT 2002+, were adopted less commonly. 
+TRACI is exclusively midpoint-oriented, while ReCiPe integrates both midpoint and end -
+point frameworks. IMPACT 2002+ adopts a hybrid structure that links midpoint indicators 
+to endpoint domains. The prevalence of CML likely reflects its long-standing use, famil -
+iarity among LCA practitioners, and broad software compatibility. However, because the 
+CML method does not provide endpoint-level interpretation, relying solely on it may limit 
+broader damage- or policy-oriented interpretation. Accordingly, LCIA method selection 
+should be consistent with the study’s goal and scope and explicitly justified to support the 
+credibility and relevance of LCA conclusions [23, 24].
+Consequently, the choice of the LCIA method can influence how RAC environmental 
+superiority is interpreted. Different methods and indicator sets vary in category coverage, 
+regional relevance, characterization model, and midpoint or endpoint perspective. As a 
+result, RAC may appear environmentally favorable in categories linked to climate change, 
+resource depletion, or avoided use of virgin aggregate, while trade-offs may emerge in cat-
+egories affected by additional processing, transport, treatment energy, water use, or toxicity-
+related impacts. Therefore, conclusions on RAC superiority should be based on a clearly 
+reported and justified LCIA approach and interpreted across relevant impact categories 
+rather than relying on a single indicator.
+1 3
+ 332 Page 24 of 32
+Circular Economy and Sustainability (2026) 6:332 
+The climate change impact category, commonly quantified using GWP, was consistently 
+identified as the most frequently assessed environmental impact category. This reflects the 
+well-established contribution of concrete production to greenhouse gas (GHG) emissions and 
+prioritization in environmental assessments [67]. Other frequently reported midpoint catego-
+ries include EP, AP, POCP, ODP, and ADP. Many studies also emphasized energy use as a 
+major environmental concern, often employing standalone energy consumption indicators. 
+However, reliance on a narrow set of impact categories may limit the ability of RAC LCA 
+studies to capture broader environmental trade-offs associated with RCA integration. There-
+fore, impact category selection should extend beyond GWP where relevant and be justified 
+according to the environmental mechanisms most affected by the RAC system under study.
+The LCA software reporting also has implications for methodological transparency and 
+reproducibility. Although software choice does not by itself determine the validity of an 
+LCA, it influences database access, modeling structure, available LCIA methods, and the 
+reproducibility of inventory and impact assessment procedures. The reviewed studies show 
+a clear dominance of commercial tools, particularly SimaPro, while open-source and con -
+crete-specific tools were used less frequently. This may improve compatibility with estab -
+lished databases and widely used LCIA methods, but it can also limit transparency where 
+proprietary databases or undocumented modeling assumptions are used.
+Overall, these findings indicate that LCIA reporting in RAC LCA studies remains uneven, 
+particularly in the explicit declaration and justification of LCIA methods, impact category 
+selection, software tools, and databases. This can limit transparency, comparability, and the 
+decision relevance of LCA conclusions.
+Life Cycle Interpretation
+A more comprehensive interpretation phase is needed to move RAC LCA studies beyond 
+descriptive hotspot identification toward clearer decision support. Although many studies have 
+compared RAC and CC environmental performance, the interpretation phase was often limited 
+to reporting which processes contributed most, rather than analyzing the conditions under which 
+RAC becomes environmentally preferable. This is important because the conclusions of the 
+RAC LCA are strongly influenced by factors such as functional equivalence, system boundary 
+selection, allocation and multifunctionality-handling approach, transport distance, RCA process-
+ing intensity, and cement content adjustment. Therefore, conclusions on RAC environmental 
+sustainability should not be presented as universal outcomes, but as context-dependent find-
+ings shaped by the assumptions adopted in each study. For example, studies should clarify and 
+clearly report whether observed benefits arise from reduced virgin aggregate extraction, avoided 
+waste management, shorter transport distances, material substitution credits, carbonation uptake, 
+or specific modeling assumptions. Such an interpretation would reduce overgeneralization and 
+enhance the usefulness of RAC LCA outcomes for decision-making in circular construction. 
+This would also help distinguish genuine CE benefits from apparent benefits created by narrow 
+system boundaries, unclear allocation approaches, or incomplete EOL modeling.
+Utilization of Data Quality Analysis (Sensitivity and Uncertainty Analyses)
+Sensitivity analysis is particularly important in RAC LCA studies because environmental 
+outcomes often depend on parameters that vary across projects and regions. Transportation 
+1 3
+Page 25 of 32 332 
+Circular Economy and Sustainability (2026) 6:332 
+was the most frequently examined sensitivity parameter, reflecting its significant 
+influence on the environmental performance of RAC systems, particularly where RCA 
+and NA supply routes differ [ 56, 70]. RCA proportion was also commonly tested, 
+as it can affect both environmental impacts and mechanical performance, especially 
+when mix design adjustments are required to maintain functional equivalence [ 40, 55]. 
+Energy-related assumptions, including electricity source, fuel type, and energy mix, 
+were also examined in several studies, highlighting the growing relevance of production 
+energy and decarbonization policy [ 3, 41]. Importantly, reporting parameters that show 
+limited sensitivity are also useful, as they improve transparency and help future studies 
+identify which variables should be prioritized, validated, or reasonably excluded.
+However, uncertainty analysis remains significantly underutilized. This is a significant 
+limitation because RAC LCA studies often combine primary data, literature-derived 
+assumptions, and secondary database values, each of which may introduce variability 
+into LCA modeling. Therefore, wider adoption of uncertainty analysis would improve 
+confidence in LCA conclusions and support more robust comparison and decision-making. 
+Future studies would therefore benefit from more consistent application of sensitivity and 
+uncertainty analyses to key variables, including transport distance, allocation approach, 
+RCA processing energy, cement-content adjustment, substitution ratios, carbonation uptake, 
+and EOL assumptions.
+ISO-Aligned Methodological Recommendations for RAC LCA Practice
+Based on the methodological gaps and reporting inconsistencies identified across the 
+reviewed studies, this section presents decision-oriented, ISO-aligned recommendations 
+to improve the robustness, transparency, and comparability of future RAC LCA 
+research. A summary of recommendations for the main LCA components is provided in 
+Supplementary Table S10, while the key recommendations are discussed below.
+RAC LCA studies can improve the relevance and transparency of their conclusions 
+by clearly defining the study goal and scope, intended application, decision context, 
+target audience, and whether results are intended to support comparative claims, product 
+development, policy guidance, or preliminary screening. Within this context, studies 
+should explicitly state and justify the use of an attributional or consequential approach. 
+ALCA is appropriate when the study aims to describe or compare the environmental 
+performance of RAC systems under current production and market conditions, whereas 
+CLCA can be adopted when the research question concerns the consequences of 
+decisions likely to affect market conditions, such as large-scale adoption, policy-driven 
+demand changes, shifts in recycling flows, transport logistics, or substitution patterns. 
+Therefore, the choice between ALCA and CLCA should be guided by the study goal, 
+intervention scale, market relevance, and data availability, rather than applying either 
+approach by default.
+V olumetric FUs can be strengthened by incorporating relevant performance metrics to 
+improve comparability and ensure that environmental impacts are interpreted on a function-
+ally equivalent basis in line with ISO 14040/44 and EN 15804 guidance. Where RAC and 
+CC differ in strength development, durability performance, or expected service life, these 
+parameters should be incorporated directly into the FU definition rather than discussed only 
+as separate performance indicators.
+1 3
+ 332 Page 26 of 32
+Circular Economy and Sustainability (2026) 6:332 
+As many studies adopted cradle-to-gate boundaries, extending system boundaries to cap-
+ture service-life effects, carbonation uptake, EOL recovery, and subsequent recycling stages 
+may provide a more complete representation of the environmental implications of RCA 
+integration into concrete and material circularity. In addition, transparent and consistently 
+applied definitions of cradle-to-cradle system boundaries are needed to clarify how EOL 
+recycling is modeled, including whether recovered RCA is treated as an output, credited for 
+avoided landfill disposal or virgin aggregate substitution, or reintegrated into a subsequent 
+product system. Consistent with ISO requirements, studies should also clearly define cut-off 
+criteria and report processes excluded from the LCA modeling, as such exclusions can affect 
+the comparability and transparency of RAC LCA outcomes.
+Furthermore, the allocation and multifunctionality handling should be explicitly reported 
+and transparently justified, especially when environmental credits are assigned for waste 
+diversion, NA substitution, or avoided landfill. Studies should clearly specify which pro -
+cesses were allocated and how impacts were distributed across life cycles and/or co-prod -
+ucts. Future studies should distinguish between scenario analysis, which explores alternative 
+modeling choices such as allocation approach, system boundary, RCA processing route, or 
+EOL pathway, and sensitivity analysis, which examines numerical parameters such as trans-
+port distance, RCA replacement ratio, and energy-related assumptions.
+The use of primary data for key RAC unit processes can improve the contextual 
+relevance of LCA outcomes, particularly where emissions, transport burdens, and 
+recycling efficiencies vary across regions and facilities. In addition, foreground inventories 
+should clearly report RCA processing steps, transport distances, energy and water inputs, 
+emissions, by-products, and waste outputs to improve inventory completeness and allow 
+meaningful comparison across studies. When secondary databases are used, their regional 
+and technological relevance needs to be clearly justified. Transparent reporting of the 
+software tool, inventory data sources, modeling assumptions, and any modifications made 
+to default datasets or characterization methods is essential for improving reproducibility 
+and comparability across RAC LCA studies. Digital LCA tools and AI-assisted inventory 
+development may also help generate more detailed and harmonized datasets for aggregate 
+recycling systems.
+Midpoint LCIA methods may be complemented by endpoint or hybrid approaches 
+where broader interpretation of environmental damage, resource depletion, or pollution-
+related effects is required. To improve robustness, RAC LCA studies should clearly state 
+the selected LCIA method, justify its relevance to the study context and impact categories 
+considered, and, where appropriate, apply more than one impact assessment method or con-
+duct sensitivity analysis to examine the influence of LCIA method selection. Studies should 
+also consider a comprehensive set of impact categories rather than focusing exclusively 
+on GWP to identify broader environmental sustainability trade-offs associated with RCA 
+integration. The interpretation phase should also move beyond hotspot identification to 
+clarify the conditions under which RAC is environmentally preferable, particularly regard-
+ing transport distance, cement-content adjustment, allocation approach, RCA processing 
+intensity, carbonation uptake, and EOL modeling assumptions. Since these factors can alter 
+comparative LCA outcomes between RAC and CC, sensitivity and uncertainty analyses 
+should be treated as essential decision-support tools for testing the robustness of conclu -
+sions, identifying influential assumptions, and improving confidence in policy, design, and 
+material-selection decisions.
+1 3
+Page 27 of 32 332 
+Circular Economy and Sustainability (2026) 6:332 
+Finally, while environmental assessment remains central, extending RAC sustainability 
+evaluation to include economic and social dimensions would support a more complete sus-
+tainability appraisal of RAC systems. This is especially relevant where the practical adoption 
+of RAC depends not only on environmental sustainability but also on cost competitiveness, 
+supply chain feasibility, and stakeholder acceptance. An integrated assessment approach can 
+therefore provide a stronger basis for decision-making associated with RCA integration.
+Overall, these recommendations provide decision-oriented and ISO-aligned practical guid-
+ance for LCA practitioners, construction-materials researchers, policymakers, and standardiza-
+tion bodies by supporting more transparent modeling, functionally equivalent RAC comparisons, 
+cautious interpretation of CE claims, and clearer reporting guidance for future RAC LCA studies.
+Conclusions
+This study conducted an ISO-informed methodological audit of contemporary life cycle 
+assessment (LCA) practices applied to recycled aggregate concrete (RAC), using a 
+PRISMA-guided systematic review. The review synthesized evidence from 37 peer-
+reviewed studies published between January 2015 and May 2025 and critically evaluated 
+the prevailing methodological challenges and inconsistencies in LCA practices, including 
+how these limitations may influence the LCA outcomes. By linking the identified limitations 
+to ISO-aligned recommendations, this review provides practical guidance for improving the 
+robustness, comparability, transparency, and credibility of future RAC LCA research and 
+circularity claims. The key conclusions from the review are summarized as follows.
+ ● Limited transparency in system approach selection affects interpretability: None of the 
+reviewed studies explicitly stated whether an attributional or consequential LCA ap -
+proach was adopted, reducing methodological clarity and decision relevance.
+ ● Over-reliance on volumetric FUs limits functional equivalence: Frequent use of purely 
+volumetric FUs (1 m 3 of concrete) does not fully reflect performance equivalence be -
+tween RAC and CC and may reduce the comparability of LCA conclusions.
+ ● Predominance of cradle-to-gate system boundary limits CE interpretation: Reliance on cradle-
+to-gate boundaries restricts the assessment of long-term sustainability trade-offs, including ser-
+vice life effects, carbonation uptake, EOL management, and subsequent recycling stages, and 
+the extent to which RAC systems genuinely support CE outcomes beyond material substitution.
+ ● Limited reporting and justification of allocation and multifunctionality handling weaken 
+robustness: Frequent absence of transparent and well-justified treatment of allocation 
+and multifunctionality handling weakens confidence in LCA conclusions, particularly 
+in studies intended to inform policy or CE decisions. Such omissions may also overstate 
+the apparent environmental superiority of RAC when recycling burdens, avoided use 
+of virgin material, landfill diversion, or EOL credits are not consistently accounted for.
+ ● Inventory data limitations reduce contextual reliability : Continued reliance on litera -
+ture-derived and proprietary datasets without sufficient regional or process-specific jus-
+tification can reduce the representativeness of RAC LCA outcomes.
+ ● Limited LCIA justification affects decision relevance: Incomplete reporting or justifica-
+tion of LCIA methods and impact categories can restrict comparability and overlook 
+broader environmental trade-offs associated with RCA integration.
+1 3
+ 332 Page 28 of 32
+Circular Economy and Sustainability (2026) 6:332 
+ ● Sensitivity and uncertainty analyses remain underused: Limited testing of key assump-
+tions, such as transport distance, energy mix, cement adjustment, RCA processing, al -
+location, carbonation, and EOL modeling, can reduce confidence in RAC LCA conclu-
+sions.
+Collectively, these findings highlight that inconsistent FUs, narrow system boundaries, 
+unclear allocation and multifunctionality-handling approaches, limitations in data quality, 
+limited LCIA justification, and insufficient sensitivity and uncertainty analyses can lead 
+to divergent interpretations of RAC environmental performance. The ISO-aligned recom -
+mendations proposed in this review provide a practical basis for improving methodologi -
+cal transparency, reliability, reproducibility, and decision relevance in future RAC LCA 
+research. They also help distinguish genuine CE benefits from outcomes primarily driven 
+by narrow boundaries, unreported allocation assumptions, or incomplete EOL modeling.
+This study has some limitations. The review was based on 37 peer-reviewed English-lan-
+guage journal articles identified primarily through Scopus and complemented by backward 
+and forward snowballing. Therefore, some relevant studies that are only indexed in other 
+databases, published in other languages, or in grey literature may not have been captured. 
+Nevertheless, the selected studies provide a strong basis for identifying key methodological 
+trends, reporting gaps, and opportunities to improve ISO-aligned RAC LCA practice.
+Supplementary Information The online version contains supplementary material available at h t t p s : / / d o i . o r g 
+/ 1 0 . 1 0 0 7 / s 4 3 6 1 5 - 0 2 6 - 0 1 0 6 4 - 1 . 
+Acknowledgements The authors acknowledge the Transformation of Reclaimed Waste Resources to Engi -
+neered Materials and Solutions for a Circular Economy (TREMS) Hub and the broader research environment 
+associated with the Australian Research Council Discovery Early Career Researcher Award (DE230101221).
+Author Contributions N.H.: Conceptualization, Methodology, Software, Data curation, Formal analysis, 
+Investigation, Visualization, Validation, Writing – original draft. Y.P.: Conceptualization, Methodology, Data 
+curation, Supervision, Writing – review & editing. C.G.: Conceptualization, Methodology, Supervision, 
+Writing – review & editing. D.W.L.: Conceptualization, Methodology, Supervision, Writing – review & edit-
+ing. S.S.: Supervision, Writing – review & editing.
+Funding Open Access funding enabled and organized by CAUL and its Member Institutions. No funding 
+was received to assist with the preparation of this manuscript.
+Data Availability Data supporting the findings of this study are included in the article and its supplementary 
+information. Additional extracted data used in the current study are available from the corresponding author 
+upon reasonable request.
+Declarations
+Conflict of interest The authors have no relevant financial or non-financial interests to disclose.
+Open Access This article is licensed under a Creative Commons Attribution 4.0 International License, 
+which permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long as 
+you give appropriate credit to the original author(s) and the source, provide a link to the Creative Commons 
+licence, and indicate if changes were made. The images or other third party material in this article are 
+included in the article’s Creative Commons licence, unless indicated otherwise in a credit line to the material. 
+If material is not included in the article’s Creative Commons licence and your intended use is not permitted 
+by statutory regulation or exceeds the permitted use, you will need to obtain permission directly from the 
+copyright holder. To view a copy of this licence, visit http://creativecommons.org/licenses/by/4.0/.
+1 3
+Page 29 of 32 332 
+Circular Economy and Sustainability (2026) 6:332 
+References
+1. Kabirifar K, Mojtahedi M, Wang C, Tam VWY (2020) Construction and demolition waste management 
+contributing factors coupled with reduce, reuse, and recycle strategies for effective waste management: 
+A review. J Clean Prod 263:121265. https://doi .org/10.101 6/j.jclepro .2020.12 1265
+2. Soto-Paz J, Arroyo O, Torres-Guevara LE et al (2023) The circular economy in the construction and 
+demolition waste management: A comparative analysis in emerging and developed countries. J Build 
+Eng 78:107724. https://doi.org/10.1016/j.jobe.2023.107724
+3. Mir N, Khan SA, Kul A et al (2023) Construction and demolition waste-based self-healing geopolymer 
+composites for the built environment: An environmental profile assessment and optimization. Constr 
+Build Mater 369:130520. https://doi .org/10.101 6/j.conbuil dmat.202 3.130520
+4. Hao J, Di Maria F, Chen Z et al (2020) Comparative study of on-site sorting for C&D in China and 
+Europe. Detritus 114–121. https://doi .org/10.310 25/2611-413 5/2020.1 4029
+5. Mesa JA, Fúquene-Retamoso C, Maury-Ramírez A (2021) Life Cycle Assessment on Construction and 
+Demolition Waste: A Systematic Literature Review. Sustainability 13:7676. h t t p s : / / d o i . o r g / 1 0 . 3 3 9 0 / s u 1 
+3 1 4 7 6 7 6 
+6. Pavlů T, Kočí V , Hájek P (2019) Environmental Assessment of Two Use Cycles of Recycled Aggregate 
+Concrete. Sustainability 11:6185. https://doi.org/10.3390/su11216185
+7. Zhao X (2021) Stakeholder-Associated Factors Influencing Construction and Demolition Waste Man -
+agement: A Systematic Review. Buildings 11:149. https://doi.org/10.3390/buildings11040149
+8. Verian KP, Ashraf W, Cao Y (2018) Properties of recycled concrete aggregate and their influence in new 
+concrete production. Resour Conserv Recycl 133:30–49. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . r e s c o n r e c . 2 0 1 8 . 0 2 . 0 
+0 5 
+9. Yazdanbakhsh A, Bank LC, Baez T, Wernick I (2018) Comparative LCA of concrete with natural and 
+recycled coarse aggregate in the New York City area. Int J Life Cycle Assess 23:1163–1173. h t t p s : / / d o i 
+. o r g / 1 0 . 1 0 0 7 / s 1 1 3 6 7 - 0 1 7 - 1 3 6 0 - 5 
+10. Bovea MD, Powell JC (2016) Developments in life cycle assessment applied to evaluate the environ -
+mental performance of construction and demolition wastes. Waste Manag 50:151–172. h t t p s : / / d o i . o r g / 1 
+0 . 1 0 1 6 / j . w a s m a n . 2 0 1 6 . 0 1 . 0 3 6 
+11. Colangelo F, Forcina A, Farina I, Petrillo A (2018) Life Cycle Assessment (LCA) of Different Kinds of 
+Concrete Containing Waste for Sustainable Construction. Buildings 8:70. h t t p s : / / d o i . o r g / 1 0 . 3 3 9 0 / b u i l d 
+i n g s 8 0 5 0 0 7 0 
+12. Gao S, Li J, Nishiwaki T et al (2024) Structural implementation of recycled lump prepared from 
+waste concrete after elevated temperatures: Mechanical and environmental performances. Structures 
+67:106970. https://doi.org/10.1016/j.istruc.2024.106970
+13. Alberto López Ruiz L, Roca Ramon X, Melissa Lara Mercedes C, Gasso Domingo S (2022) Multicrite-
+ria analysis of the environmental and economic performance of circularity strategies for concrete waste 
+recycling in Spain. Waste Manag 144:387–400. https://doi.org/10.1016/j.wasman.2022.04.008
+14. Peiris D, Gunasekara C, Law DW et al (2025) Impact of treatment methods on recycled concrete aggre-
+gate performance: a comprehensive review. Environ Sci Pollut Res. h t t p s : / / d o i . o r g / 1 0 . 1 0 0 7 / s 1 1 3 5 6 - 0 2 
+5 - 3 6 4 9 7 - y 
+15. Cerchione R, Colangelo F, Farina I et al (2023) Life Cycle Assessment of Concrete Production within a 
+Circular Economy Perspective. Sustainability 15:11469. https://doi.org/10.3390/su151411469
+16. Munir Q, Lahtela V , Kärki T, Koivula A (2024) Assessing life cycle sustainability: A comprehensive 
+review of concrete produced from construction waste fine fractions. J Environ Manage 366:121734. 
+https://doi .org/10.101 6/j.jenvman .2024.12 1734
+17. Balasbaneh AT, Sher W, Li J, Ashour A (2025) Systematic Review of Construction Waste Management 
+Scenarios: Informing Life Cycle Sustainability Analysis. Circ Econ Sustain 5:529–553. h t t p s : / / d o i . o r g / 
+1 0 . 1 0 0 7 / s 4 3 6 1 5 - 0 2 4 - 0 0 4 2 4 - z 
+18. Blengini GA, Garbarino E (2010) Resources and waste management in Turin (Italy): the role of recy -
+cled aggregates in the sustainable supply mix. J Clean Prod 18:1021–1030. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . j c l 
+e p r o . 2 0 1 0 . 0 1 . 0 2 7 
+19. De Schepper M, Van Den Heede P, Van Driessche I, De Belie N (2014) Life Cycle Assessment of Com-
+pletely Recyclable Concrete. Materials 7:6010–6027. https://doi.org/10.3390/ma7086010
+20. Knoeri C, Sanyé-Mengual E, Althaus H-J (2013) Comparative LCA of recycled and conventional con-
+crete for structural applications. Int J Life Cycle Assess 18:909–918. h t t p s : / / d o i . o r g / 1 0 . 1 0 0 7 / s 1 1 3 6 7 - 0 1 
+2 - 0 5 4 4 - 2 
+21. Marinković S, Radonjanin V , Malešev M, Ignjatović I (2010) Comparative environmental assessment 
+of natural and recycled aggregate concrete. Waste Manag 30:2255–2264. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . w a s 
+m a n . 2 0 1 0 . 0 4 . 0 1 2 
+1 3
+ 332 Page 30 of 32
+Circular Economy and Sustainability (2026) 6:332 
+22. Bennett B, Visintin P, Xie T (2022) Global warming potential of recycled aggregate concrete with sup-
+plementary cementitious materials. J Build Eng 52:104394. https://doi.org/10.1016/j.jobe.2022.104394
+23. International Organization for Standardization (2006) ISO 14040: Environmental management — Life 
+cycle assessment — Principles and framework. International Organization for Standardization, Geneva, 
+Switzerland
+24. International Organization for Standardization (2006) ISO 14044: Environmental management — Life 
+cycle assessment — Requirements and guidelines. International Organization for Standardization, 
+Geneva, Switzerland
+25. Bayram B, Greiff K (2023) Life cycle assessment on construction and demolition waste recycling: 
+a systematic review analyzing three important quality aspects. Int J Life Cycle Assess 28:967–989. 
+https://doi.org/10.1007/s11367-023-02145-1
+26. Marinković S, Josa I, Braymand S, Tošić N (2023) Sustainability assessment of recycled aggregate con-
+crete structures: A critical view on the current state-of‐knowledge and practice. Struct Concr 24:1956–
+1979. https://doi.org/10.1002/suco.202201245
+27. Zhang Y , Luo W, Wang J et al (2019) A review of life cycle assessment of recycled aggregate concrete. 
+Constr Build Mater 209:115–125. https://doi .org/10.101 6/j.conbuil dmat.201 9.03.078
+28. Xing W, Tam VW, Le KN et al (2022) Life cycle assessment of recycled aggregate concrete on its envi-
+ronmental impacts: A critical review. Constr Build Mater 317:125950. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . c o n b u i 
+l d m a t . 2 0 2 1 . 1 2 5 9 5 0 
+29. Hasheminezhad A, King D, Ceylan H, Kim S (2024) Comparative life cycle assessment of natural and 
+recycled aggregate concrete: a review. Sci Total Environ 950:175310. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . s c i t o t e n 
+v . 2 0 2 4 . 1 7 5 3 1 0 
+30. Liu X, Asghari V , Lam C-M et al (2024) Discrepancies in life cycle assessment applied to concrete waste 
+recycling: A structured review. J Clean Prod 434:140155. https://doi .org/10.101 6/j.jclepro .2023.14 0155
+31. Page MJ, McKenzie JE, Bossuyt PM et al (2021) The PRISMA 2020 statement: an updated guideline 
+for reporting systematic reviews. BMJ. https://doi.org/10.1136/bmj.n71
+32. Wang H, Kumar R, Pattanaik A et al (2025) Computational methods and artificial intelligence-based 
+modeling of magnesium alloys: a systematic review of machine learning, deep learning, and data-driven 
+design and optimization approaches. Front Mater 12:1645227. h t t p s : / / d o i . o r g / 1 0 . 3 3 8 9 / f m a t s . 2 0 2 5 . 1 6 4 5 
+2 2 7 
+33. Page MJ, Moher D, Bossuyt PM et al (2021) PRISMA 2020 explanation and elaboration: updated guid-
+ance and exemplars for reporting systematic reviews. BMJ. https://doi.org/10.1136/bmj.n160
+34. Baas J, Schotten M, Plume A et al (2020) Scopus as a curated, high-quality bibliometric data source for 
+academic research in quantitative science studies. Quant Sci Stud 1:377–386. h t t p s : / / d o i . o r g / 1 0 . 1 1 6 2 / q 
+s s _ a _ 0 0 0 1 9 
+35. Kumar R, Althaqafi E, Patro SGK et al (2024) Machine and deep learning methods for concrete strength 
+Prediction: A bibliometric and content analysis review of research trends and future directions. Appl 
+Soft Comput 164:111956. https://doi.org/10.1016/j.asoc.2024.111956
+36. European Committee for Standardization (2019) EN 15804:2012 + A2:2019: Sustainability of construc-
+tion works — Environmental product declarations — Core rules for the product category of construc -
+tion products. European Committee for Standardization, Brussels, Belgium
+37. Schaubroeck T, Schaubroeck S, Heijungs R et al (2021) Attributional & Consequential Life Cycle 
+Assessment: Definitions, Conceptual Characteristics and Modelling Restrictions. Sustainability 
+13:7386. https://doi.org/10.3390/su13137386
+38. Kang J, Liang F, Yang J et al (2025) Development of green and economical recycled aggregate con -
+crete through mineral admixtures and carbonated recycled coarse aggregate. Mater Today Commun 
+46:112531. https://doi.org/10.1016/j.mtcomm.2025.112531
+39. Ma X, Hu H, Luo Y et al (2025) A carbon footprint assessment for usage of recycled aggregate and sup-
+plementary cementitious materials for sustainable concrete: A life-cycle perspective in China. J Clean 
+Prod 490:144772. https://doi .org/10.101 6/j.jclepro .2025.14 4772
+40. Ozcelikci E, Hu M, Sahmaran M (2025) Development of Eco-hybrid cement-based green concretes 
+through CDW upcycling: Mechanical performance and environmental profile analysis. J Environ Man-
+age 377:124564. https://doi .org/10.101 6/j.jenvman .2025.12 4564
+41. Visintin P, Xie T, Bennett B (2020) A large-scale life-cycle assessment of recycled aggregate con -
+crete: The influence of functional unit, emissions allocation and carbon dioxide uptake. J Clean Prod 
+248:119243. https://doi .org/10.101 6/j.jclepro .2019.11 9243
+42. Yazdanbakhsh A, Lagouin M (2019) The effect of geographic boundaries on the results of a regional life 
+cycle assessment of using recycled aggregate in concrete. Resour Conserv Recycl 143:201–209. h t t p s : / 
+/ d o i . o r g / 1 0 . 1 0 1 6 / j . r e s c o n r e c . 2 0 1 9 . 0 1 . 0 0 2 
+1 3
+Page 31 of 32 332 
+Circular Economy and Sustainability (2026) 6:332 
+43. Turk J, Cotič Z, Mladenovič A, Šajna A (2015) Environmental evaluation of green concretes versus 
+conventional concrete by means of LCA. Waste Manag 45:194–205. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . w a s m a n . 
+2 0 1 5 . 0 6 . 0 3 5 
+44. Colangelo F, Navarro TG, Farina I, Petrillo A (2020) Comparative LCA of concrete with recycled aggre-
+gates: a circular economy mindset in Europe. Int J Life Cycle Assess 25:1790–1804. h t t p s : / / d o i . o r g / 1 0 . 
+1 0 0 7 / s 1 1 3 6 7 - 0 2 0 - 0 1 7 9 8 - 6 
+45. Tošić N, Marinković S, Dašić T, Stanić M (2015) Multicriteria optimization of natural and recycled 
+aggregate concrete for structural use. J Clean Prod 87:766–776. https://doi .org/10.101 6/j.jclepro 
+.2014.10 .070
+46. Bare JC, Hofstetter P, Pennington DW, De Haes HAU (2000) Midpoints versus endpoints: The sacri -
+fices and benefits. Int J Life Cycle Assess 5:319. https://doi.org/10.1007/BF02978665
+47. Los Santos-Ortega J, Fraile-García E, Ferreiro-Cabello J (2024) Environmental and economic viability 
+of using concrete block wastes from a concrete production plant as recycled coarse aggregates. Materi-
+als 17:1560. https://doi.org/10.3390/ma17071560
+48. Younes A, Elbeltagi E, Diab A et al (2024) Incorporating coarse and fine recycled aggregates into 
+concrete mixes: mechanical characterization and environmental impact. J Mater Cycles Waste Manag 
+26:654–668. https://doi.org/10.1007/s10163-023-01834-1
+49. Pu Y , Li L, Shi X et al (2023) A comparative life cycle assessment on recycled concrete aggregates 
+modified by accelerated carbonation treatment and traditional methods. Waste Manag 172:235–244. 
+https://doi.org/10.1016/j.wasman.2023.10.040
+50. Braga AM, Silvestre JD, De Brito J (2017) Compared environmental and economic impact from cradle 
+to gate of concrete with natural and recycled coarse aggregates. J Clean Prod 162:529–543. h t t p s : / / d o i . 
+o r g / 1 0 . 1 0 1 6 / j . j c l e p r o . 2 0 1 7 . 0 6 . 0 5 7 
+51. Lovecchio N, Shaikh F, Rosano M et al (2020) Environmental assessment of supplementary cementi -
+tious materials and engineered nanomaterials concrete. AIMS Environ Sci 7:13–30. h t t p s : / / d o i . o r g / 1 0 . 3 
+9 3 4 / e n v i r o n s c i . 2 0 2 0 0 0 2 
+52. Li J, Zhang J, Ni S, Liu L, Walubita LF (2021) Mechanical performance and environmental impacts of 
+self-compacting concrete with recycled demolished concrete blocks. J Clean Prod 293:126129. h t t p s : / / 
+d o i . o r g / 1 0 . 1 0 1 6 / j . j c l e p r o . 2 0 2 1 . 1 2 6 1 2 9 
+53. Marathe S, Sheshadri A, Sadowski Ł (2024) Agro-industrial waste utilization in air-cured alkali-acti -
+vated pavement composites: Properties, micro-structural insights and life cycle impacts. Clean Mater 
+14:100281. https://doi.org/10.1016/j.clema.2024.100281
+54. Yu Y , Zhao X, Xie T, Wang X (2022) Eco-, economic- and mechanical- efficiencies of using precast 
+rejects as coarse aggregates in self-compacting concrete. Case Stud Constr Mater 17:e01591. h t t p s : / / d o 
+i . o r g / 1 0 . 1 0 1 6 / j . c s c m . 2 0 2 2 . e 0 1 5 9 1 
+55. Mostert C, Sameer H, Glanz D, Bringezu S (2021) Climate and resource footprint assessment and visu-
+alization of recycled concrete for circular economy. Resour Conserv Recycl 174:105767. h t t p s : / / d o i . o r 
+g / 1 0 . 1 0 1 6 / j . r e s c o n r e c . 2 0 2 1 . 1 0 5 7 6 7 
+56. Ding T, Xiao J, Tam VWY (2016) A closed-loop life cycle assessment of recycled aggregate concrete 
+utilization in China. Waste Manag 56:367–375. https://doi.org/10.1016/j.wasman.2016.05.031
+57. Sharma RD, Singh N (2023) Evaluation of strength and absorption behaviour of iron slag and recycled 
+aggregates concrete and its comparative environmental estimation by life cycle assessment. Clean 
+Mater 10:100210. https://doi.org/10.1016/j.clema.2023.100210
+58. Mistri A, Dhami N, Bhattacharyya SK et al (2021) Environmental implications of the use of bio-cement 
+treated recycled aggregate in concrete. Resour Conserv Recycl 167:105436. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . r 
+e s c o n r e c . 2 0 2 1 . 1 0 5 4 3 6 
+59. Suárez Silgado S, Calderón Valdiviezo L, Gassó Domingo S, Roca X (2018) Multi-criteria decision 
+analysis to assess the environmental and economic performance of using recycled gypsum cement 
+and recycled aggregate to produce concrete: The case of Catalonia (Spain). Resour Conserv Recycl 
+133:120–131. https://doi.org/10.1016/j.resconrec.2017.11. 023
+60. Ulucan M, Alyamac KE (2022) A holistic assessment of the use of emerging recycled concrete aggre -
+gates after a destructive earthquake: Mechanical, economic and environmental. Waste Manag 146:53–
+65. https://doi.org/10.1016/j.wasman.2022.04.045
+61. Nguyen W, Martinez DM, Jen G et al (2021) Interaction between global warming potential, durability, 
+and structural properties of fiber-reinforced concrete with high waste materials inclusion. Resour Con -
+serv Recycl 169:105453. https://doi .org/10.101 6/j.resconr ec.2021. 105453
+62. López Gayarre F, González Pérez J, López-Colina Pérez C et al (2016) Life cycle assessment for con -
+crete kerbs manufactured with recycled aggregates. J Clean Prod 113:41–53. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . j 
+c l e p r o . 2 0 1 5 . 1 1 . 0 9 3 
+1 3
+ 332 Page 32 of 32
+Circular Economy and Sustainability (2026) 6:332 
+63. Aman AMN, Selvarajoo A, Chong S, Teo FY (2022) Comparative life cycle assessment of pervious 
+concrete production in Malaysia with natural and recycled aggregate. Innov Infrastruct Solut 7:211. 
+https://doi.org/10.1007/s41062-022-00801-3
+64. Patrisia Y , Law DW, Zhang J (2026) Quantifying concrete recarbonation potential: a life cycle approach 
+to carbon uptake. Environ Impact Assess Rev 118:108300. https://doi.org/10.1016/j.eiar.2025.108300
+65. Azapagica A, Cliftb R (1999) Allocation of environmental burdens in multiple-function systems. J 
+Clean Prod 7:101–119. https://doi.org/10.1016/S0959-6526(98)00046-8
+66. Paula Junior A, Jacinto C, Oliveira T et al (2021) Characterisation and Life Cycle Assessment of Pervi-
+ous Concrete with Recycled Concrete Aggregates. Crystals 11:209. h t t p s : / / d o i . o r g / 1 0 . 3 3 9 0 / c r y s t 1 1 0 2 0 
+2 0 9 
+67. Ali Y , Hassan MS, Petrillo A (2025) From waste to resource: Life cycle assessment of eco-friendly 
+concrete in developing nations through energy transition. J Clean Prod 501:145226. h t t p s : / / d o i . o r g / 1 0 . 
+1 0 1 6 / j . j c l e p r o . 2 0 2 5 . 1 4 5 2 2 6 
+68. Gillani STA, Hu K, Ali B et al (2023) Life cycle impact of concrete incorporating nylon waste and demo-
+lition waste. Environ Sci Pollut Res 30:50269–50279. https://doi.org/10.1007/s11356-023-25905-w
+69. Chen X, Matthews HS, Griffin WM (2021) Uncertainty caused by life cycle impact assessment meth -
+ods: Case studies in process-based LCI databases. Resour Conserv Recycl 172:105678. h t t p s : / / d o i . o r g / 
+1 0 . 1 0 1 6 / j . r e s c o n r e c . 2 0 2 1 . 1 0 5 6 7 8 
+70. Colangelo F, Petrillo A, Farina I (2021) Comparative environmental evaluation of recycled aggregates 
+from construction and demolition wastes in Italy. Sci Total Environ 798:149250. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 
+6 / j . s c i t o t e n v . 2 0 2 1 . 1 4 9 2 5 0 
+Publisher’s Note Springer Nature remains neutral with regard to jurisdictional claims in published maps and 
+institutional affiliations.
+Authors and Affiliations
+Namila Hewage1  · Yulin Patrisia1,2  · Chamila Gunasekara1  · David W. Law1  · 
+Sujeeva Setunge1
+ Chamila Gunasekara
+chamila.gunasekara@rmit.edu.au
+Namila Hewage
+s4145771@student.rmit.edu.au
+Yulin Patrisia
+yulin.patrisia@rmit.edu.au
+David W. Law
+david.law@rmit.edu.au
+Sujeeva Setunge
+sujeeva.setunge@rmit.edu.au
+1 Civil and Infrastructure Engineering, School of Engineering, RMIT University, Melbourne, 
+VIC 3000, Australia
+2 Teaching and Learning Department, Universitas Palangka Raya, Palangka Raya 
+73112, Indonesia

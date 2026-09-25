@@ -1,0 +1,1314 @@
+J Stat Phys manuscript No.
+(will be inserted by the editor)
+Ladislav ˇSamaj
+Counterions between walls with
+surface charge modulations: Exact
+Poisson-Boltzmann solutions
+Received: / Accepted:
+Abstract We study the thermal equilibrium of a classical system of identical
+point charges moving between two walls with parallel surfaces at a dis tance
+d, charged symmetrically with position-dependent surface charge d ensities.
+Speciﬁcally, we study the eﬀect of surface charge modulation on th e eﬀective
+force (pressure) between the walls in the Poisson-Boltzmann limit. B ased on
+Monte Carlo simulations at high temperatures, it is predicted that su rface
+charge modulation reduces the pressure between the walls compar ed to uni-
+formly charged wall surfaces with the same average surface char ge density.
+We restrict ourselves to surface charge modulations in only one dire ction
+and, using a general solution of the two-dimensional Liouville equatio n, we
+construct exact solutions for the electrostatic potential. The su rface charge
+density on the walls is generated inversely from this potential, which m eans
+that our exact results apply to a limited set of models with a speciﬁc va ria-
+tion of the surface charge density with distance d. Explicit analytical results
+show that surface charge modulation can both increase (small dist ances d)
+and decrease (large d) the pressure between the walls.
+Keywords Coulomb ﬂuids; counterions only; electric double layer; surface
+charge modulation; Poisson-Boltzmann theory; general solution o f the
+two-dimensional Liouville equation.
+1 Introduction
+As a result of solvation and screening, large colloids immersed in a polar
+solvent such as water release mobile particles from their surfaces w hich are
+“counterions” with respect to the surface charge density creat ed on the col-
+loid surface. Although mobile ions in Coulomb ﬂuids are generically of bot h
+Institute of Physics, Slovak Academy of Sciences, D´ ubravs k´ a cesta 9, SK-84511
+Bratislava, Slovakia
+E-mail: Ladislav.Samaj@savba.sk
+arXiv:2609.26356v1 [cond-mat.stat-mech] 22 Sep 2026
+2
+signs, one can approach experimentally the limit of deionized (or salt- free)
+suspensions [1–3]. Counterions in the vicinity of a charged colloid repr esent
+the simplest example of an electric double layer (EDL) [4–6]. To simplify t he
+theoretical description of the complex Coulomb problem, the curve d surface
+of large colloids is usually replaced by a planar one, the modulated shap e of
+the ﬁxed charge density on the colloid surface is replaced by a unifor m one,
+and the dielectric jump between the interior of the colloid and the solv ent is
+ignored. In general, two geometries are studied: a single EDL and tw o parallel
+EDLs. The study of the eﬀective interaction between two similarly ch arged
+EDLs, mediated by counterions, is of particular experimental and t heoretical
+interest [7] due to the counterintuitive phenomenon of eﬀective like -charge
+attraction observed in computer simulations [8–10] and experiment s [11–15].
+The relative simplicity of the studied models with uniform surface char ge
+densities allows the development of a systematic treatment of both opposite
+weak-coupling [16–18] and strong-coupling [19–24] limits.
+The ﬁrst theoretical approaches to EDLs with heterogeneous su rface charge
+densities were based on liquid-state approximations [12, 25, 26]. In t he weak-
+coupling regime, analytic perturbation studies in combination with Mon te
+Carlo simulations [27, 28] suggest an increase in the average counte rion den-
+sity near an inhomogeneously charged surface compared to a surf ace charged
+uniformly with the same average charge density. In the case of two parallel
+walls with modulated surface charge densities the increase in the cou nterion
+density at the surfaces is accompanied by a decrease in the counte rion density
+in the midplane, which is argued to imply a decrease in the pressure bet ween
+the walls [29, 30]. This phenomenon was indeed observed in a 2D exactly
+solvable version of parallel EDLs with modulated surface charge den sity at
+the free-fermion coupling Γ = 2 [31].
+The contact value theorem for EDLs with uniform surface charge d ensities
+[32–35] has been generalized to EDLs with modulated surface charg e densities
+in Ref. [36]. Unlike the uniform case, the pressure formula includes no t only
+the particle density at the wall surface, but also the particle densit y proﬁle
+between the walls; therefore, its application is limited.
+In this paper, we focus on the weak coupling regime described by the
+Poisson-Boltzmann (PB) mean ﬁeld theory, initiated long ago by Gouy [37]
+and Chapman [38]. Several exact solutions have been found for the counte-
+rion density proﬁle around a single planar EDL with speciﬁc forms of su rface
+charge modulations along only one direction [39]. Explicit results for th e pla-
+nar geometry conﬁrm the increase in the density of counterions on the wall
+due to the modulation of the surface charge density. A similar result can be
+expected in the case of two symmetric parallel EDLs, leading to a dec rease
+in the counterion density in the midplane between the walls. As we show in
+this work, although the PB pressure is determined by the particle de nsity in
+the midplane between the walls, there is an additional (positive) cont ribution
+to the pressure due to the variation of the electrostatic potentia l along the
+midplane. This positive contribution can eliminate or even overcome th e neg-
+ative contribution caused by the decrease in particle density in the m idplane
+between the walls.
+3
+This work extends previous exact solutions for a single EDL with mod-
+ulated surface charge density [39] to a pair of parallel EDLs at dista nce d,
+symmetrically charged with the same surface charge densities modu lated in
+only one direction. The method is based on the general formula for e xact so-
+lutions of the 2D Liouville equation given in Ref. [40]. The task is nontrivia l,
+since it is necessary to choose only physically acceptable “trial” func tions
+that, when substituted into the general formula for the electros tatic poten-
+tial, do not produce singularities (i.e., additional point charges) at an y point
+in the space accessible to mobile counterions. Another requirement is that
+the inhomogeneous surface charge densities be the same for each of the two
+wall surfaces. Since the surface charge density is generated inve rsely from the
+exact electrostatic potential, changing the distance between the wallsd leads
+to a change in the surface charge density proﬁle. This means that o ur exact
+results apply to a limited set of models with a speciﬁc variation of the su rface
+charge density with distance d, and not to a general model with an arbitrary
+ﬁxed charge distribution. The main result of the analysis of our exac tly solv-
+able family is that surface charge modulation increases/decreases the pressure
+for small/large wall distances. This result corrects previous mean- ﬁeld ideas
+about the eﬀect of surface charge modulation on the eﬀective wall interaction.
+The paper is organized as follows. The general formalism of the mean -
+ﬁeld PB approach for two parallel EDLs charged symmetrically with mo d-
+ulated surface charge density is reviewed in section 2. The standar d case of
+uniform surface charge density is brieﬂy summarized in section 3. Th e sys-
+tematic expansion of the electrostatic potential and counterion d ensity when
+the variation of the surface charge density around its mean value is weak
+is elaborated in section 4. Section 5 deals with the exact solution for t he
+geometry of two parallel walls. Section 5.1 recapitulates the genera l Crowdy
+formula [40], which covers all possible solutions of the 2D Liouville equat ion.
+A particular solution of the 2D Liouville equation physically suitable for t he
+electrostatic potential is discussed in section 5.2. Section 6 summar izes the
+necessary conditions for the regularity of the exact solution of th e potential.
+Section 7 discusses the physical models that correspond to the sp eciﬁc ex-
+act solutions of the 2D Liouville equation and provides an analysis of th e
+obtained exact results. Emphasis is put on the speciﬁc characteris tics of the
+modulated surface charge densities generated from the exact ele ctrostatic po-
+tential and the eﬀect of the wall spacing and surface charge modu lation on
+the pressure. Section 8 is a short summary with concluding remarks .
+2 PB approach to two-wall geometry
+2.1 General formalism for modulated surface charge density
+In a three-dimensional Euclidean space of points with Cartesian coo rdinates
+r = (x,y,z ), let there exist a pair of parallel walls surfaces perpendicular to
+the x axis at a distance d, the left one being located at x = −d/2 and the
+right one at x = d/2. The longitudinal coordinates y ∈ [−Ly/2,Ly/2] and
+z ∈ [−Lz/2,Lz/2] are unbounded, Ly,Lz → ∞ . Each of the walls carries
+the same surface charge density σ(y,z )e, where e denotes a unit charge. To
+4
+( yσ y
+y
+−d/2 d/2 0
+x
+−e
+−e
+) e σ ( ) e
+Fig. 1 Geometry of two parallel walls with surfaces at a distance d, one at x =
+−d/2 and the other at x = d/2. The symmetric surface charge density on the walls
+σ(y)e depends on the coordinate y perpendicular to x. Point particles with charge
+−e represented by hard disks move between the walls.
+obtain exact results, we restrict ourselves to surface charge de nsities that
+vary only in one direction, say σ(y,z ) ≡σ(y). Then all quantities considered
+in this work will depend on coordinates x and y, but not on z, i.e. the
+problem is eﬀectively two-dimensional (2D). In the original formulat ion of
+the problem, when particles are released from the colloidal surface s directly
+into the solvent, it holds that σ(y) ≥ 0. If some particles can return to some
+locations on the colloidal surfaces, then this restriction is absent a nd σ(y)
+can be negative in certain intervals of the y axis.
+Identical point particles of charge −e, called “counterions”, move inside
+the region −d/2 < x < d/2, see Fig. 1. The particles are immersed in a
+medium with dielectric constant ε and interact in pairs via the Coulomb po-
+tential 1/(εr) (in Gauss units). The dielectric constant of the walls is assumed
+for simplicity to be the same as the dielectric constant of the medium, i.e.
+there are no electrostatic image charges. The system of particles is in thermal
+equilibrium at the temperature T , or the inverse temperature β = 1/(kBT ),
+where kB is the Boltzmann constant.
+Letn(x,y ) be the mean particle density (per unit surface of either of the
+walls) and ρ(x,y ) = −en(x,y ) be the corresponding particle charge density
+at point r. The condition for overall electroneutrality is
+2
+∫ Ly/2
+−Ly/2
+dyσ (y)e +
+∫ d/2
+−d/2
+dx
+∫ Ly/2
+−Ly/2
+dyρ (x,y ) = 0. (2.1)
+5
+The mean electrostatic potential ψ(x,y ) satisﬁes Poisson’s equation [41]
+∂2ψ
+∂x2 + ∂2ψ
+∂y 2 = − 4π
+ε ρ. (2.2)
+The normal derivative of ψ on the wall surface is related to the surface charge
+density as [41]
+∂ψ(x,y )
+∂x
+⏐⏐⏐
+x=±d/2
+= ± 4πσ(y)e
+ε . (2.3)
+These boundary conditions are consistent with the neutrality requ irement
+(2.1), as one can show by integrating Poisson’s equation (2.2) over t he entire
+space between the walls.
+There are two relevant lengths. The distance between two unit cha rgese
+immersed in a medium with dielectric constant ε at which they interact with
+thermal energy kBT is called the Bjerrum length
+ℓB ≡ βe2
+ε . (2.4)
+The distance from a wall charged with uniform surface charge dens ityσe at
+which the potential energy of a unit charge e equals the thermal energy kBT
+is the Gouy-Chapman length [37, 38]
+µ = 1
+2πℓBσ. (2.5)
+The coupling constant Ξ is the ratio of these two lengths:
+Ξ = ℓB
+µ. (2.6)
+The weak coupling regime Ξ ≪ 1 is adequately described by the mean-ﬁeld
+PB theory [37, 38]. Within the PB theory, the particle density at a poin t
+is proportional to the Boltzmann weight of the mean electrostatic p otential
+(multiplied by the particle charge −e) at that point:
+n(r) = f0eβeψ(r), (2.7)
+where f0 is the normalization constant. In terms of the reduced potential
+φ =βeψ, this relation reads as
+n(r) = f0eφ(r). (2.8)
+Let us introduce dimensionless coordinates
+~x =Kx, ~y =Ky, (2.9)
+where
+K =
+√
+2πℓBf0 (2.10)
+6
+is a free normalization parameter for now. Poisson’s equation (2.2) c an be
+rewritten for the reduced potential as the standard 2D Liouville eq uation
+∂2φ
+∂~x2 + ∂2φ
+∂~y2 = 2eφ (2.11)
+and the boundary conditions (2.3) are expressed as
+∂φ(~x,~y)
+∂~x
+⏐⏐⏐
+~x=± ~d/2
+= ± 4πℓBσ(~y)
+K . (2.12)
+The particle density (2.8) can be expressed using the dimensionless p otential
+as follows
+n(~r) = K 2
+2πℓB
+eφ(~r). (2.13)
+Since for symmetrically charged walls the reduced potential exhibits the
+reﬂection symmetry,
+φ(~x,~y) = φ(−~x,~y), (2.14)
+the two symmetric boundary conditions (2.12) can be replaced by th e equiv-
+alent ones
+∂φ(~x,~y)
+∂~x
+⏐⏐⏐
+~x=0
+= 0, ∂φ(~x,~y)
+∂~x
+⏐⏐⏐
+~x= ~d/2
+= 4πℓBσ(~y)
+K . (2.15)
+These boundary conditions formally correspond to the conﬁgurat ion of one
+wall without surface charge density localized at ~x = 0 and the other wall at
+~x = ~d/2 with inhomogeneous surface charge density σ(~y). The electroneu-
+trality condition (2.1) has the form
+K
+∫ ~Ly/2
+−~Ly/2
+d~yσ (~y) =
+∫ ~d/2
+0
+d~x
+∫ ~Ly/2
+−~Ly/2
+d~yn (~r). (2.16)
+For a boundary with surface charge modulation, an explicit formula f or
+the local (osmotic) pressure at a point on the boundary was derive d in the
+PB limit in Ref. [39], see equation (2.26) there. Within the present geom etry
+of symmetrically charged walls with boundaries at the points ~x = ±~d/2,
+without any dependence of the relevant quantities on the z axis, this formula
+simpliﬁes to
+βP (±~d/2,~y) = n(±~d/2,~y) − 2πℓBσ2(~y) + K 2
+8πℓB
+[
+∂φ(±~d/2,~y)
+∂~y
+] 2
+. (2.17)
+The total pressure between the walls is given by averaging the local pressure
+over the surface of any of the walls:
+P (±~d/2) = lim
+~Ly→∞
+1
+~Ly
+∫ ~Ly/2
+−~Ly/2
+d~yP (±~d/2,~y). (2.18)
+7
+A special property of PB theory is that there are inﬁnitely many pos -
+sible representations of the local pressure identiﬁed by the coord inate ~x ∈
+[−~d/2,~d/2]:
+βP (~x,~y) = n(~x,~y) + K 2
+8πℓB
+{[ ∂φ(~x,~y)
+∂~y
+] 2
+−
+[ ∂φ(~x,~y)
+∂~x
+] 2}
+= K 2
+2πℓB
+[
+eφ + 1
+4
+(∂φ
+∂~y
+)2
+− 1
+4
+(∂φ
+∂~x
+)2]
+. (2.19)
+The total pressure is given by
+P (~x) = lim
+~Ly→∞
+1
+~Ly
+∫ ~Ly/2
+−~Ly/2
+d~yP (~x,~y). (2.20)
+To prove this, we diﬀerentiate βP (~x,~y) with respect to ~x:
+∂βP
+∂~x = K 2
+2πℓB
+{ ∂φ
+∂~x
+[
+eφ − 1
+2
+(∂2φ
+∂~x2 + ∂2φ
+∂~y2
+)]
++ 1
+2
+∂
+∂~y
+(∂φ
+∂~x
+∂φ
+∂~y
+)}
+. (2.21)
+Given the 2D Poisson equation for φ (2.11), the expression in square brackets
+vanishes and we get
+∂βP
+∂~x = K 2
+4πℓB
+∂
+∂~y
+(∂φ
+∂~x
+∂φ
+∂~y
+)
+. (2.22)
+Next, we integrate both sides of this equation over ~y ∈ (−~Ly/2,~Ly/2). Since
+P (~x,~y) and its partial derivatives are continuous, we can change the ord er
+of integration and diﬀerentiation with respect ~x on the left-hand side of Eq.
+(2.22) to get
+∂
+∂~xβP (~x) = K 2
+4πℓB
+lim
+~Ly→∞
+1
+~Ly
+(∂φ
+∂~x
+∂φ
+∂~y
+⏐⏐⏐
+~y=~L/2
+− ∂φ
+∂~x
+∂φ
+∂~y
+⏐⏐⏐
+~y=−~L/2
+)
+. (2.23)
+The partial derivatives of the electric ﬁeld are ﬁnite, so
+∂
+∂~xβP (~x) = 0. (2.24)
+This means that for every value of the coordinate ~x ∈ [−~d/2,~d/2], the pres-
+sure P (~x) is equal to the original pressure P (±~d/2) deﬁned by Eqs. (2.17)
+and (2.18).
+The midplane between the walls ~x = 0 is particularly interesting, because
+the symmetry φ(~x,~y) = φ(−~x,~y) implies that ∂φ/∂~x = 0 at ~x = 0. The local
+pressure is then given by
+βP (0,~y) = n(0,~y) + K 2
+8πℓB
+[ ∂φ(0,~y)
+∂~y
+] 2
+. (2.25)
+8
+We see that the local pressure is determined by the counterion den sity in the
+midplane plus a positive term due to the variation of the electric poten tial
+along the midplane. This positive contribution can overcome the nega tive
+contribution due to the decrease in particle density in the midplane. T his
+means that a decrease in the counterion density at ~x = 0 does not necessarily
+mean a decrease in pressure between the walls.
+3 Uniform surface charge density
+It is useful to brieﬂy summarize the uniform case of surface charg e densities
+on walls σ(y,z ) = σ, see e.g. Ref. [42]. The reduced potential φ depends
+only on the x-coordinate and the 2D Liouville equation (2.11) reduces to the
+one-dimensional equation
+d2φ
+d~x2 = 2eφ (3.1)
+where~x ≡K0x; the subscript “0” in K0 means “related to the uniform case”.
+Multiplying this equation by φ′ ≡ dφ/d~x and integrating over ~x we get the
+equation
+(φ′)2 − 4eφ = const. (3.2)
+Fixing the gauge, say φ(0) = 0, the explicit solution to this equation looks
+like
+φ(~x) = −2 ln (cos~x). (3.3)
+It automatically satisﬁes the boundary condition φ′ = 0 at ~x = 0. The second
+boundary condition
+K0
+∂φ
+∂~x
+⏐⏐⏐
+~x= ~d0/2
+= 4πℓBσ (3.4)
+implies the relation for the dimensionless distance ~d0 ≡K0d
+~d0 tan
+(~d0
+2
+)
+= ¯d, (3.5)
+where another dimensionless distance ¯d ≡d/µ is available in the sense that
+it does not contain any unknown parameter like K0. According to (2.13), the
+particle density is given by
+n(~x) = K 2
+0
+2πℓB
+1
+cos2~x. (3.6)
+The eﬀective interaction between two parallel walls at distance d is given
+by the pressure P0(d); the case P0 > 0 corresponds to repulsion and P0 < 0
+to attraction of the walls. Within the two-wall formulation (2.15) and (2.16),
+the contact value theorem [32–35] tells us that for the present sy stem with
+counterions only the pressure is determined by the particle density at the
+wall contacts ~x = ±~d0/2 as
+βP0 =n(~d0/2) − 2πℓBσ2. (3.7)
+9
+This exact relationship is valid not only in the high-temperature limit, bu t
+also for any temperature. As shown in the previous section, there are inﬁnitely
+many possible representations of the PB pressure identiﬁed by the coordinate
+~x:
+βP0(~x) = n(~x) − K 2
+0
+8πℓB
+(∂φ
+∂~x
+)2
+. (3.8)
+Choosing~x = 0, we get
+βP0 =n(0). (3.9)
+Using the formula for the particle density (3.6) we obtain for the dime nsion-
+less pressure
+¯P0 ≡ βP0
+2πℓBσ2 = (K0µ)2 =
+(~d0
+¯d
+)2
+. (3.10)
+Since the pressure is positive, two uniformly charged walls with the sa me
+surface charge density always repel each other in the PB regime.
+In the limit ¯d → 0, it is possible to expand the left-hand side of Eq.
+(3.5) in Taylor powers of small ~d0 to obtain a series dependence of ~d0 on ¯d.
+Substituting this dependence into (3.10), we obtain
+¯P0 = 2
+¯d − 1
+3 + 2
+45
+¯d +O
+(¯d2)
+. (3.11)
+In the limit ¯d → ∞ , Eq. (3.5) implies that ~d0 → π and the large-distance
+asymptotic of the pressure reads as
+βP0 ∼
+¯d→∞
+π
+2ℓB
+1
+d2. (3.12)
+Note that this universal form of pressure does not depend on the amplitude
+of the surface charge density σe.
+4 Inﬁnitesimal perturbation of uniform surface charge dens ity
+Let’s look at the solution of the 2D Liouville equation (2.11) by perturb ing
+slightly the uniform solution (3.3):
+φ(~x,~y) = −2 ln (cos~x) +
+∞∑
+j=1
+εjfj(~x,~y), (4.1)
+where ε is a positive smallness parameter and ~x,~y are dimensionless co-
+ordinates (2.9) with a normalization parameter K (2.10) depending on ε,
+K ≡ K(ε). The smallness of ε ≪ 1 is related to the assumption that the
+variation of the surface charge density around its average value is weak,
+|σ(y) −σ| ≪ 1. The expansion functions exhibit the reﬂection symmetry of
+the reduced potential (2.14), i.e.,
+fj(~x,~y) = fj(−~x,~y) for all j = 1, 2,... . (4.2)
+10
+By substituting the ansatz (4.1) into the Liouville equation (2.11) and ex-
+panding all functions in powers of ǫ, the linear term in ǫ vanishes if
+∂2f1
+∂~x2 + ∂2f1
+∂~y2 − 2
+cos2~xf1 = 0, (4.3)
+the quadratic term in ǫ vanishes if
+∂2f2
+∂~x2 + ∂2f2
+∂~y2 − 2
+cos2~xf2 = f 2
+1
+cos2~x, (4.4)
+and so on.
+We look for the leading order function of Eq. (4.3) using the separat ion
+of variables:
+f1(~x,~y) = ϕ(~x)ψ(~y). (4.5)
+The functions ϕ and ψ satisfy the ordinary diﬀerential equations
+1
+ϕ
+d2ϕ
+d~x2 =b2 + 2
+cos2~x, 1
+ψ
+d2ψ
+d~y2 = −b2, (4.6)
+where b is a real (say positive) parameter. The solution for ψ has the form
+ψ = cos (b~y), (4.7)
+where the prefactor is set to unity for simplicity. There are two inde pendent
+solutions for ϕ,
+ϕ±(~x) = e±b~x
+2 (b ± tan~x), (4.8)
+and the solution possessing the reﬂection symmetry ~x → −~x is given by
+ϕ(~x) = ϕ+(~x) +ϕ−(~x). The ﬁrst expansion function is then
+f1(~x,~y) = cos (b~y) [tan~x sinh (b~x) +b cosh (b~x)]. (4.9)
+The reﬂection-symmetric solution of (4.4) for the lower-order fun ctionf2
+is the sum of the homogeneous solution f1 (multiplied by an arbitrary real
+constantc) plus the inhomogeneous part:
+f2(~x,~y;c) = cf1(~x,~y) + 1
+4
+{
+b2 sinh2(b~x)
++ cos2(b~y)
+[ sinh2(b~x)
+cos2~x −b2 cosh(2b~x)
+] }
+. (4.10)
+Note that the inhomogeneous part of the solution cannot be writte n in the
+form of a separation of variables.
+It is diﬃcult to continue to higher order functions f3,f4, etc. because the
+corresponding diﬀerential equations are more diﬃcult to solve.
+11
+5 Surface charge density modulation: Exact solutions
+5.1 General solution of the 2D Liouville equation
+The 2D Liouville equation (2.11) is a partial diﬀerential equation of ellipt ic
+type that has many applications in physics. Several partial exact s olutions of
+this equation have been determined in the past. The most general s olution
+[40] is expressible in terms of complex variables
+z =~x + i~y, ¯z =~x − i~y (5.1)
+as follows
+φ(~x,~y) = −2 ln
+[
+c1Y1(z) ¯Y1(¯z) +c2Y2(z) ¯Y2(¯z)
++c3Y1(z) ¯Y2(¯z) + ¯c3 ¯Y1(¯z)Y2(z)
+]
++ ln
+[
+W (z) ¯W (¯z)
+]
+, (5.2)
+where the two independent “trial” functions Y1(z) and Y2(z) are analytic in
+z and exhibit nonzero Wronskian
+W (z) ≡Y1(z)Y ′
+2 (z) −Y ′
+1 (z)Y2(z), (5.3)
+c1,c 2 are real constants and c3 a complex constant, constrained by
+|c3|2 −c1c2 = 1
+4. (5.4)
+Here the conjugate function ¯f (¯z) is deﬁned as ¯f (¯z) ≡f (z).
+5.2 Particular solutions for the two-wall geometry
+It is instructive to reproduce the exact result for two uniformly ch arged walls
+at a distance d (3.3) with respect to the general 2D solution (5.2)-(5.4). Let
+us choose the following trial functions
+Y1(z) = e iz/2, Y 2(z) = e −iz/2 (5.5)
+and ﬁx the constants as follows
+c1 =c2 = 0, c 3 = 1
+2. (5.6)
+Since
+1
+2
+[
+Y1(z) ¯Y2(¯z) + ¯Y1(¯z)Y2(z)
+]
+= cos(~x) (5.7)
+and W (z) = −i, ¯W (¯z) = i, the solution (5.2) coincides with the uniform one
+(3.3), as intended.
+Now let the trial functions be chosen as
+Y1(z) = e iz/2 [1 + ia sinh(bz)], Y 2(z) = e −iz/2 [1 − ia sinh(bz)], (5.8)
+12
+wherea,b are positive real parameters and the constants c1,c 2,c 3 are chosen
+as before in Eq. (5.6). These trial functions reduce themselves to the previous
+ones when a = 0. After some simple algebra, the explicit solution for φ is
+φ(~x,~y) = −2 ln cos~x − 2 lng(~x,~y) + lnh(~x,~y), (5.9)
+where
+g(~x,~y) = 1 −a2 cosh2(b~x) +a2 cos2(b~y) − 2a cos(b~y) tan~x sinh(b~x) (5.10)
+and
+h(~x,~y) =
+[
+1 + 2ab cosh(bz) +a2 sinh2(bz)
+]
+×
+[
+1 + 2ab cosh(b¯z) +a2 sinh2(b¯z)
+]
+=
+{
+1 + 2ab cosh(b~x) cos(b~y) + 2a2 cosh2(b~x) cos2(b~y)
+−a2[
+cosh2(b~x) + cos2(b~y)
+] } 2
++4a2 sinh2(b~x) sin2(b~y) [b +a cosh(b~x) cos(b~y)]2. (5.11)
+Note that the electrostatic potential φ has the required reﬂection symmetry
+φ(~x,~y) = φ(−~x,~y). It is easy to verify, e.g. using the symbolic calculation
+program Mathematica, that this solution indeed satisﬁes the 2D Liouville
+equation (2.11).
+The Taylor expansion of the exact φ (5.9) in powers of the parameter a
+leads to
+φ(~x,~y) = −2 ln cos~x + 4af1(~x,~y) + (4a)2f2(~x,~y;c = 0) + O
+(
+a3)
+, (5.12)
+where f1 and f2 are the expansion functions (4.9) and (4.10) of the small- ε
+expansion of the electrostatic potential (4.1) obtained in the prev ious section.
+We see that a is related to ε by a = ε/4. The exact solution (5.9) – (5.11)
+explicitly includes all higher-order f -functions in the ansatz (4.1), which are
+diﬃcult to obtain otherwise.
+6 Conditions for regular potential solutions
+The solution for the reduced electrostatic potential (5.9) must be well-deﬁned,
+in particular real and ﬁnite (without any singularity), over the entir e interval
+of possible values of x and over one period along the ~y axis, i.e.
+~x ∈ [0,~d/2], ~y ∈ [0, 2π/b). (6.1)
+This puts some constraints on the values of the model parameters a, b and
+~d. Numerical veriﬁcation of the regularity of the potential (5.9) – (5 .11)
+is laborious, because it must be performed on a suﬃciently dense net work
+of discrete points covering the entire region (6.1). Therefore, we derive all
+necessary and suﬃcient conditions for regularity analytically.
+13
+Since cos ~x under the logarithm must be positive for any value ~x, the
+positive value of ~d is limited as follows
+0 ≤ ~d<π. (6.2)
+Further restrictions concern the functions g (5.10) and h (5.11), which
+are under logarithm and therefore must be positive in the entire reg ion (6.1).
+Next, we present a general analysis of all necessary and suﬃcient conditions
+for the parameters a, b and ~d that guarantee the positivity of the functions
+g and h, which is quite complex and is presented in the following text.
+6.1 g(~x,~y)> 0
+Let (~xmin,~ymin) denote the minimum of g given by (5.10) in the domain (6.1).
+The required positivity of g(~x,~y) is equivalent to the condition
+g(~xmin,~ymin)> 0. (6.3)
+For a ﬁxed value of ~x, the minimum of the function g(~x,~y) on the ~y axis
+is determined by the conditions
+∂g (~x,~y)
+∂~y
+⏐⏐⏐
+~y=~ymin
+= 0, ∂2g(~x,~y)
+∂~y2
+⏐⏐⏐
+~y=~ymin
+> 0. (6.4)
+Since
+∂g (~x,~y)
+∂~y = 2ab sin (b~y) [sinh (b~x) tan~x −a cos (b~y)], (6.5)
+there are three candidates for the minimum point:
+~y1 = 0, ~y2 = π
+b, cos (b~y3) = sinh (b~x) tan~x
+a . (6.6)
+The relation
+∂2g(~x,~y)
+∂~y2
+⏐⏐⏐
+~y=~y1
+= 2ab2 [sinh (b~x) tan~x −a] (6.7)
+tells us that ~y1 is a minimum point if
+a< sinh (b~x) tan~x. (6.8)
+The relation
+∂2g(~x,~y)
+∂~y2
+⏐⏐⏐
+~y=~y2
+= −2ab2 [sinh (b~x) tan~x +a] (6.9)
+tells us that ~y2 is always a maximum point. Finally, the relation
+∂2g(~x,~y)
+∂~y2
+⏐⏐⏐
+~y=~y3
+= 2b2 [a − sinh (b~x) tan~x] [sinh (b~x) tan~x +a] (6.10)
+tells us that ~y3 is a minimum point if
+a> sinh (b~x) tan~x. (6.11)
+14
+Let’s start with ~y1 = 0 which is the minimum point if a< sinh (b~x) tan~x.
+The corresponding function
+g(~x, 0) = 1 −a2 sinh2 (b~x) − 2a sinh (b~x) tan~x (6.12)
+has a negative derivative with respect to ~x:
+dg(~x, 0)
+d~x = −2a2b sinh(b~x) cosh(b~x)
+−2a
+[ sinh(b~x)
+cos2~x +b cosh(b~x) tan~x
+]
+< 0. (6.13)
+This means that the minimum of g(~x, 0) is reached at the endpoint ~x = ~d/2,
+where the condition (6.8) takes the form
+a< sinh(b~d/2) tan(~d/2). (6.14)
+The positivity requirement g(~d/2, 0)> 0 is equivalent to the inequality
+1 −a2 sinh2(b~d/2) − 2a sinh(b~d/2) tan(~d/2)> 0. (6.15)
+From this inequality, it follows that
+0 ≤a< 1
+sinh(b~d/2)
+1 − sin(~d/2)
+cos(~d/2)
+. (6.16)
+Given conditions (6.14) and (6.16), the parameter a is limited by the relation
+0 ≤a< min
+{
+sinh(b~d/2) tan(~d/2), 1
+sinh(b~d/2)
+1 − sin(~d/2)
+cos(~d/2)
+}
+. (6.17)
+Let’s continue with ~y3 given by (6.6) which is the minimum point if a>
+sinh (b~x) tan~x. We need to ﬁnd the minimum of the function
+g(~x,y 3) = 1 −a2 cosh2(b~x) − sinh2(b~x) tan2~x (6.18)
+on the interval ~x ∈ [0,~d/2]. Since
+dg(~x,y 3)
+d~x = −2a2b cosh(b~x) sinh(b~x)
+−2 tan~x sinh(b~x)
+[ sinh(b~x)
+cos2~x +b tan~x cosh(b~x)
+]
+< 0, (6.19)
+the minimum of g(~x,y 3) is reached at the endpoint ~x = ~d/2 where the con-
+dition (6.11) reads as
+a> sinh(b~d/2) tan(~d/2). (6.20)
+and the condition (6.3) gives
+1 −a2 cosh2(b~d/2) − tan2(~d/2) sinh2(b~d/2)> 0. (6.21)
+15
+This inequality means that
+a<
+√
+1 − sinh2(b~d/2) tan2(~d/2)
+cosh(b~d/2)
+. (6.22)
+Finally, the parameter a is now constrained by the relation
+sinh(b~d/2) tan(~d/2) ≤a<
+√
+1 − sinh2(b~d/2) tan2(~d/2)
+cosh(b~d/2)
+. (6.23)
+In order to have a non-empty set of a-values determined by (6.23), it is
+necessary that the lower bound is smaller than the upper bound, i.e.
+sinh(b~d/2) tan(~d/2)<
+√
+1 − sinh2(b~d/2) tan2(~d/2)
+cosh(b~d/2)
+. (6.24)
+This inequality is equivalent to the equation
+tan2(~d/2) sinh4(b~d/2) + 2 tan2(~d/2) sinh2(b~d/2) − 1< 0, (6.25)
+which leads to
+sinh(b~d/2) tan(~d/2)< 1
+sinh(b~d/2)
+1 − sin(~d/2)
+cos(~d/2)
+. (6.26)
+Combining the relations (6.17) and (6.23), we conclude that if the ineq uality
+(6.26) holds, the values of a are restricted to
+0 ≤a<
+√
+1 − sinh2(b~d/2) tan2(~d/2)
+cosh(b~d/2)
+. (6.27)
+Now consider the inequality opposite to that in (6.24), i.e.
+sinh(b~d/2) tan(~d/2)>
+√
+1 − sinh2(b~d/2) tan2(~d/2)
+cosh(b~d/2)
+. (6.28)
+This inequality can be shown to be equivalent to the one
+sinh(b~d/2) tan(~d/2)> 1
+sinh(b~d/2)
+1 − sin(~d/2)
+cos(~d/2)
+. (6.29)
+Then the restriction (6.23) does not provide any solution for a and by the
+restriction (6.17) the values of a are limited to the interval
+0 ≤a< 1
+sinh(b~d/2)
+1 − sin(~d/2)
+cos(~d/2)
+. (6.30)
+16
+6.2 h(~x,~y)> 0
+The functionh(~x,~y) (5.11) is the sum of two squares and as such can be either
+positive or equal to 0. The “dangerous” equality h(~x,~y) = 0 is satisﬁed if the
+two equations
+sinh(b~x) sin(b~y) [b +a cosh(b~x) cos(b~y)] = 0, (6.31)
+1 + 2ab cosh(b~x) cos(b~y) + 2a2 cosh2(b~x) cos2(b~y)
+−a2[
+cosh2(b~x) + cos2(b~y)
+]
+= 0, (6.32)
+are valid simultaneously. Eq. (6.31) is satisﬁed for ~x = 0, or ~y = 0, or~y =π/b,
+or b +a cosh(b~x) cos(b~y) = 0.
+•~x = 0: In this case the second equation (6.32) reads
+a2 cos2(b~y) + 2ab cos(b~y) + (1 −a2) = 0. (6.33)
+Its solution is
+cos(b~y) = −b
+a ± 1
+a
+√
+a2 +b2 − 1. (6.34)
+There is no real solution for cos( b~y) provided that
+a2 +b2< 1. (6.35)
+Since −1 ≤ cos(b~y) ≤ 1, a real solution for ~y is missing also if
+a2 +b2 = 1, b>a. (6.36)
+When a2 +b2 > 1, a real solution for cos( b~y) (6.34) must lie outside the
+interval [ −1, 1] to ensure the positivity of h. In particular, if we put a ( −)
+sign in front of the square root on the right-hand side of (6.34), we have
+−b
+a − 1
+a
+√
+a2 +b2 − 1< −1, (6.37)
+or equivalently,
+a −b<
+√
+a2 +b2 − 1. (6.38)
+This inequality is deﬁnitely true if a < b. When a > b, bringing each side
+of the inequality to the power of 2 gives us 2 ab> 1. If we take the sign (+)
+before the square root on the right-hand side of (6.34), we must d istinguish
+between two cases: a2> 1. when the inequality
+−b
+a + 1
+a
+√
+a2 +b2 − 1> 1 (6.39)
+is equivalent to the requirement 2 ab< −1, which has no solution for positive
+parameters a and b, and a2< 1, when the inequality
+−b
+a + 1
+a
+√
+a2 +b2 − 1< −1 (6.40)
+17
+has a solution if a<b and 2ab< 1. To conclude this part, h> 0 for ~x = 0 if
+one of the conditions (6.35) or (6.36) holds, or if the conditions
+a2 +b2> 1, a 2< 1, a<b, 2ab< 1 (6.41)
+hold simultaneously.
+•~y = 0: In this case the second equation (6.32) has the form
+a2 sinh2(b~x) + 2ab cosh(b~x) + 1 = 0. (6.42)
+The function on the left-hand side is always positive for ~x ∈ [0,~d/2]. Conse-
+quently,h is always positive for ~y = 0, which does not impose any restrictions
+on the possible values of the parameters a, b and ~d.
+•~y =π/b: In this case, the second equation (6.32) reads
+a2 cosh2(b~x) − 2ab cosh(b~x) + (1 −a2) = 0. (6.43)
+Its solution is
+cosh(b~x) = b
+a ± 1
+a
+√
+a2 +b2 − 1. (6.44)
+There is no real solution for cosh( b~x) assuming that
+a2 +b2< 1. (6.45)
+Eq. (6.44) has no solution for ~x ifa2 +b2 = 1 and at the same time b<a . If
+a2 +b2> 1, Eq. (6.44) has no solution for ~x in two cases:
+b
+a + 1
+a
+√
+a2 +b2 − 1< 1, b
+a − 1
+a
+√
+a2 +b2 − 1> cosh(b~d/2). (6.46)
+• b +a cosh(b~x) cos(b~y) = 0: This condition is equivalent to the condition
+− cos(b~y) = b
+a cosh(b~x). (6.47)
+The function 1/ cosh(b~x) decreases with increasing ~x, so if
+a< b
+cosh(b~d/2)
+(6.48)
+there is no solution for − cos(b~y) in the interval [0 , 1]. On the other hand, if
+a> b
+cosh(b~d/2)
+, (6.49)
+substituting cos(b~y) from (6.47) into the second equation (6.32) yields
+cosh(b~x) =
+√
+1 + 2ab +
+√
+1 − 2ab
+2a , − cos(b~y) =
+√
+1 + 2ab −
+√
+1 − 2ab
+2a .
+(6.50)
+Real solutions for ~x and~y do not exist if
+2ab> 1. (6.51)
+18
+On the other hand, if
+2ab< 1, (6.52)
+we look for values of parameters a and b such that either cosh( b~x) given by
+(6.50) lies outside the interval
+1 ≤ cosh(b~x) ≤ cosh(b~d/2), (6.53)
+what happens if
+0 ≤a< 1
+cosh(b~d/2)
+√
+1 − b2
+cosh2(b~d/2)
+, (6.54)
+or − cos(b~y) given by (6.50) lies outside the interval
+0 ≤ − cos(b~y) ≤ 1, (6.55)
+what happens if a2 +b2> 1.
+7 Physical model generated from potential
+7.1 Derivation of physical quantities
+The electric potential deﬁned by equations (5.9), (5.10) and (5.11) is periodic
+along they axis with a period equal to 2 π/b. According to the relation (2.15),
+the surface charge density on the wall surface is given by
+σ(~y) = K
+4πℓB
+∂φ(~x,~y)
+∂~x
+⏐⏐⏐
+~x= ~d/2
+. (7.1)
+It is also periodic along the y axis with period 2 π/b. The mean value of the
+surface charge density is then given by
+⟨σ⟩ = K
+4πℓB
+b
+2π
+∫ 2π/b
+0
+d~y ∂φ(~x,~y)
+∂~x
+⏐⏐⏐
+~x= ~d/2
+. (7.2)
+The particle density (2.13) and local pressure (2.25) are also period ic
+along the y axis with period 2 π/b, so the mean pressure acting on either of
+the walls is given by
+β⟨P ⟩ = K 2
+2πℓB
+b
+2π
+∫ 2π/b
+0
+d~y
+{
+eφ(0,~y) + 1
+4
+[ ∂φ(0,~y)
+∂~y
+] 2}
+. (7.3)
+The dimensionless pressure has the form
+¯P ≡ β⟨P ⟩
+2πℓB⟨σ⟩2 = 8π
+b
+∫ 2π/b
+0 d~y
+{
+eφ(0,~y) + 1
+4
+[
+∂φ(0,~y)
+∂~y
+] 2}
+[ ∫ 2π/b
+0 d~y ∂φ(~x,~y)
+∂~x
+⏐⏐⏐
+~x= ~d/2
+] 2 . (7.4)
+19
+0 0,2 0,4 0,6 0,8 1
+a
+0,75
+0,8
+0,85
+0,9
+0,95
+1
+P / P b= 1/3 1/6
+0
+2/3
+Fig. 2 Dependence of the ratio ¯P / ¯P0 on the amplitude parameter a for the dimen-
+sionless distance between the walls ~d = π/2 and the values of the period parameter
+b = 2/3, 1 /3, 1 /6.
+The relationship between the dimensionless distances ~d and ¯d follows from
+the deﬁnition of the latter:
+¯d ≡ 2πℓB⟨σ⟩d = ~d b
+4π
+∫ 2π/b
+0
+d~y ∂φ(~x,~y)
+∂~x
+⏐⏐⏐
+~x= ~d/2
+. (7.5)
+For given values of the parameters a,b and ~d, this ¯d is used to calculate the
+relevant quantities for the case of uniform surface charge densit ies, namely ~d0
+given by the relation (3.5) and subsequently ¯P0 given by the relation (3.10).
+7.2 Results
+The dimensionless pressure and modulated surface charge density of our ex-
+actly solvable model depend on the dimensionless distance between t he walls
+~d constrained by (6.2), the amplitude parameter a, and the period parameter
+b.
+First, let us consider a relatively large distance ~d =π/2. The results for
+the ratio of the dimensionless pressure ¯P for the model with surface charge
+modulation and the pressure ¯P0 for the model with a uniform surface charge
+density equal to the mean value of the modulated surface charge d ensity ⟨σ⟩
+given by the relation (7.2) (see section 3) are shown in Fig. 2. Speciﬁc ally, for
+three values of the period parameter b = 2/3, 1/3 and 1/6, the dependence
+of the ratio ¯P/ ¯P0 on the amplitude parameter a is shown by solid lines. The
+intervals of allowed values of a are determined by the conditions for a regular
+20
+0 5 10 15
+y
+0
+0,5
+1
+1,5
+2
+2,5σ/<σ>
+~
+Fig. 3 Plots of the normalized modulated surface charge density σ/⟨σ⟩ on the
+dimensionless coordinate ~y for the dimensionless distance between the walls ~d = π/2
+and the period parameter b = 1/3, plotted within one period 2 π/b = 6π. The solid
+line corresponds to the amplitude parameter a = 1 /5, the dashed line to a = 2 /5,
+the dash-dotted line to a = 3/5, and the dotted line to a = 4/5.
+electric potential derived in section 6. It can be seen that for each value of
+b the ratio ¯P/ ¯P0 is less than 1, which means that the modulation of the
+surface charge density weakens the pressure between the walls. Interestingly,
+for b = 2/3 the plot of ¯P/ ¯P0 as a function of a is not monotonic.
+The plots of the normalized modulated surface charge density σ/⟨σ⟩ on
+the dimensionless coordinate ~y for the dimensionless wall distance ~d = π/2
+and the period parameter b = 1/3 are shown for one period 2 π/b = 6π in
+Fig. 3. The plots become more pronounced with increasing value of a, as
+expected. The solid line ( a = 1/5) corresponds to a slowly varying surface
+charge density, the change is more pronounced for a = 2/5 (dashed line) and
+a = 3/5 (dash-dotted line), but the surface charge is always positive with a
+minimum at ~y = π/b = 3π. For a large value of the amplitude parameter
+a = 4/5 (dotted line), the surface charge density exhibits a local maximum
+at ~y = 3π and is negative at certain intervals of ~y; in such a case the term
+“counterion” does not make sense.
+Let us continue with the results obtained for the smaller distance ~d =
+π/4. The ratio of dimensionless pressures with the same mean surface charge
+densities ¯P/ ¯P0 is shown as a function of the amplitude parameter a for two
+values of the period parameter b = 2/3 and 1 /3 in Fig. 4. For b = 2/3 the
+ratio ¯P/ ¯P0 increases monotonically from 1 at a = 0 to 1.6766 at the endpoint
+a = 0.72, i.e. modulating surface charge density surprisingly enhances th e
+force between walls. For b = 1/3, the ratio ¯P/ ¯P0 decreases very slowly from
+21
+0 0,2 0,4 0,6 0,8 1
+a
+1
+1,2
+1,4
+1,6P / P0
+b= 1/32/3
+Fig. 4 Dependence of the ratio ¯P / ¯P0 on the amplitude parameter a for the dimen-
+sionless distance between the walls ~d = π/4 and the values of the period parameter
+b = 2/3, 1 /3.
+1 at a = 0 to 0.988 at a = 0.71 and then increases to 1.181 at the endpoint
+a = 0.92.
+For ~d = π/4 and b = 2 /3, the proﬁles of the normalized modulated
+surface charge density σ/⟨σ⟩ as functions of the coordinate ~y for one period
+2π/b = 3π are shown in Fig. 5. For the amplitude parameter a = 1/5 (solid
+line), the surface charge density is always positive and exhibits a minim um
+at ~y = π/b = 3π/2. We see that there is an increase in pressure due to
+modulation of the surface charge density even for the “physical” c ounterion
+model with charge distribution σ(˜y) ≥ 0. For a = 2/5 (dashed line), the
+surface charge density is negative in a short interval around the m inimum
+point ~y = 3π/2. For a = 3/5 (dotted line), the surface charge density is
+negative in an interval around the local maximum point ~y = 3π/2 and a pair
+of conjugate minimum points.
+The results for a small distance between the walls ~d = π/8 are quite
+similar to the results for ~d =π/4. The ratio of dimensionless pressures with
+the same mean surface charge densities ¯P/ ¯P0 is shown as a function of the
+amplitude parameter a for two values of the period parameter b = 2/3 and
+1/3 in Fig. 6. The ratio is greater than 1 for every allowed value of a.
+For ~d = π/8 and b = 2 /3, the normalized modulated surface charge
+density σ/⟨σ⟩ as a function of ~y is always positive for a = 1/5 (solid curve)
+and negative in an interval of ~y for a = 2/5 (dashed curve) and a = 3/5
+(dotted curve), see Fig. 7.
+Explicit analytic results show that for our family of exactly solvable mo d-
+els in the PB limit, surface charge modulation can both increase (small dis-
+22
+0 2 4 6 8
+y
+0
+1
+2σ/<σ>
+~
+Fig. 5 Plots of the normalized modulated surface charge density σ/⟨σ⟩ on the
+dimensionless coordinate ~y for the dimensionless wall distance ~d = π/4 and the
+period parameter b = 2 /3, plotted within one period 2 π/b = 3 π. The solid line
+corresponds to the amplitude parameter a = 1 /5, the dashed line to a = 2 /5 and
+the dotted line to a = 3/5.
+0 0,2 0,4 0,6 0,8 1
+a
+1
+1,5
+2
+P / P0
+b= 1/3 2/3
+Fig. 6 Dependence of the ratio ¯P / ¯P0 on the amplitude parameter a for the di-
+mensionless wall distance ~d = π/8 and values of the period parameter b = 2/3, 1/3.
+23
+0 2 4 6 8
+y
+0
+1
+2σ/<σ>
+~
+Fig. 7 Plots of σ/⟨σ⟩ on ~y for the distance between the walls ~d = π/8 and the
+period parameter b = 2 /3, plotted within one period 2 π/b = 3 π. The solid line
+corresponds to the amplitude parameter a = 1 /5, the dashed line to a = 2 /5 and
+the dotted line to a = 3/5.
+tances) and decrease (large distances) the pressure between t wo symmetri-
+cally charged walls.
+8 Conclusion
+The exact results are of interest in statistical mechanics because they un-
+ambiguously answer important questions without any hypothesis. W e tried
+to answer the question of how the modulation of the surface charg e aﬀects
+the force (or equivalently the pressure) between two symmetric w alls at dis-
+tance d. We restricted ourselves to the mean-ﬁeld PB theory valid in the
+high temperature region. Previous approaches based on a combina tion of
+analytical perturbation methods and MC simulations [27–30] sugges t that
+the modulation of the surface charge density causes a decrease in the force
+between the walls. The argument is that an increase in the particle de nsity
+near the walls with modulated surface charge causes a decrease in t he par-
+ticle density in the midplane between the walls; since the force (press ure) is
+proportional to this particle density, it decreases. However, as is shown in
+Eq. (2.25), the local pressure has an additional positive contribut ion due to
+the variation of the potential along the midplane, so increasing or de creasing
+the pressure is questionable. To obtain an exact solution to the pro blem, we
+restrict ourselves to modulating the surface charge density along only one
+direction. This simpliﬁcation leads to a 2D Liouville equation for the elect ric
+24
+potential (2.11) with boundary conditions (2.12), for which the mos t general
+solution exists [40], see Eqs. (5.1) – (5.4). Appropriate choice of the trial
+functions Y1(z), Y2(z) and the constants c1, c2 and c3 leads to a relatively
+complicated result for the potential given by Eqs. (5.9) – (5.11). Th e surface
+charge density is generated inversely from the electrostatic pote ntial, so our
+exact results hold for a limited set of models with a speciﬁc variation of the
+surface charge density with the inter-wall distance d. The exact potential is
+real and free of singularities under a series of conditions for the dim ensionless
+distance between walls ~d, the amplitude and period parameters a and b of
+the potential, derived in section 6. In practical calculations in the ne xt sec-
+tion 7, these conditions restrict the allowed values of ~d,a andb only slightly.
+The results for the ratio of the dimensionless pressure ¯P for the model with
+surface charge modulation and the pressure ¯P0 for the model with the uni-
+form surface charge density equal to the mean value of the modula ted surface
+charge density ⟨σ⟩ given by the relation (7.2) are shown for ~d =π/2 in Fig.
+2, for ~d = π/4 in Fig. 4, and for ~d = π/8 in Fig. 6. It is clear from these
+ﬁgures that at larger distances, surface charge modulation redu ces the force
+between the walls, while at smaller distances, modulation enhances th is force.
+This is the most important result of this work. The corresponding plo ts of
+the normalized surface charge density pictured in Figs. 3, 5 and 7 sh ow that
+if the amplitude parameter a is small, the surface charge density is positive,
+while in certain regions of the dimensionless coordinate ~y it can be negative
+if a is large. It is important to note that for potential parameters a = 1/5,
+b = 2/3 and dimensionless distances ˜d = π/4,π/ 8, there is an increase in
+pressure due to modulation of the surface charge density even fo r “physical”
+charge distributions with σ(˜y) ≥ 0.
+From the perspective of further possibilities of exploring the prese nt for-
+malism in the future, it seems interesting to look for exact solutions o f the
+2D Liouville equation that lead to non-symmetric cases of surface ch arge
+distribution on walls. This would allow solving, for example, the problem o f
+the impact of a phase shift between modulated surface charges on the force
+between the walls. Another possibility is to ﬁnd solutions of the 2D Liou ville
+equation that generate the surface charge as a sum of Dirac delta functions.
+In a previous work [39], which dealt with a single wall with surface charg e
+density modulation, exact soliton solutions of the 2D sine-Gordon eq uation,
+which represents the PB theory of the Coulomb plasma of ± charges, were
+found. It would be interesting to derive analogous soliton solutions f or the
+two-component plasma between two parallel walls.
+Acknowledgements This work was supported by the Slovak Research and De-
+velopment Agency under the Contract no. APVV-24-0091 and VE GA Grant no.
+2/0089/24.
+Declarations
+– Funding Not applicable
+– Conﬂict of interest/Competing interests Not applicable
+25
+– Ethics approval and consent to participate Not applicable
+– Consent for publication Not applicable
+– Data availability Data are available upon a request.
+– Materials availability Not applicable
+– Code availability Not applicable
+– Author contribution Not applicable
+References
+1. Raspaud, E., da Conceicao, M., Livolant, F.: Do free DNA co unterions control
+the osmotic pressure? Phys. Rev. Lett. 84, 2533–2536 (2000)
+2. Palberg, T., Medebach, M., Garbow, N., Evers, M., Fontech a, A.B., Reiber,
+H., Bartsch, E.: Electrophoresis of model colloidal sphere s in low salt aqueous
+suspension. J. Phys.: Condens. Matter. 16, S4039–S4050 (2004)
+3. Brunner, M., Dobnikar, J., von Gr¨ unberg, H.H., Bechinger, C.: Direct measure-
+ment of three-body interactions amongst charged colloids. Phys. Rev. Lett. 92,
+078301 (2004)
+4. Attard, Ph.: Electrolytes and the electric double layer. Adv. Chem. Phys.
+XCII, 1–159 (1996)
+5. Levin, Y.: Electrostatic correlations: from Plasma to Bi ology. Rep. Prog. Phys.
+65, 1577–1632 (2002)
+6. Messina, R.: Electrostatics in soft matter. J. Phys.: Con dens. Matter 21, 113102
+(2009)
+7. Hansen, J.P., L¨ owen, H.: Eﬀective interactions between electric double layers.
+Annu. Rev. Phys. Chem. 51, 209–242 (2000)
+8. Gulbrand, L., J¨ onsson, B., Wennerstr¨ om, H., Linse, P.:Electrical double layer
+forces. A Monte Carlo study. J. Chem. Phys. 80, 2221-2228 (1984)
+9. Kjellander, R., Marˇ celja, S.: Correlation and image cha rge eﬀects in electric
+double-layers. Chem. Phys. Lett. 112, 49–53 (1984)
+10. Grønbech-Jensen, N., Mashl, R.J., Bruinsma, R.F., Gelb art, W.M.:
+Counterion-Induced attraction between rigid polyelectro lytes. Phys. Rev. Lett.
+78, 2477–2480 (1997)
+11. Khan, A., J¨ onsson, B., Wennerstr¨ om, H.: Phase equilibria in the mixed sodium
+and calcium di-2-ethylhexylsulfosuccinate aqueous syste m. An illustration of
+repulsive and attractive double-layer forces. J. Phys. Che m. 89, 5180-5184 1985
+12. Kjellander, R., Marˇ celja, S., Quirk, J.P.: Attractive double-layer interactions
+between calcium clay particles. J. Colloid Interface Sci. 126, 194–211 (1988)
+13. Bloomﬁeld, V.A.: Condensation of DNA by multivalent cat ions: Considerations
+on mechanism. Biopolymers 31, 1471–1481 (1991)
+14. K´ ekicheﬀ, P., Marˇ celja, S., Senden, T.J., Shubin, V.E .: Charge reversal seen
+in electrical double layer interaction of surfaces immerse d in 2:1 calcium elec-
+trolyte. J. Chem. Phys. 99, 6098–6113 (1993)
+15. Dubois, M., Zemb, T., Fuller, N., Rand, R.P., Pargesian, V.A.: Equation
+of state of a charged bilayer system: Measure of the entropy o f the lamel-
+lar–lamellar transition in DDABr. J. Chem. Phys. 108, 7855–7869 (1998)
+16. Attard, P., Mitchell, D.J., Ninham, B.W.: Beyond Poisso n-Boltzmann: Images
+and correlations in the electric double layer. I. Counterio ns only. J. Chem.
+Phys. 88, 4987–4996 (1988)
+17. Podgornik, R.: An analytic treatment of the ﬁrst-order c orrection to the
+Poisson-Boltzmann interaction free energy in the case of co unter-ion only
+Coulomb ﬂuid. J. Phys. A: Math. Gen. 23, 275–284 (1990)
+18. Netz, R.R., Orland, H.: Beyond Poisson-Boltzmann: Fluc tuation eﬀects and
+correlation functions. Eur. Phys. J. E 1, 203–214 (2000)
+19. Moreira, A.G., Netz, R.R.: Binding of similarly charged plates with counterions
+only. Phys. Rev. Lett. 87, 078301 (2001)
+20. Netz, R.R.: Electrostatics of counter-ions at and betwe en planar charged walls:
+from Poisson-Boltzmann to the strong-coupling theory. Eur . Phys. J. E 5, 557–
+574 (2001)
+26
+21. Boroudjerdi, H., Kim, Y-W., Naji, A., Netz, R.R., Schlag berger, X., Serr, A.:
+Statics and dynamics of strongly charged soft matter. Phys. Rep. 416, 129–199
+(2005)
+22. Kanduˇ c, M., Podgornik, R.: Electrostatic image eﬀects for counterions between
+charged planar walls. Eur. Phys. J. E 23, 265–274 (2007)
+23. ˇSamaj, L., Trizac, E.: Counterions at highly charged interf aces: From one plate
+to like-charge attraction. Phys. Rev. Lett. 106, 078301 (2011)
+24. ˇSamaj, L., dos Santos, A.P., Levin, Y., Trizac, E.: Mean-ﬁel d beyond mean-
+ﬁeld: the single particle view for moderately to strongly co upled charged ﬂuids.
+Soft Matter 12, 8768–8773 (2016)
+25. Chan, D.Y.C, Mitchell, J., Ninham, B.W.: A self-consist ent study of ion ad-
+sorption and discrete charge eﬀects in the electrical doubl e layer. J. Chem.
+Phys. 72, 5159–5162 (1980)
+26. Gonzalez-Amezcua, O., Hernandez-Contreras, M., Pincu s, P.A.: Electrostatic
+correlation force of discretely charged membranes. Phys. R ev. E 64, 041603
+(2001)
+27. Lukatsky, D.B., Safran, S.A, Lau, A.W.C, Pincus, P.A.: E nhanced counterion
+localization induced by surface charge modulation. Europh ys. Lett. 58, 785–791
+(2002)
+28. Henle, M.L, Santangelo, C.D., Patel, D.M., Pincus, P.A. : Distribution of coun-
+terions near discretely charged planes and rods. Europhys. Lett. 66, 284–290
+(2004)
+29. Lukatsky, D.B., Safran, S.A.: Universal reduction of pr essure between charged
+surfaces by long-wavelength surface charge modulation. Eu rophys. Lett. 60,
+629–635 (2002)
+30. Khan, M.O., Petris, S., Chan, D.Y.C.: The inﬂuence of dis crete surface charges
+on the force between charged surfaces. J. Chem. Phys. 122, 104705 (2005)
+31. ˇSamaj, L.: Electric double layers with modulated surface ch arge density: exact
+2D results. J. Phys. A: Math. Theor. 55, 275001 (2022)
+32. Henderson, D., Blum, L.: Some exact results and the appli cation of the mean
+spherical approximation to charged hard spheres near a char ged hard wall. J.
+Chem. Phys. 69, 5441–5449 (1978)
+33. Henderson, D., Blum, L., Lebowitz, J.L., An exact formul a for the contact
+value of the density proﬁle of a system of charged hard sphere s near a charged
+wall. J. Electroanal. Chem. 102, 315–319 (1979)
+34. Blum, L., Henderson, D., Lebowitz, J.L., Gruber, Ch., Ma rtin, Ph.A.: A sum
+rule for an inhomogeneous electrolyte. J. Chem. Phys. 75, 5974–5975 (1981)
+35. Wennerstr¨ om, H., J¨ onsson, B., Linse, P.: The cell mode l for polyelectrolyte
+systems. Exact statistical mechanical relations, Monte Ca rlo simulations, and
+the Poisson-Boltzmann approximation. J. Chem. Phys. 76, 4665–4670 (1982)
+36. ˇSamaj, L.: Contact value theorem for electric double layers with modulated
+surface charge density. J. Phys. A: Math. Theor. 58, 065001 (2025)
+37. Gouy, G.L.: Sur la constitution de la charge ´ electrique ` a la surface d’un
+´ electrolyte. J. Phys. Theor. Appl. 9, 457–468 (1910)
+38. Chapman, D.L.: A contribution to the theory of electroca pillarity. Philos. Mag.
+25, 475–481 (1913)
+39. ˇSamaj, L., Trizac, E.: Electric double layers with surface c harge modulations:
+Exact Poisson-Boltzmann solutions. Phys. Rev. E 100, 042611 (2019)
+40. Crowdy, D.G.: General solutions to the 2D Liouville equa tion. Int. J. Eng. Sci.
+35, 141–149 (1997)
+41. Jackson, J.D.: Classical Electrodynamics, 3rd edn., Jo hn Wiley, (1998)
+42. Andelman, D.: Introduction to electrostatics in soft an d biological matter In:
+Poon, W.C.K., Andelman, D. (eds.), Soft Condensed Matter Ph ysics in Molec-
+ular and Cell Biology, vol. 6, Taylor & Francis, (2006)
