@@ -1,0 +1,1215 @@
+Journal of Water Resources and Ocean Science 
+2026, V ol. 15, No. 5, pp. 200–220 
+https://doi.org/10.11648/j.wros.20261505.13 
+ 
+ 
+ 
+Received: 28 August 2026; Accepted: 17 September 2026; Published: 29 September 2026 
+ 
+Copyright: © The Author(s), 2026. Published by Science Publishing Group. This is an Open Access article, distributed 
+under the terms of the Creative Commons Attribution 4.0 License ( http://creativecommons.org/licenses/by/4.0/), which 
+permits unrestricted use, distribution and reproduction in any medium, provided the original work is properly cited. 
+ 
+Research Article 
+Application of a GIS-Based DRASTIC Model for 
+Groundwater Vulnerability Assessment: A Case Study of 
+Lai City, Tandjile East Department, Southern Chad 
+Tidjani Bahar1, * , Mahamat Moussa2 
+1Department of Rural Engineering, National School of Public Works of N’Djamena, N’Djamena, Chad 
+2Department of Geology, University of N’djamena, N’Djamena, Chad 
+ 
+Abstract 
+Groundwater resource protection is a worldwide issue because groundwater plays a crucial role in meeting water supply demands 
+for both natural ecosystems and human activities. Effective groundwater management and protection therefore require 
+appropriate approaches for assessing contamination risks and identifying ar eas that are particularly vulnerable to pollution. In 
+this study, a GIS -based DRASTIC model was applied to assess groundwater vulnerability in Lai City, southern Chad. Seven 
+hydrogeological parameters were considered, namely depth to water, net recharge, aquifer media, soil media, topography, impact 
+of the vadose zone, and hydraulic conductivity. A weighted overlay analysis based on the DRASTIC Index (DI) was subsequently 
+used to generate the groundwater vulnerability map of the study area. The results show that the DRASTIC Index values range 
+from 119 to 175, enabling the study area to be categorized into three groundwater vulnerability classes: low, moderate, and high. 
+The high-vulnerability class covers approximately 35% of the study area, highlighting are as that require particular attention for 
+groundwater protection and management. The average and low class of vulnerability covers portions of the study area 31% and 
+34%, respectively. The northern and south -western portion of the catchment, namely Lai, Gab ri Mbassa, Sategui, and Django, 
+possesses high groundwater vulnerability. GIS -based Drastic model validation is performed via water quality parameters such 
+as Nitrate and Total Dissolved Solids, with the accuracy of 97% and 75% respectively. The resulting groundwater vulnerability 
+map provides a valuable tool for groundwater protection and sustainable land-use planning in Lai City and its surrounding areas. 
+Keywords 
+Drastic, Geographic Information System, Groundwater Vulnerability, Nitrate and Total Dissolved Solids Concentration, 
+Lai City 
+ 
+1. Introduction 
+Groundwater resources are the most precious source of 
+fresh water available from natural resources on the earth [13, 
+49]. It is the main source of drinking water supply in many 
+countries because of its availability, easy accessibility, and 
+low vulnerability to pollution compared to surface water re-
+sources [29]. According to data from Global Water Partner-
+ship (GWP), approxim ately 20% of chad's groundwater 
+withdrawals are allocated to human consumption, while the 
+Journal of Water Resources and Ocean Science http://www.sciencepg.com/journal/wros 
+ 
+201 
+remaining 80% are used for agricultural purposes [27]. De-
+spite their importance in human life in most parts of the 
+world, aquifers have been highly exposed to polluti on in re-
+cent years, and this situation limits the potential of ground-
+water resources for use [20, 33, 62] . Groundwater contami-
+nant sources could be natural (e.g., natural deposits of gyp-
+sum, minerals, salts, seawater intrusion) or anthropogenic 
+(untreated livestock waste, nitrates, pesticides.). Among the 
+various sources of groundwater pollution, anthropogenic 
+pollution represents one of the most significant threats to 
+groundwater resources and is increasingly recognized as a 
+major contributor to groundwate r quality degradation, par-
+ticularly in urban environments [32, 66, 71]. Groundwater 
+quality in the southern part of the Lake Chad basin, which 
+includes the town of Lai, has shown that anthropogenic ac-
+tivities contribute to the degradation of groundwater qu ality 
+[12, 64]. The protection and restoration of groundwater re-
+sources have become increasingly important in recent years, 
+highlighting the need to assess groundwater contamination 
+in areas that may be potentially affected. However, the 
+groundwater vulner ability assessment is needed in this con-
+text for taking remedial steps. 
+Aquifer vulnerability concept is introduced first by Margat 
+(1968) [37]. This concept refers to the capacity of contami-
+nants to diffuse and infiltrate from the soil surface into the un-
+derlying aquifer system. The approach has been successfully 
+applied under a wide range of climatic conditions worldwide, 
+including arid and semi-arid environments [10, 39, 73], tropi-
+cal and subtropical regions [26, 59, 63] , and temperate cli-
+mates [36, 41]. Furthermore, it is implemented across a wide 
+range of hydrogeological settings, including coastal regions 
+[21, 43], Hard rock aquifers [51, 60], Karst aquifers [11, 45, 
+70], Alluvial aquifers [6, 24]. Vrba and Zaporozec (1994) [72] 
+described groundwater vulnerability as an intrinsic property 
+of an aquifer system that reflects its susceptibility to natural 
+and anthropogenic impacts. This vulnerability is governed by 
+various intrinsic characteristics of the aquifer and its surround-
+ing environment, including soil properties such as structure 
+and texture, as well as hydrological and topographic factors 
+such as drainage density, runoff volume, and slope [2, 28, 54]. 
+Therefore, a groundwater vulnerability assessment approach 
+in a given aquifer system is put in p lace to delineating areas 
+likely to be impacted by contaminants derived from anthropo-
+genic activities. 
+In recent years, aquifer vulnerability assessment has 
+emerged as an essential tool for preventing groundwater pol-
+lution. However, several approaches can be used to assess 
+groundwater vulnerability such as: process -based model [46, 
+74], DRASTIC [7], GOD [23], AVI [69], SINTACS [16], 
+EPIK [19], SIGA [72], PCA technique [53], Decision random 
+forest [34], tree-based data mining [77], Fuzzy Clustering [31], 
+Boosted regression tree [44]. The selection of a suitable 
+groundwater vulnerability model depends largely on the type 
+of aquifer, the availability of relevant data, and the specific 
+objectives and scope of the study [13, 20]. Among the various 
+groundwater vul nerability assessment methods, the DRAS-
+TIC model —based on seven hydrogeological parameters, 
+namely depth to groundwater (D), net recharge (R), aquifer 
+media (A), soil media (S), topography (T), impact of the va-
+dose zone (I), and hydraulic conductivity (C) —is one of the 
+most widely used approach. Its applicability has been demon-
+strated in numerous studies [4, 5, 13, 20, 42, 61 , 63, 67]. The 
+DRASTIC method is based on four fundamental assumptions 
+[7, 20] : contaminants are introduced at the ground surface; 
+precipitation transports them toward the groundwater; their 
+mobility is assumed to be equivalent to that of water; and the 
+assessment area is generally expected to cover at least 0.4 km2. 
+The GIS -based DRASTIC model, which integrates the 
+DRASTIC framewor k with GIS -based spatial analysis and 
+mapping techniques, has been widely applied to delineate and 
+map groundwater vulnerability zones [13, 20]. This integrated 
+approach offers a cost -effective and time -efficient means of 
+assessing and mapping groundwater vulnerability. 
+Groundwater represents the main resource for domestic 
+needs in Lai city (Figure 1). The problem we are currently fac-
+ing stems from the fact that the study area is a floodplain 
+where agriculture is the main activity of the population. Agri-
+cultural activities are degrading the groundwater quality of Lai 
+city due to the uncontrolled use of fertilizers and pesticides. 
+Furthermore, field observations indicate that the city is facing 
+rapid urbanization, accompanied by inadequate sanitation in-
+frastructure, as evidenced by the widespread use of open la-
+trines and the lack of adequate wastewater and sewage dis-
+posal facilities. It appears essential to conduct a study to high-
+light the parameters and conditions that control the pollution 
+of the groundwater in the Lai city. However, few studies exist 
+to date regarding groundwater pollution and the assessment of 
+groundwater vulnerability through GIS-based DRASTIC vul-
+nerability model in the Lai area although research on this issue 
+has been conducted at the sca le of the Lake Chad Basin [14, 
+40, 47], of which the study area is a part. In this context, 
+groundwater vulnerability assessment of Lai city is needed in 
+order to carefully predict pollution that faced by the city and 
+its surroundings. The ultimate objecti ve of this study is to 
+evaluate the groundwater vulnerability of Lai City by integrat-
+ing the DRASTIC model into GIS and also discuss the spatial 
+distribution of nitrate concentration in the groundwater. Ulti-
+mately, this study provides a useful basis for pl anners and lo-
+cal authorities to develop an effective groundwater manage-
+ment and protection plan for Lai City. This research was car-
+ried out in N'Djamena, Chad, throughout the period of March 
+2024 to January 2025. 
+2. Materials and Methods 
+2.1. Study Site 
+Tandjile is a region of southern Chad where Lai City is the 
+capital. The study area, corresponding to Lai City and illus-
+Journal of Water Resources and Ocean Science http://www.sciencepg.com/journal/wros 
+ 
+202 
+trated in Figure 1 , covers approximately 151.12 km 2. Geo-
+graphically, it extends from 8°31′20″ N to 9°20′30″ N in lati-
+tude and from 16°13′4 0″ E to 16°22′20″ E in longitude. The 
+hydrographic network of the study area comprises three main 
+rivers: the Logone, Tandjilé , and Kabia Rivers. The Logone 
+River is the principal river in the study area. It originates in 
+the highlands of central Cameroon and flows northward to-
+ward Lake Chad. The local economy is primarily supported 
+by agricultural and fishing activities, supplemented by live-
+stock farming. Meteorological records, including precipitation 
+and temperature data obtained from the National Agency of 
+Meteorology for the period 1991–2023, indicate that the study 
+area receives an average annual rainfall of approximately 
+1,008 mm. The rainy season extends for up to seven months, 
+from April to October. The mean annual temperature varies 
+between 27.1° C and 29.2° C, while the elevation of the study 
+area ranges from 353 to 374 m above sea level. The geological 
+formations of the Tandjile region, of which the study area is a 
+part, are represented by two large groups characteristic of sed-
+imentary zones: the Te rtiary, represented by the Continental 
+Terminal formation, and the Quaternary, represented by flu-
+vial-lacustrine deposits [58]. The hydrogeological context is 
+characterized by the existence of water tables in continuous 
+sedimentary formations (free, semi-captive or captive) and in 
+discontinuous basement formations [57]. In fact, continuous 
+sedimentary formations are mostly located in fluvial -lacus-
+trine layers with free water tables. However, in the extreme 
+south-eastern part of the study area, the roof of the water table 
+is impermeable in places [58]. 
+ 
+Figure 1. Study Area Location. 
+2.2. Groundwater Vulnerability Assessment 
+Using the DRASTIC Model 
+The DRASTIC model, originally developed by the U.S. En-
+vironmental Protection Agency (EPA), is among the most 
+widely applied methods for assessing aquifer vulnerability to 
+contamination. The model evaluates groundwater susceptibil-
+ity by integrating seven hydrogeological parameters through a 
+weighted-index approach [7]: depth to water (D), net recharge 
+(R), aquifer media (A), soil media (S), topography (T), impact 
+of the vadose zone (I), and hydraulic conductivity (C). The 
+Drastic approach is divided into three significant parts [7]: 
+weights, ranges and rating. According to Aller et al. (1987) [7], 
+Journal of Water Resources and Ocean Science http://www.sciencepg.com/journal/wros 
+ 
+203 
+each DRASTIC parameter is assigned a relative weight rang-
+ing from 1 to 5, reflecting its relative significance in control-
+ling groundwater flow and contaminant transport ( Table 1 ). 
+The weights of Drastic parameter are constant and may not be 
+changed. The most significant parameter has weight of 5 
+(Depth to water level, vadose media) and least significant has 
+a weight of 1 (topography). The parameter ratings associated 
+to each Drastic factors are variable and u ser can define and 
+calibrate values to suit a given region [18]. Note that, the pa-
+rameter D, R, S, T, and C have been assigned one value per 
+range. However, A and I have a “typical” and variable rating. 
+The Delphi technique [7] has been used to establish numerical 
+weight and rating. This method is well - known and used 
+worldwide [9, 13, 52, 55, 61]. In this technique, practical and 
+research experiences of professionals in the area of interest are 
+used to assess levels of risk [17, 52]. The DRASTIC index is 
+determined by multiplying the rating assigned to each hydro-
+geological parameter by its corresponding weight, as pre-
+sented in Table 2. Based on these data, thematic maps were 
+generated for each hydrogeological parameter using a spatial 
+resolution of 30 m × 30 m and subsequently reclassified ac-
+cording to their respective ratings and weights. The final 
+groundwater vulnerability map was subsequently produced 
+through a weighted-sum overlay analysis based on the DRAS-
+TIC index, following the methodological workflo w shown in 
+Figure 2. 
+DRASTIC Index (DI) could be expressed as [7]: 
+𝐷𝐼 = 𝐷𝑟𝐷𝑤 + 𝑅𝑟𝑅𝑤 + 𝐴𝑟𝐴𝑤 + 𝑆𝑟𝑆𝑤 + 𝑇𝑟𝑇𝑤 + 𝐼𝑟𝐼𝑤 + 𝐶𝑟𝐶𝑤 (1) 
+where D, R, A, S, T, I, C represent the seven hydrogeological 
+parameters; r denotes the rating assigned to each parameter, 
+while w represents its corresponding weight. 
+A higher DRASTIC Index (DI) values correspond to greater 
+groundwater vulnerability and consequently a higher potential 
+for contamination, whereas lower DI values reflects a lower 
+vulnerability [13]. 
+Table 1. Assigned weights of the Drastic parameters [7]. 
+Parameter Generic weight 
+Depht to water D 5 
+Net recharge R 4 
+Aquifer media A 3 
+Soil media S 2 
+Topography T 1 
+Impact of vadose zone I 5 
+Hydraulic conductivity C 3 
+Table 2. DRASTIC Parameter Ratings and Weights for the Study Area. 
+Parameters Range Rating Weight Total weight (rating x weight) 
+Depth to water level (in meter) 
+1.5 - 4.5 9 
+5 
+45 
+4.5 - 9 7 35 
+Net recharge (mm/year) 118 6 4 24 
+Aquifer media 
+Compact clay 4 
+3 
+12 
+Lateritic clay 5 15 
+Sandy clay 6 18 
+Fine sand 8 24 
+Medium sand 9 27 
+Soil media Tropical ferruginous soil 2 2 4 
+Journal of Water Resources and Ocean Science http://www.sciencepg.com/journal/wros 
+ 
+204 
+Parameters Range Rating Weight Total weight (rating x weight) 
+Holomorphic soil 4 8 
+Hydromorphic soil 8 16 
+Topography (slope in%) 
+0 - 1 5 
+1 
+5 
+2 - 3 7 7 
+4 - 9 9 9 
+Vadose zone media 
+Clay or silt 3 
+5 
+15 
+Sandy clay 6 30 
+Silty sand 8 40 
+Sand 9 45 
+Hydraulic conductivity (m/s) 5 x 10-4 8 3 24 
+ 
+Figure 2. Workflow for Groundwater Vulnerability Assessment and Mapping. 
+Journal of Water Resources and Ocean Science http://www.sciencepg.com/journal/wros 
+ 
+205 
+ 
+2.3. Data Collection and Analysis 
+To apply the DRASTIC model previously described, seven 
+parameters are necessary. These parameters are: depth to water 
+level, net recharge, aquifer media, soil media, topography, im-
+pact of vadose zone, and hydraulic conductivity. The data relat-
+ing to the depth of the water level were collected from a field 
+survey conducted in April 2024. A total of 50 well locations 
+have been selected in the study area for measuring depth to wa-
+ter level and main groundwater quality parameters, including 
+Nitrate and TDS. Groundwater samples were analyzed for se-
+lected quality parameters, including nitrate and total dissolved 
+solids (TDS), at the LHGR Laboratory o f the University of 
+N’Djamena. The analyses were conducted in accordance with 
+the standard methods recommended by the American Public 
+Health Association [8]. The spatial distribution map of Depth to 
+water level, TDS, and Nitrate was prepared using the standard 
+kriging tool available in ArcGIS 10.8.1. Rainfall data has been 
+collected from the National Agency of Meteorology. The an-
+nual rainfall values were used to calculate the recharge using a 
+simple water balance model [22]. The data relating to aquifer 
+media are obtained from well log data available in the CDIG 
+(Geographical Information Centre of the Water Ministry of 
+CHAD) archives. The soil media map is obtained by digitaliza-
+tion of the pedological map produced by Pias (1970) [50] in the 
+study area. ASTER DEM (30 m spatial resolution) has been 
+used for generating the topography of the study area using the 
+surface tools of ArcGIS 10.8.1. The data relating to the impact 
+of the vadose zone and hydraulic conductivity were obtained 
+based on the data collected from CDIG. 
+2.4. Validation of Groundwater Vulnerability 
+Map 
+Validation of the vulnerability map derived from the Dras-
+tic model is needed before the use of its results. For this reason, 
+a validation procedure was adopted to evaluate the accuracy 
+of the Drastic model. Contaminant data sets collected from 
+wells throughout the study area can provide an effective basis 
+for validating the groundwater vulnerability map [20]. Nitrate 
+and total dissolved solids (TDS), which are common indica-
+tors of groundwater contamination, were selected as valida-
+tion parameters for the groundwater vulnerability assessment, 
+consistent with the methodology proposed by Bera et al. 
+(2021)[13]. Along the same lines, Elmeknassi et al. (2021)[20] 
+used groundwater contaminant parameters such as nitrate con-
+centrations and electrical conductivity measured in the study 
+site to validate the vulnerability map. Firstly, a superimposi-
+tion of nitrate and TDS data on the vulnerability map was car-
+ried out to obtain a qualitative validation of th e model. High 
+values of the studied chemical compounds (nitrate and TDS) 
+should be found in the high vulnerability zone, and conversely, 
+low concentrations in the low vulnerability zone. This valida-
+tion procedure was adopted by several authors [13, 20 , 76]. 
+Secondly, the relationship between the DRASTIC Index (DI) 
+and nitrate and TDS concentrations was further assessed using 
+the Pearson correlation coefficient (r). This statistical measure 
+is commonly used to quantify the strength and direction of the 
+linear association between two continuous variables (Singh et 
+al., 2015). The Pearson correlation coefficient (r) was calcu-
+lated using the following equation [13]: 
+𝑟 =
+𝑛(∑ 𝑥𝑦)−(∑ 𝑥)(∑ 𝑦)
+√[𝑛 ∑ 𝑥2−(∑ 𝑥)2][𝑛 ∑ 𝑦2−(∑ 𝑦)2] (2) 
+where r is the Pearson correlation coefficient, n represents the 
+number of pairs, and x and y denote the two variables consid-
+ered. 
+At the end, the maximum nitrate and TDS concentrations 
+were determined for each groundwater vulnerability class and 
+compared with the corresponding DRASTIC Index (DI) val-
+ues. A similar procedure was adopted by El -Meknassi et al. 
+(2021) [20]. 
+3. Result and discussion 
+3.1. Depth to Water Level 
+The first DRASTIC parameter, depth to water (D) level, is 
+defined as the vertical distance between the ground surface 
+and the water table [76]. This hydrogeological parameter is a 
+key component of the DRASTIC model because the unsatu-
+rated zone between the ground surface and the water table pro-
+vides an important pathway for contaminant attenuation be-
+fore pollutants reach the groundwater. In g eneral, greater 
+depth to the water table provides a longer travel distance and 
+greater opportunity for contaminant attenuation, thereby re-
+ducing groundwater vulnerability to contamination [7]. Water 
+level measurements are carried out in April 2024 in order to 
+perform a depth to water level map. A total of 50 water points, 
+comprising 15 wells and 35 boreholes, were surveyed. These 
+wells and boreholes are located in the study area (Lai City) 
+and its surroundings and used for domestic needs. The loca-
+tions and measured water levels of the 50 wells and boreholes 
+were used to interpolate the depth to the water table using the 
+ordinary kriging method available in the Spatial Analyst ex-
+tension of ArcGIS 10.8.1. The depth to the water table across 
+the study area ranges from 1.5 to 9.0 m. Based on the DRAS-
+TIC classification scheme, these values were divided into two 
+classes: 1.5-4.5 m and 4.5-9.0 m, which were assigned ratings 
+of 45 and 35, respectively ( Table 1 ). The southwestern and 
+northwestern parts of the study ar ea, including Lai, Sategui, 
+and Gabri Mbassa, are characterized by relatively shallow 
+groundwater depths ranging from 1.5 to 4.5 m. These areas are 
+therefore considered more vulnerable to groundwater contam-
+ination. In contrast, the southeastern and northeastern sectors, 
+including Djoun, Totalie, and Madjang, exhibit greater depths 
+Journal of Water Resources and Ocean Science http://www.sciencepg.com/journal/wros 
+ 
+206 
+to the water table, ranging from 4.5 to 9.0 m, indicating com-
+paratively lower groundwater vulnerability to contamination. 
+The resulting depth-to-water map is presented in Figure 3. 
+ 
+Figure 3. Depth to water level map. 
+3.2 Net Recharge 
+Net recharge refers to the amount of water that infiltrates 
+through the soil and ultimately reaches the groundwater [7]. It 
+is influenced by several factors, including slope, soil permea-
+bility, precipitatio n, land cover, and infiltration rate [7]. 
+Higher recharge rates generally increase the potential for con-
+taminants to be transported downward and reach the ground-
+water table, whereas lower recharge rates tend to reduce this 
+potential. In this study, net rec harge was estimated using me-
+teorological data covering the period from 1990-1991 to 2022-
+2023, based on the classical water -balance approach and the 
+following equation: 
+𝑁𝑅 = 𝑃 − 𝐸𝑇 − 𝑅𝑜 (3) 
+where, NR: is the net recharge in mm/year, P: is the annual 
+precipitation in mm; ET is evapotranspiration in mm/year, 𝑅𝑜 
+is the total runoff in mm. 
+The average total yearly precipitation P calculated which is 
+about (1008) mm/year. ET was calculated based on the well-
+known Thornthwaite Method (1948) [68]. 𝑅𝑜 was evaluated 
+using the Soil Conservation Service (SCS) method (SCS-CN) 
+to estimate the total runoff for the basin. The SCS -CN is the 
+most suitable method [49] and has been applied by several au-
+thors [1, 3, 30]. First, the basin is divided into several curve 
+number (CN) and then using the following equation: 
+Journal of Water Resources and Ocean Science http://www.sciencepg.com/journal/wros 
+ 
+207 
+𝑄 =
+(𝑃−0.2𝑆)2
+𝑃+0.8𝑆 𝑓𝑜𝑟 𝑃 > 0.2𝑆 (4) 
+𝑆 = (
+25,400
+𝐶𝑁 ) − 254 (5) 
+where: Q = accumulated runoff excess in (mm). P = accumu-
+lated average monthly rainfall (mm). 
+The annual runoff and the average net recharge calculated 
+in the study area are 64 mm and 118 mm/year, respectively. 
+The estimated net recharge values fall within a single class, 
+ranging from 100 to 180 mm/year, which was assigned a total 
+weight of 24 ( Table 1). Based on these recharge data, a net 
+recharge map was generated for the study area, as presented 
+in Figure 4. 
+ 
+Figure 4. Net recharge map. 
+3.3. Aquifer Media 
+Aquifer media represent the porous and/or fractured geo-
+logical formations that provide pathways for groundwater 
+flow. The characteristics of the aquifer medium strongly in-
+fluence contaminant transport and attenuation, as various 
+physicochemical processes, including sorption, cation ex-
+change, filtration, and dissolution, may occur during ground-
+water movement. Therefore, aquifer media represents an im-
+portant hydrogeological parameter in groundwater vulnerabil-
+ity and quality assessment. Acco rding to Lathamani et al. 
+(2015) [35], larger grain sizes and a greater abundance of frac-
+tures, joints, or other openings enhance aquifer permeability, 
+facilitating the migration of contaminants and consequently 
+increasing groundwater vulnerability to cont amination. The 
+DRASTIC parameter A (aquifer media) was characterized us-
+ing lithological data obtained from well logs available in the 
+archives of the CDIG (Geographical Information Centre of the 
+Journal of Water Resources and Ocean Science http://www.sciencepg.com/journal/wros 
+ 
+208 
+Ministry of Water of Chad). These data indicate the presence 
+of five main lithological formations within the study area: 
+compact clay, lateritic clay, sandy clay, fine sand, and medium 
+sand. Based on their relative influence on groundwater vulner-
+ability, DRASTIC ratings were assigned to these aquifer me-
+dia as follows (Table 1): compact clay was assigned a rating 
+of 12, lateritic clay 15, sandy clay 18, fine sand 24, and me-
+dium sand 27. The resulting aquifer media map is presented in 
+Figure 5b. 
+In order to strengthen the aquifer media map interpretation, 
+the lithologi cal cross -sections for some water points 
+(Tchindaye, Totalie, Djoun) has been included in the Figure 
+5(a), 5(c) and 5(d). These data obtained from CDIG archives 
+confirm soils distribution in the study site. 
+ 
+Figure 5. (b) Aquifer media map, (a) lithological cross-section for Tchindaye, (c) lithological cross-section for Djoun, (d) lithological cross-
+section for Totalie. 
+Journal of Water Resources and Ocean Science http://www.sciencepg.com/journal/wros 
+ 
+209 
+ 
+3.4. Soil Media 
+Soil media corresponds to the uppermost part of the vadose 
+zone, where biological activity is particularly active [13]. The 
+Drastic Factor S (soil media) plays an important role in the 
+control of recharge processes and the attenuation and removal 
+of contaminants during their migration through the soil profile. 
+The soil media map of the study site (Figure 6) was developed 
+by digitizing the pedological map produced by Pias (1970) 
+[50]. Three main soil types were identified within the study 
+area: tropical ferruginous soil, halomorphic soil, and hydro-
+morphic soil. Based on their relative influence on groundwater 
+vulnerability, DRASTIC ratings were assigned to the different 
+soil media as follows ( Table 1): tropical ferruginous soil was 
+assigned a rating of 4, halomorphic soil a rating of 8, and hy-
+dromorphic soil a rating of 16. Halomorphic soils are predom-
+inantly distributed in the southern part of the study area, par-
+ticularly around Gabri -Bassa and Djoun, whereas hydromor-
+phic soils occur mainly in the northern sector, particularly 
+around Sategui. The presence of h ydromorphic soils in the 
+northern part of the study area may favor enhanced infiltration 
+and contaminant transport, potentially increasing groundwater 
+vulnerability in this sector. In the Figure 6 below, the photo of 
+the representative soils types in the s tudy site (hydromorphic 
+soil (a'), tropical ferruginous soil (c'), halomorphic soil (d')) 
+has been illustrated in order to provide valuable visual images 
+and improve interpretation of soil characteristics in place at 
+the site studied. 
+ 
+Figure 6. (a’) hydromorphic soil, (b’) soil media map, (c’) tropical ferruginous soil, (d’) halomorphic soil. 
+3.5. Topography 
+Topography, represented by slope, is an important parame-
+ter that impact surface runoff and contaminant infiltration [7]. 
+Steep slopes generally promote rapid surface runoff, thereby 
+reducing the opportunity for contaminants to infiltrate into the 
+subsurface. Conversely, gentle slopes favor water retention 
+and infiltration, increasing the potential for contaminants to 
+reach the groundwater system. The slope map of the study area 
+(Figure 7 ) was derived from an Digital Elevation Model 
+Journal of Water Resources and Ocean Science http://www.sciencepg.com/journal/wros 
+ 
+210 
+(DEM) with a spatial reso lution of 30 m. The DEM was pro-
+cessed using the 3D Analyst extension of ArcGIS 10.8.1 to 
+generate the slope layer. Slope values across the study area 
+range from 0 to 9% and were classified into three categories: 
+0-2%, 2 -4%, and 4 -9%. Each slope class was a ssigned a 
+DRASTIC rating according to its relative influence on 
+groundwater vulnerability, following the classification pro-
+posed by Aller et al. (1987) [7] (Table 1). The resulting slope 
+map indicates that the study area is predominantly flat, with 
+most of the area characterized by slopes ranging from 0 to 2%. 
+Such low-gradient conditions favor infiltration and limit sur-
+face runoff, thereby increasing the potential for contaminants 
+to migrate toward the groundwater. Consequently, the pre-
+dominantly gentle to pography contributes to the relatively 
+high groundwater vulnerability of the study area. 
+ 
+Figure 7. Topography map. 
+3.6. Impact of Vadose Zone 
+The unsaturated zone, referred to as the vadose zone, is the 
+subsurface layer extending from the ground surface to the wa-
+ter table and overlying the saturated zone. This critical zone 
+plays a role in controlling the downward transport and perco-
+lation of contaminant -laden water toward the groundwater 
+system [75]. During contaminant migration through the va-
+dose zone, several physicochemical and biological processes, 
+including mechanical filtration, biodegradation, dispersion, 
+and volatilization, may occur. These processes contribute to 
+the attenuation an d transformation of contaminants before 
+they reach the water table [7]. The vadose zone acts as a nat-
+ural protective layer for groundwater, with its capacity to at-
+tenuate contaminants largely depending on its lithological 
+characteristics. Data on vadose zo ne media were obtained 
+from well logs available in the CDIG archives, using the same 
+approach as that applied to characterize the aquifer media. The 
+results indicate that the vadose zone in the study area consists 
+Journal of Water Resources and Ocean Science http://www.sciencepg.com/journal/wros 
+ 
+211 
+primarily of clay or silt, sandy clay, sil ty sand, and sand. A 
+high DRASTIC rating of 45 was assigned to sand, which is 
+predominantly distributed in the extreme northern part of the 
+study area (Sategui) and in the central-eastern sector (Lai). Be-
+cause of its relatively high permeability, sandy material facil-
+itates contaminant migration and is therefore associated with 
+greater groundwater vulnerability. In contrast, clay occurring 
+in the southeastern part of the study area, particularly around 
+Djoun, was assigned a lower rating of 15, reflecting its lower 
+permeability and greater capacity to impede contaminant 
+transport. The resulting vadose zone media map is presented 
+in Figure 8. 
+ 
+Figure 8. Vadose zone map. 
+3.7. Hydraulic Conductivity 
+Hydraulic conductivity is an important hydrogeological pa-
+rameter that controls the rate and extent of contaminant 
+transport within the groundwater system. Higher hydraulic 
+conductivity values generally facilitate more rapid groundwa-
+ter flow and contaminant migration, thereby increasing the po-
+tential for groundwater contamination [52]. It is more chal-
+lenging to achieve an accurate estimation of hydraulic conduc-
+tivity, and it is also considered a limitation of the DRASTIC 
+approach [38, 65]. The h ydraulic conductivity map of the 
+study area (Figure 9) was developed based on hydraulic con-
+ductivity values associated with the main rock types, as re-
+ported by Gilbert (1982) [25]. Based on the reference values 
+provided in Gilbert (1982) [25], conductivity values were as-
+signed to each aquifer media (compact clay: 0.2 m/day; later-
+itic clay: 11.15 m/day; sandy clay: 24.11 m/day; fine sandy 
+clay: 38.97 m/day; medium sand: 43.2 m/day). The weighted 
+scores assigned to the different hydraulic conductivity values 
+corresponding to the aquifer media in the studied zone are pre-
+sented as follows: 3 for compact clay, 9 for lateric clay, 15 for 
+sandy clay, 21 for fine sandy clay, and 24 for medium sand. 
+Journal of Water Resources and Ocean Science http://www.sciencepg.com/journal/wros 
+ 
+212 
+ 
+Figure 9. Hydraulic conductivity map. 
+3.8. DRASTIC Index 
+The groundwater vulnerability map of Lai City (Figure 10) 
+was generated by calculating the DRASTIC Index (DI) using 
+Eq. (1) through a weighted overlay analysis of seven thematic 
+layers, each represen ting one of the DRASTIC parameters. 
+The resulting DI values range from 119 to 175 across the study 
+area. Based on the classification proposed by Aller et al. 
+(1987)[7], three groundwater vulnerability classes were iden-
+tified. Based on the DRASTIC Index (DI) classification, areas 
+with DI values below 119 were categorized as having low 
+groundwater vulnerability, whereas DI values ranging from 
+119 to 155 and 155 to 175 corresponded to moderate and high 
+vulnerability classes, respectively. The spatial extent of each 
+vulnerability class is presented in Table 3. The northern and 
+southwestern parts of the study area exhibit high groundwater 
+vulnerability to contamination, covering approximately 35% 
+of the total study area ( Table 3 ). These highly vulnerable 
+zones include Lai, Gabri Mbassa, Sategui, and Djongo. Field 
+observations and available soil data indicate that these areas 
+are predominantly characterized by hydromorphic soils ( Fig-
+ure 6). In addition, the depth to the water table is relatively 
+shallow, ranging from 1.5 to 4.5 m. The combination of shal-
+low groundwater levels and hydromorphic soil conditions 
+contributes to the elevated vulnerability of these areas by fa-
+voring infiltration and facilitating the potential transport of 
+contaminants toward the groundwater system. In contrast, the 
+southeastern part of the study area is characterized predomi-
+nantly by low groundwater vulnerability, accounting for ap-
+proximately 33% of the total area (Table 3). The greater depth 
+to the water table and other hydrogeological characteristics of 
+this sector likely contribute to its relatively lower susceptibil-
+ity to contamination. This low -vulnerability sector includes 
+the localities of Djoun, Totalie, and Madjang. Field observa-
+tions indicate that these areas are predominantly characterized 
+by halomorphic soils and relatively deep groundwater levels, 
+ranging from 4.5 to 9.0 m. These hydrogeological conditions 
+are associated with relatively low groundwater vulnerability 
+in this sector, primarily due to the greater depth to the water 
+table. Bera et al. (2021) [13] noted that contaminants migrat-
+ing through the vadose zone generally require more time to 
+Journal of Water Resources and Ocean Science http://www.sciencepg.com/journal/wros 
+ 
+213 
+reach the groundwater table when groundwater is deeper, al-
+lowing greater opportunity for natural attenuation. In contrast, 
+the northeastern and central-eastern sectors of the study area, 
+particularly around Tchindai and Totalie, display low to mod-
+erate groundwater vulnerability. This spatial heterogeneity re-
+sults from the combined effects of groundwater depth and the 
+other hydrogeological parameters integrated into the DRAS-
+TIC model. 
+ 
+Figure 10. Groundwater vulnerability map of Lai city. 
+Table 3. DRASTIC index classification of groundwater vulnerability zones. 
+Groundwater vulnerability class Drastic index classes Area (sq.km) Area (%) Well locations 
+Low < 119 51.98 34 Djoun, Totalie, Madjang 
+Average 119-155 46.75 31 Tchindai 
+High 155-175 52.38 35 Lai, Sategui, Djongo 
+ 
+3.9. DRASTIC Index Validation 
+The reliability of the GIS-based DRASTIC model used to 
+generate the groundwater vulnerability map ( Figure 10) was 
+evaluated using nitrate and Total Dissolved Solids (TDS) con-
+centrations as validation parameters. We collected groundwa-
+Journal of Water Resources and Ocean Science http://www.sciencepg.com/journal/wros 
+ 
+214 
+ter samples from 50 locations across the study area. The spa-
+tial distributions of nitrate and TDS concentrations in ground-
+water are presented in Figs. 11 and 12, respectively. Results 
+of sample analysis indicated that nitrate and TDS values in the 
+study area vary from 0 to 68.2 ppm and 11 -518 ppm, respec-
+tively. Figure 11 and Figure 12 show clearly that the distribu-
+tion of the parameters (Nitrate and TDS) in the south-western 
+portion of the basin, namely Lai and Gabri Mbassa, is a high 
+concentration of nitrate, ranging from 40.8 to 68.2 ppm, and a 
+relatively high concentration of TDS, ranging from 266 to 518 
+ppm. As shown in Figure 10, the Lai and Gabri Mbassa areas 
+are characterized by high groundwater vulnerability. These ar-
+eas are located along the Logone River, where intensive irri-
+gated agriculture i s practiced. Under these conditions, irri-
+gated agriculture may provide contaminants via drainage wa-
+ters during the groundwater recharge process. On the other 
+hand, the south eastern sides of the basin show low concentra-
+tions of TDS and nitrate, ranging fro m 0 to 13.4 ppm and 11-
+102 ppm, respectively. This part of the study area shows lower 
+groundwater vulnerability where Djoun, Totalie, Madjang ar-
+eas are located. The occurrence of higher nitrate and TDS con-
+centrations in areas classified as highly vulnerabl e, together 
+with lower concentrations in areas of low vulnerability, pro-
+vides supporting evidence for the validity of the groundwater 
+vulnerability map [13]. 
+ 
+Figure 11. Spatial Distribution of the DRASTIC Index and Nitrate Concentrations. 
+Journal of Water Resources and Ocean Science http://www.sciencepg.com/journal/wros 
+ 
+215 
+ 
+Figure 12. Spatial Distribution of the DRASTIC Index and TDS Concentrations. 
+The link between groundwater vulnerability, expressed by 
+the DRASTIC Index (DI), and nitrate and TDS concentrations 
+was further examined using correlation analysis ( Figures 13 
+and 14). The results show a strong positive relationship be-
+tween the aggregated maximum concentrations of both pa-
+rameters and the DRASTIC Index. The Pearson correlation 
+coefficients between groundwater vulnerability and the maxi-
+mum concentrations of nitrate and TDS were r = 0.97 and r = 
+0.75, respectively, indicating strong positive correlations. The 
+observed positive correlations, together with the higher con-
+centrations of nitrate and TDS recorded in a reas classified as 
+highly vulnerable, provide supporting evidence for the relia-
+bility of the groundwater vulnerability map. Similar findings 
+have been reported by El -Meknassi et al. (2021) [20], who 
+demonstrated that the occurrence of elevated concentratio ns 
+of groundwater quality indicators in highly vulnerable areas 
+can be used to support the validation of vulnerability assess-
+ments. 
+ 
+Figure 13. Correlation between DRASTIC Index and maximum nitrate concentrations. 
+Journal of Water Resources and Ocean Science http://www.sciencepg.com/journal/wros 
+ 
+216 
+ 
+Figure 14. Correlation between DRASTIC Index and maximum nitrate concentrations. 
+3.10. Discussion 
+This study represents the first comprehensive effort to as-
+sess groundwater contamination and apply a GIS -based 
+DRASTIC vulnera bility assessment in southern Chad, with 
+particular emphasis on Lai City. As already mentioned, 
+groundwater vulnerability assessment of Lai city is needed in 
+order to carefully predict pollution that is faced by the city and 
+its surroundings. Based on the nitrate and TDS results pre-
+sented above, groundwater quality in Lai City is degraded in 
+certain areas, which correspond closely to zones characterized 
+by high groundwater vulnerability. 
+In this study, the original DRASTIC model developed by 
+Aller et al. (1 987) [7] was applied to assess the intrinsic vul-
+nerability of groundwater in Lai City. The resulting DRAS-
+TIC Index (DI) values indicated a spatial distribution ranging 
+from low to high vulnerability. The groundwater vulnerability 
+map revealed that areas characterized by shallow groundwater 
+levels (1.5 -4.0 m), particularly Lai, Gabri Mbassa, Sategui, 
+and Djongo, exhibit the highest degree of vulnerability. This 
+finding is consistent with previous studies by Bojó rquez -
+Tapia et al. (2009) [15], Bera et al. (20 21) [13], and El-Mek-
+nassi et al. (2021)[20], which identified shallow groundwater 
+levels as a key factor contributing to increased groundwater 
+vulnerability. The high vulnerability observed in these areas 
+can be attributed primarily to the shallow groundwa ter table 
+and gentle slopes (0 -2%), which favor infiltration and facili-
+tate the downward migration of potential contaminants. In ad-
+dition, agricultural activities in parts of the study area, partic-
+ularly around Gabri Mbassa and Sategui, may further increase 
+the potential for contaminant infiltration into the groundwater 
+system. These findings are consistent with recent studies by 
+Said et al. (2025) [56] and Oyda et al. (2025) [48], which re-
+ported similar groundwater vulnerability patterns using the 
+DRASTIC approach in comparable hydrogeological settings. 
+The accuracy of GIS -based Drastic model have been eval-
+uated through nitrate and TDS parameters. As mentioned ear-
+lier, validation of the Drastic model from observed contami-
+nants datasets throughout the study area, such as nitrate and/or 
+TDS is commonly applied by different authors [13, 20, 48, 56]. 
+We found that elevated nitrate levels (> 45 mg/l) align with 
+areas of high vulnerability, a correlation consistent with other 
+studies [13, 20, 48, 56]. The primary contamination sources 
+are agricultural inputs (e.g., fertilizers) because in the areas of 
+high vulnerability (Lai and Gabri Mbassa) located along the 
+Logone River, intensive irrigated agriculture is practiced. 
+Conversely, the south eastern sides of the study area where 
+Djoun, Totalie, Madjang areas are located, show low concen-
+trations of TDS and nitrate. This is attributed to minimal agri-
+cultural activity, resulting from poor soils (halomorphic soil) 
+unsuitable for farming. This finding is consist ent with those 
+obtained by Oyda et al. (2025) in similar areas. 
+4. Conclusion 
+The present study assessed groundwater vulnerability in Lai 
+City, located in the Tandjile -East Department of southern 
+Chad, using the GIS -based DRASTIC model and seven hy-
+drogeological factors are considered. The resulting DRASTIC 
+Index (DI) values ranged from 119 to 175, allowing the study 
+area to be organized into three groundwater vulnerability clas-
+ses: low, moderate, and high. The high-vulnerability class ac-
+counted for approximately 35% of the study area, while the 
+moderate- and low -vulnerability classes covered approxi-
+mately 31% and 34%, respectively. The reliability of the GIS-
+based DRASTIC assessment was further evaluated using ni-
+trate and Total Dissolved Solids (TDS) concentrations. Higher 
+nitrate and TDS concentrations were generally associated with 
+areas classified as highly vulnerable, whereas lower concen-
+trations occurred predominantly in areas of low vulnerability. 
+The Pearson correlation coefficients between g roundwater 
+vulnerability and the maximum concentrations of nitrate and 
+TDS were r = 0.97 and r = 0.75, respectively, indicating strong 
+positive relationships. These results provide supporting evi-
+dence for the reliability of the GIS -based DRASTIC vulnera-
+bility assessment. The northern and southwestern parts of the 
+Journal of Water Resources and Ocean Science http://www.sciencepg.com/journal/wros 
+ 
+217 
+study area were identified as zones of high groundwater vul-
+nerability. These areas are characterized by shallow ground-
+water levels and predominantly hydromorphic soils, condi-
+tions that favor infiltration and the downward transport of po-
+tential contaminants. The most vulnerable areas, including Lai, 
+Gabri Mbassa, Sategui, and Djongo, are located along the Lo-
+gone River, where intensive irrigated agricultural activities 
+may further contribute to the ri sk of groundwater contamina-
+tion. Overall, the groundwater vulnerability map developed in 
+this study provides a useful tool for groundwater resource pro-
+tection, contamination risk management, and land -use plan-
+ning in Lai City and its surrounding areas. 
+Author Contributions 
+Tidjani Bahar: Conceptualization, Investigation, Method-
+ology, Resources, Supervision, Writing – original draft, Writ-
+ing – review & editing 
+Mahamat Moussa: Conceptualization, Data curation, In-
+vestigation, Software 
+Conflicts of Interest 
+The authors declare that they have no competing interests. 
+References 
+[1] Abdullah, T., Ali, S., Al -Ansari, N., & Knutsson, S. (2015). 
+Groundwater vulnerability mapping using lineament density on 
+standard DRASTIC model: case study in Halabja Saidsadiq Ba-
+sin, Kurdi stan Region, Iraq. Engineering, 7(10), 644 -667. 
+https://doi.org/10.4236/eng.2015.710057 
+[2] Adimalla, N., & Qian, H. (2019). Groundwater quality evalua-
+tion using water quality index (WQI) for drinking purposes and 
+human health risk (HHR) assessment in an agric ultural region 
+of Nanganur, south India. Ecotoxicology and environmental 
+safety, 176, 153-161. 
+https://doi.org/10.1016/j.ecoenv.2019.03.066 
+[3] Adham, M. I., Shirazi, S. M., Othman, F., Rahman, S., Yusop, 
+Z., & Ismail, Z. (2014). Runoff potentiality of a wate rshed 
+through SCS and functional data analysis technique. The Sci-
+entific World Journal, 2014(1), 379763. 
+https://doi.org/10.1155/2014/379763 
+[4] Ahada, C. P., & Suthar, S. (2018). A GIS based DRASTIC 
+model for assessing aquifer vulnerability in Southern Punja b, 
+India. Modeling Earth Systems and Environment, 4(2), 635 -
+645. https://doi.org/10.1007/s40808-018-0449-6 
+[5] Al-Abadi, A. M., Al -Shamma’a, A. M., & Aljabbari, M. H. 
+(2017). A GIS -based DRASTIC model for assessing intrinsic 
+groundwater vulnerability in northeastern Missan governorate, 
+southern Iraq. Applied water science, 7(1), 89 -101. 
+https://doi.org/10.1007/s13201-014-0221-7 
+[6] Alam, F., Umar, R., Ahmed, S., & Dar, F. A. (2014). A new 
+model (DRASTIC-LU) for evaluating groundwater vulnerabil-
+ity in parts of central Ganga Plain, India. Arab J Geosci 7: 927-
+937. 
+https://doi.org/10.1007/s12517-012-0796-y 
+[7] Aller, L., Bennett, T., Lehr, J. H., Petty, R. J., Hackett, G. 
+(1987). DRASTIC: A Standardised System for Evaluating 
+Groundwater Pollu -tion Potential using Hydrogeologic Set-
+tings. US Environment Protection Agency, Ada, Oklahoma. 
+EPA/60012-87/035. 
+https://doi.org/10.17491/jgsi/1987/290112 
+[8] APHA. (2005). Standard methods for the examination of water 
+and wastewater, 21st edn. New York. 
+[9] Anwar, M., Prem, C. C., & Rao, V. B. (2002). Evaluation of 
+groundwater potential of Musi River catchment using DRAS-
+TIC index model. In Hydrology and watershed management. 
+Proceedings of the international conference (pp. 18-20). 
+[10] Azlaoui, M., Karef, S., Foufou, A., Haied, N., Zeddouri, A., & 
+Bengusmia, D. (2025). Integration of land use/land cover fac-
+tors with machine learning in groundwater vulnerability assess-
+ment models for semi -arid regions Algeri a. Desalination and 
+Water Treatment, 101256. 
+https://doi.org/10.1016/j.dwt.2025.101256 
+[11] Bagherzadeh, S., Kalantari, N., Nobandegani, A. F., De-
+rakhshan, Z., Conti, G. O., Ferrante, M., & Malekahmadi, R. 
+(2018). Groundwa-ter vulnerability assessment in karstic aqui-
+fers using COP method. Environmental Science and Pollution 
+Research, 25(19), 18960-18979. 
+https://doi.org/10.1007/s11356-018-1911-8 
+[12] Bello, M., Ketchemen -Tandia, B., Nlend, B., Huneau, F., 
+Fouepe, A., Fantong, W. Y.,. & Celle-Jeanton, H. (2019). Shal-
+low groundwater quality evolution after 20 years of exploita-
+tion in the southern Lake Chad: hydrochemistry and stable iso-
+topes survey in the far north of Cameroon. Environmental Earth 
+Sciences, 78(15), 474. 
+https://doi.org/10.1007/s12665-019-8494-7 
+[13] Bera, A., Mukhopadhyay, B. P., Chowdhury, P., Ghosh, A., & 
+Biswas, S. (2021). Groundwater vulnerability assessment using 
+GIS-based DRASTIC model in Nangasai River Basin, India 
+with special emphasis on agricultural contamination. Ecotoxi-
+cology and Environmental Safety, 214, 112085. 
+https://doi.org/10.1016/j.ecoenv.2021.112085 
+[14] Bon, A. F., Abderamane, H., Ewodo Mboudou, G., Aoudou 
+Doua, S., Banakeng, L. A., Bontsong Boyomo, S. B.,. & 
+Wangbara Damo, B. (2021). Parametrization of groundwater 
+quality of the Quaterna ry aquifer in N’Djamena (Chad), Lake 
+Chad Basin: Application of nu -merical and multivariate anal-
+yses. Environmental Science and Pollution Research, 28(10), 
+12300-12320. 
+https://doi.org/10.1007/s11356-020-10622-5 
+[15] Bojó rquez-Tapia, L. A., Cruz-Bello, G. M., Luna-Gonzá lez, L., 
+Juá rez, L., & Ortiz-Pé rez, M. A. (2009). V-DRASTIC: using 
+visualiza-tion to engage policymakers in groundwater vulnera-
+bility assessment. Journal of Hydrology, 373(1 -2), 242 -255. 
+https://doi.org/10.1016/j.jhydrol.2009.05.005 
+Journal of Water Resources and Ocean Science http://www.sciencepg.com/journal/wros 
+ 
+218 
+[16] Civita, M. (1994). Le carte della vulnerabilità degli acquiferi 
+all’inquinamento. Teoria and practica [Aquifer vulnerability 
+maps to pollution. Theory and practice]. Academy Press, Pitag-
+ora. 
+[17] Dee, N., Baker, J., Drobny, N., Duke, K., Wh itman, I., & 
+Fahringer, D. (1973). An environmental evaluation system for 
+water resource planning. Water Resources Research, 9(3), 523-
+535. https://doi.org/10.1029/wr009i003p00523 
+[18] Dixon, B., Scott, H. D., Dixon, J. C., & Steele, K. F. (2002). 
+Prediction of aquifer vulnerability to pesticides using fuzzy 
+rule-based mod-els at the regional scale. Physical geography, 
+23(2), 130-153. https://doi.org/10.2747/0272-3646.23.2.130 
+[19] Doerfliger, N., Zwahlen, F. (1997). EPIK: A New Method for 
+Outlining of Protection Areas in Karstic Environment. In: Pro-
+ceedings of the International symposium and field seminar on 
+“karst waters and environmental impacts”, edited by: Günay, 
+G. and Jonshon, AI, An-talya, Turkey, Balkema, Rotterdam. pp. 
+117-123. 
+[20] Elmeknassi, M., El Mandour, A. , Elgettafi, M., Himi, M., Ti-
+jani, R., El Khantouri, F. A., & Casas, A. (2021). A GIS-based 
+approach for geospatial modeling of groundwater vulnerability 
+and pollution risk mapping in Bou -Areg and Gareb aquifers, 
+northeastern Moroc-co. Environmental Scienc e and Pollution 
+Research, 28(37), 51612-51631. 
+https://doi.org/10.1007/s11356-021-14336-0 
+[21] Ez-zaouy, Y., Bouchaou, L., Hssaisoune, M., Aangri, A., 
+Busico, G., Danni, S. O.,. & Ait Brahim, Y. (2025). Ground-
+water vulnerability and, risk assessment of seawate r intrusion 
+for the development of a strategy plan towards sustainability: 
+Case of the Souss-Massa coastal area, Morocco. Journal of Hy-
+drology: Regional Studies, 57, 102128. 
+https://doi.org/10.1016/j.ejrh.2024.102128 
+[22] Finch, J. W. (1998). Estimating direct groundwater recharge 
+using a simple water balance model-sensitivity to land surface 
+parame-ters. Journal of Hydrology, 211(1-4), 112-125. 
+https://doi.org/10.1016/s0022-1694(98)00225-x 
+[23] Foster, S. (1987). Fundamental concepts in aquifer vulnerabil-
+ity, poll ution risk and protection strategy. In: van Duijven-
+booden W, van Waegeningh HG (eds) Vulnerability of soil and 
+groundwater to pollutants, proceedings and Information. Neth-
+erlands Organization for Applied Scientific Research, The 
+Hague, pp 69-86. 
+[24] George, N. J., Agbasi, O. E., Umoh, A. J., Ekanem, A. M., 
+Udosen, N. I., Thomas, J. E.,. & Ejepu, J. S. (2025). Enhanced 
+contamination risk assessment for aquifer management using 
+the geo -resistivity and DRASTIC model in alluvial settings. 
+Cleaner Water, 3, 100060. 
+https://doi.org/10.1016/j.clwat.2024.100060 
+[25] Gilbert, Castany. (1982). Principes et méthodes de l’hydrogéo-
+logie. Paris, Dunod. 
+[26] Guzmá n-Rojo, M., Silva de Freitas, L., Coritza Taquichiri, E., 
+& Huysmans, M. (2025). Groundwater vulnerability in the af-
+termath of wildfires at the El Sutó spring area: model-based in-
+sights and the proposal of a post-fire vulnerability index for dry 
+tropical for-ests. Fire, 8(3), 86. 
+https://doi.org/10.3390/fire8030086 
+[27] GWP (Global Water Partnership). The Lake Chad Basin Aqui-
+fer System. Global Water Partnership Transboundary Ground-
+water Fact Sheet, Compiled by F Bontemps; GWP (Global Wa-
+ter Partnership): Stockholm, Sweden, 2013. 
+[28] Hossain, M., & Patra, P. K. (2020). Contamination zoning and 
+health risk assessment of trace elements in g roundwater 
+through geostatis-tical modelling. Ecotoxicology and environ-
+mental safety, 189, 110038. 
+https://doi.org/10.1016/j.ecoenv.2019.110038 
+[29] Jahromi, M. N., Gomeh, Z., Busico, G., Barzegar, R., Samany, 
+N. N., Aalami, M. T.,. & Kazakis, N. (2021). Devel oping a 
+SINTACS-based method to map groundwater multi -pollutant 
+vulnerability using evolutionary algorithms. Environmental 
+Science and Pollution Research, 28(7), 7854-7869. 
+https://doi.org/10.1007/s11356-020-11089-0 
+[30] Jang, W. S., Engel, B., Harbor, J., & Theller, L. (2017). Aquifer 
+vulnerability assessment for sustainable groundwater manage-
+ment using DRASTIC. Water, 9(10), 792. 
+https://doi.org/10.3390/w9100792 
+[31] Javadi, S., Hashemy Shahdany, S. M., Neshat, A., & Chambel, 
+A. (2022). Multi-parameter risk mapping of Qazvin aquifer by 
+classic and fuzzy clustering techniques. Geocarto International, 
+37(4), 1160-1182. 
+https://doi.org/10.1080/10106049.2020.1778099 
+[32] Khatri, N., & Tyagi, S. (2015). Influences of natural and an-
+thropogenic factors on surface and groundwater quality in rural 
+and urban areas. Frontiers in life science, 8(1), 23 -39. 
+https://doi.org/10.1080/21553769.2014.933716 
+[33] Kurwadkar, S., Kanel, S. R., & Nakarmi, A. (2020). Ground-
+water pollution: Occurrence, detection, and remediation of or-
+ganic and inor-ganic pollutants. Water Environment Research, 
+92(10), 1659-1668. https://doi.org/10.1002/wer.1415 
+[34] Lahjouj, A., El Hmaidi, A., Bouhafa, K., & Boufala, M. H. 
+(2020). Mapping specific groundwater vulnerability to nitrate 
+using random forest: case of Sais ba sin, Morocco. Modeling 
+Earth Systems and Environment, 6(3), 1451-1466. 
+https://doi.org/10.1007/s40808-020-00761-6 
+[35] Lathamani, R., Janardhana, M. R., Mahalingam, B., & Suresha, 
+S. (2015). Evaluation of aquifer vulnerability using drastic 
+model and GIS: a case study of Mysore city, Karnataka, India. 
+Aquatic Procedia, 4, 1031-1038. 
+https://doi.org/10.1016/j.aqpro.2015.02.130 
+[36] Luoma, S., Okkonen, J., & Korkka-Niemi, K. (2017). Compar-
+ison of the AVI, modified SINTACS and GALDIT vulnerabil-
+ity methods under future climate-change scenarios for a shal-
+low low-lying coastal aquifer in southern Finland. Hydrogeol-
+ogy Journal, 25(1), 203 -222. https://doi.org/10.1007/s10040-
+016-1471-2 
+[37] Margat, J. (1968) Vulnérabilité des nappes d’eau souterraine à 
+la pollution (Groundwater vulnerability to pollution). BRGM 
+Publication, 68 p. 
+Journal of Water Resources and Ocean Science http://www.sciencepg.com/journal/wros 
+ 
+219 
+[38] Martí nez-Bastida, J. J., Arauzo, M., & Valladolid, M. (2010). 
+Intrinsic and specific vulnerability of groundwater in central 
+Spain: the risk of nitrate pollution. Hydrogeology Journal, 
+18(3), 681-698. https://doi.org/10.1007/s10040-009-0549-5 
+[39] Meng, L., Zhang, Q., Liu, P., He, H., & Xu, W. (2020). Influ-
+ence of agricultural irrigation activity on the potential risk of 
+groundwater pollution: A study with drastic method in a semi-
+arid agricultural region of C hina. Sustainability, 12(5), 1954. 
+https://doi.org/10.3390/su12051954 
+[40] Mfonka, Z., Morbe, C. M., Nsangou, D., Kpoumié , A., Kou-
+assy Kalé djé , P. S., Zammouri, M., & Ndam Ngoupayou, J. R. 
+(2025). Groundwater quality assessment for drinking and agri-
+cultural purposes under arid climate in N’Djamena, Chad (Cen-
+tral Afri -ca). International Journal of Energy and Water Re-
+sources, 9(2), 447-470. 
+https://doi.org/10.1007/s42108-024-00297-w 
+[41] Minea, I., Chelariu, O. E., Boicu, D., & Iosub, M. (2025). An 
+integrated approach to social vulnerability assessment of 
+groundwater resources in the Moldavian Plain under temperate 
+climatic conditions. Journal of Hydrology: Regional Studies, 
+58, 102308. https://doi.org/10.1016/j.ejrh.2025.102308 
+[42] Mondal, I., Bandyopadhyay, J., & Chowdhu ry, P. (2019). A 
+GIS based DRASTIC model for assessing groundwater vulner-
+ability in Jangalmahal area, West Bengal, India. Sustainable 
+Water Resources Management, 5(2), 557-573. 
+https://doi.org/10.1007/s40899-018-0224-x 
+[43] Motevalli, A., Moradi, H. R., & Javadi, S. (2018). A compre-
+hensive evaluation of groundwater vulnerability to saltwater 
+up-coning and sea water intrusion in a coastal aquifer (case 
+study: Ghaemshahr-juybar aquifer). Journal of Hydrology, 557, 
+753-773. https://doi.org/10.1016/j.jhydrol.2017.12.047 
+[44] Motevalli, A., Naghibi, S. A., Hashemi, H., Berndtsson, R., 
+Pradhan, B., & Gholami, V. (2019). Inverse method using 
+boosted regression tree and k -nearest neighbor to quantify ef-
+fects of point and non-point source nitrate pollution in ground-
+water. Journal of cleaner produc -tion, 228, 1248 -1263. 
+https://doi.org/10.1016/j.jclepro.2019.04.293 
+[45] Naranjo, E., Conicelli, B., Moulatlet, G. M., & Hirata, R. 
+(2025). Comparative analysis of EPIK, DRASTIC, and DRAS-
+TIC-LUC methods for groundwater vulnerability assessment in 
+karst aquifers of the Western Amazon Basin. Environmental 
+Earth Sciences, 84(3), 80. https://doi.org/10.1007/s12665-024-
+12048-5 
+[46] National Research Council. (1993). Groundwater vulnerability 
+assessment: Contamination potential under conditions o f un-
+certainties. National Academy Press, Washington, DC, p 185. 
+Neshat, A., Pradhan, B., Pirasteh, S., & Shafri, H. Z. M. (2014). 
+Estimating groundwater vulnerability to pollution using a mod-
+ified DRASTIC model in the Kerman agricultural area, Iran. 
+Environmental earth sciences, 71(7), 3119-3131. 
+https://doi.org/10.1007/s12665-013-2690-7 
+[47] Ombolo, A., Ambomo Bineli, E., Mboudou, E. G., Madi, A., 
+Dassou, F. E., & Samba, P. A. (2016). The physicochemical 
+seasonal effect on the quality of well drinking water in Lake 
+Chad Basin: Case study Mayo Tsanaga (Far North region of 
+Cameroun). Journal of Envi -ronmental Science, 5(10), 51 -60. 
+https://doi.org/10.29121/granthaalayah.v6.i3.2018.1493 
+[48] Oyda, Y., Hatiye, S. D., & Jothimani, M. (2025). Groundwater 
+vulnerability mapping in the Maze Zenti catchment, Ethiopia: 
+Integrating the DRASTIC model with an entropy -weighted 
+modification in a GIS environment. Scientific African, e02983. 
+https://doi.org/10.1016/j.sciaf.2025.e02983 
+[49] Patel, P., Mehta, D., & Sharma, N. (2022). A revie w on the 
+application of the DRASTIC method in the assessment of 
+groundwater vul-nerability. Water Supply, 22(5), 5190 -5205. 
+https://doi.org/10.2166/ws.2022.126 
+[50] Pias, J. (1970). La vé gé tation du Tchad: ses rapports avec les 
+sols, variations palé obotaniques au quaternaire; contribution à 
+la connais -sance du bassin tchadien (Vol. 6). IRD Editions. 
+https://doi.org/10.3406/revec.1969.4572 
+[51] Preethi, B., Subramani, T., Gopinathan, P., & Saravannan, R. 
+(2025). Evaluating uranium toxicity in groundwater and asso-
+ciated health risks in a hard rock aquifer, South India. In Sus-
+tainable groundwater and environment: challenges and solu-
+tions (pp. 215 -236). Cham: Springer Nature Switzerland. 
+https://doi.org/10.1007/978-3-031-82194-3_10 
+[52] Rahman, A. (2008). A GIS based DRASTIC m odel for as-
+sessing groundwater vulnerability in shallow aquifer in Aligarh, 
+India. Applied geography, 28(1), 32-53. 
+https://doi.org/10.1016/j.apgeog.2007.07.008 
+[53] Rahmani, B., Javadi, S., & Shahdany, S. M. H. (2021). Evalu-
+ation of aquifer vulnerability using PCA technique and various 
+clustering methods. Geocarto International, 36(18), 2117-2140. 
+https://doi.org/10.1080/10106049.2019.1690057 
+[54] Rajendran, A., & Mansiya, C. (2015). Physico-chemical analysis 
+of ground water samples of coastal areas of south Chennai in the 
+post-Tsunami scenario. Ecotoxicology and environmental safety, 
+121, 218-222. https://doi.org/10.1016/j.ecoenv.2015.03.037 
+[55] Rundquist, D. C., Peters, A. J., Di, L., Rodekohr, D. A., Ehrman, 
+R. L., & Murray, G. (1991). Statewide groundwater‐vulnera-
+bility as-sessment in nebraska using the drastic/GIS model. Ge-
+ocarto international, 6(2), 51-58. 
+https://doi.org/10.1080/10106049109354307 
+[56] Said, A., Mzee, M. A., & Forson, E. D. (2025). Modeling 
+Groundwater vulnerability to pollution on the Southern slopes 
+of Kilimanjaro, Tanzania. Scientific African, e02933. 
+https://doi.org/10.1016/j.sciaf.2025.e02933 
+[57] Schneider, J. L. (2001). Carte de valorisation des eaux souter-
+raines de la Ré publique du Tchad. Geology-Archeology-Hy-
+drology of Chad, Fu nded by European Development Fund, 
+1(500,000). 
+[58] SCHNEIDER, J. L., & THIERY, D. 2002. Water balance in 
+three points of the water table aquifer of Chad. Pangea, 37-38. 
+[59] Seabra, V. S., Silva Jr, G. C. D., & Cruz, C. B. M. (2009). The 
+use of geoprocessing to ass ess vulnerability on the east coast 
+aquifers of Rio de Janeiro State, Brazil. Environmental Geol-
+ogy, 57(3), 665-674. 
+https://doi.org/10.1007/s00254-008-1345-6 
+Journal of Water Resources and Ocean Science http://www.sciencepg.com/journal/wros 
+ 
+220 
+[60] Shekhar, S., Pandey, A. C., & Tirkey, A. S. (2015). A GIS -
+based DRASTIC model for assessing grou ndwater vulnerabil-
+ity in hard rock granitic aquifer. Arabian Journal of Geosci-
+ences, 8(3), 1385 -1401. https://doi.org/10.1007/s12517-014-
+1285-2 
+[61] Shinwari, F. U., Khan, M. A., Siyar, S. M., Liaquat, U., Kon-
+takiotis, G., Zhran, M.,. & Alshehri, F. (2025). Eva luating the 
+contamination susceptibility of groundwater resources through 
+anthropogenic activities in Islamabad, Pakistan: a GIS -based 
+DRASTIC ap-proach. Applied Water Science, 15(4), 81. 
+https://doi.org/10.1007/s13201-025-02374-9 
+[62] Sidiropoulos, P. (2024). Groundwater Pollution: Sources, 
+Mechanisms, and Prevention. Hydrology, 11(7), 98. 
+https://doi.org/10.3390/hydrology11070098 
+[63] Singh, A., Srivastav, S. K., Kumar, S., & Chakrapani, G. J. 
+(2015). A modified -DRASTIC model (DRASTICA) for as-
+sessment of groundwater vulnerability to pollution in an urban-
+ized environment in Lucknow, India. Environmental earth sci-
+ences, 74(7), 5475-5490. 
+https://doi.org/10.1007/s12665-015-4558-5 
+[64] Song, F., Nlend, B., Boum -Nkot, S. N., Huneau, F., Ndondo, 
+G. N., Garel, E.,. & Etame, J . (2023). Groundwater Resources 
+of the Transboundary Quaternary Aquifer of the Lake Chad Ba-
+sin: Towards a Better Management via Isotope Hydrology. Re-
+sources, 12(12), 138. 
+https://doi.org/10.3390/resources12120138 
+[65] Stigter, T. Y., Ribeiro, L., & Dill, A. C. (2006). Evaluation of 
+an intrinsic and a specific vulnerability assessment method in 
+comparison with groundwater salinisation and nitrate contami-
+nation levels in two agricultural regions in the south of Portugal. 
+Hydrogeology jour-nal, 14(1), 79-99. 
+https://doi.org/10.1007/s10040-004-0396-3 
+[66] Strauch, G., Mö der, M., Wennrich, R., Osenbrü ck, K., Glä ser, 
+H. R., Schladitz, T.,. & Schirmer, M. (2008). Indicators for as-
+sessing anthropogenic impact on urban surface and groundwa-
+ter. Journal of Soils and Sediments, 8(1), 23-33. 
+https://doi.org/10.1065/jss2007.06.234 
+[67] Tiwari, A. K., Singh, P. K., & De Maio, M. (2016). Evaluation 
+of aquifer vulnerability in a coal mining of India by using GIS-
+based DRASTIC model. Arabian Journal of Geosciences, 9(6), 
+438. https://doi.org/10.1007/s12517-016-2456-0 
+[68] Thornthwaite, C. W. (1948). An approach toward a rational 
+classification of climate. Geographical Review, 38, 55-94. 
+https://doi.org/10.2307/210739 
+[69] Van Stempvoort, D., Ewert, L., Wassenaar, L. (1993). Aquifer 
+vulnerability index: a gis-compatible method for groundwater 
+vulnerability mapping. Can Water Resour J 18: 25-37. 
+https://doi.org/10.4296/cwrj1801025 
+[70] Ví as, J., Andreo, B., Ravbar, N., & Hö tzl, H. (2010). Mapping 
+the vulnerability of groundwater to the contamination of four 
+carbonate aquifers in Europe. Journal of environmental man-
+agement, 91(7), 1500-1510. 
+https://doi.org/10.1016/j.jenvman.2010.02.025 
+[71] Vijay, R., Khobragade, P., & Mohapatra, P. K. (2011). Assess-
+ment of groundwater quality in Puri City, India: an impact of 
+anthropogenic activities. Environmental monitoring and as-
+sessment, 177(1), 409 -418. https://doi.org/10.1007/s10661-
+010-1643-9 
+[72] Vrba, J. and Zaporozec, A. (1994) Guidebook on Mapping 
+Groundwater Vulnerability: (IAH Contributions to Hydrogeol-
+ogy 16). Heinz Heise. 
+[73] Wang, Z., Xiong, H., Zhang, F., & Ma, C. (2024). Integrated 
+assessment of groundwater vulnerability in arid areas combin-
+ing classical vulnerability index and AHP model. Environmen-
+tal Science and Pollution Research, 31(31), 43822 -43834. 
+https://doi.org/10.1007/s11356-024-34031-0 
+[74] Wu, H., Chen, J., & Qian, H. (2016). A modified DRASTIC 
+model for assessing contamination risk of groundwa ter in the 
+northern suburb of Yinchuan, China. Environmental Earth Sci-
+ences, 75(6), 483. https://doi.org/10.1007/s12665-015-5094-z 
+[75] Yang, J., Tang, Z., Jiao, T., & Malik Muhammad, A. (2017). 
+Combining AHP and genetic algorithms approaches to modify 
+DRASTIC model to assess groundwater vulnerability: a case 
+study from Jianghan Plain, China. Environmental Earth Sci-
+ences, 76(12), 426. https://doi.org/10.1007/s12665-017-6759-6 
+[76] Yin, L., Zhang, E., Wang, X., Wenninger, J., Dong, J., Guo, L., 
+& Huang, J. (2013). A G IS-based DRASTIC model for as-
+sessing groundwater vulnerability in the Ordos Plateau, China. 
+Environmental earth sciences, 69(1), 171-185. 
+https://doi.org/10.1007/s12665-012-1945-z 
+[77] Yoo, K., Shukla, S. K., Ahn, J. J., Oh, K. a nd Park, J. (2016) 
+Decision Tree-Based Data Mining and Rule Induction for Iden-
+tifying Hydrogeological Parameters That Influence Groundwa-
+ter Pollution Sensitivity. Journal of Cleaner Production, 122, 
+277-286. https://doi.org/10.1016/j.jclepro.2016.01.075

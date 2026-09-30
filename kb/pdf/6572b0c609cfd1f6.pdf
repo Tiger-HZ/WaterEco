@@ -1,0 +1,821 @@
+	
+    
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="https://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- meta description -->
+
+    <title>Monitoring Reservoir Surface Area Using Google Earth Engine (GEE): A Case Study in Southwest Rote District, NTT | Putro | MEDIA KOMUNIKASI TEKNIK SIPIL</title> 
+    <meta name="description" content="Monitoring Reservoir Surface Area Using Google Earth Engine (GEE): A Case Study in Southwest Rote District, NTT">
+            <meta name="keywords" content="Google earth engine (GEE), CHIRPS, reservoir, remote sensing, area monitoring, Southwest Rote" />
+    
+                <meta name="gs_meta_revision" content="1.1" />
+
+<meta name="citation_journal_title" content="MEDIA KOMUNIKASI TEKNIK SIPIL"/>
+<meta name="citation_publisher" content="Department of Civil Engineering, Diponegoro University">
+<meta name="citation_issn" content="25496778"/>
+<meta name="citation_author" content="Haryono Putro"/>
+<meta name="citation_author_institution" content="Gunadarma University"/>
+<meta name="citation_author" content="Ade Suhendar Sutisna"/>
+<meta name="citation_author_institution" content="Universitas Nusa Megarkencana, Yogyakarta"/>
+
+                                    
+                
+
+    
+<meta name="citation_title" content="Monitoring Luasan Embung Menggunakan Google Earth Engine (GEE): Studi Kasus di Kecamatan Rote Barat Daya NTT"/>
+
+<meta name="citation_date" content="2026/09/30"/>
+<meta name="citation_publication_date" content="2026/09/30"/>
+
+<meta name="citation_volume" content="32"/>
+<meta name="citation_issue" content="1"/>
+
+					<meta name="citation_doi" content="10.14710/mkts.v32i1.83990"/>
+	<meta name="citation_abstract_html_url" content="https://ejournal.undip.ac.id/index.php/mkts/article/view/83990"/>
+<meta name="citation_language" content="id"/>
+			<meta name="citation_keywords" xml:lang="en" content="Google earth engine (GEE), CHIRPS, reservoir, remote sensing, area monitoring, Southwest Rote"/>
+						<meta name="citation_keywords" xml:lang="id" content="Google earth engine (GEE)"/>
+					<meta name="citation_keywords" xml:lang="id" content="CHIRPS"/>
+					<meta name="citation_keywords" xml:lang="id" content="embung"/>
+					<meta name="citation_keywords" xml:lang="id" content="penginderaan jauh"/>
+					<meta name="citation_keywords" xml:lang="id" content="pemantauan luasan"/>
+					<meta name="citation_keywords" xml:lang="id" content="Rote Barat Daya"/>
+						<meta name="citation_pdf_url" content="https://ejournal.undip.ac.id/index.php/mkts/article/download/83990/33244"/>
+			        <link rel="schema.DC" href="https://purl.org/dc/elements/1.1/" />
+
+	<meta name="DC.Creator.PersonalName" content="Haryono Putro"/>
+	<meta name="DC.Creator.PersonalName" content="Ade Suhendar Sutisna"/>
+    <meta name="DC.Date.created" scheme="ISO8601" content="2026-09-30"/>
+    <meta name="DC.created" scheme="ISO8601" content="2026/09/30"/>
+	<meta name="DC.Date.dateSubmitted" scheme="ISO8601" content="2026-04-22"/>
+
+<meta name="DC.Date.issued" content="2026/09/30"/>
+<meta name="DC.issued" content="2026/09/30"/>
+	<meta name="DC.Date.modified" scheme="ISO8601" content="2026-09-30"/>
+	<meta name="DC.Description" xml:lang="en" content="   This study aims to monitor the surface area of 13 small reservoirs in the Southwest Rote District, East Nusa Tenggara (NTT), using the Google Earth Engine (GEE) platform over a five-year period (2019–2024). The methodology involved the collection and processing of landsat satellite imagery, the integration of rainfall and rainy-day data from CHIRPS, and an analysis of changes in reservoir surface area over time. The study leveraged GEE’s cloud computing capabilities to efficiently process large-scale data. The results demonstrate that GEE is effective for mapping and monitoring changes in reservoir surface area, evidenced by a model accuracy (R²) of 0.8178 and a positive correlation (r) of 0.668 when compared against manual delineation measurements. Changes in reservoir surface area were analyzed to identify trends and patterns associated with factors such as rainfall, irrigation demands, and human activity. These findings provide crucial information for sustainable water resource management, particularly in the context of arid regions like NTT. The analysis also contributes to the understanding of hydrological dynamics in the area and establishes a foundation for improved decision-making regarding reservoir management. This study highlights the potential of GEE as a powerful tool for monitoring water resources in hard-to-reach areas and contributes to the development of remote sensing-based monitoring methodologies.   "/>
+	<meta name="DC.Description" xml:lang="id" content="  Penelitian ini bertujuan untuk memantau luasan 13 embung di Kecamatan Rote Barat Daya, Nusa Tenggara Timur (NTT) menggunakan platform Google Earth Engine (GEE) selama periode 5 tahun (2019-2024). Metode yang digunakan meliputi pengumpulan dan pengolahan data citra satelit landsat, penerapan data hujan dan hari hujan dari CHIRPS, serta analisis perubahan luasan embung dari waktu ke waktu. Penelitian ini memanfaatkan kemampuan komputasi awan GEE untuk mengolah data dalam skala besar secara efisien. Hasil penelitian menunjukkan bahwa GEE efektif dalam memetakan dan memantau perubahan luasan embung, dibuktikan dengan tingkat akurasi model (R 2 ) sebesar 0,8178 dan nilai korelasi positif (r) sebesar 0,668 jika dibandingkan dengan pengukuran delineasi manual. Perubahan luasan embung dianalisis untuk mengidentifikasi tren dan pola yang terkait dengan faktor-faktor seperti curah hujan, kebutuhan irigasi, dan aktivitas manusia. Temuan ini memberikan informasi penting untuk pengelolaan sumber daya air yang berkelanjutan, khususnya dalam konteks daerah kering seperti NTT. Analisis ini juga memberikan kontribusi pada pemahaman dinamika hidrologi di wilayah tersebut, serta memberikan dasar untuk pengambilan keputusan yang lebih baik terkait pengelolaan embung. Penelitian ini menyoroti potensi GEE sebagai alat yang ampuh untuk pemantauan sumber daya air di daerah yang sulit dijangkau, serta memberikan kontribusi pada pengembangan metodologi pemantauan berbasis penginderaan jauh.  "/>
+	<meta name="DC.Format" scheme="IMT" content="application/pdf"/>
+						<meta name="DC.Identifier.DOI" content="10.14710/mkts.v32i1.83990"/>
+    <meta name="DC.Identifier" content="doi:10.14710/mkts.v32i1.83990"/>
+    	<meta name="DC.Identifier.URI" content="https://ejournal.undip.ac.id/index.php/mkts/article/view/83990"/>
+	<meta name="DC.Language" scheme="ISO639-1" content="id"/>
+	<meta name="DC.Publisher" content="Department of Civil Engineering, Diponegoro University">
+	<meta name="DC.Rights" content="Copyright (c) 2026 Haryono Putro" />
+	<meta name="DC.Rights" content="https://creativecommons.org/licenses/by/4.0"/>
+	<meta name="DC.Source" content="MEDIA KOMUNIKASI TEKNIK SIPIL"/>
+    
+	<meta name="DC.Source.ISSN" content="25496778"/>
+    <meta name="DC.Source.Issue" content="1"/>
+	<meta name="DC.Source.URI" content="https://ejournal.undip.ac.id/index.php/mkts"/>
+    <meta name="DC.Source.Volume" content="32"/>
+				<meta name="DC.Subject" xml:lang="en" content="Google earth engine (GEE), CHIRPS, reservoir, remote sensing, area monitoring, Southwest Rote"/>
+							<meta name="DC.Subject" xml:lang="id" content="Google earth engine (GEE)"/>
+						<meta name="DC.Subject" xml:lang="id" content="CHIRPS"/>
+						<meta name="DC.Subject" xml:lang="id" content="embung"/>
+						<meta name="DC.Subject" xml:lang="id" content="penginderaan jauh"/>
+						<meta name="DC.Subject" xml:lang="id" content="pemantauan luasan"/>
+						<meta name="DC.Subject" xml:lang="id" content="Rote Barat Daya"/>
+			
+                                        
+                    
+
+    
+    <meta name="DC.Title" content="Monitoring Luasan Embung Menggunakan Google Earth Engine (GEE): Studi Kasus di Kecamatan Rote Barat Daya NTT"/>
+    <meta name="DC.Title.Alternative" xml:lang="en" content="Monitoring Reservoir Surface Area Using Google Earth Engine (GEE): A Case Study in Southwest Rote District, NTT"/>
+    
+	<meta name="DC.Type" content="Text.Serial.Journal"/>
+	<meta name="DC.Type.articleType" content="Articles"/>
+        
+        <script type="text/javascript" src="//cdn.plu.mx/widget-summary.js"></script>
+    
+    <meta name="generator" content=" 2.4.8.1" />
+    <!-- Meta Developer -->
+    <meta name="designer" content="Mpg-Undip Theme by EDW,AWP,SAF,SAR@Diponegoro University">
+    <meta name="publisher" content="Diponegoro University">
+    <meta name="copyright" content="Diponegoro University">
+        <link rel="icon" href="https://ejournal.undip.ac.id/public/journals/57/journalFavicon_en_US.png" type="image/png" />
+        <link rel="stylesheet" href="https://ejournal.undip.ac.id/lib/pkp/styles/pkp.css" type="text/css" />
+
+    <link rel="stylesheet" href="https://ejournal.undip.ac.id/styles/compiled.css" type="text/css" /> 
+    
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700|PT+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
+
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.3.1/css/flag-icon.min.css" rel="stylesheet"/>
+        <link href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet"/>
+
+
+        <link rel="stylesheet" href="/plugins/themes/mpgUndip/css/screen.css?version=2022" type="text/css" />
+    <link href="/plugins/themes/mpgUndip/css/print.css" media="print" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="/plugins/themes/mpgUndip/css/additional.css" type="text/css" />
+
+    <!-- Base Jquery -->
+     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.2/lazysizes.min.js" async></script>
+    <script src="https://code.highcharts.com/maps/highmaps.js"></script>
+    <script src="https://code.highcharts.com/mapdata/custom/world.js"></script>
+        <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+    <!-- Default global locale keys for JavaScript -->
+    
+<script type="text/javascript">
+	jQuery.pkp = jQuery.pkp || { };
+	jQuery.pkp.locale = { };
+			
+				jQuery.pkp.locale.form_dataHasChanged = 'The data on this form has changed. Continue anyway?';
+	</script>
+    <!-- Compiled scripts -->
+    <script type="text/javascript" src="https://ejournal.undip.ac.id/js/pkp.min.js"></script>
+    <!-- Form validation -->
+     
+        <script type="text/javascript" src="https://ejournal.undip.ac.id/lib/pkp/js/lib/jquery/plugins/validate/jquery.validate.js"></script>
+        <script type="text/javascript">
+                <!--
+                // initialise plugins
+                $(function(){
+                        jqueryValidatorI18n("https://ejournal.undip.ac.id", "en_US"); // include the appropriate validation localization
+                        
+                });
+                
+
+                // -->
+        </script>
+    
+    
+    <style>
+        .pdfIcon { background-image: url('https://cdn1.iconfinder.com/data/icons/CrystalClear/16x16/mimetypes/pdf.png'); background-repeat: no-repeat;
+background-position: 0px; padding-left: 21px;}
+        @keyframes blinker { 0% {opacity: 0;}
+        }
+    </style>
+    
+
+            <link rel="stylesheet" href="https://ejournal.undip.ac.id/public/journals/57/custom.css?version=2025" type="text/css" />
+        <link rel="stylesheet" href="https://ejournal.undip.ac.id/plugins/generic/orcidProfile/css/orcidProfile.css" type="text/css" />
+    
+
+        
+
+</head>
+
+<body id="pkp-common-openJournalSystems" data-spy="scroll" data-target=".navbarSpy">
+
+<a id="skip-to-content" href="#mainContent">skip to main content</a>
+
+<div id="container"> <!-- Page Container -->
+
+<div id="header" role="banner"> <!-- Header -->
+
+<div id="headerTitle" > <!-- Header: Title -->
+
+    
+    <figure>
+    <img data-src="https://ejournal.undip.ac.id/public/journals/57/pageHeaderTitleImage_en_US.png" alt="Page Header" class="lazyload"/>
+    </figure>
+    
+</div> <!-- End of headerTitle -->
+
+    <nav id="mainmenu" class="navbar navbar-expand-lg " role="navigation" style="margin-top: 1px">
+    <a class="navbar-brand" href="#">
+        MKTS
+    </a>
+    <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#mpgUndipNavbar" aria-controls="mpgUndipNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    
+    <div id="mpgUndipNavbar" class="collapse navbar-collapse">
+      	<ul class="nav navbar-nav">
+			<li id="homeMenu" class="nav-item " role="presentation"> <a class="nav-link" href="https://ejournal.undip.ac.id/index.php/mkts/index"> <class="btn btn-info btn-lg"><i class="fa fa-home"></i> Home</a></li>
+
+             
+<li id="navAboutDropdown" class="nav-item dropdown navHover "> 
+    <a href="https://ejournal.undip.ac.id/index.php/mkts/about" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fa fa-book"></i> About <span class="caret"></span></a>
+    <div class="dropdown-menu" id="navAbout" style="z-index: 100">
+        <a class="dropdown-item" href="https://ejournal.undip.ac.id/index.php/mkts/about/editorialPolicies#focusAndScope">Focus and Scope</a>
+
+        <a class="dropdown-item" href="https://ejournal.undip.ac.id/index.php/mkts/about/editorialPolicies#sectionPolicies">Section Policies</a>
+
+        <a class="dropdown-item" href="https://ejournal.undip.ac.id/index.php/mkts/about/editorialPolicies#peerReviewProcess">Peer Review Process / Policy</a>
+
+
+        <a class="dropdown-item" href="https://ejournal.undip.ac.id/index.php/mkts/about/editorialPolicies#openAccessPolicy">Open Access Policy</a>
+
+
+            <a class="dropdown-item" href="https://ejournal.undip.ac.id/index.php/mkts/about/editorialPolicies#custom-0">Publication ethics</a>
+    
+            <a class="dropdown-item" href="https://ejournal.undip.ac.id/index.php/mkts/about/editorialPolicies#custom-1">Article Processing Charge</a>
+    
+            <a class="dropdown-item" href="https://ejournal.undip.ac.id/index.php/mkts/about/editorialPolicies#custom-2">Screening for Plagiarism</a>
+    
+            <a class="dropdown-item" href="https://ejournal.undip.ac.id/index.php/mkts/about/editorialPolicies#custom-3">Copyright Notice</a>
+    
+
+
+        <a class="dropdown-item" href="https://ejournal.undip.ac.id/index.php/mkts/about/statistics">Statistics</a>
+
+        <a class="dropdown-item" href="https://ejournal.undip.ac.id/index.php/mkts/about/aboutThisPublishingSystem">About this Publishing System</a>
+
+    </div>
+</li>
+                        <li id="navPeople" class="nav-item dropdown navHover">
+                <a href="#" class="nav-link dropdown-toggle " data-toggle="dropdown"><i class="fa fa-user"></i> People <span class="caret"></span></a>
+                <div class="dropdown-menu">
+
+                    <a class="dropdown-item" href="https://ejournal.undip.ac.id/index.php/mkts/about/editorialTeam">Editorial Team</a>
+
+                                    <a class="dropdown-item" href="https://ejournal.undip.ac.id/index.php/mkts/about/displayMembership/355/0">Reviewer</a>
+
+                    <a class="dropdown-item" href="https://ejournal.undip.ac.id/index.php/mkts/about/journalSponsorship">Publisher</a>
+
+                    <a class="dropdown-item" href="https://ejournal.undip.ac.id/index.php/mkts/about/contact">Contact</a>
+                </div>
+            </li>
+    
+                        <li id="navSubmission" class="nav-item dropdown navHover">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cloud-upload"></i> Submissions <span class="caret"></span></a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="https://ejournal.undip.ac.id/index.php/mkts/about/submissions#onlineSubmissions">Online Submissions</a>
+
+                    <a class="dropdown-item" href="https://ejournal.undip.ac.id/index.php/mkts/about/submissions#authorGuidelines">Author Guidelines</a>
+                    <a class="dropdown-item" href="https://ejournal.undip.ac.id/index.php/mkts/about/submissions#copyrightNotice">Copyright Notice</a>
+
+                    <a class="dropdown-item" href="https://ejournal.undip.ac.id/index.php/mkts/about/submissions#privacyStatement">Privacy Statement</a>
+
+                </div>
+            </li>
+
+            
+            <li id="navIssue" class="nav-item dropdown navHover" >
+                <a href="#" class="nav-link dropdown-toggle " data-toggle="dropdown"><i class="fa fa-file-text"></i> Issue <span class="caret"></span></a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="https://ejournal.undip.ac.id/index.php/mkts/issue/current">Current</a>
+
+
+                    <a class="dropdown-item" href="https://ejournal.undip.ac.id/index.php/mkts/issue/archive">Archives</a>
+                    <a class="dropdown-item" href="https://ejournal.undip.ac.id/index.php/mkts/search/authors">Authors Index</a>
+
+                    <a class="dropdown-item" href="https://ejournal.undip.ac.id/index.php/mkts/search/titles">Titles Index</a>
+                </div>
+            </li>
+
+            <li id="announcementMenu" class="nav-item "><a href="https://ejournal.undip.ac.id/index.php/mkts/announcement" class="nav-link"><i class="fa fa-bullhorn"></i>  Announcements</a></li>
+
+    
+        </ul>
+        <ul class="nav navbar-nav ml-auto">
+                <form method="post" action="https://ejournal.undip.ac.id/index.php/mkts/search" class="navbar-form form-inline" style="margin:0;">
+            <div class="input-group search-box">
+                <input type="text" id="query" name="query" class="form-control" placeholder="Search contents">
+                <span class="input-group-append">
+                    <button class="btn btn-outline-light border border-left-0" type="submit" value="Search">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </form>
+
+        
+    <ul class="nav nav-pills" style="margin: auto">
+        <li class="nav-item">
+                <a href="https://ejournal.undip.ac.id/index.php/mkts/user/setLocale/id_ID?source=%2Findex.php%2Fmkts%2Farticle%2Fview%2F83990" class="nav-link"><span class="flag-icon flag-icon-id"></span></a>
+        </li>
+        <li class="nav-item">
+                 <a href="#" class="nav-link disabled" style="background-color: #444;"><span class="flag-icon flag-icon-gb"></span></a>
+        </li>
+    </ul>
+
+
+        
+                            <a href="https://ejournal.undip.ac.id/index.php/mkts/user/register" class="nav-item nav-link">Register</a>
+                <a href="https://ejournal.undip.ac.id/index.php/mkts/login" class="nav-item nav-link">Login</a>
+            
+        </ul>
+    </div>
+</nav>
+</div> <!-- End of header -->
+
+
+
+<div id="body" class="row" > <!-- Page Body -->
+
+
+	<div id="topBar">
+					</div>
+    <div class="col-md-9">
+
+           <div id="breadcrumb">
+                <a role="button" href="https://ejournal.undip.ac.id/index.php/mkts/index" target="_parent">Home</a> &gt;
+                <a href="https://ejournal.undip.ac.id/index.php/mkts/issue/archive" target="_parent">Archives</a> &gt;
+                <a href="https://ejournal.undip.ac.id/index.php/mkts/issue/view/4128" target="_parent">Volume 32, Nomor 1 (2026) In Progress</a> &gt;
+               <a role="button" href="https://ejournal.undip.ac.id/index.php/mkts/article/view/83990/0" class="current" target="_parent">Putro</a>
+            </div>
+            <br />
+            <div id="articlePubId" class="text-right" style="margin-bottom: 1.5em">
+                <span>DOI</span>: <a id="pub-id::doi" href="https://doi.org/10.14710/mkts.v32i1.83990">https://doi.org/10.14710/mkts.v32i1.83990</a>
+           <!-- Start Crossmark Snippet v2.0 -->
+           <script src="https://crossmark-cdn.crossref.org/widget/v2.0/widget.js"></script>
+           <a data-target="crossmark"><img src="https://crossmark-cdn.crossref.org/widget/v2.0/logos/CROSSMARK_Color_horizontal.svg" width="120" style="vertical-align: middle;"/></a>
+           <!-- End Crossmark Snippet -->
+
+    																				</div>
+            <div id="articleTitle">
+                                
+
+                <h3>Monitoring Luasan Embung Menggunakan Google Earth Engine (GEE): Studi Kasus di Kecamatan Rote Barat Daya NTT</h3> 
+                <h4>Monitoring Reservoir Surface Area Using Google Earth Engine (GEE): A Case Study in Southwest Rote District, NTT</h4>             </div> 
+            
+    <div id="authorString" style="margin-bottom: 10px;">
+    <div id="authorString" style="padding-left: 20px; text-indent: -10px">
+                                                        <span class="fa fa-user"></span>
+        <a href="https://scholar.google.com/scholar?q=Haryono+Putro" target="_blank" data-toggle="tooltip" title="Haryono Putro scholar profile">
+            <em><strong>*</strong>Haryono Putro</em></a>
+         
+            <a href="https://orcid.org/0009-0000-8013-9595" target="_blank" data-toggle="tooltip" title="ORCID profile"><img src="https://ejournal.undip.ac.id/plugins/themes/mpgUndip/templates/images/orcid.png" alt="orcid" /></a>
+                            <a href="https://www.scopus.com/authid/detail.uri?authorId=57209173343" target="_blank" data-toggle="tooltip" title="Scopus profile"><img src="https://ejournal.undip.ac.id/plugins/themes/mpgUndip/templates/images/scopus.png" alt="scopus" width="21px"/></a>
+                
+        &nbsp;-&nbsp;
+        Gunadarma University, Indonesia        <a href="javascript:openRTWindow('https://ejournal.undip.ac.id/index.php/mkts/rt/emailAuthor/83990/0');"title="Email the author (Login required)" onclick="return false;"><i class="fa fa-envelope-o" style="margin-left: 10px"></i></a>         <br />    </div>
+    <div id="authorString" style="padding-left: 20px; text-indent: -10px">
+                                                        <span class="fa fa-user"></span>
+        <a href="https://scholar.google.com/scholar?q=Ade+Suhendar+Sutisna" target="_blank" data-toggle="tooltip" title="Ade Suhendar Sutisna scholar profile">
+            <em>Ade Suhendar Sutisna</em></a>
+                        
+        &nbsp;-&nbsp;
+        Universitas Nusa Megarkencana, Yogyakarta, Indonesia                    </div>
+    </div>
+
+            
+
+            
+             
+
+            <div id="publishindMode">
+                    <a role="button" href="https://ejournal.undip.ac.id/index.php/mkts/about/editorialPolicies#openAccessPolicy" data-toggle="tooltip" title="Open Access"><img src="https://ejournal.undip.ac.id/plugins/themes/mpgUndip/templates/images/oa.png" alt="Open Access" /> </a>
+        
+                            <br /><a rel="license" href="https://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a> This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+                        </div>
+
+            <div>
+                <br /> 
+            
+        
+<script type="text/javascript">
+    var defaultCitation = 'ieee';
+    $(document).ready(function(){
+        //hides dropdown content
+        $(".citation_format").hide();
+  
+        //unhides first option content
+        $('#'+defaultCitation).show();
+  
+        //listen to dropdown for change
+        $("#select_citation").change(function(){
+            //rehide content on change
+            $('.citation_format').hide();
+            //unhides current item
+            $('#'+$(this).val()).show();
+        });
+
+        $("#download_citation").change(function() {
+            window.open( this.options[ this.selectedIndex ].value );
+        });
+
+    });
+</script>
+    
+
+    <div id="ieee" class="citation_format" style="display: none">
+    
+                    <div style="width: 100%;">
+<div id="citation" style="background-color:#eee; padding:10px;"><span style="font-weight: bold;">How to cite</span> (IEEE): 
+	    	    H. Putro, and 	    	    A.     S. Sutisna,
+"Monitoring Luasan Embung Menggunakan Google Earth Engine (GEE): Studi Kasus di Kecamatan Rote Barat Daya NTT,"
+<em>MEDIA KOMUNIKASI TEKNIK SIPIL</em>, vol. 32, no. 1,
+Sep. 2026. <a role="button" href="https://doi.org/10.14710/mkts.v32i1.83990">https://doi.org/10.14710/mkts.v32i1.83990</a></div>
+</div>    </div>
+
+    <div id="apa" class="citation_format" style="display: none">
+                        
+
+<div style="width: 100%;">
+<div id="citation" style="background-color:#eee; padding:10px;"><span style="font-weight: bold;">How to cite</span> (APA): 
+
+		Putro, H., &amp; 		Sutisna, A. S.
+(2026).
+Monitoring Luasan Embung Menggunakan Google Earth Engine (GEE): Studi Kasus di Kecamatan Rote Barat Daya NTT.
+<em>MEDIA KOMUNIKASI TEKNIK SIPIL, 32</em>(1). <a role="button" href="https://doi.org/10.14710/mkts.v32i1.83990">https://doi.org/10.14710/mkts.v32i1.83990</a></div>
+</div>    </div>
+
+    <div id="bcrec" class="citation_format" style="display: none">
+                        
+
+<div style="width: 100%;">
+<div id="citation" style="background-color:#eee; padding:10px;"><span style="font-weight: bold;">How to cite</span> (BCREC): 
+
+		Putro, H., 		Sutisna, A. S.
+(2026).
+Monitoring Luasan Embung Menggunakan Google Earth Engine (GEE): Studi Kasus di Kecamatan Rote Barat Daya NTT.
+<em>MEDIA KOMUNIKASI TEKNIK SIPIL</em>, 32 (1) (doi:<a role="button" href="https://doi.org/10.14710/mkts.v32i1.83990">10.14710/mkts.v32i1.83990</a>)</div>
+</div>    </div>
+
+    <div id="chicago" class="citation_format" style="display: none">
+                        
+<div style="width: 100%;">
+<div id="citation" style="background-color:#eee; padding:10px;"><span style="font-weight: bold;">How to cite</span> (Chicago): 
+
+Putro, Haryono, and Ade S. Sutisna.
+"Monitoring Luasan Embung Menggunakan Google Earth Engine (GEE): Studi Kasus di Kecamatan Rote Barat Daya NTT." <em>MEDIA KOMUNIKASI TEKNIK SIPIL</em> 32, no. 1 (2026): n. pag. Accessed September 30, 2026.
+<a role="button" href="https://doi.org/10.14710/mkts.v32i1.83990">https://doi.org/10.14710/mkts.v32i1.83990</a></div>
+</div>    </div>
+
+    <div id="vancouver" class="citation_format" style="display: none">
+                        
+
+
+<div style="width: 100%;">
+<div id="citation" style="background-color:#eee; padding:10px;"><span style="font-weight: bold;">How to cite</span> (Vancouver): 
+                Putro H,                 Sutisna AS.
+Monitoring Luasan Embung Menggunakan Google Earth Engine (GEE): Studi Kasus di Kecamatan Rote Barat Daya NTT.
+MEDIA KOMUNIKASI TEKNIK SIPIL [Online].
+2026 Sep;32(1).
+<a role="button" href="https://doi.org/10.14710/mkts.v32i1.83990">https://doi.org/10.14710/mkts.v32i1.83990</a>.
+</div>
+</div>    </div>
+
+    <div id="harvard" class="citation_format" style="display: none">
+    
+                    
+
+<div style="width: 100%;">
+<div id="citation" style="background-color:#eee; padding:10px;"><span style="font-weight: bold;">How to cite</span> (Harvard): 
+
+                Putro,        H., and                 Sutisna,        A.        S.,
+2026.
+Monitoring Luasan Embung Menggunakan Google Earth Engine (GEE): Studi Kasus di Kecamatan Rote Barat Daya NTT.
+<em>MEDIA KOMUNIKASI TEKNIK SIPIL</em>, [Online] Volume 32(1).
+<a role="button" href="https://doi.org/10.14710/mkts.v32i1.83990">https://doi.org/10.14710/mkts.v32i1.83990</a> [Accessed 30 Sep. 2026].
+</div>
+</div>    </div>
+
+    <div id="mla8" class="citation_format" style="display: none">
+    
+                    
+
+<div style="width: 100%;">
+<div id="citation" style="background-color:#eee; padding:10px;"><span style="font-weight: bold;">How to cite</span> (MLA8): 
+
+Putro, Haryono, and Ade Suhendar Sutisna.
+"Monitoring Luasan Embung Menggunakan Google Earth Engine (GEE): Studi Kasus di Kecamatan Rote Barat Daya NTT." <em>MEDIA KOMUNIKASI TEKNIK SIPIL</em>, vol. 32, no. 1, 
+30 Sep. 2026,
+n. pag. 
+, <a role="button" href="https://doi.org/10.14710/mkts.v32i1.83990">https://doi.org/10.14710/mkts.v32i1.83990</a>. Accessed 30 Sep. 2026.
+</div>
+</div>    </div>
+
+    <div id="bibtex" class="citation_format" style="display: none">
+    
+                    
+
+<div style="width: 100%;">
+<div id="citation" style="background-color:#eee; padding:10px;"><p style="font-weight: bold;">BibTex Citation Data :</p> 
+
+
+<pre style="white-space: pre-wrap; white-space: -moz-pre-wrap !important; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word;">@article{MKTS83990,
+    author = {Haryono Putro and Ade Sutisna},
+    title = {Monitoring Luasan Embung Menggunakan Google Earth Engine (GEE): Studi Kasus di Kecamatan Rote Barat Daya NTT},
+    journal = {MEDIA KOMUNIKASI TEKNIK SIPIL},
+  volume = {32},
+    number = {1},
+    year = {2026},
+    keywords = {Google earth engine (GEE), CHIRPS, reservoir, remote sensing, area monitoring, Southwest Rote},
+    abstract = {   This study aims to monitor the surface area of 13 small reservoirs in the Southwest Rote District, East Nusa Tenggara (NTT), using the Google Earth Engine (GEE) platform over a five-year period (2019–2024). The methodology involved the collection and processing of landsat satellite imagery, the integration of rainfall and rainy-day data from CHIRPS, and an analysis of changes in reservoir surface area over time. The study leveraged GEE’s cloud computing capabilities to efficiently process large-scale data. The results demonstrate that GEE is effective for mapping and monitoring changes in reservoir surface area, evidenced by a model accuracy (R²) of 0.8178 and a positive correlation (r) of 0.668 when compared against manual delineation measurements. Changes in reservoir surface area were analyzed to identify trends and patterns associated with factors such as rainfall, irrigation demands, and human activity. These findings provide crucial information for sustainable water resource management, particularly in the context of arid regions like NTT. The analysis also contributes to the understanding of hydrological dynamics in the area and establishes a foundation for improved decision-making regarding reservoir management. This study highlights the potential of GEE as a powerful tool for monitoring water resources in hard-to-reach areas and contributes to the development of remote sensing-based monitoring methodologies.   },
+   issn = {25496778},  doi = {10.14710/mkts.v32i1.83990},
+    url = {https://ejournal.undip.ac.id/index.php/mkts/article/view/83990}
+}
+</pre>
+
+</div>
+</div>    </div>
+
+    <div id="refworks" class="citation_format" style="display: none">
+    
+                    
+
+<div style="width: 100%;">
+<div id="citation" style="background-color:#eee; padding:10px;"><p style="font-weight: bold;">Refworks Citation Data :</p> 
+@article{{MKTS}{83990},
+    author = {Putro, H., Sutisna, A.},
+    title = {Monitoring Luasan Embung Menggunakan Google Earth Engine (GEE): Studi Kasus di Kecamatan Rote Barat Daya NTT},
+    journal = {MEDIA KOMUNIKASI TEKNIK SIPIL},
+  volume = {32},
+    number = {1},
+    year = {2026},
+  doi = {10.14710/mkts.v32i1.83990},
+   url = {https://ejournal.undip.ac.id/index.php/mkts/article/view/83990}
+}
+</div>
+</div>    </div>
+
+   <div class="container" id="citation" style="margin-top: 5px;">
+        <strong>Citation Format</strong>:
+        <select id="select_citation" class="form-control" style="display: inline-block; width: max-content;padding: 6px;">
+            <option title="APA Citation Style" value="apa" >APA</option>
+            <option title="BCREC Citation Style (APA-like)" value="bcrec" >BCREC</option>
+            <option title="Chicago / Turabian Citation Style" value="chicago" >Chicago / Turabian</option>
+            <option title="Harvard Citation Style" value="harvard" >Harvard</option>
+            <option title="IEEE Citation Style" value="ieee" selected>IEEE</option>
+            <option title="MLA v8 Citation Style" value="mla8" >MLA v8</option>
+            <option title="Vancouver Citation Style" value="vancouver" >Vancouver</option>
+            <option title="BibTex Citation Data" value="bibtex" >BibTex</option>
+            <option title="RefWorks Citation Data" value="refworks" >RefWorks</option>
+        </select>
+                 <select id="download_citation" class="form-control" style="display: inline-block; width: max-content;padding: 6px;">
+            <option value="">Download Citation</button></option>
+            <option title="Download EndNote for Macintosh & Windows" value="https://ejournal.undip.ac.id/index.php/mkts/rt/captureCite/83990/0/EndNoteCitationPlugin">EndNote</option>
+            <option title="Download ProCite (RIS format) for Macintosh & Windows" value="https://ejournal.undip.ac.id/index.php/mkts/rt/captureCite/83990/0/ProCiteCitationPlugin">ProCite</option>
+             <option title="Download Reference Manager (RIS format) for Windows" value="https://ejournal.undip.ac.id/index.php/mkts/rt/captureCite/83990/0/RefManCitationPlugin">Reference Manager</option>
+        </select>
+
+                     <a role="button" href="javascript:document.getElementsByTagName('body')[0].appendChild(document.createElement('script')).setAttribute('src','https://wwww.mendeley.com/minified/bookmarklet.js');" data-toggle="tooltip" title="Save to Mendeley"><button><img src="https://ejournal.undip.ac.id/plugins/themes/mpgUndip/templates/images/mendeley-logo.png" class="articleToolIcon" style="width:86px;height:22px;vertical-align: middle;"></button></a>
+                     <a role="button" href="javascript:document.getElementsByTagName('body')[0].appendChild(document.createElement('script')).setAttribute('src','https://www.zotero.org/bookmarklet/loader.js');" data-toggle="tooltip" title="Save to Zotero"><button><img src="https://ejournal.undip.ac.id/plugins/themes/mpgUndip/templates/images/zotero-logo.png" class="articleToolIcon" style="width:86px;height:22px;vertical-align: middle"></button></a>
+
+    </div>            </div>
+
+
+
+
+            
+
+
+    <div id="articleAbstract" style="margin-top: 10px;">
+        <strong>Abstract </strong>
+        <div>
+            <p><em>This study aims to monitor the surface area of 13 small reservoirs in the Southwest Rote District, East Nusa Tenggara (NTT), using the Google Earth Engine (GEE) platform over a five-year period (2019–2024). The methodology involved the collection and processing of landsat satellite imagery, the integration of rainfall and rainy-day data from CHIRPS, and an analysis of changes in reservoir surface area over time. The study leveraged GEE’s cloud computing capabilities to efficiently process large-scale data. The results demonstrate that GEE is effective for mapping and monitoring changes in reservoir surface area, evidenced by a model accuracy (R²) of 0.8178 and a positive correlation (r) of 0.668 when compared against manual delineation measurements. Changes in reservoir surface area were analyzed to identify trends and patterns associated with factors such as rainfall, irrigation demands, and human activity. These findings provide crucial information for sustainable water resource management, particularly in the context of arid regions like NTT. The analysis also contributes to the understanding of hydrological dynamics in the area and establishes a foundation for improved decision-making regarding reservoir management. This study highlights the potential of GEE as a powerful tool for monitoring water resources in hard-to-reach areas and contributes to the development of remote sensing-based monitoring methodologies.</em></p>
+        </div>
+    </div>
+
+     <p><strong>Note: </strong>This article has supplementary file(s).</p>
+
+            <div class="text-right" style="margin: 10px 0;">
+                <i class="fa fa-file-pdf-o" style="font-size: 15px;color: red"></i> Fulltext
+                    <a href="https://ejournal.undip.ac.id/index.php/mkts/article/view/83990/33244" class="file">View</a>|<a href="https://ejournal.undip.ac.id/index.php/mkts/article/download/83990/33244" class="file">Download</a>
+        
+                |                            
+<a class="file" data-toggle="collapse" data-target="#suppFile-0">
+    <i class="fa fa-file-text-o" style="font-size: 1em; color: red">&nbsp;</i>Research Instrument 
+</a>
+
+<div id="suppFile-0" class="collapse text-left" style="margin-top: 15px; border: none; padding: 10px;">
+  <strong>Data Hidrologis Embung Rote Barat Daya 2</strong><br />
+
+<table class="data" width="100%">
+<tr valign="top">
+	<td class="label" width="20%">Subject</td>
+	<td class="value" width="80%">
+		
+	</td>
+</tr>
+<tr valign="top">
+	<td class="label" width="20%">Type</td>
+	<td class="value" width="80%">
+					Research Instrument
+			</td>
+</tr>
+<tr valign="top">
+	<td class="label" width="20%">&nbsp;</td>
+	<td class="value" width="80%">
+		<a href="https://ejournal.undip.ac.id/index.php/mkts/article/downloadSuppFile/83990/24295" class="action">Download</a> (123KB)&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:openRTWindow('https://ejournal.undip.ac.id/index.php/mkts/rt/suppFileMetadata/83990/0/24295');" class="action">Indexing metadata</a>
+	</td>
+</tr>
+</table>
+</div>
+
+
+                 <i class="fa fa-envelope-o" style="vertical-align: middle; margin-left: 14px"> </i>
+                <a href="javascript:openRTWindow('https://ejournal.undip.ac.id/index.php/mkts/rt/emailColleague/83990/0');" title="Login required" onclick="return false;">
+                    Email colleagues
+                </a>
+
+
+            </div>
+
+
+    <div id="articleSubject" style="margin-top: 10px;">
+        <strong>Keywords</strong>: Google earth engine (GEE), CHIRPS, reservoir, remote sensing, area monitoring, Southwest Rote
+    </div>
+
+
+
+
+    <p style="margin-top: 10px;"><strong>Article Metrics:</strong>
+        <span class="__dimensions_badge_embed__" style="display: inline-block" data-doi="10.14710/mkts.v32i1.83990" data-style="small_rectangle"></span>
+        
+         
+        
+                <script async src="https://badge.dimensions.ai/badge.js" charset="utf-8"></script>
+        <p style="padding-left: 15px; margin-top: 5px;">
+            <a role="button" href="https://plu.mx/a/?doi=10.14710/mkts.v32i1.83990" class="plumx-summary" data-orientation="horizontal" ></a>
+        </p>
+    </p>
+    
+
+        </div> <!-- div md-col-9 -->
+
+        <div class="col-md-3">
+            <div class="block sticky-top">
+                
+<div class="blockTitle">Article Info</div>
+<div class="blockBody" style="margin-top: 10px">
+    <div style="padding: 5px 8px;"><span style="font-weight: bold;">Section</span>: Articles </div>
+
+     <div style="padding: 5px 8px;">
+        <span style="font-weight: bold;">Language</span>
+            :  ID 
+        <a role="button" href="#" data-toggle="popover" data-trigger="hover" title="Language" data-content="Bahasa Indonesia">
+                <span class="flag-icon flag-icon-id" style="border: 1px solid #ccc"></span>
+        </a>
+    </div>
+
+    <div style="padding: 5px 8px;">
+        <span style="font-weight: bold;">In</span>
+        <a class="title" href="https://ejournal.undip.ac.id/index.php/mkts/issue/view/4128">
+            Volume 32, Nomor 1 (2026) In Progress
+        </a>
+    </div>
+
+
+ <script language="javascript">
+    
+    var articleId = 83990;
+    var location_url = 'https://ejournal.undip.ac.id/index.php/mkts/stats';
+
+    function _0x68c2(_0x40334d,_0x386278){var _0x9191fc=_0x9191();return _0x68c2=function(_0x68c2f3,_0x5ef58a){_0x68c2f3=_0x68c2f3-0x80;var _0x3e0e4b=_0x9191fc[_0x68c2f3];return _0x3e0e4b;},_0x68c2(_0x40334d,_0x386278);}var _0xa4cea9=_0x68c2;function _0x9191(){var _0x12e328=['</table>','chartStatsByYear','Number\x20of','name','<span\x20style=\x22font-size:10px\x22>{point.key}</span><table>','Totaldownloads','type','slice','getFullYear','forEach','11CbMcqJ','1727318TVuTQG','get','#artDownloads','12UQJahC','<td\x20style=\x22padding:0\x22><b>{point.y:.0f}</b></td></tr>','2696oHIfXd','22950220DGdSkX','1551340RMkWUh','categories','#0000ff','/getStatisticsAllYear?aid=','yViews','length','100%','1122720aQqwEq','values','23643ttOHXF','5533696nFGccJ','color','#ffe4c4','3RPxYnI','Chart','data','Total','series','column','getJSON','dash','yAxis','#ff6347','spline','ready','xAxis','60%','90%','html','739509MkVAXj'];_0x9191=function(){return _0x12e328;};return _0x9191();}(function(_0x57231f,_0x1c715b){var _0x5ad294=_0x68c2,_0x517e05=_0x57231f();while(!![]){try{var _0x3589f2=-parseInt(_0x5ad294(0x80))/0x1+-parseInt(_0x5ad294(0x8c))/0x2+parseInt(_0x5ad294(0xa0))/0x3*(parseInt(_0x5ad294(0x93))/0x4)+parseInt(_0x5ad294(0x9a))/0x5*(-parseInt(_0x5ad294(0x8f))/0x6)+parseInt(_0x5ad294(0x9d))/0x7+-parseInt(_0x5ad294(0x91))/0x8*(parseInt(_0x5ad294(0x9c))/0x9)+parseInt(_0x5ad294(0x92))/0xa*(parseInt(_0x5ad294(0x8b))/0xb);if(_0x3589f2===_0x1c715b)break;else _0x517e05['push'](_0x517e05['shift']());}catch(_0x11db00){_0x517e05['push'](_0x517e05['shift']());}}}(_0x9191,0x82d16),$(document)[_0xa4cea9(0xab)](function(){var _0x3a122a=_0xa4cea9,_0x26e0a9=new Date(),_0xf0486c=_0x26e0a9[_0x3a122a(0x89)]();jQuery[_0x3a122a(0xa6)](location_url+_0x3a122a(0x96),null,function(_0xf74a30){var _0x352e5d=_0x3a122b;for(var _0x5de443=0x0;_0x5de443<_0xf74a30['length'];_0x5de443++){if(_0xf74a30[_0x5de443][_0x352e5d(0x84)]=='Totalviews')$('#artViews')[_0x352e5d(0xaf)](_0xf74a30[_0x5de443][_0x352e5d(0x9b)][_0x352e5d(0x88)](-0x1)[0x0]);if(_0xf74a30[_0x5de443][_0x352e5d(0x84)]==_0x352e5d(0x86))$(_0x352e5d(0x8e))[_0x352e5d(0xaf)](_0xf74a30[_0x5de443]['values']['slice'](-0x1)[0x0]);}j=0x0;for(var _0x5de443=0x0;_0x5de443<_0xf74a30[_0x352e5d(0x98)];_0x5de443++){_0xf74a30[_0x5de443]['name']!=_0x352e5d(0x86)&&(_0x4d8724[_0x352e5d(0xa4)][j]=new Object(),_0x4d8724[_0x352e5d(0xa4)][j][_0x352e5d(0x84)]=_0xf74a30[_0x5de443][_0x352e5d(0x84)],_0x4d8724[_0x352e5d(0xa4)][j]['data']=_0xf74a30[_0x5de443][_0x352e5d(0x9b)],j++);}var _0x45c64e=0x0,_0x389610=0x0;_0x4d8724[_0x352e5d(0xa4)][0x1][_0x352e5d(0xa2)][_0x352e5d(0x8a)](_0xb4d6ce=>{if(_0xb4d6ce!=0x0)_0x45c64e++;_0x389610+=_0xb4d6ce;});var _0x491d97=_0x45c64e==0x0?0x0:_0x389610/_0x45c64e,_0x5c9137=_0xf0486c;_0x4d8724[_0x352e5d(0xac)][_0x352e5d(0x94)]=[_0x5c9137-0x5,_0x5c9137-0x4,_0x5c9137-0x3,_0x5c9137-0x2,_0x5c9137-0x1,_0x5c9137],_0x4d8724['series'][0x0][_0x352e5d(0x87)]=_0x352e5d(0xa5),_0x4d8724['series'][0x1]['type']='spline',_0x4d8724[_0x352e5d(0xa4)][0x2][_0x352e5d(0x87)]=_0x352e5d(0xaa),_0x4d8724['series'][0x1][_0x352e5d(0x9e)]='#0000ff',_0x4d8724[_0x352e5d(0xa4)][0x2]['color']=_0x352e5d(0xa9),_0x4d8724[_0x352e5d(0xa4)][0x0]['yAxis']=0x1,_0x4d8724[_0x352e5d(0xa4)][0x1]['yAxis']=0x0,_0x4d8724[_0x352e5d(0xa4)][0x2][_0x352e5d(0xa8)]=0x0;var _0x4b8286=new Highcharts[(_0x352e5d(0xa1))](_0x4d8724);_0x4b8286[_0x352e5d(0x8d)](_0x352e5d(0x97))['addPlotLine']({'value':_0x491d97,'dashStyle':_0x352e5d(0xa7),'width':0x1,'color':_0x352e5d(0x95),'label':{'text':'avg:\x20'+(_0x491d97/0x3e8)['toFixed'](0x3)+'k','style':{'fontSize':'70%'}}});});var _0x4d8724={'chart':{'renderTo':_0x3a122a(0x82),'type':'spline','height':_0x3a122a(0xad)},'title':{'text':[],'style':{'fontSize':_0x3a122a(0x99)}},'subtitle':{'text':[],'style':{'fontSize':_0x3a122a(0xae)}},'legend':{'enabled':![]},'xAxis':{'categories':[],'crosshair':!![],'title':{'text':[]}},'yAxis':[{'id':_0x3a122a(0x97),'min':0x0,'title':{'text':_0x3a122a(0x83)},'plotBands':{'color':_0x3a122a(0x9f)}},{'min':0x0,'title':{'text':_0x3a122a(0xa3)},'opposite':!![]}],'tooltip':{'headerFormat':_0x3a122a(0x85),'pointFormat':'<tr><td\x20style=\x22color:{series.color};padding:0\x22>{series.name}:\x20</td>'+_0x3a122a(0x90),'footerFormat':_0x3a122a(0x81),'shared':!![],'useHTML':!![]},'plotOptions':{'column':{'pointPadding':0.2,'borderWidth':0x0}},'series':[]};}));
+
+    </script>
+
+    <div style="padding: 3px 8px;">
+        <span style="font-weight: bold;">Statistics</span>:
+        <a role="button" href="#tab-metrics" data-toggle="tooltip" title="Abstract Views">
+            <i class="fa fa-eye" style="color: green;"></i> <span id="artViews"></span>
+        </a>
+        <a role="button" href="#tab-metrics" data-toggle="tooltip" title="Fulltext Downloads">
+            <i class="fa fa-cloud-download" style="color: orange; margin-left: 5px;"></i> <span id="artDownloads"></span>
+        </a>
+    </div>
+    
+    <div id="chartStatsByYear"></div>
+    <div style="padding: 3px 8px;">
+    </div>
+
+</div>
+            </div>
+                            <div id="blockCitedArticles" class="block ">
+        <div class="blockTitle">Most cited articles</div>
+        <div class="list-group" style="text-indent: -5px">
+                    		                         <a class="list-group-item" href="https://ejournal.undip.ac.id/index.php/mkts/article/view/9241">
+                    <i class="fa fa-angle-right"></i>
+                    Perilaku dan Kekuatan Sambungan Kolom pada Sistem Beton Pracetak
+                </a>
+        		            		                         <a class="list-group-item" href="https://ejournal.undip.ac.id/index.php/mkts/article/view/18175">
+                    <i class="fa fa-angle-right"></i>
+                    Evaluasi Kinerja Campuran Beraspal dengan Bitumen Hasil Ekstraksi Penuh dari Asbuton
+                </a>
+        		            		                         <a class="list-group-item" href="https://ejournal.undip.ac.id/index.php/mkts/article/view/7862">
+                    <i class="fa fa-angle-right"></i>
+                    Pengaruh Model Change Order pada Kehilangan Produktivitas dan Performa Proyek KOnstruksi Jalan dari Perspektif System Teori
+                </a>
+        		            		                         <a class="list-group-item" href="https://ejournal.undip.ac.id/index.php/mkts/article/view/3946">
+                    <i class="fa fa-angle-right"></i>
+                    Concrete Recycling
+                </a>
+        		            		                         <a class="list-group-item" href="https://ejournal.undip.ac.id/index.php/mkts/article/view/3910">
+                    <i class="fa fa-angle-right"></i>
+                    Perhitungan SCF Untuk Analisa Fatigue pada Sambungan Struktur Anjungan Lepas Pantai
+                </a>
+        		                    <a href="https://ejournal.undip.ac.id/index.php/mkts/stats/viewCited" class="foot">
+                    <i class="fa fa-list-alt"></i> More cited articles
+                </a>
+        </div>
+    </div>
+
+        </div>
+<div>
+<ul class="nav nav-tabs" id="indexTab" style="margin-top: 15px">
+   
+            
+    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#tab-citations">Citing articles (0)</a></li>
+    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab-citationsScopus">Citing articles on Scopus (0)</a></li>
+
+   	<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab-copyright">Copyright</a></li>
+       <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab-metadata" data-url="https://ejournal.undip.ac.id/index.php/mkts/article/viewMetadata/83990">Metadata</a></li>
+</ul>
+
+<div class="tab-content">
+        
+    <div class="tab-pane active" id="tab-citations">
+                        <p id="citedBy_LastUpdate" style="margin-bottom: 10px">Last update: </p>
+
+<div id="citedBy_Citations">
+
+    No citation recorded.
+</div> 
+        <br />
+    </div>
+
+    <div class="tab-pane fade" id="tab-citationsScopus">
+                        <p id="citedBy_LastUpdate" style="margin-bottom: 10px">Last update: 2026-09-30 20:54:03</p>
+
+<div id="citedBy_Citations">
+
+    No citation recorded.
+</div>        <br />
+    </div>
+
+        <div class="tab-pane fade" id="tab-metadata" role="tabpanel" >
+    </div>
+
+            <div class="tab-pane fade" id="tab-copyright" role="tabpanel">
+                                            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a> This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+                        <br /><br />
+                <span>Authors who publish in Media Komunikasi Teknik Sipil </span><span>retain full copyright ownership</span><span> (Copyright@Author) of their work. In keeping with the journal’s commitment to open access, all articles are published under the terms of the Creative Commons Attribution- 4.0 International License (CC BY-4.0).</span>
+        <br />
+	 </div>
+    
+       <div class="tab-pane fade" id="tab-metrics" role="tabpanel">
+    </div>    
+
+</div>
+
+
+
+<script>
+$('.modal').on('show.bs.modal', function(e) {
+        var $modal = $(this), 
+                loadurl = e.relatedTarget.dataset.loadurl;
+        $modal.find('.modal-body').load(loadurl);
+});
+</script>
+
+
+
+</div> <!-- End main column -->
+
+</div> <!-- #body --><div id="pageFooter" class="sticky-top"> <!-- Footer --><div id="pageFooterContent"></div><div id="standardFooter"></div>
+
+<div class="row" style="margin: 0"></div>
+    <div id="copyright" style="margin-top: 10px;">
+        Theme Copyright by <b><a href="https://www.undip.ac.id">Universitas Diponegoro</a></b>. Powered by <a role="button" href="https://pkp.sfu.ca/ojs/" target="_blank">Public Knowledge Project OJS</a> and <a role="button" href="https://github.com/masonpublishing/OJS-Theme" target="_blank">Mason Publishing OJS theme</a>.
+    </div>
+</div><!-- End of Footer -->
+
+</div><!-- End of Container -->
+
+<script>
+
+    $("#skip-to-content").click(function() {
+         $("#mainContent").focus()
+     });
+     $("body").on('click','.tagit', function() {
+        $(this).find('input').focus();
+    });
+    $("#interests").on('click','.tagit', function() {
+        $(this).find('input').focus();
+    });
+
+</script>
+
+
+<script>
+
+    $('#indexTab a').click(function(e) { // tab remote
+        e.preventDefault();
+        
+        var url = $(this).attr("data-url");
+        var href = this.hash;
+        var pane = $(this);
+        
+        // ajax load from data-url
+        $(href).load(url,function(result){      
+            pane.tab('show');
+        });
+    });
+
+</script>
+
+
+
+
+</body>
+</html>
