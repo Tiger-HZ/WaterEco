@@ -1,0 +1,5222 @@
+ACCEPTED MANUSCRIPT • OPEN ACCESS
+Runoff reduction from widespread implementation of rain gardens in
+cities through urban-resolving Earth system modeling
+To cite this article before publication: Laura C Gray et al 2026 Environ. Res.: Climate in press https://doi.org/10.1088/2752-5295/aead0f
+Manuscript version: Accepted Manuscript
+Accepted Manuscript is “the version of the article accepted for publication including all changes made as a result of the peer review process,
+and which may also include the addition to the article by IOP Publishing of a header, an article ID, a cover sheet and/or an ‘Accepted
+Manuscript’ watermark, but excluding any other editing, typesetting or other changes made by IOP Publishing and/or its licensors”
+This Accepted Manuscript is © 2026 The Author(s). Published by IOP Publishing Ltd.
+ 
+ As the Version of Record of this article is going to be / has been published on a gold open access basis under a CC BY 4.0 licence, this Accepted
+Manuscript is available for reuse under a CC BY 4.0 licence immediately.
+Everyone is permitted to use all or part of the original content in this article, provided that they adhere to all the terms of the licence
+https://creativecommons.org/licences/by/4.0
+Although reasonable endeavours have been taken to obtain all necessary permissions from third parties to include their copyrighted content
+within this article, their full citation and copyright line may not be present in this Accepted Manuscript version. Before using any content from this
+article, please refer to the Version of Record on IOPscience once published for full citation and copyright details, as permissions may be required.
+All third party content is fully copyright protected and is not published on a gold open access basis under a CC BY licence, unless that is
+specifically stated in the figure caption in the Version of Record.
+View the article online for updates and enhancements.
+This content was downloaded from IP address 20.29.31.117 on 29/09/2026 at 08:00
+Runoff reduction from widespread implementation1
+of rain gardens in cities through urban-resolving2
+Earth system modeling3
+Laura C. Gray 1, Yifan Cheng 1, Lei Zhao 1,2,3*,4
+Ashlynn S. Stillwell 1*
+5
+1Civil and Environmental Engineering, The Grainger College of6
+Engineering, University of Illinois Urbana-Champaign, Urbana, IL, USA.7
+2Institute for Sustainability, Energy, and Environment, University of8
+Illinois Urbana-Champaign, Urbana, IL, USA.9
+3National Center for Supercomputing Applications, University of Illinois10
+Urbana-Champaign, Urbana, IL, USA.11
+*Corresponding author(s). E-mail(s): leizhao@illinois.edu;12
+ashlynn@illinois.edu;13
+Abstract14
+Green stormwater infrastructure (GSI) is widely regarded as an important nature-15
+based solution to combat the combined effects of urbanization and climate change,16
+yet its efficacy varies substantially across locations. GSI has not been evaluated17
+at broader scales due to complexity in representing local hydrology in larger scale18
+models. Using an urban-resolving Earth system model, we assess the suitability19
+of rain gardens, a form of ground-based GSI, in runoff reduction in urban areas20
+across the contiguous United States. We find strong influence of background cli-21
+mates on the runoff reduction potential across cities. Our results demonstrate22
+effective runoff reduction in colder and wetter climates from widespread urban23
+greening via installation of rain gardens compared with arid climates, possi-24
+bly enhancing resilience and livability in certain cities. Most runoff reduction25
+was due to enhanced urban evapotranspiration rather than increased infiltration.26
+However, not all urban areas are optimal for GSI implementation, likely due to27
+influence of background climate.28
+1
+Page 1 of 58 AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+Introduction29
+Climate change affects urban environments as built infrastructure continues to age and30
+worldwide urban populations increase1. Urban flooding and runoff have become promi-31
+nent issues for many cities and regions, arising from a combination of urban growth,32
+development in floodplains, altered precipitation patterns, and increases in impervi-33
+ous surfaces2. In addition, cities face urban heat island effects and more temperature34
+extremes3, 4, 5, 6. Urban infrastructures in particular are at risk from hydroclimatic35
+extremes associated with climate change if they are stressed by age and demand, or36
+are located near coastlines, storm tracks, rivers, and arid areas of vegetation7. Coupled37
+together, these factors stress the urban landscape and create livability challenges.38
+Climate models consistently project that frequency, duration, and severity of39
+hydroclimatic extremes will increase over this century under climate change 8, 9. There40
+is thus a pressing need to advance understanding of how climate adaptation strate-41
+gies can mitigate the negative impacts from climate change coupled with urban42
+development4, 10. Many modeling studies use mesoscale weather forecasting models,43
+such as the Weather Research Forecasting Model (WRF) 11, to investigate adaptation44
+strategies such as green roofs, cool roofs, and urban reforestation for heat adapta-45
+tion12, 13, 14, 15, 16, often with a focus on cooling benefits. However, mesocale modeling46
+has a high computational demand, with most studies focusing on events in single47
+cities12. Utilizing global climate models (GCMs) to model urban adaptation strategies48
+at a subgrid level reduces computational costs and promotes study of multiple urban49
+areas on a global scale 3, 17. Prior studies have used GCMs like the Community Earth50
+System Model (CESM) to study the impacts of urban adaptation strategies such as51
+green roofs, white roofs, reflective pavement, and street vegetation 3, 18, 19, 20. However,52
+the hydroclimatic effects of in-ground vegetated green stormwater infrastructure have53
+rarely been assessed across scales, primarily due to a lack of representation of the54
+complex hydrologic processes associated with those systems.55
+2
+Page 2 of 58AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+Green stormwater infrastructure (GSI) has been commonly proposed as one56
+promising tactic to combat some of the effects of urbanization and climate change,57
+such as greater urban flooding and decreased water quality, and increase resilience and58
+livability21, 22. GSI is unique in that it has potential to provide both hydrologic and59
+thermodynamic benefits 23, 24, 3. In-ground vegetated GSI systems provide benefits due60
+to their mimicry of and connection to the natural hydrologic cycle24, including vegeta-61
+tion and hydrologic complexity, though these systems are not often well modeled across62
+different locations. Ground-based GSI can capture rain where it falls, decreasing the63
+amount of surface runoff, helping alleviate urban flooding issues, treating stormwater,64
+and providing cooling through evapotranspiration, among other functions23, 24, 3. How-65
+ever, different types of GSI are not always suitable solutions due to prevailing weather66
+patterns, soil type, and other factors25. Additionally, while GSI is a promising tactic, it67
+also has environmental justice ramifications depending on how it is implemented 26, 27.68
+Typical studies determining GSI effectiveness and suitability are location-specific69
+or completed on a small scale 21, 28. For this work, we consider local scale to refer to70
+parcels to city scale, and regional scale to refer to scales larger than a single city.71
+Local work is extensive and focuses on runoff reduction, evapotranspiration, infiltra-72
+tion, and by nature is context specific 29, 30, 21. While upscaling work can be done to73
+go from site-specific to city-level, it typically requires intimate knowledge of the sewer74
+systems and other hydraulic infrastructure in place 29. As such, local scale studies are75
+better suited to evaluating site-specific performance than to generating broadly trans-76
+ferable findings. Regional-scale assessments, while less useful for individual site-specific77
+performance prediction, do reveal general suitability patterns within different climate78
+forcing contexts and allow for comparative analyses between locations. For this rea-79
+son, it serves as a compelling complement to local scale work, providing an initial80
+screening of potential implementation locations as well as identifying key processes81
+and factors that should receive more attention in local studies. By identifying where82
+3
+Page 3 of 58 AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+climatic conditions are broadly favorable or constraining, they can help municipalities83
+prioritize locations for detailed watershed and neighborhood analyses and identify the84
+processes that should receive particular attention during local design. For example,85
+regional differences in rainfall intensity, wetness, and evaporative demand can inform86
+local evaluations of storage capacity, drawdown time, soil properties, underdrain or87
+overflow requirements, and vegetation selection. Therefore, regional-scale assessments88
+narrow the design space, guide targeted data collection and modeling, and support89
+more efficient allocation of planning resources before site-specific analyses are under-90
+taken.There is thus a need for research completed at broader scales to understand91
+regional impacts of widespread urban GSI implementation 21, 25.92
+Additionally, despite its climate change adaptation potential, there remain bar-93
+riers to widespread GSI implementation on political, economic, and technological94
+levels31, 32, 24. Cities are generally concerned with the upfront and lifetime costs of GSI95
+systems, as well as risk, and are apprehensive about conflicting with existing laws or96
+city codes by installing GSI. From a technological standpoint, there is fear about the97
+presumed lack of data on suitability of GSI systems across different environmental98
+conditions. Modeling these systems on a broader scale allows for better understand-99
+ing of potential regional climate effects, but also provides consistent results to use for100
+comparison across studies and can promote city-to-city learning and knowledge trans-101
+fers. Furthermore, modeling these systems is a useful approach to provide context on102
+functional suitability for a given area or municipality, especially since GSI systems103
+can be be costly and difficult to maintain 32, 33, making their justification to involved104
+parties sometimes difficult.105
+Here, we present a novel, ground-based GSI parameterization in the form of a rain106
+garden for CESM’s Community Land Model Urban (CLMU) based on the parameters107
+from a calibrated U.S. rain garden model34 and rain garden soil mix recommendations108
+4
+Page 4 of 58AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+from the U.S. EPA 35. We conducted a thorough validation of our GSI parameteriza-109
+tion against published reports, with results demonstrating high credibility of the new110
+scheme. A rain garden was chosen to better understand benefits provided by a more111
+hydrologically complex, vegetated, and in-ground GSI system. Two separate simula-112
+tions were run for a present period (2006–2015) at a 10-km resolution, with differences113
+observed between the rain garden simulation and the control simulation. Our results114
+illustrate urban runoff reduction opportunities for many urban areas in the United115
+States due to widespread implementation of rain gardens.116
+Methodology117
+Community Land Model Urban118
+In this study, we utilized the Community Earth System Model (CESM) 36. CESM is119
+a fully-coupled, global-scale climate model hosted by the National Center for Atmo-120
+spheric Research (NCAR) and researchers in the Earth system science community 37.121
+CESM contains seven components that can communicate through a coupler: the atmo-122
+sphere, land, land ice, ocean, sea ice, river, and wave model 37, 36. Currently, CESM123
+is one of the few GCMs with an urban land parameterization as part of its land124
+model38, 5, providing a key motivation for its use in this study. The Community Ter-125
+restrial Systems Model (CTSM), the land component of CESM (formerly known as126
+the Community Land Model (CLM)), focuses mainly on how terrestrial ecosystems127
+and their various chemical, biological, and physical processes can affect and be affected128
+by climate. Grid cells in CTSM are made up of five land units: vegetated, glacier,129
+crop, lake, and urban. CTSM has been evaluated widely against both in situ and130
+remote sensing observations around the globe 39, 40, 41, 42. The urban parameterization131
+scheme embedded within CTSM (CLMU), simulates “local urban climate as an oper-132
+ational component of a global climate model” 43. CLMU models the energy, radiation,133
+5
+Page 5 of 58 AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+water, and mass transfer between the lower atmosphere and land in urban environ-134
+ments43. More details on how CLMU and CTSM simulate subsurface-land-atmosphere135
+hydrologic processes can be found in Olseon et al.39 and Lawrence et al.44, respectively.136
+Each grid cell in CTSM is composed of different percentages of each land unit. The137
+model computes outputs for each land unit and its allocated area, and for some output138
+variables, will calculate an area-weighted average over the whole grid cell area. CLMU139
+includes an embedded global urban surface dataset developed for global climate mod-140
+eling. This urban surface dataset provides information on present-day urban extent141
+and properties for every grid cell containing an “urban” subgrid land unit. Informa-142
+tion provided includes radiative, thermal, and morphological characteristics of urban143
+areas38.144
+The urban scheme in CLMU is based on an “urban canyon” conceptual structure,145
+comprised of wall (sunlit and shaded), canyon floor (pervious and impervious), and146
+roof facets 17. A schematic representation of CLMU and its role within the broader147
+gridcell is displayed in Figure 1. Importantly, Figure 1 illustrates that CLMU only148
+makes up only a portion of the overall gridcell. Adequate biophysical and hydrolog-149
+ical processes are captured over these facets 17, 43. For example, the pervious floor of150
+the canyon represents surfaces able to infiltrate water. Liquid water can pond on roofs151
+and canyon floors, supporting evaporation. Water in excess of the maximum ponding152
+depth or snowmelt water on both roofs and floors runs off. Pervious canyon floor evap-153
+oration is parameterized by a bulk scheme, where evaporation operates as a function of154
+the wetness of the entire soil column (to mimic vegetation roots) and water is removed155
+from each soil layer. A surface input dataset stipulating the radiative, thermal, mor-156
+phological, and hydrological characteristics of these facets for each grid cell in CTSM is157
+determined by satellite-derived data45. For the purposes of our simulations, values for158
+12 relevant urban surface property parameters from Cheng et al.’s 1-kilometer urban159
+surface dataset U-Surf 46 were implemented instead of the pre-existing surface dataset160
+6
+Page 6 of 58AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+driving CTSM to better represent urban areas. We utilized area weighting to aggregate161
+U-Surf to the 0.125 ◦resolution over CONUS and replaced the pre-existing values in162
+the default Jackson et al.45 configuration with U-Surf’s updated values. Details of this163
+new surface dataset and the updated variables can be found in Cheng et al. 46. Addi-164
+tionally, CLMU is forced using atmospheric model data (such as from the Community165
+Atmosphere Model (CAM)) or from observed forcing (such as field observations or166
+reanalysis data). To drive CLMU, air temperature and humidity, wind speed, precip-167
+itation, and downward solar and longwave radiation from a reference height (e.g., the168
+lowest level of the atmosphere model) are needed from the atmospheric forcing. CLMU169
+then produces sensible heat, latent heat, momentum fluxes, and solar and longwave170
+radiation budget, ground heat flux and heat storage, and anthropogenic heat flux that171
+are area averaged with fluxes from nonurban landunits to provide gridcell-averaged172
+fluxes to the atmosphere 43.173
+Traditional studies on GSI often utilize local scale (i.e., neighborhood) models to174
+examine hydrologic performance at a specific location. While such studies are useful175
+from a hydrologic and runoff management perspective, they are limited in scope and176
+are unable to provide information on broader suitability trends across locations and177
+climates. While we do sacrifice some hydrologic precision by utilizing a GCM, we are178
+still able to provide commentary on general rain garden suitability in varying climates179
+and examine large-scale variations.180
+Rain Garden Parameterization181
+For this work, we use rain gardens as our representative GSI to understand bene-182
+fits provided by a hydrologically complex, vegetated, and in-ground GSI system that183
+was still able to be represented within the constraints of CLMU. To first create a184
+functional parameterization within CLMU, we leveraged a local-scale calibrated rain185
+garden model from William et al. 34. Their calibrated parameters included thickness,186
+7
+Page 7 of 58 AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+0.125°
+(~10 km)
+Community Earth System Model
+default landunits
+(Lawrence et al., 2018; Danabasoglu, 2020)
+UrbanLakeGlacier
+CropVegetation
+Roof
+Roof
+Impervious Road
+Pervious Road
+Urban Fraction
+(% Urban x 10 km)
+U-Surf urban surface dataset
+(Cheng et al., 2024)
+Canyon Floor
+Fig. 1: Plan view schematic representation of landunit functionality within an example grid-
+cell with specific focus on the urban landunit. Each gridcell is made up of varying percentages
+of the five landunits: vegetation, crop, glacier, lake, and urban (shown on the left). The urban
+landunit component (right) includes a roof along each side of the canyon and does not over-
+lap with the canyon floor, which includes the impervious road and the pervious road. Note
+that the pervious road typically makes up a smaller portion of the canyon floor than the
+impervious road. Included on the figure are also the main data sources for this analysis, with
+the land surface data coming from CESM’s default settings, and urban inputs coming from
+the U-Surf dataset 46.
+porosity, hydraulic conductivity, seepage rate, and void ratio34. In examining how the187
+surface and soil hydrology functioned in CLMU, specifically that of the pervious road,188
+we determined many relevant soil column calculations are related to porosity and con-189
+ductivity values17, 44. However, the soil properties in CLMU are based on the more190
+simplistic soil data, only utilizing the percent sand and percent clay within the soil 17.191
+CLMU’s pervious road can function with a large number of soil layers in the hydrologic192
+column, but does not allow for explicit vegetation in the urban scheme at this time 17.193
+Despite not having explicit vegetation representation, a bulk scheme accounting for194
+evaporation still exists and operates as a function of soil moisture 17. Additionally,195
+8
+Page 8 of 58AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+CLMU does contain a rooting scheme 17, despite a lack of explicit vegetation. While196
+shading is an important consideration for other GSI strategies with taller vegetation,197
+and is not currently represented in CLMU, typical rain gardens do not contain tall198
+vegetation, allowing us to proceed with the parameterization.199
+We created and implemented a soil scheme representing rain garden installation200
+within the model. In this research, the soil scheme for all pervious road areas in the201
+urban landunit was altered to represent an optimistic scenario of widespread ground-202
+based GSI implementation. This strategy of 100% conversion is commonly used in203
+other climate adaptation modeling studies analyzing the suitability of green roofs,204
+cool roofs, and street trees to bracket the upper bound of the potential effects of205
+adaptation20, 3, 10, 47. However, this work should not be viewed as a forecasting study,206
+but instead more of an idealized, upper-bound sensitivity test and mechanistic study.207
+We recognize this scenario is not practical, but can still provide contextual information208
+on rain garden suitability across CONUS. For the urban soil columns, we implemented209
+the porosity and saturated hydraulic conductivity values from the local-scale rain210
+garden model 34 for the top seven layers of the soil column, corresponding to a depth211
+of around 0.68 meters (approximately 27 inches), as a reasonable depth of engineered212
+soil in a rain garden 35, 48, 49, 50. While these properties are derived from a single rain213
+garden in Wisconsin, the soil in rain gardens is typically an engineered soil that can be214
+designed to have ideal infiltration properties, such as those present in the rain garden215
+in Wisconsin. Additionally, because the soil properties are based on percentages of216
+sand and clay, we implemented 60% sand and 10% clay based on EPA and other217
+common municipal guidelines for rain garden soil mixtures 35, 48, 51, 52, 49, 50. However,218
+if the percent sand in one of the top seven layers of the urban soil column was already219
+above 60%, we kept the remaining value in place, and if the percent clay was below220
+10%, we retained that value as well. The percent sand and percent clay in the remaining221
+13 layers remained their default values as prescribed in CESM, allowing us to capture222
+9
+Page 9 of 58 AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+underlying soil trends. The default percent sand and percent clay values used by223
+the model vary by location and soil layer and are derived from the International224
+Geosphere-Biosphere Programme (IGBP) soil dataset (Global Soil Data Task 2000)44.225
+CLMU assumes that urban soils do not have any organic matter present 17, and as226
+such any organic matter considerations are omitted from our parameterization. Figure227
+2 illustrates the soil properties (percent sand and percent clay) in representative soil228
+layers within and outside of the rain garden parameterization across CONUS.229
+A schematic representation of these changes from the default hydrology of CLMU230
+to the rain garden parameterization is shown in Figures 3(a) and 3(b), respectively.231
+More information about how hydrology functions in CTSM and CLMU can be found232
+in Oleson et al. 17 and Lawrence et al. 44.233
+120° W 100° W 80° W
+45° N
+40° N
+35° N
+30° N
+25° N
+(a)
+120° W 100° W 80° W
+45° N
+40° N
+35° N
+30° N
+25° N (b)
+120° W 100° W 80° W
+45° N
+40° N
+35° N
+30° N
+25° N
+(c)
+120° W 100° W 80° W
+45° N
+40° N
+35° N
+30° N
+25° N (d)
+Fig. 2: Representation of the soil properties across CONUS in two representative layers of
+soil. Subfigures (a) and (c) represent the percent sand and percent clay respectively for the
+top layer of soil (located within the rain garden parameterization). Subfigures (b) and (d)
+represent the percent sand and percent clay respectively for the eighth layer of soil directly
+below the rain garden parameterization (reflecting native soil properties). Note that figures
+(a) and (c) reflect the 60% sand and 10% clay design mix, with exceptions for locations with
+percent sand greater than 60 and percent clay lesser than 10.
+10
+Page 10 of 58AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+Additionally, to better simulate vegetation, we also altered the pervious road234
+albedo for the rain garden simulation to have a value of 0.2. We assumed that rain235
+garden vegetation could be approximated within the known albedos associated with236
+“grass and pasture,” “green grass,” or “tall farm crops.” The 0.2 value falls within237
+an appropriate range for all of these classifications 53; we include a sensitivity analysis238
+for albedo in the Supplemental Information with a summary in Table S1. We made239
+this change in the surface dataset file used to run our rain garden simulation. While240
+this parameterization was designed for rain gardens specifically, we note that the241
+scheme could be easily adapted to other types of GSI such as planter boxes, infiltration242
+trenches, or bioswales.243
+For further representation of the fraction and area of each of the 5466 CONUS244
+gridcells that were altered due to the rain garden parameterization, see Supplemental245
+Information Figures S4 and S5.246
+Validation of Rain Garden Hydrology247
+The CLMU itself has been evaluated extensively against remote sensing and in248
+situ observations on urban temperature and surface energy balance across the249
+globe28, 39, 40, 41, 54, 55, 56, 57, 58, 59. Previous work has validated CESM’s capability to250
+robustly represent the hydrologic cycle and specifically total runoff by gridcell 42.251
+Because urban hydrologic data are scarce, urban runoff has not been directly validated.252
+However, since the water balance and cycling are closely tracked in each landunit in253
+CESM, including CLMU, Gray et al.’s evaluation, even in the absence of measured254
+urban runoff data at a global scale, can provide confidence and indicative information255
+in CESM’s urban hydrologic modeling 42.256
+To ensure the robustness of our simulation results, we further validated our new257
+rain garden parameterization against published reports. There is a robust and growing258
+body of literature on rain garden pilot installations and experiments in the United259
+11
+Page 11 of 58 AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+States, which aligns with our region of study. Runoff reduction in rain gardens can260
+vary widely; e.g., 12–89%60, 61, 62. Given this variability, we focused on the water mass261
+balance and hydrologic mechanisms within the pervious road through our rain garden262
+parameterization:263
+∆S = inflow− outflow (1)
+where ∆S represents the change in storage over the time period. Inflow into the264
+rain garden can be defined as a combination of precipitation and overland flow or265
+run-on, while outflow can be defined as a combination of infiltration, evapotranspi-266
+ration, and runoff. Because overland flow is routed to the river scheme of CESM 44267
+and does not flow to the parameterized rain garden, the “inflow” term simplifies to268
+only include precipitation. Here, we conducted a further CONUS land-only simulation269
+with the rain garden parameterization for 1999–2018 to perform validations on key270
+water balance components of rain gardens against present-day, local- and regional-271
+scale, observational and/or modeling studies in the literature. The simulation is driven272
+by the NLDAS-2 re-analysis dataset as the atmospheric forcing 63 to provide present-273
+day results for validation with observations. It ran at the same spatial resolution (10274
+km) as our other simulations, and we analyzed daily average values to be consistent275
+with literature.276
+We validated the rain garden parameterization with 14 case stud-277
+ies64, 62, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76 using reported infiltration and278
+evapotranspiration values as a percentage of incoming water. The reported rain gar-279
+den percentages used for comparison to CLMU come from a variety of observational280
+and modeling methods, are often reported in different units (e.g., mm/d, L, and281
+percentages), and represent locations in the United States. Due to unit and scale282
+12
+Page 12 of 58AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+discrepancies, we used percentages to capture and compare underlying hydrologic283
+trends. We calculated the model outputs of evapotranspiration and infiltration as a284
+percentage of the total model precipitation in CLMU on the basis of information285
+of the study areas to enable this comparison (see the footnotes of Supplemental286
+Information Figure S11 for details).287
+Equations 2 and 3 were used to calculate percent infiltration and evapotranspira-288
+tion:289
+%Infiltration =
+Pn
+i=1 xiPn
+i=1 zi
+× 100 (2)
+290
+%Evapotranspiration =
+Pn
+i=1 yiPn
+i=1 zi
+× 100 (3)
+where n represents the number of events for the time period, x represents infil-291
+tration volume, y represents evapotranspiration volume, and z represents the total292
+precipitation for the rain garden. Infiltration and evapotranspiration are the primary293
+mechanisms for reducing runoff in GSI, providing a key motivation for this study. All294
+estimates were computed using grid cell(s) that contain the respective study regions.295
+In some cases, the exact gridcell did not contain an urban component, so the next296
+nearest gridcell with an active urban component was used for calculation. Addition-297
+ally, all percentages from CESM were calculated with respect to total precipitation298
+over the period, as the only hydrologic input to each gridcell and landunit is precipi-299
+tation (CESM does not allow for run-on or inflow from other gridcells). However, the300
+reported studies often included overland flow, run-on, or stormwater influent as part301
+of the inflow into the rain garden, in addition to precipitation. These studies with302
+influent included in the calculation are indicated in Supplemental Information Figure303
+S11.304
+13
+Page 13 of 58 AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+While this validation was focused on evapotranspiration and infiltration mecha-305
+nisms as a result of incoming water (namely precipitation in CLMU), there are other306
+components of the water balance that influence our results. In Supplemental Infor-307
+mation Figure S11, some of our calculated evapotranspiration percentages exceed308
+100%. This result occurs during periods where there is more evapotranspiration than309
+total precipitation, and is possible due to CLMU’s soil moisture storage. Addition-310
+ally, several of the studies in Supplemental Information Figure S11 used the terms311
+“exfiltration” or “recharge” instead of “infiltration.” For the sake of comparison, we312
+assumed that these terms were comparable to CLMU’s infiltration. Lastly, some stud-313
+ies included in Supplemental Information Figure S11 reported total inflow as well as314
+precipitation alone; we report both for the sake of stronger comparison.315
+Almost half of the studies referenced in Supplemental Information Figure S11 come316
+from Villanova, PA, USA, specifically Villanova University, and its instrumented cam-317
+pus rain gardens77, 78. GSI functionaity is an area of active research at an instrumented318
+scale, with Villanova researchers completing a multitude of studies on these systems,319
+hence the oversampling represented in our table. Additionally, since GSI systems tend320
+to be designed primarily for their infiltration capabilities and flood reduction poten-321
+tial, performance data are usually reported in areas with localized flooding concerns.322
+Thus, most available data on rain garden hydrology and water balances come from323
+areas in the Midwest and Northeastern regions of the United States, which is reflected324
+in our table. Studies on rain garden water balances, and not runoff reduction, are also325
+limited as a field of ongoing study.326
+From Supplemental Information Figure S11, we show that CLMU modeled infil-327
+tration and evapotranspiration as a percentage of total precipitation are in reasonable328
+agreement with the modeled and observed values based on comparison between329
+observed and modeled infiltration and evapotranspiration from rain gardens across330
+14
+Page 14 of 58AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+seven United States cities. Almost all of the infiltration percentages are within reason-331
+able range or in direct alignment with literature. Evapotranspiration percentages have332
+more variability, but almost half of the entries still have good agreement. The exist-333
+ing differences could stem from the following reasons. (1) Inclusion of influent: many334
+of the studies referenced in our table included influent, in addition to precipitation,335
+as part of their inflow term. Studies that only used precipitation as their inflow into336
+a rain garden tended to have stronger agreement with our CLMU calculations. Only337
+using precipitation as an input is closer to our calculations. (2) Evapotranspiration338
+calculations: there are a variety of methods to calculate and observe evapotranspira-339
+tion, such as the Penman-Monteith (P-M) equation or the Hargreaves equation 73, 76,340
+some of which are used in the selected case studies. CESM, and thus CLMU, param-341
+eterizes evapotranspiration utilizing the bulk transfer scheme and Monin-Obukhov342
+Similarity Theory (MOST)44. While the underlying physics between the P-M equation343
+and MOST, for example, are the same because the P-M equation is derived from344
+MOST, they can still produce different estimates of evapotranspiration 79. (3) Resolu-345
+tions: while our simulation is striking in that it allows the global CESM/CLMU to run346
+at 0.125◦(10-km) fine resolution over CONUS, this resolution is still relatively coarse347
+compared to the local-to-regional-scale studies, particularly studies of a single rain348
+garden, which are typically not more than 30 square meters in size 35. (4) Hydrologic349
+Lag: for some of the studies, infiltration and evapotranspiration as a result of inflow350
+are equal to 100%, particularly in controlled settings where no runoff is generated.351
+This balance is not the case for our CLMU estimates, particularly as what is reported352
+as infiltration can then become evapotranspiration. In CLMU’s pervious road, there353
+is a noticeable lack of hydrologic lag time (see Fig. 8 and 9). Due to this hydrologic354
+lag, there is an increased likelihood that infiltration can become evapotranspiration355
+in a short time period, particularly as evapotranspiration is parameterized in a bulk356
+scheme that removes water as a function of the “wetness” of each soil layer.357
+15
+Page 15 of 58 AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+Notably, a similar study from 2014 completed by Demuzere et. al implemented a358
+bioinfiltration system with irrigation and drainage into CLMU 28. This study is not359
+included in our validation table, as it was completed in Australia, outside of the360
+scope of our model. However, this study used an analogous methodology to the one361
+adapted here, utilizing some altered parameter values (rain garden depth, porosity,362
+and saturated conductivity) similar to our own. Additionally, they also focused on363
+changes to soil properties, but implemented a separate soil scheme, instead of changing364
+the percent sand and percent clay. Demuzere et. al completed this study and carried365
+out a successful validation of soil moisture (95% confidence) for their location and366
+time period 28. Based on the similarities in studies, we assert that these results further367
+illustrate the credibility of our study.368
+Simulation Plan and Analysis369
+We ran two separate simulations: one control simulation, with the default CLMU in370
+place, and one test simulation, with the rain garden parameterization. Both of these371
+simulations were run at the finest resolution currently available in CESM of 10 km, or372
+0.125◦, using the land-only setting. This resolution is a regional refined grid and only373
+runs at the 10 km resolution over CONUS and at nominal 1 degree elsewhere. Land-374
+only simulations require atmospheric climate forcing data to drive the land model; for375
+these simulations, this atmospheric dataset came from Phase 2 of the North American376
+Land Data Assimilation System (NLDAS-2) 63. The 2006–2015 period was selected to377
+represent the “current” climate and our surface dataset used Jackson et al.’s urban378
+extent45 with Cheng et al’s 46 updated parameters. CESM calculates all variables at379
+a time-step of 30 minutes, but only provides outputs at hourly, daily, and monthly380
+intervals. For the sake of this analysis, we utilize the monthly outputs to examine381
+longer temporal trends. A summary of the key parameters for the control simulation382
+and the rain garden simulation is shown in Table 1.383
+16
+Page 16 of 58AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+T able 1: Parameter differences between the control and GSI simulation.
+Parameters Rain Garden (GSI)
+Simulation
+Control (Default)
+Simulation
+Resolution 10 km 10 km
+Time Period 2006–2015 2006–2015
+Saturated hydraulic conductivity (Ksat) 115 mm/hr
+(for first 7 layers of soil)
+Default value for soil
+properties of grid cell
+Porosity 0.44
+(for first 7 layers of soil)
+Default value for soil
+properties of grid cell
+% Sand 60%
+(for first 7 layers of soil)
+Default value for soil
+properties of grid cell
+% Clay 10%
+(for first 7 layers of soil)
+Default value for soil
+properties of grid cell
+Surface Albedo 0.2 Default for grid cell
+Forcing Meteorology NLDAS-2 NLDAS-2
+All simulations and data processing were conducted in NCAR’s High Performance384
+Computing (HPC) cluster, Derecho 80. Python was used to process simulation results.385
+To complete city-specific analysis (e.g., for Chicago), we utilized shapefiles from the386
+U.S. Census Bureau81 and overlayed them with the∼10-km grid to investigate trends387
+within specific city boundaries. Gridcells that overlapped with the shapefiles were388
+flagged, and an average of the flagged gridcell values was computed to calculate the389
+city mean. The cities of Chicago, New York, Seattle, and Atlanta were chosen for390
+further analysis for several reasons. All four of these cities have documented issues with391
+combined sewer overflows (CSOs), stemming from older combined sewer infrastructure.392
+The U.S. Environmental Protection Agency (EPA) commonly recommends GSI as a393
+solution to cities facing CSOs, hence why these four cities would be of note for rain394
+garden suitability. Additionally, they represent four U.S. regions, and are all notably395
+large urban areas (in terms of size and population). Because of their size, there are more396
+urban gridcells for each of these cities, allowing for a more comprehensive analysis.397
+Additionally, based on our results, we noted that most cities in arid areas saw little398
+to no benefit in terms of runoff reduction, and did not think it was useful to perform399
+further analysis on a representative arid city. The four cities chosen do represent a400
+17
+Page 17 of 58 AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+blend of cold and temperate climates, with Chicago and parts of New York falling into401
+the cold group, and Seattle, Atlanta, and other parts of New York in the temperate402
+group. We specifically included Seattle due to the uniqueness of its results (increases403
+in runoff) as opposed to other temperate cities.404
+For K¨ oppen-Geiger climate analysis, we utilized gridded data for the present period405
+provided by Beck et al. 82 and overlaid these data with our results for grouping and406
+classification. One-way analysis of variance (ANOVA), Tukey pairwise testing, and407
+one-tailed student’s t-tests were then used to determine statistical significance of408
+results.409
+Results410
+Runoff Reduction from Widespread Rain Gardens411
+The rain garden and control simulation results were compared using urban runoff412
+(runoff generated only over the urban landunit) to evaluate suitability, since a key413
+function of rain gardens is to increase infiltration and capture runoff from impervious414
+areas35, 76. Additionally, runoff represents a key hydrologic variable associated with415
+human impacts42. For the purposes of this study, we focused on three runoff variables:416
+urban total runoff, Qt, urban surface runoff, Qsrf , and urban subsurface runoff, Qsub.417
+Qsrf represents the overland flow from saturation and infiltration excess mechanisms418
+over the urban landunit, and Qsub represents drainage due to saturated soil moisture419
+conditions existing in the urban soil column 17, 44. Qt represents the sum of Qsrf and420
+Qsub83.421
+In Figure 4, the average monthly difference, calculated over the 10-year period,422
+between the control simulation and rain garden simulations’ respective runoff values423
+are shown for Qsrf , Qsub, and Qt, respectively. When utilized, the subscript “c” refers424
+to the control simulation, and “rg” refers to the rain garden simulation. Only gridcells425
+with an urban landunit present are shown.426
+18
+Page 18 of 58AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+Figure 4(a) illustrates that many urban areas in the contiguous United States, on427
+average, do not demonstrate much change in surface runoff as a result of the rain gar-428
+den implementation. The mean surface runoff difference was -0.11 mm/month (where429
+negative values indicate an average decrease in runoff) with a standard deviation of430
+± 0.27 mm/month and minimum and maximum values of -3.8 and 1.1 mm/month,431
+respectively. These values span a small range and indicate minimal runoff reduction in432
+most areas; however, some Midwestern and Northeastern states show a slightly larger433
+negative difference between the rain garden and control simulations, indicating a small434
+level of average runoff reduction. Around Massachusetts, a slight positive difference435
+can be observed, indicating a possible average runoff increase when compared to the436
+control simulation. This increase indicates that Massachusetts might not be a suit-437
+able location for rain garden implementation, or that it is not suited to this particular438
+parameterization of GSI. The altered conditions created by the parameterization do439
+not produce decreases in runoff, but rather increases, possibly due to the soil condi-440
+tions created not being superior to what already existed in that location. Figure 4(b)441
+shows a more pronounced difference in subsurface runoff than the difference in Figure442
+4(a)’s surface runoff in multiple urban areas, further illustrated by the mean subsur-443
+face runoff difference of -0.52 mm/month (a larger average decrease than for Figure444
+4(a); standard deviation± 1.1 mm/month, minimum -10.7 mm/month, maximum 5.1445
+mm/month). These values span a larger range and indicate more subsurface runoff446
+changes. Across the Midwest and Northeast, as well as in some urban areas border-447
+ing the Gulf of Mexico, there is a pronounced negative difference in subsurface runoff448
+between the control and rain garden simulation, again indicating average runoff reduc-449
+tion. However, a few urban areas, specifically those located in the Pacific Northwest,450
+show a positive difference, indicating a potential average runoff increase. Figure 4(c)451
+illustrates the total urban runoff difference, with a mean difference of -0.63 mm/month452
+(an average decrease in runoff; standard deviation ± 1.1 mm/month, minimum -10.0453
+19
+Page 19 of 58 AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+mm/month, maximum 4.8 mm/month). Unsurprisingly, the strong signals from Figure454
+4(b) show up in Figure 4(c), with similar trends highlighted in Figure 4(c), particu-455
+larly since the differences in subsurface runoff were larger than those in surface runoff.456
+Overall, 84.5% of our urban gridcells see average decreases in total urban runoff. From457
+a land area perspective, ∼38,085 km 2 of the total ∼48,486 km 2 urban area altered458
+demonstrate a decrease in total runoff.459
+We then find percent total runoff reduction change between the rain garden460
+simulation and control simulation utilizing Equations 4 and 5:461
+Runoff Reduction = (Vin− Vout)/(Vin) (4)
+462
+%Change Runoff Reduction = (RR rg− RRc)× 100 (5)
+where Vin represents volume of inflow and Vout represents volume of outflow, adapted463
+from Guo and Gao 84. In our case, inflow simplifies to only precipitation, and outflow464
+simplifies to the total urban runoff. We then calculate total urban runoff reduction for465
+the rain garden simulation (RRrg) and for the control simulation (RRc), and subtract466
+them from one another, shown in Equation 5. Using this methodology, we find a mean467
+increase in total urban runoff reduction of 0.8% ± 1.3%, with a minimum value of468
+−6.3% (6.3% runoff increase) and maximum value of 10% increase in runoff reduction469
+in response to the rain garden implementation.470
+We find strong climatic signals in the geographic patterns of runoff difference.471
+We utilized the K¨ oppen-Geiger climate classification82 to investigate the impacts of472
+cities’ background climates on the simulated urban runoff changes in our results. All473
+urban areas in the contiguous United States (CONUS) are broadly categorized into474
+20
+Page 20 of 58AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+three groups based their primary climate classification: cold, a combination of conti-475
+nental/cold and polar categories; temperate, a combination of temperate and tropical476
+categories; and arid. We analyzed the mean total urban runoff difference over the477
+10-year period, with cities categorized into their respective three subgroups; Figure478
+5(a). Based on one-way analysis of variance (ANOVA) and Tukey pairwise testing,479
+the runoff changes across the three climate groups are statistically significantly dif-480
+ferent from one another ( p < 0.05). Further examination using one-tailed student’s481
+t-tests confirms that cities in the “cold” subgroup, most of which are located in the482
+Midwest and Northeast, show statistically significantly more runoff reduction than the483
+temperate and arid groups ( p < 0.05 for both).484
+Previous studies have demonstrated that arid regions are more water-limited,485
+meaning that water availability is the main limiting factor in ecological processes85, 86,486
+which explains why there is little runoff reduction in arid areas. Temperate and cold487
+regions tend to be more humid, and are thus often energy-limited, with available energy488
+(solar radiation) being the main constraint 87, 85. We theorize that despite both tem-489
+perate and cold areas being energy-limited, cold regions see more runoff reduction due490
+to their stronger seasonality. Cold regions in CONUS experience four strong seasons491
+with wide temperature ranges, moreso than temperate climates 87. In these seasons,492
+they fluctuate between available radiation and available water, unlike temperate and493
+arid regions, which are almost always water-limited or energy-limited. This flexibility494
+allows for more disturbances and thus responses to the existing surface hydroclimate.495
+In Figure 5(b), we further break down the runoff difference between the two sim-496
+ulations into exact K¨ oppen-Geiger climate classifications. No polar CONUS gridcells497
+have an urban landunit, so the four primary climate classes represented by U.S. cities498
+are tropical (“A”), arid (“B”), temperate (“C”), and cold (“D”). For the exact break-499
+down of all of the climate zones listed in Figure 5(b), see Supplemental Information500
+21
+Page 21 of 58 AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+Figure S10. Across all of the arid regions, there is little to no total urban runoff differ-501
+ences due to our rain garden implementation. Because arid regions are water-limited502
+and have very little rain for most of the year, this result was not surprising. How-503
+ever, the tropical regions (comprising a small part of the tip of Florida), did see some504
+slight runoff reduction as a result of our rain garden implementation. As shown in505
+Figure 5(a), most of the cold regions see decreases in total urban runoff as a result506
+of the implementation, with Dfa and Dfb, representing cold climates without dry sea-507
+sons and hot and warm summers seeing the greatest decrease in total urban runoff.508
+These regions comprise most of the American Midwest and Northeast, which is also509
+consistent with our results in Figure 4. Most interestingly, climate zone Csb, repre-510
+senting temperate climates with dry, warm summers largely sees increases in total511
+urban runoff. This climate zone comprises much of inner California as well as a large512
+portion of the Pacific Northwest, which is again consistent with the results that we513
+see in Figure 4. While other climate zones see some slight increases in total urban514
+runoff, Csb is the only climate zone with a mean increase in total urban runoff. Other515
+temperate zones see slight average decreases in total urban runoff.516
+Our results show that certain urban areas are more suitable candidates for installa-517
+tion of rain gardens based on our parameterization, and that reduction of runoff in both518
+surface and subsurface runoff, on average, does not always occur in all urban locations.519
+However, the results indicate that our parameterization does function as intended520
+(capturing and reducing runoff) across many urban areas in the United States, and521
+provides insight into areas potentially better suited for rain garden implementation.522
+Our validation completed and shown in Figure S11 illustrates that the infiltration523
+and evapotranspiration capabilities captured by our parameterization are consistent524
+with independently observed and modeled rain garden results from literature. Addi-525
+tionally, approximately 78% of the urban land area saw runoff reduction as a result526
+22
+Page 22 of 58AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+of our implementation, even if it was minimal, further illustrating the effectiveness of527
+the parameterization.528
+Figure 6 provides more detail about trends across four cities in four different U.S.529
+regions (see Supplemental Information Figure S1 for city locations). Consistent with530
+Figure 4, New York City and Chicago show a negative difference between scenarios531
+(indicating runoff reduction), but Seattle notably shows a positive difference, partic-532
+ularly in the latter years of the simulation (indicating an increase in runoff). Atlanta533
+shows almost no difference between simulations across the 10-year period, indicat-534
+ing our rain garden parameterization simulation provided minimal runoff reduction535
+for that area. Interestingly, a seasonal pattern emerges regarding runoff differences536
+between scenarios, where peak runoff reduction tends to occur in the winter months537
+with occasional exceptions. However, Seattle shows a dramatically different pattern;538
+through further investigation, we determined this difference was due to an increase in539
+subsurface runoff, which might be due to greater infiltration from the rain garden sys-540
+tem. However, this Seattle outcome is not observed for all cities, raising future research541
+questions around effects of unique urban climate and form. Overall, the cities shown542
+here are consistent with the findings that urban areas in the Midwest and North-543
+east typically show a greater runoff reduction benefit as a result of our rain garden544
+parameterization in CLMU.545
+To understand the differences in water partitioning between the two simulations,546
+we examined differences in other hydrologic variables. Figure 7(a) shows the difference547
+in urban evapotranspiration (Q ET ), and Figure 7(b) shows the difference in urban548
+infiltration (Qinf il). Note that the scale in Figure 7(b) is different than the other maps549
+in this section and represents a smaller range of values. The mean evapotranspiration550
+difference was 0.9 mm/month, illustrating an average increase in evapotranspiration,551
+with a standard deviation of ± 1.2 mm/month and minimum and maximum values552
+of -5.9 and 8.8 mm/month, respectively. Approximately 90% of our urban gridcells553
+23
+Page 23 of 58 AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+see average increases in evapotranspiration, with ∼43,959 km 2 showing increases in554
+evapotranspiration of the total ∼48,486 km 2 urban area altered. The mean infiltra-555
+tion difference was 0.2 mm/month, illustrating a small average increase in infiltration,556
+with a standard deviation of ± 0.3 mm/month and minimum and maximum values557
+of−1.2 and 4.0 mm/month, respectively. Approximately 77% of our urban gridcells558
+see increases in infiltration, with ∼33,192 km2 showing increases in infiltration of the559
+total∼48,486 km2 urban area altered. From Figure 7(a), we show that a large amount560
+of incoming water (i.e., rainfall) partitions to evapotranspiration, as the areas with561
+increased evapotranspiration (shown in blue, a positive difference) align closely with562
+areas with less runoff (larger runoff reduction) in Figure4(c), with similar magnitudes.563
+Additionally, the areas in the Pacific Northwest with decreased evapotranspiration564
+align closely with areas with more runoff in Figure 4(c). These results are consistent565
+with monitored experimental rain gardens that show runoff reduction can vary between566
+infiltration, evapotranspiration, and a combination of these mechanisms, depending567
+on weather and infrastructure design 75, 71, 76. However, Figure 7(b) (and supplemen-568
+tary Figures S2 and S3) illustrates that there is still some increased infiltration into569
+the soil, also shown in blue, representing a positive difference. These areas of increased570
+infiltration align with the areas of decreased surface runoff shown in Figure 4(a),571
+which is consistent with infiltration-dominated GSI functionality. Because this param-572
+eterization uses implicit representation of vegetation, these results do not necessarily573
+reflect survival or dormancy of plants in the winter months, nor do they differentiate574
+between summer and winter processes outside of existing radiative effects. However,575
+there are still seasonal trends in infiltration and evapotranspiration, illustrated further576
+in the Supplemental Information Figures S6(c), S7(c), S8(c), and S9(c). Based on these577
+select gridcells, evapotranspiration seasonality impact varies depending on location,578
+while infiltration tends to increase in the winter months, likely linked to snowmelt.579
+Infiltration of snowmelt into soil macropores and its successive refreezing can induce580
+24
+Page 24 of 58AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+frost heave. This induction creates new preferential flow pathways and expands exist-581
+ing pores in soil, allowing for deeper surface water infiltration and acceleration of soil582
+thawing88.583
+Runoff Dynamics During Storm Events584
+To understand the rain garden functionality in response to storm events, we selected585
+two storm events for further study. Additional simulations over the storm periods were586
+completed to output data on an hourly scale (not done for the overall 10-year simula-587
+tion due to computational cost). In Figures 8 and 9, two storm events that occur over588
+the city of Chicago, IL, are shown to illustrate urban runoff generation at an hourly589
+scale. Respective precipitation is shown on the top horizontal axis of each set of figures.590
+We selected a 14.5 mm (∼0.5 in) spring storm event from April 19–20, 2011 (Figure591
+8), and a 35 mm (∼1.4 in) winter storm event from January 29–30, 2013 (Figure 9),592
+to compare differences in runoff generation during contrasting seasons. We selected593
+Chicago as a reference city due to notable average runoff reduction in Figure 4 (see594
+Supplemental Information Figure S1 for Chicago’s location). During the spring storm,595
+almost exclusively surface runoff is generated, with little to no subsurface runoff gen-596
+erated in both the control (Figure 8(a)) and rain garden simulations (Figure 8(b)). In597
+Figure 8(c), there is a small negative difference between the two simulations, imply-598
+ing runoff reduction (likely due to enhanced infiltration, see supplementary Figures599
+S2 and S3). During the winter storm, both surface and subsurface runoff are gener-600
+ated in the control and rain garden simulations (Figures 9(a) and 9(b), respectively),601
+possibly in part due to snow or frozen soils. In Figure 9(c), there is a greater negative602
+difference between the simulations almost uniformly across the 24-hour period, indi-603
+cating runoff reduction. This reduction is also greater than that of the spring storm,604
+which is consistent with the seasonality shown in our overall results.605
+25
+Page 25 of 58 AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+Discussion606
+For many municipalities and urban areas, GSI has been proposed as a promising cli-607
+mate adaptation strategy due to potential flood mitigation benefits. From a hydrologic608
+perspective, GSI implementation can reduce surface water runoff, due largely to infil-609
+tration and evapotranspiration, and potentially alleviate urban flooding, if extensively610
+implemented89, 90. Vegetated GSI also can provide cooler “microclimate” areas due611
+to evapotranspiration, affecting urban meteorology 91. An increase in vegetative cover612
+offers more possibilities for carbon sequestration, helps improve air quality, and also613
+provides a habitat for biodiversity 92. Because GSI offers a variety of benefits across614
+sectors, it can be seen as a potentially appealing option for many municipalities with615
+aging infrastructure. However, the results from this study illustrate that not all cities616
+are suitable candidates for rain garden implementation from a hydrologic perspective.617
+Based on this work, urban areas in the Midwest, Northeast, and those bordering the618
+Gulf of Mexico would be more suitable areas to implement rain gardens for runoff619
+reduction, whereas urban areas across most of the American West and Southeast show620
+little to no runoff reduction across the 10-year study period. Some areas in the Pacific621
+Northwest demonstrate increases in runoff in our simulations, likely primarily due to622
+a decrease in evapotranspiration and corresponding increase in subsurface runoff.623
+A significant portion of the runoff reduction delivered by our parameterization624
+was due to enhanced urban evapotranspiration rather than just increased infiltra-625
+tion. While most GSI is designed to reduce and capture runoff through infiltration,626
+experimental studies have also demonstrated the importance of evapotranspiration in627
+GSI water balances75, 76. This combination of infiltration and evapotranspiration pro-628
+vides credence to our parameterization’s implicit vegetation representation and ability629
+to mimic vegetative processes. Our results show that in a region without increased630
+evapotranspiration (namely urban areas in Washington and Oregon) there was more631
+subsurface runoff occurring, indicating that more water was present in the soil with632
+26
+Page 26 of 58AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+the implemented rain garden. This result is interesting, as it illustrates less total runoff633
+reduction benefits provided in these areas, but that the parameterization was able to634
+retain more water compared to the control. There was not necessarily much greater635
+infiltration in these areas (see Fig. 7(b) ), but due to the changes in soil hydrology,636
+more water was captured in the soil. However, such a result does not indicate that rain637
+gardens and GSI broadly are not a suitable adaptation strategy for areas such as the638
+Pacific Northwest. The purpose of our work is to broadly understand suitability, and639
+the results here motivate further studies completed on a local-urban watershed mod-640
+eling scale with explicit considerations of underlying sewer systems that could better641
+understand how GSI such as rain gardens would respond to actual implementation in642
+a specific region, such as the Pacific Northwest. The Pacific Northwest has some of643
+the most prevalent implementation of GSI in the United States, and the region has644
+benefited from both water quantity and quality perspectives 93. Most runoff reduc-645
+tion from our parameterization occurs during the winter, where evapotranspiration in646
+the Pacific Northwest is likely lowest due to their cool, wet winters. While this area647
+might not be evapotranspiring in the same manner as other locations in CONUS,648
+water is still being retained in the soil and infiltration slightly increases due to the649
+parameterization. Additionally, much of Seattle’s sewer system is combined sewers,650
+providing additional motivation to implement GSI to mitigate combined sewer over-651
+flows (CSOs). Thus, we assert that while the Pacific Northwest might not experience652
+as many benefits due to evapotranspiration, it could still be a worthwhile investment653
+from a water retention perspective and motivates further local-scale study. Addition-654
+ally, while evapotranspiration played a major role, some regions of the Midwest and655
+Northeast still saw increases in infiltration that particularly align with the decreases656
+in surface runoff (Fig. 4(a) and 7(a)). These results demonstrate that our parameter-657
+ization is thus representative of both infiltration and evapotranspiration mechanisms658
+in vegetated GSI systems.659
+27
+Page 27 of 58 AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+While we observed differences between the rain garden and control simulations in660
+many urban areas, indicating the rain garden parameterization was functional, this661
+change was smaller than expected. The local-scale reference rain garden was designed662
+to infiltrate at least 1 in (25.4 mm) of runoff 34, which was not observed in the results663
+on a daily or monthly scale. Average runoff reduced for four of the cities across the664
+10-year period, with each city representing a U.S. geographic region, was less than665
+20 mm of urban runoff in any month over the 10-year period, indicating that the666
+parameterization is limited, although functional. While 10 km (0.125 ◦) is very fine667
+resolution for a GCM, this spatial resolution is still coarse for representing local-scale668
+hydrology. Each U.S. city is composed of multiple 10-km grid cells, likely contributing669
+to this more “muted” runoff reduction signal.670
+We theorize that our results reflect artifacts of the model itself in addition to671
+underlying climatic factors. Due to current limitations in CTSM and CLMU, the672
+only hydrologic input into the land surface is precipitation, either from snow or rain.673
+Runoff generated from other gridcells or subgrids within the gridcell (such as the674
+impervious road within the urban landunit) is immediately routed to the river model,675
+instead of flowing into another gridcell, landunit, or portion of the landunit. As such,676
+our results only reflect direct precipitation interception, which further contextualizes677
+this work as a suitability study of rain garden implementation rather than a full678
+study on actual performance. Also because of this limitation in CTSM, our results679
+should be considered as a conservative estimation of potential runoff reduction benefits.680
+While the magnitude of benefits may be smaller due to this limitation, generally681
+suitability should still be reflected in the results. Additionally, NLDAS-2, the dataset682
+used for our atmospheric forcing, has known issues in underestimating high-intensity683
+and convective summer precipitation94. As such, our runoff results, particularly in the684
+summer, could potentially be biased.685
+28
+Page 28 of 58AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+The work presented in this study represents an optimistic scenario and brackets686
+the upper-bound of potential impacts due to rain garden implementation. While not687
+practical and a key limitation, this approach is still useful in providing information688
+on rain garden suitability across CONUS. Ideally, a study could be completed with689
+staged implementation scenarios, which could provide useful additional information690
+for planning. However, such scenarios cannot be implemented in the current CTSM691
+configuration by simply prescribing a lower conversion percentage. In our present692
+implementation, the rain-garden parameterization replaces the existing pervious693
+canyon-floor representation. Simulating partial conversion would require development694
+of a new subgrid structure that allows conventional pervious canyon floor and engi-695
+neered rain gardens to coexist within the same urban subgrid, together with the696
+consistent aggregation of their water and energy fluxes and associated hydrologic rout-697
+ing. This would require substantial model development, testing, and validation and is698
+therefore beyond the scope of the present study.699
+In our parameterization, we modified the surface albedo for the “pervious road”700
+part of the landunit to a value of 0.2, which was higher than most default surface albedo701
+values even with Cheng et al.’s 46 finer resolution surface dataset, U-Surf (see Figure702
+S1). This change likely altered the partitioning of water in CLMU, thus increasing703
+evapotranspiration in many areas. Although evapotranspiration accounts for most of704
+the observed runoff reduction, increased infiltration was still observed in key areas in705
+the Midwest and Northeast (shown in Figure 7(b)). The daily analysis in Chicago (as706
+illustrated in Figure 8) showed that the current state of CLMU does not yet represent707
+the lag time associated with runoff generation. Peak runoff directly correlated with708
+peak precipitation, which is not reflective of rainfall-runoff relationships, even in urban709
+areas95. Lag time is not present in either storm event shown in Figures 8 and 9,710
+although runoff reduction did occur for both storms. We theorize this condition could711
+be due to the simplicity of the current urban hydrology representation in CLMU, as712
+29
+Page 29 of 58 AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+lag time is present in the vegetated landunits. CLMU and CESM are able to represent713
+total runoff and the hydrologic cycle robustly 42, but impervious surfaces in CLMU714
+have no infiltration, only allow for ponding up to 1 millimeter, and send all surface715
+water to runoff 17. Since the urban component is made of impervious and pervious716
+surfaces, it is not surprising to see little to no lag time with this representation. What717
+little lag time that potentially exists in the pervious road is likely overshadowed by718
+the lack of lag from the impervious road and roof, since the surface runoff generated719
+over the urban landunit is a combination of runoff from the roof, pervious road, and720
+impervious road (see Figure 1 for the schematic).721
+Additionally, while the overall Community Terrestrial Systems Model (CTSM), the722
+land component of CESM, has CLMU embedded, vegetation is not explicitly repre-723
+sented within the urban landunit. This lack of vegetation in the urban landunit is one of724
+the most significant limitations of our study, as our parameterization instead implicitly725
+represents vegetation within the confines of the model’s current version. Explicit veg-726
+etation representation does exist in the cropland and vegetated landunits of CTSM 44,727
+but has yet to be incorporated into the urban landunit. The urban landunit currently728
+has a simplified surface and subsurface hydrology for the “pervious road,” particu-729
+larly regarding soil hydrology and assumed soil properties. A rooting scheme exists in730
+CLMU’s pervious road, but functions by distributing root mass equally through all731
+hydrologically active layers and primarily serves as a mechanism to calculate evapo-732
+transpiration from each layer17. We altered the distribution of root mass in one version733
+of our parameterization, but this altered rooting led to poor partitioning of water in734
+lower soil layers, leading us to retain the default uniform distribution of roots. Lastly,735
+because of this lack of explicit vegetation representation, we are unable to capture736
+nuances in seasonality from vegetative processes, as the interactions between vegeta-737
+tion and background climate are simplified. We are not able to consider how available738
+30
+Page 30 of 58AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+water would impact plant function, dormancy, and survivability, a limitation of par-739
+ticular concern since the results of this analysis point towards more runoff reduction740
+potential during the winter months. As such, this study is likely not the precise tool741
+to examine seasonality.742
+Most of the pervious road soil hydrology is based on empirical equations from a743
+1980s study with three main properties: percent sand, percent clay, and percent organic744
+matter present in a given layer44. These equations are further simplified for the urban745
+landunit as CLMU assumes that urban soils have no organic matter present 17, which746
+is not representative of recent studies on urban soil 96, 97. This way of representing soil747
+is somewhat simplistic, not accounting for complexities associated with different soil748
+types and importantly, neglecting silt present in soils. The lack of organic material749
+present in urban soils in CLMU also likely causes underestimation of infiltration and750
+soil-water retention98, 99. As a result, it is feasible that the exclusion of organic matter751
+in soils potentially contributes to why our parameterization saw greater changes in752
+evapotranspiration compared to infiltration. Additionally, the soil hydrology in the753
+urban landunit uses the same soil properties as the natural vegetation in the gridcell754
+and does not adjust to represent urban soils, outside of altering them to have no organic755
+matter17. As such, the urban soils in CLMU do not reflect current soil conditions in756
+cities, but do capture some location-specific effects. However, a similar study completed757
+in 2014 implemented a bioinfiltration (or rain garden) parameterization into CLMU,758
+with many of the authors’ chosen parameters (such as rain garden depth, saturated759
+hydraulic conductivity, and porosity) similar to ours. This work was completed and760
+validated in only one location, but was still able to capture the nuances of a local rain761
+garden28, reinforcing the applicability of our work.762
+Some nuances in our results are likely due to underlying contributors of location-763
+specific weather patterns, climate, and soil conditions. Our simulations use historical764
+weather data, Phase 2 of the North American Land Data Assimilation System765
+31
+Page 31 of 58 AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+(NLDAS-2)63, to force the model, and the contiguous United States spans multiple766
+climate zones according to the K¨ oppen-Geiger climate classification system 82. Many767
+cities in continental climates show greater runoff reduction than those in other cli-768
+mate zones. This result could be because our rain garden parameterization was based769
+on a calibrated rain garden model (built in the Environmental Protection Agency’s770
+Stormwater Management Model (EPA-SWMM) 34) representing Wisconsin, which is771
+also located in a continental climate. Additionally, we hypothesize that many conti-772
+nental/cold climates saw greater runoff reduction in the winter due to snowmelt. GSI773
+hydrologic suitability in snow and cold conditions is an area of active research cur-774
+rently outside the scope of this study, but research from this area has shown that GSI775
+is still active in the winter 100, 101, with one study finding that snow cover enabled soil776
+temperatures to stay warm enough to continue infiltration 101. We hypothesize that777
+underlying soil conditions also influenced our results, similar to results from Sytsma778
+et al. 102 showing calibration parameter transfer uncertainty in SWMM models with779
+different soil, storm, and land cover forcings. Due to assumptions made in the rain780
+garden design, almost all of the urban areas experienced major changes in percent781
+sand and percent clay based on our parameterization for the top seven soil layers;782
+however, the soil beyond the top seven layers likely played a role in deeper infiltration783
+and seepage 103. Prior work has found that urban soil properties converge to similar784
+ranges across cities, likely as a result of management 104, supporting our top seven785
+soil layer assumption. Other work has indicated that properties such as urban soil786
+hydraulic conductivity can vary across cities and locations 105, however, which also787
+could be contributing to rain garden suitability differences. Detailed investigation of788
+urban soil properties is beyond the scope of this study.789
+32
+Page 32 of 58AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+Conclusion790
+Many cities understandably have concerns about implementing GSI systems into their791
+municipal infrastructure. There is high uncertainty for many urban planners surround-792
+ing GSI suitability for their specific location, particularly since GSI systems are much793
+more variable in performance than their grey stormwater infrastructure counterparts.794
+Additionally, for GSI systems to maintain functionality, they need to be properly main-795
+tained and upkept (i.e., cleared of debris that can cause clogging, etc.) 34. While our796
+results provide information about the potential suitability of widespread rain gardens797
+across many locations, the runoff reduction functionality of the systems does not con-798
+sider the holistic socio-political context that could be useful for decision makers. Our799
+work serves as a large-scale suitability assessment, identifying important processes and800
+factors that should receive more attention in local scale studies, but lacks the ability801
+to incorporate site-specific nuances. Other work has noted that GSI implementation802
+can have environmental justice implications, particularly since access to green space803
+is often inherently political and does have economic impacts as well 26, 27. Prior work804
+advises that when making decisions about GSI implementation, urban planners and805
+policymakers need to consider the impacts of not just the functionality of GSI systems,806
+but how the location of GSI will impact the community and the different populations807
+within the community26, 27. Prior work also advises that community engagement with808
+GSI planning and maintenance processes is vital, especially to ensure longevity and809
+enhance resilience for the impacted communities 106, 107. Thus, while our results pro-810
+vide insight into suitability of rain gardens across the contiguous United States, they811
+only capture one aspect of GSI implementation and must be evaluated in context.812
+Despite these limitations, our rain garden parameterization successfully bridges813
+microscale vegetation processes to a macroscale climate model. While some artifacts of814
+the model are reflected in our results and some uncertainty exists in how we represent815
+33
+Page 33 of 58 AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+rain gardens in CESM, we assert that the results presented still provide relevant infor-816
+mation and commentary on applicability of rain gardens as an adaptation strategy. Our817
+K¨ oppen-Geiger climate classification analysis provides important information about818
+the influence of background climate on potential rain garden suitability, and allows819
+for stronger inter-region comparison. Our simulation results based on rain garden820
+parameterization were generally consistent with observational and modeled studies of821
+rain garden functionality (see Supplemental Information Figure S11). Parameterizing822
+this kind of hydrologically-complex adaptation strategy into a GCM is an important823
+step in model advancement to further provide a tool for cities to better prepare for824
+climate change. Understanding how humans, and urban areas in general, affect cli-825
+mate is important for adaptation strategies. Through this work, we provide insight826
+into how implementation of ground-based, vegetated GSI in the form of rain gardens827
+functions in urban areas from a hydrologic perspective across the contiguous United828
+States. While rain gardens are not a suitable adaptation strategy everywhere, they829
+are still worth considering for runoff reduction benefits alone in the U.S. Midwest and830
+Northeast, as well as in states bordering the Gulf of Mexico.831
+Through this work, we leveraged modeled data detailing potential hydrologic832
+impacts of ground-based, vegetated GSI systems to advance knowledge on rain garden833
+suitability for diverse areas and contexts. This research builds on previous studies com-834
+pleted on the mesoscale and local levels, and provides data on rain garden suitability835
+trends on a larger scale. Such information could have important policy implications836
+for U.S. municipal leaders weighing GSI investments, such as rain gardens, with837
+environmental benefits for a specific location.838
+34
+Page 34 of 58AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+Acknowledgments839
+This work was supported in part under the provisions of section 104 of the Water840
+Resources Research Act annual base grants (104b) program made possible and dis-841
+tributed through the Illinois Water Resources Center and United States Geological842
+Survey. Additional support was provided by the Center for Infrastructure Resilience843
+in Cities as Livable Environments and the Support for Under-Represented Groups in844
+Engineering Fellowship from the Grainger College of Engineering at the University845
+of Illinois Urbana-Champaign. L.Z. acknowledges the support by the U.S. National846
+Aeronautics and Space Administration (NASA) through a joint Advanced Model-847
+ing Technology (AMT) and Land Cover Land Use Change (LCLUC) grant (Grant848
+80NSSC25K7322). We acknowledge the high-performance computing support from849
+Derecho (https://www.cisl.ucar.edu/capabilities/derecho) provided by NSF NCAR850
+Computational and Information Systems Laboratory, sponsored by the U.S. National851
+Science Foundation.852
+Author Contributions853
+L.C.G., L.Z., and A.S.S. conceptualized and developed the rain garden parameteri-854
+zation; L.C.G. implemented the parameterization and performed the data modeling855
+and analysis; L.Z. supervised the modeling; A.S.S. supervised the hydrologic analysis;856
+L.Z. and A.S.S. formulated the analysis, supervised the research, and obtained fund-857
+ing; Y.C. prepared the surface dataset used to drive all simulations; L.C.G. drafted858
+the manuscript, with discussions and contributions from L.Z. and A.S.S.859
+35
+Page 35 of 58 AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+References860
+1 United Nations. World Urbanization Prospects 2018: Highlights861
+(2019). URL https://www.un.org/development/desa/publications/862
+2018-revision-of-world-urbanization-prospects.html.863
+2 Ashley, R. M., Balmfort, D. J., Saul, A. J. & Blanskby, J. D. Flooding in the future864
+- Predicting climate change, risks and responses in urban areas. Water Science865
+and Technology 52, 265–273 (2005).866
+3 Zhao, L., Lee, X. & Schultz, N. M. A wedge strategy for mitigation of urban867
+warming in future climate scenarios. Atmospheric Chemistry and Physics 17,868
+9067–9080 (2017). URL https://acp.copernicus.org/articles/17/9067/2017/.869
+4 Zhao, L. Urban growth and climate adaptation. Nature Climate Change 8, 1034870
+(2018).871
+5 Zheng, Z., Zhao, L. & Oleson, K. W. Large model structural uncertainty in global872
+projections of urban heat waves. Nature Communications 12 (2021).873
+6 Cutter, S. L. et al. Chapter 11: Urban Systems, Infrastructure, and Vulnerabil-874
+ity. Climate Change Impacts in the United States: The Third National Climate875
+Assessment (2014).876
+7 Wilbanks, T. J. & Fernandez, S. J. Climate Change and Infrastructure, Urban877
+Systems, and Vulnerabilities: Technical Report for the U.S. Department of Energy878
+in Support of the National Climate Assessment (2014).879
+8 Horton, R. M., Mankin, J. S., Lesk, C., Coffel, E. & Raymond, C. A Review of880
+Recent Advances in Research on Extreme Heat Events. Current Climate Change881
+Reports 2, 242–259 (2016).882
+36
+Page 36 of 58AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+9 IPCC. Climate Change 2014: Synthesis Report. Contribution of Working Groups883
+I, II and III to the Fifth Assessment Report of the Intergovernmental Panel on884
+Climate Change (2014).885
+10 Krayenhoff, E. S., Moustaoui, M., Broadbent, A. M., Gupta, V. & Georgescu, M.886
+Diurnal interaction between urban expansion, climate change and adaptation in887
+US cities. Nature Climate Change 8, 1097–1103 (2018). URL wed.888
+11 Skamarock, W. C. et al. A Description of the Advanced Research WRF Version 3889
+(2008).890
+12 Li, D., Bou-Zeid, E. & Oppenheimer, M. The effectiveness of cool and green roofs as891
+urban heat island mitigation strategies. Environmental Research Letters 9, 055002892
+(2014). URL https://dx.doi.org/10.1088/1748-9326/9/5/055002.893
+13 Huber, M. Can a roof’s material cool the outside air and lower energy894
+demand? | Argonne National Laboratory (2023). URL https://www.anl.gov/895
+article/can-a-roofs-material-cool-the-outside-air-and-lower-energy-demand.896
+14 Georgescu, M., Morefield, P. E., Bierwagen, B. G. & Weaver, C. P. Urban897
+adaptation can roll back warming of emerging megapolitan regions. Proceed-898
+ings of the National Academy of Sciences 111, 2909–2914 (2014). URL https:899
+//www.pnas.org/doi/10.1073/pnas.1322280111.900
+15 Salamanca, F., Georgescu, M., Mahalov, A., Moustaoui, M. & Martilli, A. Citywide901
+Impacts of Cool Roof and Rooftop Solar Photovoltaic Deployment on Near-Surface902
+Air Temperature and Cooling Energy Demand. Boundary-Layer Meteorology 161,903
+203–221 (2016).904
+16 Stone, B. J., Vargo, J., Liu, P., Hu, Y. & Russell, A. Climate Change Adaptation905
+Through Urban Heat Management in Atlanta, Georgia. Environmental Science &906
+37
+Page 37 of 58 AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+Technology 47, 7780–7786 (2013). URL https://doi.org/10.1021/es304352e.907
+17 Oleson, K. W., Bonan, G. B., Feddema, J. J., Vertenstein, M. & Kluzek,908
+E. Technical Description of an Urban Parameterization for the Com-909
+munity Land Model (CLMU). NCAR/TN-480+STR NCAR Technical910
+Note (2010). URL https://www.researchgate.net/profile/Keith-Oleson/911
+publication/261062625 Technical Description of an Urban Parameterization912
+for the Community Land Model CLMU/links/02e7e5331acf6834e7000000/913
+Technical-Description-of-an-Urban-Parameterization-for-the-Communit.914
+18 Anderson, G. B., Oleson, K. W., Jones, B. & Peng, R. D. Projected trends915
+in high-mortality heatwaves under different scenarios of climate, population, and916
+adaptation in 82 US communities. Climatic Change 146, 455–470 (2018). URL917
+https://doi.org/10.1007/s10584-016-1779-x.918
+19 Oleson, K. W., Bonan, G. B. & Feddema, J. Effects of white roofs on urban919
+temperature in a global climate model. Geophysical Research Letters 37 (2010).920
+URL https://onlinelibrary.wiley.com/doi/abs/10.1029/2009GL042194.921
+20 Zhang, J., Zhang, K., Liu, J. & Ban-Weiss, G. Revisiting the climate impacts922
+of cool roofs around the globe using an Earth system model. Environmental923
+Research Letters 11, 084014 (2016). URL https://dx.doi.org/10.1088/1748-9326/924
+11/8/084014.925
+21 Prudencio, L. & Null, S. E. Stormwater management and ecosystem services: A926
+review. Environmental Research Letters 13, 033002 (2018). URL https://dx.doi.927
+org/10.1088/1748-9326/aaa81a.928
+38
+Page 38 of 58AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+22 Suppakittpaisarn, P., Jiang, X. & Sullivan, W. C. Green Infrastructure, Green929
+Stormwater Infrastructure, and Human Health: A Review.Current Landscape Ecol-930
+ogy Reports 2, 96–110 (2017). URL https://doi.org/10.1007/s40823-017-0028-y .931
+23 Denchak, M. Green Infrastructure: How to Manage Water in932
+a Sustainable Way (2019). URL https://www.nrdc.org/stories/933
+green-infrastructure-how-manage-water-sustainable-way .934
+24 US EPA. What is Green Infrastructure? (2023). URL https://www.epa.gov/935
+green-infrastructure/what-green-infrastructure.936
+25 Copeland, C. Green Infrastructure and Issues in Managing Urban Stormwater.937
+CRS Report R43131, Congressional Research Service (2016). URL https://sgp.fas.938
+org/crs/misc/R43131.pdf.939
+26 Hoover, F.-A., Meerow, S., Grabowski, Z. J. & McPhearson, T. Environmental940
+justice implications of siting criteria in urban green infrastructure planning.Journal941
+of Environmental Policy & Planning (2021). URL https://www.tandfonline.com/942
+doi/abs/10.1080/1523908X.2021.1945916.943
+27 Meerow, S. & Newell, J. P. Urban resilience for whom, what, when, where, and944
+why? Urban Geography 40, 309–329 (2019). URL https://www.tandfonline.com/945
+doi/full/10.1080/02723638.2016.1206395.946
+28 Demuzere, M. et al. The implementation of biofiltration systems, rainwater947
+tanks and urban irrigation in a single-layer urban canopy model. Urban Cli-948
+mate 10, 148–170 (2014). URL https://www.sciencedirect.com/science/article/949
+pii/S2212095514000844.950
+29 Zhang, K. & Chui, T. F. M. Linking hydrological and bioecological benefits of951
+green infrastructures across spatial scales – A literature review. Science of The952
+39
+Page 39 of 58 AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+Total Environment 646, 1219–1231 (2019). URL https://linkinghub.elsevier.com/953
+retrieve/pii/S004896971832850X.954
+30 Lisenbee, W. A., Hathaway, J. M., Burns, M. J. & Fletcher, T. D. Model-955
+ing bioretention stormwater systems: Current models and future research needs.956
+Environmental Modelling & Software 144, 105146 (2021). URL https://www.957
+sciencedirect.com/science/article/pii/S1364815221001894.958
+31 Congressional Research Service. Green Infrastructure and Issues in Managing959
+Urban Stormwater. Tech. Rep., Congressional Research Service (2016).960
+32 Nemo, L. As Cities’ Interest in Green Infrastructure Grows, So Does the Need to961
+Develop Strategies and Resources to Maintain It.Ensia (2019). URL https://ensia.962
+com/features/green-infrastructure-maintenance-flooding-pollution-groundwater/.963
+33 Water Environment Federation. The Real Cost of Green Infrastructure (2015).964
+URL https://stormwater.wef.org/2015/12/real-cost-green-infrastructure/.965
+34 William, R., Gardoni, P. & Stillwell, A. S. Reliability-Based Approach to Inves-966
+tigating Long-Term Clogging in Green Stormwater Infrastructure. Journal of967
+Sustainable Water in the Built Environment 5 (2019).968
+35 Georgia, C. W. C. Rain Gardens for Home Landscapes. URL https://cfpub.epa.969
+gov/npstbx/files/cwc raingardenbrochure.pdf.970
+36 Danabasoglu, G. et al. The Community Earth System Model Version 2 (CESM2).971
+Journal of Advances in Modeling Earth Systems 12 (2020).972
+37 Hurrell, J. W. et al. The Community Earth System Model: A Framework for973
+Collaborative Research. Bulletin of the American Meteorological Society 94, 1339–974
+1360 (2013).975
+40
+Page 40 of 58AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+38 Zhao, L. et al. Global multi-model projections of local urban climates. Nature976
+Climate Change 11 (2021).977
+39 Oleson, K. W., Bonan, B., Feddema, J., Vertenstein, M. & Grimmond, C. S. An978
+urban parameterization for a global climate model. Part 1: Formulation and evalu-979
+ation for two cities. Journal of Applied Meteorology and Climatology 47, 1038–1060980
+(2008).981
+40 Zhao, L., Lee, X., Smith, R. B. & Oleson, K. Strong contributions of local982
+background climate to urban heat islands. Nature 511, 216–219 (2014).983
+41 Demuzere, M. et al. Impact of urban canopy models and external parameters on984
+the modelled urban energy balance in a tropical city. Quarterly Journal of the985
+Royal Meteorological Society 143, 1581–1596 (2017).986
+42 Gray, L. C., Zhao, L. & Stillwell, A. S. Impacts of climate change on global987
+total and urban runoff. Journal of Hydrology 620, 129352 (2023). URL https:988
+//www.sciencedirect.com/science/article/pii/S0022169423002949.989
+43 Oleson, K. W. & Feddema, J. Parameterization and Surface Data Improvements990
+and New Capabilities for the Community Land Model Urban (CLMU). Jour-991
+nal of Advances in Modeling Earth Systems 12, e2018MS001586 (2020). URL992
+https://onlinelibrary.wiley.com/doi/abs/10.1029/2018MS001586. E2018MS001586993
+2018MS001586.994
+44 Lawrence, D. et al. Technical Description of version 5.0 of the Community Land995
+Model (CLM). NCAR/TN-478+STR NCAR Technical Note (2018).996
+45 Jackson, T. L., Feddema, J. J., Oleson, K. W., Bonan, G. B. & Bauer, J. T.997
+Parameterization of urban characteristics for global climate modeling. Annals of998
+the Association of American Geographers 100 (2010).999
+41
+Page 41 of 58 AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+46 Cheng, Y. et al. U-Surf: A global 1 km spatially continuous urban surface property1000
+dataset for kilometer-scale urban-resolving Earth system modeling. Earth System1001
+Science Data 17, 2147–2174 (2025). URL https://essd.copernicus.org/articles/17/1002
+2147/2025/.1003
+47 Jiang, T. et al. Prioritizing urban heat adaptation infrastructure based on multi-1004
+ple outcomes: Comfort, health, and energy. Proceedings of the National Academy1005
+of Sciences 122, e2411144122 (2025). URL https://www-pnas-org.proxy2.library.1006
+illinois.edu/doi/10.1073/pnas.2411144122.1007
+48 EPA, U. Bioretention Design Handbook: Designing Holistic Bioretention for Per-1008
+formance and Longevity. EPA EPA 841-B-23-002| (2023). URL https://www.epa.1009
+gov/system/files/documents/2023-11/bioretentiondesignhandbook plainnov2023.1010
+pdf.1011
+49 New York City Department of Environmental Protection. New York City Stormwa-1012
+ter Manual. Appendix (2024). URL https://www.nyc.gov/assets/dep/downloads/1013
+pdf/water/stormwater/unified-stormwater-rule/uswr nyc stormwater manual.1014
+pdf.1015
+50 City of Chicago Department of Water Management. City of Chicago1016
+Stormwater Management Ordinance Manual. Tech. Rep. (2024). URL1017
+https://www.chicago.gov/content/dam/city/depts/water/general/Engineering/1018
+SewerConstStormReq/2024StormwaterManual.pdf.1019
+51 Hinman, C. & Extension, W. S. U. Rain Garden Handbook for Western Wash-1020
+ington. Tech. Rep., Department of Ecology, State of Washington (2013). URL1021
+https://apps.ecology.wa.gov/publications/documents/1310027.pdf.1022
+42
+Page 42 of 58AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+52 New York State Department of Environmental Conservation & Center for Water-1023
+shed Protection. New York State Stormwater Management Design Manual.1024
+Tech. Rep. (2015). URL https://cms4files1.revize.com/tonawandany/Engineer/1025
+Stormwater%20Management%20Design%20Manual%20-%20Jan%202015.pdf.1026
+53 Chin, D. A. Water-Resources Engineering 4th edn (Pearson, 2020).1027
+54 Li, X. C., Zhao, L., Qin, Y., Oleson, K. & Zhang, Y. Elevated urban energy risks1028
+due to climate-driven biophysical feedbacks.Nature Climate Change 14, 1056–10631029
+(2024). URL https://www.nature.com/articles/s41558-024-02108-w .1030
+55 Fitria, R., Kim, D., Baik, J. & Choi, M. Impact of Biophysical Mechanisms1031
+on Urban Heat Island Associated with Climate Variation and Urban Morphol-1032
+ogy. Scientific Reports 9, 19503 (2019). URL https://www.nature.com/articles/1033
+s41598-019-55847-8.1034
+56 Mohammad Harmay, N. S. & Choi, M. Effects of heat waves on urban warming1035
+across different urban morphologies and climate zones. Building and Environ-1036
+ment 209, 108677 (2022). URL https://www.sciencedirect.com/science/article/1037
+pii/S0360132321010672.1038
+57 Lipson, M. J. et al. Evaluation of 30 urban land surface models in the Urban-1039
+PLUMBER project: Phase 1 results. Quarterly Journal of the Royal Meteorological1040
+Society 150, 126–169 (2024). URL https://onlinelibrary.wiley.com/doi/abs/10.1041
+1002/qj.4589.1042
+58 Karsisto, P. et al. Seasonal surface urban energy balance and wintertime stabil-1043
+ity simulated using three land-surface models in the high-latitude city Helsinki.1044
+Quarterly Journal of the Royal Meteorological Society 142, 401–417 (2016). URL1045
+https://onlinelibrary.wiley.com/doi/abs/10.1002/qj.2659.1046
+43
+Page 43 of 58 AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+59 Lin, S., Feng, J., Wang, J. & Hu, Y. Modeling the contribution of long-term1047
+urbanization to temperature increase in three extensive urban agglomerations in1048
+China. Journal of Geophysical Research: Atmospheres121, 1683–1697 (2016). URL1049
+https://onlinelibrary.wiley.com/doi/abs/10.1002/2015JD024227.1050
+60 Zhang, L., Ye, Z. & Shibata, S. Assessment of Rain Garden Effects for the Man-1051
+agement of Urban Storm Runoff in Japan. Sustainability 12, 9982 (2020). URL1052
+https://www.mdpi.com/2071-1050/12/23/9982.1053
+61 Zhou, Z. & Guo, Q. Drainage Alternatives for Rain Gardens on Subsoil of Low1054
+Permeability: Balance among Ponding Time, Soil Moisture, and Runoff Reduction.1055
+Journal of Sustainable Water in the Built Environment 8, 05022002 (2022). URL1056
+https://ascelibrary.org/doi/10.1061/JSWBAY.0000988.1057
+62 Winston, R. J., Dorsey, J. D. & Hunt, W. F. Quantifying volume reduction1058
+and peak flow mitigation for three bioretention cells in clay soils in northeast1059
+Ohio. Science of The Total Environment 553, 83–95 (2016). URL https://www.1060
+sciencedirect.com/science/article/pii/S0048969716302911.1061
+63 National Aeronautics and Space Administration. NLDAS-2 Forcing Dataset1062
+Information| LDAS. URL https://ldas.gsfc.nasa.gov/nldas/v2/forcing.1063
+64 Scharenbroch, B. C., Morgenroth, J. & Maule, B. Tree Species Suitability to1064
+Bioswales and Impact on the Urban Water Budget.Journal of Environmental Qual-1065
+ity 45, 199–206 (2016). URL https://onlinelibrary.wiley.com/doi/abs/10.2134/1066
+jeq2015.01.0060.1067
+65 Read, L. K., Hogue, T. S., Edgley, R., Mika, K. & Gold, M. Evaluating the Impacts1068
+of Stormwater Management on Streamflow Regimes in the Los Angeles River.Jour-1069
+nal of Water Resources Planning and Management 145, 05019016 (2019). URL1070
+44
+Page 44 of 58AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+https://ascelibrary.org/doi/10.1061/%28ASCE%29WR.1943-5452.0001092.1071
+66 Li, H., Sharkey, L. J., Hunt, W. F. & Davis, A. P. Mitigation of Impervious1072
+Surface Hydrology Using Bioretention in North Carolina and Maryland. Journal1073
+of Hydrologic Engineering 14, 407–415 (2009). URL https://ascelibrary.org/doi/1074
+10.1061/%28ASCE%291084-0699%282009%2914%3A4%28407%29.1075
+67 Nocco, M. A., Rouse, S. E. & Balster, N. J. Vegetation type alters water and1076
+nitrogen budgets in a controlled, replicated experiment on residential-sized rain1077
+gardens planted with prairie, shrub, and turfgrass. Urban Ecosystems 19, 1665–1078
+1691 (2016). URL https://doi.org/10.1007/s11252-016-0568-7.1079
+68 Selbig, W. R. & Balster, N. Evaluation of Turf-Grass and Prairie-Vegetated Rain1080
+Gardens in a Clay and Sand Soil, Madison, Wisconsin, Water Years 2004-2008.1081
+Scientific Investigations Report 2010-5077, U.S. Department of Interior & U.S.1082
+Geological Survery (2010).1083
+69 Hathaway, J. M., Brown, R. A., Fu, J. S. & Hunt, W. F. Bioretention function1084
+under climate change scenarios in North Carolina, USA. Journal of Hydrology1085
+519, 503–511 (2014). URL https://www.sciencedirect.com/science/article/pii/1086
+S002216941400554X.1087
+70 Avellaneda, P. M., Jefferson, A. J., Grieser, J. M. & Bush, S. A. Simulation of1088
+the cumulative hydrological response to green infrastructure. Water Resources1089
+Research 53, 3087–3101 (2017). URL https://onlinelibrary.wiley.com/doi/abs/10.1090
+1002/2016WR019836.1091
+71 DelVecchio, T., Welker, A. & Wadzuk, B. M. Exploration of Volume Reduction1092
+via Infiltration and Evapotranspiration for Different Soil Types in Rain Garden1093
+Lysimeters. Journal of Sustainable Water in the Built Environment 6, 040190081094
+45
+Page 45 of 58 AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+(2020). URL https://ascelibrary.org/doi/10.1061/JSWBAY.0000894.1095
+72 Hess, A., Wadzuk, B. & Welker, A. Evapotranspiration in Rain Gardens1096
+Using Weighing Lysimeters. Journal of Irrigation and Drainage Engineering1097
+143, 04017004 (2017). URLhttps://ascelibrary.org/doi/10.1061/%28ASCE%29IR.1098
+1943-4774.0001157.1099
+73 Hess, A., Wadzuk, B. & Welker, A. Predictive Evapotranspiration Equations in1100
+Rain Gardens. Journal of Irrigation and Drainage Engineering 145, 040190101101
+(2019). URL https://ascelibrary.org/doi/10.1061/%28ASCE%29IR.1943-4774.1102
+0001389.1103
+74 McGauley, M. W., Amur, A., Shakya, M. & Wadzuk, B. M. A Complete Water1104
+Balance of a Rain Garden. Water Resources Research 59, e2023WR0351551105
+(2023). URL https://onlinelibrary.wiley.com/doi/abs/10.1029/2023WR035155.1106
+E2023WR035155 2023WR035155.1107
+75 Wadzuk, B. M., Hickman, J. M. & Traver, R. G. Understanding the Role of Evap-1108
+otranspiration in Bioretention: Mesocosm Study. Journal of Sustainable Water in1109
+the Built Environment 1, 04014002 (2015). URL https://ascelibrary.org/doi/10.1110
+1061/JSWBAY.0000794.1111
+76 Welker, A., Baghalian, S., Farnsworth, M. & Traver, R. Quantitative Analysis of1112
+the Water Budget of a Rain Garden in Pennsylvania.Journal of Sustainable Water1113
+in the Built Environment 10, 04023013 (2024). URL https://ascelibrary.org/doi/1114
+10.1061/JSWBAY.SWENG-545.1115
+77 University, V. Stormwater | Villanova University (2025).1116
+URL https://www1.villanova.edu/villanova/sustainability/1117
+CampusSustainabilityBuildingsGroundsStormwaterDiningRecycling/1118
+46
+Page 46 of 58AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+StormwaterSustainability.html.1119
+78 Villanova College of Engineering. Villanova Center for Resilient Water Sys-1120
+tems| Villanova University (2025). URL https://www1.villanova.edu/university/1121
+engineering/faculty-research/Resilient-Water-Systems.html.1122
+79 in Chapter 17 - Terrestrial evapotranspiration (eds Liang, S. & Wang, J.) Advanced1123
+Remote Sensing (Second Edition) 649–684 (Academic Press, 2020). URL https:1124
+//www.sciencedirect.com/science/article/pii/B9780128158265000179.1125
+80 Hart, D. Documentation | Derecho supercomputer (2023). URL https://arc.ucar.1126
+edu/knowledge base/74317833.1127
+81 Bureau, U. C. Cartographic Boundary Files - Shapefile. URL https://www.census.1128
+gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html.1129
+82 Beck, H. E. et al. High-resolution (1 km) K¨ oppen-Geiger maps for 1901–20991130
+based on constrained CMIP6 projections. Scientific Data 10, 724 (2023). URL1131
+https://www.nature.com/articles/s41597-023-02549-6.1132
+83 National Center for Atmospheric Research. CLM: Hydrologic Cycle (2020). URL1133
+https://www2.cesm.ucar.edu/models/clm/hydrologic.html.1134
+84 Guo, Y. & Gao, T. Analytical Equations for Estimating the Total Runoff Reduction1135
+Efficiency of Infiltration Trenches. Journal of Sustainable Water in the Built Envi-1136
+ronment 2, 06016001 (2016). URL https://ascelibrary.org/doi/10.1061/JSWBAY.1137
+0000809.1138
+85 Peng, S. et al. Climatic and biotic controls of evapotranspiration across grassland1139
+ecosystems on the Tibetan Plateau. Journal of Hydrology: Regional Stud-1140
+ies 61, 102747 (2025). URL https://www.sciencedirect.com/science/article/pii/1141
+S2214581825005762.1142
+47
+Page 47 of 58 AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+86 Budyko, M. I. & Miller, D. H. Climate and life (1974).1143
+87 National Oceanic and Atmospheric Administration. Climate Zones | National1144
+Oceanic and Atmospheric Administration (2023). URL https://www.noaa.gov/1145
+jetstream/global/climate-zones.1146
+88 Kang, W. et al. Characterization of Preferential Flow Occurrence Dur-1147
+ing Freeze-Thaw Cycles. Water Resources Research 62, e2025WR0419261148
+(2026). URL https://onlinelibrary.wiley.com/doi/abs/10.1029/2025WR041926.1149
+E2025WR041926 2025WR041926.1150
+89 Wilby, R. L. & Keenan, R. Adapting to flood risk under climate change. Progress1151
+in Physical Geography 36, 348–378 (2012).1152
+90 McGuire, M. P. et al. Retrofitting urban land through integrative, subsoils-based1153
+planning of green stormwater infrastructure: A research framework. Environmental1154
+Research: Infrastructure and Sustainability 1, 035003 (2021). URL https://dx.doi.1155
+org/10.1088/2634-4505/ac27bd.1156
+91 UNEP-DHI Partnership Centre on Water and Environment et al. Green Infras-1157
+tructure: Guide for Water Management. Tech. Rep., United Nations Environment1158
+Programme (2014).1159
+92 Schifman, L. A. et al. Situating Green Infrastructure in Context: A Framework for1160
+Adaptive Socio-Hydrology in Cities. Water Resources Research 53, 10139–101541161
+(2017).1162
+93 McPhillips, L. E. & Matsler, A. M. Temporal Evolution of Green Stormwater1163
+Infrastructure Strategies in Three US Cities. Frontiers in Built Environment 41164
+(2018). URL https://www.frontiersin.org/journals/built-environment/articles/10.1165
+3389/fbuil.2018.00026/full.1166
+48
+Page 48 of 58AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+94 Xu, X. et al. Evaluation of variability among different precipitation products in the1167
+Northern Great Plains. Journal of Hydrology: Regional Studies 24, 100608 (2019).1168
+URL https://www.sciencedirect.com/science/article/pii/S2214581818303410.1169
+95 Singh, N. K., Emanuel, R. E., McGlynn, B. L. & Miniat, C. F. Soil Mois-1170
+ture Responses to Rainfall: Implications for Runoff Generation. Water Resources1171
+Research 57, e2020WR028827 (2021). URL https://onlinelibrary.wiley.com/doi/1172
+abs/10.1029/2020WR028827. E2020WR028827 2020WR028827.1173
+96 Herrmann, D. L., Schifman, L. A. & Shuster, W. D. Widespread loss of inter-1174
+mediate soil horizons in urban landscapes. Proceedings of the National Academy1175
+of Sciences 115, 6751–6755 (2018). URL https://www.pnas.org/doi/abs/10.1073/1176
+pnas.1800305115.1177
+97 Vodyanitskii, Yu. N. Organic matter of urban soils: A review.Eurasian Soil Science1178
+48, 802–811 (2015). URL https://doi.org/10.1134/S1064229315080116.1179
+98 Bergtold, J., Sailus, M. & Jackson, T. Conservation Tillage Systems in the1180
+Southeast: Production, Profitability and Stewardship (2020).1181
+99 Agency, M. P. C. Soil physical properties and processes | Minnesota Stormwater1182
+Manual (2026). URL https://stormwater.pca.state.mn.us/soil physical properties1183
+and processes.1184
+100 Lewellyn, C., Lyons, C. E., Traver, R. G. & Wadzuk, B. M. Evaluation of Seasonal1185
+and Large Storm Runoff Volume Capture of an Infiltration Green Infrastructure1186
+System. Journal of Hydrologic Engineering 21, 04015047 (2016). URL https:1187
+//ascelibrary.org/doi/10.1061/%28ASCE%29HE.1943-5584.0001257.1188
+101 Pineau, B. et al. Performance of green infrastructure for storm water treatment1189
+in cold climate (Canada). Journal of Environmental Engineering and Science 16,1190
+49
+Page 49 of 58 AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+185–194 (2021). URL https://doi.org/10.1680/jenes.20.00041.1191
+102 Sytsma, A., Crompton, O., Panos, C., Thompson, S. & Mathias Kondolf, G. Quan-1192
+tifying the Uncertainty Created by Non-Transferable Model Calibrations Across1193
+Climate and Land Cover Scenarios: A Case Study With SWMM. Water Resources1194
+Research 58, e2021WR031603 (2022). URL https://onlinelibrary.wiley.com/doi/1195
+abs/10.1029/2021WR031603. E2021WR031603 2021WR031603.1196
+103 Bethke, G. M., William, R. & Stillwell, A. S. Rain Garden Performance as a1197
+Function of Native Soil Parameters.Journal of Sustainable Water in the Built Envi-1198
+ronment 8, 04021021 (2022). URL https://ascelibrary.org/doi/10.1061/JSWBAY.1199
+0000967.1200
+104 Herrmann, D. L., Schifman, L. A. & Shuster, W. D. Urbanization drives conver-1201
+gence in soil profile texture and carbon content. Environmental Research Letters1202
+15, 114001 (2020). URL https://doi.org/10.1088/1748-9326/abbb00.1203
+105 Shuster, W. et al. K in an Urban World: New Contexts for Hydraulic Conductivity.1204
+JAWRA Journal of the American Water Resources Association57, 493–504 (2021).1205
+URL https://onlinelibrary.wiley.com/doi/abs/10.1111/1752-1688.12918.1206
+106 Meenar, M., Heckert, M. & Adlakha, D. “Green Enough Ain’t Good Enough:”1207
+Public Perceptions and Emotions Related to Green Infrastructure in Environmental1208
+Justice Communities. International Journal of Environmental Research and Public1209
+Health 19, 1448 (2022). URL https://www.mdpi.com/1660-4601/19/3/1448.1210
+107 Whitten, M. in Engaging Resilience: Integrating Sociocultural Dimensions into1211
+Green Infrastructure Planning (eds Gomes Sant’Anna, C., Mell, I. & Schenk, L.1212
+B. M.) Planning with Landscape: Green Infrastructure to Build Climate-Adapted1213
+Cities 15–33 (Springer International Publishing, Cham, 2023). URL https://doi.1214
+50
+Page 50 of 58AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+org/10.1007/978-3-031-18332-4 2.1215
+51
+Page 51 of 58 AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+Unsaturated Soil
+qdrai
+Infiltration
+Evaporation
+Precipitation
+Surface Runoff
+Redistribution
+𝒁𝛁
+River
+SnowMelt
+Sublimation
+Saturated Soil
+Impermeable Bedrock
+(a)
+0.02 m
+0.68 m
+Layer 1
+Layer 2
+Layer 3
+Layer 4
+Layer 5
+Layer 6
+Layer 7
+Layers 
+8-20
+qdrai
+Infiltration
+Evaporation
+Precipitation
+Surface Runoff
+Redistribution
+𝒁𝛁
+Unsaturated Soil
+Saturated Soil
+Impermeable Bedrock
+Rain Garden Soil
+River
+(b)
+Fig. 3: Original hydrology for CLMU, recreated from 44, 17 (a) and modified hydrology for
+CLMU, reflecting rain garden implementation (b). Snow is still present in (b) but is excluded
+from this illustration for simplicity, and since we did not alter the existing snow scheme.qdrai
+refers to subsurface runoff. Both surface and subsurface runoff are routed to the river model
+after generation.
+52
+Accepted Manuscript
+10.0
+5.0
+0.0
+-5.0
+-10.0
+120° W 100° W 80° W
+45° N
+40° N
+35° N
+30° N
+25° N
+(a)
+120° W 100° W 80° W
+45° N
+40° N
+35° N
+30° N
+25° N
+(b)
+120° W 100° W 80° W
+45° N
+40° N
+35° N
+30° N
+25° N
+10.0
+5.0
+0.0
+-5.0
+-10.0
+(c)
+Fig. 4: Monthly average runoff differences observed across (a) urban surface runoff, (b) urban
+subsurface runoff, and (c) urban total runoff variables for the 10-year simulation period.
+Negative values indicate an average decrease in runoff in the rain garden simulation compared
+to the control simulation.
+53
+Page 53 of 58 AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+10
+ 5
+ 0 5
+(Qtrg - Qtc) 
+(mm/month)
+Arid
+T emperate
+Cold
+Climate Group
+(a)
+10
+ 8
+ 6
+ 4
+ 2
+ 0 2 4
+(Qtrg - Qtc) 
+(mm/month)
+Af
+Am
+Aw
+BWh
+BWk
+BSh
+BSk
+Csa
+Csb
+Cfa
+Cfb
+Dsa
+Dsb
+Dwa
+Dwb
+Dfa
+Dfb
+Dfc
+Köppen-Geiger Climate Classification
+Primary Climate Class
+Tropical
+Arid
+T emperate
+Cold
+(b)
+Fig. 5: Box plots illustrating the difference in mean urban runoff values (mm/month) for
+CONUS distributed according to (a) three climate groups (cold: continental + polar, temper-
+ate: temperate + tropic, and arid) and (b) more detailed K¨ oppen-Geiger classification82. For
+(a), one-way analysis of variance (ANOVA) and Tukey pairwise testing reveals that runoff
+changes in each climate group are statistically significantly different from one another (p <
+0.05). For (b), the primary class is indicated by the color of the bar. For a breakdown of spe-
+cific classes, see Supplemental Information Figure S10. The classes visualized reperesent the
+only classes present across CONUS urban areas.
+54
+Page 54 of 58AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+Fig. 6: Monthly average urban total runoff difference with rain gardens implemented
+for 2006–2015 for cities representing four U.S. regions: the Southeast (Atlanta), Midwest
+(Chicago), Northeast (New York), and West (Seattle).
+55
+Page 55 of 58 AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+120° W 100° W 80° W
+45° N
+40° N
+35° N
+30° N
+25° N
+(a)
+4.0
+2.0
+0.0
+-2.0
+-4.0
+120° W 100° W 80° W
+45° N
+40° N
+35° N
+30° N
+25° N
+(b)
+Fig. 7: Monthly average urban (a) evapotranspiration difference and (b) infiltration differ-
+ence observed for the 10-year simulation period. Positive values indicate an increase in either
+evapotranspiration or infiltration in the rain garden simulation compared to the control sim-
+ulation.
+56
+Page 56 of 58AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+0
+2
+4
+6
+8
+10
+Time (Hour)
+18:00 21:00 0:00 3:00 6:00 9:00 12:00 15:00 18:00
+Precipitation (mm/hour)
+Urban total runoff
+Urban surface runoff
+Urban subsurface 
+runoffPrecipitation
+5
+4
+3
+2
+1
+0
+Runoff (mm/hour)
+(a)
+0
+2
+4
+6
+8
+10
+Time (Hour)
+18:00 21:00 0:00 3:00 6:00 9:00 12:00 15:00 18:00
+Precipitation (mm/hour)
+Urban total runoff
+Urban surface runoff
+Urban subsurface 
+runoffPrecipitation
+5
+4
+3
+2
+1
+0
+Runoff (mm/hour)
+(b)
+0
+2
+4
+6
+8
+10
+Time (Hour)
+18:00 21:00 0:00 3:00 6:00 9:00 12:00 15:00 18:00
+Precipitation (mm/hour)
+Urban total runoff
+Urban surface runoff
+Urban subsurface 
+runoffPrecipitation
+0.6
+0.4
+0.2
+0
+-0.2
+-0.4
+Runoff Difference, 𝑄!" − 𝑄#
+(mm/hour)
+(c)
+Fig. 8: Comparison of urban runoff components generated from a Chicago spring storm
+event spanning April 19-20, 2011. Hourly precipitation is shown on the top axis. Urban total
+runoff, Qt, represents the sum of urban surface runoff, Qsrf , and urban subsurface runoff,
+Qsub. Subfigure (a) shows the control simulation, (b) shows the rain garden simulation, and
+(c) shows the difference in runoff generated between the two simulations ( Qrg-Qc), where
+negative differences in runoff indicate that there was less runoff in the rain garden simulation
+compared to the control simulation.
+57
+Page 57 of 58 AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
+0
+2
+4
+6
+8
+10
+Time (Hour)
+18:00 21:00 0:00 3:00 6:00 9:00 12:00 15:00 18:00
+Precipitation (mm/hour)
+Urban total runoff
+Urban surface runoff
+Urban subsurface 
+runoffPrecipitation
+5
+4
+3
+2
+1
+0
+Runoff (mm/hour)
+(a)
+0
+2
+4
+6
+8
+10
+Time (Hour)
+18:00 21:00 0:00 3:00 6:00 9:00 12:00 15:00 18:00
+Precipitation (mm/hour)
+Urban total runoff
+Urban surface runoff
+Urban subsurface 
+runoffPrecipitation
+5
+4
+3
+2
+1
+0
+Runoff (mm/hour)
+(b)
+0
+2
+4
+6
+8
+10
+Time (Hour)
+18:00 21:00 0:00 3:00 6:00 9:00 12:00 15:00 18:00
+Urban total runoff
+Urban surface runoff
+Urban subsurface 
+runoffPrecipitation
+Precipitation (mm/hour)
+0.6
+0.4
+0.2
+0.0
+-0.2
+-0.4
+Runoff Difference, 𝑄!" − 𝑄#
+(mm/hour)
+(c)
+Fig. 9: Comparison of urban runoff components generated from a Chicago winter storm event
+spanning January 29-30, 2013. Urban total runoff, Qt, represents the sum of urban surface
+runoff, Qsrf , and urban subsurface runoff, Qsub. Subfigure (a) shows the control simulation,
+(b) shows the rain garden simulation, and (c) shows the difference in runoff generated between
+the two simulations (Q rg-Qc), where negative differences in runoff indicate that there was
+less runoff in the rain garden simulation compared to the control simulation.
+58
+Page 58 of 58AUTHOR SUBMITTED MANUSCRIPT - ERCL-101128.R2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+Accepted Manuscript
