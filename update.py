@@ -75,6 +75,7 @@ if os.path.exists(os.path.join(BASE, "crawl_law.py")):
 # 3.55) 内容准入判定：按内容类型打标（政策/报告/案例/专家/技术/学术/资讯）
 #       —— 学术文献按期刊分级准入（journal_tier），政策/案例类放宽以确保不遗漏；
 #          只打标不删除（gate_status=reject 供门户过滤与噪声治理清单）
+os.environ["GATE_APPLY"] = "1"   # 让 gate 真正写回标记（否则只统计）
 run("gate.py", optional=True)
 # 3.6) 知识图谱：结构化实体-关系网络 -> kb/graph.json
 run("kg_build.py", optional=True)

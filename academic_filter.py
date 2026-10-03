@@ -100,8 +100,11 @@ def journal_ok(jname, title="", abstract="", require_relevance=True):
         return True, "ok", "未分级期刊，但标题命中水生态要素：%s" % t_hit
     a_low = (abstract or "").lower()
     n = sum(1 for k in STRONG_WATER if k in a_low)
-    if n >= 2:
-        return True, "ok", "未分级期刊，但摘要命中 %d 个水生态要素" % n
+    # 收紧（2026-10-03）：未分级期刊不再只看摘要 —— 摘要"沾边"的主题相关性太弱，
+    # 实测让一般期刊（Desalination and Water Treatment 等）大量涌入，学术类占比冲到 85%。
+    # 现要求摘要命中 ≥3 个水生态要素，或标题命中（已在上面返回）。
+    if n >= 3:
+        return True, "ok", "未分级期刊，但摘要强命中 %d 个水生态要素" % n
     if not j:
         return False, "ok", "无期刊信息且主题相关性不足"
     return False, "ok", "未达中高水平门槛或主题相关性不足：%s" % j[:40]

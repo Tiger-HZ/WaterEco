@@ -273,6 +273,10 @@ def main():
     ap.add_argument("--report", default="")
     ap.add_argument("--limit", type=int, default=0)
     a = ap.parse_args()
+    # 流水线内自动写回：GATE_APPLY=1 时默认执行打标（否则 update.py 里的调用只统计不写回 —— 曾导致
+    # 3700+ 条新增条目长期没有 gate_status）
+    if os.environ.get("GATE_APPLY") == "1":
+        a.apply = True
 
     kb = load_json(a.kb, [])
     # ——— 读取失败保护：宁可中止，绝不把库写空 ———
