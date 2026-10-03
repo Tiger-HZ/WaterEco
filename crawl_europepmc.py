@@ -9,6 +9,7 @@ import os, sys, json, re, datetime, urllib.parse
 import crawl_common as C
 import media  # 学术 OA 全文 PDF 入库
 import academic_filter as af  # 学术源头准入（期刊分级）
+import academic_fulltext as afull  # 全文获取
 
 PAGES = int(os.environ.get("PAGES", "2"))
 ROWS = 200
@@ -75,6 +76,7 @@ def main():
     recs = []
     added = 0
     acad_rejected = 0
+    fulltext_miss = 0
     for q in QUERIES:
         qrecs = []
         cursor = "*"
@@ -99,6 +101,12 @@ def main():
                 okj, jtier, jwhy = af.journal_ok(jname, title, abstract)
                 if not okj:
                     acad_rejected += 1
+                    continue
+                # 全文闸门：EuropePMC 有 PMCID 者可取 fullTextXML，无全文不入库
+                _pmcid = it.get("pmcid") or ""
+                ft, fsrc = afull.fetch_fulltext(doi=it.get("doi") or "", pmcid=_pmcid)
+                if not ft:
+                    fulltext_miss += 1
                     continue
                 d = (it.get("firstPublicationDate") or "")[:10]
                 doi = it.get("doi") or ""
@@ -135,8 +143,11 @@ def main():
                     "quality": quality,
                     "summary": (abstract[:240] if abstract else title),
                     "tags": [],
-                    "content": abstract[:800] if abstract else "",
-                    "content_fetched": bool(abstract),
+                    "content": ft[:200000],
+                    "content_fetched": True,
+                    "content_kind": "fulltext",
+                    "fulltext_source": fsrc,
+                    "abstract": (abstract or "")[:800],
                     "pdf": pdf,
                     "cid": cid,
                     "importance": min(5, 1 + cited // 50),
@@ -159,8 +170,8 @@ def main():
     C.save_cursor(cur)
     print("europepmc 年份游标推进 -> %d" % nxt_year)
     total = len(json.load(open(C.INBOX, encoding="utf-8")) if os.path.exists(C.INBOX) else [])
-    print("crawl_europepmc: added=%d, inbox_total=%d, 源头拒收=%d"
-          % (added, total, acad_rejected))
+    print("crawl_europepmc: added=%d, inbox_total=%d, 源头拒收=%d, 无全文跳过=%d"
+          % (added, total, acad_rejected, fulltext_miss))
 
 
 if __name__ == "__main__":

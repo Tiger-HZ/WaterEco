@@ -7,6 +7,7 @@ import os, sys, json, time, ssl, urllib.request, urllib.parse, re, datetime
 import crawl_common as C
 import media  # 学术 OA 全文 PDF 入库
 import academic_filter as af  # 学术源头准入（期刊分级）
+import academic_fulltext as afull  # 全文获取（2026-10-03：无全文不入库）
 
 FETCH_PDF = os.environ.get("FETCH_PDF", "1") == "1"
 BASE = os.path.dirname(os.path.abspath(__file__))
@@ -119,6 +120,7 @@ def main():
     queries = QUERIES + extra
     added = 0
     acad_rejected = 0   # 源头准入拒收计数（无关学科 / 未达门槛）
+    fulltext_miss = 0   # 无全文计数（2026-10-03：学术须有全文）
     # 回溯游标：每次抓取比上一次“更旧”的批次，单调增长、零重复
     cur = C.load_cursor()
     until = (cur.get("openalex") or {}).get("until") or datetime.date.today().isoformat()
@@ -152,6 +154,17 @@ def main():
                 if not okj:
                     acad_rejected += 1
                     continue
+                # —— 全文闸门（2026-10-03 用户要求：学术必须收录全文，不接受只有摘要）——
+                _oa = w.get("open_access") or {}
+                _best = (w.get("best_oa_location") or {})
+                ft, fsrc = afull.fetch_fulltext(
+                    doi=doi,
+                    pmcid=(w.get("ids") or {}).get("pmcid") or "",
+                    oa_url=_oa.get("oa_url") or _best.get("landing_page_url") or "",
+                    oa_pdf=_best.get("pdf_url") or _oa.get("pdf_url") or "")
+                if not ft:
+                    fulltext_miss += 1
+                    continue
                 concepts = [c["display_name"] for c in (w.get("concepts") or [])[:6] if c.get("display_name")]
                 # 机构国家 → 地域
                 cn = False
@@ -184,8 +197,11 @@ def main():
                     "quality": "A",
                     "summary": summary,
                     "tags": concepts[:5],
-                    "content": abs[:3000] if abs else "",
-                    "content_fetched": bool(abs),
+                    "content": ft[:200000],
+                    "content_fetched": True,
+                    "content_kind": "fulltext",
+                    "fulltext_source": fsrc,
+                    "abstract": (abs or "")[:3000],
                     "pdf": pdf,
                     "cid": cid,
                     "added_at": datetime.date.today().isoformat(),
@@ -200,8 +216,8 @@ def main():
         C.save_cursor(cur)
         print("openalex 游标推进 -> %s" % min_date)
     total = C.append_inbox(inbox)
-    print("crawl_academic: added=%d, inbox_total=%d, 源头拒收=%d（无关学科/未达门槛）"
-          % (added, total, acad_rejected))
+    print("crawl_academic: added=%d, inbox_total=%d, 源头拒收=%d（无关学科/未达门槛）, 无全文跳过=%d"
+          % (added, total, acad_rejected, fulltext_miss))
     print(af.stats_line())
 
 if __name__ == "__main__":
