@@ -1,0 +1,1547 @@
+Vol.: (0123456789)
+Environ Monit Assess (2026) 198:1078 
+https://doi.org/10.1007/s10661-026-15918-6
+RESEARCH
+Region‑specific LOI–TOC conversion models for marine 
+sediment blue carbon assessment in the Western Irish Sea
+Anthony Grey · Ciara Ní Mhaoldomhnaigh · 
+Mark Chatting · Phoebe Walsh · Alan Lee · 
+Brian Kelleher · Mark Coughlan
+Received: 22 April 2026 / Accepted: 5 September 2026 
+© The Author(s) 2026
+Abstract Continental-shelf sediments (< 200  m 
+water depth; ~ 9% of the global seafloor) store large 
+amounts of organic carbon (OC) and accumulate OC 
+annually, but management and accounting applications 
+require regional evidence and transparent uncertainty. 
+Loss-on-ignition (LOI) is a rapid, low-cost proxy 
+for organic matter and OC, but LOI-to- total organic 
+carbon (TOC) conversions vary with sediment type 
+and analytical protocol. This study used multiagency 
+Western Irish Sea data to test whether region- and 
+sediment-specific LOI-to-TOC regressions improve 
+OC estimation relative to a pooled conversion. Paired 
+LOI and TOC measurements were strongly corre-
+lated (R 2 = 0.948). Structural-break and analysis of 
+covariance (ANCOVA) tests identified changes in the 
+LOI-TOC relationship associated with mud content, 
+iron (Fe) concentration and water depth. Splitting 
+samples into high-mud and low-mud groups produced 
+group-specific models (R 2 = 0.97 and 0.72, respec-
+tively) and improved fit for high-mud sediments, while 
+the low-mud model retained greater uncertainty. The 
+results support the use of separate sediment-class-spe-
+cific LOI-to-TOC calibration models for Western Irish 
+Sea sediments and comparable settings, provided that 
+paired LOI–TOC calibration, the range of sediments to 
+which each model applies, and propagated uncertainty 
+are reported. By integrating archived samples, rou-
+tine geotechnical measurements, grain-size data, LOI 
+results and targeted TOC analyses from multiple sur -
+vey and research sources, the study also demonstrates 
+how existing marine monitoring and seabed-mapping 
+Supplementary Information The online version 
+contains supplementary material available at https:// doi. 
+org/ 10. 1007/ s10661- 026- 15918-6.
+A. Grey (*) · C. N. Mhaoldomhnaigh · B. Kelleher 
+School of Chemical Science, Dublin City University, 
+Dublin, Ireland
+e-mail: greyanthony@gmail.com
+C. N. Mhaoldomhnaigh 
+e-mail: ciara.nimhaoldomhnaigh22@mail.dcu.ie
+B. Kelleher 
+e-mail: brian.kelleher@dcu.ie
+M. Chatting 
+School of Civil Engineering, University College Dublin, 
+Dublin, Ireland
+e-mail: M.Chatting@exeter.ac.uk
+P. Walsh · M. Coughlan 
+School of Earth Sciences, University College Dublin, 
+Dublin, Ireland
+e-mail: phoebe.walsh@ucdconnect.ie
+M. Coughlan 
+e-mail: mark.coughlan@ucd.ie
+A. Lee 
+Dún Laoghaire-Rathdown County Council, Marine Road, 
+Dún Laoghaire, Dublin, Ireland
+e-mail: alan.lee93@gmail.com
+M. Coughlan 
+Research Ireland Centre for Applied Geosciences 
+(iCRAG), O’Brien Centre for Science East, University 
+College Dublin, Dublin, Ireland
+ Environ Monit Assess (2026) 198:1078 
+ 1078 Page 2 of 18
+Vol:. (1234567890)
+activities can be leveraged to strengthen national sedi-
+ment carbon datasets.
+Keywords Blue carbon · Marine sediment carbon 
+assessment · Organic carbon · Loss-on-ignition 
+(LOI) · Sediment classification · Continental shelf 
+sediments
+Introduction
+Subtidal, non-vegetated marine sediments hold a 
+major fraction of ocean OC, with the top metre 
+estimated to contain > 2.3 Tt OC and accumulate 
+126–350 Mt OC yr − 1 (Atwood et al., 2020; Epstein 
+& Roberts, 2022). Continental shelves cover ~ 9% 
+of the global marine area and include OC-rich sedi-
+ments that can hold ~ 2% total organic carbon (TOC) 
+and are exposed to climate and anthropogenic pres-
+sures (Diesing, 2020; Epstein et  al., 2025; Legge 
+et al., 2020; Smeaton & Austin, 2022; Smeaton et al., 
+2020). Fine-grained shelf deposits, including those 
+in the Irish Sea, Fladden Grounds and Celtic Sea, are 
+recognised OC accumulation hotspots (Roseby et al., 
+2026; Ward et al., 2025). In these areas, OC-rich sedi-
+ments are found in low-energy depositional settings 
+where fine-grained sediments composed primarily 
+of silts and clays (i.e. < 63 µm), are allowed to set-
+tle from suspension and accumulate on the seafloor. 
+Their carbon content reflects mineralogical and geo-
+chemical controls, including clay minerals and Fe 
+oxides that can protect organic matter (Babakhani 
+et al., 2025; Kennedy & Wagner, 2011; Moore et al., 
+2023; Zhang et al., 2025).
+Reliable OC measurements are needed to sup-
+port stock estimates, spatial predictive models and 
+monitoring. To address this, collaboration among 
+researchers, policymakers, and international organi-
+zations is essential to develop and implement con-
+sistent approaches and standardized methodologies 
+for assessing and reporting OC stock, accumulation 
+and burial rates, thereby supporting the develop-
+ment of a rigorous evidence base. Mapping stud-
+ies depend on local measurements propagated 
+into unsampled areas using statistical or machine-
+learning approaches (Chatting et  al., 2025; Dies-
+ing, 2020; Diesing et al., 2017; Wilson et al., 2018). 
+Although databases such as the Modern Ocean Sed-
+iment Archive and Inventory of Carbon (MOSAIC), 
+EURO-CARBON and PANGAEA improve data 
+access (Felden et al., 2023; Graversen et al., 2025; 
+Paradis et  al., 2023), inconsistent methods for OC 
+stock, accumulation and burial-rate estimation still 
+limit comparability across studies (Dahl et al., 2025; 
+Graves et al., 2022; Ratefinjanahary et al., 2025).
+Direct OC measurement by combustion analysis 
+after inorganic carbon removal is widely used and 
+can be accurate and reproducible when preparation, 
+acidification and calibration are controlled (King 
+et al., 1998; Serrano et al., 2023; Wang et al., 2011). 
+However, elemental analysis is relatively costly and 
+requires specialist equipment, consumables and 
+routine calibration, which can restrict high-density 
+monitoring. This is especially relevant for agen-
+cies with limited budget and developing nations. 
+Alternative approaches include Walkley–Black wet 
+oxidation, which can overestimate OC in anoxic 
+sediments and underestimate it in oxic sediments 
+(Leong & Tanner, 1999; Tuffour et al., 2014). LOI 
+is widely used by researchers, monitoring agencies 
+and commercial laboratories as a semi-quantitative 
+OC proxy (Breithaupt et al., 2019; Hoogsteen et al., 
+2015; Plater et al., 2015) and is included in BS EN 
+15935:2021 for soil, waste, treated biowaste and 
+sludge (British Standards Institution, 2021). LOI 
+measures mass loss during ignition and can include 
+organic matter (OM), structural water, salts and car -
+bonate-related losses; therefore, conversion to OC 
+requires local calibration.
+Published LOI-to-TOC conversions differ among 
+arid soils, mangroves and littoral sediments (Jensen 
+et al., 2018; Ratefinjanahary et al., 2025; Touch et al., 
+2017), partly because sediment composition, OM 
+content and ignition temperature affect regression 
+slopes (Sleutel et  al., 2007; Breithaupt et  al., 2023; 
+Table S3). Ireland’s Exclusive Economic Zone (EEZ) 
+covers roughly 450,000 square kilometres (~ 10 times 
+its land mass), yet its seabed carbon inventory remains 
+poorly constrained despite the extensive degree of 
+mapping and sampling that has occurred there (Chat-
+ting et al., 2025). Here, we compile LOI, TOC, grain-
+size and iron (Fe) data for Western Irish Sea (WIS) 
+non-vegetated marine sediments from research, com-
+mercial and national monitoring sources, and test 
+whether stratified LOI-to-TOC models provide a prac-
+tical framework for regional OC assessment. We also 
+provide recommendations for methodological aspects 
+of sediment carbon analysis and recommendations for 
+Environ Monit Assess (2026) 198:1078 
+ Page 3 of 18 1078 
+Vol.: (0123456789)
+national carbon stock accounting strategies which can 
+inform interested stakeholders.
+Regional setting
+The Western Irish Sea study area (Fig.  1) connects to 
+the Atlantic Ocean through the North Channel and St. 
+George’s Channel (Knight et al., 1999). Sample sites 
+span mud, sand and gravel sediments and were retro-
+spectively grouped in Fig.  1 as High mud (> 19.80% 
+mud) or Low mud (≤ 19.80% mud) as described by 
+the results of statistical testing from this study.
+Water depths range from coastal shallows (< 5 m) 
+to approximately 115  m in the central basin. The 
+western region is generally deeper, less tidally ener -
+getic and more saline (Gowen & Stewart, 2005), sup-
+porting a seasonal summer gyre and offshore Summer 
+Stratified Region (Woods et al., 2019; Fig.  1) distinct 
+from the Coastal and Southern Mixed Regions (Hill 
+et  al., 1994, 1997; Horsburgh et  al., 2000; O’Reilly 
+et al., 2014). North of 53.5°N, weaker hydrodynam-
+ics favour fine-grained deposition (i.e. silts and clays), 
+whereas southern areas are dominated by sands, grav-
+elly sands and high-energy bedforms (Coughlan et al., 
+2021; Creane et al., 2022; Trimmer et al., 2003; Ward 
+et al., 2025). The Irish Sea catchment is ~ 43,000 km2, 
+with major freshwater input in the eastern Irish Sea 
+(Bowden, 1980). Previous work documented anthro-
+pogenic impacts on Western Irish Sea Mud Belt sedi-
+ments, including trawling and radionuclide inputs 
+from Sellafield (Coughlan et  al., 2015; Muir et  al., 
+2026).
+Data and methods
+Samples and existing data were collated from sur -
+veys between 2010 and 2023: CV10_28 (O’Reilly 
+et  al., 2010), KRY22_03 (Furey & Cullen, 2022) 
+and CE23_016 (QUEST; grant no. PBA/CC/21/01). 
+Data variables and source agencies are summarised 
+in Table  1. Where data had been published previ-
+ously, the relevant reference is provided. CV10_28 
+surface sediments were sampled in June 2010 dur -
+ing INFOMAR (Integrated Mapping for the Sustain-
+able Development of Ireland’s Marine Resource) 
+survey CV10_28 aboard the RV Celtic Voyager using 
+a Day Grab. Box cores were taken using a Reineck 
+box corer, and subsequently push cores were taken 
+from the box using pre-cut and edge filed piping 
+(50  cm length and 7  cm internal diameter), capped, 
+sealed and frozen at −20  °C. For survey Kry22_03, 
+the Marine Institute (MI) collected surface grab 
+samples from Dublin Bay in spring 2022 using a 
+Day Grab aboard the RV Keary (Geological Survey 
+Ireland), and samples were refrigerated until analy -
+sis. In October 2023, the QUEST project team led 
+survey CE23_016 aboard the RV Celtic Explorer 
+(MI) to execute a sampling programme in the West-
+ern Irish Sea. Surface grab samples were captured 
+using a Day Grab and stored at −20  °C. A Reineck 
+box corer was used similarly to survey CV10_28 
+where duplicate push cores (hereafter referred to as 
+box cores) were extracted from the sediment box on 
+deck before storage (1* frozen). Gravity (1–3 m) and 
+Vibrocores (4–5.5  m) were used to collect deeper 
+sediments where sediments were collected within 
+plastic piping inserted into respective coring devices 
+before deployment to the seabed. Onboard cores 
+were sectioned into 1  m lengths before storage at 
+−20 °C. The processing of frozen cores was carried 
+out at Dublin City University. Workflow of grab sam-
+ples included defrosting, complete homogenisation 
+using a stainless-steel trowel before subsampling for 
+respective analysis. The box cores, gravity cores, and 
+vibrocores were split manually while frozen using 
+an angle grinder power tool. Briefly, the two deep 
+lines were scored along the surface of the piping at 
+opposing sides. A flat-blade screwdriver and hammer 
+were used to gently tap along the score lines until the 
+outward pressure split the pipe to reveal the frozen 
+and physically intact core. The outer core was QC 
+assessed for any possible contaminants from the pipe. 
+Stainless steel saws were used immediately while the 
+core remained frozen to further section the core into 
+selected horizons before subsampling.
+Sediment analysis
+Grain size analysis was carried out on the 0–5  cm 
+horizon of core samples and on the homogenised 
+subsample from grabs (sand, silt, and clay fractions). 
+Grain size was measured on the < 2  mm fraction of 
+ Environ Monit Assess (2026) 198:1078 
+ 1078 Page 4 of 18
+Vol:. (1234567890)
+Environ Monit Assess (2026) 198:1078 
+ Page 5 of 18 1078 
+Vol.: (0123456789)
+dried and sieved sediment by laser diffraction (Mal-
+vern Mastersizer MS3000) after dispersion in deion-
+ised water and sonication. The fraction retained in the 
+sieve (> 2 mm) was weighed and classified as gravel 
+mass, later integrated into the data set during process-
+ing with software. All studies used the same method-
+ology to attain grain size distribution data. Data was 
+subsequently processed using the statistics package 
+GRADISTAT in Excel to define sediment grain size 
+distribution and provide % of sand, silt, clay, and 
+gravel (Blott et al., 2001). Mud (%) was derived from 
+the sum of silt and clay. CV10_28 samples were ana-
+lysed at University College Cork; KRY22_03 sam-
+ples were analysed by Fugro (https:// www. fugro. com/ 
+exper tise/ labor atory- testi ng- and- data- deliv ery), and 
+CE23_016 samples were analysed at University Col-
+lege Dublin.
+TOC was measured consistently across surveys on 
+the < 2 mm sediment fraction after freeze-drying, pow-
+dering by manual grinding with a mortar and pestle, 
+and storage in a desiccator. A 125 µm sieve was used 
+only after powdering samples as a post grain size test 
+to ensure that all powdered sediments passed the same 
+size cutoff to obtain a uniform fine fraction prior to 
+weighing, i.e. sediment that did not pass through was 
+further powdered and combined with the rest of the 
+sample before homogenising. CV10_28 samples were 
+analysed at the University College Dublin Microana-
+lytical Laboratory KRY22_03 and CE23_016 samples 
+were analysed in the Dublin City University environ-
+mental laboratory. TOC concentrations are reported 
+as weight percent of dry sediment (wt.%). TOC data 
+used in this study for CV10_28 was carried out on 
+the 0–2 cm depth horizon of cores, while cores ana-
+lysed for this study were sampled 0–3 cm to increase 
+sample availability. CE23_016 core sediments used 
+0–5  cm depths. Briefly, powdered sediment samples 
+were weighed into silver capsules (~ 10  mg) using 
+a calibrated balance (QUINTIX35-1S- readability 
+0.01  mg). Sediments were treated to remove carbon-
+ate (Verardo et al., 1990). The serial addition (20 µl*5) 
+of 1 M HCl was pipetted into the silver capsule until, 
+followed by drying overnight at 40 °C, and storage in 
+a desiccator until analysis. Immediately prior to analy-
+sis, silver capsules were closed and lightly compacted 
+using stainless stell tweezers and analysed by combus-
+tion using a Fisons NCS 1500 NA elemental analyser, 
+calibrated with a certified soil standard (CE Instru-
+ments; mean C = 2.3%, % RSD < 1%) before each 
+batch and after every nine samples. % RSD for sample 
+triplicates ranged from 1.02 to 5.5 with the higher var-
+iability occurring in sediments with higher sand and 
+shell content.
+To perform LOI analysis, sediment samples 
+(~ 40–50  g wet weight) were placed on glass petri 
+dishes and dried at 105  °C for 24  h to remove all 
+moisture, until constant mass was achieved. Dried 
+sediments were sieved to < 2  mm and manually 
+powdered using a mortar and pestle. Samples were 
+re-dried at 60  °C for an additional 4  h, cooled, and 
+stored in a vacuum desiccator prior to ignition 
+(ensuring complete dryness after processing). Rep-
+licate sample masses of 10–15  g were placed in 
+pre-weighed ceramic crucibles. The samples were 
+furnaced at 450 °C for 4 h, allowed to cool in the fur -
+nace, and immediately placed in a desiccator until re-
+weighing for mass loss. LOI (wt.%) was calculated 
+as: LOI (wt.%) = (Y − X/Y) × 100 where, Y is the initial 
+dry sediment mass, and X is the post-ignition mass 
+(determined as total crucible + ash mass—crucible 
+tare). Replicate analyses and desiccation were used 
+to reduce precision and rehydration artefacts. In most 
+cases duplicate analysis (some samples had triplicate 
+runs) was carried out for LOI with % RSD ranging 
+from 1.3% in homogenous mud sediments to 13.6% in 
+heterogeneous sandy and lower—OM sediment.
+Fe concentrations were measured in triplicate using 
+a Thermo Scientific Niton XL3t 900 portable X-ray 
+fluorescence (XRF) analyser with Niton NDTr 6.5.2 
+software (Radu et al., 2013). Quantification used fun-
+damental parameters to reduce matrix effects, with 
+internal calibration before and after each run. Accu-
+racy was checked against certified soil reference mate-
+rials (NCSDC 73308, TILL-4 and GBW 07411) fol-
+lowing US EPA Method 6200 (U.S. EPA., 2007).
+Statistical analysis
+Data were quality checked in Excel and analysed 
+using Python statsmodels (Seabold & Perktold, 
+Fig. 1 Map of the Western Irish Sea study area and sample 
+locations. Seabed sediment classification is derived from the 
+British Geological Survey Seabed Sediments 250  K data-
+set (British Geological Survey, 2011; Folk, 1954). Sample 
+sites are shown as High mud (> 19.80% mud) and Low mud 
+(≤ 19.80% mud). Approximate extent of the summer seasonal 
+water mass stratified region is adapted from Woods et  al. 
+(2019)
+◂
+ Environ Monit Assess (2026) 198:1078 
+ 1078 Page 6 of 18
+Vol:. (1234567890)
+2010), PAST (Hammer et al., 2001) and Excel. Sum-
+mary statistics were calculated for all variables. The 
+baseline WIS model used ordinary least squares 
+(OLS) regression of TOC against LOI, followed by 
+residual inspection. Structural breaks were tested 
+using Chow tests across candidate thresholds for mud, 
+water depth, clay, silt, sand, gravel and total Fe, with 
+thresholds constrained to leave at least 15 samples per 
+group. Candidate splits were ranked by F-statistic and 
+p-value.
+Group differences were evaluated using analysis 
+of covariance (ANCOVA): TOC = ([a + b] × LOI) + (
+c × Group) + (d × [LOI × Group]). A significant inter-
+action term indicated different slopes, while group 
+effects indicated intercept differences. Final group 
+models were assessed using regression fit, residuals 
+and practical interpretability. Spearman correlations 
+explored variable relationships, and Mann–Whitney 
+U tests were used for non-normal group comparisons 
+(Nachar, 2008).
+Results
+XRF calibration checks indicated accept-
+able Fe accuracy across the calibration range: 
+measured-versus-certified slopes were 0.97 
+(R2 = 0.9469) for NCSDC 73308, 0.90 (R 2 = 0.8069) 
+for TILL-4 and 0.99 (R 2 = 0.9897) for GBW 07411. 
+The dataset covered wide sediment and carbon ranges 
+(Table 2 and Table  S1). LOI ranged from 0.33% to 
+4.95% (mean 1.23%; mean Relative standard devia-
+tion (RSD) 3.53%), and measured TOC ranged from 
+0.03% to 2.02% (mean 0.40%; mean RSD 2.65%). 
+Water depths ranged from 3 to 114  m; mud con-
+tent ranged from 0% to 97.66%; and Fe ranged from 
+0.41% to 3.78%, generally increasing in finer sedi-
+ments. The paired LOI-TOC subset was smaller than 
+the full metadata set, so external validation remains 
+required.
+Across groups, TOC correlated strongly with 
+LOI (r = 0.85–0.98), with the strongest relationship 
+in mud-rich sediments (r = 0.98; Fig.  2). Mud con-
+tent correlated with TOC and LOI in the full data-
+set (r = 0.66 and 0.80) and particularly in the high-
+mud group. Fe also correlated with TOC and LOI 
+(r = 0.69–0.79), especially in high-mud sediments, 
+but these associations are interpreted as covariation 
+with depositional setting rather than direct causation. 
+Water depth relationships varied by group: in the full 
+dataset, TOC and LOI correlated with water depth; 
+in low-mud sediments, only LOI showed a weak 
+Table 1 Summary of agencies and sources providing data and samples for this publication
+Agencies/funders include Geological Survey Ireland (GSI), Marine Institute (MI), Dublin City University (DCU), University College 
+Dublin (UCD), University College Cork (UCC), Geological Survey of Norway (NGU), Agri-Food and Biosciences Institute (AFBI), 
+Queen’s University Belfast (QUB) and the Environmental Protection Agency (EPA). Survey codes: CV10_28 (Celtic Voyager 2010–
+28), KRY22_03 (Keary 2022–03) and CE23_016 (Celtic Explorer 2023–16). Projects: Quantification, characterisation, source and 
+fate of past and present carbon storage in coastal and offshore sediments for effective marine management (QUEST), Prediction of 
+Irish coastal transformation (PREDICT), and Integrated Mapping for the Sustainable Development of Ireland’s Marine Resource 
+(INFOMAR)
+Survey Agency Date (m/yr) Sedi-
+ment 
+samples
+Sample method Data Variables Project References
+CV10_28 GSI, MI, DCU, 
+UCC 
+06/2010 ✓ Day grab
+Box core
+✓ Clay, silt, sand, 
+water depth, 
+total iron, TOC
+INFOMAR O’Reilly et al., 
+2014
+ Murphy et al., 
+2016
+KRY22_03 GSI, MI, DCU, 
+UCD, UCC, 
+Fugro
+03/2022 ✓ Day grab ✓ Clay, silt, sand, 
+water depth, 
+TOC, total iron
+PREDICT Furey & Cullen, 
+2022
+CE23_016 MI, DCU, UCD, 
+NGU, AFBI
+10/2023 ✓ Day grab, Box 
+core, Vibro-
+core, Gravity 
+core
+✓ Clay, silt, sand, 
+water depth, 
+total iron, 
+TOC, LOI, 
+Bulk density 
+(BD)
+QUEST Grey et al., 2024; 
+Chatting et al., 
+2025
+Environ Monit Assess (2026) 198:1078 
+ Page 7 of 18 1078 
+Vol.: (0123456789)
+Table 2 Descriptive 
+statistics for the sediment 
+dataset. Variables include 
+LOI, TOC, TOC/LOI, 
+TOC/mud, water depth, 
+grain-size fractions and Fe
+Variable n Min Max Median Mean Std. error
+LOI (wt.%) 77 0.33 4.95 1.02 1.23 0.09
+TOC (wt.%) 98 0.03 2.02 0.21 0.40 0.04
+TOC/LOI 77 0.00 0.41 0.21 0.22 0.01
+TOC/Mud 86 0.00 0.30 0.02 0.03 0.00
+Water Depth (m) 99 3.00 114.00 22.00 31.48 2.97
+Clay (%) 97 0.00 26.36 2.82 7.07 0.88
+Silt (%) 99 0.00 94.53 7.24 21.78 2.89
+Mud (%) 99 0.00 97.66 9.15 25.88 3.19
+Sand (%) 99 2.34 100.00 86.33 70.78 3.16
+Gravel (%) 99 0.00 74.88 0.08 3.33 1.14
+Fe (%) 95 0.41 3.78 0.85 1.20 0.08
+Fig. 2 Spearman correlation matrices for the WIS, Low mud and High mud groups. The upper triangle shows p-values and the 
+lower triangle shows correlation coefficients (r), indicating the strength and direction of relationships among variables
+ Environ Monit Assess (2026) 198:1078 
+ 1078 Page 8 of 18
+Vol:. (1234567890)
+significant water depth relationship; in high-mud sed-
+iments, TOC was more strongly water depth-associ-
+ated. These patterns support testing stratified models.
+LOI and measured TOC were strongly correlated 
+across the WIS dataset (Fig.  3), yielding the base-
+line model:
+The model explained ~ 95% of measured TOC 
+variance (R 2 = 0.9478). The negative intercept 
+(−0.18) indicates a small low-LOI offset, consistent 
+with potential inorganic mass loss or methodologi-
+cal bias in low-TOC sands. Residuals suggested that 
+the pooled WIS model slightly over-predicted some 
+TOC = 0.41× LOI − 0.18
+sandy, low-TOC samples and under-predicted some 
+high-TOC muds, supporting stratified analysis.
+Chow tests identified the largest LOI-TOC struc-
+tural breaks (Table  3). TOC/LOI gave the smallest 
+p-value but is derived from the predictor and response 
+variables and is therefore not a practical independent 
+stratifier. Fe produced the strongest independent split 
+(0.99% Fe; p = 9.7 × 10 − 13), followed by mud con-
+tent (19.8% mud; p = 6.4 × 10 − 11) and water depth 
+(29.6 m; p = 2.3 × 10 − 9). Clay, silt and sand thresh-
+olds identified substantially overlapping fine- versus 
+coarse-sediment groups. Fe and depth are therefore 
+interpreted as proxies for sedimentological and depo-
+sitional setting rather than independently validated 
+WIS:y= 0.41x -0 .18
+R² =0 .95
+Lr Mud:y= 0.24x -0 .03
+R² =0 .72
+Hr Mud :y=0 .42x -0 .16
+R² =0 .97
+0
+0.5
+1
+1.5
+2
+2.5
+00 .5 11 .5 22 .5 33 .5 44 .5 55 .5 6
+TOC( %w)
+LOI( WT%)
+Lr Mud
+Hr Mud
+WIS
+Lr Mud
+Hr Mud
+Fig. 3 Linear regression plots for the Western Irish Sea (WIS) dataset and the low mud and high mud groups. Equations and R 2 val-
+ues are shown for each trend line
+Table 3 Chow-test results 
+for candidate structural 
+breaks in the LOI-TOC 
+relationship
+Covariate Threshold F statistic p n low n high Slope low Slope high
+TOC/LOI 0.26 55.15 2.6 × 10⁻15 57 20 0.23 0.40
+Mud 19.8 32.93 6.4 × 10⁻11 59 18 0.24 0.42
+Fe 0.99 42.41 9.7 × 10⁻13 55 18 0.22 0.41
+Water depth 29.6 26.44 2.3 × 10⁻⁹ 62 15 0.26 0.41
+Environ Monit Assess (2026) 198:1078 
+ Page 9 of 18 1078 
+Vol.: (0123456789)
+causal controls. Mud content was selected as the pri-
+mary stratifier because it is statistically significant, 
+geochemically interpretable and routinely measur -
+able. A two-group model was therefore developed 
+using the 19.8% mud threshold.
+ANCOVA results for Fe and water depth are 
+included because they may act as practical proxies 
+where grain-size data are incomplete. Mann–Whitney 
+U tests showed significant differences between low 
+mud and high mud groups for all variables (Table S2).
+ANCOVA indicated significant slope differences 
+between mud, Fe and water depth groups (Table  4; 
+Fig. 3). The high-mud slope (0.42) was nearly twice 
+the low-mud slope (0.24), meaning that a given LOI 
+corresponds to higher TOC in fine, deeper sediments 
+than in shallower, sand-dominated sediments (Dies-
+ing et  al., 2017). Intercepts also differed (−0.16 for 
+high mud; −0.03 for low mud).
+Near-zero LOI extrapolation should be treated 
+cautiously because fitted intercepts fall outside the 
+main management range and may reflect analyti-
+cal or mineralogical effects. Mean TOC/LOI ratios 
+were also higher in fine sediments (low mud = 0.20; 
+high mud = 0.34), supporting sediment-class-specific 
+conversion.
+Discussion
+Improving LOI-TOC conversion in marine sediments
+The WIS data are not well represented by one pooled 
+LOI-TOC relationship. Chow tests and ANCOVA 
+revealed structural breaks associated with mud con-
+tent, water depth and Fe concentration: mud-rich 
+or Fe-rich sediments had steeper TOC/LOI slopes 
+than coarse, Fe-poor sediments. Calibrated slopes 
+were ~ 0.41 percentage points TOC per 1LOI (wt.%) 
+in deep or mud-rich beds and ~ 0.24 percentage points 
+TOC per 1 LOI (wt.%) in shallow or coarse sites. 
+These findings are consistent with the ability of fine 
+mineral matrices, clay interlayers and Fe/Mn oxides 
+to retain and protect organic matter (Barber et  al., 
+2017; Chen et al., 2020; Johnson et al., 2015; Lalonde 
+et  al., 2012; Moore et  al., 2023; Wei et  al., 2025). 
+In coarse sediments, low organic content and small 
+absolute LOI values can make TOC estimates more 
+sensitive to minor inorganic mass losses or seasonal/
+anthropogenic organic inputs (Ahrens et  al., 2020; 
+Kubo & Kanda, 2017).
+The Fe split indicates a geochemical association 
+rather than a direct causal test. Fe phases, including iron 
+(oxyhydr)oxides and sulfides, can co-accumulate with 
+TOC in low-energy, fine-grained or low-oxygen set-
+tings (Egger et al., 2017; Taylor & Macquaker, 2011). 
+However, Western Irish Sea sediments are affected by 
+bioturbation by Nephrops norvegicus and by trawl-
+ing, with reported Irish Sea trawling intensities of 
+2.70–11.90  yr−1 and measurable benthic impacts (Jones 
+et al., 2002; Hinz et al., 2017; O’Sullivan et al., 2014; 
+Hiddink et  al., 2016). These processes can alter sedi-
+ment structure, biogeochemical cycling and OM-min-
+eral relationships (Lønborg et al., 2024; Paradis et al., 
+2021). The TOC/mud ratio may help separate grain-
+size effects from disturbance effects, as shown for inten-
+sively trawled North Sea sediments (Zhang et al., 2024).
+Fe and water depth can therefore help flag shifts in 
+TOC/LOI where grain-size data are incomplete, but 
+they should be used as proxies for depositional set-
+ting. Mineral associations remain important mecha-
+nistic context: nitrogen-rich OM may bind closely 
+to Fe-rich minerals, whereas carbon-rich OM may 
+be preserved within aggregate pores (Zhang et  al., 
+2025), consistent with distinct mineral protection 
+pathways for different OM pools (Blattmann et  al., 
+2019; Yedema et al., 2024; Bauer et al., 2013; Moore 
+et al., 2023; Barber et al., 2017; Wei et al., 2025).
+Implications and recommendations
+National seabed carbon inventories need reliable 
+point data for spatial modelling (Luisetti et al., 2019, 
+Table 4 ANCOVA results 
+for group-wise LOI-TOC 
+models using Chow-test 
+thresholds
+Factor F p F p Slope Intercept
+[Groups] n [slopes] [slopes] Interaction Interaction Lower Higher Lower Higher
+Mud 77 10.93 1.5 × 10–3 47.98 1.4 × 10–9 0.24 0.42 −0.03 −0.16
+Fe 77 14.98 2.3 × 10–4 36.4 6.1 × 10–8 0.25 0.41 −0.04 −0.14
+Water depth 77 14.81 2.5 × 10–4 31.89 2.9 × 10–7 0.26 0.41 −0.05 −0.14
+ Environ Monit Assess (2026) 198:1078 
+ 1078 Page 10 of 18
+Vol:. (1234567890)
+2020). Open datasets such as MOSAIC and EURO-
+CARBON support harmonisation, and EURO-CAR -
+BON specifically notes that LOI-to-TOC conversion 
+depends on local physical factors (Graversen et  al., 
+2025; Paradis et  al., 2023). A single conversion can 
+over- or under-estimate TOC in particular sediment 
+regimes. In this study, stratified models based on mud 
+content, Fe or water depth improved fit within WIS 
+groups (R 2 = 0.97 and 0.72 for high- and low-mud 
+sediments), suggesting a practical route for converting 
+low-cost LOI measurements when paired calibration 
+data, sediment-class metadata and uncertainty propa-
+gation are available. Tables 5 and 6 summarise meth-
+odological and accounting recommendations; they 
+should be treated as guidance for measurement con-
+sistency and uncertainty reporting, not as evidence 
+that LOI alone is sufficient for national accounting.
+A further implication of this study is that national 
+sediment carbon datasets need not rely solely on stan-
+dalone carbon-focused surveys. The present dataset 
+integrates archived samples, routine geotechnical 
+data, particle-size measurements, LOI results and 
+targeted TOC analyses from multiple research, moni-
+toring and seabed-mapping activities. This approach 
+could be expanded through collaboration among 
+national mapping programmes, research institutions, 
+environmental regulators, local authorities, offshore 
+renewable-energy developers, ports, fisheries-man-
+agement bodies and commercial survey providers. 
+Shared study design, sample archiving, infrastruc-
+ture, metadata standards and co-funding would allow 
+routine marine surveys and infrastructure projects 
+to strengthen national seabed carbon assessment, 
+improve spatial coverage, reduce duplicate sampling 
+and support more robust carbon-stock mapping and 
+policy evaluation.
+Limitations and uncertainty
+This regional case study should not be interpreted 
+as providing a universal LOI-to-TOC conversion. 
+The paired LOI-TOC dataset is smaller than the 
+full metadata set, group sizes are uneven (18 high-
+mud and 59 low-mud samples), and the 19.8% mud, 
+0.99% Fe and 29.6  m water depth thresholds were 
+selected using exploratory structural-break analysis 
+without independent validation. Application to other 
+regions or sedimentary settings therefore requires 
+new paired LOI–TOC measurements to calibrate and 
+independently validate locally appropriate conver -
+sion relationships and any associated sediment-class 
+thresholds. LOI provides an indirect estimate of 
+sediment organic matter and cannot be expected to 
+achieve the analytical specificity or accuracy of direct 
+TOC determination by combustion-based elemental 
+analysis. LOI at 450  °C can include organic matter, 
+clay structural water and other volatile or mineral-
+associated losses. Results can also vary with igni-
+tion temperature, sample mass, sieving, drying, car -
+bonate content and desiccation. These limitations do 
+not preclude the use of LOI for estimating TOC, but 
+they require conversion relationships to be empiri-
+cally calibrated against direct TOC measurements 
+and interpreted within the sedimentological and geo-
+chemical context of the samples. Fe and water depth 
+co-vary with grain size and depositional environment 
+in this dataset and should be treated as practical prox-
+ies unless supported by independent geochemical 
+and mineralogical evidence. Prediction uncertainty 
+is greatest in low-OC coarse sediments for samples 
+close to classification thresholds.
+Importantly, this study evaluates the conversion of 
+LOI measurements to estimated TOC concentration 
+only. It does not directly quantify sediment carbon 
+stocks, accumulation or burial rates, carbon perma-
+nence or climate-mitigation potential. Where cali-
+brated LOI-to-TOC relationships are applied to addi-
+tional sediment samples, the resulting TOC estimates 
+may subsequently contribute to stock calculations, 
+but these require additional information including 
+dry bulk density, sediment thickness or defined water 
+depth intervals, grain-size and spatial data, together 
+with appropriate propagation of conversion, meas-
+urement and spatial uncertainties. Estimates of accu-
+mulation or burial additionally require independent 
+chronological constraints such as radionuclide dating.
+Conclusion
+This study demonstrates that the principal value of 
+LOI-to-TOC conversion is not to replace direct ele-
+mental analysis, but to extend the spatial value of 
+existing and future marine sediment datasets where 
+LOI is available, but direct TOC measurements are 
+limited. For the WIS dataset, sediment-class-specific 
+conversion improved model fit and reduced conver -
+sion bias relative to a single pooled LOI-to-TOC 
+Environ Monit Assess (2026) 198:1078 
+ Page 11 of 18 1078 
+Vol.: (0123456789)
+Table 5 Recommendations for methodological aspects of sediment carbon analysis
+ID Recommendation Key implementation Resources Expected impact Main risk
+R1a Measure TOC on a 10–25% 
+calibration subset and LOI on 
+all samples
+Stratify by sediment class; pair 
+LOI-TOC; update after proto-
+col changes
+Elemental analyser or partner 
+lab; sampling plan
+Expands coverage while retain-
+ing direct-OC traceability
+Rare sediment types may be 
+under-sampled; inter-lab offsets
+R1b Standardise and report the LOI 
+protocol
+Record drying, mass, crucible, 
+ignition temperature/time, 
+desiccation and replication
+Muffle furnace; balance; desic-
+cator; SOP; training
+Improves comparability and 
+auditability
+Marine carbonates/clays may 
+need documented deviations
+R1c Control carbonate removal and 
+inorganic-carbon correction
+Classify carbonate likelihood; 
+apply one validated IC/
+removal SOP; record method
+Elemental analyser; IC/carbon-
+ate testing capacity
+Reduces systematic OC bias 
+across carbonate gradients
+Acidification can remove OC; 
+carbonate behaviour varies
+R1d Test clay/mineral interference 
+where fines are high
+Use sensitivity tests or TGA/
+XRD subsets to separate mass-
+loss processes
+Mineralogy/TGA access; spe-
+cialist interpretation
+Improves LOI interpretation in 
+clay-rich sediments
+Adds cost and may not yield 
+universal corrections
+R2a Use stratified LOI-to-TOC mod-
+els rather than one regional 
+factor
+Define classes; fit regressions; 
+validate interactions; publish 
+applicability rules
+Paired LOI-TOC, grain-size/
+Fe/water depth metadata; 
+statistics
+Reduces regime-specific over/
+under-estimation
+Misclassification near thresholds; 
+model drift
+R2b Require grain-size metadata Report mud, silt, clay, sand and 
+method consistently; integrate 
+into model selection
+Laser diffraction or sieving/
+pipette; QA procedures
+Supports correct stratified con-
+version and spatial modelling
+Method offsets require harmoni-
+sation
+R2c Use Fe as a secondary proxy 
+where grain size is absent
+Measure Fe with certified refer-
+ences and compare Fe- versus 
+mud-based splits
+XRF/ICP/FAAS; standards; QC 
+logging
+Helps classify depositional 
+setting when physical data are 
+incomplete
+Fe is a proxy and should not be 
+over-interpreted causally
+ Environ Monit Assess (2026) 198:1078 
+ 1078 Page 12 of 18
+Vol:. (1234567890)
+Table 6 Recommendations for national carbon stock accounting strategies
+SOP standard operating procedure, IC inorganic carbon, TGA thermogravimetric analysis, XRD X-ray diffraction, ICP inductively coupled plasma analysis, FAAS flame atomic 
+absorption spectroscopy, QA/QC quality assurance/quality control, CRM certified reference material, LIMS laboratory information management system, DBD dry bulk density, 
+MAR mass accumulation rate, MRV monitoring, reporting and verification, GIS geographic information system
+ID Recommendation Key implementation Resources Expected impact Main risk
+R3a Measure dry bulk den-
+sity and water content 
+routinely
+Define core/sec-
+tion SOP; measure 
+volume and dry mass; 
+propagate uncertainty
+Corers, liners, oven, 
+balance and volume 
+tools
+Improves stock accu-
+racy and compara-
+bility
+Compaction and distur-
+bance can bias DBD
+R3b Standardise sediment 
+depth horizons and 
+reporting units
+Use defined horizons 
+(e.g. 0–10, 10–30, 
+30–100 cm); record 
+recovery/compaction
+Coring capability; data-
+base schema
+Improves comparability 
+with global bench-
+marks
+Bioturbation and deeper 
+coring complicate 
+interpretation
+R3c Report burial only with 
+accumulation-rate 
+evidence
+Use 210Pb/137Cs or 
+equivalent chronolo-
+gies; calculate MAR 
+and uncertainty
+Radiometric dating; 
+chronology expertise
+Separates stock esti-
+mates from higher-
+tier burial evidence
+Dating assumptions and 
+mixing may dominate 
+uncertainty
+R3d Operate a formal QA/
+QC system
+Use replicates, blanks, 
+CRMs, inter-lab 
+checks, calibration 
+logs and QC flags
+CRMs; LIMS/struc-
+tured data; staff time
+Supports MRV cred-
+ibility and detects lab 
+drift
+Coordination costs; 
+criteria may reduce 
+usable data
+R4a Integrate sampling and 
+spatial modelling
+Sample by strata; 
+model with cross-
+validation; report 
+uncertainty and appli-
+cability
+GIS/modelling exper-
+tise; predictor layers
+Improves scaling from 
+point data to stock 
+maps
+Predictor layers and 
+extrapolation can bias 
+maps
+R4b Include disturbance 
+and vulnerability 
+layers
+Link trawling/dredg-
+ing/storm data to 
+sampling strata and 
+scenario tests
+Pressure datasets; 
+stakeholder coordina-
+tion
+Improves policy rel-
+evance and perma-
+nence assessment
+Attribution is difficult 
+and context dependent
+R4c Align outputs with 
+recognised account-
+ing frameworks
+Document boundaries, 
+tiers, activity data, 
+uncertainty and veri-
+fication traceability
+Policy expertise; QA 
+review
+Makes outputs more 
+usable for MRV and 
+reporting
+Framework mismatch 
+may cause misinterpre-
+tation
+Environ Monit Assess (2026) 198:1078 
+ Page 13 of 18 1078 
+Vol.: (0123456789)
+relationship, with mud content providing the clear -
+est basis for model separation. Direct TOC meas-
+urement nevertheless remains necessary for model 
+development, independent validation and high-con-
+fidence inventory reporting. Future work should test 
+whether similar sediment-class relationships occur in 
+other regions using large datasets such as MOSAIC 
+and EURO-CARBON, while resolving LOI method 
+standardisation and mineralogical interference (e.g. 
+clay structural water and carbonate loss).
+Marine sedimentary blue carbon is increasingly rel-
+evant to marine protected area (MPA) assessment and 
+marine spatial planning (Allcock et al., 2024; Bergagna 
+et al., 2024; Laffoley & Baxter, 2022; Marine Protected 
+Area Advisory Group, 2020; Visalli et  al., 2020). 
+Remaining gaps in dry bulk density, grain size and 
+accumulation-rate data limit stock accuracy (Graversen 
+et al., 2025), so national seabed mapping programmes 
+such as INFOMAR and MAREANO (Norwegian sea-
+bed mapping programme) provide valuable sampling 
+platforms (Bøe et al., 2022; Guinan et al., 2020). The 
+framework presented here can increase OC data avail-
+ability where LOI is the best available option. Indeed, 
+retrospective application of validated conversion mod-
+els could increase the spatial density of estimated TOC 
+data where archived LOI measurements are accompa-
+nied by sufficient metadata, particularly grain-size and 
+location information, but it should not be used alone 
+to infer accumulation, burial, permanence or mitiga-
+tion value. Beyond the specific LOI–TOC calibration, 
+this study demonstrates the value of collating data 
+from multiple marine survey, monitoring and research 
+sources. Coordinated sample archiving, shared infra-
+structure, common metadata standards and targeted 
+collaboration among mapping agencies, research insti-
+tutions, regulators, local authorities and offshore infra-
+structure stakeholders could improve spatial coverage 
+while reducing duplication of sampling effort. This 
+approach would support more robust national seabed 
+carbon assessment, monitoring and policy evaluation 
+while merging multidisciplinary knowledge to enhance 
+interpretation of data.
+Acknowledgements Sample anlaysis for LOI and grain 
+size were supported by Jack Ryan (BSc) while completing 
+his internship at Dublin City University. The authors would 
+like to thank three anonymous peer reviewers whose com-
+ments allowed improvements to the paper. The authors would 
+also  like to thank the Master and crews of the CV10_28, 
+KRY22_03 and CE23_016 surveys for skill and expertise in 
+acquiring samples, as well as the staff of the INFOMAR pro-
+gramme for coordinating these surveys.
+Author contributions AG: conceptualization, funding 
+acquisition, data curation, formal analysis, investigation, meth-
+odology, software, validation, visualization, writing – original 
+draft preparation, writing – review & editing. CNM: data cura-
+tion, figure generation– review & editing. MCh: data curation, 
+formal analysis, writing – original draft preparation, writing 
+– review & editing. PW: supervision, formal analysis, review 
+& editing. AL: data curation, formal analysis, methodology. 
+BPK: funding acquisition, project administration, resources, 
+supervision, writing – review & editing. MCo: conceptualiza-
+tion, funding acquisition, investigation, methodology, project 
+administration, resources, supervision, writing – original draft 
+preparation, writing – review & editing.
+Funding This research has been carried out as part of the 
+Quest project with the support of the Marine Institute and the 
+Environmental Protection Agency, funded by the Irish Govern-
+ment (Grant: PBA/CC/21/01).
+Data availability Data will be uploaded onto a publically 
+accessible platform.
+Declarations 
+Ethics approval All authors have read, understood, and have 
+complied as applicable with the statement on “Ethical respon-
+sibilities of Authors” as found in the Instructions for Authors.
+Competing interests The authors declare no competing inter-
+ests.
+Clinical trial number Not applicable.
+Open Access This article is licensed under a Creative Com-
+mons Attribution-NonCommercial-NoDerivatives 4.0 Interna-
+tional License, which permits any non-commercial use, shar -
+ing, distribution and reproduction in any medium or format, as 
+long as you give appropriate credit to the original author(s) and 
+the source, provide a link to the Creative Commons licence, 
+and indicate if you modified the licensed material. You do 
+not have permission under this licence to share adapted mate-
+rial derived from this article or parts of it. The images or other 
+third party material in this article are included in the article’s 
+Creative Commons licence, unless indicated otherwise in a 
+credit line to the material. If material is not included in the arti-
+cle’s Creative Commons licence and your intended use is not 
+permitted by statutory regulation or exceeds the permitted use, 
+you will need to obtain permission directly from the copyright 
+holder. To view a copy of this licence, visit http://creativecom-
+mons.org/licenses/by-nc-nd/4.0/.
+ Environ Monit Assess (2026) 198:1078 
+ 1078 Page 14 of 18
+Vol:. (1234567890)
+References
+Ahrens, J., Beck, M., Marchant, H. K., Ahmerkamp, S., Sch-
+netger, B., & Brumsack, H. J. (2020). Seasonality of 
+organic matter degradation regulates nutrient and metal 
+net fluxes in a high-energy sandy beach. Journal of 
+Geophysical Research: Biogeosciences, 125(2), Article 
+e2019JG005399. https:// doi. org/ 10. 1029/ 2019j g0053 99
+Allcock, L., Breen, P., Conway, A., Crowe, T., Dolton, H. R., 
+Haberlin, D., Heney, K., Johnson, M., Keena, T., Max-
+well, J., Nolan, C., Orrell, D. L., Power, M., & Tully, O. 
+(2024). Ecological sensitivity analysis of the Celtic Sea 
+to inform future designation of Marine Protected Areas 
+(MPAs): A report by the Marine Protected Area Advisory 
+Group for the Department of Housing, Local Government 
+and Heritage. Department of Housing, Local Government 
+and Heritage, Government of Ireland. https:// assets. gov. 
+ie/ static/ docum ents/ 26ae7 3df/ Celtic_ Sea_ ESA_ Main_ 
+report_ June_ 2024_1. pdf
+Atwood, T. B., Witt, A., Mayorga, J., Hammill, E., & Sala, E. 
+(2020). Global patterns in marine sediment carbon stocks. 
+Frontiers in Marine Science, 7, Article 165. https:// doi. 
+org/ 10. 3389/ fmars. 2020. 00165
+Babakhani, P., Dale, A. W., Woulds, C., Moore, O. W., Xiao, 
+K.-Q., Curti, L., & Peacock, C. L. (2025). Preservation of 
+organic carbon in marine sediments sustained by sorption 
+and transformation processes. Nature Geoscience, 18(1), 
+78–83. https:// doi. org/ 10. 1038/ s41561- 024- 01606-y
+Barber, A., Brandes, J., Leri, A., Lalonde, K., Balind, 
+K., Wirick, S., Wang, J., & Gélinas, Y. (2017). Pres-
+ervation of organic matter in marine sediments by 
+inner-sphere interactions with reactive iron. Scien-
+tific Reports, 7, Article 366. https:// doi. org/ 10. 1038/ 
+s41598- 017- 00494-0
+Bauer, J. E., Cai, W.-J., Raymond, P. A., Bianchi, T. S., Hop-
+kinson, C. S., & Regnier, P. A. G. (2013). The changing 
+carbon cycle of the coastal ocean. Nature, 504(7478), 
+61–70. https:// doi. org/ 10. 1038/ natur e12857
+Bergagna, L., Lovrich, G., Riccialdelli, L., & Sahade, R. 
+(2024). Blue carbon storage in a sub-Antarctic marine 
+protected area. Scientific Reports, 14, Article 20642. 
+https:// doi. org/ 10. 1038/ s41598- 024- 71319-0
+Blattmann, T. M., Liu, Z., Zhang, Y., Zhao, Y., Haghipour, N., 
+Montluçon, D. B., Plötze, M., & Eglinton, T. I. (2019). 
+Mineralogical control on the fate of continentally derived 
+organic matter in the ocean. Science, 366(6466), 742–745. 
+https:// doi. org/ 10. 1126/ scien ce. aax53 45
+Blott, S. J., & Pye, K. (2001). GRADISTAT: A grain size dis-
+tribution and statistics package for the analysis of uncon-
+solidated sediments. Earth Surface Processes and Land-
+forms, 26(11), 1237–1248. https:// doi. org/ 10. 1002/ esp. 
+261
+Bøe, R., Bjarnadóttir, L. R., Elvenes, S., Dolan, M., Bellec, V., 
+Thorsnes, T., Lepland, A., & Longva, O. (2022). Reveal-
+ing the secrets of Norway’s seafloor: Geological map-
+ping within the MAREANO programme and in coastal 
+areas. Geological Society, London, Special Publications, 
+505(1), 57–69. https:// doi. org/ 10. 1144/ sp505- 2019- 82
+Bowden, K. F. (1980). Physical and dynamical oceanography 
+of the Irish Sea. In F. T. Banner, M. B. Collins, & K. S. 
+Massie (Eds.), The North-West European shelf seas: The 
+sea bed and the sea in motion: II. Physical and chemical 
+oceanography, and physical resources (Elsevier Ocean-
+ography Series, Vol. 24, Part B, pp. 391–413). Elsevier. 
+https:// doi. org/ 10. 1016/ S0422- 9894(08) 71357-6
+Breithaupt, J. L., Smoak, J. M., Sanders, C. J., & Troxler, T. 
+G. (2019). Spatial variability of organic carbon, CaCO3 
+and nutrient burial rates spanning a mangrove productiv -
+ity gradient in the coastal Everglades. Ecosystems, 22(4), 
+844–858. https:// doi. org/ 10. 1007/ s10021- 018- 0306-5
+Breithaupt, J. L., Steinmuller, H. E., Rovai, A. S., Engelbert, 
+K. M., Smoak, J. M., Chambers, L. G., Radabaugh, K. R., 
+Moyer, R. P., Chappel, A. R., Vaughn, D. R., Bianchi, T. 
+S., Twilley, R. R., Pagliosa, P. R., Cifuentes-Jara, M., & 
+Torres, D. (2023). An improved framework for estimat-
+ing organic carbon content of mangrove soils using loss-
+on-ignition and coastal environmental setting. Wetlands, 
+43(6), 57. https:// doi. org/ 10. 1007/ s13157- 023- 01698-z
+British Geological Survey. (2011). BGS Seabed Sediments 250k 
+(version 3.0) [Dataset]. British Geological Survey.https:// 
+doi. org/ 10. 5285/ e0df9 db6- 09ac- 4fa3- a815- 1394c 19886 54
+British Standards Institution. (2021). Soil, waste, treated bio-
+waste and sludge—Determination of loss on ignition (BS 
+EN 15935:2021). BSI Standards Limited. https:// knowl 
+edge. bsigr oup. com/ produ cts/ soil- waste- treat ed- biowa ste- 
+and- sludge- deter minat ion- of- loss- on- ignit ion
+Chatting, M., Diesing, M., Hunter, W. R., Grey, A., Kelleher, 
+B. P., & Coughlan, M. (2025). Improving marine sedi-
+ment carbon stock estimates: The role of dry bulk density 
+and predictor adjustments. Biogeosciences, 22(20), 5975–
+5990. https:// doi. org/ 10. 5194/ bg- 22- 5975- 2025
+Chen, P., Wei, Y., Wei, L., Wu, H., Bu, H., Wang, G., & Wang, 
+S. (2020). Quantitative assessments of organic matter 
+uncoupling from clay surfaces in presence of salinity. 
+Applied Clay Science, 188, Article 105532. https:// doi. 
+org/ 10. 1016/j. clay. 2020. 105532
+Coughlan, M., Guerrini, M., Creane, S., O’Shea, M., Ward, 
+S. L., Van Landeghem, K. J. J., Murphy, J., & Doherty, 
+P. (2021). A new seabed mobility index for the Irish 
+Sea: Modelling seabed shear stress and classifying sedi-
+ment mobilisation to help predict erosion, deposition, and 
+sediment distribution. Continental Shelf Research, 229, 
+104574. https:// doi. org/ 10. 1016/j. csr. 2021. 104574
+Coughlan, M., Wheeler, A. J., Dorschel, B., Lordan, C., Boer, 
+W., Van Gaever, P., De Haas, H., & Mörz, T. (2015). 
+Record of anthropogenic impact on the Western Irish 
+Sea mud belt. Anthropocene, 9, 56–69. https:// doi. org/ 10. 
+1016/j. ancene. 2015. 06. 001
+Creane, S., Coughlan, M., O’Shea, M., & Murphy, J. (2022). 
+Development and dynamics of sediment waves in a com-
+plex morphological and tidal dominant system: Southern 
+Irish Sea. Geosciences, 12(12), Article 431. https:// doi. 
+org/ 10. 3390/ geosc ience s1212 0431
+Dahl, M., Lavery, P. S., Mazarrasa, I., Samper-Villarreal, J., 
+Adame, M. F., Crooks, S., Duarte, C. M., Friess, D. A., 
+Krause-Jensen, D., Leiva-Dueñas, C., Lovelock, C. E., 
+Macreadie, P. I., Masqué, P., Mateo, M. A., & Serrano, O. 
+(2025). Recommendations for strengthening blue carbon 
+science. One Earth, 8(3), Article Article 101175. https:// 
+doi. org/ 10. 1016/j. oneear. 2025. 101175
+Environ Monit Assess (2026) 198:1078 
+ Page 15 of 18 1078 
+Vol.: (0123456789)
+Diesing, M. (2020). Deep-sea sediments of the global ocean. 
+Earth System Science Data, 12(4), 3367–3381. https:// doi. 
+org/ 10. 5194/ essd- 12- 3367- 2020
+Diesing, M., Kröger, S., Parker, R., Jenkins, C., Mason, C., 
+& Weston, K. (2017). Predicting the standing stock of 
+organic carbon in surface sediments of the North–West 
+European continental shelf. Biogeochemistry, 135(1–2), 
+183–200. https:// doi. org/ 10. 1007/ s10533- 017- 0310-4
+Egger, M., Hagens, M., Sapart, C. J., Dijkstra, N., Van Hel-
+mond, N. A. G. M., Mogolló, J. M., Risgaard-Petersen, 
+N., Van der Veen, C., Kasten, S., Riedinger, N., Böttcher, 
+M. E., Röckmann, T., Jørgensen, B. B., & Slomp, C. P. 
+(2017). Iron oxide reduction in methane-rich deep Baltic 
+Sea sediments. Geochimica Et Cosmochimica Acta, 207, 
+256–276. https:// doi. org/ 10. 1016/j. gca. 2017. 03. 019
+Epstein, G., & Roberts, C. M. (2022). Protecting seabed sediment 
+carbon for climate mitigation: A UK case study. [Preprint]. 
+bioRxiv. https:// doi. org/ 10. 1101/ 2022. 02. 10. 479679
+Epstein, G., Fuller, S. D., Gullage, L., & Baum, J. K. (2025). 
+Mobile bottom fishing in the Canadian Pacific and Atlan-
+tic causes disturbance and risk to remineralisation of sea-
+bed sediment carbon stocks. Canadian Journal of Fish-
+eries and Aquatic Sciences, 82, 1–22. https:// doi. org/ 10. 
+1139/ cjfas- 2024- 0325
+Felden, J., Möller, L., Schindler, U., Huber, R., Schumacher, S., 
+Koppe, R., Diepenbroek, M., & Glöckner, F. O. (2023). 
+PANGAEA - Data Publisher for Earth & Environmental 
+Science. Scientific Data, 10, 347. https:// doi. org/ 10. 1038/ 
+s41597- 023- 02269-x
+Folk, R. L. (1954). The distinction between grain size and 
+mineral composition in sedimentary-rock nomenclature. 
+Journal of Geology, 62(4), 344–359. https:// doi. org/ 10. 
+1086/ 626171
+Furey, T., & Cullen, S. (2022). INFOMAR activity report 
+2022: Report on INFOMAR progress. INFOMAR, 
+Marine Institute & Geological Survey Ireland. https:// 
+www. infom ar. ie/ sites/ defau lt/ files/ pdfs/ 2022_ Activ ityRe 
+port_ updat ed_1. pdf
+Gowen, R. J., & Stewart, B. M. (2005). The Irish Sea: Nutrient 
+status and phytoplankton. Journal of Sea Research, 54(1), 
+36–50. https:// doi. org/ 10. 1016/j. seares. 2005. 02. 003
+Graversen, A. E. L., Lønborg, C., Addamo, A. M., Pedersen, 
+S. G., Chemello, S., Alejo, I., Apostolaki, E. T., Asplund, 
+M. E., Austin, W. E. N., Berov, D., Berto, D., Björk, M., 
+Black, K., Bobchev, N., Bonaglia, S., Borgersen, G., 
+Bouma, T., Costello, M. J., Dahl, M., … Jensen, D. K. 
+(2025). A marine and salt marsh sediment organic carbon 
+database for European regional seas (EURO-CARBON). 
+Data in Brief, 60, Article 111595. https:// doi. org/ 10. 
+1016/j. dib. 2025. 111595
+Graves, C. A., Benson, L., Aldridge, J., Austin, W. E. N., Dal 
+Molin, F., Fonseca, V. G., Hicks, N., Hynes, C., Kröger, 
+S., Lamb, P. D., Mason, C., Powell, C., Smeaton, C., Wex-
+ler, S. K., Woulds, C., & Parker, R. (2022). Sedimentary 
+carbon on the continental shelf: Emerging capabilities and 
+research priorities for blue carbon. Frontiers in Marine 
+Science, 9, Article 926215. https:// doi. org/ 10. 3389/ fmars. 
+2022. 926215
+Grey, A., Kelleher, B., Chatting, M., Long, M., Walsh, P., Dies-
+ing, M., & Coughlan, M. (2024). The quantification, char-
+acterisation, source and fate of past and present carbon 
+storage in coastal and offshore sediments for effective 
+marine management (QUEST) [Conference presentation 
+abstract]. EGU General Assembly 2024. https:// doi. org/ 
+10. 5194/ egusp here- egu24- 19779
+Guinan, J., McKeon, C., O’Keeffe, E., Monteys, X., Sacchetti, 
+F., Coughlan, M., & Nic Aonghusa, C. (2020). INFOMAR 
+data supports offshore energy development and marine 
+spatial planning in the Irish offshore via the EMODnet 
+Geology portal. Quarterly Journal of Engineering Geol-
+ogy and Hydrogeology, 54(1), qjegh2020-033. https:// doi. 
+org/ 10. 1144/ qjegh 2020- 033
+Hammer, Ø., Harper, D. A. T., & Ryan, P. D. (2001). PAST: 
+Paleontological statistics software package for education 
+and data analysis. Palaeontologia Electronica, 4(1), 1–9. 
+https:// palaeo- elect ronica. org/ 2001_1/ past/ issue1_ 01. htm
+Hiddink, J. G., Moranta, J., Balestrini, S., Sciberras, M., Cen-
+drier, M., Bowyer, R., Kaiser, M. J., Sköld, M., Jonsson, 
+P., Bastardie, F., & Hinz, H. (2016). Bottom trawling 
+affects fish condition through changes in the ratio of prey 
+availability to density of competitors. Journal of Applied 
+Ecology, 53(5), 1500–1510. https:// doi. org/ 10. 1111/ 1365- 
+2664. 12697
+Hill, A. E., Brown, J., & Fernand, L. (1997). The summer 
+gyre in the Western Irish Sea: Shelf sea paradigms and 
+management implications. Estuarine, Coastal and Shelf 
+Science, 44(SUPPL. A), 83–95. https:// doi. org/ 10. 1016/ 
+s0272- 7714(97) 80010-8
+Hill, A. E., Durazo, R., & Smeed, D. A. (1994). Observations 
+of a cyclonic gyre in the western Irish Sea. Continental 
+Shelf Research, 14(5), 479–490. https:// doi. org/ 10. 1016/ 
+0278- 4343(94) 90099-X
+Hinz, H., Moranta, J., Balestrini, S., Sciberras, M., Pantin, J. 
+R., Monnington, J., Zalewski, A., Kaiser, M. J., Sköld, M., 
+Jonsson, P., Bastardie, F., & Hiddink, J. G. (2017). Stable 
+isotopes reveal the effect of trawl fisheries on the diet of 
+commercially exploited species. Scientific Reports, 7(1), 
+Article 6334. https:// doi. org/ 10. 1038/ s41598- 017- 06379-6
+Hoogsteen, M. J. J., Lantinga, E. A., Bakker, E. J., Groot, J. C. 
+J., & Tittonell, P. A. (2015). Estimating soil organic car -
+bon through loss on ignition: Effects of ignition conditions 
+and structural water loss. European Journal of Soil Sci-
+ence, 66(2), 320–328. https:// doi. org/ 10. 1111/ ejss. 12224
+Horsburgh, K., Hill, A. E., Brown, J., Fernand, L., Garvine, 
+R. W., & Angélico, M. M. (2000). Seasonal evolution 
+of the cold pool gyre in the western Irish Sea. Progress 
+in Oceanography, 46(1), 1–58. https:// doi. org/ 10. 1016/ 
+S0079- 6611(99) 00054-3
+Jensen, J. L., Christensen, B. T., Schjønning, P., Watts, C. W., 
+& Munkholm, L. J. (2018). Converting loss-on-ignition to 
+organic carbon content in arable topsoil: Pitfalls and pro-
+posed procedure. European Journal of Soil Science, 69(4), 
+604–612. https:// doi. org/ 10. 1111/ ejss. 12558
+Johnson, K., Purvis, G., Lopez-Capel, E., Peacock, C., Gray, 
+N., Wagner, T., März, C., Bowen, L., Ojeda, J., Finlay, 
+N., Robertson, S., Worrall, F., & Greenwell, C. (2015). 
+Towards a mechanistic understanding of carbon stabili-
+zation in manganese oxides. Nature Communications, 6, 
+Article 7628. https:// doi. org/ 10. 1038/ ncomm s8628
+Jones, D. G., Bouch, J., Burt, G. R., Campbell, N., Cave, M. 
+R., Chesman, B. S., Coombs, P., Davies, A. M., Davis, 
+J. R., Hall, P., Hards, V. L., Harrison, I., Higgo, J. J. W., 
+ Environ Monit Assess (2026) 198:1078 
+ 1078 Page 16 of 18
+Vol:. (1234567890)
+Humphreys, B., Hyslop, E. K., James, J. W. C., Jones, 
+J. E., Langston, W. J., McKervey, J., … Xing, J. (2002). 
+Assessment of the relative importance of biological, 
+physical and chemical processes on the transport and 
+speciation of pollutants, particularly radionuclides, in 
+the Irish Sea: AE1129 Final Project report for DEFRA 
+(Commissioned Report CR/02/295). British Geological 
+Survey. https:// nora. nerc. ac. uk/ id/ eprint/ 538573/
+Kennedy, M. J., & Wagner, T. (2011). Clay mineral continental 
+amplifier for marine carbon sequestration in a greenhouse 
+ocean. Proceedings of the National Academy of Sciences 
+of the United States of America, 108(24), 9776–9781. 
+https:// doi. org/ 10. 1073/ pnas. 10186 70108
+King, P., Kennedy, H., Newton, P. P., Jickells, T. D., Brand, T., 
+Calvert, S., Cauwet, G., Etcheber, H., Head, B., Khripou-
+noff, A., Manighetti, B., & Carlos Miquel, J. (1998). 
+Analysis of total and organic carbon and total nitrogen 
+in settling oceanic particles and a marine sediment: An 
+interlaboratory comparison. Marine Chemistry, 60(3–4), 
+203–216. https:// doi. org/ 10. 1016/ s0304- 4203(97) 00106-0
+Knight, P. J., & Howarth, M. J. (1999). The flow through the 
+north channel of the Irish Sea. Continental Shelf Research, 
+19(5), 693–716. https:// doi. org/ 10. 1016/ s0278- 4343(98) 
+00110-1
+Kubo, A., & Kanda, J. (2017). Seasonal variations and sources 
+of sedimentary organic carbon in Tokyo Bay. Marine Pol-
+lution Bulletin, 114(2), 637–643. https:// doi. org/ 10. 1016/j. 
+marpo lbul. 2016. 10. 030
+Laffoley, D., & Baxter, J. M. (2022). Blue carbon in marine 
+protected areas: Progress review (JNCC Report No. 709). 
+Joint Nature Conservation Committee. https:// jncc. gov. uk/ 
+resou rces/ e7501 0a5- 4c1e- 4953- a785- 48e4d 56ef9 8b
+Lalonde, K., Mucci, A., Ouellet, A., & Gélinas, Y. (2012). 
+Preservation of organic matter in sediments promoted 
+by iron. Nature, 483(7388), 198–200. https:// doi. org/ 10. 
+1038/ natur e10855
+Legge, O., Johnson, M., Hicks, N., Jickells, T., Diesing, M., 
+Aldridge, J., Andrews, J., Artioli, Y., Bakker, D. C. E., 
+Burrows, M. T., Carr, N., Cripps, G., Felgate, S. L., Fer -
+nand, L., Greenwood, N., Hartman, S., Kröger, S., Lessin, 
+G., Mahaffey, C., … Williamson, P. (2020). Carbon on 
+the Northwest European Shelf: Contemporary budget and 
+future influences. Frontiers in Marine Science, 7, Article 
+Article 143. https:// doi. org/ 10. 3389/ fmars. 2020. 00143
+Leong, L. S., & Tanner, P. A. (1999). Comparison of methods 
+for determination of organic carbon in marine sediment. 
+Marine Pollution Bulletin, 38(10), 875–879. https:// doi. 
+org/ 10. 1016/ s0025- 326x(99) 00013-2
+Lønborg, C., Markager, S., Herzog, S. D., Carreira, C., & Høg-
+slund, S. (2024). Impacts of anthropogenic resuspension 
+on sediment organic matter: An experimental approach. 
+Estuarine, Coastal and Shelf Science, 310, Article Article 
+108981. https:// doi. org/ 10. 1016/j. ecss. 2024. 108981
+Luisetti, T., Ferrini, S., Grilli, G., Jickells, T. D., Kennedy, H., 
+Kröger, S., Lorenzoni, I., Milligan, B., van der Molen, 
+J., Parker, R., Pryce, T., Turner, R. K., & Tyllianakis, E. 
+(2020). Climate action requires new accounting guid-
+ance and governance frameworks to manage carbon in 
+shelf seas. Nature Communications, 11(1), Article 4599. 
+https:// doi. org/ 10. 1038/ s41467- 020- 18242-w
+Luisetti, T., Turner, R. K., Andrews, J. E., Jickells, T. D., 
+Kröger, S., Diesing, M., Paltriguera, L., Johnson, M. T., 
+Parker, E. R., Bakker, D. C. E., & Weston, K. (2019). 
+Quantifying and valuing carbon flows and stores in coastal 
+and shelf ecosystems in the UK. Ecosystem Services, 35, 
+67–76. https:// doi. org/ 10. 1016/j. ecoser. 2018. 10. 013
+Marine Protected Area Advisory Group. (2020). Marine Pro-
+tected Area Advisory Group. (2020). Expanding Ireland’s 
+marine protected area network: A report by the Marine 
+Protected Area Advisory Group. Department of Housing, 
+Local Government and Heritage, Government of Ireland. 
+https:// www. gov. ie/ en/ depar tment- of- housi ng- local- gover 
+nment- and- herit age/ publi catio ns/ expan ding- irela nds- 
+marine- prote cted- area- netwo rk/
+Moore, O. W., Curti, L., Woulds, C., Bradley, J. A., Babakhani, 
+P., Mills, B. J. W., Homoky, W. B., Xiao, K. Q., Bray, 
+A. W., Fisher, B. J., Kazemian, M., Kaulich, B., Dale, 
+A. W., & Peacock, C. L. (2023). Long-term organic 
+carbon preservation enhanced by iron and manganese. 
+Nature, 621(7978), 312–317. https:// doi. org/ 10. 1038/ 
+s41586- 023- 06325-9
+Muir, H. C., Strong, J. A., Hiddink, J. G., et al. (2026). Strati-
+graphic evidence of organic carbon depletion in an 
+intensely trawled muddy seabed. Ambio. https:// doi. org/ 
+10. 1007/ s13280- 026- 02439-2
+Murphy, B. T., O’Reilly, S. S., Monteys, X., Reid, B. F., Szpak, 
+M. T., McCaul, M. V., Jordan, S. F., Allen, C. C. R., & 
+Kelleher, B. P. (2016). The presence of PAHs and faecal 
+sterols in Dublin Bay and their impact on sediment micro-
+bial communities. Marine Pollution Bulletin, 106(1–2), 
+215–224. https:// doi. org/ 10. 1016/j. marpo lbul. 2016. 02. 066
+Nachar, N. (2008). The Mann-Whitney U: A test for assessing 
+whether two independent samples come from the same 
+distribution. Tutorials in Quantitative Methods for Psy -
+chology, 4(1), 13–20. https:// doi. org/ 10. 20982/ tqmp. 04.1. 
+p013
+O’Reilly, S. S., Szpak, M. T., Flanagan, P. V., Monteys, X., Mur-
+phy, B. T., Jordan, S. F., Allen, C. C. R., Simpson, A. J., 
+Mulligan, S. M., Sandron, S., & Kelleher, B. P. (2014). Bio-
+markers reveal the effects of hydrography on the sources 
+and fate of marine and terrestrial organic matter in the west-
+ern Irish Sea. Estuarine, Coastal and Shelf Science, 136, 
+157–171. https:// doi. org/ 10. 1016/j. ecss. 2013. 11. 002
+O’Reilly, S. S., Szpak, M., Monteys, X., & Kelleher, B. (2010). 
+CV10_28 Irish Sea cruise report (Technical Report). Geo-
+logical Survey Ireland.. https:// doras. dcu. ie/ 20025/
+O’Sullivan, D., Lordan, C., Doyle, J., Berry, A., & Lyons, K. 
+(2014).  Sediment characteristics and local hydrodynam-
+ics, and their influence on the population of Nephrops 
+around Ireland (Irish Fisheries Investigations No. 26). 
+Marine Institute. https:// hdl. handle. net/ 10793/ 985
+Paradis, S., Goñi, M., Masqué, P., Durán, R., Arjona-Camas, 
+M., Palanques, A., & Puig, P. (2021). Persistence of bio-
+geochemical alterations of deep-sea sediments by bottom 
+trawling. Geophysical Research Letters, 48(2), Article 
+e2020GL091279. https:// doi. org/ 10. 1029/ 2020g l0912 79
+Environ Monit Assess (2026) 198:1078 
+ Page 17 of 18 1078 
+Vol.: (0123456789)
+Paradis, S., Nakajima, K., Van Der Voort, T. S., Gies, H., Wild-
+berger, A., Blattmann, T. M., Bröder, L., & Eglinton, T. 
+I. (2023). The modern ocean sediment archive and inven-
+tory of carbon (MOSAIC): Version 2.0. Earth System 
+Science Data, 15(9), 4105–4125. https:// doi. org/ 10. 5194/ 
+essd- 15- 4105- 2023
+Plater, A. J., Kirby, J. R., Boyle, J. F., Shaw, T., & Mills, H. 
+(2015). Loss on ignition and organic content. In I. Shen-
+nan, A. J. Long, & B. P. Horton (Eds.), Handbook of sea-
+level research (pp. 312–330). Wiley. https:// doi. org/ 10. 
+1002/ 97811 18452 547. ch21
+Radu, T., Gallagher, S., Byrne, B., Harris, P., Coveney, S., 
+McCarron, S., McCarthy, T., & Diamond, D. (2013). Port-
+able X-ray fluorescence as a rapid technique for survey -
+ing elemental distributions in soil. Spectroscopy Letters, 
+46(7), 516–526. https:// doi. org/ 10. 1080/ 00387 010. 2013. 
+763829
+Ratefinjanahary, I., MacKenzie, R., Sharma, S., Razakamana-
+rivo, H., Razafintsalama, V., Ravelosamiariniriana, K., 
+Welti, A., & Ramifehiarivo, N. (2025). Development of 
+soil organic carbon quantification model and comparison 
+based on CHN analyser, loss on ignition, and Walkley-
+Black methods for mangrove soils in Madagascar. Estu-
+arine, Coastal and Shelf Science, 317, Article Article 
+109182. https:// doi. org/ 10. 1016/j. ecss. 2025. 109182
+Roseby, Z. A., Sengupta, T., Ward, S. L., Vosper, D. F., 
+Blaauw, M., Roberts, C. M., & Scourse, J. D. (2026). 
+Vulnerability of blue carbon stocks to disturbance in sedi-
+ments with low burial efficiency. Marine Geology, 492, 
+107676. https:// doi. org/ 10. 1016/j. margeo. 2025. 107676
+Seabold, S., & Perktold, J. (2010). Statsmodels: Econometric 
+and statistical modeling with Python. In S. van der Walt 
+& J. Millman (Eds.), Proceedings of the 9th Python in 
+Science Conference (pp. 92–96). SciPy. https:// doi. org/ 
+10. 25080/ Majora- 92bf1 922- 011
+Serrano, O., Mazarrasa, I., Fourqurean, J. W., Serrano, E., 
+Baldock, J., & Sanderman, J. (2023). Flaws in the meth-
+odologies for organic carbon analysis in seagrass blue 
+carbon soils. Limnology and Oceanography: Methods, 
+21(12), 814–827. https:// doi. org/ 10. 1002/ lom3. 10583
+Sleutel, S., De Neve, S., Singier, B., & Hofman, G. (2007). 
+Quantification of organic carbon in soils: A comparison 
+of methodologies and assessment of the carbon content 
+of organic matter. Communications in Soil Science and 
+Plant Analysis, 38(19–20), 2647–2657. https:// doi. org/ 
+10. 1080/ 00103 62070 16628 77
+Smeaton, C., & Austin, W. E. N. (2022). Quality not quan-
+tity: Prioritizing the management of sedimentary 
+organic matter across continental shelf seas. Geophysi-
+cal Research Letters, 49(5), Article e2021GL097481. 
+https:// doi. org/ 10. 1029/ 2021g l0974 81
+Smeaton, C., Austin, W. E. N., & Turrell, W. R. (2020).  Re-
+evaluating Scotland’s sedimentary carbon stocks (Scottish 
+Marine and Freshwater Science, Vol. 11, No. 2, 16 pp.). 
+Marine Scotland Science. https:// doi. org/ 10. 7489/ 12267-1
+Taylor, K. G., & Macquaker, J. H. S. (2011). Iron minerals 
+in marine sediments record chemical environments. 
+Elements, 7(2), 113–118. https:// doi. org/ 10. 2113/ gsele 
+ments.7. 2. 113
+Touch, N., Hibino, T., Takata, H., & Yamaji, S. (2017). Loss 
+on ignition-based indices for evaluating organic mat-
+ter characteristics of littoral sediments. Pedosphere, 
+27(5), 978–984. https:// doi. org/ 10. 1016/ s1002- 0160(17) 
+60487-9
+Trimmer, M., Gowen, R. J., & Stewart, B. M. (2003). 
+Changes in sediment processes across the western Irish 
+Sea front. Estuarine, Coastal and Shelf Science, 56(5–
+6), 1011–1019. https:// doi. org/ 10. 1016/ s0272- 7714(02) 
+00312-8
+Tuffour, H. O., Yeboah, I. B., Bonsu, M., Adjei-Gyapong, T., 
+Khalid, A. A., Abubakar, A., Melenya, C., & Kpotor, 
+P. (2014). Soil organic carbon: Relating the Walkley-
+Black wet oxidation method to loss on ignition and clay 
+content. International Journal of Scientific Research in 
+Knowledge, 2(5), 249–256. https:// doi. org/ 10. 12983/ 
+ijsrk- 2014- p0249- 0256
+U.S. Environmental Protection Agency. (2007). U.S. Envi-
+ronmental Protection Agency. (2007). SW-846 Test 
+Method 6200: Field portable X-ray fluorescence spec-
+trometry for the determination of elemental concentra-
+tions in soil and sediment (Revision 0).  https:// www. 
+epa. gov/ hw- sw846/ sw- 846- test- method- 6200- field- 
+porta ble-x- ray- fluor escen ce- spect romet ry- deter minat ion
+Verardo, D. J., Froelich, P. N., & McIntyre, A. (1990). Deter -
+mination of organic carbon and nitrogen in marine sedi-
+ments using the Carlo Erba NA-1500 analyzer. Deep 
+Sea Research Part a: Oceanographic Research Papers, 
+37(1), 157–165. https:// doi. org/ 10. 1016/ 0198- 0149(90) 
+90034-S
+Visalli, M. E., Best, B. D., Cabral, R. B., Cheung, W. W. L., 
+Clark, N. A., Garilao, C., Kaschner, K., Kesner-Reyes, 
+K., Lam, V. W. Y., Maxwell, S. M., Mayorga, J., Moe-
+ller, H. V., Morgan, L., Crespo, G. O., Pinsky, M. L., 
+White, T. D., & McCauley, D. J. (2020). Data-driven 
+approach for highlighting priority areas for protection 
+in marine areas beyond national jurisdiction. Marine 
+Policy, 122, Article Article 103927. https:// doi. org/ 10. 
+1016/j. marpol. 2020. 103927
+Wang, Q., Li, Y., & Wang, Y. (2011). Optimizing the weight 
+loss-on-ignition methodology to quantify organic and 
+carbonate carbon of sediments from diverse sources. 
+Environmental Monitoring and Assessment, 174, 241–
+257. https:// doi. org/ 10. 1007/ s10661- 010- 1454-z
+Ward, S. L., Bradley, S. L., Roseby, Z. A., Wilmes, S.-B., 
+Vosper, D. F., Roberts, C. M., & Scourse, J. D. (2025). 
+The role of long-term hydrodynamic evolution in the 
+accumulation and preservation of organic carbon-rich 
+shelf sea deposits. Journal of Geophysical Research: 
+Oceans, 130(4), Article e2024JC022092. https:// doi. org/ 
+10. 1029/ 2024j c0220 92
+Wei, B., Müller, D., Kusch, S., Niu, L., Hefter, J., Sander, 
+L., Hanz, U., Mollenhauer, G., Jia, G., Kasten, S., & 
+Holtappels, M. (2025). Twice the global average car -
+bon burial efficiency in the Helgoland Mud Area of the 
+North Sea: Insights into carbon sequestration in small-
+size depocenters on sand-dominated shelves. Chemical 
+Geology, 681, Article Article 122712. https:// doi. org/ 
+10. 1016/j. chemg eo. 2025. 122712
+ Environ Monit Assess (2026) 198:1078 
+ 1078 Page 18 of 18
+Vol:. (1234567890)
+Wilson, R. J., Speirs, D. C., Sabatino, A., & Heath, M. R. 
+(2018). A synthetic map of the North-West European 
+Shelf sedimentary environment for applications in 
+marine science. Earth System Science Data, 10(1), 109–
+130. https:// doi. org/ 10. 5194/ essd- 10- 109- 2018
+Woods, M. A., Wilkinson, I. P., Leng, M. J., Riding, J. B., 
+Vane, C. H., Lopes dos Santos, R. A., Kender, S., De 
+Schepper, S., Hennissen, J. A. I., Ward, S. L., Gowing, 
+C. J. B., Wilby, P. R., Nichols, M. D., & Rochelle, C. 
+A. (2019). Tracking holocene palaeostratification and 
+productivity changes in the Western Irish Sea: A multi-
+proxy record. Palaeogeography, Palaeoclimatology, 
+Palaeoecology, 532, 109231. https:// doi. org/ 10. 1016/j. 
+palaeo. 2019. 06. 004
+Yedema, Y. W., Sangiorgi, F., Trabucho-Alexandre, J. P., 
+Nierop, K. G. J., Vonk, J. E., & Peterse, F. (2024). Influ-
+ence of organo-mineral associations on terrestrial par -
+ticulate organic matter dispersal in the Northern Gulf 
+of Mexico. Journal of Geophysical Research: Biogeo-
+sciences, 129(11), Article e2024JG008144. https:// doi. 
+org/ 10. 1029/ 2024j g0081 44
+Zhang, N., Liu, Z., Lin, B., Wu, J., Yu, G., Yin, B., You, 
+C.-F., Siringan, F. P., Thompson, C. E. L., & Müller, 
+C. W. (2025). Minerals provide divergent protection to 
+carbon- and nitrogen-rich organic matter in fluvial sedi-
+ments. Communications Earth & Environment, 6, Arti-
+cle 568. https:// doi. org/ 10. 1038/ s43247- 025- 02563-z
+Zhang, W., Porz, L., Yilmaz, R., Wallmann, K., Spiegel, T., 
+Neumann, A., Holtappels, M., Kasten, S., Kuhlmann, J., 
+Ziebarth, N., Taylor, B., Ho-Hagemann, H. T. M., Bock -
+elmann, F. D., Daewel, U., Bernhardt, L., & Schrum, 
+C. (2024). Long-term carbon storage in shelf sea sedi-
+ments reduced by intensive bottom trawling. Nature 
+Geoscience, 17, 1268–1276. https:// doi. org/ 10. 1038/ 
+s41561- 024- 01581-4
+Publisher’s Note Springer Nature remains neutral with 
+regard to jurisdictional claims in published maps and 
+institutional affiliations.
