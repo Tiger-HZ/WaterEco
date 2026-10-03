@@ -1,0 +1,526 @@
+54 
+ 
+SJESR: Vol. 4, No. 3, 2026, 54-66 College of Engineering / University of Samarra 
+ SAMARRA JOURNAL OF ENGINEERING 
+SCIENCE AND RESEARCH 
+ 
+ 
+ 
+Hamrin Lake monitoring and sustainability in Iraq using GIS-based 
+machine learning and remote sensing 
+ 
+Qayssar Mahmood Ajaj 1*, Zainab B. Mohammed 2 
+ 
+1- Department of Surveying Engineering Technology, Technical Engineering College of Kirkuk, Northern 
+Technical University, Kirkuk, Iraq. 
+2- College of Civil Engineering, University of Technology, Baghdad, Iraq . 
+Article Information Abstract 
+Received: 19/5/2026 
+Accepted: 16/7/2026 The present research is focused on the study of the changes that have 
+occurred in Hamrin Lake and to test the ability of Geographic Information 
+System (GIS)- based Support Vector Machine (SVM) to provide reliable 
+water monitoring. The main objective of this research is to explore the 
+evolution of the Lake by using GIS, Sentinel -2 satellite images, and a 
+Machine Learning ML approach, SVM classification. Based on three multi-
+temporal images of the years 2017, 2022 , and 2026, we assessed the 
+changes in lake extent and its surrounding s. The classification results 
+indicated that in October 2017, the Hamrin Lake area was 169.09 km², 
+but showed a significant drop in April 2022 to 30.08 km², and a rise t o 
+almost 185.77 km² in January 2026. Such variations are driven by the 
+drying conditions experienced within the catchment, hydrological 
+variation, evaporation, and water management within the study area. 
+The interpretation and consistency of the classified water boundaries 
+with the clas sification in the generated maps showed that the SVM 
+classification had an estimated overall accuracy of about 94%. The 
+observed fluctuations highlight the need for monitoring support for 
+sustainable water resource management and putting in place effective 
+water allocation and conservation strategies in Iraq. 
+Keywords 
+Geographic Information 
+Systems, Hamrin Lake , 
+Machine Learning , 
+Remote Sensing Images , 
+Sustainability, Support 
+Vector Machine. 
+ 
+*Corresponding Author 
+E-mail: 
+qayssarajaj@ntu.edu.iq 
+ 
+ 
+1. Introduction 
+The interactions of land use and land cover, vegetation, and climate with the lake's 
+hydrology control the lake's ecosystem response, which in turn dictates the environmental 
+sustainability of lakes [1]. These parameters can be used to track trends over time, and 
+significant trends with possible implications of degradation or recovery of the ecosystem can 
+be identified [2]. Climate change, population growth, upstream damming, and over-exploitation 
+of limited water resources have resulted in high environmental stress on many of the water 
+bodies in Iraq [3 -5]. Thus, advanced monitoring approaches, which are based on GIS, RS , and 
+ML, are important for environmental pl anning and sustainable development strategies [6 -8]. 
+These technologies can be used by government and researchers to identify sensitive regions, 
+55 
+ 
+determine the condition of these ecosystems, and apply management strategies for the 
+ecosystem that are appropriate [9]. RS and GIS are now becoming effective tools to deliver 
+highly accurate and rapid spatial information in a large spatial region, and are useful in 
+environmental monitoring and sustainability analysis over large areas [ 10, 11]. GIS helps to 
+integrate and visualize spatial data and analyse it, while satellite imagery is used to monitor 
+land and water resources [12]. These technologies allow lake changes to be studied at both 
+temporal and spatial scales, identify degradation of the environment , and provide support for 
+sustainable decision -making processes [13]. Specifically, multispectral satellite information 
+from the Sentinel-2 and Landsat missions is useful in terms of spatial and temporal resolution 
+for water body mapping, vegetation cover, soil information, and land-use change [14]. In recent 
+years, ML techniques have greatly enhanced the capability of RS analysis, increasing the success 
+of classification and automatic feature extraction processes [15]. In recent years, the use of 
+remote sensing, GIS, and machine learning in monitoring water resources in Iraq has been 
+shown to be effective, especially in a climate of growing climate variability and water scarcity 
+[12, 13]. Major Iraqi reservoirs have been investigated, showing considerable surface water 
+extent variations due to drought [11], water regulation by upstream reservoirs , and seasonal 
+hydrological variations, which underscores the need for continuous monitoring of surface 
+water over the reservoirs using geospatial approaches to facilitate sustainable water resource 
+management [16 , 17]. SVM and GIS/RS data can provide efficient tools for monitoring 
+environmental changes [18] and evaluating the sustainability indicators of complex 
+ecosystems, such as lakes and wetlands [19, 20]. 
+Hamrin Lake is very important for the provision of water and agricultural resources, 
+fisheries, biodiversity, and ecological balance in the region, and it is considered to be one of the 
+most important freshwater resources in Iraq. The lake has undergone significant 
+environmental changes over the last few decades due to climate variability, extended droughts, 
+a de crease in inflow from tributaries, sedimentation, and increasing human impacts. Water 
+quality and quantity issues have been adversely impacted by t hese challenges, leading to 
+changes in the lake's surface area and ecosystem degradation. Therefore, monitoring and 
+evaluating these changes in the environment is a necessity to ensure sustainable water 
+resource management and the integrity of the lake's ecosystem. 
+The novelty of this study does not come from the individual GIS, remote sensing, or machine 
+learning, but rather from their use in combination for Hamrin Lake, a reservoir that has been 
+quantitatively assessed spatiotemporally only a few times. Moreover, the present study 
+presents a multi-temporal assessment (2017–2026) of the lake dynamics based on Sentinel -2 
+images and SVM classification for susta inable water management. The proposed workflow is 
+an achievable and translatable solution for monitoring Iraqi reservoirs under climatic and 
+hydrological changes. 
+The aim of this study is to monitor the environmental changes and sustainability status of 
+Hamrin Lake with the use of GIS -based SVM classification in the context of RS information. 
+Multi-temporal satellite imagery is used to study changes in water extent, land use, and 
+vegetation dynamics over the years. The efficacy of the SVM algorithm for the correct 
+classification of environmental characteristics and identification of spatial changes in a lake 
+ecosystem is also evaluated. The obtained results would be useful in the process of sustainable 
+environmental management, as well as for providing scientific data to decision-makers, and the 
+56 
+ 
+great importance of using ML together with geospatial technologies in environmental 
+monitoring applications in Iraq. 
+ 
+2. Methodology 
+2.1 Study area 
+Hamrin Lake is one of the largest man-made reservoirs in the eastern part of Iraq, created 
+by the construction of the Hamrin Dam on the Diyala River [21]. The lake is situated between 
+the governorates of Diyala and Salah al -Din and is a vital source of irrigation water, flood 
+control, fisheries, and water suppl y [22]. The climate is semi -arid with hot summers, low 
+rainfall, and high evaporation, which have a significant impact on water levels. Many villages, 
+farmland and bare land are found around the lake [23]. 
+Climatic variability and increasing water demand have led to numerous environmental and 
+hydrological changes in Hamrin Lake in recent years. Hamrin Lake is located in Iraq as indicated 
+in the figure 1. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Fig.1. Hamrin Lake's geographical location in Iraq. 
+ 
+2.2 Flowchart 
+Figure 2 illustrates the general methodology used to monitor the spatial and temporal 
+dynamics of Lake Hamrin. The first step of the study was to download Sentinel -2 Level -2A 
+satellite imagery, along with climatic data such as air temperature and rainfall. The satellite 
+images were processed to ensure spatial consistency by cropping them to fit the study area, 
+57 
+ 
+layering them, and projecting them onto the WGS 1984 coordinate system. Representative 
+training samples were then selected from the main land cover classes. The water was classified 
+relative to the surrounding land using the Supporting Vector Machine (SVM) algorithm. These 
+classified images were used to estimate the lake's area and determine its changes between 2017 
+and 2026. To quantify the spatial and temporal changes, area statistics and thematic maps were 
+prepared. All collected data were integrated int o a GIS database for visualization and analysis. 
+Finally, the results were interpreted to determine environmental sustainability and provide 
+decision-making information to aid in the long -term management and conservation planning 
+of Lake Hamrin. 
+ 
+ 
+Fig.2. Methodology steps. 
+ 
+58 
+ 
+2.3 Data acquisition 
+The first step of the methodology was to gather Sentinel -2 Level-2A satellite imagery to 
+monitor Hamrin Lake. Multi-temporal images were chosen for 2017, 2022, and 2026 to assess 
+temporal changes in the extent of the lake and were downloaded from Copernicus Data Space 
+Ecosystem [24]. Due to their high spatial resolution and free availability for environmental 
+applications, Sentinel-2 imagery was selected. The resolution of the images acquired was 20 m, 
+which is adequate for identifying water boundaries and surrounding land features. The low 
+percentages of cloud coverage enhanced the image quality and reliability of image 
+classification. Images were acquired in the WGS1984 coordinate system to facilitate spatial 
+consistency in analysis. The dates of the selec ted acquisitions were associated with different 
+hydrological conditions of the lake. The valuable spectral information was provided by satellite 
+data, which was used to distinguish water and non -water classes. The multi -date imagery 
+allowed for the detecti on of change over time and trend analysis. The major database for the 
+following stage of GIS and ML analysis was created in this stage. Table 1 reports the images' 
+properties. Furthermore, Figure 3 shows annual rainfall and temperature of Hamrin Lake from 
+2017 to 2026. 
+Table 1. Images properties. 
+Image Type Date of Sensing Cloud Coverage Resolution Coordinate System 
+Sentinel-2 LA2 10/10/2017 0.0037% 20m WGS1984 
+Sentinel-2 LA2 13/04/2022 0.0443% 20m WGS1984 
+Sentinel-2 LA2 27/01/2026 0.0095% 20m WGS1984 
+ 
+ 
+Fig. 3. Annual rainfall and temperature of Hamrin Lake from 2017 to 2026. 
+Annual precipitation in mm and mean air temperature in ºC were downloaded from NASA 
+POWER, a data access viewer online application , on 27 th May 2026 [25]. The data show 
+generally drier conditions around and/or about 2022, with less rainfall and greater warming , 
+which agree with the observed decrease in the lake surface area. The recovery in the extent of 
+the lake, on the other hand, is stronger during the years of better precipitation conditions 
+(2026). The results are consistent with the hypothesis that cl imate variations were a major 
+contributor to the lake level changes recorded, in addition to local water management actions. 
+ 
+ 
+59 
+ 
+2.4 Pre-processing 
+The image was pre-processed to enhance the image quality and to make the satellite data 
+suitable for classification. The surface reflectance products were used as Sentinel-2 Level-2A 
+(L2A) products where atmospheric correction was already carried out in the Copernicus 
+processing chain. The Scene Classification Layer (SCL) that was delivered with the L2A products 
+was used to mask the cloudy pixels before SVM classification. 
+Spectral bands from Sentinel-2 were layered to create multi -band composite images after 
+the removal of clouds. To minimize processing time and only process the Hamrin Lake basin, 
+the study area was clipped from the original scenes. All bands were resampled to ensure the 
+same spatial resolution. Spatial compatibility was achieved through projection and coordinate 
+system adjustments, using WGS1984. Water bodies and land features were more visible due to 
+image enhancement. Pre-processing reduced the noise and geometric distortion of the images. 
+These procedures increased the reliability of the ML classification process. The final dataset 
+after processing was suitable for feature extraction and model building. 
+The image processing and classification were done in ArcGIS 10.8. To guarantee that the 
+analysis is spatially consistent, Sentinel -2 Level-2A imagery was projected in the WGS 1984 / 
+UTM Zone 38N coordinate reference system. Optimized training samples for the major land -
+cover classes were used to implement a Support Vector Machine (SVM) classifier with the 
+default ArcGIS parameters. 
+ 
+2.5 ML and analysis 
+The machine learning and classification phase was targeted for water body extraction using 
+the SVM classification model. The processed Sentinel-2 images were sampled for training water 
+and non -water classes. The SVM algorithm was trained with these samples to differentiate 
+between land cover classes in terms of their spectra. A series of feature selection methods was 
+applied to select the best spectral bands to detect water. 
+Samples for training the SVM classifier were visually interpreted from the Sentinel-2 Level-
+2A images and were manually selected to represent the dominant land -cover classes (water 
+and the surrounding land). The spatial distribution of samples throughout the study area was 
+assessed to evaluate spectral variability and ensure less classification bias. This sampling 
+method provided class signatures that were representative , and the reproducibility and 
+reliability of the classification were enhanced. 
+The SVM model was then built and optimized with the goal of achieving a higher 
+classification accuracy and minimizing misclassification. The trained model was able to 
+distinguish between open water and the areas around the water. 
+The two main land-cover classes (Hamrin Lake water versus adjacent land) were manually 
+identified from the training data and implemented into ArcGIS with the SVM classifier. The 
+training samples were selected with visual interpretation of false colour composite images from 
+Sentinel-2, with the aim of having representative spectral signatures. An independent set of 
+validation samples was used to evaluate the classification performance, and a confusion matrix 
+was used to calculate the overall accuracy. The ov erall accuracy (OA) of approximately 94% 
+demonstrated the accuracy of the Supporting Vector Machine (SVM) classification in detecting 
+the spatial and temporal variations of Lake Hamrin. The lake dynamic classification maps were 
+generated in 2017, 2022, and 2026. The water extent change detection was used to determine 
+water extent differences between the study years. Area changes (increase or decrease) that are 
+60 
+ 
+statistically significant were detected . This phase was marked by the success of the use of ML 
+techniques for the environmental monitoring and assessment of lakes' sustainability. 
+The area of the lake was determined using the SVM-classified raster by extracting the water 
+class and converting it to polygons in ArcGIS. Post-classification, the Raster to Polygon tool was 
+used to create vector polygons to delineate the lake extent for each study year. The surface area 
+was then calculated in the WGS 1984 / UTM Zone 3 8N coordinate system using the Calculate 
+Geometry Attributes function with the polygon geometry to ensure the area measurement is in 
+square meters. Values calculated were conv erted to (km²) for comparison. The resulting lake 
+extents were 169.09 km² in 2017, 30.08 km² in 2022, and 185.77 km² in 2026. The values 
+suggest a significant decline through the drought and a vigorous rebound in wetter conditions. 
+All three years were processed using the same projection and consistent processing technique, 
+so the areas calculated were comparable and truly represented changes in the extent of the 
+lakes and not a difference in processing techniques. 
+ 
+2.6 Outputs evaluation 
+Several thematic maps and analytical results on the sustainability of Hamrin Lake were 
+created at the output stage. Maps of water extent were produced in 2017, 2022 , and 2026 to 
+show the spatial distribution changes. These maps clearly show changes in the size of the lake 
+and how much water was available in the lake over time. The temporal change and trends in 
+lake area were quantified through the creation of change and trend analysis graphs. The results 
+were categorized, and water conditions and environmen tal change indicators were shown to 
+be sustainable. 
+GIS databases with the spatial layers and attribute data were developed for further analysis 
+and future monitoring. The output produced was accurate in terms of graphical and statistical 
+depiction of lake dynamics. Hydrological changes and environmental st ress conditions were 
+facilitated by maps and charts. The products produced can be used for scientific research and 
+environmental management applications. In all the outputs , the outputs were an integrated 
+long-term change of the lake. 
+ 
+2.7 Sustainability evaluation 
+The final step involved implementing the results for sustainable management and decision-
+making of the environment. Maps and analytical water products produced in the project will be 
+very useful for the water resource managers and policymakers in Iraq. The results show when 
+water levels have dropped significantly and if there are any potential risks to be worried about 
+for Hamrin Lake. Temporal monitoring and change detection results can be used to develop 
+sustainable management strategies. GIS and RS techn ologies allow water resources to be 
+continuously monitored at a low cost and high efficiency. The methodology can be used for 
+conservation planning and long-term environmental sustainability assessments. The produced 
+database will enable decision-makers to make better use of water resources and drought 
+management techniques. The study also helps in developing strategies for the future for climate 
+adaptation and ecosystem protection. Sustainable development targets can be achieved 
+through continuous monit oring. Continuous monitoring can help reduce environmental 
+degradation and help towards sustainable development targets. 
+ 
+ 
+61 
+ 
+3. Results 
+The analysis results from the ML and RS techniques using GIS indicated that the extent of 
+Hamrin Lake surface area (HSA) has experienced a significant change from 2017 to 2026, both 
+in terms of space and time. By using an SVM classification model, the wate r bodies and land 
+features around the water bodies were identified visually in Sentinel -2 images with a high 
+degree of accuracy and mapped. These variations in the size of the lakes from one year to the 
+next were clearly demonstrated in the classified maps, which represented the impact of climatic 
+variability, water management, and hydrology. The Sentinel -2 image from 2017 showed the 
+lake area of Hamrin Lake to be around 169.09 km² with a relatively stable hydrological status. 
+The lake boundary classificati on using SVM was proven to be accurate, as it was able to 
+distinguish the lake from barren and agricultural lands, indicating the suitability of the ML 
+methods used for water body extraction. However, the image captured in 2022 showed a huge 
+decrease in th e surface area of the lake to almost 30.08 km². The classified map showed very 
+pronounced shrinkage in the southern and central parts of the lake, which appeared to be due 
+to the result of a long drought, decreased inflow of water from the river, and incre ased 
+evaporation rates. This is a downward trend reflecting the increased environmental stresses 
+and therefore sustainability concerns on water resources in Iraq. An extraordinary increase in 
+the lake area was observed in the year 2026 where the area was 1 85.77 km². According to the 
+water map based on SVM, the water area has drastically increased compared to 2022, 
+particularly in the northern and eastern parts of the reservoir. This increase may be linked to 
+improved rainfall patterns and/or improved water release arrangements, or seasonal 
+hydrological changes. The results from the three years are compared and show how dynamic 
+Hamrin Lake is and the need for ongoing monitoring. The variation chart also shows the 
+changes in the area of the lake, with the lowe st value in 2022 and the highest in 2026. GIS and 
+RS classification worked well for detecting environmental changes, while the SVM classification 
+worked well for the overall sustainability evaluation of Hamrin Lake. 
+The Overall Accuracy of SVM was found to be around 94%, which was an excellent level of 
+agreement with the reference data. The confusion matrix showed high classification reliability 
+for water and surrounding land classes, and proved the SVM model to be su itable for 
+monitoring the spatiotemporal changes of Hamrin Lake. SVM performs better than other 
+classifiers reported from previous studies in water body classification, e.g., Maximum 
+Likelihood and Random Forest classifiers in water body classification fro m Sentinel-2 images 
+for binary classification [26, 27]. 
+The results showed the significance of geospatial technologies to facilitate sustainable 
+water resource management and environmental decision -making in Iraq. Figure 4 represents 
+Sentinel-2 image maps of Hamrin Lake. Figure 5 shows SVM-based Hamrin Lake variation from 
+2017 to 2026. These variations in lake area are shown in a Bar chart in Figure 6. 
+The spatial variation of Hamrin Lake extent in 2017, 2022, and 2026 is shown in the figure 
+and indicates that the reduction in extent was not uniform across the entire lake. The greatest 
+loss was in the southern and south-eastern part of the reservoir, where areas of shallow water 
+were the first to be lost with lower water availability. By comparis on, the water -holding 
+capacity of deeper parts of the central and northern regions was greater, hence better 
+hydrological resilience. The restoration in 2026 was in accord with the original lake 
+morphology, but various areas of the lake were still isolated, indicating that shoreline processes 
+are very responsive to water level changes. The exposed margins in 2022 were found to be 
+62 
+ 
+associated with the adjacent barren and agricultural lands, which suggests a direct relationship 
+between the lake contraction and the land use change in the surroundings. As the water level 
+fell, areas that were previously flooded were exposed, thus expanding the dry land mass around 
+the reservoir. In contrast, in 2026, the rewetting of many areas around the lake was caused by 
+the lake expansion, highlighting the close relationship between hydrology and land use. These 
+local observations highlight the need for the combination of GIS and remote sensing in order to 
+delineate vulnerable shoreline areas and to aid reservoir management for sustainable 
+development. 
+ 
+ (a) (b) 
+ 
+(c) 
+Fig. 4. Sentinel-2 image maps of Hamrin Lake in (a) 2017, (b) 2022, (c) 2026. 
+63 
+ 
+ 
+Fig. 5. SVM-based Hamrin Lake variation from 2017 to 2026. 
+ 
+ 
+Fig. 6. Bar chart of Hamrin Lake surface water area. 
+4. Discussion 
+The results revealed that the water extent of Hamrin Lake during the study period 
+experienced significant variations, which highlights the vulnerability of the water resources in 
+Iraq to climatic and hydrological changes. The extreme decrease in 2022 is in dicative of the 
+negative effect of the drought, absence of inflow from tributaries , and high evaporation rates 
+caused by the rise in temperature. The latter, however, shows an improvement in the hydrology 
+in the 2026 expansion, a possible result of more pr ecipitation and water management. The 
+64 
+ 
+results of the application of the SVM model are positive and prove that the application of ML 
+techniques using GIS and Sentinel -2 data can be used to monitor the dynamics of lakes. The 
+results are based on the importance of continuous monitoring of water r esources through RS 
+for sustainable water resource planning and environmental management in Iraq. Water surface 
+changes around Hamrin Lake are very dynamic in the time series (2017-2026), as indicated by 
+the trend analysis. The lake , in terms of condition , was medium and was hydrologically 
+balanced in 2017, with a relatively stable area of 169.09 km². But in 2022, there was a dramatic 
+decrease in the area of the lake, which sharply decreased to about 30.08 km². This has been a 
+difficult stretch of environmental stress, which has been blamed on a mix of the impacts of years 
+of drought, reduced river flows, increased demand for water, and increased evaporation rates 
+from climate warming. The trend changed in 2026 when the lake area was much larger, 
+approximately 185.77 km², as compared to 2017. The increase is a hydrological recovery that 
+can be attributed to better seasonal inflows, better rainfall and/or better water resource 
+management practices. The overall temporal trend indicates that Hamrin Lake is very sensitive 
+to climatic variability and human use of the water resources . The results also confirmed that 
+the methods of RS, GIS , and SVM have great potential for detecting environmenta l changes in 
+the long term and to ease the monitoring of the lakes in Iraq in a sustainable way. 
+ 
+5. Conclusions 
+This study showed the ability of using the integration of GIS, ML methods , and Sentinel-2 
+RS images to monitor the spatial and temporal dynamics of Hamrin Lake in Iraq, which was 
+confirmed by the results of the study. The lakes were successfully classified with an SVM 
+classification model, and the water bodies and land use around the lakes were demarcated to 
+assess the change in these lakes in the selected years 2017, 2022, and 2026. Thematic maps and 
+statistical analysis clearly showed significant changes in Hamrin Lake extent, which is 
+indicative of its sensitivity to environmental and climatic change. The results showed that the 
+area of the lake in 2017 was 169.09 km2 and it reached 30.08 km2 in 2022 , which is a 
+remarkable decrease. This very low reduction is attributed to the magnitude of the droughts 
+and river flow reductions, increased evaporation and water source stress. Such a reduction on 
+this scale is a significant concern for environmental health, and has the potential to impa ct 
+water ecosystems, farmers' livelihoods, wildlife, and water safety. The area of the lake in 2026, 
+however, was very impressive, with an area of approximately 185.77 km2. This increase is a 
+result of better hydrological conditions, more seasonal variability in precipitation, and/or 
+better water management strategies. Through the trend analysis, it was concluded that there 
+are continuous changes in Hamrin Lake's environment and that the lake should be monitored 
+frequently to ensure sustainable management. 
+In addition to providing historical knowledge of the lake extent, the study proves that GIS, 
+remote sensing, and machine learning can be used as a viable tool for ongoing environmental 
+monitoring in data-poor areas. The suggested workflow yields reliable spatial information for 
+early detection of environmental changes and water resource planning based on evidence. The 
+application of this is transferable to other Iraqi reservoirs with similar climatic and 
+hydrological conditions. Thus, the study provides a scalable geospatial monitoring scheme that 
+can be used to facilitate sustainable water management and to guide decision-making for 
+environmental protection in the context of a changing climate. 
+65 
+ 
+GIS and ML proved to be effective and cost -efficient in detecting environmental changes, 
+generating accurate information in the spatial domain , and supporting decision-making. The 
+proposed method will facilitate the consistent and timely mapping of the dynamics of lakes, 
+which will be useful for the sustainable management of water resources. The present study did 
+not include an economic comparison with conventional monitoring me thods, which is 
+recommended for further study. 
+Furthermore, Sentinel -2 data was shown to be suitable for the monitoring of water 
+resources at high resolution in arid and semi -arid areas. In general, the results of this study 
+emphasize the role of geospatial technologies in attaining environmental susta inability and 
+optimizing water resources management in Iraq. Continuous monitoring coupled with 
+advanced analytical techniques could play a large role in safeguarding lakes and sustainable 
+environmental planning in a changing climate. 
+This study has a number of limitations that it is important to recognize. Only Sentinel -2 
+Level-2A data with three representative observation years were used for the analysis and thus 
+do not reflect all conditions in the shorter -term lake dynamics. Furthermore, the level of 
+classification was teste d with image -based reference data, instead of large -scale field -based 
+ground truth observations. More studies are needed to combine multi -source satellite data, in 
+situ data , and more frequent temporal observation s to further increase the accuracy of 
+monitoring and interpretation. 
+ 
+References 
+[1] M. A. Meteab, A. F. Abdullah, H. J. Jumaah, and M. H. Ameen, “Water indices and machine learning classification 
+of Al-Razzaza Lake in Iraq: A sustainable perspective,” Math. Model. Eng. Probl., vol. 13, no. 2, p. 305, 2026. 
+ 
+[2] A. Azareh, E. R. Sardooi, H. Gholami, A. Mosavi, A. Shahdadi, and S. Barkhori, “Detection and prediction of lake 
+degradation using landscape metrics and remote sensing dataset,” Environ. Sci. Pollut. Res., vol. 28, no. 21, pp. 27283 –
+27298, 2021. 
+ 
+[3] Q. M. Ajaj, H. A. Abdullah, S. A. Bakr, and H. J. Jumaah, “Spatiotemporal analysis of Al-Dalmaj Marsh in Iraq using 
+Sentinel-2 imagery and GIS-based classification methods,” Int. J. Des. Nat. Ecodyn., vol. 20, no. 9, pp. 1965–1976, 2025. 
+ 
+[4] H. J. Jumaah, N. K. Khursheed, V. F. Salahalden, and M. H. A. Sulyman, “Integration of remote sensing and artificial 
+intelligence in detecting the environmental changes of Najaf Sea in Iraq using NDWI and GIS,” Eng. Technol. Appl. Sci. 
+Res., vol. 15, no. 4, pp. 26107–26112, 2025. 
+ 
+[5] M. R. Mahmood, B. I. Abrahem, H. J. Jumaah, H. A. Alalwan, and M. M. Mohammed, “Drought monitoring of large 
+lakes in Iraq using remote sensing images and normalized difference water index (NDWI),” Results Eng., vol. 25, Art. 
+no. 103854, 2025, doi: 10.1016/j.rineng.2024.103854. 
+ 
+[6] A. Maurya and A. Kumar, “The role of GIS in the study of sustainable development and environmental management,” 
+Int. J. Multidiscip. Res., vol. 6, no. 6, pp. 1–13, 2024. 
+[7] Y. Deng, Y. Zhang, D. Pan, S. X. Yang, and B. Gharabaghi, “Review of recent advances in remote sensing and 
+machine learning methods for lake water quality management,” Remote Sens., vol. 16, no. 22, Art. no. 4196, 2024. 
+ 
+[8] M. Shaikh and F. Birajdar, “Advancements in remote sensing and GIS for sustainable groundwater monitoring: 
+Applications, challenges, and future directions,” Int. J. Res. Eng. Sci. Manag., vol. 7, no. 3, pp. 16–24, 2024. 
+ 
+[9] G. E. Host, J. Schuldt, J. J. H. Ciborowski, L. B. Johnson, T. Hollenhorst, and C. Richards, “Use of GIS and remotely 
+sensed data for a priori identification of reference areas for Great Lakes coastal ecosystems,” Int. J. Remote Sens. , vol. 
+26, no. 23, pp. 5325–5342, 2005. 
+ 
+66 
+ 
+[10] K. E. Sawaya, L. G. Olmanson, N. J. Heinert, P. L. Brezonik, and M. E. Bauer, “Extending satellite remote sensing 
+to local scales: Land and water resource monitoring using high-resolution imagery,” Remote Sens. Environ., vol. 88, nos. 
+1–2, pp. 144–156, 2003. 
+ 
+[11] M. H. Ameen, H. J. Jumaah, and N. K. Khorsheed, “An analysis of hydrologic dynamics in Hamrin Lake, Iraq using 
+remote sensing and GIS techniques,” DYSONA Appl. Sci., vol. 6, no. 1, pp. 96–103, 2025. 
+ 
+[12] H. J. Jumaah, M. H. Ameen, and B. Kalantar, “Surface water changes and water depletion of Lake Hamrin, Eastern 
+Iraq, using Sentinel-2 images and geographic information systems,” Adv. Environ. Eng. Res., vol. 4, no. 1, pp. 1–11, 2023. 
+ 
+[13] H. J. Jumaah, M. H. Ameen, G. H. Mohamed, and Q. M. Ajaj, “Monitoring and evaluation Al-Razzaza Lake changes 
+in Iraq using GIS and remote sensing technology,” Egypt. J. Remote Sens. Space Sci., vol. 25, no. 1, pp. 313–321, 2022. 
+ 
+[14] H. J. Jumaah, A. Ghanbari, A. T. Jasim, and Z. A. Khalaf, “Using RS and AI GIS in land management and urban 
+planning in Mosul, Iraq for sustainable development,” Geod. Cartogr., vol. 51, no. 3, pp. 165–177, 2025. 
+ 
+[15] Y. Pang et al., “Remote sensing extraction of lakes on the Tibetan Plateau based on the Google Earth Engine and 
+deep learning,” Remote Sens., vol. 16, no. 3, Art. no. 583, 2024. 
+ 
+[16] M. Hasan, A. Moody, L. Benninger, and H. Hedlund, “How war, drought, and dam management impact water supply 
+in the Tigris and Euphrates Rivers,” Ambio, vol. 48, no. 3, pp. 264–279, 2019. 
+ 
+[17] N. Al-Ansari, S. Saleh, T. Abdullah, and S. A. Abed, “Quality of surface water and groundwater in Iraq,” Earth Sci. 
+Geotech. Eng., vol. 11, no. 2, pp. 161–199, 2021. 
+ 
+[18] A. B. Rabie, M. Elhag, and A. Subyani, “Remote sensing, GIS, and machine learning in water resources management 
+for arid agricultural regions: A review,” Water, vol. 17, no. 21, Art. no. 3125, 2025. 
+ 
+[19] A. Ghanbari and H. J. Jumaah, “Monitoring surface water area changes of Najaf Sea in Iraq using RS and GIS for 
+sustainable development,” in Proc. Adv. Eng. Days, vol. 9, 2024, pp. 323–325. 
+ 
+[20] J. Dong, X. Liang, B. Du, Y. Ju, Y. Wang, and H. Guo, “Applications of geographic information systems in ecological 
+impact assessment: A methods landscape, practical bottlenecks, and future pathways,” Sustainability, vol. 17, no. 22, Art. 
+no. 10358, 2025. 
+ 
+[21] R. Y. Hussain, “Submerged surface area and water storage volume of Hamrin Dam Lake using contour lines,” Iraqi 
+J. Sci., vol. 65, no. 6, pp. 3524–3535, 2024. 
+ 
+[22] K. S. Kazkoz and M. A. Al-Azzawi, “Water management of agricultural lands in Diyala Governorate,” in IOP Conf. 
+Ser.: Earth Environ. Sci., vol. 1222, no. 1, Art. no. 012019, Aug. 2023. 
+ 
+[23] S. B. Abdul-Razak and H. M. Abduljabbar, “The impact of seasonal changes on the land cover of Lake Hamrin: A 
+comparative study of dry and wet seasons,” Ibn Al-Haitham J. Pure Appl. Sci., vol. 39, no. 1, pp. 128–139, 2026. 
+ 
+[24] Copernicus Data Space Ecosystem, “Hamrin Lake”, https://browser.dataspace.copernicus.eu. 
+ 
+[25] NASA POWER, “Hamrin Lake”, https://power.larc.nasa.gov/data-access-viewer. 
+ 
+[26] N. P. N. Nathalia, G. A. R. Wijaya, K. Y. E. Aryanto, N. P. N. P. Dewi, P. H. Saputra, N. P. K. Dewi, et al ., 
+“Comparison of SVM, K -NN, RF, CART, and GNB algorithms for water bodies detection using Sentinel -2 Level-2A 
+imagery in Nakhon Pathom, Thailand,” Int. J. Appl. Sci. Smart Technol., vol. 7, no. 1, pp. 145–158, 2025. 
+ 
+[27] Y. S. Bhageerath, S. V. S. P. Sharma, S. R. P., and K. D. Rao, “An object -based custom ensemble framework for 
+automated water body extraction using Sentinel-2 imagery,” Environ. Monit. Assess., vol. 198, no. 8, Art. no. 826, 2026.
