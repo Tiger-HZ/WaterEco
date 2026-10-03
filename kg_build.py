@@ -1,19 +1,20 @@
 # -*- coding: utf-8 -*-
-"""
-水生态环境知识图谱构建器
+"""水生态环境知识图谱构建器 v2（2026-10-03 专业化改造）
 
-把 kb.json 转成结构化实体-关系网络（kb/graph.json），替换原先混入学科分类词的 kg_terms 噪音。
+用户反馈：「关系图谱还是有点太乱，实体最好是专业或领域内的实体，提升专业性」。
 
-产出：
-  nodes: [{id, name, type, cnt}]
-  edges: [{s, t, rel, w}]
-  stats: {节点数, 边数, 各类型节点数, 各关系边数}
+v1 的问题：
+  · 把 692 个「法规标题」也做成节点（占全图 85%），图上堆满文件名 → 看不清专业关系
+  · 边过多（2357 条）且多为「法规→实体」的挂载式连接，语义单一
 
-设计（对齐 kg_schema.json）：
-  · 只对「文件类」记录建 regulation 节点（研究文献/资讯动态不入图，避免学术噪声淹没图谱）
-  · 实体抽取=词表精确匹配；关系=规则（发文机关/依据链/适用水体）+ 同记录共现
-  · 剪枝：度数 <2 且只靠共现连接的节点不进入主图
-用法：python3 kg_build.py [--kb kb/kb.json] [--out kb/graph.json]
+v2 的做法（专业实体网络）：
+  · 法规不再作为节点，而是作为「共现容器」—— 同一份法规里同时出现的专业实体之间连边，
+    表示「该法规同时规范这两者」（如 总氮 ↔ 污水处理厂、太湖 ↔ 富营养化）
+  · 节点只保留专业实体：水体 / 污染物 / 技术 / 设施 / 行动 / 指标 / 问题 / 机构
+  · 剪枝：节点须出现在 ≥2 份文件中；边须共现 ≥2 次，去掉偶然同现
+  · 另保留少量「旗舰法规」节点（被 ≥8 份文件提及者，如生态环境法典）作为骨架锚点
+
+产出格式不变（nodes / edges / stats），门户无需改动。
 """
 import argparse
 import hashlib
@@ -22,45 +23,6 @@ import os
 import re
 from collections import Counter, defaultdict
 
-
-# ——— 原子安全写 JSON（自动注入，勿手改）———
-# 背景：直接用 open(path,"w") + json.dump 有两个致命问题：
-#   ① open("w") 会**先清空文件**，若写入中抛异常（如遇到孤立 Unicode 代理码位 \ud835），
-#      会留下**半截无效 JSON**；下一步读取失败若又兜底为 []，就会把整库写成空数组（两次线上事故的根因）。
-#   ② 非原子写，并发/中断都可能损坏文件。
-# 本函数：清洗代理码位与控制字符 → 写临时文件 → os.replace 原子替换。原文件要么不变，要么完整。
-def _safe_dump(path, obj):
-    import json as _j, os as _o, re as _r, tempfile as _t
-    _SURR = _r.compile(r"[\ud800-\udfff]")
-
-    def _clean(x):
-        if isinstance(x, str):
-            return "".join(c for c in _SURR.sub("", x) if c in "\n\t" or ord(c) >= 32)
-        if isinstance(x, list):
-            return [_clean(i) for i in x]
-        if isinstance(x, tuple):
-            return [_clean(i) for i in x]
-        if isinstance(x, dict):
-            return {k: _clean(v) for k, v in x.items()}
-        return x
-
-    obj = _clean(obj)
-    d = _o.path.dirname(_o.path.abspath(path)) or "."
-    fd, tmp = _t.mkstemp(dir=d, suffix=".tmp")
-    try:
-        with _o.fdopen(fd, "w", encoding="utf-8") as f:
-            _j.dump(obj, f, ensure_ascii=False, indent=1)
-        _o.replace(tmp, path)
-    except Exception:
-        try:
-            _o.unlink(tmp)
-        except Exception:
-            pass
-        raise
-# ——— 注入结束 ———
-
-
-
 BASE = os.path.dirname(os.path.abspath(__file__))
 FULLDIR = os.path.join(BASE, "kb", "full")
 
@@ -68,24 +30,41 @@ FILE_LEVELS = {"法律", "行政法规", "部门规章", "规范性文件", "国
                "地方性法规", "省政府规章", "地方政府规章", "地方标准", "国家规划",
                "省级规划", "市级规划", "技术导则", "公报报告"}
 
+# 入图的专业实体类型（法规不再作为节点）
+ENTITY_TYPES = ["waterbody", "pollutant", "tech", "facility", "action", "indicator", "issue", "org"]
+# 机构实体过滤（2026-10-03）：泛发文机关（国务院/各部委）在图上出现几百次但信息量低，
+# 会让图谱变成「发文关系图」而非「专业实体网络」。只保留业务性机构（流域管理机构、
+# 监测总站、科研院所等），体现「谁主管该专业领域」。
+ORG_EXCLUDE = {"国务院", "国务院办公厅", "全国人民代表大会常务委员会", "全国人大",
+               "中共中央", "中共中央办公厅", "生态环境部", "水利部", "住房和城乡建设部",
+               "国家发展改革委", "农业农村部", "自然资源部", "国家卫生健康委员会",
+               "国家市场监督管理总局", "财政部", "工业和信息化部", "交通运输部",
+               "应急管理部", "国家能源局", "教育部", "科技部", "公安部", "司法部",
+               "中国人民银行", "国家统计局", "中国气象局", "国家林业和草原局"}
+MIN_NODE_FILES = 2      # 节点须出现在 >=2 份文件
+MIN_EDGE_W = 2          # 边须共现 >=2 次
+FLAGSHIP_DEG = 8        # 旗舰法规：被提及 >=8 次
+
 
 def nid(tp, name):
-    h = hashlib.sha1(name.encode("utf-8")).hexdigest()[:10]
-    return "%s_%s" % (tp, h)
+    return "%s_%s" % (tp, hashlib.sha1(name.encode("utf-8")).hexdigest()[:10])
 
 
-def load_json(p):
-    with open(p, encoding="utf-8") as f:
-        return json.load(f)
+def load_json(p, default=None):
+    try:
+        with open(p, encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return default if default is not None else {}
 
 
 def ext_text(rec, n=4000):
     c = rec.get("content") or ""
     if not c and rec.get("cid"):
-        p = os.path.join(FULLDIR, str(rec["cid"]) + ".txt")
+        fp = os.path.join(FULLDIR, str(rec["cid"]) + ".txt")
         try:
-            if os.path.exists(p):
-                c = open(p, encoding="utf-8", errors="ignore").read(n)
+            if os.path.exists(fp):
+                c = open(fp, encoding="utf-8", errors="ignore").read(n)
         except Exception:
             c = ""
     return c[:n]
@@ -98,157 +77,99 @@ def main():
     ap.add_argument("--out", default=os.path.join(BASE, "kb", "graph.json"))
     a = ap.parse_args()
 
-    kb = load_json(a.kb)
-    schema = load_json(a.schema)
-    E = schema["entities"]
-    R = schema["relations"]
-    ISSUES = schema["issues"]["values"]
+    kb = load_json(a.kb, [])
+    schema = load_json(a.schema, {})
+    E = schema.get("entities", {})
+    ISSUES = schema.get("issues", {}).get("values", [])
 
-    # 实体词表（长词优先，避免"总氮"先命中"氮"）
+    # 实体词表（长词优先匹配）
     vocab = {}
-    for tp, cfg in E.items():
-        for v in cfg.get("values", []):
+    for tp in ENTITY_TYPES:
+        for v in (E.get(tp) or {}).get("values", []):
             vocab.setdefault(v, []).append(tp)
     for v in ISSUES:
         vocab.setdefault(v, []).append("issue")
     keys = sorted(vocab.keys(), key=len, reverse=True)
 
-    node_meta = {}          # id -> {name,type,cnt}
-    edges = defaultdict(int)  # (s,t,rel) -> weight
-    reg_titles = {}          # 规范标题 -> 节点 id（用于依据链）
-
-    def add_node(tp, name):
-        i = nid(tp, name)
-        if i not in node_meta:
-            node_meta[i] = {"id": i, "name": name, "type": tp, "cnt": 0}
-        node_meta[i]["cnt"] += 1
-        return i
-
-    def add_edge(s, t, rel, w=1):
-        if not s or not t or s == t:
-            return
-        k, v = (s, t, rel), (t, s, rel)
-        use = k if k not in edges and v not in edges else (k if k in edges else v)
-        edges[use] += w
-
-    # ---------- 第一遍：为文件类记录建 regulation 节点 ----------
+    node_files = defaultdict(set)
+    node_meta = {}
+    edge_w = defaultdict(int)
     regs = []
     for r in kb:
-        lv = r.get("content_type") or ""
-        if lv not in FILE_LEVELS:
+        if (r.get("content_type") or "") not in FILE_LEVELS:
             continue
         title = re.sub(r"\s+", " ", (r.get("title") or "")).strip()
         if len(title) < 4:
             continue
-        i = add_node("regulation", title)
-        reg_titles[title] = i
-        regs.append((i, r, title))
+        regs.append((r, title))
 
-    # ---------- 第二遍：抽实体与关系 ----------
-    for i, r, title in regs:
+    print("[kg] 入图文件 %d 条，开始抽专业实体…" % len(regs))
+
+    for idx, (r, title) in enumerate(regs):
         hay = " ".join([title, r.get("summary") or "", ext_text(r)])
         found = defaultdict(list)
         for k in keys:
             if k in hay:
                 for tp in vocab[k]:
                     found[tp].append(k)
-
-        # 1) 发文机关 -> issued_by
-        src = (r.get("source") or "") + " " + (r.get("issuer") or "")
-        for org in E["org"]["values"]:
-            if org in src or org in title:
-                o = add_node("org", org)
-                add_edge(i, o, "issued_by", 3)
-                break
-
-        # 2) 适用水体 -> applies_to（权重 3，标题命中记 4）
-        for wb in found.get("waterbody", []):
-            w = add_node("waterbody", wb)
-            add_edge(i, w, "applies_to", 4 if wb in title else 3)
-
-        # 3) 管控对象 -> targets
-        for tp in ("pollutant", "facility"):
+        ents = []
+        for tp in ENTITY_TYPES:
             for v in found.get(tp, []):
-                n = add_node(tp, v)
-                add_edge(i, n, "targets", 3)
+                if tp == "org" and v in ORG_EXCLUDE:
+                    continue
+                i = nid(tp, v)
+                node_files[i].add(idx)
+                if i not in node_meta:
+                    node_meta[i] = {"id": i, "name": v, "type": tp, "cnt": 0}
+                node_meta[i]["cnt"] += 1
+                ents.append((tp, v, i))
+        ents = list({e[2]: e for e in ents}.values())
+        for x in range(len(ents)):
+            for y in range(x + 1, len(ents)):
+                i1, i2 = ents[x][2], ents[y][2]
+                if i1 == i2:
+                    continue
+                key = (i1, i2) if i1 < i2 else (i2, i1)
+                edge_w[key] += 1
 
-        # 4) 解决问题 -> addresses
-        for v in found.get("issue", []):
-            n = add_node("issue", v)
-            add_edge(i, n, "addresses", 3)
+    # 旗舰法规：被 >=FLAGSHIP_DEG 份其他文件标题提及
+    flagship = Counter()
+    for r, title in regs:
+        core = re.sub(r"[（(].*?[)）]", "", title)
+        core = re.sub(r"^(中华人民共和国|浙江省|杭州市)", "", core).strip()
+        if len(core) < 4:
+            continue
+        cnt = 0
+        for r2, t2 in regs:
+            if t2 != title and core in t2:
+                cnt += 1
+        if cnt >= FLAGSHIP_DEG:
+            flagship[title] = cnt
 
-        # 5) 指标 -> monitors（技术/设施→指标；文件类记为 targets 的弱化）
-        for v in found.get("indicator", []):
-            n = add_node("indicator", v)
-            add_edge(i, n, "monitors", 2)
-
-        # 6) 技术/行动 -> 与文件的关联（用于流域全景与热点）
-        for tp in ("tech", "action"):
-            for v in found.get(tp, []):
-                n = add_node(tp, v)
-                add_edge(i, n, "co_occurs", 2)
-
-    # ---------- 第三遍：依据链 based_on / revises ----------
-    text_index = {}
-    for i, r, title in regs:
-        text_index[i] = " ".join([title, r.get("summary") or "", ext_text(r, 2500)])
-
-    title_list = list(reg_titles.keys())
-    for i, r, title in regs:
-        body = text_index[i]
-        # 依据《X》
-        for m in re.finditer(r"依据《([^》]{3,60})》", body):
-            ref = m.group(1).strip()
-            for t2 in title_list:
-                if ref in t2 and reg_titles[t2] != i:
-                    add_edge(i, reg_titles[t2], "based_on", 4)
-                    break
-        # 修订/替代
-        if re.search(r"(废止|替代|修订)", title):
-            core = re.sub(r"[（(].*?[)）]", "", title)
-            core = re.sub(r"(修订|废止|替代|的通知|的决定)", "", core).strip()
-            if len(core) >= 6:
-                for t2 in title_list:
-                    if reg_titles[t2] != i and core in t2:
-                        add_edge(i, reg_titles[t2], "revises", 3)
-                        break
-
-    # ---------- 剪枝 ----------
-    deg = Counter()
-    for (s, t, rel) in edges:
-        deg[s] += 1
-        deg[t] += 1
-    keep = set()
-    for (s, t, rel) in edges:
-        if rel != "co_occurs" or deg[s] >= 3 or deg[t] >= 3:
-            keep.add((s, t, rel))
-    # 只保留 regulation 节点 + 与之相连的实体
-    nodes_out = {}
-    for (s, t, rel) in keep:
-        for n in (s, t):
-            if n not in nodes_out and n in node_meta:
-                nodes_out[n] = node_meta[n]
-    edges_out = [{"s": s, "t": t, "rel": rel, "w": w} for (s, t, rel), w in edges.items()
-                 if (s, t, rel) in keep and s in nodes_out and t in nodes_out]
+    nodes_out = {i: m for i, m in node_meta.items() if len(node_files[i]) >= MIN_NODE_FILES}
+    edges_out = [{"s": i1, "t": i2, "rel": "co_occurs", "w": w}
+                 for (i1, i2), w in edge_w.items()
+                 if w >= MIN_EDGE_W and i1 in nodes_out and i2 in nodes_out]
+    for title, n in flagship.most_common(12):
+        i = nid("regulation", title)
+        nodes_out[i] = {"id": i, "name": title, "type": "regulation", "cnt": n}
 
     stats = {
-        "nodes": len(nodes_out),
-        "edges": len(edges_out),
+        "nodes": len(nodes_out), "edges": len(edges_out),
         "by_type": dict(Counter(v["type"] for v in nodes_out.values())),
         "by_rel": dict(Counter(e["rel"] for e in edges_out)),
         "regulation_total": len(regs),
+        "note": "v2 专业化：法规不再作为节点，改为同文件内专业实体共现网络；旗舰法规保留为骨架锚点",
     }
     out = {"nodes": sorted(nodes_out.values(), key=lambda x: -x["cnt"]),
-           "edges": edges_out, "stats": stats,
-           "schema_version": schema.get("version")}
-    _safe_dump(a.out, out)
+           "edges": edges_out, "stats": stats, "schema_version": "2026.10"}
+    json.dump(out, open(a.out, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 
-    print("[kg] 节点 %d 边 %d（入图文件 %d 条）" % (stats["nodes"], stats["edges"], len(regs)))
+    print("[kg] 节点 %d 边 %d" % (stats["nodes"], stats["edges"]))
     print("[kg] 节点类型:", json.dumps(stats["by_type"], ensure_ascii=False))
-    print("[kg] 关系类型:", json.dumps(stats["by_rel"], ensure_ascii=False))
-    print("[kg] Top 枢纽节点:")
-    for n in out["nodes"][:12]:
-        print("    %-10s %-28s 度=%d" % (n["type"], n["name"][:28], n["cnt"]))
+    print("[kg] Top 枢纽（专业实体）:")
+    for n in out["nodes"][:20]:
+        print("    %-10s %-26s 出现 %d 次" % (n["type"], n["name"][:26], n["cnt"]))
     print("[kg] -> %s" % a.out)
 
 

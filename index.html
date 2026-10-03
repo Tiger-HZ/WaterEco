@@ -321,7 +321,9 @@
             padding:18px 20px;margin-bottom:14px;box-shadow:var(--shadow)}
   .must-hero h2{margin:0 0 7px;font-size:18px}
   .must-hero p{margin:0;font-size:12.8px;opacity:.93;line-height:1.75}
-  .must-group{margin:22px 0 9px;font-size:15px;font-weight:700;color:var(--green-d);
+  .must-sec{font-size:15px;font-weight:700;color:var(--ink);margin:22px 0 10px;padding-left:10px;border-left:4px solid var(--teal)}
+.must-sec .muted{font-weight:400;font-size:12.5px;margin-left:6px}
+.must-group{margin:22px 0 9px;font-size:15px;font-weight:700;color:var(--green-d);
               display:flex;align-items:center;gap:9px;padding-bottom:6px;border-bottom:2px solid var(--line)}
   .must-group .n{font-size:12px;font-weight:400;color:var(--sub)}
   .must-list{display:flex;flex-direction:column;gap:9px}
@@ -2023,13 +2025,24 @@ const MUST_RANK_LABEL = [
   [950,999,'十一、杭州市政府规章 · 市级规划 · 公报报告'],
 ];
 function mustRankLabel(n){ n=Number(n)||999; for(const [a,b,l] of MUST_RANK_LABEL){ if(n>=a&&n<=b) return l; } return '十二、其他'; }
+/* 必知必会两类（2026-10-03 按用户要求）：
+   基础必知 = 基础性文件类型（法律/行政法规/标准/法规/规章）—— 不分年份，
+              它们是领域基本功，如《生态环境法典》《地表水环境质量标准》(GB 3838)
+   新知速递 = 其他类型（政策文件/规划/报告/管理机制等）中近 3 年内发布的 */
+const MUST_BASE_LEVELS = ['法律','行政法规','部门规章','规范性文件','国家标准','行业标准',
+                          '地方性法规','省政府规章','地方政府规章','地方标准','法规标准','政府规章'];
+function mustCategory(r){
+  const lv = r.content_type || '';
+  if (MUST_BASE_LEVELS.indexOf(lv) >= 0) return 'base';
+  const y = String(effDate(r)||'').slice(0,4);
+  const nowY = new Date().getFullYear();
+  if (y && (nowY - Number(y) <= 3)) return 'newly';
+  return 'other';
+}
 /* 入选规则（2026-09-23 优化）
    核心必知 = 数据中带 must_know 标记（人工逐条核实并核定层级）
-   高分补充 = 按【知识类别】判定（原用旧 category 字段 + water_rel≥0.9 过严阈值，漏掉大量政策/规划）：
-     · 政策法规/标准规范/规划与报告/管理机制 → 重要性 ≥8.5
-     · 杭州本地 ≥8.0、浙江省级 ≥8.2（本单位重点，放宽）
-     · 权威实践案例（A 级）≥8.0
-   这样既补全重要内容，又不会让必知必会泛滥成灾。 */
+   高分补充 = 按【知识类别】判定：政策法规/标准规范/规划与报告/管理机制 → 重要性 ≥8.5；
+              杭州本地 ≥8.0、浙江省级 ≥8.2（本单位重点放宽）；权威实践案例（A级）≥8.0 */
 function mustMatch(r){
   if(r.must_know) return 'core';
   const kc=r.kclass||'', imp=Number(r.importance)||0, q=r.quality||'', reg=r.region||'';
@@ -2094,26 +2107,50 @@ function mustRender(){
         || (Number(b.importance)||0)-(Number(a.importance)||0)
         || effDate(b).localeCompare(effDate(a)));
   auto.sort((a,b)=> (Number(b.importance)||0)-(Number(a.importance)||0) || effDate(b).localeCompare(effDate(a)));
-  $('#mustStat').innerHTML='<span class="chip">核心必知 <b>'+core.length+'</b> 条</span>'
-    +'<span class="chip">高分补充 <b>'+auto.length+'</b> 条</span>'
+
+  // —— 合并后按「基础必知 / 新知速递」两类拆分 ——
+  const all = core.concat(auto);
+  const base = all.filter(r=>mustCategory(r)==='base');
+  const newly= all.filter(r=>mustCategory(r)==='newly');
+  const other= all.filter(r=>mustCategory(r)==='other');
+  // 基础必知按 must_rank 分层排序（法律→行政法规→标准→法规…）
+  base.sort((a,b)=> (Number(a.must_rank)||9999)-(Number(b.must_rank)||9999)
+        || (Number(b.importance)||0)-(Number(a.importance)||0));
+  newly.sort((a,b)=> effDate(b).localeCompare(effDate(a)));
+
+  $('#mustStat').innerHTML='<span class="chip">基础必知 <b>'+base.length+'</b> 条</span>'
+    +'<span class="chip">新知速递 <b>'+newly.length+'</b> 条</span>'
+    + (other.length? '<span class="chip">其他 <b>'+other.length+'</b> 条</span>':'')
     +'<span class="chip">数据来源：政府/部委官网 · 人大法规库 · 标准平台，逐条核实</span>';
+
   let html='', rank=0;
   const showCore = (tier==='all'||tier==='core'), showAuto=(tier==='all'||tier==='auto');
-  if(showCore && core.length){
-    let cur=null, buf=[];
+
+  // ===== 第一类：基础必知（按文件层级分层，同层合并到一个标题下）=====
+  if(base.length){
+    html+='<div class="must-sec">📚 基础必知 <span class="muted">领域基本功：法律、行政法规、国家标准、行业标准、地方性法规与规章 —— 不分发布年份，都是入门与依据之本</span></div>';
+    let curLbl=null, buf=[];
     const flush=()=>{ if(!buf.length) return;
-      html+='<div class="must-group">'+esc(mustRankLabel(cur))+' <span class="n">'+buf.length+' 条</span></div>';
+      html+='<div class="must-group">'+esc(curLbl)+' <span class="n">'+buf.length+' 条</span></div>';
       html+='<div class="must-list">'+buf.map(r=>mustCard(r, rank++)).join('')+'</div>';
       buf=[]; };
-    core.forEach(r=>{ const k=Number(r.must_rank)||999;
-      if(cur==null) cur=k;
-      if(k!==cur){ flush(); cur=k; }
-      buf.push(r); });
+    base.forEach(r=>{
+      const lbl = mustRankLabel(Number(r.must_rank)||999);   // ← 按【分层标签】比较，修复重复分组
+      if(curLbl===null) curLbl=lbl;
+      if(lbl!==curLbl){ flush(); curLbl=lbl; }
+      buf.push(r);
+    });
     flush();
   }
-  if(showAuto && auto.length){
-    html+='<div class="must-group">高分补充（系统按质量与重要性自动并入） <span class="n">'+auto.length+' 条</span></div>';
-    html+='<div class="must-list">'+auto.map(r=>mustCard(r, rank++)).join('')+'</div>';
+
+  // ===== 第二类：新知速递（近 3 年重要文件，按时间倒序）=====
+  if(newly.length){
+    html+='<div class="must-sec">🆕 新知速递 <span class="muted">近 3 年重要的各级政策、标准、规划与报告（按发布时间倒序）</span></div>';
+    html+='<div class="must-list">'+newly.map(r=>mustCard(r, rank++)).join('')+'</div>';
+  }
+  if(other.length){
+    html+='<div class="must-sec">📎 其他相关 <span class="muted">时间较早且非基础性文件</span></div>';
+    html+='<div class="must-list">'+other.map(r=>mustCard(r, rank++)).join('')+'</div>';
   }
   host.innerHTML = html || '<div class="empty">暂无匹配条目</div>';
 }
