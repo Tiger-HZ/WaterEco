@@ -92,7 +92,14 @@ def journal_ok(jname, title="", abstract="", require_relevance=True):
     if hit:
         return True, "core_cn", "国内核心：%s" % hit
 
-    # 3) 其他：需主题强相关
+    # 3) 其他期刊：2026-10-03 起**不再放行**
+    #    用户明确要求「学术文献提质：只收中高水平 SCI 与国内核心」。
+    #    实测保留 ok 档会让一般期刊大量涌入（学术类占比冲到 85%、库容 1 万+ 条、信噪比恶化）。
+    if os.environ.get("ACADEMIC_ALLOW_OK") == "1" and require_relevance:
+        t_hit = _hit(title, STRONG_WATER)
+        if t_hit:
+            return True, "ok", "未分级期刊（临时放行，标题命中：%s）" % t_hit
+    return False, "ok", "未达中高水平门槛（非领域顶刊 / 国内核心），不予收录"
     if not require_relevance:
         return True, "ok", "未分级期刊（未做相关性判定）"
     t_hit = _hit(title, STRONG_WATER)
