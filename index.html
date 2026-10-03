@@ -343,6 +343,7 @@
   .must-note{font-size:11.5px;color:var(--amber);margin-top:4px}
 .b-topic{background:#e8f0fe;color:#1a4b8c;border-color:#c3d6f5}
 .b-class{background:#eef2f7;color:#33475b;border-color:#d5dde7}
+.b-nofull{background:#fff8e6;color:#8a6100;border-color:#f0dcb0}
 .b-kc{background:#eef7f4;color:#0d5c4d;border-color:#c9e6dd;font-weight:600}
 .b-rej{background:#f6f7f9;color:#9aa3af;border-color:#e3e6ea}
 .b-wb{background:#e6f5f2;color:#0f6b5c;border-color:#bfe5dd}
@@ -812,7 +813,13 @@ function recCard(r){
   const imp = (typeof r.importance==='number')?r.importance:null;
   const impHtml = imp!=null ? '<span class="imp-star" title="重要性评分">★ '+imp.toFixed(1)+'</span>' : '';
   const q = r.quality||'';
-  const full = r.content_fetched ? '<span class="badge b-full">全文</span>' : '';
+  // 全文状态（2026-10-03）：明确区分「已有全文」与「仅摘要·全文待补」，让缺口可见
+  const _fts = r.fulltext_status || '';
+  const full = (_fts==='已获取全文' || r.content_kind==='fulltext')
+    ? '<span class="badge b-full" title="'+(r.fulltext_source?('来源：'+esc(r.fulltext_source)):'已收录全文')+'">全文</span>'
+    : (_fts==='未获取到全文'
+        ? '<span class="badge b-nofull" title="'+esc(r.fulltext_note||'未找到开放获取版本')+'">仅摘要 · 全文待补</span>'
+        : (r.content_fetched ? '<span class="badge b-full">全文</span>' : ''));
   const pdfb = r.pdf ? '<span class="badge b-full">📄 原文PDF</span>' : '';
   const origb = r.origin_status==='原文已核'
       ? '<span class="badge b-full" title="原文已核实来源">✔ 原文已核</span>'

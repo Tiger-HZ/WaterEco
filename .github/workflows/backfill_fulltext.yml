@@ -1,0 +1,95 @@
+# 学术全文回填 · 定时分批（2026-10-03 新增）
+#
+# 背景：用户要求「全文回填，所有都要补上，实在补不上的也要保留，但要做好标注」。
+#   存量约 8000 条学术文献原先只有摘要（题录级），本任务分批把它们补成全文：
+#   · 多源取全文（EuropePMC fullTextXML → Unpaywall → OpenAlex OA → DOI 直连）
+#   · 补不到的**保留并标注** fulltext_status/fulltext_note/fulltext_tried_at（门户显示「仅摘要·全文待补」）
+#   · 可续跑：已尝试过的条目自动跳过；每天 2 轮，每轮 800 条
+name: 学术全文回填
+
+on:
+  schedule:
+    - cron: '0 2,14 * * *'    # UTC 02:00 / 14:00 = 北京 10:00 / 22:00
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: '本轮处理条数'
+        required: false
+        default: '800'
+      retry_miss:
+        description: '是否重试之前失败的（1=是）'
+        required: false
+        default: '0'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: water-eco-collect
+  cancel-in-progress: false
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 170
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 安装依赖
+        run: pip install --quiet requests beautifulsoup4 pypdf
+
+      - name: 学术全文回填（分批，可续跑）
+        timeout-minutes: 140
+        continue-on-error: true
+        env:
+          OA_MAIL: 'water-eco-bot@users.noreply.github.com'
+          MIN_FULLTEXT: '3000'
+        run: |
+          LIMIT="${{ github.event.inputs.limit }}"; LIMIT=${LIMIT:-800}
+          RETRY=""; [ "${{ github.event.inputs.retry_miss }}" = "1" ] && RETRY="--retry-miss"
+          timeout 8000 python3 backfill_fulltext.py --limit "$LIMIT" $RETRY --report backfill_report.json \
+            || echo "backfill partial, continue"
+
+      - name: 重建索引与站点数据
+        if: always()
+        timeout-minutes: 20
+        run: python3 update.py || echo "update failed, continue"
+
+      - name: 提交（safe_push，含数据护栏）
+        if: always()
+        continue-on-error: true
+        run: bash safe_push.sh backfill-fulltext
+
+      - name: 配置 Pages
+        if: always()
+        uses: actions/configure-pages@v5
+
+      - name: 准备站点产物
+        if: always()
+        run: |
+          rm -rf _site && mkdir -p _site
+          tar -cf - --exclude=./.git --exclude=./_site . | (cd _site && tar -xf -)
+
+      - name: 上传站点产物
+        if: always()
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: 部署到 GitHub Pages
+        id: deployment
+        if: always()
+        uses: actions/deploy-pages@v4
