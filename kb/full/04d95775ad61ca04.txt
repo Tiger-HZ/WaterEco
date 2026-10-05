@@ -1,0 +1,1201 @@
+LETTER • OPEN ACCESS
+Multi-scale planning model for robust urban
+drought response
+To cite this article: Marta Zaniolo et al 2023 Environ. Res. Lett. 18 054014
+ 
+View the article online for updates and enhancements.
+You may also like
+Spatial planning for water sustainability
+projects under climate uncertainty:
+balancing human and environmental water
+needs
+Rachel E Fovargue, Shabnam Rezapour,
+Derek Rosendahl et al.
+-
+The potential economic value of
+agricultural and urban water from forecast
+informed reservoir operations (FIRO) in
+California
+Thomas W Corringham, Denali M Pinto, F
+Martin Ralph et al.
+-
+Global drought risk in cities: present and
+future urban hotspots
+Tristian R Stolte, Hans de Moel, Elco E
+Koks et al.
+-
+This content was downloaded from IP address 4.242.195.242 on 05/10/2026 at 19:28
+Environ. Res. Lett. 18 (2023) 054014 https://doi.org/10.1088/1748-9326/acceb5
+OPEN ACCESS
+RECEIVED
+1 December 2022
+REVISED
+7 March 2023
+ACCEPTED FOR PUBLICATION
+20 April 2023
+PUBLISHED
+2 May 2023
+Original Content from
+this work may be used
+under the terms of the
+Creative Commons
+Attribution 4.0 licence.
+Any further distribution
+of this work must
+maintain attribution to
+the author(s) and the title
+of the work, journal
+citation and DOI.
+LETTER
+Multi-scale planning model for robust urban drought response
+Marta Zaniolo1,∗, Sarah Fletcher1,4,5 and Meagan S Mauter1,2,3,4,5
+1 Department of Civil and Environmental Engineering, Stanford University, Stanford, CA 94305, United States of America
+2 Global Environmental Policy, Stanford University, Stanford, CA 94305, United States of America
+3 Precourt Institute for Energy, Stanford University, Stanford, CA 94305, United States of America
+4 W oods Institute for the Environment, Stanford University, Stanford, CA 94305, United States of America
+5 Fletcher and Mauter equally co-supervised the study.
+∗ Author to whom any correspondence should be addressed.
+E-mail:mzaniolo@stanford.edu
+Keywords: urban drought security, water reuse, water desalination, water infrastructure adaptation, reinforcement learning
+Supplementary material for this article is available online
+Abstract
+Increasingly severe droughts are straining municipal water resources and jeopardizing urban water
+security, but uncertainty in their duration, frequency, and intensity challenges drought planning
+and response. W e develop the Drought Resilient Interscale Portfolio Planning model (DRIPP) to
+generate optimal planning responses to urban drought. DRIPP is a generalizable multi-scale
+framework for optimizing dynamic planning strategies of long-term infrastructure deployment
+and short-term drought response. It integrates climate and hydrological variability with
+high-fidelity representations of urban water distribution, available technology options, and
+demand reduction measures to yield robust and cost-effective water supply portfolios that are
+location-specific. W e apply DRIPP in Santa Barbara, California to assess how least cost water
+supply portfolios vary under different drought scenarios and identify portfolios that are robust
+across drought scenarios. In Santa Barbara, we find that drought intensity, not duration or
+frequency, drives cost increases, reliability risk, and regret of overbuilding infrastructure. Under
+uncertain drought conditions, a diversified technology portfolio that includes both rapidly
+deployable, decentralized technologies alongside larger centralized technologies minimizes water
+supply cost while maintaining high robustness to climate uncertainty.
+1.Introduction
+The city of Santa Barbara built the Charles E. Mayer
+ocean desalination plant to address the water supply
+crisis caused by the late 1980s drought. After con-
+struction and commissioning, the plant was operated
+for four months (March–June, 1992), at which point
+abundant rainfall ended the drought and made desal-
+inated water economically undesirable. The plant
+was modernized and reactivated in May, 2017 at an
+additional capital investment of $72 million, nearly
+double the initial construction investment [1]. While
+desalinated water now provides rainfall-independent
+supply comprising 30% of Santa Barbara’s water
+demand, the cost of producing and delivering this
+water is five-fold that of surface water [ 2]. These
+increased costs are reflected in household water bills
+and municipal energy demand.
+Santa Barbara’s history is not unique. In regions
+where water availability is highly variable and affected
+by climate change, water planners must make difficult
+infrastructure investment decisions that will affect
+water security, affordability, and equitable access dec-
+ades into the future [ 3, 4]. Drought intensity, dura-
+tion, and frequency, are expected to increase in many
+regions of the world [ 5], but how and how much
+is difficult to assess, and harder to predict then, for
+instance, average precipitation trends [ 6, 7]. When
+droughts abate, large expensive technologies appear
+to have been a bad investment. Some emerging tech-
+nologies, like rapidly deployable small scale mod-
+ular systems provide a more flexible alternative to
+centralized system deployment, but their per-unit
+cost of water treated is often higher [ 8]. Low-cost
+water supply portfolios that are robust in the face of
+changing climates require decision support tools that
+© 2023 The Author(s). Published by IOP Publishing Ltd
+Environ. Res. Lett. 18 (2023) 054014 M Zaniolo et al
+explicitly assess the interactions between future cli-
+mate uncertainty, hydrological variability, and tech-
+nology attributes.
+Choosing optimal sources, timing their imple-
+mentation, and managing the portfolio of existing
+resources under uncertainty is too complex a prob-
+lem for traditional decision-making methods like life-
+cycle cost-benefit analysis [ 9–11]. Instead, most aca-
+demic water resources planning models incorporate
+decision-making under deep uncertainty and focus
+on developing strategies that are robust and adapt-
+ive to changing conditions. These approaches identify
+dynamic planning policies that respond to hydrolo-
+gical conditions as they unfold over time, with the
+aim of preventing over- and under-building [12–14].
+For instance, these models use optimization to find
+low-cost robust water planning strategies in light of
+regional coordination opportunities [ 15, 16], imple-
+mentation uncertainty [17], timing of infrastructural
+development [ 18, 19], drought characteristics [ 20],
+and preserving optionality for future infrastructure
+expansion [21, 22]. However, the water supply plan-
+ning literature typically considers a limited number
+of hedging strategies [ 23] and infrastructure options
+[24] for water storage and diversion at the basin scale.
+This coarse spatial scale adequately represents climate
+uncertainty, but poorly represents water augmenta-
+tion options at multiple scales, and typically aggreg-
+ates cities into a single demand point.
+Urban water literature, in contrast, has demon-
+strated that high-resolution, household-level mod-
+eling that explicitly considers distribution of water
+to end-users is necessary to accurately identify
+opportunities to integrate centralized and decent-
+ralized technologies [ 25–28], target demand-side
+management [ 29–31], and estimate the operational
+costs of urban or regional water supply networks [25,
+32, 33]. Y et, these urban-level studies typically neglect
+climate uncertainty and hydrological variability, lead-
+ing to static infrastructure portfolios that are costly
+and ineffective if water availability is highly variable.
+W e need urban water planning frameworks that
+both respond to climate uncertainty at large scales,
+and represent urban demand and technologies at a
+high resolution. By integrating the state of the art in
+water resources planning and urban water literature,
+we can leverage the benefits of both scales, yielding
+to multi-scale, climate-robust solutions that include
+large to small-scale planning options and demand-
+side efforts. W e introduce the Drought Resilient Inter-
+scale Portfolio Planning (DRIPP), a modeling frame-
+work that integrates regional and urban-scale water
+models to identify vulnerabilities to plausible future
+droughts and design robust solutions. State-of-the-
+art tools in these fields have never been brought
+together, in large part due to computational limita-
+tions. W e overcome this challenge by drawing from
+recent advances in reinforcement learning methods
+that couple universal approximators (e.g. neural net-
+works, decision trees) with multi-objective evolution-
+ary global parameter optimizers [ 34, 35]. W e employ
+a decision tree-based method [ 36, 37] that allows us
+to optimally design water augmentation measures in
+combination with the hydrological and technological
+signposts that dynamically trigger their implementa-
+tion across stochastic drought realizations.
+W e consider several non-traditional water sup-
+ply sources and treatment options, and characterize
+them across multiple attributes including their level-
+ized cost, time to deployment, and scalability. W e cre-
+ate climate scenarios which reflect plausible changes
+in drought characteristics of frequency, duration, and
+intensity via synthetic streamflow generation [38]. W e
+solve this optimization problem to find lowest-cost,
+robust planning strategies under these drought scen-
+arios with bottom-up vulnerability analysis [ 12], in
+order to assess the relative influence of each drought
+attribute on planning strategies, water system costs,
+and robustness.
+With this work, we expect to make two contribu-
+tions. First, we create a framework that yields cost-
+effective and drought-robust water supply portfo-
+lios that respond dynamically to climate uncertainty
+and hydrological variability, and employ drought
+mitigation options at different scales and resolu-
+tion. Second, we demonstrate that different types of
+drought require different planning strategies, and we
+analyse why certain portfolios are robust and low-cost
+in certain climates, but not others.
+W e apply DRIPP to the drought-stricken muni-
+cipality of Santa Barbara, California. The state of Cali-
+fornia requires water utilities to demonstrate pre-
+paredness for a design drought with a duration of
+5 years and an unprescribed intensity (i.e. magnitude
+of shortage) and frequency [ 39]. However, climate
+change projections show that frequency, duration,
+and intensity of droughts in California are likely to
+increase in magnitude and variability [ 6, 7], bey-
+ond the specified design drought characteristics. Our
+results show that the drought characteristics spe-
+cified in climate scenarios directly influence urban
+water planning decisions and outcomes including
+cost, installed capacity, technology type, and sys-
+tem variables used to dynamically trigger decisions.
+In Santa Barbara—a system characterized by abund-
+ant surface storage with interannual carryover, and
+minimal groundwater—drought intensity, not dur-
+ation or frequency, is the most influential attribute
+for determining the risk of supply deficit and the
+cost associated to the water portfolio. Additionally,
+rapidly deployed and easily scalable solutions like
+decentralized technology and curtailment measures
+are associated with higher annual cost in Santa Bar-
+bara, but are more robust across a wide variety of
+drought conditions, including out-of-sample climate
+scenarios that are not used in optimization.
+2
+Environ. Res. Lett. 18 (2023) 054014 M Zaniolo et al
+Figure1. Multiscale simulation model. The model integrates climate scenarios with varying drought characteristics, regional and
+watershed-level water sources, urban distribution, and water treatment options.
+2.Methods
+In this work we apply DRIPP to test Santa Barbara’s
+water system under climate scenarios displaying vary-
+ing characteristics of drought frequency, duration,
+and intensity, and assess the relative influence of each
+drought attribute on optimal water system costs and
+planning strategies.
+This section details and motivates the meth-
+ods used in this work, namely the components of
+the multiscale simulation model, the optimization
+method, and the robustness analysis.
+2.1.Multiscalesimulationmodel
+W e represent Santa Barbara’s water system with the
+multiscale simulation model in figure 1. This model
+integrates climate scenarios with varying drought
+characteristics, a conceptual water resources system
+model, an urban distribution model, and treatment
+train models for several treatment technologies. W e
+present these elements below.
+2.1.1. Identify drought characteristics that lead to
+system failure
+Bottom-up vulnerability analysis employs a large
+sampling of plausible states of the world [ 40] to
+identify relevant changes in socio-hydrological condi-
+tions that produce consequential effects on the system
+[14, 41–44]. Identifying the conditions that lead to
+system vulnerability can direct planners to develop
+anticipatory solutions to prevent those outcomes.
+Note that most bottom-up, vulnerability stud-
+ies focus on changes in long-term average climate
+states, e.g. mean values of precipitation, temperat-
+ure, streamflow [ 20]. However, short-term hydro-
+logical variability governed by changes in drought
+characteristics is also very influential for planning
+and currently overlooked in bottom-up vulnerabil-
+ity literature. This study links long-term average cli-
+mate change states to statistical patterns of short-term
+hydrological variability through uncertain drought
+characteristics with the goal of accurately capturing
+both long- and short-term vulnerability drivers.
+In this work, a climate scenario comprises an
+ensemble of inflow time series to Santa Barbara’s
+reservoirs with a specified average drought persist-
+ence P , intensity I, and frequency F . W e design four
+climate scenarios: (1) Historical droughts: P , F , and I
+are comparable to recent droughts in Santa Barbara;
+(2) long mild droughts: double P , half I, and same
+F as historical droughts; (3) Short intense droughts:
+half P , double I and same F; (4) frequent droughts:
+unaltered P and I, double F . P , I, and F are quanti-
+fied using the standardized runoff index [ 45] (SRI)
+computed on streamflow time series (details in SI
+section 1). For each climate scenario, we generate an
+ensemble of 50 100 year streamflow time series using
+the synthetic drought generator presented in meth-
+ods section ‘Drought Generator’ and illustrated in SI
+section 1.
+Modeling different types of droughts allows us to
+systematically explore the space of plausible future
+vulnerability to droughts and design robust solutions
+revealing insights on their relative importance, and
+how they each influence planning strategies and costs.
+Lastly, we conduct an All droughts experiment that
+designs optimal planning policies on the ensemble
+of the four climate scenarios. By including these in
+the synthetic time series that the all drought policy
+is trained on, we ensure that the all drought policy is
+truly robust to all plausible future droughts—an out-
+come that a traditional synthetic time series approach
+using historical data or climate model projections
+would be unlikely to achieve.
+3
+Environ. Res. Lett. 18 (2023) 054014 M Zaniolo et al
+As is common in bottom-up vulnerability liter-
+ature, we generate climate scenarios using syntetic
+streamflow generation [ 40]. Most synthetic stream-
+flow generation tools are designed for a specific
+application and allow the user to control a prespe-
+cified set of case-relevant streamflow properties, for
+instance AR parameters as informed by changes in
+precipitation and temperature [46], annual peak flow
+magnitude and total flow volume [ 47], and drought
+frequency and severity [20]. Borgomeo et al [38] pro-
+posed a streamflow generation method formulated
+as a multiobjective optimization problem where the
+objective functions represent the streamflow char-
+acteristics to be controlled. In absence of an exist-
+ing synthetic generator that allows to control the
+drought attributes of interest for this study intens-
+ity, we employ Borgomeo’s method and modify it
+to control the intensity, duration, and frequency of
+droughts in 100 years streamflow scenarios. The SI
+section 1 contains details and experimental design for
+the climate scenario generation, as well as selected
+plots of climate scenarios.
+2.1.2. Water resources model
+The water resources model captures the routing of
+water to the City of Santa Barbara from the surround-
+ing sources, including inter-basin transfers from the
+California State Water Project (SWP), local water
+diverted from nearby reservoirs within the watershed,
+and desalinated ocean water. The monthly reservoir
+dynamics are described by the mass balance of their
+water volumes. According to the monthly time-step
+adopted in the model, the river reaches are modeled
+as plug-flow canals in which the velocity and direc-
+tion of flow are constant. Groundwater abstraction
+is modeled as a constant 80 AF/m corresponding to
+historical sustainable average abstraction [ 2] due to
+data limitations and its small contribution to water
+supply (around 5%–7%). More information on the
+water resources model can be found in section 2 of
+the SI.
+2.1.3. Urban water distribution model
+The urban water distribution model simulates the
+distribution of water from surface water sources and
+water production technologies to individual nodes
+within the city through the water distribution net-
+work. The building blocks of this models are injection
+points connected to extra-urban water source, tanks,
+consumers, non-consumer junctions, pipes, valves
+and pumps. Simulating this model for a given water
+supply portfolio allows to estimate the energy intens-
+ity and cost of delivering water to end users for differ-
+ent centralized and decentralized technology config-
+urations. More details on this model are presented in
+section 2 of the SI.
+2.1.4. Water treatment models and water
+augmentation options
+The portfolio of water augmentation options con-
+sidered in this work includes a number of alternative
+water treatment technologies (water reuse, sea water
+desalination), modes of deployment (centralized and
+decentralized), and end-uses (potable and nonpot-
+able). Additionally, we consider a demand reduc-
+tion measure, curtailment, in which the city imposes
+mandatory water restrictions as a percentage of total
+demand [31, 48].
+The treatment train models employed in this
+work estimate the capital and operational expenses of
+the considered treatment trains for a range of plant
+capacities. W e estimate the costs of the considered
+technology options using the Water T echnoeconomic
+Assessment Pipe-Parity Platform (WaterTAP3 [ 49]).
+WaterTAP3 is an open source platform that sup-
+ports the simulation of a steady-state water treat-
+ment train and details its performance and costs and
+includes a variety of treatment unit processes con-
+figurations of treatment technologies, and system-
+level techno-economic assumptions. Section 3 of the
+SI reports details assumptions on additional techno-
+logy attributes such as location, capacity, and time to
+deployment.
+T able1 summarizes the multi-attribute character-
+ization of alternative water augmentation options and
+highlights their tradeoffs. In particular, decentralized
+deployment is typically associated with a higher unit
+cost (i.e. LCOW) than that of centralized techno-
+logy, but it is also associated with faster and more
+scalable deployment. Non-potable reuse is less costly
+than potable reuse, but its end-use is limited to non-
+potable applications comprising only a fraction of
+the city’s water demand. Curtailment is modeled as
+a water augmentation option whose capacity is equi-
+valent to the curtailed demand with unit cost equi-
+valent to the lost revenue incurred by the utility from
+reduced water sales. Water bills are high in a water-
+scarce municipality like Santa Barbara, which trans-
+lates into high cost of curtailment measures, but their
+deployment is immediate. In addition, curtailment
+measures have been observed to induce a behavioral
+change for which demand does not rebound imme-
+diately to pre-drought levels after the mandate is lif-
+ted. The demand rebound effect has been empirically
+modeled as a survival process with a nearly 8 year half-
+life [50]. See the SI section 3 for more details on these
+assumptions.
+2.1.5. Modeling choices and generalizability of the
+method
+Note that we model a modified version of the current
+Santa Barbara water system. W e consider a baseline
+water demand corresponding the city water use in
+2013, preceding voluntary and mandated curtailment
+4
+Environ. Res. Lett. 18 (2023) 054014 M Zaniolo et al
+Table1. Multi-attribute characterization of the considered water augmentation options. The augmentation options (rows) are
+curtailment, centralized sea water desalination (C-SW), and centralized (C) and decentralized (D) potable reuse (PR) and non potable
+reuse (NPR). The attributes are the levelized cost of water (LCOW) calculated aggregating Capital and Operational expenses assuming a
+deployment of 200 acre feet/month (AF/m) for 40 years, the time to deployment (TTD), minimum and maximum capacity, and
+scalability. The data and assumptions used to populate this table are presented in section 3 of the SI.
+LCOW ($/AF) TTD (years)
+Min capacity
+(AF/m)
+Max capacity
+(AF/m) Scalability
+Curtailment 5998 0 75 375 5% through 25%
+of demand
+C-SW 870 10 200 500 One plant with
+different capacity
+options
+C-PR 804 5 100 500 One plant with
+different capacity
+options
+C-NPR 733 4 100 200 One plant with
+different capacity
+options
+D-PR 965 3 50 350 Up to 7 plants of
+50 AF/m each
+D-NPR 857 2 20 140 Up to 7 plants of
+20 AF/m each
+observed in the city during the drought of 2015–2016.
+W e also consider a baseline water portfolio includ-
+ing only natural surface and groundwater sources,
+and excluding water technologies currently opera-
+tional in the city, namely the Charles E. Meyer sea-
+water desalination plant. W e made this choice with
+the aim to identify portfolio planning policies and
+analyze drought impacts independently from previ-
+ous, potentially suboptimal, planning and curtail-
+ment measures taken by the city.
+However, the DRIPP framework described in
+the next section can support analysis far beyond
+what is demonstrated by this case study. The user
+can swap the proposed water resources model for
+a different water system. Climate scenarios can be
+replaced with a different ensemble of synthetic scen-
+arios probing vulnerability to other climate condi-
+tions. Water demand assumptions can be revisited
+to reflect changing demand and population growth.
+Costs, deployment, and capacity assumptions for the
+water augmentation options can be updated to cap-
+ture alternative technological realities in different
+world regions, as well as to reflect technology innov-
+ation over time. Lastly, additional water augmenta-
+tion measures can be considered, including increased
+water transfers, storage, enhanced regional coordina-
+tion, and demand management options.
+This multiscale simulation model is integrated in
+a simulation-optimization framework described in
+the next section.
+2.2.TheDRIPPframework
+The DRIPP framework is a simulation-optimization
+approach that generates cost-optimal dynamic plan-
+ning policies that incur no deficit on the range of cli-
+mate conditions they are trained upon. In this work,
+we design planning policies for each set of synthetic
+climate scenarios separately, generating, and then
+comparing, low-cost policies for historical, long and
+mild, intense, and frequent droughts. Lastly, we train
+a set of policies on all drought types conjunctively.
+W e formulate this cost-optimal urban water port-
+folio planning as a control problem [ 12] with flex-
+ible policy structure [ 37, 51, 52]. Figure 2(a) illus-
+trates the method used to generate optimal planning
+policies π∗ comprising the water augmentation
+decisions that minimize costs while achieving no
+unmet demand across the streamflow ensemble in
+each climate scenario. Decision policies are para-
+meterized as an ensemble of decision trees that
+implement centralized, decentralized, and curtail-
+ment measures respectively in response to the state
+of water resources in the system. This state comprises
+several indicators that capture the hydrology, water
+storage, and technology over time. T able S2 and S3
+in the SI contains a list of all indicators and actions
+considered in this work. Policies are optimized via
+an evolutionary simulation-optimization approach
+that progressively improves performance by iterat-
+ively generating and testing new policies, resulting in
+the optimal set of indicators, thresholds, actions, and
+functional structure that minimizes costs across the
+streamflow ensemble characterising a climate scen-
+ario. Studies typically fix one or more of these com-
+ponents a priori while optimizing the others, result-
+ing in suboptimal empirical approximations. Here we
+leverage a recent method that allows us to optimize all
+these elements simultaneously [ 12], and we expand
+it to handle an ensemble of decision trees instead of
+a single tree. Our optimal decision policies therefore
+explicitly identify what information is used to trig-
+ger different augmentation options, improving the
+5
+Environ. Res. Lett. 18 (2023) 054014 M Zaniolo et al
+Figure2. The DRIPP framework. (a) Flowchart of the simulation-optimization scheme used to design optimal portfolio planning
+policies. (b) Example of an optimal policy designed for historical drought conditions. PR200 indicates a centralized potable reuse
+plant with production capacity of 200 AF/m, while NPR20 indicates a non-potable reuse plant of 20 AF/m. (c) Representative
+system variables when simulating the policy in panel (b) on one scenario with historical drought conditions.
+explainability of our results. See section 4 of the SI for
+the full problem formulation as well as the adopted
+experimental design.
+Figure 2(b) shows an example of an optimal
+policy designed on 20 climate scenarios of 100 years
+with historical drought characteristics, and panel
+(c) displays representative system trajectories for the
+policy in panel (b) simulated on a 100 year historical
+drought scenario. Policy timeseries for other drought
+types and their analysis are presented in figure S6 of
+the SI.
+2.2.1. Robustness analysis
+Robustness is an important feature of planning
+policies in addressing climate uncertainty. A robust
+policy has low performance variability across climate
+scenarios, including out-of-sample scenarios that are
+not used in policy optimization, and is more likely to
+perform consistently in unknown future conditions.
+In this paper we conduct two robustness tests.
+In the first analysis, we test policies optimized on all
+droughts across 30 out-of-sample climate scenarios of
+all drought types, and select a least-cost policy and
+a least-deficit policy based on their out-of sample
+performance. The comparison of these two policies
+reveals what attributes of a planning strategy make it
+robust to the effects of climate uncertainty on plan-
+ning costs vs. unmet demand.
+In the second analysis, we select policies trained
+on a given drought type (e.g. historical droughts), and
+test them on a different drought type (e.g. short and
+intense droughts), quantifying the risk and regret of
+planning for the wrong drought. Our analysis quan-
+tifies the risk of underpreparing for future drought
+conditions and incurring deficits, as well as the regret
+of overspending on drought measures that may not
+be necessary.
+Understanding the policy attributes and the cli-
+mate conditions that contribute to policy robustness,
+or policy vulnerability, are key results of the bottom-
+up vulnerability analysis proposed in this work.
+2.3.DRIPPwithinthelandscapeofexistingwater
+decisionsupporttools
+Several water system decision support models have
+been proposed over the years with advanced user
+interface, simulation capabilities, and representation
+of alternative stakeholders and sources of uncertainty
+(for a review, see [ 53]). DRIPP addresses four out-
+standing challenges that limit the utility of exist-
+ing water system decision support tools. First, past
+approaches have relied exclusively on user’s input data
+for technology options and cost parameters, which
+have typically been provided as point estimates rather
+than continuous functions. DRIPP integrates techno-
+logy models that estimate the capital and operational
+costs of an array of traditional and non-traditional
+treatment trains as a function of design flow. Second,
+past models largely represent cities as single demand
+points, rather than a distributed network of water
+6
+Environ. Res. Lett. 18 (2023) 054014 M Zaniolo et al
+Figure3. Cost-optimal planning policies for different drought types. (a)–(c) Characteristics of (near-)cost-optimal policies
+optimized for different drought types and averaged across 2000 simulation years. (a) Average installed capacity (b) Average
+fraction of decentralized capacity in the portfolio. (c) Category of indicator used to trigger capacity expansion. (d) Average annual
+cost of the cost-optimal drought planning policy designed for different drought types. The black bar indicates an additional 10%
+cost that constitutes the performance range achieved by near-optimal policies.
+sources and users, thereby overlooking urban distri-
+bution costs, and missing opportunities to reduce dis-
+tribution distance, and costs, with decentralized tech-
+nology. DRIPP integrates water distribution network
+models to estimate the cost of delivering water to end
+users within a city, which often represents a signi-
+ficant fraction of a utility’s expenses and may vary
+with the portfolio of technology installed [25]. Third,
+in existing methods, action deployment is triggered
+exclusively by looking at storage-based indicators
+[53], while DRIPP automatically selects a set of rel-
+evant indicators from a multidimensional dataset of
+indicators representing the state of the climate, hydro-
+logy, and technology at various time aggregation.
+Fourth, vulnerability studies have largely focused on
+changes in long-term average climate states, (e.g.
+mean values of precipitation, temperature, stream-
+flow). DRIPP more accurately captures vulnerability
+to extreme events by considering droughts with vary-
+ing characteristics of duration, frequency, and intens-
+ity. This addition enables important new insights on
+the interactions between drought characteristics and
+technology attributes that are not possible to identify
+using existing modeling approaches. Specifically, it
+allows us to identify that drought intensity, rather
+than frequency or duration, drives vulnerability in
+our case study, which has important policy implica-
+tions given that that the design drought in California
+is currently based on drought duration. Additionally,
+it allows us to identify the conditions under which
+small-scale decentralized technologies are useful. Our
+results highlight that policies that are robust to all
+drought characteristics rely on decentralized techno-
+logy: while it does not comprise a large fraction of
+installed capacity, it reduces system costs by reducing
+the need to overbuild large centralized capacity.
+However, we believe there are several opportunit-
+ies to pair DRIPP with existing water decision support
+tools with advanced user interfaces. Planning path-
+ways designed with DRIPP’s multi-scale optimization
+approach can be evaluated and contrasted via water
+system models with a user-friendly graphical interface
+[54, 55], integration with geographic information
+system (GIS) [56], and models that estimate user pref-
+erences beyond cost [53, 57].
+3.Results
+3.1.Optimalurbanportfolioplanningpoliciesfor
+differentclimatescenarios
+Figure 3 shows the impact of climate scenarios with
+varying drought characteristics on optimal urban
+drought planning decisions in terms of deployed
+technology (panels (a) and (b)), indicators used to
+trigger deployment (panel (c)), and annual water sup-
+ply costs (panel (d)). W e design cost-optimal plan-
+ning policies that yield no deficit for each drought
+type independently and for all droughts in order
+to capture how drought characteristics influence
+optimal planning decisions and outcomes.
+Panel (a) shows the average capacity deployed by
+cost-optimal and near-optimal policies (i.e. within
+10% of lowest supply costs) designed for different cli-
+mate scenarios. The intensity of the color indicates
+7
+Environ. Res. Lett. 18 (2023) 054014 M Zaniolo et al
+the magnitude of capacity deployed by different
+(near-)cost-optimal policies. For example, the first
+bar in figure 3(a) indicates that 80% of the near-
+optimal policies designed for Historical drought
+conditions deploy a total water supply capacity of
+150 AF/month or more. The remaining 20% of cost-
+optimal policies deploy less capacity, but incur in sim-
+ilar costs. This indicates that while some planning
+strategies are lower cost than others, planners can
+choose from a range of alternative policies without
+increasing total costs more than 10%. In particu-
+lar, the ensemble of low-cost policies contains both
+low and high deployment strategies. Low deployment
+strategies select a large fraction of decentralized tech-
+nology (panel (b)) and curtailment measures that
+come online just-in-time in response to depleting
+water reserves, and scale production to water needs,
+with higher unit cost. Conversely, high deployment
+strategies select centralized technology with low unit
+cost and high inertia (i.e. poor scalability and high
+time to deployment) that remain online when not
+strictly necessary.
+In contrast to the historical climate scenario, plan-
+ning for a climate with long mild droughts requires a
+relatively low installed capacity, as surface water stor-
+age depletes slowly and allows time for technology to
+come online when needed. Conversely, short intense
+droughts develop abruptly, leaving water planners
+little time to respond to early signs of drought and
+requiring large redundancy in installed capacity to
+ensure enough water production. Low-cost planning
+policies for all droughts display a capacity distribu-
+tion similar to short intense droughts.
+Panel (b) shows the average fraction of decent-
+ralized technology deployed in the portfolio. Decent-
+ralized capacity is typically deployed dynamically at
+the onset of a drought, as surface water storage is
+depleting and the city needs quick-to-deploy tem-
+porary augmentation measures. As a result, while the
+fraction of decentralized capacity may appear low
+when averaged across the simulation, decentralized
+measures are essential to prevent shortages in critical
+conditions. This is why decentralized deployment is
+highest in the frequent drought climate scenarios.
+The drought type also determines the type
+of indicators used to trigger capacity expansion
+(panel (c)). (Near-) optimal policies designed for
+long mild droughts deploy capacity in response to
+storage indicators, which capture the slow decline
+in water resources in lakes and reservoirs. Plan-
+ning policies in historical and frequent drought cli-
+mates mostly respond to hydrological indicators (e.g.
+drought index) that might reveal the onset of a
+drought before it has a measurable impact on stor-
+age levels. Short intense drought policies mainly
+deploy capacity in response to technology indicat-
+ors, e.g. current installed capacity. The onset of these
+droughts is so abrupt that new technology cannot
+be deployed dynamically in response to unfolding
+drought conditions. Conversely, it is deployed if the
+current installed capacity would not be adequate to
+buffer an incoming drought. Lastly, policies designed
+to be robust across all drought types present a similar
+indicators as Short intense droughts.
+The difference in planning strategies leads to very
+different annual costs (panel (d)). Planning for short
+intense droughts and all droughts would cost the city
+of Santa Barbara over 4 M$/year, about four times
+the cost of planning for long mild droughts. Planning
+for historical and frequent droughts results in about
+2.5 M$/year and 3 M$/year respectively.
+3.2.Ensuringrobustplanningacrossalldroughts
+This section presents the results of the first robust-
+ness analysis performed in this work, and com-
+pares the attributes of two policies trained on all
+droughts and achieving, respectively, lowest out-of-
+sample costs (i.e. least-cost policy) and lowest out-of-
+sample unmet demand (least-deficit policy). Capa-
+city, cost, and maximum annual unmet demand
+of least-cost and least-deficit policies are shown in
+figure 4. The least-deficit policy installs a higher aver-
+age capacity than the least-cost policy (panel (a)),
+indicating that including more redundancy in the sys-
+tem enables high robustness to deficit. Interestingly,
+however, the redundancy is not achieved by merely
+oversizing the least-cost technology portfolio, but by
+enhancing its flexibility and creating a more diversi-
+fied portfolio of measures that includes lower cent-
+ralized capacity and a significant portion of decent-
+ralized capacity and curtailment measures. Given the
+higher unit cost of these drought measures, the cost of
+the least-deficit portfolio is 60% higher than the least-
+cost, indicating that designing for robustness to water
+shortage comes at a significant cost for the system
+(panel (b)). The water distribution network model
+estimates the cost of delivering water to users. Deploy-
+ing decentralized technology is shown to reduce the
+distance between the water source and the water
+users, thereby reducing distribution costs. However,
+this difference is small in Santa Barbara’s mostly flat
+distribution network, and certainly not enough to off-
+set the higher unit cost of decentralized measures. On
+the other hand, robust least-cost planning exposes the
+system to shortage risks, in this analysis quantified as
+six times larger for the least-cost policy than for the
+least-deficit policy (panel (c)).
+3.3.Riskandregretofplanningforthewrong
+droughttype
+This section presents the results of the second robust-
+ness analysis investigating the effects of planning
+for the wrong drought. Drought planning in an
+uncertain climate presents both the risk of incurring
+water deficit through under-preparation for a severe
+drought and the regret of overspending on unneces-
+sary drought measures. Figure 5 quantifies the risk
+and regret of planning for the wrong drought type
+8
+Environ. Res. Lett. 18 (2023) 054014 M Zaniolo et al
+Figure4. Least-cost vs. least-deficit planning: comparison between an least-cost policy for All droughts, which scores the lowest
+out-of-sample annual cost, and a least-deficit policy, which scores the lowest out-of-sample unmet demand. The policies are
+compared with respect to installed capacity (panel (a)), expected annual cost (panel (b)), and max annual unmet demand (panel
+(c)) on 12 000 out-of-sample simulation years.
+Figure5. Risk and regret of planning for the wrong drought type. The matrix in panel (a) represents the maximum annual
+fraction of unmet demand expected in a century for a planning policy optimized on the ‘T raining’ climate scenario indicated on
+the matrix rows, and tested on the scenarios indicated on the columns. Planning for climates with short intense droughts and all
+droughts (third and fifth horizontal rows) ensures no unmet demand across other drought types, albeit at a higher planning cost
+(see figure 3(d)). The regret of planning for these costly droughts is quantified in panel (b) as the normalized extra cost of
+planning for short intense and all droughts when a different drought type unfolds.
+in the city of Santa Barbara. The matrix in panel (a)
+shows the maximum annual unmet demand expec-
+ted in a 100 year time period for a policy optim-
+ized on drought conditions in one climate scen-
+ario (row) and tested across other climate scenarios
+(columns). Planning for a climate with long mild
+droughts (second row) produces large unmet demand
+across all other climates. Short and intense droughts
+are the most challenging (middle column), produ-
+cing unmet demand on policies optimized for all
+other climate scenarios. Planning for short intense
+droughts minimizes the risk of deficit if a differ-
+ent drought occurs (third row), equivalent to plan-
+ning for all drought types (top row). However, plan-
+ning for short intense and all droughts is expensive
+(figure 3(d)). Figure 5(b) shows the extra costs, or
+regret, of planning for Short intense and all droughts,
+in climate scenarios without intense droughts. For
+example, the regret R of planning for an expens-
+ive Short intense drought when a long mild drought
+unfolds is here computed as R = (CSI − CLM)/CLM
+where CSI is the cost of planning for a short intense
+drought, and CLM is the cost of planning for a long
+mild drought. In this case the regret is significant,
+leading to up to a three-fold increase in cost.
+4.Discussion
+This work presents DRIPP , a framework for dynamic
+and drought-responsive urban water portfolio plan-
+ning demonstrated for the city of Santa Barbara, Cali-
+fornia. Our results underscore that high-resolution
+representation of technology, climate, and system
+modeling are fundamental building blocks of effect-
+ive urban drought planning under a changing cli-
+mate. According to the middle-range theory in
+sustainability [ 58], this case study bears relevance
+for many drought-prone municipalities character-
+ized by low annual precipitation and large depend-
+ence on surface storage. Additionally, DRIPP is easily
+9
+Environ. Res. Lett. 18 (2023) 054014 M Zaniolo et al
+transferable to different case studies upon customiz-
+ing the hydrological and urban distribution models.
+Below, we detail their importance and implications
+for planning, and we highlight areas where further
+research is needed.
+4.1.Technologymatters
+The 20th century approach to ensuring robustness
+of a water system is through redundancy: oversiz-
+ing traditional centralized infrastructure by a safety
+factor [8, 59]. Our results for Santa Barbara highlight
+suboptimal outcomes of redundancy planning under
+growing climate and demand uncertainty. Instead,
+high robustness to water shortages in this case study
+is achieved through a diversified portfolio of water
+augmentation measures that relies on cost-effective
+centralized technology for baseload and on rap-
+idly deployed, modular technologies that dynamic-
+ally respond to droughts. However, flexibility and
+robustness increase costs by 60%. Further research
+to reduce costs of small scale, decentralized techno-
+logy is critical to lower cost of portfolio diversifica-
+tion in a changing climate. Additionally, research in
+small-scale water treatment technology could critic-
+ally enhance urban drought resilience while limiting
+overbuilding.
+4.2.Climatematters
+The drought characteristics of the future climate
+we prepare for significantly impact local planning
+decisions. In Santa Barbara, the optimal planning
+strategy to address long and mild droughts is rad-
+ically different than the optimal strategy to address
+short intense droughts. Our results show that drought
+intensity, not duration or frequency, drives both risk
+of deficit during a drought we are not prepared
+for, and the regret of overspending on unnecessary
+drought measures. These findings underscore the
+value in advancing our ability to predict the charac-
+teristics of upcoming droughts. While previous work
+has explored how to predict the onset of an upcom-
+ing drought [ 60, 61], further research is needed to
+advance our ability to predict the persistence, fre-
+quency, and especially intensity of future droughts.
+4.3.Systemrepresentationmatters
+The problem of urban water security encompasses
+multiple scales from climate, watershed, city, and
+ultimately end users. Maintaining high spatial, tem-
+poral, technology, and climate fidelity across scales
+yields more realistic and implementable water sup-
+ply portfolios. Additionally, high-fidelity, multi-
+scale and multi-attribute models are more likely
+to be trusted and adopted by diverse stakeholders
+because the model fidelity matches or exceeds that
+used to simulate their sub-systems. While accurate
+system representation is important, the strictly tech-
+nical DRIPP model does not capture elements of
+social preferences and concerns for alternative water
+treatment technologies that are rarely captured in
+computational water system models. For instance,
+recent social science literature has shown that sea-
+water desalination plants are often perceived by the
+public as very energy intensive and raise concerns
+of excessive greenhouse gas emissions [ 2, 62], and
+decentralized wastewater treatment systems might
+be unpopular due to water quality concerns [ 63].
+A planning tool like DRIPP should be accompan-
+ied by holistic planning processes that better capture
+social and political preferences that inform influence
+a water planner’s decision.
+4.4.Implicationsfordroughtplanningin
+California
+Our findings have implications for policymakers,
+municipal water planners, and technology providers
+in the state of California and beyond. Currently, the
+state of California requires water utilities to ensure
+preparedness for a design drought of 5 years and an
+unprescribed intensity and frequency. Our findings
+show that intensity is the primary drought attribute
+that influences planning decisions, and determines
+the tradeoff between risk and regret of planning for
+the wrong drought. While this study focuses on the
+city of Santa Barbara, our findings and recommenda-
+tions might be generalized to similar drought prone
+coastal cities in California. W e recommend policy
+makers in the state of California include drought
+intensity in the design drought. W e advise municipal
+water planners in California to use DRIPP to assess
+the value of a diversified water portfolio that includes
+centralized technology for a cost-effective baseload
+and rapidly deployable, distributed technologies as
+a tool for augmenting robustness under drought
+uncertainty. Lastly, we recommend that techno-
+logy providers advance research in decentralized
+and modular technologies with the aim of enabling
+municipalities to diversify their water portfolio cost
+effectively.
+Dataavailabilitystatement
+The hydrological data used in this study is pub-
+licly available on the USGS National Water Dash-
+board https://dashboard.waterdata.usgs.gov/app/
+nwd/?region=lower48&aoi=default. The record of
+SWP allocation is available at the SWP websitehttps://
+water.ca.gov/Programs/State-Water-Project. T echno-
+logical data and assumptions used in this project
+are the default assumptions built in the WaterTAP3
+models. Water reservoirs geomorphological data was
+acquired from the US Bureau of Reclamation Pro-
+jects and Facilities Database www.usbr.gov/projects/.
+Lastly, the City of Santa Barbara’s water distribution
+network is considered sensitive information for the
+city, and was shared with the authors confidentially.
+10
+Environ. Res. Lett. 18 (2023) 054014 M Zaniolo et al
+Codeavailability
+The WaterTAP3 framework used to estimate energy
+requirements and costs of alternative treatment train
+technologies is available athttps://github.com/NREL/
+WaterTAP3. The WNTR framework used to sim-
+ulate the urban distribution network is available
+at https://github.com/USEPA/WNTR. The planning
+policy optimization is based on a wrapper of the
+open PTREEOPT code available at https://github.
+com/jdherman/ptreeopt. Case study-specific models
+and functions are available on the author’s GitHub
+(https://github.com/m-zaniolo/DRIPP).
+Acknowledgments
+This work is supported by the National Alliance
+for Water Innovation (NA WI), funded by the U.S.
+Department of Energy, Energy Efficiency and Renew-
+able Energy Office, Advanced Manufacturing Office
+under Funding Opportunity Announcement DE-
+FOA-0001905. The views expressed herein do not
+necessarily represent the views of the U.S. Depart-
+ment of Energy or the United States Government.
+The research was performed using computational
+resources sponsored by the Department of Energy’s
+Office of Energy Efficiency and Renewable Energy
+and located at the National Renewable Energy Labor-
+atory. W e thank Joshua Haggmark, Cathy T aylor, and
+Dakota Corey, Water Resources Managers at Santa
+Barbara for their help understanding the system.
+ORCIDiDs
+Marta Zaniolo  https://orcid.org/0000-0001-9466-
+7102
+Sarah Fletcher  https://orcid.org/0000-0003-3289-
+2237
+Meagan S Mauter  https://orcid.org/0000-0002-
+4932-890X
+References
+[1] City of Santa Barbara 2021 Charles E. Meyer desalination
+plant (available at: www.santabarbaraca.gov/gov/depts/pw/
+resources/system/sources/desalination/default.asp)
+[2] Morrow R and Freed H 2020 Water Vision Santa Barbara
+Technical Report vol 09
+[3] Dai A 2013 Increasing drought under global warming
+in observations and models Nat. Clim. Change
+3 52–58
+[4] Grasham C F , Korzenevica M and Charles K J 2019 On
+considering climate resilience in urban water security: a
+review of the vulnerability of the urban poor in sub-Saharan
+Africa Wiley Interdiscip. Rev.: Water6 e1344
+[5] Zhang X et al 2019 Urban drought challenge to 2030
+sustainable development goals Sci. Total Environ.693 133536
+[6] Diffenbaugh N S, Swain D L and T ouma D 2015
+Anthropogenic warming has increased drought risk in
+California Proc. Natl Acad. Sci.112 3931–6
+[7] Swain D L, Horton D E, Singh D and Diffenbaugh N S 2016
+T rends in atmospheric patterns conducive to seasonal
+precipitation and temperature extremes in California Sci.
+Adv.2 e1501344
+[8] Mauter M S and Fiske P S 2020 Desalination for a circular
+water economy Energy Environ. Sci.13 3180–4
+[9] Dennig F 2018 Climate change and the re-evaluation of
+cost-benefit analysis Clim. Change151 43–54
+[10] Borgomeo E, Mortazavi-Naeini M, Hall J W, O’Sullivan M J
+and Watson T 2016 T rading-off tolerable risk with climate
+change adaptation costs in water supply systems Water
+Resour. Res.52 622–43
+[11] Lempert R J 2014 Embedding (some) benefit-cost concepts
+into decision support processes with deep uncertainty J.
+Benefit-Cost Anal.5 487–514
+[12] Herman J D, Quinn J D, Steinschneider S, Giuliani M and
+Fletcher S 2020 Climate adaptation as a control problem:
+review and perspectives on dynamic water resources
+planning under uncertainty Water Resour. Res.56 e24389
+[13] Zeff H B, Herman J D, Reed P M and Characklis G W 2016
+Cooperative drought adaptation: integrating infrastructure
+development, conservation and water transfers into adaptive
+policy pathways Water Resour. Res.52 7327–46
+[14] Haasnoot M, Kwakkel J H, Walker W E and T er Maat J 2013
+Dynamic adaptive policy pathways: a method for crafting
+robust decisions for a deeply uncertain world Glob. Environ.
+Change23 485–98
+[15] Zeff H B, Kasprzyk J R, Herman J D, Reed P M and
+Characklis G W 2014 Navigating financial and supply
+reliability tradeoffs in regional drought management
+portfolios Water Resour. Res.50 4906–23
+[16] Herman J D, Zeff H B, Reed P M and Characklis G W 2014
+Beyond optimality: Multistakeholder robustness tradeoffs
+for regional water portfolio planning under deep uncertainty
+Water Resour. Res.50 7692–713
+[17] Gold D F , Reed P M, T rindade B C and Characklis G W 2019
+Identifying actionable compromises: Navigating multi-city
+robustness conflicts to discover cooperative safe operating
+spaces for regional water supply portfolios Water Resour. Res.
+55 9024–50
+[18] Zaniolo M, Giuliani M, Sinclair S, Burlando P and
+Castelletti A 2021 When timing matters-misdesigned dam
+filling impacts hydropower sustainability Nat. Commun.
+12 1–10
+[19] Fletcher S, Strzepek K, Alsaati A and de W eck O 2019
+Learning and flexibility for water supply infrastructure
+planning under groundwater resource uncertainty Environ.
+Res. Lett.14 114022
+[20] Herman J D, Zeff H B, Lamontagne J R, Reed P M and
+Characklis G W 2016 Synthetic drought scenario generation
+to support bottom-up water supply vulnerability
+assessments J. Water Resour. Plan. Manage.142 04016050
+[21] Fletcher S M, Miotti M, Swaminathan J, Klemun M M,
+Strzepek K and Siddiqi A 2017 Water supply infrastructure
+planning: Decision-making framework to classify multiple
+uncertainties and evaluate flexible design J. Water Resour.
+Plan. Manage.143 04017061
+[22] Fletcher S, Lickley M and Strzepek K 2019 Learning about
+climate change uncertainty enables flexible water
+infrastructure planning Nat. Commun.10 1–11
+[23] Robert Kasprzyk J, Michael Reed P , Kirsch B R and
+Characklis G W 2009 Managing population and drought
+risks using many-objective water portfolio planning under
+uncertainty Water Resour. Res.45 W12401
+[24] Cohen J S, Zeff H B and Herman J D 2020 Adaptation of
+multiobjective reservoir operations to snowpack decline in
+the western united states J. Water Resour. Plan. Manage.
+146 04020091
+[25] Liu Y and Mauter M S 2021 Marginal energy intensity of
+water supply Energy Environ. Sci.14 4533–40
+[26] Liu L, Lopez E, Due nas-Osorio L, Stadler L, Xie Y ,
+Alvarez P J J and Li Q 2020 The importance of system
+configuration for distributed direct potable water reuse Nat.
+Sustainabil.3 548–55
+11
+Environ. Res. Lett. 18 (2023) 054014 M Zaniolo et al
+[27] Lee J and Y ounos T 2018 Sustainability strategies at the
+water-energy nexus: Renewable energy and decentralized
+infrastructure J. Am. Water Work. Assoc.110 2
+[28] Stillwell A S, T womey K M, Osborne R, Greene D M,
+Pedersen D W and W ebber M E 2011 An integrated energy,
+carbon, water and economic analysis of reclaimed water use
+in urban settings: a case study of Austin, T exas J. Water
+Reuse. Desal.1 208–23
+[29] Cominola A, Spang E S, Giuliani M, Castelletti A, Lund J R
+and Loge F J 2018 Segmentation analysis of residential
+water-electricity demand for customized demand-side
+management programs J. Clean. Prod.172 1607–19
+[30] Andrea Cominola K N, Giuliani M, Stewart R A, Maier H R
+and Castelletti A 2019 Data mining to uncover
+heterogeneous water use behaviors from smart meter data
+Water Resour. Res.55 9315–33
+[31] Bolorinos J, Ajami N K and Rajagopal R 2020 Consumption
+change detection for urban planning: monitoring and
+segmenting water customers during drought Water Resour.
+Res.56 e2019WR025812
+[32] Kavvada O, Nelson K L and Horvath A 2018 Spatial
+optimization for decentralized non-potable water reuse
+Environ. Res. Lett.13 064001
+[33] Kavvada O, Horvath A, Stokes-Draut J R, Hendrickson T P ,
+Eisenstein W A and Nelson K L 2016 Assessing location and
+scale of urban nonpotable water reuse systems for life-cycle
+energy consumption and greenhouse gas emissions Environ.
+Sci. Technol.50 13184–94
+[34] Giuliani M, Quinn J D, Herman J D, Castelletti A and
+Reed P M 2017 Scalable multiobjective control for large-scale
+water resources systems under uncertainty IEEE Trans.
+Control Syst. Technol.26 1492–9
+[35] Giuliani M, Castelletti A, Pianosi F , Mason E and Reed P M
+2016 Curses, tradeoffs and scalable management: advancing
+evolutionary multiobjective direct policy search to improve
+water reservoir operations J. Water Resour. Plan. Manage.
+142 04015050
+[36] Herman J D and Giuliani M 2018 Policy tree optimization
+for threshold-based water resources management over
+multiple timescales Environ. Modelling Softw.99 39–51
+[37] Cohen J S and Herman J D 2021 Dynamic adaptation of
+water resources systems under uncertainty by learning
+policy structure and indicators Water Resour. Res.
+57 e2021WR030433
+[38] Borgomeo E, Farmer C L and Hall J W 2015 Numerical
+rivers: A synthetic streamflow generator for water resources
+vulnerability assessments Water Resour. Res.51 5382–405
+[39] The Natural Resources Agency DEPARTMENT OF W ATER
+RESOURCES Division of Regional Assistance, Water Use
+Efficiency Branch 2021 Urban Water Management Plan
+Guidebook 2020 Technical Report
+[40] Herman J D, Reed P M, Zeff H B and Characklis G W 2015
+How should robustness be defined for water systems
+planning under change? J. Water Resour. Plan. Manage.
+141 04015012
+[41] Lempert R J, Popper S W and Bankes S C 2003 Shaping the
+Next One Hundred Y ears: New Methods for Quantitative,
+Long-Term Policy Analysis (Science) (Santa Monica, CA:
+Rand corporation)
+[42] Kasprzyk J R, Nataraj S, Reed P M and Lempert R J 2013
+Many objective robust decision making for complex
+environmental systems undergoing change Environ.
+Modelling Softw.42 55–71
+[43] Kwakkel J H, Haasnoot M and Walker W E 2015 Developing
+dynamic adaptive policy pathways: a computer-assisted
+approach for developing adaptive strategies for a deeply
+uncertain world Clim. Change132 373–86
+[44] Giuliani M, Zaniolo M, Sinclair S, Micotti M, V an
+Orshoven J, Burlando P and Castelletti A 2022 Participatory
+design of robust and sustainable development pathways in
+the Omo-T urkana river basinJ. Hydrol.41 101116
+[45] Vicente-Serrano S M and López-Moreno J I 2005
+Hydrological response to different time scales of
+climatological drought: an evaluation of the standardized
+precipitation index in a mountainous mediterranean basin
+Hydrol. Earth Syst. Sci. Discuss.9 523–33
+[46] Brown C, Ghile Y , Laverty M and Li K 2012 Decision scaling:
+Linking bottom-up vulnerability analysis with climate
+projections in the water sector Water Resour. Res.
+48 W09537
+[47] Nazemi A, Wheater H S, Chun K P and Elshorbagy A 2013 A
+stochastic reconstruction framework for analysis of water
+resource system vulnerability to climate-induced changes in
+river flow regime Water Resour. Res.49 291–305
+[48] Escriva-Bou A, McCann H, Hanak E, Lund J and Gray B
+2016 Accounting for California water Calif. J. Politics Policy
+8 3
+[49] Miara A, Sitterley K, T almadge M, Huang Z, Evans A,
+Stokes-Draut J and Macknick J 2021 Watertap3
+documentation (available at: https://github.com/NREL/
+WaterTAP3/blob/master/watertap3/watertap3/WaterTAP3_
+documentation.pdf)
+[50] Bolorinos J, Rajagopal R and Ajami N K 2021 Mining the
+gap in long-term residential water and electricity
+conservation Environ. Res. Lett.16 024007
+[51] Zaniolo M, Giuliani M and Castelletti A 2021
+Neuro-evolutionary direct policy search for multiobjective
+optimal control IEEE Trans. Neural Netw. Learn. Syst.
+33 5926–38
+[52] Zaniolo M, Giuliani M and Castelletti A 2021 Policy
+representation learning for multiobjective reservoir policy
+design with different objective dynamics Water Resour. Res.
+57 e2020WR029329
+[53] T rindade B C, Gold D F , Reed P M, Zeff H B and
+Characklis G W 2020 Water pathways: an open source
+stochastic simulation system for integrated water supply
+portfolio management and infrastructure investment
+planning Environ. Modelling Softw.132 104772
+[54] Matrosov E S, Harou J J and Loucks D P 2011 A
+computationally efficient open-source water resource system
+simulator–application to London and the thames basin
+Environ. Modelling Softw.26 1599–610
+[55] de Fraiture C 2007 Integrated water and food analysis at the
+global and basin level. an application of W ATERSIMWater
+Resour. Manage.21 185–98
+[56] Labadie J 2011 Modsim-dss water rights planning water
+resources management & river operations decisión support
+system Documentation and User Manual (Colorado State
+University)
+[57] T omlinson J E, Arnott J H and Harou J J 2020 A water
+resource simulator in python Environ. Modelling Soft.
+126 104635
+[58] Clark W C and Harley A G 2020 An integrative framework
+for sustainability science Sustainability Science: A Guide for
+Researchers
+[59] Daigger G T 2007 Wastewater management in the 21st
+century J. Environ. Eng.133 671–80
+[60] Hao Z, Singh V P and Xia Y 2018 Seasonal drought
+prediction: advances, challenges and future prospects Rev.
+Geophys.56 108–41
+[61] AghaKouchak A, Feldman D, Hoerling M, Huxman T and
+Lund J 2015 Water and climate: Recognize anthropogenic
+drought Nature524 409–11
+[62] Campero C, Harris L M and Kunz N C 2021 De-politicising
+seawater desalination: Environmental impact assessments in
+the Atacama mining region, chile Environ. Sci. Policy
+120 187–94
+[63] Gómez-Román C, Sabucedo J-M, Alzate Monica and
+Medina B 2021 Environmental concern priming and social
+acceptance of sustainable technologies: the case of
+decentralized wastewater treatment systems Front. Psychol.
+12 647406
+12

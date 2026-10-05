@@ -1,0 +1,405 @@
+229
+INTRODUCTION
+According to the modern scientific literature, 
+there are two meanings which describe organic 
+agriculture and often used interchangeably, but ap-
+parently, ecological and organic farming are not the 
+same. While ecological farming views the soil, it 
+works on as a part of a larger ecosystem, organic 
+farming focuses on the final product (Nobari et al., 
+2021). Theoretically, organic products could be 
+produced keeping agroecology in mind. In practice, 
+it means if the products that want to claim an “or-
+ganic” label in the EU must keep ecological farm-
+ing in mind. In the past, any products grown with-
+out pesticides, herbicides, the use of GE or man-
+made fertilizers, or livestock feed additives could 
+claim to be organic. Today, the word starts to have 
+a more holistic meaning. According to the EU, for 
+a farm to be considered organic, it should also limit 
+the impact it has on the environment and encour-
+ages: responsible use of energy and natural resourc-
+es, biodiversity, preservation of regional ecological 
+balances, improvement of soil fertility, and mainte-
+nance of water quality (Dudiak et al., 2021).
+Some Ukrainian scientists consider ecologi-
+cal farming to be defined as such an attitude to ag-
+riculture, the goal of which is to create a sustain -
+able, from the point of view of humanity, quality 
+of the environment and an economically justified 
+production system (Pichura et al., 2021a). Their 
+main idea is to use self-regulatory mechanisms 
+of agroecosystems, local and resources obtained 
+Agroecological Assessment of Suitability of the Steppe Soils 
+of Ukraine for Ecological Farming
+Denys Breus1*, Olha Yevtushenko1
+1 Kherson State Agrarian and Economic University, Stritens’ka str. 23, 73006, Kherson, Ukraine
+* Corresponding author’s e-mail: breusd87@gmail.com
+ABSTRACT
+The intensive development of industry generates a number of negative consequences, which leads to an ecological 
+crisis. As a result, the soil on which plant products are grown is polluted by radionuclides, heavy metals, pesticides, 
+and chemicals. That is why in the early 1960s, the alternative farming, which is also called biological, biodynamic 
+or organic, began to develop in Europe. The movement for alternative farming is widely developing in industrial-
+ized countries with a high level of chemization of agriculture. Therefore, the proposed topic is extremely relevant in 
+terms of rational nature use, ensuring the sustainable development of territories, as well as food security in Ukraine. 
+The article deals with agroecological assessment of suitability of agricultural land of the Steppe Zone of Ukraine for 
+ecological farming and bases on the modern data from the Kherson branch of the state institution “Institute of Soil 
+Protection of Ukraine”. Spatial modeling of the presence of nutrients in the steppe soil of Ukraine was made by the 
+means of ArcGIS 10.1 product. Taking into account the obtained data and spatial modeling, the territories with soils 
+of limited suitability for ecological farming occupy 67.2% (1194.5 thousand hectares) of the Kherson region, unsuit-
+able soils are located on 16.7% (297.4 thousand hectares) of agricultural land of the Steppe Zone of Ukraine and 
+suitable lands were detected on 16.1% (286.2 thousand hectares) of the territory of the studied lands. The conclu-
+sion was made that with the actual availability of lands occupied under ecological farming (4.3% or 75.9 thousand 
+hectares), the territory of the Steppe Zone of Ukraine has a prime potential to increase the area under ecological 
+farming by 4.2 times. Therefore, the article paid attention to ecological farming, taking into account the specifics of 
+the content of trace elements in the steppe soils and their compliance with the methodology for determining whether 
+soils belong to the categories of suitable, limited-suitability and unsuitable for ecological farming.
+Keywords: agricultural land, spatial modeling, GIS-technologies, agroecology, agrochemical indicators, nutrients.
+Journal of Ecological Engineering
+Received: 2023.02.17
+Accepted: 2023.03.15
+Published: 2023.04.01
+Journal of Ecological Engineering 2023, 24(5), 229–236
+https://doi.org/10.12911/22998993/161761
+ISSN 2299–8993, License CC-BY 4.0
+230
+Journal of Ecological Engineering 2023, 24(5), 229–236
+on the territory of the farm, and management of 
+ecological and biological processes and reactions. 
+The use of external energy sources, both chemi -
+cal and organic, is limited as much as possible. In 
+European countries, ecological farming is based 
+on ecosystem management, rather than attracting 
+resources from outside (Pichura et al., 2021b).
+Today, in scientific articles there is a conclu -
+sion that ecological farming system is not consid-
+ered an intensive technology of agricultural pro -
+duction. Ecological farming is a system of reduc-
+ing the input of energy resources from the outside 
+to obtain the products that do not use synthetic 
+chemical compounds. The main goal is the pro -
+duction of food products without the use of po -
+tentially dangerous substances, which means that 
+they are relatively safe for consumption. The use 
+of commercial fertilizers and pesticides is prohib-
+ited (Pichura et al., 2020). 
+Some European scientists stress that synthetic 
+fertilizers are replaced by manure and composts, 
+and the preservation of organic matter and nitrogen 
+reserves is ensured by expanding the cultivation of 
+legumes to green fertilizers. Specially bred vari -
+eties, crop rotations and buffer plants are used to 
+protect agricultural plants from pests and diseases 
+(Podawca et al., 2020) . According to the data of 
+domestic and foreign scientists, the productivity 
+of ecological farming in relation to conventional 
+farming ranges from 56% to 107%. A conventional 
+farming system is considered to be a farming sys-
+tem where all agricultural activities are carried out 
+on the basis of general scientifically based recom-
+mendations without taking into account the spe -
+cific conditions of the farm (Shennan et al., 2017).
+According to modern concepts, the term “agro-
+ecological condition of the soils” is defined as an 
+integral indicator of its ecological stability, level 
+of fertility and sanitary-hygienic condition. The 
+information about soil contamination with heavy 
+metals, pesticides, and radionuclides is a manda -
+tory component for determining and justifying the 
+suitability of soils for ecological agriculture in or-
+der to keep soils in appropriate condition for their 
+further effective use. Land suitability assessment 
+is based on the principles of systematic methods 
+of research and analysis (Pichura et al., 2023).
+Thus, the main goal of the article is to evalu -
+ate the agroecological properties of the steppe 
+soils and, with the help of modern software, to 
+build spatial models which reflect their suitability 
+for ecological farming.
+MATERIAL AND METHODS
+For the research and spatial modeling, the data 
+of the 11th round of whole agrochemical surveys of 
+Table 1. Methodology for determining suitability of agricultural land for ecological farming according to its 
+agrichemical indicators
+Indicators of the sanitary and hygienic condition of 
+the soil
+Standards by the level of suitability
+Suitable Limited suitability Unsuitable
+Density of contamination by radionuclides, Кі/km2:
+Cs-137 <1 1–5 >5
+Sr-90 <0.05 – 0.05-0.02 >0.05
+Content of moving forms of heavy metals, relative to 
+the MPC <1.0 ≥1.0
+Content of residues of pesticides, relative to the MPC <1.0 ≥1.0
+Indicators of ecological sustainability of the soil:
+Content of humus in the arable layer, %: >4.0 4.0–2.0 <2.0
+Reaction of soil solution, units (pHsalt) >5.5 5.5–4.6 <4.6
+Agrochemical indicators of soil fertility, mg/kg
+Content of nitrogen (N) >40 40–30 <30
+Content of phosphorus (P) >30 30–15 <15
+Content of potassium (K) >300 300–200 <200
+Movable forms of trace elements, mg/kg
+Zinc (Zn) >5.0 – 1-23 5.0-2.0 – <1 <2.0 – > 23
+Manganese (Mn) >20 – 10-100 20-10 – <10 <10 – >100
+Copper (Cu) >0.5 – 0.5-3 0.5-0.2 – <0.5 <0.2 – >3
+Cobalt (Co) >0.3 – 0.15-5 0.3-0.15 – <0.15 <0.15 – >5
+231
+Journal of Ecological Engineering 2023, 24(5), 229–236
+the agricultural land of the Steppe Zone of Ukraine 
+(2016–2021) was used; these were conducted by 
+the Kherson branch of the state institution “Institute 
+of Soil Protection of Ukraine” (Boiko et al, 2018).
+The article is based on the method of classi -
+fying the suitability of agricultural land for eco -
+logical farming according to their agrochemical 
+indicators (Breus et al, 2018 ). This method was 
+determined by the scientists of the Institute of 
+Agroecology and Nature Use of the National 
+Academy of Sciences of Ukraine (Table 1).
+As a result of research, cartograms of the het-
+erogeneity of soil distribution according to agro -
+chemical and ecological-toxicological indicators 
+were created, which became the basis for zoning 
+and determining the areas of agricultural land in 
+the Steppe Zone of Ukraine according to their 
+suitability for ecological farming.
+RESULTS AND DISCUSSION
+Study of soil ecological sustainability indi -
+cators. It was determined that according to the 
+humus content (Fig. 1a) in the soil layer of 0–20 
+cm, only 0.1% of agricultural lands are suitable, 
+80.5% have limited suitability, and 19.4% are un-
+suitable for ecological farming. 
+Figure 1. Spatial models of land suitability for ecological farming by the 
+indicators of ecological sustainability of the soil: a – humus; b – pH
+a)
+b)
+232
+Journal of Ecological Engineering 2023, 24(5), 229–236
+Figure 2. Spatial models of land suitability for ecological farming by the agrochemical 
+indicators of soil fertility: a – Nitrogen (N); b – Phosphorus (P); c – Potassium (K)
+a)
+b)
+c)
+233
+Journal of Ecological Engineering 2023, 24(5), 229–236
+About 80% of the districts of the studied re -
+gion have 75% or more of the area of agricultural 
+land suitable and land with limited suitability in 
+terms of humus for ecological farming, 20% of 
+the districts have less than 13% of lands with 
+limited suitability, the majority of their territories 
+are unsuitable for ecological farming. The district 
+with the largest area of land with limited suitabil-
+ity is Novotroitskyi – 151.0 thousand hectares, 
+with unsuitable – Holoprystanskyi (99.2 thousand 
+hectares).
+Soil acidity (pH) of soils (Fig. 1b) – 59.4% 
+of agricultural lands are suitable and 40.6% have 
+limited suitability for ecological farming. On the 
+basis of the conducted pH studies, the district 
+with the largest area of land suitable for ecologi -
+cal farming is Velikooleksandrivskyi with an area 
+of 123.7 thousand hectares (98.7% of the entire 
+area of the district), and the district with the larg-
+est area of land with limited suitability – Novo -
+troitskyi (151.0 thousand hectares)
+Study of the agrochemical indicators of soil 
+fertility. Nitrogen (N) – only 0.1% of agricultural 
+lands are suitable, 97.7% have limited suitability, 
+and 2.2% are unsuitable for ecological farming 
+(Fig. 2a). All regions of the region have 90% or 
+more of the area of agricultural land suitable and 
+with limited suitability for ecological farming. 
+Figure 3. Spatial models of land suitability for ecological farming by the movable 
+forms of trace elements: a – Zinc (Zn); b – Manganese (Mn)
+a)
+b)
+234
+Journal of Ecological Engineering 2023, 24(5), 229–236
+The district with the largest area of land from the 
+category unsuitable is Henicheskyi (13.33 thou -
+sand hectares or 9.6% of the total area of agricul-
+tural land of the district).
+The largest area of land suitable for ecological 
+agriculture in the studied territory was identified 
+by the indicators of the content of phosphorus (P) 
+and potassium (K). Phosphorus (Fig. 2b) – 90.2% 
+of the soils of the studied area is suitable, 9.8% 
+has limited suitability. The district with most suit-
+able lands for ecological agriculture in terms of P 
+content – Kalanchatskyi (62.1 thousand hectares).
+Potassium (K) – 76.3% of agricultural lands 
+are suitable, 17.6% have limited suitability, and 
+6.2% are unsuitable for ecological farming (Fig. 
+2c). The district with the most suitable soils in 
+terms of K content is Novotroitskyi (151 thou -
+sand hectares). The largest area of surveyed ag -
+ricultural land, which belongs to the category of 
+unsuitable, is located in the Oleshky district (43.5 
+thousand hectares or 64.5% of the total area of 
+agricultural land of the district).
+Study of the content of mobile forms of trace 
+elements. The significant heterogeneity of the 
+spatial distribution of the content of mobile forms 
+of trace elements in the steppe soils determines 
+the high variability of land suitability for ecologi-
+cal agriculture (Breus et al., 2020). In particular, 
+Figure 4. Spatial models of land suitability for ecological farming by the 
+movable forms of trace elements: a – copper (Cu); b – cobalt (Co)
+a) 
+b)
+235
+Journal of Ecological Engineering 2023, 24(5), 229–236
+all agricultural lands are unsuitable according to 
+the Zinc (Zn) content (Fig. 3a). A small amount of 
+Zn in the soil does not mean that steppe soils are 
+not suitable for ecologic farming, but it must be 
+taken into account during soil cultivation. Accu -
+mulation of the required amount of mobile forms 
+of Zn in the soil is hindered by a number of fac -
+tors, such as soil temperature, high pH level, lim-
+ing or high carbonate content, compacted soil and 
+low organic matter content that can reduce the 
+mobility and assimilation of Zn by the plant root 
+system (Breus et al., 2022). 
+Manganese (Mn) – 15.3% of agricultural 
+lands are suitable, 68.3% have limited suitability, 
+and 16.4% are unsuitable for ecological farming 
+(Fig. 3b). The district with the largest area of land 
+from the category suitable is Nizhnyosyrogozhs -
+ky (94.5 thousand hectares or 86.9%), the area of 
+unsuitable land is located in Bilozersky District 
+– 99.2 thousand hectares.
+According to the content of mobile forms of 
+Copper ( Cu) 19.2% of the studied agricultural 
+lands are suitable, 77.8% have limited suitability, 
+and 3.1% are unsuitable for ecological farming 
+(Fig. 4a). The district with the largest area of land 
+suitable for the content of mobile forms of Cu is 
+Chaplinskyi (105.2 thousand hectares or 82.8%), 
+unsuitable – Beryslavskyi district (39.8 thousand 
+hectares or 32.3%).
+As for the content of mobile forms of Cobalt 
+(Co) 51.6% of lands are suitable, 47.0% have lim-
+ited suitability and 1.4% are unsuitable (Fig. 4b). 
+The largest area, in percentage to the total land 
+area of the district in terms of the content of mobile 
+forms of Co, which is suitable for conducting eco-
+logical agriculture, characterizes the Henichesky 
+district (91.9%). The largest area of unusable land 
+is located in the Verkhnyorogachytsky district 
+(19.8 thousand hectares or 30.4%).
+Heavy metals (lead, cadmium, mercury), re -
+sidual amounts of pesticides, presence of Cs-137 
+and Sr-90 radionuclides are included in the list of 
+toxicants that are determined in the steppe soils. In 
+turn the situation in the region regarding the pres-
+ence of heavy metals in the soil is quite satisfactory, 
+during the period of research, a slight exceedance 
+of the MPC was periodically detected. Such varia-
+tions are observed, for the most part, in the soils 
+adjacent to major transport routes. That is, accord-
+ing to the content of mobile forms of heavy metals, 
+residual amounts of pesticides, radionuclides Cs-
+137 and Sr-90 radionuclides, the steppe soils are 
+suitable for ecological farming (Breus et al, 2022).
+Using build-in instruments of ArcGIS 10.1 
+and based on the results of spatial modeling of 
+the distribution of agrochemical properties, eco -
+logical sustainability and trace elements of the 
+steppe soils an integral model of land suitability 
+for ecological farming was built (Fig. 5). It was 
+determined that about 16.7% (297.4 thousand 
+hectares) of researched lands are unsuitable, 
+67.2% (1194.5 thousand hectares) have limited 
+suitability and 16.1% (286.2 thousand hectares) 
+are suitable.
+Figure 5. Integral map of the spatial distribution of soils according to the suitability for ecologic farming
+236
+Journal of Ecological Engineering 2023, 24(5), 229–236
+CONCLUSIONS
+As a result of spatial modeling of the agroeco-
+logical state of the steppe soils it was determined 
+that 0.1% of agricultural lands are suitable for eco-
+logical farming according to the content of humus 
+and N, and 80.5% and 97.7% of lands have limited 
+suitability, respectively. The largest area of suitable 
+land in the studied area was identified by the indi-
+cators of the content of P – 86.4% and K – 76.3%. 
+According to the acidity of the soil 59.4% of ag -
+ricultural lands are suitable for ecological farming. 
+The content of Zn shows that agricultural lands are 
+unsuitable. As for the content of Mn suitable for 
+ecologic farming – 15.3%, Cu – 19.2%, Co – 51.6% 
+of the total area of studied lands of the region. It 
+was determined that about 16.7% of the lands are 
+unusable, 67.2% have limited suitability and 16.1% 
+is suitable. With the actual availability of lands un-
+der ecological farming (4.3%), the territory has a 
+primary potential to increase the area by 4.2 times. 
+Under the conditions of the transition period, state 
+and regional support of agricultural producers, these 
+areas can be expanded to 794.0 thousand hectares 
+(44.7% of all agricultural land of studied area).
+REFERENCES
+1. Boiko T.O., Boiko P.M., Breus D.S. 2018. Optimi-
+zation of shelterbelts in the Steppe zone of Ukraine 
+in the context of sustainable development. Proc. 
+18-th International Multidisciplinary Scientific 
+GeoConference SGEM 2018; 871–876.
+2. Breus D., Dudyaeva O., Evtushenko O., Skok, S. 
+2018. Organic agriculture as a component of the 
+sustanable development of the Kheson region 
+(Ukraine). Proc. 18-th International Multidisci -
+plinary Scientific GeoConference SGEM 2018, 
+691–697.
+3. Breus D., Yevtushenko O. 2022. Modeling of trace 
+elements and heavy metals content in the steppe 
+soils of Ukraine. Journal of Ecological Engineering, 
+23(2), 159–165.
+4. Breus D., Yevtushenko O., Skok S., Rutta O. 2020. 
+Method of forecasting the agro-ecological state of 
+soils on the example of the South of Ukraine. Proc. 
+20-th International Multidisciplinary Scientific 
+GeoConference SGEM 2020, 523–528.
+5. Dudiak N., Pichura V ., Potravka L., Stratichuk N. 
+2021. Environmental and economic effects of water 
+and deflation destruction of steppe soil in Ukraine. 
+Journal of Water and Land Development, 50, 10–26. 
+DOI: 10.24425/jwld.2021.138156
+6. Nobari N. 2021. Social movements in the transfor-
+mation of food and agriculture systems. In: Rethink-
+ing food and agriculture: New ways forward, ed. 
+A. Kassam and L. Kassam, 371–398. Woodhead 
+Publishing, Cambridge.
+7. Pichura V ., Potravka L., Domaratskiy E., Stratichuk 
+N., Baysha K., Pichura I. 2023. Long-term Changes 
+in the Stability of Agricultural Landscapes in the 
+Areas of Irrigated Agriculture of the Ukraine Steppe 
+Zone. Journal of Ecological Engineering, 24(3), 
+188–198. DOI: 10.12911/22998993/158553
+8. Pichura V ., Potravka L., Dudiak N., Stroganov A., 
+Dyudyaeva O. 2021a. Spatial differentiation of reg-
+ulatory monetary valuation of agricultural land in 
+conditions of widespread irrigation of steppe soils. 
+Journal of Water and Land Development, 48(1–3), 
+182–196. DOI: 10.24425/jwld.2021.136161
+9. Pichura V .I., Potravka L.A., Skrypchuk P.M., Strati-
+chuk N.V . 2020. Anthropogenic and climatic cau-
+sality of changes in the hydrological regime of the 
+Dnieper River. Journal of Ecological Engineering, 
+V ol.21 (4), 1–10. DOI: 10.12911/22998993/119521
+10. Pichura V ., Potravka L., Dudiak N., Vdovenko N. 
+2021b. Space-time modeling of climate change and 
+bioclimatic potential of steppe soils. Indian Journal 
+of Ecology, 48(3), 671–680.
+11. Podawca K., Dąbkowski N. 2020. Spatial diversifi-
+cation of situation of the organic farming in the Pol-
+ish V oivodeships in the years 2010–2018. Journal 
+of Ecological Engineering, 21(6), 191–200. DOI: 
+10.12911/22998993/123830
+12. Shennan C., Krupnik T.J., Baird G., Cohen H., For-
+bush K., Lovell R.J., Olimpi E.M. 2017. Organic and 
+Conventional Agriculture: A Useful Framing. Annual 
+Review of Environment and Resources, 42, 317–346.
