@@ -1,0 +1,1419 @@
+RESEARCH Open Access
+Discover Artificial IntelligenceAdugna Discover Artificial Intelligence (2026) 6:1055 
+https://doi.org/10.1007/s44163-026-02160-9
+Explainable vision transformer for coffee leaf 
+nutrient deficiency detection with rule-based 
+treatment recommendation
+Fikadu Berie Adugna1*
+ * C o r r e s p o n d e n c e : 
+Fikadu Berie Adugna
+fikadu.berie@uog.edu.et
+1Department of Computer Science, 
+College of Informatics, University of 
+Gondar, Gondar, Ethiopia
+© The Author(s) 2026. Open Access This article is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International 
+License, which permits any non-commercial use, sharing, distribution and reproduction in any medium or format, as long as you give appropriate 
+credit to the original author(s) and the source, provide a link to the Creative Commons licence, and indicate if you modified the licensed material. 
+You do not have permission under this licence to share adapted material derived from this article or parts of it. The images or other third party 
+material in this article are included in the article's Creative Commons licence, unless indicated otherwise in a credit line to the material. If material 
+is not included in the article's Creative Commons licence and your intended use is not permitted by statutory regulation or exceeds the permitted 
+use, you will need to obtain permission directly from the copyright holder. To view a copy of this licence, visit h t t p : / / c r e a t i v e c o m m o n s . o r g / l i c e n s 
+e s / b y - n c - n d / 4 . 0 / . 
+Abstract
+Coffee is a worldwide significant agricultural commodity, but nutritional deficits 
+in coffee leaves impair plant health and output, necessitating early and correct 
+diagnosis. Existing deep learning algorithms confront limitations such as common 
+deficiency symptoms, limited datasets, and poor interpretability. This study presents 
+an Explainable Vision Transformer (XViT)-based system for detecting coffee leaf 
+nutrient deficiencies and making rule-based treatment recommendations. The 
+approach improves data variety by preprocessing and class-wise augmentation, 
+whereas XViT collects global and detailed visual patterns for classification. An expert-
+defined rule-based module makes suitable treatment recommendations, while Grad-
+CAM visualization enhances model clarity by emphasizing key symptom locations. 
+Experimental results show that the proposed XViT model regularly outperforms 
+baseline architectures such as ResNet-50, EfficientNet-B4, and ConvNeXt. On the 
+initial dataset, XViT achieved 94% precision, 91% recall, 92% F1-score, and accuracy of 
+94 ± 0.37%, whereas augmentation improved accuracy to 96 ± 0.29%. The rule-based 
+recommendation module achieved 100% rule coverage, 100% rule consistency, a 
+93.72% end-to-end recommendation success rate, and a Cohen’s Kappa agreement 
+of 0.93 among agricultural specialists. Grad-CAM study indicated that the model 
+concentrates on significant symptom regions linked with nutrient deficits, hence 
+increasing transparency and reliability. Overall, the proposed framework for precision 
+coffee nutrient management is accurate, explainable, and practical since it combines 
+deep learning-based diagnosis with expert-guided treatment.
+Keywords Vision transformer, Nutrient deficiency detection, Explainable 
+artificial intelligence, Coffee leaf management, Precision agriculture, Rule-based 
+recommendation
+ 1 Introduction
+Coffee is one of the world’s most economically important crops, providing a significant 
+income for millions of growers in tropical and subtropical countries. However, nutri -
+tional deficits significantly impact coffee production by reducing plant health, crop 
+yield, and bean quality [ 1, 2]. Nutrient deficiencies in nitrogen, phosphorus, potassium, 
+Page 2 of 32
+Adugna Discover Artificial Intelligence (2026) 6:1055 
+magnesium, and iron are common apparent signs on coffee leaves. If not recognized 
+promptly, these flaws can dramatically affect output and overall coffee quality [2, 3].
+Traditional approaches for diagnosing nutrient deficiencies mainly rely on manual 
+inspection, soil testing, and laboratory analysis [ 3, 4]. Although these methods are fre -
+quently used, they are time-consuming, expensive, and require specialist knowledge. 
+Furthermore, manual monitoring is difficult to implement successfully in large-scale 
+coffee plantations, which limits its scalability and effectiveness [ 5, 6]. These limitations 
+underscore the importance of automated, reliable nutrient-deficit detection systems for 
+precision agriculture.
+Recent advancements in artificial intelligence (AI) and deep learning have greatly 
+enhanced automated plant health monitoring. In particular, convolutional neural net -
+works (CNNs) have demonstrated promising performance in agricultural image analy -
+sis applications [7, 8]. However, CNN-based approaches frequently fail to capture global 
+contextual information and subtle visual patterns for nutrient-deficit detection in com -
+plex agricultural imagery [ 9]. Vision Transformers (ViTs) have recently emerged as an 
+effective alternative due to their self-attention mechanisms and ability to model long-
+range interactions in images [ 10–12]. These properties make transformer-based tech -
+niques useful for detecting nutritional deficits in coffee leaves [13–16].
+Despite recent progress, existing studies still have numerous limitations. The majority 
+of past research has focused on detecting plant diseases rather than identifying nutri -
+ent deficiencies. Furthermore, many current systems only provide categorization results, 
+not treatment recommendations or interpretability analyses. Furthermore, transformer-
+based learning techniques for detecting coffee nutrient deficiencies are underexplored.
+To address these issues, this study provides an Explainable Vision Transformer (ViT) 
+framework for automated nutrient deficiency identification and rule-based treatment 
+recommendations in coffee leaves. The proposed architecture uses a Vision Transformer 
+to gather global contextual information as well as subtle visual patterns in order to accu-
+rately classify nutrient deficiencies. Based on the expected nutrient deficiency, an expert-
+defined rule-based suggestion module automatically applies the appropriate agronomic 
+treatment in accordance with accepted nutrition-treatment criteria. Grad-CAM is used 
+to depict the discriminative regions that contribute to the model’s predictions, which 
+improves transparency and helps with practical decision-making. The proposed frame -
+work intends to support precision agriculture by offering an accurate, scalable, interpre -
+table, and practical decision-support tool for managing coffee nutritional deficiencies.
+The main contributions of this study are as follows:
+1. An explainable vision transformer (ViT) framework is developed for automated 
+detection of multiple nutrient deficiencies in coffee leaves by effectively capturing 
+global contextual features and subtle visual symptoms.
+2. An expert-defined rule-based treatment recommendation module is integrated to 
+automatically generate appropriate agronomic treatment recommendations based on 
+the predicted nutrient deficiency, enabling an end-to-end decision-support workflow.
+3. A Grad-CAM-based explainable AI module is incorporated to improve model 
+transparency by highlighting the discriminative regions of coffee leaf images that 
+influence nutrient deficiency predictions.
+Page 3 of 32
+Adugna Discover Artificial Intelligence (2026) 6:1055 
+4. Extensive experiments and comparative evaluations against state-of-the-art baseline 
+models are conducted to demonstrate the effectiveness, robustness, and generalization 
+capability of the proposed framework.
+5. The proposed framework provides an accurate, interpretable, scalable, and practical 
+decision-support solution for precision coffee agriculture by combining reliable 
+nutrient deficiency detection with expert-guided treatment recommendations.
+1.1 Literature review
+Automated plant disease diagnosis systems have been greatly enhanced by recent devel -
+opments in computer vision, machine learning, and deep learning. Image-based dis -
+ease detection techniques have drawn a lot of interest in coffee farming because they 
+can facilitate early diagnosis, lower the cost of manual inspections, and increase crop 
+management effectiveness. Convolutional neural networks (CNNs), transfer learning 
+techniques, hybrid deep learning architectures, and, more recently, transformer-based 
+models are the main methods used in current research to classify coffee leaf diseases.
+CNN-based architectures were widely used in early research on coffee leaf disease 
+detection due to their powerful capacity to extract discriminative visual information 
+from leaf images. Under controlled imaging settings, CNN models have been shown in 
+multiple studies to accurately discern between healthy and sick coffee leaves. For exam -
+ple, utilizing over 4000 images of coffee leaves, a CNN-based framework for identifying 
+coffee wilt disease achieved a classification accuracy of 97.9%, demonstrating the effi -
+cacy of deep feature extraction for disease recognition [ 17]. Similar to this, CNN models 
+based on transfer learning, like MobileNet and ResNet50, were used to classify coffee 
+rust, brown eye spot, wilt, and healthy leaves with an accuracy of more than 97% [ 18]. 
+The effectiveness of CNN architectures in collecting local texture and color differences 
+linked to coffee leaf diseases was validated by this research.
+Many studies used transfer learning approaches with pretrained deep learning models 
+to further enhance classification performance and solve the problem of limited labeled 
+datasets. In coffee illness classification tasks, pretrained architectures such as ResNet50, 
+InceptionV3, VGG16, Xception, and ResNet101 have demonstrated exceptional perfor -
+mance [19, 20]. In fact, research on large-scale coffee leaf datasets reported classification 
+accuracies of up to 99%, confirming transfer learning’s robustness for agricultural image 
+analysis. These techniques’ success is largely due to their capacity to apply feature repre -
+sentations learnt from huge benchmark datasets to domain-specific agricultural tasks. 
+Despite their excellent classification accuracy, most extant transfer learning studies are 
+exclusively concerned with disease identification and rarely address nutrient deficiency 
+detection or treatment recommendations.
+Beyond deep CNN structures, classic machine learning and ensemble learning tech -
+niques have been investigated for coffee crop monitoring applications. Ensemble-based 
+techniques, such as XGBoost, have been employed to detect Coffee Berry Disease early 
+on, producing competitive results with accuracies of 98% [ 21]. These methods demon -
+strated that handmade feature extraction mixed with ensemble classifiers can still deliver 
+dependable performance in specific agricultural contexts. Nonetheless, traditional 
+machine learning approaches can necessitate extensive feature engineering and may fail 
+to generalize effectively under changing environmental conditions when compared to 
+deep learning models.
+Page 4 of 32
+Adugna Discover Artificial Intelligence (2026) 6:1055 
+Recent research has increasingly focused on hybrid and advanced deep learning archi -
+tectures to improve coffee leaf disease detection. Hybrid models that incorporate archi -
+tectures such as U-Net, SegNet, MobileNetV3, VGG16, and Swin Transformers have 
+shown improved feature representation and classification performance [ 22, 23]. Trans-
+former-based models, in particular, have received interest because of their self-attention 
+processes and capacity to capture global contextual information, making them useful for 
+detecting subtle illness indications in agricultural images.
+Advanced techniques, such as Graph Neural Networks (GNNs), have also been used 
+to monitor agricultural activities. Hybrid Vision Graph Neural Networks (HV-GNNs) 
+excelled at detecting coffee pests and crop damage by accurately modeling spatial rela -
+tionships in complex agricultural situations [24].
+Beyond coffee crops, deep learning algorithms have been widely used to detect disease 
+and nutrient deficiencies in crops such as rice, maize, wheat, and tomato [ 25]. Trans-
+former-based models have recently demonstrated promising results in plant phenotyp -
+ing and nutrient deficiency diagnosis, owing to their capacity to capture subtle visual 
+fluctuations and long-range correlations within images [26].
+Although previous research has yielded good classification accuracy for coffee leaf 
+disease identification, a number of significant research gaps remain. First, most present 
+research focuses on disease categorization rather than nutritional deficit identification, 
+despite the fact that nutrient deficiencies have a major impact on coffee growth, produc-
+tion, and quality. Second, many existing techniques conclude with nutrient deficiency 
+classification but do not provide actionable treatment recommendations to help farm -
+ers make timely management decisions. Third, traditional convolutional neural network 
+(CNN) models frequently fail to capture the global contextual relationships and subtle 
+visual patterns linked to nutrient insufficiency symptoms.
+Furthermore, many contemporary systems do not use explainable artificial intelli -
+gence (XAI) methodologies, which limits the transparency, interpretability, and practi -
+cal application of their predictions in real-world agricultural contexts. Although Vision 
+Transformers have shown high performance in a variety of computer vision tasks, their 
+application to explainable coffee leaf nutrient deficit detection combined with expert-
+guided treatment advice is mostly unexplored. Motivated by these constraints, this study 
+provides an Explainable Vision Transformer (ViT) framework for detecting coffee leaf 
+nutrient deficiencies and recommending rule-based treatments. The proposed system 
+uses Vision Transformers’ global feature representation capacity to accurately detect 
+nutrient shortages in coffee leaves. Based on the expected shortfall, an expert-defined 
+rule-based suggestion module creates the appropriate agronomic solution using known 
+nutrient management principles. In addition, a Grad-CAM-based explainability module 
+is included to depict the image regions that contribute the most to the model’s predic -
+tions, increasing transparency, interpretability, and user trust. The proposed framework 
+for precision coffee agriculture combines accurate nutrient shortage diagnosis, expert-
+guided treatment recommendations, and explainable artificial intelligence to create a 
+practical and dependable decision-support system.
+Page 5 of 32
+Adugna Discover Artificial Intelligence (2026) 6:1055 
+2 Methodology
+2.1 Overview of the proposed framework
+The proposed approach combines an Explainable Vision Transformer (XViT) for auto -
+mated nutrient deficit detection and an expert-defined rule-based module for treat -
+ment recommendations in coffee leaves. The framework functions as an end-to-end 
+decision-support system, first analyzing coffee leaf images to diagnose nutrient deficien -
+cies, and then converting the projected deficiency categories into appropriate treatment 
+recommendations based on specified agronomic principles. The input images are pre -
+processed and separated into fixed-size patches (16 × 16). These patches are embedded 
+with positional encodings before being processed through several transformer encoder 
+layers using multi-head self-attention methods. The obtained transformer represen -
+tations allow for the efficient extraction of global contextual information and delicate 
+visual patterns associated with nutrient insufficiency symptoms. Furthermore, a Grad-
+CAM-based explainability module identifies the leaf regions that provide the greatest 
+contribution to model predictions, boosting transparency and interpretation. By com -
+bining precise diagnosis, expert-guided recommendations, and visual explanations, 
+the proposed framework offers a realistic solution for smart agriculture and precision 
+coffee nutrition management. For model development and evaluation, the proposed 
+framework was assessed using a stratified five-fold cross-validation strategy. In each 
+fold, approximately 861 images (72% of the complete dataset) were used for training, 96 
+images (8% of the complete dataset; 10% of the training portion) were allocated for inter-
+nal validation, and 239 images (20% of the complete dataset) were reserved as an inde -
+pendent test set to ensure unbiased performance evaluation. Figure  1 depicts the overall 
+design of the proposed framework.
+2.2 Dataset collection and preparation
+The dataset used for this study consists of coffee leaf images collected from publicly 
+available sources and manually organized into nutrient deficiency categories. The final 
+dataset contains eight nutrient deficiency classes and one healthy class. Each deficiency 
+class includes a corresponding treatment suggestion label, enabling the proposed Vision 
+Fig. 1 The proposed architecture
+ 
+Page 6 of 32
+Adugna Discover Artificial Intelligence (2026) 6:1055 
+Transformer to detect the leaf deficiency type and appropriate rule based treatment 
+action.
+2.2.1 Dataset collection
+The main sources of photos of coffee leaves were two publicly accessible datasets. This 
+study utilizes the CoLeaf dataset, a publicly available leaf image dataset designed for 
+plant disease and nutrient deficiency analysis. In addition to the CoLeaf dataset, this 
+study also employs the Plant Disease Classification Merged Dataset, a publicly available 
+collection of leaf images compiled from multiple plant disease datasets. This merged 
+dataset provides diverse disease categories and variations in illumination and back -
+ground, which enhance the robustness of the proposed model. Images with unclear leaf 
+conditions or several signs of nutritional stress were not included. As can be seen below, 
+the dataset was finally divided into eight classes for nutrient deficiencies and a class for 
+health in Table 1.
+After merging data sources, the total number of samples became 1196 images, which 
+were shuffled and split using a 5-fold cross-validation protocol.
+2.2.2 Dataset preparation
+First, every image was scaled to the 224 × 224 pixel fixed Vision Transformer input 
+resolution. For uniform patch extraction and stable positional encoding in the ViT 
+architecture, this resizing step guarantees that all input samples have the same spatial 
+dimensions. A two-stage normalization procedure was then used to normalize the pixel 
+values. First, each pixel’s intensity was divided by 255 to scale it to the interval [0,1]. Sec-
+ond, to standardize feature distributions and speed up training convergence, standard 
+ViT normalization based on the ImageNet mean (µ) and standard deviation (σ) was per -
+formed per RGB channel.
+The sample images corresponding to each nutrient deficiency class and healthy leaves 
+are presented in Fig. 2 below, providing a representative overview of the dataset.
+Advanced online data augmentation approaches were used to boost robustness to 
+real-world field variability and improve generalization performance. Random crop -
+ping, horizontal and vertical flips, and random rotations between 0° and 30° are exam -
+ples of geometric transformations that mimic the variety of leaf orientation. In order 
+to promote spatial invariance and enhance feature-learning under partial occlusion, 
+local regions were masked or mixed using region-based perturbations like Cutout and 
+Table 1 The collected dataset description
+Nutrient deficiency Treatment recommendation No. of images
+Boron (B) Borax (sodium tetraborate) 101
+Calcium (Ca) Gypsum (calcium sulfate) 162
+Healthy No treatment required 300
+Iron (Fe) Iron sulfate (FeSO4) 65
+Potassium (K) Potassium sulfate (K2SO4) 96
+Magnesium (Mg) Magnesium sulfate (epsom salt) 79
+Manganese (Mn) Manganese sulfate (MnSO4) 83
+Nitrogen (N) Urea 64
+Phosphorus (P) Triple superphosphate (TSP) 246
+Total 1196
+Page 7 of 32
+Adugna Discover Artificial Intelligence (2026) 6:1055 
+CutMix. Additionally, to provide smoother decision boundaries, labels and images were 
+linearly blended at the pixel level using Mixup augmentation.
+Brightness, contrast, saturation, and hue fluctuations are examples of photometric 
+augmentations that were used to adjust for variations in illumination during field image 
+acquisition. Together, these augmentation techniques add artificial diversity to training 
+samples, which strengthens the model’s resistance to changes in lighting, camera noise, 
+leaf occlusion, and overlapping stress symptoms. This enhances the model’s capacity 
+for generalization when it is deployed in actual agricultural settings. The sample output 
+images for augmented images are depicted in Fig. 3.
+2.2.3 Annotation procedure and validation
+Images from the CoLeaf Collection and Plant Disease Classification. Merged collections 
+were evaluated and annotated to ensure they met the study’s objectives. Each image was 
+Fig. 2 Sample collected images
+ 
+Page 8 of 32
+Adugna Discover Artificial Intelligence (2026) 6:1055 
+classified as nutrient deficit or healthy based on dominant visual symptoms linked with 
+distinct nutritional states of coffee plants.
+The annotation method was guided by established agronomic knowledge of cof -
+fee plant nutrient shortages, which included visible traits such as chlorosis (yellowing), 
+necrosis (tissue death), interveinal discoloration, and leaf deformation patterns. Images 
+with confusing symptoms, multiple overlapping nutrient shortages, non-coffee leaf con -
+tent, or low visual quality were eliminated in order to reduce annotation ambiguity and 
+increase dataset reliability.
+To ensure annotation reliability, the assigned nutrient deficiency labels were indepen -
+dently examined and approved by two agricultural experts in plant nutrition and cof -
+fee crop management. Each professional examined the images separately, categorizing 
+nutritional deficiencies based on observable symptoms and establishing agronomic 
+benchmarks. Any discrepancies between the two annotators were handled through dis -
+cussion and consensus before the final dataset labels were created.
+The nutrient deficiency annotations’ reliability was assessed using Cohen’s Kappa coef-
+ficient (κ). Cohen’s Kappa was derived by comparing the independent class assignments 
+provided by the two agricultural specialists, thereby determining agreement beyond 
+Fig. 3 Augmented sample images
+ 
+Page 9 of 32
+Adugna Discover Artificial Intelligence (2026) 6:1055 
+chance. The annotation reliability assessment using Cohen’s Kappa coefficient is defined 
+in Table 2.
+The calculated agreement between two independent annotators was κ = 0.96, indicat-
+ing near-perfect agreement. This high degree of agreement illustrates the stability and 
+dependability of the image-level nutrient insufficiency labels used in model training and 
+evaluation.
+The linked treatment recommendations were not regarded as independent predic -
+tion labels. Instead, treatment suggestions were derived using a deterministic rule-based 
+mapping that linked each projected nutrient insufficiency class to an expert-defined cor-
+rection action. As a result, the machine learning model was solely responsible for nutri -
+ent deficit categorization, while the advice component adhered to specified agronomic 
+guidelines.
+During dataset cleaning, 50 images were removed due to unclear symptoms, non-cof -
+fee leaf content, multiple concurrent nutrient stress conditions, or poor image quality. 
+Images from the Plant Disease Classification Merged collection were manually screened 
+to retain only coffee leaf images corresponding to the target nutrient deficiency catego -
+ries. Duplicate and near-duplicate images were identified and removed through image 
+similarity inspection and manual verification before dataset splitting to prevent data 
+leakage between training, validation, and independent testing subsets.
+2.2.4 Dataset split
+The dataset, which included 1,196 coffee leaf photos from two publicly accessible 
+sources, was analyzed using a stratified 5-fold cross-validation technique to ensure accu-
+rate performance estimates and decrease the danger of overfitting. The entire dataset 
+was randomly divided into five about equal-sized folds while keeping the original class 
+distribution for all nutrient deficiency categories and the healthy class.
+During each cross-validation iteration, one fold was set aside as an independent test 
+set, which was only used for the final evaluation of the trained model. The remaining 
+four folds were utilized for model development. From the four training folds, 10% of the 
+available training data were selected as an internal validation subset (approximately 96 
+images, equivalent to 8% of the complete dataset) for hyperparameters optimization, 
+early stopping, and model checkpoint selection.
+For each fold, the dataset distribution was organized as follows:
+ • Training set: Approximately 861 images (72% of the complete dataset).
+ • Validation set: Approximately 96 images (8% of the complete dataset; 10% of the 
+training portion).
+ • Independent test set: Approximately 239 images (20% of the complete dataset).
+Table 2 Annotation reliability assessment using Cohen’s Kappa coefficient
+Evaluation metric Result
+Number of annotators 2
+Annotation task Nutrient deficiency classification
+Images evaluated 1196
+Agreement measure Cohen’s Kappa coefficient
+Cohen’s Kappa (κ) 0.96
+Interpretation Almost perfect agreement
+Page 10 of 32
+Adugna Discover Artificial Intelligence (2026) 6:1055 
+The technique described above was done five times, with each fold serving as the inde -
+pendent test set once. The final performance parameters were determined by averaging 
+the results from all five test folds. Stratified splitting was used throughout the procedure 
+to guarantee that each nutritional deficit category and healthy class were proportionally 
+represented in the training, validation, and test subsets. This method gives a thorough 
+evaluation of the Vision Transformer while also improving its ability to generalize to 
+previously unseen coffee leaf images.
+The sample distribution for each cross-validation fold is presented in Table 3.
+To prevent data leakage, duplicate and near-duplicate images were removed before 
+dataset partitioning, and the independent test fold remained completely unseen during 
+training, validation, and hyperparameter optimization.
+2.3 Model architecture
+The proposed system uses an Explainable Vision Transformer (ViT) architecture to 
+detect nutrient deficiencies in coffee leaves, followed by a rule-based treatment recom -
+mendation module. The model features a conventional Vision Transformer (ViT) back -
+bone that extracts rich, hierarchical feature representations from input coffee leaf images 
+using patch embedding and multi-head self-attention techniques. The collected feature 
+representation is fed into a fully connected classification head, which predicts the nutri -
+tional deficiency class using a Softmax activation function. To address class imbalance in 
+the dataset, the classifier is trained using the cross-entropy loss function, with configu -
+rable class weighting.
+Once the nutrient shortage has been diagnosed, the projected class is passed to an 
+expert-defined rule-based recommendation module, which automatically gets the 
+appropriate agronomic treatment from a predefined nutrient-treatment mapping based 
+on known agricultural norms. This modular design isolates the data-driven image classi -
+fication process from the expert knowledge required to prescribe treatments, increasing 
+transparency, maintainability, and scientific validity. Furthermore, a Grad-CAM-based 
+explainability module is included to show the discriminative regions of coffee leaf pic -
+tures that have the greatest influence on the model’s predictions, improving interpret -
+ability and facilitating practical decision-making in precision agriculture. The technique 
+Table 3 Sample dataset distribution for each fold
+Fold Training 
+images
+Validation Indepen-
+dent test 
+images
+Total 
+images
+Notes
+Fold 1 861 96 239 1196 Fold 1 was reserved as the indepen-
+dent test set; remaining folds were 
+used for training and validation.
+Fold 2 861 96 239 1196 Fold 2 was reserved as the indepen-
+dent test set; remaining folds were 
+used for training and validation.
+Fold 3 861 96 239 1196 Fold 3 was reserved as the indepen-
+dent test set; remaining folds were 
+used for training and validation.
+Fold 4 861 96 239 1196 Fold 4 was reserved as the indepen-
+dent test set; the remaining folds 
+were used for training and validation
+Fold 5 861 96 239 1196 Fold 5 was reserved as the indepen-
+dent test set; the remaining folds 
+were used for training and validation.
+Page 11 of 32
+Adugna Discover Artificial Intelligence (2026) 6:1055 
+section contains a pseudo-code version of the proposed framework, which improves 
+clarity and reproducibility.
+2.4 Training details
+The proposed model was trained using the Adam optimizer, which adaptively adjusts 
+learning rates for each parameter to accelerate convergence and improve stability. 
+A batch size of 16 was used to balance computational efficiency and gradient estima -
+tion accuracy, and the network was trained for 100 epochs to ensure sufficient learning 
+across all nutrient deficiency classes. All experiments were conducted on Google Colab 
+using Python 3 and TensorFlow Keras. Data augmentation was applied to enhance data 
+diversity and improve generalization without increasing storage requirements. The sum-
+marization of the training configuration is depicted in Table 4.
+Page 12 of 32
+Adugna Discover Artificial Intelligence (2026) 6:1055 
+A stratified 5-fold cross-validation technique was used to ensure a consistent and reli -
+able evaluation protocol. The dataset was randomly divided into five about equal-sized 
+folds while maintaining the distribution of all nutrient insufficiency classifications. In 
+each cycle, one fold was designated as an independent test set, with the remaining four 
+folds used for model development. A validation subset was produced from the training 
+folds to be utilized for hyperparameter selection, early stopping, and model checkpoint -
+ing. The independent test fold was not accessed during training, validation, or hyperpa -
+rameters optimization, resulting in an unbiased evaluation of the proposed model. To 
+ensure reliability, a fixed random seed was employed throughout all tests. Without con -
+ducting a lengthy grid search, hyperparameters were chosen based on validation perfor -
+mance, as is typical practice.
+2.5 Explainability
+Gradient-weighted Class Activation Mapping (Grad-CAM) was used on the proposed 
+Explainable Vision Transformer (ViT) model to increase the interpretability of nutrient 
+insufficiency predictions [27–29]. Grad-CAM gives visual explanations for classification 
+results by highlighting the portions of the input image that contribute most strongly to 
+the model’s decision [26].
+In this approach, Grad-CAM is applied to the ViT model’s nutrient deficiency classifi -
+cation output, resulting in attention heatmaps that identify the relevant regions of coffee 
+leaf pictures associated with certain deficiencies. These highlighted locations could cor -
+respond to visual characteristics like chlorosis, necrotic patches, discoloration patterns, 
+or marginal scorching, all of which are key markers of nutrient deficits.
+The resulting explanations improve transparency by helping researchers, agronomists, 
+and farmers understand which leaf regions influenced the model’s forecast. Once the 
+nutritional shortage has been diagnosed, the appropriate treatment advice is obtained 
+using an expert-defined rule-based nutrient-treatment mapping. As a result, the explain-
+ability module focuses on evaluating the visual evidence used to detect deficiencies, 
+Table 4 Training configuration environment
+Parameter Value
+Optimizer Adam
+Learning rate Default (0.001)
+Pretrained weights ImageNet pretrained
+Classifier head Dense (512) + Dropout (0.1) + Softmax (9 classes)
+Loss function Categorical cross-entropy
+Class weights Not applied
+Batch size 16
+Epochs 100
+Random seed value 42
+Patch size 16 × 16
+Patch embedding dimension 768
+Dropout 0.1
+Framework TensorFlow Keras
+Programming language Python 3
+Hardware/platform Google Colab (Tesla T4 GPU, 16 GB RAM)
+Data augmentation Applied
+Deployment/interface Flask web framework
+Page 13 of 32
+Adugna Discover Artificial Intelligence (2026) 6:1055 
+whereas the recommendation module gives actionable management counsel based on 
+the anticipated deficiency class.
+By combining Vision Transformer-based categorization, Grad-CAM explanations, 
+and rule-based treatment recommendations, the proposed approach increases model 
+reliability, interpretability, and practical applicability for precision coffee nutrition 
+management.
+2.6 Evaluation metrics
+Standard classification metrics were utilized to evaluate the effectiveness of the pro -
+posed Explainable Vision Transformer (ViT) framework in terms of nutritional insuf -
+ficiency identification. Because treatment suggestions are generated after classification 
+using an expert-defined rule-based mapping, no independent model assessment metrics 
+are required. Instead, the accuracy and consistency of the suggestion module were tested 
+using established nutrient-treatment relationships.
+3 Deficiency detection
+For the classification of nutrient deficiencies and treatment recommendations, standard 
+metrics were computed:
+ • Accuracy: the proportion of correctly predicted leaf deficiency classes among all 
+samples.
+ • Precision: the ratio of correctly predicted positive samples to all predicted positives, 
+computed per class to evaluate class-wise reliability.
+ • Recall: the ratio of correctly predicted positives to all actual positives, indicating the 
+model’s sensitivity to each deficiency.
+ • F1-score: the harmonic mean of precision and recall, providing a balanced measure 
+of performance.
+ • Confusion matrix: visualizes the distribution of true versus predicted classes, 
+highlighting misclassification patterns and enabling detailed error analysis.
+4 Treatment recommendation
+The treatment suggestion module was evaluated based on how well the generated rec -
+ommendations matched the expert-defined nutrient-treatment mapping. For each 
+accurately detected nutrient shortage, the matching treatment was selected from the 
+predetermined rule base, ensuring that the recommended intervention adhered to rec -
+ognized agronomic standards.
+This evaluation methodology assesses the proposed system comprehensively by mea -
+suring nutrient deficiency detection accuracy and reliability, as well as confirming the 
+rule-based treatment recommendation component’s practical utility. ViT classification 
+performance, Grad-CAM-based interpretability, and expert-guided recommendations 
+all illustrate the framework’s appropriateness for precision coffee nutrition management.
+5 Experimental results and discussion
+5.1 Quantitative results
+This section presents the results of coffee leaf deficiency and recommended treat -
+ment using Vision Transformer (ViT), both with the original dataset and after 
+applying augmentation, and their quantitative analyses. Comparisons are made to 
+Page 14 of 32
+Adugna Discover Artificial Intelligence (2026) 6:1055 
+evaluate the effectiveness of each approach. The reported accuracy values are presented 
+as mean ± standard deviation obtained from the five-fold cross-validation results. The 
+value before the ± symbol represents the average accuracy across the five folds, while the 
+value after ± represents the standard deviation of accuracy across the folds. It does not 
+represent the standard error or confidence interval.
+5.1.1 Nutrient deficiency detection
+In this first experiment, the Vision Transformer model was trained and evaluated on the 
+raw/original coffee leaf disease images without applying any augmentation techniques. 
+The purpose of this experiment was to investigate how effectively ViT can extract dis -
+criminative visual features for variety recognition using only the original image distribu -
+tion. The aggregated fold precision, recall, f1-score, and confusion matrix results of this 
+experiment are presented in Fig. 4.
+The majority of classes were accurately predicted along the diagonal; the confu -
+sion matrix demonstrates the model’s overall excellent performance. Manganese-Mn, 
+Calcium-Ca, Healthy, and Magnesium-Mg are all highly accurately categorized, with 1 
+misclassification each. There is a little more misunderstanding in Iron-Fe, Nitrogen-N, 
+Phosphorus-P , Boron-B, and Potassium-K. In particular, Nitrogen-N is mislabeled as 
+Boron-B and Magnesium-Mg, while Potassium-K is mislabeled as Healthy and Phospho-
+rus-P . With only a few small misclassifications, usually across related nutrient deficits, 
+the matrix overall shows good predictive performance.
+Fig. 4 Performance result for nutrient deficiency of precision, recall, f1-score, and confusion matrix, respectively
+ 
+Page 15 of 32
+Adugna Discover Artificial Intelligence (2026) 6:1055 
+The per-class ROC curves provide a visual assessment of the model’s ability to dis -
+criminate between each nutrient deficiency class and all others. The area under the 
+curve (AUC) values indicates excellent performance across most classes. Figure  5 illus-
+trates the ROC curve plot.
+The model provides strong separability between each class and the others, as these 
+results show. The near-perfect discrimination of classes like Healthy, Phosphorus-P , 
+and Calcium-Ca is demonstrated by their AUCs above 97%. The misclassifications seen 
+in the confusion matrix are consistent with the somewhat lower AUCs for Nitrogen-
+N (88%) and Iron-Fe (92%), which indicates slight overlaps with visually comparable 
+deficient groups with small datasets. Overall, the ROC analysis shows that the model 
+has strong predictive reliability across all classes and is very good at detecting nutrient 
+deficits.
+To visually summarize the prediction performance for each nutrient class, a bar chart 
+illustrating precision, recall, and F1-score is provided in Fig. 6.
+The class-wise precision, recall, and F1-score for nutritional deficiency prediction are 
+summarized in Table 5.
+The proposed technique demonstrated good performance in detecting nutrient defi -
+cits across several coffee leaf classes. Based on five-fold cross-validation, the model 
+achieved a macro-averaged accuracy, recall, and F1-score of 94%, 91%, and 92%, respec -
+tively, with a weighted average precision, recall, and F1-score of 94%, 94%, and 94%. With 
+an overall classification accuracy of 94 ± 0.37%, the performance was consistent across 
+various validation folds. Manganese-Mn and Phosphorus-P had the highest F1-scores of 
+97% among the individual nutrient classes, followed by Healthy leaves with an F1-score 
+of 96%, demonstrating the model’s excellent capacity to recognize these groups. On the 
+other hand, because of their visual resemblance to other nutrient insufficiency patterns, 
+Nitrogen-N (F1-score: 87%) and Magnesium-Mg (F1-score: 88%) performed compara -
+tively poorly.
+Fig. 5 ROC curve plot for nutrient deficiency classification
+ 
+Page 16 of 32
+Adugna Discover Artificial Intelligence (2026) 6:1055 
+Although the results show that the categorization capability is effective, the relatively 
+small dataset size must be considered when interpreting the conclusions. The evaluation 
+was carried out on 239 samples with stratified five-fold cross-validation, which reduces 
+bias induced by a single train-test partition and provides a more reliable estimate of 
+model generalizability. However, classes with fewer samples, such as Iron-Fe and Nitro -
+gen-N (n = 13 each), may cause variation in class-specific metrics. Lower recall values for 
+some minority classes indicate that visually identical deficiency symptoms can occasion -
+ally lead to misdiagnosis.
+Nitrogen-N insufficiency, for example, may have visual similarities to Magnesium-Mg 
+shortage, but Potassium-K symptoms may overlap with healthy leaf patterns or other 
+nutritional stress disorders. These difficulties are common in plant disease and nutrient 
+shortage detection tasks, where symptom presentation varies based on ambient condi -
+tions, development phases, and image capture parameters.
+Table 5 The performance of the vision transformer for nutrient deficiency classification before 
+augmentation
+Nutrient 
+deficiency
+Fold-1 (P/R/F1 Fold-2 (P/R/F1) Fold-3 (P/R/
+F1)
+Fold-4 (P/R/
+F1)
+Fold-5 (P/R/
+F1)
+Average
+Boron-B 89/90/89 91/90/90 90/88/89 90/92/91 90/90/90 90/90/90
+Calcium-Ca 90/96/93 92/98/95 91/97/94 91/96/93 91/98/94 91/97/94
+Healthy 92/100/96 91/100/95 93/100/97 92/100/96 92/100/96 92/100/96
+Iron-Fe 100/85/92 100/84/91 100/86/92 100/85/92 100/85/92 100/85/92
+Magne-
+sium-Mg
+82/94/88 84/93/88 83/95/89 85/94/89 81/94/87 83/94/88
+Manga-
+nese-Mn
+100/94/97 100/92/96 100/95/97 100/94/97 100/95/97 100/94/97
+Nitrogen-N 100/77/87 100/75/86 100/78/88 100/77/87 100/78/88 100/77/87
+Phospho-
+rus-P
+98/96/97 97/95/96 99/97/98 98/96/97 98/96/97 98/96/97
+Potassium-K 94/83/88 93/85/89 95/84/89 94/85/89 94/83/88 94/84/89
+Macro Avg 93.4/90.6/91.2 93.8/90.2/91.1 94.6/91.1/92.2 93.9/90.9/91.9 93.8/90.9/91.8 94/91/92
+Weighted 
+Avg
+93.6/93.5/93.2 93.8/93.3/92.9 94.6/94.1/94.1 94.1/93.7/93.6 93.8/93.7/93.5 94/94/94
+Overall ac-
+curacy (%)
+93.5 94.4 94.1 94.3 93.7 94 ± 0.37
+Fig. 6 The bar chart plot for nutrient deficiency classification
+ 
+Page 17 of 32
+Adugna Discover Artificial Intelligence (2026) 6:1055 
+Despite these restrictions, the proposed model performed consistently throughout all 
+five validation folds, with accuracy values ranging from 93.5 to 94.4%, demonstrating 
+stability and resilience. The ROC analysis further confirmed the model’s discriminative 
+performance, with class-wise AUC values ranging from 88% to 99%. The constant preci -
+sion, recall, and F1-score values across nutritional categories, as well as the robust cross-
+validation findings, show that the proposed design can efficiently distinguish between 
+distinct nutrient insufficiency states. Future research combining larger and more diverse 
+datasets gathered under various field situations might enhance model robustness, par -
+ticularly for minority classes with few training samples.
+Overall, the proposed explainable Vision Transformer-based approach achieved com -
+petitive performance for coffee leaf nutrient deficiency classification, obtaining an accu -
+racy of 94 ± 0.37% while maintaining balanced performance across nine nutrient-related 
+classes. These results demonstrate its potential as a reliable decision-support tool for 
+automated nutrient deficiency assessment and provide a strong foundation for future 
+deployment in real-world agricultural applications.
+5.1.2 Treatment suggestions
+The proposed rule-based treatment suggestion module was developed as a decision-sup-
+port tool following the Explainable Vision Transformer (XViT) classification stage. The 
+module does not participate in model training; rather, it receives the nutrient-deficiency 
+class predicted by the XViT model and generates a suitable treatment recommendation 
+based on specified agricultural criteria. The evaluation was designed to assess the rule-
+based system’s capacity to turn nutrient deficiency forecasts into appropriate treatment 
+suggestions. The evaluation centered on:
+(1) Recommendation accuracy
+(2) Rule coverage
+(3) Rule consistency
+(4) Error analysis
+Unlike the earlier version of this work, treatment advice is not presented as a separate 
+machine learning problem. The Explainable Vision Transformer (XViT) solely identifies 
+deficiencies. The predicted nutrient shortage class is then passed to a transparent rule-
+based inference engine, which pulls the appropriate treatment recommendation from a 
+predetermined agricultural knowledge base.
+The recommendation module uses an IF–THEN rule structure.
+The general rule representation is: 
+ IF Ci → THEN Ri (1)
+Where:
+ • Ci represents the detected nutrient deficiency class.
+ • Ri represents the recommended treatment.
+The recommendation criteria were created based on known coffee nutrient management 
+recommendations and confirmed by agricultural specialists to verify that each treat -
+ment suggestion corresponds to conventional agronomic practice for fixing the reported 
+nutrient shortfall. The knowledge base includes one predefined suggestion for each 
+Page 18 of 32
+Adugna Discover Artificial Intelligence (2026) 6:1055 
+nutrient class, providing explicit and consistent decision help. The developed knowledge 
+base consists of nine treatment rules corresponding to the nine coffee leaf classes.
+5.1.3 Rule knowledge bas
+The rule knowledge base was created to establish the link between identified coffee leaf 
+nutrient deficiencies and treatment recommendations. The knowledge base contains a 
+set of preconfigured IF-THEN rules based on typical agricultural nutrient management 
+strategies. Each rule offers expert knowledge that links a specific nutrient deficiency con-
+dition indicated by the Explainable Vision Transformer (XViT) model to a suitable cor -
+rective treatment solution. The goal of this rule-based method is to create a visible and 
+interpretable recommendation process, allowing users to comprehend how a detected 
+defect leads to a certain treatment solution.
+The proposed system has nine rules that correlate to the nine classification catego -
+ries: boron (B), calcium (Ca), healthy, iron (Fe), potassium (K), magnesium (Mg), manga-
+nese (Mn), nitrogen (N), and phosphorus (P). When the XViT model predicts a nutrient 
+deficiency class, the rule inference engine searches the knowledge base and applies the 
+matching rule to provide the proposed treatment. For example, if the projected condi -
+tion is nitrogen deficit, the rule engine will use the rule IF nutrient deficiency = Nitrogen 
+THEN propose Urea. Similarly, potassium insufficiency triggers the rule that recom -
+mends potassium sulfate, whereas a healthy leaf categorization yields no treatment 
+prescription. This rule-based knowledge representation ensures that treatment recom -
+mendations are consistent, understandable, and domain-specific, without the need for 
+extra model training. The rule-based mapping depicted in Table 6.
+The current knowledge base assigns one commonly recommended treatment to each 
+nutrient deficiency based on expert consultation. The objective is to provide transpar -
+ent and interpretable decision support rather than optimize treatment selection. Future 
+work will extend the knowledge base by incorporating alternative treatment options, 
+dosage recommendations, soil properties, coffee cultivars, and nutrient deficiency 
+severity.
+5.1.4 Recommendation performance results
+An experiment was carried out to evaluate the effectiveness of the proposed rule-based 
+treatment suggestion module utilizing the Explainable Vision Transformer’s (XViT) 
+outputs. Each anticipated nutrient deficiency class was fed into the rule-based infer -
+ence engine, which created the appropriate treatment suggestion based on the specified 
+knowledge base. The resulting recommendations were then compared to ground-truth 
+Table 6 The rule-based mapping for deficiency with recommendation
+Rule IF nutrient deficiency THEN recommended treatment
+R1 Boron Borax
+R2 Calcium Gypsum
+R3 Healthy No treatment
+R4 Iron Iron
+R5 Potassium Potassium sulfate
+R6 Magnesium Magnesium sulfate
+R7 Manganese Manganese sulfate
+R8 Nitrogen Urea
+R9 Phosphorus Triple superphosphate
+Page 19 of 32
+Adugna Discover Artificial Intelligence (2026) 6:1055 
+treatment recommendations developed by agricultural professionals. A suggestion was 
+judged correct if the system advised the same treatment as the expert-defined guideline 
+for the relevant nutrient shortage; otherwise, it was deemed invalid. The evaluation was 
+conducted on all 239 coffee leaf photos in the dataset, and the findings were assessed in 
+terms of the number of correct and incorrect recommendations for each nutrient class.
+The overall treatment recommendation accuracy was calculated as:
+ 
+Accuracy = Correct Recommendations
+Total Samples ∗ 100 (2)
+Table 7 indicates balanced performance in both frequent and seldom treatment classes.
+This indicates that 93.72% of coffee leaf samples received the correct treatment 
+recommendation.
+5.1.5 Rule coverage evaluation
+Rule coverage assesses the completeness of the rule-based treatment suggestion module 
+by verifying whether each nutrient deficiency class identified by the Explainable Vision 
+Transformer has a corresponding treatment rule in the knowledge base. A comprehen -
+sive rule foundation ensures that the system can create treatment recommendations for 
+all potential classification outcomes, leaving no nutritional condition untreated. The 
+proposed approach outlined treatment rules for all nine classification categories, includ -
+ing the healthy class. Rule coverage measures whether all possible nutrient conditions 
+are represented in the knowledge base.
+ 
+Rule Coverage = Implemented Rules
+Required Rules ∗ 100 (3)
+The total number of implemented rules is 9, which matches the total number of required 
+rules (9). Therefore, the rule coverage is 100%, indicating that all required rules have 
+been successfully implemented.
+5.1.6 Rule consistency
+Rule consistency evaluation determines if the implemented rules create dependable and 
+consistent results free of conflicts or inconsistencies. Each rule was evaluated under a 
+variety of input conditions to ensure that it performed as anticipated and produced the 
+desired results.
+Table 7 The performance of the vision transformer for treatment suggestions before augmentation
+Nutrient class Number of 
+images
+Correct 
+recommendation
+Incorrect 
+recommendation
+Accu-
+racy 
+(%)
+Boron (B) 20 18 2 90.00
+Calcium (Ca) 32 31 1 96.88
+No treatment 60 60 0 100
+Iron (Fe) 13 10 3 76.92
+Potassium (K) 19 17 2 89.47
+Magnesium (Mg) 16 13 3 81.25
+Manganese (Mn) 17 15 2 88.24
+Nitrogen (N) 13 11 2 84.62
+Phosphorus (P) 49 49 0 100
+Total 239 224 15 93.72
+Page 20 of 32
+Adugna Discover Artificial Intelligence (2026) 6:1055 
+ Rule Consistency = Consistent Outputs
+T otal T ests ∗ 100 (4)
+5.1.7 Error analysis
+Despite constantly applying the established rules, the rule engine made 15 inaccurate 
+suggestions due to faulty nutritional estimates from the XViT classifier. The error analy -
+sis is presented in Table 8.
+The rule-based system correctly processed the predicted input; however, the incorrect 
+input class resulted in an incorrect final recommendation.
+5.1.8 Expert-based evaluation
+To validate the proposed rule-based treatment suggestion module, two agricultural spe -
+cialists independently reviewed the system’s treatment recommendations. Each expert 
+evaluated the recommended treatment for the reported nutrient shortfall and concluded 
+whether it was appropriate in terms of existing coffee nutrient management techniques. 
+Cohen’s Kappa (κ) was used to estimate inter-rater reliability and adjust for chance 
+agreement.
+The Cohen’s Kappa coefficient is calculated as: 
+ κ = Po − Pe
+1 − Pe ∗ 100 (5)
+Where:
+ • Po = observed agreement between the two experts.
+ • Pe = expected agreement by chance.
+The two experts evaluated 100 recommendation cases. The expert-based evaluation of 
+the treatment recommendation module using Cohen’s Kappa is defined in Table 9.
+Using the formula: κ = 0.95−0.30
+1−0.30 ∗ 100 = 0.93.
+According to widely accepted interpretation rules, a Cohen’s Kappa value of 0.93 indi -
+cates nearly perfect agreement, meaning the two experts consistently agreed on the 
+Table 8 Error analysis of incorrect recommendations generated by the rule-based engine due to 
+XViT classifier prediction errors
+Parameter Result
+Actual nutrient class Nitrogen deficiency
+XViT predicted class Magnesium deficiency
+Activated rule Magnesium→ Magnesium sulfate
+Generated recommendation Magnesium sulfate
+Expected recommendation Urea
+Error source Classification error
+Table 9 Expert-based evaluation of the treatment recommendation module using Cohen’s Kappa
+Evaluation metric Result
+Number of experts 2
+Recommendation cases evaluated 100
+Observed agreement (Po) 0.95
+Expected agreement (Pe) 0.30
+Cohen’s Kappa (κ) 0.93
+Interpretation Almost perfect agreement
+Page 21 of 32
+Adugna Discover Artificial Intelligence (2026) 6:1055 
+appropriateness of the treatment recommendations generated by the proposed rule-
+based system.
+The evaluation findings show that the proposed rule-based treatment suggestion mod-
+ule efficiently converts XViT classification results into appropriate treatment sugges -
+tions. The algorithm achieved a recommendation accuracy of 93.72%, indicating that the 
+majority of nutrient shortage predictions were successfully translated into appropriate 
+treatment recommendations. Furthermore, the knowledge base achieved 100% rule cov -
+erage, indicating that all nine nutrient classes have corresponding treatment rules.
+The rule consistency examination revealed that the implemented rules produced stable 
+and conflict-free suggestions, proving the trustworthiness of the inference mechanism. 
+Error analysis found that wrong suggestions were primarily due to classification prob -
+lems in the XViT model rather than failures in the rule-based reasoning process. Fur -
+thermore, expert validation yielded a Cohen’s Kappa score of 0.93, showing near-perfect 
+agreement between agricultural specialists and system-generated recommendations.
+These findings validate the proposed rule-based treatment suggestion module as an 
+interpretable, consistent, and reliable strategy to support coffee nutrition management 
+decisions.
+5.2 Qualitative results
+5.2.1 Grad-CAM implementation and evaluation details
+The proposed XViT model’s final transformer encoder block was used to generate 
+Grad-CAM explanations, which improved the interpretability of nutrient insufficiency 
+categorization. Because Vision Transformers use patch tokens rather than typical con -
+volutional feature maps, the retrieved token representations were molded into their 
+matching spatial patch pattern before creating the activation maps. The class token was 
+eliminated, and the remaining patch tokens were reorganized using the original patch 
+grid dimensions to create a two-dimensional spatial representation. The resulting Grad-
+CAM heatmaps were scaled to match the original image dimensions and superimposed 
+over the input coffee leaf images [34].
+To show the proposed framework’s practical usability and interpretability, qualitative 
+findings were created utilizing a Flask-based web interface. Users can upload coffee leaf 
+images and receive the predicted nutrient deficiency class, rule-based treatment recom -
+mendation, and Grad-CAM visualization that explains the classification decision. The 
+qualitative examples in Fig. 7 show how the proposed XViT model concentrates on visu-
+ally significant leaf regions related to nutrient deficiency symptoms such as chlorosis, 
+necrosis, and coloring.
+The Grad-CAM heatmaps show that the model predictions are based on significant 
+symptom regions, rather than irrelevant background data. The highlighted areas show 
+the image regions that contribute most heavily to the nutritional deficit classification 
+judgment. It should be highlighted that therapy recommendations are not independently 
+predicted by the machine learning model. Instead, they are generated by a determinis -
+tic expert-defined mapping from the projected nutritional shortage class to the related 
+management advice. Therefore, Grad-CAM analysis was used primarily on the nutri -
+tional deficit classification model.
+The Grad-CAM heatmaps show that the model predictions are based on significant 
+symptom regions, rather than irrelevant background data. The highlighted areas show 
+Page 22 of 32
+Adugna Discover Artificial Intelligence (2026) 6:1055 
+the image regions that contribute most heavily to the nutritional deficit classification 
+judgment. It should be highlighted that therapy recommendations are not independently 
+predicted by the machine learning model. Instead, they are generated by a determinis -
+tic expert-defined mapping from the projected nutritional shortage class to the related 
+management advice. Therefore, Grad-CAM analysis was used primarily for the nutri -
+tional deficit classification model. The quantitative evaluation of Grad-CAM explana -
+tions is presented in Table 10.
+The quantitative results from Grad-CAM show that the proposed XViT model is reli -
+able and interpretable. The low AUC-Deletion score (0.18 ± 0.01) indicates that deleting 
+the most impactful image regions significantly affects model confidence. This suggests 
+that the classifier depends on meaningful visual features rather than irrelevant back -
+ground patterns. The high AUC-Insertion value (0.86 ± 0.02) shows that gradually restor-
+ing significant image regions quickly restores prediction confidence, indicating that 
+the model accurately detects discriminative symptom regions associated with nutrient 
+shortage classes.
+These results show that the proposed XViT framework not only performs well in 
+classification, but also provides accurate visual explanations for agronomic signs such 
+as chlorosis, necrosis, and discoloration. The matching of model attention regions with 
+visually observable deficiency symptoms improves transparency and lends support 
+for the framework’s use as an explainable decision-support system for precision coffee 
+cultivation.
+5.3 State-of-the-art comparison
+We further conducted a comparative evaluation against state-of-the-art models using 
+the augmented dataset to assess performance under identical experimental conditions. 
+Table 10 Quantitative evaluation of Grad-CAM explanations for nutrient deficiency classification
+Metric Deficiency
+AUC-deletion 0.18 ± 0.01
+AUC-insertion 0.86 ± 0.02
+Fig. 7 Sample Grad-CAM visualization
+ 
+Page 23 of 32
+Adugna Discover Artificial Intelligence (2026) 6:1055 
+Specifically, ResNet-50, ConvNeXt, and EfficientNet-B4 were employed as representa -
+tive baseline architectures. ResNet-50 and EfficientNet-B4 have been widely adopted as 
+strong baseline architectures in agricultural image analysis [ 30, 31]. In multi-crop dis -
+ease detection tasks, demonstrating its practical effectiveness in field conditions. Effi -
+cientNet-B4 has also shown excellent performance for disease and nutrient deficiency 
+classification, achieving high accuracy in lettuce disease detection and nutrient defi -
+ciency diagnosis when integrated with feature refinement modules [ 32, 33]. ConvNeXt 
+is a contemporary convolutional neural network (CNN) architecture that was presented 
+in 2022. It uses concepts from Vision Transformers to revamp conventional CNNs. It 
+seeks to achieve state-of-the-art performance while maintaining the simplicity of convo-
+lutional models, bridging the gap between CNNs and transformers.
+All baseline models (ResNet-50, ConvNeXt, and EfficientNet-B4) were implemented 
+under identical training conditions, including the same dataset splits, data augmenta -
+tion strategy, optimizer (Adam), learning rate, batch size, number of epochs, and evalu -
+ation protocol (5-fold cross-validation), to ensure a fair and consistent comparison. The 
+comparison was limited to the task of classifying nutritional deficiencies. Because it is 
+a deterministic inference component that functions after classification and does not 
+require model training, the rule-based treatment recommendation module was left out 
+of this benchmark. The quantitative benchmark results are summarized in Table 11, pro-
+viding a clear and interpretable comparison of model performance. We also evaluated 
+the paired t-test in Table 11.
+Table 11 compares the classification performance of the proposed XViT model to the 
+baseline architectures on the original dataset, using five-fold cross-validation. All mod -
+els were evaluated under identical experimental conditions, with performance indicators 
+including precision, recall, F1-score, and classification accuracy. The XViT model out -
+performed all investigated models, with average precision, recall, and F1-score of 94%, 
+94%, and 94%, respectively, and an overall classification accuracy of 94 ± 0.37%. The fold-
+level findings confirm the proposed model’s stability, with precision values ranging from 
+93.6 to 94.9%, recall values from 93.3 to 94.1%, and F1-scores ranging from 93.1 to 94.2% 
+throughout the five validation folds.
+The ConvNeXt model has an average accuracy of 91 ± 0.02%, with 90% precision, 89% 
+recall, and 89% F1-score. ResNet-50 achieved an average accuracy of 90 ± 0.03%, with 
+precision, recall, and F1-scores of 89%, 88%, and 88%. EfficientNet-B4 had an accuracy 
+of 89 ± 0.03%, with precision, recall, and F1-score values of 88%, 87%, and 87%. These 
+findings show that the proposed XViT consistently beat all baseline topologies across the 
+measures tested.
+The superior performance of XViT can be attributed to the ability of the Vision Trans-
+former architecture to model long-range dependencies through its self-attention mech -
+anism. Unlike convolution-based architectures that primarily focus on local feature 
+Table 11 Classification performance comparison using the original dataset
+Model Fold-1
+(P/R/F1)
+Fold-2
+(P/R/F1)
+Fold-3
+(P/R/F1)
+Fold-4
+(P/R/F1)
+Fold-
+5 (P/R/F1)
+Average
+(P/R/F1)
+Mean accuracy
+ResNet-50 88/87/87 89/88/88 90/89/89 89/88/88 89/88/88 89/88/88 90 ± 0.03
+EfficientNet-B4 87/86/86 88/87/87 89/88/88 88/87/87 88/87/87 88/87/87 89 ± 0.03
+ConvNeXt 89/88/88 90/89/89 91/90/90 90/89/89 90/89/89 90/89/89 91 ± 0.02
+Proposed XViT 93.6/93.5/93.2 93.8/93.3/93.10 94.6/
+94.1/94.2
+94.9/93.7
+/93.6
+93.8/93.7
+/93.5
+94/94
+/94
+94 ± 0.37%
+Page 24 of 32
+Adugna Discover Artificial Intelligence (2026) 6:1055 
+extraction, XViT can capture global contextual relationships and subtle visual variations 
+associated with nutrient deficiency symptoms. This enhanced feature representation 
+capability enables more accurate discrimination among visually similar nutrient defi -
+ciency categories, leading to improved classification robustness and generalization per -
+formance. The performance comparison for augmented images depicted in Table 12.
+5.3.1 Augmented dataset performance analysis
+All models showed enhanced classification performance following the application of data 
+augmentation. The accuracy of ResNet-50 improved from 90 to 91%, EfficientNet-B4 
+from 89 to 90%, and ConvNeXt from 91 to 92%. With 96% accuracy, 95% precision, 94% 
+recall, and 94% F1-score, the proposed XViT demonstrated the greatest improvement.
+The improvement shows that by broadening the variety of training samples, augmen -
+tation improved model generalization. The better performance of XViT indicates that 
+Vision Transformers’ self-attention mechanism successfully captures complex visual 
+patterns and global spatial linkages linked to nutrient shortages in coffee leaves. Table 13 
+presents the comparison of model accuracy before and after data augmentation.
+Overall, across both the original and enriched datasets, the XViT consistently outper -
+formed the basic CNN architectures. XViT had the best accuracy of 94% without aug -
+mentation, but with augmentation, it reached 96%. The steady improvement confirms 
+the robustness of the proposed model for classifying coffee leaf nutrient deficiencies 
+across evaluation conditions. The rule-based recommendation module receives the pro -
+jected nutrient deficiency classes after categorization and uses the preset agricultural 
+knowledge base to produce clear treatment recommendations.
+5.3.2 Statistical significance evaluation
+To ensure reproducibility and statistical validity, paired t-tests were recalculated using 
+only the fold-level accuracy values. For each comparison, the accuracy obtained by 
+the proposed XViT model was paired with the corresponding accuracy of each base -
+line model on the identical cross-validation folds. Therefore, each statistical test con -
+sisted of five paired observations (n = 5), resulting in four degrees of freedom (df = 4). The 
+Table 12 Classification performance comparison using the augmented dataset
+Model Fold-1
+(P/R/F1)
+Fold-2
+(P/R/F1)
+Fold-3
+(P/R/F1)
+Fold-4
+(P/R/F1)
+Fold-
+5 (P/R/F1)
+Average
+(P/R/F1)
+Mean accuracy
+ResNet-50 89.2/88.3
+/88.6
+89.7/88.8
+/89.1
+90.8/89.7
+/90
+90.3/89.1
+/89.5
+90/88.9
+/89.2
+90/89
+/89
+91.2 ± 0.34
+EfficientNet-B4 88.3/87.4/
+87.6
+88.7/87.8/88 89.8/88.9
+/89.1
+89.2/88.3/
+88.6
+89.1/87.7/
+87.9
+89/88/
+88
+90.0 ± 0.22
+ConvNeXt 90.3/89.2/
+89.6
+90.8/89.7/90.0 91.7/90.8
+/91.1
+91.2/90.1/
+90.4
+91.0/90.2/89.9 91.0/90.0/
+90.0
+92.0 ± 0.19
+Proposed XViT 94.4/93.2/
+93.6
+94.8/93.7
+/94.0
+95.6/94.8/
+95.1
+95.3/94.2/
+94.6
+94.9/94.1/
+93.9
+95.0/94.0/
+94.0
+96.0 ± 0.29
+Table 13 Performance improvement after augmentation
+Model Original accuracy (%) Augmented accuracy (%) Improvement (%)
+ResNet-50 90 91 + 1
+EfficientNet-B4 89 90 + 1
+ConvNeXt 91 92 + 1
+Proposed XViT 94 96 + 2
+Page 25 of 32
+Adugna Discover Artificial Intelligence (2026) 6:1055 
+recalculated t-statistics were obtained directly from the fold-wise accuracy differences, 
+ensuring consistency between the reported cross-validation results and statistical analy -
+sis. Precision, recall, and F1-score values were not included in the hypothesis testing and 
+were considered only as descriptive performance metrics. The fold-level accuracy results 
+are used for paired t-test analysis in Table 14.
+To further validate whether the performance improvements achieved by the proposed 
+XViT model were statistically significant compared with the baseline architectures, 
+paired t-tests were conducted using the fold-level accuracy values. The statistical com -
+parison results are presented in Table 15.
+The paired t-test findings show that the proposed XViT model improved statistically 
+significantly when compared to all baseline topologies. All comparisons yielded p-val -
+ues less than 0.001, indicating that the observed performance increases were unlikely to 
+happen by coincidence. These findings demonstrate that XViT’s performance advantage 
+over standard CNN-based models is statistically significant. The model accuracy and 
+loss plot are depicted in Figs. 8 and 9.
+The convergence and generalization of ResNet-50, EfficientNet-B4, and the proposed 
+XViT are shown by the training and validation curves across 100 epochs (Figs.  7 and 
+8). Effective learning and strong generalization are demonstrated by the decreasing 
+training and validation losses of all models. XViT outperforms ResNet-50 (91.2 ± 0.34), 
+EfficientNet-B4 (90.0 ± 0.22), and ConvNeXt (92.0 ± 0.19) in terms of convergence speed, 
+Table 14 The Fold-level accuracy results on the augmented dataset used for paired t-test analysis
+Fold 1 Fold 2 Fold 3 Fold 4 Fold 5 Mean ± SD
+ResNet-50 91.7 91.3 91.2 90.8 91.1 91.2 ± 0.34
+EfficientNet-B4 89.7 90.2 90.1 89.8 90.2 90.0 ± 0.22
+ConvNeXt 91.8 92.1 92.3 91.9 92.1 92.0 ± 0.19
+Proposed XViT 95.6 96.2 96.1 95.8 96.3 96.0 ± 0.29
+Table 15 Statistical evaluation results of paired t-test
+Comparison t-statistic p-value Degrees of freedom (df) Interpretation
+XViT vs. ResNet-50 20.99 p < 0.001 4 Significant
+XViT vs. EfficientNet-B4 189.74 p < 0.001 4 Significant
+XViT vs. ConvNeXt 48.72 p < 0.001 4 Significant
+Fig. 8 The training and validation accuracy plot
+ 
+Page 26 of 32
+Adugna Discover Artificial Intelligence (2026) 6:1055 
+accuracy (96 ± 0.29), and lowest loss. Its training and validation curves behave similarly, 
+indicating little overfitting. The efficiency and stability of the proposed framework for 
+nutrient insufficiency identification and practical treatment suggestions are confirmed 
+by these results, which also support the prior quantitative metrics.
+5.3.3 Ablation study
+The main elements of the proposed framework, such as the impact of data augmenta -
+tion, the efficiency of the Explainable Vision Transformer (XViT) architecture in com -
+parison to traditional CNN models, and the contribution of the rule-based treatment 
+recommendation module, were examined through an ablation study.
+5.3.4 Effect of data augmentation
+The effect of data augmentation on nutritional deficiency classification performance was 
+determined by comparing model performance before and after class-wise augmentation. 
+The augmentation method aimed to boost the representation of minority nutritional 
+deficit categories while preserving the original qualities of coffee leaf photos.
+As shown in Tables  12 and 13, data augmentation increased classification perfor -
+mance, especially for classes with few samples, such as iron (Fe), nitrogen (N), mag -
+nesium (Mg), and potassium (K). The increased representation of minority classes 
+improved the model’s capacity to identify underrepresented nutritional insufficiency 
+patterns while decreasing bias toward majority classes.
+After augmentation, the proposed XViT’s overall accuracy increased from 94% to 
+96%, indicating that increasing training diversity improved model generalization. The 
+improvement in minority class recognition demonstrates the efficacy of class-wise aug -
+mentation in resolving dataset imbalance.
+5.3.5 Comparison of XViT with baseline models
+The recommended treatment is not regarded as a stand-alone machine learning task. As 
+a result, the ablation study concentrates on the proposed XViT model’s capacity to clas -
+sify nutrient deficiencies.
+Using the same training settings and evaluation procedures, the proposed XViT 
+was contrasted with representative baseline architectures, such as ResNet-50, 
+Fig. 9 The model training and validation loss plot
+ 
+Page 27 of 32
+Adugna Discover Artificial Intelligence (2026) 6:1055 
+EfficientNet-B4, and ConvNeXt. The proposed XViT produced the best classification 
+results on both the original and augmented datasets, as demonstrated in Table 13.
+XViT attained an accuracy of 94% on the original dataset, surpassing ResNet-50 (90%), 
+EfficientNet-B4 (89%), and ConvNeXt (91%). Following augmentation, XViT increased 
+to 96% accuracy, whereas ResNet-50, EfficientNet-B4, and ConvNeXt obtained 91%, 
+90%, and 92%, respectively.
+The proposed model’s higher performance is due to the self-attention mechanism of 
+Vision Transformers, which allows the model to grasp global spatial linkages and long-
+range dependencies in coffee leaf images. These traits are especially useful for identi -
+fying vitamin deficiencies, which frequently manifest as subtle and spatially scattered 
+visual patterns.
+5.3.6 Evaluation of the rule-based treatment recommendation module
+The contribution of the rule-based recommendation component was assessed indepen -
+dently because it is a deterministic decision-support module rather than a trainable pre -
+diction model. The XViT classifier’s expected nutrient shortage class was submitted to 
+the IF-THEN rule inference engine, which created the appropriate treatment suggestion 
+from the expert-defined knowledge base.
+The rule-based module achieved:
+ • 100% rule coverage, because all nine nutrient deficiency categories contained 
+corresponding treatment rules.
+ • 100% rule consistency, because identical inputs always generated identical treatment 
+recommendations.
+ • 93.72% end-to-end recommendation success rate, where incorrect recommendations 
+resulted from XViT classification errors rather than rule inference failures.
+ • Cohen’s Kappa = 0.93, indicating almost perfect agreement between agricultural 
+experts and system-generated recommendations.
+These results demonstrate that the rule-based recommendation module successfully 
+converts model predictions into transparent and interpretable agricultural guidance.
+5.3.7 Statistical significance analysis
+To evaluate whether the improvement of the proposed XViT over baseline models was 
+statistically significant, paired statistical tests were performed using the accuracy values 
+obtained from the five-fold cross-validation results.
+The comparisons demonstrated statistically significant improvements:
+ • XViT vs. ResNet-50: t = 20.99, p < 0.01.
+ • XViT vs. EfficientNet-B4: t = 189.74, p < 0.01.
+ • XViT vs. ConvNeXt: t = 48.72, p < 0.01.
+The results confirm that the performance improvements achieved by the proposed XViT 
+were statistically meaningful.
+5.3.8 Impact of dataset balance
+The augmentation method improved the balance of majority and minority nutritional 
+deficit groups. Increasing the number of samples in underrepresented classes improved 
+Page 28 of 32
+Adugna Discover Artificial Intelligence (2026) 6:1055 
+the model’s capacity to detect unusual nutrient insufficiency symptoms while not affect -
+ing performance in well-represented classes.
+This balanced learning approach helped to increase memory and F1-score values for 
+minority categories while reducing the potential of biased predictions toward dominant 
+classes.
+The ablation findings show that each component of the proposed system helps to 
+increase performance. Data augmentation makes models more robust by boosting sam -
+ple variety and lowering class imbalance. The XViT architecture outperforms conven -
+tional CNN-based models in feature representation by capturing global linkages as well 
+as small visual differences in coffee leaf symptoms. Furthermore, the rule-based recom -
+mendation module offers a clear and understandable method for translating classifica -
+tion results into agronomic suggestions.
+6 Discussion
+The proposed XViT model routinely outperforms cutting-edge baselines like ResNet-50, 
+EfficientNet-B4, and ConvNeXt in detecting nutrient deficits and suggesting practical 
+treatment for coffee leaves. The proposed XViT successfully captures both local and 
+global aspects of the input images for accurate nutrient deficiency classification. Subse -
+quently, the classified deficiency is mapped to its related treatment using a deterministic 
+rule-based engine. The vision transformer architecture contributes to enhanced perfor -
+mance by modeling long-range dependencies across leaf images, which is particularly 
+beneficial for complex patterns of nutrient stress that may not be captured by traditional 
+CNN-based models.
+Crucially, the interpretability of the predictions is made possible by the explainable 
+nature of XViT, which highlights leaf regions most suggestive of nutritional deficits 
+and is visualized by Grad-CAM and attention maps. This openness helps agronomists 
+make better-informed and effective treatment decisions by validating the model’s deci -
+sion-making process and offering useful advice. The baseline comparison study with 
+ResNet-50, EfficientNet-B4, and ConvNeXt highlights the benefits of XViT in utilizing 
+transformer-based global context.
+Beyond quantitative superiority, XViT demonstrates promise in practical agricultural 
+applications by bridging the gap between AI-driven predictions and field-level decision-
+making through the combination of high accuracy and Explainability. Future research 
+could concentrate on assessing how well the model applies to other coffee cultivars, 
+environmental circumstances, and leaf developmental phases. Predictive power could be 
+further increased by including multispectral imagery or temporal growth data. Overall, 
+the findings show that XViT is an effective and comprehensible framework for manag -
+ing the nutrients in coffee leaves, offering practical insights and a standard for upcoming 
+models in precision agriculture.
+Key discussion points:
+ • The proposed XViT model outperformed ResNet-50, EfficientNet-B4, and ConvNeXt 
+in nutrient deficiency classification under identical experimental settings, achieving 
+superior precision, recall, F1-score, and accuracy.
+ • The framework integrates XViT-based nutrient deficiency detection with 
+a transparent rule-based treatment recommendation module, ensuring 
+Page 29 of 32
+Adugna Discover Artificial Intelligence (2026) 6:1055 
+interpretable and expert-guided treatment suggestions without treating treatment 
+recommendation as an independent learning task.
+ • The Vision Transformer architecture effectively captures global contextual 
+information and long-range dependencies, improving discrimination of visually 
+similar nutrient deficiency symptoms compared with CNN-based models.
+ • Data augmentation enhanced model robustness by improving training diversity and 
+recognition of minority nutrient deficiency classes.
+ • Grad-CAM and attention visualization improve model transparency by highlighting 
+image regions influencing predictions, supporting user trust and practical 
+agricultural deployment.
+ • The rule-based recommendation module provides consistent and agronomical 
+meaningful treatment suggestions through an expert-defined knowledge base, 
+achieving complete rule coverage and strong expert agreement.
+ • The proposed framework demonstrates potential for precision coffee nutrient 
+management by combining accurate diagnosis with interpretable decision support.
+ • Future work will explore severity-aware recommendations, soil and environmental 
+factors, multispectral imaging, temporal monitoring, diverse coffee cultivars, and 
+field-scale validation.
+6.1 Dataset size and overfitting considerations
+Although the proposed model performs well, the dataset employed in this work is quite 
+limited, with just 1,196 photos compared to larger benchmarks. Such minimal data may 
+raise the likelihood of overfitting, in which the model learns dataset-specific patterns 
+rather than generalizable characteristics.
+To address this issue, numerous solutions were implemented. First, substantial data 
+augmentation techniques such as rotation, flipping, scaling, and brightness manipula -
+tion were used to artificially increase data diversity. Second, transfer learning was used, 
+which enabled the model to use pretrained weights from large-scale datasets, enhanc -
+ing generalization. Third, regularization techniques like dropout were used to keep the 
+model from memorizing training data. To ensure robustness, the model’s performance 
+was assessed using distinct training and validation splits.
+Despite these efforts, the limited dataset size remains a constraint, and the model’s 
+generalization capability may be further improved by incorporating larger and more 
+diverse datasets collected under varying environmental conditions. Future work will 
+focus on expanding the dataset and validating the model across different geographical 
+regions.
+6.2 Limitations
+Despite its high performance, the proposed framework has a few restrictions. The data -
+set’s quantity and diversity are restricted, which may impact generalization across dif -
+ferent coffee types, geographies, and environmental conditions. The current model is 
+based mostly on leaf images and does not take into account additional parameters such 
+as soil conditions, climate, or plant growth stage, all of which influence nutrient deficits. 
+Furthermore, the rule-based suggestion module is based on expert-defined knowledge 
+and may require adaptation to diverse agricultural practices. Additional field validation 
+Page 30 of 32
+Adugna Discover Artificial Intelligence (2026) 6:1055 
+with larger and more diverse datasets is required to increase robustness and real-world 
+deployment capability.
+6.3 Practical implications and deployment
+The proposed XViT-based approach has the potential to improve precision coffee grow -
+ing by delivering quick and interpretable nutrient shortage diagnosis and expert-guided 
+fertilizer recommendations. In real-world applications, farmers or agricultural extension 
+workers can use mobile devices or field cameras to collect photos of coffee leaves, which 
+the model subsequently processes to indicate potential nutrient deficits. The projected 
+deficiency class is then transformed into a suitable fertilizer recommendation using the 
+rule-based knowledge module, allowing for timely and informed nutrient management 
+decisions.
+The incorporation of Grad-CAM-based explanations boosts user trust by showing the 
+leaf regions that drive the model’s predictions, allowing agronomists to confirm whether 
+the reported symptoms match meaningful deficiency patterns. This combination of auto-
+mated diagnosis, transparent reasoning, and expert-based recommendations decreases 
+reliance on manual inspection while promoting more efficient crop monitoring.
+The proposed framework can be deployed as a lightweight mobile or cloud-based deci-
+sion assistance application. A mobile-based system would allow for field-level diagno -
+sis in areas with limited access to agricultural experts, whereas a cloud-based platform 
+could provide centralized monitoring, model updates, and integration with additional 
+agricultural data sources such as soil properties, environmental conditions, and farm 
+management records. Future deployment studies should test the model in a variety of 
+field situations, coffee types, and geographical regions to determine its robustness and 
+scalability.
+7 Conclusion and future work
+7.1 Conclusion
+This study proposed an explainable Vision Transformer (XViT)-based framework for 
+automated coffee leaf nutrient deficiency classification and treatment recommen -
+dation. The framework integrates class-wise data augmentation, an XViT classifier, 
+Grad-CAM explainability, and a rule-based recommendation module to provide accu -
+rate, transparent, and practical decision support for precision coffee farming. Experi -
+mental results demonstrated that the proposed framework consistently outperformed 
+ResNet-50, EfficientNet-B4, and ConvNeXt under identical experimental conditions. 
+The proposed XViT achieved a classification accuracy of 94 ± 0.37% on the original 
+dataset and 96 ± 0.29% on the augmented dataset, showing that data augmentation 
+effectively improved class balance and enhanced the recognition of minority nutrient 
+deficiency classes. Statistical analysis further confirmed that the performance improve -
+ments over the baseline models were statistically significant ( p < 0.001). In addition, 
+Grad-CAM visualizations demonstrated that the model focused on agronomical mean -
+ingful symptom regions, improving the interpretability of its predictions. The rule-
+based recommendation module also provided consistent and expert-aligned treatment 
+recommendations, achieving 100% rule coverage, 100% rule consistency, and a 93.72% 
+end-to-end recommendation success rate. Overall, the proposed framework offers an 
+Page 31 of 32
+Adugna Discover Artificial Intelligence (2026) 6:1055 
+accurate, explainable, and reliable decision-support system with strong potential to sup -
+port sustainable coffee nutrient management and precision agriculture.
+7.2 Future work
+Future studies will focus on enhancing the robustness and practical application of the 
+proposed framework. A wider and more diverse coffee leaf dataset collected from dif -
+ferent geographic regions and climatic conditions will be used to boost the model’s gen -
+eralization capabilities. Additional nutrient deficiencies, plant diseases, and combined 
+stress conditions can also be incorporated to develop a more comprehensive crop health 
+diagnosis system.
+Furthermore, the framework can be expanded to include environmental parameters 
+such as soil nutrient information, meteorological conditions, and IoT sensor data, result-
+ing in more context-aware treatment recommendations. Future research may look into 
+advanced explainable AI techniques, such as SHAP and LIME, to supplement Grad-
+CAM and improve model transparency. Finally, adopting the proposed framework as a 
+lightweight mobile or cloud-based application would allow for real-time nutrient defi -
+ciency diagnosis and treatment recommendations, making it more useful for precision 
+coffee farming and sustainable agricultural management.
+Acknowledgements
+The author would like to thank the agricultural experts who provided valuable knowledge and evaluation support for 
+validating the rule-based treatment recommendation module.
+Author contributions
+Fikadu Berie Adugna conceptualized and designed the study, developed the Explainable Vision Transformer for Coffee 
+Leaf Nutrient Deficiency Detection with Rule-Based Treatment Recommendation model, conducted data collection and 
+preprocessing, performed experiments and evaluations, implemented explainable AI methods, analyzed and interpreted 
+the results, and drafted, reviewed, and finalized the manuscript. All work reported in this study was carried out solely by 
+the author.
+Funding
+The author declares no funding for this research.
+Data availability
+The compiled image dataset used during the current study is available in ( h t t p s : / / w w w . k a g g l e . c o m / d a t a s e t s / a l i n e d 
+o b r o v s k y / p l a n t - d i s e a s e - c l a s s i fi c a t i o n - m e r g e d - d a t a s e t ) and ( h t t p s : / / d a t a . m e n d e l e y . c o m / d a t a s e t s / b r f g w 4 6 w z b / 1 ) . T h 
+e compiled image dataset, source code, trained models, XViT framework, and rule-based treatment recommendation 
+module developed in this study are available from the corresponding author, Fikadu Berie Adugna, upon reasonable 
+request to support reproducibility (fikadu.berie@uog.edu.et).
+Declarations
+Ethics approval and consent to participate
+Not applicable.
+Consent for publication
+Not applicable.
+Competing interests
+The authors declare no competing interests.
+Received: 3 February 2026 / Accepted: 29 August 2026
+References
+1. Emadi RC, Kamangar F. Coffee’s impact on health and well-being. Nutrients. 2025;17:2558. h t t p s : / / d o i . o r g / 1 0 . 3 3 9 0 / n u 1 7 1 5 
+2 5 5 8 . 
+2. Araaf RT, Minn A, Ahamed T. Coffee leaf rust disease detection and implementation of an edge device for pruning infected 
+leaves via deep learning algorithms. Sensors. 2024;24(24):8018. https://doi.org/10.3390/s24248018.
+3. Sb H. Nutrient management strategies for sustainable coffee production in a climate change scenario. Food Sci Nutr 
+Technol. 2024;9(3):1–4. https://doi.org/10.23880/fsnt-16000347.
+Page 32 of 32
+Adugna Discover Artificial Intelligence (2026) 6:1055 
+4. Ramirez-Builes VH, Küsters J, Thiele E, Leal-Varon LA. Boron nutrition in coffee improves drought stress resistance and, 
+together with calcium, improves long-term productivity and seed composition. Agronomy. 2024;14(3):474. h t t p s : / / d o i . o r g 
+/ 1 0 . 3 3 9 0 / a g r o n o m y 1 4 0 3 0 4 7 4 . 
+5. Randive L, Sapkal S, Bornare D. Nutrient deficiency detection and classification in coffee leaves using deep learning mod-
+els. EPJ Web Conf. 2025;328:01038. https://doi.org/10.1051/epjconf/202532801038.
+6. Calderón-Mosilot C, Tapia-Gálvez U, Arcila-Diaz J, Mejia-Cabrera HI. Diagnosis of nutritional deficiencies in coffee plants 
+through automated analysis of digital images using deep learning in uncontrolled agricultural environments. AgriEngi-
+neering. 2025;7(12):421. https://doi .org/10.339 0/agriengin eering71 20421.
+7. Silva CESE, Fragoso JB, Paixão T, Alvarez AB, Palomino-Quispe F. A low computational cost deep learning approach for 
+localization and classification of diseases and pests in coffee leaves. IEEE Access. 2025;13:71943–64. h t t p s : / / d o i . o r g / 1 0 . 1 1 0 
+9 / A C C E S S . 2 0 2 5 . 3 5 6 2 8 3 2 . 
+8. Pham TC, Nguyen TN, Nguyen VD. Ambiguity-aware semi-supervised learning for leaf disease classification. Sci Rep. 
+2025;15(1):14070. https://doi.org/10.1038/s41598-025-95849-3.
+9. Pham TC, Nguyen VD, Le CH, Packianather M, Hoang VD. Artificial intelligence-based solutions for coffee leaf disease clas-
+sification. IOP Conf Ser Earth Environ Sci. 2023;1278(1):012004. https://doi .org/10.108 8/1755-1315 /1278/1/ 012004.
+10. Adugna FB. Explainable hybrid CNN-vision transformer with morphometric and cross-modal attention for simultaneous 
+classification of rice seed ecology and variety. Smart Agricultural Technol. 2026;14:102183. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . a t e c h . 
+2 0 2 6 . 1 0 2 1 8 3 . 
+11. Adugna FB, et al. Explainable attention-based convolutional neural network for multi-trait soybean seed variety classifica-
+tion. Discover Artif Intell. 2026;6:275. https://doi.org/10.1007/s44163-026-00964-3.
+12. Kameswari CS, et al. An overview of vision transformers for image processing: a survey. Int J Adv Comput Sci Appl. 2023. 
+https://doi.org/10.14569/IJACSA.2023.0140830.
+13. Maurício J, Domingues I, Bernardino J. Comparing vision transformers and convolutional neural networks for image clas-
+sification: a literature review. Appl Sci. 2023;13(9):5521. https://doi.org/10.3390/app13095521.
+14. Barman U, et al. ViT-SmartAgri: vision transformer and smartphone-based plant disease detection for smart agriculture. 
+Agronomy. 2024;14(2):327. https://doi.org/10.3390/agronomy14020327.
+15. Fu X, et al. Crop pest image recognition based on the improved ViT method. Inf Process Agric. 2024;11(2):249–59. h t t p s : / / d 
+o i . o r g / 1 0 . 1 0 1 6 / j . i n p a . 2 0 2 3 . 0 2 . 0 0 7 . 
+16. Chen K, Xue B, Zhang M, Zhou F. An evolutionary multitasking-based feature selection method for high-dimensional clas-
+sification. IEEE Trans Cybern. 2022;52(7):7172–86. https://doi.org/10.1109/TCYB.2020.3042243.
+17. Milke EB, Gebiremariam MT, Salau AO. Development of a coffee wilt disease identification model using deep learning. Inf 
+Med Unlocked. 2023;42:101344. https://doi.org/10.1016/j.imu.2023.101344.
+18. Paulos EB, Woldeyohannis MM. Detection and classification of coffee leaf disease using deep learning. In: 2022 Inter-
+national conference on information and communication technology for development for Africa (ICT4DA), Bahir Dar, 
+Ethiopia: IEEE; 2022, pp. 1–6. https://doi.org/10.1109/ICT4DA56482. 2022 .9 971300
+19. Taye BG, Goel N. Coffee Leaf plant disease identification through image processing and machine-learning techniques in 
+Ethiopia. In Review; 2024. https://doi .org/10.339 0/agriengin eering70 10013.
+20. Adelaja O, Pranggono B. Leveraging deep learning for real-time coffee leaf disease identification. AgriEngineering. 
+2025;7(1):13. https: //d oi. or g/10 .3390/agriengineeri ng7010013.
+21. Selvanarayanan R, Rajendran S, Alotaibi Y. Early detection of colletotrichum kahawae disease in coffee cherry based on 
+computer vision techniques. Comput Model Eng Sci. 2024;139(1):759–82. https://doi.org/10.32604/cmes.2023.044084.
+22. Thakur D, et al. SUNet: Coffee leaf disease detection using hybrid deep learning model. IEEE Access. 2024;12:149173–91. 
+https://doi.org/10.1109/ACCESS.2024.3476211.
+23. Faisal M, Leu J-S, Darmawan JT. Model selection of hybrid feature fusion for coffee leaf disease classification. IEEE Access. 
+2023;11:62281–91. https://doi.org/10.1109/ACCESS.2023.3286935.
+24. Maruthai S, Selvanarayanan R, Thanarajan T, Rajendran S. Hybrid vision GNNs based early detection and protection against 
+pest diseases in coffee plants. Sci Rep. 2025;15(1):11778. https://doi.org/10.1038/s41598-025-96523-4.
+25. Hughes S, et al. Using deep learning for image-based plant disease detection. Front Plant Sci. 2023;7:1419.
+26. Dosovitskiy A et al. An image is worth 16 x 16 words: transformers for image recognition at scale. In: International confer-
+ence on learning representations (ICLR); 2023, p.1018.
+27. Wang S, Zhang Y. Grad-CAM: understanding AI models. Comput Mater Contin. 2023;76(2):1321–4. h t t p s : / / d o i . o r g / 1 0 . 3 2 6 0 
+4 / c m c 2 0 2 3 . 0 4 1 4 1 9 . 
+28. Gopalan K, Srinivasan S, Singh PM, Mathivanan SK, Moorthy U. Corn leaf disease diagnosis: enhancing accuracy with 
+ResNet152 and Grad-CAM for explainable AI. BMC Plant Biol. 2025;25(1):440. https://doi.org/10.1186/s12870-025-06386-0.
+29. Adugna FB. An interpretable vision transformer framework for joint wheat leaf disease classification and pesticide recom-
+mendation. Discov Artif Intell Springer Nat. 2026. https://doi.org/10.1007/s44163-026-01896-8.
+30. Sagnika S, Malhotra M, Deol IK. PlantDiseaseNet-RT50: a fine-tuned ResNet50 architecture for high-accuracy plant disease 
+detection beyond standard CNNs. https://doi.org/10.5753/eniac.2024.244378
+31. Junior AGC, da Silva FS, Rios R. Deep learning-based transfer learning for classification of cassava disease. In: Anais do XXI 
+Encontro Nacional de Inteligência Artificial e Computacional (ENIAC 2024); 2024, pp. 364–375. h t t p s : / / d o i . o r g / 1 0 . 5 7 5 3 / e n i 
+a c . 2 0 2 4 . 2 4 4 3 7 8 . 
+32. Nasra P , et al. Deep learning-based phenotyping of lettuce diseases using Efficient-FBM-FRMNet for precision agriculture. 
+Front Plant Sci. 2025;16:1704647. https://doi.org/10.3389/fpls.
+33. González-Briones A, Florez SL, Chamoso P , Castillo-Ossa LF, Corchado ES. Enhancing plant disease detection: incorporating 
+advanced CNN architectures for better accuracy and interpretability. Int J Comput Intell Syst. 2025;18(1):120. h t t p s : / / d o i . o r 
+g / 1 0 . 1 0 0 7 / s 4 4 1 9 6 - 0 2 5 - 0 0 8 3 5 - 2 . 
+34. Adugna FB, Desta EA, Hailu AA. Efficient multi-task CNN framework for joint identification of soybean leaf diseases and 
+pesticide presence with explainable AI. Sci Rep. 2026;16:55680. https://doi.org/10.1038/s41598-026-55680-w.
+Publisher’s note
+Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional affiliations.

@@ -1,0 +1,1274 @@
+communications earth & environment Article
+A Nature Portfolio journal
+Article in Press https://doi.org/10.1038/s43247-026-04006-9
+Pollution-driven surface water quality
+improvement and expanding population
+beneﬁts in karst regions of China
+Check for updates
+Mingxia He1, Jie Niu 2,3 ,C h u a n h a oW u4,D o n g d o n gL i u5,P a nW u5 &B i l lX .H u6
+Karst regions in China have high geological permeability, fragmented river networks, and strong
+surface– groundwater interactions, making water quality management challenging. Despite their
+ecological and societal importance, long-term patterns of surface water quality remain poorly
+understood. Here we provide a nationwide, multi-decadal evaluation of surface water quality in karst
+regions using remote sensing and machine learning. The results show that surface water quality
+improved markedly, with the proportion of water bodies classi ﬁed as the highest quality increasing
+from 22.7% to 35.9%. Attribution analysis indicates that pollution-related factors account for the
+dominant contribution across basins (>65%), whereas climate effects are secondary and land-use
+contributions are generally small (<5%). The number of people beneﬁting from high-quality water rose
+to 4.86 million by 2020, although 1.36 million people remained exposed to polluted water near
+expanding settlements. Future scenario projections indicate that these improvements may be
+reversed without sustained pollution control. These ﬁndings highlight the importance of protecting
+surface water in karst regions for ecosystem and human well-being.
+Karst landscapes, characterized by soluble carbonate rock, complex
+hydrology, and high ecological sensitivity, occupy approximately 15% of the
+global land surface and support hundreds of millions of people1,2.C h i n ah a s
+the largest absolute karst surface area,spanning diverse climatic zones with a
+variety of natural geological environments3,4. Some ecologically critical and
+densely populated provinces, including Yunnan, Guizhou, and Guangxi, are
+largely characterized by karst landscapes.
+Karst aquifers exhibit a pronounced vulnerability to contamination
+due to their rapid, often non-linear recharge dynamics and intricate
+hydrological connectivity between surface and subsurface systems 5,6.
+Research on karst hydrology has larg ely focused on groundwater, with
+extensive studies addressing contamination risks, recharge mechanisms,
+and aquifer vulnerability7–9. These studies have advanced the understanding
+of groundwater vulnerability, pollution pathways, and resource security. By
+comparison, karst surface waters have received less attention, even though
+they are central to drinking-water supply, water-quality management, and
+ecological conservation.
+Although water pollution has been documented in previous studies,
+the majority have focused on small catchments and relied on short-term
+monitoring efforts10–13. Traditional monitoring approaches rely heavily on
+in-situ measurements from ground-based stations, which are often spatially
+sparse and unevenly distributed, e specially across the dispersed and
+mountainous karst regions. These methods face logistical, ﬁnancial, and
+technical constraints, making it dif ﬁcult to achieve continuous, high-
+resolution coverage over large spatial and temporal scales14,15. As a result,
+critical areas with limited monitoring infrastructure are frequently excluded
+from assessments. The lack of national -scale assessments has resulted in
+critical knowledge gaps regarding the spatiotemporal dynamics of surface
+water quality and their driving forces. The implications of surface water
+quality across karst regions at national level for human populations, parti-
+cularly in terms of exposure and health risks, are even less understood.
+Machine learning, combined with geospatial and remote sensing data,
+offers a powerful alternativeto conventional monitoring16,17. By leveraging
+environmental predictors and histor ical observations, these models can
+generate spatially continuous, temp orally resolved estimates of water
+quality, even in unmonitored or hard-to-access regions18–20.T h i sa p p r o a c h
+enables retrospective analysis and forward-looking projections, thereby
+expanding the reach of water qualit y surveillance and supporting more
+1School of Geography and Planning, Huaiyin Normal University, Huaian, China. 2Institute of One Health Science, School of Civil & Environmental Engineering and
+Geography Science, State Key Laboratory for Quality and Safety of Agro-products, Ningbo University, Ningbo, China. 3International Science and Technology
+Cooperation Base for Coastal Agricultural Water Resilience and One Health of Zhejiang Province, Ningbo, China. 4The National Key Laboratory of Water Disaster
+Prevention, Hohai University, Nanjing, China. 5College of Resources and Environmental Engineering, Guizhou University, Guiyang, China. 6School of Water
+Conservancy and Environment, University of Jinan, Jinan, China. e-mail: jay_niu@hotmail.com; 2776090374@qq.com
+Communications Earth & Environment Article in Press
+1234567890():,;
+1234567890():,;
+equitable and data-driven managemen t decisions. Recent national-scale
+efforts have demonstrated the value of machine-learning and remote-
+sensing approaches for water-relatedassessment in China, particularly for
+lake/reservoir water-quality param eters and large-sample monitoring
+datasets that support broad hydr o-environmental applications21,22.H o w -
+ever, these studies typically focus on speciﬁc optical/chemical parameters,
+emphasize lakes and reservoirs rather than the hydrologically distinctive
+karst river–spring systems.
+By integrating machine learning, remote sensing, and multi-source
+socio-environmental data, this study presents a nationwide, multi-decadal
+assessment of surface water quality in China’s karst regions. Speciﬁcally, we
+aim to: (1) reconstruct high-resolution surface water quality maps for
+2000–2023; (2) quantify spatiotemporal trends in water-quality classes and
+identify dominant drivers using grouped predictor domains (e.g., pollution-
+related, climatic, and land-use factors); (3) estimate beneﬁciary and exposed
+populations associated with high-quality and non-high-quality waters; and
+(4) project post-2030 water-quality trajectories under three Shared Socio-
+economic Pathways. Based on this framework, we show that surface water
+quality has generally improved over the past two decades, with changes
+primarily driven by pollution-related factors. These improvements beneﬁt
+millions of people, while persistent exposure remains in rapidly developing
+areas. This study provides a comprehensive framework for understanding
+karst surface water dynamics and supports targeted water-resource man-
+agement in vulnerable regions.
+Results
+Reconstruction of surface water quality across karst regions
+in China
+In this study, we developed a data-d riven modeling framework to recon-
+struct the spatiotemporal dynamics of surface water quality in karst regions
+of China from 2000 to 2023. By integrating long-term water quality
+observations with a comprehensive suite of environmental, geospatial, cli-
+matic, and soil-related variables, we aimed to capture the spatiotemporal
+dynamics of surface water quality and its driving factors in these envir-
+onmentally sensitive landscapes.
+Surface water quality was categorized intoﬁve standard classes (I–V)
+following national classi ﬁcation guidelines23. Four supervised machine
+learning algorithms, including Ra ndom Forest (RF), Extreme Gradient
+Boosting (XGBoost), Light Gradient-Boosting Machine (LightGBM), and
+Logistic Regression, were applied and compared to predict these categories
+(Supplementary Fig. 1). Among these models, RF achieved the highest
+overall accuracy (0.85), with class-speciﬁc accuracies exceeding 0.70 for all
+categories. Ten-fold cross-validation conﬁrmed the robustness of the RF
+model, with AUC (Area Under Curve) values consistently above 0.87 across
+all folds (Supplementary Fig. 2). In contrast, XGBoost showed lower overall
+performance (accuracy = 0.72) and struggled to accurately distinguish
+among the more polluted classes (III –V). LightGBM exhibited mis-
+classiﬁcation between classes I and II, indicating potential overlap in feature
+distributions for low-pollution water bodies.
+We reconstructed annual surface water quality maps for China’s karst
+regions from 2000 to 2023 using the trained RF model. Surface water in the
+karst regions of China is primarily concentrated in the Yangtze River Basin,
+Pearl River Basin, and the Southwest Rivers. In contrast, karst surface waters
+in the Inland River Basin, Haihe River Basin, and the Huai River Basin are
+more sparsely and discontinuously distributed. To evaluate predictive
+uncertainty, we performed Monte Car lo simulations by perturbing con-
+tinuous predictors and repeating RF predictions (Supplementary Fig. 3). For
+each perturbation level, uncertainty was summarized using Shannon
+entropy computed from the Monte Carlo-derived class probabilities for
+each grid cell (see Methods), where lower entropy indicates more stable class
+assignment. Under the 1% perturbation, over 94% of samples in 2000, 2010,
+and 2020 exhibited low entropy (total entropy below one); this proportion
+declined to 89% under the 5% perturbation and to 71% under the 10%
+perturbation, indicating increasin g ambiguity as input perturbations
+intensify. These results support the model ’s robustness for long-term
+assessments of surface water quality in data-scarce karst regions.
+Water quality trends during 2000– 2023
+Surface water area in China’s karst regions exhibited a general increasing
+trend, expanding from approximately 13,914 km² in 2000 to a peak of over
+25,000 km² in 2017 (Fig.1a). However, a notable decline occurred between
+2008 and 2012, which coincided with a period of pronounced drought in
+southwestern China24,25. Shifts in water quality composition were also
+observed from 2000 to 2023. Speciﬁcally, Class I waters expanded steadily
+from 3153 km² in 2000 to over 7800 km² in 2023, with their proportion
+rising from 22.7% to 35.9% (Fig. 1b). This growth, especially after 2012,
+potentially reﬂecting the policy interventions of water protection and pol-
+lution control in the past decade may have yielded tangible environmental
+beneﬁts in karst landscapes26,27. Class II waters consistently dominated in
+size, reaching over 15,600 km² in 2019 and accounting for more than 50% of
+the total surface water area throughoutthe study period, despite their extent
+having declined slightly in recent years. Class III waters remained relatively
+stable, covering a modest share (4–13%) of total area.
+Classes IV and V (representing poor and very-poor water quality)
+exhibited divergent trends. Class IV waters exhibited a general decline, with
+areas shrinking from a peak of 1366 km² in 2003 to nearly 731 km² in 2023,
+and their share of total surface water area dropping from over 9.0% to just
+3.4%. Conversely, Class V waters demonstrated a long-term increasing
+trend, expanding from only 107 km² (0.8%) in 2000 to a peak of 1466 km²
+(5.8%) in 2017. Although this extent slightly declined in subsequent years, it
+remained consistently above the levelat the beginning of the 21st century.
+These dynamics suggest that while moderate pollution has been alleviated,
+severe pollution remained persistent in localized areas. The inherent vul-
+nerability of karst landscapes, characterized by rapid inﬁltration and limited
+naturalﬁltration, likely exacerbates these conditions by facilitating the swift
+spread of contaminants and hindering ecological recovery28,29.
+The annual proportion of high-quality waters (Classes I and II) versus
+non-high-quality waters (Classes III –V) demonstrates a consistently
+improving trend of water quality (Fig.1c). High-quality waters constituted
+about 84.5% of the total surface water area in 2000, peaking at over 91.2% in
+2014. From 2010 onward, the share of high-quality water consistently
+remained above 87%, indicating a re markable level of improvement and
+stability. This trend suggests that national and regional water management
+policies have had a measurable positiveeffect, particularly after the imple-
+mentation of stricter environmental regulations around 2010. However, the
+proportion of non-high-quality waters, though declining, still ﬂuctuates
+slightly in some years (e.g., 2013 and2021). Given the complex hydrological
+and geological character istics of karst regions, even slight increases in
+degraded water classes merit close attention. Sustained monitoring and early
+warning efforts are therefore critical, especially in areas where Class III–V
+waters persist, to safeguard long-term water quality and ecosystem stability
+in karst-dominated catchments.
+While the overall trend indicates improvement, spatial heterogeneity
+persists (Fig.2). For example, the Longdai River system in Anhui Province,
+situated within the Huai River Basin and lying in a transitional zone between
+mountainous and hilly terrain, has shown signi ﬁcant recovery. Likewise,
+smaller water bodies, such as Hongqitang River, Ditang River, and Longxi
+River in the Yangtze River Basin, have also experienced consistent
+improvements, reﬂecting effective pollution control and localized con-
+servation efforts in peri-urban and rural settings30. In contrast, several rivers
+in the Pearl River Basin, particula rly in Yunnan Province, continue to
+experience persistent water quality challenges. The Huaxi River, Lujiang,
+and Dianxi River remained hotspots of degradation.
+In addition, we analyzed the proportion of surface water areas across
+ﬁve water quality classes in the years 2000, 2010, and 2023 for each province
+(Fig. 3). Between 2000 and 2023, most provinces in the karst region
+experienced substantial improvements in surface water quality, character-
+ized by increasing proportions of Class I and II waters and declining shares
+of Classes IV and V. Guizhou, a province dominated by karst topography,
+https://doi.org/10.1038/s43247-026-04006-9 Article
+Communications Earth & Environment Article in Press
+exhibited a consistent improvement in surface water quality. The propor-
+tion of Class I water rose markedly from 46.9% in 2000 to 61.2% in 2010 and
+remained relatively stable at 59.1 % in 2023 (Supplementary Fig. 4).
+Meanwhile, the share of Class V water steadily declined from 2.8% to just
+0.07%, suggesting a successful and sustained transition toward high-quality
+surface water.
+In contrast, Yunnan province demonstrated a clear worsening trend.
+While Class II water dominated in 2000,comprising 53.1% of the total, this
+ﬁgure plummeted to 11.8% in 2023. At the same time, the shares of Class III
+and IV water rose signiﬁcantly to 34.7% and 41.8%, respectively, and Class V
+water also increased from 1.8% to 3.7%. The worsening water quality
+observed in Yunnan is primarily con centrated in karst lake systems and
+Fig. 1 | Evolution of surface water quality in Chi-
+na’s karst regions from 2000 to 2023. a Temporal
+variation in surface water area across different water
+quality classes. The upper left panel highlights the
+changes in Class III, IV, and V water areas.
+b Proportional distribution of surface water area
+across quality classes. c Proportions of high-quality
+(Classes I–II) and non-high-quality (Classes III –V)
+waters over time.
+(a)
+(b)
+(c)
+https://doi.org/10.1038/s43247-026-04006-9 Article
+Communications Earth & Environment Article in Press
+agricultural basins, where enclosed catchments and strong surface-
+groundwater interactions intensify pollutant accumulation and disper-
+sion, resulting in low capacity for natural puri ﬁcation31,32.M o r e o v e r ,
+extreme pollution events such as the phosphorus sludge spill in 2008
+illustrate the acute vulnerability of karst environments in Yunnan to both
+diffuse and point-source pollution33.C l a s sI–II waters dominate Guangxi
+and Chongqing provinces throughout the period.
+Fig. 2 | Spatial distributions of surface water quality in China ’s karst regions. Each panel shows the classiﬁcation of surface water bodies by quality class (I–V) across six
+representative years.
+https://doi.org/10.1038/s43247-026-04006-9 Article
+Communications Earth & Environment Article in Press
+Overall, the analysis conﬁrms that the proportion of high-quality surface
+w a t e ri nC h i n a’s karst areas has increased signi ﬁcantly over the past two
+decades and has remained relatively stable in recent years. Importantly, these
+improvements are spatially uneven: gains in high-quality waters are more
+evident in less densely populated areas, whereas degraded waters tend to persist
+or concentrate near expanding settlements and industrial/agricultural regions.
+This ﬁnding highlights the need for sustained monitoring and more targeted
+pollution control and infrastructure upgrades in rapidly urbanizing basins.
+Fig. 3 | Proportional distribution of surface water quality classes in karst regions across Chinese provinces in 2000, 2010, and 2023. a– c Class I; d– f Class II; g– i Class III;
+j– l Class IV; m– o Class V.
+https://doi.org/10.1038/s43247-026-04006-9 Article
+Communications Earth & Environment Article in Press
+Drivers of surface water quality
+To better understand the mechanisms driving surface water quality changes
+in China’s karst regions, we analyzed the relative contributions of three
+major factor groups: climate, pollution, and land use (Fig.4). Analysis of the
+driving factors across major river basins reveals that anthropogenic pollu-
+tion is the dominant contributor to surface water quality variations, with its
+inﬂuence exceeding 65% in all basins. The Yangtze River Basin shows the
+highest pollution-related contribution (84.27%). This pattern is consistent
+Fig. 4 | Contributions of driving factors to surface water quality. aContributions of driving factors at basin-level in 2020;b– e Contributions of driving factors for different
+water quality classes in 2005, 2010, 2015, and 2020.
+https://doi.org/10.1038/s43247-026-04006-9 Article
+Communications Earth & Environment Article in Press
+with the pervasive impact of anthropogenic activities, although the mag-
+nitude of the contribution may be inﬂuenced by the grouping of pollution-
+related variables. Climatic factors exhibit moderate in ﬂuence in several
+basins, especially in the Southwest Basins (35.71%), Pearl River Basin
+(30.21%), Inland River Basins (29.85%), and Yellow River Basin (24.85%).
+These regions are often characterized by strong hydroclimatic variability,
+where precipitation and drought patterns signiﬁcantly affect hydrological
+processes and pollutant transport34. Land use factors generally exhibit the
+smallest relative contribution in the factorial attribution results, with pro-
+portions mostly below 5% in the more developed eastern basins (e.g., 0.47%
+in the Hai River and 1.73% in the Yangtze River Basin), and slightly higher
+values (up to 6.05%) observed in the less urbanized Southwest Basins.
+Within the present framework, this outcome reﬂects that land-use variables
+change more gradually over time and that their inﬂuences on surface water
+quality are often mediated through po llution-related inputs and hydro-
+logical processes, rather than acting asstrongly time-varying drivers at the
+basin scale.
+Analysis of key time points indicates that anthropogenic pollution has
+consistently been the dominant dri ver throughout the study period,
+accounting for 62.3% of observed changes in 2005 and reaching a peak of
+85.3% in 2010. This trend suggests that anthropogenic pollution has played
+a major role in shaping observed patterns of surface water quality change. In
+contrast, climate-related factors such as precipitation, temperature, and
+aridity exhibited a more dynamic pattern, contributing 36.3% in 2005,
+dropping sharply to 10.4% in 2010, and gradually recovering to 26.8% by
+2020. The sharp decline around 2010 likely re ﬂects the intensiﬁcation of
+human-induced pressures during that period, overshadowing the inﬂuence
+of climatic variability. The modest but increasing in ﬂuences of climate
+factors in later years may be attributed to the compounding effects of climate
+change, particularly in hydrologica lly sensitive karst basins. Land use
+remained the least inﬂuential driver, consistently contributing less than 5%
+to overall changes.
+Considerable heterogeneity was observed in the relative importance of
+different drivers across water quali ty classes. Climate factors were the
+dominant inﬂuence on both Class I and II waters in 2005. However, in
+subsequent years, anthropogenic pollution gradually overtook climate as the
+primary driver, indicating that even high-quality or well-preserved waters
+are increasingly susceptible to human-induced impacts. For Class III, pol-
+lution dominated throughout, accounting for over 70% in both 2010 and
+2020. The trend is even more pronounced in Classes IV and V, where
+pollution accounted for more than 98% of the changes in both 2010 and
+2015, indicating severe anthropogenic impacts, while the inﬂuence of cli-
+mate and land-based drivers becomes relatively less pronounced under
+highly degraded conditions. Interestingly, in Class V waters in 2020, land use
+showed a slightly elevated contribut ion (4.3%), potentially signaling
+intensifying local pressures such as u rban sprawl or unsustainable land
+conversion. Taken together, these ﬁndings highlight the crucial role of
+pollution control in water quality in the karst regions of China. While
+climate and land use exert measurable in ﬂuence, particularly in less
+degraded systems or under changing climatic conditions, the overarching
+determinant of water quality remains the intensity of anthropogenic
+pollution.
+Exposed and beneﬁting populations
+High-quality surface water representspristine conditions that are suitable
+for direct human consumption and essential ecological functions. We dif-
+ferentiated between beneﬁted and exposed populations based on the pro-
+portion of high-quality and polluted waters, respectively (Fig. 5). Despite
+broad improvements in surface water quality across China’s karst regions,
+the relationship between water quality and population exposure remains
+complex and regionally varied. In 2000, approximately 3.99 million people
+beneﬁted from high-quality water, while 937,675 people were exposed to
+polluted waters (Class IV–V). These populations were distributed across
+multiple river basins, reﬂecting a mixed spatial pattern of water quality and
+human settlement. By 2010, the beneﬁted population declined slightly to
+2.51 million, while the exposed population increased to 1.18 million. This
+trend likely results from localized degradation in certain areas, such as parts
+of Yunnan and Shandong, where rising proportions of Class IV and V water
+were observed. The increase in exposed population, despite overall
+improvement in national water quality, indicates that degradation was
+occurring in areas with growing or densely settled populations, thus
+amplifying its human impact.
+By 2020, the bene ﬁted population had risen sharply to 4.86 million,
+while the exposed population also increased to 1.36 million. The population
+exposure rose despite a national-leveldecline in the proportion of polluted
+waters, reﬂecting two interrelated phenomena. First, population migration
+and urban expansion played a criti cal role. As economic development
+accelerated, increasing numbers of people settled near surface water bodies,
+particularly in ecologically sensiti ve karst regions. Although the overall
+extent of polluted water declined, the concentration of population around
+the remaining degraded water bodies increased. This pattern was especially
+evident in Yunnan Province, where theproportion of Class II water dropped
+substantially; However, Classes IV and V waters expanded, resulting in
+Yunnan accounting for a substantial share of the exposed population in
+2020. Second, a spatial mismatch developed between regions that achieved
+water quality improvements and those that experienced the greatest
+demographic pressure. Provinces such as Guizhou and Chongqing
+demonstrated clear improvement in water quality, but these improvements
+were often concentrated in sparsely populated areas. In contrast, south-
+western karst regions where degradation persisted coincided with areas of
+rapid population growth and urba nization. As a result, the bene ﬁts of
+ecological restoration efforts did not fully translate into reduced exposure
+risk, underscoring the importance of aligning water quality interventions
+with patterns of human settlement.
+Notably, improvements in water quality do not always translate into
+reduced human exposure, especially when degradation persists in demo-
+graphically sensitive regions. Therefore, targeted interventions are essential,
+focusing not just on improving water quality but also on aligning efforts with
+population risk proﬁles and urban planning. Without such alignment, even
+successful water quality programs may yield limited public health gains in
+the most vulnerable karst zones.
+Projections of surface water quality under climate change
+Building upon the previously trained RF model, we projected surface water
+quality in karst regions from 2030 to 2100 under three Shared Socio-
+economic Pathways (SSP119, SSP245, and SSP585). Furthermore, Monte
+Carlo simulations were employed to assess model uncertainty for the years
+2050 and 2100, demonstrating the robustness and reliability of the projec-
+tions across all three SSPs (Supplementary Figs. S5 and S6). The simulation
+under three scenarios reveals starkly divergent trajectories for surface water
+quality across China, with substantial implications for ecological health and
+human well-being. For scenario projections after 2020, the surface-water
+extent is held constant using the 2020 baseline footprint. Accordingly,
+changes in class-speciﬁc areas represent shifts in water-quality composition
+within this ﬁxed surface-water mask. Because surface-water extent in karst
+regions can be highly sensitive to climatic variability and human regulation,
+the projected absolute class areas are interpreted conditional on the
+constant-extent assumption.
+Under the most optimistic scenario (SSP119), water quality improves
+markedly over the century, with the proportion of high-quality water bodies
+rising from 89.8% in 2023 to 95.4% by 2100 (Fig.6). This is accompanied by
+a sharp decline in severely polluted waters (Grade IV–V) from 965.9 km² to
+just 166.5 km² (Supplementary Fig. 7). These trends reﬂect effective pollu-
+tion control measures and robust environmental governance aligned with
+global sustainability targets. These improvements in water quality translate
+directly into public health and environmental bene ﬁts: the population
+beneﬁting from high-quality surface water increases from 4.94 million in
+2050 to over 5.39 million by 2100, while the number of people exposed to
+polluted waters drops sharply from 1.70 million to 579,808 (Figs. S8, S9).
+The underlying drivers of this improvement are primarily pollution control
+https://doi.org/10.1038/s43247-026-04006-9 Article
+Communications Earth & Environment Article in Press
+efforts, which will account for over 79% of the explained variance by 2050
+and nearly 89% by 2100 (Fig.7). The declining importance of climate factors
+(from 14.6% to 4.0%) suggests that long-term improvements in water
+quality under low-emission pathwa ys are driven primarily by anthro-
+pogenic interventions rather than climate variability.
+In the medium-emission scenario (SSP245), the proportion of high-
+quality waters slightly declines to 85.2% by 2100, and polluted water areas
+nearly double to 1860.2 km². Although the beneﬁted population remains
+relatively stable (3.63 million in 2050 to 3.42 million in 2100), the exposed
+population rises signiﬁcantly, increasing from 1.48 million to 1.89 million.
+This suggests that water quality gains are increasingly outpaced by
+Fig. 5 | County-level distribution of bene ﬁting and exposed population to surface water in karst regions. a , b Year 2000; c, d Year 2010; e, f Year 2020.
+https://doi.org/10.1038/s43247-026-04006-9 Article
+Communications Earth & Environment Article in Press
+population growth and urban expansion in karst zones. In these regions,
+where hydrological systems are highly sensitive to diffuse pollution and
+land-use changes, the spatial mismatch between water quality and popu-
+lation density results in increased exposure and risk of public health impacts.
+Although pollution remains the dominant driver (contributing 89.6% in
+2050 and 81.2% in 2100), the inﬂuence of climate grows signiﬁcantly, from
+7.8% to nearly 16%, suggesting that climate-induced hydrological stress
+becomes an increasingly relevant factor. The declining inﬂuence of land-use
+change may suggest either policy saturation or limitations in the effective-
+ness of spatial planning.
+Under the high-emission scenario (SSP585), water quality deteriorates
+sharply. By 2100, the proportion of non-high-quality waters rises to 18.7%,
+and polluted areas exceed 2800 km², which is more than three times the
+2023 level. In this scenario, the bene ﬁciary population is signi ﬁcantly
+reduced to 2.25 million by 2100, while the number of exposed individuals
+surges to 2.87 million, indicating a net negative impact on water security.
+T h en e g l i g i b l er o l eo fc l i m a t e( < 1 % )i nthe overall driver structure may stem
+from the overwhelming inﬂuence of unchecked industrial emissions and
+poorly regulated development. This i mbalance highlights the failure of
+mitigation and adaptation strategies under high-emission trajectories,
+particularly in fragile karst ecosystems where pollution rapidly in ﬁltrates
+groundwater systems. Regions suchas Guangxi, Yunnan, and Guizhou are
+particularly vulnerable due to their combined exposure to environmental
+degradation and growing population pressures. Theseﬁndings underscore
+that without integrated and aggressive climate –water–land policy
+frameworks, improvements in ecological quality may not translate into
+human wellbeing, especially in socio-ecologically fragile regions.
+Discussion
+Dominance of anthropogenic pollution in karst surface waters
+This study conducted a large-scale, high-resolution assessment of surface
+water quality dynamics in karst regions of China, revealing the sustained
+dominance of anthropogenic polluti on. Within the factorial framework
+adopted here, the relative contribution of a given driver category reﬂects the
+extent to which time-varying information from that category is required to
+reproduce observed and reconstructed water quality changes, rather than a
+strict quantiﬁcation of physical causality. From this perspective, the high
+contribution attributed to the pollutioncategory indicates that surface water
+quality dynamics in karst regions are most sensitive, within the model, to
+variables representing direct human pressure pathways, such as industrial
+discharge, agricultural nutrient inputs, and energy-related emissions. When
+these pollution-related inputs are held constant, the modeled water quality
+deviates most strongly from the full-signal simulations, highlighting their
+central role in explaining recent temporal variability. This dominance does
+not imply that other processes are negligible, but rather that their inﬂuences
+are more indirect, operate over longer timescales, or are partially expressed
+through pollution-related changes.
+In contrast, the contributions asso ciated with climate and land use
+represent broader hydroclimatic modulation and landscape-mediated
+processes that shape water quality th rough dilution, transport, and bio-
+geochemical regulation. These eff ects become more evident in higher-
+Fig. 6 | Temporal variation in proportion of sur-
+face water area across quality classes under dif-
+ferent scenarios from 2030 to 2100. Shaded
+envelopes denote the 95% con ﬁdence intervals
+derived from Monte Carlo simulations, dashed lines
+indicate linear trends, and R² values represent the
+goodness of ﬁt. a Class I; b Class II; c Class III; d Class
+IV; e Class V; f High-quality (Classes I –II) water.
+https://doi.org/10.1038/s43247-026-04006-9 Article
+Communications Earth & Environment Article in Press
+quality waters and less-degraded systems, where direct pollution pressures
+are weaker and natural controls exert a stronger inﬂuence.
+Existing nationwide products in China have mainly reconstructed
+lake/reservoir water-quality parameters from remote sensing and/or com-
+piled large spatiotemporal monitoring datasets to support broad assess-
+ment, providing important baselines for large water bodies and indicator-
+speciﬁc analyses20. However, these efforts have rarely targeted the hydro-
+logically distinctive karst surface-water network, and karst-related research
+has traditionally emphasized groundwater vulnerability and contamination
+pathways rather than surface systems35,36.
+Prior research often emphasized the diffuse and hidden nature of karst
+hydrology, which limited large-scale surface assessments37. This research
+shifts attention to surface systems and demonstrates that surface waters in
+karst landscapes are equally sensitive topollution and climate, yet capable of
+delivering substantial public beneﬁts. Our approach, combined with long-
+term reconstruction with future scenario modeling, reveals that pollution
+overwhelmingly dominates Class IV–V water degradation (up to 98%), and
+that the climate inﬂuence becomes more pronounced in high-quality waters
+(41.1% in Class I by 2020).
+Hydroclimatic extremes and long-term climate shifts are known to
+affect key water-quality constituents by altering stream ﬂow (dilution
+capacity), water temperature, and in-stream transformation rates, with
+particularly strong effects on di ssolved oxygen and nutrient-related
+indicators38. In karst headwaters where Class I waters are more common,
+conduit–ﬁssure ﬂow paths can produce rapid rainfall–runoff responses and
+short lag times, enhancing the sensitivity of water chemistry to precipitation
+variability39. Event-scale studies in Southwest China further show that
+rainstorms can rapidly dilute karst surface water hydrochemistry and shift
+concentration–discharge behavior, highlighting strong hydrologic control
+under relatively low pollution pressure40. By contrast, in Class IV–V waters,
+persistent and high anthropogenic inputs dominate water-quality dynamics
+and can mask climate-driven variability, leading to a smaller apparent cli-
+mate contribution, consistent with the stronger human imprint observed in
+managed or highly disturbed watersheds41.
+The contribution attributed to land-use change is comparatively small,
+particularly in urbanized eastern basins. This result contrasts with previous
+studies that have highlighted land-use change as a major driver of surface
+water degradation42,43. The difference may be because the factorial attribu-
+tion employed here, which isolates the contribution of time-varying signals
+within predeﬁned driver categories, rather than the cumulative or long-term
+effects of land-use conﬁguration. Consequently,within the present frame-
+work, land-use effects are expressedmore gradually or indirectly, whereas
+pollution-related variables capture more immediate temporal variability in
+water quality. Moreover, while previous projections often treated climate
+change as a growing threat, our SSP-based modeling shows that climate
+Fig. 7 | Relative contributions of driving factors to
+surface water quality under various scenarios for
+the years 2050 and 2100. a , b Scenario I (SSP 119);
+c, d Scenario II (SSP 245); e, f Scenario III (SSP 585).
+https://doi.org/10.1038/s43247-026-04006-9 Article
+Communications Earth & Environment Article in Press
+factors may play a diminishing or secondary role under strong pollution
+control scenarios.
+Spatial heterogeneity and implications for water– population
+interactions
+It is worth noting that in these geologically fragile zones, human dependency
+on surface water was previously underestimated. By 2020, over 4.86 million
+people beneﬁted from high-quality surface water, a sharp increase from 2.51
+million in 2010. Our projections furt her demonstrate that under low-
+emission pathways, the bene ﬁted population cou ld exceed 5 million by
+2100, reinforcing the strategic ecological and public health value of karst
+surface waters.
+The observed spatial patterns underscore pronounced heterogeneity in
+surface water quality trajectories across karst regions in China. National
+improvements demonstrate that targeted interventions can be effective at
+the basin scale. However, these gains are unevenly distributed and do not
+translate uniformly across regions. In particular, Yunnan exhibits a per-
+sistently deteriorating trajectory that deviates from the broader national
+improvement trend. In Yunnan, the convergence of lake- and basin-
+dominated karst systems, constrained hydrological ﬂushing, strong
+surface–groundwater coupling, and concentrated agricultural and urban
+activities intensiﬁes pollutant retention and limits natural puri ﬁcation
+capacity. Similar mechanisms oper ate in other karst regions, yet their
+combined intensity is typically lower,allowing water quality improvements
+to emerge more readily31–33.T h e s eﬁndings suggest that sustained progress
+will require both basin-scale management strategies andﬁner-scale inter-
+ventions tailored to the geomorphological and socio-economic character-
+istics of each sub-region. The continued increase in population exposure
+from 2010 to 2020 to degraded waters further emphasizes the need to align
+water quality restoration with spatially differentiated development and
+planning strategies.
+Sources of uncertainty and methodological limitations
+Several limitations should be acknowledged.
+First, label and input-data uncertainty may affect model training and
+spatial prediction. Water-quality grades derived from station observations
+can be in ﬂuenced by sampling frequency and missing records. Another
+important source of uncertainty arises from the mixed spatial resolution of
+predictor datasets. Several key pollution-related variables were only avail-
+able at the provincial scale and were therefore uniformly assigned to
+monitoring stations within each province. This simpliﬁcation introduces
+structural uncertainty by neglecting sub-provincial heterogeneity in pollu-
+tion sources, management practices, and socioeconomic conditions, which
+is not captured by Monte Carlo perturbations. As a result, localized pollu-
+tion impacts may be attenuated, parti cularly in environmentally hetero-
+geneous karst regions.
+Second, the assumption that surface water extent remainsﬁxed after
+2020 constitutes a strong constraint, especially in hydrologically sensitive
+karst landscapes where surface water bodies can respond rapidly to climate
+variability and human regulation. Potential changes in river width, seasonal
+inundation, and surface –groundwater connectivity are therefore not
+reﬂected in post-2020 reconstructions, which may inﬂuence both long-term
+projections and estimates of population exposure.
+Third, while the driving factor decomposition captures basin-level
+patterns, speciﬁc pollution sources such as industrial and agricultural dis-
+charge may not be fully represented. In addition, our exposure analysis uses
+the population and exposed water body ratios in speciﬁc regions as alter-
+native indicators of risk, without considering water usage patterns, infra-
+structure access, or treatment technologies. These simpli ﬁcations may
+underestimate localized exposure risks or overestimate beneﬁts in regions
+with limited accessibility.
+Future work could reduce these uncertainties by integrating ﬁner-
+resolution pollution and socioecono mic datasets and by incorporating
+additional monitoring information t o better constrain labels and sub-
+provincial heterogeneity. It would also be valuable to relax the post-2020
+ﬁxed-extent assumption by coupling water-quality projections with
+dynamic surface-water extent and to re ﬁne attribution/exposure assess-
+ments with more explicit source indicators and infrastructure- and water-
+use–related information.
+Conclusion
+This study provides a data-driven reconstruction of surface water quality
+dynamics in China’s karst regions over the past two decades. The results
+show a general improvement in water quality, with increasing proportions
+of high-quality water and several million people beneﬁting by 2020. How-
+ever, exposure to polluted water persists in some regions. Across basins and
+time, anthropogenic pollution is identiﬁed as the dominant driver of water-
+quality variability, while climate andland-use effects play secondary roles.
+Importantly, the observed improvements are spatially heterogeneous and
+do not always align with population dist ribution, highlighting persistent
+exposure risks in rapidly developing karst areas. Theseﬁndings emphasize
+the need for integrated water quality management strategies that combine
+pollution control with spatially targeted interventions in environmentally
+and socially vulnerable regions.
+Methods
+Data collection and process
+Surface water quality data used in this study were derived from the China
+National Environmental Monitoring Centre, spanning the period from
+2004 to 2023. A total of 448 monitoring stations located within China’s karst
+regions were selected, covering a broad spatial range across multiple basins
+(Supplementary Fig. 10). These stations concentrate on the
+Yunnan–Guizhou Plateau and surrounding areas, where karst geomor-
+phology is particularly prominent. Water quality at each station was clas-
+siﬁed based on the national environmental standards (GB3838-2002),
+which deﬁne ﬁve surface water quality grades (I–V), with Grade I repre-
+senting the highest quality. To ensure data reliability and temporal repre-
+sentativeness, we only included stations that had monitoring data for at least
+two-thirds of the days within a given month. This ﬁltering criterion mini-
+mized the inﬂuence of data gaps and seasonal anomalies, ensuring that the
+observed water quality patterns were robust and comparable across time.
+These observations served as the training/validation dataset for the machine
+learning model described below.
+To capture the dynamic changes in surface water quality across karst
+landscapes, we compiled a comprehensive dataset incorporating environ-
+mental, climatic, geospatial, and soilv a r i a b l e sa sp r e d i c t o r s( T a b l eS 1 ) .T h e
+selection of predictive factors was grounded in the unique hydrological,
+geological, and anthropogenic characteristics of karst systems, which are
+highly sensitive to both surface pro cesses and subsurface connectivity.
+Anthropogenic pollution-related indicators were a central component of
+our model, reﬂecting the inﬂuence of anthropogenic emissions on water
+degradation. Speciﬁcally, we included industrial wastewater discharge,
+industrial solid waste discharge, carbon dioxide (CO₂) emissions, pesticide
+consumption, fertilizer consumption, plasticﬁlm consumption, wastewater
+treatment plants, environmental investment, coal consumption, crude oil
+consumption, and natural gas consumption. These variables capture key
+dimensions of agricultural intensiﬁcation and energy consumption, both of
+which have been shown to signi ﬁcantly contribute to non-point source
+pollution in rural and peri-urban karst areas44–47. In addition, industrial solid
+waste discharge and industrial wastewater emissions were incorporated to
+account for localized industrial pollution, which poses acute risks to surface
+water bodies, especially in regi ons undergoing rapid economic
+development48.
+Recognizing the spatial heterogeneity and ecological fragility of karst
+environments, we further included geospatial variables that describe land-
+scape structure and vegetative dynamics. These included elevation, slope,
+land use categories, Normalized Difference Vegetation Index (NDVI), and
+Net Primary Productivity (NPP). Topographic and land cover features are
+crucial in determining runoff generation, erosion potential, and pollutant
+transport, while NDVI and NPP provide proxies for vegetation cover and
+https://doi.org/10.1038/s43247-026-04006-9 Article
+Communications Earth & Environment Article in Press
+ecosystem productivity. Climate data were also integrated to account for
+hydrometeorological inﬂuences on water quality. Given that karst systems
+are particularly responsive to precipitation patterns, we included average
+monthly rainfall, temperature, potent ial evapotranspiration, and aridity
+index. These variables allowed us to capture both seasonal water availability
+and longer-term climate variability, which can amplify or dampen pollutant
+loading and dilution processes.
+Finally, we incorporated a suite of soil-related indicators. On the one
+hand, during rainfall events, soil particles and associated nutrients can be
+mobilized and transported into nearby rivers and streams, directly
+degrading surface water quality through sedimentation and nutrient load-
+ing. On the other hand, soil propertie s also strongly affect groundwater
+quality by regulating in ﬁltration, ﬁltration, and subsurface nutrient
+dynamics. Given the well-documentedhydrological connectivity between
+surface and subsurface waters in karstlandscapes, such as rapid conduitﬂow
+and frequent exchanges between rivers and aquifers, groundwater is highly
+responsive to surrounding environmental conditions49,50. As a result, the
+chemical and physical characteristics ofsoils can indirectly but substantially
+inﬂuence surface water quality through their impact on groundwater. To
+capture these effects, we included variables such as lithology, topsoil texture,
+carbonate content, pH, electrical conductivity, soil organic carbon, total
+nitrogen, total phosphorus, and particle-size composition (sand, silt, and
+clay). These parameters help characterize erosion potential, pollutant
+mobility, and subsurface transport processes that are especially active in the
+fragile and highly permeable karst environment.
+Surface water quality data were compiled at a monthly resolution. For
+consistency and spatial alignment, all predictor variables were resampled or
+aggregated to match the spatial and temporal scales of the water quality
+observations. Remotely sensed geospatial datasets, e.g., land cover, NPP,
+NDVI, and topographic features, were resampled to a 100 m × 100 m spatial
+resolution. This resolution strikes a balance between computational ef ﬁ-
+ciency and the capacity to capture the heterogeneity of landscapes pertinent
+to surface water processes within karst terrains. Several anthropogenic
+variables, including pesticide and fer tilizer usage, industrial wastewater
+discharge, and industrial solid waste production, were available only at the
+provincial level. For these datase ts, we assigned the same value to all
+monitoring stations located within agiven province during a given month.
+While this approach may smooth out sub-provincial variability, it effectively
+preserves the broader spatial signal of pollution intensity driven by regional
+socioeconomic activities, which is often a dominant control on water quality
+in China. To prepare the dataset for machine learning modeling, all pre-
+dictor variables were spatially and temporally matched to the water quality
+monitoring records. For each station-month observation, the correspond-
+ing values of all predictor variables were extracted based on the station ’s
+geographic coordinates and the month of observation. This ensured that
+each data point fed into the model represented a consistent and temporally
+synchronized snapshot of surface water quality and its potential environ-
+mental drivers.
+Machine learning model
+To model and classify surface water quality levels in karst regions, we
+employed four widely used machine learning algorithms: Random Forest
+(RF)51, Extreme Gradient Boosting (XGBoost)52, Light Gradient Boosting
+Machine (LightGBM)53, and Logistic Regression 54. These models were
+selected to cover a range of tree-based ensemble learners and linear classi-
+ﬁers, allowing for comprehensive comparison of performance and robust-
+ness under varying data distributions a nd feature interactions. An initial
+predictor dataset of 34 predictors wa sa s s e m b l e d ,i n c l uding topographic,
+anthropogenic, and climatic factors. Toreduce multicollinearity, six highly
+correlated variables were excluded based on correlation analysis: coal con-
+sumption, crude oil consumption, potential evapotranspiration, pesticide
+consumption, surface soil electrical conductivity, and bulk density (Sup-
+plementary Fig. 11). This reﬁnement improved model stability and inter-
+pretability by eliminating redundant inputs.
+For each water quality class (Classes I–V), we performed a stratiﬁed
+random split in which 80% of samples were assigned to the training set and
+the remaining 20% to the testing set, preserving the class proportions. This
+stratiﬁed sampling strategy maintained the class-level representation and
+avoided bias introduced by imbalance d class distributions during model
+training and evaluation. Such an approach is particularly crucial in multi-
+class classiﬁcation tasks, such as grading waterquality, where certain classes
+(e.g., Class V) may occur less frequently. Without stratiﬁcation, the model
+could become biased towardmajority classes, leading to poor generalization
+and underestimation of rare but environmentally signiﬁcant water quality
+conditions. To avoid an imbalanced partition dominated by a single year,
+station, or basin, the split was imp lemented with group-coverage con-
+straints, ensuring that both the training and testing sets contained samples
+spanning multiple years, monitoring stations, and basins. By enforcing
+broad coverage across years, stations, and basins in both subsets, the eva-
+luation better re ﬂects the model ’s ability to generalize beyond narrowly
+sampled spatiotemporal contexts. Model performance was evaluated using
+10-fold cross-validation on the training data to minimize over ﬁtting and
+assess generalizability. To optimize each model ’s hyperparameters, we
+adopted a Bayesian grid search stra tegy, which iteratively updates the
+parameter space based on past evaluations to effectively identify the optimal
+conﬁgurations.
+To systematically evaluate model performance, we adopted four widely
+used classiﬁcation metrics: accuracy, precision, recall, and the confusion
+matrix. These metrics were selected to assess both the overall predictive
+capability and the model’s sensitivity to different water quality classes.
+Accuracy quantiﬁes the proportion of correctly classiﬁed samples out
+of all predictions, deﬁned as:
+Accuracy ¼ TP þ TN
+TP þ TN þ FP þ FN ð1Þ
+where TP, TN, FP, and FN represent the number of true positives, true
+negatives, false positives, and false negatives, respectively.
+Precision evaluates the proportio n of correct positive predictions
+among all samples predicted as positive. This metric is especially important
+for minimizing false alarms, i.e., incorrectly labeling poor-quality waters as
+clean. It is deﬁned as:
+Precision ¼ TP
+TP þ FP ð2Þ
+Recall measures the model ’s ability to detect all actual positive
+instances. This is crucial in environmental monitoring contexts, where
+missed detections of polluted water bodies can have serious health and
+ecological implications. It is deﬁned as:
+Recall ¼ TP
+TP þ FN ð3Þ
+To provide a full diagnostic view, w e also constructed the confusion
+matrix, which presents the distribution of predicted versus actual water
+quality classes (I –V). This matrix enables the identi ﬁcation of speci ﬁc
+misclassiﬁcation patterns, such as confusion between adjacent water quality
+grades (e.g., Class II vs. Class III).
+Among the four models, the Random Forest algorithm consistently
+outperformed the others across all metrics. It achieved the highest classiﬁ-
+cation accuracy and demonstrated strong stability across cross-validation
+folds. The optimal hyperparameters identiﬁed for the RF model were as
+follows: n_estimators = 90, min_samples_split = 10, min_samples_leaf = 1,
+and max_depth = 30. These settings strike a balance between model com-
+plexity and generalization ability, enabling effective capture of non-linear
+relationships between environmental predictors and surface water quality
+classes in heterogeneous karst landscapes.
+https://doi.org/10.1038/s43247-026-04006-9 Article
+Communications Earth & Environment Article in Press
+Surface water quality reconstruction and prediction
+To reconstruct the historical distribution of surface water quality and project
+its future evolution across China’s karst regions, the trained RF model was
+applied in a hindcasting–projection framework by inputting the predictor
+layers for target years outside the observational window, thereby generating
+gridded water-quality classi ﬁcations for 2000 –2100 conditional on the
+availability and consistency of predictors. For the historical reconstruction
+(2000–2023), we ﬁrst obtained annual surface water distribution data from
+the Global Surface Water55, which were generated based on Landsat imagery
+and offer global 30-meter-resolutionmaps of surface water presence. These
+data, accessed via the Google Earth Engine platform, allowed us to identify
+grid cells classiﬁed as surface water within the karst region for each year from
+2000 to 2020.
+For each water grid cell in each year, we spatially aligned and tempo-
+rally matched the full set of predictor variables, including climate, land use,
+emissions, topography, vegetation, and soil attributes, as described in the
+previous sections. These variables represent both direct and indirect drivers
+of water quality and were preprocessed to ensure temporal consistency and
+spatial coverage. The resulting dataset was input into the trained RF model,
+which generated categori cal predictions (Classes I –V) representing the
+expected water quality class for each grid cell and year. For the years 2021 to
+2023, due to the unavailability of surface water maps, we assumed that the
+surface water distribution remained constant as in 2020. While this
+assumption introduces a degree of uncertainty, it allows temporal continuity
+in water quality reconstruction. Theﬁnal output is a time series of surface
+water quality maps for the karst region from 2000 to 2023, at a 100 m
+resolution.
+For future projections (2030–2100), we applied the same trained model
+using scenario-based predictor inputs under the SSP pathways. To simulate
+future water quality trajectories under changing environmental and socio-
+economic conditions, we conducted projections under three representative
+CMIP6 scenarios: SSP1-119 (low emissions), SSP245 (intermediate path-
+way), and SSP585 (high emissions). These scenarios re ﬂect contrasting
+f u t u r e si nt e r m so fe n e r g yu s e ,l a n d - use policies, climate mitigation, and
+technological development. Meteoro logical predictors, including pre-
+cipitation, temperature, and aridity index, were derived from the EC-Earth3
+global climate model under each SSP s cenario, providing internally con-
+sistent climate inputs. Land use variables, such as urban expansion, cropland
+area, and forest cover, were sourced from the SSP-RCP dataset, which
+provides spatially explicit land-use simulations consistent with CMIP6.
+For pollutant-related predictors such as CO₂ emissions, chemical fer-
+tilizer and plastic ﬁlm consumption, industrial wastewater, and industrial
+solid waste discharge, direct high-resolution projections at the provincial or
+ﬁner scale are not available. To bridge this gap, we adopted a scaling
+approach to approximate future values based on the socioeconomic and
+policy assumptions of each SSP. Under SSP119, which emphasizes sus-
+tainability, environmental steward ship, and strong emission controls,
+pollution-related variables were decreased by 3% relative to the baseline,
+reﬂecting expected advancements in clean technology, stringent regulation,
+and behavioral changes. In contrast, SSP245 reﬂects a“middle-of-the-road”
+trajectory in which moderate progress is made in climate mitigation and
+pollution control; Thus, we assumed a1% increase in pollutant emissions,
+representing incremental economi c growth and technological uptake
+without drastic environmental policy shifts. SSP585 assumes rapid fossil-
+fuel-driven development with minimal environmental regulation, aggres-
+sive industrial expansion, and risingconsumption levels. Accordingly, a 3%
+increase in pollutant emissions was applied to represent accelerated input of
+anthropogenic contaminants into the environment. These scaling ratios
+were determined by reviewing long-term sectoral emission trends in China
+and global scenario literature, and servea sp l a u s i b l ee s t i m a t e si nt h ea b s e n c e
+of detailed projections for each variable56–58.
+Surface water distribution in 2030-2100 was assumed to follow the
+2020 baseline, as high-resolution future water extent projections are not
+readily available. The RF model was then applied to this future input dataset
+to generate categorical predictions of water quality for 2030-2100 under
+each scenario, enabling us to assess potential trajectories of water quality in
+response to environmental change.
+T of u r t h e re v a l u a t er o b u s t n e s sand quantify sensitivity to input
+uncertainty, we conducted a Monte Ca rlo simulation by perturbing all
+continuous predictors. For each predictorxj, the perturbed value in simu-
+lation was generated as:
+x;
+ij ¼ xij þ ϵijσj ð4Þ
+where σj is the standard deviation of predictorj computed from the input
+dataset and ϵij/C24 Nð0; ρÞ.W et e s t e dρ ¼ 1%; 5%; and 10 %,r e p e a t i n g
+predictions 100 times for each level and target year. For each grid celli,t h e
+ensemble of predictions yields class probabilitiespi;k (the fraction of runs
+assigned to classk 2f 1; ... ; 5g). We quantiﬁed predictive uncertainty using
+Shannon entropy:
+Hi ¼/C0
+X5
+k¼1
+pi;klog2ðpi;kÞ ð5Þ
+where Hi /C25 0 indicates consistent class assi gnment across perturbations
+and larger Hi indicates greater disagreement among classes.
+To propagate this uncertainty into scenario-scale area estimates, we
+computed the expected area for each classk as the sum of pixel-wise class
+probabilities multiplied by pixel areaa:
+E½Ak/C138¼
+X
+i
+ρi;k
+ !
+a ð6Þ
+and, assuming pixel-wise independence, approximated the variance as:
+VarðAkÞ¼
+X
+i
+ρi;kð1 /C0 ρi;kÞ
+"#
+a2 ð7Þ
+An approximate 95% uncertainty interval was then derived
+as E½Ak/C138 ±1 :96
+ﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃ
+VarðAkÞ
+p
+.
+The contributions of time-variant drivers to surface water quality
+dynamics
+To identify the dominant drivers underpinning spatiotemporal changes in
+surface water quality across China’s karst regions, we employed a factorial
+simulation framework that isolates thecontributions of three key categories
+of time-varying predictors: climate, pollution, and land use. These categories
+represent groups of correlated input variables rather than isolated physical
+processes, and each category is internally heterogeneous. The grouping was
+motivated by two considerations: (i) these three domains correspond to the
+main pathways by which water quality is altered at large scales; and (ii) many
+predictors within each domain are strongly correlated and operate jointly,
+such that treating them as domains improves interpretability and reduces
+sensitivity to individua l-variable redundancy. We conducted factorial
+experiments across four historical years (2005, 2010, 2015, and 2020), using
+2000 as the reference baseline, and for two future time points —2050 and
+2100—under three SSP climate scenarios, using 2020 as the baseline. In each
+experiment, we selectively held one driver category constant at its baseline
+state, while allowing the other two categories to vary temporally based on
+observed or projected trajectories. For example, in the “WQ2005-Clima-
+teFix” experiment, all climate-related var iables (e.g., precipitation, tem-
+perature, aridity index) were ﬁxed at their 2000 levels, while land use and
+environmental drivers (e.g., CO₂ emissions, fertilizer consumption, indus-
+trial discharges) were allowed to evolve to their 2005 states. Similar treat-
+ments were conducted for the vegetation- ﬁxed and environment- ﬁxed
+cases. To obtain spatially explicit insights, we applied these calculations at
+the pixel level. The factorial experiments are designed to assess model-based
+attribution under controlled input perturbations by comparing predictions
+https://doi.org/10.1038/s43247-026-04006-9 Article
+Communications Earth & Environment Article in Press
+with and without temporal variation in a given predictor group. While this
+approach provides insights into the relative explanatory strength of driver
+groups, it does not strictly disentangle the underlying physical causality.
+To quantify the absolute contribut ion and relative contributions of
+each time-varying driver category to surface water quality changes, we
+adopted the following formulation:
+AbsCondi;j ¼ WQAll
+y /C0 WQ/C0 i
+y
+/C12/C12/C12
+/C12/C12/C12 ð8Þ
+where AbsConi;j represents the absolute contribution of driveri in year y.
+WQAll
+y denote the predicted surface water quality in year y using all time-
+varying drivers, andWQ/C0 i
+y denote the prediction with driver categoryi held
+constant at its baseline (e.g., 2000 or 2020), while other categories vary
+normally.
+RelConi;j represents the relative contribution (%) of driveri in yeary,i s
+given by:
+RelConi;j ¼
+AbsConi;jP
+j AbsConi;j
+× 100 ð9Þ
+where j indexes the three driver categories
+To further disentangle the underlying mechanisms shaping water
+quality dynamics, we extended the factorial experiment framework to
+analyze the contributions of each driver category for individual water quality
+classes. For this, we strati ﬁed the predicted surface water grids by their
+assigned class and computed the relative contribution of climate, pollution,
+and land use drivers within each class. Following the same approach as
+described above, the contribution of each driver categoryi to a given classc
+in year y, denoted as RelConc
+i;j, was calculated as:
+RelConc
+i;j ¼
+jWQAll; cðÞ
+y /C0 WQ/C0 i; cðÞ
+y j
+P
+j jWQAll; cðÞ
+y /C0 WQ/C0 j; cðÞ
+y j × 100 ð10Þ
+where WQAll; cðÞ
+y and WQ/C0 i; cðÞ
+y represent the predictions with all drivers and
+with categoryi held constant, respectively, but only for grid cells belonging
+to water quality class c. This strati ﬁed analysis provided class-speci ﬁc
+insights into the dominant drivers of water quality and revealed the
+heterogeneous nature of pollution pr essures and resilience mechanisms
+across the karst region.
+Estimating exposed and beneﬁciary populations
+In this study, Grade I and II surface waters were classiﬁed as high-quality
+water (HQ), as they meet the most stringent standards for drinking water
+sources and ecological integrity. Grade III waters were excluded from the
+high-quality category due to their relatively lower quality and limited eco-
+logical value. Grades IV and V are considered polluted and potentially
+hazardous to surrounding populations and ecosystems. Grade III waters,
+together with Grades IV and V, were collectively classi ﬁed as non-high-
+quality water (NonHQ). On this basis, we deﬁned the beneﬁciary population
+as the population potentially associated with high-quality waters, and the
+exposed population as the population potentially associated with non-high-
+quality waters.
+In karst mountainous basins, human settlements are strongly clustered
+along valleys and transportation corridors, and are therefore unevenly
+distributed within administrative u nits. An area-weighted allocation of
+county population to surface-water areas may over-allocate population to
+sparsely inhabited high-relief zones and under-allocate population in den-
+sely inhabited corridors. To better re ﬂect this spatial heterogeneity, we
+reﬁned the population exposure and beneﬁt assessment using a night-time
+light (NTL)59—informed dasymetric allocation approach combined with
+surface-water proximity buffers. Speciﬁcally, for each county, we delineated
+a surface-water proximity buffer with aﬁxed distance of 10 km. The buffer
+was deﬁned as the area within 10 km of the mapped surface-water boundary
+(for polygonal waterbodies such as lakes and reservoirs) or within 10 km of
+the river centerline (for linear river features), and was then intersected with
+county boundaries. This approach r educes bias from assuming uniform
+settlement distribution within mountainous karst counties and provides a
+more spatially grounded approximation of populations concentrated along
+near-water corridors.
+Population data were obtained from the Fifth (2000), Sixth (2010), and
+Seventh (2020) National Population Censuses conducted by the National
+Bureau of Statistics of China, which provide demographic totals at the
+county scale. The census year closest to the target year of analysis was used
+for each time point. We used gridded NTL to represent the spatial con-
+centration of settlement/activity within each county. NTL values were
+preprocessed by removing low-intensity background signals and capping
+extreme bright outliers; the resulting non-negative NTL value at pixel i is
+denoted by Li. For each county, we computed the total NTL signal:
+Sc ¼
+X
+i2c
+Li ð11Þ
+where Sc denotes the sum of NTL values across all pixels located within
+county c.
+We then delineated near-water proximity zones by buffering mapped
+surface-water features by a ﬁxed distance of 10 km and intersecting the
+buffer with county boundaries. Within each countyc, the NTL signal within
+this near-water zone was computed as:
+Sprox;c ¼
+X
+i2proxðcÞ
+Li ð12Þ
+where proxðcÞ d e n o t e st h es e t so fN T Lp i x e l st h a tf a l lw i t h i nt h e1 0 - k m
+proximity zones of any surface water inside countyc.
+The surface-water-associated population in countyc was estimated by
+allocating county population in pr oportion to the share of county NTL
+located within the near-water zone:
+Pwater;c ¼ Pc ×
+Sprox;c
+Sc
+; Sc >0 and Sprox;c >0
+0; otherwise
+(
+ð13Þ
+where Pc represents the total population of countyc.I fn od e t e c t a b l eN T L
+signal was present in a given proximity zone ( Swater;c ¼ 0), the corre-
+sponding beneﬁciary/exposed population was conservatively set to zero.
+For each county we calculated PropHQ;c,d eﬁned as the proportion of
+HQ surface-water area among all surface-water area within distance 10 km,
+and Prop NonHQ;c ¼ 1 /C0 PropHQ;c.B e n eﬁciary and exposed populations
+were then obtained by partitioning the surface-water-associated population
+according to these proportions:
+Pbenefit;c ¼ Pwater;c × PropHQ;c ð14Þ
+Pexposed;c ¼ Pwater;c × PropNonHQ;c ð15Þ
+Given that NTL may underrepresent low-electriﬁcation rural settle-
+ments and may be biased by non-resid ential lighting, our estimates are
+intended to represent proximity-based potential beneﬁciary and exposed
+populations, not direct measuremen ts of actual water use or contact
+behavior.
+Data availability
+Water quality data are publicly ava ilable from the Chinese National
+Environmental Monitoring Centre ( https://www.cnemc.cn).I n d u s t r i a l
+wastewater discharge, industrial solid waste discharge, and environmental
+investment data were obtained from the China Statistical Yearbook on
+Environment. Pesticide consumption, fertilizer consumption, and plastic
+ﬁlm consumption data were obtained from the China Rural Statistical
+https://doi.org/10.1038/s43247-026-04006-9 Article
+Communications Earth & Environment Article in Press
+Yearbook. Coal consumption, crude oil consumption, and natural gas
+consumption data were obtained from the China Energy Statistical Year-
+book. Meteorological data, including p recipitation, temperature, aridity
+index, potential evapotranspiration, NDVI, and PM2.5, were obtained from
+the National Tibetan Plateau Data Center ( https://data.tpdc.ac.cn).S o i l
+properties data were obtained fromthe Harmonized World Soil Database
+(https://gaez.fao.org/pages/hwsd). DEM data were obtained from the Hole-
+ﬁlled seamless SRTM data version 4 (https://srtm.sci.cgiar.org), and slope
+data were derived from the Copernicus Global Digital Elevation Model
+(https://dataspacec.copernicus.eu). Net primary productivity data were
+obtained from the United States Geological Survey (https://www.usgs.gov).
+Land-use data are available from https://doi.org/10.5281/zenodo.4417810.
+Night-time light data were obtained from https://doi.org/10.5281/zenodo.
+4417810. The source data required to generate theﬁg u r e si nt h i ss t u d ya r e
+available at https://doi.org/10.6084/m9.ﬁgshare.33027083.
+Code availability
+The codes for this study are available via Figshare athttps://doi.org/10.6084/
+m9.ﬁgshare.33027083.
+Received: 24 October 2025; Accepted: 21 August 2026;
+References
+1. Ford, D., Williams, P. Introduction to karst. In Karst Hydrogeology and
+Geomorphology,1 – 8 (John Wiley & Sons, 2007).
+2. Goldscheider, N. et al. Global distribution of carbonate rocks and karst
+water resources. Hydrogeol. J. 28, 1661– 1677 (2020).
+3. Stevanovi ć, Z. Karst waters in potable water supply: a global scale
+overview. Environ. Earth Sci. 78, 662 (2019).
+4. Wang, K. et al. Karst landscapes of China: patterns, ecosystem
+processes and services. Landsc. Ecol. 34, 2743– 2763 (2019).
+5. Gutiérrez, F. et al. A review on natural and human-induced geohazards
+and impacts in karst. Earth-Sci. Rev. 138,6 1– 88 (2014).
+6. Bakalowicz, M. Karst and karst groundwater resources in the
+Mediterranean. Environ. Earth Sci. 74,5 – 14 (2015).
+7. Peng, H. et al. Hydrochemical characteristics and health risk
+assessment of groundwater in karst areas of southwest China: a case
+study of Bama, Guangxi. J. Clean. Prod. 341, 130872 (2022).
+8. Feng, Y. et al. Evolution of hydrochemistry and water quality of karst
+groundwater under the effects of intense anthropogenic activities. J.
+Environ. Manag. 371, 123059 (2024).
+9. Shi, J. et al. The migration and transformation processes of dissolved
+organic matter in rainwater- drip water- phreatic water of a typical
+karst spring catchment, in South China.J. Hydrol. 625, 130077 (2023).
+10. Wu, X. et al. Mechanisms of water quantity and quality evolution in
+karst groundwater: new insights from long-term monitoring data. J.
+Hydrol. 661, 133634 (2025).
+11. Li, J. et al. Application of the hydrochemistry, stable isotopes and
+MixSIAR model to identify nitrate sources and transformations in
+surface water and groundwater of an intensive agricultural karst
+wetland in Guilin, China. Ecotoxicol. Environ. Saf. 231, 113205 (2022).
+12. Fu, B. et al. Multi-sensor and multi-platform retrieval of water
+chlorophyll a concentration in karst wetlands using transfer learning
+frameworks with ASD, UAV, and Planet CubeSate re ﬂectance data.
+Sci. Total Environ. 901, 165963 (2023).
+13. Yang, W. et al. Monitoring multi-water quality of internationally
+important karst wetland through deep learning, multi-sensor and
+multi-platform remote sensing images: a case study of Guilin, China.
+Ecol. Indic. 154, 110755 (2023).
+14. Han, R. & Xu, Z. Riverine hydrochemical characteristics of a typical
+karst urban watershed: major ion compositions, sources,
+assessment, and historical evolution[J]. ACS Earth Space Chem. 6,
+1495– 1505 (2022).
+15. Peng, G. et al. Karst water quality, source of pollution, and health risk
+assessment in China[J]. Sci. Total Environ. 973, 179120 (2025).
+16. Huang, S. et al. Water quality prediction based on sparse dataset
+using enhanced machine learning. Environ. Sci. Ecotechnol. 20,
+100402 (2024).
+17. Zhou, Q. et al. Groundwater quality evolution across China. Nat.
+Commun. 16, 2522 (2025).
+18. Huo, K. et al. Interpretable machine learning reveals the importance of
+geography and landscape arrangement for surface water quality
+across China. Water Res. 281, 123578 (2025).
+19. Jia, Y. et al. Unveiling microbial nitrogen metabolism in rivers using a
+machine learning approach. Environ. Sci. Technol. 58, 6605– 6615
+(2024).
+20. Wang, Z. et al. Mapping long-term surface water dynamics by
+integrating ﬁne resolution binary maps and medium resolution fraction
+series[J]. J. Hydrol. 661, 133555 (2025).
+21. Luan, S. et al. High resolution water quality dataset of chinese lakes
+and reservoirs from 2000 to 2023. Sci. Data 12, 572 (2025).
+22. Jones, E. R. et al. Dynqual v1.0: a high-resolution global surface water
+quality model. Geosci. Model Dev. 16, 4481– 4500 (2023).
+23. Ministry of Ecology and Environment of the People ’s Republic of
+China. GB3838-2002, Environmental Quality Standards for Surface
+Water (Ministry of Ecology and Environment of the People’s Republic
+of China, 2002).
+24. Yang, J. et al. Extreme drought event of 2009/2010 over southwestern
+China. Meteorol. Atmos. Phys. 115, 173– 184 (2012).
+25. Zhang, M. et al. Extreme drought changes in Southwest China from
+1960 to 2009. J. Geogr. Sci. 23,3 – 16 (2013).
+26. Jiang, Y. China ’s water security: current status, emerging challenges
+and future prospects[J]. Environ. Sci. Policy 54, 106– 125 (2015).
+27. Huang, J. et al. Characterizing the river water quality in China: recent
+progress and on-going challenges. Water Res. 201, 117309 (2021).
+28. Zhao, H. et al. Sources and transformations of nitrate constrained by
+nitrate isotopes and Bayesian model in karst surface water, Guilin,
+Southwest China. Environ. Sci. Pollut. Res. 27, 21299– 21310 (2020).
+29. Zhang, S. et al. Evolution and determinants of ecosystem services:
+insights from South China karst. Ecol. Indic. 133, 108437 (2021).
+30. Chen, G. et al. Effectiveness of best management practices for non-
+point source pollution in intensively managed agricultural watersheds.
+J. Clean. Prod. 495, 145076 (2025).
+31. Ran, J. et al. Spatiotemporal variation and driving factors of water
+quality in Yunnan-Guizhou plateau lakes, China. J. Contam Hydrol.
+254, 104141 (2023).
+32. Duan, X, et al. Hydrogeochemical characteristics and environment
+quality assessment of karst groundwater in Mengzi Basin of Yunnan
+Province, China. Water 15, 2126 (2023).
+33. Shi, Z. et al. Catastrophic groundwater pollution in a karst
+environment: a study of phosphorus sludge waste liquid pollution at
+the Penshuidong Cave in Yunnan, China. Environ. Earth Sci. 59,
+757– 763 (2009).
+34. Zhang, S. & Zhang, K. Assessing the impact of extreme rainfall and
+slope surface conditions on runoff and erosion based on a big
+database in Southwest China ’s karst region. J. Hydrol. 659, 133273
+(2025).
+35. Schorr, J. et al. Tracing pesticide dynamics: high resolution offers new
+insights to karst groundwater quality. Water Res. 267, 122412 (2024).
+36. Xia, J. et al. Migration and transformation of soil mercury in a karst
+region of southwest China: implications for groundwater
+contamination. Water Res. 226, 119271 (2022).
+37. Jourde, H. & Wang, X. Advances, challenges and perspective in
+modelling the functioning of karst systems: a review. Environ. Earth
+Sci. 82, 396 (2023).
+38. van Vliet, M. et al. Global river water quality under climate change and
+hydroclimatic extremes. Nat. Rev. Earth Environ. 4, 687– 702 (2023).
+https://doi.org/10.1038/s43247-026-04006-9 Article
+Communications Earth & Environment Article in Press
+39. Wang, F. et al. Hydrological response of karst stream to precipitation
+variation recognized through the quantitative separation of runoff
+components. Sci. Total Environ. 748, 142483 (2020).
+40. Qin, C. et al. Hydrogeochemical dynamics and response of karst
+catchment to rainstorms in a critical zone observatory (CZO),
+Southwest China. Front. Water 2, 577511 (2020).
+41. Zhang, H. et al. Natural and anthropogenic imprints on seasonal river
+water quality trends across China. npj Clean. Water 8, 49 (2025).
+42. Jiang, W. et al. Quantifying impacts of climate and land use changes
+on ecosystem services from statistic perspective. Ecol. Indic. 172,
+113285 (2025).
+43. Tong, S. T. Y. & Chen, W. Modeling the relationship between land use
+and surface water quality. J. Environ. Manag. 66, 377– 393 (2002).
+44. Wu, Y., Liu, S. & Gallant, A. L. Predicting impacts of increased CO2
+and climate change on the water cycle and water quality in the
+semiarid James River Basin of the Midwestern USA. Sci. Total
+Environ. 430, 150– 160 (2012).
+45. Han, H. & Wu, S. Rural residential energy transition and energy
+consumption intensity in China. Energy Econ. 74, 523– 534 (2018).
+46. Li, S.-L. et al. Karst ecosystem and environment: characteristics,
+evolution processes, and sustainable development. Agric. Ecosyst.
+Environ. 306, 107173 (2021).
+47. Li, C. et al. Intense human activities induce the dynamic changes of
+interaction pattern between karst water-quaternary groundwater in
+the basin-mountain coupling belt over the past 60 years. Water
+Resour. Res. 60, e2023WR035211 (2024).
+48. Bondu, R. et al. Impact of past mining activities on water quality in a
+karst area in the Cévennes region, Southern France. Sci. Total
+Environ. 873, 162274 (2023).
+49. Guo, F. & Jiang, G. Hydro-ecological processes of hyporheic zone in a
+karst spring-fed pool: Effects of groundwater decline and river
+backﬂow. J. Hydrol. 587, 124987 (2020).
+50. Meyerhoff, S. B. et al. Characterization of groundwater and surface
+water mixing in a semicon ﬁned karst aquifer using time-lapse
+electrical resistivity tomography. Water Resour. Res. 50, 2566– 2585
+(2014).
+51. Breiman, L. Random forests. Mach. Learn. 45,5 – 32 (2001).
+52. Chen, T, Guestrin, C. XGBoost: a scalable tree boosting system[C]. In
+Proc. 22nd ACM SIGKDD International Conference on Knowledge
+Discovery and Data Mining , 785– 794 (2016).
+53. Ke G, et al. LightGBM: a highly ef ﬁcient gradient boosting decision
+tree[C]. (Neural Information Processing Systems, 2017).
+54. Zou X, et al. Logistic Regression Model Optimization and Case
+Analysis[C]. In Proc. IEEE 7th International Conference on Computer
+Science and Network Technology (ICCSNT) , pp 135– 139 (2019).
+55. Pekel, J.-F. et al. High-resolution mapping of global surface water and
+its long-term changes. Nature 540, 418– 422 (2016).
+56. Zhao, Y., Zhang, J. & Nielsen, C. P. The effects of recent control
+policies on trends in emissions of anthropogenic atmospheric
+pollutants and CO2 in China. Atmos. Chem. Phys. 13, 487– 508 (2013).
+57. Riahi, K. et al. The Shared Socioeconomic Pathways and their energy,
+land use, and greenhouse gas emissions implications: an overview[J].
+Glob. Environ. Change 42, 153– 168 (2017).
+58. Gidden, M. J. et al. Global emissions pathways under different
+socioeconomic scenarios for use in CMIP6: a dataset of harmonized
+emissions trajectories through the end of the century. Geosci. Model
+Dev. 12, 1443– 1475 (2019).
+59. Tian, Y. et al. An Extended VIIRS-like Arti ﬁcial Nighttime Light Data
+Reconstruction (1986– 2024). Sci. Data 13, 233 (2026).
+Acknowledgements
+This research was funded by the Key Project of National Natural Science
+Foundation of China [42430712], National Natural Science Foundation of
+China [41972244], the High-Level Talent Training Program in Guizhou Pro-
+vince (GCC[2023]045), Guizhou Provincial Science and Technology Support
+Projects (Qiankehe Support[2024] General 057), and Guizhou Provincial
+Qiankehe Talent Program (KJZY[2025]030).
+Author contributions
+M.H. contributed to conceptualization, methodology, investigation,
+visualization, drafting of the original manuscript, and manuscript revision.
+J.N. contributed to conceptualization, interpretation of results, project
+supervision, and manuscript revision. C.W., D.L., and P.W. contributed to
+manuscript revision. B.X.H. contributed to conceptualization and
+manuscript revision.
+Competing interests
+The authors declare no competing interests.
+Additional information
+Supplementary informationThe online version contains
+supplementary material available at
+https://doi.org/10.1038/s43247-026-04006-9.
+Correspondenceand requests for materials should be addressed to Jie Niu
+or Bill X. Hu.
+Peer review information Communications Earth & Environmentthanks
+Dongmei HAN, and Evangelos Tziritizfor their contribution to t e peer review
+of this work. Primary Handling Editors: Martina Grecequet and Rahim
+Barzegar. A peer review ﬁle is available.
+Reprints and permissions informationis available at
+http://www.nature.com/reprints
+Publisher’s note Springer Nature remains neutral with regard to
+jurisdictional claims in published maps and institutional afﬁliations.
+Open Access This article is licensed under a Creative Commons
+Attribution-NonCommercial-NoDerivatives 4.0 International License,
+which permits any non-commercial use, sharing, distribution and
+reproduction in any medium or format, as long as you give appropriate
+credit to the original author(s) and the source, provide a link to the Creative
+Commons licence, and indicate if you modi ﬁed the licensed material. You
+do not have permission under this licence to share adapted material
+derived from this article or parts of it. The images or other third party
+material in this article are included in the article's Creative Commons
+licence, unless indicated otherwise in a credit line to the material. If material
+is not included in the article's Creative Commons licence and your intended
+use is not permitted by statutory regulation or exceeds the permitted use,
+you will need to obtain permission directly from the copyright holder. To
+view a copy of this licence, visit http://creativecommons.org/licenses/by-
+nc-nd/4.0/.
+© The Author(s) 2026
+This Article in Press is shared early to give you faster access to new research.
+It is citable and carries a permanent DOI. Theﬁnal edited version will replace it
+automatically.
+https://doi.org/10.1038/s43247-026-04006-9 Article
+Communications Earth & Environment Article in Press

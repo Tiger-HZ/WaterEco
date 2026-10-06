@@ -1,0 +1,599 @@
+1 
+Stage-specific prediction of body weight in Hanwoo steers using body 
+measurements and nutrient intake variables 
+ 
+Myungsun Park†, Sun-Sik Jang*, Youl-Chang Baek* 
+ 
+*Corresponding Authors: Sun-Sik Jang and Y oul-Chang Baek 
+Tel: +82-33-330-0693, E-mail: jangsc@korea.kr 
+Tel: +82-33-330-0612, E-mail: chang4747@korea.kr 
+Hanwoo Research Institute, National Institute of Animal Science, Pyeongchang, 25340, Korea 
+ 
+ORCID 
+Myungsun Park https://orcid.org/0000-0002-1260-5694 
+Sun-Sik Jang https://orcid.org/0000-0002-8121-4697 
+Youl-Chang Baek https://orcid.org/0000-0003-4454-5339 
+ 
+Accepted Article
+ 
+ 
+2 
+Title of the manuscript: Stage-specific prediction of body weight in Hanwoo steers using 
+body measurements and nutrient intake variables 
+ 
+ABSTRACT 
+Objective: Accurate body weight ( BW) prediction is important for growth management and nutrient 
+utilization in Hanwoo steers. However, prediction performance may vary across growth stages and input 
+variables. Therefore, this study evaluated stage -specific machine learning models for BW prediction 
+using body measurements and nutrient intake variables.This study investigated stage-dependent factors 
+associated with body weight (B W) and average daily gain (ADG) and evaluated the predictive 
+performance of machine learning (ML) models using body size traits and nutrient intake variables in 
+Hanwoo steers. 
+Methods: Data from 136 Hanwoo steers were collected during the growing (6–12 months), early 
+fattening (13–21 months), and late fattening (22–31 months) periods. Body size traits and nutrient intake 
+variables were used to develop prediction models using Random Forest (RF), Linear Regression (LR), 
+K-Nearest Neighbors (KNN), and Artificial Neural Networks (ANN). To minimize repeated -
+measurement bias, datasets were divided into training and testing sets based on individual animal 
+identification. Prediction performance was evaluated using coefficient of determination (R²), root mean 
+square error (RMSE), and mean absolute error (MAE). 
+Results: BW showed strong associations with skeletal -related body traits during the growing period, 
+whereas nutrient intake variables became more strongly assoc iated with average daily gain ( ADG) 
+during the fattening periods. Among the evaluated ML models, RF generally demonstrated robust 
+predictive performance across growth stages. For BW prediction, RF achieved the highest prediction 
+accuracy during the growing period (R² = 0.952), whereas LR achieved the highest prediction accuracy 
+during the early-fattening period (R² = 0.947). Prediction performance for ADG was generally lower 
+than that for BW. Variable importance analysis indicated that skeletal -related body traits contributed 
+most to BW prediction, whereas nutrient intake variables contributed more to ADG prediction during 
+fattening. 
+Conclusion: Factors associated with BW and ADG in Hanwoo steers differed according to production 
+stage. Skeletal-related body traits were more strongly associated with BW during the growing period, 
+whereas nutrient intake variables became increasingly important during the fattening stages. The present 
+findings suggest that integrating body measurements and nutritional information may contribute to 
+stage-specific growth monitoring and provide preliminary information for developing nutritional 
+management strategies in Hanwoo production systems. 
+ 
+메모 포함[u1]: Response: Revised accordingly. The rationale and 
+necessity of the study were added to the Objective section of the 
+Abstract to clarify the need for stage-specific prediction of body 
+weight and average daily gain using body measurements and nutrient 
+intake variables in Hanwoo steers. 
+Accepted Article
+ 3 
+Keywords: Average daily gain; Body weight; Growth performance; Growth stage; Hanwoo steers; 
+Machine learning 
+ 
+Accepted Article
+ 
+ 
+4 
+INTRODUCTION 
+Accurate prediction of growth performance is important for improving productivity, feed efficiency, 
+and economic profitability in beef cattle production systems. In Hanwoo production, body weight (BW) 
+and average daily gain (ADG) are major indicators used for nutritional management and production 
+efficiency because Hanwoo cattle are characterized by relatively long fattening periods and high 
+production costs [1] . Therefore, precise growth monitoring is essential for efficient management and 
+sustainable beef production. 
+Conventional evaluation of cattle growth generally relies on direct BW measurements using livestock 
+scales. However, repeated weighing procedures are labor -intensive, time-consuming, and may cause 
+stress to animals during handling. In addition , conventional approaches may not adequately reflect 
+dynamic growth changes occurring throughout different fattening stages. Consequently, interest has 
+increased in precision livestock management approaches capable of predicting growth performance 
+using easily measurable phenotypic and nutritional variables. 
+Recent studies have reported that machine learning (ML) approaches can be effectively applied for 
+predicting cattle growth traits using body measurements and feeding information [2, 3]. In Hanwoo 
+cattle, body size traits have shown significant relationships with growth and carcass characteristics [4, 
+5]. In addition, nutrient intake and feed efficiency are closely associated with growth performance 
+during the fattening period [6, 7] . However, most previo us studies have primarily focused on overall 
+growth prediction without considering biological differences among growth stages [8]. 
+Growth mechanisms in beef cattle vary according to production stage. Skeletal and muscular 
+development are dominant during th e growing period, whereas nutrient utilization efficiency and fat 
+deposition become increasingly important during the fattening period. Therefore, factors associated 
+with BW and ADG may differ according to growth stage, and stage-specific prediction approaches may 
+improve growth prediction accuracy and biological interpretation. 
+Despite increasing interest in ML-based growth prediction in beef cattle, most previous studies have 
+primarily focused on overall prediction performance using pooled datasets withou t considering stage-
+dependent physiological changes throughout the production cycle. In addition, limited studies have 
+Accepted Article
+ 5 
+integrated both body measurements and nutrient intake variables while accounting for repeated -
+measurement data structure in Hanwoo cattle . Therefore, stage -specific approaches may provide 
+improved biological interpretation and more practical nutritional management strategies for commercial 
+beef production systems. 
+Therefore, the objective of this study was to identify stage -dependent factors associated with BW and 
+ADG in Hanwoo steers and to evaluate the predictive performance of multiple ML models across 
+different growth stages using body size traits and nutrient intake variables. 
+ 
+MATERIALS AND METHODS 
+Animals and experimental design 
+A total of 136 Hanwoo steers were used in this study. Animals were managed under commercial feeding 
+conditions at the Hanwoo Research Institute, National Institute of Animal Science, Republic of Korea. 
+Repeated measurements of BW, ADG, body size traits, an d nutrient intake variables were collected 
+throughout the experimental period. 
+To evaluate stage-dependent growth characteristics, animals were classified into three production stages 
+according to age: growing period (6–12 months), early fattening period (13–21 months), and late 
+fattening period (22–31 months). Growth performance, bo dy measurements, and nutrient intake 
+variables were evaluated to identify stage-specific factors associated with growth and to develop ML-
+based prediction models for BW and ADG. 
+ 
+Measurement of body weight and body size traits 
+Body weight was measured mon thly before morning feeding using an electronic livestock scale 
+throughout the experimental period. Body size traits were measured according to standard livestock 
+measurement procedures at 2 -month intervals throughout the experimental period. Measured trai ts 
+included withers height (WH), hip height (HH), body length (BL), chest depth (CD), chest width (CW), 
+rump width (RW), pelvic width (PW), hip width (HW), rump length (RL), and chest girth (CG), as 
+illustrated in Figure 1. All measurements were obtained b y trained personnel using standardized 
+Accepted Article
+ 
+ 
+6 
+measuring tools to minimize measurement variability. Because body size traits were measured at 2 -
+month intervals rather than at every BW recording, the number of observations for body measurements 
+was lower than that for BW records. 
+ 
+Nutrient intake analysis 
+Feed intake and nutrient composition were used to calculate dry matter intake (DMI), organic matter 
+intake (OMI), crude protein intake (CPI), ether extract intake (EEI), neutral detergent fiber intake 
+(NDFI), acid detergent fiber intake (ADFI), ash intake (AshI), total digestible nutrient intake (TDNI), 
+and non-fiber carbohydrate intake (NFCI). Chemical analyses were conducted according to AOAC [9], 
+and fiber fractions were analyzed using the method of Van Soest et al. [10]. Feed conversion ratio (FCR) 
+was calculated as the ratio of DMI to ADG and was used only for correlation analysis and biological 
+interpretation. FCR was excluded from ADG prediction models to avoid target leakage because FCR is 
+mathematically associated with ADG. ADG was calculated based on BW changes between consecutive 
+measurement intervals. Therefore, the number of ADG observations was lower than that of BW records 
+because the initial BW measurements could not be used for ADG calculation. Nutrient intake variables 
+used for ADG prediction were calculated over the same measurement interval used to determine ADG, 
+ensuring temporal consistency between predictor and response variables. 
+ 
+Machine learning models 
+Four ML algorithms, including Random Forest (RF), Linear Regression (LR), K -Nearest Neighbors 
+(KNN), and Artificial Neural Networks (ANN), were applied to predict BW and ADG in Hanwoo steers. 
+Input variables included body size traits (WH, HH, BL, CD, CW, RW, PW, HW, RL, and CG) and 
+nutrient intake variables (DMI, OMI, CPI, NDFI, ADFI, EEI, AshI, TDNI, and NFCI). Prior to model 
+development, observations containing missing values were excluded. The final numbers of unique 
+animals and observations included in each production stage are summarized in Supplementary Tables 
+S1A and S1B, respectivelySupplementary Table S1. The numbers of animals and observations differed 
+among production stages because some animals were slaughtered at different finishing ages, resulting 
+메모 포함[u2]: Response: Revised accordingly. All supplementary 
+tables and figures were compiled into a single Supplementary 
+Material PDF file with appropriate titles and headings. The 
+Supplementary Material section in the manuscript was also revised to 
+indicate the included supplementary tables and figure. References to 
+the corresponding supplementary materials were added at the relevant 
+locations in the main text. 
+Accepted Article
+ 7 
+in fewer records available for the late-fattening stage. Continuous variables were standardized using z-
+score normalization for KNN and ANN models because these algorithms are sensitive to variable scale 
+differences. 
+To minimize information leakage associated with repeated measureme nts, datasets were divided into 
+training and testing sets based on individual animal identification. Repeated observations from the same 
+animal were not simultaneously included in both datasets. The dataset was randomly divided into 
+training (70%) and testing (30%) sets at the animal level using a fixed random seed of 42. This approach 
+was selected to ensure complete independence between the training and testing datasets while 
+preserving sufficient training data for model development under the relatively li mited sample size 
+available at each production stage. 
+Hyperparameter optimization was conducted only within the training dataset to avoid information 
+leakage during model development. For RF models, hyperparameters including the number of trees 
+(n_estimators = 100–500), maximum tree depth (max_depth = 5 –20), and minimum samples required 
+for node splitting (min_samples_split = 2 –10) were optimized using grid search procedures based on 
+minimum mean squared error (MSE). 
+For KNN models, the optimal number of ne ighbors (k = 2 –20) was selected according to minimum 
+MSE within the training dataset using Euclidean distance metrics. 
+ANN models were developed using multilayer perceptron structures consisting of fully connected 
+hidden layers. The ANN architecture included one hidden layer with 100 neurons, rectified linear unit 
+activation functions, Adam optimizer, learning rate of 0.001, batch size of 32, and a maximum of 500 
+training epochs. Early stopping procedures were applied to reduce overfitting during model trai ning. 
+Unlike RF and KNN, the ANN architecture and training parameters were predefined and were not 
+subjected to additional hyperparameter optimization. 
+Model development, preprocessing, hyperparameter optimization, and prediction analyses were 
+conducted using Python software (version 3.11; Python Software Foundation, Wilmington, DE, USA) 
+with pandas, NumPy, scikit-learn, matplotlib, and seaborn libraries. 
+Although repeated longitudinal observations within animals were retained to preserve biological growth 
+Accepted Article
+ 
+ 
+8 
+information, strict separation of animals between training and testing datasets was applied to reduce 
+repeated-measurement bias and improve model generalizability. 
+ 
+Model evaluation 
+Prediction performance was evaluated using coefficient of determination (R² ), root mean square error 
+(RMSE), and mean absolute error (MAE). The best-performing model was selected based on the highest 
+R² together with the lowest RMSE and MAE values. 
+R² was calculated as: 
+R² = 1 − (Σ(yᵢ − ŷᵢ)² / Σ(yᵢ − ȳ)²) 
+where yᵢ represents observed values, ŷᵢ represents predicted values, and ȳ represents the mean observed 
+value. 
+Lower RMSE and MAE values indicated improved prediction accuracy and reduced prediction error. 
+ 
+Statistical analysis 
+Descriptive statistics, correlation analyses, and ML analyses were conducted using Python software 
+(version 3.11; Python Software Foundation, Wilmington, DE, USA). 
+Pearson correlation analysis was performed as a descriptive assessment of pairwise linear associations 
+among variables. Because repeated long itudinal observations from the same animals were retained, 
+these correlations reflect both between -animal differences and within -animal changes over time and 
+therefore should not be interpreted as evidence of independent biological relationships or causal effects. 
+Data preprocessing, model development, hyperparameter optimization, and visualization were 
+performed using pandas, NumPy, scikit -learn, matplotlib, and seaborn libraries. Prior to correlation 
+analyses, variable distributions and outliers were visually inspected using histograms and boxplots. 
+RESULTS 
+Descriptive statistics of growth performance, body size traits, and nutrient intake variables 
+Accepted Article
+ 9 
+Descriptive statistics for growth performance, body size traits, and nutrient intake variables are 
+presented in Tables 1–3. Body weight and body size traits generally increased with advancing growth 
+stage. Skeletal-related body measurements, including withers height, hip height, body length, and chest 
+girth, showed progressive increases from the growing to late fattening periods. 
+Nutrient intake variables, i ncluding dry matter intake , total digestible nutrient intake, and non -fiber 
+carbohydrate intake, also increased during the fattening periods. In contrast, average daily gain showed 
+greater variation during the late fattening period compared with the growing period, indicating increased 
+biological and nutritional variability during the finishing stage. 
+ 
+Correlation patterns among growth performance, body size traits, and nutrient intake variables 
+Correlation analyses among growth performance variables, body size traits, and nutrient intake 
+variables are presented in Figure 2. During the growing period, BW showed strong positive correlations 
+with skeletal-related body traits, particula rly BL, HH, WH, and CD , suggesting that skeletal growth 
+was closely associated with BW during early development. 
+As steers progressed into the fattening periods, Pearson correlation coefficients between nutrient 
+intake variables and ADG were generally weak, although TDNI and NFCI exhibited relatively 
+stronger positive associations during the early and late fattening periods than during the growing period. 
+Although these pairwise correlations were modest, RF variable importance analysis identified nutrient 
+intake variables as important predictors of ADG during the fattening periods, suggesting that their 
+contribution to prediction was better captured within the multivariable ML framework than by simple 
+linear correlations. FCR showed negative correlations with ADG across all growth stages. Because FCR 
+is mathematically derived from DMI and ADG, this relationship should not be interpreted as an 
+independent biological association. 
+ 
+Prediction performance for body weight 
+Prediction performance for BW across growth stages and ML models is presented in Figure 3. 
+Accepted Article
+ 
+ 
+10 
+During the growing period (6–12 months), RF, LR, and KNN showed high predictive performance for 
+BW. RF achieved the highest prediction accuracy (R² = 0.952), followed by LR (R² = 0.931) and KNN 
+(R² = 0.920). In contrast, ANN showed substantially lower predictive performance than the other 
+evaluated models, with negative R² values, indicating prediction performance worse than that 
+obtained by using the mean value of the test dataset. 
+Similarly, during the early fattening period (13 –21 months), LR and RF showed strong predictive 
+performance, with R² values of 0.947 and 0.938, respectively. KNN also maintained relatively high 
+prediction accuracy (R² = 0.890), whereas ANN again showed lower predictive performance than the 
+other evaluated models. 
+Prediction performance generally decreased during the late fattening period (22–31 months), possibly 
+reflecting increased biological variability during finishing growth. Nevertheless, LR maintained 
+relatively strong predictive performance (R² = 0.927), whereas RF showed moderate prediction 
+accuracy (R² = 0.820). KNN performance decreased substantially during the late fattening stage, and 
+ANN consistently showed lower predictive performance across al l growth stages than RF, LR, and 
+KNN. 
+ 
+Prediction performance for average daily gain 
+Prediction performance for ADG was generally lower than that for BW across all evaluated models and 
+growth stages (Figure 4). 
+During the growing period, RF showed the high est predictive performance for ADG (R² = 0.345), 
+whereas KNN and LR showed relatively lower prediction accuracy. ANN showed lower predictive 
+performance than the other evaluated models, with negative R² values during this stage. 
+During the early fattening period, RF maintained the highest prediction accuracy for ADG (R² = 0.243), 
+whereas KNN showed relatively low predictive performance (R² = 0.094). LR and ANN showed 
+negative prediction accuracy during this stage. 
+Prediction accuracy further decreased durin g the late fattening period. Most models showed low or 
+negative R² values, indicating limited ability to predict short -term growth performance during the 
+Accepted Article
+ 11 
+finishing stage. RF and KNN showed near-zero prediction performance, whereas LR and ANN showed 
+negative predictive accuracy. 
+Optimization of the KNN model demonstrated that the optimal number of neighbors (k) differed 
+according to growt h stage ( Supplementary 1Figure S1 ). MSE generally increased during the late 
+fattening period compared with the growing per iod, indicating greater prediction variability during 
+finishing growth. 
+Overall, these findings indicate that ADG prediction is substantially more difficult than BW prediction, 
+particularly during the fattening stages, likely due to increased biological and environmental variability 
+associated with short-term growth responses. 
+ 
+Random Forest variable importance analysis 
+RF variable importance analysis revealed clear stage -dependent differences in factors associated with 
+BW and ADG prediction (Figure 5). 
+For BW prediction during the growing period, skeletal-related body measurements showed the greatest 
+importance, particularly CG, BL, and HH . Similar patterns were observed during the early and late 
+fattening periods, where CG consistently remained the most influential variable for BW prediction. 
+In contrast, nutrient intake variables showed relatively greater importance for ADG prediction. During 
+the growing period, EEI, NDFI, and TDNI contributed substantially to ADG prediction. During the 
+early and late fattening periods, TDNI, CPI, ADFI, and NDFI showed relatively high importance. 
+These findings suggest that BW prediction is primarily associated with skeletal and body frame 
+development, whereas ADG prediction is more strongly influenced by nutrient utiliza tion and dietary 
+composition, particularly during the fattening stages. 
+ 
+DISCUSSION 
+The present study suggests that stage -dependent physiological and nutritional changes should be 
+considered when developing ML-based growth prediction models for Hanwoo steers. 
+Unlike previous studies that primarily focused on overall prediction accuracy using pooled datasets, the 
+Accepted Article
+ 
+ 
+12 
+present study evaluated stage -dependent shifts in factors associated with growth by integrating body 
+measurements and nutrient intake variables under repeated-measurement conditions. 
+Prediction performance for BW was generally high during the growing and early fattening periods, 
+particularly in the RF, LR, and KNN models. These findings suggest that BW can be estimated relatively 
+reliably using body size traits and nutrient intake variables in Hanwoo steers. The strong prediction 
+performance observed during the growing stage may be associated with the relatively stable relationship 
+between skeletal development and BW during early growth. During t his period, body growth is 
+primarily characterized by increases in frame size, muscle development, and structural tissue accretion 
+rather than excessive fat deposition. Consequently, body measurements such as chest girth, body length, 
+and hip height tend to show strong linear or nonlinear relationships with BW. 
+Previous studies have similarly reported significant associations between body measurements and 
+growth traits in Hanwoo cattle and other beef breeds. Park and Park [4] and Choy et al. [5] reported that 
+chest girth and body length were strongly associated with BW and growth performance in Hanwo o 
+cattle, while Firdaus et al. [1 2] demonstrated that body measurements could effectively estimate BW 
+across multiple beef cattle breeds. Recent advances in precision livestock farming have also increased 
+interest in ML -based BW prediction systems as practical tools for real -time animal monitoring and 
+feeding management [1, 13]. The relatively high prediction accuracy observed in the present study 
+therefore supports the applicability of ML approaches for practical growth monitoring in commercial 
+Hanwoo production systems. 
+In contrast to BW prediction, prediction performance for ADG was substantially lower across all 
+evaluated models and growth stages. This result s uggests that short -term growth performance is 
+influenced by more complex and variable biological processes than BW alone. Unlike BW, which 
+reflects cumulative growth over time, ADG is highly sensitive to short -term fluctuations in nutrient 
+intake, rumen fe rmentation characteristics, metabolic efficiency, environmental stress, animal health 
+status, and behavioral variation. Consequently, predicting ADG under practical production conditions 
+is inherently more challenging. 
+The relatively lower prediction performance during the late fattening period may also reflect increased 
+Accepted Article
+ 13 
+biological variability associated with adipose tissue deposition and nutrient partitioning during finishing 
+growth. As cattle approach market weight, growth efficiency generally declines be cause a greater 
+proportion of dietary energy is directed toward fat deposition rather than lean tissue accretion. In 
+Hanwoo production systems, late fattening is particularly associated with intensive marbling 
+development, which involves substantial metabo lic variation among individuals. These physiological 
+changes may reduce the consistency of growth responses and increase prediction error for ADG. Cho 
+et al. [7] similarly reported that feed efficiency traits in Hanwoo steers showed variable repeatability 
+across growing and fattening periods, indicating that physiological responses to nutrient intake differ 
+dynamically throughout the production cycle. In addition, nutrient digestibility and rumen fermentation 
+characteristics are known to substantially influence growth responses during different production stages 
+[14]. 
+Among the evaluated ML models, RF generally demonstrated robust and consistent predictive 
+performance across production stages. However, LR achieved the highest BW prediction accuracy 
+during th e early - and late -fattening stages, suggesting that linear relationships between body 
+measurements, nutrient intake variables, and BW remained strong during these production periods. RF 
+models are capable of effectively capturing nonlinear relationships and interactions among explanatory 
+variables while remaining relatively robust to multicollinearity, outliers, and noisy field data [11]. 
+Because growth performance in beef cattle is i nfluenced by multiple interacting biological and 
+nutritional factors, the ability of RF models to accommodate complex relationships may explain their 
+superior performance in the present study. 
+Previous livestock studies have similarly reported that RF mode ls provide relatively robust prediction 
+accuracy for animal growth and production traits under commercial production conditions. Ruchay et 
+al. [2] reported that RF-based approaches effectively predicted livestock body traits under variable field 
+environments, while Duwalage et al. [3] demonstrated that RF models outperformed several 
+conventional approaches for cattle weight prediction. In the present study, the consistent performance 
+of RF across production stages suggests that ensemble-based ML approaches may be particularly useful 
+for practical precision livestock farming applications in Hanwoo systems. 
+Accepted Article
+ 
+ 
+14 
+In contrast, ANN showed substantially lower predictive performance than the other evaluated models, 
+with negative R² values, indicating performance worse t han a baseline model that predicts the mean 
+value of the test dataset. This finding should be interpreted cautiously because ANN performance is 
+influenced not only by dataset size and biological variability but also by network architecture, 
+hyperparameter configuration, and optimization strategy. In the present study, the ANN architecture 
+remained fixed, whereas RF and KNN underwent hyperparameter optimization during model 
+development. Therefore, the relatively lower performance observed for ANN may reflect the specific 
+modeling framework adopted in this study in addition to the characteristics of the available dataset, 
+rather than an inherent limitation of ANN for predicting BW and ADG. Previous livestock studies have 
+similarly reported that ANN performance is highly dependent on dataset structure, sample size, and 
+model configuration. Future studies incorporating alternative network architectures and more extensive 
+hyperparameter optimization may further improve the predictive performance of ANN models for 
+growth prediction in Hanwoo steers. The RF variable importance analysis further supported the 
+biological differences observed among production stages. During the growing period, skeletal -related 
+body measurements, particularly chest girth, body length, and hip height, were the most important 
+variables associated with BW prediction. These findings indicate that structural body development is 
+closely associated with BW during early growth. Skeletal growth and frame expansion are generally 
+prioritized during t he growing stage, and body measurements therefore provide reliable indicators of 
+overall growth status. 
+In contrast, nutrient intake variables showed relatively greater importance for ADG prediction during 
+the fattening periods. Variables associated with dietary energy and nutrient intake, including TDNI, CPI, 
+ADFI, and NDFI, contributed substantially to ADG prediction during the fattening stages. These 
+findings suggest that nutrient utilization efficiency becomes increasingly important as cattle progress 
+into the finishing phase. 
+Previous studies have similarly demonstrated that dietary energy concentration and nutrient utilization 
+strongly influence growth performance and carcass characteristics in Hanwoo steers [6]. In addition, 
+nutrient composition and d ietary energy level influence nutrient utilization efficiency and growth 
+Accepted Article
+ 15 
+performance in beef cattle [15]. Recent studies have further shown that total mixed ration composition 
+and dietary energy level can substantially affect feed utilization efficiency an d growth performance 
+during the fattening period [14, 16, 17]. Therefore, the increased importance of nutrient intake variables 
+observed during the fattening stages likely reflects metabolic shifts toward adipose tissue deposition 
+and changes in nutrient partitioning associated with finishing growth. 
+Collectively, the present findings suggest that factors associated with BW and ADG differ according to 
+production stage. Skeletal-related body traits showed stronger associations with BW during the growing 
+period, whereas nutrient intake variables contributed relatively more to ADG prediction during the 
+fattening periods. Although Pearson correlation analysis showed generally weak pairwise associations 
+between nutrient intake variables and ADG across production stages, RF variable importance identified 
+several nutrient intake variables, particularly TDNI and NFCI, as important predictors of ADG during 
+the fattening periods. Unlike Pearson correlation, which evaluates pairwise linear relationships, RF 
+variable imp ortance reflects the relative contribution of predictors within a multivariable nonlinear 
+prediction model. Consequently, predictors with relatively weak individual correlations may still 
+substantially improve prediction accuracy when considered jointly wi th other variables. These results 
+highlight the importance of applying stage -specific approaches when developing growth prediction 
+systems and nutritional management strategies for beef cattle. 
+From a practical perspective, integrating body measurements and nutritional information may improve 
+growth monitoring and feeding management in commercial Hanwoo systems. Stage-specific prediction 
+models could support more precise nutritional management by allowing producers to adjust feeding 
+strategies according to physiological growth priorities during each production stage. Such approaches 
+may contribute to improved feed efficiency, optimized growth performance, and more sustainable beef 
+production systems. 
+Nevertheless, several limitations should be considered when interpreting the present findings. First, the 
+study was conducted using data collected from a single research environment under relatively uniform 
+management and feeding conditions, which may limit the generalizability of the developed models 
+under diverse commercial production systems. Therefore, the present models should be interpreted as 
+Accepted Article
+ 
+ 
+16 
+exploratory stage-specific prediction frameworks rather than universally applicable prediction systems. 
+Second, although repeated longitudinal observations were retained to preserve biological growth 
+information and datasets were separated at the animal level to minimize information leakage, model 
+performance was evaluated using a single animal -level train –test split. Therefore, prediction 
+performance may have been influenced by the specific data partition. Because of the limited number of 
+animals available in each production stage, particularly during the late fattening period, grouped cross-
+validation or repeated animal-level splitting was not applied in the present study. Future studies using 
+larger datasets should evaluate model stability and variability through grouped cross -validation or 
+repeated animal-level resampling approaches. Furthermore, because several body size traits and nutrient 
+intake variables were correlated with one another, the RF variable importance rankings should be 
+interpreted as relative measures of predictor contribution within the prediction model rather than 
+independent measures of biological importance. 
+Third, the predictive performance for ADG remained relatively limited across growth stages, 
+particularly during the late fattening period. This finding likely reflects the complex biological 
+variability associated with short -term gro wth responses, including nutrient utilization efficiency, 
+metabolic variation, environmental stress, feeding behavior, and health -related factors that were not 
+included in the present models. 
+Finally, although the present study incorporated body measuremen ts and nutrient intake variables, 
+additional physiological and environmental information, including rumen fermentation characteristics, 
+blood metabolites, climate-related variables, behavioral traits, and genomic information, may further 
+improve prediction accuracy and biological interpretation in future precision livestock farming 
+applications. 
+Overall, the present study demonstrated that ML-based prediction performance and variable importance 
+differed according to production stage in Hanwoo steers. The fi ndings suggest that integrating stage -
+specific body measurements and nutritional information may provide preliminary information for 
+developing nutritional management and growth management systems in beef cattle production. 
+ 
+Accepted Article
+ 17 
+CONCLUSION 
+The present study demonstrated that ML-based prediction performance for BW and ADG in Hanwoo 
+steers differed according to production stage. Skeletal-related body measurements were more strongly 
+associated with BW prediction during the growing period, whereas nutrient intake v ariables became 
+increasingly important during the fattening stages, reflecting dynamic physiological and nutritional 
+changes throughout the production cycle. 
+Although LR achieved the highest BW prediction accuracy during the early- and late-fattening stages, 
+RF generally demonstrated robust predictive performance across production stages and across both BW 
+and ADG prediction tasks. In contrast, ADG prediction accuracy remained limited across models, 
+indicating the greater biological complexity and variability associated with short-term growth responses 
+under practical production conditions. The relatively lower performance of ANN should be interpreted 
+in the context of the modeling framework adopted in the present study, in which the ANN architecture 
+remained fixed whereas RF and KNN underwent hyperparameter optimization. Therefore, the observed 
+ANN performance should not be interpreted as an inherent limitation of deep learning approaches, and 
+further optimization of network architectures and hyperparameters may improve prediction accuracy in 
+future studies. 
+These findings suggest that integrating stage -specific body measurements and nutritional information 
+may facilitate stage -dependent growth evaluation and support future precision feeding and growth 
+management studies. However, additional validation under diverse production environments and 
+incorporation of physiological, environme ntal, and behavioral variables will be necessary to improve 
+model generalizability and prediction accuracy. 
+ 
+ 
+ 
+Accepted Article
+ 
+ 
+18 
+CONFLICT OF INTEREST 
+No potential conflict of interest relevant to this article was reported. 
+ 
+AUTHORS’ CONTRIBUTION 
+Conceptualization: Park M, Jang SS, Baek YC. 
+Data curation: Park M. 
+Formal analysis: Park M. 
+Methodology: Park M, Jang SS, Baek YC. 
+Software: Park M. 
+Validation: Jang SS, Baek YC. 
+Investigation: Park M. 
+Writing - original draft: Park M. 
+Writing - review & editing: Park M, Jang SS, Baek YC. 
+ 
+FUNDING 
+This study was supported by the National Institute of Animal Science, Rural Development 
+Administration, Republic of Korea, through the research project “Determination of growing 
+performance, tissue physiology and meat quality change in Hanwoo steers” (Project No. PJ01492001). 
+ 
+ACKNOWLEDGMENTS 
+The authors thank the staff of the Hanwoo Research Institute for animal management and data collection. 
+ 
+SUPPLEMENTARY MATERIAL 
+Supplement 1. Supplementary Tables S1A and S1B and Supplementary Figure S1. Numbers of unique 
+animals and observations included in the stage-specific body weight (BW) and average daily gain (ADG) 
+prediction models, and mean squared error (MSE) according to the number of neighbors (k) in K-nearest 
+neighbors (KNN) models across growth stages in Hanwoo steers. 
+Accepted Article
+ 19 
+Mean squared error (MSE) according to the number of neighbors (k) in K -nearest neighbors (KNN) 
+models across growth stages in Hanwoo steers. 
+ 
+DATA AV AILABILITY 
+Upon reasonable request, the datasets of this study can be available from the corresponding author. 
+ 
+ETHICS APPROV AL 
+Animal care and experimental procedures were approved by the Institutional Animal Care and Use 
+Committee (IACUC) of the National Institute of Animal Science, Rural Development Administration, 
+Republic of Korea (Approval No. NIAS 2020-0460). 
+ 
+DECLARATION OF GENERATIVE AI 
+During the preparation of this work, Generative AI (ChatGPT; OpenAI, San Francisco, CA, USA) was 
+used only for language editing and grammatical refinement. After using this tool, the authors reviewed 
+and edited the manuscript as needed and take full responsibility for the content of the publication. 
+ 
+Accepted Article
+ 
+ 
+20 
+REFERENCES (Limited to 40 references for original and 100 for review articles) 
+ 
+1. Hakem M, Boulouard Z, Kissi M. Classification of body weight in beef cattle via machine learning 
+methods: A review. Procedia Comput Sci 2022;198:263 -8. 
+https://doi.org/10.1016/j.procs.2021.12.238 
+2. Ruchay A, Kober V , Dorofeev K, et al. Comparative analysis of machine learning algor ithms for 
+predicting live weight of Hereford cows. Comput Electron Agric 2022;195:106837. 
+https://doi.org/10.1016/j.compag.2022.106837 
+3. Duwalage KI, Wynn MT, Mengersen K, et al. Predicting carcass weight of grass-fed beef cattle before 
+slaughter using statistical modelling. Animals 2023;13:1968. https://doi.org/10.3390/ani13121968 
+4. Park CJ, Park YI. Estimation of genetic correlations for the growth and carcass traits in Hanwoo. J 
+Anim Sci Technol 2002;44:685-92. https://doi.org/10.5187/JAST.2002.44.6.685 
+5. Choy YH, Lee JG, Mahboob A, et al. Genetic correlation between live body measurements and beef 
+cutability traits in Hanwoo steers. Asian -Australas J Anim Sci 2017;30:1074 -80. 
+https://doi.org/10.5713/ajas.16.0692 
+6. Ahn JS, Son GH, Kim MJ, et al. Effec t of total digestible nutrients level of concentrates on growth 
+performance, carcass characteristics, and meat composition of Korean Hanwoo steers. Food Sci 
+Anim Resour 2019;39:388-401. https://doi.org/10.5851/kosfa.2019.e32 
+7. Cho H, Kang K, Kang H, et al. Repeatability of feed efficiency and its relationship with carcass traits 
+in Hanwoo steers during their entire growing and fattening period. Anim Biosci 2024;37:1568 -80. 
+https://doi.org/10.5713/ab.24.0074 
+8. Jeon E, Oh J. Early prediction of final body weight in Hanwoo steers using machine and deep learning 
+models. Anim Biosci 2026;39:250595. https://doi.org/10.5713/ab.250595 
+9. AOAC. Official methods of analysis. 18th ed. Arlington (V A): Association of Official Analytical 
+Chemists; 2005. 
+10. V an Soest PJ, Robertson JB, Lewis BA. Methods for dietary fiber, neutral detergent fiber, and 
+nonstarch polysaccharides in relation to animal nutrition. J Dairy Sci 1991;74:3583 -97. 
+https://doi.org/10.3168/jds.S0022-0302(91)78551-2 
+11. Breiman L. Random forests. Mach Learn 2001;45:5-32. https://doi.org/10.1023/A:1010933404324 
+12. Firdaus F, Atmoko BA, Baliarti E, et al. The meta -analysis of beef cattle body weight prediction 
+using body measurement approach with breed, sex, and age categories. J Adv Vet Anim Res 
+2023;10:630-8. https://doi.org/10.5455/javar.2023.j718 
+13. Ma W, Qi X, Sun Y , et al. Computer vision -based measurement techniques for livestock body 
+dimension and weight: A review. Agriculture 2024;14:306. 
+https://doi.org/10.3390/agriculture14020306 
+메모 포함[u3]: Response: Revised accordingly. The editorial note 
+regarding the reference limit was removed from the manuscript. 
+Accepted Article
+ 21 
+14. Li W, Ye B, Wu B, et al. Effect of total mixed ration on growth performance, rumen fermentation, 
+nutrient digestion, and rumen microbiome in Angus beef cattle during the growing and fattening 
+phases. Fermentation 2024;10:205. https://doi.org/10.3390/fermentation10040205 
+15. National Academies of Sciences, Engineering, and Medicine. Nutrient requirements of beef cattle. 
+8th rev ed. Washington (DC): National Academies Press; 2016. https://doi.org/10.17226/19014 
+16. Onche E, Cho H, Rangandang AD, et al. Enhancing feed efficiency and growth in early -fattening 
+Hanwoo steers through high -energy concentrate feeding. Animals 2025;15:490. 
+https://doi.org/10.3390/ani15040490 
+17. Oh J, Cho H, Kang N, et al. Effects of dietary crude protein levels on growth performance, rumen 
+characteristics, blood metabolites, and methane emissions in finishing Hanwoo steers. Anim Biosci 
+2025;38:1934-42. https://doi.org/10.5713/ab.25.0063 
+Accepted Article
+Figure 1.
+Accepted Article
+Figure 2.
+Accepted Article
+Figure 3.
+Accepted Article
+Figure 4.
+Accepted Article
+Figure 5.
+Accepted Article
