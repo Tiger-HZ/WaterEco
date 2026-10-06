@@ -1,0 +1,464 @@
+International Journal of Environmental Impacts
+https://www.acadlore.com/journals/IJEI
+Water Quality Index Method for Determining Groundwater Quality
+Around Oil Mining Sites
+Eka Wardhani1,2,3
+ , Athaya Zahrani Irmansyah4*
+ , Ridho Rachmatullah1
+ , Mila Dirgawati1,2
+ , Ania Citraresmini2,3
+1 Environmental Engineering Program Study, Faculty of Civil Engineering and Planning, Institut Teknologi Nasional,
+40124 Bandung, Indonesia
+2 Research Collaboration Centre for Sustainability of Environmental Carrying Capacity Itenas Bandung-BRIN,
+Institut Teknologi Nasional, 40124 Bandung, Indonesia
+3 Centre for Sustainable Urban Environmental Research and Innovation (CSUE) Itenas, Institut Teknologi Nasional,
+40124 Bandung, Indonesia
+4 Mathematics Program Study, Faculty of Mathematics and Natural Science, Universitas Kebangsaan Republik
+Indonesia, 40263 Bandung, Indonesia
+* Correspondence: Athaya Zahrani Irmansyah (athaya zahrani irmansyah@mipa.ukri.ac.id)
+Received: 07-19-2026 Revised: 09-03-2026 Accepted: 09-15-2026
+Citation: E. Wardhani, A. Z. Irmansyah, R. Rachmatullah, M. Dirgawati, and A. Citraresmini, “Water Quality Index
+method for determining groundwater quality around oil mining sites,” Int. J. Environ. Impacts. , vol. 9, no. 5, pp.
+986–995, 2026. https://doi.org/10.56578/ijei090504.
+ 2026 by the author(s). Published by Acadlore Publishing Services Limited, Hong Kong. This article is available for free download
+and can be reused and cited, provided that the original published version is credited, under the CC BY 4.0 license.
+Abstract: Crude oil is a major energy resource; however, oil exploration and production activities may release
+petroleum hydrocarbons (PHCs), heavy metals, and other contaminants that can adversely affect groundwater
+quality. This study evaluates the quality of groundwater surrounding oil mining sites in Musi Banyuasin Regency,
+South Sumatra, Indonesia, using the Water Quality Index (WQI) method. Groundwater samples were collected
+from 36 sampling points, consisting of 30 study wells located near oil drilling areas and six control wells, with
+two control wells in each of the three sub-districts: Sanga Desa, Babat Toman, and Lawang Wetan. The analyzed
+parameters included pH, temperature, total dissolved solids (TDS), turbidity, color, and heavy metals, including
+copper (Cu), nickel (Ni), lead (Pb), and mercury (Hg). The physicochemical and heavy metal data were processed
+and analyzed using Python, and the WQI was calculated to determine the overall groundwater quality classification.
+The results indicated that all 30 study wells (100%) were classified as unfit for consumption, whereas all six control
+wells (100%) were classified as excellent based on the WQI classification. The primary contaminants contributing
+to poor groundwater quality were Ni, Pb, and Hg, which exceeded the applicable national groundwater quality
+standards at several sampling points. Elevated concentrations of TDS, turbidity, and color were also observed at
+several study wells. These findings demonstrate a substantial anthropogenic influence of oil exploration activities
+on groundwater quality in the study area. Continuous groundwater monitoring, improved pollution control, and
+appropriate environmental management by relevant authorities are therefore essential to minimize contamination
+and prevent further degradation of groundwater resources.
+Keywords: Groundwater quality; Oil spill; Water Quality Index; Mining sites; Heavy metals; Oil exploration
+1 Introduction
+Crude oil is a primary energy source that plays a crucial role across various sectors of the economy. Along
+with the increasing global energy demand, exploration and production activities of crude oil continue to rise [1].
+It is estimated that approximately 600,000 tons of crude oil are contaminated in terrestrial and aquatic ecosystems
+worldwide each year [2]. Crude oil exploration is conducted using various methods, including both modern and
+traditional techniques, with simpler approaches [3].
+One of the oil-rich regions in Indonesia is Musi Banyuasin Regency, located in South Sumatra Province. Oil
+exploration in this area has been traditionally carried out since the Dutch colonial era and continues to this day.
+There are more than 500 active wells with an average production capacity of 650 barrels of oil per day (BOPD) [4].
+Accidents, leaks, and spills during exploration, production, transportation, and storage pose a risk of environmental
+contamination, particularly to groundwater [2, 3]. The oil exploration process generates various types of waste,
+https://doi.org/10.56578/ijei090504
+986
+including liquid waste, acid sludge, and drilling residues [4]. One of the major impacts is the deterioration of
+groundwater quality due to the infiltration of pollutants from exploration activities into the aquifer layer [5–7].
+The most frequent type of contamination observed in the oil fields of Musi Banyuasin is oil spillage during
+exploration activities [4]. These activities also generate hazardous waste, such as acid sludge, which is a complex
+mixture of petroleum hydrocarbons (PHCs), water, heavy metals, and solid particles. More than 33% of acid sludge
+contains up to 550 mg/kg of polyaromatic hydrocarbons (PAHs), along with heavy metals such as barium, lead, zinc,
+copper, mercury, chromium, arsenic, and nickel [2, 3].
+Acid sludge contamination can cause severe environmental impacts, including alterations in the chemical and
+physical properties of soil, changes in soil structure, a reduction in nutrient content, and inhibition of vegetation
+growth in affected areas [2, 3]. In addition, pollutants in acid sludge can infiltrate and contaminate groundwater
+sources [8]. PAHs and heavy metals are known to be genotoxic, bioaccumulative in living organisms, and may pose
+health risks such as neurological damage, cancer, and endocrine disruption [9]. A major challenge in addressing oil
+spill pollution is its persistent nature, difficulty in natural degradation, and tendency to accumulate in the environment
+and organisms [9, 10].
+Research on oil spills’ impact on groundwater is vital to assess risks. The Water Quality Index (WQI) [11]
+offers a comprehensive evaluation of groundwater parameters, clarifying effects of oil exploration. It also supports
+mitigation strategies and better environmental management to safeguard this vital resource [11, 12]. However,
+the WQI has several limitations: it oversimplifies the complex conditions of groundwater, is highly dependent on
+parameter selection, is not sensitive to local or emerging contaminants, does not indicate pollution sources, and does
+not account for spatial variability or data uncertainty. As a result, its assessment outcomes may be less accurate under
+specific conditions. Nevertheless, the WQI can be readily adapted to incorporate additional parameters without the
+need for complex models or sophisticated weighting schemes, making it suitable for rapid field analysis. Furthermore,
+it produces a single, easily interpretable value, unlike multicriteria methods that generate matrix scores, weights, or
+graphs that are more difficult for the public and regulators to understand.
+Previous studies have examined groundwater quality from various perspectives, including groundwater
+characteristics, petroleum contamination, treatment technologies, and water quality assessment. Studies on the
+characteristics and distribution of deep groundwater have demonstrated the importance of hydrogeological conditions
+in determining groundwater quality and contaminant distribution [5]. In the context of oil and gas activities, previous
+research has also reviewed treatment technologies for produced water and emphasized the complexity of contaminants
+generated during petroleum exploration and production [6]. PHCs are of particular concern because they can persist
+in groundwater aquifers and undergo various environmental processes, including transport, biodegradation, and
+transformation, which may affect their toxicity and associated environmental risks [7]. In addition, the WQI has
+been widely applied to integrate multiple physicochemical and chemical parameters into a single indicator for
+evaluating groundwater suitability for drinking purposes [8]. Previous research by the author has also assessed
+groundwater quality in Cimahi City, West Java Province, demonstrating the applicability of water quality assessment
+methods for identifying groundwater conditions in areas affected by anthropogenic activities [9]. However, limited
+studies have specifically evaluated groundwater quality around oil mining areas in Musi Banyuasin Regency by
+integrating physicochemical parameters and heavy metal contamination using the WQI approach. Therefore, this
+study aims to assess the quality status of groundwater surrounding oil mining sites in Musi Banyuasin using the WQI
+method and to identify the parameters contributing to groundwater contamination.
+2 Research Significance
+This research is crucial, considering that groundwater serves as the primary source of water for daily life. The
+low service coverage of the regional water utility company in the study area has led to a high dependence of the local
+population on groundwater to meet their daily clean water needs. Groundwater contamination poses a significant
+risk to public health and can lead to economic decline, as affected communities are often forced to purchase clean
+water for everyday use.
+3 Methodology
+Groundwater samples were collected using the grab sampling method, as specified in the Indonesian National
+Standard (SNI) No. 6989.58:2008, which provides guidelines for groundwater sampling procedures [13]. A total
+of 36 groundwater samples were collected from three sub-districts in Musi Banyuasin Regency: Sanga Desa, Babat
+Toman, and Lawang Wetan. In each sub-district, 10 study wells located near oil drilling areas and two control wells
+located at sites distant from oil wells were selected, resulting in 12 sampling points per sub-district and 36 sampling
+points in total. Thus, the sampling design consisted of 30 study wells and six control wells, with two control wells
+in each sub-district. Figure 1, Table 1, Table 2, and Table 3 present the locations and characteristics of the sampling
+sites. In the site descriptions, “RA” refers to residential areas, “RF” refers to rice fields, and “dist.” refers to the
+distance between the sampling location and the nearest oil drilling well, expressed in meters.
+987
+Figure 1. Sampling point location
+Table 1. Sampling point location in Sanga Desa
+No. Landuse North Coordinate East Coordinate Distance Depth
+1 RA 9692321.00 321774.00 0.33 2.0
+2 RA 9692539.00 321863.00 0.58 3.1
+3 RA 9692573.96 322033.10 0.67 2.0
+4 RA 9692758.59 322085.21 0.87 2.5
+5 RA 9692858.32 322159.52 1 3.7
+6 RA 9695960.33 324716.20 1.1 3.2
+7 RA 9695949.00 324800.00 0.1 2.0
+8 RA 9697917.35 323862.75 0.17 1.9
+9 RA 9699632.82 333454.08 0.33 1.0
+10 RA 9699495.38 333527.81 0.27 1.0
+C-1 RA 9697775.82 330037.62 4.9 0.5
+C-2 RA 9697716.20 330311.82 4.6 3.0
+Note: RA = residential areas.
+Table 2. Sampling point location in Babat Toman
+No. Landuse North Coordinate East Coordinate Distance Depth
+1 RF 9693821.10 342495.20 0.14 1.3
+2 RF 9693935.62 342692.37 0.44 1.2
+3 RA 9693656.11 342663.48 0.38 2.0
+4 RA 9693779.49 342894.59 0.68 2.0
+5 RA 9693466.50 342797.55 0.65 1.0
+6 RF 9693425.57 343183.95 0.84 1.5
+7 RA 9697023.76 348483.12 0.13 0.6
+8 RA 9697293.66 348513.44 0.32 1.0
+9 RA 9697560.70 348477.62 0.11 0.8
+10 RA 9696455.84 350048.97 0.18 1.0
+C-1 RF 9695072.31 351004.93 2.23 2.5
+C-2 RA 9694323.33 351310.50 3.12 3.3
+Note: RA = residential areas; RF = rice fields.
+988
+Table 3. Sampling point location in Lawang Wetan
+No. Landuse North Coordinate East Coordinate Distance Depth
+1 RF 9689421.54 347659.95 0.53 3.2
+2 RA 9689044.03 347912.13 0.46 2.6
+3 RA 9688556.83 348180.53 0.69 2.5
+4 RA 9691477.22 355411.66 0.2 1.0
+5 RA 9691357.30 355493.99 0.33 1.0
+6 RF 9688995.00 357304.90 0.73 1.0
+7 RA 9687447.41 359261.37 0.42 0.5
+8 RA 9687455.66 359842.73 0.56 1.0
+9 RF 9687326.67 359945.70 0.63 2.7
+10 RA 9687227.64 359991.58 0.66 1.0
+C-1 RA 9690850.17 353442.22 6.76 2.0
+C-2 RA 9690880.05 353906.18 7.26 2.5
+Note: RA = residential areas; RF = rice fields.
+The selection of sampling points was based on distance criteria from contamination sources [10]. Wells located
+within 45 meters of the contamination source were classified as having a high pollution risk, those within 200 meters
+as moderate risk, those within 1 km as low risk, and wells more than 1.5 km away were considered to have a very
+low pollution risk [10]. The main sampling points (10 in each sub-district) were selected from wells located within
+1 km of contamination sources, while control points were selected from wells located more than 1.5 km away.
+The groundwater quality parameters analyzed included pH, temperature, total dissolved solids (TDS), turbidity,
+color, and concentrations of heavy metals (Ni, Cu, Pb, and Hg). The pH analysis was conducted based on SNI No.
+6989.11:2019 [14]; temperature and color based on SNI No. 06.6989.23-2005 Part 59 [15]; TDS based on SNI
+No. 6989.27:2019 [16]; turbidity based on SNI No. 06.6989.25:2005 [17]; and heavy metal analysis based on SNI
+No. 6989.69:2009 [18]. The laboratory tests were conducted at PT. Sucofindo, Mineral Division, Cibitung. The
+results provided a comprehensive overview of groundwater quality in the study area, including the potential impact
+of petroleum contamination.
+The WQI method was used to determine the groundwater quality status. The WQI calculation involved
+selecting parameters including heavy metals (Cu, Ni, Pb, and Hg), pH, temperature, TDS, turbidity, and color [11].
+The formulas used for WQI calculation are presented in the formulas below, where Ci represents the measured
+concentration of each parameter and Si is the quality standard based on the Indonesian Ministry of Health Regulation
+No. 2 of 2023 concerning environmental health [19]. Regulation of the Minister of Health No. 2 of 2023 was
+selected because it is the most recent regulation that establishes environmental health–based water quality standards.
+It comprehensively covers physical, chemical, and biological parameters, is easy to apply for monitoring purposes, has
+a strong legal basis, and provides flexibility to accommodate regional needs and public health protection objectives.
+Each parameter was assigned a weight (wi) according to its impact on human health and groundwater quality. The
+assigned wi values are shown in Table 4.
+Table 4. Weight (wi) and Relative Weight (W i) values [11]
+Parameter Weight ( wi) W i (Relative Weight) = wi/P wi
+Pb 5 0.12
+Hg 5 0.12
+Ni 5 0.12
+Cu 5 0.12
+TDS 5 0.12
+Turbidity 5 0.12
+Color 5 0.12
+pH 3 0.07
+Temperature 3 0.07P 41 1.00
+Note: TDS = total dissolved solids.
+The WQI method classifies groundwater quality into five categories: excellent (WQI < 50), good (WQI:
+50–100), poor (WQI: 100–200), very poor (WQI: 200–300), and unsuitable for consumption (WQI > 300) [11].
+Metals such as Ni and Pb predominantly disperse horizontally following the flow of shallow groundwater, are
+989
+constrained by impermeable vertical layers, and undergo strong sorption onto specific minerals. As a result, their
+concentrations tend to correlate with distance from the source rather than depth. Consequently, distance becomes the
+most influential factor controlling metal concentrations. The relationships between groundwater quality parameters
+and the characteristics of the sampling locations were evaluated based on the available physicochemical and heavy
+metal data. The concentrations of heavy metals, particularly Ni, Pb, and Hg, were compared with the applicable
+national groundwater quality standards to identify parameters that contributed to groundwater contamination. The
+spatial distribution of groundwater quality was also evaluated based on the sampling locations and their distances
+from the nearest oil drilling wells.
+qi = Ci
+Si
+× 100 (1)
+Wi = wiPn
+i=1 wi
+(2)
+SI = Wi× qi (3)
+The observed relationship between heavy metal concentrations and the distance from oil drilling wells suggests
+that spatial proximity to potential pollution sources may influence groundwater quality. However, the mechanisms
+controlling the transport and distribution of these metals cannot be determined conclusively from the present dataset
+and would require further hydrogeochemical and contaminant-transport investigations.
+Based on their toxicity to humans and the environment, heavy metals such as Hg, Pb, Cu, and Ni exhibit different
+levels of hazard. Mercury (Hg) is considered the most toxic due to its strong neurotoxic properties and its ability
+to bioaccumulate and biomagnify within the food chain. Lead (Pb) is also highly toxic even at relatively low
+concentrations, as it can damage the nervous system and kidneys. Copper (Cu), although an essential trace element
+required for biological processes, can become toxic when present in elevated concentrations. Nickel (Ni) is generally
+considered less toxic compared to Hg and Pb, but prolonged exposure at high concentrations can still pose health
+risks and has been associated with carcinogenic effects.
+Based on toxicity classification, Hg and Pb are commonly categorized as highly toxic heavy metals due to their
+strong bioaccumulation potential and their ability to cause long-term or permanent health damage. In contrast, Cu
+and Ni are generally classified as moderately to less toxic. Although these metals may be tolerated by organisms in
+trace amounts, their presence above permissible environmental limits can still pose significant risks to both aquatic
+ecosystems and human health.
+In the calculation of the WQI, equal weighting is often assigned to Pb, Hg, Cu, and Ni because these metals
+collectively represent important indicators of heavy metal contamination in aquatic environments. Despite differences
+in their individual toxicity levels, all four metals are considered hazardous pollutants due to their persistence, toxicity,
+and potential to accumulate within aquatic organisms and sediments, which can ultimately impact human health
+through the food chain.
+Several factors support the use of equal weighting for these heavy metals in WQI calculations. First, Hg, Pb,
+and Ni are generally classified as non-essential toxic metals that can cause adverse health effects even at relatively
+low concentrations, while Cu, although essential in trace amounts, becomes toxic when its concentration exceeds
+environmental quality standards. Second, these metals are known to exhibit bioaccumulation characteristics, allowing
+them to accumulate within aquatic organisms and sediments over time. Third, Pb and Hg are frequently used as
+key indicators of pollution originating from industrial and mining activities, and they are often detected together
+in contaminated waters. Assigning equal weights therefore ensures that the presence of any individual metal or a
+combination of these contaminants significantly influences the WQI value.
+Furthermore, in several standard WQI calculation methods, uniform weighting is applied as a practical approach to
+simplify the assessment of water quality. Although some studies may assign different weights depending on specific
+environmental concerns—such as prioritizing mercury contamination—equal weighting is commonly adopted to
+represent the overall burden of heavy metal contamination. A high cumulative concentration of these metals
+generally indicates severe water quality degradation and potential ecological risk.
+4 Results and Discussions
+Musi Banyuasin Regency in South Sumatra, Indonesia, has rich petroleum potential. Oil exploration began
+during the Dutch colonial era, but many wells were abandoned after independence. In 1974, local communities
+started reusing these old wells as an alternative source of income by tapping into the available natural resources [20].
+From 2012, approximately 7,734 illegal oil wells have been identified across various sub-districts in Musi Banyuasin.
+Uncontrolled oil extraction processes often result in oil spills that contaminate the surrounding environment, including
+soil and groundwater [20]. Areas within Musi Banyuasin Regency with significant petroleum potential include Babat
+Toman, Jirak Jaya, Sanga Desa, Keluang, Bayung Lincir, and Lawang Wetan sub-districts [21–23].
+990
+The distribution data and oil production levels served as the basis for determining sampling locations. Babat
+Toman Sub-district, with 500 community-managed wells and a production rate of 2,000 BOPD, was selected as
+a strategic research site, as its high oil output indicates a potentially greater environmental impact. The second
+sampling location, Sanga Desa Sub-district, has 400 community-managed wells with a production rate of 1,000
+BOPD. Lawang Wetan Sub-district contains 200 wells with a production level of 800 BOPD, making it one of the
+regions with a relatively high oil yield.
+Groundwater quality measurements at the 30 study wells for parameters including temperature, pH, TDS,
+turbidity, color, Cu, Ni, Pb, and Hg are presented in Figure 2, which compares these parameters across 10 sampling
+points in each sub-district. The six control wells were excluded from Figure 2 to provide a clearer visualization
+of groundwater quality variations among the study wells located near oil drilling areas. The results of the control
+wells are presented separately for comparison with the study wells. The quality of groundwater in the study area
+shows variations influenced by environmental conditions and anthropogenic activities, particularly oil exploration.
+The average measured groundwater temperature was 27.3◦C, which meets quality standards as it falls within a 3◦C
+deviation from the 2024 average ambient temperature in Musi Banyuasin Regency of 29.43◦C [20].
+Figure 2. Groundwater quality parameters at the 30 study wells in Sanga Desa, Babat Toman, and Lawang Wetan
+sub-districts
+Note: Standard: temperature = ±3 deviation from air temperature, pH = 6.5–7.5, TDS = 300 mg/L, turbidity = 3 NTU, color = 10 TCU, Cu = 2
+mg/L, Ni = 0.07 mg/L, Pb = 0.01 mg/L, and Hg = 0.001 mg/L (Minister of Health Regulation No. 2 of 2023, on Environmental Health).
+The pH values of groundwater in Sanga Desa ranged from 4.8 to 8.2, with two sampling points (points 6 and 8)
+falling below the quality standard. In Babat Toman, pH ranged from 5.8 to 8.1, with one point (point 10) not meeting
+the standard. In Lawang Wetan, the pH ranged from 6.3 to 8.2. Low pH values in groundwater may be influenced
+by the aquifer’s geological composition or the surrounding lithology. Acidic groundwater is commonly found in
+areas with alluvial deposits. Alluvium with high organic content can lower groundwater pH, especially in wetlands
+or swampy areas. Decomposing organic matter produces humic and fulvic acids, which contribute to groundwater
+acidity [20, 21].
+Oil exploration activities, such as drilling, can lead to soil and groundwater contamination due to petroleum spills.
+Such pollution alters the physical, chemical, and biological properties of the environment, leaving toxic residues
+such as heavy metals that are difficult to degrade. Of the four heavy metals analyzed, Ni, Pb, and Hg exceeded
+permissible limits at several points in each sub-district. In contrast, the concentrations at the control wells complied
+with the standards. This indicates that oil extraction activities contribute to heavy metal contamination.
+991
+The groundwater quality status was assessed in the three sub-districts using parameters such as temperature,
+pH, TDS, turbidity, color, and heavy metals (Pb, Hg, Ni, Cu). The quality status was determined based on
+the concentration of each parameter. Figure 3 shows the summarized WQI values for each sub-district. The
+WQI calculation results indicate that groundwater contamination levels in the study area fall within the ’unfit for
+consumption’ category. This suggests that oil drilling activities have impacted groundwater quality within a 0–1 km
+radius.
+Figure 3. Water Quality Index (WQI) values for the 30 study wells located within 0–1 km of oil drilling areas
+The groundwater quality status was assessed in the three sub-districts using parameters such as temperature,
+pH, TDS, turbidity, color, and heavy metals (Pb, Hg, Ni, and Cu). The quality status was determined based on the
+concentration of each parameter. Figure 3 presents the summarized WQI values for the 30 study wells, comprising
+10 sampling points in each sub-district. The six control wells, which were located more than 1.5 km from the oil
+wells, were not included in Figure 3. The WQI calculation results indicate that the groundwater quality at all 30 study
+wells falls within the “unfit for consumption” category (WQI > 300). In contrast, the control wells were classified
+as “excellent” based on the WQI assessment. These results indicate that groundwater quality around the oil drilling
+areas was more degraded than that of the control wells located farther from the oil wells.
+Groundwater contamination in the study area also exhibits a clear spatial gradient relative to the proximity of oil
+extraction activities. Sampling points located within a 0–1 km radius from drilling sites generally showed higher
+concentrations of heavy metals and poorer WQI values. In contrast, control wells located more than 1.5 km away from
+the oil wells consistently exhibited better groundwater quality. This pattern suggests that contamination intensity
+decreases with increasing distance from the pollution source, indicating that oil extraction activities function as
+localized point sources of groundwater pollution.
+Spatial differences were also observed among the three sub-districts investigated. Babat Toman generally showed
+relatively higher contamination levels compared to Sanga Desa and Lawang Wetan, which may be associated with its
+larger number of community-managed oil wells and higher oil production capacity. Sanga Desa exhibited moderate
+contamination patterns, while several sampling points in Lawang Wetan showed comparatively lower concentrations
+of certain parameters. These inter-district contrasts highlight the influence of local operational intensity and well
+distribution on groundwater quality in the region.
+Overall, the spatial distribution indicates that groundwater contamination is primarily localized rather than
+regionally widespread. Elevated contaminant levels are concentrated around areas with active or abandoned oil
+wells, while groundwater quality improves significantly at greater distances from these sources. This finding
+suggests that pollution is strongly linked to specific operational zones and has not yet spread uniformly across the
+broader hydrogeological system.
+Statistical analysis showed very weak to moderate correlations between well depth and metal concentrations,
+while weak to very strong correlations were observed between the distance from the oil drilling wells and metal
+concentrations (Table 5). The strength of the relationships was interpreted based on the following correlation
+coefficient intervals: 0.000–0.199 indicates a very weak relationship, 0.200–0.399 indicates a weak relationship,
+0.400–0.599 indicates a moderate relationship, 0.600–0.799 indicates a strong relationship, and 0.800–1.000 indicates
+a very strong relationship. Overall, the correlation results indicate that the distance between the sampling wells and
+992
+the potential pollution source had a stronger relationship with several heavy metal concentrations than well depth.
+Table 5. Correlation coefficients of sampling distance and depth with heavy metal concentrations
+Distance Depth Cu Ni Pb Hg
+Distance 1.000 0.506 -0.221 -0.088 0.494 0.077
+Depth 0.506 1.000 -0.117 0.101 0.421 0.328
+Note: Values represent Pearson correlation coefficients.
+The correlation analysis results indicate that the relationships between spatial variables and heavy metal
+concentrations vary in strength. Distance shows a moderate positive correlation with depth ( r = 0.506), suggesting
+that sampling locations farther from the reference point tend to have greater sampling depths. Regarding heavy metal
+concentrations, Pb exhibits moderate positive correlations with both distance ( r = 0.494) and depth ( r = 0.421),
+indicating that Pb concentrations tend to increase with increasing distance and depth. Hg shows a weak to moderate
+positive correlation with depth ( r = 0.328), while Cu and Ni display weak to very weak correlations with both
+distance and depth (|r| < 0.3). Overall, these findings indicate that the spatial distribution patterns are not uniform
+across the analyzed metals, with Pb showing the strongest observed correlations with the spatial variables. However,
+the correlation coefficients only describe the strength and direction of the observed relationships and do not establish
+statistical significance. Therefore, significance testing is required to determine whether the observed correlations are
+statistically significant and to confirm the reliability of these spatial associations.
+To prevent the further spread of groundwater contamination, it is essential to implement appropriate pollution
+control measures, including soil and groundwater remediation techniques. The selection of a suitable remediation
+method must consider both technical and non-technical aspects. From a technical standpoint, priority should be given
+to methods that offer high efficiency, cost-effectiveness, and field applicability. Numerous technologies have been
+developed to remediate soil and groundwater contaminated with heavy metals, targeting five primary objectives: (1)
+complete degradation of pollutants, (2) extraction for treatment or disposal, (3) stabilization through immobilization
+and detoxification, (4) separation, and (5) recycling of clean materials.
+Despite these efforts, this study has several limitations. First, groundwater quality was assessed based on a single
+sampling event, making it impossible to evaluate seasonal variations in heavy metal concentrations. Second, the
+study included 36 sampling points across three sub-districts, consisting of sampling wells in Sanga Desa, Babat
+Toman, and Lawang Wetan, as well as control wells. Although the sampling points covered three sub-districts,
+the number of samples may still limit the generalizability of the findings to other areas. Third, hydrogeological
+conditions were not included in the scope of analysis, as this study focused primarily on assessing heavy metal
+concentrations and groundwater quality near oil extraction activities. Future research should incorporate seasonal
+monitoring, broader sampling coverage, hydrogeological characterization, and groundwater contamination modeling
+to provide a more comprehensive understanding of contaminant transport and distribution in the study area.
+5 Conclusions
+This study assessed groundwater quality around oil mining sites in Musi Banyuasin Regency using the WQI
+method and heavy metal analysis. The findings demonstrate substantial degradation of groundwater quality in areas
+located within a 0–1 km radius of oil extraction activities. Thirty sampling points across Sanga Desa, Babat Toman,
+and Lawang Wetan were classified as unfit for consumption, primarily due to elevated concentrations of Ni, Pb,
+and Hg that exceeded national standards. In contrast, control wells consistently fell within the good to excellent
+categories, indicating that contamination is geographically localized.
+Spatial correlation analysis revealed that the strength and direction of the relationships between metal
+concentrations and spatial variables varied among the analyzed metals. Pb showed the strongest association with
+distance, with a moderate positive correlation (r = 0.494), as well as a moderate positive correlation with well depth
+(r = 0.421). In comparison, Hg showed a weak to moderate correlation with depth ( r = 0.328), while Cu and Ni
+exhibited weak to very weak correlations with both distance and depth ( |r| < 0.3). Therefore, the results do not
+support a general conclusion that metal concentrations are strongly associated with distance from contamination
+sources. Instead, the spatial patterns appear to be metal-specific, with Pb showing the most pronounced observed
+relationship with the spatial variables. Statistical significance testing is required to determine whether these observed
+correlations are statistically significant and to further support interpretations of contaminant transport.
+These findings indicate that oil extraction activities may contribute to localized groundwater quality degradation
+and may pose risks to public health, agricultural productivity, and the economic resilience of communities that
+rely heavily on groundwater for daily use. To mitigate further contamination, comprehensive pollution control
+and effective remediation measures are necessary, including technologies that enable degradation, extraction,
+stabilization, separation, or recycling of contaminants. However, this study is limited by its single sampling
+993
+period, restricted number of sampling points, and the absence of a hydrogeological assessment. Future studies
+should incorporate seasonal monitoring, expand sampling coverage, and integrate groundwater flow modeling to
+better understand contaminant transport dynamics and inform long-term groundwater management strategies.
+Author Contributions
+Conceptualization, E.W. and R.R.; methodology, E.W. and R.R.; software, E.W. and R.R.; validation, E.W.,
+A.Z.I., R.R., M.D., and A.C.; investigation, E.W. and R.R.; resources, E.W. and R.R.; data curation, E.W., A.Z.I., and
+R.R.; writing—original draft preparation, E.W., A.Z.I., and R.R.; writing—review and editing, A.Z.I.; visualization,
+A.Z.I.; supervision, E.W.; project administration, E.W. and A.Z.I.; funding acquisition, E.W., M.D., and A.C. All
+authors have read and agreed to the published version of the manuscript.
+Data Availability
+The data used to support the research findings are available from the corresponding author upon request.
+Conflicts of Interest
+The authors declare no conflicts of interest.
+References
+[1] Z. Al-Busaidi, M. Baawain, A. Sana, A. Ebrahimi, and H. Omidvarborna, “Sustainable risk-based analysis
+towards remediation of an aquifer impacted by crude oil spills,” J. Environ. Manage., vol. 247, pp. 333–341,
+2019. https://doi.org/10.1016/j.jenvman.2019.05.121
+[2] O. A. Johnson and A. C. Affam, “Petroleum sludge treatment and disposal: A review,” Environ. Eng. Res. ,
+vol. 24, no. 2, pp. 191–201, 2019. https://doi.org/10.4491/eer.2018.134
+[3] S. J. Robertson, W. B. McGill, H. B. Massicotte, and P. M. Rutherford, “Petroleum hydrocarbon contamination
+in boreal forest soils: A mycorrhizal ecosystems perspective,” Biol. Rev., vol. 82, pp. 213–240, 2007. https:
+//doi.org/10.1111/j.1469-185X.2007.00012.x
+[4] C. M. Kanno and J. E. McCray, “Evaluating potential for groundwater contamination from surface spills
+associated with unconventional oil and gas production,” Water, vol. 13, no. 3, p. 353, 2021. https://doi.org/10
+.3390/w13030353
+[5] E. K. Maskooni, M. Naseri-Rad, R. Berndtsson, and K. Nakagawa, “Use of heavy metal content and modified
+water quality index to assess groundwater quality in a semiarid area,” Water, vol. 12, no. 4, p. 1115, 2020.
+https://doi.org/10.3390/w12041115
+[6] S. Lotfi, M. Chakit, and D. Belghyti, “Groundwater quality and pollution index for heavy metals in Sa¨ıs plain,
+Morocco,” J. Health Pollut., vol. 10, no. 26, p. 200603, 2020. https://doi.org/10.5696/2156-9614-10.26.200603
+[7] G. Singh and R. K. Kamal, “Heavy metal contamination and its indexing approach for groundwater of Goa
+mining region, India,” Appl. Water Sci., vol. 7, pp. 1479–1485, 2017. https://doi.org/10.1007/s13201-016-043
+0-3
+[8] W. Hao, H. Liu, S. Hao, and K. Mao, “Characterization of heavy metal contamination in groundwater of a
+typical mining area,” Sci. Rep., vol. 14, p. 13054, 2024. https://doi.org/10.1038/s41598-024-63460-7
+[9] E. Wardhani and Y. Primalaksono, “Pollutant load estimation in surface water using mass balance approach,”
+IOP Conf. Ser.: Earth Environ. Sci. , vol. 999, p. 012025, 2022. https://doi.org/10.1088/1755-1315/999/1/01
+2025
+[10] P. Logeshwaran, M. Megharaj, S. Chadalavada, M. Bowman, and R. Naidu, “Petroleum Hydrocarbons (PH)
+in groundwater aquifers: An overview of environmental fate, toxicity, microbial degradation and risk-based
+remediation approaches,” Environ. Technol. Innov., vol. 10, pp. 175–193, 2018. https://doi.org/10.1016/j.eti.20
+18.02.001
+[11] S. Tyagi, B. Sharma, P. Singh, and R. Dobhal, “Water quality assessment in terms of water quality index,”Am.
+J. Water Resour., vol. 1, no. 3, pp. 34–38, 2013. https://doi.org/10.12691/ajwr-1-3-3
+[12] L. O. L. Putri and E. Wardhani, “Analysis of groundwater quality in Cimahi City of West Java Province,” IOP
+Conf. Ser.: Earth Environ. Sci. , vol. 894, p. 012037, 2021. https://doi.org/10.1088/1755-1315/894/1/012037
+[13] Badan Standardisasi Nasional, “Standar Nasional Indonesia (SNI) 6989.58:2008: Air dan air limbah—Bagian
+58: Metoda pengambilan contoh air tanah,” Jakarta, Indonesia, 2008. https://id.scribd.com/document/2197474
+81/SNI-6989-58-2008-pdf
+[14] Badan Standardisasi Nasional, “Standar Nasional Indonesia (SNI) 6989.11:2019: Air dan air limbah—Bagian
+11: Cara uji derajat keasaman (pH) dengan menggunakan pH meter,” Jakarta, Indonesia, 2019. https://id.scr
+ibd.com/document/742124466/2-SNI-6989-11-2019-tentang-Air-dan-Air-Limbah-Bagian-11-Cara-uji-dera
+jat-keasaman-pH-dengan-menggunakan-pH-meter
+994
+[15] Badan Standardisasi Nasional, “Standar Nasional Indonesia (SNI) 06.6989.23:2005: Air dan air
+limbah—Bagian 23: Cara uji suhu dengan termometer,” Jakarta, Indonesia, 2005. https://id.scribd.com/do
+c/34337666/SNI-06-6989-23-2005-Uji-Suhu-Dg-Termometer
+[16] Badan Standardisasi Nasional, “Standar Nasional Indonesia (SNI) 6989.27:2019: Air dan air limbah—Bagian
+27: Cara uji padatan terlarut total (Total Dissolved Solids, TDS) secara gravimetri,” Jakarta, Indonesia, 2019.
+https://id.scribd.com/document/743666943/6-SNI-6989-27-2019-tentang-Air-dan-Air-Limbah-Bagian-27-C
+ara-uji-padatan-terlarut-total-total-dissolved-solids-TDS-secara-gravimetri
+[17] Badan Standardisasi Nasional, “Standar Nasional Indonesia (SNI) 06.6989.25:2005: Air dan air
+limbah—Bagian 25: Cara uji kekeruhan dengan nefelometer,” Jakarta, Indonesia, 2005. https://id.scribd.
+com/doc/34337853/SNI-06-6989-25-2005-kekeruhan-nefelometer
+[18] Badan Standardisasi Nasional, “Standar Nasional Indonesia (SNI) 6989.69:2009: Air dan air limbah—Bagian
+69: Cara uji kalium (K) secara Spektrofotometri Serapan Atom (SSA)–nyala,” Jakarta, Indonesia, 2009.
+https://id.scribd.com/doc/295327229/SNI-6989-69-2009-Air-dan-air-limbah-Bagian-69-Cara-uji-kalium-K-
+secara-Spektrofotometri-Serapan-Atom-SSA-nyala-pdf
+[19] Ministry of Health of the Republic of Indonesia, “Regulation of the Minister of Health No. 2 of 2023 on
+environmental health,” Jakarta, Indonesia, 2023. https://peraturan.bpk.go.id/Details/245563/permenkes-no-2-
+tahun-2023
+[20] Government of Musi Banyuasin Regency, “Dokumen informasi kinerja pengelolaan lingkungan hidup daerah
+(DIKPLHD) Kabupaten Musi Banyuasin tahun 2020,” Musi Banyuasin, Indonesia, 2020. https://data.go.id/dat
+aset/dataset/dokumen-dikplhd1
+[21] E. O. Thomas, “Groundwater vulnerability assessment using multivariate statistics and heavy metal pollution
+index in Ibadan metropolis, Nigeria,”Water Sci., vol. 40, p. 22, 2026. https://doi.org/10.1007/s44533-025-000
+12-6
+[22] E. Wardhani, K. Nastiti, and A. Zahrani, “Use of the water quality index method in assessing groundwater
+quality around the Sarimukti landfill,” inAIP Conference Proceedings, vol. 3351, no. 1. Bandung, Indonesia:
+AIP Publishing, 2025, p. 090003. https://doi.org/10.1063/5.0299512
+[23] E. Wardhani, D. Roosmini, and S. Notodarmojo, “Status of heavy metal in sediment of Saguling Lake, West
+Java,” IOP Conf. Ser.: Earth Environ. Sci. , vol. 60, p. 012035, 2017. https://doi.org/10.1088/1755-1315/60/1
+/012035
+995

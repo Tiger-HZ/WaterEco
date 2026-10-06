@@ -1,0 +1,962 @@
+Copyright © 2019-2026 GeoAI Data Society
+Articles published in GEO DATA are Open Access, distributed under the terms of the Creative Commons Attribution-Noncommercial License(https://creativecommons.org/licenses/by-nc/4.0/).
+September 2026 • Vol. 8. No. 3, pp. 222-238
+ https://doi.org/10.22761/GD.2026.0030
+DATA ARTICLE
+eISSN 2713-5004 • https://gaidas-geodata.org
+충청권 금강 유역 지하수 수질 데이터셋을 활용한 수질 평가
+한수연1 , 한종규2 , 유순영3 , 박동규3 , 최한나3,4,* 
+1선임연구원, 한국지질자원연구원 지질자원융합지식본부, 대전광역시 유성구 과학로 124, 34132, 대한민국
+2책임연구원, 한국지질자원연구원 지질자원융합지식본부, 대전광역시 유성구 과학로 124, 34132, 대한민국
+3선임연구원, 한국지질자원연구원 지구환경연구본부, 대전광역시 유성구 과학로 124, 34132, 대한민국
+4부교수, 과학기술연합대학원대학교 지질과학전공, 대전광역시 유성구 가정로 217, 34113, 대한민국
+Water Quality Assessment Using a Groundwater Hydrochemical Dataset from the 
+Geum River Basin, Chungcheong Region
+Sooyeon Han
+1
+, Jong-Gyu Han
+2
+, Soonyoung Yu
+3
+, Dongkyu Park
+3
+, and Hanna Choi
+3,4,
+*
+1
+Senior Researcher, GEO-Resources Convergence Knowledge Division, Korea Institute of Geoscience and Mineral Resources, 124 Gwahak-ro, Yuseong-
+gu, 34132 Daejeon, South Korea
+2
+Principal Researcher, GEO-Resources Convergence Knowledge Division, Korea Institute of Geoscience and Mineral Resources, 124 Gwahak-ro, 
+Yuseong-gu, 34132 Daejeon, South Korea
+3
+Senior Researcher, Geo-Environment Research Division, Korea Institute of Geoscience and Mineral Resources, 124 Gwahak-ro, Yuseong-gu, 34132 
+Daejeon, South Korea
+4
+Associate Professor, Major in Geological Science, University of Science and Technology, 217 Gajeong-ro, Yuseong-gu, 34113 Daejeon, South Korea
+Received July 8, 2026
+Revised August 10, 2026
+Accepted August 11, 2026
+Corresponding Author
+Hanna Choi
+Tel: +82-42-868-3147
+E-mail: pythagoras84@kigam.re.kr
+The Geum River basin is a major groundwater resource region in South Korea and an 
+important source of domestic and agricultural water for the Chungcheong Region. 
+This data article presents an open groundwater field dataset collected from 128 
+groundwater sites during the 2020 dry season, along with representative examples 
+demonstrating how additional hydrochemical data can be used for groundwater 
+quality assessment. The publicly available dataset includes in situ measurements of 
+water temperature, pH, and electrical conductivity. Laboratory analyses of major 
+ions, dissolved silica (SiO2), and total dissolved solids (TDS) were used to demonstrate 
+potential applications of the field dataset. Hydrochemical data quality was assessed 
+using the ionic charge balance error, with 127 of 128 samples falling within ±10%, 
+indicating acceptable analytical consistency. Hydrochemical analyses revealed that 
+Ca-HCO3 was the dominant water type, accounting for 89% of the samples, and 
+suggesting that groundwater chemistry was primarily governed by water-rock in -
+teraction. Pearson correlation, principal component analysis, hierarchical clustering, 
+Gibbs and Schoeller diagrams, ion-exchange indices, and PHREEQC saturation-index 
+calculations demonstrated that silicate weathering, cation exchange, and localized 
+salinity inputs were the primary processes responsible for the observed hydrochem-
+ical characteristics. Coastal groundwater exhibited significantly higher concen -
+trations of NO3, Cl, Na, and TDS than inland groundwater (Mann-Whitney U test, 
+p<0.05). Based on the respective classification schemes, most samples were classified 
+as Excellent according to the aggregate water quality index and entropy-weighted 
+water quality index scores, while the irrigation indices indicated that most samples 
+met the corresponding suitability criteria. In contrast, the non-carcinogenic health-
+risk assessment identified hazard index values exceeding 1 at 26 sites for children, 
+Special Section Geology
+223
+ September 2026 • Vol. 8. No. 3, pp. 222-238
+1. 서론
+기후 변화의 영향으로 가뭄과 집중호우의 발생 빈도와 강도
+가 증가하면서 지표수 중심의 수자원 공급 체계는 기상학적 
+변동성에 더욱 취약해지고 있다(Intergovernmental Panel 
+on Climate Change, 2014). 이에 따라 지속 가능한 대체 
+수자원으로서 강수의 직접적인 영향을 상대적으로 적게 받
+고 수질이 안정적인 지하수의 중요성이 점차 커지고 있다. 지
+하수는 남한 내륙 지역 생활용수와 농업용수 공급량의 각각 
+약 42.2%와 51.0%를 차지하는 등 가용 수자원의 한 축으로
+서 중요한 역할을 하고 있다(National Groundwater In -
+formation Management and Service Center, 2026). 특
+히 금강 유역은 총 수자원량 199.6억 m3 가운데 110.1 억 m3 
+(55.2%)가 이용되고 있어 한강권역(56.2%) 다음으로 높은 수
+자원 이용률을 보인다(Han River Flood Control Office et 
+al., 2024). 이러한 이용 여건 가운데 지속 가능한 지하수자
+원 관리와 효율적인 수자원 계획 수립을 위해 지하수의 수질 
+특성과 공간적 분포를 파악하고 수질 형성 과정과 오염 요인
+을 규명하는 것이 중요한 기초 자료로 활용될 수 있다.
+지하수는 함양 이후 대수층을 통과하는 동안 다양한 반응
+을 거치며 체류 시간과 지질 조건에 따라 수질 특성이 달라진
+다(Choi et al., 2014; Kim et al., 2008). 본 연구에서 다루
+는 충청권은 선캄브리아기 변성암 복합체, 쥐라기 화강암류, 
+고생대 옥천누층군 등 다양한 암상이 분포하는 지역으로 지
+질 조건에 따른 수질의 공간적 이질성이 크게 나타난다(Kim 
+et al., 2008). 한편 국내 심부 기반암 지하수를 대상으로 한 
+연구에서는 불소 농도가 화강편마암과 화강암에서 상대적으
+로 높게 나타났으며, 특히 심부 순환이 이루어진 Na-HCO3
+형 지하수에서 가장 높은 농도를 보여 불소 분포가 지질학적 
+배경과 수화학적 진화 과정의 영향을 받는 것으로 보고되었
+다(Chae et al., 2007). 불소는 적정 농도에서는 충치 예방에 
+도움이 되지만 과다 섭취할 경우 반상치와 골격계 질환을 유
+발할 수 있으므로(World Health Organization, 2017) 지
+질 기원의 불소 분포를 파악하는 것은 광역 지하수의 안전한 
+이용과 관리 측면에서 중요하다.
+반면 농업과 축산 활동, 도시화의 진행 등 복잡한 토지 이
+용은 질산염 외에도 염류의 유입을 증가시켜 지하수 수질을 
+변화시킬 수 있다. 질산염은 토양 유기물의 분해 과정에서 낮
+은 농도로 존재하지만 외부 오염원의 영향으로 농도가 높아질 
+경우 영유아의 메트헤모글로빈혈증 등 건강 위해를 유발할 수 
+있다(Cheong et al., 2012). 또한 지하수에서 하천으로 유
+출된 질산염은 수계의 부영양화를 초래할 수 있다(Benefield 
+et al., 1982). 국내 농업 및 축산 지역에서는 질산염이 염소 
+및 주요 양이온과 함께 증가하는 경향이 보고되었으며 주성
+분 분석(principal component analysis, PCA), 군집 분석
+(hierarchical cluster analysis, HCA), 안정동위원소 분석 
+등이 오염원 구분에 활용되어 왔다(Choi et al., 2014; Choi 
+et al., 2011). 충청권 역시 농경지와 축산 시설이 넓게 분포하
+고 있어 질산염 오염 가능성을 지속적으로 고려할 필요가 있
+다. 한편 연구 지역 서부의 황해 연안에서는 지하수의 과잉 이
+용과 해수 침투의 영향으로 염소(Cl-), 나트륨(Na+), 총용존고
+형물(total dissolved solids, TDS)이 증가하는 현상이 보고
+되어 왔다(Park et al., 2005). 따라서 내륙과 연안을 모두 포
+함하는 충청권에서는 자연적인 수질 형성과 함께 연안 지역의 
+염류 영향을 구분하여 평가할 필요가 있다.
+이처럼 자연적 요인과 인위적 요인이 복합적으로 작용하는 
+광역 지하수의 특성을 이해하기 위해서는 신뢰성 높은 개방
+형 데이터의 구축과 공유가 중요하다. 검색 가능성(findable), 
+primarily due to elevated nitrate concentrations. The accompanying hydrochemical 
+analyses demonstrate how these field data can be extended through integration 
+with additional chemical measurements for groundwater quality assessment, spatial 
+statistical analysis, health-risk assessment, and future machine learning applications.
+Keywords: Groundwater; Statistical analysis; Hydrochemical processes; Water quality 
+assessment; Health-risk assessment
+224
+eISSN 2713-5004 • https://gaidas-geodata.org
+접근 가능성(accessible), 상호 운용성(interoperable), 재
+사용 가능성(reusable)을 제시한 FAIR 원칙(Wilkinson et 
+al., 2016)과 지구과학 정보 자원의 상호 운용 메타데이터 체
+계(Han and Han, 2022)는 연구 자료의 재현성과 활용성을 
+높이기 위한 중요한 기준으로 제시되고 있다. 선행 연구(Choi 
+et al., 2021)는 이 논문에서 재정리한 자료의 일부를 활용하
+여 안정동위원소와 삼중수소를 기반으로 지하수 함양 특성과 
+오염 기원을 해석하였으나 전체 수리화학 자료의 공간적 특성
+과 데이터의 재사용 가능성은 다루지 않았다.
+본 논문은 선행 해석 연구와 구별되는 데이터 논문으로 
+128개 지점에서 측정한 수온, pH 및 전기전도도(electrical 
+conductivity, EC)와 행정구역 지번주소를 표와 CSV 형식
+으로 공개하고 자료의 구성과 활용 범위를 제시하는 데 초점
+을 두었다. 공개된 주소 정보는 지오코딩을 통해 시료 채취 지
+점의 공간 자료로 변환할 수 있어 현장 수질의 공간 분포와 지
+역적 특성을 분석하는 데 활용할 수 있다. 한편 공개 현장 자
+료와 동일한 시료에서 별도로 확보한 주요 이온, SiO2 및 TDS 
+자료를 재구성하여 전하 균형 오차(charge balance error, 
+CBE)를 이용한 분석 자료의 품질 검증과 수리화학적 해석을 
+수행하였다. PCA, HCA, PHREEQC 기반 광물 포화지수 분
+석, 풍화 및 이온 교환 지표, 음용수 및 관개용수 적합성 평
+가, 질산성 질소와 불소에 대한 건강 위해성 평가 및 권역 간 
+통계 비교를 적용함으로써 공개 현장 자료가 추가적인 수리화
+학 자료와 연계될 때 확장될 수 있는 분석 및 재사용 가능성
+을 제시하였다. 주소 기반 위치 정보를 이용한 공간 분석은 연
+구의 중심 목적이 아니라 데이터의 재사용 가능성을 보여주기 
+위한 탐색적 사례로 수행하였다.
+2. 자료 및 방법
+2.1 연구 지역
+본 연구는 농업용수와 생활용수로 이용되는 충청권 지하수
+의 수질 특성, 이용 적합성 및 건강 위해성을 광역적으로 평
+가하는 데 목적을 두었다. 한편 대전광역시는 높은 인구밀도
+와 산업 및 도시 지역의 집중으로 지하수 이용 및 오염 환경
+이 주변 농업용 지하수와 생활용 지하수 이용 지역과 구별되
+므로 연구 대상의 수질 및 이용 특성을 일관되게 비교하기 위
+해 대상 지역에서 제외하였다. 충청남도, 충청북도 및 세종특
+별자치시를 포함한 연구 지역의 면적은 약 12,294 km2이며 
+위경도 범위는 북위 35°58′-37°04′, 동경 126°07′-128°04′
+이다. 지형은 동쪽의 소백산맥에서 서쪽 황해 연안으로 갈수
+록 점차 낮아지며 서부에는 농경지와 도시 지역이, 동부에는 
+산림이 주로 분포한다. 이러한 지형과 토지 이용 특성은 지역
+별 오염 부하와 지하수 수질의 공간적 차이를 유발하는 요인
+으로 작용할 수 있다. 이 지역은 선캄브리아기 경기, 소백산 변
+성암복합체, 쥐라기 대보 화강암류, 고생대 옥천누층군 및 탄
+산염암 등 다양한 지질로 구성되며, 대보 조산운동에 의해 형
+성된 대규모 심성암체가 옥천대를 따라 분포한다(Korea In-
+stitute of Geoscience and Mineral Resources, 2021). 
+수리화학 특성의 광역 비교를 위해 기반암 지질은 결정질 편
+마암, 백악기 관입 화성암, 트라이아스기-쥐라기 관입 화성
+암, 미고결 쇄설성 퇴적층, 변성 퇴적암류, 편암류, 비공극 화
+산암, 쇄설성 퇴적암 및 탄산염암의 9개 수문지질 단위로 구
+분하였다(Korea Institute of Geoscience and Mineral 
+Resources, 2021). 이들 암상은 규산염 풍화, 탄산염 용해, 
+불소 용출 등 서로 다른 수질 형성 과정에 영향을 미치므로 
+연구 지역의 광역 수질 특성을 이해하는 중요한 지질학적 배
+경을 제공한다. 연구 지역의 위치와 수문지질 단위, 지하수 시
+료 채취 지점은 Fig. 1에 나타내었다.
+2.2 시료 채취 및 실험 분석
+배경 수질 특성을 평가하기 위해 대부분의 시료는 강수의 
+직접적인 영향과 농경지의 시비 및 관개 영향을 최소화할 수 
+있는 갈수기인 2020년 4월부터 6월 초 사이에 채취하였다. 
+강수가 발생한 경우에는 일시적인 수질 변화를 배제하기 위
+해 강우 종료 후 3일이 지난 뒤 시료 채취를 실시하였다. 현장
+에서는 다항목 수질 측정기(WTW Multi 3620 IDS; Xylem 
+Water Solutions, Washington DC, USA)를 이용하여 수
+온, pH, EC, 용존산소(dissolved oxygen), 산화환원전위
+(oxidation reduction potential)를 측정하였다. 이 가운
+데 공개 데이터셋에는 수온, pH, EC를 포함하였다. 채취한 시
+료는 0.45 µm 셀룰로오스 아세테이트 필터로 여과한 후 폴
+225
+ September 2026 • Vol. 8. No. 3, pp. 222-238
+리프로필렌 용기에 담아 4℃ 이하에서 냉장 보관하였다 . 양
+이온 분석용 시료는 금속 이온의 침전과 용기 흡착을 방지하
+기 위해 질산을 첨가하여 pH 2 이하로 산성화하였다. 주요 
+양이온과 용존실리카(SiO2)는 유도결합플라스마 분광분석기
+(Optima 7300DV; PerkinElmer, Shelton, CT, USA)로 분
+석하였으며, 음이온은 이온크로마토그래피(Dionex Aquion; 
+Thermo Scientific, Waltham, MA, USA)로 정량하였다. 
+중탄산이온(HCO3
+-)은 0.02 N 염산을 이용한 알칼리도 적정
+기(Rondolino DL50; Mettler Toledo, Greifensee, Swit-
+zerland)로 측정하였다. 전체 128개 시료 중 127개(99%)의 
+CBE가 ±10% 이내로 나타나 대부분의 분석 자료가 현장 수
+질 자료에 일반적으로 적용되는 허용 범위를 만족하였다.
+2.3 데이터 구성
+공개 데이터셋은 128개 레코드로 구성되며, 각 레코드는 
+시료 식별자(G01-G128), 수온, pH, EC, 채취 지점의 행정구
+역 지번주소를 포함한다. 위치 정보는 행정구역 지번주소(시·
+도/시·군·구/읍·면/리/지번)로 제공되며 재사용자는 주소를 
+지오코딩하여 점 단위 공간 분석에 활용할 수 있다. 다만 지
+번주소 기반 지오코딩 좌표는 현장 측량 좌표가 아니므로 실
+제 관정 위치와 일치하지 않을 수 있다. 주소 기반 지오코딩의 
+위치 오차는 지역과 참조 자료에 따라 수십 m에서 수 km까
+지 달라질 수 있으며(Cayo and Talbot, 2003), 본 데이터셋
+에는 검증용 정밀 좌표가 없어 지점별 오차를 정량화하지 못
+하였다. 따라서 해당 좌표는 개별 관정의 정밀 위치가 아니라 
+충청권 규모의 공간 분포를 탐색하기 위한 근사 위치 정보로 
+사용하였다. 파일은 장기 보존과 상호 운용성을 위해 CSV와 
+XLSX 형식으로 함께 제공한다. 한편 이 논문에서는 공개 현
+장 자료의 활용 가능성을 예시하기 위해 동일 시료에 대해 별
+도로 분석한 주요 이온, SiO2 및 TDS 자료를 이용하여 수리
+화학 해석, 수질지수, 건강 위해성 및 공간 분석을 수행하였
+다. pH 및 용존 성분 자료에 대한 기술통계를 Table 1에 제
+시하였으며 넓은 농도 범위(e.g., Cl, 2.4-938.5 mg/L; NO3, 
+0.0-319.1 mg/L; TDS, 50.2-2,155.9 mg/L)는 이 연구에서 
+다루고 있는 데이터셋이 자연 배경 수질부터 인위 오염 수질
+까지 폭넓은 스펙트럼을 포괄함을 보여준다.
+2.4 분석 방법
+모든 자료의 통계 분석은 Python (scikit-learn, SciPy)을 
+이용하였으며 수리지화학 계산에는 PHREEQC, 수화학 도
+표 작성에는 wqchartpy를 사용하였다. 분석 자료의 신뢰성
+은 양이온과 음이온의 당량농도 합 차이를 상대값으로 나타
+Fig. 1. Geological map of the study area (Chungcheong Region) showing nine lithological units, major faults, and the 128 groundwater sampling 
+sites (black dots). The geology was compiled from the 1:250,000 digital geological map of Korea (Korea Institute of Geoscience and Mineral Re-
+sources, 2021). Left panel shows the location of the study area within South Korea. Sampling sites were georeferenced from address records using 
+the VWorld Geocoding Service. Because these coordinates were derived from parcel-address records rather than field-surveyed coordinates, they 
+should be interpreted as approximate locations.
+226
+eISSN 2713-5004 • https://gaidas-geodata.org
+내는 CBE=(Σcations−Σanions)/(Σcations+Σanions)×
+100 (%)로 검증하였다. 수리화학적 유형은 우세 이온에 따른 
+수질 유형과 Gibbs 및 Schoeller 다이어그램을 이용하여 해
+석하였다. Gibbs 다이어그램은 TDS와 주요 이온의 비를 이
+용하여 기반암과의 반응, 증발 및 강수의 영향을 구분하였으
+며(Gibbs, 1970), Schoeller 다이어그램은 주요 이온의 상대
+적인 분포 패턴을 비교하여 시료 간 수질 특성의 유사성을 평
+가하였다(Schoeller, 1967).
+다변량 통계 분석에 앞서 변수의 왜도(skewness)를 완화하
+기 위해 농도 자료를 로그 변환한 후 표준화하였다. 변수 간 상
+관성은 Pearson 상관 분석으로 검토하였으며 연안 지역과 내
+륙 지역의 수질 차이는 자료의 비정규성을 고려하여 Mann-
+Whitney U 검정으로 비교하였다. PCA로 수질을 지배하는 주
+요 요인을 추출하였고 Ward 연결법을 이용한 계층적 HCA를 
+수행하여 수질 특성이 유사한 시료를 군집화하였다.
+물-암석 반응과 이온 교환 특성은 (Ca+Mg)-(HCO3+SO4)
+와 Na-Cl의 당량 관계, Gaillardet et al. (1999)의 삼성분
+(Ca/Na, Mg/Na, HCO 3/Na) 도표 및 염소-알칼리 지수
+(chloro-alkaline indices, CAI) CAI-1, CAI-2 (Schoeller, 
+1977)를 이용하여 해석하였다. 광물 포화지수(saturation 
+index, SI)는 SI=log(IAP/Ksp)와 같이 정의되며 PHREEQC 
+(Parkhurst and Appelo, 2013)를 이용하여 계산하였다. 계
+산 대상 광물은 방해석, 백운석, 아라고나이트, 석고, 경석고, 
+형석, 암염, 석영 및 옥수였으며 각 시료에서 현장 측정한 수
+온을 적용하였다. 음용수 적합성은 수질지수(water quality 
+index, WQI)와 엔트로피 수질지수(entropy-weighted 
+water quality index, EWQI)로 평가하였다(Amiri et al., 
+2014; Li et al., 2010; Vasanthavigar et al., 2010). WQI
+는 각 수질 항목에 건강학적 중요도를 반영한 1부터 5까지의 
+가중치(wᵢ)를 부여하고 Eq. 1로 상대 가중치(Wᵢ)를 계산한 뒤 
+Eq. 2의 수질평정값(qᵢ)을 이용하여 Eq. 3으로 산정하였다. 
+pH는 중성 조건(pH 7)을 기준으로 알칼리성에서는 |C−7|/
+(8.5-7)× 100, 산성에서는 |C−7|/( 7- 6 .5)×10 0 으 로 수 질평
+정값을 계산하였다. 산정된 WQI는 50 미만은 매우 양호(ex-
+cellent), 50-100은 양호(good), 100-200은 미흡(poor), 
+200-300은 불량(very poor), 300 초과는 음용 부적합(unfit) 
+으로 분류하였다(Ramakrishnaiah et al., 2009). WQI와 
+EWQI 산정에 사용한 수질 기준(Sᵢ), 중요도 가중치(wᵢ), 상대 
+가중치(Wᵢ) 및 엔트로피 가중치(wⱼ)는 Table 2에 제시하였다.
+W w
+w
+i
+i
+i
+=
+∑
+Eq. 1
+q c
+s
+i
+i
+i
+=× 100 Eq. 2
+Cᵢ: measured concentration, 
+Sᵢ: drinking water quality standard
+Table 1. Descriptive statistics of the complementary hydrochemical data (n=128)
+Variable Mean SD Minimum Median Maximum
+pH 7.11 0.58 5.80 7.13 8.28
+Ca (mg/L) 35.16 27.09 0.05 29.07 258.74
+Mg (mg/L) 7.67 12.63 0.41 5.95 144.06
+Na (mg/L) 16.14 20.56 2.56 12.39 183.13
+K (mg/L) 1.76 1.39 0.29 1.36 11.16
+HCO3 (mg/L) 106.79 81.62 11.35 95.55 865.22
+F (mg/L) 0.28 0.70 0.00 0.13 6.86
+Cl (mg/L) 28.59 83.59 2.43 15.04 938.52
+SO4 (mg/L) 16.35 19.01 0.00 12.91 197.21
+NO3 (mg/L) 28.94 37.89 0.00 19.87 319.11
+SiO2 (mg/L) 24.49 9.46 7.60 24.18 48.67
+TDS (mg/L) 241.40 207.59 50.18 200.69 2,155.90
+SD, standard deviation; TDS, total dissolved solids.
+227
+ September 2026 • Vol. 8. No. 3, pp. 222-238
+WQ IW qii= ∑ () Eq. 3
+EWQI는 WQI와 동일한 계산 절차를 적용하지만 가중치는 
+전문가의 주관적인 판단 대신 자료의 농도 분포에서 계산한 
+정보 엔트로피를 이용하여 결정한다(Amiri et al., 2014). 먼
+저 정규화 비율(pᵢⱼ=Cᵢⱼ/ΣᵢCᵢⱼ)로부터 Eq. 4를 이용하여 정보 
+엔트로피(eⱼ, n=128)를 계산하고 이를 바탕으로 Eq. 5의 엔
+트로피 가중치(wⱼ)를 산정한 후 Eq. 6으로 EWQI를 계산하
+였다(Kumar and Augustine, 2022).
+e n ppji ij ij=− ∑
+1
+1n ln Eq. 4
+w e
+e
+j
+j
+jj
+= −
+−∑
+1
+1() Eq. 5
+EWQI wqji j= ∑ () Eq. 6
+관개용수 적합성은 나트륨흡착비(sodium adsorption 
+ratio, SAR), 나트륨백분율(%Na), 잔류 탄산나트륨(residual 
+sodium carbonate, RSC), 마그네슘위험도(magnesium 
+hazard, MH), Kelly 비(Kelly ratio, KR), 투수지수(perme-
+ability index, PI)를 이용하여 평가하였다(Richards, 1 954; 
+Wilcox, 1955). 각 지수는 주요 수화학 성분의 당량농도(meq/L) 
+를 이용하여 계산하였으며, 지수별 계산식은 Table 3에 정리
+하였다.
+비발암 건강 위해성은 질산성 질소와 불소를 대상으로 Eq. 
+7과 Eq. 8을 이용하여 평가하였다(United States Environ- 
+mental Protection Agency, 1989). 만성 일일 섭취량
+(chronic daily intake, CDI)은 CDI=C×IR/BW로 정의되
+며 CDI로부터 Eq. 7의 위해지수(hazard quotient, HQ)를 
+계산하고 Eq. 8과 같이 각 HQ의 합으로 위해지수 합(hazard 
+index, HI)을 산정하였다. 섭취율(ingestion rate, IR)과 체
+중(body weight, BW)은 성인 2.2 L/day 및 65 kg, 어린이 
+1.5 L/day 및 15 kg을 적용하였으며 참조 용량(reference 
+dose, RfD)은 질산성 질소(NO3-N) 1.6 mg/kg/day와 불소
+(F-) 0.06 mg/kg/day를 사용하였다(European Food Safe-
+ty Authority Panel on Dietetic Products, Nutrition, 
+and Allergies, 2010). 질산염(NO3
+-) 농도는 위해성 평가에 
+앞서 질산성 질소(NO3-N) 농도로 환산하여 계산하였다.
+HQ CD I
+RfD= Eq. 7
+HI HQ= ∑ Eq. 8
+일반적으로 HI가 1을 초과하면 해당 노출 조건에서 비발암
+Table 2. Drinking-water standards (Sᵢ) and parameter weights for WQI (wᵢ, Wᵢ) and EWQI (wj)
+Parameter Si (mg/L) wi Wi wj
+pH
+a)
+6.5-8.5 4 0.118 0.001
+TDS 500 4 0.118 0.044
+Ca 75 2 0.059 0.046
+Mg 50 2 0.059 0.098
+Na 200 3 0.088 0.083
+K 12 2 0.059 0.054
+F 1.5 5 0.147 0.262
+Cl 250 3 0.088 0.213
+SO4 250 4 0.118 0.082
+NO3 50 5 0.147 0.118
+WQI, water quality index, EWQI, entropy-weighted water quality index; wi, importance weight; Wi, relative weight; wj, entropy 
+weight; TDS, total dissolved solids.
+a)
+No unit for pH.
+228
+eISSN 2713-5004 • https://gaidas-geodata.org
+성 건강 위해가 발생할 가능성이 있는 것으로 판단하며 HI가 
+1 이하인 경우에는 평가 대상 노출로 인한 유의한 비발암 위
+해 가능성이 낮은 것으로 판단한다.
+3. 결과 및 토의
+3.1 기술통계 및 데이터 검증
+CBE는 분석된 양이온과 음이온의 당량농도 합 차이를 나
+타내는 지표로 0에 가까울수록 분석의 신뢰도가 높다. 전체 
+시료의 CBE 평균은 -3.6%, 중앙값은 -3.9%로 전반적으로 
+미소한 음이온 우세를 보였다. 이러한 경향은 미량 이온의 미
+분석이나 용존 유기산의 영향으로 자연수에서 흔히 나타나
+는 수준이다(Fetter and Kreamer, 2021). 전체 128개 시
+료 가운데 89개(70%)는 ±5% 이내, 127개(99%)는 ±10% 이
+내의 CBE를 보여 현장 시료에 일반적으로 적용되는 허용 기
+준(±10%)을 대부분 만족하였다. CBE가 ±10%를 초과한 시
+료는 1개뿐이었으며 재사용자가 필요에 따라 제외할 수 있도
+록 별도의 품질 관리(quality control) 플래그를 부여하였다. 
+음용수 기준과 비교한 결과 질산염은 18개 지점에서 World 
+Health Organization (2017)의 음용 권고 기준(NO 3
+- 50 
+mg/L, NO3-N 기준 약 11.3 mg/L)을 초과하였으며 국내 먹
+는 물 수질 기준(질산성 질소 10 mg/L as NO 3-N)도 함께 
+초과하였다. 불소는 대부분의 시료에서 먹는 물 수질 기준
+(1.5 mg/L) 이하를 나타냈으나 일부 Na-HCO3형 지하수에
+서는 상대적으로 높은 농도가 확인되었다. TDS의 최대 농도
+(2,155.9 mg/L)는 시료 G32에서 관찰되었다. 이 지점은 해안
+으로 둘러싸인 지역에 위치하고 인근에 축산 시설이 위치하고 
+있어 해수 영향과 인근 축산 활동의 영향이 함께 반영되었을 
+가능성이 있다. 해당 시료는 이후 수행한 다변량 통계 분석과 
+SI 해석에서도 일관되게 이상치(outlier)로 구분되었다.
+3.2 수리화학적 특성
+수화학 유형은 Ca-HCO3형이 114개 시료(89.1%)로 가장 
+높은 비율을 차지하였으며 Ca-Cl형 9개(7.0%), Na-HCO3형 
+3개(2.3%), Ca-SO4형 2개(1.6%) 순으로 나타났다(Table 4). 
+Ca-HCO3형의 우세는 토양 CO2의 영향 아래 규산염 또는 탄
+산염 광물의 용해를 통해 형성되는 천부 지하수에서 일반적
+으로 나타나는 특성으로 연구 지역 지하수의 초기 수질 형성
+에 이 과정이 중요하게 작용하였음을 시사한다. 반면 Ca-Cl
+형은 해수 침투나 생활하수 등에 의한 염소 부하, Na-HCO3
+형은 규산염 풍화와 양이온 교환이 진행된 지하수, Ca-SO4
+형은 황산염 광물의 용해나 황산염 유입의 영향을 받은 지하
+수에서 주로 관찰되는 유형으로 알려져 있다. 다만 수화학 유
+형은 지하수의 진화 과정과 잠재적인 수질 형성 요인을 파악
+Table 3. Irrigation suitability indices and formulas
+Index Formula
+SAR
+%Na (%)
+RSC (meq/L)
+MH
+KR
+PI (%)
+SAR, sodium adsorption ratio; RSC, residual sodium carbonate; MH, magnesium hazard; KR, Kelly ratio; PI, permeability index.
+229
+ September 2026 • Vol. 8. No. 3, pp. 222-238
+하기 위한 개념적인 분류 기준으로, 개별 지점의 수질 기원을 
+단정하기에는 한계가 있다. 지화학적 기원을 보다 정확하게 규
+명하기 위해서는 주변 토지 이용, 잠재적 오염원, 관정 관리 
+상태, 지질 및 수리지질 특성 등을 함께 고려할 필요가 있다. 
+본 연구는 충청권 지하수의 광역적인 수질 특성과 공간 분포
+를 제시하는 데 목적이 있으므로 개별 지점의 수질 형성 과정
+은 후속 현장 조사와 추가적인 지화학 분석을 통해 검증할 필
+요가 있다.
+3.3 상관 및 다변량 분석
+Pearson 상관 분석(Fig. 2)에서 TDS는 Ca, Mg, Na, Cl 
+및 HCO3와 높은 양의 상관성을 보여 물-암석 반응이 진행
+됨에 따라 주요 용존이온이 함께 증가하는 수리지화학적 특
+성과 일치하였다. Cl-Na의 높은 상관성은 염류의 유입 또는 
+축적을 반영하며 Ca-Mg 및 Ca-HCO3의 동반 증가는 기반
+암 광물의 풍화와 용해 과정의 영향을 시사한다. 반면 NO3는 
+대부분의 주요 이온과 뚜렷한 상관성을 보이지 않았다. 이는 
+NO3가 농업 활동과 생활하수 등 인위적 오염원으로부터 주
+로 유입되는 한편 지하수의 산화·환원 조건에 따른 탈질, 식물 
+및 미생물의 흡수, 강수 함양에 의한 희석 등의 영향을 받아 
+주요 이온과 다른 농도 경향을 보이는 것으로 해석된다.
+SiO2 역시 다른 주요 이온들과 비교적 낮은 상관성을 나타
+냈다. 규산염 광물의 용해는 광물의 종류와 반응속도, 지하수
+의 체류 시간 및 pH 등에 따라 달라지며 용출된 SiO2의 농도
+는 점토광물과 같은 2차 광물의 형성이나 석영 및 옥수의 포
+화 상태에 의해서도 조절될 수 있다. 따라서 SiO2의 낮은 상관
+성은 해당 대수층에서 규산염 풍화가 미약하거나 SiO2가 독
+립적인 기원에서 공급되기 때문이라기보다 Ca, Mg 및 HCO3
+의 증가를 유발하는 광물 용해 반응과 SiO 2의 용출 과정 사
+이의 반응속도 차이, 이후 발생하는 2차 반응의 영향이 복합
+적으로 반영된 결과로 판단된다.
+앞선 논의에서 염류 부하가 연구 지역 수질을 지배하는 주
+요 요인 중 하나로 나타남에 따라 연안 지역과 내륙 지역의 
+수질 특성을 추가로 비교하였다. 수질 자료는 비대칭 분포와 
+이상치를 포함하고 있어 비모수 검정인 Mann-Whitney U 
+검정을 적용하였으며 연안 시·군(보령, 태안, 서산, 당진, 홍
+성, 서천; n=29)과 내륙 지역(n=99)을 대상으로 분석하였다
+(Table 5; Fig. 3). 그 결과 연안 지역은 내륙 지역보다 질산염 
+(중앙값 33.0 vs. 17.5 mg/L, p=0.010), 염소(중앙값 31.8 vs. 
+12.6 mg/L, p<0.001), TDS (중앙값 270.5 vs. 190.4 mg/L, 
+p<0.001) 및 나트륨(p=0.004) 농도가 유의하게 높았다. 이러
+한 결과는 연안 지역에서 해수의 영향으로 Cl, Na 및 TDS가 
+증가하는 경향과 함께 농업 활동이나 축산, 생활하수 등의 영
+향으로 질산염 부하가 상대적으로 높은 특성을 반영하는 것
+으로 해석된다. 반면 황산염은 두 지역 간 유의한 차이가 나타
+나지 않아(p=0.754) 연안 지역 해수 혼합 여부가 황산염 농도
+를 결정하는 주요 요인은 아닌 것으로 판단된다. 다만 연안과 
+Table 4. Water type classification of the 128 samples
+Water type Number of samples Proportion (%)
+Ca-HCO3 114 89.1
+Ca-Cl 9 7.0
+Na-HCO3 3 2.3
+Ca-SO4 2 1.6
+Fig. 2. Pearson correlation matrix of pH and hydrochemical variables, 
+including total dissolved solids (TDS).
+230
+eISSN 2713-5004 • https://gaidas-geodata.org
+내륙의 구분은 행정구역을 기준으로 이루어졌으므로 실제 해
+안선과의 거리나 해수 침투 범위를 직접 반영하지 못하는 한
+계가 있다. 향후 시료 위치의 정밀 좌표를 활용한 거리 기반 
+분석이 수행된다면 연안 영향의 공간적 범위를 보다 정량적으
+로 평가할 수 있을 것이다.
+Ward 연결법을 이용한 계층적 HCA 결과 128개 시료는 
+4개의 군집으로 구분되었다(Fig. 4A). C1 (n=48)은 낮은 pH 
+(평균 6.7), 높은 질산염 농도(평균 35.8 mg/L), 낮은 HCO3 
+농도를 보이는 군집으로 인위적 오염의 영향을 받은 유형으로 
+해석된다. C2 (n=42)는 높은 pH와 낮은 질산염 농도, 상대
+적으로 높은 불소 농도를 나타내는 Ca-HCO3형으로 연구 지
+역의 대표적인 배경수질 군집으로 분류되었다. C3 (n=37)는 
+TDS, Cl 및 SO4 농도가 높은 혼합형 수질 특성을 보였으며 
+C4 (n=1)는 HCO3, Na 및 F 농도가 매우 높은 Na-HCO3형 
+시료(G92)로 심부 순환의 영향을 받은 이상치로 구분되었다. 
+단 통계적으로는 단독 군집으로 구분되지만 수리지질학적으
+로는 장기 체류 또는 광역 유동(regional flow)을 겪은 지하
+수에서 나타날 수 있는 자연적 배경수질 유형이다. HCA는 수
+질 조성에 근거한 비지도 분류이므로 연안과 내륙을 직접 구
+분한 결과는 아니다. 다만 TDS와 Cl이 높은 C3의 특성은 연
+안 지역에서 두 성분이 유의하게 높았던 연안-내륙 비교 결과
+(Table 5)와 정성적으로 일치한다.
+로그 변환과 표준화를 거친 자료에 대해 PCA를 수행한 결
+과 상위 3개 주성분이 전체 분산의 63.7%를 설명하였다(Fig. 
+4B). Fig. 4B에서는 일부 용존이온 적재 벡터가 원점 부근에서 
+중첩되어 시각적 구분이 제한적이므로 각 주성분의 해석은 
+계산된 적재값의 상대적 크기와 부호를 기준으로 하였다. 
+PC1 (33.3%)는 TDS, Cl, Mg, Ca 및 Na에 높은 양의 적재
+값을 보여 전반적인 주요 용존 성분을 나타내는 축으로 해석
+되었다. 연안 지역에서 Cl, Na 및 TDS가 유의하게 높았던 결
+과(Table 5; Fig. 3)를 고려하면 PC1은 연안의 염류 특성과도 
+관련되지만 Ca와 Mg의 높은 적재값을 함께 고려할 때 해수 
+영향만을 나타내는 축으로 단정할 수는 없다. PC2 (17.2%)는 
+HCO3, pH 및 F에 양의 적재값을, NO 3에는 음의 적재값을 
+Table 5. Coastal vs. inland comparison
+Variable Coastal median Inland median p-value
+a)
+NO3 (mg/L) 33.0 17.5 0.010
+b)
+Cl (mg/L) 31.8 12.6 <0.001
+b)
+TDS (mg/L) 270.5 190.4 <0.001
+b)
+Na (mg/L) 14.2 11.8 0.004
+b)
+SO4 (mg/L) 11.8 13.0 0.754
+TDS, total dissolved solids.
+a)
+Mann-Whitney U test; 
+b)
+Statistically significant at p<0.05.
+Fig. 3. Coastal vs. inland distributions of (A) NO3, (B) Cl, (C) TDS, and (D) Na. TDS, total dissolved solids.
+A CB D
+231
+ September 2026 • Vol. 8. No. 3, pp. 222-238
+보여 물-암석 반응에 따른 자연적인 수질 형성과 인위적 질산
+염 오염을 구분하는 축으로 해석되었다. PC3 (13.2%)는 SiO2
+와 Na에 높은 양의 적재값을 보여 규산염 풍화의 영향을 반
+영하는 축으로 나타났으며 선행 연구에서 분석되지 않았던 
+SiO2 자료가 독립적인 수질 형성 과정을 설명하는 데 유용함
+을 보여준다.
+Gibbs 다이어그램(Fig. 5)은 양이온 및 음이온의 상대 조
+성과 TDS를 이용하여 지하수 수질 형성에 영향을 미치는 주
+요 지배 요인을 해석하는 방법이다. 연구 지역의 대부분 시료
+는 rock dominance 영역에 분포하여 강수나 증발 농축보다 
+대수층 내 물-암석 반응이 지하수의 수질 형성을 지배하는 
+것으로 나타났다.
+Fig. 5. Gibbs diagrams showing rock-weathering dominance. TDS, total dissolved solids.
+Fig. 4. Ward dendrogram (A) and PCA biplot with HCA clusters (B). PCA, principal component analysis; HCA, hierarchical cluster analysis.
+A B
+232
+eISSN 2713-5004 • https://gaidas-geodata.org
+이는 기반암의 풍화와 광물 용해 과정에서 공급되는 Ca2+, 
+Mg2+ 및 Na +가 주요 용존이온의 기원임을 보여준다. 반면 
+HCA에서 C3와 C4로 분류된 일부 시료는 상대적으로 높은 
+TDS를 나타내며 seawater dominance 방향으로 치우친 
+분포를 보여 국지적인 염류 유입 또는 장기간의 광물화 과정
+이 일부 반영된 것으로 해석된다.
+Schoeller 다이어그램(Fig. 6)에서도 대부분의 시료는 유
+사한 이온 분포 패턴을 나타냈으며 Ca2+와 HCO3
+-가 우세한 
+Ca-HCO3형 담수 특성이 확인되었다. 이는 Gibbs 다이어그
+램에서 확인된 물-암석 반응의 영향뿐 아니라 PCA에서 자연
+적인 수질 형성을 반영한 PC2와 규산염 풍화를 반영한 PC3
+의 해석과도 일치하며, 연구 지역 지하수가 전반적으로 기반
+암 풍화와 광물 용해의 영향을 받은 배경 수질을 유지하고 있
+음을 보여준다. Na+와 Mg2+는 Ca2+보다 낮은 농도 범위에서 
+비교적 일정하게 분포하였으며 K+는 모든 시료에서 가장 낮은 
+농도를 보여 풍화 과정에서 용출되더라도 점토광물 등에 흡
+착되어 쉽게 제거되는 일반적인 거동을 나타냈다. 음이온은 
+HCO3
+-가 가장 우세하였으며 Cl-와 SO4
+2-는 대부분 낮은 농도
+를 유지하였다. 다만 일부 시료에서는 Cl-와 SO4
+2- 농도가 상
+대적으로 높게 나타나 생활하수, 농업 활동 또는 국지적인 염
+류 유입의 영향을 받은 것으로 판단된다. 그러나 이러한 시료
+를 제외하면 대부분은 HCO3
+-가 우세한 담수형 수질 특성을 
+유지하여 광역적인 배경수질의 일관성을 확인할 수 있었다.
+3.4 광물 포화지수를 활용한 용해 및 침전 예측
+SI는 물이 특정 광물에 대해 과포화(SI >0, 침전 경향) 또
+는 불포화(SI<0, 용해 경향) 상태인지를 나타낸다. 전체 시료
+의 PHREEQC 계산 결과 방해석(-1.03), 백운석(-2.54), 석고 
+(-2.83), 형석(-5.56), 암염(-8.21)의 중앙값은 대부분 불포화 
+상태를 보였다(Fig. 7). 이는 연구 지역의 기반암이 화강암, 편
+마암 및 변성 퇴적암 등 규산염암이 우세하여 탄산염광물과 
+증발광물의 함량이 제한적이며 현재 지하수가 이들 광물과 
+평형에 도달하지 않았음을 의미한다. 반면 석영은 대부분 평
+형 또는 약한 과포화 상태를 보여 규산염 광물과의 물-암석 
+반응이 지속적으로 진행되고 있음을 나타냈다. 이러한 결과
+는 연구 지역에서 우세하게 나타나는 Ca-HCO3형 수질이 규
+산염광물의 풍화와 토양 CO2의 영향으로 형성되었음을 뒷받
+침하며 Choi et al. (2021)이 제시한 비교적 짧은 지하수 체
+류 시간 특성과도 일치한다. 다만 본 연구의 SI는 충청권 지하
+수의 광역적인 수질 특성을 파악하기 위한 결과이며 특정 지
+Fig. 6. Schoeller semi-logarithmic diagram of major ions (meq/L).
+Fig. 7. Mineral saturation indices computed with PHREEQC using 
+field-measured temperatures (n=128).
+233
+ September 2026 • Vol. 8. No. 3, pp. 222-238
+역의 평형 상태를 대표하는 값으로 해석해서는 안 된다. 향후 
+집중 조사 지역의 지하수 수질 자료를 추가하면 지역별 광물 
+포화 특성은 달라질 수 있으며 본 연구에서 공개한 데이터는 
+후속 연구의 기준 자료(baseline dataset)로 활용될 수 있다.
+3.5 음용 및 관개 적합성
+음용 적합성은 WQI와 EWQI로 평가하였다. WQI의 평균
+은 27.7로 128개 시료 중 119개(93.0%)가 excellent 등급
+으로 분류되었으며 EWQI의 평균은 21.9로 124개(96.9%)
+가 excellent 등급을 나타냈다. 두 지수 모두 대부분의 시
+료가 음용에 적합한 것으로 평가되어 일관된 결과를 보였
+다. EWQI의 엔트로피 가중치는 F (0.262), Cl (0.213), NO3 
+(0.118) 순으로 높게 산정되어 이들 항목이 연구 지역 수질 변
+동을 설명하는 주요 인자인 것으로 나타났다. 이는 연구 지역
+에서 지질 기원의 불소와 인위 기원의 염소 및 질산염이 수질 
+특성의 공간적 변동에 크게 기여하고 있음을 보여준다. 음용 
+부적합으로 분류된 시료는 한 지점(G32)으로 해수 영향과 축
+산 활동이 복합적으로 작용한 것으로 해석된다.
+관개용수 적합성은 SAR, %Na, RSC, MH, KR, PI를 이
+용하여 평가하였으며 적합성 기준과 계산 결과를 Table 6에 
+제시하였다. 대부분의 시료는 Richards (1954)와 Wilcox 
+(1955)가 제시한 양호(good) 또는 허용 가능(permissible) 
+이상의 등급에 해당하였다. 특히 SAR은 127개 시료가 10 미
+만이었고 RSC는 126개 시료가 1.25 meq/L 미만, MH는 
+127개 시료가 50 미만으로 나타나 나트륨 축적, 탄산염 집적 
+및 마그네슘 과다에 따른 토양 위해 가능성이 전반적으로 낮
+은 것으로 평가되었다.
+따라서 연구 지역의 지하수는 대부분 관개용수로 활용 
+가능한 수준으로 판단된다. 다만 이 연구에서는 USSL 및 
+Wilcox 도표를 이용한 염분-나트륨 복합 평가는 수행하지 
+않았으며 향후 공개된 데이터셋의 EC 자료와 SAR을 함께 활
+용하면 관개용수의 염류 및 나트륨 위해성을 보다 종합적으로 
+평가할 수 있다.
+3.6 질산성 질소 및 불소 위해성 평가
+비발암 건강 위해성은 질산성 질소와 불소를 대상으로 HQ
+와 HI를 산정하여 성인과 어린이에 대해 각각 평가하였다. 
+앞선 수질 특성 해석에는 질산염(NO 3
+-) 농도를 사용하였으
+나 건강 위해성 평가에서는 RfD의 단위와 일치하도록 질산
+염 농도를 질산성 질소(NO3-N) 농도로 환산하였다. 건강 위
+해성 평가에 적용한 질산성 질소와 불소의 RfD 및 노출계수
+(IR, BW)는 Table 7에 제시하였다. HI가 1을 초과한 지점은 
+성인에서 4개, 어린이에서 26개로 나타났다. 평균 HI는 성인
+(0.30)보다 어린이(0.87)에서 높게 나타났으며(Fig. 8), 이는 
+체중당 음용량이 상대적으로 큰 어린이가 동일한 수질 조건
+에서도 더 높은 위해에 노출되기 때문이다. 또한 연구 지역의 
+비발암 건강 위해는 대부분 질산성 질소에 의해 결정되는 것
+으로 나타나 질산염 관리가 건강 위해 저감의 핵심 요소임을 
+Table 6. Results of irrigation suitability indices and acceptable ranges
+SAR %Na RSC MH KR PI (%)
+Suitable range <10 <60 <1.25 <50 <1 >25 (class I-II)
+This study (mean) 0.78 24.3 -0.64 26.1 0.92 71.6
+SAR, sodium adsorption ratio; RSC, residual sodium carbonate; MH, magnesium hazard; KR, Kelly ratio; PI, permeability index.
+Table 7. Exposure parameters and chemical-specific reference doses (RfD) for the non-carcinogenic health-risk assessment
+Parameter Symbol Value
+Reference dose, nitrate (NO3-N) RfD 1.6 mg/kg/day
+Reference dose, fluoride (F) RfD 0.06 mg/kg/day
+Ingestion rate (adult/child) IR 2.2/1.5 L/day
+Body weight (adult/child) BW 65/15 kg
+234
+eISSN 2713-5004 • https://gaidas-geodata.org
+보여준다. 특히 농업 및 축산 활동이 활발한 지역에서는 질산
+염에 대한 지속적인 수질 모니터링과 수원 관리가 필요할 것
+으로 판단된다. 다만 본 평가는 표준 노출계수와 RfD를 적용
+한 선별적 위해성 평가 결과이므로 실제 건강 위해는 개인의 
+음용량, 수처리 여부 및 생활 환경 등에 따라 달라질 수 있다.
+한편 WQI와 EWQI에서는 대부분의 시료가 excellent 등
+급으로 분류되었으나 어린이에 대한 건강 위해성 평가에서는 
+26개 지점의 HI가 1을 초과하였다. 이는 WQI와 EWQI가 여
+러 수질 항목을 가중 합산한 종합 지수이므로 특정 위해 물
+질의 기준 초과 영향이 전체 점수에 충분히 반영되지 않을 수 
+있는 반면 HI는 체중당 음용량과 물질별 RfD를 고려하여 질
+산성 질소와 불소의 섭취 위해를 직접 평가하기 때문이다. 따
+라서 종합 수질지수가 양호하더라도 민감 집단의 음용 안전성
+을 판단하기 위해서는 개별 오염물질의 기준 초과 여부와 건
+강위해성 평가를 함께 검토할 필요가 있다.
+3.7 주소 기반 위치 정보를 활용한 탐색적 공간 분석
+지번주소를 지오코딩하여 산출한 128개 지점의 근사 좌표
+를 이용하여 주요 수질 지표의 광역적 공간 분포를 역거리 가
+중법(inverse distance weighting, IDW)으로 탐색(차수
+=2)하였다(Fig. 9).
+질산성 질소, 염소 및 TDS는 모두 황해 연안의 서부 저지대
+에서 높은 값을 보였으며 동부 산지로 갈수록 감소하는 경향
+을 나타냈다. 이러한 공간 분포는 연안-내륙 통계 분석 결과
+와 대체로 일치하며 주소 기반으로 산출한 좌표가 충청권 규
+모의 광역적 수질 분포를 탐색하는 재사용 사례에 활용될 수 
+있음을 보여준다.
+전역 공간 자기상관은 K-최근접(k=8) 가중행렬과 999회 
+순열검정을 이용한 Moran's I로 평가하였다. 질산성 질소
+(I=0.04), 염소(I=0.01), TDS (I=0.01)를 포함한 모든 수질 지
+표에서 Moran's I가 0에 가까웠으며 통계적으로도 유의하지 
+않았다(p>0.05). 이는 연구 지역 전체에서 뚜렷한 공간적 자
+기상관은 나타나지 않으며 수질 분포가 광역적인 하나의 경향
+보다는 지질, 토지 이용 및 국지적인 오염원의 영향을 받아 공
+간적으로 불균질하게 나타남을 의미한다.
+반면 국지 공간 자기상관(Getis-Ord Gi*, k=8, p<0.05) 
+분석에서는 전역 자기상관이 크지 않음에도 불구하고 통계적
+으로 유의한 고농도 및 저농도 군집이 확인되었다(Fig. 10). 
+질산성 질소는 서부와 남서부 연안에서 12개의 핫스팟과 중
+부와 동부에서 9개의 콜드스팟이 나타났으며 염소와 TDS는 
+황해 연안을 중심으로 각각 8개와 7개의 핫스팟, 중부 내륙
+Fig. 8. Non-carcinogenic hazard index (combined exposure to NO 3-N 
+and F , ingestion) for adults and children. HI, hazard index.
+Fig. 9. Inverse distance weighting (IDW) interpolation maps (power=2) of (A) NO 3-N, (B) Cl, and (C) TDS over the study area. Dots denote the 128 
+sampling sites. TDS, total dissolved solids.
+A B C
+235
+ September 2026 • Vol. 8. No. 3, pp. 222-238
+에서는 각각 29개와 26개의 콜드스팟이 확인되었다. 이러한 
+결과는 광역적으로는 뚜렷한 공간 자기상관이 나타나지 않더
+라도 연안 일부 지역에서는 염류와 질산염이 국지적으로 집중
+되는 공간적 군집이 존재함을 보여주며 공간적인 수질 관리와 
+후속 정밀 조사가 필요한 지역을 효과적으로 식별할 수 있음
+을 보여준다. 
+이러한 공간적 패턴은 연안 지역에서 Cl과 TDS가 높았던 
+통계 비교(Table 5), TDS와 Cl이 높은 C3, 전반적인 용존
+이온 농축을 나타낸 PC1의 해석과 정성적으로 일치한다. 질
+산성 질소 핫스팟 역시 높은 질산염 농도로 특징지어진 C1
+의 오염 관련 수질 특성과 정성적으로 부합한다. 다만 HCA
+와 PCA는 수질 조성의 유사성과 공분산 구조를, Getis-Ord 
+Gi*는 인접 지점 간 국지적 공간 군집을 평가하므로 세 분석 
+결과가 개별 지점에서 일대일로 대응한다고 해석하지 않았다. 
+주소 기반 좌표의 위치 불확실성은 지점 간 거리와 이웃관계
+를 사용하는 IDW 보간, Moran's I 및 Getis-Ord Gi* 결과
+에 영향을 줄 수 있으며, 특히 국지적 보간값과 핫스팟과 콜드
+스팟의 세부 위치를 달라지게 할 수 있다. 따라서 본 연구의 
+공간 분석 결과는 개별 관정이나 특정 오염원과의 정밀한 공
+간적 연계를 의미하는 것이 아니라 충청권 규모의 광역적, 탐
+색적 경향으로 해석하였다.
+4. 결론 및 향후 활용
+이 연구는 2020년 4월부터 6월 초 갈수기에 대전광역시
+를 제외한 충청권 금강 유역의 128개 지점에서 동일한 조사 
+및 분석 절차로, 취득한 현장 수질 데이터셋을 개방형으로 공
+개하고 데이터의 신뢰성과 활용 가능성을 정량적으로 제시하
+였다. 공개한 자료는 수온, pH, EC로 구성되며 자료의 신뢰
+성 검증을 위해 활용한 수리화학 분석에서는 전체 128개 시
+료 중 127개(99.2%)의 CBE가 ±10% 이내로 나타났으며 전
+체 평균은 -3.6%로 분석 자료가 전반적으로 신뢰할 수 있는 
+수준임을 확인하였다. 별도로 확보한 주요 이온, SiO2 및 TDS 
+자료를 활용하여 수리화학 해석, 수질 평가 및 건강 위해성 평
+가를 수행하고 주소 기반 위치 정보의 탐색적 공간 분석을 재
+사용 사례로 제시함으로써 공개 현장 자료의 활용 가능성을 
+보였다. 또한 선행 연구(Choi et al., 2021)에 포함되지 않았
+던 SiO2 자료를 추가로 활용하여 전체 시료의 수질 특성과 건
+강 위해성을 종합적으로 평가함으로써 데이터의 활용 가능성
+을 제시하였다.
+이 연구에서 수행한 수리화학 유형 분류, 다변량 통계 분
+석, SI, 음용 및 관개 적합성 평가와 건강 위해성 평가는 공개 
+현장 수질 자료의 주요 재활용 사례이며 주소 기반 공간 통계
+분석은 위치 정보의 추가 활용 가능성을 보여주는 탐색적 사
+례로 제시하였다. 분석 결과는 충청권 지하수가 대부분 Ca-
+HCO3형의 배경 수질 특성을 보이며, 기반암과의 물-암석 반
+응이 수질 형성의 주요 과정으로 작용하는 가운데 일부 연
+안 지역에서는 해수 영향과 인위적 오염이 복합적으로 나타남
+을 보여주었다. 또한 제공된 행정구역 지번주소를 활용하여 
+IDW, Moran's I 및 Getis-Ord Gi* 분석을 예시함으로써 주
+소 기반 위치 자료가 광역적 공간 패턴의 예비 탐색과 후속 정
+밀조사 설계에 활용될 수 있음을 보여주었다.
+이 데이터셋은 단순한 현장 수질 자료의 공개에 그치지 않
+고 다양한 분석 기법과 결합하여 활용할 수 있는 표준적인 재
+사용 사례를 함께 제시한다는 점에서 의미가 있다. 공개된 자
+료는 향후 동일 권역의 장기 수질 변화 평가, 광역 지하수 수
+질 모니터링, 오염원 추적, 기계학습 기반 수질 예측 모델 구
+축, 공간 통계 분석, 타 지역과의 비교 및 메타분석 등 다양한 
+Fig. 10. Getis-Ord Gi* hotspot analysis (KNN k=8, p<0.05) of (A) NO 3-N, (B) Cl, and (C) TDS. Red means significant hot spots, blue means cold 
+spots, and gray means not significant.
+A B C
+236
+eISSN 2713-5004 • https://gaidas-geodata.org
+연구에 기초 자료로 활용될 수 있을 것으로 기대된다.
+다만 이 연구에서 활용한 데이터는 2020년 갈수기에 조사
+된 단일 시기의 자료이며 위치 정보는 행정구역 지번주소 수
+준으로 제공되고 브롬(Br), 동위원소 등 일부 추적 지표는 포
+함하지 못한 한계가 있다. 또한 주소 기반 지오코딩 좌표의 위
+치 오차가 공간 보간 및 국지적 군집 판정에 영향을 줄 수 있
+으므로 공간 분석 결과는 광역적, 탐색적 경향으로 해석할 필
+요가 있다. 향후 계절 및 연차별 조사 자료를 추가하여 시계
+열 데이터로 확장하고 해안선까지의 실제 거리를 고려한 공간 
+분석과 안정동위원소 및 방사성동위원소 자료를 연계한다면 
+데이터셋의 활용성과 확장성은 더욱 높아질 것으로 기대된다. 
+이 데이터셋은 충청권 지하수의 배경 수질 특성을 대표하는 
+공개 현장 수질 자료로 지하수 수질 연구뿐 아니라 지속 가능
+한 지하수 관리, 수자원 정책 수립, 환경 빅데이터 구축 및 인
+공지능 기반 수질 예측 연구를 위한 기초 자료로 폭넓게 활용
+될 수 있을 것이다.
+Conflict of Interest
+JongGyu Han has been an Editorial Board of GEO DATA; howev-
+er, he was not involved in the peer reviewer selection, evaluation, 
+or decision process of this paper. Otherwise, no other potential 
+conflicts of interest relevant to this paper were reported.
+Funding Information
+This work was supported by the Basic Research Project, “Devel -
+opment of an Integrated Research Data Repository and Smart 
+Geo-big Data Open Platform (26-3131, GP2025-014),” and the 
+“Development of Advanced Technologies for Sustainable and 
+Optimal Groundwater Management and Conservation (26-3411, 
+GP2025-011)” of the Korea Institute of Geoscience and Mineral 
+Resources (KIGAM), funded by the Ministry of Science and ICT 
+(MSIT).
+Data Availability Statement
+The data that support the findings of this study are openly avail -
+able in Geo Big Data Open Platform at https://doi.org/10.22747/
+paper_data.20260626.54.
+Artificial Intelligence (AI) Statement
+The authors declare that no artificial intelligence (AI) tools were 
+used in the preparation of this manuscript.
+References
+Amiri V, Rezaei M, Sohrabi N (2014) Groundwater quality assess-
+ment using entropy weighted water quality index (EWQI) in 
+Lenjanat, Iran. Environ Earth Sci 72(9):3479-3490
+Benefield LD, Judkins JF, Weand BL (1982) Process chemistry for 
+water and wastewater treatment. Prentice-Hall, Hoboken, NJ
+Cayo MR, Talbot TO (2003) Positional error in automated geoc -
+oding of residential addresses. Int J Health Geogr 2(1):10
+Chae GT, Yun ST, Mayer B, et al (2007) Fluorine geochemistry in 
+bedrock groundwater of South Korea. Sci Total Environ 385(1-3): 
+272-283
+Cheong JY, Hamm SY, Lee JH, Lee KS, Woo NC (2012) Ground- 
+water nitrate contamination and risk assessment in an agri -
+cultural area, South Korea. Environ Earth Sci 66(4):1127-1136
+Choi BY, Yun ST, Kim KH, Kim JW, Kim HM, Koh YK (2014) 
+Hydrogeochemical interpretation of South Korean groundwa-
+ter monitoring data using self-organizing maps. J Geochem 
+Explor 137:73-84
+Choi BY, Yun ST, Mayer B, Kim KH (2011) Sources and biogeo -
+chemical behavior of nitrate and sulfate in an alluvial aquifer: 
+hydrochemical and stable isotope approaches. Appl Geochem 
+26(7):1249-1260
+Choi H, Lee CM, Koh DC, Yoon YY (2021) Recharge and spatial 
+distribution of groundwater hydrochemistry in the Geum 
+River basin, South Korea. J Radioanal Nucl Chem 330(2):397-
+412
+European Food Safety Authority Panel on Dietetic Products, 
+Nutrition, and Allergies (2010) Scientific opinion on dietary 
+reference values for water. EFSA J 8(3):1459
+Fetter CW, Kreamer D (2021) Applied hydrogeology. 5th ed. 
+Waveland Press, Long Grove
+Gaillardet J, Dupr é B, Louvat P , Allègre CJ (1999) Global silicate 
+weathering and CO 2 consumption rates deduced from the 
+chemistry of large rivers. Chem Geol 159(1-4):3-30
+Gibbs RJ (1970) Mechanisms controlling world water chemistry. 
+Science 170(3962):1088-1090
+Han River Flood Control Office, Korea Water Resources Corporation, 
+Korea Institute of Hydrological Survey (2024) Statistical 
+analysis report of the 2023 river basin survey. Han River Flood 
+Control Office, Seoul
+Han S, Han JG (2022) Case study on an integrated interoperable 
+metadata model for geoscience information resources. 
+Geosci Data J 9(2):355-370
+237
+ September 2026 • Vol. 8. No. 3, pp. 222-238
+Intergovernmental Panel on Climate Change (2014) Climate 
+change, 2014: impacts, adaptation and vulnerability. Cambridge 
+University Press, Cambridge
+Kim K, Jeong DH, Kim Y, Koh YK, Kim SH, Park E (2008) The geo-
+chemical evolution of very dilute CO 2-rich water in Chung-
+cheong Province, Korea: processes and pathways. Geofluids 
+8:3-15
+Korea Institute of Geoscience and Mineral Resources (2021) 
+Groundwater information map of the Geumgang River Basin. 
+Korea Institute of Geoscience and Mineral Resources, Daejeon
+Kumar PJS, Augustine CM (2022) Entropy-weighted water quality 
+index (EWQI) modeling of groundwater quality and spatial 
+mapping in Uppar Odai Sub-Basin, South India. Model Earth 
+Syst Environ 8(1):911-924
+Li PY, Qian H, Wu JH (2010) Groundwater quality assessment 
+based on improved water quality index in Pengyang County, 
+Ningxia, Northwest China. J Chem 7:451304
+National Groundwater Information Management and Service 
+Center (2026) Groundwater-bearing conditions. National 
+Groundwater Information Management and Service Center. 
+https://www.gims.go.kr/internalUseStts.do Accessed 25 Jun 
+2026
+Park SC, Yun ST, Chae GT, et al (2005) Regional hydrochemical 
+study on salinization of coastal aquifers, western coastal area 
+of South Korea. J Hydrol 313(3-4):182-194
+Parkhurst DL, Appelo CAJ (2013) Description of input and 
+examples for PHREEQC version 3: a computer program for 
+speciation, batch-reaction, one-dimensional transport, and 
+inverse geochemical calculations. United States Geological 
+Survey, Reston, Techniques and Methods 6-A43
+Ramakrishnaiah CR, Sadashivaiah C, Ranganna G (2009) Assess-
+ment of water quality index for the groundwater in Tumkur 
+Taluk, Karnataka State, India. J Chem 6(2):523-530
+Richards LA (1954) Diagnosis and improvement of saline and alkali 
+soils. United States Department of Agriculture, Washington 
+DC, Agricultural Handbook 60, 160p
+Schoeller H (1967) Qualitative evaluation of ground water 
+resources. In: Schoeller H (ed) Methods and techniques of 
+groundwater investigation and development. UNESCO, Paris, 
+pp 44-52
+Schoeller H (1977) Geochemistry of groundwater. In: Brown RH, 
+Konoplyantsev AA, Ineson J, Kovalevsky VS (eds) Ground-
+water studies: an international guide for research and prac -
+tice. UNESCO, Paris, pp 1-18
+United States Environmental Protection Agency (1989) Risk 
+assessment guidance for superfund, vol. 1. Human health 
+evaluation manual (part A). United States Environmental 
+Protection Agency, Washington DC, EPA/540/1-89/002
+Vasanthavigar M, Srinivasamoorthy K, Vijayaragavan K, et al 
+(2010) Application of water quality index for groundwater 
+quality assessment: Thirumanimuttar sub-basin, Tamilnadu, 
+India. Environ Monit Assess 171(1-4):595-609
+Wilcox LV (1955) Classification and use of irrigation waters. 
+United States Department of Agriculture, Washington DC, 
+Circular 969
+Wilkinson MD, Dumontier M, Aalbersberg IJ, et al (2016) The 
+FAIR guiding principles for scientific data management and 
+stewardship. Sci Data 3:160018
+World Health Organization (2017) Guidelines for drinking-water 
+quality, 4th ed. World Health Organization, Geneva
+238
+eISSN 2713-5004 • https://gaidas-geodata.org
+Meta Data for Dataset
+Essential
+Field Sub-Category
+Title of Dataset Field Water Quality Measurements from the Geum River Basin, South Korea
+DOI https://doi.org/10.22747/paper_data.20260626.54
+Category Inland Waters/Geoscientific Information
+Temporal Coverage 2020.4.-2020.6.
+Spatial Coverage Address Chungcheong Region (Chungcheongnam-do, Chungcheongbuk-do, Sejong), 
+Geum River basin, South Korea
+WGS84 Coordinates [Bounding box] 126.12°E, 35.97°N, 128.07°E, 37.07°N
+Personnel Name Hanna Choi
+Affiliation Korea Institute of Geoscience and Mineral Resources (KIGAM)
+E-mail pythagoras84@kigam.re.kr
+CC License CC BY-NC
+Optional
+Field Sub-Category
+Summary of Dataset 128 groundwater records containing field measurements of water 
+temperature, pH, and electrical conductivity (EC), together with address-
+based location information. Complementary hydrochemical data were used 
+in the article to demonstrate potential applications of the dataset
+Project KIGAM Basic Research Project “Development of an Integrated Research Data 
+Repository and a Smart Geo-big Data Open Platform” (26-3131, GP2025-
+014) and “Development of Advanced Technologies for Sustainable and 
+Optimal Groundwater Management and Conservation” (26-3411, GP2025-
+011)
+Instrument Multi-parameter meter (WTW Multi 3620 IDS)

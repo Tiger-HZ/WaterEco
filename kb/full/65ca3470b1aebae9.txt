@@ -1,0 +1,1496 @@
+npj | clean water Article
+Published in partnership with King Fahd University of Petroleum & Minerals
+Article in Press https://doi.org/10.1038/s41545-026-00631-1
+Equitable supply in water distribution
+networks using data-driven optimization
+and AI-assisted voice automation
+Check for updates
+Harish Doneparthi1,A d h i t y a nR1, Saryu Sundararaman2, Rajasundaram Mathiazhagan1,
+Sri Hari Prasath Ramprasath1, Prasanna Mohan Doss1, Mallikarjun Jamadarkhani3,
+Venkata Prakash Nallamothula3,4, Varghese Kurian5 & Sridharakumar Narasimhan3
+Intermittent water supply is common across the Global South. In Multi-Village Schemes, one source
+supplies several village storage tanks within ﬁxed supply periods, making balanced allocation difﬁcult
+when ﬂow information is limited. This study presents an integrated framework for multilingual demand
+input, data-driven scheduling, and automatic valve operation. A voice interface collects tank
+demands, the scheduling model generates a valve schedule, and a programmable logic controller
+executes the schedule without manual transfer between stages. The framework adapts an existing
+discrete-event model, mixed-integer linear programming formulation, and ε-greedy state-selection
+strategy. It uses measured state-speci ﬁc ﬂows instead of hydraulic equations. On an eight-tank
+laboratory network with 256 valve states, ﬂow measurements from 33 states (13%) produced a
+schedule with an absolute solver-predicted deviation below 2.6% for every tank. Across eight physical
+trials, the largest absolute mean experimental deviation was 5.55%. The optimized schedules
+produced more balanced allocations than the basic operating policies. In simulation, ε-greedy and
+pure greedy performed similarly for the eight-tank network, while ε-greedy required fewer states on
+average for the ten-tank network. The voice interface achieved 97 –98% entity-extraction accuracy
+under the tested clean and noisy conditions, with no hallucinated demand assignments observed.
+These results demonstrate an integrated demand-to-actuation work ﬂow on a laboratory-scale
+intermittent water-supply testbed.
+Reliable access to safe drinking water remains a persistent global challenge,
+particularly in low and middle-incom e regions across the Global South.
+Despite substantial investments in water infrastructure, intermittent water
+supply (IWS) continues to be widely practiced due to source limitations,
+infrastructure constraints, and operational challenges1–3. In IWS systems,
+water is delivered only during limited time windows, leading to supply
+unreliability, pressure variability, and inequitable distribution among
+consumers2,4.
+In many water scarce regions,particularly in South Asia–rural and peri
+urban supply systems are organized as shared-source networks in which a
+single reservoir supplies multiple geographically dispersed villages or sto-
+rage tanks through a common transmission system as shown in Fig.1.T h e s e
+conﬁgurations are commonly referred toa sM u l t i - V i l l a g eS c h e m e s( M V S )
+or Regional Rural Water Supply Schemes (RRWSS) 5. Because all storage
+tanks depend on the same upstream source, the timing and duration of
+supply to one village directly affect availability elsewhere. Under limited
+supply conditions, increasing deliveryto one settlement necessarily reduces
+availability to others. Coordinated scheduling of valve operations is there-
+fore essential to ensure equitable allocation across villages.
+Unlike continuously operated wate r distribution networks, where
+operational objectives emphasize pressure regulation and energy efﬁciency6,
+MVS networks regulate service primarily through time-based control of
+inlet valves. The central operational objective shifts toward equity— deﬁned
+as uniformity in proportional demand satisfaction across villages when total
+available supply is insuf ﬁcient7. Achieving this requires systematic sche-
+duling strategies rather than heuristic or experience-based operation.
+1Department of Chemical Engineering, Indian Institute of Technology Madras, Chennai, India. 2Government College of Technology, Coimbatore, India. 3Depart-
+ment of Data Science and Arti ﬁcial Intelligence, Indian Institute of Technology Madras, Chennai, India. 4School of Computer Science, University of Birmingham,
+Birmingham, UK. 5Department of Chemical and Biomolecular Engineering, University of Delaware, Newark, DE, 19716, USA. e-mail: sridharkrn@iitm.ac.in
+npj Clean Water Article in Press
+1234567890():,;
+1234567890():,;
+Optimization-based formulations have been proposed to address
+equitable allocation in intermittent systems7,8. Scheduling in such networks
+involves binary valve decisions coupled with nonlinear hydraulic relation-
+ships governing ﬂow and pressure, resulting in mixed-integer nonlinear
+programming (MINLP) problems 6,9. These formulations are computa-
+tionally intensive and require accura te hydraulic models that are rarely
+available in practice.
+Rural water supply networks in th e Global South exhibit pressure-
+dependent demand behavior, transientﬁlling dynamics, and highly variable
+boundary conditions, complicatingsteady-state hydraulic modeling10.E v e n
+recent calibration approaches develo ped for data-scarce environments
+continue to rely on detailed network topology, measuredﬂows, and pressure
+observations11. In many MVS networks, such data are unavailable or out-
+dated, limiting the practical applicability of model-dependent optimization
+approaches.
+A data-driven alternative that avoids the need for calibrated hydraulic
+models reformulates the scheduling problem using a Discrete Event Model
+(DEM)12. In the DEM representation, each distinct valve con ﬁguration is
+treated as a system state with aﬁxed experimentally measuredﬂow vector,
+replacing nonlinear hydraulic equations with pre-measured values and
+reducing the MINLP to a tractable mixed integer linear programming
+(MILP) problem. A practical limitation of this approach is the exponential
+growth of the state space with the number of valves (2n states for n valves),
+making exhaustive characterization infeasible for larger networks. To
+address this limitation, anε-greedy exploration strategy was introduced to
+identify a reduced set of informative valve states by prioritizing conﬁgura-
+tions that serve tanks with current supply deﬁcits13. This approach enables
+low-deviation schedules to be obtained without measuring the complete
+valve-state space.
+Surrogate-based active learning provides another approach for redu-
+cing the number of costly state evaluations. Gaussian-process models pre-
+dict both the response and uncertainty of unmeasured candidates, while an
+acquisition function balances the use of promising candidates with the
+exploration of uncertain regions. Similar Bayesian optimization methods
+have been applied to pump scheduling and control in water distribution
+networks14,15.T h i sp r o v i d e sab a s i sf o re v a l u ating Gaussian-process-based
+active learning as an alternative valve-state selection method in the
+present study.
+A complementary challenge concerns execution. Existing reviews
+indicate that much of the scheduling literature emphasizes simulation and
+benchmark studies, while practical implementation remains constrained by
+computational demands, modeling requirements, and control integration
+challenges6. The gap between a computed optimal schedule and its reliable
+physical execution in theﬁeld has received limited attention.
+Reservoirs in Indian MVS networks are typically of theﬁll-and-draw
+type, with separate inlets at the highest level and outlets at the lowest level16.
+Inlet valves are regulated as binary devices — fully open or fully closed —
+using multi-turn manual valves that require signiﬁcant physical effort to
+operate (more than 45 turns to open or close a valve on a 10-inch line) 17.
+Retroﬁtting existing valves with electrical actuators and remote actuation
+through IoT-enabled devices has been explored, though operator interac-
+tion typically remains through conventional smartphone displays or
+Human Machine Interfaces (HMIs)18.
+In MVS networks, ﬁeld studies report that routine oversight is often
+carried out by local caretakers rather than trained hydraulic operators19.
+These personnel communicate storage status or daily demand estimates to a
+central operator, who then opens or closes valves according to heuristic
+plans. Demand articulation, therefore, forms an integral part of the opera-
+tional workﬂow, since allocation outcomes depend directly on the accuracy
+of reported inputs.
+Speech-based human–computer interaction has been widely studied as
+a mechanism to reduce barriers associated with text literacy, keyboard
+proﬁciency, and language constraints indiverse socio-technical contexts20.
+In low-resource and multilingual env ironments, speech interfaces lower
+articulation and cognitive burdens relative to text-dominant systems21.E a r l y
+deployments in rural India demonstrated that voice-based systems enable
+inclusive interaction among semi-literate and multilingual communities22,
+and subsequent studies indicate th at voice interaction is embedded in
+routine smartphone practice across socio-economic groups in India23.T h e s e
+characteristics make voice-based demand acquisition a natural ﬁtf o rt h e
+MVS operational context, where operators communicate in multiple
+regional languages.
+Building on prior work, this study uses the existing DEM–MILP for-
+mulation and an adapted ε-greedy state-selection strategy. The main con-
+tribution is the integration of demand input, schedule generation, and
+automatic valve operation. The fra mework is tested on an eight-tank
+laboratory MVS with convenient-hours and valve-switching constraints for
+8 trials, and also tested for two differentshortfall conditions. Its performance
+is further compared with two basic o perating policies namely time pro-
+portional demand allocation, opera tor based operation, and two state
+selection strategies– pure-greedy algorithm, Gaussian-process-based active
+learning method. A hydraulic model was developed using the known net-
+work geometry and calibrated hydraulic loss parameters. EPANET, through
+W a t e rN e t w o r kT o o lf o rR e s i l i e n c e( W N T R ) ,w a st h e nu s e dt os i m u l a t e
+Fig. 1 | Schematic of a Multi-Village Scheme
+(MVS) network. A central reservoir supplies two
+overhead tanks (OHTs) operating in ﬁll-and-draw
+mode through a common transmission pipeline.
+https://doi.org/10.1038/s41545-026-00631-1 Article
+npj Clean Water Article in Press
+valve-stateﬂows for the eight- and ten-tank networks. Theseﬂows were used
+to compare the adapted ε-greedy strategy with pure-greedy, random, and
+Gaussian-process-based state selection for both network sizes. Sensitivity
+tests examine the effect of ε and β in respective state selction methods. A
+voice interface accepts demand inputs in English, Hindi, Tamil, and Telugu.
+An automatic speech recognition system and a large language model con-
+vert each spoken command into structured demand data. A programmable
+logic controller then executes the computed valve schedule. The study tests
+this complete demand-to-actuation workﬂow under controlled laboratory
+conditions.
+Results
+The proposed framework was evalu ated experimentally on an eight-
+demand-tank subnetwork of the Reconﬁgurable Testbed for the Control
+and Operation of Water Distribution Networks (RTCOP-WDN), where a
+single overhead tank (OHT) supplied gravity-driven ﬂow through inde-
+pendently actuated inlet valves. The optimized schedule was implemented
+on the testbed and benchmarked against two basic operating heuristics—
+demand-proportional time allocation and operator based operation — as
+well as schedules obtained using pure-greedy and Gaussian-process-based
+state selection. Because the network has 2 8 = 256 possible valve states,
+exhaustive experimental characterization was impractical; the proposedϵ-
+greedy strategy required measurements from only 33 states. A broader
+comparison of ϵ-greedy, pure-greedy, random, and Gaussian-process
+methods was conducted separately using EPANET/WNTR-simulatedﬂows
+for eight- and ten-tank networks.
+Scheduling performance and convergence
+The scheduling process was initialized withM random valve states, whereM
+is the number of valves. Multiple valves could be open in each state, and the
+initial set included every valve open at least once. Thus, eight initial states
+were used for the eight-valve network. Given the limitedﬂow information
+available initially, the schedule obtained at the ﬁrst iteration exhibited
+relatively large deviations from the speciﬁed demand targets. To improve
+the allocation performance, additionalvalve states were selected iteratively
+using the ϵ-greedy heuristic described in the Methods section. At each
+iteration, the selected state and its correspondingﬂow rates were appended
+to theﬂow table, after which the scheduling problem was re-solved using the
+updated information.
+The objective function represents the aggregate absolute deviation
+between the supplied and target demands, together with a maximum-
+deviation term that promotes equitable allocation among the tanks. Our
+aim is to get that objective function close to zero, which indicates
+relative deviation are very less for all the tanks. Fig. 2 illustrates the
+reduction in the objective function value as additional valve states were
+incorporated.
+Using 33 of the 256 possible valve states (12.9% of the full state space),
+the adapted ε-greedy method reached an objective value of 0.103. At this
+point, the absolute relative deviation of each tank was below 2.6%. This
+objective value was used as the common threshold for all state-selection
+methods. Sampling efﬁciency was de ﬁned as the total number of states,
+including the initial states, required for the objective to ﬁrst satisfy
+J ≤ Jref = 0.103.
+Figure 3 compares the tank-level relative deviations at the initial and
+ﬁnal iterations. The initial schedule showed a wide range of deviations
+because the ﬂow table contained limited state information. As additional
+valve states were included, both the magnitude and spread of the deviations
+decreased. At theﬁnal iteration, the absolute relative deviation of each tank
+was below 2.6%, indicating amore balanced allocation.
+Optimized schedule and experimental validation
+In some supply zones, the absence of local storage may require residents to
+collect water directly from standpipes. Supply during working hours may
+therefore be inconvenient when residents are away from home. To represent
+this operational requirement, Tanks3 and 7 were constrained to receive no
+supply between 09:00 and 16:00. In addition, a maximum of 10 switching
+operations was imposed on each valve, with every opening or closing
+counted as one switching operation. These constraints reduced the sche-
+duling ﬂexibility available for satisfying the demands of all tanks.
+Figure 4 presents the optimized valve schedule for the eight-tank sys-
+tem. Each row represents a tank, and each column represents a scheduling
+interval. The color intensity indicates the allocated ﬂow rate, while white
+cells indicate intervals with no supply. No water was allocated to Tanks 3 and
+7 during the restricted period, demo nstrating that the convenient-hours
+constraints were satisﬁed.
+Table 1 compares the tank demands with the solver-predicted and
+experimentally observed supplies. The experimental values represent the
+mean of eight trials conducted using the same schedule and demand inputs.
+The solver-predicted deviations remained within ± 3% for all tanks. The
+experimental mean deviations were generally higher, with the largest
+absolute deviations observed for T1 ( − 5.55%) and T5 ( + 4.35%). The
+differences between the predicted and experimental results may re ﬂect
+experimental variability and uncertainty in the level measurements obtained
+using the HC-SR04 sensors. Results for the four-tank con ﬁguration are
+provided in Supplementary Section S1.
+Fig. 2 | Progression of the objective function value across successive iterations.
+Each iteration corresponds to one additional valve conﬁguration being incorporated
+into the ﬂow table, and the objective is re-optimized. The value decreases mono-
+tonically as more informative states are explored.
+Fig. 3 | Tank-wise relative deviation at the ﬁrst and ﬁnal iterations. The reduction
+in both magnitude and variability across tanks con ﬁrms the improved equity of
+supply allocation after iterative state exploration.
+https://doi.org/10.1038/s41545-026-00631-1 Article
+npj Clean Water Article in Press
+The repeatability of the experimen tal implementation was assessed
+using the eight trials. Figure 5 compares the individual experimental
+deviations, their mean values, and the corresponding solver predictions for
+each tank. The experimental results generally followed the solver-predicted
+deviations, although some trial-to-trial variation was observed. Because the
+supplied volumes were derived from water-level measurements, variations
+in the HC-SR04 sensor readings could contribute to the observed
+differences.
+For each tank, the standard deviation of the experimental deviations
+and the root mean square error (RMSE ) relative to the solver prediction
+were calculated across the eight trials. The resulting summary statistics are
+presented in Table2. The standard deviations ranged from 0.39% to 2.73%,
+with an average of 1.66%. The tank-speci ﬁcR M S Ev a l u e sr a n g e df r o m
+0.43% to 4.02%, with an average of 2.48%. These results indicate that the
+Fig. 4 | Optimized valve schedule for the eight-tank con ﬁguration. Tanks 3 and 7 were constrained to receive no supply between 09:00 and 16:00, and a maximum of
+10 switching operations was permitted for each valve. Color intensity represents the allocated ﬂow rate, while white cells indicate intervals with no supply.
+Table 1 | Demand – supply comparison for the eight-tank con ﬁguration
+T1 T2 T3 T4 T5 T6 T7 T8
+Demand (L) 14.13 16.25 12.72 12.01 10.60 7.06 4.94 3.53
+Supply, solver (L) 13.83 16.28 12.38 11.96 10.65 7.01 4.94 3.56
+Supply, experiment (L) 13.35 16.30 12.18 11.95 11.06 6.97 4.85 3.54
+Deviation, solver (%) -2.12 +0.18 -2.67 -0.42 +0.47 -0.71 0 +0.85
+Deviation, experiment (%) -5.52 +0.31 -4.25 -0.50 +4.34 -1.27 -1.82 +0.28
+Experimental values represent the mean of eight repeated trials.
+Fig. 5 | Comparison of solver-predicted and
+experimentally observed deviations over eight
+repeated implementations of the selected sche-
+dule. Scattered markers represent individual trials,
+ﬁlled markers represent the mean experimental
+deviations, and error bars indicate the observed
+ranges across the eight trials.
+Table 2 | Summary statistics for the repeatability analysis
+across eight experimental trials
+Metric Value (%)
+Minimum standard deviation 0.39
+Maximum standard deviation 2.73
+Average standard deviation 1.66
+Minimum RMSE 0.43
+Maximum RMSE 4.02
+Average RMSE 2.48
+https://doi.org/10.1038/s41545-026-00631-1 Article
+npj Clean Water Article in Press
+selected schedule produced reasonably consistent demand allocations
+across repeated experimental implementations.
+Performance under supply shortage conditions
+Intermittent water distribution systems frequently operate under conditions
+where the available water is insufﬁcient to satisfy total consumer demand.
+To evaluate the proposed schedulin g framework under such conditions,
+additional experiments were conducted by proportionally scaling all tank
+demands by the same factor, thereby preserving the relative demand dis-
+tribution while reﬂecting the reduced available supply. Schedules were then
+generated using the proposed methodology with these revised targets.
+Two shortage scenarios were investigated: a 10% and a 15% reduction
+in total available supply. The originalt o t a ld e m a n do ft h e8 - t a n kn e t w o r k
+was 81.28 L, reduced to 73.16 L under the 10% scenario and 69.09 L under
+the 15% scenario.
+The results under a 10% supply reduction are presented in Table3.A l l
+experimentally delivered volumes closely matched the revised target
+demands, with implementation deviations ranging from− 5.03% to 4.79%,
+well within the ± 5% acceptance criterion. The experimental supplies were
+also in close agreement with solver predictions, con ﬁrming successful
+implementation of the generated schedule under moderate shortage
+conditions.
+Table 4 presents results under the more severe 15% reduction.
+Implementation deviations ranged from− 4.99% to 5.67%. The marginal
+exceedance observed for T6 (5.67%) is attributed to the errors from the level
+sensor, and equitable allocation was broadly maintained across all tanks.
+Solver predictions and experimental outcomes remained in close agree-
+ment, demonstrating the framework’s ability to generate realizable sche-
+dules even under tighter supply constraints.
+Taken together, both shortage scenarios con ﬁrm that the proposed
+framework maintains equitable distribution under supply-limited condi-
+tions. The proportional demand scaling approach allows the optimization to
+directly accommodate shortage scenarios without structural modiﬁcation,
+making the methodology well suited to the variable supply conditions
+characteristic of intermittent water distribution systems.
+Sensitivity analysis for the exploration parameterε
+The exploration parameter ε governs the balance between random
+exploration and deﬁcit-based exploitation in the state selection heuristic.
+A higher ε increases the probability of selecting a valve state at random,
+promoting broader exploration of the state space, while a lower ε biases
+selection towards states that serve the tanks with the greatest supply
+deﬁcit. Since the number of states required to reach a target objective can
+vary between runs due to the stochastic nature of the selection process, a
+sensitivity analysis was conducted to identify a suitable value of ε prior to
+the main experiments.
+Four candidate values were evaluated:ε ∈ {0.01, 0.05, 0.10, 0.15}. For
+each value, ﬁve independent trials were performed, each starting from the
+same initial working set of valve states. The number of states added to the
+working set before the target objective function value was achieved was
+recorded for each trial. The results are summarized in Table 5 and visua-
+lized Fig. 6.
+The results indicate that the mean number of states explored is broadly
+similar across all four values, ranging from 34.6 (ε = 0.01) to 37.0 (ε = 0.10).
+This suggests that, within the investigated range, the search effort required to
+reach the target objective was relatively insensitive to the exact choice ofε.
+The standard deviation varied more noticeably. The highest variability
+was observed forε = 0.15 (10.01 states), whereasε = 0.10 exhibited the lowest
+variability (5.87 states), indicating more consistent convergence behavior
+across repeated trials. The value ε = 0.05 provides a moderate level of
+exploration with a mean search effort (35.2 states) comparable to the best-
+performing conﬁguration and a moderate standard deviation (7.29 states).
+Accordingly,ε = 0.05 was selected for all subsequent experiments.
+Benchmark methodologies
+The framework was evaluated using two types of benchmark methods. The
+ﬁrst group consisted of two basic operating policies, namely:
+ time-proportional demand allocation; and
+ operator-based operation.
+The second group consisted of alternative valve-state selection meth-
+ods, namely:
+ random state selection;
+ pure-greedy state selection; and
+ Gaussian-process-based active learning.
+Table 3 | Equitable supply performance under 10% supply
+reduction
+Tank Demand Solver
+Supply
+Exp.
+Supply
+Dev.(S) Dev.(E)
+(L) (L) (L) (%) (%)
+T1 12.72 12.81 12.82 +0.71 +0.79
+T2 14.63 14.83 14.63 +1.37 0
+T3 11.45 10.82 10.92 −5.50 -4.63
+T4 10.81 11.23 11.33 +3.89 +4.81
+T5 9.53 9.68 9.66 +1.57 +1.36
+T6 6.35 6.55 6.56 +3.15 +3.31
+T7 4.45 4.44 4.42 −0.22 −0.67
+T8 3.18 3.04 3.02 −4.40 −5.03
+Dev.(S): solver deviation from revised demand; Dev.(E): Deviation obtained after implementing
+based on experiments.
+Table 4 | Equitable supply performance under 15% supply
+reduction
+Tank Demand Solver
+Supply
+Exp.
+Supply
+Dev.(S) Dev.(E)
+(L) (L) (L) (%) (%)
+T1 12.02 11.94 11.95 −0.67 −0.58
+T2 13.82 13.69 13.90 −0.94 +0.58
+T3 10.81 10.17 10.27 −5.92 −4.99
+T4 10.21 10.52 10.47 +3.04 +2.55
+T5 9.01 8.59 8.56 −4.66 −4.99
+T6 6.00 6.31 6.34 +5.17 +5.67
+T7 4.20 3.98 3.99 −5.24 −5.00
+T8 3.00 3.14 3.13 4.67 +4.33
+Dev.(S): solver deviation from revised demand; Dev.(E): Deviation obtained after implementing
+based on experiments.
+Table 5 | Number of states explored to reach the target
+objective for each ε value across ﬁve independent trials,
+together with the mean and standard deviation
+ε Trial 1 Trial 2 Trial 3 Trial 4 Trial 5 Mean Std. Dev.
+0.01 30 40 46 22 35 34.6 9.21
+0.05 28 41 42 39 26 35.2 7.60
+0.10 37 35 29 44 40 37.0 5.61
+0.15 32 38 19 40 45 34.8 9.98
+https://doi.org/10.1038/s41545-026-00631-1 Article
+npj Clean Water Article in Press
+The following results include physical tests on the eight-tank network
+and WNTR/EPANET based numerical simulations of the eight and ten-
+tank networks. The results are presented in the same order as the methods
+listed above.
+The time-proportional demand allocation is a non-adaptive heuristic
+in which the valve-open duration assigned to each tank is proportional to its
+demand. The heuristic was implemented over a 24-min scheduling horizon
+(Th = 1440s). The valves were operated sequentially and exclusively; when
+one valve was open, all other valves remained closed. The open duration
+assigned to tank m was calculated as:
+τm ¼ Th
+dmPM
+k¼1 dk
+; ð1Þ
+where dm is the demand of tank m and M is the total number of tanks. No
+ﬂow measurements, hydraulic model, or optimization procedure was used
+to construct the schedule.
+Table 6 presents the demand, allocated valve-open duration, experi-
+mentally received volume, and resulting relative deviation for each tank.
+All tanks remained under-suppliedunder the time-proportional pol-
+icy, with relative deviations ranging from − 54.12% to − 80.57% and an
+average deviation of approximately− 67.4%. The tanks collectively received
+28.696 L, corresponding to only 35.3% of the total demand of 81.289 L.
+Because the supply head was maintained constant, the tank-speciﬁc ﬂow
+rates remained approximately constan t during single-valve operation.
+Based on the measured delivery rates, satisfying all tank demands sequen-
+tially would require approximately 71.5 min, nearly three times the speciﬁed
+scheduling horizon. Thus, allocatingvalve-open durations based solely on
+demand does not account for differences in tank-speci ﬁc ﬂow rates and
+cannot achieve the required allocation within the available supply period.
+The operator based operation method 24 was implemented by
+opening all valves simultaneously at the beginning of the 24-min sche-
+duling horizon. The cumulative volume supplied to each tank was
+monitored during operation. When the supplied volume of a tank
+reached its speciﬁed demand, the corresponding valve was closed, while
+the valves associated with the remaining unsatisﬁed tanks remained open.
+The procedure continued until all demands were satis ﬁed or the 24-min
+scheduling horizon was reached. No schedule optimization or prior
+characterization of the combined valve states was used. Table 7 presents
+the demand, experimentally received volume, and resulting relative
+deviation for each tank.
+This method delivered a total of 79.07 L, compared with an aggregate
+demand of 81.29 L (approximately 97.3%). Six of the eight tanks received
+volumes within approximately ± 6% of their respective demands. However,
+Tanks 6 and 7 remained under-supplied, with deviations of − 22.1% and
+− 44.9%, respectively. Thus, the high aggregate supply concealed substantial
+tank-level inequality, with a maximum absolute deviation of 44.9%. Because
+the heuristic does not anticipate differences in theﬂow rates among tanks, it
+cannot compensate for low-ﬂow tanks within theﬁxed scheduling horizon.
+Fig. 6 | Mean number of states explored to reach
+the target objective for different values of ε. Error
+bars represent one standard deviation computed
+from ﬁve independent trials.
+Table 6 | Experimental performance of the time-proportional
+demand allocation over the 24-min scheduling horizon
+Tank Demand (L) Volume
+received (L)
+Rel.
+deviation (%)
+Open
+duration (s)
+T1 14.137 4.962 -64.90 250
+T2 16.258 6.517 -59.91 288
+T3 12.723 4.481 -64.78 225
+T4 12.017 5.513 -54.12 213
+T5 10.603 3.633 -65.73 188
+T6 7.069 1.668 -76.40 125
+T7 4.948 0.961 -80.57 87
+T8 3.534 0.961 -72.80 63
+Total 81.289 28.696 — 1439
+Table 7 | Performance of operator based operation method
+over the 24-min horizon
+Tank Demand (L) Volume received (L) Rel. deviation (%)
+T1 14.137 14.059 -0.55
+T2 16.258 16.703 2.74
+T3 12.723 12.992 2.11
+T4 12.017 12.738 6.00
+T5 10.603 10.758 1.46
+T6 7.069 5.506 -22.11
+T7 4.948 2.728 -44.87
+T8 3.534 3.584 1.41
+Total 81.289 79.068 —
+https://doi.org/10.1038/s41545-026-00631-1 Article
+npj Clean Water Article in Press
+Consequently, a high overall supplied volume does not necessarily ensure
+equitable demand satisfaction. Furt hermore, incorporating operational
+constraints, such as restricted supply hours, is difﬁcult because the heuristic
+has no mechanism for planning valve operations in advance. Such restric-
+tions reduce the available supply opportunities and may further increase the
+deﬁcits of low-ﬂow tanks.
+For the state-selection benchmark comparison, a consistent sampling-
+efﬁciency criterion was used. The objective value achieved by theϵ-greedy
+method, Jref = 0.103, was adopted as the common performance threshold.
+Starting from the same initial ﬂow table, each state-selection method was
+applied iteratively until the objectiveﬁrst satisﬁed J ≤ Jref.S a m p l i n ge fﬁciency
+was quantiﬁed by the total number of measured valve states required to
+reach this threshold, including the initial states.
+The pure-greedy valve-state selection method iteratively selected valve
+states based on the deﬁcits obtained from the current schedule. After solving
+the scheduling problem using the availableﬂow table, under-supplied tanks
+were ranked according to their relative deﬁcits, and the next unmeasured
+state was selected to prioritizeﬂow to those tanks. The correspondingﬂow
+rates were measured and added to the ﬂow table before the scheduling
+problem was re-solved. Unlike the ϵ-greedy method, pure greedy did not
+include an explicit exploration step.
+The pure-greedy method attained the reference objective, J ≤ 0.103,
+after 33 measured states. Althoughthis was the same number required by
+the ϵ-greedy method, the two methods selected different sequences of valve
+states. Table 8 compares the solver-predicted allocation obtained from the
+pure-greedyﬂow table with its physical implementation on the eight-tank
+testbed.
+The solver-predicted deviations ranged from − 1.58% to + 1.37%.
+Following physical implementation, the deviations ranged from− 4.77% to
++ 3.94%. The experimental results therefore remained reasonably close to
+the solver predictions, with the largest absolute experimental deviation
+observed for T6.
+The Gaussian-process (GP)-based active learning method used a data-
+driven surrogate model to select informative valve states. A separate GP was
+trained for each tank using the measured valve states and their corre-
+sponding ﬂow rates. For every unmeasured state, the models predicted the
+tank-levelﬂows and their associated uncertainties. An acquisition function
+combined the predicted ability of each state to reduce the current demand
+deﬁcits with an uncertainty-based exploration term. The highest-scoring
+state was measured and added to theﬂow table, after which the scheduling
+problem was re-solved. This process continued until the reference objective
+was attained.
+The GP-based method attained J ≤ 0.103 after 38 measured states.
+Table 9 compares the solver-predicted allocation obtained from the
+resulting ﬂow table with its physical implementation on the eight-tank
+testbed.
+The solver-predicted deviations ranged from − 2.518% to
++ 0.858%. Following physical implementation, the deviations ranged
+from − 5.517% to + 5.001%, with the largest absolute deviation observed
+for T7. The GP-based method required 38 measured states to attain the
+reference objective, compared with 33 states for both the ϵ-greedy and
+pure-greedy methods. Thus, for the eight-tank con ﬁguration, the GP-
+based method required ﬁve additional state measurements to achieve the
+same objective threshold.
+Model-based benchmarking
+Model-based scheduling requires a hydraulic model with accurate network
+and operating data. Some parameters,such as pipe roughness, minor-loss
+coefﬁcients, and local operating conditions, can be uncertain or unavailable.
+For comparison with the data-driven framework, a model of the experi-
+mental network was developed usi ng WNTR, an EPANET-compatible
+Python package.
+The pipe lengths, pipe diameters, overhead-tank dimensions, and
+demand-tank cross-sectional areas wereobtained from the laboratory setup.
+The pipe roughness parameters, which determine major head loss, and the
+minor-loss coefﬁcients were not known. These parameters were estimated
+using the ﬂow measurements from the same 33 valve states selected by the
+adapted ε-greedy method. The parameter-estimation procedure 25 mini-
+mized the difference between the simulated and measured ﬂow rates. No
+additional measurements were used for model calibration. The calibrated
+model was then used to simulate theﬂow rates for all 28 = 256 valve states.
+Two schedules were generated from these simulatedﬂows. The ﬁrst sche-
+dule was obtained by solving the MILP with all 256 states and was used as the
+full-state model reference. The second schedule was obtained using 39 states
+selected by the adaptedε-greedy strategy. Both schedules were implemented
+on the physical eight-tank testbed, and the delivered volumes were
+Table 8 | Solver-predicted and experimentally observed
+performance of the schedule generated using 33 valve states
+selected by the pure-greedy method
+Solver Experiment
+Tank Demand (L) Supply (L) Dev. (%) Supply (L) Dev. (%)
+T1 14.137 14.130 −0.05 14.470 2.36
+T2 16.258 16.481 1.37 16.899 3.94
+T3 12.723 12.701 −0.17 12.222 −3.94
+T4 12.017 12.162 1.21 11.776 −2.01
+T5 10.603 10.435 −-1.58 10.744 1.33
+T6 7.069 7.021 −0.68 6.732 −4.77
+T7 4.948 4.907 −0.83 4.713 −4.75
+T8 3.534 3.548 0.40 3.369 −4.67
+Table 9 | Solver-predicted and experimentally observed
+performance of the schedule generated using 38 valve states
+selected by the GP-based active-learning method
+Solver Experiment
+Tank Demand (L) Supply (L) Dev. (%) Supply (L) Dev. (%)
+T1 14.137 13.977 −1.132 14.844 5.001
+T2 16.258 16.312 0.332 15.706 −3.395
+T3 12.723 12.804 0.637 12.301 −3.317
+T4 12.017 11.988 −0.241 12.282 2.205
+T5 10.603 10.694 0.858 10.949 3.263
+T6 7.069 7.014 −0.778 6.748 −4.541
+T7 4.948 4.941 −0.141 4.675 −5.517
+T8 3.534 3.445 −2.518 3.464 −1.981
+Table 10 | Solver-predicted and experimental results for the
+schedule generated using WNTR-simulated ﬂows for all 256
+valve states
+Tank Demand (L) Solver
+supply
+(L)
+Experimental
+supply (L)
+Solver
+dev.
+(%)
+Experimental
+dev. (%)
+T1 14.13 13.82 12.02 − 2.19 − 14.93
+T2 16.25 16.36 15.08 + 0.68 − 7.20
+T3 12.72 12.71 12.80 − 0.08 + 0.63
+T4 12.01 12.01 13.20 + 0.00 + 9.91
+T5 10.60 10.48 10.59 − 1.13 − 0.09
+T6 7.06 6.82 7.89 − 3.40 + 11.76
+T7 4.94 4.82 4.39 − 2.43 − 11.13
+T8 3.53 3.52 3.23 − 0.28 − 8.50
+https://doi.org/10.1038/s41545-026-00631-1 Article
+npj Clean Water Article in Press
+measured. Tables10 and 11 compare the solver-predicted and experimental
+results.
+For the full-state model reference, the maximum absolute solver-
+predicted deviation was 3.39%. After physical implementation, the max-
+imum absolute deviation was 14.90%. y
+For theε-greedy model-based schedule, the maximum absolute solver-
+predicted deviation was 7.85%. After physical implementation, the max-
+imum absolute deviation was 18.48%. The full-state model reference pro-
+duced lower maximum deviations tha n the reduced-state model-based
+schedule in both the solver and experimental results. The full-state case is a
+reference for the calibrated model and does not represent an experimentally
+measured optimum of the physical network. The schedule generated using
+numerically simulated ﬂows resulted in a higher deviation when imple-
+mented on the physical eight-tank network compared with the schedule
+generated using experimentally measuredﬂows.
+State-selection benchmarking using numerical simulations
+R a n d o m ,p u r e - g r e e d y ,a d a p t e dε-greedy, and Gaussian-process (GP) state
+selection were compared using WNTR/EPANET-simulated ﬂows. Each
+method was evaluated over ﬁve runs for both network sizes. Within each
+run, all methods started with different initial states. A run was considered
+successful when the maximum absolute relative deviation across all tanks
+ﬁrst reached 5% or less. The reported state count includes the initial states.
+The maximum state count was 120 for the eight-tank network and 300 for
+the ten-tank network. The GP comparisons used an exploration weight of
+β = 0.3 unless otherwise stated.
+For the eight-tank network, the methods selected states from 256
+possible valve conﬁgurations. Table12 reports the number of states required
+to meet the 5% criterion.
+All four methods met the 5% criterion in every run. Pure greedy
+required the fewest states on average (39), followed by ε-greedy (41), GP
+with β = 0.3 (46), and random selection (49). The ranges overlapped,
+showing variation among theﬁve initial state sets. Pure greedy andε-greedy
+therefore gave similar mean state counts for the eight-tank network.
+Because GP state selection depends on the weight assigned to predic-
+tion uncertainty, a separate parameter sensitivity analysis was conducted for
+β ∈ {0, 0.3, 0.6, 1.0, 2.0}. Five runs were completed for each value using the
+same stopping criterion. Table13 reports the mean state count.
+The GP method required subst antially more states when β =0 ,f o r
+which prediction uncertainty was excluded from the acquisition score.
+Increasingβ from 0.3 to 0.6 didn't change the mean state count signiﬁcantly.
+The results forβ =0 . 6 ,β =1 . 0a n dβ = 2.0 were similar. At these values, GP
+performed on par with pure greedy and ε-greedy in the eight-tank
+simulation.
+The comparison was then repeated for the ten-tank network. The
+calibrated WNTR model was extended by adding two demand tanks while
+retaining the estimated hydraulic lossparameters. No physical experiments
+were conducted for this network. The model provided simulatedﬂows for all
+210 = 1024 valve states.
+Figure 7 shows one representativeε-greedy run. The run started with
+10 random states and used ε = 0.05. The maximum absolute relative
+deviation fell below 7% after 50 states and reached approximately 5.5% after
+145 states.
+In this representative run, 50 states corresponded to 4.9% of the
+complete state space. The result shows that the method reduced the max-
+imum deviation below 7% without using the complete simulatedﬂow table.
+The full-state MILP with 1024 states was solved in 24 s, while the 50-
+state MILP was solved in 65 s under the same solver settings. Thus, the
+number of available states was not the only factor that affected solution time.
+The main purpose of state selection was to reduce the amount ofﬂow data
+required from the network.
+Table 14 compares the four methods for the ten-tank network. A run
+that did not meet the 5% criterion within 300 states was recorded as
+unsuccessful and was assigned a value of 300 when the capped mean was
+calculated.
+The adaptedε-greedy method met the 5% criterion in allﬁve runs and
+had the lowest capped mean state count(172). Pure greedy also succeeded in
+all ﬁve runs but required a capped mean of 212 states. Random and GP
+selection each failed to meet the criterion in one run. The GP result corre-
+sponds to β = 0.3 and should therefore be interpreted for this ﬁxed para-
+meter setting. The eight-tank se nsitivity analysis showed that GP
+performance improved when greater weight was assigned to prediction
+uncertainty. Under the tested settings, ε-greedy required fewer states and
+gave more consistent results as the state space increased from 256 to 1024
+conﬁgurations.
+Multilingual voice-based demand acquisition
+To facilitate operator interaction without manual data entry, the scheduling
+framework integrated a multilingual voice interface supporting English,
+Hindi, Telugu, and Tamil. Spoken demand commands are processed
+through a two-stage pipeline comprising an automatic speech recognition
+(ASR) module followed by a large language model (LLM) entity extraction
+layer, which mapped the transcribed text to structured demand vectors
+compatible with the scheduling formulation. Internally, tanks were indexed
+as T1–T8 within the optimization model.
+Table 11 | Solver-predicted and experimental results for the
+schedule generated using 39 valve states selected by the
+adapted ε-greedy strategy from the WNTR-simulated ﬂows
+Tank Demand (L) Solver
+supply
+(L)
+Experimental
+supply (L)
+Solver
+dev.
+(%)
+Experimental
+dev. (%)
+T1 14.13 13.98 13.12 − 1.06 − 7.15
+T2 16.25 15.71 15.86 − 3.32 − 2.40
+T3 12.72 12.75 15.06 + 0.24 + 18.40
+T4 12.01 11.94 13.57 − 0.58 + 12.99
+T5 10.60 10.23 10.28 − 3.49 − 3.02
+T6 7.06 6.51 8.18 − 7.79 + 15.86
+T7 4.94 4.55 4.03 − 7.89 − 18.42
+T8 3.53 3.50 3.23 − 0.85 − 8.50
+Table 12 | State-selection results for the eight-tank network
+using WNTR/EPANET-simulated ﬂows
+Method Success rate Mean state count Range
+Random 5/5 49 43 –67
+Pure greedy 5/5 39 25 –62
+ε-greedy 5/5 41 37 –58
+GP 5/5 46 29 –66
+Each method was evaluated over ﬁve runs with a maximum of 120 selected states per run.
+Table 13 | Sensitivity of GP state selection to the exploration
+weight β in the eight-tank simulation
+Exploration weight, β Mean states required
+0.3 46.2
+0.6 40.6
+1.0 41.0
+2.0 41.5
+The state count was recorded when the maximum absolute relative deviation ﬁrst reached 5%
+or less.
+https://doi.org/10.1038/s41545-026-00631-1 Article
+npj Clean Water Article in Press
+The interface accommodated natura l-language variability in tank
+identiﬁers and volume expressions, includingﬂexible syntax and language-
+speciﬁc phrasing. For example, the English command “Supply 10 liters to
+tank 3” was interpreted as (T3, 10 L); the Hindi command" T a n k4m eb a r a
+liter paani” (12 liters of water in tank 4) was mapped to (T4,1 2 L ) ; a n d t h e
+Tamil command"tank ondril pathu liters thaneer irappuvaum” (ﬁll tank 1
+with 10 liters of water) was normalized to (T1, 10 L). Despite differences in
+grammatical structure, numeral representation, and word order, the
+extraction layer consistently identi ﬁed the correct tank identi ﬁer and
+requested volume. A video demonstra tion with subtitles is provided in
+Supplementary Video S1.
+The pipeline was evaluated on 70 audio recordings spanning ﬁve
+language categories— English, Hindi, Telugu, Tamil, and local language
+mixed with english— under both clean and noisy acoustic conditions. Per-
+formance was assessed using word error rate (WER), character error rate
+(CER), entity extraction accuracy, h allucination rate, and end-to-end
+latency. Table15 summarizes the aggregate results.
+The entity extraction accuracy (97 –98%) was notably higher than
+the raw transcription error rates (WER = 29 –33%). This decoupling
+reﬂects the ability of the LLM extraction layer to recover correct tank
+identiﬁers and demand volumes from partially erroneous transcrip-
+tions, provided the semantic content is preserved. Critically, the hal-
+lucination rate was 0% under both conditions, meaning the system
+never assigned demand values to tanks not mentioned in the spoken
+command — an important property for a control-oriented application
+where false demand assignments propagate directly into valve
+actuation.
+In case of per-language results shown in Table16, Telugu achieved the
+lowest ASR error rates (WER: 3.1- -5. 6%) and perfect entity extraction
+under both conditions. Hindi perfo rmed similarly well, reaching 100%
+extraction accuracy on clean audio. T amil exhibited higher transcription
+error rates (WER: 30.6- -46.7%), yet the extraction stage maintained accu-
+racy above 96%, further demonstrating the robustness of the semantic
+parsing layer. Mixed inputs were the most challenging, with WER exceeding
+65% and extraction accuracy of 93.0%, attributable to intra-sentence lan-
+guage switching which increases ASR ambiguity.
+End-to-end latency for single-language inputs remained below 6.5 s per
+command under both conditions, comprising approximately 2–3sf o rA S R
+transcription and 3 –4 s for entity extraction. Mixed language inputs
+required substantially higher processing time (13.9–14.5 s), owing to the
+increased disambiguation complexity associated with multilingual utter-
+ances. For the intended operational context — where demand inputs are
+Fig. 7 |Convergence of the adaptedε-greedy method
+for one representative run on the ten-tank network.
+Table 15 | Overall voice pipeline performance under clean and
+noisy conditions
+Metric Clean Noisy
+Entity extraction accuracy 98.04% (549/560) 97.14% (544/560)
+Entity extraction error rate 2.32% 3.38%
+Hallucination rate 0.00% 0.00%
+Average WER 28.62% 33.00%
+Average CER 20.83% 25.69%
+Semantic match rate 92.86% (65/70) 87.14% (61/70)
+Avg. end-to-end latency 6.23 s 6.87 s
+Table 14 | State-selection results for the ten-tank network
+using WNTR/EPANET-simulated ﬂows
+Method Success rate Capped mean state
+counta
+Range
+Random 4/5 209 111 –300
+Pure greedy 5/5 212 178 –257
+ε-greedy 5/5 172 108 –202
+GP 4/5 219 165 –300
+Each method was evaluated over ﬁve runs with a maximum of 300 selected states per run.
+aUnsuccessful runs were assigned the maximum value of 300 states when the capped mean was
+calculated.
+Table 16 | Per-language ASR error rates and entity extraction
+accuracy under clean and noisy conditions
+Clean audio Noisy audio
+Language WER (%) CER (%) Ext.
+Acc.
+(%)
+WER (%) CER (%) Ext.
+Acc.
+(%)
+English 26.7 22.1 100.0 26.7 22.1 100.0
+Hindi 17.3 12.0 100.0 19.6 12.6 98.4
+Telugu 3.1 0.3 100.0 5.6 3.7 100.0
+Tamil 30.6 12.0 98.4 46.7 32.9 96.1
+Code-Mixed 65.4 57.7 93.0 66.5 57.2 93.0
+https://doi.org/10.1038/s41545-026-00631-1 Article
+npj Clean Water Article in Press
+speciﬁed once per scheduling cycle— these latencies are acceptable across all
+language categories.
+Background noise had a limited overall effect on pipeline performance:
+extraction accuracy decreased by only 0.90 percentage points and WER
+increased by 4.38 percentage points under noisy conditions relative to clean
+audio. These results demonstrate th at the pipeline maintains reliable
+demand acquisition capability under realistic operating conditions, and that
+interpreted inputs do not introduce variability into the scheduling outcomes
+or valve actuation sequences generated by the optimization layer.
+Discussion
+This study demonstrates the end-to-end implementation of a data-driven
+scheduling framework that connects m ultilingual demand acquisition,
+schedule generation, and automatic PLC-controlled valve actuation on an
+eight-tank laboratory network. Using measuredﬂows from 33 of the 256
+possible valve states, the framework produced a low-deviation allocation
+while satisfying the imposed switching and convenient-hours constraints.
+This study builds on the DEM–MILP formulation andε-greedy state-
+selection strategy developed in earlier work 12,13. Here, these methods are
+adapted and integrated with multilingual demand input and PLC-based
+valve operation. The integrated system is evaluated through physical trials,
+comparisons with operating and state-selection methods, model-based
+benchmarking, and simulations on a larger network.
+The comparison with the basic ope rating policies demonstrates the
+importance of accounting for tank-speciﬁc ﬂow characteristics. Allocating
+valve-open durations solely in proportion to demand resulted in substantial
+under-supply because the policy did not account for differences in theﬂow
+delivered to each tank. Operator based operation method delivered a large
+fraction of the aggregate dema nd but produced substantial de ﬁcits in
+individual tanks. Thus, high aggregate water delivery did not ensure equi-
+table tank-level demand satisfaction. In comparison, the schedules gener-
+ated using measured state-speci ﬁc ﬂows produced more balanced
+allocations under the speciﬁed operational constraints.
+The experimental results show th at effective scheduling can be
+achieved without measuring every possible valve conﬁguration. However,
+because all 256 states were not characterized experimentally, the minimum
+attainable objective value for the physical network remains unknown. The
+result is therefore interpreted as successful reduced-state scheduling rather
+than as evidence of near-optimality.
+The ε-greedy strategy performed comparably to pure greedy for the
+eight-tank network. In the experimental study, both methods required 33
+measured states to attain the reference objective threshold, although they did
+not select the same states. In the simulation study, pure greedy andε-greedy
+required averages of 39 and 41 states, respectively, to meet the 5% deviation
+criterion. For the ten-tank network, ε-greedy required fewer states on
+average and met the criterion in all ﬁve runs. Its exploration component
+periodically selected conﬁgurations outside those favored by the current
+tank deﬁcits, which may reduce the risk of restricting the search to a limited
+region. These results indicate that ε-greedy performed on par with pure
+greedy in the eight-tank network and provided a clearer advantage in the
+larger ten-tank state space.
+GP based method implemented on experimental set up required 5
+more states than the ε-greedy method and pure greedy method. In
+numerical simulations, the GP based selection method explores similar
+number of states as compared to theϵ greedy method. However, it requires
+estimation of the kernel parameters during each iteration which is a clear
+disadvantage as compared to the ϵ greedy method which requires only
+simple calculations.
+The calibrated WNTR model provided a model-based reference using
+simulatedﬂows for all valve states. The resulting schedules had low solver-
+predicted deviations, but their deviations increased when implemented on
+the physical network. The model used measurements from the same
+33 states to estimate the unknown hydraulic loss parameters because no
+other calibration data were available. Therefore, this comparison tests how
+well the calibrated model predictsﬂows outside these 33 states.
+The model-based comparison also shows the information needed to
+build a hydraulic model. Even in the controlled laboratory network, the
+unknown roughness and minor-loss parameters had to be estimated from
+ﬂow measurements. This task can be more difﬁcult in ﬁeld networks where
+network data and operating conditions may be incomplete or uncertain. The
+data-driven formulation does not require these parameters because it uses
+measured ﬂow rates directly. However, it still requiresﬂow measurements
+from a representative set of valve states.
+The ten-tank simulation provides evidence that a scheduling-relevant
+subset can be identi ﬁed without incorporating the complete state space.
+Although the number of possible conﬁgurations increased fourfold relative
+to the eight-tank system, the adaptedε- g r e e d ys t r a t e g yi d e n t iﬁed schedules
+satisfying the selected deviation criteria using only a fraction of the available
+states. The observed MILP solution times also showed that reducing the
+number of states does not necessarily reduce computation time, because a
+larger state set can provide the solver with greaterﬂexibility in satisfying the
+scheduling constraints. The principalpurpose of state selection is therefore
+to reduce the number of physical ﬂow measurements rather than the
+computational size of the scheduling problem.
+The shortfall experiments showed that the scheduler continued to
+produce feasible allocations when the available water was below the total
+demand. Tank-level deviations increased as water availability decreased.
+These ﬁndings apply only to the two tested shortfall conditions.
+The present sensitivity analyses varied ε and β separately. They
+therefore do not measure the combined effects of algorithmic, hydraulic,
+and operational inputs. Future work will apply global sensitivity analysis by
+varying different inputs together. First-order and total-order indices can
+then be used to measure their direct and interaction effects26,27.
+The multilingual voice interface connects demand input with
+schedule generation and execution. It maintained high entity-extraction
+accuracy under the tested clean, noisy, and code-mixed conditions, with
+no hallucinated demand assignments observed. The code-mixed results
+also showed that entity extraction remained reliable despite lower tran-
+scription accuracy. Further testing with more speakers, dialects, acoustic
+conditions, and alternative input methods will support its use in ﬁeld
+applications.
+The RTCOP-WDN testbed represents key features of gravity-fed
+intermittent water-supply systems, including a common elevated source,
+separate supply branches, binary va lve operation, demand targets, and
+restricted supply periods. However, the laboratory network does not
+reproduce the scale, leakage, infrastructure condition, or operating uncer-
+tainty of a ﬁeld network. Field validation is therefore required to assess
+performance under real operating c onditions. Direct comparison with
+published scheduling studies is also difﬁcult because the networks, objec-
+tives, constraints, and evaluation conditions differ.
+The present system uses binary valve operation and an open-loop
+schedule based on ﬁxed demand inputs. Binary operation represents the
+targeted ﬁeld condition, where inlet valves are either fully open or fully
+closed. Continuous valve control could provideﬁner ﬂow adjustment where
+suitable equipment is available. The current schedule does not respond to
+changes in demand or water availability during operation. Future work will
+include ﬁeld testing, further hydraulic-model validation, comparison with
+additional scheduling and demand-input methods, and an Economic
+Model Predictive Control formulation using real-time tank-level feedback
+and a shrinking scheduling horizon28.
+Methods
+The proposed framework integrates three functional components —
+demand acquisition, optimization-based scheduling, and physical control
+execution — into a uni ﬁed pipeline for equitable water distribution in
+intermittently operated rural and peri-urban networks. Figure8 provides an
+overview of the complete system, illustrating the data and controlﬂow from
+spoken user input through to valve actuation at the laboratory testbed. The
+following subsections describe each component in detail, beginning with the
+overall system architecture, followedby the mathematical formulation of the
+https://doi.org/10.1038/s41545-026-00631-1 Article
+npj Clean Water Article in Press
+scheduling problem, the state-space exploration strategy, the laboratory
+network and experimental setup, and the voice-based demand acquisition
+interface.
+System architecture
+T h ed e m a n da c q u i s i t i o nl a y e ra c c e p t ss p o k e nc o m m a n d sf r o mﬁeld
+operators through the multilingual voice interface. Recognized speech is
+parsed by a large language model extraction layer into a structured demand
+vector {(i, di)}, where i identiﬁes the tank and di is the requested supply
+volume. Simultaneously, ﬂow rate measurements collected from the
+laboratory network under controlled valve states serve as the hydraulic input
+parameters to the scheduling problem.
+At the computational scheduling layer, the demand vector and ﬂow
+parameters are passed to the MILP solver (Gurobi 12.0, via the PuLP
+interface). The solver operates over a24-slot scheduling horizon and returns
+an optimal sequence of valve states— one active conﬁguration per time slot
+— that minimizes relative supply deviations across all tanks subject to the
+operational constraints.
+The resulting schedule is translated into a binary open-close actuation
+sequence and transmitted to a PLC through intranet. The PLC executes each
+valve transition deterministically at the corresponding time interval, com-
+pleting the decision-to-actuation loop from spoken demand to physical
+supply.
+Scheduling problem formulation
+Equitable water distribution is formulated as an optimization problem that
+allocates supply over aﬁnite scheduling horizon by selecting valve states that
+minimize relative deviation betwe en supplied and demanded volumes
+across all demand tanks.
+RRWSS/MVS-type systems typically follow a ﬁll-and-draw conﬁg-
+uration in which water from a centralized source is conveyed to overhead
+storage tanks through inlet pipes at the top, while withdrawal occurs
+through separate outlet pipes at the bottom 16. This structural separation
+hydraulically decouples the supply side from the downstream distribution
+network: inﬂow to a tank during a supply interval is governed entirely by
+upstream head conditions and valve conﬁguration, and is independent of
+the storage level within the tank.
+Exploiting this property, Kurian et al. [ref.12] introduced a data-driven
+optimization framework for MVS networks. Each unique combination of
+ON/OFF valve positions de ﬁnes a state characterized by ﬁxed ﬂow dis-
+tributions, forming a Discrete Event Model (DEM). Flows associated with
+each state are determined either through hydraulic simulation or direct
+experimental measurement. By treating these as known parameters, the
+nonlinear hydraulic equations are decoupled from the scheduling problem,
+transforming the original MINLP in to a mixed-integer linear program
+(MILP) that is substantially more tractable. A detailed derivation of the
+DEM formulation and the correspon ding reduction from the original
+MINLP to the MILP scheduling model is provided in Supplementary
+Section S2.
+Although the DEM approach eliminates full state-space enumeration,
+the number of feasible valve states grows exponentially with the number of
+valves (2n for n valves). To mitigate this combinatorial growth, a de ﬁcit-
+driven ε-greedy exploration strategy proposed in Adhithyan et al. [ref.13]
+iteratively constructs a reduced yet informative subset of valve states by
+prioritizing states that improve supply to villages experiencing the largest
+relative de ﬁcits, enabling near-optimal s cheduling without exhaustive
+characterization of the state space.
+The scheduling horizon is divided intoT time slots, each with duration
+Δt minutes. In the experiments,Δt = 1 min, but this value can be changed for
+other operating conditions. All valves are initially closed.
+Let I denote the set of demand tanks and let K denote the set of
+available valve states. The demand of tank i is denoted by di (L), and fi,k
+denotes the measured ﬂow rate to tank i under valve state k (L/min). The
+binary parameter vi,k represents the position of the valve serving tank i in
+state k, where 1 denotes an open valve and 0 denotes a closed valve. The
+parametersNmax
+i and Si deﬁne the maximum number of valve switches and
+the maximum number of supply slots allowed for tanki, respectively. The set
+T no/C0 supply
+i contains the time slots during which tanki cannot receive water.
+The binary variablext,k is equal to 1 when valve statek is selected during
+time slot t. The binary variableyi,t indicates a change in the position of the
+valve serving tanki at time slot t.T h ev a r i a b l e szi, zabs
+i ,a n dzmax denote the
+Fig. 8 | Overview of the proposed scheduling fra-
+mework. Demand inputs acquired through the
+voice interface are passed to the optimization
+module, which generates a valve operation schedule.
+The schedule is transmitted to the PLC, which
+actuates the network valves over the prescribed
+supply horizon.
+https://doi.org/10.1038/s41545-026-00631-1 Article
+npj Clean Water Article in Press
+relative deviation, absolute relative deviation, and maximum absolute
+relative deviation, respectively.
+The objective function is
+min
+X
+i2I
+zabs
+i þ zmax: ð2Þ
+This objective reduces the total absolute deviation and limits the largest
+deviation among the tanks.
+The relative deviation for tanki is deﬁned as
+Δt PT
+t¼1
+P
+k2K f i;kxt;k
+di
+/C0 1 ¼ zi; 8 i 2 I : ð3Þ
+Since fi,k is expressed in L/min and Δt = 1 min in the reported
+experiments, the numerator in Eq. (3) gives the total volume supplied to
+tank i in litres.
+The absolute deviation is linearized using
+zabs
+i ≥ zi; zabs
+i ≥ /C0 zi; 8 i 2 I; ð4Þ
+and the maximum deviation is constrained by
+zmax ≥ zabs
+i ; 8 i 2 I : ð5Þ
+One valve state is selected during every time slot:
+X
+k2K
+xt;k ¼ 1; 8 t ¼ 1; ... ; T: ð6Þ
+Because all valves are initially closed, the switching indicators for the
+ﬁrst time slot satisfy
+yi;1 ≥
+X
+k2K
+vi;kx1;k; 8 i 2 I ; ð7Þ
+yi;1 ≥ /C0
+X
+k2K
+vi;kx1;k; 8 i 2 I : ð8Þ
+For the remaining time slots, the switching indicators are deﬁned as
+yi;t ≥
+X
+k2K
+vi;k xt;k /C0 xt/C0 1;k
+/C0/C1
+; 8 i 2 I ; t ¼ 2; ... ; T; ð9Þ
+yi;t ≥ /C0
+X
+k2K
+vi;k xt;k /C0 xt/C0 1;k
+/C0/C1
+; 8 i 2 I ; t ¼ 2; ... ; T: ð10Þ
+The total number of switching operations for each tank is limited by
+XT
+t¼1
+yi;t ≤ Nmax
+i ; 8 i 2 I : ð11Þ
+This constraint limits manual operating effort and actuator cycling
+during the scheduling horizon.
+For a village that is restricted from receiving water during selected time
+slots, the following constraint is imposed:
+X
+k2K
+vi;kxt;k ¼ 0; 8 i 2 I ; t 2 T no/C0 supply
+i : ð12Þ
+Finally, the number of supply slots assigned to each tank is limited by
+XT
+t¼1
+X
+k2K
+vi;kxt;k ≤ Si; 8 i 2 I : ð13Þ
+This formulation allows the slot duration, switching limits, supply-slot
+limits, and restricted operating periods to be changed for different network
+conditions.
+Laboratory setup
+Experiments were conducted on the RTCOP-WDN, a scaled laboratory
+platform designed to emulate the structural characteristics of gravity-fed
+Multi-Village Scheme networks operating under intermittent supply con-
+ditions. The platform comprises four overhead tanks (OHTs) and twenty
+storage tanks (STs), interconnected through a reconﬁg u r a b l ep i p en e t w o r k .
+The OHTs represent elevated source reservoirs and the STs represent
+village-level household or community storage points, consistent with the
+RRWSS model described in ref.12. A schematic of the experimental platform
+i ss h o w ni nF i g .9.
+Fig. 9 | Lab-scale RTCOP-WDN subnetwork con-
+sisting of a gravity-fed overhead tank (OHT) sup-
+plying eight demand tanks (T 1–T8) through
+independently actuated binary valves (V 1–V8).
+https://doi.org/10.1038/s41545-026-00631-1 Article
+npj Clean Water Article in Press
+For the experiments reported her e, an eight-tank subnetwork was
+conﬁgured: one OHT serving as the source and eight demand tanks (T1–T8)
+as consumers. The OHT was positioned approximately 2.6 m above the
+demand tanks, providing the hydrauli c head required for gravity-driven
+distribution— a deliberate design choice to replicate the conditions of
+gravity-fed water schemes common in rural India12. The water level in the
+OHT was maintained within a controlled range of 46.5 ± 2.5 cm throughout
+all experiments to ensure consistent supply-side head pressure across trials.
+Each supply pipe was equipped with a Bürkert Model 3280 motorized
+ball valve, operated in binary ON/OFF mode via analog control signals
+(4–20 mA) from the automation system. These valves allow rapid, repea-
+table switching between open and closed states, enabling precise control of
+the valve conﬁguration at each scheduling interval.
+The Automation system was implemented using an AXC F 2152
+PLCnext controller along with AXL F AO8 1F and AXL F AO4 1H Axioline
+F I/O modules manufactured by Phoenix Contact, Germany.
+Tank water levels were measured using HC-SR04 ultrasonic sensors
+mounted on each tank connected to an Arduino Mega. The water level data
+was logged at a rate of one reading for everyﬁve seconds in each tank; raw
+distance readings were low-passﬁltered and converted to volume estimates
+based on the known tank cross-sectional area.
+The distribution network consists of 3.5 mm diameter stainless steel
+tubes connecting a 10.5 mm diameter main trunk from the OHT to each
+demand tank via individual supply branches. The OHT has a diameter of
+45 cm and height of 75 cm, while each demand tank is constructed from
+acrylic glass with a diameter of 30 cm and height of 50 cm. Each branch is
+independently controlled by its dedicated Bürkert 3280 valve, so that
+opening or closing a valve fully enables or isolatesﬂow to the corresponding
+tank. There are no shared branch segments between demand tanks,
+ensuring that theﬂow delivered to any tank depends only on the state of its
+own valve and the prevailing OHT head— a structural property that makes
+each valve con ﬁguration’s ﬂow vector reproducible under constant head
+conditions.
+The laboratory scheduling horizon consists of N =2 4o n e - m i n u t e
+intervals, giving a total experime ntal window of 24 min per trial. This
+compact horizon is a laboratory-scale analog of a real-world supply window,
+which typically spans 6 –24 hours discretised into hourly intervals. The
+capacity of the demand tanks is 35 l and the averageﬂow rate in the tank is
+1.5 lpm (liter per minute). The slot duration of 1 minute is chosen to match
+the hydraulic time constants of the scaled system.
+A four-tank sub-con ﬁguration of the same platform was used for
+preliminary validation of the scheduling framework. Results of that study,
+including convergence behavior and demand tracking accuracy for the
+reduced system, are provided in Supplementary Section S1.
+Flow measurement and data-driven model construction
+Flow rates delivered to each demand tank were obtained experimentally
+from steady-state level measurements for the subset of valve states identiﬁed
+through deﬁcit-drivenε-greedy exploration. TheOHT was maintained at a
+constant head of 46.5 ± 2.5 cm to ensure consistent supply pressure across all
+states. For a given con ﬁguration, the system was ﬁrst allowed to reach
+hydraulic steady state. The initial water level in each demand tank was
+recorded, after whichﬂow was supplied for a ﬁxed duration of 3 minutes.
+The ﬁnal water levels were then measured, and the volumetric ﬂow rate
+delivered to tankm under conﬁguration s was computed as:
+f s;m ¼
+Am ðhf ;m /C0 hi;mÞ
+T
+ð14Þ
+where Am is the cross-sectional area of tankm, hi,m and hf,m are the initial
+and ﬁnal water levels, andT =1 8 0si st h em e a s u r e m e n td u r a t i o n .A l t h o u g h
+the scheduling interval is one minute,ﬂow was measured over a 3-minute
+window to produce a level change suf ﬁciently large to exceed the
+measurement uncertainty of the HC-SR04 sensors ( ± 3 mm). Because
+the OHT head was held constant throughout, theﬂow rate is steady and the
+per-interval delivery volume is obtained by scalingfs,m over 60 s.
+As the number of tanks increases, the con ﬁguration space grows
+exponentially, making exhaustive measurement infeasible in practice. To
+address this, a deﬁcit-driven state selection heuristic implemented through
+an ϵ-greedy strategy, adopted from prior work 13, was used to identify a
+reduced informative set. The p rocedure was initialized with ﬂow mea-
+surements from n0 ≈ Nv = 8 randomly selected states, where Nv is the
+number of controlled valves. The expl oration is initialized with a set of
+randomly selected valve states, with the number of initial states set equal to
+the number of valves in the network. This convention follows the initi-
+alization practice established in prior works on data-driven scheduling for
+this class of networks13, where the initial state count is chosen to ensure at
+least one observation per controllable element before the de ﬁcit-driven
+selection begins. Using the availableﬂow data, the scheduling problem was
+solved and tanks exhibiting negative relative deviation were identi ﬁed as
+supply-deﬁcient. Let D ¼f m : zm <0 g denote this set. The normalized
+deﬁcit weight for tank m 2 D is
+wm ¼ jzmjP
+j2Djzjj ; ð15Þ
+a n dt a n k sa r es o r t e di nd e s c e n d i n go r d e ro fwm. A random scalar r /C24
+Uð0; 1Þ is drawn, and tanks are selected sequentially until the cumulative
+weight meets or exceedsr:
+S ¼ m1; m2; ... ; mp
+Xp
+i¼1
+wmi
+≥ r
+/C12/C12/C12/C12/C12
+()
+: ð16Þ
+The next conﬁguration is chosen as the unexplored state that supplies
+all tanks in S and no others. With probability ε, a uniformly random
+unexplored conﬁguration is selected instead, ensuring sufﬁcient coverage of
+the conﬁguration space while directing exploration toward conﬁgurations
+likely to reduce supply deﬁcits. At each iteration, a new conﬁguration was
+selected as follows: with probability (1− ϵ), a conﬁguration was chosen to
+preferentially supply tanks with larger normalized supply de ﬁcits; with
+probabilityϵ, a previously unexplored conﬁguration was selected at random
+to ensure adequate coverage of the state space and avoid convergence to
+suboptimal solutions. Each selected con ﬁguration was experimentally
+measured, appended to theﬂow database, and the scheduling problem was
+re-solved. This process was repeated until the relative deviation for all
+demand tanks fell below 5%. The overall procedure is illustrated in Fig.10.I n
+all experiments, the exploration parameter was ﬁxed at ϵ = 0.05, a value
+justiﬁed by the sensitivity analysis presented in the Results.
+Baseline operating and state-selection methods
+Two basic operating policies and three alternative state-selection methods
+were used for comparison. The operating policies were time-proportional
+demand allocation and operator-based operation, while the state-selection
+methods were random state selection, pure-greedy state selection, and
+Gaussian-process-based active learning. The time-proportional demand
+allocation and operator-based operation policies were implemented on the
+physical eight-tank testbed. Pure-greedy and GP-based state selection were
+evaluated experimentally on the eight-tank testbed and through WNTR/
+EPANET simulations of the eight- and ten-tank networks. The adaptedε-
+greedy strategy was evaluated under the same experimental and simulation
+conditions. Random state selection was evaluated only in simulation
+because its random behavior required several independent runs, making
+repeated physical measurements and implementations impractical within
+the experimental scope.
+The time-proportional demand allocation method opened each valve
+once, with its open duration assigned in proportion to the corresponding
+tank demand. The valves were operated sequentially. When one valve was
+https://doi.org/10.1038/s41545-026-00631-1 Article
+npj Clean Water Article in Press
+open, all other valves remained closed. No ﬂow information, hydraulic
+model, or optimization was used to generate the schedule.
+The operator-based operation method opened all valves at the begin-
+ning of the supply period24. When the cumulative volume supplied to a tank
+reached its demand, the corresponding valve was closed, while the valves of
+the remaining unsatisﬁed tanks remained open. The process continued until
+all demands were satisﬁed or the supply period ended.
+In random state selection, at each iteration, one valve state was selected
+uniformly at random from the remaining unobserved states, without
+replacement. Five simulation runs were conducted using different
+random seeds.
+Pure greedy method used the same deﬁcit-based selection rule as the
+adapted ε-greedy strategy but with exploration disabled (ε =0 ) .E a c hn e w
+state was therefore selected only according to the current tank-level deﬁcits.
+The Gaussian-process-based active learning method used the mea-
+sured valve states to predict the tank-level ﬂows of unmeasured states.
+Gaussian processes provide both a predicted response and its uncertainty
+and have been used as surrogate models for sequential optimization in
+water distribution networks14. A valve state was represented by a binary
+vector x ∈ {0, 1}M, where M is the number of valves. A separate GP was
+trained for each tank using a zero-mean prior and a radial basis function
+kernel,
+kðx; x0Þ¼ σ2
+f exp /C0 k x /C0 x0k2
+2‘2
+/C18/C19
+þ σ2
+nδx;x0 : ð17Þ
+The kernel parameters were estimated by maximizing the log marginal
+likelihood. For each unmeasured state, the GP returned the predictedﬂow
+μi(x) and predictive standard deviationσi(x) for each tank i.
+After the scheduling problem was solved using the available states, the
+deﬁcit weight of each tank was calculated aswi ¼ maxð0; /C0 ZiÞ,w h e r eZi is
+its relative demand deviation. The exploitation and exploration terms for
+each candidate state were then calculated as
+EðxÞ¼
+X
+i
+wiμiðxÞ; UðxÞ¼
+X
+i
+σiðxÞ: ð18Þ
+Upper Conﬁdence Bound acquisition functions combine predicted
+performance and uncertainty to balance exploitation and exploration14,29.
+Based on this principle, the next valve state was selected using the following
+modiﬁed UCB-inspired score:
+AðxÞ¼ N EðxÞðÞ þ β N UðxÞðÞ ; ð19Þ
+where N ð/C1Þ denotes min–max normalization across the unmeasured can-
+didate states.
+The physical GP implementation and the primary simulation com-
+parison used β = 0.3. A separate simulation-b ased parameter sensitivity
+analysis examined β ∈ { 0 ,0 . 3 ,0 . 6 ,1 . 0 ,2 . 0 } .F i v er u n sw e r ec o n d u c t e df o r
+each value using the same stopping rule as the state-selection comparison. A
+run was considered successful when the maximum absolute tank deviation
+fell below 5%. Performance was evaluated using the success rate and the
+number of available states when this condition was ﬁrst satisﬁed.
+The parameter β = 0.3 controlled the contribution of prediction
+uncertainty and was keptﬁxed in all evaluations. The state with the highest
+score was selected, and its ﬂow values were added to the ﬂow table. The
+scheduling problem and GP models we re then updated. This iterative
+selection and update process follows the general structure of pool-based
+active learning used to reduce costly evaluations in large candidate spaces30.
+Voice interface implementation
+The complete pipeline, from spoken input to structured demand vector, is
+illustrated in Fig.11.
+Audio was captured at 16 kHz mono usingsounddeviceand pre-
+processed withSciPy and NumPy before being passed to the ASR model.
+Transcription and entity extraction were both performed using Sarvam
+Saaras v3, a multilingual transformer-based model trained on large-scale
+Fig. 10 | Flowchart of the de ﬁcit-driven ε-greedy exploration procedure for valve state selection.
+https://doi.org/10.1038/s41545-026-00631-1 Article
+npj Clean Water Article in Press
+Indic speech corpora, accessed via the Sarvam AI API. The model natively
+supports English, Hindi, Tamil, and T elugu without language-switching
+overhead. A ﬁxed system prompt speciﬁed the output schema (tank iden-
+tiﬁer, supply volume in litres) togeth er with few-shot examples covering
+typical command phrasings across a ll supported languages, including
+ordinal tank references, fractional volumes, and explicit zero-supply state-
+ments in code-mixed speech. No ﬁne-tuning was performed; the model
+operated in prompted inference mode with outputs constrained to a strict
+JSON schema, preventing hallucination by design. Extraction accuracy was
+evaluated using deterministic JSON key-matching, veriﬁed independently
+by an LLM-as-judge assessment using Groq Llama 3.3 70B for semantic
+correctness.
+Voice pipeline performance was e valuated on 70 audio recordings
+spanningﬁve language categories (English,H i n d i ,T e l u g u ,T a m i l ,a n dC o d e -
+Mixed), collected under two acoustic conditions: clean (indoor, low ambient
+noise) and noisy (recorded with background crowd noise at approximately
+60 dB SPL). Each recording was labeled with the ground-truth tank iden-
+tiﬁer and volume, and evaluated for transcription accuracy (WER, CER) and
+end-to-end extraction correctness. Hallucination— deﬁned as the system
+outputting a tank or volume not present in the spoken command — was
+tracked as a separate metric given its direct impact on valve actuation safety.
+Data availability
+The measured ﬂow-rate data for the four-tank and eight-tank systems are
+provided in Supplementary Data~1.The archive also contains the WNTR/
+EPANET-simulatedﬂow data used for the eight-tank and ten-tank state-
+selection comparisons.
+Code availability
+The source code used for scheduling, s tate selection, and experimental
+implementation is provided in Supplementary Data 1. The archive contains
+separate folders for the four-tank an d eight-tank systems, including the
+main execution scripts, scheduling modules, state-selection modules, and
+ﬂow-data workbooks. It also contains the code and datasets used for the
+pure-greedy and Gaussian-process-based active-learning comparisons.
+Received: 27 February 2026; Accepted: 22 August 2026;
+References
+1. Vairavamoorthy, K., Gorantiwar, S. D. & Mohan, S. Intermittent water
+supply under water scarcity situations. Water Int. 32, 121–132 (2007).
+2. Kumpel, E. & Nelson, K. L. Intermittent water supply: prevalence,
+practice, and microbial water quality. Environ. Sci. Technol. 50,
+542–553 (2016).
+3. Loubser, C., Chimbanga, B. M. & Jacobs, H. E. Intermittent water
+supply: a South African perspective. Water SA 47,1 –9 (2021).
+4. Christodoulou, S. & Agathokleous, A. A study on the effects of
+intermittent water supply on the vulnerability of urban water
+distribution networks. Water Sci. Technol. Water Supply 12, 523–530
+(2012).
+5. Hooda, N. & Damani, O. Jaltantra: A system for the design and
+optimization of rural piped water networks. INFORMS J. Appl. Anal.
+49, 447–458 (2019).
+6. Mala-Jetmarova, H., Sultanova, N. & Savic, D. Lost in optimisation of
+water distribution systems? A literature review of system operation.
+Environ. Model. Softw. 93, 209–254 (2017).
+7. Gottipati, P. V. K. S. V. & Nanduri, U. V. Equity in water supply in
+intermittent water distribution networks. Water Environ. J. 28,
+509–515 (2014).
+8. Solgi, M., Haddad, O. B. & Mariño, M. A. Multi-objective optimisation
+for water distribution network design under intermittent supply.Water
+Resour. Manag. 28, 4269–4286 (2014).
+9. Shi, H. & You, F. Energy optimization of water supply system
+scheduling: Novel minlp model and ef ﬁcient global optimization
+algorithm. AIChE J. 62, 4277–4296 (2016).
+10. Sarisen, D., Koukoravas, V., Farmani, R., Kapelan, Z. & Memon, F. A.
+Review of hydraulic modelling approaches for intermittent water
+supply systems. AQUA Water Infrastruct., Ecosyst. Soc. 71,
+1291–1310 (2022).
+11. Leinæs, A., Simukonda, K. & Farmani, R. Calibration of intermittent
+water supply systems hydraulic models under data scarcity. Water
+Supply 24, 1626–1644 (2024).
+12. Kurian, V. et al. Equitable supply in intermittently operated rural water
+networks in emerging economies. Water Supply 23, 4520–4538
+(2023).
+13. Adhithyan, R., Kurian, V. & Narasimhan, S. Data driven approach for
+equitable supply in water networks. In Proceedings of the WDSA/
+CCWI 2022 Conference, 426–437 (2022).
+14. Candelieri, A., Perego, R. & Archetti, F. Bayesian optimization of pump
+operations in water distribution systems. J. Glob. Optim. 71, 213–235
+(2018).
+15. Candelieri, A., Galuzzi, B., Giordani, I. & Archetti, F. Learning optimal
+control of water distribution networks through sequential model-
+Fig. 11 | Speech-based demand acquisition and structuring pipeline.
+https://doi.org/10.1038/s41545-026-00631-1 Article
+npj Clean Water Article in Press
+based optimization. In International Conference on Learning and
+Intelligent Optimization, 303–315 (Springer, 2020).
+16. Ghorpade, A., Sinha, A. K. & Kalbar, P. P. Drivers for intermittent water
+supply in India: critical review and perspectives.Front. Water3, (2021).
+17. Chinnusamy, S. et al. IoT enabled monitoring and control of water
+distribution network. In Proceedings of the 1st WDSA / CCWI Joint
+Conference (2018).
+18. Raphael, R., Prasath Ramprasad, S. H. & Narasimhan, S. Cloud-
+based control and monitoring of water distribution network using free
+spectrum communication protocols.Engineer. Proc. 69, https://www.
+mdpi.com/2673-4591/69/1/71 (2024).
+19. Hutchings, P., Franceys, R., Jasthi, S. & Saraswathy, R. Community
+management and participation in multi-village schemes for rural water
+supply in India. Waterlines 39, 133–143 (2020).
+20. Deshmukh, A. M. & Chalmeta, R. User experience and usability of
+voice user interfaces: a systematic literature review. Information 15,
+579 (2024).
+21. Medhi, I. et al. Designing mobile interfaces for novice and low-literacy
+users. ACM Trans. Comput. Hum. Interact. 18,1 –28 (2011).
+22. Patel, N. et al. Experiences designing a voice interface for rural
+India. In 2008 IEEE Spoken Language Technology Workshop ,
+21–24 (2008).
+23. Kendall, L., Chaudhuri, B. & Bhalla, A. Understanding technology as
+situated practice: everyday use of voice user interfaces among
+diverse groups of users in urban India. Inf. Syst. Front. 22, 585–605
+(2020).
+24. Bhave, P. & Gupta, R. Analysis of Water Distribution Networks (Alpha
+Science International, 2006). https://books.google.co.in/books?id=
+YEjiHGYmuyAC.
+25. Rahman, E. et al. Parameter estimation in water distribution networks
+using an error-in-variables approach. Engineer. Proc. 69, https://
+www.mdpi.com/2673-4591/69/1/145 (2024).
+26. Owais, M. & Salah, A. Integrating machine learning and global
+sensitivity analysis for human-centered pedestrian path design.
+Innovat. Infrastruct. Solut. 11, 145 (2026).
+27. Owais, M., Salah, A. & Shehata, H. M. Integrating machine learning
+and global sensitivity analysis for modeling public transport
+acceptance: evidence from Egyptian cities. Transport. Plann.
+Technol. 1–47 (2026).
+28. Govindarajan, S. et al. Economic model predictive control for water
+distribution networks. IFAC-PapersOnLine 59,5 0–55 (2025).
+29. Srinivas, N., Krause, A., Kakade, S. M. & Seeger, M. Gaussian process
+optimization in the bandit setting: No regret and experimental design.
+arXiv preprint arXiv:0912.3995 (2009).
+30. Smith, L., Steele, J., Karimi-Varzaneh, H. A. & Carbone, P. Hierarchical
+virtual screening for plasticizer discovery with active learning. ACS
+Appl. Polym. Mater. 8, 4188–4200 (2026).
+Acknowledgements
+This work was partially funded by the Department of Science and
+Technology (DST), Government of India, under the Water Technology
+Initiative (Grant No. DST/TM/WTI/WIC/2K17/82(G), WATER-IC for SUTRAM
+of EASY WATER), Madras and by the Wadhwani School of Data Science and
+Artiﬁcial Intelligence, Indian Institute of Technology Madras.
+Author contributions
+Harish Doneparthi conducted the experiments, performed data analysis and
+prepared the manuscript. Adhithyan R. contributed to conducting
+experiments. Prasanna Mohan Doss designed the lab scale RTCOP-WDN
+system. Saryu Sundararaman, Raja Sundaram Mathiagazhan, Sri Hari Pra-
+sath Ramprasath and Prasanna Mohan Doss contributed towards the
+instrumentation of the lab-scale RTCOP-WDN system. Mallikarjun Jama-
+darkhani and Venkata Prakash Nallamothula developed the LLM-based
+voice ﬁle. Varghese Kurian contributed to algorithm development and
+reviewed the manuscript. Sridharakumar Narasimhan supervised the
+research, provided strategic guidance and reviewed the manuscript. All
+authors discussed the results and approved the ﬁnal manuscript.
+Competing interests
+The authors declare no competing interests.
+Additional information
+Supplementary informationThe online version contains
+supplementary material available at
+https://doi.org/10.1038/s41545-026-00631-1.
+Correspondenceand requests for materials should be addressed to
+Sridharakumar Narasimhan.
+Reprints and permissions informationis available at
+http://www.nature.com/reprints
+Publisher’s note Springer Nature remains neutral with regard to
+jurisdictional claims in published maps and institutional afﬁliations.
+Open Access This article is licensed under a Creative Commons
+Attribution-NonCommercial-NoDerivatives 4.0 International License,
+which permits any non-commercial use, sharing, distribution and
+reproduction in any medium or format, as long as you give appropriate
+credit to the original author(s) and the source, provide a link to the Creative
+Commons licence, and indicate if you modi ﬁed the licensed material. You
+do not have permission under this licence to share adapted material
+derived from this article or parts of it. The images or other third party
+material in this article are included in the article's Creative Commons
+licence, unless indicated otherwise in a credit line to the material. If material
+is not included in the article's Creative Commons licence and your intended
+use is not permitted by statutory regulation or exceeds the permitted use,
+you will need to obtain permission directly from the copyright holder. To
+view a copy of this licence, visit http://creativecommons.org/licenses/by-
+nc-nd/4.0/.
+© The Author(s) 2026
+This Article in Press is shared early to give you faster access to new research.
+It is citable and carries a permanent DOI. Theﬁnal edited version will replace it
+automatically.
+https://doi.org/10.1038/s41545-026-00631-1 Article
+npj Clean Water Article in Press

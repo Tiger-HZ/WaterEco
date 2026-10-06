@@ -1,0 +1,1423 @@
+ORIGINAL ARTICLE
+Environmental Earth Sciences (2026) 85:406 
+https://doi.org/10.1007/s12665-026-13136-4
+ Honghu Zeng
+zenghonghu@glut.edu.cn
+1 Guangxi Key Laboratory of Environmental Pollution Control 
+Theory and Technology, Guilin University of Technology, 
+Guilin 541006, China
+2 Hubei College of Water Resources and Hydropower 
+Technology, Wuhan 430000, China
+3 SCNU Environmental Research Institute, Guangdong 
+Provincial Key Laboratory of Chemical Pollution and 
+Environmental Safety & MOE Key Laboratory of Theoretical 
+Chemistry of Environment, South China Normal University, 
+Guangzhou 510006, China
+4 Changhu Ecological Administration Bureau, 
+Jingzhou 434000, China
+Abstract
+Karst basins have permeable surface-subsurface connections that can accelerate nitrogen transport. The Lipu River Basin 
+in southern Guilin is affected by intensive agriculture and industrial activity, but its nitrate sources and transformations 
+remain poorly resolved. We integrated dual nitrate isotopes (δ 15N-NO3⁻ and δ 18O-NO3⁻), hydrochemical data, and a 
+Bayesian SIAR mixing model. River-water TN was significantly higher in winter (7.09 ± 6.59 mg/L) than in summer 
+(2.95 ± 1.48 mg/L). River-water NO 3⁻-N was lower in summer than in winter and lower than groundwater only during 
+summer; the winter river-groundwater difference was not significant. The highest individual groundwater NO 3⁻-N values 
+occurred near the industrial park, but the land-use group difference was not significant (Kruskal-Wallis, p = 0.48). The 
+SIAR model identified manure and sewage as the largest modeled summer nitrate source, contributing 49% at the basin 
+scale. These results identify elevated winter river loads and groundwater nitrate hotspots near tributaries and industrial 
+zones as management priorities.
+Keywords Bayesian isotope mixing model · Nitrate source apportionment · Karst aquifer · Uncertainty quantification · 
+Environmental risk assessment
+Received: 23 January 2026 / Accepted: 2 September 2026
+© The Author(s) 2026
+Identifying nitrate sources and nitrogen transformation in a karst 
+river–groundwater system using dual nitrate isotopes and a Bayesian 
+(SIAR) mixing model
+Zupeng Wan1 · Baojun Liu2 · Wenwen Chen1 · Yingjie Chen3 · Xiaoyu Yan4 · Honghu Zeng1
+observed transport may depart from predictions based on 
+porous-media models (P. Zhang et al. 2023). A highly per-
+meable karst conduit network enables refractory organic 
+matter in industrial wastewater and agricultural nitrogen 
+to bypass the slow degradation process in the soil zone 
+for rapid and deep transboundary transport (Güven et al. 
+2017). Rather than attenuating contaminants, these conduits 
+may accelerate their transport and transformation, thereby 
+increasing ecological exposure and potential toxicity (Wells 
+et al. 2018).
+Most nitrogen source-apportionment studies have exam-
+ined non-karst catchments dominated by porous media (Jost 
+et al. 2011; Li et al. 2022), Studies in karst systems have 
+focused mainly on agricultural or single-land-use catch -
+ments. Where dual nitrate isotopes and Bayesian mixing 
+models have been applied to karst and plateau systems in 
+Southwest China, manure & sewage and soil nitrogen have 
+repeatedly emerged as the dominant NO 3⁻ sources (Fan et 
+al. 2025; Liu et al. 2025); still, basins in which intensive 
+industry is superimposed on dense rural land use—where 
+point- and non-point inputs are strongly mixed—remain 
+Introduction
+Pollution-control strategies developed for porous-media-
+dominated basins are often inadequate for heterogeneous 
+karst environments (Guo et al. 2019). When industrial and 
+agricultural nitrogen inputs interact with karst hydrology, 
+1 3
+ 406 Page 2 of 16
+Environmental Earth Sciences (2026) 85:406 
+poorly characterised. Discrete conduit flow and rapid sur -
+face-subsurface exchange challenge lumped and semi-dis -
+tributed watershed models such as SWAT and HEC-HMS. 
+These models represent the subsurface as a continuous 
+porous medium and may not capture heterogeneous flow 
+paths or nitrogen transport reliably (Iriawan H et al. 2021). 
+For source apportionment, dual NO 3⁻ isotopes are increas -
+ingly combined with Bayesian mixing models, the IsoSource 
+mass-balance approach, or statistical receptor models such 
+as PMF and APCS-MLR. Most applications have focused 
+on non-karst settings. Few studies have quantified source 
+proportions and their uncertainty in coupled karst river-
+groundwater systems, where conduits create heterogeneous 
+links between surface water and groundwater. We therefore 
+investigated the Lipu River Basin, where nitrate concentra -
+tions are elevated but source contributions remain unquanti-
+fied. We combined dual nitrate isotopes with hydrochemical 
+data to trace sources and assess transformation pathways in 
+this karst river-groundwater system.
+Dissolved inorganic nitrogen (DIN) in natural waters 
+occurs mainly as NO3
+−, NO2
+− and NH4
++. Owing to its high 
+mobility, NO3
+− is typically the dominant DIN species and 
+a sensitive indicator of pollutant transport in karst systems 
+(Zuo et al. 2023). In addition, high NO 3
+− levels are asso -
+ciated with methemoglobinemia in humans and aquatic 
+ecosystem degradation (Yan et al. 2023). NO 3
+− pollution 
+sources in karst basins include point and river sources. 
+Point sources include mainly industrial parks and landfills. 
+In addition, NO 3
+− concentrations and sources are affected 
+by various nitrogen transformations. For example, higher 
+NH4⁺ concentrations can promote nitrification (Ma et al. 
+2021). They may also reduce net NO3⁻ removal by assimila-
+tion, thereby promoting nitrate accumulation in karst basins. 
+Fertilizer application commonly dominates nitrate inputs in 
+agricultural areas (Wang et al. 2024), whereas point sources 
+are often more important in urbanized areas (Lai et al. 2023). 
+However, manure, sewage, and soil nitrogen can also domi-
+nate groundwater NO3
+− inputs in agricultural areas Integrat-
+ing multiple tracers with source-apportionment models can 
+quantify these contributions and distinguish natural from 
+anthropogenic controls.
+NO3
+− sources largely reflect basin nitrogen sources (Iqbal 
+et al. 2022; Schaefer et al. 2016). Linking land use types to 
+cations and anions has been a traditional approach to identi-
+fying NO3
+− sources and nitrogen cycling processes (Biddau 
+et al. 2023). The NO 3
+− stable isotope method (δ 15N-NO3
+− 
+and δ 18O-NO3
+−) provides meaningful insights into NO 3
+− 
+sources and nitrogen conversion processes because different 
+NO3
+− sources exhibit unique isotopic characteristics (Xue et 
+al. 2009). The NO3
+− stable isotope method requires minimal 
+auxiliary information, offers high accuracy and operational 
+simplicity, and directly identifies NO 3
+− sources (Yang et 
+al. 2024). In general, manure and sewage have relatively 
+high δ15N-NO3⁻ values, whereas atmospheric deposition has 
+high δ18O-NO3⁻ values. Mineral fertilizer and soil nitrogen 
+usually have lower δ 15N-NO3⁻ values, which helps con -
+strain nitrate sources in aquatic systems (Wu et al. 2022). 
+However, isotope signatures can overlap between fertilizer 
+and soil nitrogen and between soil nitrogen and manure or 
+sewage. Source mixing and isotope fractionation during 
+biogeochemical transformations further limit source appor-
+tionment (Lin et al. 2019). Consequently, NO3
+− isotopes are 
+often combined with complementary tracers. In this study, 
+auxiliary tracers were used to distinguish mixing from deni-
+trification within the analytical scope, while the potential 
+value of additional tracers and integrated approaches is 
+acknowledged in the Conclusion (Grechanik et al. 2024; Li 
+et al. 2023).
+This study integrated a Bayesian isotope mixing model 
+with NO 3⁻ stable isotope analysis. Additional covariates 
+(hydrochemical parameters and land use types) enhanced 
+source apportionment accuracy compared with traditional 
+mixing models. The hydrological status of the southwest -
+ern karst basin is complex, with intense agricultural and 
+human activities. Groundwater, rainfall, and river water 
+are key sources of river recharge. Towns and farmlands are 
+scattered around karst basin (Chang et al. 2024). There -
+fore, karst basins are typical areas of mixed land use (Yi 
+et al. 2015). Frequent seasonal groundwater-river water 
+exchange results in severe groundwater nitrogen pol -
+lution, with average nitrogen and NO 3
+− concentrations 
+reaching 24.35 and 15.15 mg/L (Boumaiza et al. 2022), 
+respectively, posing a major threat to lake water quality 
+and safety. In coupled karst river-groundwater systems it 
+remains unclear (i) how the dominant NO 3
+− sources dif -
+fer between river water and groundwater, (ii) whether 
+nitrification or denitrification controls the NO 3
+− pool, and 
+(iii) what the proportional source contributions-with their 
+uncertainty-actually are.
+To address these research gaps, we investigated inor -
+ganic nitrogen pollution in river water and groundwater 
+in the Lipu River Basin within Lipu County, considering 
+domestic sewage, industrial sewage, and other pollution 
+sources. By integrating NO 3
+− stable isotope (δ 15N and 
+δ18O) analysis with water chemistry data, meteorological 
+parameters, environmental factors, and the Bayesian iso -
+tope mixing (SIAR, Stable Isotope Analysis in R) model, 
+the objectives of this study are to: (1) clarify the distribu -
+tion characteristics of DIN (NO 3⁻-N + NO2⁻-N + NH4⁺-N) 
+species under the influence of various discharge types in a 
+typical karst area; (2) investigate the spatiotemporal distri -
+bution of nitrogen-containing pollutants in river water and 
+groundwater and their correlations with comprehensive 
+hydrochemical indicators; and (3) identify the sources of 
+1 3
+Page 3 of 16 406 
+Environmental Earth Sciences (2026) 85:406 
+NO3
+− based on nitrogen distribution characteristics and the 
+SIAR model.The results can inform evaluation and man -
+agement of nitrogen pollution across contrasting discharge 
+settings in karst regions.
+Materials and methods
+Description of the study area
+The study area lies in Lipu City, southern Guilin, in north -
+eastern Guangxi Zhuang Autonomous Region. It extends 
+into western Pingle County and reaches the western banks of 
+the Lijiang and Guijiang rivers. The basin spans 110°12′6″-
+110°40′57″ E and 24°20′54″-24°39′27″ N. The region has 
+distinct wet and dry seasons, with long, hot, rainy summers 
+and generally mild winters. The long-term mean temperature 
+is 18.9 °C, and mean annual precipitation is 1,441.5 mm, 
+concentrated from April to August. The submerged aquifer 
+in the area is 0.5–3.5 m deep. The lithology of the area is 
+composed mainly of clastic, carbonate, igneous, and loose 
+rocks. The Quaternary Holocene Q4 is located on the upper 
+terrace, with pore aquifers and partial pressure. The northern 
+part of the basin overlies the Lower Carboniferous stages of 
+the Datangdian and Yanguandian C1, which contain fissure 
+cave water with a small flow of springs (Zhang et al. 2020).
+Watershed monitoring
+Two sampling campaigns were conducted in 2022, one dur-
+ing the wet season (summer) and one during the dry sea -
+son (winter; Fig. 1). The summer campaign included 27 
+river sites and 12 groundwater sites. The winter campaign 
+included 24 river sites and 14 groundwater sites, yielding 
+51 river-water and 26 groundwater samples in total. Main -
+stream sites were distributed from upstream Tianjingling to 
+the downstream Guijiang confluence. Tributary sites cov -
+ered the Pulu, Dumo, Datang, Xinping, Limu, and Maling 
+rivers. Groundwater sites followed the inferred flow direc -
+tion and represented three aquifer types: Quaternary porous 
+aquifers, Carboniferous fissure-cave aquifers, and bedrock-
+fissure aquifers. Table S1 lists all sampling sites, coordi -
+nates, water-body types, and remarks. Text S1 describes the 
+hydrogeological setting.
+Sample collection
+Sampling sites covered the basin’s recharge, runoff, and dis-
+charge zones and were classified by dominant surrounding 
+land use and discharge type (industrial, sanitary, or other). 
+These categories were based on land use rather than direct 
+measurements of flow or pollutant load at individual outlets. 
+One local effluent sample (LTE) was collected at the location 
+listed in Table S1. The summer isotope dataset comprised 
+39 mixture samples (27 river-water and 12 groundwater 
+samples) plus LTE. LTE was used only to assess whether 
+local effluent fell within the literature-defined manure-and-
+sewage prior; it was not entered as a mixture sample or as 
+a separate modeled source. Before collection, brown glass 
+bottles were rinsed three times with ultrapure water and 
+three times with sample water, then sealed with aluminum 
+foil and capped. Duplicate samples represented at least 10% 
+of sites in each sampling batch. Groundwater was collected 
+from phreatic wells and karst springs that tap the shallow 
+aquifer. The water table was 0.5–3.5 m below ground sur -
+face. Wells were purged until pH, electrical conductivity, 
+and temperature stabilized, after which samples were col -
+lected 0.5–1.0 m below the water table.
+Fig. 1 Overview of the Lipu 
+River Basin study area
+ 
+1 3
+ 406 Page 4 of 16
+Environmental Earth Sciences (2026) 85:406 
+Sample preparation and analysis
+Detection of inorganic carbon and nitrogen compounds
+Immediately after the samples were transported to the 
+laboratory, NH4
++-N, NO 3
+−-N, NO 2
+−-N, and inorganic car -
+bon (DIC, including CO 3
+2− and HCO 3
+−) were measured. 
+The remaining samples were filtered using a 0.45-µm filter 
+membrane (Tianjin Jinteng, China) and stored in the dark at 
+0–4 °C. DIN concentrations were measured spectrophoto -
+metrically with a JH-TD401 multiparameter water-quality 
+analyzer. DIC was measured using total-alkalinity test kits 
+(10–200 mg/L, Lu Heng Bio, China).
+Hydrochemical detection and data analysis
+The anion and cation indicators to be tested included K +, 
+Na+, Ca2+, Mg2+, SO4
+2−, and Cl−. The samples to be tested 
+were filtered using a 0.22-µm filter membrane and stored 
+away from light at 4 °C. Cationic concentrations were 
+determined using an inductively coupled plasma emission 
+spectrometer (Optima 8000, USA) in accordance with the 
+method specified in the National Environmental Protection 
+Standard (HJ 776–2015, China). Anions were detected using 
+ion chromatography (DIONEX ICS-2100, USA). Anions 
+were determined using the method specified in the National 
+Environmental Protection Standard (HJ 84-2016, China). 
+Because the data were non-normally distributed, non -
+parametric tests were used throughout. The Friedman test 
+compared nitrogen species measured in the same samples. 
+Mann-Whitney U and Kruskal-Wallis tests were used for 
+two-group and multigroup comparisons, respectively, and 
+Spearman’s rank correlation assessed associations between 
+solutes. Significance was set at p < 0.05. A summary of the 
+key tests is given in Table S5.
+Sampling and analysis of dual nitrate isotopes 
+(δ15N-NO3
+- and δ18O-NO3
+- )
+Sample collection for NO3
+− isotopes
+River water samples were collected onsite using PET sam -
+ple bottles. First, they were filtered through a 0.45 μm filter 
+membrane to remove various suspended solids and micro -
+organisms. Subsequently, the water samples were stored at 
+temperatures below 4 °C. Dual NO 3⁻ isotopes were deter -
+mined by the bacterial denitrifier method, in which sample 
+NO3⁻ is converted to N 2O by denitrifying bacteria and the 
+N2O analysed by isotope-ratio mass spectrometry. Results 
+were calibrated against the international reference materi -
+als USGS32, USGS34 and USGS35 (with IAEA-NO 3 as a 
+check); the analytical precision (1σ) was better than ± 0.3‰ 
+for δ15N and ± 0.5‰ for δ18O. Text S3 summarizes method 
+detection limits and the precision of the hydrochemical mea-
+surements. Samples were filtered through 0.22-µm cartridge 
+filters, and nitrate concentrations were measured before the 
+samples were frozen and stored. An aliquot of the denitrify-
+ing bacterial culture was plated and incubated at 30 °C for 3 
+days. A single colony was then transferred to 6 mL of TSB 
+medium and incubated for 8 h at 32 °C and 180 rpm. The 
+remaining strain was stored at 4 °C.
+Sample pre-treatment and isotope determination
+A 0.2-mL aliquot of culture was added to 10 mL of tryptic 
+soy broth (TSB) and incubated under the same conditions for 
+16 h. Next, 10 mL of this culture was transferred to 238 mL of 
+TSB and incubated for 48 h. A colorimetric test was performed 
+after culture expansion. The next day, 0.2 mL of 10 mol/L 
+NaOH was injected to terminate the reaction and absorb CO2. 
+The generated gas was then analyzed instrumentally.
+Hydrogen and oxygen isotopes were measured using a 
+liquid water isotope laser spectrometer. Stable carbon iso -
+tope (δ13C) analyses were performed by the Karst Geologi -
+cal Resources and Environment Supervision and Testing 
+Center, Institute of Karst Geology, Chinese Academy of 
+Geological Sciences, Guilin.
+Nitrogen Enrichment Slope (NES)
+The nitrogen enrichment slope (NES) is the slope b of the 
+regression of log 10C(NO3⁻) on δ 15N (Eq. 1; after Lavoie 
+et al. 2013) and indicates how δ 15N changes as NO 3⁻ con-
+centration changes; a positive slope (NES > 0) is consistent 
+with progressive nitrogen accumulation/enrichment along 
+the flow path.
+log CNO3 = 𝛿𝛿15N(b)+ a (1)
+where the slope (b) represents the NES. A positive slope 
+(NES > 0) indicates increased nitrogen accumulation.
+SIAR configuration, priors and uncertainty
+A Bayesian stable isotope mixing model was used to quan -
+tify the contributions of different nitrate sources to the Lipu 
+River Basin water system. The model was implemented 
+with the Stable Isotope Analysis in R (SIAR) package and 
+was formulated as follows (Ji et al. 2022):
+Xij= ∑ pk (Sij+Cij) +𝜀𝜀ij (2)
+Sij=N (𝜇𝜇ij,𝜔𝜔2
+jk) (3)
+1 3
+Page 5 of 16 406 
+Environmental Earth Sciences (2026) 85:406 
+CijN (𝜆𝜆′
+ij,𝜔𝜔𝜔𝜔 ′ 2
+jk) (4)
+𝜀𝜀ij=N (0,𝜎𝜎2
+j ) (5)
+In the above formula (Eqs. 1, 2, 3, 4, 5), Xij is the j-th iso -
+tope value of the i-th mixture, i = 1,2,3,… N; j = 1,2,3,… 
+J; Pk is the proportion of the k-th source that needs to be 
+estimated using the SIAR model; S ij is the value of the j-th 
+isotope from the i-th source, following a normal distribution 
+with a mean of µ and a variance of ω; Cij is the fractionation 
+coefficient of the j-th isotope from the i-th source, following 
+a normal distribution with a mean of λ ‘and a variance of τ’; 
+εij is the residual error, representing the variance that cannot 
+be quantified among the other mixtures, with the mean and 
+variance typically being 0.
+To estimate the proportional contributions of NO 3⁻-N 
+sources, two isotopes (j = 2; δ 15N-NO3⁻ and δ 18O-NO3⁻) 
+and three potential end-members were considered: nitrogen 
+fertilizer (NF), soil nitrogen (SN), and manure & sewage 
+(M&S) (She et al. 2024; Liu et al. 2025). The δ 15N-NO3
+− 
+and δ 18O-NO3
+− signatures (mean ± SD) assigned to each 
+end-member were compiled from previously published val-
+ues for comparable settings and are summarised in Table S6.
+Source δ 15N–NO3⁻ and δ¹⁸O–NO 3⁻ prior means and 
+standard deviations were taken from widely cited literature 
+compilations (Table S4) and supplemented by a local efflu -
+ent end-member (LTE) measured in this study, one local 
+effluent end-member (LTE) was collected directly from a 
+karst basin effluent discharge point (Table S1; coordinates 
+110.482°E, 24.533°N). The measured δ¹⁵N–NO 3⁻ (+ 8.6‰) 
+and δ¹⁸O–NO 3⁻ (− 1.3‰) of LTE fall within the manure-
+and-sewage (M&S) literature range (Table S4), confirming 
+its assignment to that end-member class. Including LTE as 
+a supplementary data point to anchor the M&S prior did 
+not materially change the posterior M&S mean, but reduced 
+the credible-interval width by approximately 0.5% points, 
+a modest improvement reflecting the limited influence 
+of a single local measurement on a broad literature prior; 
+Because the δ15N–δ18O ranges of manure and sewage over-
+lap, they were combined into a single manure-and-sewage 
+(M&S) source, so the model resolves three isotopically 
+distinct end-members from 39 summer samples on two iso-
+topes. Isotope fractionation was incorporated through the 
+source-variance and discrimination terms of Eqs. (2)–(5). 
+The model was implemented in SIAR (R v4.1.3; RStudio 
+2022.02.0-443; MixSIAR formulation of by Markov-chain 
+Monte Carlo (Kiszka et al. 2014; Ren et al. 2022); con -
+vergence was confirmed before interpretation, and source 
+proportions are reported as posterior mean ± SD with 95% 
+credible intervals (Table S4, Text S2).
+Results and discussion
+Dissolved inorganic nitrogen concentrations
+DIN was detected in all river-water samples. River-water 
+TN ranged from 0.24 to 16.11 mg/L, with a mean of 
+5.02 ± 4.04 mg/L. This mean was lower than the ground -
+water mean of 6.11 ± 5.01 mg/L, but the difference was 
+not significant ( p > 0.05). Nitrate was the dominant 
+DIN species in river water, averaging 4.27 ± 3.55 mg/L. 
+Mean NH 4⁺-N and NO 2⁻-N were 0.68 ± 0.42 and 
+0.06 ± 0.04 mg/L, respectively. The same order occurred 
+in groundwater, with means of 5.75 ± 4.82, 0.36 ± 0.28, 
+and 0.07 ± 0.05 mg/L, respectively. Nine of the 76 samples 
+(12%) exceeded the WHO/China drinking-water guideline 
+for NO 3
+−-N (10 mg/L, equivalent to 50 mg/L as NO 3
+−); 
+exceedances were more frequent in groundwater (19%) 
+than in river water (8%) and were concentrated in ground -
+water near the industrial park and in winter river water at 
+food/grain-processing tributaries (Table S2). The NH 4
++-N 
+concentration level is significantly ( p < 0.05) higher than 
+that in large rivers with good water quality, such as the 
+middle reaches of the Yangtze River (0.24 mg/L) and the 
+Pearl River (0.33 mg/L) (Zhang et al. 2011; Xue et al. 
+2009), and the water quality is roughly the same as that 
+of the main stream of the Yellow River, China, which is 
+greatly affected by local industrial and agricultural activi -
+ties. Compared with karst river basins abroad, the Lipu 
+River Basin is much better (p < 0.05) than the Silver Spring 
+in Florida in USA (1.55 mg/L) and the Coesle River Basin 
+in France (2.34 mg/L). In summary, the water quality dem-
+onstrates a higher contamination risk compared to major 
+rivers both in China and internationally, reflecting clear 
+evidence of human impact.
+Figure 2 presents the concentrations of nitrogen in river 
+and groundwater samples from the Lipu River Basin. In 
+Fig. 2a, the nitrate nitrogen in the river water during sum -
+mer (average 2.29 ± 1.02 mg/L) was significantly ( p < 0.05) 
+lower than that of the other DIN, while there was no sig -
+nificant difference in the four types of ammonia nitrogen 
+and nitrite nitrogen ( p > 0.05), indicating that nitrate nitro -
+gen dominates the TN and its seasonal variation is relatively 
+large. Figure 2b shows that river-water TN was signifi -
+cantly lower in summer (2.95 ± 1.48 mg/L) than in winter 
+(7.09 ± 6.59 mg/L; p < 0.05). Groundwater TN did not dif -
+fer significantly between seasons. This contrast suggests 
+that the aquifer buffered seasonal variation, whereas river 
+water responded more directly to seasonal hydrological and 
+anthropogenic inputs. This pattern is consistent with rapid 
+conduit flow. Regional faults and folds may provide prefer-
+ential groundwater pathways (Hu 2024).
+1 3
+ 406 Page 6 of 16
+Environmental Earth Sciences (2026) 85:406 
+Nitrogen content in river water
+During the summer, as shown in Fig. 3, the concentration of 
+NO3
+−-N in the river water ranging from 0.24 to 4.16 (aver -
+age 2.29 ± 2.01 mg/L), NH4
++-N (0.64 ± 0.43 mg/L), NO2
+−-N 
+(0.03 ± 0.01 mg/L), with a relative content of 77.57, 21.68 
+and 0.75%. NO 3
+−-N concentrations ranged from 0.35 to 
+14.25 mg/L (6.25 ± 5.65 mg/L), NH4
++-N (0.76 ± 0.65 mg/L), 
+NO2
+−-N (0.09 ± 0.05 mg/L), with a relative content of 
+88.03, 10.70 and 1.27%. Overall, the relative content of 
+NO3
+−-N was more than 77%, indicating that the nitro -
+gen form entering the river was mainly NO 3
+−-N, and the 
+sources were mainly nitrified or rapidly nitrified pollution 
+sources, including fertilizer application, livestock breed -
+ing, and sewage treatment plant discharge in the study area 
+(Yu Z et al. 2022). The average concentration of NO3⁻-N in 
+Fig. 3 Spatial and temporal 
+variation in river-water nitrogen. 
+Panels show (a) NO3
+−-N, (b) 
+NH4
++-N, and (c) NO2
+−-N by dis-
+charge and land-use category, and 
+(d) the proportion of each species 
+in TN. SW, sanitary wastewater; 
+IW, industrial wastewater; OT, 
+other types
+ 
+Fig. 2 Concentrations of (a) nitrogen species and (b) total nitrogen (TN) in river water and groundwater during summer and winter seasons. SR, 
+summer river water; WR, winter river water; SG, summer groundwater; WG, winter groundwater. Significance levels: *p < 0.05; **p < 0.01
+ 
+1 3
+Page 7 of 16 406 
+Environmental Earth Sciences (2026) 85:406 
+winter (6.25 mg/L) was significantly higher ( p < 0.05) than 
+that in summer (2.29 mg/L), and the fluctuation range was 
+larger. NH4⁺-N also increased slightly in winter. The win -
+ter increase may reflect stronger external nitrogen inputs, 
+reduced biological uptake, or weaker dilution (Friedrichs et 
+al. 2019).
+Near industrial land, mean NO3
+−-N was 6.65 ± 5.63 mg/L. 
+Mean NH 4
++-N and NO 2
+−-N were 0.75 ± 0.53 and 
+0.04 ± 0.03 mg/L, respectively. However, DIN did not differ 
+significantly among industrial, agricultural, and other land-
+use categories (p > 0.05). This lack of separation may reflect 
+mixing among discharges within the river and sewage-col -
+lection network (Shoaib et al. 2008).
+Nitrogen content in groundwater
+The TN concentration of groundwater in the basin (aver -
+age 6.12 ± 5.33 mg/L) was higher than that of river water, 
+indicating persistent pollution seepage and accumula -
+tion (Fig. 4). In summer groundwater, mean NO 3
+−-N 
+was 5.98 ± 5.11 mg/L. Mean NH 4
++-N and NO 2
+−-N were 
+0.34 ± 0.31 and 0.02 ± 0.01 mg/L, respectively, accounting 
+for 5.25% and 0.22% of TN. In winter, mean NO 3
+−-N and 
+NH4⁺-N were 5.36 ± 5.21 and 0.37 ± 0.34 mg/L, respectively. 
+Groundwater NO2
+−-N was significantly higher in summer 
+than in winter (Mann-Whitney, p = 0.009; medians 0.013 
+and 0.002 mg N/L, respectively; Table S5 The concentration 
+of NO2
+−-N in the summer was significantly (p < 0.05) higher 
+than in the winter, with increased rainfall in the summer and 
+river runoff scouring dissolved NO 3
+−-N precursors into the 
+vesicular zone for infiltration. In karst basins, rapid infil -
+tration through fissure-dominated flow pathways facilitates 
+pollutant transport to phreatic aquifers during summer, lead-
+ing to elevated NO2⁻-N concentrations (Chu et al. 2021).
+Mean groundwater NO 3
+−-N in the Central High-Tech 
+Industrial Park was 4.53 ± 3.88 mg/L, below the 10 mg N/L 
+guideline; however, individual groundwater samples near 
+the industrial park exceeded the guideline (Table S2). Indus-
+trial-wastewater outlets serve chemical, pharmaceutical, 
+and electroplating facilities that use nitrate- and nitrite-con-
+taining materials (Huo et al. 2019; Li et al. 2025). Residual 
+nitrogen in the effluent may increase wastewater NO 3
+−-N 
+concentrations. The nutrients may partially remain in the 
+wastewater, in turn increasing the concentrations of NO3
+−-N 
+in the wastewater. The average NH4
++-N in groundwater was 
+0.41 mg/L, which was slightly lower than the concentration 
+in river water bodies, and the pH of water in karst basins 
+was weakly alkaline (pH 7.5–8.5). Under weakly alkaline 
+conditions, NH 4⁺ may be lost through ammonia volatil -
+ization before infiltration, which could reduce the amount 
+reaching groundwate (Woodward et al. 2011).
+Groundwater NO3
+−-N did not differ significantly among 
+industrial, agricultural, and other land-use categories (Krus-
+kal-Wallis, p = 0.48; Table S5). The highest individual val -
+ues nevertheless occurred at wells near the industrial park. 
+Elevated groundwater nitrate may be associated with the 
+hanger-manufacturing and specialty food-processing indus-
+tries prevalent in Lipu County (Yan et al. 2024). During 
+Fig. 4 Spatial and temporal varia-
+tions of nitrogens in groundwater: 
+(a) NO3
+−-N, (b) NH4
++-N, and (c) 
+NO2
+--N concentrations classified 
+by pollutant discharge level and 
+land use type; (d) proportions of 
+nitrogen species relative to TN
+ 
+1 3
+ 406 Page 8 of 16
+Environmental Earth Sciences (2026) 85:406 
+wastewater treatment, ammonia oxidation and nitrifica -
+tion convert reduced nitrogen to NO 3⁻-N. Organic nitro -
+gen in food-processing wastewater and nitrite oxidation 
+may provide additional nitrate that can subsequently enter 
+groundwater. This finding aligns with Wu’s probabilistic 
+assessments (Wu et al. 2025). The absence of significant 
+nitrate differences among river water categories does not 
+imply that their discharge sources are identical. Instead, it 
+may indicate stronger plume mixing in the river than in the 
+aquifer.
+Spatial distribution
+Nitrogen content in river water
+During the observation period, river-water TN averaged 
+4.95 ± 4.36 mg/L. Using the WHO and Chinese nitrate 
+guideline, 8% of river sites exceeded the threshold. Mean 
+nitrogen concentrations were relatively high in the Puling, 
+Dumo, Datang, and Limu tributaries. Concentrations in the 
+lower Maling River were 2.2 mg/L higher than upstream 
+values, possibly reflecting inputs from the nearby grain- 
+and food-processing industrial park. The concentrations of 
+various forms of nitrogen in the mainstream are NH 4
++-N 
+(0.55 ± 0.38 mg/L), NO3
+−-N (2.07 ± 1.78 mg/L), and NO2
+−-N 
+(0.02 ± 0.01 mg/L). In the tributaries, they are respectively 
+NH4
++-N (2.21 ± 1.87 mg/L), NO 3
+−-N (2.52 ± 2.38 mg/L), 
+and NO 2
+−-N (0.01 ± 0.01 mg/L). Along the Lipu main -
+stream, nitrogen concentrations were lower in the middle 
+reach and higher in the upper and lower reaches. The middle 
+reach passes through urban Lipu, whereas site DT2 receives 
+inputs from several industrial sectors, including metal, oil, 
+rice, and flour processing. Strong karst development in the 
+tributaries leads to low DO (< 2 mg/L), and an anoxic envi-
+ronment severely inhibits nitrification (Diab et al. 1993), 
+resulting in the accumulation of NH 4
++-N in the tributaries. 
+Mean TN was higher in the tributaries (5.11 mg/L) than in 
+the mainstream (2.64 mg/L). This difference was driven 
+mainly by elevated NH4⁺-N at a few tributary sites, whereas 
+the NO 3⁻-N difference was not statistically significant 
+(Mann-Whitney, p = 0.11; Table S5)., and the flow rates in 
+tributaries were mostly over 3.5 m 3/s, which is more than 
+30% of the flow rate of the main stream. The pollution load 
+is relatively high, indicating that tributaries such as the Pulu 
+and Dumo Rivers are the core sources of N pollution in 
+the basin (Fakouri et al. 2022). The river water monitoring 
+points were mainly driven by OT and SW.
+Points L5, DM1, and DM2 were affected by nearby 
+karst skylights, with higher DO (5 mg/L) and NO 3
+−-N 
+concentrations of 3.05, 4.16, and 2.93 mg/L, respectively. 
+Near PL2, L6, and DT2, there were large karst springs 
+with NO 3
+−-N concentrations of 3.11, 2.97 and 3.05 mg/L 
+respectively, all higher than the average NO 3
+−-N concen -
+tration (2.88 mg/L) in the basin, confirming the earlier 
+conclusion of groundwater recharge to the river water. 
+Considering the regional monitoring points were pure car -
+bonate rock hydrogeological conditions, the retention time 
+of pollutants around the large springs and skylights was 
+potentially shortened (Meng et al. 2021) and the natural 
+degradation rate was relatively low.
+Nitrate-nitrogen content in groundwater
+Groundwater TN averaged 5.743 mg/L, and 18.83% of 
+groundwater sites exceeded the WHO and Chinese nitrate 
+guideline. TN at sites U10 and U11, near the metalworking 
+industrial park, was two to three times the regional mean 
+(Fig. 5c, d). The area near the industrial-wastewater out -
+let was therefore a nitrate hotspot and may have contrib -
+uted to elevated concentrations in surrounding wells. The 
+upstream agricultural area has become a significant source 
+of groundwater NO 3
+−-N pollution, and the fundamental 
+driving factor is extensive application of organic fertil -
+izer in the Lipu Taro planting model and the subsequent 
+nitrification process. The concentrations of NO 3
+−-N in the 
+U1–U3 region were 1.65–3.57 mg/L higher than the aver -
+age concentration of groundwater in the region. Organic 
+fertilizers can account for 30%–50% of the cultivation of 
+Lipu taro in the region. Organic nitrogen is converted into 
+NH4
++-N through microbial mineralization and then into 
+NO3
+−-N by nitrifying bacteria. If the application is exces -
+sive or uncomposted, the rate of nitrate formation exceeds 
+the absorption capacity of the crop (Cui et al. 2023 b), 
+resulting in accumulation of NO 3
+−-N. U4 and U5 were 
+affected by nearby karst skylights, with NO3
+−-N concentra-
+tions of 2.87 and 3.2 mg/L, respectively. There are large 
+karst springs near U10, U11, and U12, with NO 3
+−-N con-
+centrations of 6.1, 18.3, and 5.6 mg/L, respectively. The 
+monitoring data near the karst spring showed no significant 
+differences from the other points in the basin; however, the 
+monitoring points near the karst skylight showed signifi -
+cant differences from those of the other points ( P < 0.05). 
+Sites U10-U12 sampled bedrock-fissure groundwater with 
+limited precipitation recharge, short subsurface flow paths, 
+and low discharge (Yi et al. 2023). Spring flow ranged from 
+0.014 to 0.325 L/s. Mean NO 3⁻-N across U10-U12 was 
+approximately 10 mg/L, possibly reflecting inputs from the 
+nearby new-materials industrial park.
+NO3⁻-N and dissolved oxygen varied among sites near 
+karst springs, skylights, and porous-aquifer wells. These 
+spatial patterns are consistent with heterogeneous con -
+duit and matrix flow paths, but the available groups do not 
+1 3
+Page 9 of 16 406 
+Environmental Earth Sciences (2026) 85:406 
+support a single statistically significant conduit-versus-
+matrix contrast. The U1-U3 wells represent a Quaternary 
+porous aquifer, whereas several other sites are associated 
+with karst springs or skylights; this hydrogeological distinc-
+tion is therefore treated as a process interpretation.
+Seasonal variation
+In summer, mean TN was lower in river water 
+(2.96 ± 2.36 mg/L) than in groundwater (6.74 ± 5.36 mg/L). 
+In winter, the pattern reversed: river-water TN averaged 
+7.12 ± 6.65 mg/L, compared with 5.77 ± 4.86 mg/L in 
+groundwater (Figs. 5 and 6). River-water NO3
+−-N, NH4
++-N, 
+and NO2
+−-N were higher from October to March than from 
+July to September, likely because summer rainfall and run -
+off diluted river concentrations. During the winter, there is 
+less precipitation and water flow slows down, and NO 3
+−-N 
+accumulation in the basin leads to higher concentration. 
+Sewage outlets within the basin also affect the distribution 
+of nitrogen; however, the dilution and accumulation effects 
+caused by seasonal changes are more significant. Notably, 
+there was a significant difference in NO 2
+−-N between the 
+wet and dry seasons, with concentrations in the summer 
+being approximately three times those in the winter. The 
+unique hydrological and water quality conditions in the 
+study area during the summer (high load input, turbidity, 
+and anoxic microenvironment) disrupted nitrogen transfor -
+mation (Zhao et al. 2020) and inhibited the nitrite consump-
+tion pathway (Fig. 5b). In groundwater, the high value areas 
+of the DIN are often concentrated at the IW monitoring point 
+(Fig. 5cd), which reflects both the continuous influence of 
+industrial pollution sources and the fissure-pipe type flow 
+characteristics of karst basins. Once pollutants enter a karst 
+aquifer through infiltration, they migrate to relatively con -
+nected channels, forming relatively stable high-value areas.
+Between summer and winter, the contribution of NO3⁻-N 
+to total DIN in river water declined from 88.07% (winter) 
+to 77.56% (summer). In summer, dilution by high rainfall 
+reduces absolute concentrations while the dominant sig -
+nal shifts towards non-point (agricultural) sources, par -
+tially masking point-source contributions. In winter, lower 
+discharge concentrates the point-source signal; elevated 
+NO3⁻-N at DT1, LM2 and L13, combined with elevated Cl⁻ 
+and EC, indicates direct industrial and sanitary inputs.
+Fig. 5 Spatial distribution of nitrogen in river water and groundwater during summer and winter. ( a) Summer river water; (b) winter river water; 
+(c) summer groundwater; (d) winter groundwater
+ 
+1 3
+ 406 Page 10 of 16
+Environmental Earth Sciences (2026) 85:406 
+Hydrochemical and isotopic constraints on NO3
+- 
+sources and transformation
+Two independent diagnostics are used here to identify the 
+processes controlling NO 3⁻ rather than its sources: the 
+nitrogen enrichment slope (NES, Eq. 1), which relates log 
+C(NO3⁻) to δ¹⁵N and δ¹⁸O, and the conservative tracers Cl⁻ 
+and EC, whose covariation with NO₃⁻ distinguishes source 
+mixing from in-situ removal. Together they constrain the 
+extent of denitrification and provide the process framework 
+within which the source apportionment in Section “ SIAR-
+based nitrate source apportionment” is interpreted.
+Nitrogen enrichment slope: log C(NO3
+-) versus δ15N and δ18O
+At the SW and IW outlets the NES was positive, log 
+C(NO3
+−) increasing with δ 15N (Fig. 6a, b). This is the sig -
+nature expected where manure- and sewage-derived NO 3
+− 
+accumulates along the flow path, because these sources carry 
+high δ15N, generally + 10 to + 25‰ (Serna et al. 2010). At the 
+OT outlets the slope was negative. The most probable con -
+trol is the low δ15N of synthetic fertilisers (urea, ammonium 
+salts and nitrate fertilisers), which is close to the atmospheric 
+value of 0‰ and generally ranges from − 6 to + 6‰: where 
+fertiliser is applied in excess of plant uptake and soil fixa -
+tion, runoff and leaching deliver high NO 3
+− concentrations 
+at low δ15N (Šturm et al. 2011). The contrast in the sign of 
+the NES between SW/IW and OT therefore separates the two 
+dominant source families independently of, and prior to, the 
+mixing model. The fitted relationships and their coefficients 
+of determination are shown in Fig. 6.
+The regressions against δ18O were likewise positive at SW 
+and IW (Fig. 6c, d). Because nitrification incorporates oxygen 
+from ambient water, NO3
+− produced in situ inherits a δ 18O 
+close to that of the local water, so a positive log C(NO 3
+−)-
+δ18O relationship indicates that NO3
+− at these outlets is largely 
+nitrification-derived while the contributing sources (domes-
+tic, industrial and soil mineralisation) retain distinguishable 
+δ18O signatures (Buchwald et al. 2012). The weaker relation-
+ship at OT is consistent with a larger, isotopically distinct 
+fertiliser contribution. Critically, neither regression shows 
+the joint enrichment of δ15N and δ18O with falling NO3
+− that 
+would indicate denitrification; that possibility is evaluated 
+quantitatively in Section “Extent of denitrification”.
+Conservative tracers (Cl − and EC): mixing versus in-situ 
+removal
+Cl− behaves conservatively in these waters and EC inte -
+grates total mineralisation, so their covariation with NO 3
+− 
+discriminates between the two processes that can control 
+NO3
+− concentration (Xu et al. 2016). If NO3
+− rises together 
+with Cl − and with EC, the concentration change is gov -
+erned by source mixing and conservative transport; if 
+Fig. 6 Relationships of log-
+transformed NO3
+− concentrations 
+with δ15N and δ18O in the Lipu 
+River Basin. Shading indicates 
+the confidence interval around 
+the fitted mean. Panels (a, b) 
+show relationships with δ15N, and 
+panels (c, d) show relationships 
+with δ18O
+ 
+1 3
+Page 11 of 16 406 
+Environmental Earth Sciences (2026) 85:406 
+denitrification is active, NO 3
+− falls while Cl− is unchanged, 
+so that the NO 3
+−/Cl− ratio declines as δ 15N rises. The 
+two diagnostics are applied separately to river water and 
+to groundwater, because Section “ Spatial distribution ” 
+showed that the two compartments differ in flow path and 
+residence time.
+IThe group-specific regressions in Fig. 7 showed that the 
+NO₃⁻-EC relationship was strongest for SW (R² = 0.593), 
+followed by IW (R² = 0.464), while OT showed only a 
+weak relationship (R² = 0.032). The NO₃⁻-Cl⁻ relationship 
+was also strongest for SW (R² = 0.483); the corresponding 
+values for OT and IW were 0.216 and 0.206, respectively. 
+The SW and IW patterns are consistent with co-discharge 
+and conservative mixing, whereas the weaker OT relation -
+ships indicate more heterogeneous inputs. These regres -
+sions do not by themselves quantify denitrification, which 
+is evaluated using the isotope evidence in Section “ Extent 
+of denitrification” (Fig. 7; Table S5)n river water, NO3
+− was 
+positively correlated with both EC and Cl − at all discharge 
+types (Fig. 7a, b), and the relationship was strongest at the 
+industrial outlets (R 2 = 0.596), where chloride-rich effluent 
+is expected and where elevated wastewater temperature 
+further increases ionic mobility and hence EC (Zhang et 
+al. 2020). Read together with the winter point-source sig -
+nal described in Section “ Seasonal variation ”, the positive 
+NO3
+−-Cl− relationship (Table S5) indicates that river-water 
+NO3
+− is controlled by conservative mixing of discharge 
+sources rather than by in-stream removal. In groundwater, 
+by contrast, the NO 3
+−-Cl− relationship was not significant. 
+This decoupling cannot be produced by mixing alone and 
+is attributed to vertical karst heterogeneity: where matrix-
+dominated, hypoxic to anoxic conditions develop (Lorette 
+et al. 2022), NO 3
+− is removed locally while Cl − is con -
+served. The conduit-matrix contrast in dissolved oxygen 
+reported in Section “Nitrate-nitrogen content in groundwa -
+ter” thus has a measurable geochemical expression, whose 
+magnitude is bounded below.
+Extent of denitrification
+The δ18O-NO3
+− values of all samples fall within the range 
+produced by nitrification, confirming that nitrification, 
+rather than direct input of oxidised nitrate, establishes the 
+NO3
+− pool in both compartments. Where denitrification does 
+occur, nitrogen and oxygen isotopes fractionate according to 
+a Rayleigh model, so δ15N and δ18O both increase as NO 3
+− 
+decreases, with an enrichment ratio ε N/εO of about 1.3–2.1. 
+Most river-water samples plotted to the left of the εN/εO = 2.1 
+line and showed no coupled increase in δ15N and δ18O, that 
+is, no resolvable denitrification. In groundwater, δ 15N and 
+δ18O were inversely related to NO 3
+−-N with an enrichment 
+ratio of about 1.38, which does indicate denitrification (Plata 
+et al. 2025); the δ values nevertheless remained low and the 
+samples were only suboxic (DO < 2 mg/L), so the extent 
+of removal was limited. This bound is consistent with the 
+loss of the NO 3
+−-Cl− relationship in groundwater (Section 
+“Conservative tracers (Cl − and EC): mixing versus in-situ 
+removal”) and means that the proportions derived in Section 
+“SIAR-based nitrate source apportionment” can be treated as 
+near-conservative mixtures, with the caveat that the ground-
+water M&S contribution may be marginally underestimated.
+SIAR-based nitrate source apportionment
+The SIAR model estimated source contributions to NO3
+−-N 
+in river water and groundwater (Fig. 8). Manure and sew -
+age were combined as M&S because their isotope ranges 
+overlapped. Posterior estimates are reported as means ± SD 
+with 95% credible intervals (Text S2). M&S was the largest 
+modeled source in river water, followed by soil nitrogen. 
+The soil contribution may reflect runoff that transported 
+organic nitrogen from residential soils during heavy sum -
+mer rainfall (Cui et al. 2020), and heavy rainfall during the 
+summer washed the homestead soil, carrying high amounts 
+of organic nitrogen into the river water. After entering river 
+water, some organic nitrogen may be converted to nitrate 
+Fig. 7 ( a) Relationship between 
+nitrate (NO3
+−) and electrical 
+conductivity. (b) Relationship 
+between NO3
+− and Cl−
+ 
+1 3
+ 406 Page 12 of 16
+Environmental Earth Sciences (2026) 85:406 
+through nitrification rather than transported directly to 
+groundwater (Xiong et al. 2023). Soil nitrogen was nev -
+ertheless the second-largest modeled groundwater source, 
+possibly through river recharge or direct soil leaching. 
+M&S was the largest modeled groundwater source. The 
+proposed role of landfill flushing and infiltration should be 
+stated only if supported by site-specific evidence; other -
+wise, present it as a hypothesis rather than an explanation 
+(Vadas et al. 2008). Isotope-based apportionment in karst 
+systems is subject to uncertainties arising from overlapping 
+end-member signatures, conduit–matrix mixing, and vari -
+able nitrification/denitrification. The reported proportions 
+therefore represent the summer basin-scale NO 3⁻ budget, 
+with associated uncertainty reflected by the credible inter -
+vals (Text S2).
+Quantitatively, the posterior estimates confirmed M&S 
+as the dominant NO 3⁻ source. For the basin as a whole, 
+M&S contributed 56.7 ± 8.2%, followed by soil nitrogen 
+(22.5 ± 6.5%), nitrogen fertilizer (15.3 ± 5.0%) and atmo -
+spheric deposition (5.5 ± 2.5%). The M&S contribution 
+was higher in groundwater (61.5 ± 8.5%) than in river water 
+(50.2 ± 8.0%), whereas soil nitrogen was correspondingly 
+higher in river water (27.0 ± 6.8%) than in groundwater 
+(21.0 ± 6.2%); NF and AD were minor in both (Table S7). 
+The very low AD contribution is consistent with the low 
+δ¹⁸O-NO₃⁻ values of the samples, which lie well below the 
+atmospheric end-member.
+The δ18O-NO3
+− values of the water samples in the study 
+area were all within the typical δ 18O-NO3
+− range produced 
+by nitrification (Li et al. 2019), indicating that nitrification 
+is a key process for establishment of the source of NO 3
+− in 
+river water and groundwater. In groundwater dominated 
+by nitrification, the higher the dissolved oxygen content, 
+the higher the δ 15N-NO3
+− value. The nitrogen and oxygen 
+isotope fractionation produced during denitrification fol -
+lowed Rayleigh fractionation, and the δ 15N and δ 18O val-
+ues of the remaining NO 3
+− satisfied the Rayleigh formula, 
+showing that as NO 3
+− concentration decreased, both δ 15N 
+and δ18O values increased and were linearly correlated. In 
+addition, the slope of the enrichment coefficient ratio (ε N/
+εO) varied between 1.3 and 2.1. Most of the data at the 
+monitoring points were concentrated in the left zone of 
+εN/εO = 2.1, where the NO 3
+−-N concentration and the val -
+ues of nitrogen and oxygen isotopes were within a certain 
+range, indicating that the changes in the water body were 
+not significant and there was no obvious denitrification. 
+Groundwater δ 15N and δ18O values were inversely related 
+to NO₃⁻-N concentrations, with an enrichment-slope ratio 
+of approximately 1.38. This pattern was consistent with 
+some denitrification (Yuan et al. 2020), although the 
+Fig. 8 Distribution of δ15N-NO3⁻ 
+and δ18O-NO3⁻ values and mod-
+eled nitrate-source proportions. 
+(a) River water and groundwater; 
+(b) sanitary wastewater (SW), 
+industrial wastewater (IW), 
+and other types (OT); (c) SIAR 
+proportions for the three modeled 
+source categories by discharge 
+category and for the whole basin. 
+Shaded outlines in panels (a) and 
+(b) show 95% group ellipses. 
+Rounded values in panel (c) are 
+listed in Table S7
+ 
+1 3
+Page 13 of 16 406 
+Environmental Earth Sciences (2026) 85:406 
+generally low isotope values suggested that the process 
+was limited. The interpretation of DO < 2 mg/L as evi -
+dence of weak denitrification should be justified, because 
+suboxic conditions can also favor denitrification The δ 15N 
+and δ18O values in groundwater were slightly higher than 
+those in river water, suggesting that groundwater was more 
+strongly influenced by fecal matter and domestic sewage 
+inputs. This is likely attributable to the widespread use 
+of dry toilet systems in rural areas and the application of 
+manure to agricultural land (Wang et al. 2021).
+Compared with other karst and plateau systems in South-
+west China, the M&S contribution in the Lipu River basin 
+(56.7%) is notably higher. In the Babu karst aquifer, manure 
+and sewage, nitrogen fertilizer, and soil nitrogen contributed 
+37%-38%, 31%-32%, and 31%, respectively (Ren et al. 
+2022). In the Erhai Basin, manure and sewage contributed 
+49.6%, while soil nitrogen contributed 37.2%. The higher 
+M&S contribution in the Lipu Basin may reflect dense rural 
+settlement, dry-toilet use, manure application, and local 
+industrial discharge of dissolved-organic-nitrogen-rich 
+wastewater (Table S8). These findings suggest that M&S 
+is a major nitrogen source in karst groundwater in South -
+west China, whereas the Lipu River Basin is also affected 
+by local industrial activities.
+The δ 18O-NO3
+− of agricultural area was higher than 
+that of other areas, suggesting that major nitrogen biogeo -
+chemical processes have changed across different pollution 
+types. Many studies have found that pollution type and 
+water body characteristics largely influence the NO3
+− isoto-
+pic characteristics (Choi et al. 2020; Yu et al. 2022a, b). The 
+δ15N-NO3
+− values observed in IA were lower than those 
+observed in FA, mainly because SN and NF are the main 
+sources of NO 3
+− (Kim et al. 1996). Isotope enrichment in 
+river water may reflect increased fertilizer use, enhanced 
+manure volatilization, and evaporation of waste-derived 
+leachate during warm periods. However, δ 18O-NO3
+− may 
+respond more strongly to microbial nitrification than 
+to source, land use, or season. The higher groundwater 
+δ15N-NO3⁻ values were consistent with M&S inputs from 
+densely populated areas and waste leachate.
+Compared with other karst and plateau systems in 
+Southwest China, the M&S contribution in the Lipu River 
+basin (56.7 ± 8.2%) is notably higher than that reported for 
+the Babu karst aquifer, Guizhou (37–38%), and the Erhai 
+Basin on the Yunnan–Guizhou Plateau (49.6%), where 
+nitrogen fertilizer and/or soil nitrogen remain co-dominant. 
+The greater dominance of M&S in the Lipu basin reflects 
+its specific land-use setting—dense rural settlements with 
+widespread dry-toilet systems and manure application, com-
+bined with hanger-manufacturing and taro food-processing 
+industries that discharge dissolved DON-rich wastewater—
+rather than the fertilizer or soil-dominated signatures typi -
+cal of more strictly agricultural karst catchments. Table S8 
+summarises this cross-study comparison.
+Conclusion
+This study combined dual nitrate isotopes, hydrochem -
+istry, and SIAR modeling to evaluate nitrate sources and 
+transformations in a coupled karst river-groundwater sys -
+tem. Groundwater TN exceeded river-water TN in summer, 
+whereas river-water TN was higher in winter. Ground -
+water near the metalworking and new-materials park and 
+tributaries near the grain and food-processing park con -
+tained localized NO 3⁻-N hotspots. In Fig. 7, the strongest 
+NO3⁻-EC relationship occurred at SW outlets (R² = 0.593), 
+followed by IW outlets (R² = 0.464); the NO 3⁻-Cl⁻ rela -
+tionship was also strongest for SW (R² = 0.483). Mea -
+sured δ18O-NO3⁻ values fell within the nitrification-derived 
+range, and an εN/εO slope of approximately 1.38 suggested 
+limited groundwater denitrification. The three-source SIAR 
+model identified M&S as the largest modeled summer 
+source, contributing 49% at the basin scale. Because nitrate 
+isotopes were measured only in summer, these source pro -
+portions should not be interpreted as seasonal estimates. 
+Management should prioritize manure and sewage control 
+in karst-sensitive zones, localized industrial groundwater 
+hotspots, and winter monitoring of tributaries affected by 
+food-processing activities.
+Supplementary Information The online version contains supplementary 
+material available at h t t p s : / / d o i . o r g / 1 0 . 1 0 0 7 / s 1 2 6 6 5 - 0 2 6 - 1 3 1 3 6 - 4 . 
+Acknowledgements This work was supported by the Guangxi Univer-
+sity Engineering Research Center for River Basin Protection and Green 
+Development, Guilin University of Technology and the Guangxi Engi-
+neering Research Center for Comprehensive Control of Agricultural 
+Non-point Source Pollution.
+Author contributions Zupeng Wan: Conceptualization, data cura -
+tion, modeling, writing - original draft, writing - review and editing, 
+and funding acquisition. Baojun Liu: Data curation and investigation. 
+Xiaoyu Yan: Formal analysis. Yingjie Chen: Conceptualization. Wen-
+wen Chen: Resources, Methodology. Honghu Zeng*: Writing—re -
+viewing and editing, Funding acquisition.
+Funding This work was funded by the National Natural Science Foun-
+dation of China (grant 52360001) and the Guangxi Basic Ability En -
+hancement Programme for Young and Middle-Aged Teachers (grant 
+2023KY0273).
+Data availability No datasets were generated or analysed during the 
+current study.
+1 3
+ 406 Page 14 of 16
+Environmental Earth Sciences (2026) 85:406 
+Declarations
+Competing interests The authors declare no competing interests.
+Open Access This article is licensed under a Creative Commons 
+Attribution-NonCommercial-NoDerivatives 4.0 International License, 
+which permits any non-commercial use, sharing, distribution and 
+reproduction in any medium or format, as long as you give appropri -
+ate credit to the original author(s) and the source, provide a link to the 
+Creative Commons licence, and indicate if you modified the licensed 
+material. You do not have permission under this licence to share 
+adapted material derived from this article or parts of it. The images or 
+other third party material in this article are included in the article’s Cre-
+ative Commons licence, unless indicated otherwise in a credit line to 
+the material. If material is not included in the article’s Creative Com -
+mons licence and your intended use is not permitted by statutory regu-
+lation or exceeds the permitted use, you will need to obtain permission 
+directly from the copyright holder. To view a copy of this licence, visit 
+http:// creativ ecommon s.org /licenses/by-nc-nd/4.0/.
+References
+Biddau R, Dore E, Da Pelo S, Lorrai M, Botti P, Testa M, Cidu R 
+(2023) Geochemistry, stable isotopes and statistic tools to esti -
+mate threshold and source of nitrate in groundwater (Sardinia, 
+Italy). Water Res 232:119663. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . w a t r e s . 2 
+0 2 3 . 1 1 9 6 6 3 
+Boumaiza L, Walter J, Chesnaux R, Huneau F, Garel É, Erostate M, 
+Johannesson KH, Vystavna Y , Bougherira N, Bordeleau G, Stot-
+ler RL, Blarasin M, Gutiérrez M, Knöller K, Stumpp C (2022) 
+Multi-tracer approach to understand nitrate contamination and 
+groundwater-surface water interactions in the Mediterranean 
+coastal area of Guerbes-Senhadja, Algeria. J Contam Hydrol 
+251:104098. https:/ /doi.or g/10.10 16/j. jconhyd.2022.104098
+Buchwald C, Santoro AE, McIlvin MR, Casciotti KL (2012) Oxygen 
+isotopic composition of nitrate and nitrite produced by nitrify -
+ing cocultures and natural marine assemblages. Limnol Oceanogr 
+57:1361–1375. https:/ /doi.or g/10.43 19/lo .2012.57.5.1361
+Chang Y , Qi Y , Wang Z (2024) Comprehensive evaluation of IMERG, 
+ERA5-Land and their fusion products in the hydrological simula-
+tion of three karst catchments in Southwest China. J Hydrol Reg 
+Stud 52:101671. https:/ /doi.or g/10.10 16/j. ejrh.2024.101671
+Choi J-Y , Kim S-K, Kim J-C, La G-H (2020) Utilization of nitrate sta-
+ble isotopes of Chydorus sphaericus (OF Müller) to elucidate the 
+hydrological characteristics of riverine wetlands in the Nakdong 
+River, South Korea. J Ecol Environ 44:1. h t t p s : / / d o i . o r g / 1 0 . 1 1 8 6 
+/ s 4 1 6 1 0 - 0 1 9 - 0 1 4 4 - 1 
+Chu X, Ding H, Zhang X (2021) Simulation of solute transport behav-
+iors in saturated karst aquifer system. Sci Rep 11:15614. h t t p s : / / d 
+o i . o r g / 1 0 . 1 0 3 8 / s 4 1 5 9 8 - 0 2 1 - 9 4 9 5 0 - 7 
+Cui N, Cai M, Zhang X, Abdelhafez AA, Zhou L, Sun H, Chen G, 
+Zou G, Zhou S (2020) Runoff loss of nitrogen and phosphorus 
+from a rice paddy field in the east of China: Effects of long-term 
+chemical N fertilizer and organic manure applications. Glob Ecol 
+Conserv 22:e01011. https:/ /doi.or g/10.10 16/j. gecco.2020.e01011
+Cui R, Zhang D, Hu W, Zhao X, Yan H, Liu G, Chen A (2023) Nitro-
+gen in soil, manure and sewage has become a major challenge in 
+controlling nitrate pollution in groundwater around plateau lakes, 
+Southwest China. J Hydrol 620:129541. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / 
+j . j h y d r o l . 2 0 2 3 . 1 2 9 5 4 1 
+Diab S, Kochba M, Avnimelech Y (1993) Nitrification pattern in a 
+fluctuating anaerobic-aerobic pond environment. Water Res 
+27:1469–1475. https:/ /doi.or g/10.10 16/00 43-1354(93)90027-F
+Fakouri B, Mohamad Vali Samani J, Mohamad Vali Samani H, Maza-
+heri M (2022) Cost-based model for optimal waste-load allocation 
+and pollution loading losses in river system: simulation–optimi -
+zation approach. Int J Environ Sci Technol 19:12103–12118. 
+https:/ /doi.or g/10.10 07/s1 3762-022-04422-2
+Fan Z, Ti C, Xing Y , Qiu J, Han H, Wang R, Liu Y , Xu R, Qi C, He 
+Z, Yan, Xiaoyuan, Xia Y (2025) Elucidating nitrate sources in a 
+karst watershed: Integrating isotope techniques, hydrochemical 
+methods, and bayesian model. J Environ Manage 392:126793. 
+https:/ /doi.or g/10.10 16/j. jenvman.2025.126793
+Friedrichs MAM, St-Laurent P, Xiao Y , Hofmann E, Hyde K, Man -
+nino A, Najjar RG, Narváez DA, Signorini SR, Tian H, Wilkin J, 
+Yao Y , Xue J (2019) Ocean circulation causes strong variability 
+in the mid-atlantic bight nitrogen budget. J Geophys Res Oceans 
+124:113–134. https:/ /doi.or g/10.10 29/20 18JC014424
+Grechanik SV , Klymenko NA, Bunetskyi V A, Smolin SK, Zabneva 
+OV , Nevynna LV (2024) Production of Activated Biochar from 
+Wood Raw Materials for Water Treatment and Water Purification 
+Applications. J Water Chem Technol 46:512–523. h t t p s : / / d o i . o r g / 
+1 0 . 3 1 0 3 / S 1 0 6 3 4 5 5 X 2 4 0 5 0 0 4 7 
+Guo W, Zhang K, Liang Z, Zou R, Xu Q (2019) Electrochemical nitro-
+gen fixation and utilization: theories, advanced catalyst materials 
+and system design. Chem Soc Rev 48:5658–5716. h t t p s : / / d o i . o r g 
+/ 1 0 . 1 0 3 9 / C 9 C S 0 0 1 5 9 J 
+Güven D, Hanhan O, Aksoy EC, Insel G, Çokgör E (2017) Impact of 
+paint shop decanter effluents on biological treatability of automo-
+tive industry wastewater. J Hazard Mater 330:61–67. h t t p s : / / d o i . o 
+r g / 1 0 . 1 0 1 6 / j . j h a z m a t . 2 0 1 7 . 0 1 . 0 4 8 
+Hu Q (2024) Pollution characteristics and risk assessment of persistent 
+organic pollutants in typical karst industrial areas (Master’s the -
+sis). Guilin University of Technology, Guilin. h t t p s : / / d o i . o r g / 1 0 . 2 
+7 0 5 0 / d . c n k i . g g l g c . 2 0 2 4 . 0 0 0 4 8 8 
+Huo J, He G, Chen W, Hu X, Deng Q, Chen D (2019) A minireview of 
+hydroamination catalysis: alkene and alkyne substrate selective, 
+metal complex design. BMC Chem 13:89. h t t p s : / / d o i . o r g / 1 0 . 1 1 8 
+6 / s 1 3 0 6 5 - 0 1 9 - 0 6 0 6 - 7 
+Iqbal J, Su C, Wang M, Abbas H, Baloch MYJ, Ghani J, Ullah Z, Huq 
+ME (2022) Groundwater fluoride and nitrate contamination and 
+associated human health risk assessment in South Punjab. Paki -
+stan Environ Sci Pollut Res 30:61606–61625. h t t p s : / / d o i . o r g / 1 0 . 1 
+0 0 7 / s 1 1 3 5 6 - 0 2 3 - 2 5 9 5 8 - x 
+Iriawan H, Andersen SZ, Zhang X, Comer BM, Barrio J, Chen P, 
+Medford AJ, Stephens IEL, Chorkendorff I, Shao-Horn Y (2021) 
+Methods for nitrogen activation by reduction and oxidation. Nat 
+Rev Methods Primer 1:56. h t t p s : / / d o i . o r g / 1 0 . 1 0 3 8 / s 4 3 5 8 6 - 0 2 1 - 0 
+0 0 5 3 - y 
+Ji X, Shu L, Chen W, Chen Z, Shang X, Yang Y , Dahlgren RA, Zhang 
+M (2022) Nitrate pollution source apportionment, uncertainty and 
+sensitivity analysis across a rural-urban river network based on 
+δ15N/δ18O-NO3 – isotopes and SIAR modeling. J Hazard Mater 
+438:129480. https:/ /doi.or g/10.10 16/j. jhazmat.2022.129480
+Jost G, Dirnboeck T, Grabner M-T, Mirtl M (2011) Nitrogen leach -
+ing of two forest ecosystems in a karst watershed. Water Air Soil 
+Pollut 218:633–649. https:/ /doi.or g/10.10 07/s1 1270-010-0674-8
+Kim CS, Sandretto C, Hostetler J (1996) Effects of farmer response to 
+nitrogen fertilizer management practices on groundwater quality. 
+Water Resour Res 32:1411–1415. h t t p s : / / d o i . o r g / 1 0 . 1 0 2 9 / 9 6 W R 
+0 0 4 9 1 
+Kiszka JJ, Mendez-Fernandez P, Heithaus MR, Ridoux V (2014) The 
+foraging ecology of coastal bottlenose dolphins based on stable 
+isotope mixing models and behavioural sampling. Mar Biol 
+161:953–961. https:/ /doi.or g/10.10 07/s0 0227-014-2395-9
+Lai Y , Yang H, Qiu F, Dang Z, Luo Y (2023) Can rural industrial inte-
+gration alleviate agricultural non-point source pollution? evi -
+dence from Rural China. Agriculture 13:1389. h t t p s : / / d o i . o r g / 1 0 . 
+3 3 9 0 / a g r i c u l t u r e 1 3 0 7 1 3 8 9 
+1 3
+Page 15 of 16 406 
+Environmental Earth Sciences (2026) 85:406 
+Lavoie RA, Jardine TD, Chumchal MM, Kidd KA, Campbell LM 
+(2013) Biomagnification of mercury in aquatic food webs: a 
+worldwide meta-analysis. Environ Sci Technol 47:13385–13394. 
+https:/ /doi.or g/10.10 21/es 403103t
+Li X, Tang C, Cao Y , Li X (2019) Carbon, nitrogen and sulfur isotopic 
+features and the associated geochemical processes in a coastal 
+aquifer system of the Pearl River Delta, China. J Hydrol 575:986–
+998. https:/ /doi.or g/10.10 16/j. jhydrol.2019.05.092
+Li J, Zhu D, Zhang S, Yang G, Zhao Y , Zhou C, Lin Y , Zou S (2022) 
+Application of the hydrochemistry, stable isotopes and MixSIAR 
+model to identify nitrate sources and transformations in surface 
+water and groundwater of an intensive agricultural karst wetland 
+in guilin, China. Ecotoxicol Environ Saf 231. h t t p s : / / d o i . o r g / 1 0 . 1 
+0 1 6 / j . e c o e n v . 2 0 2 2 . 1 1 3 2 0 5 
+Li Y , Yang J, Wen J (2023) Entropy-based redundancy analysis and 
+information screening. Digit Commun Netw 9(5):1061–1069. 
+https:/ /doi.or g/10.10 16/j. dcan.2021.12.001
+Li H, Tian R, Zhang Y (2025) Electrochemically superior ammonia 
+production from electroplating wastewater over oxygen-incorpo-
+rated antiperovskite. J Colloid Interface Sci 683:49–57. h t t p s : / / d o 
+i . o r g / 1 0 . 1 0 1 6 / j . j c i s . 2 0 2 4 . 1 2 . 1 2 2 
+Lin H, Yan S, Song B, Wang Z, Sun L (2019) Discrimination of aged 
+rice using colorimetric sensor array combined with volatile 
+organic compounds. J Food Process Eng 42:e13037. h t t p s : / / d o i 
+. o r g / 1 0 . 1 1 1 1 / j f p e . 1 3 0 3 7 
+Liu X, Han Z, Li Q, Wu P (2025) Quantitative identification of nitrate 
+pollution sources in karst water in carbonate basins combined 
+with stable isotope tracer techniques. Ecohydrol Hydrobiol 
+25:573–585. https:/ /doi.or g/10.10 16/j. ecohyd.2024.09.006
+Lorette G, Sebilo M, Buquet D, Lastennet R, Denis A, Peyraube N, 
+Charriere V , Studer J-C (2022) Tracing sources and fate of nitrate 
+in multilayered karstic hydrogeological catchments using natural 
+stable isotopic composition (δ15N-NO3- and δ18O-NO3-). Appli-
+cation to the toulon karst system (dordogne, france). J Hydrol 
+610:127972. https:/ /doi.or g/10.10 16/j. jhydrol.2022.127972
+Ma Y , Jones DL, Wang J, Cardenas LM, Chadwick DR (2021) Rela-
+tive efficacy and stability of biological and synthetic nitrification 
+inhibitors in a highly nitrifying soil: Evidence of apparent nitrifi-
+cation inhibition by linoleic acid and linolenic acid. Eur J Soil Sci 
+72:2356–2371. https:/ /doi.or g/10.11 11/ej ss.13096
+Meng Q, Xing L, Liu L, Xing X, Zhao Z, Zhang F, Li C (2021) Time-
+lag characteristics of the response of karst springs to precipitation 
+in the northern China. Environ Earth Sci 80:348. h t t p s : / / d o i . o r g / 1 
+0 . 1 0 0 7 / s 1 2 6 6 5 - 0 2 1 - 0 9 6 4 0 - 4 
+Plata I, Humez P, Wilson L, Nightingale M, McClain C, Mayer B 
+(2025) Distribution, sources, and fate of nitrate in groundwater in 
+agricultural areas of southern alberta, canada. Biogeochemistry 
+168:18. https:/ /doi.or g/10.10 07/s1 0533-025-01209-8
+Ren K, Pan X, Yuan D, Zeng J, Liang J, Peng C (2022) Nitrate sources 
+and nitrogen dynamics in a karst aquifer with mixed nitrogen 
+inputs (southwest China): Revealed by multiple stable isotopic 
+and hydro-chemical proxies. Water Res 210:118000. h t t p s : / / d o i . o 
+r g / 1 0 . 1 0 1 6 / j . w a t r e s . 2 0 2 1 . 1 1 8 0 0 0 
+Schaefer MV , Ying SC, Benner SG, Duan Y , Wang Y , Fendorf S 
+(2016) Aquifer Arsenic Cycling Induced by Seasonal Hydrologic 
+Changes within the Yangtze River Basin. Environ Sci Technol 
+50:3521–3529. https:/ /doi.or g/10.10 21/ac s.est.5b04986
+Serna A, Pätsch J, Dähnke K, Wiesner MG, Hass C, Zeiler H, Hebbeln 
+M, Emeis D, K.-C (2010) History of anthropogenic nitrogen input 
+to the german bight/SE north sea as reflected by nitrogen isotopes 
+in surface sediments, sediment cores and hindcast models. Cont 
+Shelf Res 30:1626–1638. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . c s r . 2 0 1 0 . 0 6 . 0 1 0 
+She W, Jiao Y , Lu R, Chai Y , Chen F, Shen J, Zhang H, Liao H, Xu Q 
+(2024) Quantification of nitrate sources and its spatial heteroge -
+neity by dual isotopes. Ecosyst Health Sustain 10:0201. h t t p s : / / d 
+o i . o r g / 1 0 . 3 4 1 3 3 / e h s . 0 2 0 1 
+Shoaib AM, Aly SM, Awad ME, Foo DCY , El-Halwagi MM (2008) A 
+hierarchical approach for the synthesis of batch water network. 
+Comput Chem Eng 32:530–539. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . c o m p 
+c h e m e n g . 2 0 0 7 . 0 3 . 0 1 5 
+Šturm M, Kacjan-Maršić N, Lojen S (2011) Can δ15N in lettuce tis -
+sues reveal the use of synthetic nitrogen fertiliser in organic pro -
+duction? J Sci Food Agric 91:262–267. h t t p s : / / d o i . o r g / 1 0 . 1 0 0 2 / j 
+s f a . 4 1 7 9 
+Vadas PA, Owens LB, Sharpley AN (2008) An empirical model for 
+dissolved phosphorus in runoff from surface-applied fertilizers. 
+Agric Ecosyst Environ 127:59–65. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . a g e 
+e . 2 0 0 8 . 0 3 . 0 0 1 
+Wang X, Xu S, Zhan J, Ma J (2021) Analysis of the two-stage aero -
+bic cooperative composting effects of rural organic solid waste. J 
+Environ Eng 15:1708–1715
+Wang S, Lin W, Ye Q, Lv W, Liao P, Yu J, Mu C, Wu L, Muneer MA, 
+Zhang Y , Zhan R, Wu A, Wu H, Chen C, Su H, Chen Y , Wang Z, 
+Zhang Z, Ji H, Guo L (2024) Effects of Different Nitrogen Fertil-
+izer Rates on Soil Magnesium Leaching in Tea Garden. J. Soil 
+Sci. Plant Nutr 24:6630–6640. h t t p s : / / d o i . o r g / 1 0 . 1 0 0 7 / s 4 2 7 2 9 - 0 
+2 4 - 0 1 9 9 5 - 4 
+Wells NS, Kappelmeyer U, Knöller K (2018) Anoxic nitrogen cycling 
+in a hydrocarbon and ammonium contaminated aquifer. Water 
+Res 142:373–382. https:/ /doi.or g/10.10 16/j. watres.2018.06.005
+Woodward TR, Frame WH, Alley MM, Whitehurst GB, Whitehurst 
+BM (2011) Design and validation of a laboratory system for mea-
+surement of volatilized ammonia. Agron J 103:38–44. h t t p s : / / d o i 
+. o r g / 1 0 . 2 1 3 4 / a g r o n j 2 0 1 0 . 0 2 4 2 
+Wu P, Xiao Q, Guo Y , Prelovšek M, Yu Q, Wang Q (2022) Migration, 
+transformation and nitrate source in the Lihu Underground River 
+based on dual stable isotopes of δ15N-NO3 – and δ18O-NO3–. 
+Environ Sci Pollut Res 29:48661–48674. h t t p s : / / d o i . o r g / 1 0 . 1 0 0 7 
+/ s 1 1 3 5 6 - 0 2 2 - 1 9 2 7 7 - w 
+Wu H, Wang Y , Liu Y , Guo S, Zhong Z (2025) Experimental and 
+simulation study of flue gas desulfurization using the limestone-
+gypsum wet method under an oxygen-enriched combustion atmo-
+sphere. J Energy Inst 119:101999. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . j o e i . 2 
+0 2 5 . 1 0 1 9 9 9 
+Xiong G, Zhu X, Liu M, Yang Y , Chen G, Fu T, Ding R, Xu X, Wu J 
+(2023) Nitrogen cycle pattern variations during seawater-ground-
+water-river interactions enhance the nitrogen availability in the 
+coastal earth critical zone. J Hydrol 624:129932. h t t p s : / / d o i . o r g / 1 
+0 . 1 0 1 6 / j . j h y d r o l . 2 0 2 3 . 1 2 9 9 3 2 
+Xu S, Kang P, Sun Y (2016) A stable isotope approach and its applica-
+tion for identifying nitrate source and transformation process in 
+water. Environ Sci Pollut Res 23:1133–1148. h t t p s : / / d o i . o r g / 1 0 . 1 
+0 0 7 / s 1 1 3 5 6 - 0 1 5 - 5 3 0 9 - 6 
+Xue D, Botte J, De Baets B, Accoe F, Nestler A, Taylor P, Van Cle -
+emput O, Berglund M, Boeckx P (2009) Present limitations and 
+future prospects of stable isotope methods for nitrate source iden-
+tification in surface- and groundwater. Water Res 43(5):1159–
+1170. https:/ /doi.or g/10.10 16/j. watres.2008.12.048
+Yan J, Chen J, Zhang W (2023) A new probabilistic assessment pro -
+cess for human health risk (HHR) in groundwater with exten -
+sive fluoride and nitrate optimized by non parametric estimation 
+method. Water Res 243:120379. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . w a t r e s . 
+2 0 2 3 . 1 2 0 3 7 9 
+Yan X, Huang H, Chen W, Li H, Chen Y , Liang Y , Zeng H (2024) Indus-
+trial effluents and N-nitrosamines in karst aquatic systems: a study 
+on distribution and ecological implications. Environ Geochem 
+Health 46:255. https:/ /doi.or g/10.10 07/s1 0653-024-02034-y
+Yang Y , Wu J, Du J, Yang, Yunhua, Ye F, Wang Y , Hong Y (2024) 
+Coupled Stable Isotope Tracing and Sulfamic Acid Reduction 
+(SIT–SAR) Method to Determine the Ammonia and Nitrite Oxi -
+dation Rates in Water and Sediments. Anal Chem 96:4197–4204. 
+https:/ /doi.or g/10.10 21/ac s.analchem.3c05461
+1 3
+ 406 Page 16 of 16
+Environmental Earth Sciences (2026) 85:406 
+Yi L, Xia R, Tang J, Lu D, Wang Z, Lu H, Zhao L (2015) Karst conduit 
+hydro-gradient nonlinear variation feature study: case study of 
+Zhaidi karst underground river. Environ Earth Sci 74:1071–1078. 
+https:/ /doi.or g/10.10 07/s1 2665-014-3963-5
+Yi L, Xia R, Tang J, Lu D, Wang Z, Lu H, Zhao L (2023) Modeling 
+the effect of the submerged zone on nitrogen removal efficiency 
+of a bioretention system under dry-wet alterations. J Hydrol 
+623:129788. https:/ /doi.or g/10.10 16/j. jhydrol.2023.129788
+Yu L, Zheng T, Yuan R, Zheng X, Liu P, Zhang C, Xue C, Mu Y , Liu 
+J, Zhang Y , Tian D, Ye C, Zhang H, Guan J, Iqbal J, Su C, Wang 
+M, Abbas H, Baloch MYJ, Ghani J, Ullah Z, Huq ME (2022a) 
+APCS-MLR model: A convenient and fast method for quantita -
+tive identification of nitrate pollution sources in groundwater. J 
+Environ Manage 314:115101. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . j e n v m a n 
+. 2 0 2 2 . 1 1 5 1 0 1 
+Yu Z-Q, Nakagawa K, Berndtsson R, Hiraoka T, Suzuki Y (2022b) 
+Effects of the Japanese Nitrate Directive Plan (NDP) to curb 
+groundwater nitrate-nitrogen content in the Miyakonojo River 
+basin. J Hydrol 615:128563. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . j h y d r o l . 2 0 
+2 2 . 1 2 8 5 6 3 
+Yuan Z, Liao Y , Zheng M, Zhuo M, Huang B, Nie X, Wu X, Li D 
+(2020) Relationships of nitrogen losses, phosphorus losses, and 
+sediment under simulated rainfall conditions. J Soil Water Con -
+serv 75:231–241. https:/ /doi.or g/10.24 89/js wc.75.2.231
+Zhang Q, Xu C-Y , Chen YD, Ren L (2011) Comparison of evapo -
+transpiration variations between the Yellow River and pearl river 
+basin, china. Stoch Environ Res Risk Assess 25:139–150. h t t p s : / / 
+d o i . o r g / 1 0 . 1 0 0 7 / s 0 0 4 7 7 - 0 1 0 - 0 4 2 8 - 6 
+Zhang W, Chen X, Wang Y , Wu L, Hu Y (2020) Experimental and mod-
+eling of conductivity for electrolyte solution systems. ACS Omega 
+5:22465–22474. https:/ /doi.or g/10.10 21/ac somega.0c03013
+Zhang P, Wang X-D, Yue F-J, Chen S-N, Liu Z-H, Lu M, Shi Z-Y 
+(2023a) Dynamic characteristics of nitrogen transport in various 
+land use in a typical karst catchment during rainfall events. Sci 
+Data 82:332–343. https:/ /doi.or g/10.10 07/s1 2665-023-10980-6
+Zhao Y , Deng Q, Lin Q, Zeng C, Zhong C, Sullivan PF, Stokes MC, 
+McMillan CK, Weintraub MN (2020) Cadmium source identifi -
+cation in soils and high-risk regions predicted by geographical 
+detector method. Environ Pollut 263:114338. h t t p s : / / d o i . o r g / 1 0 . 1 
+0 1 6 / j . e n v p o l . 2 0 2 0 . 1 1 4 3 3 8 
+Zuo R, Zheng S, Liu X, Wu G, Wang S, Wang J, Liu J, Huang C, Zhai 
+Y (2023) Groundwater table fluctuation: A driving force affecting 
+nitrogen transformation in nitrate-contaminated groundwater. J 
+Hydrol 621:129606. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . j h y d r o l . 2 0 2 3 . 1 2 9 6 0 6 
+Publisher’s note Springer Nature remains neutral with regard to juris-
+dictional claims in published maps and institutional affiliations.

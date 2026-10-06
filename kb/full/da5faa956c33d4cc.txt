@@ -1,0 +1,92 @@
+Package ‘gRaphiaExtra’
+September 18, 2026
+Type Package
+Title An R Package for Integrating 'Seurat' Objects into 'gRaphia'
+V ersion 0.26.9
+Maintainer Nilabhra R Das <n.das@uq.edu.au>
+Description Utilising graph-based network analysis frame-
+works, 'Graphia' <https://graphia.app/> is a powerful open source visual analytics applica-
+tion developed to aid the interpretation of large and complex datasets. For more details, see arti-
+cle by Freeman et al. (2022) <doi:10.1371/journal.pcbi.1010310>. 'gRaphia' is an exten-
+sion of the 'Graphia' application within the R environment, providing tools for network analy-
+sis and visualisation. 'gRaphiaExtra' provides additional functionality specifically de-
+signed for single-cell RNA-sequencing data, enabling users to seamlessly inte-
+grate and utilise existing 'Seurat' analysis outputs in 'gRaphia'. The package also provides supple-
+mentary functions to support and enhance the 'gRaphia' analysis framework.
+License GPL-3
+Depends R (>= 4.4.2.0)
+Imports checkmate, dplyr, stats, utils
+Encoding UTF-8
+RoxygenNote 7.3.3
+NeedsCompilation no
+Author Nilabhra R Das [cre, aut] (ORCID:
+<https://orcid.org/0000-0001-8187-0080 >),
+Kaitlyn A Flynn [aut] (ORCID: <https://orcid.org/0000-0002-8951-7887 >),
+John P Kemp [aut] (ORCID: <https://orcid.org/0000-0002-9105-2249 >)
+Repository CRAN
+Date/Publication 2026-09-18 11:50:13 UTC
+Contents
+testSeuratClusterEnrichment . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+Index 4
+1
+2 testSeuratClusterEnrichment
+testSeuratClusterEnrichment
+testSeuratClusterEnrichment - Test Seurat Clusters for Enrichment
+Description
+Performs appropriate tests of enrichment of Seurat clusters for a specified set of genes.
+Usage
+testSeuratClusterEnrichment(
+markers_list,
+test_set,
+background_set,
+test = "fisher",
+alternative = "greater",
+p_adjust = "bonferroni"
+)
+Arguments
+markers_list Data frame. A data frame containing two columns: a gene column and a
+cluster column. Typically, output from the FindAllMarkers() function. If
+using a custom markers_list object, ensure no clusters are labelled as "0". If
+so, rename that cluster to prevent erroneous enrichment. "0" is a cluster label
+internally reserved for the background set.
+test_set Data frame or character. Either a data frame including two columns, "gene" and
+"group" (e.g., causal genes for different mouse diseases), or a vector of genes
+giving the test set (e.g., mouse breast cancer genes).
+background_set Character. A vector of genes that form the background population for the tests
+(e.g., all mouse protein coding genes).
+test Character. One of "fisher" (default) for fisher’s exact test, "chi.sq" for the chi
+squared test, "hyper" for the hypergeometric test, and "conditional" for partial
+odds ratios from a multivariable logistic regression. Conditional is only appli-
+cable when groups are included in the test set and there is substantial overlap
+between the groups.
+alternative Character. One of "greater" (default), "two.sided", or "less".
+p_adjust Character. Correct for multiple testing using one of "holm", "hochberg", "hom-
+mel", "bonferroni" (default), "BH", "BY", or "fdr" methods.
+Value
+A data frame with enrichment test results.
+testSeuratClusterEnrichment 3
+Examples
+# Define Background Set
+background_set <- c(paste0("gene", 1:20), "gene_causal1", "gene_causal2", "gene_causal3")
+# Define Markers List
+# Note: Cluster labels must avoid "0" as specified in your function documentation
+markers_list <- data.frame(gene = c("gene1", "gene2", "gene_causal1", "gene_causal2",
+"gene3", "gene4", "gene5", "gene_causal1",
+"gene6", "gene7", "gene8"),
+cluster = c(rep("Cell Type 1", 4),
+rep("Cell Type 2", 4),
+rep("Cell Type 3", 3)),
+stringsAsFactors = FALSE)
+# Define Test Set
+# Data frame with 'gene' and 'group' columns
+test_set_df <- data.frame(gene = c("gene_causal1", "gene_causal2", "gene_causal3"),
+group = c("Disease_A", "Disease_A", "Disease_B"),
+stringsAsFactors = FALSE)
+# Example Function Call
+# One-sided (greater) Fisher 's exact test with Bonferroni correction
+testSeuratClusterEnrichment(markers_list = markers_list,
+test_set = test_set_df,
+background_set = background_set)
+Index
+testSeuratClusterEnrichment, 2
+4
