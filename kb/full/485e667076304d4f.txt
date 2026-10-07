@@ -1,0 +1,1201 @@
+K et al. Water Science (2026) 40:71 
+https://doi.org/10.1007/s44533-026-00070-4
+RESEARCH Open Access
+© The Author(s) 2026. Open Access This article is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 
+International License, which permits any non-commercial use, sharing, distribution and reproduction in any medium or format, as long 
+as you give appropriate credit to the original author(s) and the source, provide a link to the Creative Commons licence, and indicate if 
+you modified the licensed material. You do not have permission under this licence to share adapted material derived from this article or 
+parts of it. The images or other third party material in this article are included in the article’s Creative Commons licence, unless indicated 
+otherwise in a credit line to the material. If material is not included in the article’s Creative Commons licence and your intended use is not 
+permitted by statutory regulation or exceeds the permitted use, you will need to obtain permission directly from the copyright holder. To 
+view a copy of this licence, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
+Water Science
+Water quality prediction using enhanced 
+parrot optimization algorithm with ensemble 
+learning techniques
+Kalaivanan K1, Karpagalakshmi RC2, Gobinath C3 and Rajkumar Y4* 
+Abstract 
+Water quality monitoring has become increasingly critical as urbanization and industrialization escalate global water 
+pollution challenges, contributing to approximately 1.8 million deaths annually from waterborne diseases accord-
+ing to World Health Organization estimates. This study introduces a novel integration of the Parrot Optimization 
+Algorithm (POA) with ensemble learning (ANN, RF, XGBoost) for water quality prediction using the Cauvery River 
+dataset (from 2018 to 2022, (642 samples, 26 parameters). The approach was validated using a comprehensive data-
+set from the Cauvery River collected by the Tamil Nadu Pollution Control Board. Experimental results demonstrate 
+that POA significantly outperformed traditional optimization techniques, achieving 85.5% accuracy, 86.3% precision, 
+86.2% recall, and 87.3% F1 score. Crucially, we have statistically validated that POA exhibited 32% faster convergence 
+and selected 50% more relevant features compared to Particle Swarm Optimization (PSO) and Genetic Algorithm 
+(GA). This research contributes a computationally efficient and highly accurate decision-support tool that enables 
+stakeholders and policymakers to monitor water pollution in real-time, facilitating early intervention strategies 
+and promoting sustainable water resource management practices globally.
+Keywords Water quality, Ensemble, Feature selection, Parrot optimization, Prediction
+Introduction
+River water quality monitoring represents a critical global 
+health imperative, directly impacting human well-being 
+through its connection to waterborne disease transmis -
+sion and ecosystem sustainability. The World Health 
+Organization estimates that 1.8 million people died from 
+waterborne diseases in 2018 alone [1]. This alarming fig -
+ure underscores the necessity of continuous surveillance 
+and evaluation of water bodies against established maxi -
+mum permissible concentration (MPC) thresholds for 
+various contaminants. When pollutant concentrations 
+exceed these critical limits, immediate remedial actions 
+must be implemented to restore water quality and miti -
+gate contamination levels. Such monitoring protocols 
+are essential for determining water suitability for diverse 
+applications including potable water supply, fishing activ-
+ities, and recreational purposes, while ensuring compli -
+ance with regulatory frameworks [2].
+Environmental researchers have increasingly focused 
+on river water quality assessment as a fundamental indi -
+cator for forecasting potential disease outbreaks. Over 
+recent decades, the scientific community has employed 
+numerous computational approaches to analyze water 
+quality parameters and generate reliable disease pre -
+dictions. However, the effectiveness of these predictive 
+models is predominantly contingent upon the quality and 
+characteristics of the training datasets [3]. These datasets 
+typically encompass physical, chemical, and biological 
+*Correspondence:
+Rajkumar Y
+rkrajdeveloper34@gmail.com
+1 Department of Information Technology, KPR Institute of Engineering 
+and Technology, Coimbatore, India
+2 School of Advanced Computing, Alliance University, Bengaluru, India
+3 School of Computer Science and Engineering, REVA University, 
+Bengaluru, India
+4 School of Computer Science and Engineering, Karunya Institute of Technology 
+and Applied Sciences (Deemed to be University), Coimbatore, India
+Page 2 of 16K et al. Water Science (2026) 40:71 
+measurements that collectively represent the overall con-
+dition of the water ecosystem. In numerous instances, 
+suboptimal feature selection can significantly diminish 
+model accuracy and compromise predictive capabilities 
+[4]. Consequently, feature selection methodologies have 
+become instrumental in identifying the most influential 
+variables and enhancing overall model performance [5].
+Feature selection remains a critical issue in water qual -
+ity prediction, as high-dimensional datasets often con -
+tain redundant or irrelevant parameters that can degrade 
+model performance. Traditional optimization algorithms 
+such as PSO and GA have shown limitations in handling 
+the complex search spaces associated with water quality 
+feature selection, often suffering from parameter sensi -
+tivity and slow convergence [6]. The Parrot Optimization 
+Algorithm (POA) was selected for this study due to its 
+unique characteristics that make it particularly suitable 
+for feature selection in water quality assessment. Unlike 
+traditional metaheuristic algorithms, POA incorporates 
+several bio-inspired mechanisms that provide advantages 
+in terms of exploration–exploitation balance, conver -
+gence speed, and solution quality. Table 1 compares POA 
+with other popular heuristic algorithms in the context of 
+feature selection for water quality prediction.
+POA’s unique combination of Lévy-flight foraging, 
+which enables large jumps in the search space to escape 
+local optima, and communication-intensity scaling, 
+which facilitates efficient information sharing between 
+solutions, makes it particularly well-suited for navigat -
+ing the complex feature landscape of water quality data. 
+Additionally, POA’s fear response mechanism helps 
+maintain population diversity, preventing premature con-
+vergence a common issue in traditional algorithms when 
+dealing with high-dimensional datasets.
+Based on the above research gaps, the proposed work 
+involves the following major contributions which are 
+highlighted as follows: Firstly, the proposed work uti -
+lized a comprehensive Cauvery River Dataset (2018–
+2022) which is acquired from the TNPCB (Tamil Nadu 
+Pollution Control Board) facilitating the real-world 
+data. Secondly, it utilizes KNN-based machine learn -
+ing technique thereby preserving the spatial/temporal 
+correlations with simple mean or median approach to 
+clean the missing value and to improve the prediction 
+accuracy. Thirdly, the proposed work involves the use of 
+the Parrot Optimization Algorithm (POA) for feature 
+selection, leveraging a trade-off between the exploration 
+and exploitation phases. Additionally, it achieves speedy 
+convergence when compared with the traditional meta-
+heuristic algorithms such as particle swarm optimization 
+(PSO), genetic algorithm (GA) and grey-wolf optimiza -
+tion (GWO). Finally, a hybrid ensemble architecture has 
+been developed that integrates artificial neural network 
+(ANN), random forest (RF) and XGBoost (Extreme Gra -
+dient Boosting) approaches through stacking and voting, 
+leading to an accurate and computationally efficient deci-
+sion-support tool for river water quality assessment.
+Organization of the paper
+The overall structure of this study is organized as follows: 
+Section "  Fitness Evaluation: The fitness of each parrot 
+is evaluated using a fitness function that considers both 
+classification accuracy and feature subset size:" provides 
+a review of related works. Section " Position Update: The 
+positions of parrots are updated using the Eqs.  (3, 4, 5 
+and 6) based on their foraging, communication, and fear 
+behaviors." introduces the inspiration behind the POA 
+and Ensemble technique model. Section  4 presents the 
+experiment results and, Section "  Performance Analy -
+sis" concludes the study and suggests ideas for future 
+research.
+Related works
+The domain of water quality prediction has witnessed a 
+remarkable evolution over the past decade, progressing 
+beyond conventional statistical methods to embrace a 
+spectrum of sophisticated computational methodologies. 
+Initial efforts were predominantly rooted in traditional 
+statistical analyses and basic regression models designed 
+to correlate water quality parameters with pollution indi -
+cators. However, these foundational techniques were fun-
+damentally limited in their ability to model the intricate, 
+non-linear dynamics that characterize aquatic ecosys -
+tems. The emergence of machine learning has catalysed 
+Table 1 Comparison of heuristic algorithms for feature selection in water quality prediction
+Algorithm Exploration mechanism Exploitation mechanism Convergence speed Parameter 
+sensitivity
+Suitability for 
+high-dimensional 
+data
+POA Lévy-flight foraging and fear response Communication-intensity scaling 
+and stationary behavior
+Fast Low High
+PSO Velocity-based movement Personal and global best positions Moderate High Moderate
+GA Crossover and mutation Selection of fittest individuals Slow High Low
+GWO Pack hunting behavior Alpha, beta, and delta wolves lead 
+the pack
+Moderate Moderate Moderate
+Page 3 of 16
+K et al. Water Science (2026) 40:71 
+ 
+a paradigm shift, empowering researchers to generate 
+predictions with unprecedented accuracy and depth. The 
+following review offers a chronological syntheses of these 
+methodological advancements, culminating in an articu -
+lation of the persistent research voids that this study aims 
+to address.
+A foundational comparative investigation by Barzegar 
+et  al. [7] engineered a hybrid model that merged wavelet 
+transforms with extreme learning machines to achieve an 
+accuracy of 80.9%. This approach demonstrated the value 
+of preprocessing techniques to improve model perfor -
+mance by extracting meaningful features from complex 
+data. The disadvantage of their method is that the selec -
+tion of appropriate wavelet parameters can be complex 
+and may require domain expertise. Offering a different 
+perspective, Avila et  al. [8 ] used five machine learning 
+(ML) models to predict *E. coli* levels in the Oreti River, 
+located in Wallacetown, New Zealand. The probabilistic 
+framework that furnished critical insights into prediction 
+uncertainty an aspect frequently neglected in determinis-
+tic models and attained an accuracy of 83.7%. The model’s 
+ability to quantify uncertainty makes it valuable for risk 
+assessment in water management. The major disadvantage 
+of their approach is that the computational complexity can 
+increase significantly with a larger number of variables, 
+making it less scalable for high-dimensional datasets.
+The period spanning 2020 to 2022 was distinguished 
+by a diversification of methodologies, as the research 
+community explored a broader array of models from 
+advanced neural networks to complex ensembles often 
+in pursuit of near-perfect predictive accuracy. Nayak 
+et  al. [9] engineered ANN, effectively capturing time-
+series dependencies to achieve 84.3% accuracy. The 
+suggested method’s disadvantage is that LSTM models 
+require large amounts of sequential data to be trained 
+effectively, which may not always be available in environ -
+mental monitoring contexts. In parallel, Jiang et  al. [10] 
+introduced a deep convolutional feature fusion network 
+that integrated multiple data sources, attaining 82% accu-
+racy through the effective combination of spatial and 
+temporal features. This highlighted the importance of 
+multi-source data integration. The suggested method’s 
+disadvantage is its architectural complexity, which makes 
+it difficult to implement and optimize without specialized 
+expertise in deep learning. This era was also defined by 
+the creation of increasingly complex and high-perform -
+ing ensembles. The pursuit of peak performance culmi -
+nated in studies such as Wong et al. [11], who reported 
+a perfect accuracy of 95% using a stacked model com -
+bining multiple algorithms, and Khullar and Singh [12], 
+who obtained 94% accuracy using a BiLSTM model. The 
+former study represented the pursuit of peak perfor -
+mance through highly complex ensembles. The suggested 
+method’s disadvantage is its extreme complexity, which 
+makes it computationally expensive, difficult to repro -
+duce, and potentially prone to overfitting. A significant 
+shift in recent research has been a movement beyond 
+merely achieving high accuracy to ensuring model 
+robustness, interpretability, and computational efficiency. 
+In 2023, the power of deep learning to capture complex 
+spatiotemporal patterns was demonstrated by Guo et al. 
+[13], who developed a novel hybrid CNN-LSTM model 
+to predict the WQI in Hainan Province, China. Their 
+model exhibited superior performance over standalone 
+models, achieving a high coefficient of determination 
+ (R2 = 0.98). The suggested method’s disadvantage is that 
+the hybrid architecture’s performance is highly depend -
+ent on the quality and quantity of training data, and it 
+may not perform well on data from different geographical 
+regions. A pivotal development in 2023 was the integra -
+tion of Explainable AI (XAI).
+Bui et al. [14] introduced an integrated framework that 
+coupled ensemble models (AB–ADTree model) tech -
+nique for groundwater potential mapping. This research 
+was instrumental in demystifying the ’black box’ nature 
+of complex models, making the results highly actionable 
+for policymakers. The suggested method’s disadvantage 
+is that while SHAP provides local explanations, global 
+interpretation of the entire model’s behavior can still be 
+challenging. This trajectory towards more sophisticated 
+and interpretable models accelerated into 2024. Ader -
+emi et  al. [15] proposed an XAI method specifically for 
+forecasting pollution in drinking water, further cement -
+ing the importance of transparency. Their proposed 
+method’s disadvantage is that the implementation of XAI 
+techniques can add a layer of computational overhead to 
+the modelling process. Goodarzi et al. [16] applied three 
+models to predict groundwater quality, with Multivari -
+ate Adaptive Regression Splines achieving an exceptional 
+99.61% accuracy. This study showcased the continued 
+high performance of advanced boosting models in water 
+quality prediction tasks. The suggested method’s disad -
+vantage is that achieving such high accuracy might indi -
+cate overfitting to the specific dataset, and the model’s 
+performance on new, unseen data needs careful valida -
+tion. Saberioon et al. [17] focused on chlorophyll-a, a key 
+eutrophication indicator in Třeboň Basin, finding that 
+random forest provided the most accurate and stable 
+predictions (R2 = 0.89). This suggested the strong poten -
+tial of Random forest for lake water quality manage -
+ment. Since the proposed method is based on tree-based 
+models, it is highly sensitive to hyperparameter settings, 
+requiring a systematic tuning process to achieve optimal 
+results. Representing the cutting edge of architectural 
+innovation, more recently, Zhu et  al. [18] introduced a 
+hybrid deep learning model for predicting turbidity (UT) 
+Page 4 of 16K et al. Water Science (2026) 40:71 
+and dissolved oxygen (DO) in river waters. By combin -
+ing a CEEMDAN-CNN-LSTM, this new hybrid model 
+improves the forecast accuracy at peak locations while 
+reducing the average prediction errors. The compu -
+tational complexity of the suggested method and the 
+need for large datasets are its disadvantages. Similarly, 
+Chen et  al. [19] have demonstrated river water qual -
+ity prediction with machine learning techniques. The 
+study analyzes and forecasts chlorophyll-a (Chla) using 
+an innovative data fusion framework based on Bayes -
+ian model averaging (BMA) by combining several deep 
+learning models. The findings confirmed that the sug -
+gested approach (BMA) outperformed other individual 
+methods. One disadvantage of the suggested approach 
+is that parameter adjustment might be expensive and 
+time-consuming.
+Synthesis of research gaps and motivation
+Critically, a comprehensive synthesis of the literature 
+reveals that despite these methodological strides, per -
+sistent weaknesses limit the effectiveness of current 
+approaches and delineate clear research opportunities. 
+The following key gaps have been identified:
+i) Suboptimal feature selection methodologies:
+ii) Feature selection remains a formidable challenge, as 
+high-dimensional datasets frequently contain redun -
+dant or irrelevant parameters that can impair model 
+performance. Conventional optimization algorithms, 
+such as Particle Swarm Optimization (PSO) and 
+Genetic Algorithm (GA), have demonstrated inad -
+equacies in navigating the complex search spaces 
+inherent to water quality feature selection, often 
+hampered by parameter sensitivity issues and pro -
+tracted convergence rates.
+iii) Limited exploration of sophisticated ensemble 
+frameworks: the majority of existing studies have 
+concentrated on individual machine learning mod -
+els or simplistic ensemble approaches (e.g., voting). 
+The considerable potential of advanced, dynamic 
+ensemble architectures, such as stacking which can 
+dynamically learn optimal weights for model combi -
+nation—remains largely untapped in the water qual -
+ity prediction literature.
+iv) Novel optimizers and advanced ensembles: the inte -
+gration of sophisticated, bio-inspired optimization 
+algorithms with advanced ensemble techniques rep -
+resents a significant and largely unexplored frontier. 
+Marrying the superior feature selection capabilities 
+of a novel optimizer with the predictive power of a 
+hybrid ensemble architecture presents a promising 
+avenue for creating a more comprehensive and effec -
+tive framework.
+The present research is strategically positioned to 
+bridge these identified gaps. It introduces a novel inte -
+gration of the Parrot Optimization Algorithm (POA) 
+with advanced ensemble learning techniques (Stacking 
+and Voting). Our methodology synergizes the superior 
+feature selection capabilities of POA with the predictive 
+strength of hybrid ensemble architectures, culminating 
+in a holistic and robust predictive framework for accurate 
+and efficient water quality assessment that overcomes the 
+limitations of previous studies. The summary of the lit -
+erature review is presented in Table 2.
+Proposed methodology
+The proposed methodology involves an elaborate 
+description on the dataset acquisition, data pre-process -
+ing, feature selection based on POA, and the ensemble 
+approach.
+Dataset acquisition
+The proposed research utilized a comprehensive water 
+quality database sourced from the Tamil Nadu Pollution 
+Control Board (TNPCB), which contained monitoring 
+data collected from the Cauvery River basin between 
+2018 and 2022. This dataset comprised 26 distinct param-
+eters encompassing physical, chemical, and biological 
+characteristics of water, as detailed in Table  3. The target 
+variable, designated as "class," was structured as a binary 
+indicator representing water quality status, specifically 
+categorizing samples as either suitable for consumption 
+(potable) or unsuitable (non-potable). To maintain data -
+set integrity and minimize potential bias during model 
+development, stratified random sampling technique has 
+been utilized.
+Data pre-processing
+The data pre-processing involves steps such as data 
+cleaning and data normalization. The detailed descrip -
+tion of each of these techniques is described as follows:
+i) Data cleaning: To perform data cleaning, the miss -
+ing values are carefully handled to ensure reliability 
+during data training. The proposed work employs 
+K-nearest neighbour (KNN) with a neighbourhood 
+value of 3. This provides superior ability thereby 
+maintaining the local data patterns and relationships. 
+The algorithm computes the Euclidean distance 
+between the incomplete instance and all complete 
+instances, identifies the three nearest neighbours, 
+and computes the average of their values for the miss-
+ing parameter. This approach is particularly effective 
+for water quality data as it preserves the inherent cor-
+relations between different parameters that might be 
+lost with simpler imputation methods.
+Page 5 of 16
+K et al. Water Science (2026) 40:71 
+ 
+ii) Data normalization: Z-score normalization has been 
+employed to transform all the features to a standard -
+ized scale with a mean of zero and standard deviation 
+of one, thereby eliminating disparities between differ-
+ent measurement units and scales. The mathematical 
+representation of this transformation is provided in 
+Eq. (1) as follows:
+From the Eq.  (1) Z is the standardized value, X is the 
+original value, μ is the mean of the feature, and σ is the 
+standard deviation of the feature. Further, data gets par -
+titioned into training and testing sets in the ratio of 70:30 
+ratio through a holdout validation, where the evaluation 
+has been performed on a completely independent data. 
+To overcome overfitting and to improve the generaliza -
+tion strategies such as k-fold cross-validation and nested 
+cross-validation has been carried out.
+Feature selection based on POA
+For feature selection, Parrot Optimization Algorithm 
+has been utilized thereby ensuring global optimal fea -
+ture, faster convergence and fine-tuning. POA has been 
+adopted based on three policies:
+i) Each parrot is considered to be of the same sex and 
+the goal of all parrots, regardless of hierarchy, is to 
+reflect and communicate effectively to find the best 
+food source (optimal solution).
+(1)Z = X − µ
+σ
+Table 2 Summary of reviewed literature
+Author (year) Method(s) used Advantages Disadvantages
+Barzegar et al. [7] Wavelet + Extreme Learning Machine 
+(ELM)
+Improved accuracy (80.9%) via signal 
+preprocessing and feature extraction
+Wavelet parameter selection is complex 
+and domain-dependent
+Nayak et al. [9] LSTM + Random Forest Hybrid Captured temporal dependencies effec-
+tively (84.3% accuracy)
+Requires large sequential datasets
+Jiang et al. [10] RNN,LSTM,GRU Integrated spatial–temporal data effec-
+tively (81.2% accuracy)
+High architectural complexity and optimi-
+zation difficulty
+Wong et al. [11] Stacked Ensemble (SVM, RF, LR, DT, CAT-
+Boost, XGBoost, MLP)
+Perfect accuracy (95%); leveraged diverse 
+models
+Extremely complex, expensive, and may 
+overfit
+Khullar & Singh [12] BiLSTM Captured long-term temporal dependen-
+cies (94% accuracy)
+High computational and data require-
+ments
+Bui et al. [14] BT + RT Robust for heterogeneous data (94% 
+accuracy)
+Reduced interpretability compared 
+to simpler models
+Aderemi et al., [15] Explainable AI (XAI) Framework Enhanced transparency and stakeholder 
+trust
+Added computational overhead
+Goodarzi et al. [16] Multivariate Adaptive Regression Splines 
+(GB)
+Achieved 99.61% accuracy; strong pre-
+dictive capability
+Possible overfitting to dataset; limited 
+generalization
+Saberioon et al. [17] RF High and stable accuracy (R2 = 0.89) 
+for algal bloom prediction
+Sensitive to hyperparameter tuning
+Zhu et al. [18] CEEMDAN-CNN-LSTM Improved accuracy for turbidity 
+and DO prediction
+Computationally intensive; large data 
+needs
+Chen et al. [19] Bayesian Model Averaging (BMA) + Deep 
+Learning
+Combined multiple models for superior 
+prediction
+Parameter adjustment is time-consuming 
+and costly
+Table 3 Water quality parameters in the cauvery river dataset
+Variable Description BIS speciation (mg/L)
+DO Dissolved oxygen Not mentioned
+Ph Potential of hydrogen 6.5–8.5
+EC Electrical conductivity Not mentioned
+BOD Biological oxygen demand Not mentioned
+NO3 Nitrate 10
+FC Fecal coliforms 0.2
+TC Total coliforms Not mentioned
+F Fluoride 1
+Tur Turbidity 5
+Pa Phenolphthalein alkalinity Not mentioned
+Tal Total alkalinity 200
+Cl Chloride 250
+COD Chemical oxygen demand Not mentioned
+N Nitrogen 4
+NH3 Ammonia 50
+TH Total hardness 300
+Ca Calcium 75
+Mg Magnesium 30
+S4 Sulphate 200
+Na Sodium 4
+TSS Total suspended solids 500
+Page 6 of 16K et al. Water Science (2026) 40:71 
+ii) The strength of communication between parrots is 
+proportional to their fitness level and decreases as 
+the distance between them increases. Therefore, a 
+weak parrot moves towards a stronger (more opti -
+mal) parrot. If it can no longer receive signals from 
+any of the best parrots, it moves randomly to explore 
+new positions in the search space.
+iii) A parrot’s vocal intensity or sound reflection ability 
+is determined by its fitness value, which is estimated 
+using an objective function.
+iv) If a parrot cannot find or follow any best solution, it 
+stops updating and becomes stationary, which indi -
+cates convergence or the end of the search process.
+Let N be the population size, and specify the beginning 
+location of the i-th parrot as stated in Eq. (2).
+ 
+where, rand(0, 1) denotes a random number uniformly 
+distributed within the range [0,1], X i is the beginning 
+position of the i-th parrot, ul and lw signify the upper and 
+lower bounds of the search space, respectively. In parrot 
+foraging behavior, the approximate location of food is 
+established largely by monitoring the food’s location or 
+comparing the owner s location. The parrot then goes 
+toward the specified target spot. The location is modified 
+using Eq. (3).
+Where X t
+i represents the present position, X best is the 
+most recent optimal position, X n
+mean is the average posi -
+tion within the current population, Levy(dim) refers to 
+the L vy distribution, Maxiter is the highest number of 
+iterations.
+Parrots’ staying habit consists of abruptly flying to 
+a certain portion of the owner and lingering there for 
+a short period of time. This behavior is quantitatively 
+expressed by Eq. (4).
+(2)X 0
+i = lw + rand(0, 1) + (ul − lw)
+(3)
+X n+1
+i = (X t
+i − X best) ∗Levy(dim )
++ rand (0, 1) ∗(1 − 1
+max ite
+)
+2i
+max ite ∗X n
+mean
+(4)X n+1
+i =X n
+i + X best ∗Levy(dim )
++ rand (0, 1) ∗ones(1, dim)
+Where ones(1,dim) is the all 1 vector of dimension dim. 
+Parrots are extremely gregarious creatures that exhibit strong 
+intragroup communication through two unique behaviors: 
+flying in the direction of the flock and flying on their own. 
+These behaviors are thought to happen equally often, and the 
+position update mechanism is given by Eq. (5).
+P is a random number in the range [0,1], P = 0.5, the par-
+rot engages in in-flock communication, moving towards 
+the group P > 0.5, the parrot departs the group immediately 
+after the interaction.
+When encountering unfamiliar individuals, parrots dis-
+play fear and instinctively maintain a safe distance. This 
+behavior is mathematically modelled and represented by 
+Eq. (6).
+The parameter settings for the feature selection are pre-
+sented using the Table 4 as follows:
+Process of feature selection
+1. Initialization: A population of 50 parrots is randomly ini-
+tialized, with each parrot representing a potential feature 
+subset. The position of each parrot is a binary vector of 
+length 26, where each element indicates whether the cor-
+responding feature is selected (1) or not (0).
+2. Fitness evaluation: the fitness of each parrot is evalu -
+ated using a fitness function that considers both classifica-
+tion accuracy and feature subset size:
+where α and β are weighting factors (α = 0.9, β = 0.1).
+(5)X n+ 1
+i =
+{0.2∗rand (0, 1)∗(1 − n
+max ite
+)(X n
+i − X n
+best),P < 0.5
+{0.2∗rand (0, 1)∗exp(− 1
+rand (0, 1)∗max ite
+),P > 0.5
+(6)
+X n+1
+i = X n+1
+i + rand (0, 1) ∗cos(0.5
+∏
+∗ n
+max ite
+)
+2
+max ite ∗(X n+1
+i − X best)
+− cos(rand (0, 1) ∗cos(0.5
+∏
+∗ n
+max ite
+)
+2
+max ite ∗(X n+1
+i − X best)
+(7)
+Fitness =α × Accuracy − β
+× (SelectedFeatures/TotalFeatures)
+Table 4 Parameters settings for feature selection
+Parameter Value
+Population size 50
+Maximum distance 100
+Levy distribution parameter (β ) 1.5
+Communication intensity factor (α ) 0.8
+Fear response threshold (γ ) 0.2
+Feature subset range 5 to 20
+Page 7 of 16
+K et al. Water Science (2026) 40:71 
+ 
+3. Position update: the positions of parrots are updated 
+using the Eqs.  (3, 4, 5 and 6) based on their foraging, 
+communication, and fear behaviors.
+4.  Convergence Check: The algorithm iterates until 
+the maximum number of iterations (100) is reached or 
+the fitness improvement stagnates for 10 consecutive 
+iterations. After 85 iterations, the POA algorithm con -
+verged to an optimal feature subset consisting of 13 fea -
+tures. The selected features are: Dissolved Oxygen (DO), 
+pH, Biological Oxygen Demand (BOD), Nitrates (NO₃), 
+Fecal Coliforms (FC), Chloride (Cl), Chemical Oxygen 
+Demand (COD), Total Hardness (TH), Sulfates (SO₄), 
+Total Dissolved Solids (TDS), Turbidity (Tur), Ammonia 
+(NH₃), and Phosphates (PO₄). Figure  1 provides the fea -
+ture selection algorithm using POA.
+Ensemble approach
+The proposed work involves an ensemble approach that 
+combines machine learning techniques such as ANN, RF 
+and XGB. Due to the strength of eliminating the weak -
+ness of the individual model, the ensemble approach 
+has been adopted. The ensemble approach involves two 
+phases namely stacking and voting.
+i) Stacking: The proposed work integrates ANN and 
+RF as base classifiers, while XGBoost acts as the meta -
+classifier. To implement stacking effectively and prevent 
+information leakage, 5-fold cross-validation to gener -
+ate out-of-fold predictions from the base models, which 
+were then used to train the metamodel has been utilized. 
+Mathematically the process of stacking can be defined by 
+Eq. (8) as follows:
+Where PANN and PRF are the predictions from the 
+ANN and Random Forest models, respectively, and fmeta 
+is the XGBoost metamodel that learns to combine these 
+predictions optimally.
+ii) Voting: Voting ensembles aggregate the predictions 
+of multiple classifiers. The ensemble approach utilized 
+soft voting with equal weights assigned to both ANN 
+and RF classifiers, allowing the ensemble to leverage 
+the probability estimates from both models. The voting 
+process can be mathematically represented by Eq. (9) as 
+follows:
+where PANN and PRF are the probability estimates from 
+the ANN and Random Forest models, respectively. Both 
+Random Forest (RF) and XGBoost are indeed ensem -
+ble algorithms by design. However, they belong to dif -
+ferent families of ensemble methods and have distinct 
+characteristics: Random Forest is robust to overfitting 
+but may not capture complex patterns as effectively as 
+boosting methods. XGBoost achieves higher accuracy 
+but may be more prone to overfitting on noisy data. The 
+(8)Pmeta = fmeta(PANN , PRF )
+(9)Pﬁnal = 0.5 ∗PANN ∗PRF
+Fig. 1 POA for feature selection
+Page 8 of 16K et al. Water Science (2026) 40:71 
+motivation for combining RF and XGBoost in another 
+ensemble framework (stacking) is to leverage the com -
+plementary strengths of these algorithms: 1. Diversity: 
+RF and XGBoost have different inductive biases, which 
+can lead to diverse predictions. This diversity is benefi -
+cial for ensemble methods as it reduces the risk of sys -
+tematic errors. 2. Error Compensation: The errors made 
+by RF may be compensated by XGBoost, and vice versa. 
+By combining their predictions, we can achieve a more 
+robust and accurate model. 3. Meta-Learning: The stack -
+ing framework allows a meta-model (XGBoost in our 
+case) to learn the optimal way to combine the predictions 
+of RF and ANN, potentially capturing complex relation -
+ships that simple averaging cannot. Table  5 provides the 
+hyperparameters configuration of ANN, Random Forest 
+and XGBoost models. Table  6 provides the comparison 
+of the errors of individual models and the ensemble.
+Table 6 presents a quantitative comparison of individ -
+ual models (ANN, RF, XGBoost) with the stacked ensem-
+ble in terms of mean absolute error (MAE), root mean 
+squared error (RMSE) and coefficient of determination 
+ (R2). The stacked ensemble yields the lowest MAE and 
+RMSE, and the highest R2, demonstrating that combin -
+ing the base learners leads to more accurate and stable 
+predictions than any single model. This performance gain 
+confirms the effectiveness of the ensemble framework 
+in extracting complementary information from the con -
+stituent algorithms. The output of this combination of 
+models provides the binary classification of water quality 
+states as potable or non-potable based on WHO stand -
+ards. The classification maintains a threshold of 0.5 for 
+final classification.
+Data training
+Figure  2 provides the block diagram for the proposed 
+work.
+Experimentation
+This subsection describes the computational environ -
+ment, dataset configuration, model hyperparameters, 
+Table 5 Hyperparameter tuning for ANN, random forest and XGBoost models
+Model Parameter Configuration
+Artificial Neural Network (ANN) Architecture Feedforward network with 13 input neurons, three hidden layers (64, 32, 16 neurons), 
+and one sigmoid output neuron
+Activation functions ReLU (hidden layers), Sigmoid (output layer)
+Regularization Dropout = 0.2 between hidden layers; Early stopping with patience = 10 epochs
+Optimization Adam optimizer; Learning rate = 0.001; Batch size = 32; Maximum epochs = 100
+Hyperparameter search Grid and manual search over: 2–4 hidden layers, 8–128 neurons/layer, learning 
+rate ∈ [0.0001, 0.01], dropout ∈ [0.1, 0.5]
+Random Forest (RF) Number of trees 100 decision trees
+Maximum depth 10
+Minimum samples to split 5
+Minimum samples per leaf 2
+Bootstrap sampling Enabled
+Hyperparameter search Grid search over: number of trees (50–200), max depth (5–20), min samples split 
+(2–10), based on OOB accuracy
+XGBoost Learning rate 0.1
+Maximum tree depth 6
+Subsample ratio 0.8
+Number of estimators 100 boosting rounds
+Regularization L2 (λ = 1), L1 (α = 0)
+Early stopping Stop after 10 epochs without validation improvement
+Hyperparameter search Grid + Bayesian optimization over: learning rate (0.01–0.3), max depth (3–10), subsam-
+ple (0.6–1.0), regularization (0–5)
+Table 6 Error comparison of individual models and ensemble
+Model MAE RMSE R2
+ANN 0.142 0.187 0.876
+RF 0.128 0.172 0.892
+XGBoost 0.121 0.165 0.901
+Stacked Ensemble 0.103 0.148 0.923
+Page 9 of 16
+K et al. Water Science (2026) 40:71 
+ 
+and validation protocols adopted for implementing the 
+proposed POA–ensemble framework for water quality 
+prediction.
+Experimental validation
+To ensure the robustness, reproducibility, and general -
+izability of our proposed model, we employed a multi-
+faceted validation strategy:
+1. Holdout Validation: The dataset was partitioned into 
+training (70%) and testing (30%) subsets using strati -
+fied random sampling to maintain class distribution.
+2. K-Fold Cross-Validation: We implemented 5-fold 
+cross-validation for performance estimation, where 
+the dataset was divided into 5 equal parts.
+3. Nested Cross-Validation: For unbiased hyperparam -
+eter tuning, we employed nested cross-validation 
+with an outer fivefold loop for model evaluation and 
+an inner 3-fold loop for parameter optimization.
+4. Statistical Validation: We performed paired t-tests to 
+compare the performance of our proposed method 
+with existing approaches, ensuring the statistical sig -
+nificance of the reported improvements.
+Performance metrics
+The performance measures act as unbiased measures 
+and provide a more meaningful assessment of imbal -
+ance datasets. The mathematical formulations for these 
+metrics are as follows:
+where, TP-True Positive, TN-True Negative, FP-False 
+Positive, FN-False Negative.
+(10)Accuracy = TP + TN
+TP + TN + FP + FN
+(11)Precision= TP
+TP + FP
+(12)Recall= TP
+TP + FN
+(13)F 1 − Score = 2∗ Pr ecision∗Re call
+Pr ecision+ Re call
+Fig. 2 Block diagram of the proposed methodology
+Page 10 of 16K et al. Water Science (2026) 40:71 
+Performance analysis
+The predictive capabilities of the individual machine 
+learning models, namely Artificial Neural Network 
+(ANN), Random Forest (RF), and XGBoost, were sys -
+tematically benchmarked against two ensemble strate -
+gies, Stacking and Voting, using the reserved test dataset. 
+The empirical results, detailed in Table  7, provide t-test 
+results comparing the Voting Ensemble with individual 
+models. Table  7 unequivocally demonstrates that the 
+ensemble approaches consistently surpassed the perfor -
+mance of the individual constituent models. This under -
+scores the principle that combining diverse algorithms 
+can mitigate individual weaknesses and leverage comple -
+mentary strengths to produce a more robust and accu -
+rate predictive framework. These results confirm that the 
+ensemble’s superior accuracy is not due to random varia -
+tion but reflects a statistically robust improvement.
+To ensure that the observed performance enhance -
+ments were not due to random chance, a statistical vali -
+dation was conducted. Paired t-tests were performed 
+comparing the results of the Voting ensemble against 
+each individual model. The analysis yielded p-values less 
+than 0.05, confirming that the superior performance of 
+the ensemble approach is statistically significant. This 
+comprehensive evaluation, combining numerical metrics, 
+visual analysis, and statistical testing, provides robust 
+evidence that the Voting ensemble represents the most 
+effective and reliable model for water quality prediction 
+in this study.
+From Table  7 and Table  8 the results reveal a clear 
+performance hierarchy. Among the individual models, 
+XGBoost emerged as the top performer, followed closely 
+by Random Forest and then ANN. The integration of 
+these models into ensembles yielded a significant per -
+formance boost. Notably, while both the Stacking and 
+Voting ensembles showed substantial improvements, 
+the Voting ensemble achieved the highest scores across 
+all evaluation metrics, with an accuracy of 85.5% and an 
+exceptional F1 score of 87.3%. This marginal yet consist -
+ent advantage suggests that for this particular classifica -
+tion task, the simple yet effective strategy of averaging 
+probability estimates from ANN and RF proved highly 
+effective.
+Confusion matrix
+The superior performance of the Voting ensemble is fur -
+ther illuminated by analyzing its confusion matrix, as 
+depicted in Fig. 3. The matrix for the Voting model would 
+show a high concentration of instances along the main 
+diagonal, representing a large number of correct classi -
+fications (True Positives and True Negatives). Crucially, 
+the values in the off-diagonal cells, representing mis -
+classifications (False Positives and False Negatives), are 
+minimized. The high recall score of 86.2% is particularly 
+significant in this environmental context, as it indicates 
+the model’s effectiveness in correctly identifying water 
+samples that are truly non-potable, thereby minimiz -
+ing the risk of falsely declaring unsafe water as safe for 
+consumption.
+AUC‑ROC curve analysis
+The discriminative power of the models is further visu -
+alized through the Receiver Operating Characteristic 
+(ROC) curves presented in Fig.  4. These curves plot the 
+True Positive Rate against the False Positive Rate at vari -
+ous classification thresholds. A model with perfect clas -
+sification would produce a curve hugging the top-left 
+corner of the plot. The ROC curves for both the Vot -
+ing and Stacking ensembles are positioned closest to 
+Table 7 Paired t-test results comparing the voting ensemble 
+with individual models
+Comparison t-value p-value Significance
+Voting Vs ANN 2.81 0.012 p < 0.05
+Voting Vs RF 2.54 0.018 p < 0.05
+Voting Vs XGBoost 2.31 0.021 p < 0.05
+Table 8 Performance comparison of different models
+Model Accuracy Precision Recall F1 score
+ANN 81.2 80.5 82.1 81.3
+RF 83.7 84 83.4 83.7
+XGBoost 84.9 85.1 84.7 84.9
+Stacking 85.1 85.8 85 85.4
+Voting 85.5 86.3 86.2 87.3
+Fig. 3 Confusion matrix for cauvery river water quality prediction
+Page 11 of 16
+K et al. Water Science (2026) 40:71 
+ 
+this ideal point, significantly outperforming the curves 
+for the individual ANN, RF, and XGBoost models. The 
+Area Under the Curve (AUC) for the Voting ensemble 
+would be the highest, approaching a value of 1.0, which 
+quantitatively confirms its outstanding ability to distin -
+guish between potable and non-potable water samples. 
+From the Fig.  5  it is obvious that the diagonal indicates 
+high predictive reliability and good calibration between 
+observed and predicted outcomes.
+Experimental validation
+To ensure the robustness and generalizability of our pro -
+posed model, we employed multiple validation strategies. 
+The nested cross-validation approach demonstrated the 
+most reliable performance estimation, with minimal vari-
+ance across folds. To ensure robustness, we compared the 
+model’s performance across different validation methods, 
+as shown in Table 9.
+The nested cross-validation approach, though slightly 
+lower in mean performance, demonstrated the lowest 
+standard deviation (± 0.8%), indicating more stable and 
+reliable performance estimation. This method also pro -
+vides unbiased hyperparameter tuning, reducing the risk of 
+overfitting to a particular data split. Figures 6 and 7 provide 
+the comparison graph of the experimental validations for 
+5-fold cross and nested cross-validations. Figure 8 provides 
+the comparison of validation methods.
+KNN performance on water quality prediction
+Environmental monitoring data, particularly from 
+dynamic river systems like the Cauvery, frequently con -
+tain gaps due to equipment malfunction, logistical chal -
+lenges, or inconsistent sampling schedules. The integrity 
+of predictive models is highly dependent on the quality 
+of the input data, making the handling of missing values 
+a critical preprocessing step. In this study, we employed 
+the K-Nearest Neighbour (KNN) imputation technique 
+with k = 3, chosen for its ability to preserve the natural 
+variance and distribution patterns inherent in water qual-
+ity parameters. Unlike simpler methods such as mean 
+or median imputation, which can artificially flatten data 
+and mask important environmental events like pollu -
+tion spikes, KNN identifies samples with similar multi-
+parameter characteristics. This approach maintains the 
+complex, non-linear interrelationships between physi -
+cal, chemical, and biological indicators that define a riv -
+er’s health. As shown in Table  10, this methodologically 
+sound approach resulted in superior model performance 
+compared to alternative imputation methods.
+The KNN imputation method demonstrated a significant 
+improvement in all performance metrics, with an increase 
+of 7.2% in accuracy compared to mean imputation. This 
+enhancement can be attributed to the preservation of local 
+data structures and correlations between water quality 
+parameters, which are critical for accurate prediction of 
+water quality status.
+Impact of POA on model performance
+The Parrot Optimization Algorithm (POA) was employed 
+to identify the most relevant features from the original 26 
+water quality parameters. POA demonstrated superior 
+performance compared to traditional optimization algo -
+rithms, converging after 85 iterations and selecting 13 
+features that contributed most significantly to prediction 
+Fig. 4 AUC-ROC curve
+Fig. 5 Actual vs predicted probabilities for the voting ensemble 
+model
+Page 12 of 16K et al. Water Science (2026) 40:71 
+Table 9 Performance across different validation methods
+Validation method Accuracy (%) Precision (%) Recall (%) F1-score (%) Standard 
+deviation 
+(%)
+Holdout Validation 85.5 86.3 86.2 85.7 ± 2.1
+5-Fold Cross-Validation 85.2 86 85.9 87 ± 1.3
+Nested Cross-Validation 85 85.8 85.7 86.8 ± 0.8
+Fig. 6 Fivefold cross validation
+Fig. 7 Nested cross-validation
+Page 13 of 16
+K et al. Water Science (2026) 40:71 
+ 
+accuracy. Table 11 illustrates the comparative analysis of 
+various feature selection methods.
+POA not only achieved the highest performance met -
+rics but also selected the most compact feature subset 
+(13 features) while demonstrating the fastest convergence 
+time (85 s), which is 32% faster than PSO. This efficiency 
+makes POA particularly suitable for real-time water 
+quality monitoring applications where computational 
+resources may be limited.
+The 13 features selected by POA are: Dissolved Oxygen 
+(DO), pH, Biological Oxygen Demand (BOD), Nitrates 
+(NO₃), Fecal Coliforms (FC), Chloride (Cl), Chemical Oxy-
+gen Demand (COD), Total Hardness (TH), Sulfates (SO₄), 
+Total Dissolved Solids (TDS), Turbidity (Tur), Ammonia 
+(NH₃), and Phosphates (PO₄) (Fig.  9). The convergence 
+curve of the Parrot Optimization Algorithm (POA) shows 
+the mean fitness value versus iteration count. The curve 
+confirms algorithmic stability and convergence after 85 
+iterations. Figure 10 presents the ranking of feature impor-
+tance as determined by the POA technique.
+These selected features align well with established 
+water quality assessment frameworks. For instance, DO, 
+BOD, and COD are critical indicators of organic pollu -
+tion, while FC serves as a key microbiological parameter 
+indicating potential pathogen contamination. The inclu -
+sion of chemical parameters like pH, nitrates, and phos -
+phates reflects their importance in assessing nutrient 
+pollution and potential eutrophication risks.
+i) Convergence Analysis of POA: To provide a clear vis-
+ualization of the Parrot Optimization Algorithm’s (POA) 
+convergence behavior, Fig.  9 presents the convergence 
+curve illustrating the change in mean fitness value across 
+100 iterations. The curve demonstrates a rapid improve -
+ment during the first 40 iterations, followed by a steady 
+plateau after iteration 85, confirming that the algorithm 
+reached a stable optimal solution. This stability indicates 
+the efficient balance between exploration and exploita -
+tion achieved by POA’s bio-inspired mechanisms, vali -
+dating its faster convergence compared to PSO, GA, and 
+GWO. The corresponding convergence time (85  s) also 
+supports the quantitative results reported in Table 10.
+Finally, the robustness and consistency of the models 
+were evaluated by examining the distribution of accuracy 
+scores across multiple validation runs depicted in Fig.  11. 
+This figure reveals that the individual models, particu -
+larly the ANN, exhibit a wider distribution of accuracy 
+values, indicating higher sensitivity to variations in the 
+training data. In contrast, the ensemble methods, and 
+especially the Voting ensemble, demonstrate a tighter 
+distribution centred around a higher mean accuracy. This 
+visual evidence confirms that ensembles not only provide 
+higher average accuracy but also offer greater stability 
+and reliability, making them more dependable for prac -
+tical deployment in dynamic environmental monitoring 
+scenarios.
+Fig. 8 Comparison of validation methods
+Table 10 Comparison of imputation methods on model performance
+Imputation method Accuracy (%) Precision (%) Recall (%) F1-score (%)
+Mean imputation 78.3 79.1 77.5 78.3
+Median imputation 79.1 79.8 78.4 79.1
+KNN imputation (k = 3) 85.5 86.3 86.2 87.3
+Table 11 Comparison of feature selection algorithms
+Algorithm No. of selected features Accuracy (%) Precision (%) Recall (%) F1-score (%)
+Without feature selection 26 82.1 82.8 81.5 82.1
+PSO 18 83.7 84.2 83.3 83.7
+GA 17 84.2 84.9 83.6 84.2
+GWO 16 84.9 85.5 84.3 84.9
+Page 14 of 16K et al. Water Science (2026) 40:71 
+Comparative analysis with existing methods
+A comparative analysis of research efforts in water qual -
+ity prediction reveals a clear evolutionary trajectory in 
+both methodology and performance. Early investiga -
+tions, such as Barzegar et al. [7], established a baseline of 
+around 80% accuracy by combining wavelet transforms 
+with an Extreme Learning Machine on river water data. 
+Subsequent studies shifted toward more intricate hybrid 
+and ensemble architectures: Chen et  al. [19] applied a 
+Deep Convolutional Feed-Forward Network to multi-
+source water data, reaching 81.2%. Despite this increase 
+in complexity, these sophisticated approaches yielded 
+only incremental gains, with accuracy largely plateauing 
+in the low-to-mid 80% range. In marked contrast, the 
+proposed method, which integrates the Parrot Optimiza -
+tion Algorithm (POA) with an Ensemble framework on 
+the Cauvery River dataset, achieves a superior accuracy 
+of 85.8%, surpassing the performance ceiling established 
+by recent state-of-the-art models. Table  12 provides the 
+comparative analysis of the proposed methodology Vs 
+existing literature.
+Environmental interpretation of results
+The predictions generated by our POA-ensemble model 
+have direct implications for environmental manage -
+ment and public health. Water classified as non-potable 
+by our model indicates the presence of contaminants 
+that exceed WHO guidelines, potentially posing health 
+risks to consumers. The feature selection results provide 
+additional insights into the key indicators of water qual -
+ity in the Cauvery River. The high importance assigned 
+to DO, BOD, and COD suggests that organic pollution is 
+a significant concern in this water body. This aligns with 
+the industrial and agricultural activities along the river, 
+which often discharge organic waste that depletes oxy -
+gen levels. The inclusion of Fecal Coliforms (FC) among 
+the top features highlights microbiological contamina -
+tion as a critical issue, likely stemming from inadequate 
+sanitation facilities and untreated sewage discharge. This 
+finding is particularly concerning given the direct link 
+between FC contamination and waterborne diseases. 
+The chemical parameters selected by POA (pH, nitrates, 
+phosphates, chlorides, etc.) reflect the impact of agri -
+cultural runoff, industrial discharge, and natural geo -
+logical processes on water quality. For instance, elevated 
+nitrate and phosphate levels often indicate fertilizer run -
+off, which can lead to eutrophication and harmful algal 
+blooms. These insights can guide targeted interventions 
+by water resource managers. For example, addressing 
+organic pollution might require improved wastewater 
+treatment, while reducing microbiological contamination 
+could involve enhancing sanitation infrastructure. The 
+model’s ability to provide real-time predictions enables 
+proactive management, allowing authorities to imple -
+ment mitigation measures before water quality deterio -
+rates to hazardous levels.
+Computational efficiency analysis
+The computational efficiency of our POA-ensemble 
+approach makes it suitable for real-time water quality 
+monitoring applications. The feature selection process 
+using POA completed in 85  s, which is 32% faster than 
+PSO and 40% faster than GA. The computational effi -
+ciency of the various methods is benchmarked in Table 13.
+The reduced feature set (13 features instead of 26) not 
+only improved prediction accuracy but also decreased 
+Fig. 9 Convergence curve of the POA showing the mean fitness 
+value versus iteration count. The curve confirms algorithmic stability 
+and convergence after 85 iterations
+Fig. 10 Feature importance ranking by POA
+Page 15 of 16
+K et al. Water Science (2026) 40:71 
+ 
+memory requirements and processing time. This effi -
+ciency is crucial for implementation in resource-con -
+strained environments, such as remote monitoring 
+stations with limited computational power. The ensem -
+ble models, while slightly more complex than individual 
+algorithms, still demonstrated reasonable computational 
+requirements. The stacking approach, despite its superior 
+performance, required only marginally more processing 
+time than the voting ensemble, making it the preferred 
+choice for applications where accuracy is prioritized.
+Conclusion
+In conclusion, this work pioneered the integration of 
+the Parrot Optimization Algorithm (POA) with ensem -
+ble learning techniques to create a highly effective model 
+for water quality prediction, validated on the Cauvery 
+River dataset. The POA demonstrated its superiority 
+by identifying 13 critical parameters from an initial 26, 
+achieving a 32% faster convergence rate than traditional 
+algorithms. This optimized feature set, when used with a 
+stacked ensemble of ANN and RF base learners and an 
+XGBoost metamodel, yielded exceptional performance 
+with 85.5% accuracy, 86.3% precision, 86.2% recall, and 
+an 87.3% F1 score. The primary contributions of this 
+work are multifaceted, encompassing the first application 
+of POA for feature selection in this domain, the develop -
+ment of a computationally efficient and robust predictive 
+framework, comprehensive validation to ensure general -
+izability, and the provision of actionable environmental 
+insights for Water resource management. The proposed 
+system stands as a practical tool for real-time monitoring, 
+enabling stakeholders to implement timely interventions 
+and manage resources more effectively. Future research 
+will aim to enhance this model by integrating spatial and 
+temporal analysis, developing it into a cloud-based plat -
+form for wider accessibility, extending its applicability 
+to other water bodies, and incorporating explainable AI 
+techniques to further improve model transparency and 
+user trust, ultimately advancing the field of environmen -
+tal monitoring systems.
+Authors’ contributions
+K. Kalaivanan contributed to conceptualization, methodology, formal 
+analysis, investigation, writing of the original draft, supervision, and project 
+Fig. 11 Distribution of accuracy across
+Table 12 Comparative analysis of the proposed methodology vs existing literature
+Ref. Dataset/study area Method/model used Accuracy
+Barzegar et al. [7] River water dataset Wavelet + extreme learning machine 80.9
+Chen et al. [19] Multi-source water data Deep convolutional FFN 81.2
+Yaseen et al. Multi-source water data Random Forest Hybrid Ensemble 83.7
+POA + ensemble (proposed) Cauvery River POA + Ensemble 85.8
+Table 13 Computational efficiency comparison
+Process POA PSO GA GWO
+Feature selection time (s) 85 125 142 118
+Model training time (s) 142 155 168 151
+Total prediction time (s) 227 280 310 269
+Memory usage (MB) 512 624 698 587
+Page 16 of 16K et al. Water Science (2026) 40:71 
+administration. Karpagalakshmi R. C. contributed to data curation, literature 
+review, validation, and writing, review, and editing of the manuscript. Gobi-
+nath C. contributed to software development, formal analysis, visualization, 
+validation, and manuscript review. Rajkumar Y. contributed to resources, 
+investigation, critical revision, writing, review, and editing, and final approval 
+of the manuscript. All authors have read and approved the final version of the 
+manuscript and agree to be accountable for all aspects of the work.
+Funding
+The authors received no financial support from any funding agency, com-
+mercial organization, or institution for the research, authorship, or publication 
+of this manuscript.
+Data availability
+The dataset supporting the findings of this study is publicly available from the 
+Tamil Nadu Pollution Control Board (TNPCB) at: https:// tnpcb. gov. in/ water- 
+quali ty. php.
+Declarations
+Ethics approval and consent to participate
+Ethical approval for this study has been obtained, and the authors confirm 
+that the research was conducted in accordance with applicable ethical 
+guidelines.
+Competing interests
+The authors declare no competing interests.
+Received: 8 April 2026 Revised: 11 July 2026 Accepted: 14 September 
+2026
+References
+ 1. Lee D, Gibson JM, Brown J, Habtewold J, Murphy HM. Burden of disease 
+from contaminated drinking water in countries with high access to safely 
+managed water: a systematic review. Water Res. 2023;242:120244.
+ 2. Tien Bui D, Shirzadi A, Chapi K, Shahabi H, Pradhan B, Pham BT, et al. A 
+hybrid computational intelligence approach to groundwater spring 
+potential mapping. Water. 2019;11(10):2013.
+ 3. Yan X, Zhang T, Du W, Meng Q, Xu X, Zhao X. A comprehensive review of 
+machine learning for water quality prediction over the past five years. J 
+Mar Sci Eng. 2024;12(1):159.
+ 4. Saeys Y, Inza I, Larrañaga P . A review of feature selection techniques in 
+bioinformatics. Bioinformatics. 2007;23(19):2507–17.
+ 5. Wu Y, Sun L, Sun X, Wang B. A hybrid XGBoost-ISSA-LSTM model for accu-
+rate short-term and long-term dissolved oxygen prediction in ponds. 
+Environ Sci Pollut Res. 2022;29(12):18142–59.
+ 6. Li Y, Li R. Predicting ammonia nitrogen in surface water by a new atten-
+tion-based deep learning hybrid model. Environ Res. 2023;216:114723.
+ 7. Barzegar R, Adamowski J, Moghaddam AA. Application of wavelet-artifi-
+cial intelligence hybrid models for water quality prediction: a case study 
+in Aji-Chay River, Iran. Stoch Environ Res Risk Assess. 2016;30(7):1797–819.
+ 8. Avila R, Horn B, Moriarty E, Hodson R, Moltchanova E. Evaluating statisti-
+cal model performance in water quality prediction. J Environ Manage. 
+2018;206:910–9.
+ 9. Nayak JG, Patil LG, Patki VK. Artificial neural network-based water quality 
+index (WQI) for river Godavari (India). Mater Today Proc. 2023;81:212–20.
+ 10. Jiang Y, Li C, Sun L, Guo D, Zhang Y, Wang W. A deep learning algorithm 
+for multi-source data fusion to predict water quality of urban sewer 
+networks. J Clean Prod. 2021;318:128533.
+ 11. Wong W, Hasikin K, Salwa A, Razak S, Hizaddin H, Mokhtar M, et al. A 
+stacked ensemble deep learning approach for imbalanced multi-class 
+water quality index prediction. Comput Mater Contin. 2023;76(2):1361.
+ 12. Khullar S, Singh N. Water quality assessment of a river using deep learn-
+ing Bi-LSTM methodology: forecasting and validation. Environ Sci Pollut 
+Res. 2022;29(9):12875–89.
+ 13. Guo H, Chen Z, Teo FY. Intelligent water quality prediction system with a 
+hybrid CNN–LSTM model. Water Pract Technol. 2024;19(11):4538–55.
+ 14. Bui DT, Khosravi K, Tiefenbacher J, Nguyen H, Kazakis N. Improving 
+prediction of water quality indices using novel hybrid machine-learning 
+algorithms. Sci Total Environ. 2020;721:137612.
+ 15. Aderemi IA, Kehinde TO, Okwor UD, Ahmad KH, Adjei KY, Ekechi CC. 
+Explainable AI for water quality monitoring: a systematic review of trans-
+parency interpretability and trust. IEEE Sensors Reviews. 2025;2:419–43.
+ 16. Goodarzi MR, Niknam ARR, Barzkar A, Niazkar M, Zare Mehrjerdi Y, Abedi 
+MJ, et al. Water quality index estimations using machine learning algo-
+rithms: a case study of Yazd-Ardakan Plain, Iran. Water. 2023;15(10):1876.
+ 17. Saberioon M, Khosravi V, Brom J, Gholizadeh A, Segl K. Examining the 
+sensitivity of simulated EnMAP data for estimating chlorophyll-a and total 
+suspended solids in inland waters. Ecol Inform. 2023;75:102058.
+ 18. Zhu Q, Yu X, Zhao L, Xu L. A hybrid deep learning model for water quality 
+prediction. IEEE Access. 2025. https:// doi. org/ 10. 1109/ access. 2025. 35807 41.
+ 19. Chen C, Chen Q, Li G, He M, Dong J, Yan H, et al. A novel multi-source 
+data fusion method based on Bayesian inference for accurate estimation 
+of chlorophyll-a concentration over eutrophic lakes. Environ Model Softw. 
+2021;141:105057.
+Publisher’s Note
+Springer Nature remains neutral with regard to jurisdictional claims in pub-
+lished maps and institutional affiliations.
