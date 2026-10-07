@@ -1,0 +1,1139 @@
+ORIGINAL ARTICLE
+Applied Water Science (2026) 16:290 
+https://doi.org/10.1007/s13201-026-02976-x
+Communicated by Francesca Alessandro 
+ María Molinos-Senante
+maria.molinos@uva.es
+Victor Mocholi
+vm.mocholialabau@edu.gva.es
+Alexandros Maziotis
+sala@uv.es; alexandrosmaziotis@uc.cl
+1 Department of Mathematics for Economics, University of 
+Valencia, Avd. Tarongers S/N, Valencia, Spain
+2 Department of Business, New York College, Leof. Vasilisis 
+Amalias 38, Athina 105 58, Greece
+3 Institute of Sustainable Processes, University of Valladolid, 
+C/Mergelina, S/N. , Valladolid 47007, Spain
+4 Department of Chemical Engineering and Environmental 
+Technology, University of Valladolid, C/Mergelina, S/N., 
+Valladolid 47007, Spain
+Abstract
+In response to escalating global water scarcity, reducing water losses in urban drinking water services has become crucial 
+for enhancing eco-efficiency. This study introduces an innovative methodological approach to benchmark water leak -
+age and its associated operational-cost adjustment in the water sector. The approach employs inverse Data Envelopment 
+Analysis (DEA) through reverse optimization. A case study of Chile’s water industry—marked by prolonged drought but 
+maintaining stable leakage rates—was conducted to demonstrate the methodology’s value. The findings show that 6 out of 
+27 assessed water companies cannot reduce water leakage without affecting their eco-efficiency. However, for the remain -
+ing 21 companies, an average potential leakage reduction of 20.51% is achievable, with reductions ranging from 8.76 to 
+81.55%. The economic impact of these reductions varies significantly, from US$0.27 to US$38.32 per cubic meter saved. 
+These results highlight the economic complexity of reducing leakage, emphasizing the importance of balanced policies 
+that address water affordability alongside eco-efficiency goals.
+Keywords Water leakage · Operational cost · Eco-efficiency · Water utilities · Inverse data envelopment analysis · 
+Water tariffs
+Received: 11 February 2025 / Accepted: 17 September 2026
+© The Author(s) 2026
+Estimating minimum feasible water leakage and its economic impact 
+in the drinking water sector: a case study from Chile
+Victor Mocholi1 · Alexandros Maziotis2 · Ramón Sala-Garrido1 · María Molinos-Senante3,4
+Nations ( 2024) highlighted that between 2002 and 2021, 
+droughts impacted over 1.4 billion people, forecasting that 
+by 2050, between 1.7 and 2.4 billion people in urban areas 
+might face water scarcity. Addressing this growing water 
+crisis requires a multifaceted approach. A critical compo -
+nent in urban drinking water services is the reduction of 
+water losses (Zang 2023). Annually, global water loss totals 
+approximately 126 billion cubic meters, valued at around 
+US$ 39 billion (Liemberger and Wyatt 2019). Water leakage 
+not only results in the wastage of water resources but also 
+has significant economic repercussions and poses public 
+health risks due to potential contamination (Fox et al. 2016). 
+Moreover, the energy expended in treating and distributing 
+leaked water contributes to environmental burdens, high -
+lighting the interconnected nature of water management 
+with broader environmental issues (Jernigan 2024). Given 
+these complexities, implementing effective leakage reduc -
+tion strategies is crucial for sustainable urban water manage-
+ment, underscoring the need for comprehensive solutions 
+that address both the immediate challenges of water loss 
+and the long-term sustainability of water resources (Pokhrel 
+et al. 2023).
+Introduction
+Global water scarcity is intensifying, with more than 80 
+major cities facing extreme droughts and water shortages 
+over the past two decades (Zhang et al. 2020). The United 
+1 3
+ 290 Page 2 of 11
+Applied Water Science (2026) 16:290 
+Within the context of sustainable urban drinking water 
+supply, the assessment of water companies’ eco-efficiency 
+has emerged as a valuable tool for both regulators and utili-
+ties (Goh and See 2021). Eco-efficiency evaluations involve 
+the estimation of a synthetic indicator for each water com -
+pany, integrating various single indicators that typically 
+cover economic, operational, and quality of service dimen -
+sions (Cetrulo et al. 2020). Consequently, eco-efficiency 
+offers a comprehensive view of water companies’ perfor -
+mance, providing objective data that aids policymakers 
+in designing incentives and policies aimed at promoting 
+improvements across economic, environmental, and ser -
+vice quality aspects of water company operations (Cetrulo 
+et al. 2019). Given the critical importance of water leakage 
+in the context of sustainable water services, several studies 
+have incorporated the volume of water loss as an undesir -
+able output in the eco-efficiency evaluation of water compa-
+nies (Kumar 2010; Maziotis et al. 2023; Ravelojaona et al. 
+2026). This approach positions water loss as a key variable 
+to be minimized to enhance the overall performance and 
+sustainability of water utilities.
+Empirical studies assessing the eco-efficiency of water 
+companies integrating water leakage used various models 
+of the Data Envelopment Analysis (DEA) method. DEA is 
+a non-parametric technique capable of managing multiple 
+inputs and outputs without necessitating a predefined func -
+tional form for the relationships between these variables 
+or requiring any a priori weighting scheme for them (Du 
+et al. 2023). This method is particularly valuable because 
+it focuses on individual observations, providing insights 
+relative to specific units under evaluation rather than gen -
+eralizing to population averages (lo Storto 2022). Molinos-
+Senante et al. (2022) and Sala-Garrido et al. (2022) utilized 
+a non-radial DEA approach to assess the eco-efficiency of a 
+sample of 21 Chilean water companies over the period 2007–
+2018. They focused on potential savings in water losses if 
+utilities were eco-efficient. lo Storto (2022) employed a DEA 
+metafrontier approach to assess the eco-efficiency of 71 Ital-
+ian water utilities, accommodating heterogeneities among 
+utilities based on their locations. Similarly, Li et al. ( 2021) 
+and Du et al. ( 2023) applied this methodological approach 
+to estimate changes in the eco-efficiency of Chinese water 
+utilities. Walker et al. (2021) also examined changes in eco-
+efficiency over time but uniquely integrated the reduction of 
+water leakage as a desirable output in their model.
+Prior research has effectively incorporated water leak -
+age into the eco-efficiency assessments of water companies, 
+enabling an evaluation of how this critical factor influences 
+their overall performance (Ablanedo-Rosas et al. 2020). 
+These studies have significantly contributed to highlight 
+the pivotal role of water leakage management in enhanc -
+ing eco-efficiency. However, two fundamental questions 
+remain largely unexplored: What is the lowest level of water 
+leakage that each water company can achieve while main -
+taining its current level of eco-efficiency? and what are the 
+economic implications, specifically in terms of increased 
+operational costs, associated with efforts to reduce water 
+leakage within each water company?. To reply both ques -
+tions, we have inspired in the methodological approach pro-
+posed by Mocholi-Arce et al. ( 2024) who use inverse DEA 
+to estimate the additional operational costs associated with 
+predefined improvements in water and sanitation service 
+continuity. Building on that framework, the present study 
+develops a leakage-specific application in which the leakage 
+benchmark is determined endogenously rather than imposed 
+through predefined scenarios.
+The main aim of this study is to propose and apply an 
+inverse DEA framework to estimate utility-specific, frontier-
+consistent leakage benchmarks and their associated opera -
+tional-cost adjustments while maintaining eco-efficiency 
+scoreTo demonstrate the value of the proposed methodol -
+ogy, an empirical analysis was conducted on a sample of 27 
+water companies in Chile, representing a range of current 
+water leakage levels. This research extends the application 
+of inverse DEA to a leakage-specific, endogenous-target 
+benchmarking problem. It thereby extends previous studies 
+that have focused on evaluating the impact of water leakage 
+on water company performance. From a policy standpoint, 
+the findings of this research offer valuable insights for water 
+regulators and managers by providing a quantitative assess-
+ment of how reducing water leakage affects operational 
+costs, which could influence water tariffs and affordability. 
+Understanding the economics of water loss reduction is cru-
+cial for setting specific targets at the water company level, 
+helping to achieve a balance between service quality and 
+operational costs in water services.
+Materials and methods
+Methodological framework for estimating the 
+minimum water leakage and its impact on 
+operational costs
+Building on previous research that used DEA to estimate the 
+eco-efficiency of water companies, including water leakage, 
+this study proposes a framework based on Inverse DEA to 
+determine the minimum feasible water leakage for each 
+water company analysed. This framework also estimates 
+the operational costs required to achieve this target while 
+maintaining current levels of eco-efficiency. Specifically, 
+we propose the use of an inverse DEA model framed as a 
+design problem. This model functions by designing prices, 
+incentives, or mechanisms that guide agent decisions to be 
+1 3
+Page 3 of 11 290 
+Applied Water Science (2026) 16:290 
+optimal within the calculated parameters (Gupta and Zhang 
+2023). This approach ensures that all solutions generated by 
+the optimization are feasible and actionable for water com -
+panies. Moreover, Inverse DEA, employing reverse optimi-
+zation, identifies the necessary inputs and/or outputs to meet 
+predetermined efficiency targets (Emrouznejad et al. 2023). 
+This methodological approach, therefore, enables the esti -
+mation of both the minimum feasible water leakage and its 
+corresponding impact on operational costs for each assessed 
+water company.
+The proposed methodological framework consists of two 
+primary stages, defined as follows:
+Stage 1: Assessment of the current eco-efficiency of 
+water companies.
+At this phase, the eco-efficiency of water companies was 
+evaluated, including specifically in current water leakage 
+levels. Following past research (Walker et al. 2021; Li et al. 
+2021; Du et al. 2023), the analysis utilized the DEA method. 
+This non-parametric approach is capable of accommodating 
+different returns to scale such as constant returns to scale 
+(CRS), variable returns to scale (VRS), non-increasing 
+returns to scale (NIRS), and non-decreasing returns to scale 
+(NDRS). Previous studies (Maziotis et al. 2023; Sala-Gar-
+rido et al. 2022) have demonstrated that water companies in 
+Chile typically function under VRS conditions. An input-
+oriented VRS DEA model was employed because opera -
+tional costs are considered a controllable input, whereas 
+increases in the desirable outputs are generally beyond the 
+direct control of water companies. In the empirical appli -
+cation, operational cost is the only input contracted by the 
+radial efficiency factor. Water leakage is incorporated as an 
+undesirable output through a non-increase constraint which 
+involves that the reference combination must exhibit a leak-
+age level no greater than that observed for the evaluated 
+company.
+Consider 𝑛𝑛 water companies, 𝑊𝑊𝑊𝑊1, …,𝑊𝑊 𝑊𝑊 𝑛𝑛, and 
+that water company 𝑘𝑘 ( 𝑘𝑘𝑘 1,2,… ,𝑛𝑛 ) uses a vector of 𝑀𝑀 
+inputs, 𝑥𝑥𝑘𝑘 = (𝑥𝑥1𝑘𝑘𝑘 𝑥𝑥2𝑘𝑘 ,… ,𝑥𝑥 𝑀𝑀𝑘𝑘 ) (operational costs) to pro -
+duce a vector of 𝑆𝑆 desirable outputs, 𝑦𝑦𝑘𝑘 = (𝑦𝑦 1𝑘𝑘𝑘 𝑦𝑦2𝑘𝑘 ,… ,𝑦𝑦 𝑆𝑆𝑘𝑘 ) 
+(water and wastewater services) and a vector of 𝑃𝑃 undesir-
+able outputs, 𝑏𝑏𝑘𝑘 = (𝑏𝑏1𝑘𝑘𝑘 𝑏𝑏2𝑘𝑘 ,… ,𝑏𝑏 𝑃𝑃𝑘𝑘 ) (water leakage), the 
+eco-efficiency ( 𝜃𝜃 ) of each water company is obtained by 
+solving the following linear programming model (Gómez 
+et al. 2018):
+𝑀𝑀𝑀𝑀𝑀𝑀 𝜃𝜃 0 (1)
+𝑆𝑆𝑆𝑆𝑆𝑆𝑆𝑆𝑆𝑆𝑆𝑆𝑆𝑆 𝑆𝑆𝑆𝑆 𝑆
+∑ 𝑛𝑛
+𝑘𝑘𝑘𝑘 𝜆𝜆 𝑘𝑘 𝑥𝑥𝑖𝑖𝑘𝑘 ≤𝜃𝜃 𝑥𝑥𝑖𝑖𝑘𝑘𝑖 1 ≤ 𝑖𝑖 ≤ 𝑀𝑀
+∑ 𝑛𝑛
+𝑘𝑘𝑘𝑘 𝜆𝜆 𝑘𝑘 𝑦𝑦𝑟𝑟𝑘𝑘 ≥ 𝑦𝑦𝑟𝑟𝑘𝑘𝑟 1 ≤ 𝑟𝑟 ≤ 𝑆𝑆
+∑ 𝑛𝑛
+𝑘𝑘𝑘𝑘 𝜆𝜆 𝑘𝑘 𝑏𝑏𝑙𝑙𝑘𝑘 ≤ 𝑏𝑏𝑙𝑙𝑘𝑘𝑙 1 ≤ 𝑙𝑙 ≤ 𝑃𝑃
+𝜆𝜆 𝑘𝑘 ≥ 0
+∑ 𝑛𝑛
+𝑘𝑘𝑘𝑘 𝜆𝜆 𝑘𝑘 =1
+.
+where 𝜆𝜆 𝑘𝑘 represents the vector of weights assigned to 
+each input, desirable output and undesirable output associ -
+ated with water company 𝑘𝑘, while 𝜃𝜃 0 is the input-oriented 
+eco-efficiency score of the evaluated water company, with 
+0< 𝜃𝜃 0 ≤ 1. Because operational cost is the only input 
+in the empirical application, 𝜃𝜃 0𝑥𝑥0 represents the projected 
+operational cost on the estimated VRS frontier. Conse -
+quently, 1− 𝜃𝜃 0 measures the maximum proportional reduc-
+tion in operational costs that is feasible while maintaining 
+the desirable outputs at their observed levels and ensuring 
+that water leakage does not exceed its observed value. It 
+does not measure a proportional reduction in water leak -
+age. A value of 𝜃𝜃 0 =1 indicates that no radial reduction in 
+operational costs is feasible under these conditions.
+In this study, feasibility has a strictly DEA-based mean -
+ing. A leakage value is considered model-feasible when it 
+is represented within the VRS production possibility set 
+constructed from the observed water utilities and satisfies 
+the output and eco-efficiency constraints imposed by the 
+model. Such feasibility is conditional on the sample, year, 
+variables, orientation, returns-to-scale assumption, and data 
+quality. It does not demonstrate that the corresponding leak-
+age level is hydraulically, physically, financially, or tempo-
+rally attainable by the evaluated utility.
+Stage 2: Estimation of a frontier-consistent leakage 
+benchmark and its associated operational-cost adjustment.
+This stage identifies, for each evaluated water utility, the 
+lowest leakage benchmark represented within the estimated 
+DEA technology while maintaining the observed desirable 
+outputs and the Stage 1 eco-efficiency score. It subsequently 
+estimates the operational-cost adjustment associated with 
+reaching that benchmark under the inverse DEA constraints. 
+The resulting value is a relative, sample-based benchmark 
+and not an estimate of the physical or engineering minimum 
+leakage of the utility’s distribution network.
+To accomplish this, following to Mocholi-Arce et 
+al. ( 2024), an inverse DEA approach was utilized. This 
+approach involves an inverse optimization problem, which 
+not only estimates a feasible solution for reducing water 
+leakage but also calculates the necessary increase in opera -
+tional costs (inputs) to realize this reduction (Emrouznejad 
+et al. 2023).
+The reduction in water leakage (𝛽𝛽 0) for each water com-
+pany evaluated ( 𝑊𝑊𝑊𝑊0) is defined as follows:
+1 3
+ 290 Page 4 of 11
+Applied Water Science (2026) 16:290 
+𝛽𝛽 0 = (𝑏𝑏0 − ∆ 𝑏𝑏0) (2)
+To determine the maximum reduction in water leakage of 
+the evaluated water company ( 𝑊𝑊𝑊𝑊0) and its impact on 
+operational costs, the following model was solved:
+𝑀𝑀𝑀𝑀𝑀𝑀 𝑀 ∑ 𝑃𝑃
+𝑙𝑙𝑙𝑙 𝛽𝛽 𝑙𝑙𝑙 (3)
+𝑠𝑠𝑠𝑠𝑠𝑠𝑠𝑠𝑠𝑠𝑠𝑠𝑠𝑠 𝑠𝑠𝑠𝑠 𝑠
+∑ 𝑛𝑛
+𝑘𝑘𝑘𝑘 𝜆𝜆 𝑘𝑘 𝑥𝑥𝑖𝑖𝑘𝑘 ≤𝜃𝜃 0 (𝑥𝑥𝑖𝑖0 + 𝛥𝛥 𝑥𝑥𝑖𝑖 ) , 𝑖𝑖𝑖 𝑖 ,𝑖 ,𝑖,𝑖𝑖
+∑ 𝑛𝑛
+𝑘𝑘𝑘𝑘 𝜆𝜆 𝑘𝑘 𝑦𝑦𝑟𝑟𝑘𝑘 ≥ 𝑦𝑦𝑟𝑟𝑟 , 𝑟𝑟𝑟 𝑟 ,𝑟 ,𝑟, 𝑟𝑟
+∑ 𝑛𝑛
+𝑘𝑘𝑘𝑘 𝜆𝜆 𝑘𝑘 𝑏𝑏𝑙𝑙𝑘𝑘 ≤ 𝑏𝑏𝑙𝑙𝑙 − 𝛥𝛥 𝑏𝑏𝑙𝑙𝑙 = 𝛽𝛽 𝑙𝑙𝑙 , 𝑙𝑙 = 𝑙, 𝑙, 𝑙 , 𝑙𝑙
+𝜆𝜆 𝑘𝑘 ≥ 0
+∑ 𝑛𝑛
+𝑘𝑘𝑘𝑘 𝜆𝜆 𝑘𝑘 =1
+The meaning of the parameters in Model (3) is the same as 
+in Models (1) and Eq. (2).
+Sample of water companies and data selection
+The case study analyzed in this study focused on the Chil -
+ean water industry, which serves 6,058,085 households, 
+accounting for approximately 16,215,864 individuals. 
+Urban drinking water coverage in Chile reaches 99.9%, 
+while sanitation coverage stands at 97.5% (SISS, 2023). 
+There is considerable variation in the size of water compa -
+nies within Chile; the largest serves 2,160,340 households, 
+while the smallest serves fewer than 1,000. Given the wide 
+disparity in company sizes and the statistical data available, 
+this study includes the largest 27 water companies based 
+on customer numbers. These 27 companies provide water 
+and sanitation services to 5,903,863 households, which rep-
+resents 97.45% of all urban customers. Operating across 
+Chile’s 16 administrative regions, these water utilities col -
+lectively provide a representative sample for analyzing the 
+Chilean water industry.
+The analysis of water leakage levels among Chilean 
+water companies is detailed in Fig. 1, which depicts the evo-
+lution of the average percentage of water leakage over the 
+past decade. The data show that the average water leakage 
+rate for Chilean water companies has remained relatively 
+stable, fluctuating between 23.7 and 25.0%. This stability 
+corresponds to an estimated annual loss of 270 to 300 mil -
+lion cubic meters of water. According to 2023 figures, the 
+average monthly water consumption per customer account 
+is 16.8 m³ (SISS, 2023). Consequently, the annual water lost 
+is approximately equivalent to the annual consumption of 
+1.4 million people. It is important to highlight that Chile 
+has experienced severe drought conditions over the past 15 
+years (2012–2023), significantly reducing water availability 
+from both groundwater and surface sources (Bobadilla et 
+al. 2024). This scarcity has compelled water companies to 
+invest to secure raw water sources, with approximately US$ 
+424 million spent in 2023 alone (SISS, 2023). Despite these 
+investments, the rate of drinking water network replace -
+ment has remained below 0.5% annually for the last decade 
+(SISS, 2023), involving that a complete network replace -
+ment would take over 200 years. This is particularly con -
+cerning in a seismically active country like Chile, which 
+recorded 6900 earthquakes in 2023 with magnitudes of 3 
+or higher (CSN 2023), potentially impacting the integrity 
+of water networks. In this context, it is crucial to assess the 
+potential reductions in water leakage and their effects on the 
+operational costs of water companies.
+Variables for assessing the eco-efficiency of water com -
+panies were chosen based on available statistical data and 
+international past research on this topic (Cetrulo et al. 2019; 
+Goh and See 2021). Because one of the objectives of this 
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+  !
+
+!
+"
+Fig. 1 Evolution of the aver-
+age percentage of water leakage 
+and water lost in Chilean water 
+companies.Source: Own elaboration 
+using data from regulator
+ 
+1 3
+Page 5 of 11 290 
+Applied Water Science (2026) 16:290 
+study is to evaluate the impact of reducing water leakage 
+on the operational costs of water companies, the operational 
+costs of water companies was selected as an input variable. 
+It was quantified in US$ per year and encompasses the total 
+operational expenditure of each assessed water company. It 
+should be noted that capital expenditure, annualized invest-
+ment costs, financing costs, asset depreciation and the costs 
+of specific network-rehabilitation projects are not explicitly 
+represented as separate inputs in the DEA model.
+As for desirable outputs, which represent the operational 
+capabilities of water companies, the volume of revenue 
+water and the population receiving wastewater treatment 
+services were selected. According to the International Water 
+Association’s Water Balance (2008), the variable “revenue 
+water” includes billed metered consumption and billed 
+unmetered consumption. Conversely, water leakage, cho -
+sen as the undesirable output to be minimized, refers to real 
+losses, including leakage from distribution networks, over -
+flows and leakage at storage tanks, and leakage on service 
+connections up to the customer meter. Thus, the difference 
+between abstracted water and revenue water does not rep -
+resent water leakage, as the provision of water also encom -
+passes: (i) apparent or commercial losses, which include 
+unauthorized consumption and inaccuracies in customer 
+metering and; (ii) unbilled authorized consumption, which 
+is unbilled water.
+Statistical data was collected from the Management 
+Report of Water Companies published by the urban water 
+regulator, Superintendencia de Servicios Sanitatios, on its 
+webpage for 2023. Table 1 presents a statistical summary of 
+the variables for the 27 Chilean water companies evaluated 
+in this study.
+Results and discussion
+Eco-efficiency scores of water companies
+As outlined in the methodological section, Stage 1 esti -
+mated input-oriented eco-efficiency scores for the 27 water 
+companies. The scores ranged from 0.207 to 1.000 (Fig. 
+2). Because the eco-efficiency factor in Model (1) con -
+tracts only operational costs, the minimum score of 0.207 
+indicates that the lowest-scoring company could reduce its 
+operational costs by up to 79.3% relative to the estimated 
+frontier, while maintaining its desirable outputs and keeping 
+water leakage no higher than its observed level. The com -
+pany is a relatively small utility located in northern Chile 
+and serves approximately 190,000 customers. Its low score 
+is consistent with its comparatively high operational costs, 
+which are more than twice the sample average and are partly 
+Table 1 Main statistics of variables for Chilean water companies for 
+2023
+Variable Unit Average Std. Dev Minimum Maximum
+Operational_
+costs
+1000 
+US$/
+year
+47,624 70,517 1,191 312,203
+Billed water 1000 
+m3/
+year
+44,609 90,218 361 454,369
+Population 
+wastewater
+Peo-
+ple
+591,575 1,436,613 3,583 7,352,685
+Water leakage 1000 
+m3/
+year
+10,818 21,853 66 107,931
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+Fig. 2 Estimated eco-efficiency 
+scores for each water company 
+assessed
+ 
+1 3
+ 290 Page 6 of 11
+Applied Water Science (2026) 16:290 
+associated with groundwater abstraction from deep wells. 
+Conversely, 10 of the 27 assessed water companies, repre -
+senting 37% of the sample, achieved an eco-efficiency score 
+of 1.000. Under Model (1), this means that no proportional 
+reduction in operational costs is feasible while maintaining 
+the observed desirable outputs and preventing an increase in 
+leakage. It does not mean that these companies necessarily 
+operate at their minimum feasible leakage levels.
+Notably, 8 of these 10 eco-efficient companies are located 
+in the Metropolitan Region of Santiago, which is the most 
+densely populated area of the country. This high population 
+density likely contributes positively to the eco-efficiency of 
+water companies in the region.
+The mean input-oriented eco-efficiency score for the 27 
+evaluated companies was 0.724. This corresponds to an 
+average company-level potential reduction in operational 
+costs of 27.6%, calculated as 1 − 0.724 = 0.276, while main-
+taining the desirable outputs and preventing an increase in 
+leakage.
+Research findings on the eco-efficiency of Chilean water 
+companies vary significantly depending on the method -
+ological approaches and variables used in the assessments. 
+Molinos-Senante et al. (2022) estimated an average eco-effi-
+ciency score of 0.714 for a sample of 21 water companies 
+in Chile, using the same inputs and outputs as this study, 
+which provides consistency in the results. On the other 
+hand, studies by Sala-Garrido et al. ( 2022, 2023) incorpo-
+rated unplanned water supply interruptions alongside water 
+leakage as undesirable outputs, resulting in considerably 
+higher average eco-efficiency scores of 0.961 and 0.986, 
+respectively. These findings suggest that including addi -
+tional variables can significantly alter the outcomes. This 
+disparity highlights how different analytical techniques can 
+yield diverse estimations of eco-efficiency within the same 
+industry.
+Minimum level of water leakage for each water 
+company
+By solving Model (3), the minimum feasible water leak -
+age for each water company was calculated, along with the 
+potential percentage reduction based on their current levels 
+of water loss (Fig. 3). It was found that 6 out of the 27 eval-
+uated water companies (22.2%) cannot reduce their water 
+loss while maintaining the volume of drinking water sup -
+plied and their current level of eco-efficiency. Notably, one 
+of these six companies is the largest water provider in San -
+tiago, the capital city of Chile. The other companies where 
+water leakage reduction is not feasible are WC5, WC9, 
+WC13, WC14, and WC15.
+It should be noted that an eco-efficiency score of 1 does 
+not imply that every individual input or undesirable output 
+has reached its minimum feasible value. In the input-ori -
+ented DEA model, a score of 1 indicates that operational 
+costs cannot be proportionally and simultaneously reduced 
+while maintaining the observed desirable outputs. The 
+inverse DEA model addresses a different question because 
+it searches for an alternative feasible combination in which 
+leakage is reduced and operational costs are allowed to 
+increase, while the desirable outputs and the initial eco-
+efficiency score remain unchanged. Consequently, an eco-
+efficient water company may still move to another point on 
+the VRS frontier characterized by lower leakage but higher 
+operational costs. This explains the leakage-reduction 
+potential identified for WC10, WC22, WC26, and WC27. In 
+contrast, for WC1, WC5, WC9, WC13, WC14, and WC15, 
+Model (3) identifies no alternative feasible point with lower 
+leakage within the production possibility set estimated from 
+the sample. Their current leakage levels therefore represent 
+the minimum feasible levels under the model constraints. 
+These differences arise from each company’s specific 
+
+
+
+
+
+ 
+ 
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+
+
+
+
+
+   !"#
+ ! 
+
+$%#
+"
+Fig. 3 Current and estimated 
+minimum feasible of water lost 
+in Chilean water companies 
+expressed in volume and percent-
+age of reduction
+ 
+1 3
+Page 7 of 11 290 
+Applied Water Science (2026) 16:290 
+position on the piecewise-linear frontier and its particular 
+combination of operational costs, service outputs, scale, 
+and leakage, rather than from the eco-efficient classification 
+alone. For example, WC27 is eco-efficient with a current 
+leakage rate of 37.22%, but the inverse DEA model indi -
+cates that leakage could be reduced to 19.66% if operational 
+costs increase. Conversely, WC14, with a current leakage 
+rate of 4.51%, shows no additional feasible reduction.
+The weighted average estimated percentage of water 
+leakage reduction across all 27 companies is 16.31%. For 
+the subset of companies that can reduce water leakage, the 
+average reduction rises to 20.51%. The range of potential 
+reductions in water leakage varies widely, from as low as 
+8.76% for WC8 to as high as 81.55% for WC24. The poten-
+tial leakage reductions identified for WC8 and WC24 derive 
+from Model (3), rather than directly from their Stage 1 eco-
+efficiency scores. Stage 1 measures the proportional reduc -
+tion in operational costs subject to non-increasing leakage, 
+whereas Stage 2 explicitly determines the maximum fea -
+sible reduction in leakage while maintaining the initial 
+eco-efficiency level. The results therefore demonstrate that 
+cost-oriented eco-efficiency and leakage-reduction poten -
+tial represent related but distinct dimensions of company 
+performance.
+At the water industry level, aggregating the data from 
+the 27 water companies evaluated, reveals that the current 
+annual water loss amounts to 292,081,000 m 3. The analy -
+sis estimates that the minimum feasible water loss could be 
+reduced to 244,435,000 m3/year. This represents a potential 
+avoidance of 47,646,000 m 3 of water lost annually. Given 
+that the average monthly water consumption per customer 
+account is 16.8 m³ (SISS, 2023), the estimated reduction 
+in water leakage is equivalent to the annual average water 
+consumption of approximately 236,000 customer accounts. 
+This comparison is provided only to illustrate the magnitude 
+of the estimated leakage reduction.
+The current average percentage of water loss among 
+the assessed Chilean water companies is 20.29% (Fig. 4). 
+This rate exceeds the maximum threshold of 15% set by the 
+urban water regulator for the purpose of determining water 
+tariffs (Molinos-Senante and Donoso 2016). However, the 
+average estimated minimum feasible water leakage stands 
+at 13.02%, evidencing that, on average, the Chilean water 
+industry could adhere to the current regulatory standards. 
+Despite this average, Fig. 4 highlights significant dispari -
+ties in both the current and minimum feasible percentages 
+of water leakage among the companies. Currently, water 
+leakage rates range from 4.51 to 37.22%. The company 
+with the poorest performance has the potential to reduce its 
+water leakage to 23.75%. The Superintendencia de Servi -
+cios Sanitarios, following its Agenda 2030 adopted in 2019, 
+launched a specific initiative aimed at reducing water leak -
+age (SISS, 2019). As part of this initiative, water companies 
+and the regulatory body have agreed upon a memorandum of 
+understanding which sets a target for all water companies to 
+reduce water leakage to below 25% (SISS, 2023). The find-
+ings from this study demonstrate that achieving this target 
+is feasible and can be accomplished without compromising 
+the eco-efficiency of the water companies, as the estimated 
+minimum feasible water leakage for all companies is below 
+the 25% threshold.
+Operational-cost implications of reducing water 
+leakage
+Moving from the observed leakage level toward the frontier-
+consistent leakage benchmark is associated in the inverse 
+DEA model with an adjustment in operational costs (Fig. 3). 
+For the 21 water companies that have the potential to reduce 
+their water loss, the total estimated annual increase in opera-
+tional costs amounts to US$157,741,000. The correspond -
+ing model-implied operational-cost adjustment averages 
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+  !
+Fig. 4 Current and minimum per-
+centage of water leakage relative to 
+the volume of water billed for each 
+water company
+ 
+1 3
+ 290 Page 8 of 11
+Applied Water Science (2026) 16:290 
+47.3% relative to current operational expenditure. How -
+ever, there are significant variations among the companies 
+assessed, with increases in operational costs ranging from 
+a minimum of 3.3% for WC11 to a maximum of 132.6% 
+for WC19. The results show a moderate positive association 
+between the percentage reduction in water leakage and the 
+corresponding percentage operational-cost adjustment, with 
+a correlation coefficient of 0.57. This suggests that larger 
+model-implied leakage reductions tend to be associated 
+with larger operational-cost adjustments, although consid -
+erable heterogeneity remains across utilities. The remain -
+ing dispersion indicates substantial heterogeneity among 
+utilities in the relationship between leakage reduction and 
+operational-cost adjustment. However, the present model 
+does not identify the specific network, environmental, or 
+operational characteristics responsible for this heterogene -
+ity (See Fig. 5).
+Figure 6 illustrates the DEA-implied operational-cost 
+adjustment per cubic metre of model-implied leakage 
+reduction for the water companies for which a lower leak -
+age benchmark was identified. This indicator ranges from 
+US$0.27 to US$38.32 per cubic metre of leakage reduction. 
+It should be interpreted as a cost-effectiveness indicator 
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ !
+Fig. 6 DEA-implied operational-
+cost adjustment per cubic metre of 
+model-implied leakage reduction
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ !" #"
+ !
+#
+Fig. 5 DEA-implied operational-
+cost adjustments associated with 
+the frontier-consistent leakage 
+benchmarks for Chilean water 
+companies
+ 
+1 3
+Page 9 of 11 290 
+Applied Water Science (2026) 16:290 
+describing the operational-cost intensity associated with 
+reducing leakage within the DEA framework.
+The results nevertheless indicate that reductions in leak -
+age may be associated with substantial operational-cost 
+adjustments for some utilities. Any potential implications 
+for water tariffs would depend on the applicable tariff-
+setting methodology and on how additional costs are rec -
+ognized and recovered within the regulatory framework. 
+Therefore, the estimates reported here should not be inter -
+preted as direct predictions of tariff changes.
+The United Nations ( 2010) has stipulated that the cost 
+for water and sanitation services should not exceed 5% of 
+a household’s average income to remain financially afford -
+able. Therefore, before translating leakage benchmarks into 
+regulatory targets, their potential tariff and affordability 
+implications should be evaluated through a separate regu -
+latory and economic assessment. Such an assessment is 
+beyond the scope of the present DEA framework.
+In Chile, the potable water subsidy benefited over 764,770 
+families, accounting for 12% of the urban customers. Par -
+ticularly in the Aysen region, 34.9% of customers received 
+this subsidy (SISS, 2023). The potable water subsidy in 
+Chile is a direct subsidy targeted at consumers, designed 
+to ensure access to a basic water supply and sewage ser -
+vices for lower-income families (SISS, 2023). This context 
+highlights the importance of considering affordability when 
+leakage-reduction policies are translated into expenditure or 
+tariff decisions. However, the present analysis does not esti-
+mate tariff changes or changes in the number of households 
+requiring subsidies. These effects would require a separate 
+affordability and regulatory analysis.
+The following issues should be considering when inter -
+preting results of this study. First, DEA constructs a rela -
+tive production possibility set from the observed utilities. 
+The estimated leakage benchmarks therefore depend on the 
+composition of the sample, the 2023 cross-sectional data, 
+the variables selected, and the orientation of the models. 
+Second, the analysis does not incorporate some structural 
+and operating conditions such as network length and age, 
+pipe material and diameter, pressure regimes, etc. that can 
+materially affect leakage and the resources required to 
+reduce it. The omission of these variables means that the 
+model cannot distinguish fully between differences arising 
+from management performance and those arising from het -
+erogeneous operating environments. Third, the operational-
+cost input is an aggregate annual value. It does not isolate 
+expenditure specifically related to leakage management and 
+does not include the capital expenditure or asset-renewal 
+requirements that may be necessary to attain a lower leak -
+age level. The estimated cost adjustments are therefore 
+benchmark implications rather than engineering cost func -
+tions or investment budgets.
+Conclusions
+In a global context where water scarcity is intensifying, 
+reducing water losses in urban drinking water services is 
+increasingly critical. Previous research has shown that water 
+leakage levels significantly influence the eco-efficiency of 
+water companies. This study introduces a methodologi -
+cal approach based on inverse DEA to quantify the mini -
+mum feasible level of water losses and assess its impact on 
+operational costs at the water company level. This approach 
+provides information on the operational-cost adjustments 
+associated, within the inverse DEA framework, with lower 
+leakage benchmarks. These operational-cost implica -
+tions may be relevant for subsequent assessments of tariffs 
+and affordability, although such effects are not estimated 
+directly in the present study.To demonstrate the value of 
+the proposed methodological approach, a case study of the 
+Chilean water industry was conducted. This serves as a par-
+adigmatic example, as despite the country’s prolonged and 
+severe drought, the level of water leakage in water compa -
+nies has remained stable over the past decade. The results 
+reveal that 6 out of 27 water companies cannot reduce 
+water losses without compromising their eco-efficiency. 
+However, for the remaining 21 companies, the average esti-
+mated reduction in water leakage is 20.51%, with a range 
+from 8.76 to 81.55%. This reduction in water leakage has 
+significant implications for operational costs, which were 
+quantified between US$0.27 and US$38.32 per cubic meter 
+of water saved. This highlights the challenge of balancing 
+operational efficiency and cost-effectiveness with broader 
+concerns about equitable access to water.
+From a policy perspective, the proposed methodological 
+approach offers valuable guidance for water regulators in 
+setting realistic, data-driven leakage reduction targets. By 
+identifying feasible reduction levels tailored to each water 
+company, this approach promotes targeted, rather than uni -
+form, policies that account for the unique circumstances and 
+operational capacities of individual companies. The signifi-
+cant variation in cost per cubic meter saved underscores the 
+importance of a thorough economic assessment when estab-
+lishing leakage reduction targets.
+Looking beyond the immediate case study, adoption of 
+this framework by water regulators carries three longer-
+term implications. First, it would allow uniform, sector-
+wide leakage thresholds such as the < 25% target currently 
+agreed between Chilean water companies and the regula -
+tor to be progressively replaced or complemented by com -
+pany-specific targets that are consistent with each utility’s 
+eco-efficiency frontier, reducing the risk of imposing infea-
+sible or disproportionately costly obligations on individual 
+companies. Second, because the estimated cost of leak -
+age reduction varies widely across companies, recurrent 
+1 3
+ 290 Page 10 of 11
+Applied Water Science (2026) 16:290 
+application of the model could inform the phased design 
+of water tariffs and of the potable water subsidy scheme, 
+so that affordability is assessed jointly with each leakage-
+reduction target rather than after the fact. Third, given that 
+network replacement in Chile has proceeded at below 0.5% 
+per year over the past decade, repeated application of the 
+model over successive regulatory periods, alongside infra -
+structure renewal investment, would allow regulators and 
+companies to track how each company’s minimum feasible 
+leakage evolves as networks are renewed and as drought 
+conditions persist. Future research should test the dynamic 
+extension of this framework using multi-year panel data, 
+and examine its applicability to other water-scarce countries 
+facing a comparable trade-off between eco-efficiency and 
+leakage reduction.
+Acknowledgements The authors acknowledge the Superintendencia 
+de Servicios Sanitarios in Chile for data provision.
+Author contributions VM: Methodology, Formal analysis, Writing—
+Original Draft. AM: Conceptualization, Formal analysis, Writing—
+Original Draft. RSG: Methodology, Formal analysis, Data Curation, 
+Writing— Review and Editing. MMS: Conceptualization, Methodol -
+ogy, Data Curation, Writing—Review and Editing
+Funding Open access funding provided by the University of Vallado-
+lid.
+Declarations
+Conflict of interest The authors declare that there are no known con -
+ficts of interest associated with this publication.
+Open Access This article is licensed under a Creative Commons 
+Attribution-NonCommercial-NoDerivatives 4.0 International License, 
+which permits any non-commercial use, sharing, distribution and 
+reproduction in any medium or format, as long as you give appropri -
+ate credit to the original author(s) and the source, provide a link to the 
+Creative Commons licence, and indicate if you modified the licensed 
+material. You do not have permission under this licence to share 
+adapted material derived from this article or parts of it. The images or 
+other third party material in this article are included in the article’s Cre-
+ative Commons licence, unless indicated otherwise in a credit line to 
+the material. If material is not included in the article’s Creative Com -
+mons licence and your intended use is not permitted by statutory regu-
+lation or exceeds the permitted use, you will need to obtain permission 
+directly from the copyright holder. To view a copy of this licence, visit 
+http:// creativ ecommon s.org /licenses/by-nc-nd/4.0/.
+References
+Ablanedo-Rosas JH, Campanur AG, Olivares-Benitez E, Sánchez-
+García JY , Nuñez-Ríos JE (2020) Operational efficiency of 
+Mexican water utilities: Results of a double-bootstrap data envel-
+opment analysis. Water (Switzerland) 12(2):553
+Bobadilla A, Stehr A, Toro N (2024) Evaluation of climate-change 
+impacts on the temporal and spatial behaviour of drought in 
+South-Central Chile. Hydrol Sci J 69(2):165–184
+Cetrulo TB, Marques RC, Malheiros TF (2019) An analytical review 
+of the efficiency of water and sanitation utilities in developing 
+countries. Water Res 161:372–380
+Cetrulo TB, Ferreira DFC, Marques RC, Malheiros TF (2020) Water 
+utilities performance analysis in developing countries: on an ade-
+quate model for universal access. J Environ Manage 268:110662
+CSN (2023) Earthquakes in Chile. Available at: h t t p : / / w w w . c s n . u c h i 
+l e . c l / 6 - 9 0 0 - s i s m o s - s e - r e g i s t r a r o n - e n - c h i l e - d u r a n t e - 2 0 2 3 / # : ~ : t e x t 
+= D e % 2 0 a c u e r d o % 2 0 a % 2 0 l a s % 2 0 c i f r a s , P r e v e n c i % C 3 % B 3 n % 2 
+0 y % 2 0 R e s p u e s t a % 2 0 a n t e % 2 0 D e s a s t r e s ) 
+Du M, Wang B, Chen Z, Liao L (2023) Productivity evaluation of 
+urban water supply industry in China: a metafrontier-biennial 
+cost Malmquist productivity index approach. Ann Oper Res. 
+https:/ /doi.or g/10.10 07/s1 0479-023-05294-6
+Emrouznejad A, Amin GR, Ghiyasi M, Michali M (2023) A review 
+of inverse data envelopment analysis: Origins, development and 
+future directions. IMA J Manag Math 34(3):421–440
+Fox S, Shepherd W, Collins R, Boxall J (2016) Experimental quanti -
+fication of contaminant ingress into a buried leaking pipe during 
+transient events. J Hydraul Eng 142(1):4015036
+Goh KH, See KF (2021) Twenty years of water utility benchmarking: 
+a bibliometric analysis of emerging interest in water research and 
+collaboration. J Clean Prod 284:124711
+Gómez T, Gémar G, Molinos-Senante M, Sala-Garrido R, Caballero 
+R (2018) Measuring the eco-efficiency of wastewater treatment 
+plants under data uncertainty. J Environ Manage 226:484–492
+Gupta R, Zhang Q (2023) An inverse optimization approach to deci -
+sion focused learning. Proceedings of the 33rd European Sym -
+posium on Computer Aided Process Engineering (ESCAPE33), 
+June 18–21, 2023, Athens, Greece
+International Water Association (2008) Water balance. Available at: 
+https:/ /iwa-ne twork.o rg/le arn/water-balance-essentials/
+Jernigan W (2024) The hidden link: water leakage. carbon emissions 
+and climate change
+Kumar S (2010) Unaccounted for water and the performance of 
+water utilities: an empirical analysis from India. Water Policy 
+12(5):707–721
+Li Y , Chiu Y-H, Li Y , Cen H, Lin T-Y (2021) Dynamic analysis of 
+residential and enterprise water supply and leakage efficiencies. 
+Environ Sci Pollut Res 28(29):39471–39492
+Liemberger R, Wyatt A (2019) Quantifying the global non-rev -
+enue water problem. Water Sci Technology: Water Supply 
+19(3):831–837
+lo Storto C (2022) Performance evaluation of water services in Italy: 
+a meta-frontier approach accounting for regional heterogeneities. 
+Water 14(18):2882
+Maziotis A, Molinos-Senante M, Sala-Garrido R, Mocholi-Arce M 
+(2023) Evaluation of dynamic eco-efficiency of water companies: 
+the influence of non-revenue water and water supply interrup -
+tions. npj Clean Water 6(1):20
+Mocholi-Arce M, Maziotis A, Sala-Garrido R, Molinos-Senante M 
+(2024) Estimating operational costs for enhanced continuity in 
+water supply and sanitation services: an inverse data envelop -
+ment analysis approach in Chilean utilities. J Hydrol Reg Stud 
+56:102008
+Molinos-Senante M, Donoso G (2016) Water scarcity and affordabil -
+ity in urban water pricing: A case study of Chile. Utilities Policy 
+43:107–116
+Molinos-Senante M, Maziotis A, Sala-Garrido R, Mocholi-Arce M 
+(2022) Estimating performance and savings of water leakages 
+and unplanned water supply interruptions in drinking water pro -
+viders. Resour Conserv Recycl 186:106538
+Pokhrel SR, Chhipi-Shrestha G, Mian HR, Hewage K, Sadiq R (2023) 
+Integrated performance assessment of urban water systems: Iden-
+tification and prioritization of one water approach indicators. Sus-
+tainable Prod Consum 36:62–74
+1 3
+Page 11 of 11 290 
+Applied Water Science (2026) 16:290 
+Ravelojaona P, Abad A, Alves PN, Pinto FS, Costa-Melo I (2026) 
+Water losses: a productivity analysis of the water supply in Portu-
+gal. Omega 138:103431
+Sala-Garrido R, Mocholi-Arce M, Molinos-Senante M, Maziotis A 
+(2022) Measuring operational and quality-adjusted efficiency of 
+Chilean water companies. npj Clean Water 5(1):1
+Sala-Garrido R, Mocholi-Arce M, Molinos-Senante M, Maziotis A 
+(2023) Assessing the dynamic performance of water companies 
+through the lens of service quality. Environ Sci Pollut Res Int 
+30(57):121077–121089
+SISS (Superintendencia de Servicios Sanitarios) (2019) Agenda sector 
+Sanitario 2030. Available at: h t t p : / / w w w . s e c t o r s a n i t a r i o 2 0 3 0 . s i s s 
+. c l / 5 8 7 / w 3 - c h a n n e l . h t m l 
+SISS (Superintendencia de Servicios Sanitarios) (2023) Water and 
+sewerage services in 2023. Available from: h t t p s : / / w w w . s i s s . g o b . 
+c l / 5 8 6 / a r t i c l e s - 1 7 7 2 2 _ r e c u r s o _ 1 . p d f 
+United Nations (2010) Human Rights to Water and Sanitation. Avail -
+able at: h t t p s : / / w w w . u n . o r g / w a t e r f o r l i f e d e c a d e / h u m a n _ r i g h t _ t o _ 
+w a t e r . s h t m l 
+United Nations (2024) Water – at the center of the climate crisis. Avail-
+able at: h t t p s : / / w w w . u n . o r g / e n / c l i m a t e c h a n g e / s c i e n c e / c l i m a t e - i s s 
+u e s / w a t e r 
+Walker NL, Styles D, Gallagher J, Prysor Williams A (2021) Aligning 
+efficiency benchmarking with sustainable outcomes in the United 
+Kingdom water sector. J Environ Manage 287:112317
+Zang J (2023) Urban water operational robustness failure preliminary 
+study: step forward solution to resilience improvement of future 
+sustainable city. Environ Sci Eng. h t t p s : / / d o i . o r g / 1 0 . 1 0 0 7 / 9 7 8 - 3 - 
+0 3 1 - 4 2 5 8 8 - 2 
+Zhang X, Zhao X, Li R, Mao G, Tillotson MR, Liao X, Zhang C, Yi Y 
+(2020) Evaluating the vulnerability of physical and virtual water 
+resource networks in China’s megacities. Resour Conserv Recycl 
+161:104972
+Publisher’s Note Springer Nature remains neutral with regard to juris-
+dictional claims in published maps and institutional affiliations.

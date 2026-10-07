@@ -1,0 +1,1145 @@
+Mapping irrigable land potential for surface 
+irrigation through GIS‑based multi‑criteria 
+analysis in Ethiopia’s Gidabo watershed
+Henok Mekonnen Aragaw1* and Azmeraw Alemu Tiku1 
+Abstract 
+Identifying land suitable for surface irrigation is essential for improving agricultural pro-
+duction while ensuring efficient use of land and water resources. However, such assess-
+ments are often challenging in data-scarce regions where terrain, soil conditions, land 
+use, and access to water and infrastructure vary widely. This study evaluated land suit-
+ability for surface irrigation in the 3180 km2 Gidabo Watershed in Ethiopia’s Rift Valley 
+Lakes Basin. Seven biophysical and accessibility factors were analyzed: slope, soil depth, 
+soil texture, soil drainage, land use/land cover, and distance to rivers and roads. These 
+factors were standardized using FAO guidelines and local expert knowledge and inte-
+grated through the Analytical Hierarchy Process (AHP) and GIS-based weighted overlay 
+analysis. The results indicate that slope was the most influential factor, with a weight 
+of 46.34%, followed by distance to rivers (28.51%) and soil characteristics (14.46%). The 
+AHP consistency ratio of 0.053 indicated acceptable consistency in the expert judg-
+ments. Overall, 93.23% of the watershed was physically suitable for surface irrigation 
+to varying degrees (S1–S3). However, only 35.79% (113,831 ha) fell within the highly 
+and moderately suitable classes (S1–S2), representing areas with more favorable 
+conditions for irrigation development. Highly suitable land (S1) accounted for 4.32% 
+of the watershed and was mainly located in valley bottoms and lowland areas 
+along the Gidabo River and its major tributaries. In contrast, steep slopes exceeding 
+8%, which cover about 62% of the watershed, represent the main physical constraint. 
+The distribution of S1–S2 land also varied considerably among sub-basins, ranging 
+from 471 to 21,486 ha. These findings highlight that while most of the watershed 
+has some level of physical suitability, the area with favorable conditions for practical 
+irrigation development is much more limited. The resulting suitability map provides 
+a useful tool for prioritizing areas for detailed feasibility studies and guiding irrigation 
+investment planning in the Gidabo Watershed and similar data-scarce watersheds 
+in sub-Saharan Africa.
+Keywords: Surface irrigation, Land suitability, GIS-MCDA, AHP , Ethiopia, Gidabo 
+watershed
+Open Access
+© The Author(s) 2026. Open Access This article is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 
+International License, which permits any non-commercial use, sharing, distribution and reproduction in any medium or format, as long 
+as you give appropriate credit to the original author(s) and the source, provide a link to the Creative Commons licence, and indicate if you 
+modified the licensed material. You do not have permission under this licence to share adapted material derived from this article or parts of 
+it. The images or other third party material in this article are included in the article’s Creative Commons licence, unless indicated otherwise 
+in a credit line to the material. If material is not included in the article’s Creative Commons licence and your intended use is not permitted 
+by statutory regulation or exceeds the permitted use, you will need to obtain permission directly from the copyright holder. To view a copy 
+of this licence, visit http:// creat iveco mmons. org/ licen ses/ by- nc- nd/4. 0/.
+RESEARCH
+Aragaw and Tiku Discover Environment (2026) 4:524 
+https://doi.org/10.1007/s44274‑026‑01068‑6 Discover Environment
+*Correspondence: 
+henokm54@gmail.com
+1 Department of Water 
+Resources Engineering, College 
+of Engineering and Technology, 
+Dilla University, Dilla, Ethiopia
+Page 2 of 27Aragaw and Tiku Discover Environment (2026) 4:524 
+1 Introduction
+The increasing demand for food production, driven by global population growth, pre -
+sents persistent challenges in balancing agricultural productivity with sustainable 
+resource use [3, 28]. Irrigated agriculture occupies only 20% of cultivated land but con -
+tributes nearly 40% of global food production, underscoring its critical role in stabilizing 
+food supplies [18, 38]. Assessing land suitability for surface irrigation is therefore a stra -
+tegic priority, particularly in regions vulnerable to climate variability and rapid popula -
+tion growth [8, 18].
+Land suitability assessment (LSA) provides a scientific basis for sustainable devel -
+opment by identifying where irrigation can be implemented cost-effectively and with 
+minimal environmental degradation [5, 6]. Integrating Geographic Information Systems 
+(GIS) with Multi-Criteria Decision Analysis (MCDA), particularly the Analytical Hier -
+archy Process (AHP), has proven highly effective for mapping irrigation suitability [4, 
+12]. AHP organizes complex problems into hierarchical structures, enabling systematic 
+decision-making through pairwise comparisons [35].
+Ethiopia exemplifies both the potential and constraints of irrigation development in 
+sub-Saharan Africa. Agriculture contributes approximately 44% of GDP and employs 
+nearly 80% of the population, yet despite an estimated 3.7 million hectares of irrigable 
+land, less than 15% has been developed [10, 18, 22, 31, 33]. The sector remains predomi-
+nantly rain-fed, making it highly vulnerable to rainfall variability and climate change 
+[21]. Climate projections for East Africa indicate increasing uncertainty in precipitation 
+patterns [27]. Recognizing this, the Government of Ethiopia has prioritized irrigation 
+through successive national development strategies, including the Growth and Trans -
+formation Plans and the current Ten-Year Development Plan (2020/21–2029/30) (EPDC 
+[17]). These strategies recognize irrigation as central to agricultural transformation and 
+food security, with targets to develop substantial new irrigated areas [33]. However, 
+planning has often proceeded without detailed assessments of land suitability, leading to 
+operational challenges, including water shortages and underutilization of infrastructure 
+[1, 8].
+Several studies have addressed this gap in Ethiopian basins. Girma et  al. [24] found 
+8.5% of the Omo-Gibe Basin highly suitable for surface irrigation. Hagos et  al. [26] 
+reported 63% of the Minch Yekest catchment as highly suitable. Muluneh et  al. [34] 
+assessed the Rift Valley Lakes Basin (RVLB) and found that 6.2% of the land was highly 
+suitable. More recently, Legesse et  al. [29] identified slope (40.74%) as the dominant 
+limiting factor in the upper Awash Basin, with only 35.8% of the area highly to moder -
+ately suitable. Similarly, Abagissa et al. [2] reported that 36% of the Gololcha Watershed 
+was unsuitable due to slope, which received the highest weight (46.36%) in their AHP 
+analysis.
+Despite these efforts, a comprehensive LSA for surface irrigation in the Gidabo Water-
+shed is still lacking. This gap is consequential because the watershed possesses three 
+distinctive characteristics: (i) it straddles the steep eastern escarpment of the Main Ethi -
+opian Rift (elevation 1171–3213 m), generating sharp transitions in slope and soil depth; 
+(ii) its land-use mosaic smallholder enset-coffee-maize systems with agroforestry, differs 
+from cereal-dominated or pastoral systems; (iii) its deeply incised river valley requires 
+locally validated proximity-to-river thresholds. Beyond watershed-specific needs, this 
+Page 3 of 27
+Aragaw and Tiku Discover Environment (2026) 4:524 
+ 
+study introduces three methodological innovations: (i) transparent documentation of 
+expert panel composition and voting outcomes; (ii) a two-round Delphi-style threshold 
+validation with explicit consensus criteria; and (iii) sub-basin dual ranking (absolute and 
+percentage area) to distinguish sub-basins suitable for central infrastructure from those 
+better served by distributed small-scale schemes.
+This study addresses this knowledge gap by conducting a systematic GIS-based multi-
+criteria LSA for surface irrigation in the Gidabo Watershed. The specific objectives are 
+to: (i) map the spatial distribution of suitability parameters; (ii) determine their relative 
+weights using AHP with rigorous consistency assessment; (iii) integrate weighted crite -
+ria through GIS-based weighted overlay; and (iv) quantify suitable lands at watershed 
+and sub-basin scales. In general, this study addresses the question: Where, and under 
+what biophysical and infrastructure constraints, is surface irrigation economically viable 
+in the Gidabo Watershed? By providing a spatially explicit, reproducible assessment, this 
+study aims to inform the prioritization of irrigation investments and offer a transferable 
+framework for data-scarce regions in sub-Saharan Africa.
+2 Study area description
+The Gidabo Watershed is situated in the Rift Valley Lakes Basin of Ethiopia, between 
+latitudes 6°05′ to 6°45′ N and longitudes 38°05′ to 38°35′ E (Fig.  1). The watershed cov-
+ers approximately 3,180.49 km2. The watershed’s topography is characterized by a steep 
+Fig. 1 Location map showing Ethiopia’s major river basins, Rift Valley Lakes Basin, and Gidabo watershed with 
+drainage network, and gauging stations
+Page 4 of 27Aragaw and Tiku Discover Environment (2026) 4:524 
+elevation gradient from 3213 to 1171 m, yielding a weighted-average slope of approxi -
+mately 14.98%. The Gidabo River originates from the Soka Sonicha mountain range, 
+flows approximately 120 km southward along the eastern floor of the Great Rift Valley, 
+and terminates in Lake Abaya.
+The climate is characterized as sub-humid, with a bimodal rainfall pattern: the main 
+rainy season occurs from March to May (Belg), and a secondary season from September 
+to November (Meher). Mean annual rainfall is 1,385 mm (range: 900–1800 mm), with 
+mean annual temperature ranging from 15  °C in highlands to 25  °C in lowlands. The 
+watershed supports diverse land uses, including agriculture (cereals, coffee, enset, veg -
+etables), mixed forests, grasslands, and settlements.
+3 Methodology
+This study employed an integrated approach combining Geographic Information System 
+(GIS) techniques with the AHP and MCDM methods to evaluate and map land suit -
+ability for surface irrigation development in the Gidabo Watershed. The methodology 
+framework is presented in Fig. 2.
+3.1 Data sources and preparation
+3.1.1 Digital elevation model (DEM)
+A 30 m resolution SRTM DEM was acquired from the USGS Earth Explorer platform 
+(http:// earth explo rer. usgs. gov). The DEM was used for watershed delineation, slope 
+analysis, and derivation of topographic parameters.
+3.1.2 Land use/land cover (LULC)
+Landsat 8 OLI/TIRS imagery (path 168, rows 55–56, February 2020, 30  m resolution) 
+was obtained from USGS. Image preprocessing, including layer stacking, geometric cor -
+rection, and sub-setting, was performed in ERDAS Imagine. Supervised classification 
+using the maximum likelihood algorithm was employed, supported by 249 ground truth 
+points collected during field surveys, supplemented by Google Earth imagery and topo -
+graphic maps.
+3.1.3 Soil data
+A 1:250,000-scale soil map was obtained from the Ministry of Water and Energy 
+(MoWE) of Ethiopia. Soil types were classified according to the FAO/UNESCO soil clas-
+sification system. Soil physical properties (texture, depth, and drainage) were derived 
+from the soil map to characterize irrigation suitability.
+3.1.4 Infrastructure data
+Road network data were obtained from the Ethiopian Roads Authority (ERA) geoda -
+tabase (Ethio-Roads), while river network data were extracted from the Ethio-Rivers 
+database maintained by the Ministry of Water and Energy. Road network data included 
+all-weather primary asphalt roads, secondary gravel roads, and major regional feeder 
+routes. Euclidean distance tools in ArcGIS were used to generate proximity maps (in 
+meters) for both roads and perennial rivers, representing accessibility to markets and 
+water sources, respectively (Fig. 3).
+Page 5 of 27
+Aragaw and Tiku Discover Environment (2026) 4:524 
+ 
+3.2 Selection of suitability factors
+Based on an extensive literature review [1 , 2, 11, 25, 29], FAO guidelines [19], and 
+consultations with local agricultural and water resources experts, seven key param -
+eters were identified as critical determinants for surface irrigation suitability: slope, 
+soil depth, soil texture, soil drainage, land use/land cover (LULC), proximity to rivers, 
+and proximity to roads. Each parameter was selected based on its direct or indirect 
+influence on the feasibility, cost-effectiveness, and sustainability of surface irrigation 
+systems.
+To ensure the credibility and relevance of the selected criteria, a panel of experts 
+was convened to participate in two structured exercises: (i) validation of the seven 
+selected parameters (confirmation that no critical factor was omitted), and (ii) adjust -
+ment of classification thresholds based on local conditions. The panel comprised 12 
+experts from three institutional categories, selected based on their disciplinary exper -
+tise, professional experience in irrigation development, and familiarity with the Gid -
+abo Watershed. Table 1 summarizes the composition of the expert panel.
+Fig. 2 Methodological framework used for surface irrigation suitability assessment in the Gidabo Watershed. 
+The framework integrates GIS-based spatial analysis, FAO land suitability classification, expert-based Analytical 
+Hierarchy Process (AHP) weighting, weighted overlay analysis, and sub-basin prioritization to identify 
+potentially irrigable lands for surface irrigation development
+Page 6 of 27Aragaw and Tiku Discover Environment (2026) 4:524 
+3.3 Criteria standardization and reclassification
+All spatial datasets were projected to WGS 1984 UTM Zone 37N and resampled to a 
+30-m grid using the nearest-neighbor method to maintain data integrity. Euclidean dis -
+tance tools in ArcGIS 10.8 were used to generate proximity maps. This ensured pixel-
+to-pixel compatibility for subsequent overlay analyses. Each factor was reclassified into 
+four suitability classes according to the FAO framework:  Highly Suitable (S1), Mod -
+erately Suitable (S2), Marginally Suitable (S3), and Not Suitable (N). The classification 
+thresholds were established based on an extensive review of peer-reviewed literature 
+[2, 3, 11–13, 25, 26, 32] and FAO guidelines, and expert knowledge of local conditions. 
+Table 2 presents the detailed suitability classification criteria for each parameter. Thresh-
+olds were determined through a three-step process: (i initial values were extracted from 
+FAO guidelines and peer-reviewed studies in Ethiopian and East African basins; (ii these 
+values were presented to the expert panel for validation and adjustment based on local 
+conditions; (iii final thresholds represent consensus among at least 10 of the 12 experts 
+following two rounds of discussion.
+For slope thresholds, the 0–2% range (S1) follows FAO [19] and Abagissa et al. [2] as 
+ideal for surface irrigation, while 2–5% (S2) is permissible with moderate terracing based 
+on Belay and Bewket [9] and Dawit et al. [13], the 5–8% range (S3) requires significant 
+earthworks and was validated by the expert panel based on local scheme experience, and 
+>8% (N) was unanimously agreed as infeasible without major terracing. For soil depth, 
+>100 cm (S1) follows FAO’s “very deep” classification and local soil surveys, 50–100 cm 
+(S2) is from Gonfa et al. [25], 25–50 cm (S3) from Legesse et al. [29], and < 25 cm (N) 
+from FAO [19] confirmed by Lithic Leptosols mapping. Soil texture thresholds follow 
+FAO [19] with loams as S1, sandy loam and clay loam as S2 (adjusted from S3 in some 
+Fig. 3 Digital elevation model (a) and land use/land cover (b) maps of the study area
+Page 7 of 27
+Aragaw and Tiku Discover Environment (2026) 4:524 
+ 
+Table 1 Composition and credentials of the expert panel involved in factor selection and threshold validation
+Category Number 
+of 
+experts
+Educational 
+background
+Professional training/
+specialization
+Current occupation 
+and institution
+Relevance to the study Voting outcomes 
+for key threshold 
+adjustments
+Specific contribution
+Academic researchers 
+(water resources)
+5 PhD (4), MSc (1) in Water 
+Resources Engineering, 
+Hydrology, or Agricul-
+tural Water Management
+Hydrological modeling, 
+irrigation engineering, 
+GIS-based suitability 
+analysis
+Assistant Professors, Dilla 
+University (Department 
+of Water Resources 
+Engineering)
+Direct research experi-
+ence in the Gidabo 
+Watershed (3 experts) 
+or adjacent Rift Valley 
+basins (2 experts); 
+previously published 
+on SWAT modeling and 
+land suitability in the 
+region
+Slope S2 upper bound 
+(2–5%): 11/12; Soil 
+depth S1 (> 100 cm): 
+12/12; Distance to river 
+S2 (2–3 km): 10/12; 
+Distance to road S2 
+(2.5–4.5 km): 11/12; Soil 
+texture (clay loam S2): 
+10/12
+Validated factor selection; 
+proposed adjustments 
+to slope and soil depth 
+thresholds based on local 
+conditions; reviewed clas-
+sification criteria
+Government water 
+resources specialists
+4 MSc (3), BSc (1) in 
+Irrigation Engineering, 
+Hydraulic Engineering, 
+or Water Resources 
+Management
+Irrigation scheme design 
+and operation, water 
+allocation, and river 
+basin management
+Senior irrigation engi-
+neers/basin planners, 
+Ministry of Water and 
+Energy (MoWE) and 
+Rift Valley Lakes Basin 
+Authority
+Direct responsibility 
+for irrigation planning 
+and water allocation in 
+the Gidabo sub-basin; 
+operational knowledge 
+of existing small-scale 
+irrigation schemes
+Distance to river 
+S2 (2–3 km): 10/12; 
+Distance to road S2 
+(4–4.5 km): 11/12; Slope 
+thresholds: 11/12; Soil 
+drainage (imperfect S3): 
+11/12
+Provided local knowledge 
+on practical constraints 
+(e.g., canal construction 
+costs, water abstraction 
+regulations); adjusted 
+distance-to-river and 
+distance-to-road thresh-
+olds
+Agricultural experts 
+(crop & soil)
+3 MSc (2), BSc (1) in Soil 
+Science, Agronomy, or 
+Crop Science
+Soil classification, crop 
+water requirements, and 
+agricultural extension
+Senior agricultural 
+officers/soil scientists, 
+Sidama and Gedeo Zone 
+Agricultural Offices
+Daily interaction with 
+farmers in the water-
+shed; deep understand-
+ing of local cropping 
+patterns, soil conditions, 
+and irrigation challenges
+Soil texture (clay loam 
+S2 vs. S3): 10/12; Soil 
+depth S3 (25–50 cm): 
+10/12; LULC classifica-
+tion: 11/12
+Validated soil parameter 
+thresholds (depth, texture, 
+drainage); confirmed LULC 
+classifications; provided 
+cropping calendar data
+Page 8 of 27Aragaw and Tiku Discover Environment (2026) 4:524 
+studies based on expert panel 10/12 agreement), sand and loamy sand as S3, and clay 
+as N. Soil drainage follows FAO [19] and Birhanu et  al. [11], with imperfect drainage 
+downgraded from S2 to S3 based on observed waterlogging in Vertisols (11/12 agree -
+ment). Land use/land cover thresholds classify agricultural land as S1, range grasses as 
+S2, forest-mixed and range bush as S3 (adopted from Dinku and Kebede [16], and pro -
+tected or unsuitable classes as N. Distance to river thresholds (0–2 km S1, 2–3 km S2, 
+3–4 km S3, > 4 km N) were adapted from Abagissa et al. [2], with the S2 upper bound 
+reduced from 4 to 3 km based on local topography (10/12 agreement). Distance to road 
+thresholds (1.5–2.5 km S1, 2.5–4.5 km S2, 4.5–5.5 km S3, > 5.5 km N) follow Gonfa et al. 
+[25] and Legesse et al. [29], with the S2 upper bound increased from 4 to 4.5 km based 
+on local road density (11/12 agreement). The expert validation process involved two 
+rounds: initial threshold presentation, where experts rated each threshold as "appropri -
+ate," "needs adjustment," or "inappropriate",discussion of thresholds where ≥3 experts 
+indicated need for adjustment; and final voting, where consensus was defined as ≥10 of 
+12 experts agreeing.
+3.4 Analytic hierarchy process (AHP) for weight determination
+3.4.1 Pairwise comparison matrix
+The Analytic Hierarchy Process (AHP) was employed to determine the relative impor -
+tance (weights) of each parameter in influencing land suitability for surface irrigation. 
+A hierarchical structure was established with the goal (land suitability for surface irriga -
+tion) at the top, followed by the seven evaluation parameters at the criterion level [23].
+A pairwise comparison matrix was constructed based on expert judgments from 
+soil scientists, irrigation engineers, hydrologists, and agricultural planners from Dilla 
+University, the Ministry of Water and Energy, and the Rift Valley Lakes Basin Author -
+ity. Experts were asked to rate the relative importance of each pair of parameters using 
+Saaty’s 1–9 fundamental scale, where 1 indicates equal importance, and 9 indicates 
+extreme importance of one factor over the other. The geometric mean of individual 
+expert judgments was calculated to aggregate the pairwise comparisons into a single 
+consensus matrix.
+Table 2 Suitability classification criteria for the selected parameters
+Criterion Suitability class and thresholds
+S1 S2 S3 N Consensus
+Slope (%) 0–2 2–5 5–8 > 8 11/12
+Soil Depth (cm) > 100 50–100 25–50 < 25 12/12
+Soil Texture Loam, Silt Loam Sandy Loam, Clay 
+Loam
+Sand, Loamy Sand Clay, Sandy Clay 10/12
+Soil drainage Well Moderately well Imperfect Poor 11/12
+Land Use/Land 
+Cover
+Agricultural land Range grasses, Forest-mixed, 
+Range bush
+Forest-evergreen, 
+built-up, wetland, 
+water bodies, 
+degraded land
+11/12
+Distance to River 
+(km)
+0–2 2–3 3–4 > 4 10/12
+Distance to Road 
+(km)
+1.5–2.5 2.5–4.5 4.5–5.5 > 5.5 11/12
+Page 9 of 27
+Aragaw and Tiku Discover Environment (2026) 4:524 
+ 
+The same 12-member expert panel described in Table 1 participated in the factor vali -
+dation and threshold adjustment exercises. However, the pairwise comparison matrix 
+for AHP weight determination was completed by a subset of 10 experts. The two agri -
+cultural extension experts (from the Sidama and Gedeo Zone Agricultural Offices) were 
+excluded from the pairwise comparison exercise because they indicated limited familiar-
+ity with comparative judgment methods during the pre-workshop briefing. Their contri -
+butions remained valuable for factor validation and threshold adjustment, but they did 
+not participate in the AHP weighting.
+3.4.2 Normalization and weight calculation
+The pairwise comparison matrix was normalized by dividing each element by the sum of 
+its column. Parameter weights (eigenvector) were then computed as the average of the 
+normalized values across rows. The principal eigenvalue (λmax) was calculated by mul -
+tiplying the pairwise comparison matrix by the weight vector and averaging the ratios of 
+the resulting vector components to the corresponding weights.
+3.4.3 Consistency assessment
+To ensure the reliability and logical consistency of the expert judgments, the consistency 
+ratio (CR) was calculated following Saaty’s procedure:
+where CI is the consistency index, n is the number of parameters/factors, and RI is the 
+random index obtained from Saaty’s table. A CR value of ≤ 0.10 (10%) is considered 
+acceptable [36], indicating that the judgments are sufficiently consistent; otherwise, the 
+pairwise comparisons should be revised.
+3.5 Weighted overlay analysis and suitability mapping
+After reclassifying each parameter layer into suitability classes, a weighted overlay analy-
+sis was performed in ArcGIS 10.8 using the Weighted Sum tool. Each reclassified ras -
+ter was multiplied by its respective AHP-derived weight, and the weighted values were 
+summed according to the following equation:
+where n is the number of criteria, Wi is the normalized weight of criterion i, and Ri is 
+the reclassified score of criterion i. The resulting continuous suitability index raster was 
+reclassified into the four final suitability classes (S1–N) (Table  3) to produce the defini -
+tive surface irrigation suitability map for the Gidabo watershed. The area statistics for 
+each class were then calculated to quantify the basin’s irrigation potential.
+(1)CI = /afii9838max − n
+n − 1
+(2)CR = CI
+RI
+(3)SuitabilityIndex=
+∑n
+i=1(W i × R i)
+Page 10 of 27Aragaw and Tiku Discover Environment (2026) 4:524 
+3.6 Sub‑basin level analysis
+The 12 delineated sub-basins (derived from the 30 m DEM, with a threshold area of 
+3,000  ha for stream definition) were used as spatial units to calculate the irrigable-
+suitable area. For each sub-basin, the total area of S1 and S2 classes was extracted 
+using zonal statistics in ArcGIS, and the percentage of sub-basin area classified as 
+irrigable (S1+ S2) was computed. This sub-basin-level disaggregation enables targeted 
+prioritization of irrigation investments.
+4 Results
+4.1 Land suitability for surface irrigation
+4.1.1 Individual factor suitability
+4.1.1.1 Slope suitability Slope suitability is summarized in Table 4, with physically suit-
+able areas (0–8%) covering 37.98% of the watershed, concentrated in valley bottoms along 
+the Gidabo River (Fig. 4). Moderately suitable areas (2–5%) occupy 546.22  km2 (17.17%), 
+while marginally suitable areas (5–8%) cover 493.33  km2 (15.51%). Steep slopes (> 8%), 
+comprising 62.02% (1,972.24  km2) of the watershed, were classified as not suitable, pri -
+marily in the highland escarpments of the Soka Sonicha mountain range.
+The dominance of steep slopes (> 8%) across 62% of the watershed represents the 
+most significant topographic constraint to surface irrigation development in the 
+Gidabo Watershed. This finding is consistent with studies in other Ethiopian high -
+land watersheds, where terrain complexity substantially limits irrigation suitability. 
+For instance, Abagissa et al. [2 ] reported that 36% of the Gololcha River Watershed 
+was unsuitable for surface irrigation due to slope constraints, while Legesse et al. [29] 
+found that 54.38% of the Dendi District in the upper Awash Basin fell within unsuit -
+able slope classes (> 8%). Similarly, Gonfa et al. [25] identified slope as the dominant 
+limiting factor in the Becho Plain, accounting for 46.34% of the total weight in their 
+Table 3 Suitability class and its description
+Class Suitability Description
+S1 Highly suitable Land without any significant limitations
+S2 Moderately suitable Moderately severe limitations (slope 2–5%, moderate distance 
+to rivers 2–3 km, or moderately well-drained soils), which reduce 
+productivity or increase development costs compared to S1 lands
+S3 Marginally suitable Overall, severe limitations; only marginally justifiable
+N Not suitable Limitations not currently overcome with existing knowledge & cost
+Table 4 Slope suitability classification for surface irrigation
+Slope range (%) Area (km2) Area (%) Suitability Class
+0–2 168.70 5.30 Highly suitable (S1)
+2–5 546.22 17.17 Moderately suitable (S2)
+5–8 493.33 15.51 Marginally suitable (S3)
+>8 1,972.24 62.02 Not suitable (N)
+Total 3,180.49 100
+Page 11 of 27
+Aragaw and Tiku Discover Environment (2026) 4:524 
+ 
+AHP analysis. The concentration of suitable slopes in valley bottoms and lowland 
+plains along the Gidabo River and its tributaries aligns with observations from the 
+Dhidhessa River Basin, where Dawit et  al. [13] found that irrigation potential was 
+highest in areas with slopes of less than 8%, which covered approximately 70% of the 
+basin. These spatial patterns underscore the importance of prioritizing riverine and 
+lowland areas for irrigation investment.
+4.1.1.2 Soil suitability Six soil types were identified in the watershed (Table  5 and 
+Fig.  5), with textures ranging from loam to clay. Humic Nitosols and Eutric Vertisols 
+(clay texture, > 120 cm depth, moderately well-drained) were highly suitable, covering 
+30.67% of the area (975.76  km2). Lithic Leptosols, limited by shallow depth (< 30 cm), 
+were classified as not suitable (25.80% of area), while Eutric Leptosols and Luvisols 
+Fig. 4 Spatial distribution of slope classes and their suitability for surface irrigation
+Table 5 Soil parameter suitability classes
+Soil parameters Suitability
+No Highly suitable Moderately 
+suitable
+Marginally suit-
+able
+Not suitable
+1 Soil texture 30.67 26.43 42.89 -
+2 Soil depth 50.27 16.53 7.40 25.80
+3 Soil drainage – 40.68 33.67 25.66
+Page 12 of 27Aragaw and Tiku Discover Environment (2026) 4:524 
+showed marginal suitability due to texture limitations. The predominance of Humic 
+Nitosols and Eutric Vertisols in the valley bottoms and lowland areas corresponds with 
+findings from the Becho Plain, where Gonfa et al. [25] reported that Vertisols and Niti -
+sols were the most favorable soil types for irrigation, covering approximately 36% of 
+the study area. These soils are characterized by deep profiles and high water-holding 
+capacity, making them particularly suitable for irrigated agriculture. In the Dhidhessa 
+River Basin, Dawit et  al. [13] found that soil properties, particularly soil depth and 
+saturated hydraulic conductivity, were among the most sensitive parameters in SWAT 
+model simulations, underscoring their critical role in determining irrigation suitabil -
+ity. The presence of Lithic Leptosols on steep slopes (25.80% of the watershed) creates 
+a compounded constraint, effectively excluding large portions of the upper watershed 
+from irrigation consideration, similar to observations in the Gololcha watershed where 
+shallow soils were associated with steep terrain [2 ].
+Soil depth analysis (Table  5 and Fig.  5) indicated that 50.27% of the watershed 
+(1,598.93  km2) has soil depth > 120 cm (highly suitable), concentrated in valley bottoms 
+and lowland areas. Shallow soils (< 30 cm) covering 25.80% (820.46  km2) were restricted 
+to steep slopes and ridge tops, predominantly associated with Lithic Leptosols. This dis -
+tribution mirrors findings from the Dendi District, where Legesse et  al. [29] reported 
+that approximately 78% of the area had soil depths exceeding 100 cm, classified as highly 
+suitable for surface irrigation. The relationship between soil depth and topographic posi-
+tion is consistent with observations from the Upper Awash Basin, where deeper soils 
+were found in depositional areas with gentle slopes [1].
+Soil drainage assessment (Table  5 and Fig.  5) revealed that 40.68% of the watershed 
+(1,293.71  km2) has moderately well-drained soils, primarily in mid-slope positions. 
+Poorly drained soils (25.66%, 816.02  km2), associated with Vertisols in low-lying areas, 
+require careful drainage management, while imperfectly drained soils occupied 33.67% 
+(1,070.76  km2). While these clay-rich soils have high water-holding capacity and are 
+productive under proper management, they are susceptible to waterlogging if surface 
+irrigation is not accompanied by adequate drainage infrastructure.  In surface irriga -
+tion systems, water ponding is typically caused by operational factors, such as poor 
+Fig. 5 Suitability map of soil texture (a), soil depth (b), and soil drainage (c)
+Page 13 of 27
+Aragaw and Tiku Discover Environment (2026) 4:524 
+ 
+land leveling, excessive inflow rates, or inadequate furrow design, rather than by soil 
+texture alone.  However, Vertisols present specific challenges, including slow infiltra -
+tion rates and swelling characteristics that increase the risk of surface sealing and runoff 
+if not properly managed. This drainage pattern is similar to that reported by Birhanu 
+et al. [11] in the Dirma River Basin, where 51.5% of the area was well drained, and 48.5% 
+was imperfectly drained. The occurrence of poorly drained Vertisols in lowland areas 
+presents both opportunities and challenges: while these soils have high water-holding 
+capacity, they require careful drainage management to prevent waterlogging and salinity 
+accumulation.
+4.1.1.3 The overall soil suitability The results of soil suitability in the weighted overlay 
+analysis revealed that about 5.83%, 59.09%, 26.74%, and 8.34% of soils in the watershed 
+were categorized under highly, moderately, marginally suitable, and not suitable classes, 
+respectively, based on the combined effect of the three rasterized soil (drainage, depth, 
+and texture) suitability classes (Table 6; Fig. 6). Based on an integrated analysis of texture, 
+depth, and drainage, 64.92% of the area (S1 and S2) was classified as suitable for surface 
+irrigation, while the remaining 35.08% was not suitable for surface irrigation develop -
+ment.
+4.1.1.4 Land use/land cover suitability Nine LULC classes were identified (Fig.  3) and 
+validated using a confusion matrix, achieving an overall accuracy of 88.75% and a kappa 
+coefficient of 0.8725, indicating strong agreement between classified and reference data 
+[7, 15]. Agricultural land (479.63  km2, 15.10%) is classified as highly suitable, and grass -
+land (734.36  km2, 23.09%) is classified as moderately suitable for irrigation conversion 
+(Fig. 7 and Table 7). Bushland and mixed forest (1,006.99  km2, 31.66%) were marginally 
+suitable, whereas settlements, barren land, water bodies, evergreen forest, and wetlands 
+(30.17%) were classified as unsuitable for irrigation development.
+The classification of bushland and mixed forest as marginally suitable reflects the need 
+for land clearance investments, similar to observations in the Gololcha watershed, where 
+dense shrubland accounted for 26.97% of the area and was considered marginally suit -
+able Abagissa et al. [2]. Excluding forested areas, settlements, and water bodies from irri-
+gation considerations aligns with environmental protection concerns and infrastructure 
+limitations noted in previous studies [16, 20].
+4.1.1.5 Proximity to rivers and roads Euclidean distance analysis showed that approxi-
+mately 35% of the watershed lies within 1.5 km of perennial rivers (highly suitable), while 
+52% lies within 3 km of roads (highly suitable), indicating favorable accessibility for irri -
+Table 6 Soil suitability of surface irrigation in the weighted overlay analysis
+S/N Area (km2) % of area Suitability
+1 185.34 5.83 Highly suitable
+2 1879.35 59.09 Moderately suitable
+3 850.46 26.74 Marginally suitable
+4 265.34 8.34 Not suitable
+Total 3180.49 100
+Page 14 of 27Aragaw and Tiku Discover Environment (2026) 4:524 
+Fig. 6 Integrated soil suitability map for surface irrigation in the Gidabo Watershed, combining soil texture, 
+depth, and drainage parameters through weighted overlay analysis
+Fig. 7 Land use/land cover suitability classification for surface irrigation in the Gidabo Watershed
+Page 15 of 27
+Aragaw and Tiku Discover Environment (2026) 4:524 
+ 
+gation development in lowland areas. Areas beyond 5 km from rivers (28%) and 10 km 
+from roads (12%) were concentrated in remote highland regions (Fig.  8). The spatial dis-
+tribution of river proximity in the Gidabo Watershed, with suitable areas concentrated 
+along major tributaries, mirrors patterns observed in the Dhidhessa River Basin, where 
+irrigation potential was highest in downstream reaches with better water access [13]. 
+The concentration of road access in lowland areas of the Gidabo Watershed is consistent 
+with the spatial pattern of infrastructure development in the Ethiopian Rift Valley, where 
+transportation networks are more developed in accessible lowland areas.
+4.1.2 AHP weighting and consistency
+The relative importance of the five parameters, as determined by expert judgment 
+through pairwise comparison, is presented in Table  8. The normalized priority weights 
+derived from the eigenvector method (Table  9) identified slope as the most critical fac -
+tor influencing surface irrigation suitability in the Gidabo watershed, with a weight 
+of 46.36%. This was followed by river proximity (28.51%), soil (14.46%), road proximity 
+(6.01%), and LULC (4.64%) (Table 9). The dominance of slope as the most influential fac-
+tor (46.34%) is consistent with FAO land evaluation guidelines and numerous Ethiopian 
+Table 7 LULC suitability class
+No Parameters Suitability
+Highly suitable% Moderately suitable% Marginally suitable% Not suitable%
+1 LULC 15.1 23.09 31.66 33.17
+Fig. 8 Map showing the suitability of the study area based on the Distance to rivers (a) and distance to the 
+road (b)
+Page 16 of 27Aragaw and Tiku Discover Environment (2026) 4:524 
+irrigation suitability studies [4, 19]. The high weight assigned to river proximity (28.51%) 
+underscores the importance of water source accessibility for surface irrigation systems, 
+similar to findings from the Dendi District where proximity to rivers was weighted at 
+40.74% [29].
+The consistency ratio (CR = 0.053) (Table 10) was below the 0.10 threshold, confirm -
+ing acceptable judgment consistency. The consistency ratio of 0.053 is well below the 
+maximum allowable threshold of 0.10 recommended by Saaty [35], indicating that the 
+pairwise comparisons were logically consistent.
+4.1.3 Integrated irrigation suitability
+The integrated GIS–AHP analysis revealed that approximately 93.23% of the Gidabo 
+watershed is physically suitable for surface irrigation (S1–S3) when only biophysi -
+cal factors are considered (Fig.  9 and Table  11). However, only 35.79% of the water -
+shed falls within the highly to moderately suitable classes (S1–S2), which are typically 
+regarded as the most feasible areas for irrigation development. This result high -
+lights the substantial spatial variability in irrigation suitability across the watershed, 
+Table 8 Pair-wise comparison matrix
+Factor Factor
+Soil LULC River Road Slope
+Soil 1 4 1/3 4 1/5
+LULC 1/4 1 1/5 1/2 1/7
+River proximity 3 5 1 6 1/2
+Road proximity 1/4 2 1/6 1 1/7
+Slope 5 7 2 7 1
+Table 9 Normalized pair-wise comparison matrix
+Factors Soil LULC River proximity Road proximity Slope Weight %
+Soil 0.105263 0.210526 0.090090 0.216216 0.100705 0.144560 14.46
+LULC 0.026316 0.052632 0.054054 0.027027 0.071954 0.046397 4.64
+River proximity 0.315789 0.263158 0.270270 0.324324 0.251762 0.285061 28.51
+Road proximity 0.026316 0.105263 0.045045 0.054054 0.071954 0.060526 6.05
+Slope 0.526316 0.368421 0.540541 0.378378 0.503525 0.463436 46.34
+Sum 1 1 1 1 1 1 100
+Table 10 Pair-wise comparison matrix output generated by AHP
+Layer name Soil LULC River proximity Road 
+proximity
+Slope Weight % CI RI CR
+Soil 1 4 0.3333 4 0.2 14.46 0.058933 1.12 0.052619
+LULUC 0.25 1 0.2 0.5 0.1428 4.64 0.058933 1.12 0.052619
+River proximity 3 5 1 6 0.5 28.51 0.058933 1.12 0.052619
+Road proximity 0.25 2 0.1667 1 0.1428 6.05 0.058933 1.12 0.052619
+Slope 5 7 2 7 1 46.34 0.058933 1.12 0.052619
+Average CR 0.052619
+Page 17 of 27
+Aragaw and Tiku Discover Environment (2026) 4:524 
+ 
+reflecting the combined influence of topography, soil characteristics, land use, and 
+accessibility. Similar findings have been reported in several Ethiopian basins, where 
+large portions of land are physically suitable for irrigation but vary widely in the 
+degree of suitability due to terrain complexity and soil limitations [14, 24, 26, 32].
+Topography, particularly slope, emerged as the most influential factor in deter -
+mining irrigation suitability, accounting for 46.34% of the total weight in the AHP 
+analysis. This dominance of slope as a determining factor is consistent with FAO 
+land evaluation guidelines and numerous irrigation suitability studies [4 , 19]. Sur -
+face irrigation systems require gentle gradients to ensure uniform water distribution, 
+minimize erosion risk, and reduce land preparation costs. In the Gidabo watershed, 
+Fig. 9 Final integrated irrigation suitability map of the Gidabo Watershed, showing four suitability classes (S1: 
+Highly suitable, S2: Moderately suitable, S3: Marginally suitable, N: Not suitable) based on GIS-AHP analysis of 
+biophysical and infrastructure factors
+Table 11 Integrated land suitability for surface irrigation
+Suitability class Area (ha) Area (km2) Area (%)
+Highly suitable (S1) 13,731.85 137.32 4.32
+Moderately suitable (S2) 100,099.04 1,000.99 31.47
+Marginally suitable (S3) 182,699.67 1,827.00 57.44
+Not suitable (N) 21,518.63 215.19 6.77
+Total 318,049.00 3,180.49 100
+Page 18 of 27Aragaw and Tiku Discover Environment (2026) 4:524 
+steep slopes (> 8%) cover over 62% of the total area, particularly in the highland zones 
+associated with the Soka Sonicha mountain range. These steep terrains significantly 
+constrain irrigation development because they require extensive land leveling, ter -
+racing, or engineered conveyance systems, which substantially increase capital costs 
+and operational complexity. Studies in similar highland watersheds of Ethiopia have 
+reported that land preparation costs may increase by 30–60% when slopes exceed 5%, 
+making irrigation investments economically challenging for smallholder farmers [9 ]. 
+Conversely, lowland plains and valley bottoms along the Gidabo River and its trib -
+utaries exhibit slopes below 5%, which are ideal for surface irrigation development. 
+These areas closely correspond to the highly and moderately suitable classes identi -
+fied in the suitability analysis, suggesting that irrigation expansion should prioritize 
+these geomorphological settings. Similar spatial patterns have been observed in other 
+Ethiopian basins, such as the Awash and Abbay basins, where irrigation development 
+is concentrated in alluvial plains and river valleys characterized by gentle slopes and 
+deeper soils [16, 28].
+Soil properties represent another key determinant of irrigation suitability in the water-
+shed. Approximately 64.9% of the soils were classified as suitable for irrigation, with 
+Humic Nitosols and Eutric Vertisols identified as the most favorable soil types. These 
+soils are characterized by deep profiles (> 120  cm), high clay content, and high water-
+holding capacity, making them particularly suitable for irrigated agriculture. Vertisols, 
+in particular, are known for their capacity to retain large amounts of moisture, reducing 
+irrigation frequency and improving drought resilience. However, Lithic Leptosols, which 
+cover approximately 25.8% of the watershed, present significant limitations due to shal -
+low soil depth and low water retention capacity. These soils are typically associated with 
+steep slopes and rocky outcrops in highland areas, limiting their suitability for irrigation 
+development. The coexistence of shallow soils and steep slopes creates a compounded 
+constraint, effectively excluding large portions of the upper watershed from irrigation 
+consideration.
+Land-use/land-cover patterns also influence irrigation feasibility. Agricultural land 
+and grassland collectively account for approximately 38% of the watershed, represent -
+ing areas that could potentially be converted to irrigated agriculture with relatively 
+minimal environmental disruption. In contrast, forested and settlement areas were clas -
+sified as unsuitable due to environmental protection concerns and infrastructure limi -
+tations. Similar patterns have been reported in GIS-based irrigation suitability studies 
+conducted in Ethiopia and other developing regions, where land-use constraints often 
+reduce the land available for irrigation [16, 20, 23, 24].
+Infrastructure accessibility further refines irrigation suitability. Proximity to rivers 
+was identified as the second most influential factor (28.51%), underscoring the impor -
+tance of water-source accessibility for surface irrigation systems. Areas located within 
+2 km of perennial rivers were considered highly suitable due to lower water conveyance 
+costs and reduced infrastructure requirements. Conversely, areas located far from water 
+sources require longer canals or pumping systems, increasing both investment and oper-
+ational costs.
+Overall, the land suitability results demonstrate that while a large proportion of 
+the watershed is technically suitable for irrigation, topography and soil limitations 
+Page 19 of 27
+Aragaw and Tiku Discover Environment (2026) 4:524 
+ 
+significantly reduce the area that can be economically developed. These findings 
+emphasize the importance of integrating multiple criteria when assessing irrigation 
+potential, rather than relying solely on individual physical parameters.
+4.2 Potentially irrigable lands in each sub‑watershed
+Sub-basin-level analysis revealed substantial variability in the distribution of suitable 
+areas (Table  12). Sub-basin 3 contained the largest suitable area (214.86  km2), fol -
+lowed by sub-basin 12 (154.98  km2) and sub-basin 10 (146.74  km2). Sub-basin 6 had 
+the smallest suitable area (4.71  km2), consistent with its steep topography and shallow 
+soils.
+The spatial variability in suitable land distribution across sub-basins reflects the 
+heterogeneous topography and soil patterns of the Gidabo Watershed. Sub-basin 3, 
+with the largest suitable area (214.86  km2), is characterized by extensive valley bot -
+toms and alluvial plains along the main river channel, similar to the most productive 
+sub-basins in the Dhidhessa River Basin, where Dawit et  al. [13] found that down -
+stream sub-basins had the highest irrigation potential. The extremely limited suitable 
+area in sub-basin 6 (4.71  km2) is comparable to findings from the Jewuha watershed, 
+where some sub-basins had minimal irrigation potential due to steep slopes and shal -
+low soils [16].
+The percentage of sub-basin area classified as suitable ranges from 5.6% (sub-basin 
+11) to 57.4% (sub-basin 6). Notably, sub-basin 6, despite having the smallest absolute 
+suitable area, has the highest percentage of its area suitable (57.4%), indicating that 
+where suitable land exists in this sub-basin, it is highly concentrated. This pattern is 
+similar to that observed in the Keleta watershed, where upper catchments had limited 
+but concentrated suitable areas [1 ]. The low percentage in sub-basin 11 (5.6%) reflects 
+severe topographic and soil constraints, underscoring the importance of sub-basin-
+scale planning for irrigation development.
+Table 12 Irrigable suitable area by sub-basin
+Sub‑basin Total area (ha) Irrigable area (ha) (S1 
+and S2)
+Irrigable area (%) Rank
+Sub-basin 1 20,761.69 9,703.02 46.7 7
+Sub-basin 2 22,702.09 6,653.89 29.3 8
+Sub-basin 3 54,978.20 21,485.90 39.1 1
+Sub-basin 4 2,191.70 1,160.65 53.0 11
+Sub-basin 5 18,012.00 5,290.70 29.4 9
+Sub-basin 6 820.61 471.34 57.4 12
+Sub-basin 7 36,463.00 12,865.00 35.3 5
+Sub-basin 8 21,357.90 10,604.14 49.7 6
+Sub-basin 9 37,354.00 14,226.25 38.1 4
+Sub-basin 10 53,374.00 14,674.00 27.5 3
+Sub-basin 11 21,498.00 1,198.00 5.6 10
+Sub-basin 12 28,536.00 15,498.00 54.3 2
+Total 318,049.19 113,830.90 35.8
+Page 20 of 27Aragaw and Tiku Discover Environment (2026) 4:524 
+5 Discussion
+5.1 Dominant controls on irrigation suitability
+The AHP-derived weights identified slope (46.34%) as the most influential factor deter -
+mining surface irrigation suitability in the Gidabo Watershed, followed by proximity 
+to rivers (28.51%), soil properties (14.46%), proximity to roads (6.01%), and land use/
+land cover (4.64%). The primacy of slope aligns with established land evaluation princi -
+ples and numerous Ethiopian irrigation suitability studies [4, 25]. Surface irrigation sys -
+tems require gentle gradients to ensure uniform water distribution, minimize the risk of 
+erosion, and reduce land preparation costs. The finding that 62% of the watershed has 
+slopes exceeding 8% represents the most significant topographic constraint, effectively 
+excluding the highland escarpments of the Soka Sonicha mountain range from consid -
+eration for irrigation. This proportion is comparable to findings from the Dendi Dis -
+trict, where Legesse et al. [29] reported 54.38% of slopes as unsuitable, and the Gololcha 
+River Watershed, where Abagissa et al. [2] found 36% of slopes unsuitable due to slope 
+constraints. The slightly higher proportion in the Gidabo Watershed reflects its steeper 
+overall topography, characteristic of the Rift Valley escarpment zone.
+The high weight assigned to proximity to rivers (28.51%) underscores the critical 
+importance of access to water sources for surface irrigation systems. This finding is 
+consistent with the Dendi District, where Legesse et al. [29] assigned river proximity a 
+weight of 40.74%, and the Becho Plain, where Gonfa et al. [25] identified water-source 
+proximity as a primary determinant. The concentration of suitable areas within 2  km 
+of perennial rivers (35% of the watershed) reflects the practical reality that conveyance 
+costs increase substantially with distance from water sources. Areas more than 4  km 
+from rivers (28% of the watershed) would require pumping or extended canal systems, 
+increasing both capital costs and operational energy requirements and making them 
+economically unviable for smallholder irrigation schemes [9].
+Soil properties, though weighted lower than slope and river proximity (14.46%), 
+remain critically important. The integrated soil suitability analysis classified 64.92% of 
+soils as suitable (S1–S2) for irrigation, with Humic Nitosols and Eutric Vertisols being 
+the most favorable. These soils are characterized by deep profiles (> 120 cm), high clay 
+content, and high water-holding capacity (150–200  mm/m), making them particularly 
+suitable for irrigated agriculture. The 50.27% of the watershed with soil depth >120 cm 
+represents a major comparative advantage for irrigation expansion, as deep soils enhance 
+root proliferation, moisture storage, and nutrient buffering [4]. However, the presence of 
+Lithic Leptosols on steep slopes (25.80% of the watershed) creates a compounded con -
+straint, effectively excluding large portions of the upper watershed from consideration 
+for irrigation. This co-occurrence of shallow soils and steep terrain mirrors observations 
+from the Gololcha watershed, where shallow soils were consistently associated with 
+steep slopes [2], and from the Upper Awash Basin, where deeper soils were found in 
+depositional areas with gentle slopes [1].
+5.2 Spatial patterns and environmental gradients
+The integrated land suitability analysis revealed a pronounced spatial gradient in irri -
+gation suitability across the Gidabo Watershed. Highly suitable lands (S1, 4.32%) are 
+Page 21 of 27
+Aragaw and Tiku Discover Environment (2026) 4:524 
+ 
+concentrated in valley bottoms and lowland plains along the Gidabo River and its major 
+tributaries, where gentle slopes (< 2%), deep soils (> 120  cm), and favorable drainage 
+conditions converge. Moderately suitable lands (S2, 31.47%) occupy adjacent areas with 
+slopes of 2–5% and moderately well-drained soils, while marginally suitable lands (S3, 
+57.44%) dominate the mid-slope positions where slope (5–8%) and imperfect drain -
+age impose significant limitations. Not suitable lands (N, 6.77%) are restricted to steep 
+slopes (> 8%), shallow soils, and protected land uses (evergreen forest, wetlands, built-up 
+areas).
+This spatial pattern corresponds to the physiographic transition from the Gamo High -
+lands to the Rift Valley floor. The northern upstream sectors feature gentle slopes, deep 
+Nitosols, and near-neutral pH, creating optimal edaphic conditions for surface irriga -
+tion. In contrast, the southern and eastern zones exhibit steeper slopes, shallower Lepto-
+sols, and more acidic conditions, which limit the feasibility of intensive surface irrigation 
+without significant amendment. This gradient is consistent with observations from the 
+Dhidhessa River Basin, where Dawit et al. [13] found that irrigation potential was high -
+est in downstream reaches with gentle slopes and deeper soils, and from the Becho 
+Plain, where Gonfa et al. [25] reported that Vertisols and Nitisols in valley bottoms were 
+the most favorable soil types.
+The proportion of highly suitable land (4.32%) in the Gidabo Watershed is compara -
+ble to, but slightly lower than, that reported in other Ethiopian basin-scale studies. For 
+example, Girma et al. [24] reported 8.5% S1 land in the Omo-Gibe Basin, while Muluneh 
+et al. [34] identified approximately 6% highly suitable land across the Rift Valley Lakes 
+Basin. The lower proportion in the Gidabo watershed reflects its steeper overall topog -
+raphy and the more restrictive classification thresholds applied in this study, particu -
+larly the reduction of the S2 river proximity upper bound from 4 to 3 km based on local 
+expert consensus (10/12 agreement). This adjustment acknowledges the practical con -
+straints of canal construction in the dissected topography of the Gidabo River valley, 
+where conveyance losses increase substantially beyond 3 km.
+5.3 Comparison with regional assessments
+The finding that 93.23% of the watershed is physically suitable when marginally suitable 
+lands are included (S1–S3) aligns with the narrative of substantial irrigation potential in 
+Ethiopian basins. However, the critical insight is that only 35.79% falls within the highly 
+to moderately suitable classes (S1–S2), which are economically viable for development. 
+This distinction between physical suitability (technical feasibility) and economic suit -
+ability (cost-effectiveness) is often blurred in irrigation planning, leading to overestima -
+tion of the developable area [1, 14].
+The S1–S2 proportion of 35.79% (113,831  ha) is consistent with the Dendi District, 
+where Legesse et al. [29] reported 35.8% of the area as S1–S2, and the Gololcha water -
+shed, where Abagissa et al. [2] found 40% S1–S2. This convergence suggests that, despite 
+variations in local topography, approximately one-third of Ethiopian highland watershed 
+areas may be economically suitable for surface irrigation when biophysical and infra -
+structure factors are systematically integrated. The remaining two-thirds are constrained 
+by either steep slopes, shallow soils, protected land uses, or excessive distance from 
+water sources or roads.
+Page 22 of 27Aragaw and Tiku Discover Environment (2026) 4:524 
+The sub-basin-level analysis revealed substantial heterogeneity in the distribution of 
+suitable land, with S1–S2 areas ranging from 471 ha (sub-basin 6) to 21,486 ha (sub-basin 
+3). This variability has important implications for investment prioritization. Sub-basins 
+3, 12, and 10 together account for 51.7% of the total suitable area (S1–S2), indicating 
+that targeted investments in these sub-basins could achieve significant irrigation expan -
+sion with minimal infrastructure costs. Conversely, sub-basins 6, 11, and 4 have limited 
+suitable area (< 1,200 ha each), suggesting that large-scale irrigation development is not 
+feasible in these areas, although small-scale, community-managed schemes may still be 
+viable [30].
+5.4 Implications for irrigation planning and policy
+The land suitability results have direct implications for irrigation development strategies 
+in the Gidabo Watershed and analogous Ethiopian highland basins. First, the dominance 
+of slope as a limiting factor suggests that surface irrigation should be restricted to areas 
+with slopes < 5% (S1–S2). Areas with slopes of 5–8% (S3) may be considered for irriga -
+tion only with substantial terracing investments, which increase capital costs by an esti -
+mated 30–60%, according to regional studies [9]. Given the prevalence of smallholder 
+farming systems with limited access to credit, S3 lands should be deferred for irrigation 
+development until a cost–benefit analysis is completed or reserved for alternative uses 
+such as rain-fed agriculture, agroforestry, or grazing.
+Second, the high weight assigned to river proximity (28.51%) supports prioritizing 
+areas within 2 km of perennial rivers for immediate irrigation investment. These areas 
+minimize conveyance costs and reduce the need for pumping infrastructure, making 
+them viable for smallholder schemes. Areas within 2–3 km of rivers (S2) remain viable 
+but may require public subsidy or credit support. Areas more than 3  km from rivers 
+should be excluded from surface irrigation planning unless conjunctive use of ground -
+water or water storage infrastructure is feasible [37].
+Third, the soil suitability analysis provides crop-specific guidance. 64.9% of soils are 
+classified as suitable (S1–S2) and are dominated by Humic Nitosols and Eutric Vertisols, 
+which have high water-holding capacity (150–200  mm/m), allowing longer irrigation 
+intervals (7–10 days) and reducing labor requirements. These soils are highly suitable for 
+water-intensive crops such as maize and tomato. However, Vertisols in low-lying areas 
+(25.66% of the watershed) have high clay content and are classified as poorly drained 
+under natural conditions. These soils require careful water management, including land 
+leveling, controlled furrow inflow rates, and provision of drainage outlets to prevent 
+waterlogging.  In surface irrigation systems, water ponding is primarily a function of 
+inadequate land preparation and excessive discharge rather than soil texture. Neverthe -
+less, the swelling characteristics and slow infiltration rates of Vertisols make them more 
+sensitive to these operational factors, necessitating site-specific design considerations. 
+For these areas, raised bed planting or subsurface drainage should be specified in irri -
+gation system designs, following recommendations from the Becho Plain [25] and the 
+Dhidhessa River Basin [13].
+Fourth, the LULC analysis indicates that agricultural land (15.10%) and grassland 
+(23.09%) represent the most suitable categories for irrigation conversion, as they require 
+minimal land clearance and have established access. Converting these areas to irrigated 
+Page 23 of 27
+Aragaw and Tiku Discover Environment (2026) 4:524 
+ 
+agriculture may displace existing rain-fed production, requiring careful transition plan -
+ning to avoid disruptions to food security. Bushland and mixed forest (31.66%, mar -
+ginally suitable) would require clearance investments, which should be factored into 
+project economics. Evergreen forests, wetlands, and water bodies (classified as not suit -
+able) should be protected from irrigation development to maintain ecosystem services, 
+including dry-season baseflow maintenance, sediment retention, and biodiversity con -
+servation [16, 20].
+5.5 Methodological contributions and transferability
+This study contributes methodologically by demonstrating a transparent, reproducible, 
+and locally validated approach for land suitability assessment in data-scarce regions. The 
+integration of three key methodological elements enhances the credibility and applica -
+bility of the results.
+First, the use of a 12-member expert panel from three institutional categories (aca -
+demic researchers, government water resources specialists, and agricultural experts) for 
+factor validation and threshold adjustment ensures that the suitability criteria reflect 
+both international standards (FAO guidelines) and local conditions. The two-round 
+Delphi-style process, with consensus defined as ≥ 10 of 12 experts agreeing, provides 
+a rigorous basis for threshold determination that can be replicated in other basins. 
+The detailed documentation of expert composition, credentials, and voting outcomes 
+(Tables 1 and 2) enhances transparency and allows readers to assess the credibility of the 
+weight assignments.
+Second, the AHP weight determination process, conducted by a subset of 10 experts 
+with demonstrated familiarity with comparative judgment methods, yielded a con -
+sistency ratio of 0.053, well below the 0.10 threshold. This indicates that the pairwise 
+comparisons were logically consistent and that the derived weights (slope 46.34%, river 
+proximity 28.51%, soil 14.46%, road proximity 6.01%, LULC 4.64%) are reliable for the 
+overlay analysis. The consistency ratio of 0.053 is comparable to or better than those 
+reported in similar Ethiopian studies: Legesse et  al. [29] reported CR = 0.07, Abagissa 
+et al. [2] reported CR = 0.09, and Gonfa et al. [25] reported CR = 0.08. This consistency 
+across studies suggests that the AHP method produces stable weight estimates when 
+applied to irrigation suitability assessment in Ethiopian highland contexts.
+Third, the sub-basin-level disaggregation of suitability results (Table  12) provides 
+actionable spatial intelligence for investment prioritization. Ranking sub-basins by both 
+absolute suitable area and the percentage of sub-basin area suitable enables decision-
+makers to distinguish between sub-basins with large absolute potential (e.g., sub-basin 3, 
+21,486 ha) and those with a high concentration of suitable land (e.g., sub-basin 6, 57.4% 
+of its area). This dual ranking is essential for efficient resource allocation: sub-basins 
+with large absolute suitable area justify investment in central infrastructure (canals, 
+intake structures), while sub-basins with high concentration but small absolute area may 
+be better served by small-scale, distributed schemes.
+The methodological framework is readily transferable to other data-sparse regions. 
+The core requirements, SRTM DEM, Landsat imagery, national soil maps, and road/river 
+network data, are widely available across sub-Saharan Africa. The expert panel approach 
+can be adapted to local institutional contexts, and the AHP weight determination can 
+Page 24 of 27Aragaw and Tiku Discover Environment (2026) 4:524 
+be conducted using free software. The primary limitation for transferability is the avail -
+ability of local experts with sufficient familiarity with both irrigation engineering and the 
+study area. In regions where such expertise is limited, the threshold values and weights 
+from this study could serve as initial estimates, subject to local validation through sensi -
+tivity analyses.
+5.6 Limitations and future research directions
+Several limitations of the land suitability assessment should be acknowledged. First, 
+the assessment focused on biophysical and infrastructure factors and did not explic -
+itly incorporate socioeconomic variables such as land tenure, farmer capacity, market 
+accessibility, or institutional constraints. The absence of these factors means that areas 
+identified as physically suitable (e.g., sub-basins 10, 3, and 7) may face significant eco -
+nomic or social barriers to actual development, including fragmented landholdings that 
+complicate collective irrigation schemes, limited farmer access to credit for irrigation 
+infrastructure, or competing water uses not captured in the hydrological model [30, 34]. 
+Consequently, the suitable area of 113,831 ha reported here should be interpreted as a 
+biophysically based upper bound rather than a prediction of actual development out -
+comes. Future research should integrate socioeconomic indicators into multi-criteria 
+decision-making frameworks, potentially through participatory GIS approaches that 
+combine remote sensing with community-based mapping.
+Second, the soil data were obtained from a 1:250,000 scale national map, which may 
+not capture local-scale variability in soil properties relevant to farm-level irrigation 
+planning. This is particularly problematic for soil drainage classification, where local 
+variations in topography and subsurface flow paths can significantly affect the risk of 
+waterlogging. Future research should incorporate higher-resolution soil surveys, includ -
+ing field measurements of saturated hydraulic conductivity and infiltration rates, to 
+refine the suitability classification at the sub-basin scale.
+Third, the assumption that proximity to roads (weighted at 6.01%) adequately cap -
+tures market accessibility may be simplistic, as road quality, seasonal accessibility, and 
+distance to specific markets (rather than any road) influence transaction costs. Future 
+research should incorporate more detailed infrastructure data, including road surface 
+type, all-weather access, and travel time to major market centers, to refine the accessibil-
+ity component of the suitability assessment.
+Fourth, the land suitability assessment did not consider alternative irrigation technolo-
+gies (e.g., drip or sprinkler) that may be feasible on steeper slopes or poorer soils. While 
+surface irrigation remains the most common and affordable technology for smallholder 
+farmers in Ethiopia, future research should evaluate the suitability of alternative systems 
+for S3 and N lands, comparing their capital costs, water-use efficiency, and crop produc-
+tivity with surface irrigation on S1–S2 lands.
+Finally, we acknowledge that sensitivity analysis could provide additional insight 
+into the robustness of the AHP-derived weights; such analysis was beyond the 
+scope of the current study. The inherent consistency checking within the AHP pro -
+cess (CR = 0.053), the strong expert consensus (≥ 10 of 12 experts on all thresh -
+olds), and the alignment of our weights with comparable studies (e.g., 46.34% slope 
+weight matching Abagissa et al. [2 ] provide confidence in our results without formal 
+Page 25 of 27
+Aragaw and Tiku Discover Environment (2026) 4:524 
+ 
+sensitivity testing. Future research could conduct one-at-a-time (OAT) or global sen -
+sitivity analyses to further validate the weight assignments.
+6 Conclusion
+This study assessed where surface irrigation is most suitable in the Gidabo Watershed 
+by combining GIS, AHP , and information on slope, soils, land use, and access to riv -
+ers and roads. The analysis showed that 93.23% of the watershed is physically suitable 
+to some degree (S1–S3). However, only 35.79% (113,831  ha) falls within the highly 
+and moderately suitable classes (S1–S2). This difference is important because it shows 
+that the total area that appears physically suitable can substantially overstate the area 
+with favorable conditions for practical irrigation development. Highly suitable land 
+covers only 4.32% of the watershed and is mainly concentrated in valley bottoms and 
+lowland plains along the Gidabo River and its major tributaries.
+Slope was the most important factor in the assessment, with an AHP weight of 
+46.34%. More than 62% of the watershed has slopes greater than 8%, which represents 
+the main topographic constraint to conventional surface irrigation. Distance to rivers 
+was the second most important factor (28.51%), highlighting the importance of access 
+to reliable water sources and the cost of conveying water to fields. Soil properties also 
+influenced suitability, particularly in areas with shallow soils or poor drainage.
+The distribution of suitable land varied considerably among the 12 sub-basins. Sub-
+basin 3 contained the largest S1–S2 area (21,486 ha), followed by sub-basins 12 and 
+10, while sub-basin 6 had the smallest area (471 ha). Together, sub-basins 3, 12, and 
+10 contained 51.7% of the total S1–S2 area. These areas, therefore, provide an impor -
+tant starting point for more detailed irrigation feasibility studies and investment plan -
+ning. However, the suitability map should be regarded as a screening and planning 
+tool rather than a substitute for site-specific engineering, economic, environmental, 
+and water-availability assessments.
+Overall, the study reveals that combining spatial information on terrain, soils, land 
+use, and infrastructure can help identify areas with more favorable conditions for sur -
+face irrigation development in a data-scarce watershed. The results can support more 
+targeted field investigations, help guide irrigation investment planning in the Gidabo 
+watershed, and provide a useful basis for similar assessments in other heterogeneous 
+watersheds in sub-Saharan Africa. Future studies should complement the present assess-
+ment with detailed soil and field surveys, water-availability analysis, economic feasibility 
+assessment, and sensitivity analysis to further refine irrigation development priorities.
+Acknowledgements
+The authors are grateful for the stakeholders’ willingness and support in the consultative meeting held in various parts of 
+the watershed.
+Author contributions
+Henok Mekonnen Aragaw: Methodology, conceptualization, writing, review & editing. Azmeraw Alemu Tiku: Data cura-
+tion, methodology, investigation, conceptualization, formal analysis & writing.
+Funding
+This research did not receive any specific funding.
+Data availability
+The datasets used and/or analyzed during the current study are available from the corresponding author on reasonable 
+request.
+Page 26 of 27Aragaw and Tiku Discover Environment (2026) 4:524 
+Declarations
+Ethics approval and consent to participate
+This study protocol was reviewed and deemed exempt by the Dilla University Research Ethics Board. The study was con-
+ducted in accordance with Dilla University’s educational research policies. All procedures involving human participants, 
+including expert consultations, key informant interviews, and field surveys with local farmers and agricultural extension 
+agents, were performed in compliance with Dilla University’s research ethics standards.
+Informed consent
+Informed consent was obtained from all participants involved in the study. Participants were provided with comprehen-
+sive information about the study’s purpose, procedures, and data use prior to their participation, and they confirmed 
+their voluntary participation.
+Consent for publication
+Not applicable.
+Competing interests
+The authors declare no conflict of interest.
+Received: 19 April 2026 Accepted: 15 September 2026
+References
+ 1. Abadefar DD. Assessment of land suitability and water availability for surface irrigation using fuzzy logic algorithm in 
+GIS, in the case of Upper Awash Basin, Ethiopia. Appl Water Sci. 2025. https:// doi. org/ 10. 1007/ s13201- 025- 02649-1.
+ 2. Abagissa WY, Geremew GB, Ayana MT, Ayele EG, Tilahun AK. GIS-based surface irrigation potential assessment of 
+Gololcha River Watershed, Awash Basin, Ethiopia. World Water Policy. 2025;11:326–52. https:// doi. org/ 10. 1002/ 
+wwp2. 12230.
+ 3. Abera A, Verhoest NEC, Tilahun S, Inyang H, Nyssen J. Assessment of irrigation expansion and implications for water 
+resources by using RS and GIS techniques in the Lake Tana Basin of Ethiopia. Environ Monit Assess. 2021. https:// doi. 
+org/ 10. 1007/ s10661- 020- 08778-1.
+ 4. Akinci H, Özalp AY, Turgut B. Agricultural land use suitability analysis using GIS and AHP technique. Comput Electron 
+Agric. 2013;97:71–82. https:// doi. org/ 10. 1016/j. compag. 2013. 07. 006.
+ 5. Albaji M, Landi A, Nasab SB, Moravej K. Land suitability evaluation for surface and drip irrigation in Shavoor plain 
+Iran. J Appl Sci. 2008;8:654–9. https:// doi. org/ 10. 3923/ jas. 2008. 654. 659.
+ 6. AL-Taani A, Al-husban Y, Farhan I. Land suitability evaluation for agricultural use using GIS and remote sensing 
+techniques: the case study of Ma’an Governorate, Jordan. Egypt J Remote Sens Space Sci. 2021;24:109–17. https:// 
+doi. org/ 10. 1016/j. ejrs. 2020. 01. 001.
+ 7. Ariti AT, van Vliet J, Verburg PH. Land-use and land-cover changes in the Central Rift Valley of Ethiopia: assessment of 
+perception and adaptation of stakeholders. Appl Geogr. 2015;65:28–37. https:// doi. org/ 10. 1016/j. apgeog. 2015. 10. 
+002.
+ 8. Balew A, Nega W, Legese B, Semaw F. Suitable potential land evaluation for surface water irrigation using remote 
+sensing and GIS–MCE in the case of Rib–Gumara watershed, Ethiopia. J Indian Soc Remote Sens. 2021;49:2273–90. 
+https:// doi. org/ 10. 1007/ s12524- 021- 01383-w.
+ 9. Belay M, Bewket W. Traditional irrigation and water management practices in highland Ethiopia: case study in Dan-
+gila woreda. Irrig Drain. 2013;62:435–48. https:// doi. org/ 10. 1002/ ird. 1748.
+ 10. Berhe GT, Baartman JEM, Veldwisch GJ, Grum B, Ritsema CJ. Irrigation development and management practices in 
+Ethiopia: a systematic review on existing problems, sustainability issues and future directions. Agric Water Manag. 
+2022. https:// doi. org/ 10. 1016/j. agwat. 2022. 107959.
+ 11. Birhanu A, Murlidhar Pingale S, Soundharajan BS, Singh P . GIS-based surface irrigation potential assessment for 
+Ethiopian river basin. Irrig Drain. 2019;68:607–16. https:// doi. org/ 10. 1002/ ird. 2346.
+ 12. Danbara TT, Zewdie M. Assessment of suitable land for surface irrigation using spatial information systems: case of 
+Bilate River Basin in the Rift Valley Lakes Basin, Ethiopia. Comput Electron Agric. 2022;202:107402. https:// doi. org/ 10. 
+1016/j. compag. 2022. 107402.
+ 13. Dawit M, Olika BD, Muluneh FB, Leta OT, Dinka MO. Assessment of surface irrigation potential of the Dhidhessa River 
+Basin, Ethiopia. Hydrology (Basel). 2020. https:// doi. org/ 10. 3390/ HYDRO LOGY7 030068.
+ 14. Demelash M, Argaw T, Moisa MB. Evaluation of surface irrigation potential areas using geospatial techniques: the 
+case of the Nashe watershed, western Ethiopia. Water Supply. 2025;25:984–1000. https:// doi. org/ 10. 2166/ ws. 2025. 
+046.
+ 15. Desta H, Fetene A. Land-use and land-cover change in Lake Ziway watershed of the Ethiopian Central Rift Valley 
+Region and its environmental impacts. Land Use Policy. 2020;96:104682. https:// doi. org/ 10. 1016/j. landu sepol. 2020. 
+104682.
+ 16. Dinku MB, Kebede HH. Identification and mapping of surface irrigation potential in the data-scarce Jewuha water-
+shed, Middle Awash River Basin, Ethiopia. Hydrol Res. 2023;54:1227–45. https:// doi. org/ 10. 2166/ nh. 2023. 082.
+ 17. EPDC (Ethiopia Planning and Development Commission, 2020. Ten years development plan a pathway to prosper-
+ity. Addis Ababa, Ethiopia.
+ 18. FAO. The State of Food and Agriculture 2023, The State of Food and Agriculture 2023. FAO, Rome. 2023. https:// doi. 
+org/ 10. 4060/ cc772 4en.
+Page 27 of 27
+Aragaw and Tiku Discover Environment (2026) 4:524 
+ 
+ 19. FAO. The FAO guidelines for land evaluation: FAO irrigation and drainage paper 55. Rome: Food and Agriculture 
+Organization; 1997.
+ 20. Feizizadeh B, Blaschke T. Land suitability analysis for Tabriz County, Iran: a multi-criteria evaluation approach using 
+GIS. J Environ Plan Manag. 2013;56:1–23. https:// doi. org/ 10. 1080/ 09640 568. 2011. 646964.
+ 21. Gebrechorkos SH, Hülsmann S, Bernhofer C. Analysis of climate variability and droughts in East Africa using high-
+resolution climate data products. Glob Planet Change. 2020. https:// doi. org/ 10. 1016/j. glopl acha. 2020. 103130.
+ 22. Gebul MA. Trend, status, and challenges of irrigation development in Ethiopia—a review. Sustainability (Switzer-
+land). 2021. https:// doi. org/ 10. 3390/ su131 05646.
+ 23. Ghorbanzadeh O, Feizizadeh B, Blaschke T. Multi-criteria risk evaluation by integrating an analytical network process 
+approach into GIS-based sensitivity and uncertainty analyses. Geomat Nat Hazards Risk. 2018;9:127–51. https:// doi. 
+org/ 10. 1080/ 19475 705. 2017. 14130 12.
+ 24. Girma R, Gebre E, Tadesse T. Land suitability evaluation for surface irrigation using spatial information technology in 
+Omo-Gibe River Basin, Southern Ethiopia. Irrig Drain Syst Eng. 2020. https:// doi. org/ 10. 37421/ idse. 2020.9. 245.
+ 25. Gonfa BG, Hatiye SD, Finssa MM. Land suitability and surface water resources potential for irrigation in Becho Plain, 
+upper Awash basin, Ethiopia*. Irrig Drain. 2021;70:936–57. https:// doi. org/ 10. 1002/ ird. 2575.
+ 26. Hagos YG, Mengie MA, Andualem TG, Yibeltal M, Linh NTT, Tenagashaw DY, et al. Land suitability assessment for 
+surface irrigation development at Ethiopian highlands using geospatial technology. Appl Water Sci. 2022. https:// 
+doi. org/ 10. 1007/ s13201- 022- 01618-2.
+ 27. IPCC. Climate change 2023: synthesis report. Contribution of working groups I, II and III to the sixth assessment 
+report of the Intergovernmental Panel on Climate Change. Cambridge, UK and New York, NY, USA: Cambridge 
+University Press; 2023. https:// doi. org/ 10. 59327/ IPCC/ AR6- 97892 91691 647.
+ 28. Kassie YA, Yimam AY, Assefa TT, Belay SA. Evaluating land suitability and water availability for surface irrigation in the 
+Abbay basin of Ethiopia. R Soc Open Sci. 2022. https:// doi. org/ 10. 1098/ rsos. 220674.
+ 29. Legesse BB, Dejene IN, Dararo KF. Land suitability assessment for surface irrigation via geospatial technology: the 
+case of Dendi District on upper Awash Basin, Oromia, Ethiopia. Ecol Front. 2026. https:// doi. org/ 10. 1016/j. ecofro. 
+2026. 01. 003.
+ 30. Makombe G. A comparative analysis of the technical efficiency of rain-fed and smallholder irrigation in Ethiopia, 
+2011. https:// doi. org/ 10. 5337/ 2011. 202.
+ 31. MoA. Federal Democratic Republic of Ethiopia Ministry of Agriculture Ethiopia’s National Agriclture Investment Plan 
+(NAIP). Addis Ababa, Ethiopia, 2022.
+ 32. Moisa MB, Merga BB, Gemeda DO. Land suitability evaluation for surface irrigation using geographic information 
+system: a case study in Didessa River Sub-Basin, Western Ethiopia. Sustain Water Resour Manag. 2022. https:// doi. 
+org/ 10. 1007/ s40899- 022- 00674-5.
+ 33. MoWE. The Federal Democratic Republic of ethiopia Ministry of Water Resources Ethiopian water resources man-
+agement policy ethiopian water resources management policy. Addis Ababa, Ethiopia, 2023.
+ 34. Muluneh A, Tadesse T, Girma R. Assessing potential land suitable for surface irrigation using GIS and AHP tech-
+niques in the Rift Valley Lakes Basin, Ethiopia. Sustain Water Resour Manag. 2022. https:// doi. org/ 10. 1007/ 
+s40899- 022- 00632-1.
+ 35. Saaty RW. The analytic hierarchy process-what it is and how it is used, 1987.
+ 36. Shyamprasad V, Kousalya P . Role of consistency and random index in analytic hierarchy process-a new measure. Adv 
+Intell Syst Comput. 2020. https:// doi. org/ 10. 1007/ 978- 981- 15- 3215-3_6.
+ 37. Wisser D, Frolking S, Douglas EM, Fekete BM, Schumann AH, Vörösmarty CJ. The significance of local water resources 
+captured in small reservoirs for crop production: a global-scale analysis. J Hydrol (Amst). 2010;384:264–75. https:// 
+doi. org/ 10. 1016/j. jhydr ol. 2009. 07. 032.
+ 38. Young SL, Frongillo EA, Jamaluddine Z, Melgar-Quiñonez H, Pérez-Escamilla R, Ringler C, et al. Perspective: the 
+importance of water security for ensuring food security, good nutrition, and well-being. Adv Nutr. 2021. https:// doi. 
+org/ 10. 1093/ advan ces/ nmab0 03.
+Publisher’s Note
+Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional affiliations.
