@@ -1,0 +1,680 @@
+Restoration of aquatic vegetation 
+can mitigate the risk of 
+eutrophication in large shallow 
+lakes
+Xiang Li1, Rui Xia1,2,3, Zhongwen Yang1, Yan Chen1,4, Chao Yan1,5, Junde Ming1, Qiang Hu1 
+& Hao Liu1,5
+The role of aquatic vegetation restoration in mitigating lake eutrophication is well-recognized, yet the 
+underlying nutrient dynamics-vegetation response relationship remains poorly quantified, hindering 
+a mechanistic understanding of grass-algae regime shifts. To address this, the Wetland Eco-dynamic 
+Model for Submerged Plants (WET) was developed to mechanistically simulate ecological processes 
+within the water–sediment-plant continuum by coupling hydrodynamics, nutrient cycling, and plant 
+growth modules. Applied to Lake Taihu (2005–2019), the model effectively simulated submerged 
+plant responses to hydrological and physicochemical parameters, with simulated vegetation cover 
+validation achieving an R2 of 0.68. A multi-scale analysis further identified a significant positive 
+correlation between N:P ratios and aquatic vegetation cover. The model was subsequently employed 
+to simulate vegetation dynamics under 121 distinct nutrient regulation scenarios, revealing that 
+aquatic vegetation cover exerts a stronger influence on total phosphorus than on total nitrogen, a 
+relationship characterized by steady-state nonlinearity. The findings demonstrate that under stable 
+meteorological, hydrological, and pollution load conditions, managing aquatic vegetation is an 
+effective eutrophication mitigation strategy for large, shallow lakes. Specifically for the phosphorus-
+limited Lake Taihu, simulations indicate that increasing vegetation coverage to 27.7% would shift 
+its trophic status from eutrophic to oligotrophic-mesotrophic. By systematically quantifying these 
+nonlinear responses, this study provides operational thresholds and a scientific basis for lake ecological 
+management, overcoming a key limitation of traditional qualitative descriptions.
+Keywords Algal bloom, Submerged plants, State transformation, Threshold mutation, GOTM-FABM-
+PCLake, Taihu Lake
+Eutrophication prevention and control remain a major challenge for global aquatic environmental management1. 
+This challenge is intensified by increased nutrient loading from anthropogenic activities and climate-induced 
+alterations in hydrodynamics, which have exacerbated the degradation of lake ecosystems 2,3. Moreover, 
+controlling pollutant loads alone has proven insufficient for restoring ecological function in many degraded 
+lakes4. Consequently, ecosystems often remain impaired by persistent issues such as wetland degradation, 
+eutrophication, and salinization5–8. These impacts pose significant threats to aquatic vegetation, water quality, 
+and public health 8, thereby compounding the challenges of eutrophication management. This is particularly 
+evident in China, where lacustrine ecosystems have undergone severe degradation due to the combined effects 
+of anthropogenic pressures and natural drivers9. Over a recent decade, the proportion of assessed lakes classified 
+as moderately eutrophic increased from 31.3 to 42.7%  10. A rapid shift from mesotrophic to mildly eutrophic 
+status has also been observed in key water bodies, including major tributaries like the Hanjiang River and large 
+reservoirs such as the Three Gorges Reservoir, particularly within their bays and estuaries 10. Nutrient-driven 
+1State Key Laboratory of Environmental Criteria and Risk Assessment, Chinese Research Academy of Environmental 
+Sciences, Beijing 100012, China. 2National Engineering Laboratory for Lake Pollution Control and Ecological 
+Restoration, Chinese Research Academy of Environmental Sciences, Beijing 100012, China. 3National Joint 
+Research Center for Ecological Conservation and High Quality Development of the Yellow River Basin, Chinese 
+Research Academy of Environmental Sciences, Beijing 100012, China. 4Chongqing Institute of Green and Intelligent 
+Technology, Chinese Academy of Sciences, Chongqing 400714, China. 5Northwest University College of Urban and 
+Environmental Sciences, Northwest University, Xi’an 710127, China. email: xiarui@craes.org.cn
+OPEN
+Scientific Reports | (2026) 16:4111 1| https://doi.org/10.1038/s41598-025-31045-7
+www.nature.com/scientificreports
+eutrophication in Lake Taihu emerged in the 1980s, marked by the expansion of cyanobacterial blooms from 
+Meiliang Bay to the broader northwestern region 11. Despite long-standing recognition of the issue, harmful 
+cyanobacterial blooms persist, and anaerobic ‘black water’ events recur annually each summer 12,13. Given that 
+N:P ratios are integrative indicators of nutrient limitation and eutrophic status 8,14, a refined understanding 
+of their interaction with biotic components is critical. This study aims to provide this understanding, thereby 
+offering a scientific foundation for the effective management of eutrophication in large, shallow lakes.
+Several studies have shown that shallow lakes can shift from a turbid, phytoplankton-dominated regime to a 
+clear-water, macrophyte-dominated regime, indicating a transition from eutrophic to oligotrophic conditions15. 
+Submerged macrophyte restoration has been widely recognized as an effective strategy for restoring eutrophic 
+aquatic systems16. The distribution and coverage of aquatic vegetation in Taihu Lake exhibited two distinct 
+phases from 1980 to 2017: a gradual expansion followed by a rapid decline. The distribution area reached 
+its peak between 1980 and 2014, followed by a sharp decrease from 2015 to 2017, declining to less than 50 
+km2. Aquatic vegetation is mainly concentrated in East Lake, the East Area, and Gong Bay, with submerged 
+species constituting the dominant vegetation type 17. Aquatic vegetation plays a critical role in mitigating lake 
+eutrophication through multiple mechanisms, such as suppressing algal growth (Bakker et al., 2010), enhancing 
+dissolved oxygen levels15, stabilizing aquatic ecosystems16, and enhancing physical habitat conditions. Beyond 
+these direct interactions, the density and distribution of aquatic vegetation, along with their impact on altering 
+hydrodynamics, also play a crucial role in modifying dissolved oxygen and carbon levels in water, thereby 
+influencing biogeochemical dynamics 2,3. A substantial body of research has demonstrated that aquatic plants 
+are key contributors to eutrophication mitigation in lakes 18,19. Restoring a balanced macrophyte–algae aquatic 
+ecosystem has become a central focus of ecological restoration efforts in Taihu Lake 20. The rehabilitation of 
+eutrophic water bodies using aquatic ecological methods offers a cost-effective and efficient approach to 
+wastewater treatment and is increasingly adopted worldwide to enhance water quality. Lakes dominated by 
+aquatic plants generally exhibit clear water and high transparency under low-nutrient conditions 21. Notably, 
+clear-water conditions can be maintained in certain lakes through internal regulatory mechanisms, even 
+under elevated nutrient inputs 22,23. Conversely, with increasing nutrient inputs, phytoplankton-dominated 
+algal blooms and turbid conditions commonly emerge24. Large-scale aquatic vegetation, including submerged, 
+emergent, and floating-leaf plants, plays a vital role in supporting the structural and functional integrity of 
+lake ecosystems25. Large aquatic vegetation in lakes, particularly submerged species, is widely recognized as an 
+effective means of managing eutrophication in ecological restoration efforts. As primary producers in aquatic 
+ecosystems, submerged plants enhance water quality and reduce eutrophication in aquatic ecosystems 26. The 
+transition between clear and turbid water states is primarily driven by competition between submerged plants 
+and phytoplankton. Therefore, the adoption of water ecological restoration methods can better prioritize natural 
+recovery and long-term benefits, overcoming the limitations of short-term solutions and the potential negative 
+impacts of traditional governance approaches. It represents a more sustainable and environmentally friendly 
+governance approach. This approach enhances the self-purification capacity of water bodies, reduces secondary 
+pollution, lowers treatment costs, and demonstrates strong adaptability, aligning with the concept of ecological 
+civilization construction. This paper models the ecological mechanisms of submerged plants in Taihu Lake, 
+quantifying the effects of management measures and providing a scientific basis for formulating specific goals to 
+restore the ecological functions of the lake and restore its clear water state.
+Additionally, simulating aquatic vegetation requires comprehensive environmental and biological data, 
+which necessitate complex statistical analysis and model development. Experimental methods often encounter 
+challenges in realistically replicating the evolution of lake ecosystems, while the lack of effective mathematical 
+models hinders the accurate prediction and simulation of the grass-algae transition process. Experimental 
+methods often concentrate on specific species, such as subfossil mosquitoes, zoobenthos, and zooplankton, 
+leading to a highly complex and labor-intensive workload 27,28. The impact of aquatic plants on eutrophication 
+can be assessed through experiments involving these plants 29. These experiments can be conducted indoors or 
+in small lake areas, which facilitates ease of implementation and reproducibility. However, these experiments 
+are time-intensive and spatially constrained, thereby limiting their representativeness of the entire site and 
+watershed30. Statistical analysis methods are commonly used to identify trends in large datasets over extended 
+periods. These methods are primarily utilized to determine thresholds. However, statistical approaches that do 
+not incorporate mechanistic models to represent the underlying mechanisms of individual components may 
+be susceptible to error propagation during data processing 31. In contrast to statistical methods, eco-dynamic 
+models can predict changes in lake ecosystems and aquatic vegetation using mechanistic modeling. Several 
+mathematical models are employed to elucidate the mechanisms underlying changes in aquatic ecosystems 32. 
+The Vollenweider model was the first to establish the relationship between phosphorus nutrient loading and 
+the eutrophic status of lakes 33. The PCLake (Princeton Lake Model), an integrated model of complex aquatic 
+ecosystems, was used to simulate state changes with delayed effects in bifurcation analyses of a dataset 
+comprising 43 shallow temperate lakes34,35. It has been widely used in studies of regime change, climate change, 
+and submerged plant restoration36,37. The WET model (Water Ecosystems Tool) integrates the hydrodynamic 
+GOTM (General Ocean Turbulence Model) with the PCLake model. Compared to the standalone PCLake 
+model, this coupled model more accurately simulates the gradual response of ecosystems to changes in external 
+forcing. It is particularly useful for studying the responses and changes in aquatic vegetation in shallow lakes, 
+especially in scenario simulations38,39.
+However, the quantitative mechanisms through which aquatic vegetation regulates the clear-turbid state 
+transition in large, shallow lakes remain poorly understood, particularly the ecological response processes to 
+coupled environmental stressors. This knowledge gap impedes the development of precise eutrophication control 
+strategies based on vegetation restoration. To address this, a process-based eco-dynamic model for submerged 
+aquatic vegetation (the WET model) was developed. Integrating long-term observational data, the model couples 
+Scientific Reports | (2026) 16:4111 2| https://doi.org/10.1038/s41598-025-31045-7
+www.nature.com/scientificreports/
+hydrological processes, nutrient biogeochemical cycles, and vegetation dynamics. This framework facilitates 
+the identification of key ecological thresholds and provides a theoretical and methodological foundation for 
+transitioning from qualitative description to quantitative prediction in the ecological restoration of large, shallow 
+lakes. This study addresses these challenges through three primary objectives: (1) to analyze the spatiotemporal 
+patterns of aquatic vegetation cover in Lake Taihu over a 15-year period and identify its key drivers using 
+long-term time-series data; (2) to establish the relationship between hydrological/physicochemical drivers and 
+submerged vegetation response in Lake Taihu using the submerged vegetation eco-dynamics (WET) model; 
+(3) to quantify the nonlinear response and control thresholds of aquatic vegetation cover to eutrophication in 
+large, shallow lakes by evaluating N:P ratio-based indicators across multiple eutrophication scenarios. These 
+objectives are achieved through scenario-based modeling of the Lake Taihu ecosystem, elucidating the critical 
+role of vegetation cover in eutrophication dynamics. The findings provide a scientific foundation for developing 
+targeted vegetation restoration strategies to control eutrophication. Furthermore, they offer critical insights into 
+eutrophication recovery management and elucidate the mechanisms governing the macrophyte-to-algae regime 
+shift in large, shallow eutrophic lakes.
+Materials and methods
+Study area
+Taihu Lake, the third-largest freshwater lake in China, has an average depth of 1.9 m. It is classified as a typical 
+shallow lake, covering an area of 2338 km 2 and supporting a basin population of approximately 60 million 20. 
+Taihu Lake, located at the junction of southern Jiangsu Province and northern Zhejiang Province in China, 
+lies between latitudes 30°55′40″–31°32′58″N and longitudes 119°52′32″–120°36′10″E. Taihu Lake is located in 
+the heart of the Y angtze River Delta, the most industrialized and urbanized region in China26. Since the 1980s, 
+cyanobacterial blooms have posed a significant environmental challenge in Taihu Lake40. Human activities are the 
+primary drivers of accelerated water eutrophication, with agricultural non-point source pollution representing 
+the largest proportion, while point-source discharges from industrial and domestic wastewater collectively 
+elevate nitrogen and phosphorus concentrations41. Increased eutrophication and degradation of the underwater 
+environment in Taihu Lake have led to the loss of vegetation, thereby disrupting the balance of the lake’s aquatic 
+ecosystem and contributing to its continued degradation37,42. The highest density of aquatic vegetation is found 
+in the eastern region of Taihu Lake, predominantly composed of submerged macrophytes, while the southern 
+region supports a mixed community of submerged and floating-leaf macrophytes. In contrast, aquatic vegetation 
+has largely disappeared from the open-water zones of the central and northwestern regions17.
+Data sources and processing
+The historical meteorological data for this study were obtained from the Resource Service System (cern.ac.cn), 
+with measurements collected at the Taihu Lake Station (Wuxi Headquarters), including daily records of air 
+temperature, dew point temperature, barometric pressure, wind speed, and cloud cover. Additionally, historical 
+flow data were obtained from the Taihu Lake Basin Management Bureau under the Ministry of Water Resources 
+(MWR), which provided monthly rainfall and discharge data. Water quality data covering the period from 2005 
+to 2019 were also collected. This dataset includes 15 years of monthly data from 32 sampling points in Taihu 
+Lake, facilitating continuous monitoring of 27 ecological indicators. Key indicators include water temperature, 
+dissolved oxygen, total nitrogen, total phosphorus, and chlorophyll-a. The distribution of sampling points is 
+shown in Fig. 1c, and the samples were analyzed in accordance with the “Technical Specification Requirements 
+for Surface Water and Wastewater Monitoring” (People’s Republic of China Ministry of Environmental 
+Protection, 2002). For satellite data, observations were made in February, May, August, and November of 
+each year from 2005 to 2019. The remotely sensed data were acquired from Landsat TM/ETM+/OLI surface 
+reflectance datasets. Field data on the dry weight of aquatic plants were collected biannually from 2000 to 2019 
+to validate the remotely sensed data.
+WET model principles
+The WET (Water Ecosystems Tool) model consists of six key modules that work together to simulate 
+various aquatic processes. These modules include the abiotic-water, abiotic-sediment, phytoplankton-water, 
+phytoplankton-sediment, macrophytes, and auxiliary modules43. In addition to these core modules, the model 
+incorporates essential physicochemical processes, such as sedimentation, deposition, resuspension, diffusion, 
+adsorption, mineralization, and burial, which are crucial for accurately simulating aquatic interactions. Primary 
+producers, such as macrophytes and phytoplankton, are central to the model’s simulations. Oxygen dynamics, 
+such as oxygen produced by photosynthesis and consumed by mineralization in both the water column and 
+sediment, are also considered, providing a comprehensive understanding of the ecological balance in aquatic 
+environments44.
+The aquatic plant module primarily simulates submerged plants and incorporates key processes such as 
+photosynthesis, nutrient uptake, respiration, excretion, mortality, migration, and seasonal growth and emergence 
+cycles. These processes are essential for accurately modeling the life cycle and ecological interactions of aquatic 
+plants within the ecosystem43. Figure 2 presents a conceptual diagram of the WET model, adapted from Hu et 
+al.44. The left side shows the model’s input data, while the right side presents the primary output data. The inflow 
+of phosphate, dissolved and particulate organic phosphorus, ammoniacal nitrogen, dissolved and particulate 
+organic nitrogen, and nitrate nitrogen into the lake acts as a boundary condition. The output data include key 
+indicators such as dissolved oxygen, lake water quality, aquatic plant cover, and water temperature39.
+ Macrophytes dry weight
+[
+gD/m2]
+Scientific Reports | (2026) 16:4111 3| https://doi.org/10.1038/s41598-025-31045-7
+www.nature.com/scientificreports/
+Fig. 2. Conceptual diagram of the aquatic ecosystem model GOTM-FABM-PCLake, adapted from Hu et al.44 
+under a CC BY 4.0 license. Black arrows represent interactions, red arrows depict dissolved oxygen kinetic 
+processes, and green arrows indicate aquatic plant-mediated processes.
+ 
+Fig. 1. Study area and sampling sites. (A) geographic location of Taihu Lake in the Taihu Lake basin; (B) Taihu 
+Lake water quality sampling sites and Taihu Lake division.
+ 
+Scientific Reports | (2026) 16:4111 4| https://doi.org/10.1038/s41598-025-31045-7
+www.nature.com/scientificreports/
+ 
+dDVeg =< tDProdVeg − tDRespVeg − tDMortVeg + tDMigrVeg >
+=< P roduction − Respiration − M ortality + M igration > (1)
+The dry weight of the aquatic plant module in the model is calculated using Eq. ( 1). The net change variable 
+in submerged plant biomass per unit time (dDVeg) equals total primary production (tDProdVeg) minus total 
+respiratory consumption (tDRespVeg) minus total mortality (tDMortVeg) plus net migration (tDMigrVeg). The 
+migration term in Eq. ( 1) plays a critical role in mediating the spatial redistribution, population maintenance, 
+and disturbance response dynamics of aquatic plant communities. The dry weight of the aquatic plant is equal 
+to the dry weight produced through aquatic plant production, minus the dry weight lost due to respiration and 
+mortality, plus the dry weight generated during the migration process.
+ 
+R2 =1 −
+∑
+i
+(ˆyi−yi
+)2
+∑
+i
+(yi−yi)2 (2)
+ RM SE =
+√
+1
+m
+∑ m
+i=1 (yi − ˆyi)
+2 (3)
+The formulas for calculating the metrics used for calibration and validation in the model are given in Eqs. (2) and 
+(3). yi denotes the actual observed value for the i-th sample, ˆyi denotes the model-predicted value for the i-th 
+sample, yi denotes the mean of all observed values yi, and m is the sample size. The coefficients of determination 
+(R2) and root mean square errors (RMSE) are calculated after normalizing the data.
+The Pettitt test is a nonparametric method used to detect change points in time series data, utilizing rank-
+based sequential analysis to identify abrupt shifts in the mean or distributional properties of a dataset.
+ 
+UK =
+k∑
+i=1
+Ri − k(n + 1)
+2 (4)
+In the Pettitt test, Ri denotes the rank of the data, and k represents the candidate change point position. The test 
+statistic K = max|UK |, and its statistical significance is evaluated against the asymptotic distribution:
+ 
+p ≈ 2exp
+(
+− 6K2
+n3 + n2
+)
+ (5)
+If p < 0.05, the null hypothesis of homogeneity is rejected, and a statistically significant change point is identified 
+at arg max |Uk|.
+Eutrophication scenario construction in Taihu Lake
+To assess the impact of external nutrient loading on aquatic ecosystems, this study used the years 2015–2019 as a 
+baseline for analyzing year-to-year changes in the modeled scenarios. Scenario changes were made by adjusting 
+the boundary and input conditions for the baseline years. The N:P ratios can, to some extent, characterize the 
+eutrophic status of lakes. As the chlorophyll-a concentration increases, the N:P ratio significantly decreases. 
+The corresponding mean N:P ratios are 54.1, 26.8, and 18.1 when the lake is in oligotrophic, eutrophic, and 
+hyper-eutrophic states, respectively 45. These values were used as boundary conditions to simulate different 
+eutrophication states.
+To investigate the ecosystem response to nutrient changes, two distinct regulatory scenarios were developed: 
+one for phosphorus regulation and one for nitrogen regulation. Scenario boundaries were defined using the 
+observed minimum and maximum concentrations of TN, TP and the resulting N:P ratios from historical 
+monitoring data at Lake Taihu (2005–2019). For the P-regulation scenario, TP concentration was varied from 
+0.052 to 0.332 mg/L in 0.005 mg/L increments, while TN was held constant at its historical average (2.859 mg/L). 
+This generated 56 scenarios with N:P ratios ranging from 9 to 57. For the N-regulation scenario, TN was varied 
+from 1.527 to 7.927 mg/L in 0.1 mg/L increments, with TP fixed at its historical average (0.129 mg/L), yielding 
+65 scenarios with N:P ratios between 12 and 61. All scenarios were simulated over a 60-year period (2020–2089) 
+to ensure the lake ecosystem reached a stable, dynamic equilibrium. Model outputs for aquatic plant cover and 
+nutrient concentrations were evaluated based on summer averages, as this season best represents peak biological 
+activity and the critical conditions for regime shifts. The N:P ratios served as a key integrative indicator to 
+simulate eutrophication status under varying levels of aquatic plant cover, thereby providing a quantitative basis 
+for management recommendations (Table 1).
+Results
+Characterization of spatial and temporal changes in nutrients and aquatic vegetation cover 
+in Taihu Lake
+Analyzing long-term trends in N:P ratios and aquatic plant cover is crucial for understanding the ecohydrological 
+dynamics of Lake Taihu. The average interannual N:P ratio in Lake Taihu exhibited an overall decreasing trend 
+from 2000 to 2019. This period began with an increase from 19.5 in 2000 to a peak in 2003, followed by a decline 
+until 2010. A secondary peak then occurred before ratios declined again through 2019. This overall decline in 
+the N:P ratio suggests a general deterioration in trophic status, consistent with the association of lower N:P 
+ratios with more severe eutrophication in this system. Similarly, aquatic plant cover, which is predominantly 
+Scientific Reports | (2026) 16:4111 5| https://doi.org/10.1038/s41598-025-31045-7
+www.nature.com/scientificreports/
+submerged vegetation, displayed a decreasing trend. A particularly sharp decline commenced in 2015. This 
+abrupt decline coincided with the initiation of centralized, high-intensity mechanical salvage operations. These 
+operations directly removed aboveground biomass and fragmented rhizome networks, thereby impairing 
+regenerative capacity. Concurrently, the repeated disturbance reduced sediment seed banks and increased water 
+turbidity, which further inhibited seedling establishment and vegetative regrowth17. A highly significant positive 
+correlation was identified between N:P ratios and aquatic plant cover in Lake Taihu (p < 0.001), reflecting 
+their synchronous temporal dynamics. These correlated long-term trends are essential for understanding the 
+ecohydrological dynamics of Lake Taihu. The analysis confirmed a significant decreasing trend in the average 
+interannual N:P ratio over the study period (Fig. 3).
+The spatial patterns of aquatic plants and N:P ratios in Taihu Lake were analyzed using data from 30 
+monitoring points for aquatic plant dry weight and 32 hydrological monitoring stations. The distribution patterns 
+of both variables across the divisions of Taihu Lake were examined. The spatial distribution of aquatic plant dry 
+weight is shown in Fig. 4a, with the highest dry weight found in the East Lake and East Area. The concentration 
+decreases from the southeast to the northwest. The N:P ratios of Taihu Lake, shown in Fig. 4b, exhibit a similar 
+spatial trend, increasing from the southwest to the east. The N:P ratios are higher in the eastern part of the lake 
+and lower in the western part. The spatial trends of both variables generally follow the same pattern from the 
+Southwest Area to the Eastern Area, showing a decreasing trend as illustrated in Fig.  4c. The average values of 
+sampling points in each region were calculated to analyze the N:P ratios and dry weight of aquatic plants in the 
+Southwestern Area, Gong Bay, Eastern Area, and East Lake. The concentrations of both indicators were highest 
+in the Eastern Area. Both indicators exhibited a linear increasing trend from the Southwestern Area to the 
+Eastern Area, demonstrating similar spatial changes.
+Analysis of spatiotemporal patterns revealed a consistent coupling between N:P ratios and aquatic plant 
+biomass in Lake Taihu. This coupling indicates that aquatic vegetation is a significant driver of N:P ratios, which 
+in turn governs the eutrophication status of the lake.
+Construction and validation of the WET eco-dynamic model for large shallow lakes
+An ecological dynamics model for a large, shallow lake was developed to simulate the complex input–output 
+relationships between nutrients and aquatic vegetation in Taihu Lake. The dataset spans from 2005 to 2019, with 
+data from January 2005 used as the initial condition for the model. The model runs for three years as a warm-up 
+phase to minimize calibration uncertainty, with the period from January 2008 to December 2014 designated 
+as the calibration period and from January 2015 to December 2019 as the validation period. Parameters were 
+Fig. 3. Trends in aquatic plants and N:P ratios. (a) Average annual trends in N:P ratios from 2000 to 2019; 
+(b) Average annual trend of aquatic plant cover from 2000 to 2019; (c) Correlation analysis of interannual 
+nitrogen-phosphorus ratio and aquatic plant coverage from 2000 to 2019.
+ 
+Control (P/N) Index Min Max
+P Control (Increment: 0.005)
+TP (mg/L) 0.052 0.332
+TN (mg/L) 2.859
+N:P ratios 57 9
+N Control (Increment: 0.1)
+TP (mg/L) 0.129
+TN (mg/L) 1.527 7.927
+N:P ratios 12 61
+Table 1. Scenario settings for two conditions of nitrogen and phosphorus regulation to control N:P ratios.
+ 
+Scientific Reports | (2026) 16:4111 6| https://doi.org/10.1038/s41598-025-31045-7
+www.nature.com/scientificreports/
+adjusted to achieve optimal model performance for water quality variables, based on previous sensitivity 
+analyses and the modeling expertise of Janse et al. 46. The model was calibrated and optimized using the ACPy 
+auto-calibration tool, which employs a differential evolution algorithm to maximize the likelihood function. 
+Model performance was evaluated by calculating the Root Mean Square Error (RMSE) and the coefficient of 
+determination (R2) through a comparison of simulated outputs against observed data. The calibration process 
+iteratively adjusted parameters until these metrics reached their optimal values and the model output stabilized. 
+The final calibrated parameter values are reported in Supplementary Material, Table S1.
+The model was calibrated and validated using water quality, meteorological, and hydrological data from 
+Taihu Lake, spanning the period from 2008 to 2019. For water quality, field-measured monthly data of TP , 
+TN, and ammonia nitrogen from monitoring sites in Taihu Lake, covering the same period, were utilized. In 
+Fig. 5, black solid points represent the validation values during calibration, while black hollow points indicate 
+the validation values during the validation phase. The simulation is depicted by a black line, with a 15% error 
+band illustrating the uncertainty associated with the observations. The model-simulated TN closely matched the 
+observed values, as shown in Fig. 5a, with a deviation of less than 20% and an R2 greater than 0.6. However, the 
+Fig. 4. Response pattern of spatial distribution of dry weight and N:P ratios of aquatic plants. (a) Spatial 
+interpolation results of dry weight concentration at 30 aquatic plant dry weight sampling points in Taihu Lake; 
+(b) Spatial interpolation results of nitrogen and phosphorus ratios at 32 water quality sampling points in Taihu 
+Lake; (c) Histogram of the average of sampling points in four sub-districts: Southwest Area, Gong Bay, East 
+Lake, and East Area.
+ 
+Scientific Reports | (2026) 16:4111 7| https://doi.org/10.1038/s41598-025-31045-7
+www.nature.com/scientificreports/
+model did not consistently capture the maximum and minimum TN values, indicating limitations in simulating 
+the seasonal peaks of the nitrogen indicator. However, the overall trend was adequately represented. For aquatic 
+organisms, the model successfully captured the overall trend in aquatic plant cover, showing a decrease as winter 
+temperatures cooled. However, the model overestimated aquatic plant cover during the spring and summer of 
+2011. The model generally describes submerged plant cover levels; however, the simulated cover was typically 
+lower than the observed values during the fall and winter months. This discrepancy may be attributed to limited 
+light availability during these seasons, which results in reduced simulated growth. This suggests that the water 
+quality and aquatic plant simulations are accurate and reliable, demonstrating the overall applicability of the 
+WET model to Taihu Lake. The simulation results meet the requirements of this study.
+Nonlinear response process of aquatic plant cover in Taihu Lake under different 
+eutrophication states
+Using the constructed ecological kinetic mechanism model of Taihu Lake, a total of 121 scenarios for nitrogen 
+and phosphorus regulation were simulated. Process curves and inflection points for aquatic vegetation in Taihu 
+Lake under varying nitrogen and phosphorus inputs were derived, as shown in Fig. 6. When the Chlorophyll-a 
+levels in the lake indicated oligotrophic, eutrophic, and hypereutrophic states, the corresponding mean N:P 
+ratios were 54.1, 26.8, and 18.1, respectively45, thus classifying the lake into three states based on the grading of 
+N:P ratios. The pink curve in Fig. 6 represents the 56 scenarios where N:P ratios vary from 12 to 61 by adjusting 
+the TN concentration between its minimum and maximum values (1.527 to 7.927 mg/L), while maintaining 
+Fig. 5. Model simulated values (black line) and calibration and validation observations (black solid and white 
+hollow dots, respectively). Gray bands represent the uncertainty associated with the 15% error introduced into 
+the indications and observations (a) TN; (b) TP; (c) Macrophytes coverage.
+ 
+Scientific Reports | (2026) 16:4111 8| https://doi.org/10.1038/s41598-025-31045-7
+www.nature.com/scientificreports/
+a constant TP concentration at the monthly average of 0.129 mg/L from 2005 to 2019. The flat purple curve 
+represents the 65 scenarios in which the TN concentration was kept constant at the average monthly value of 
+2.859  mg/L over the past 15  years, while the TP concentration varied between its minimum and maximum 
+values (0.052 to 0.332 mg/L), resulting in N:P ratios ranging from 9 to 57. The load map in Fig.  6 depicts the 
+average aquatic plant cover during the summer months of the last five years of the scenario simulation. In the 
+nitrogen control scenario, changes in aquatic plants show a slight increase in the N:P ratio to 14.3 after the aquatic 
+plant cover declines to 16.51%. Beyond this point, as aquatic plant cover continues to rise, the change interval 
+remains approximately 0.1%. The growth of aquatic plant cover in Taihu Lake is less restricted by nitrogen than 
+by phosphorus. The impact of nitrogen is minimal, resulting in an overall non-significant trend that levels off. 
+In contrast, changes in aquatic vegetation under phosphorus control show a nonlinear increase and are more 
+sensitive than those under nitrogen control.
+The results of the Pettitt mutation test for the phosphorus control simulation scenario indicated that the 
+inflection point for changes in aquatic plant cover occurred at 15.28%. Under phosphorus control, increasing 
+aquatic plant cover in the lake effectively mitigates the eutrophic state. As aquatic plant cover rises to 27.7%, 
+the lake’s N:P ratio reaches a point where it transitions to a mesotrophic state, signaling an improvement in 
+eutrophication. Aquatic plants play a crucial role in aquatic ecology. Expanding the area of submerged plants in 
+the lake can help alleviate eutrophication.
+Discussion
+Temporal and spatial patterns of changes in nutrients and aquatic vegetation in large 
+shallow lakes and their impact relationships
+The spatiotemporal dynamics of aquatic vegetation cover and N:P ratios in Taihu Lake exhibit remarkable 
+consistency. A severe cyanobacterial bloom occurred in Taihu Lake in 2007, followed by repeated bloom-
+induced eutrophication, with N:P ratios gradually decreasing 47. Data analysis indicates that the aquatic 
+vegetation cover in Taihu Lake exhibited an overall decreasing trend with interannual variations. By 2015, the 
+cover had been reduced to about 5%, consistent with trends observed in remote sensing data from Taihu Lake 
+between 1980 and 2017. As shown in Fig. 4b, the N:P ratios in Taihu Lake exhibited a decreasing trend from east 
+to west48. Additionally, the water quality in the western part of the lake was more polluted than in the eastern 
+part, consistent with findings from previous studies. The injection of large nutrient loads into the northwestern 
+part of Taihu Lake due to human activities, combined with the closed geomorphological features in the northern 
+region, is the primary factor contributing to the spatial heterogeneity in water quality49. As shown in Fig. 4a, the 
+aquatic vegetation cover gradually decreased from the eastern part to the middle and western sections of Taihu 
+Lake50. Remote sensing results revealed that aquatic vegetation was primarily concentrated in the eastern and 
+southeastern regions17, consistent with the trend observed in this study.
+A significant relationship was observed between aquatic vegetation and the trophic status of Taihu Lake. 
+Persistent water eutrophication and changes in hydrological conditions contribute to the ongoing decline of 
+aquatic vegetation in Taihu Lake50. The large-scale reduction of aquatic vegetation has disrupted the ecological 
+balance and steady state of the lake, further contributing to the degradation of the water ecosystem26. Spatially, the 
+western part of the lake is dominated by plankton, with sparse aquatic vegetation and frequent algal blooms12,13, 
+whereas the eastern part of the lake is characterized by dense aquatic vegetation and relatively good water 
+quality51. Conversely, the interaction between water eutrophication and aquatic vegetation demonstrates that 
+Fig. 6. Scenario simulation of aquatic plants regulating the dynamic response process of lake eutrophication.
+ 
+Scientific Reports | (2026) 16:4111 9| https://doi.org/10.1038/s41598-025-31045-7
+www.nature.com/scientificreports/
+nutrients in hyper-eutrophic lakes lead to the deterioration of aquatic vegetation and the subsequent degradation 
+of lake ecosystems15. There is a discernible relationship between aquatic vegetation and eutrophication in Taihu 
+Lake, which supports our hypothesis. However, simulating this response requires a more complex analytical 
+model, and the WET model may be more effective for scenario prediction in addressing this issue.
+Model construction and advantages of aquatic vegetation in the shallow lake Taihu Lake
+Aquatic ecological models are primarily used to study eutrophication, bioaccumulation, and trophic interactions 
+in aquatic ecosystems 52. Several large-scale aquatic ecosystem models, including PCLake, WET, EFDC, CE-
+QUAL-W2, W ASP , DELFT3D, AQUATOX, and MIKE, are well-developed and commercially available53. The 
+WET model is an aquatic ecosystem model that allows flexible, modular configuration of the food chain, making 
+it suitable for a wide range of aquatic ecosystem applications. It integrates hydrodynamic, biogeochemical, and 
+ecological processes to comprehensively simulate lake ecosystems, with multiple modules capable of simulating 
+complex ecosystem interactions. This complexity enables a more accurate simulation of changes in aquatic 
+vegetation43. The WET model can simulate biotic and abiotic transport and transformation processes, as well as 
+climate and nutrient loading change scenarios in a lake ecosystem. For example, Nielsen et al. applied the model 
+to Arreskov Lake, a shallow Danish lake, to predict the impacts of future climate change and nutrient loading 
+on lake water quality. Chen et al. used the WET model to assess the impacts of extreme climatic events on 
+eutrophication levels in Bryrup Lake, Denmark54. Similarly, Andersen et al. employed the WET model to predict 
+changes in ecosystem states of shallow lakes38.
+The WET model provides mechanistic explanatory capabilities for simulating aquatic vegetation in lakes 
+and aligns with the scientific principles governing growth and changes in aquatic biodynamic processes. It 
+incorporates the vertical gradient from the hydrodynamic model GOTM, analyzed in conjunction with the 
+aquatic ecosystem model PCLake, and is implemented within the framework of Aquatic Biogeochemical 
+Modeling (FABM). This approach more accurately models the delayed growth and cumulative effects of aquatic 
+vegetation, better aligning with the observed phenomenon in which aquatic vegetation does not decline 
+immediately after an algal bloom outbreak. Compared to using PCLake alone, the WET model offers better 
+lag identification capabilities and more accurately reflects the actual conditions of the lake. During practical 
+validation, the WET model successfully simulates the coverage and growth processes of aquatic vegetation in 
+shallow lakes. Phytoplankton limitation by nutrients is modeled using the Droppe equation, which also accounts 
+for oxygen dynamics, including reaeration, oxygen production via photosynthesis, oxygen exchange with the 
+water column, and oxygen consumption during sediment mineralization38. The effect of temperature on aquatic 
+vegetation growth can be represented by two exponential functions, which describe its impact on production 
+respiration and maintenance respiration, respectively34.
+Nonlinear inflection thresholds and cause identification for aquatic vegetation restoration 
+and eutrophication scenarios in shallow lakes
+The increase in aquatic vegetation coverage to control lake eutrophication and inhibit algal blooms aligns with 
+the results of the scenario simulation presented in this study 55. Phosphorus limitation in lake ecosystems is 
+governed by its distinct biogeochemical behavior at the sediment–water interface and its long-term accumulation. 
+Aquatic vegetation exhibits a pronounced uptake capacity for phosphorus, which is sustained by a dynamic 
+release-uptake cycle at the sediment interface that maintains a stable recycling pathway. In contrast, nitrogen is 
+typically non-limiting due to significant gaseous losses via denitrification, constraints on biological fixation, and 
+complex transformations among its various chemical species. These processes collectively result in lower and 
+less predictable nitrogen bioavailability compared to phosphorus. The Pettitt mutation test indicated that the 
+curve’s inflection point occurred when aquatic vegetation cover reached 15.28%, at which point the lake entered 
+a state of hyper-eutrophication in response to the simulated phosphorus. The results of the Pettitt mutation test 
+are presented in Fig. S3 of the Supplementary Material, indicating that increasing aquatic vegetation cover to 
+15.28% is insufficient to improve the health of Taihu Lake. However, increasing the aquatic vegetation cover to 
+27.7% resulted in an increase in the N:P ratio to 56.1, causing the lake to transition from a hyper-eutrophic state 
+to an eutrophic one and ultimately to an oligotrophic state. The 27.7% threshold aligns with the lower bound of 
+the optimal range identified in the Baiyangdian study, likely indicating that a self-sustaining, resilient clear-water 
+state has been established56.
+The model simulates the varying effects of aquatic vegetation on the dynamics of nitrogen and phosphorus. 
+Phosphorus absorption by aquatic vegetation increases linearly, while nitrogen absorption is more sensitive to 
+vegetation, initially declining before increasing. In lakes, phosphorus uptake begins with the direct absorption 
+of phosphate, followed by the accumulation of phosphorus as aquatic plants develop. As aquatic vegetation wilts 
+and decays, phosphorus stored in plant tissue is released back into the water, causing a short-term increase in 
+phosphorus concentration. However, this process is generally slow, with phosphorus changes occurring as a long-
+term, steady-state increase. As aquatic vegetation decays, phosphorus is released back into the water. Additionally, 
+the root system of aquatic vegetation plays a role in influencing phosphorus dynamics in the sediments 57. 
+Additionally, increased aquatic vegetation cover enhances water transparency and reduces plankton growth, 
+thereby indirectly limiting phosphorus cycling. The influence of aquatic vegetation on nitrogen is primarily 
+associated with its polymorphic nature and complexity. The scenario simulation of the WET model currently 
+simplifies ecological processes, with the simulation results mainly reflecting the response characteristics driven 
+by nitrogen-phosphorus structure changes. Due to data acquisition limitations and the preliminary positioning 
+of the model, the current framework is simplified. Future research will incorporate remote sensing technology 
+and water quality monitoring data to supplement variables such as transparency, water depth, and other key 
+factors, ultimately building a more ecologically complete multi-factor coupling model to enhance both its 
+ecological adaptability and universality.
+Scientific Reports | (2026) 16:4111 10| https://doi.org/10.1038/s41598-025-31045-7
+www.nature.com/scientificreports/
+Moreover, submerged vegetation plays a crucial role in maintaining clear water conditions in lakes through 
+various mechanisms 58. These plants reduce turbidity and nutrient concentrations, including total nitrogen 
+and phosphorus, by acting as a barrier to particle dispersal and filtering suspended particles from the water. 
+Submerged plants also directly absorb nitrogen and phosphorus through their roots and leaves, thereby 
+improving water quality by lowering the concentrations of soluble nitrogen and phosphorus 50. Additionally, 
+by secreting allelopathic substances, they modify algal cell physiology, inhibiting phytoplankton growth and 
+reducing algal biomass. The leaf type of submerged plants plays a crucial role in enhancing water quality. Leaf 
+shape is a key phenotypic trait that reflects their adaptive strategies to environmental stress. Establishing a 
+submerged plant system not only improves water transparency, but the resulting clarity further supports plant 
+growth, creating a positive feedback loop. It provides food for microorganisms and shelter for zooplankton, 
+reducing suspended nutrients and inhibiting algal growth through zooplankton grazing 59. Therefore, large-
+scale cultivation of submerged vegetation in lakes can improve aquatic ecosystem health and help mitigate 
+eutrophication in Taihu Lake. In the future, emphasizing the ecological role of aquatic vegetation may alleviate 
+the burden of lake management.
+This study establishes a 27.7% aquatic vegetation coverage threshold for transitioning Lake Taihu from a 
+eutrophic to an oligotrophic-mesotrophic state, providing a quantifiable management target that bridges 
+scientific research and practical application. This threshold serves as a key indicator for assessing ecosystem 
+status and restoration effectiveness. The WET model serves as a predictive decision-support tool, simulating 
+vegetation response to management actions—including pollutant load reduction and hydrological regulation—
+to optimize strategies and forecast eutrophication trends. Furthermore, these findings enable the development 
+of an early-warning system that triggers intervention when vegetation coverage nears critical levels, facilitating 
+a shift from reactive treatment to proactive, preventative management.
+Conclusions
+This study developed a novel WET-based ecological model for large, shallow lakes, establishing a nonlinear 
+relationship between long-term hydrological/physicochemical drivers and submerged vegetation cover in Lake 
+Taihu. A key contribution is the quantification of critical ecological thresholds, demonstrating that achieving 
+approximately 27.7% vegetation cover can shift the system from a eutrophic to an oligotrophic-mesotrophic 
+state under specific N:P ratios. The results confirm phosphorus as the primary limiting nutrient, with nitrogen 
+exerting a secondary influence on vegetation dynamics. A primary limitation is the model’s parameterization 
+for a single lake system, necessitating validation across diverse lacustrine environments to ensure broader 
+applicability. Future work should elucidate the underlying biogeochemical mechanisms—particularly sediment-
+phosphorus feedbacks and nitrogen fixation—and evaluate the impacts of climate change on restoration 
+resilience. For management, this study provides quantifiable vegetation targets and a predictive tool to simulate 
+ecosystem responses to interventions, thereby enabling proactive eutrophication control and optimized resource 
+allocation in shallow lakes.
+Data availability
+All data supporting the findings of this study are included in the manuscript. The datasets used and analysed 
+during the current study available from the corresponding author on reasonable request.
+Received: 26 September 2025; Accepted: 28 November 2025
+References
+ 1. Mozafari, Z. et al. Impact of climatic factors on eutrophication in the world’s largest lake. Ecol. Ind. 175, 113497. h t t p s : / / d o i . o r g / 1 
+0 . 1 0 1 6 / j . e c o l i n d . 2 0 2 5 . 1 1 3 4 9 7 (2025).
+ 2. Dykes, C. et al. Impact of seasonal climate variability on constructed wetland treatment efficiency. J. Water Process Eng. 72, 107350. 
+https://doi.org/10.1016/j.jwpe.2025.107350 (2025).
+ 3. Dykes, C. A. et al. Spatial and temporal dynamics of methane and carbon dioxide fluxes in a constructed wetland. J. Water Process 
+Eng. 76, 108130. https://doi.org/10.1016/j.jwpe.2025.108130 (2025).
+ 4. Deng, S. et al. Lake pollution control and restoration: A critical review of strategies and measures for plateau lakes in Southwestern 
+China. Ecol. Eng. 215, 107583. https://doi.org/10.1016/j.ecoleng.2025.107583 (2025).
+ 5. Jiang, C., Fan, X., Cui, G. & Zhang, Y . Removal of agricultural non-point source pollutants by ditch wetlands: implications for lake 
+eutrophication control. Hydrobiologia 581, 319–327. https://doi.org/10.1007/s10750-006-0512-6 (2007).
+ 6. Mahdian, M. et al. Anzali wetland crisis: unraveling the decline of Iran’s ecological gem. J. Geophys. Res. Atmos. 129(4), 
+e2023JD039538. https://doi.org/10.1029/2023JD039538 (2024).
+ 7. Stone, R. China aims to turn tide against toxic lake pollution. Science 333, 1210–1211. https://doi.org/10.1126/science.333.6047.1210 
+(2011).
+ 8. Qin, B. et al. Water depth underpins the relative roles and fates of nitrogen and phosphorus in lakes. Environ. Sci. Technol. 54, 
+3191–3198. https://doi.org/10.1021/acs.est.9b05858 (2020).
+ 9. Wang, M., Shi, W . & Tang, J. Water property monitoring and assessment for China’s inland Lake Taihu from MODIS-Aqua 
+measurements. Remote Sens. Environ. 115, 841–854. https://doi.org/10.1016/j.rse.2010.11.012 (2011).
+ 10. Tang, X., Li, R., Han, D. & Scholz, M. Response of eutrophication development to variations in nutrients and hydrological regime: 
+a case study in the Changjiang river (Y angtze) basin. Water 12, 1634. https://doi.org/10.3390/w12061634 (2020).
+ 11. Qin, B. et al. A drinking water crisis in Lake Taihu, China: Linkage to climatic variability and lake management. Environ. Manage. 
+45, 105–112. https://doi.org/10.1007/s00267-009-9393-6 (2010).
+ 12. Zhang, Y . et al. A novel algorithm to estimate algal bloom coverage to subpixel resolution in Lake Taihu. IEEE J. Sel. Top. Appl. 
+Earth Observ. Remote Sens. 7, 3060–3068. https://doi.org/10.1109/JSTARS.2014.2327076 (2014).
+ 13. Zhang, Y . et al. Effect of light intensity on growth of Microcystis flos-aquae colonies size. JLSci 26, 559–566. h t t p s : / / d o i . o r g / 1 0 . 1 8 3 
+0 7 / 2 0 1 4 . 0 4 1 0 (2014).
+Scientific Reports | (2026) 16:4111 11| https://doi.org/10.1038/s41598-025-31045-7
+www.nature.com/scientificreports/
+ 14. Cha, Y ., Alameddine, I., Qian, S. S. & Stow, C. A. A cross-scale view of N and P limitation using a Bayesian hierarchical model. 
+Limnol. Oceanogr. 61, 2276–2285. https://doi.org/10.1002/lno.10375 (2016).
+ 15. Wang, J. et al. Impact of water turbidity on growth of submerged plant Potamogeton cripus. J. Ecol. Rural Environ. 31(3), 353–358. 
+h t t p s : / / d o i . o r g / 1 0 . 1 1 9 3 4 / j . i s s n . 1 6 7 3 - 4 8 3 1 . 2 0 1 5 . 0 3 . 0 1 3 (2015).
+ 16. Y ang, F . et al. Ecological mechanisms of submerged macrophytes in the restoration of eutrophic shallow lakes. J. Anhui Agric. Sci. 
+44(26), 58–61. h t t p s : / / d o i . o r g / 1 0 . 1 3 9 8 9 / j . c n k i . 0 5 1 7 - 6 6 1 1 . 2 0 1 6 . 2 6 . 0 2 2 (2016).
+ 17. Wang, S. et al. Long-term and inter-monthly dynamics of aquatic vegetation and its relation with environmental factors in Taihu 
+Lake, China. Sci. Total Environ. 651, 367–380. https://doi.org/10.1016/j.scitotenv.2018.09.216 (2019).
+ 18. Sun, R. & Fan, L. Purification of eutrophic water by five aqua-cultured plants in Lake Hongfeng, Guiyang, China. Wuhan Univ. J. 
+Nat. Sci. 24, 37–44. https://doi.org/10.1007/s11859-019-1366-x (2019).
+ 19. Zhang, Z., Li, W . & Ashraf, M. A. Allelopathic effects of various aquatic plants in eutrophic water areas. Coas 82, 137–142. h t t p s : / / 
+d o i . o r g / 1 0 . 2 1 1 2 / S I 8 2 - 0 1 9 . 1 (2018).
+ 20. Y ang, L. Y ., Y ang, X. Y ., Ren, L. M., et al. (2019). Mechanisms and control strategies of cyanobacterial bloom in Lake Taihu. Journal 
+of Lake Sciences, 31(1), 18–27. https://doi.org/10.18307/2019.0102
+ 21. Luo, J. et al. Global trends and regime state shifts of lacustrine aquatic vegetation. Innovation 6, 100784. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . 
+x i n n . 2 0 2 4 . 1 0 0 7 8 4 (2025).
+ 22. Beklioglu, M. & Moss, B. Existence of a macrophyte-dominated clear water state over a very wide range of nutrient concentrations 
+in a small shallow lake. Hydrobiologia 337, 93–106. https://doi.org/10.1007/BF00028510 (1996).
+ 23. Zhengwen, L. et al. The responses of the benthic-pelagic coupling to eutrophication and regime shifts in shallow lakes: Implication 
+for lake restoration. J. Lake Sci. 32(1), 1–10. https://doi.org/10.18307/2020.0101 (2020).
+ 24. Scheffer, M. & Jeppesen, E. Regime shifts in shallow lakes. Ecosystems 10, 1–3. https://doi.org/10.1007/s10021-006-9002-y (2007).
+ 25. Liuyan, Y ., Xinyan, Y ., Liman, R., Xin, Q. & Lin, X. Mechanism and control strategy of cyanobacterial bloom in Lake Taihu. J. Lake 
+Sci. 31, 18–27. https://doi.org/10.18307/2019.0102 (2019).
+ 26. Luo, J. et al. Evaluating the influences of harvesting activity and eutrophication on loss of aquatic vegetations in Taihu Lake, China. 
+Int. J. Appl. Earth Obs. Geoinf. 87, 102038. https://doi.org/10.1016/j.jag.2019.102038 (2020).
+ 27. Boll, T. et al. Changes in benthic macroinvertebrate abundance and lake isotope (C, N) signals following biomanipulation: an 18-
+year study in shallow Lake Vaeng, Denmark. Hydrobiologia 686, 135–145. https://doi.org/10.1007/s10750-012-1005-4 (2012).
+ 28. Zhang, Y . et al. Control and remediation methods for eutrophic lakes in the past 30 years. Water Sci Technol 81, 1099–1113. h t t p s : 
+/ / d o i . o r g / 1 0 . 2 1 6 6 / w s t . 2 0 2 0 . 2 1 8 (2020).
+ 29. Shen, C., Wu, D., Chen, B., Khazaei, B. & Han, C. Phosphorus removal potential of aquatic macrophytes in a shallow eutrophic 
+system. Hydrobiologia 850, 3935–3948. https://doi.org/10.1007/s10750-023-05261-z (2023).
+ 30. Stewart, R. I. A. et al. Chapter two - mesocosm experiments as a tool for ecological climate-change research. In Advances in 
+Ecological Research, Global Change in Multispecies Systems: Part 3 (eds Woodward, G. & O’Gorman, E. J.) 71–181. h t t p s : / / d o i . o r g / 
+1 0 . 1 0 1 6 / B 9 7 8 - 0 - 1 2 - 4 1 7 1 9 9 - 2 . 0 0 0 0 2 - 1 (Academic Press, 2013).
+ 31. Liu, J.-T. et al. Analysis of regime shift in Taihu Lake based on Mann-Kendall method 35, 3707–3713 (2015).
+ 32. Catastrophic regime shifts in ecosystems: linking theory to observation. Trends Ecol. Evol. 18, 648–656. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . t 
+r e e . 2 0 0 3 . 0 9 . 0 0 2 (2003).
+ 33. Reckhow, K. H. Uncertainty analysis applied to Vollenweider’s phosphorus loading criterion. J. (Water Pollut. Control Feder.) 51, 
+2123–2128 (1979).
+ 34. Janse, J. H. Model studies on the eutrophication of shallow lakes and ditches. [external Ph-D, WU, Wageningen U n i v e r s i t y ] . h t t p s : 
+/ / d o i . o r g / 1 0 . 1 8 1 7 4 / 1 2 1 6 6 3 (Wageningen Universiteit, 2005).
+ 35. Janse, J. H. A model of nutrient dynamics in shallow lakes in relation to multiple stable states. Hydrobiologia 342, 1–8. h t t p s : / / d o i . 
+o r g / 1 0 . 1 0 2 3 / A : 1 0 1 7 0 1 8 8 1 2 2 1 5 (1997).
+ 36. Zhang, X., Yu, R., Zhang, Y . & Li, L. Progress in research of regime shift model PCLake for shallow lakes (2017).
+ 37. Zhang, Y . et al. Global loss of aquatic vegetation in lakes. Earth Sci. Rev. 173, 259–265. https://doi.org/10.1016/j.earscirev.2017.08.013 
+(2017).
+ 38. Andersen, T. K. et al. Predicting ecosystem state changes in shallow lakes using an aquatic ecosystem model: Lake Hinge, Denmark, 
+an example. Ecol. Appl. 30, e02160. https://doi.org/10.1002/eap.2160 (2020).
+ 39. Nielsen, A., Bolding, K., Hu, F . & Trolle, D. An open source QGIS-based workflow for model application and experimentation with 
+aquatic ecosystems. Environ. Model. Softw. 95, 358–364. https://doi.org/10.1016/j.envsoft.2017.06.032 (2017).
+ 40. Huang, C. et al. Long-term variation of phytoplankton biomass and physiology in Taihu lake as observed via MODIS satellite. 
+Water Res. 153, 187–199. https://doi.org/10.1016/j.watres.2019.01.017 (2019).
+ 41. Y an, X. et al. Thirty years of experience in water pollution control in Taihu Lake: A review. Sci. Total Environ. 914, 169821. h t t p s : / 
+/ d o i . o r g / 1 0 . 1 0 1 6 / j . s c i t o t e n v . 2 0 2 3 . 1 6 9 8 2 1 (2024).
+ 42. Schelske, C. L. et al. How anthropogenic darkening of Lake Apopka induced benthic light limitation and forced the shift from 
+macrophyte to phytoplankton dominance. Limnol. Oceanogr. 55, 1201–1212. https://doi.org/10.4319/lo.2010.55.3.1201 (2010).
+ 43. Azaña, S. M. N. et al. Water Ecosystems Tool (WET) 1.0 – a new generation of flexible aquatic ecosystem model. Geosci. Model Dev. 
+15 (2022).
+ 44. Hu, F ., Bolding, K., Bruggeman, J., Jeppesen, E., Flindt, M. R., van Gerven, L., Janse, J. H., Janssen, A. B. G., Kuiper, J. J., Mooij, W . 
+M., and Trolle, D. FABM-PCLake – linking aquatic ecology with hydrodynamics Geoscientific Model Development 9(6) 2271-
+2278. https://doi.org/10.5194/gmd-9-2271-2016 (2016).
+ 45. Liang, Z., Soranno, P . A. & Wagner, T. The role of phosphorus and nitrogen on chlorophyll a: Evidence from hundreds of lakes. 
+Water Res. 185, 116236. https://doi.org/10.1016/j.watres.2020.116236 (2020).
+ 46. Janse, J. H. et al. Estimating the critical phosphorus loading of shallow lakes with the ecosystem model PCLake: Sensitivity, 
+calibration and uncertainty. Ecol. Model. 221, 654–665. https://doi.org/10.1016/j.ecolmodel.2009.07.023 (2010).
+ 47. Song, T. et al. Cyanobacterial blooms in Lake Taihu: Temporal trends and potential drivers. Sci. Total Environ. 942, 173684. h t t p s : 
+/ / d o i . o r g / 1 0 . 1 0 1 6 / j . s c i t o t e n v . 2 0 2 4 . 1 7 3 6 8 4 (2024).
+ 48. Wang, J., Zhao, Q., Pang, Y . & Hu, K. Research on nutrient pollution load in Lake Taihu, China. Environ. Sci. Pollut. Res. 24, 
+17829–17838. https://doi.org/10.1007/s11356-017-9384-8 (2017).
+ 49. Wang, Y . et al. Spatiotemporal heterogeneities and driving factors of water quality and trophic state of a typical urban shallow lake 
+(Taihu, China). Environ. Sci. Pollut. Res. 29, 53831–53843. https://doi.org/10.1007/s11356-022-18519-1 (2022).
+ 50. Y ang, C. et al. Driving forces and recovery potential of the macrophyte decline in East Taihu Lake. J. Environ. Manag. 342, 118154. 
+https://doi.org/10.1016/j.jenvman.2023.118154 (2023).
+ 51. Luo, J. et al. Applying remote sensing techniques to monitoring seasonal and interannual changes of aquatic vegetation in Taihu 
+Lake, China. Ecol. Ind. 60, 503–513. https://doi.org/10.1016/j.ecolind.2015.07.029 (2016).
+ 52. Anagnostou, E., Gianni, A. & Zacharias, I. Ecological modeling and eutrophication—A review. https://doi.org/10.1111/nrm.12130 
+(n.d.).
+ 53. Zheng, Z., Liao, T., Lin, Y ., Zhu, X. & Meng, H. Evaluation of algal control measures in eutrophic reservoirs based on aquatic 
+ecosystem models. Water 16, 1494. https://doi.org/10.3390/w16111494 (2024).
+ 54. Chen, W . et al. Modeling the ecological response of a temporarily summer-stratified lake to extreme heatwaves. Water 12, 94. 
+https://doi.org/10.3390/w12010094 (2019).
+Scientific Reports | (2026) 16:4111 12| https://doi.org/10.1038/s41598-025-31045-7
+www.nature.com/scientificreports/
+ 55. Wang, T. & Liu, H. Aquatic plant allelochemicals inhibit the growth of microalgae and cyanobacteria in aquatic environments. 
+Environ. Sci. Pollut. Res. 30, 105084–105098. https://doi.org/10.1007/s11356-023-29994-5 (2023).
+ 56. Zhang, X. et al. Optimal submerged macrophyte coverage for improving water quality in a temperate lake in China. Ecol. Eng. 162, 
+106177. https://doi.org/10.1016/j.ecoleng.2021.106177 (2021).
+ 57. Wu, D., Shen, C., Cheng, Y ., Ding, J. & Li, W . Phosphorus removal by aquatic vegetation in shallow eutrophic lakes: a laboratory 
+study. Environ. Sci. Pollut. Res. 30, 16166–16177. https://doi.org/10.1007/s11356-022-23403-z (2023).
+ 58. Lv, C. et al. The dual role of benthic fish: Effects on water quality in the presence and absence of submerged macrophytes. Water 
+Res. 267 (2024).
+ 59. Wang, D. et al. Research status on remediation of eutrophic water by submerged macrophytes: A review. Process Saf. Environ. Prot. 
+169, 671–684. https://doi.org/10.1016/j.psep.2022.11.063 (2023).
+ 60 Mahdian, M., Hosseinzadeh, M., Siadatmousavi, S.M. et al. Modelling impacts of climate change and anthropogenic activities on 
+inflows and sediment loads of wetlands: case study of the Anzali wetland. Sci Rep 13, 5399. h t t p s : / / d o i . o r g / 1 0 . 1 0 3 8 / s 4 1 5 9 8 - 0 2 3 - 3 
+2 3 4 3 - 8 (2023).
+Author contributions
+Xiang LI: Resources, Data curation, Methodology, Formal analysis, Writing—original draft. Rui XIA: Resources, 
+Methodology, Formal analysis, Writing—original draft. Zhongwen YANG: Resources, Data curation, Formal 
+analysis. Y an CHEN: Data curation, Formal analysis. Chao YAN: Data curation, Formal analysis. Junde MING: 
+Data curation, Formal analysis. Qiang HU: Data curation, Formal analysis. Hao LIU: Data curation, Formal 
+analysis.
+Funding
+This work was supported by the National Natural Science Foundation of China [grant number 52479078], the 
+National Key R&D Program of China [grant number 2021YFC3201004], and the National Key R&D Program of 
+China [grant number 2021YFC3201003].
+Declarations
+Competing interests
+The authors declare no competing interests.
+Additional information
+Supplementary Information The online version contains supplementary material available at h t t p s : / / d o i . o r g / 1 
+0 . 1 0 3 8 / s 4 1 5 9 8 - 0 2 5 - 3 1 0 4 5 - 7 . 
+Correspondence and requests for materials should be addressed to R.X.
+Reprints and permissions information is available at www.nature.com/reprints.
+Publisher’s note Springer Nature remains neutral with regard to jurisdictional claims in published maps and 
+institutional affiliations.
+Open Access This article is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 
+4.0 International License, which permits any non-commercial use, sharing, distribution and reproduction in 
+any medium or format, as long as you give appropriate credit to the original author(s) and the source, provide 
+a link to the Creative Commons licence, and indicate if you modified the licensed material. Y ou do not have 
+permission under this licence to share adapted material derived from this article or parts of it. The images or 
+other third party material in this article are included in the article’s Creative Commons licence, unless indicated 
+otherwise in a credit line to the material. If material is not included in the article’s Creative Commons licence 
+and your intended use is not permitted by statutory regulation or exceeds the permitted use, you will need to 
+obtain permission directly from the copyright holder. To view a copy of this licence, visit h t t p : / / c r e a t i v e c o m m o 
+n s . o r g / l i c e n s e s / b y - n c - n d / 4 . 0 / . 
+© The Author(s) 2026 
+Scientific Reports | (2026) 16:4111 13| https://doi.org/10.1038/s41598-025-31045-7
+www.nature.com/scientificreports/

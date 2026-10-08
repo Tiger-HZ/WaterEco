@@ -1,0 +1,1668 @@
+RESEARCH
+Earth Science Informatics (2026) 19:61
+https://doi.org/10.1007/s12145-026-02123-9
+aquatic ecosystems intersect(Hennings et al. 2021; Politi 
+et al. 2024), such as lakes and rivers, which are strongly 
+affected by human activities and have poor water exchange 
+capabilities(Dai et al. 2023). In recent years, with the accel-
+eration of urbanization and industrialization, an increas -
+ing amount of pollutants has been discharged(Madjar et al. 
+2024; Lin et al. 2022), making water eutrophication a major 
+challenge in global water ecological governance(Baladi et 
+al. 2022; Preisner et al. 2020). Since the 1960s, the global 
+incidence of eutrophication has been increasing. From the 
+late 1970s to the late 1990s, the proportion of eutrophic 
+lakes rose from 41% to 61% (Zhang et al. 2021). In 2019, 
+among the 107 lakes (reservoirs) monitored in China, 5.6% 
+were classified as moderately eutrophic, 23.4% as mildly 
+eutrophic, 61.7% as mesotrophic, and 9.3% as oligotrophic 
+(Yu et al. 2020). These findings indicate an overall concern-
+ing water quality status. Therefore, accurate prediction of 
+water body eutrophication is of great significance(Zang et 
+al. 2024).
+Introduction
+Water eutrophication refers to the pollution phenomenon 
+caused by excessive content of nutrients such as nitro -
+gen, phosphorus, and organic matter in water bodies with 
+low internal circulation(Lin et al. 2021; Petrova et al. 
+2023). It typically occurs in areas where terrestrial and 
+Communicated by Hassan Babaie
+  Zhiyao Zhao
+zhaozy@btbu.edu.cn
+Yihan Sun
+sunyihan7895123@163.com
+1 Beijing Laboratory for Intelligent Environmental Protection, 
+School of Computer and Artificial Intelligence, Beijing 
+Technology & Business University, Beijing 100048, China
+2 China Conservatory of Music, Beijing 100101, China
+Abstract
+Irregular temporal sampling and limited data availability restrict the performance of remote sensing–based chlorophyll-
+a prediction for water eutrophication assessment. Meanwhile, atmospheric pollutant deposition represents an important 
+pathway for nutrient input into lakes, yet such information is rarely incorporated into data-driven prediction frameworks.
+To address these challenges, this study proposes a multimodal fusion framework integrating atmospheric pollutant data 
+and chlorophyll remote sensing imagery. First, a transfer learning-based generative adversarial network (TL-MCAS-CSG-
+GAN) is developed to reconstruct missing chlorophyll remote sensing images and enhance temporal continuity. Second, a 
+cross-attention Conv2D-LSTM GAN model is designed to fuse atmospheric six-parameter features with chlorophyll image 
+sequences for eutrophication prediction.Experiments conducted on Taihu Lake datasets demonstrate that the proposed 
+model improves SSIM, PSNR, and COSIN by 6.51% compared with baseline models without atmospheric feature fusion. 
+The results indicate that atmospheric pollutant information provides complementary spatiotemporal signals for chlorophyll 
+prediction and improves eutrophication assessment accuracy.The proposed framework offers a data-driven paradigm for 
+multimodal environmental modeling and contributes to intelligent water quality monitoring and management.
+Keywords Remote sensing images · Graph data · Image migration expansion · Multi-modal fusion · Eutrophication 
+prediction
+Received: 3 January 2026 / Accepted: 28 March 2026 / Published online: 10 April 2026
+© The Author(s) 2026
+Remote sensing image enhancement and water eutrophication 
+prediction based on atmospheric-water multimodal information 
+fusion
+Li Wang1 · Yihan Sun1 · Xiaoyi Wang2 · Jiping Xu1 · Zhiyao Zhao1 · Jiabin Yu1 · Huiyan Zhang1 · Qian Sun1 · Yuting Bai1
+1 3
+Earth Science Informatics (2026) 19:61
+Eutrophication prediction studies focus on applying math-
+ematical models and remote sensing techniques to foresee 
+its occurrence and development trends. These models are 
+based on the physical and chemical characteristics of water 
+bodies, biological indicators, and atmospheric conditions. 
+Advances in remote sensing technology have improved the 
+efficiency of large-scale water body monitoring and early 
+warning(Laneve et al. 2024; Peppa et al. 2020). Predic -
+tion methods can be divided into two categories based on 
+whether they reveal the intrinsic mechanisms of water bod-
+ies: Mechanism-driven prediction focuses on direct and 
+indirect influencing factors, describing their relationship 
+with eutrophication through mathematical equations. This 
+approach has evolved from single-nutrient limitation mod -
+els (Du et al. 2022; Zhang et al. 2023) to incorporating tem-
+perature variations (He et al. 2024) and suspended solids 
+(Pan et al. 2023), and further to complex models integrating 
+ecosystem dynamics and hydrodynamic processes (Koue 
+2025). Such progression has deepened the multidimensional 
+understanding of eutrophication and improved prediction 
+accuracy.On the other hand, data-driven prediction models 
+use big data and data mining techniques to analyze observa-
+tional information, combining ground stations and remote 
+sensing data. These models cover both specific water qual -
+ity details at individual sites and broad water body char -
+acteristics, revealing key influencing factors and patterns 
+through data analysis and providing important decision-
+making support for water environment management(Chen 
+et al. 2021; Karimian et al. 2023; Li et al. 2021; Zhang et 
+al. 2022). These two methods complement each other and 
+jointly promote the scientific prediction and management of 
+water eutrophication.
+In addition to watershed nutrient inputs, atmospheric 
+deposition has been increasingly recognized as an impor -
+tant external nutrient source influencing eutrophication 
+processes. In large shallow lakes such as Taihu Lake, atmo-
+spheric nitrogen deposition has been shown to contribute 
+significantly to nutrient loading and algal bloom dynam -
+ics (Chen et al. 2018).Existing studies generally adopt 
+two main approaches to incorporate atmospheric factors 
+into eutrophication research. The first approach introduces 
+atmospheric nitrogen deposition and related meteorologi -
+cal variables into water quality models as external driving 
+forces. Modeling studies have demonstrated that atmo -
+spheric nitrogen deposition can measurably affect water 
+quality dynamics and nutrient concentrations (Wang et al. 
+2022).The second approach couples climate forcing with 
+hydrodynamic–ecological models to simulate the influence 
+of atmospheric processes on nutrient transport and eutro -
+phication evolution. Recent research has shown that atmo -
+spheric deposition and climate warming jointly alter water 
+quality responses and ecosystem dynamics (Han et al. 
+2023).These findings indicate that atmospheric processes 
+are not merely background environmental variables but 
+can act as external nutrient drivers influencing chlorophyll-
+a variability. Therefore, integrating atmospheric pollutant 
+information into chlorophyll-a prediction models is theo -
+retically grounded and scientifically justified.In this study, 
+the atmospheric dataset consists of daily PM2.5 images 
+with 1 km spatial resolution, while chlorophyll-a data are 
+derived from satellite inversion products with irregular 
+temporal sampling. This difference in temporal resolution 
+further motivates the need for temporal reconstruction and 
+multimodal modeling.
+Convolutional neural networks, as a classic deep learning 
+algorithm, overcome the curse of dimensionality in high-
+dimensional data analysis and are particularly suitable for 
+image processing and recognition. Convolutional process -
+ing makes feature extraction from images more efficient, 
+providing a more streamlined input set for subsequent 
+nonlinear transformations, thereby improving training and 
+prediction effects(Archana and Jeevaraj 2024; Liang 2024; 
+Liu et al. 2024; Zhao et al. 2025). Generative adversarial 
+networks (GANs), as excellent models for generating image 
+data, consist of a generator and a discriminator. The genera-
+tor learns to produce samples that approximate the distribu-
+tion of real remote sensing images, while the discriminator 
+distinguishes whether the images come from real remote 
+sensing image samples or are generated by the generator. 
+This allows the network model to effectively extract key 
+features from water body remote sensing images and gener-
+ate high-quality water body remote sensing image data(Gui 
+et al. 2021; Jabbar et al. 2021; Pai et al. 2020).
+To address the aforementioned challenges, this study 
+develops a multimodal fusion framework integrating atmo -
+spheric pollutant information and chlorophyll remote sens -
+ing imagery for water eutrophication prediction. The main 
+contributions of this work are summarized as follows:
+(1) A transfer learning-based image reconstruction frame -
+work (TL-MCAS-CSG-GAN) is proposed to address 
+irregular temporal sampling and limited chlorophyll 
+data availability, improving temporal continuity of 
+remote sensing image sequences.
+(2) A cross-attention multimodal fusion architecture is 
+designed to integrate atmospheric six-parameter fea -
+tures with chlorophyll image sequences, enabling joint 
+spatiotemporal modeling across heterogeneous envi -
+ronmental data sources.
+(3) A structured ablation analysis is conducted to quantita -
+tively evaluate the contribution of temporal modeling, 
+attention mechanisms, and atmospheric feature fusion, 
+demonstrating the effectiveness of multimodal integra -
+tion for chlorophyll-a prediction.
+1 3
+61 Page 2 of 29
+Earth Science Informatics (2026) 19:61
+(4) The proposed framework provides a data-driven para -
+digm for integrating atmospheric and water quality 
+information in eutrophication assessment, contributing 
+to intelligent environmental monitoring and Earth sys -
+tem informatics research.
+Water body remote sensing image 
+expansion method based on atmospheric 
+pollutant knowledge transfer
+Considering that chlorophyll is the main indicator for pre -
+dicting water eutrophication, this paper uses chlorophyll 
+remote sensing images as the dataset for modeling. How -
+ever, the original chlorophyll remote sensing image data 
+of the target water body has unequal sampling lengths 
+and low sampling frequencies, resulting in unequal time 
+intervals and a small volume of data samples, making 
+the original data unsuitable for direct modeling and pre -
+diction. Therefore, it is necessary to study a method for 
+expanding the chlorophyll remote sensing image samples 
+of the target water body. Additionally, since the volume 
+of chlorophyll remote sensing images is small, expand -
+ing these samples requires rich prior knowledge. Tra -
+ditional methods based on single factors for expanding 
+chlorophyll remote sensing image samples often produce 
+results that differ significantly from real images. Consid -
+ering the strong correlation between atmospheric pol -
+lutants and chlorophyll concentration, it is necessary to 
+study a method for expanding chlorophyll remote sensing 
+image samples based on high-resolution atmospheric pol -
+lutant image data as prior knowledge. In response to these 
+issues, this chapter proposes a chlorophyll remote sens -
+ing image expansion method based on transfer learning 
+and multi-channel attention cascaded semantic selection 
+networks.
+The model for expanding water body remote sensing 
+images based on atmospheric pollutant knowledge transfer 
+consists of four modules, as shown in Fig. 1.
+The first module is the cascaded semantic generation 
+module, which overlays atmospheric pollutant images with 
+the semantic maps of the target water body and uses them 
+as inputs to the model. This module extracts features from 
+atmospheric pollutant images and generates coarse-grained 
+chlorophyll remote sensing images of the target water body. 
+The second module is the multi-scale spatial pooling mod -
+ule, which performs average pooling on the coarse-grained 
+cascaded semantic features at different scales to expand 
+the receptive field and obtain feature information from a 
+larger area. The third module is the multi-channel attention 
+selection module, which convolves multi-scale features and 
+combines attention mechanisms to generate more accu -
+rate results. The fourth module is the knowledge transfer 
+module, which integrates the generated chlorophyll remote 
+sensing images with the original chlorophyll remote sensing 
+image data and adjusts the generated images using the origi-
+nal data to achieve smooth fusion of the expanded image 
+dataset.
+Fig. 1 Structure diagram of water remote sensing image expansion method based on atmospheric pollutant knowledge transfer
+ 
+1 3
+Page 3 of 29 61
+Earth Science Informatics (2026) 19:61
+to better learn image feature information. Specifically, the 
+output image Ig from the image generator Gi is further fed 
+into the semantic map generator Gs of domain B to con -
+struct a new semantic map Sg1. This provides additional 
+informational guidance for the generator, allowing it to bet-
+ter learn the information from the images of domain A and 
+the semantic maps of domain B. This process is formalized 
+as:
+Sg1 = Gs (Ig1)= Gs (Gi (concat( Ia, Sg ))) (2.2)
+Due to the complexity of the task, it is observed that after 
+the initial step, the image generator Gi of domain B pro -
+duces a coarse-grained target domain image Ig1. The gen-
+erated image exhibits blurriness, with a notable disparity in 
+high pixel-level similarity between the scene details and the 
+target domain image, as illustrated in Fig. 3.
+This necessitates exploring a coarse-to-fine image 
+generation strategy to improve image generation accu -
+racy. Cascaded processing of images has been applied in 
+various computer vision tasks, such as object detection 
+and semantic segmentation, and has demonstrated signifi -
+cant effectiveness. In this section, a cascaded strategy is 
+introduced to address the problem of image translation 
+and generation across different knowledge domains. The 
+output of the last convolutional layer of the image gen -
+erator Gi of domain B is extracted as the coarse-grained 
+target domain image feature Fi. Similarly, the output of 
+the last convolutional layer of the semantic map genera -
+tor Gs of domain B is extracted as the coarse-grained 
+semantic map feature Fs. The image Ia from domain A, 
+the coarse-grained target domain image Ig1, the target 
+domain semantic map Sg1, the feature Fi, and the feature 
+Fs are then cascaded to obtain the new feature Fc, as 
+formalized below.
+Construction of the cascaded semantic generation 
+module
+The task of image translation and generation across different 
+knowledge domains is a challenging endeavor, particularly 
+when the domains represent different physical quantities. 
+This study investigates how to leverage knowledge learned 
+from atmospheric pollutant images of a target water body 
+to generate reference chlorophyll remote sensing images. 
+To enhance the accuracy of image translation, this paper 
+employs semantic maps of the target water body as con -
+ditional guidance. A U-Net-based semantic segmentation 
+model is employed to extract semantic maps of the target 
+water body. However, using semantic mappings solely in 
+the reconstruction loss to guide the generation of chloro -
+phyll remote sensing images provides only weak guidance 
+for image generation. Therefore, this study not only incor -
+porates the semantic maps of the target water body in the 
+reconstruction loss but also uses them as input to the model. 
+The specific cascaded semantic generation module structure 
+is illustrated in Fig. 2, where the image Ia from domain A 
+and the semantic map Sg from domain B are concatenated 
+through function concat(• ) and fed into the image gen -
+erator Gi of domain B, producing the output image Ig1 of 
+domain B.
+In this way, the semantic map Sg from domain B pro -
+vides stronger supervision for image generation in subse -
+quent units, formalized as:
+Ig1 = Gi (concat( Ia, Sg )) (2.1)
+Considering the cascaded target water body chlorophyll 
+images and semantic maps can enhance the accuracy of the 
+model’s generated images. Therefore, this paper constructs 
+a cyclic semantic generation network to enable the model 
+Fig. 2 Structure diagram of cascaded semantic generation module
+ 
+1 3
+61 Page 4 of 29
+Earth Science Informatics (2026) 19:61
+resulting in pooled features at different spatial scales. These 
+features are then concatenated along the channel dimension 
+and passed through a Conv2d convolutional layer to obtain 
+the multi-scale feature Fc1. The model structure is illus -
+trated in Fig. 4, and the process is formalized as follows:
+F c1 ← concat(F c × up1(F c), ..., F c × pl_upM (F c )) (2.4)
+where upi denotes the upsampling operation.
+Construction of the multi-channel attention 
+selection module
+In the first two unit modules, outputs are generated in a three-
+channel RGB representation format corresponding to the 
+color-encoded chlorophyll concentration maps. However, 
+for cross-domain image conversion generation in this study, 
+this is limiting. It is necessary to use a larger generation space 
+to create multiple intermediate variable images to achieve 
+richer synthesis. Therefore, this paper designs a multi-chan-
+nel attention mechanism that automatically selects spatially 
+and temporally from the generation to synthesize a finer final 
+output. The model structure is illustrated in Fig. 5.
+Given a multi-scale feature volume Fc1 ∈ Rh× w× c, 
+where h and w represent the width and height of the fea -
+tures, respectively, and c is the number of channels, this 
+section designs two image output streams. One is used 
+to generate intermediate variable images for multiple B 
+knowledge domains, and the other is used to generate mul -
+tiple channel attention maps. To generate N different inter-
+mediate variables IG =
+{
+Ii
+G
+}N
+i=1, N convolutional filters 
+{
+W i
+G,b i
+G
+}N
+i=1 are first applied for convolution operations, 
+followed by a nonlinear activation operation tanh(·). For 
+generating the corresponding N attention maps, another 
+set of filters 
+{
+W i
+A,b i
+A
+}N
+i=1 is applied. The formulas for 
+calculating the intermediate variable images of multiple 
+B knowledge domains and the multiple channel attention 
+maps are as follows:
+Ii
+G = tanh
+(
+F c1W i
+G + bi
+G
+)
+, f or i =1 ,... , N (2.5)
+F c = concat(Ia, Ig1, Sg1, F i, F s) (2.3)
+The concatenation operation integrates complementary 
+information from different sources. The original atmo -
+spheric image preserves spatial distribution patterns, while 
+the coarse-generated image and semantic maps provide 
+structural constraints for chlorophyll reconstruction. Chan -
+nel-wise concatenation allows the model to retain diverse 
+feature information before further refinement. Although 
+redundant information may be introduced, subsequent multi-
+scale pooling and attention mechanisms automatically sup -
+press irrelevant features and enhance useful representations.
+In the implementation example of this paper, the water 
+quality remote sensing image of the monitored target water 
+body is missing. For each missing moment, the atmospheric 
+pollutant image of that moment is obtained, and then the 
+atmospheric pollutant image and the semantic map of the 
+target water body are input into the cascaded semantic gen-
+eration module. The module generates a coarse-grained 
+water quality remote sensing image, from which feature Fc 
+is extracted.
+Since the PM2.5 dataset has daily temporal resolution, 
+temporal alignment was performed based on calendar-day 
+matching. For each chlorophyll observation (or missing 
+timestamp), the atmospheric image from the same date was 
+selected.
+Construction of the multi-scale spatial pooling 
+module
+To fully utilize the coarse-grained feature Fc output by 
+the cascaded semantic generation module, this section pro -
+poses a multi-scale spatial pooling module. Due to signifi -
+cant variations in objects and scenes between images from 
+domain A and domain B, single-scale feature extraction 
+cannot capture all the spatial information required for fine-
+grained image generation. Therefore, this section introduces 
+a multi-scale spatial pooling module, which applies global 
+average pooling to the input features using a set of M kernels 
+with different sizes but the same stride. Specifically, a set of 
+M spatial scales {si}M
+i=1 is used in the pooling process, 
+Fig. 3 Example of coarse-grained target domain image
+ 
+1 3
+Page 5 of 29 61
+Earth Science Informatics (2026) 19:61
+I′′
+g =
+(
+I1
+A × I1
+G
+)
++ ··· +( IN
+A × IN
+G ) (2.7)
+where IN
+g represents the final synthesized output selected 
+from multiple different results, and the symbol + denotes 
+element-wise addition. In the third module, the final seman-
+tic map of the B knowledge domain is obtained. This paper 
+establishes the following relationship:
+Ii
+A = Sof tmax
+(
+F c1W i
+A + bi
+A
+)
+, f or i =1 ,... , N (2.6)
+Here, Sof tmax(·) is the activation function used to nor -
+malize the multiple channel attention maps. Finally, the 
+learned attention maps are applied to perform channel-wise 
+selection from the intermediate variables of each generator, 
+as follows:
+Fig. 5 Structure diagram of multichannel attention module
+ 
+Fig. 4 Structure diagram of multi-
+scale spatial pooling module
+ 
+1 3
+61 Page 6 of 29
+Earth Science Informatics (2026) 19:61
+Construction of the knowledge transfer module
+The specific structure of the knowledge transfer module is 
+illustrated in Fig. 6. First, a generative adversarial network 
+(GAN) is used as the feature extractor. The B-domain image 
+generator Gs1 learns the features of chlorophyll remote 
+sensing images from the original target water body, while 
+the B-domain image discriminator D completes adversar -
+ial training to uncover the rules for generating chlorophyll 
+remote sensing images. Additionally, the B-domain image 
+generator Gs1 can eliminate redundant information. The 
+original water quality remote sensing images are input into 
+the feature extractor for learning. After learning the rules for 
+generating chlorophyll remote sensing images, the network 
+structure and parameters of the generator Gs1 are trans -
+ferred and cascaded with an LSTM network, to form the 
+knowledge transfer module. This module models the spa -
+tial and temporal correlations of chlorophyll remote sensing 
+image data.
+The expanded water quality remote sensing image sequence, 
+consisting of both generated and original observations arranged 
+in chronological order, is fed into the LSTM network. Through 
+its gating mechanism, the LSTM captures long-term temporal 
+dependencies between consecutive time steps and mitigates 
+abrupt variations potentially introduced by the generative pro-
+cess. As a result, the module outputs a temporally smoothed 
+sequence of chlorophyll remote sensing images.
+However, the semantic maps obtained from the pre-
+trained model are not accurate, which leads to erroneous 
+guidance during the training process. To address this issue, 
+this paper proposes using the generated attention maps to 
+learn uncertainty maps, thereby controlling the optimiza -
+tion loss. This approach is introduced to tackle the problem 
+of noisy semantic labels, assuming that there are K differ-
+ent loss maps requiring guidance. First, multiple generated 
+attention maps are concatenated and then passed through a 
+convolutional layer with K filters 
+{
+W i
+u
+}K
+i=1 to produce a 
+set of K uncertainty maps. The reason for using attention 
+maps to generate uncertainty maps is that the attention maps 
+directly influence the final generated results and have a 
+strong connection with the loss. Let Li
+p represent the pixel-
+level loss map, and Ui denote the i-th uncertainty map. The 
+relationship is as follows:
+U i = σ (W i
+u
+(
+concat
+(
+I1
+A, ··· , IN
+A
+))
++ bi
+u) (2.8)
+Li
+p ← Li
+p
+U i
++ logU i, f ori =1 , ··· , K (2.9)
+where σ (·) is the Sigmoid function used for pixel-level 
+normalization. The uncertainty maps are learned automati -
+cally and serve as a weighting scheme to control the opti -
+mization loss.
+Fig. 6 Structure diagram of knowledge transfer module
+ 
+1 3
+Page 7 of 29 61
+Earth Science Informatics (2026) 19:61
+extract spatiotemporal information. The atmospheric pol -
+lutant image sequence is input into the four-dimensional 
+directed GCN-LSTM model to extract image features. In 
+the example shown in Fig. 7, each batch inputs an atmo -
+spheric pollutant image sequence with a time length of 30, 
+with 6 atmospheric pollutant concentrations at 7 spatial 
+nodes. The four-dimensional directed GCN-LSTM model 
+extracts spatiotemporal features Fair at 30 time points, with 
+a feature dimension of D2.
+ The structure of the chlorophyll remote sensing image 
+time series data feature extraction module is shown in 
+Fig. 8. The Att_Conv2D_LSTM module has unique advan-
+tages in processing time series image data, as it can fully 
+utilize both the spatial and temporal information of the 
+images(Lin et al. 2020). The input to this module is histori-
+cal water quality remote sensing image data. First, the time 
+series image data is normalized to the same size scale, and 
+the sequence data is organized according to the time steps. 
+The front end consists of multiple convolutional layers that 
+extract local features such as edges and textures from the 
+images. Then, the series of feature maps output after con -
+volutional layer processing are passed through an attention 
+Water eutrophication prediction method 
+based on multimodal information fusion
+Construction of the spatiotemporal feature 
+extraction module
+The structure of the atmospheric pollutant station time 
+series data feature extraction module is shown in Fig. 7. 
+Considering that the time series data of atmospheric pol -
+lutant stations in multiple regions have high-dimensional, 
+spatiotemporal evolution, and multifactor characteristics, 
+a four-dimensional directed GCN-LSTM model is con -
+structed. The four-dimensional directed graph convolu -
+tional unit can include two-dimensional spatial directional 
+information and capture the correlation information of 
+multiple factors within graph nodes. Additionally, the tra -
+ditional four-dimensional directed graph convolutional 
+filter is improved and optimized to enhance the model’s 
+data processing efficiency. Then, by introducing the 
+LSTM network to extract temporal correlation informa -
+tion at different time points, a four-dimensional directed 
+GCN-LSTM model is constructed to synchronously 
+Fig. 8 Structure diagram of Chlorophyll remote sensing image time series data feature extraction module
+ 
+Fig. 7 Structure diagram of atmospheric pollutant station time series data feature extraction module
+ 
+1 3
+61 Page 8 of 29
+Earth Science Informatics (2026) 19:61
+Construction of the cross-modal feature encoder
+The cross-modal feature encoder is composed of a bidi -
+rectional cross-attention layer (Cross Attention), a self-
+attention layer (Self Attention), and a feedforward network 
+(Feed Forward), as shown in Fig. 10. Among them, the 
+cross-attention layer is primarily used for information inter-
+action between different modalities, allowing data from one 
+modality to focus on and acquire feature information from 
+another modality, thereby achieving feature complementar-
+ity and enhancement across modalities(Li et al. 2022; Luo et 
+al. 2024). The self-attention layer is mainly used to focus on 
+information interaction within a modality, capturing internal 
+dependencies within the modality and improving the overall 
+representation capability of the encoder. The feedforward 
+network performs nonlinear transformations on the fea -
+tures output by the attention layers to extract higher-level 
+abstract features. In this paper, the outputs F air_sa and 
+F water_sa of the single-modal feature encoder are input 
+into the cross-modal feature encoder, resulting in chloro -
+phyll remote sensing image features F water_sa_air that 
+incorporate atmospheric six-parameter factors.
+Generation and discrimination module
+The generation and discrimination module consists of a 
+Markov discriminator and a feature decoder. The Markov 
+discriminator is a special convolutional neural network struc-
+ture composed of Conv2d convolutional layers, LeakyReLU 
+activation function layers, and Sigmoid activation function 
+layers, as shown in Fig. 11. The convolutional layers use a 
+set of learnable filters to slide over the input image, perform-
+ing weighted summation on local regions to obtain new fea-
+ture representations, capturing local patterns and structural 
+information in the image, and providing a basis for subse -
+quent discrimination or generation tasks. The LeakyReLU 
+activation function layer is used to increase the nonlinear 
+capability of the neural network, helping to prevent gradi -
+ent vanishing and improve the training effect of the model. 
+The Sigmoid activation function layer maps the output of the 
+mechanism to retain spatial information while reducing 
+data dimensionality. Finally, the transformed feature vec -
+tors are input into the LSTM layer to capture temporal 
+dependencies in the sequence data. Through the gating 
+mechanism (input gate, forget gate, and output gate), infor-
+mation is selectively retained and transmitted, enabling the 
+model to learn temporal features in the image sequence. 
+In the example shown in Fig. 8, Each batch of input chlo -
+rophyll concentration sequences has a temporal length of 
+30, represented in a three-channel image format (256 × 256 
+pixels) corresponding to the color-encoded concentration 
+maps. After processing by the Att_Conv2D_LSTM model, 
+spatiotemporal features F of the size D1 at 30 time points 
+are obtained.
+Construction of the single-modal feature encoder
+The spatiotemporal features of atmospheric pollutant 
+images and the spatiotemporal features of target water body 
+remote sensing images are input into the single-modal fea -
+ture encoder for feature dimension alignment.
+The single-modal feature encoder consists of a self-
+attention layer and a feedforward network layer, as shown 
+in Fig. 9. Among them, the self-attention layer can auto -
+matically calculate the weights of different positions in the 
+input sequence, enabling the encoder to focus more on the 
+features most relevant to the current task. This helps the 
+model filter out the most useful information from a large 
+amount of data(Hui et al. 2023; Wang et al. 2024). The 
+feedforward network layer can learn nonlinear transforma -
+tions, further converting and extracting the feature repre -
+sentations output by the self-attention module, aligning the 
+feature dimensions of different modal data. In this paper, 
+the atmospheric six-parameter and chlorophyll remote 
+sensing image spatiotemporal features F air and F water 
+obtained from the feature extraction module are input into 
+the single-modal feature encoder, and the output is the 
+atmospheric six-parameter feature F air_sa and chloro -
+phyll remote sensing image feature F water_sa with the 
+same dimensions.
+Fig. 9 Structure diagram of 
+single-modal feature encoder
+ 
+1 3
+Page 9 of 29 61
+Earth Science Informatics (2026) 19:61
+The feature decoder consists of a ReflectionPad2d bound-
+ary padding function, Conv2d convolutional layers, Layer 
+linear layers, ReLU activation functions, and Tanh activation 
+functions, as shown in Fig. 12. ReflectionPad2d is a two-
+dimensional reflection padding layer in PyTorch that per -
+forms reflection padding on the edges of the input feature map 
+to protect edge information and avoid the loss of edge infor-
+mation during convolution operations. The Conv2d convolu-
+tional layer mainly performs weighted summation on local 
+regions of the input image by sliding a convolution kernel to 
+obtain new feature representations, effectively extracting local 
+features and spatial relationships in the image, which is cru-
+cial for image recognition and processing tasks. Additionally, 
+convolutional operations have the characteristics of weight 
+sharing and local perception, which can reduce the number of 
+model parameters and improve computational efficiency. The 
+Layer linear layer is typically used for linear transformation 
+of input features, mapping the output of the previous layer 
+to the input of the next layer. Each neuron in the linear layer 
+network to a range of 0 to 1, providing the probability value 
+of the correctness of the discrimination. Finally, the network 
+outputs a feature map corresponding to the local regions of 
+the input image, where each feature value reflects the prob-
+ability that the region conforms to the real data distribution.
+Fig. 12 Structure diagram of 
+chlorophyll remote sensing image 
+feature decoder
+ 
+Fig. 11 Structure diagram of markov discriminator
+ 
+Fig. 10 Structure diagram of cross-modal feature encoder
+ 
+1 3
+61 Page 10 of 29
+Earth Science Informatics (2026) 19:61
+The experimental datasets adopted in this study are sum-
+marized in Table 1.
+ Among them, the sample of the Yangtze River Delta 
+1 km high-resolution daily PM2.5 data is shown in Fig. 13. 
+The sample of Taihu Lake chlorophyll remote sensing 
+image data is shown in Fig. 14. The atmospheric six-param-
+eter dataset for the Taihu Lake urban agglomeration is pre -
+sented, showing the spatial-temporal samples of PM2.5 
+(Fig. 15), PM10 (Fig. 16), CO (Fig. 17), O3 (Fig. 18), NO2 
+(Fig. 19), SO2 (Fig. 20). The sample of the expanded Taihu 
+Lake chlorophyll remote sensing image dataset is shown in 
+Fig. 21.
+Construction and prediction results of the TL-MCAS_
+CSG_GAN model
+Considering that the Yangtze River Delta PM2.5 high-res -
+olution image data is sampled once a day, while the Taihu 
+Lake chlorophyll remote sensing image data is missing 
+is connected to all neurons in the previous layer, perform -
+ing linear combination through weights and biases, enabling 
+the learning and adaptation to different data distributions and 
+task requirements. The ReLU function has the characteristic 
+of unilateral suppression, which can enhance the nonlinear 
+characteristics of the neural network, helping the network 
+learn features better. At the same time, the ReLU function 
+is computationally simple, which can speed up model train-
+ing. Moreover, the ReLU function maintains the gradient 
+unchanged when the input is positive, helping to alleviate the 
+gradient vanishing problem. The Tanh function has a wide 
+output range, which can better handle negative inputs. This 
+makes it very effective in processing images with complex 
+textures and structures. At the same time, the Tanh function 
+has the effect of suppressing interference, helping the neural 
+network filter out noise and irrelevant information.
+Experimental verification
+To avoid circular validation, we strictly separate recon -
+structed (generated) samples from the evaluation set. The 
+reconstructed chlorophyll-a images are used only for train -
+ing to enhance temporal continuity, while all quantitative 
+evaluations are conducted exclusively on real chlorophyll-a 
+observations. The dataset is split chronologically into train-
+ing, validation, and test subsets to prevent future informa -
+tion leakage. Metrics such as SSIM, PSNR, and COSIN are 
+computed on the test set consisting only of real observa -
+tions, and generated samples are excluded from testing.
+Experimental data
+Chlorophyll-a concentration is widely regarded as a key 
+indicator for water eutrophication assessment. In this study, 
+chlorophyll remote sensing images are used as the primary 
+dataset for modeling. The chlorophyll-a data are provided 
+as color-encoded inversion maps, where each RGB value 
+corresponds to a specific chlorophyll concentration defined 
+by the original data product. However, the original chloro -
+phyll observations of the target water body are characterized 
+by irregular temporal sampling and limited data volume, 
+resulting in discontinuous time series that are not suitable 
+for direct spatiotemporal prediction.
+To address this issue, an image expansion strategy is 
+introduced to enhance temporal continuity. Given the lim -
+ited number of chlorophyll samples, auxiliary environmental 
+information is incorporated to provide additional contextual 
+support during reconstruction. Atmospheric pollutant data, 
+which may be associated with nutrient deposition processes 
+influencing eutrophication dynamics, are therefore used as 
+complementary prior information.
+Table 1 Experimental datasets used in this paper
+Name Source Introduction Data 
+size
+Yangtze River 
+Delta 1 km High-
+Resolution Daily 
+PM2.5 Dataset
+National 
+Earth System 
+Science Data 
+Center
+Geographic scope: 
+Jiangsu, Zhejiang, 
+and Anhui provinces 
+in the Yangtze River 
+Delta region;
+Time resolution: 
+daily;
+Variable unit: ug/m3;
+Data format: Geo-
+TIFF files
+Time 
+length: 
+2014 to 
+2017;
+Sample 
+size: 
+1461 
+images
+Taihu Lake Chlo-
+rophyll Remote 
+Sensing Image 
+Dataset
+National 
+Earth System 
+Science Data 
+Center
+Geographic scope: 
+Taihu Lake Basin;
+Time resolution: 
+irregular;
+Variable unit: ug/L;
+Data format: jpg 
+images
+Time 
+length: 
+2014 to 
+2017;
+Sample 
+size: 
+569 
+images
+Atmospheric 
+Six-Parameter 
+Dataset of Taihu 
+Lake Urban 
+Agglomeration
+WheatA 
+Agricultural 
+Meteorologi-
+cal Big Data
+Geographic scope: 
+Suzhou, Nantong, 
+Changzhou, Yixing, 
+Huzhou, Jiaxing, and 
+Shanghai;
+Time resolution: 3 h;
+Variable content: 
+PM2.5, PM10, O3, 
+CO, SO2, NO2
+Time 
+length: 
+2014 to 
+2017;
+Sample 
+size: 
+490,896 
+records
+Taihu Lake Chlo-
+rophyll Remote 
+Sensing Image 
+Expansion Dataset
+National 
+Earth System 
+Science Data 
+Center and 
+Experimental 
+Generation
+Geographic scope: 
+Taihu Lake Basin; 
+Time resolution: 
+daily;
+Variable unit: ug/L; 
+Data format: jpg 
+images
+Time 
+length: 
+2014 to 
+2017;
+Sample 
+size: 
+1461 
+images
+1 3
+Page 11 of 29 61
+Earth Science Informatics (2026) 19:61
+This section compares the effects of four models (GAN, 
+CSG_GAN, MCAS_GAN, MCAS_CSG_GAN) and the 
+TL-MCAS_CSG_GAN model (the proposed model in this 
+study) in expanding and generating 5 missing image data 
+in 15 consecutive time points.For fairness, all comparative 
+models were trained and evaluated under the same experi -
+mental settings. The missing data generation process fol -
+lowed an identical strategy across models, where temporally 
+adjacent observations were used as input to predict the tar -
+get time step. The training data, preprocessing procedures, 
+and loss functions were kept consistent to ensure that per -
+formance differences were solely attributed to architectural 
+variations rather than experimental bias. The experimental 
+results are shown in Figs. 30, 31, 32, 33, and 34, where 
+Fig. 28 shows a complete time series of Taihu Lake chlo -
+rophyll remote sensing image data, and Fig. 29 shows a set 
+of manually missing time series of Taihu Lake chlorophyll 
+remote sensing image data with 5 images removed.
+The purpose of the experiment is to verify that the pro -
+posed TL-MCAS_CSG_GAN model is the most effective 
+without a temporal pattern, the following explains the exper-
+imental process of the Taihu Lake remote sensing image 
+sample expansion model based on atmospheric pollutant 
+knowledge transfer. The missing conditions of the existing 
+two datasets are shown in Table 2, Fig. 22, and Fig. 23.
+This section uses the Zhixing Cloud computing platform 
+to support experimental calculations, selecting the Windows 
+10 operating system, equipped with a dual-core GPU, graph-
+ics card type GeForce RTX 3090 (24GB video memory), 
+system image win10 cuda11, system disk size 350GB, and 
+memory size starting from 56GB. The deep learning envi -
+ronment is configured with cuda11.1, cuDnn8, Anaconda, 
+Pytorch1.7.1, Tensorflow2.4, and python3.8.3. In network 
+training, the initial learning rate is set to 0.01, the batch 
+size is set to 64, and the overall training cycle is set to 150 
+epochs. Additionally, the Adam optimizer is selected for 
+its adaptive learning rate adjustment characteristics, which 
+helps the model optimize the loss function more effectively 
+during training. The specific experimental process of the 
+model is shown in Table 3:
+Fig. 13 Sample of chlorophyll-a 
+remote sensing image data for 
+Taihu Lake
+ 
+1 3
+61 Page 12 of 29
+Earth Science Informatics (2026) 19:61
+generation strategies, thereby improving the overall image 
+generation quality.
+Comparing the three evaluation metrics of the GAN 
+model and the MCAS_GAN model, the SSIM, PSNR, and 
+COSIN values of the MCAS_GAN model are 0.64070, 
+20.14051, and 0.90563, respectively, representing improve-
+ments of 0.02523, 0.8118, and 0.03399, with an average 
+improvement percentage of 4.07%. It can be concluded 
+that the multiscale spatial pooling unit can perform pool -
+ing operations at different spatial scales, extracting feature 
+information at different scales, helping the model better cap-
+ture details and global information in images or data. The 
+multichannel attention selection unit can weight features 
+based on the importance of different channels, making the 
+model focus more on key features that contribute to the task, 
+thereby enhancing the model’s ability to capture key infor -
+mation and improving the richness and accuracy of features.
+Comparing the three evaluation metrics of the CSG_
+GAN model, MCAS_GAN model, and MCAS_CSG_
+GAN model, the SSIM, PSNR, and COSIN values of 
+model for expanding Taihu Lake chlorophyll remote sens -
+ing images compared to the four models (GAN, CSG_GAN, 
+MCAS_GAN, MCAS_CSG_GAN). By comparing the real 
+results in Fig. 28 with the experimental results in Figs. 30, 
+31, 32, 33, and 34, and analyzing the evaluation metrics of 
+each model in Table 4, the following conclusions can be 
+drawn:
+Comparing the three evaluation metrics of the GAN 
+model and the CSG_GAN model, the SSIM, PSNR, and 
+COSIN values of the GAN model are 0.61547, 19.32871, 
+and 0.87164, respectively, while the SSIM, PSNR, and 
+COSIN values of the CSG_GAN model are 0.63701, 
+19.90857, and 0.89953, respectively, representing improve-
+ments of 0.02154, 0.57986, and 0.02789, with an average 
+improvement percentage of 3.12%. It can be concluded 
+that the cascaded semantic generation unit can gradually 
+construct and enrich semantic information. By cascading 
+multiple semantic generation units, each unit can further 
+process and optimize based on the output of the previous 
+unit, learning and fusing various semantic information and 
+Fig. 14 Sample of 1 km high-
+resolution daily PM2.5 data in 
+the Yangtze River Delta
+ 
+1 3
+Page 13 of 29 61
+Earth Science Informatics (2026) 19:61
+Fig. 16 Sample of PM10 concentration data for cities surrounding Taihu Lake
+ 
+Fig. 15 Sample of PM2.5 concentration data for cities surrounding Taihu Lake
+ 
+1 3
+61 Page 14 of 29
+Earth Science Informatics (2026) 19:61
+Fig. 18 Sample of O3 concentration data for cities surrounding Taihu Lake
+ 
+Fig. 17 Sample of CO concentration data for cities surrounding Taihu Lake
+ 
+1 3
+Page 15 of 29 61
+Earth Science Informatics (2026) 19:61
+Fig. 20 Sample of SO2 concentration data for cities surrounding Taihu Lake
+ 
+Fig. 19 Sample of NO2 concentration data for cities surrounding Taihu Lake
+ 
+1 3
+61 Page 16 of 29
+Earth Science Informatics (2026) 19:61
+Table 2 Example of missing data in experimental datasets
+Time T1 T2 T3 T4 T5 T6 T7 T8
+PM2.5 Image I1 I2 I3 I4 I5 I6 I7 I8
+Remote Sensing Image Water1 Missing Water3 Water4 Missing Water6 Missing Water8
+Fig. 22 Example of Yangtze River Delta PM2.5 time series image data
+ 
+Fig. 21 Sample of the expanded Taihu Lake chlorophyll remote sensing image data
+ 
+1 3
+Page 17 of 29 61
+Earth Science Informatics (2026) 19:61
+and the MCAS unit, compared to using them individually, 
+makes the model structure more flexible, allowing units to 
+be added or removed based on actual needs, improving the 
+model’s performance on specific tasks. Additionally, since 
+each unit can be trained and optimized independently, com-
+putation can be performed more efficiently, reducing com -
+putational costs. The introduction of the multiscale spatial 
+pooling unit and the multichannel attention selection unit 
+can enhance the model’s feature extraction capability, 
+robustness, efficiency, and performance, while reducing the 
+risk of overfitting and enhancing feature expression, making 
+the model more effective and reliable in handling complex 
+tasks and various challenges.
+Comparing the three evaluation metrics of the MCAS_
+CSG_GAN model and the TL-MCAS_CSG_GAN model, 
+the SSIM, PSNR, and COSIN values of the TL-MCAS_
+CSG_GAN model are 0.69548, 21.84144, and 0.97623, 
+respectively, representing improvements of 0.04124, 
+1.2757, and 0.05055, with an average improvement per -
+centage of 6.27%. It can be concluded that transfer learning 
+plays a significant role and has advantages in image gen -
+eration models, helping researchers more effectively utilize 
+existing models and data, improving generation quality, 
+reducing computational costs, and achieving high-quality 
+image generation with limited data and computational 
+resources.
+the MCAS_CSC_GAN model are 0.65424, 20.56574, 
+and 0.92568, respectively, representing improvements of 
+0.01723, 0.65717, and 0.02615 compared to the CSG_
+GAN model, and improvements of 0.01354, 0.42523, and 
+0.02005 compared to the MCAS_GAN model, with aver -
+age improvement percentages of 3.11% and 2.16%, respec-
+tively. It can be concluded that combining the CSG unit 
+Table 3 Experimental Process of TL-MCAS_CSC_GAN Model
+Step Operation Figure
+Step1 Select the images corresponding to the missing 
+time points in the Taihu Lake chlorophyll image 
+dataset from the Yangtze River Delta PM2.5 high-
+resolution image dataset (e.g., Time3, Time6, and 
+Time8) and organize them into a separate dataset 
+as the input data for the TL-MCAS_CSG_GAN 
+model
+Figs. 
+22, 
+23, 
+and 
+24
+Step2 The TL-MCAS_CSG_GAN model learns from 
+the dataset in Step 1 to generate preliminary Taihu 
+Lake chlorophyll images for the missing time 
+points
+Figs. 
+24 
+and 
+25
+Step3 Organize the preliminary generated Taihu Lake 
+chlorophyll images for the missing time points 
+and the original Taihu Lake chlorophyll images 
+into a separate dataset as the input data for the 
+knowledge transfer module
+Fig. 
+26
+Step4 The knowledge transfer module learns from the 
+dataset in Step 3 to generate the final Taihu Lake 
+chlorophyll images for the missing time points
+Fig. 
+27
+Fig. 23 Example of Taihu Lake Chlorophyll inversion time series image data
+ 
+1 3
+61 Page 18 of 29
+Earth Science Informatics (2026) 19:61
+Fig. 25 Example of preliminary generated Taihu Lake Chlorophyll images at missing time points (Time3, 6, 8)
+ 
+Fig. 24 Example of Yangtze River Delta PM2.5 images at missing time points (Time3, 6, 8)
+ 
+1 3
+Page 19 of 29 61
+Earth Science Informatics (2026) 19:61
+Fig. 27 Example of experimental results of TL-MCAS_CSG_GAN model
+ 
+Fig. 26 Example of integration of preliminary generated Taihu Lake Chlorophyll images at missing time points (Time3, 6, 8) and Original Images
+ 
+1 3
+61 Page 20 of 29
+Earth Science Informatics (2026) 19:61
+the Taihu Lake chlorophyll remote sensing image feature 
+decoder are shown in Table 6.
+This paper constructs a discriminator as a Markov dis -
+criminator model, and its detailed network parameters are 
+shown in Table 7. The Markov discriminator structure con-
+sists of four network layers, aiming to extract and judge fea-
+tures at different scales in the input image.
+During the training process of this network, this paper 
+uses historical Taihu Lake chlorophyll remote sensing 
+images from 30 time points as input for each batch. These 
+images contain rich spatiotemporal information, help -
+ing the model capture the dynamic changes of Taihu Lake 
+chlorophyll remote sensing images. By learning from these 
+historical images, the model can predict the Taihu Lake 
+chlorophyll remote sensing image at the 31st time point, 
+achieving effective prediction of future Taihu Lake chloro -
+phyll remote sensing images. The structural characteristics 
+of the Markov discriminator make it focus on local details 
+of remote sensing images, improving prediction accuracy 
+and robustness.
+Construction and prediction results of the 
+atmospheric-water quality multimodal fusion 
+prediction model
+This section uses the Zhixing Cloud computing platform to 
+support experimental calculations, selecting the Windows 
+10 operating system, equipped with a single-core GPU, 
+graphics card type GeForce RTX 2080 Ti (11GB video 
+memory), system image win10 cuda11, system disk size 
+350GB, and memory size starting from 28GB. The deep 
+learning environment is configured with cuda11.1, cuDnn8, 
+Anaconda, Pytorch1.7.1, Tensorflow2.4, and python3.8.3. 
+In network training, the initial learning rate is set to 0.001, 
+the batch size is set to 64, and the overall training cycle 
+is set to 300 epochs. Additionally, the Adam optimizer is 
+selected for its adaptive learning rate adjustment charac -
+teristics, which helps the model optimize the loss function 
+more effectively during training. The specific network layer 
+parameters of the Att_Conv2D_LSTM module are shown 
+in Table 5, and the specific network layer parameters of 
+Fig. 28 Complete Time Series of Taihu Lake Chlorophyll Remote Sensing Image Data
+ 
+1 3
+Page 21 of 29 61
+Earth Science Informatics (2026) 19:61
+Fig. 31 Expanded Time Series of Taihu Lake Chlorophyll Remote Sensing Image Data Based on CSG_GAN Model
+ 
+Fig. 30 Expanded Time Series of Taihu Lake Chlorophyll Remote Sensing Image Data Based on GAN Model
+ 
+Fig. 29 Manually Missing Time Series of Taihu Lake Chlorophyll Remote Sensing Image Data
+ 
+1 3
+61 Page 22 of 29
+Earth Science Informatics (2026) 19:61
+To verify that the proposed atmospheric-water qual -
+ity multimodal fusion water eutrophication prediction 
+model based on cross-attention has good prediction effects, 
+this section compares the GAN, Conv2D_LSTM_GAN, 
+Table 4 Evaluation metrics for Taihu Lake Chlorophyll remote sensing 
+image data expansion experiment
+Model SSIM PSNR COSIN Average 
+Improve-
+ment 
+Ratio
+GAN 0.61547 19.32871 0.87164 0%
+CSG_GAN 0.63701 19.90857 0.89953 3.12%
+MCAS_GAN 0.64070 20.14051 0.90563 4.07%
+MCAS_CSG_GAN 0.65424 20.56574 0.92568 6.23%
+TL-MCAS_CSG_GAN 0.70102 21.84144 0.97623 12.51%
+Table 5 Parameter Settings of Att_Conv2D_LSTM
+Network Layer Parameters Activation 
+Function
+Attention Average Pooling Layer Outputsize = 1 None
+Spatial Attention Convolutional 
+Layer
+Filters = 1, 
+Kernelsize = 7
+Sigmoid
+Channel Attention Fully Connected 
+Layer
+Outputfeatures = 8 Sigmoid
+Conv2D Network Layer Filters = 32, 
+Kernelsize = 4
+Leaky-
+ReLU
+LSTM Network Layer Filters = 32, 
+Kernelsize = 4
+Leaky-
+ReLU
+Table 6 Parameter Settings of Taihu Lake Chlorophyll Remote Sens -
+ing Image Feature Decoder
+Network Layer Parameters Activation Function
+ReflectionPad2d intputsize = 3 None
+Conv2D_1 Filters = 1, Kernelsize = 7 ReLU
+Conv2D_2 Filters = 1, Kernelsize = 3 ReLU
+ReflectionPad2d intputsize = 3 None
+Conv2D_3 Filters = 1, Kernelsize = 7 Tanh
+Table 7 Parameter Settings of Markov Discriminator
+Network Layer Number of 
+Convolutional 
+Kernels
+Convolu-
+tional Kernel 
+Size
+Activation 
+Function
+Conv2D-1 32 4 × 4 LeakyReLU
+Conv2D-2 64 4 × 4 LeakyReLU
+Conv2D-3 128 4 × 4 Sigmoid
+Output Layer 1 4 × 4 None
+Fig. 34 Expanded Time Series of Taihu Lake Chlorophyll Remote Sensing Image Data Based on TL-MCAS_CSG_GAN Model
+ 
+Fig. 33 Expanded Time Series of Taihu Lake Chlorophyll Remote Sensing Image Data Based on MCAS_CSG_GAN Model
+ 
+Fig. 32 Expanded Time Series of Taihu Lake Chlorophyll Remote Sensing Image Data Based on MCAS_GAN Model
+ 
+1 3
+Page 23 of 29 61
+Earth Science Informatics (2026) 19:61
+the improvement effects, verifying that the introduction of 
+the Conv2D_LSTM module, Attention module, and cross-
+attention mechanism for fusing atmospheric six-parame -
+ter factors significantly improves the model’s prediction 
+performance.
+The purpose of the experiment is to verify that the pro -
+posed Att_Conv2D_LSTM_Cross_GAN model is the most 
+Att_Conv2D_LSTM_GAN, and Att_Conv2D_LSTM_
+Cross_GAN (the proposed model in this study) models in 
+predicting Taihu Lake chlorophyll remote sensing images. 
+The specific comparison results are shown in Fig. 35.
+To objectively evaluate the results of the ablation experi-
+ment, Table 8 shows the average SSIM, PSNR, and COSIN 
+metrics for each part of the ablation experiment, as well as 
+Fig. 35 Comparison of Ablation Experiment Results for Taihu Lake Chlorophyll Remote Sensing Image Prediction
+ 
+1 3
+61 Page 24 of 29
+Earth Science Informatics (2026) 19:61
+features, the observed performance enhancement can be 
+attributed to multimodal information fusion. These find -
+ings suggest that atmospheric temporal dynamics provide 
+complementary spatiotemporal signals for chlorophyll-a 
+prediction and contribute to improved eutrophication mod -
+eling accuracy.
+In addition to GAN-based models, two classical statis -
+tical baselines, Mean-30 and LinearTrend-30, were intro -
+duced for comparison. The Mean-30 model predicts the 
+chlorophyll image at time t + 1 by averaging the previous 
+30 observations, assuming temporal stability. The LinearT-
+rend-30 model performs pixel-wise linear regression over 
+the past 30 days and extrapolates the trend to predict the 
+next day.
+As shown in Table 8, although the Mean-30 base -
+line achieves relatively competitive SSIM (0.70912) and 
+COSIN (0.94422), its PSNR (22.93 dB) remains signifi -
+cantly lower than that of the proposed multimodal fusion 
+model. This indicates that simple temporal averaging can 
+preserve global structural similarity but fails to capture fine-
+grained spatial variations.
+The LinearTrend-30 baseline performs slightly worse 
+than Mean-30 across all metrics, suggesting that linear tem-
+poral extrapolation is insufficient to model the nonlinear 
+evolution of chlorophyll dynamics.
+Compared with both statistical baselines, the proposed 
+Att_Conv2D_LSTM_Cross_GAN consistently achieves 
+higher SSIM, PSNR, and COSIN values, demonstrating its 
+superior ability to model complex spatiotemporal patterns 
+and multimodal interactions.
+Water eutrophication evaluation
+Chlorophyll is the main parameter characterizing water 
+eutrophication. The following is the Carlson evalua -
+tion index formula for converting chlorophyll as a single 
+water quality parameter indicator into water eutrophication 
+degree:
+TSI (Chl.a) = 10 (2.5+1 .086 ln (Chl.a)) (4.1)
+In the formula, TSI represents the Carlson Trophic State 
+Index, and Chl.a represents the chlorophyll concentration 
+in the water body, with the unit: ug/L. According to the cor-
+respondence between the TSI index and the trophic state 
+of the water body, a series of continuous numbers from 0 to 
+100 are used to divide the trophic state into five levels: oli -
+gotrophic (TSI < 35), mesotrophic (35 ≤ TSI < 50), 
+mildly eutrophic (50 ≤ TSI < 60), moderately eutrophic 
+(60 ≤ TSI < 70), and hypereutrophic (TSI ≥ 70). The 
+corresponding chlorophyll concentration indicator levels 
+are shown in Fig. 36.
+effective model for predicting Taihu Lake chlorophyll 
+remote sensing images compared to the Att_Conv2D_
+LSTM_GAN, Conv2D_LSTM_GAN, and GAN models 
+(note: the three comparison models did not add the cross-
+attention mechanism Cross, i.e., they did not fuse atmo -
+spheric six-parameter factors from multiple cities around 
+Taihu Lake for modeling and prediction). By comparing the 
+prediction results of each model in Fig. 35 and analyzing the 
+evaluation metrics of each model in Table 8, the following 
+conclusions can be drawn:
+As shown in Table 8, the prediction performance 
+improves progressively as additional modules are incorpo -
+rated into the framework. To better interpret these quantita-
+tive results, the contribution of each component is analyzed 
+from three aspects: (1) temporal dependency modeling, (2) 
+attention-based feature refinement, and (3) atmospheric 
+multimodal feature fusion.
+First, compared with the baseline GAN model, the 
+Conv2D_LSTM_GAN improves SSIM from 0.69012 
+to 0.70619 and PSNR from 23.72 dB to 24.29 dB. This 
+improvement demonstrates that introducing the LSTM 
+module enables the model to capture temporal dependen -
+cies in chlorophyll evolution, thereby enhancing prediction 
+stability and structural consistency.
+Second, when the attention mechanism is incorporated 
+(Att_Conv2D_LSTM_GAN), SSIM further increases to 
+0.71406 and PSNR to 24.54 dB. This indicates that atten -
+tion-based feature weighting allows the model to emphasize 
+spatially informative regions and suppress irrelevant varia -
+tions, resulting in refined prediction performance.
+Third, the most notable performance gain is observed 
+when atmospheric six-parameter features are integrated 
+through the cross-attention mechanism. Compared with 
+the Att_Conv2D_LSTM_GAN model (without atmo -
+spheric inputs), the proposed Att_Conv2D_LSTM_Cross_
+GAN achieves improvements of ΔSSIM = + 0.02098, 
+ΔPSNR = + 0.83723 dB, and ΔCOSIN = + 0.03087, cor -
+responding to an overall improvement ratio of 6.51%. 
+Since the primary architectural difference between these 
+two models lies in the inclusion of atmospheric pollutant 
+Table 8 Evaluation metrics of ablation experiment for Att_Conv2D_
+LSTM_Cross_GAN model
+Model SSIM PSNR COSIN Improve-
+ment Ratio
+GAN 0.69012 23.71583 0.91538 0%
+Conv2D_LSTM_GAN 0.70619 24.28500 0.94284 2.33%
+Att_Conv2D_LSTM_
+GAN
+0.71406 24.5387 0.94741 3.47%
+Att_Conv2D_LSTM_
+Cross_GAN
+0.73504 25.37593 0.97828 6.51%
+Mean-30 0.70912 22.93215 0.94422
+LinearTrend-30 0.69693 21.93421 0.93304
+1 3
+Page 25 of 29 61
+Earth Science Informatics (2026) 19:61
+eutrophication prediction is analyzed. Comparing the true 
+and predicted images at time (a), it can be seen that the water 
+eutrophication level in the middle and northeast part of the 
+water body is oligotrophic in both the true and predicted 
+results, while the water eutrophication level in the middle 
+and southwest part of the water body has errors, with the 
+true result being mildly eutrophic and the predicted result 
+being between mesotrophic and mildly eutrophic. Compar -
+ing the true and predicted images at time (b), it can be seen 
+that the overall true and predicted results are oligotrophic, 
+with small errors in the water eutrophication level along the 
+northwest and northeast edges of the lake, where the true 
+result is moderately eutrophic and the predicted result is 
+between mildly eutrophic and moderately eutrophic.
+To verify the accuracy of the water eutrophication evalu-
+ation results in this paper, the annual average chlorophyll 
+remote sensing images are compared with the data pub -
+lished in the China Lake Ecological Environment Research 
+Report - Taihu Lake. The results are shown in Table 9.
+Overall, the predicted TSI values show small numerical 
+deviations from the observed data across all years, indicating 
+By displaying the true images, predicted images, and 
+water eutrophication state levels of chlorophyll remote 
+sensing at two time points, as shown in Fig. 37, the atmo -
+spheric-water quality multimodal information fusion water 
+Fig. 37 Comparison of Eutrophication Levels Between True and Predicted Results of Chlorophyll Remote Sensing Images at Two Time Points
+ 
+Fig. 36 Chlorophyll concentration corresponding to water eutrophica-
+tion state levels
+ 
+1 3
+61 Page 26 of 29
+Earth Science Informatics (2026) 19:61
+atmospheric pollutant factors can improve the accuracy of 
+water eutrophication prediction.
+Furthermore, comparisons with classical statistical 
+baselines (Mean-30 and LinearTrend-30) demonstrate that 
+deep multimodal modeling significantly outperforms sim -
+ple temporal averaging and linear extrapolation strategies, 
+highlighting the necessity of nonlinear spatiotemporal rep -
+resentation learning for chlorophyll-a prediction.
+Conclusion
+This study proposes a two-stage multimodal fusion frame -
+work for water eutrophication prediction by integrating 
+atmospheric pollutant information and chlorophyll remote 
+sensing imagery.
+First, a transfer learning-based chlorophyll image recon-
+struction strategy (TL-MCAS-CSG-GAN) is developed to 
+address irregular temporal sampling and limited data avail -
+ability. By improving temporal continuity and enriching 
+training sequences, the reconstruction module enhances 
+the stability of subsequent spatiotemporal modeling. It is 
+emphasized that reconstructed samples are used solely for 
+training purposes, while all quantitative evaluations are 
+conducted exclusively on real chlorophyll observations to 
+ensure experimental validity.
+Second, a cross-attention Conv2D-LSTM GAN model 
+is designed to fuse atmospheric six-parameter features with 
+chlorophyll image sequences for eutrophication prediction. 
+Experimental results demonstrate consistent improvements 
+in SSIM, PSNR, and COSIN compared with both GAN-
+based variants and classical statistical temporal baselines. 
+The ablation analysis further confirms that atmospheric pol-
+lutant information provides complementary spatiotemporal 
+signals that contribute to enhanced prediction accuracy.
+From an environmental informatics perspective, incorpo-
+rating atmospheric pollutant factors offers a data-driven rep-
+resentation of external nutrient transport processes that may 
+influence lake eutrophication dynamics. The proposed frame-
+work demonstrates the potential of multimodal environmen-
+tal data integration for intelligent water quality monitoring.
+Acknowledgements On the completion of this paper, I would like to 
+extend my sincerest gratitude to all my teachers, classmates, family 
+and friends who have supported and helped me during the research 
+process.
+First of all, I sincerely thank my supervisor and co-supervisor for their 
+careful guidance. In the process of grasping the research direction, con-
+structing the research methodology and revising the thesis, they gave 
+me valuable suggestions and patient guidance, and I benefited greatly 
+from their rigorous attitude and profound academic attainments.
+I would like to thank all the members of the Intelligent Environmental 
+Protection Laboratory of Beijing Technology and Business University 
+for their technical support and collaboration in experimental design, 
+data analysis, and model optimization. Also, thanks to the cooperative 
+stable regression performance and consistent eutrophication 
+trend estimation.The classification discrepancy observed 
+in 2015 is primarily due to the threshold-based categoriza -
+tion of trophic levels. The predicted TSI (59.2) is close to 
+the classification boundary (TSI = 60), while the observed 
+value (60.7) lies slightly above this threshold. The abso -
+lute numerical difference is only 1.5 units, suggesting that 
+the category shift is mainly caused by boundary sensitivity 
+rather than substantial prediction error.
+To further assess the physical consistency of the esti -
+mated chlorophyll-a values, we compared the lake-wide 
+monthly mean concentrations of Taihu Lake with indepen -
+dent monitoring statistics(by Bulletin on Water Quality of 
+Water Bodies at Provincial Boundaries in the Taihu Lake 
+Basin and Southeastern Rivers). The predicted values for 
+March (14.87 µg/L) and April (29.06 µg/L) show strong 
+numerical agreement with the reported monthly means 
+(14.70 µg/L and 31.50 µg/L, respectively), with only minor 
+deviations. This external comparison supports the physical 
+plausibility of the derived chlorophyll-a estimates and their 
+consistency with independent monitoring statistics.
+Analysis and discussion
+From the above prediction results, it can be seen that abla -
+tion experiments were conducted on both the proposed TL-
+MCAS_CSG_GAN and Att_Conv2D_LSTM_Cross_GAN 
+models. By calculating the SSIM, PSNR, and COSIN met -
+rics for the remote sensing images generated by the TL-
+MCAS_CSG_GAN model and the true images, the results 
+show that the added cascaded semantic generation module, 
+multichannel attention selection module, and knowledge 
+transfer module all positively benefit the model, further 
+verifying that the multichannel attention cascaded seman -
+tic selection module and knowledge transfer module can 
+improve the accuracy of image transformation and gen -
+eration. By comparing the water eutrophication prediction 
+results of the Att_Conv2D_LSTM_Cross_GAN model with 
+those of the model without atmospheric factors, it is verified 
+that the proposed cross-modal feature encoder for fusing 
+Table 9 Evaluation of Taihu Lake eutrophication level
+Lake Year Predicted 
+TSI 
+Index
+Predicted 
+Trophic 
+Level
+True 
+TSI 
+Index
+True Trophic 
+Level
+Taihu Lake 2014 55.6 Mildly 
+Eutrophic
+57.8 Mildly 
+Eutrophic
+Taihu Lake 2015 59.2 Mildly 
+Eutrophic
+60.7 Moderately 
+Eutrophic
+Taihu Lake 2016 59.6 Mildly 
+Eutrophic
+58.8 Mildly 
+Eutrophic
+Taihu Lake 2017 62.3 Moderately 
+Eutrophic
+60.9 Moderately 
+Eutrophic
+1 3
+Page 27 of 29 61
+Earth Science Informatics (2026) 19:61
+References
+Archana R, Jeevaraj PSE (2024) Deep learning models for digital 
+image processing: a review. Artif Intell Rev 57:11. h t t p s : / / d o i . o r g 
+/ 1 0 . 1 0 0 7 / s 1 0 4 6 2 - 0 2 3 - 1 0 6 3 1 - z
+Baladi E, Davar F, Hojjati-Najafabadi A (2022) Synthesis and charac-
+terization of g–C3N4–CoFe2O4–ZnO magnetic nanocomposites 
+for enhancing photocatalytic activity with visible light for degra-
+dation of penicillin G antibiotic. Environ Res 215:114270. h t t p s : / 
+/ d o i . o r g / 1 0 . 1 0 1 6 / j . e n v r e s . 2 0 2 2 . 1 1 4 2 7 0
+Chen B, Mu X, Chen P, Wang B, Choi J, Park H, Xu S, Wu Y , Yang H 
+(2021) Machine learning-based inversion of water quality param-
+eters in typical reach of the urban river by UA V multispectral 
+data. Ecol Indic 133:108434. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . e c o l i n d . 2 
+0 2 1 . 1 0 8 4 3 4
+Chen X, Wang Y , Ye C et al (2018) Atmospheric nitrogen deposi -
+tion associated with the eutrophication of Taihu Lake. J Chem 
+2018(1):4017107. h t t p s : / / d o i . o r g / 1 0 . 1 1 5 5 / 2 0 1 8 / 4 0 1 7 1 0 7
+Dai T, Liu R, Zhou X, Zhang J, Song M, Zou P, Bi X, Li S (2023) Role 
+of Lake Aquatic–Terrestrial Ecotones in the Ecological Restora -
+tion of Eutrophic Water Bodies. Toxics 11:560. h t t p s : / / d o i . o r g / 1 0 
+. 3 3 9 0 / t o x i c s 1 1 0 7 0 5 6 0
+Du C, Shi K, Liu N, Li Y , Lyu H, Yan C, Pan J (2022) Remote Estima-
+tion of the Particulate Phosphorus Concentrations in Inland Water 
+Bodies: A Case Study in Hongze Lake. Remote Sens 14(16):3863. 
+h t t p s : / / d o i . o r g / 1 0 . 3 3 9 0 / r s 1 4 1 6 3 8 6 3
+Gui J, Sun Z, Wen Y , Tao D, Ye J (2021) A review on generative adver-
+sarial networks: Algorithms, theory, and applications. IEEE Trans 
+Knowl Data Eng 35(4):3313–3332. h t t p s : / / d o i . o r g / 1 0 . 1 1 0 9 / T K D 
+E . 2 0 2 1 . 3 1 3 0 1 9 1
+Han F, Liu T, Huang Y et al (2023) Response of water quality to cli -
+mate warming and atmospheric deposition in an alpine lake of 
+Tianshan Mountains, Central Asia. Ecol Ind 147:109949. h t t p s : / / 
+d o i . o r g / 1 0 . 1 0 1 6 / j . e c o l i n d . 2 0 2 3 . 1 0 9 9 4 9
+Hennings N, Becker JN, Guillaume T, Damris M, Dippold MA, Kuzya-
+kov Y (2021) Riparian wetland properties counter the effect of 
+land-use change on soil carbon stocks after rainforest conversion 
+to plantations. CATENA 196:104941. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . c 
+a t e n a . 2 0 2 0 . 1 0 4 9 4 1
+He Y , Leng L, Ji X, Wang M, Huo Y , Li Z (2024) Inversion and Analy-
+sis of Global Ocean Chlorophyll-a Concentration Based on Tem-
+perature Zoning. Remote Sens 16(13):2302. h t t p s : / / d o i . o r g / 1 0 . 3 3 
+9 0 / r s 1 6 1 3 2 3 0 2
+Hui T, Liu S, Ding Z, Huang S, Li G, Wang W, Liu L, Han J (2023) 
+Language-aware spatial-temporal collaboration for refer -
+ring video segmentation. IEEE Trans Pattern Anal Mach Intell 
+45(7):8646–8659. h t t p s : / / d o i . o r g / 1 0 . 1 1 0 9 / T P A M I . 2 0 2 3 . 3 2 3 5 7 2 0
+Jabbar A, Li X, Omar B (2021) A survey on generative adversarial net-
+works: Variants, applications, and training. ACM Comput Surv 
+54(8):1–49. h t t p s : / / d o i . o r g / 1 0 . 1 1 4 5 / 3 4 6 3 4 7 5
+Karimian H, Huang J, Chen Y , Wang Z, Huang J (2023) A novel frame-
+work to predict chlorophyll-a concentrations in water bodies 
+through multi-source big data and machine learning algorithms. 
+Environ Sci Pollut Res 30(32):79402–79422. h t t p s : / / d o i . o r g / 1 0 . 1 
+0 0 7 / s 1 1 3 5 6 - 0 2 3 - 2 7 8 8 6 - 2 
+Koue J (2025) Influence of Nutrient Desorbed from Sediments and Den-
+sity Variations Driven by Organic Matter on Flow Patterns in Closed 
+Water Bodies. Water 17(1):100. h t t p s : / / d o i . o r g / 1 0 . 3 3 9 0 / w 1 7 0 1 0 1 0 0
+Laneve G, Téllez A, Kallikkattil Kuruvila A, Bruno M, Messineo V 
+(2024) Eutrophication and HAB Occurrence Control in Lakes of 
+Different Origins: A Multi-Source Remote Sensing Detection Strat-
+egy. Remote Sens 16:1792. h t t p s : / / d o i . o r g / 1 0 . 3 3 9 0 / r s 1 6 1 0 1 7 9 2
+Liang X (2024) Enhanced Convolutional Neural Network for Image 
+Processing in 6G Smart City Environments. Wirel Pers Commun. 
+h t t p s : / / d o i . o r g / 1 0 . 1 0 0 7 / s 1 1 2 7 7 - 0 2 4 - 1 1 2 0 2 - 3
+team for their constructive comments during the research process.
+Thanks to my classmates and colleagues for their discussions and 
+encouragement during the research process, and your suggestions pro-
+vided important help for the improvement of this paper.
+In addition, special thanks to my family and friends, your understand-
+ing and support are the motivation for me to persevere on the research 
+path.
+Finally, I would like to express my high respect to the experts who par-
+ticipated in the review of this paper and provided valuable comments, 
+and thank you for your guidance and suggestions on the research.
+Author contributions Authorship Contribution StatementLi Wang: 
+Conceptualization, Methodology, Software, Formal analysis, Inves -
+tigation, Data curation, Writing - original draft, Writing - review & 
+editing, Project administration. Yihan Sun: Methodology, Validation, 
+Investigation, Resources, Writing - original draft, Writing - review & 
+editing. Xiaoyi Wang: Data curation, Visualization, Writing - review & 
+editing.Jiping Xu: Validation, Writing - review & editing.Zhiyao Zhao: 
+Software, Writing - review & editing.Jiabin Yu: Resources, Writing 
+- review & editing.Huiyan Zhang: Formal analysis, Writing - review 
+& editing.Qian Sun: Investigation, Writing - review & editing.Yuting 
+Bai: Visualization, Writing - review & editing.All authors: Reviewed 
+and approved the final manuscript.
+Funding This research received no specific grant from any funding 
+agency in the public, commercial, or not-for-profit sectors.
+Data availability No datasets were generated or analysed during the 
+current study.
+Code availability Name of the code/library : water.
+Contact: Yihan Sun email: sunyihan7895123@163.com.
+Hardware requirements: This section uses the Zhixing Cloud comput-
+ing platform to support experimental calculations, selecting the Win -
+dows 10 operating system, equipped with a dual-core GPU, graphics 
+card type GeForce RTX 3090 (24GB video memory), system image 
+win10 cuda11, system disk size 350GB, and memory size starting from 
+56GB. The deep learning environment is configured with cuda11.1, 
+cuDnn8, Anaconda, Pytorch1.7.1, Tensorflow2.4, and python3.8.3.
+Program language: python.
+Software required: python.
+Program size: pycharm.
+The source codes are available for downloading at the link: h t t p s : / / g i t 
+h u b . c o m / s u n y i h a n 1 2 3 / w a t e r.
+Declarations
+Competing interests The authors declare no competing interests.
+Open Access This article is licensed under a Creative Commons 
+Attribution-NonCommercial-NoDerivatives 4.0 International License, 
+which permits any non-commercial use, sharing, distribution and 
+reproduction in any medium or format, as long as you give appropri -
+ate credit to the original author(s) and the source, provide a link to the 
+Creative Commons licence, and indicate if you modified the licensed 
+material. You do not have permission under this licence to share 
+adapted material derived from this article or parts of it. The images or 
+other third party material in this article are included in the article’s Cre-
+ative Commons licence, unless indicated otherwise in a credit line to 
+the material. If material is not included in the article’s Creative Com -
+mons licence and your intended use is not permitted by statutory regu-
+lation or exceeds the permitted use, you will need to obtain permission 
+directly from the copyright holder. To view a copy of this licence, visit 
+h t t p : / / c r e a t i v e c o m m o n s . o r g / l i c e n s e s / b y - n c - n d / 4 . 0 /.
+1 3
+61 Page 28 of 29
+Earth Science Informatics (2026) 19:61
+Simultaneous Cultivation of Microalgae Chlorella vulgaris with 
+a Polymer Material Based on Chitosan for the Sorption of Heavy 
+Metals and Biomass. Nanobiotechnol Rep 18(1):80–84. h t t p s : / / d 
+o i . o r g / 1 0 . 1 1 3 4 / S 2 6 3 5 1 6 7 6 2 3 0 1 0 0 9 3
+Politi E, Cutler ME, Carvalho L, Rowan JS (2024) A global typologi-
+cal approach to classify lakes based on their eutrophication risk. 
+Aquat Sci 86(2):52. h t t p s : / / d o i . o r g / 1 0 . 1 0 0 7 / s 0 0 0 2 7 - 0 2 4 - 0 1 0 6 8 - 9
+Preisner M, Neverova-Dziopak E, Kowalewski Z (2020) Analysis 
+of eutrophication potential of municipal wastewater. Water Sci 
+Technol 81(9):1994–2003. h t t p s : / / d o i . o r g / 1 0 . 2 1 6 6 / w s t . 2 0 2 0 . 2 5 4
+Wang J, Cai S, Zhao J (2022) Modeling effects of atmospheric nitrogen 
+deposition on the water quality of the MR-SNWDP. Atmosphere 
+13(4):553. h t t p s : / / d o i . o r g / 1 0 . 3 3 9 0 / a t m o s 1 3 0 4 0 5 5 3
+Wang Y , Guo Z, Chen Y , Guo C, Xia M, Qi T (2024) A robot grasp-
+ing detection network based on flexible selection of multi-modal 
+feature fusion structure. Appl Intell 54(6):5044–5061. h t t p s : / / d o i . 
+o r g / 1 0 . 1 0 0 7 / s 1 0 4 8 9 - 0 2 4 - 0 5 4 2 7 - 9
+Yu C, Li Z, Xu Z, Yang Z (2020) Lake recovery from eutrophication: 
+Quantitative response of trophic states to anthropogenic influ -
+ences. Ecol Eng 143:105697. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . e c o l e n g . 2 
+0 1 9 . 1 0 5 6 9 7
+Zang N, Cao G, Xu Y , Feng Y , Xu Z, Zhou X, Liao Y (2024) An inno-
+vative method based on Gaussian cloud distribution and sample 
+information richness for eutrophication assessment of Yangtze’s 
+lakes and reservoirs under uncertainty. Environ Sci Pollut Res 
+31:32784–32799. h t t p s : / / d o i . o r g / 1 0 . 1 0 0 7 / s 1 1 3 5 6 - 0 2 4 - 3 3 3 0 7 - 9
+Zhang H, Huan J, Xu X, Shi B, Zheng Y , Mao J, Lv J (2023) Model 
+evaluation of total phosphorus prediction based on model accu -
+racy and interpretability for the surface water in the river network 
+of the Jiangnan Plain, China. Water Sci Technol 88(8):2108–
+2120. h t t p s : / / d o i . o r g / 1 0 . 2 1 6 6 / w s t . 2 0 2 3 . 3 1 0
+Zhang J, Fu P, Meng F, Yang X, Xu J, Cui Y (2022) Estimation algo-
+rithm for chlorophyll-a concentrations in water from hyperspectral 
+images based on feature derivation and ensemble learning. Ecol 
+Inf 71:101783. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . e c o i n f . 2 0 2 2 . 1 0 1 7 8 3
+Zhang Y , Li M, Dong J, Yang H, Van Zwieten L, Lu H, Alshameri A, 
+Zhan Z, Chen X, Jiang X, Xu W, Bao Y , Wang H (2021) A Criti-
+cal Review of Methods for Analyzing Freshwater Eutrophication. 
+Water 13(2):225. h t t p s : / / d o i . o r g / 1 0 . 3 3 9 0 / w 1 3 0 2 0 2 2 5
+Zhao S, Liu R, Liu Y , Zeng T, Chen C, Xu L (2025) A Water Quality 
+Prediction Model Based on Modal Decomposition and Hybrid 
+Deep Learning Models. Water 17(2):184. h t t p s : / / d o i . o r g / 1 0 . 3 3 9 
+0 / w 1 7 0 2 0 1 8 4
+Publisher’s note Springer Nature remains neutral with regard to juris-
+dictional claims in published maps and institutional affiliations.
+Li H, Xiong W, Cui Y , Xiong Z (2022) A fusion-based contrastive 
+learning model for cross-modal remote sensing retrieval. Int J 
+Remote Sens 43(9):3359–3386. h t t p s : / / d o i . o r g / 1 0 . 1 0 8 0 / 0 1 4 3 1 1 
+6 1 . 2 0 2 2 . 2 0 9 1 9 6 4
+Lin CY , Tsai MS, Tsai JT, Lu CC (2022) Prediction of Carlson Trophic 
+State Index of Small Inland Water from UA V-Based Multispectral 
+Image Modeling. Appl Sci 13(1):451. h t t p s : / / d o i . o r g / 1 0 . 3 3 9 0 / a p 
+p 1 3 0 1 0 4 5 1
+Lin SS, Shen SL, Zhou A, Lyu HM (2021) Assessment and manage -
+ment of lake eutrophication: A case study in Lake Erhai, China. 
+Sci Total Environ 751:141618. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . s c i t o t e n 
+v . 2 0 2 0 . 1 4 1 6 1 8
+Lin Z, Li M, Zheng Z, Cheng Y , Yuan C (2020) Self-attention convlstm 
+for spatiotemporal prediction. In: Proceedings of the AAAI con -
+ference on artificial intelligence. 34(07): 11531–11538. h t t p s : / / d o 
+i . o r g / 1 0 . 1 6 0 9 / a a a i . v 3 4 i 0 7 . 6 8 1 9
+Li S, Song K, Wang S, Liu G, Wen Z, Shang Y , Lyu L, Chen F, Xu S, 
+Tao H, Du Y , Fang C, Mu G (2021) Quantification of chlorophyll-
+a in typical lakes across China using Sentinel-2 MSI imagery with 
+machine learning algorithm. Sci Total Environ 778:146271. h t t p s : 
+/ / d o i . o r g / 1 0 . 1 0 1 6 / j . s c i t o t e n v . 2 0 2 1 . 1 4 6 2 7 1
+Liu Y , Xue J, Li D, Zhang W, Chiew TK, Xu Z (2024) Image recogni-
+tion based on lightweight convolutional neural network: Recent 
+advances. Image Vis Comput 105037. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . i 
+m a v i s . 2 0 2 4 . 1 0 5 0 3 7
+Luo H, Wang Z, Du B, Dong Y (2024) A deep cross-modal fusion net-
+work for road extraction with high-resolution imagery and lidar 
+data. IEEE Trans Geosci Remote Sens 62:1–15. h t t p s : / / d o i . o r g / 1 0 
+. 1 1 0 9 / T G R S . 2 0 2 4 . 3 3 6 0 9 6 3
+Madjar RM, Vasile Scăețeanu G, Sandu MA (2024) Nutrient Water 
+Pollution from Unsustainable Patterns of Agricultural Systems, 
+Effects and Measures of Integrated Farming. Water 16(21):3146. 
+h t t p s : / / d o i . o r g / 1 0 . 3 3 9 0 / w 1 6 2 1 3 1 4 6
+Pai MM, Mehrotra V , Verma U, Pai RM (2020) Improved semantic 
+segmentation of water bodies and land in SAR images using gen-
+erative adversarial networks. Int J Semant Comput 14(01):55–69. 
+h t t p s : / / d o i . o r g / 1 0 . 1 1 4 2 / S 1 7 9 3 3 5 1 X 2 0 4 0 0 0 3 6
+Pan X, Wang Z, Ullah H, Chen C, Wang X, Li X, Li H, Zhuang Q, Xue 
+B, Yu Y (2023) Evaluation of Eutrophication in Jiaozhou Bay via 
+Water Color Parameters Determination with UA V-Borne Hyper-
+spectral Imagery. Atmosphere 14(2):387. h t t p s : / / d o i . o r g / 1 0 . 3 3 9 0 
+/ a t m o s 1 4 0 2 0 3 8 7
+Peppa M, Vasilakos C, Kavroudakis D (2020) Eutrophication Monitor-
+ing for Lake Pamvotis, Greece, Using Sentinel-2 Data. ISPRS Int 
+J Geo-Inf 9(3):143. h t t p s : / / d o i . o r g / 1 0 . 3 3 9 0 / i j g i 9 0 3 0 1 4 3
+Petrova MG, Pozhidaev VM, Tikhomirov SA, Kondratev OA, 
+Antipova KG, Bakirov A V , Grigoriev TE, Gorin KV (2023) 
+1 3
+Page 29 of 29 61

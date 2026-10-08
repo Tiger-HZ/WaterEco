@@ -1,0 +1,554 @@
+npj | clean water Comment
+Published in partnership with King Fahd University of Petroleum & Minerals
+https://doi.org/10.1038/s41545-026-00562-x
+Call for the mainstreaming of eutrophication
+in global water assessments and policies
+Olli Varis & Dandan Zhao
+ Check for updates
+This comment prompts scholars to include
+eutrophication more often to water quality
+assessments as it is globally one of the major water-
+related environmental problems but remains
+underrepresented in contemporary assessments,
+water policies and international targets such as the
+United Nations Sustainable Development Goals
+(SDGs). What we scholars can do is to mainstream
+eutrophication in our global water assessments,
+and that way ram it to a higher position in political
+agendas. The recent advances in global nutrient
+models and datasets, as well as Earth observation
+approaches, allow novel horizons in this regard.
+Now is the time to scrutinize these novel
+opportunities. Our take to this quest here is to
+develop a model protocol that produces gridded
+eutrophication maps from total nitrogen and total
+phosphorus data. We also developed analogous
+methods for biochemical oxygen demand and total
+dissolved solids.
+Elevated attention to eutrophication is needed in research
+and policy
+Eutrophication is one of the major water quality problems of surface waters
+globally1– 3, causing massive deterioration of aquatic ecosystems, habitats,
+and biodiversity as well as remarkable environmental nuisance to human
+water uses. Eutrophication stands for enrichment of plant nutrients, most
+importantly nitrogen and phosphorus, resulting in increased biomass
+production4,5. Eutrophication is a natural phenomenon, but human activ-
+ities, such as discharge of waste and wastewater, and land use change result
+in increased erosion and leaching of nutrients. This greatly accelerates the
+input of nutrients to waters across the world, causing nuisance in terms of
+excessive biomass of algae and vegetation6. This, in turn, is prone to lead to
+an enhanced degradation of biomass, often leading to hypoxia. Warming of
+climate enhances the severity of these problems.
+Whereas eutrophication has been identiﬁed and recognized as a major
+problem for over a century 7,8, and being recently highlighted within the
+Earth system boundaries context 9, it keeps worsening 9.T h i sd e s p i t eo f
+growing attempts to control non-poi nt source pollution, together with
+massive and escalating investments intreatment of waste waters across the
+world, exceeding 300 billion USD annually10.Y e ts t i l l2 8 %o ft h ew o r l d’s
+population had no access to wastewater treatment in 202011.C l i m a t ec h a n g e
+further accelerates eutrophication12.
+Appreciating the progress of the SDG 6.2 on wastewater treatment
+and the SDG 6.3 on halving the proportion of untreated wastewater 13,
+Jones et al.14 call for more ambitious development goals than those we see
+at present to curtail the further deterioration of water quality. To bear out
+this concern, eutrophication of freshwaters is gaining only occasional
+mention in UN Agenda 2030 reports, and is absent from the SDGs 13.
+Alike, eutrophication has been virtually missing from global freshwater
+models and related assessments, although analyses and scenarios are now
+emerging15– 17, with initiatives to incorporate eutrophication into global
+data and model portals such as the ISIMIP 18. At the same time, we see a
+progress in estimating the level of eutrophication from Earth observation
+data19– 21. Hopefully, these pioneering works will attract others within the
+modelling community to pay elevated attention to eutrophication since
+rigorous approaches are needed.
+In general, the key factors that contribute to freshwater eutrophication
+are total nitrogen (TN) and total phosphorus (TP), being the most
+important drivers of the abundance of phytoplankton and the eutrophic
+c o n d i t i o no faw a t e rb o d y22. With growing number of gridded datasets and
+models on concentrations of TN and TP in surface inland waters that have
+recently become available6,18,23– 25, making it possible to understand and
+quantify the global patterns and dynamics, their temporal evolution and
+driving factors of the fate of these key nutrients in aquatic systems on higher
+spatial resolution and scales. Thus, i nspired by increasing water-related
+nutrient studies and datasets, this s tudy makes this contribution by pro-
+posing a eutrophication model protocol that is implementable to gridded
+global and regional models employing TN and TP data. Such datasets allow
+a building ground for relatively straightforward ways to assess
+eutrophication.
+We propose one based on the N and P co-limitation concept, and not
+solely on P limitation as has been common thus far17. It produces gridded
+eutrophication estimates using any spatial TN and TP datasets. We used the
+data of van Vliet et al.25 on a 0.5° × 0.5° resolution for the 2000– 2010 period
+to investigate and illustrate how to create water quality classiﬁcation-based
+eutrophication maps globally.
+We employ the water quality classiﬁcation scheme, an approach that
+has mainstreamed policy documents in eutrophication over decades26– 28.I t
+is based on the Trophic State Index (TSI) concept29, in which the waters are
+classiﬁed according to their primary production level. We derive this index
+from TN and TP concentrations as has been done in the above-mentioned
+documents, but today it can also be derived from Chlorophyll-a con-
+centration observable visually, e.g., from remote sensing data21. TSI instead
+of concentrations makes sense because ecosystem response to increased P
+and N concentrations (as well as many other pollutants), and consequently
+npj Clean Water | (2026) 9:23 1
+1234567890():,;
+1234567890():,;
+the adverse effect to water uses and public concerns, are typically not linear.
+Therefore, it is of prime importance to provide estimates on the harmfulness
+of eutrophication (expressed as TSI29).
+This protocol, for the ﬁrst time, allows the production of quanti ﬁed
+mappings of the harm due to freshwater eutrophication across the planet,
+under co-limitation of TN and TP. TSI has recently, though, been assessed
+from Landsat data, but has not been linked to nutrient concentrations21.A sa
+side product of our eutrophication protocol, we propose analogous models
+for Biological Oxygen Demand (BOD) and salinity (total dissolved solids;
+TDS), documented in Supplementary Information. Such models are an
+important step in mainstreaming the consideration of eutrophication, BOD
+and TDS in large-scale water models and assessments.
+The three-step protocol for eutrophication modelling
+From TN and TP concentrations to eutrophication classiﬁcation. First,
+the TN and TP concentrations are transferred into eutrophication classes
+(Fig. 1) using TSI29. Typically, the classes used are ultra-oligotrophic (very
+low), oligotrophic (low), mesotrophic (intermediate), eutrophic (high),
+and hypertrophic (very high), implying an increasing level of primary
+production and thus eutrophication. The eutrophication literature of the
+past several decades abounds with various water quality
+classiﬁcations26,27,30. They vary across various agencies and geographic
+locations, and speci ﬁc classi ﬁcations exist for numerous fractions of
+nutrients and different types of water bodies, such as rivers, streams, deep
+lakes, shallow water bodies and more31.
+Nevertheless, many water quality guidelines for policy and manage-
+ment purposes are reasonably consistent with one another. Based on the
+most important of them26– 28,30, we produced the values presented in Table1
+for the purposes of our study.
+To develop equations for transferring nutrient concentrations into the
+scale of water quality classi ﬁcations of Table 1, we used logarithmic
+regression analysis and further scaled the transformed maps into the unity
+scale so that the best water quality receives the index value 0 and the worst
+one 1. Instead of a categorical value from 1 to 5 of the conventional clas-
+siﬁcations, it gives a continuous number [0, 1], which is much more useful
+in, for instance, hazard and risk analysis as recommended in many con-
+temporary United Nations protocols32,33. Here, we need to assign minimum
+values for TN and TP (TNmin =0 . 1m g / La n dT Pmin = 0.001 mg/L). This is
+done because the used gridded datasets include many grid cells with zero
+values. In natural waters, though, these two nutrients are always available at
+least in low concentrations22, and zero values are thus misleading. Another
+aspect is that in our logarithmic model, zero values cannot be handled as the
+Fig. 1 | Nitrogen and phosphorus in inland waters.
+Global gridded maps of freshwater quality classi ﬁ-
+cations due to total nitrogen (TN Index) (a) and total
+phosphorus (TP Index) ( b).
+npj | clean water Comment
+npj Clean Water | (2026) 9:23 2
+logarithm of 0 is undeﬁned. Also, calculating the N/P ratio with P being zero
+yields an unde ﬁned outcome. Further, the use of zero values in multi-
+plicative risk analyses promoted widely32,33 yields in zero risk, which can
+yield to an underestimation of the risk.
+TN Index ¼ maxð0; minð1; ð1:3946/C3 logðTNÞþ 2:5592Þ=5ÞÞ ðR2 ¼ 0:984Þ
+ð1Þ
+TP Index ¼ maxð0; minð1; ð0:9137/C3 logðTPÞþ 6:105Þ=5ÞÞ ðR2 ¼ 0:997Þ
+ð2Þ
+Using the protocol to the van Vliet et al.25 data (Fig.1a), we can see a belt
+of high TN index values in the northern mid-latitudes covering most of the
+United States and northern Mexico, and most of the corridor from North
+Africa and Europe (excluding the northern parts) to China and northern
+Indian subcontinent, plus many of the crowded and intensively farmed
+areas elsewhere. The lowest TN index values occurred in northern latitudes
+and in drylands. The areas with high TP index had similarities with the
+above (Fig. 1b), yet occupied larger areas. In turn, the low TP index value
+regions were more restricted in size, including northern latitudes and many
+other areas, but less than in the case of the TN index.
+Table 1 | Trophic State Index classi ﬁcations used in this study
+Eutrophication
+class
+1 Ultra-oligotrophic 2 Oligotrophic 3 Mesotrophic 4 Eutrophic 5 Hypertrophic Unit
+TP <0.004 0.004 –0.01 0.01 –0.035 0.035 –0.1 >0.1 mg/L
+TN <0.3 0.3 –0.75 0.75 –1.5 1.5 –2.5 >2.5 mg/L
+Attributes Clear water, oxygen
+throughout the year in
+the hypolimnion
+Hypolimnia of
+deeper lakes may
+become anoxic.
+Water moderately clear;
+increasing probability of
+hypolimnetic anoxia during
+summer.
+Blue-green algae
+dominate, algal scums and
+macrophyte problems.
+Notable anoxia problems.
+(light limited productivity).
+Dense algae and
+macrophytes. Fish kills due
+to anoxia.
+These classiﬁcations have been synthesized from key international policy documents 26–28,30.
+Fig. 2 | Global spatial distribution of nitrogen and
+phosphorus limitation of inland waters and
+eutrophication. A map for limiting nutrients for
+eutrophication showing areas in which TN is more
+important limiting factor than TP and the opposite
+(a), and a map for the Trophic State Index (TSI)
+indicating the severity of eutrophication in fresh-
+waters (b).
+npj | clean water Comment
+npj Clean Water | (2026) 9:23 3
+The limiting nutrient . Second, we identify areas where TN being more
+important limiting factor for aquatic primary production than TP, and the
+opposite ones (Fig. 2a). As eutrophication is driven mainly by both N and
+P, the approach classically used in eutrophication studies is the nearly two
+centuries old Liebig’s Law of the Minimum. It proposes that the growth of a
+plant is driven by the most critical factor, whatever it may be, at a given
+location and time. For eutrophication studies within aquatic ecosystems,
+the tipping point is at which the molar (atomic) N:P ratio is 16:1 (equal to
+7.235 by weight as used for concentrations); above it, P is the limiting factor
+and below it, N limits the growth34.T h i si sc o m m o n l yc a l l e dt h eR e dﬁeld
+ratio22,35,36. Accordingly, we use the TP raster above the tipping point and
+the TN raster below it. Despite the recent evolution of more elaborate co-
+limitation schemes for N and P in ecosystems, Liebig ’s law has still been
+recommended to be used as a useful approximation of co-limitation5.
+TN appeared more important in many mountainous and dry areas,
+whereas TP often limited eutrophication more than TN in lowlands,
+although much local variation existed. 69% of the grid cells of Fig.2a exhibit
+TP limitation, whereas 31% have TN limitation. The observation on TN and
+TP limitation following such geogr aphic patterns was an unanticipated
+ﬁnding, not addressed originally in the research questions. However, it may
+51 %
+79 %
+85 %
+63 %
+70 %
+55 %
+0 0,5 1 1,5 2 2,5 3 3,5 4 4,5
+Africa
+Asia
+Europe
+North America
+South America
+Oceania
+Billions
+Eutrophication exposure by continent
+Total Population Exposed
+(a)
+91 %
+77 %
+70 %
+74 %
+67 %
+72 %
+77 %
+70 %
+46 %
+93 %
+76 %
+55 %
+76 %
+64 %
+89 %
+70 %
+83 %
+93 %
+49 %
+86 %
+64 %
+61 %
+89 %
+70 %
+42 %
+0 500 1000 1500
+China
+India
+USA
+Pakistan
+Indonesia
+Brazil
+Russia
+Bangladesh
+Nigeria
+Germany
+Japan
+Mexico
+Vietnam
+Ethiopia
+France
+Iran
+Turkey
+United Kingdom
+Dem. Rep. Congo
+Italy
+Thailand
+Philippines
+South Korea
+South Africa
+Egypt
+Millions
+Eutrophication exposure by country
+Total Population Exposed
+(b)
+81 %
+93 %
+77 %
+94 %
+96 %
+88 %
+48 %
+83 %
+87 %
+77 %
+93 %
+90 %
+78 %
+87 %
+74 %
+72 %
+90 %
+61 %
+48 %
+76 %
+87 %
+92 %
+81 %
+72 %
+93 %
+0 400 800
+GBM
+Yangtze
+Indus
+Huang He
+Hai He
+China E Coastal Basins
+Nile
+Bay of Bengal NE Coastal Basins
+China S Coastal Basins
+Java Sea Coastal Basins
+North Sea Coastal Basins
+Danube
+La Plata
+Pearl
+Mississippi-Missouri
+Bay of Bengal W Coastal Basins
+Amur
+Krishna
+Congo/Zaire
+Arabian Sea E Coastal Basins
+Yellow Sea E Coastal Basins
+Bohai Sea Coastal Basins
+Volga
+Euphrat-Tigris
+Rhine
+Millions
+Eutrophication exposure by river basin
+Total Population Exposed
+(c)
+Fig. 3 | Exposure of human population to eutrophication globally. Share of people exposed (a) by continent, (b) by country and (c) by river basin. For (b), (c), only the 25
+largest exposure units are shown.
+npj | clean water Comment
+npj Clean Water | (2026) 9:23 4
+be a remarkableﬁnding warranting further research as similar features have
+been detected in terrestrial ecosystems37, but not thus far in inland waters.
+Co-limitation of eutrophication by nitrogen and phosphorus. Finally,
+the eutrophication class map (Fig. 2b) can be produced from the maps of
+Fig. 1a, b by using the TN index map (Fig.1a) pixel values in areas with TN
+being more important limiting factor than TP, and TP index map (Fig.1b)
+TP limited ones. Figure 2a indicates the geographic areas in which TN is
+more important limiting factor than TP, and vice versa.
+Examples. As an example of the use of the protocol, we estimated the
+global exposure of humans to eutrophication by continent38, by country38,
+and by river basin 39 (Fig. 3). This yields an estimate of 73% of humanity
+being exposed to eutrophication. Asia, as the most populated continent,
+dominates with 60% of the world’s total exposure. In turn, Europe has the
+world’s highest population share of those exposed (85%), Africa having
+only 51%. China and India are by margin the countries with biggest
+exposure. 72% of the world’s population live in TP-limited areas, whereas
+28% live in TN-limited ones. We forward other eutrophication exposure
+analyses to further studies. They could includeﬁsh abundance and species,
+threatened species, biodiversity hotspots, and others.
+We have thus far used this approach to include eutrophication in
+two multirisk studies, one analyzing China ’s eight key water-related
+risks40, and the other one for a risk analysis of the world ’sc o a s t a lz o n e
+population 41. Those studies include more insight into the applicability
+of the protocol in such asessments, indicating that the human exposure
+to eutrophication overwhelms the exposure to most other water-related
+risks in both cases.
+Discussion
+Within the water quality management and policy domain, the use of water
+quality classiﬁcations that estimate the harm caused by deteriorated water
+quality to humans and human uses of water has been the standard approach.
+For eutrophication, such an approach is the TSI 26,27,29– 31. We developed a
+TSI-based method for producing water quality classi ﬁcation values for
+eutrophication and present also analogous schemes for BOD and TDS as
+Supplementary Information. Our water quality index datasets can readily be
+used to estimate the nuisance, exposure and risk of humans and human uses
+to those water quality problems. Such a straightforward methodology has
+not been available before. By employing TSI, the methodology is compatible
+with standardized policy approaches, and, besides, with the evolving Earth
+observation-based approaches, typically relying also on TSI19– 21.
+The co-limitation concept allows consideration of other fractions of N
+and P besides TN and TP. For instance, the orthophosphate would be a
+remarkably better estimation for b iologically available P than TP 3,22,b u t
+gridded datasets of it are not available on a global scale. Similar limitations
+occur to other fractions of N and P, such as the often-used lumped indicators
+DIN and DIP and their ratio36. The inclusion of other limiting factors, such
+as Silica, can be included with the same logic as what we have shown here,
+although we would rather pay attention to looking closer at N-ﬁxing Cya-
+nobacteria; their co-limitation scheme would differ notably from that of
+other phytoplankton42. For the inclusion of factors such as water tempera-
+ture and irradiance, we would recommend employing approaches such as
+the classical multiplicative use of the Michaelis-Menten kinetics, frequently
+used in water quality models42. A discussion of the reliability of our protocol
+is presented in the Supplementary Information. Thus far, it is precondi-
+tioned by the reliability of the TN and TP data, but we recommend devel-
+oping hybrid approaches linking nutrient concentration datasets with Earth
+observations to allow more rigorous uncertainty analyses.
+Compared with traditional approaches that rely on in situ sampling of
+water quality parameters to calculate the TSI, the widespread availability of
+Earth observation data such as remote sensing19– 21, together with the rapid
+growth of publicly accessible water quality databases6,23– 25, effectively over-
+comes many limitations of manual monitoring, including sparse sampling
+sites, high costs, and the difﬁculty of obtaining long-term continuous time
+series. This allows now to quantitatively assess the degree of eutrophication
+across different spatial and tempora l scales. In this context, given that
+eutrophication is one of the major water-related risk factors1– 3,41, affecting
+large populations and posing substantial ecological and public health risks,
+incorporating eutrophication indicators into global water quality assess-
+ment frameworks, including SDG 6, is of great importance for improving
+water quality monitoring capacity, strengthening water risk identiﬁcation
+systems, and enhancing access to clean water.
+Data availability
+The data are available on request from the authors.
+Code availability
+No custom code was developed in the study.
+Olli Varis 1 & Dandan Zhao 2
+1Water and Development Research Group, Aalto University,
+Espoo, Finland. 2Institute of Surface-Earth System Science, School of
+Earth System Science, Tianjin University, Tianjin, China.
+e-mail: olli.varis@aalto.ﬁ; dandan.zhao0212@outlook.com;
+zhaodandan@tju.edu.cn
+Received: 16 December 2025;Accepted: 6 February 2026;
+References
+1. De Jonge, V. N., Elliott, M. & Orive, E. Causes, historical development, effects and future
+challenges of a common environmental problem: eutrophication.Hydrobiologia 475– 476,1 –19
+(2002).
+2. Smith, V. H. Eutrophication of freshwater and coastal marine ecosystems: a global problem.
+Environ. Sci. Pollut. Res. 10, 126–139 (2003).
+3. Suresh, K. et al. Recent advancement in water quality indicators for eutrophication in global
+freshwater lakes. Environ. Res. Lett. 18, 063004 (2023).
+4. Conley, D. J. et al. Controlling eutrophication: nitrogen and phosphorus. Science 323,
+1014–1015 (2009).
+5. Elser, J. J. et al. Global analysis of nitrogen and phosphorus limitation of primary producers in
+freshwater, marine and terrestrial ecosystems. Ecol. Lett. 10, 1135–1142 (2007).
+6. Beusen, A. H. W., Bouwman, A. F., Van Beek, L. P. H., Mogollón, J. M. & Middelburg, J. J. Global
+riverine N and P transport to ocean increased during the 20th century despite increased
+retention along the aquatic continuum. Biogeosciences 13, 2441–2451 (2016).
+7. Thienemann, A. Untersuchungen über die Beziehungen zwischen dem Sauerstoffgehalt des
+Wassers und der Zusammensetzung der Fauna in norddeutschen Seen. Arch. Hydrobiol. 12,
+1–65 (1918).
+8. Naumann, E. Några synpunkter angående limnoplanktons ökologi med särskild hänsyn till
+fytoplankton. Sven. Bot. Tidskr. 13, 129–163 (1919).
+9. Rockström, J. et al. Safe and just Earth system boundaries. Nature 619, 102–111 (2023).
+10. Precedence Research. Water and Wastewater Treatment Market (By Equipment: Membrane
+Separation, Biological, Disinfection, Sludge Treatment, Others; By Process: Primary, Secondary,
+Tertiary; By Application: Municipal, Industrial) - Global Industry Analysis, Size, Share, Growth,
+Trends, Regional Outlook, and Forecast 2023 -2032 (Precedence Research, 2023).
+11. WMO and UNICEF. Progress on Household Drinking Water, Sanitation and Hygiene 2000-2020:
+Five Years into the SDGs . (World Health Organization, 2021).
+12. Paerl, H. W. & Paul, V. J. Climate change: Links to global expansion of harmful cyanobacteria.
+Water Res. 46, 1349–1363 (2012).
+13. United Nations. The Sustainable Development Goals Report (United Nations, 2019).
+14. Jones, E. R. et al. Current wastewater treatment targets are insuf ﬁcient to protect surface water
+quality. Commun. Earth Environ. 3, 221 (2022).
+15. Bouwman, A. F., Beusen, A. H. W., Doelman, J. C., Stehfest, E. & Westhoek, H. Impact of
+lifestyle, human diet and nutrient use ef ﬁciency in food production on eutrophication of global
+aquifers and surface waters. Glob. Environ. Change 87, 102874 (2024).
+16. Bak, M. P. et al. Future river exports of nutrients, plastics, and chemicals worldwide under
+climate-driven hydrological changes. Environ. Res. Lett. 20, 094033 (2025).
+npj | clean water Comment
+npj Clean Water | (2026) 9:23 5
+17. Vasilakou, K., Nimmegeers, P., Yao, Y., Billen, P. & Van Passel, S. Global spatiotemporal
+characterization factors for freshwater eutrophication under climate change scenarios. Sci.
+Total Environ. 959, 178275 (2025).
+18. Strokal, M. et al. Advancing water quality model intercomparisons under global change:
+perspectives from the new ISIMIP water quality sector. Environ. Res. Water 1, 035002 (2025).
+19. Sass, G. Z., Creed, I. F., Bayley, S. E. & Devito, K. J. Understanding variation in trophic status of
+lakes on the Boreal Plain: a 20 year retrospective using Landsat TM imagery. Remote Sens.
+Environ. 109, 127–141 (2007).
+20. Pahlevan, N. et al. Seamless retrievals of chlorophyll-a from Sentinel-2 (MSI) and Sentinel-3
+(OLCI) in inland and coastal waters: A machine-learning approach. Remote Sens. Environ. 240,
+111604 (2020).
+21. Hu, M. et al. A dataset of trophic state index for nation-scale lakes in China from 40-year Landsat
+observations. Sci. Data 11, 659 (2024).
+22. Guildford, S. J. & Hecky, R. E. Total nitrogen, total phosphorus, and nutrient limitation in lakes
+and oceans: Is there a common relationship? Limnol. Oceanogr. 45, 1213–1223 (2000).
+23. Desbureaux, S. et al. Mapping global hotspots and trends of water quality (1992 –2010): a data
+driven approach. Environ. Res. Lett. 17, 114048 (2022).
+24. McDowell, R. W., Noble, A., Pletnyakov, P. & Mosley, L. M. Global database of diffuse riverine
+nitrogen and phosphorus loads and yields. Geosci. Data J. 8, 132–143 (2021).
+25. van Vliet, M. T. H. et al. Global water scarcity including surface water quality and expansions of
+clean water technologies. Environ. Res. Lett. 16, 024020 (2021).
+26. Higler, L. W. G. A Worldwide Surface Water Classi ﬁcation System (UNESCO, 1988).
+27. UNEP & GEMS Water. SDG Indicator 6.3.2 Technical Guidance Document No. 2 Target Values
+(UNEP & GEMS Water, 2020).
+28. MWR. Technological Regulations for Surface Water Resources Quality Assessment (Ministry of
+Water Resources, Beijing, China, 2007).
+29. Carlson, R. E. A trophic state index for lakes1. Limnol. Oceanogr. 22, 361–369 (1977).
+30. OECD. Surface Water Quality Regulation in EECCA Countries - Directions for Reform: Annex 1:
+Data Sheets for Surface Water Quality Standards (OECD, 2007).
+31. Poikane, S. et al. Estimating nutrient thresholds for eutrophication management: novel insights
+from understudied lake types. Sci. Total Environ. 827, 154242 (2022).
+32. UNDRR. Sendai Framework for Disaster Risk Reduction 2015 - 2030 (UNDRR, 2015).
+33. IPCC. Climate Change 2022: Impacts, Adaptation and Vulnerability. Working Group II
+Contribution to the Sixth Assessment Report of the Intergovernmental Panel on Climate
+Change. (Intergovernmental Panel on Climate Change, 2022).
+34. Red ﬁeld, A. C. On the proportions of organic derivatives in sea water and their relation to the
+composition of plankton. in James Johnstone Memorial, Vol 176 –192 (University Press of
+Liverpool, 1934).
+35. Frost, P. C. et al. Interactive effects of nitrogen and phosphorus on growth and stoichiometry of
+lake phytoplankton. Limnol. Oceanogr. 68, 1172–1184 (2023).
+36. Chorus, I. & Spijkerman, E. What Colin Reynolds could tell us about nutrient limitation, N:P ratios
+and eutrophication control. Hydrobiologia 848,9 5–111 (2021).
+37. Du, E. et al. Global patterns of terrestrial nitrogen and phosphorus limitation. Nat. Geosci. 13,
+221–226 (2020).
+38. Natural Earth. 1:10m Cultural Vectors. https://www.naturalearthdata.com/downloads/110m-
+physical-vectors/ (2024).
+39. Varis, O., Taka, M. & Kummu, M. The planet ’s stressed river basins: too much pressure or too
+little adaptive capacity? Earth’s Future 7, 1118–1135 (2019).
+40. Varis, O. & Zhao, D. China ’s eight water risks. Int. J. Water Resour. Dev. 41, 2448720 (2025).
+41. Varis, O., Taka, M. & Kummu, M. Mapping world’s coastal population facing water-related risks.
+Geogr. Sustain. 100411 https://doi.org/10.1016/j.geosus.2026.100411 (2026).
+42. Varis, O. Temporal sensitivity of Aphanizomenon ﬂos-aquae dominance — A whole-lake
+simulation study with input perturbations. Ecol. Model. 43, 137–153 (1988).
+Acknowledgements
+The authors are grateful for the invaluable comments of Prof. Michelle V.T. van Vliet to the manuscript.
+This work was supported by Maa- ja vesitekniikan tuki r.y, grant number 802503. D.Z. is funded by
+National Natural Science Foundation of China (Grant No. 42401379, 42561144298).
+Author contributions
+O.V. has been responsible for all aspects of the work, from concept and data to writing, via design,
+data analysis, drafting, ﬁnalization, and accountability. D.Z. has written, edited, and reviewed the
+manuscript.
+Competing interest
+O.V. and D.Z. are the Editorial Board Member and the Associate Editor of npj Clean Water,
+respectively. Neither of them was involved in the journal’s review of, or decisions related to, this
+manuscript. Besides, both authors declare that they have no known competingﬁnancial interests or
+personal relationships that could have appeared to inﬂuence the work reported in this manuscript.
+Additional information
+Supplementary informationThe online version contains supplementary material available at
+https://doi.org/10.1038/s41545-026-00562-x.
+Correspondence and requests for materials should be addressed to Olli Varis or Dandan Zhao.
+Reprints and permissions informationis available at
+http://www.nature.com/reprints
+Publisher’sn o t eSpringer Nature remains neutral with regard to jurisdictional claims in published
+maps and institutional afﬁliations.
+Open Access This article is licensed under a Creative Commons Attribution-NonCommercial-
+NoDerivatives 4.0 International License, which permits any non-commercial use, sharing,
+distribution and reproduction in any medium or format, as long as you give appropriate credit to the
+original author(s) and the source, provide a link to the Creative Commons licence, and indicate if you
+modiﬁed the licensed material. You do not have permission under this licence to share adapted
+material derived from this article or parts of it. The images or other third party material in this article
+are included in the article’s Creative Commons licence, unless indicated otherwise in a credit line to
+the material. If material is not included in the article’s Creative Commons licence and your intended
+use is not permitted by statutory regulation or exceeds the permitted use, you will need to obtain
+permission directly from the copyright holder. To view a copy of this licence, visit http://
+creativecommons.org/licenses/by-nc-nd/4.0/.
+© The Author(s) 2026
+npj | clean water Comment
+npj Clean Water | (2026) 9:23 6
