@@ -1,0 +1,1273 @@
+58
+PHOTOSYNTHETICA
+International Journal for Photosynthesis Research
+Special issue in honor of Prof. Suleyman I. Allakhverdiev
+REVIEW
+Salt stress in cyanobacteria and its relevance to energy management
+I. ALAMIN*,**, J. SEBESTA***, V .A. DENNIS**, J. YU***,+ , and H.J.M. HOU*,**,+
+RENEW Cyanobacteria Collection Center, Department of Physical and Forensic Sciences, Alabama State 
+University, Montgomery, AL 36104, USA*
+Center for NanoBiotechnology Research, Ph.D. Program in Microbiology, Department of Biological Sciences, 
+Alabama State University, Montgomery, AL 36104, USA**
+Biosciences Center, National Laboratory of the Rockies, Golden, Colorado 80401, USA***
+Abstract
+Keywords: carbon imbalance; cyanobacteria; energy management; metabolism; metabolite overflow; salinity.
+Abbreviations: 2-OG – 2-oxoglutarate; ATP – adenosine triphosphate; GC–MS – gas chromatography–mass spectrometry; HPLC – 
+high-performance liquid chromatography; LC–MS/MS – liquid chromatography–tandem mass spectrometry; MFA – metabolic flux 
+analysis; PHB – polyhydroxybutyrate; PII – nitrogen regulatory protein PII; ROS – reactive oxygen species; TCA – tricarboxylic acid.
+Acknowledgments: We thank Barry Bruce and two anonymous reviewers for their constructive critiques to improve the quality 
+of the manuscript. We appreciate Himadri Pakrasi, Fuzhong Zhang, Yinjie Tang, Yixin Chen, Katherine Chou, and B.K. Robertson 
+via the tri-institutional (NLR–WashU–ASU) cyanobacteria team for stimulating discussion. This work was supported by the U.S. 
+Department of Energy, SFEE program (DE-SC002567) and RENEW program (DE-SC0024702), and in part by the National Science 
+Foundation (NSF MCB-2428256). This work was authored in part by the National Laboratory of the Rockies for the U.S. Department 
+of Energy (DOE) under Contract No. DE-AC36-08GO28308. Funding provided by the U.S. Department of Energy Office of Science 
+Office of Biological and Environmental Science under Secure Biosystems Design Science Focus Area (SFA). The views expressed in 
+the article do not necessarily represent the views of the DOE or the U.S. Government. The U.S. Government retains, and the publisher, 
+by accepting the article for publication, acknowledges that the U.S. Government retains a nonexclusive, paid-up, irrevocable, worldwide 
+license to publish or reproduce the published form of this work, or allow others to do so, for U.S. Government purposes.
+Conflict of interest: The authors declare that they have no conflict of interest.
+ Received 30 March 2026
+ Accepted 11 June 2026
+ Published online 30 July 2026
+ +Corresponding authors 
+ e-mail: jianping.yu@nlr.gov
+ hhou@alasu.edu
+DOI 10.32615/ps.2026.015 PHOTOSYNTHETICA 64 (SI): 58-70, 2026
+Energy management in photosynthetic organisms occurs at multiple levels, including the electron transfer and 
+metabolic reactions. Salt stress imposes osmotic, ionic, energetic, and oxidative constraints on cyanobacteria, 
+profoundly reshaping carbon allocation and photosynthetic performance. To maintain osmotic balance, cyanobacteria 
+employ a salt-out strategy, accumulating compatible solutes such as glucosylglycerol and sucrose while maintaining 
+low intracellular Na⁺ concentrations. This review provides a comprehensive perspective by synthesizing current 
+knowledge on cyanobacterial overflow under salt stress, emphasizing its physiological context rather than focusing 
+on a single dedicated pathway. We compare metabolite overflow responses under nitrogen limitation, high light, 
+mixotrophy, and combined stresses, and discuss methodological approaches integrating targeted analytics, untargeted 
+exometabolomics, energy charge measurements, and flux analysis. Collectively, energy management via metabolite 
+overflow under salt stress is proposed as an emergent, condition-dependent outcome of integrated carbon, energy, 
+and redox regulation.
+Highlights
+● Salt stress imposes energetic constraints and reshapes photosynthetic performance
+● Energy management occurs at the levels of electron transfer and metabolism
+● Response to salt stress is proposed for biomanufacturing via energy management
+Introduction
+Cyanobacteria, algae, and green plants can harvest sunlight 
+and store it as chemical energy. Specifically, they capture 
+sunlight energy and transfer it to the energy carriers ATP 
+and NADPH in living cells (Long et al. 2015, Ort et al. 
+2015, Hou et al. 2017, Nocera 2017, Shen et al. 2021, 
+Hou and Allakhverdiev 2023). Photosynthetic energy is 
+regulated and managed via a variety of mechanisms to 
+maintain normal growth and to survive environmental 
+59
+SALT STRESS IN CYANOBACTERIA
+stress (Aro et al. 1993, Baker and Bowyer 1994). Energy 
+management occurs at multiple levels, including at 
+the level of electron transfer and at the level of metabolic 
+reactions. Mechanisms at the electron transfer level have 
+been investigated for decades, including the xanthophyll 
+cycle, nonphotochemical quenching, cyclic and alternative 
+electron transfer, etc. (Aro et al. 1993, Baker and Bowyer 
+1994, Long et al. 1994, Niyogi 1999, Kramer et al. 
+2003). In contrast, energy management mechanisms at 
+the metabolic level are less understood. Carbon fixation 
+and metabolism also play an important role in energy 
+regulation. 
+As biomass growth is often limited by nutrient 
+limitation or other environmental conditions, a significant 
+amount of organic compounds can be secreted into the 
+medium in what is known as overflow metabolism. We 
+have reported the overflow metabolism in mutant strains 
+of cyanobacteria to study its potential in producing organic 
+acids, and to identify such a metabolism as an energy 
+regulation mechanism (Carrieri et al. 2012, Cano et al. 
+2018).
+Most living cells can only survive within a limited 
+range of salinity. While life is believed to have originated 
+in the saline environment of early oceans, modern 
+organisms exhibit significant differences in their tolerance 
+to salt (Oren 2014, Gunarathne et al. 2023). Salinity 
+remains a crucial environmental factor shaping aquatic 
+ecosystems and is increasingly a serious constraint in 
+terrestrial environments due to the global expansion of 
+soil salinization (Gunarathne et al. 2023). As a result, 
+salt acclimation has garnered long-standing interest not 
+only in ecology but also in biotechnology, particularly 
+for improving salt tolerance in crop plants (Erdmann and 
+Hagemann 2001).
+Algae and cyanobacteria are central to salt-acclimation 
+research. These photosynthetic microorganisms 
+naturally inhabit environments with high, variable, or 
+compositionally complex salinity, ranging from freshwater 
+to marine and hypersaline systems. In addition to their 
+ecological relevance, cyanobacteria serve as useful model 
+organisms for understanding how photosynthetic cells 
+respond to osmotic and ionic stress. This is due to their 
+relatively simple cellular organization, short generation 
+times, and well-developed genetic tools (Santos-Merino 
+et al. 2021). Many characteristics of cyanobacterial 
+photosynthesis, membrane composition, and signal 
+transduction closely resemble those of chloroplasts in 
+higher plants, making them valuable models for plant 
+stress biology (Gross et al. 2012).
+In cyanobacteria, an increase in external salinity 
+poses two immediate and interconnected challenges. 
+First, reduced water availability leads to water loss from 
+the cell, resulting in a decreased cell volume and turgor 
+pressure. Second, elevated concentrations of inorganic 
+ions increase the passive influx of ions such as Na⁺ and Cl⁻, 
+disrupting enzyme activity, membrane potential, and ionic 
+homeostasis (Yang et al. 2020). Successful acclimation, 
+therefore, requires a coordinated cellular response aimed at 
+restoring osmotic balance and cell volume, re-establishing 
+ion homeostasis through regulated transport and membrane 
+adjustments, and protecting proteins, nucleic acids, and 
+membranes from the combined effects of high ionic 
+strength and reduced water activity (Klähn and Hagemann 
+2011). In most cyanobacteria, these goals are achieved 
+through a salt-out strategy, in which intracellular inorganic 
+ion concentrations are kept low while osmotic adjustment 
+is facilitated by the accumulation of compatible organic 
+solutes. For example, in Synechocystis sp. PCC 6803, 
+glucosylglycerol, and sucrose serve as major osmolytes 
+(Hagemann 2011). The transcriptomics analysis revealed 
+that the salt stress response is energetically costly and 
+involves extensive changes in gene expression, protein 
+turnover, antioxidant defenses, and central metabolism 
+(Hagemann 2011, Klähn and Hagemann 2011).
+Salt stress is also closely linked to photosynthetic 
+function. Elevated Na + and Cl – concentrations impair 
+electron transport, disrupt cellular K⁺/Na⁺ balance, 
+and promote the formation of reactive oxygen species 
+(ROS), ultimately damaging the photosynthetic apparatus 
+(Long et al. 1994). The short-term salt stress is an acute 
+shock response occurring within minutes to hours, and 
+the long-term salt acclimation is a steady-state 
+physiological adaptation over extended periods. This 
+distinction is critical, as metabolic and photosynthetic 
+responses differ substantially between these two states. 
+For example, under short-term salt stress, D1 protein 
+repair inhibition contributes to photoinhibition; however, 
+in long-term salt-acclimated cells, D1 turnover rates can 
+recover to levels comparable to non-stressed conditions. 
+Since cyanobacteria depend on a continuous light-driven 
+electron flow, this creates a fundamental physiological 
+conflict: under salt stress, cells must allocate more 
+energy towards homeostasis and protection, while 
+the photosynthetic machinery becomes increasingly 
+vulnerable to over-reduction and oxidative damage (Long 
+et al. 1994). Understanding how cyanobacteria resolve this 
+imbalance is a central question in stress physiology.
+One adaptive response that has attracted attention 
+is metabolite overflow, defined as the excretion of fixed 
+carbon as small organic compounds when photosynthetic 
+carbon input exceeds the cell's capacity for growth or stable 
+storage (Hudson 2021). Rather than representing a simple 
+loss of carbon, overflow metabolism is now considered 
+a regulated strategy that stabilizes cellular redox state and 
+energy balance under metabolic constraints. Disruption 
+of major carbon storage sinks, such as glycogen, leads to 
+the extracellular accumulation of metabolites, including 
+pyruvate and 2-oxoglutarate. Similar excretion patterns 
+can occur due to high light or nutrient imbalances (Cano 
+et al. 2018). Salt stress can promote overflow through 
+several mechanisms: increased ATP demand for ion 
+transport and compatible solute synthesis, altered carbon 
+partitioning away from biomass, and heightened oxidative 
+pressure on the photosynthetic electron transport chain 
+(Allakhverdiev and Murata 2008). At the same time, 
+the biosynthesis of osmolytes can compete for carbon 
+internally, which means salt stress may either suppress 
+or enhance overflow, depending on the species, genetic 
+background, nutrient availability, and light conditions. 
+These opposing influences make salt-associated metabolite 
+60
+I. ALAMIN et al.
+overflow a complex and still incompletely understood 
+phenomenon. 
+Beyond its physiological significance, metabolite 
+overflow under salt stress has important biotechnological 
+implications. Large-scale cyanobacterial cultivation is 
+often envisioned in seawater-based systems to conserve 
+freshwater resources and reduce contamination risks 
+(Bolay et al. 2025). However, salt acclimation imposes 
+substantial energetic costs and can divert carbon away from 
+productivity, while overflow represents both a challenge, 
+due to carbon loss, and an opportunity, as naturally secreted 
+metabolites could be redirected toward valuable products 
+such as organic acids, alcohols, or polyhydroxybutyrate 
+(PHB)/3-hydroxybutyrate-related compounds (Bai et al. 
+2025). Achieving predictable and efficient production 
+under saline conditions, therefore, requires a mechanistic 
+understanding of how osmotic and ionic stress intersect 
+with photosynthetic performance, carbon storage, and 
+metabolite export. In addition, hypoosmotic shock 
+reduction in salinity can activate mechanosensitive 
+channels, resulting in the release of intracellular compatible 
+solutes, a process known as ‘bacterial milking’, which has 
+been explored for metabolite harvesting.
+In this review, we provide perspective by synthesizing 
+current knowledge on cyanobacterial energy management 
+under salt stress and integrating physiological, 
+methodological, and mechanistic perspectives. We first 
+summarize the core processes underlying salt acclimation 
+in cyanobacteria, with emphasis on osmotic adjustment, 
+ion transport, and photosynthetic vulnerability. We 
+then describe experimental strategies for detecting and 
+quantifying overflow, including targeted analytical 
+approaches and exometabolomics compatible with high-
+salinity systems. Next, we compare overflow responses 
+across environmental conditions and genetic backgrounds 
+to identify recurring patterns associated with salinity stress. 
+By integrating these perspectives, this review aims to 
+provide a framework for interpreting overflow metabolism 
+in natural saline environments and for guiding the rational 
+design of cyanobacterial strains and cultivation strategies 
+for seawater-based bioprocesses.
+Physiology of cyanobacteria under salt stress
+Cyanobacteria encounter a multifaceted physiological 
+challenge in response to salt stress, which involves complex 
+interactions among osmotic stress, ionic imbalance, and 
+secondary oxidative and metabolic stresses rather than 
+a singular disturbance (Erdmann and Hagemann 2001, 
+Yang et al. 2020). An increase in external salinity exposes 
+these microorganisms to a variety of physiological 
+responses; namely, the influx of sodium (Na⁺) and chloride 
+(Cl⁻) ions occurs simultaneously (Fig. 1). These stresses are 
+not independent; rather, they interact in intricate ways that 
+influence both the immediate cellular responses to elevated 
+salinity and the long-term acclimatization processes that 
+enable growth to resume in saline environments. While 
+most of our in-depth knowledge arises from a relatively 
+small number of extensively studied model strains, 
+the fundamental physiological strategies employed to 
+cope with salt stress are notably conserved across diverse 
+cyanobacterial species inhabiting freshwater, brackish, 
+marine, and hypersaline ecosystems.
+Early salt shock responses: rapid osmotic and ionic 
+imbalance: When cyanobacteria are abruptly exposed 
+to elevated salinity, they undergo an immediate phase of 
+osmotic shock, marked by rapid water efflux from the cell 
+due to a steep osmotic gradient (Fig. 1). This loss results in 
+a significant reduction in cell volume and turgor pressure. 
+If this loss of turgor is not promptly compensated, it can 
+destabilize membranes and compromise the structural 
+Fig. 1. Two phases of response mechanisms of cyanobacteria under salt stress conditions.
+61
+SALT STRESS IN CYANOBACTERIA
+integrity of the cellular architecture (Pade and Hagemann 
+2015). Additionally, the elevated concentrations of 
+Na⁺ and Cl⁻ ions in the external environment facilitate 
+their passive influx into the cytoplasm, driven by 
+established electrochemical gradients. The uncontrolled 
+accumulation of these ions poses a substantial threat 
+to cellular bioenergetics and viability by disrupting 
+enzyme activities, membrane potential, and intracellular 
+pH. This acute phase of the salt shock occurs within 
+seconds to minutes and is physiologically distinct from 
+the subsequent acclimatization period. Transcriptomic 
+and proteomic studies consistently indicate that numerous 
+stress-responsive genes and proteins may be transiently 
+induced during this initial response phase, signifying 
+an emergency mobilization of cellular resources rather 
+than a transition toward stable metabolic adaptation 
+(Yu et al. 2024). As the duration of salt exposure increases, 
+many of these early physiological alterations diminish, 
+suggesting that measurements taken shortly after the onset 
+of salt exposure may not accurately reflect the physiology 
+of cells that have transitioned to acclimation.
+Osmotic adjustment via compatible solutes: To restore 
+turgor pressure while avoiding toxic intracellular ion 
+concentrations, most cyanobacteria employ a salt-out 
+strategy. To avoid high internal concentration of inorganic 
+ions, Na+ is actively exported, while osmotic adjustment 
+is achieved by synthesizing or importing compatible 
+solutes, small organic molecules that can accumulate to 
+high concentrations without impairing enzymatic function. 
+The specific types of compatible solutes produced 
+generally correspond to the level of salt tolerance in that 
+species. For example, many moderately halotolerant 
+species predominantly synthesize glucosylglycerol, while 
+species with low salt tolerance use trehalose or sucrose, 
+and halophiles use glycine betaine or glutamate (Pade et al. 
+2015). The metabolic investment required for the synthesis 
+of these compatible solutes is substantial, necessitating 
+significant amounts of fixed carbon, adenosine 
+triphosphate (ATP), and reducing power. This leads to 
+a pronounced reorganization of central carbon metabolism 
+during the acclimatization process (Furmaniak et al. 2017, 
+Klähn et al. 2021). The diversion of metabolic resources 
+toward osmolyte production disrupts the typical balance 
+between growth, storage, and other metabolic obligations. 
+Consequently, cyanobacteria that have acclimated to 
+salt stress frequently exhibit reduced growth rates and 
+distinct intracellular and extracellular metabolite profiles 
+compared to unstressed cells, even after restoration of 
+osmotic balance.
+Ion homeostasis and membrane transport: 
+The accumulation of compatible solutes is insufficient 
+for survival in saline conditions due to the ongoing influx 
+of Na⁺ and Cl⁻ ions. Thus, it becomes imperative for 
+cyanobacteria to actively regulate ion transport to prevent 
+cytotoxic concentrations of these ions from accumulating 
+within the cell. Maintaining a high intracellular potassium 
+(K⁺)/sodium (Na⁺) ratio is especially critical, as numerous 
+enzymes, ribosomes, and pivotal metabolic processes 
+are exceedingly sensitive to elevated Na⁺ concentrations 
+(Roychoudhury et al. 2025). Ion homeostasis is achieved 
+through the coordinated activity of various membrane 
+transport systems, including Na⁺/H⁺ antiporters and other 
+specific ion transporters. The energy demands of these 
+systems are considerable, as the export of ions is coupled 
+to proton gradients generated by both photosynthetic and 
+respiratory electron transport processes. The maintenance 
+energy cost of salt stress is 10× the energy cost without 
+salt stress in E. coli (Schink et al. 2024). Furthermore, salt 
+stress alters membrane lipid composition and transporter 
+abundance, thereby influencing membrane permeability 
+and transport efficiency (Roychoudhury et al. 2025). These 
+findings underscore the notion that membranes serve not 
+only as passive barriers but as integral regulatory platforms 
+essential for acclimation to marine environments.
+Effects of salt stress on membranes and the 
+photosynthetic apparatus: The plasma membrane and 
+thylakoid membrane system are directly affected by salt 
+stress (Sudhir et al. 2005). Changes in ionic strength and 
+water activity impact membrane fluidity, protein–lipid 
+interactions, and the stability of large photosynthetic 
+complexes. Because cyanobacteria carry out both 
+photosynthesis and a significant portion of respiratory 
+electron transport within the thylakoid membrane, 
+perturbations at this level have system-wide consequences 
+(Agrawal et al. 2015). Experimental studies show 
+that salt stress disrupts electron transport in both 
+Photosystem II (PSII) and Photosystem I (PSI). Altered 
+K⁺/Na⁺ ratios and direct ionic effects on protein complexes 
+impair electron flow, increasing susceptibility to 
+photoinhibition. Importantly, salt stress does not primarily 
+accelerate photodamage itself but instead inhibits 
+the repair of damaged PSII by suppressing the synthesis 
+of key components, particularly the D1 protein encoded 
+by the psbA genes (Allakhverdiev et al. 2002, Marin 
+et al. 2003, Allakhverdiev and Murata 2008). As a result, 
+photoinhibition becomes more severe under illumination, 
+even at moderate salt concentrations. These responses are 
+not unique to salt stress but are part of a broader general 
+stress response shared across multiple abiotic stress 
+conditions.
+Oxidative stress as a secondary consequence: 
+The disruption of photosynthetic electron transport 
+caused by salt stress significantly impacts cyanobacterial 
+physiology by leading to an over-reduction of the electron 
+transport chain. This over-reduction facilitates the increased 
+production of reactive oxygen species (ROS), primarily 
+at the PSII and PSI complexes. The phenomenon is 
+particularly pronounced when light absorption persists at 
+high levels despite reduced metabolic demand, leading to 
+unchecked ROS accumulation that can adversely affect 
+cellular integrity and function (Liu et al. 2021). Elevated 
+concentrations of ROS are highly damaging; they can 
+cause oxidative damage to vital cellular structures, such 
+as proteins, lipids, and nucleic acids. This oxidative 
+damage further undermines photosynthetic efficiency 
+and disrupts membrane integrity, thereby harming 
+62
+I. ALAMIN et al.
+cellular health. Moreover, high ROS concentrations can 
+inhibit protein synthesis by targeting essential translation 
+factors, thereby exacerbating the inhibition of PSII repair 
+mechanisms and intensifying photoinhibition, a state 
+in which the photosynthetic apparatus is subjected to 
+stress and impaired in the light-energized environment 
+(Foyer 2018). To combat the harmful effects of oxidative 
+damage, cyanobacteria have evolved a range of protective 
+strategies. These mechanisms encompass the activation 
+of various antioxidant enzymes that scavenge ROS, 
+the accumulation of carotenoids that provide 
+photoprotection, the activation of energy-dissipating 
+pathways that help regulate excess excitation energy, and 
+the synthesis of photoprotective proteins, all of which 
+work synergistically to mitigate oxidative stress.
+Two-phase acclimation and system-level reprogram-
+ming: Cyanobacterial acclimation to salt stress can be 
+described in terms of two distinct but interrelated phases 
+(Fig. 1). The initial shock phase is marked by rapid 
+physiological responses, characterized by extensive 
+alterations in gene expression and metabolic pathways 
+that protect the organism from immediate cellular damage. 
+During this phase, there is an influx of signaling that 
+triggers an array of protective measures aimed at stabilizing 
+cellular function under stress. Following this initial 
+response, the organism enters a longer-term adaptation 
+phase, during which a narrower and more specialized suite 
+of processes is sustained. This includes the synthesis of 
+compatible solutes that help maintain cellular osmotic 
+balance, the activation of ion transport mechanisms to 
+manage toxic ion concentrations, membrane remodeling 
+to enhance cellular resilience, and the fortification of 
+antioxidant defenses to counteract persistent oxidative 
+stress (Hagemann 2011, Klähn and Hagemann 2011, Kim 
+et al. 2016, Yang et al. 2020). Comprehensive system-
+level analyses have revealed that acclimating to saline 
+environments necessitates a global reallocation of cellular 
+resources. In response to increasing energy demands for 
+ion pumping and repair processes, carbon flux is redirected 
+away from biomass production toward maintenance and 
+protective functions. This strategic reallocation implies that 
+photosynthetic output must be meticulously controlled to 
+prevent a redox imbalance that could compromise cellular 
+integrity. Thus, the cell's metabolic landscape undergoes 
+significant restructuring under saline conditions, reflecting 
+the organism's acute adaptability to environmental 
+stressors (Erdmann and Hagemann 2001, Hagemann 2011, 
+Klähn and Hagemann 2011, Yang et al. 2020).
+Physiological context for energy management under 
+salt stress: From a physiological standpoint, salt stress 
+engenders a complex interplay between energy availability 
+and biosynthetic capacity that is often untenable. 
+The photosystems in cyanobacteria may continue to 
+capture light energy effectively; however, growth and 
+macromolecular synthesis are constrained by osmotic, 
+ionic, and oxidative challenges. Under these adverse 
+conditions, the synthesis of compatible solutes, which 
+serve as protective osmotic agents, starts to compete 
+with other carbon sinks within the cell. Concurrently, 
+the associated maintenance energy costs rise sharply, 
+leading to a resource balance precariously adjusted. 
+The overflow of pyruvate and 2-oxoglutarate observed 
+in glycogen mutants during N-starvation is abolished by 
+adding salt stress because the synthesis of glucosylglycerol 
+replaces the sink (Díaz-Troya et al. 2020).
+In response to the physiological challenges posed by 
+salt stress, cyanobacteria may redirect excess fixed carbon 
+into storage polymers, a strategy that helps preserve some 
+nutrients. In certain instances, they may also excrete 
+low-molecular-mass metabolites into the surrounding 
+environment to manage internal stress. The extent to 
+which salt stress facilitates or inhibits this metabolite 
+overflow depends on a delicate balance among osmolyte 
+production capacity, available storage capacity, and 
+overall photosynthetic activity. It is crucial to understand 
+that overflow metabolism under salt stress does not arise as 
+a straightforward or inevitable result of increased salinity; 
+rather, it is an emergent property that reflects the intricate, 
+integrated nature of cellular physiology under challenging 
+environmental conditions. To date, there is limited direct 
+evidence demonstrating metabolite excretion under 
+steady-state salt-acclimated conditions (Carrieri et al. 
+2010, Díaz-Troya et al. 2020); therefore, this option should 
+be considered a hypothesis requiring further investigation.
+Mechanisms of cyanobacterial energy 
+management 
+The phenomenon of energy management, including 
+metabolite overflow, in cyanobacteria can best be 
+interpreted as a complex interplay of physiological, 
+metabolic, and regulatory mechanisms, rather than 
+a simplistic linear pathway (Chi et al. 2019). As shown 
+in Fig. 2, current research suggests that the mechanisms 
+facilitating overflow can be categorized into three 
+conceptual layers: (a) the driving forces that promote 
+overflow, (b) the metabolic branch points at which excess 
+carbon is generated, and (c) the pathways that enable 
+metabolites to be extruded into the extracellular space.
+Driving forces
+Sink limitation and constrained anabolic capacity: 
+When cyanobacteria are subjected to salt stress, they 
+Fig. 2. Simplified scheme of metabolite overflow in cyanobacteria 
+and possible role in energy management.
+63
+SALT STRESS IN CYANOBACTERIA
+face significant challenges that impose a substantial 
+energetic and biosynthetic burden. Stress prompts 
+a reallocation of resources towards essential functions such 
+as stress defense and cellular maintenance, specifically 
+ion transport mechanisms, membrane repair processes, 
+antioxidant defense systems, and the production of 
+compatible solutes (Soru 2019). As a result of these 
+diverted resources, processes such as protein synthesis, 
+cell growth, and cellular division commonly slow down. 
+Interestingly, while light harvesting and carbon fixation 
+can persist, the overall anabolic activity is hindered. 
+Under these conditions, anabolic sinks, such as biomass 
+formation and macromolecular synthesis, become limited, 
+leading to an accumulation of fixed carbon within central 
+metabolic intermediates. This accumulation consequently 
+increases the likelihood that carbon will be diverted from 
+intracellular metabolic pathways, ultimately leading to 
+the export of overflow metabolites from the cell (Hudson 
+2021). Alternatively, even salt-stressed cells do not 
+excrete organic compounds under steady-state conditions, 
+because they build up a high intracellular carbon sink, 
+the compatible solute pool; hence, excess organic 
+carbon should be used to maintain this pool according to 
+the growth rate. While this mechanism is plausible based 
+on current metabolic understanding, direct experimental 
+validation under salt stress conditions remains limited. 
+Energy and redox balance: Another significant aspect 
+of overflow metabolism is its role in maintaining 
+energy and redox balance amidst metabolic imbalances. 
+The process of exporting reduced carbon compounds can 
+help mitigate elevated levels of intracellular metabolites 
+while also aiding in the dissipation of excess ATP and 
+reduced equivalents generated during photosynthesis 
+(Hudson 2021). This phenomenon has been prominently 
+demonstrated in studies involving glycogen-deficient 
+cyanobacterial mutants, in which the excretion of organic 
+acids is tightly correlated with changes in cellular energy 
+charge, necessitating compensatory adjustments in 
+photosynthetic activity. Under salt stress, this balance can 
+be altered in multiple ways. Increased ATP consumption 
+from processes such as ion pumping and the synthesis 
+of compatible solutes heightens the risk of oxidative 
+stress, especially under illuminated conditions (Jassal 
+et al. 2025). Furthermore, the inherent capacity for internal 
+carbon storage sinks might be affected or even temporarily 
+saturated. Collectively, these factors foster an environment 
+in which overflow metabolism emerges as a strategic 
+approach to stabilize cellular energy and maintain redox 
+homeostasis. Consistent with this view, mutant-based 
+studies by Cano et al. (2018) that disrupt carbon–nitrogen 
+balance, such as glycogen-deficient strains, demonstrate 
+distinct overflow phenotypes, highlighting the central role 
+of metabolic regulation in controlling metabolite excretion.
+Intersection of stress signaling and carbon regulation: 
+The acclimatization of cyanobacteria to high salinity 
+is a highly coordinated process governed by intricate 
+regulatory networks that blend environmental sensing with 
+metabolic control mechanisms. Salt-responsive histidine 
+kinases, alongside global transcriptional regulators, 
+regulate expression patterns encompassing not only 
+stress defense mechanisms but also key central metabolic 
+pathways (Chaffai et al. 2024). Central regulatory systems 
+that interlink carbon and nitrogen metabolism respond 
+to fluctuations in the concentrations of intracellular 
+metabolites such as ATP, ADP, and 2-oxoglutarate 
+(Forchhammer and Selim 2020). This integration of 
+regulatory networks suggests that overflow metabolism 
+may function as an actively modulated response rather 
+than a purely passive outcome of metabolite accumulation. 
+In this context, overflow metabolism reflects 
+an orchestrated redistribution of carbon flux catalyzed 
+by stress signaling networks that prioritize cellular survival 
+at the expense of growth (Hudson 2021). The recent work 
+by Alford et al. analyzed overflow metabolisms in different 
+mutants with affected C/N regulation (Alford et al. 2025).
+Metabolic branch points
+Pyruvate as a central metabolic node: Pyruvate plays 
+a pivotal role in the metabolic network of cyanobacteria, 
+serving as a central hub at the convergence of glycolysis, 
+Calvin cycle-derived carbon metabolism, and acetyl-CoA 
+formation. When the pathways responsible for downstream 
+utilization become saturated or limited, pyruvate contents 
+can increase significantly. This excess pyruvate may 
+be excreted directly or rerouted to fermentative or 
+overflow pathways, which may be native to the organism 
+or introduced through metabolic engineering efforts 
+(Pathania and Srivastava 2025). Experimental evidence 
+strongly supports pyruvate as a major branching point for 
+overflow metabolism. For example, Cano et al. (2018) 
+demonstrated that a glycogen-deficient Synechocystis sp. 
+PCC 6803 mutant (ΔglgC) accumulated high intracellular 
+energy charge and released significant amounts of 
+pyruvate and 2-oxoglutarate into the extracellular 
+medium, particularly under conditions of elevated light 
+input (Foyer 2018). These results indicated that when 
+the primary carbon storage pathway is impaired, central 
+metabolites such as pyruvate become key outlets for 
+excess photosynthetic carbon and energy. Numerous 
+investigations of organic acid production in cyanobacteria 
+have consistently underscored the importance of pyruvate 
+as a critical branching point from which a variety of 
+overflow products can be synthesized (Pathania and 
+Srivastava 2025). In addition to organic acids, several 
+amino acids derived from pyruvate may also contribute to 
+overflow, particularly under nitrogen-limited conditions 
+when the glycogen sink is absent.
+Metabolite 2-oxoglutarate as a carbon-nitrogen signal: 
+Metabolite 2-oxoglutarate (2-OG) serves dual functions in 
+cyanobacterial systems, acting as both a crucial metabolic 
+intermediate and a signaling molecule that links carbon 
+status to nitrogen availability. Under nitrogen limitation, 
+2-OG tends to accumulate and is particularly prone to 
+excretion in strains with impaired carbon storage (Cano 
+et al. 2018, Esteves-Ferreira et al. 2018). Its intracellular 
+concentrations are finely tuned by nitrogen assimilation 
+64
+I. ALAMIN et al.
+processes and regulatory proteins that detect the carbon-
+to-nitrogen balance, including pathways governed by 
+PII-dependent signaling networks. The dynamics of 
+2-OG are likely to be affected by salt stress, even when 
+sufficient external nitrogen is present. Variations in energy 
+status, redox balance, and nitrogen-assimilation efficiency 
+can induce a state resembling functional nitrogen stress, 
+leading to enhanced accumulation of 2-OG and its 
+potential release as an overflow metabolite (Cano et al. 
+2018, Robles-Rengel et al. 2019). In the study by Cano 
+et al. (2018), extracellular excretion of 2-oxoglutarate 
+and pyruvate occurred not only under nitrogen starvation 
+but also under nitrogen-replete conditions when energy 
+input exceeded cellular assimilation capacity, indicating 
+that energy imbalance alone can trigger overflow 
+metabolism. The experimental evidence for 2-oxoglutarate 
+accumulation is best demonstrated in studies where cells 
+are shifted from nitrate to ammonium conditions.
+Carbon storage vs. export: glycogen, PHB, and 
+compatible solutes: Cyanobacteria possess multiple 
+internal carbon sinks that can buffer excess fixed carbon, 
+including glycogen, polyhydroxybutyrate (PHB) in certain 
+species or conditions, and compatible solutes such as 
+glucosylglycerol and sucrose, which are utilized during 
+salt acclimation (Lucius 2024). Among these, glycogen 
+represents a major storage sink that generally suppresses 
+overflow when functioning efficiently. Salt stress increases 
+the demand for compatible solutes, drawing carbon into 
+osmolyte synthesis. A useful working hypothesis is 
+that if the capacity or regulation of compatible solute 
+synthesis is limiting or delayed, particularly during early 
+phases of salt shock, fixed carbon may transiently exceed 
+the buffering capacity of internal sinks and spill into 
+overflow metabolites such as organic acids or other 
+exudates, based on the experimental data from rice 
+(Owen 1987). This hypothesis is not a reliable support 
+for this scenario in salt-shocked cyanobacteria and may 
+be tested using time-resolved exometabolomics combined 
+with measurements of osmolyte pathway enzyme 
+expression and abundance, including key enzymes such as 
+glucosylglycerol-phosphate synthase (Hagemann 2011). 
+This hypothesis remains to be validated specifically in 
+cyanobacteria under salt stress.
+Export routes: Overflow metabolism requires not only 
+the production of excess metabolites but also their release 
+into the extracellular environment. Several non-mutually 
+exclusive routes may contribute to this process.
+One possibility is transport via specific or low-
+specificity membrane transporters. Some organic acids and 
+sugars are known to be exported by dedicated transport 
+systems, and salt acclimation is accompanied by changes 
+in transporter expression profiles, suggesting a role for 
+regulated export mechanisms. Alternatively, changes in 
+membrane permeability under salt and oxidative stress 
+may facilitate passive leakage. Salt-induced alterations in 
+membrane composition, combined with ROS-mediated 
+damage, can increase membrane permeability and modify 
+efflux behavior, thereby contributing to the accumulation 
+of extracellular metabolites. A third, species-dependent 
+mechanism involves the release of outer membrane 
+vesicles, which can contribute to extracellular pools 
+of metabolites and small molecules, even if not 
+always classified as classical overflow metabolism. 
+Mechanosensitive channels likely play a critical role in 
+mediating metabolite release during osmotic transitions, 
+particularly during hypoosmotic shock.
+A major unresolved challenge in the field is 
+distinguishing between regulated export and damage-
+associated leakage. Addressing this question requires 
+an integrated experimental approach that combines 
+exometabolomics with viability assays, membrane 
+integrity measurements, and time-resolved stress markers 
+(Pinu et al. 2018). Such strategies are essential for 
+determining whether overflow under salt stress represents 
+an adaptive, regulated process or a byproduct of cellular 
+damage or, most likely, a continuum between the two. Cano 
+et al. (2018) addressed this question using live/dead cell 
+staining. In that example, live cells were found to overflow 
+metabolites (Cano et al. 2018). Additionally, Kirsch et al. 
+(2017) reported the role of the glucosylglycerol-degrading 
+enzyme in acclimation to fluctuating salinities.
+Overflow metabolism under different conditions
+Overflow metabolism in cyanobacteria is not restricted to 
+a single environmental trigger but emerges across 
+a range of conditions that create imbalances among carbon 
+fixation, energy input, and biosynthetic capacity. Studies 
+across model cyanobacteria have shown that nutrient 
+availability, light intensity, carbon source, and salinity all 
+influence whether fixed carbon is retained internally or 
+released into the extracellular environment.
+Carbon–nutrient imbalance: nitrogen limitation and 
+glycogen as a primary carbon sink: Nitrogen starvation 
+is one of the best-characterized conditions that promote 
+overflow-like phenotypes in cyanobacteria. Under 
+nitrogen deprivation, photosynthetic carbon fixation can 
+continue for some time, while growth and protein synthesis 
+slow down due to limited nitrogen availability. Many 
+cyanobacteria respond by diverting excess fixed carbon 
+into glycogen, which serves as a primary storage sink and 
+helps stabilize cellular energy balance. When glycogen 
+synthesis is disrupted, however, this buffering capacity 
+is lost, and carbon is forced into alternative pathways, 
+including extracellular excretion.
+A landmark study demonstrated that glycogen synthesis 
+and metabolite overflow jointly contribute to energy 
+balancing in Synechocystis sp. PCC 6803. Glycogen-
+deficient strains excreted organic acids, particularly 
+pyruvate and 2-oxoglutarate, under nitrogen starvation 
+and, notably, even under nitrogen-replete conditions 
+when exposed to high light, provided that the energy 
+input exceeded a critical threshold (Gründel et al. 2012). 
+Complementary work in Synechococcus elongatus PCC 
+7942 further examined the factors controlling pyruvate 
+excretion in glycogen storage mutants, highlighting 
+that overflow depends strongly on the growth regime, 
+65
+SALT STRESS IN CYANOBACTERIA
+light intensity, and nutrient status, rather than nitrogen 
+availability alone (Benson et al. 2016). More recent 
+studies have continued to refine this picture, emphasizing 
+the central role of glycogen as a metabolic buffer that 
+suppresses overflow under balanced conditions. Together, 
+these findings establish glycogen as a primary carbon sink 
+that limits overflow. When glycogen capacity is reduced 
+or eliminated, overflow metabolism becomes a prominent 
+alternative route for excess fixed carbon.
+Recently, Cano et al. (2018) suggested that additional 
+carbon sinks can also participate in cellular energy 
+management. Manipulation of glycogen and sucrose 
+synthesis pathways has been shown to influence 
+photosynthetic productivity, indicating that these pathways 
+may function as ATP-consuming cycles that help balance 
+photosynthetic energy input with metabolic demand 
+(Carrieri et al. 2012, Cano et al. 2018). Reducing flux 
+through glycogen or sucrose cycling can redirect energy 
+toward growth, demonstrating that these storage pathways 
+compete with biomass production for photosynthetically 
+derived energy (Cantrell et al. 2023). Energy buffering 
+in cyanobacteria is not limited to carbon metabolism. 
+Polyphosphate metabolism has also been implicated 
+in energy management. Polyphosphate synthesis and 
+degradation can dissipate ATP, providing an additional 
+regulatory layer for maintaining energy homeostasis. 
+Deletion of the ppk gene, encoding polyphosphate kinase, 
+has been shown to increase ATP contents and enhance 
+photosynthetic productivity, suggesting that polyphosphate 
+cycling normally acts as an energy-consuming buffer that 
+stabilizes intracellular energy balance (Sebesta et al. 2024). 
+Energy buffering in cyanobacteria is not limited to 
+carbon metabolism. Polyphosphate metabolism has also 
+been implicated in energy management. Polyphosphate 
+synthesis and degradation can dissipate ATP energy, 
+providing an additional regulatory layer for maintaining 
+energy homeostasis. Deletion of the ppk gene, encoding 
+polyphosphate kinase, has been shown to increase ATP 
+levels and enhance photosynthetic productivity, suggesting 
+that polyphosphate cycling normally acts as an energy-
+consuming buffer that helps stabilize intracellular energy 
+balance (Sebesta et al. 2024).
+High light and energy-driven overflow: High light 
+intensity can also trigger overflow metabolism in 
+the absence of nutrient starvation. Under such conditions, 
+photosynthetic electron flow and ATP generation increase, 
+while downstream anabolic sinks may become saturated. 
+In glycogen-deficient backgrounds, highlight alone is 
+sufficient to induce organic acid excretion, supporting 
+the concept of energy overflow driven by excess light 
+input (Zhang et al. 2021). These observations suggest 
+a threshold behavior, whereby cyanobacteria export 
+metabolites once internal mechanisms for dissipating 
+excess energy and reducing power are exceeded. Notably, 
+the comprehensive work of the Ducat group demonstrated 
+that engineering sucrose export creates an external 
+carbon sink with multiple consequences, enhancing 
+photosynthetic activities and metabolic output (Santos-
+Merino et al. 2021).
+Mixotrophy and external carbon supply: Mixotrophic 
+growth, such as supplementation with glucose or other 
+organic carbon sources, further alters carbon flux and 
+redox balance. Under these conditions, carbon enters 
+the metabolic network through both CO 2 fixation and 
+the uptake of external substrates. Several studies report 
+enhanced secretion or excretion phenotypes in mutants or 
+under specific nutrient regimes during mixotrophic growth 
+(Zhang et al. 2021). The unifying principle remains 
+consistent: when total carbon influx exceeds the cell's 
+capacity for assimilation, storage, or balanced growth, 
+overflow pathways become energetically favorable.
+Salt stress as a potential multifactor driver of overflow: 
+Salt stress represents a particularly complex driver of 
+energy management because it simultaneously increases 
+maintenance energy demand and constrains biosynthetic 
+capacity. Ion pumping and the synthesis of compatible 
+solutes substantially increase ATP consumption, while 
+osmotic and ionic stress can slow growth and impair 
+protein synthesis. Under these conditions, photosynthetic 
+activity may persist intermittently, creating mismatches 
+between carbon fixation and utilization that favor 
+the export of metabolites.
+Salt also reshapes carbon allocation by competing with 
+internal sinks. Carbon is redirected toward compatible 
+solutes such as glucosylglycerol or sucrose, which can 
+suppress organic acid overflow in some cases. However, 
+if osmolyte synthesis is limited by regulatory bottlenecks 
+or temporal delays, particularly during the early stages 
+of salt shock, fixed carbon may transiently accumulate 
+and spill into extracellular metabolites. Additionally, salt 
+stress can intensify photoinhibition by inhibiting the repair 
+of PSII and increasing reactive oxygen species, further 
+destabilizing the redox balance and promoting the need 
+for alternative dissipation routes. System-level analyses 
+reinforce this view. Transcriptomic and metabolomic 
+studies reveal that salt acclimation entails a dynamic, 
+time-dependent reorganization of metabolic networks, 
+particularly shortly after salt exposure, encompassing 
+pathways for the synthesis of compatible solutes and 
+broader central metabolism. Such reorganization can 
+generate transient overshoots in metabolite pools, thereby 
+contributing to extracellular release.
+Importantly, overflow under salt stress should not be 
+equated with a single metabolite signature. Depending on 
+species and growth conditions, the exometabolome may 
+include organic acids, sugars, osmolytes, amino acids, 
+and other small metabolites. Salt-associated overflow is 
+therefore best viewed as a spectrum of exudation behaviors 
+rather than a uniform response.
+Sodium stress cycling represents a powerful 
+environmental strategy to enhance carbon flux toward 
+fermentative products in cyanobacteria. Carrieri et al. 
+(2010) demonstrated that growth under high salinity 
+induces substantial accumulation of soluble carbohydrates 
+(up to ~50% of dry mass), while subsequent exposure to 
+hypoionic conditions accelerates carbohydrate catabolism 
+and significantly increases fermentation product 
+yields, including ethanol, acetate, and formate. This is 
+66
+I. ALAMIN et al.
+an example under transition to low-salt conditions. Notably, 
+hydrogen production remained unchanged, indicating 
+a shift in redox balancing toward ethanol synthesis under 
+osmotic stress. Mechanistically, this process is driven by 
+osmotic regulation of metabolism, where cells redirect 
+carbon storage and overflow pathways in response to 
+ionic changes. These findings highlight the critical role 
+of environmental stress in regulating metabolic overflow 
+and carbon partitioning, offering a scalable approach 
+to improve (Carrieri et al. 2010) biofuel production in 
+cyanobacteria without genetic modification. It is important 
+to note that the limited data to support our hypothesis and 
+future work are needed to approve or reject the proposal on 
+the possibility of salt stress as a potential multifactor driver 
+of overflow in cyanobacteria.
+Engineering perspective: overflow as a platform for 
+bioproduction: From a biotechnological standpoint, 
+overflow metabolism is increasingly framed as 
+an opportunity rather than a liability (Fig. 3). If 
+cyanobacteria naturally export carbon under imbalanced 
+conditions, metabolic engineering can redirect this 
+flux toward the production of desired products. Recent 
+reviews on cyanobacterial organic acid production 
+describe strategies to channel pyruvate and related branch 
+points into lactate, acetate, acetoin, and other value-
+added compounds (Angermayr et al. 2015). In principle, 
+salt stress could serve as a controllable lever to induce 
+overflow-like states; however, this approach must balance 
+enhanced export against the negative impacts of salinity 
+on growth and photosynthetic efficiency.
+Methods to measure cyanobacterial overflow 
+(under salt stress and beyond)
+Salt acclimation in the model cyanobacterium 
+Synechocystis sp. PCC 6803 was analyzed by integrating 
+transcriptomic, proteomics, and metabolic data (Carrieri 
+et al. 2010). A dynamic reorganization occurred during 
+the first hours after salt shock. The massive accumulation 
+of glucosylglycerol then had a measurable impact on 
+the carbon and nitrogen metabolism. The data provide 
+the basis for engineering cyanobacterial salt tolerance and 
+to further understand its regulation (Klähn et al. 2021).
+At a conceptual level, metabolite overflow is defined 
+by the accumulation of extracellular metabolites over time. 
+In practice, however, accurately quantifying overflow 
+in cyanobacteria, particularly under salt stress, requires 
+careful experimental design to disentangle biological 
+secretions from physicochemical artifacts introduced by 
+saline matrices. As shown in Fig. 4, robust workflows 
+therefore integrate growth and physiological measurements 
+with targeted and untargeted exometabolomics and, when 
+possible, complementary analyses of metabolic flux, 
+energy status, and regulatory state.
+Experimental design essentials, especially under salt 
+stress: Appropriate controls are critical for interpreting 
+extracellular metabolite accumulation. Media-only 
+controls incubated under identical light and temperature 
+conditions are crucial for capturing non-biological 
+changes, such as salt-dependent chemical instability or 
+evaporation-driven concentration effects. Cell-free filtrate 
+Fig. 3. Sodium stress cycling represents a powerful environmental strategy to enhance carbon flux toward fermentative products 
+in cyanobacteria.
+67
+SALT STRESS IN CYANOBACTERIA
+controls further help verify the stability of metabolites in 
+saline matrices after sampling. Where feasible, osmotic 
+controls using non-ionic osmolytes can help separate 
+osmotic from ionic effects, although their interpretation 
+depends on the organism and the experimental question 
+(Lu et al. 2017).
+Sampling procedures must minimize post-harvest 
+artifacts. Cells should be rapidly separated from 
+the supernatant by centrifugation or filtration, and 
+intracellular metabolism should be quenched if paired 
+intracellular metabolomics are planned. In long-term 
+salt experiments, evaporation should be monitored 
+carefully, as even modest volume loss can alter effective 
+salinity and metabolite concentrations. Normalization is 
+equally important: extracellular metabolite accumulation 
+is typically normalized to optical density (OD₇₅₀), 
+chlorophyll content, dry mass, or cell counts. Because 
+salt stress can alter cell morphology and aggregation, 
+the choice of biomass proxy should be validated for each 
+condition (Ladd et al. 2021). High salinity can interfere 
+with analytical workflows, particularly liquid separation 
+techniques, due to ionic strength and charge effects, 
+representing a significant experimental challenge.
+Targeted analytical approaches for extracellular 
+overflow metabolites: Targeted analytical techniques 
+remain the backbone of overflow studies. High-performance 
+liquid chromatography (HPLC) with refractive index 
+or UV detection is commonly used to quantify organic 
+acids and sugars, including pyruvate, acetate, lactate, and 
+succinate, as well as compatible solutes such as sucrose or 
+glucosylglycerol, in some cases. HPLC is well-suited for 
+routine time-course experiments and mutant screening due 
+to its robustness and accessibility.
+Liquid chromatography–tandem mass spectrometry 
+(LC–MS/MS) offers higher sensitivity and selectivity and 
+is particularly valuable when overflow metabolites are 
+present at low concentrations or span diverse chemical 
+classes. LC–MS/MS enables simultaneous detection 
+of organic acids, amino acids, osmolytes, and selected 
+phosphorylated intermediates. Gas chromatography–mass 
+spectrometry (GC–MS) is especially effective for volatile 
+or derivatized compounds and is useful when expanding 
+analyses beyond canonical overflow metabolites to 
+include alcohols and fermentative products. Nuclear 
+magnetic resonance (NMR) spectroscopy, while less 
+sensitive, provides unambiguous structural identification 
+and absolute quantification in complex saline matrices and 
+is often used to validate findings from mass spectrometry-
+based methods.
+Untargeted exometabolomics: Untargeted exometabolo-
+mics is increasingly employed to map the extracellular 
+metabolite landscape under diverse environmental 
+conditions. This approach enables the discovery of 
+condition-specific exudate signatures and can reveal 
+unexpected metabolites associated with stress adaptation, 
+redox balancing, or osmoprotection (Ladd et al. 2021). 
+Under salt stress, untargeted methods are particularly 
+powerful because overflow is not restricted to central 
+carbon intermediates but may include amino acids, 
+osmolytes, sugars, and other stress-related metabolites. 
+High-throughput untargeted workflows also facilitate 
+systematic comparisons across nutrient regimes, light 
+intensities, and salinity levels, providing a broader view of 
+overflow phenotypes.
+Probing overflow mechanisms: energy, redox, flux, and 
+regulation: To move beyond descriptive measurements, 
+mechanistic studies of overflow often incorporate assays 
+of cellular energy and redox state. Measurements of 
+ATP, ADP, and AMP allow calculation of cellular energy 
+charge, which has been linked to overflow behavior, 
+particularly in glycogen-deficient strains where organic 
+Fig. 4. Workflow of metabolite overflow in cyanobacteria under high salt conditions to reveal the response mechanisms of energy 
+management.
+68
+I. ALAMIN et al.
+acid excretion correlates with altered energy management 
+(Lin and Jacobs-Wagner 2022). Under salt stress, energy 
+charge measurements help distinguish regimes dominated 
+by carbon excess from those limited by energy availability, 
+which may cause metabolite overflow.
+Redox status can be assessed using NAD(P)H 
+fluorescence, targeted cofactor assays, and indicators of 
+reactive oxygen species (ROS). These measurements 
+clarify whether overflow functions as a reductant sink that 
+alleviates over-reduction of the photosynthetic electron 
+transport chain. Integrating transcriptomics, proteomics, 
+and metabolomics further strengthens mechanistic 
+interpretation. In Synechocystis sp. PCC 6803, salt 
+acclimation has been dissected using multi-omics 
+approaches, enabling pathway-level hypotheses that link 
+stress responses to carbon partitioning and overflow.
+Stable-isotope tracing and ¹³C metabolic flux analysis 
+(MFA) provide quantitative insight into how carbon 
+flux is redistributed among the Calvin cycle, glycolysis, 
+the oxidative pentose phosphate pathway, and tricarboxylic 
+acid (TCA) cycle branches. MFA is particularly informative 
+when comparing low- and high-salt conditions to test 
+whether salinity shifts flux toward overflow-prone branch 
+points. Genome-scale metabolic models, developed for 
+model cyanobacteria such as Synechocystis PCC 6803, 
+provide a complementary framework for interpreting 
+overflow as the outcome of constrained growth or storage 
+capacity in the presence of sustained carbon fixation 
+(Adebiyi et al. 2015).
+Conclusions 
+Cyanobacteria advanced oxygenic photosynthesis and 
+are valuable models to study molecular mechanisms of 
+the photosynthetic process under different environmental 
+conditions (Hudson 2021, Shen et al. 2021, Hou and 
+Allakhverdiev 2023). During recent years, they have been 
+increasingly considered as green cell factories for different 
+biotechnological purposes (Hudson 2021). For example, 
+salt stress constrains cyanobacterial growth in nature as well 
+as in mass cultivation systems. The photosynthetic carbon 
+fixation and cellular demand differ, leading eventually to 
+the release of organic compounds to achieve equilibrium 
+as an alternative energy management mechanism (Cano 
+et al. 2018). Salt stress and metabolite overflow in 
+cyanobacteria represent an underexplored intersection of 
+physiology and metabolism. The significant contributions 
+of Murata and Allakhverdiev et al. established that salt 
+induces both osmotic and ionic stress on plant cells, which 
+severely disrupts photosynthesis (Allakhverdiev et al. 
+2002, Marin et al. 2003, Allakhverdiev and Murata 2008). 
+While existing studies suggest that carbon imbalance 
+under stress may promote overflow-like behaviors, direct 
+evidence under salt-acclimated steady-state conditions 
+remains limited. 
+Future work integrating controlled physiological 
+experiments with systems-level analyses will be essential 
+to distinguish adaptive overflow from stress-induced 
+leakage and to validate the hypotheses proposed in this 
+review. 
+Future progress will depend on combining controlled 
+physiological experiments with systems-level analyses, 
+including multi-omics integration, stable-isotope flux 
+measurements, and genome-scale metabolic modeling. 
+Such approaches will be essential for disentangling cause 
+and consequence in salt-associated overflow and for 
+identifying regulatory nodes that can be targeted through 
+genetic or process engineering. Future studies should also 
+consider hypoosmotic transitions, during which rapid 
+solute release via mechanosensitive channels provides 
+a well-established mechanism for metabolite export. 
+By framing metabolite overflow as an emergent property 
+of carbon imbalance under stress, this review proposed 
+a conceptual foundation for interpreting cyanobacterial 
+behavior in saline environments and for guiding 
+the rational design of robust strains and cultivation 
+strategies for sustainable bioprocessing. It is important 
+to note that direct experimental evidence linking salt 
+acclimation to metabolite overflow under steady-state 
+conditions remains limited, and several of the connections 
+discussed in this review should be considered hypotheses 
+requiring further validation.
+References
+Adebiyi A.O., Jazmin L.J., Young J.D.: 13C flux analysis of 
+cyanobacterial metabolism. – Photosynth. Res. 126: 19-32, 
+2015.
+Agrawal C., Sen S., Chatterjee A. et al.: Signal perception 
+and mechanism of salt toxicity/tolerance in photosynthetic 
+organisms: cyanobacteria to plants. – In: Tripathi B., Müller M. 
+(Eds.): Stress Responses in Plants: Mechanisms of Toxicity 
+and Tolerance. Pp. 79-113. Springer, Cham 2015.
+Alford J.T., Becker N.S., Rapp J. et al.: Controlled carbon loss: 
+threshold-dependent overflow metabolism in Synechocystis 
+sp. PCC 6803. – Microorganisms 13: 2767, 2025.
+Allakhverdiev S.I., Murata N.: Salt stress inhibits photosystems 
+II and I in cyanobacteria. – Photosynth. Res. 98: 529-539, 
+2008. 
+Allakhverdiev S.I., Nishiyama Y ., Miyairi S. et al.: Salt stress 
+inhibits the repair of photodamaged photosystem II by 
+suppressing the transcription and translation of psbA genes in 
+Synechocystis. – Plant Physiol. 130: 1443-1453, 2002.
+Angermayr S.A., Rovira A.G., Hellingwerf K.J.: Metabolic 
+engineering of cyanobacteria for the synthesis of commodity 
+products. – Trends Biotechnol. 33: 352-361, 2015.
+Aro E.-M., Virgin I., Andersson B.: Photoinhibition of 
+Photosystem II. Inactivation, protein damage and turnover. – 
+BBA-Bioenergetics 1143: 113-134, 1993.
+Bai X., Zhang G., Xu L. et al.: Rewiring photosynthetic 
+carbon flow: Engineered cyanobacterial factories for 
+sustainable carbohydrate production and carbon-negative 
+biomanufacturing. – Bioresource Technol. 434: 132850, 2025.
+Baker N.R., Bowyer J.R.: Photoinhibition of Photosynthesis: 
+From Molecular Mechanisms to the Field. Pp. 471. BIOS 
+Scientific Publishers, Oxford 1994.
+Benson P.J., Purcell-Meyerink D., Hocart C.H. et al.: Factors 
+altering pyruvate excretion in a glycogen storage mutant 
+of the cyanobacterium, Synechococcus PCC7942. – Front. 
+Microbiol. 7: 475, 2016.
+Bolay P., Toepel J., Bühler B.: Biotechnological applications of 
+cyanobacteria: Synechocystis and Synechococcus strains. – 
+In: Holtmann D. (Ed.): Unconventional Organisms in 
+69
+SALT STRESS IN CYANOBACTERIA
+Biotechnology. Advances in Biochemical Engineering/
+Biotechnology. V ol. 192. Pp. 155-191. Springer, Cham 2025.
+Cano M., Holland S.C., Artier J. et al.: Glycogen synthesis 
+and metabolite overflow contribute to energy balancing in 
+cyanobacteria. – Cell Rep. 23: 667-672, 2018.
+Cantrell M., Cano M., Sebesta J. et al.: Manipulation of glycogen 
+and sucrose synthesis increases photosynthetic productivity in 
+cyanobacteria. – Front. Microbiol. 14: 1124274, 2023.
+Carrieri D., Momot D., Brasg I.A. et al.: Boosting 
+autofermentation rates and product yields with sodium 
+stress cycling: application to production of renewable fuels 
+by cyanobacteria. – Appl. Environ. Microb. 76: 6455-6462, 
+2010.
+Carrieri D., Paddock T., Maness P.-C. et al.: Photo-catalytic 
+conversion of carbon dioxide to organic acids by 
+a recombinant cyanobacterium incapable of glycogen 
+storage. – Energ. Environ. Sci. 5: 9457-9461, 2012.
+Chaffai R., Ganesan M., Cherif A.: Plant adaptations and 
+molecular responses to salt stress. – In: Plant Adaptation to 
+Abiotic Stress: From Signaling Pathways and Microbiomes 
+to Molecular Mechanisms. Pp. 137-176. Springer, Singapore 
+2024.
+Chi X., Zhang S., Sun H. et al.: Adopting a theophylline-responsive 
+riboswitch for flexible regulation and understanding of 
+glycogen metabolism in Synechococcus elongatus PCC7942. – 
+Front. Microbiol. 10: 551, 2019.
+Díaz-Troya S., Roldán M., Mallén-Ponce M.J. et al.: Lethality 
+caused by ADP-glucose accumulation is suppressed by salt-
+induced carbon flux redirection in cyanobacteria. – J. Exp. 
+Bot. 71: 2005-2017, 2020.
+Erdmann N., Hagemann M.: Salt acclimation of algae and 
+cyanobacteria: a comparison. – In: Rai L.C., Gaur J.P. (Eds.): 
+Algal Adaptation to Environmental Stresses. Pp. 323-361. 
+Springer, Berlin-Heidelberg 2001.
+Esteves-Ferreira A.A., Inaba M., Fort A. et al.: Nitrogen 
+metabolism in cyanobacteria: metabolic and molecular 
+control, growth consequences and biotechnological 
+applications. – Crit. Rev. Microbiol. 44: 541-560, 2018.
+Forchhammer K., Selim K.A.: Carbon/nitrogen homeostasis 
+control in cyanobacteria. – FEMS Microbiol. Rev. 44: 33-53, 
+2020.
+Foyer C.H.: Reactive oxygen species, oxidative signaling and 
+the regulation of photosynthesis. – Environ. Exp. Bot. 154: 
+134-142, 2018.
+Furmaniak M.A., Misztak A.E., Franczuk M.D. et al.: Edible 
+cyanobacterial genus Arthrospira: Actual state of the art in 
+cultivation methods, genetics, and application in medicine. – 
+Front. Microbiol. 8: 2541, 2017.
+Gross J., Bhattacharya D., Pelletreau K.N. et al.: Secondary 
+and tertiary endosymbiosis and kleptoplasty. – In: Bock R., 
+Knoop V . (Eds.): Genomics of Chloroplasts and Mitochondria. 
+Advances in Photosynthesis and Respiration. V ol. 35. Pp. 31-
+58. Springer, Dordrecht 2012.
+Gründel M., Scheunemann R., Lockau W., Zilliges Y .: Impaired 
+glycogen synthesis causes metabolic overflow reactions and 
+affects stress responses in the cyanobacterium Synechocystis 
+sp. PCC 6803. – Microbiology 158: 3032-3043, 2012.
+Gunarathne V ., Vithanage M., Rinklebe J.: Overview of salinity 
+in arable soils: global perspectives. – In: Bolan N., Kirkham 
+M.B. (Eds.): Soil Constraints and Productivity. Pp. 1-24. CRC 
+Press, Boca Raton 2023.
+Hagemann M.: Molecular biology of cyanobacterial salt 
+acclimation. – FEMS Microbiol. Rev. 35: 87-123, 2011.
+Hou H.J.M., Allakhverdiev S.I.: Photosynthesis: From Plants to 
+Nanomaterials. Pp. 518. Academic Press, London 2023.
+Hou H.J.M., Najafpour M.M., Moore G.F., Allakhverdiev S.I.: 
+Photosynthesis: Structures, Mechanisms, and Applications. 
+Pp. 417. Springer, Cham 2017.
+Hudson P.: Cyanobacteria Biotechnology. Pp. 542. Wiley-VCH, 
+Weinheim 2021.
+Jassal P.S., Yadav T., Kaur J., Singh J.: Cyanobacterial membranes 
+under extreme conditions. – In: Singh P.K., Panwar J.S., 
+Kumar A., Elster J. (Eds.): Cyanobacterial Response 
+to Extreme Environments: A Molecular Understanding for 
+a Sustainable Future. Pp. 148-168. CABI, Oxfordshire 2025.
+Kim J., Liu Y ., Zhang X. et al.: Analysis of salt-induced 
+physiological and proline changes in 46 switchgrass (Panicum 
+virgatum) lines indicates multiple response modes. – Plant 
+Physiol. Biochem. 105: 203-212, 2016.
+Kirsch F., Pade N., Klähn S. et al.: The glucosylglycerol-
+degrading enzyme GghA is involved in acclimation to 
+fluctuating salinities by the cyanobacterium Synechocystis sp. 
+strain PCC 6803. – Microbiology 163: 1319-1328, 2017.
+Klähn S., Hagemann M.: Compatible solute biosynthesis in 
+cyanobacteria. – Environ. Microbiol. 13: 551-562, 2011.
+Klähn S., Mikkat S., Riediger M. et al.: Integrative analysis of 
+the salt stress response in cyanobacteria. – Biol. Direct 16: 
+26, 2021.
+Kramer D.M., Cruz J.A., Kanazawa A.: Balancing the central 
+roles of the thylakoid proton gradient. – Trends Plant Sci. 8: 
+27-32, 2003.
+Ladd M.P., Reeves D.T., Poudel S. et al.: Untargeted 
+exometabolomics provides a powerful approach to investigate 
+biogeochemical hotspots with vegetation and polygon type in 
+Arctic tundra soils. – Soil Syst. 5: 10, 2021.
+Lin W.-H., Jacobs-Wagner C.: Connecting single-cell ATP 
+dynamics to overflow metabolism, cell growth, and the cell 
+cycle in Escherichia coli . – Curr. Biol. 32: 3911-3924.e4, 
+2022.
+Liu J., Fu C., Li G. et al.: ROS homeostasis and plant salt 
+tolerance: plant nanobiotechnology updates. – Sustainability 
+13: 3552, 2021.
+Long S.P., Humphries S., Falkowski P.G.: Photoinhibition of 
+photosynthesis in nature. – Annu. Rev. Plant Phys. 45: 633-
+662, 1994.
+Long S.P., Marshall-Colon A., Zhu X.-G.: Meeting the global 
+food demand of the future by engineering crop photosynthesis 
+and yield potential. – Cell 161: 56-66, 2015.
+Lu W., Su X., Klein M.S. et al.: Metabolite measurement: pitfalls 
+to avoid and practices to follow. – Annu. Rev. Biochem. 86: 
+277-304, 2017.
+Lucius S.: Investigations on regulatory mechanisms of the 
+central carbon metabolism in Synechocystis sp. PCC 6803. 
+Dissertation. Pp. 141. Universität Rostock, Rostock 2024.
+Marin K., Suzuki I., Yamaguchi K. et al.: Identification of 
+histidine kinases that act as sensors in the perception of salt 
+stress in Synechocystis sp. PCC 6803. – PNAS 100: 9061-
+9066, 2003.
+Niyogi K.K.: Photoprotection revisited: Genetic and molecular 
+approaches. – Annu. Rev. Plant Biol. 50: 333-359, 1999.
+Nocera D.G.: Solar fuels and solar chemicals industry. – Accounts 
+Chem. Res. 50: 616-619, 2017.
+Oren A.: Cyanobacteria: biology, ecology and evolution. – In: 
+Sharma N.K., Rai A.K., Stal L.J. (Eds.): Cyanobacteria: 
+An Economic Perspective. Pp. 1-20. John Wiley & Sons, 
+Chichester 2014.
+Ort D.R., Merchant S.S., Alric J. et al.: Redesigning 
+photosynthesis to sustainably meet global food and bioenergy 
+demand. – PNAS 112: 8529-8536, 2015.
+Owen J.H.: Respiratory activity in meristematic regions of light-
+grown barley seedlings. Thesis. Pp. 280. Lancaster University, 
+Lancaster 1987.
+70
+I. ALAMIN et al.
+Pade N., Hagemann M.: Salt acclimation of cyanobacteria and 
+their application in biotechnology. – Life 5: 25-49, 2015.
+Pathania R., Srivastava A.: Advances in organic acid production 
+using cyanobacteria: strategies and applications. – Blue 
+Biotechnol. 2: 22, 2025.
+Pinu F.R., Granucci N., Daniell J. et al.: Metabolite secretion 
+in microorganisms: the theory of metabolic overflow put to 
+the test. – Metabolomics 14: 43, 2018.
+Robles-Rengel R., Florencio F.J., Muro‐Pastor M.I.: Redox 
+interference in nitrogen status via oxidative stress is mediated 
+by 2‐oxoglutarate in cyanobacteria. – New Phytol. 224: 216-
+228, 2019.
+Roychoudhury A., Chatterjee U., Gupta H.: Revisiting salinity 
+tolerance mechanism in cyanobacteria. – In: Singh P.K., Panwar 
+J.S., Kumar A., Elster J. (Eds.): Cyanobacterial Response 
+to Extreme Environments: A Molecular Understanding for 
+a Sustainable Future. Pp. 101-127. CABI, Oxfordshire 2025.
+Santos-Merino M., Singh A.K., Ducat D.C.: Sink engineering in 
+photosynthetic microbes. – Hudson P. (Ed.): Cyanobacteria 
+Biotechnology. Pp. 171-209. Wiley-VCH, Weinheim 2021.
+Schink S., Polk M., Athaide E. et al.: Survival dynamics of 
+starving bacteria are determined by ion homeostasis that 
+maintains plasmolysis. – Nat. Phys. 20: 1332-1338, 2024.
+Sebesta J., Cantrell M., Schaedig E. et al.: Polyphosphate kinase 
+deletion increases laboratory productivity in cyanobacteria. – 
+Front. Plant Sci. 15: 1342496, 2024.
+Shen J.-R., Satoh K., Allakhverdiev S.I.: Photosynthesis: 
+Molecular Approaches to Solar Energy Conversion. Pp. 622. 
+Springer, Cham 2021.
+Soru S.: Biomass productivity enhancement and extraction of 
+high values products of an extremophile microalga from 
+SCCA culture collection. PhD thesis. Pp. 211. University of 
+Cagliari, Cagliari 2019.
+Sudhir P.R., Pogoryelov D., Kovacs L. et al.: The effects of salt 
+stress on photosynthetic electron transport and thylakoid 
+membrane proteins in the cyanobacterium Spirulina platensis. – 
+BMB Rep. 38: 481-485, 2005.
+Yang W., Wang F., Liu L.-N., Sui N.: Responses of membranes and 
+the photosynthetic apparatus to salt stress in cyanobacteria. – 
+Front. Plant Sci. 11: 713, 2020.
+Yu J., Zhang Y ., Liu H. et al.: Temporal dynamics of stress 
+response in Halomonas elongata to NaCl shock: physiological, 
+metabolomic, and transcriptomic insights. – Microb. Cell 
+Fact. 23: 88, 2024.
+Zhang Z., Sun D., Cheng K.-W., Chen F.: Investigation of 
+carbon and energy metabolic mechanism of mixotrophy in 
+Chromochloris zofingiensis. – Biotechnol. Biofuels 14: 36, 
+2021.
+© The authors. This is an open access article distributed under the terms of the Creative Commons BY-NC-ND Licence.
