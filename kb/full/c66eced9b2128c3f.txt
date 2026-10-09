@@ -1,0 +1,1743 @@
+Vol.: (0123456789)
+Hydrobiologia (2026) 853:5767–5786 
+https://doi.org/10.1007/s10750-026-06317-6
+PRIMARY RESEARCH PAPER
+Environmental predictors of benthic meiofaunal densities 
+in the abyssal and hadal zones of the North Pacific: 
+a combined Gradient Forest and GLMM approach
+Stefanie Kaiser  · Frederic Bonk  · Jens Oldeland  · Chih‑Lin Wei  · 
+Angelika Brandt  · Pedro Martínez Arbizu 
+Received: 1 April 2026 / Revised: 25 June 2026 / Accepted: 10 July 2026 / Published online: 25 July 2026 
+© The Author(s) 2026
+Abstract The northern North Pacific forms a het-
+erogeneous deep-sea environment with dynamic cur -
+rents, distinct water masses, and complex bathymetry, 
+including the Kuril–Kamchatka (KKT) and Aleutian 
+Trenches (AT). As a climate-sensitive region, warm-
+ing and sea-ice loss alter surface productivity and 
+organic matter flux, potentially affecting deep-sea 
+benthic communities. We quantified metazoan mei-
+ofaunal densities across abyssal and hadal zones of 
+the KKT and AT, integrating samples from the 2022 
+AleutBio (SO293) expedition with legacy datasets. 
+Gradient-Forest modeling captured broad productiv -
+ity patterns across higher taxonomic levels, while 
+generalized linear mixed effects models (GLMMs) 
+quantified taxon-specific responses to environmen-
+tal factors. Meiofaunal densities varied substantially, 
+peaking on the abyssal KKT plain and reaching min-
+ima in the hadal AT. Gradient -Forest analysis identi-
+fied surface chlorophyll a, bottom-water temperature, 
+and monthly primary production as primary drivers 
+of regional density patterns. However, taxon-specific 
+GLMMs revealed that once spatial effects and over -
+dispersion were controlled, bottom-water chemistry 
+and hydrography exerted the most consistent con-
+trol on local abundances. These results demonstrate 
+a  two-tier ecological control: surface-derived food 
+availability governs meiofaunal densities at regional 
+Handling editor: Jonne Kotta
+Supplementary Information The online version 
+contains supplementary material available at https:// doi. 
+org/ 10. 1007/ s10750- 026- 06317-6.
+S. Kaiser (*) · A. Brandt 
+Senckenberg Research Institute and Natural 
+History Museum, Senckenberganlage 25, 
+60325 Frankfurt am Main, Germany
+e-mail: stefanie.kaiser@biol.uni.lodz.pl
+Present Address: 
+S. Kaiser 
+Department of Invertebrate Zoology and Hydrobiology, 
+Faculty of Biology and Environmental Protection, 
+University of Łódź, Banacha St. 12/16, 90-237 Łódź, 
+Poland
+F. Bonk · P. Martínez Arbizu 
+German Centre for Marine Biodiversity Research 
+(DZMB), Senckenberg am Meer, Südstrand 44, 
+26382 Wilhelmshaven, Germany
+F. Bonk · P. Martínez Arbizu 
+Marine Biodiversity Research, Institute of Biology 
+and Environmental Science, Carl von Ossietzky 
+University Oldenburg, Ammerländer Heerstraße 114–118, 
+26129 Oldenburg, Germany
+J. Oldeland 
+Eco-Systems, Hamburg, Germany
+J. Oldeland 
+Institute for Globally Distributed Open Research 
+and Education (IGDORE), Hamburg, Germany
+C.-L. Wei 
+Institute of Oceanography, National Taiwan University, 
+Taipei 10617, Taiwan
+5768 Hydrobiologia (2026) 853:5767–5786
+Vol:. (1234567890)
+scales, whereas bottom-water chemistry, hydro-
+graphic regimes, and grain size fine-tune local dis-
+tributions. This study provides critical baseline data 
+for understudied deep-sea regions and informs pre-
+dictions of meiofaunal responses to climate-driven 
+changes.
+Keywords Aleutian Trench · Kuril Kamchatka 
+Trench · Environmental gradients · Climate change · 
+Deep sea
+Introduction
+The deep sea, here defined as areas beyond the con-
+tinental shelf break at > 200  m depth (Tyler et  al., 
+2016), encompasses diverse environments charac-
+terized by unique topographies, seabed properties, 
+water-mass characteristics, and energy availability. 
+These conditions influence the distribution and com-
+position of life across various geomorphic features 
+including vast abyssal plains, steep continental slopes 
+and ridges, as well as incisive canyons and hadal 
+trenches that extend to the ocean’s greatest depth 
+(Ramirez-Llodra et  al., 2010). In these settings, the 
+resident biota depends heavily on organic matter pro-
+duced in the euphotic zone and subsequently trans-
+ported to the deep sea as the primary food resource 
+(i.e., allochthonous inputs from external sources 
+rather than autochthonous, locally produced mate-
+rial). However, only a fraction of the organic material 
+produced in surface waters reaches the seafloor (Lutz 
+et al., 2002), resulting in decreasing faunal densities 
+and biomass with increasing depth (Rex et al., 2006; 
+Wei et al., 2010). Yet, the strength of this decline is 
+not uniform across different size classes. Specifically, 
+meiofaunal communities experience a less severe 
+decrease in densities compared to larger (macro- and 
+megafaunal) organisms, indicating shifting ecological 
+significance toward smaller biota with lower energy 
+demands at greater depths (Thiel, 1975, 1979; Rex 
+et al., 2006; Wei et al., 2010; Zeppili et al., 2018).
+Meiofauna, i.e., minute benthic eukaryotes 
+including metazoans, protists and fungi that pass 
+through a 1  mm sieve  but are retained by a lower 
+mesh size of 32 µm (Mare, 1942; Higgins & Thiel, 
+1988), play an integral role in deep-sea ecosystems 
+(Zeppilli et al., 2018; Schmidt-Rhaesa, 2020; Mar -
+tínez et  al., 2025). Their ecological relevance is 
+highlighted by their contributions to ecosystem pro-
+cesses through their wide distribution, high abun-
+dance, diversity, and rapid generation times (Wood-
+ward, 2010; Schratzberger & Ingels, 2018). As 
+essential components of the food web, meiofauna 
+enhances nutrient cycling and sediment bioturba-
+tion, improving nutrient exchange within the sedi-
+ment (Green & Chandler, 1994; Meadows & Mead-
+ows, 1994; Bonaglia & Nascimento, 2023). They 
+also support sediment remineralization by fostering 
+microbial activity and facilitating the breakdown 
+and assimilation of organic matter (Findlay & Ten-
+ore, 1982; Moens et al., 2007; Ingels et al., 2023). 
+Moreover, meiofauna serve as indicators for assess-
+ing the impacts of human activities on marine envi-
+ronments, including climate change effects (Coull 
+& Chandler, 1992; Pusceddu et  al., 2014; Zeppilli 
+et al., 2015; Moens et al., 2022; Schratzberger et al., 
+2023). Yet, despite their significant ecological role, 
+there exists a notable scarcity of comprehensive 
+data on meiofaunal communities in certain regions, 
+such as the deep North Pacific (Rosli et  al., 2018) 
+limiting our capacity to identify the environmental 
+drivers shaping these communities and to predict 
+their responses to environmental change.
+The northern North Pacific is characterized by 
+distinct water masses and strong current systems 
+coupled with varied bathymetric features, including 
+trenches, ridges, and seamounts (Warren & Owens, 
+1988; Harris et al., 2014). Prominent among these are 
+the southwest-to-northeast directed Kuril Kamchatka 
+Trench (KKT) and the east-to-west directed Aleutian 
+Trench (AT) along the Aleutian Ridge. The Bering 
+Strait, a shallow marine passage, constrains faunal 
+migration from and into the Arctic (Lee et al., 2020; 
+Lemenkova, 2021). This area is sensitive to climate 
+perturbations, particularly in the south-eastern Ber -
+ing Sea, which has undergone demonstrated ocean 
+warming and changes in sea-ice coverage with subse-
+quent effects on surface productivity and marine food 
+webs (Coyle et  al., 2007; Brown et  al., 2011; Hunt 
+et  al., 2022; Overland et  al., 2024). Such changes 
+in surface-water conditions and the frequency and 
+magnitude of organic-matter export to the deep sea 
+can also profoundly affect deep-sea floor organisms 
+(Smith et al., 2013). These environmental transitions 
+make the North Pacific particularly suitable for inves-
+tigating meiofaunal responses across multiple gra-
+dients of food availability, sediment characteristics, 
+5769Hydrobiologia (2026) 853:5767–5786 
+Vol.: (0123456789)
+and hydrographic variables, providing essential 
+benchmarks for detecting and forecasting ecological 
+changes in response to climate variability.
+Incorporating new samples from the eastern 
+AT (Brandt, 2022; Bonk et  al., 2025), this study 
+extends upon existing meiofaunal data from prior 
+investigations in the KKT (Schmidt & Martínez 
+Arbizu, 2015; Schmidt et  al., 2019) to identify the 
+environmental drivers affecting densities of metazoan 
+meiofauna at higher taxonomic levels across these 
+abyssal and hadal areas. Earlier studies identified 
+seafloor particulate organic carbon (POC) flux 
+and sediment characteristics, among others, as key 
+determinants of meiofaunal densities (Pfannkuche, 
+1985; Pfannkuche & Thiel, 1987; Vanreusel et  al., 
+1995; Hoste et  al., 2007; Ostmann & Martínez 
+Arbizu, 2018; Ingels et  al., 2023). Building on 
+this foundation, we aimed to (1) identify key 
+environmental predictors of meiofaunal densities 
+across bathymetric and geographic gradients; (2) 
+quantify the relative importance of these predictors 
+and their taxon-specific effects using Gradient Forest 
+and generalized linear mixed effects models (Poisson-
+GLMM); and (3) assess community thresholds along 
+environmental gradients to elucidate the key drivers 
+of deep-sea biodiversity patterns. This approach 
+provides a baseline for predicting how ongoing 
+changes in surface productivity and deep-water 
+conditions may affect benthic communities in the 
+northern North Pacific.
+Material and methods
+Study area
+The study area covers two trench systems in the 
+northern Pacific: the KKT adjacent to Japan, the Kuril 
+Islands, and Kamchatka Peninsula, and the AT, which 
+spans over 3,000 km from Siberia to the Alaska Pen-
+insula (Fig. 1). The KKT is formed by the subduction 
+of the Pacific Plate beneath the Okhotsk Plate toward 
+Fig. 1 Map of multicorer sampling stations from SO223 (KuramBio, light blue), SO250 (KuramBio II, blue) and SO293 (AleutBio, 
+orange) expeditions to the Kuril–Kamchatka and Aleutian trenches (northern North Pacific) and adjacent Bering Sea
+5770 Hydrobiologia (2026) 853:5767–5786
+Vol:. (1234567890)
+the northwest (DeMets et  al., 1994), while the AT 
+results from the Pacific Plate subducting beneath the 
+North American Plate (Lemenkova, 2021). The Sub-
+arctic North Pacific exhibits high nutrient levels with 
+comparatively low chlorophyll concentrations (Har -
+rison et  al., 2004). The oceanography of the area is 
+mainly influenced by the Western Subarctic Gyre to 
+the west and the Alaska Gyre to the east, each char -
+acterized by distinct currents contributing to regional 
+nutrient distribution. The Alaska Gyre, especially 
+its northern edge marked by the strong westward-
+flowing Alaska Stream Current, influences water 
+flow into the Bering Sea through passes in the Aleu-
+tian Islands, including Amchitka and Amukta passes 
+and Near Strait (Stabeno et  al., 1999; Zimmermann 
+& Prescott, 2021). The Kamchatka Current defines 
+the western edge of this gyre, directing water from 
+the Siberian coast back toward the KKT (e.g., Khen 
+et al., 2013). In the KKT, surface waters are further 
+modulated by the contrasting influences of the cold, 
+fresh Oyashio Current (from the Sea of Okhotsk) and 
+the warmer, saltier Kuroshio-derived eddies and Kuril 
+Current, while deep-water flows are dominated by the 
+northward transport of the Lower Circumpolar Deep 
+Water (LCDW) (Kawabe & Fujio, 2010). Some of 
+this LCDW propagates into the AT via deep western-
+boundary currents (Johnson, 1998).
+Sampling and taxonomic procedures
+During the boreal summers of 2012, 2016, and 2022, 
+samples were collected from the north-western and 
+north-eastern Pacific Ocean in the course of three 
+expeditions onboard RV Sonne: KuramBio (SO223), 
+KuramBio II (SO250), and AleutBio (SO293) 
+(Fig.  1, Online Resource 4). A multicorer (MUC) 
+was used, employing cores with an inner diameter 
+of 94  mm. Each core thereby provided a sampling 
+surface area of 69.4 cm2. MUC sampling was 
+carried out across 33 distinct sampling areas, with 
+multiple deployments per area, resulting in a total 
+of 66 stations. Previously published data from the 
+KuramBio and KuramBio II expeditions can be found 
+in Schmidt & Martínez Arbizu (2015) and Schmidt 
+et  al. (2019), respectively. Due to unit discrepancies 
+between these earlier datasets and the most recent 
+samples from SO293, a re-assessment of the raw data 
+from Schmidt & Martínez Arbizu (2015) and Schmidt 
+et al. (2019) was necessary. Specifically, meiofaunal 
+densities were calculated per core and harmonized 
+to a standardized unit (number of individuals per 
+69.4 cm2). Furthermore, samples from the Bering 
+Sea were excluded from the downstream analysis 
+due to low sample coverage comprising eight cores, 
+of which only two covered raster cells. This study 
+includes data from a total of 66 individual stations 
+comprising a total of 190 cores, with sampling depths 
+ranging from 4,304 to 9,541  m (Bonk et  al., 2026; 
+Online Resource 4).
+The sample protocol and processing of the MUC 
+samples collected during SO293 are based on the 
+methods described by Bonk et  al. (2025). Briefly, 
+three cores were analyzed at each station to evalu-
+ate the composition of meiofaunal assemblages. On 
+board, the top 5 cm of each sediment core was pre-
+served in buffered formalin (4%). The samples were 
+then centrifuged and categorized into supra-specific 
+taxa at the German Center for Marine Biodiversity 
+Research (DZMB) in Wilhelmshaven, Germany.
+Taxonomic resolution focused on supra-specific 
+meiofaunal groups routinely distinguished in deep-
+sea meiofaunal studies. Nauplii, although represent-
+ing larval stages of Copepoda rather than a separate 
+taxon, were retained as an independent analytical 
+category because they form a substantial and mor -
+phologically distinguishable component of benthic 
+meiofaunal assemblages and may exhibit ecological 
+responses distinct from copepodid and adult stages 
+(e.g., Guidi-Guilvard et  al., 2009; Guidi-Guilvard & 
+Dallot, 2014; Ayón Dejo et  al., 2023). This practice 
+is commonly applied in meiofaunal ecology, particu-
+larly where nauplii contribute substantially to total 
+abundance and can respond differently to environ-
+mental gradients. We therefore treat nauplii here as an 
+operational ecological category rather than a formal 
+taxonomic entity. Nevertheless, we acknowledge that 
+this approach may underestimate total copepod repre-
+sentation when Copepoda and nauplii are considered 
+separately. Conversely, typical macrofaunal taxa (e.g., 
+Amphipoda, Isopoda, Polychaeta) were excluded, 
+consistent with previous meiofaunal studies (e.g., 
+Rowe et al., 1991; Berkenbusch et al., 2011).
+Environmental layers
+A set of environmental predictors was assembled to 
+model meiofaunal distributions using GLMMs and 
+Gradient Forests (Table 1). Benthic and water-column 
+5771Hydrobiologia (2026) 853:5767–5786 
+Vol.: (0123456789)
+variables were obtained from Bio-Oracle v3 (Assis 
+et al., 2024), including bathymetry (bathy), seafloor 
+chlorophyll (Chl), dissolved oxygen (O2), salinity 
+(SO), nitrate (NO₃), phosphate (PO₄), silicate (Si), 
+seabed temperature (Temp), and current velocity 
+(SWS). Benthic-flux indicators were obtained from 
+Snelgrove et al. (2018), including particulate organic-
+carbon flux (Lutz et al., 2007), Vertically General-
+ized Production Model (VGPM) metrics (mean and 
+seasonal variability [svi]), and sediment-commu-
+nity oxygen consumption. Total sediment thickness 
+(GlobSed) was incorporated based on Straume et al. 
+(2019), and seafloor roughness (Gravrough) was 
+derived from EarthByte’s gravity anomaly dataset 
+following Whittaker et al. (2008). The environmental 
+layers are provided at a global spatial resolution of 5 
+arcmin (~ 0.083°; approximately 9.2 km at the equa-
+tor), representing large-scale environmental condi-
+tions rather than fine-scale habitat characteristics. All 
+layers were harmonized onto a common spatial grid, 
+with full metadata including units, resolution, and 
+sources detailed in Table  1. In addition, point-based 
+sediment grain-size data obtained from MUC sam-
+pling were compiled from the literature (Schmidt & 
+Martínez Arbizu, 2015; Schmidt et al., 2019; Sindlev 
+et al., 2025), providing in situ measurements of ben-
+thic substrate characteristics.
+Gradient Forest analysis
+Species abundances are given as densities per sam-
+ple area of 69.4 cm2. When more than one core was 
+recovered from a single station, specimen counts were 
+summed and then averaged and scaled to give density 
+per core surface area (expressed per 69.4 cm2). We ran 
+our Gradient-Forest analysis in R using the gradient-
+Forest package (Ellis et al., 2012) on a single combined 
+data frame of the 15 environmental predictors and 
+Table 1 Data sources for environmental predictors used to characterize meiobenthic communities in the northern North Pacific
+Acronym Parameter Unit Resolution References
+Chl Mean sea surface net primary productivity g/m3/day 5 arcmin Bio-Oracle 3 Assis et al. (2024)
+SWS Mean sea water current velocity at maxi-
+mum bottom depth
+m/s 5 arcmin Bio-Oracle 3 Assis et al. (2024)
+O2 Mean mole concentration of dissolved 
+molecular oxygen in sea water at maxi-
+mum bottom depth
+µmol/m3 5 arcmin Bio-Oracle 3 Assis et al. (2024)
+SO Mean salinity at the seafloor PSU 5 arcmin Bio-Oracle 3 Assis et al. (2024)
+Temp Mean sea water temperature at the seafloor degrees Celsius 5 arcmin Bio-Oracle 3 Assis et al. (2024)
+PO4 Mean mole concentration of phosphate in 
+sea water at maximum bottom depth
+µmol/m3 5 arcmin Bio-Oracle 3 Assis et al. (2024)
+NO3 Mean mole concentration of nitrate in sea 
+water at maximum bottom depth
+µmol/m3 5 arcmin Bio-Oracle 3 Assis et al. (2024)
+Si Mean concentration of silicate in sea water 
+at maximum bottom depth
+μmol/m3 5 arcmin Bio-Oracle 3 Assis et al. (2024)
+bathy Mean bottom depth m 5 arcmin Bio-Oracle 3 Assis et al. (2024)
+Lutz_POC Particulate organic carbon flux to the 
+seafloor based on Lutz et al. (2007) 
+algorithm
+mgC/m2/day 5 arcmin Lutz et al. (2007); Snelgrove et al. 
+(2018)
+VGPM_svi Seasonal index of mean monthly surface 
+primary production from 1998 to 2014
+VGPM ~ SD/mean 5 arcmin Lutz et al. (2007); Snelgrove et al. 
+(2018)
+VGPM_mean Mean monthly surface primary production 
+from 1998 to 2014
+mgC/m2/day 5 arcmin Lutz et al. (2007); Snelgrove et al. 
+(2018)
+SCOC Sediment- community oxygen consump-
+tion as Log10 of SCOC
+mmol/cm2/year In situ Stratmann et al. (2019)
+GLOBSED Total Sediment Thickness m 5 arcmin Straume et al. (2019)
+GR Seafloor roughness using 100 km filter 
+width, unmasked
+mGal 2 arcmin Whittaker et al. (2008)
+5772 Hydrobiologia (2026) 853:5767–5786
+Vol:. (1234567890)
+taxon densities. We set ‘mtry = 3’ to randomly sample 
+three predictors at each split, and grew 2500 trees per 
+taxon (`ntree = 2500`) to ensure stable importance esti-
+mates. Collinearity among predictors was addressed 
+using conditional permutation importance (Strobl et al., 
+2008), which permutes predictors only within data 
+blocks defined by splits of correlated variables (|r|> 0.5) 
+by setting ‘corr.threshold = 0.5,’ i.e., the default value, 
+preserving their structural dependence. Finally, we 
+allowed the algorithm to explore up to three splits 
+per tree (maxLevel). The resulting models produced 
+per‐predictor weighted R2 (wR2) values for ranking 
+importance, as well as cumulative importance curves to 
+identify threshold‐sensitive ranges along each environ-
+mental gradient. Unlike the coefficient of determination 
+ (R2) in conventional regression analyses, wR2 values 
+represent weighted measures of predictor importance 
+aggregated across species-specific random forest mod-
+els and are therefore intended for relative comparison 
+among predictors rather than assessment of absolute 
+explanatory power.
+Poisson-GLMM
+We fitted generalized linear mixed–effects models 
+(GLMMs) with a Poisson error distribution to assess 
+how each environmental parameter influences mei-
+ofauna densities, while accounting for variation in sam-
+ple area and spatial clustering. The predictors (depth 
+and the focal parameter) were centered to zero mean 
+and scaled to unit variance to facilitate model conver-
+gence and interpretation. For each focal taxon–param-
+eter combination, we built a model with taxon counts 
+as the response and the focal predictor and sampling 
+depth as fixed effects and log(sampled sediment area) 
+as an offset. This approach allowed us to estimate direct 
+effects on densities (individuals/m 2), while preserv -
+ing the count data structure. We did not build a full 
+model containing all predictors as the number of sam-
+ples with unique values for the environmental predic-
+tors was restricted to the number of stations. For the 
+random effect structure, we nested sampling stations 
+(n = 66) within sampling areas (n = 33). We then added 
+an observation‐level random effect (OLRE) by creating 
+a unique factor for each sample (n = 190) to control for 
+overdispersion. Before modeling, records with missing 
+values were omitted.
+The primary model formula was specified as:
+Models were fitted with glmer() from the lme4 
+package (Bates et al., 2015), using a Poisson distri-
+bution and the “bobyqa” optimizer to ensure relia-
+ble convergence. We compared the two models via 
+Akaike information criterion (AIC) and formally 
+assessed overdispersion using the R performance 
+package (Lüdecke et al., 2021) and a custom Pear -
+son‐chi‐square-based overdispersion ratio (Zuur 
+et al., 2009). Model assumptions (linearity, collin-
+earity, random-effects structure, residual distribu-
+tion) were further evaluated using the respective 
+plots and functions.
+To quantify the proportion of variance explained 
+by each fixed effect, we computed semi–partial R2 
+statistics with the partR2 package (Stoffel et  al., 
+2021), performing 99 parametric bootstraps for con-
+fidence intervals. We extracted overall marginal R2, 
+the inclusive R2 attributable to each predictor (IR2), 
+and the associated structure-component (SC) and 
+beta‐weight (BW) metrics. We used IR2 and BW to 
+interpret the importance of each parameter, and the 
+respective strength and direction of each effect.
+In partR2, IR2 for a predictor j is calculated as
+where SCj is the structure coefficient, i.e., the Pearson 
+correlation between the centered-and-scaled predictor 
+xj and the model’s fitted values. R2total is the marginal 
+ R2 of the full model, i.e., the variance explained by all 
+fixed effects.
+To quantify and compare the strength and 
+direction of individual environmental effects, 
+we extracted the beta-weight (BW) for every 
+centered-and-scaled predictor from the final 
+Poisson-GLMMs. A BW is simply the model’s 
+fixed-effect slope after all continuous covariates 
+have been standardized to zero mean and unit vari-
+ance; it therefore represents the expected change in 
+the density and hence the multiplicative change in 
+the expected organism abundance associated with 
+a one-standard-deviation increase in that predictor. 
+Because all predictors share the same scale, BW 
+values can be interpreted as standardized effect sizes 
+(Burnham & Anderson, 2002): larger absolute BW 
+(1)
+Count ∼ oﬀset(log (sample_area))
++ depth_scaled + parameter_scaled
++ (1 /uni007C.var area∕station) + (1 /uni007C.var olre)
+(2)IR2j = /parenleft.s1SCj/parenright.s12 × R2total
+5773Hydrobiologia (2026) 853:5767–5786 
+Vol.: (0123456789)
+values denote stronger direct effects, while the sign 
+(positive or negative) indicates the direction of the 
+relationship. We chose BW as an additional meas-
+ure of “individual predictor importance”,  because 
+it conveys both effect magnitude and direction, and 
+remains directly comparable across taxa, sites, and 
+models. For each BW we report bootstrapped 95% 
+confidence intervals using 99 bootstraps to estimate 
+uncertainty and to identify significant effects.
+Compositional data analysis
+Grain-size composition was quantified as the per -
+centage of sand, mud (combined silt and clay frac-
+tion), and gravel (Schmidt & Martínez Arbizu, 2015; 
+Schmidt et  al., 2019; Sindlev et  al., 2025). Because 
+these components are constrained to sum to 100%, 
+they constitute compositional data and cannot be 
+analyzed as independent variables, as an increase in 
+one component necessarily results in a decrease in at 
+least one of the others. Therefore, we applied compo-
+sitional data analysis (Aitchison, 1986) to transform 
+grain-size measurements into orthogonal, i.e., uncor -
+related and isometric log-ratio (ILR) components 
+(Egozcue et  al., 2003). These components describe 
+the relative balance between percentages of sand 
+and mud vs. gravel (ILR1) and sand vs. mud (ILR2). 
+Components were created using the package compo-
+sitions (van den Boogart et  al., 2025). The effect of 
+sediment grain size on meiofaunal densities was then 
+assessed using the same Poisson GLMM with off-
+set described above, with ILR1 and ILR2 included 
+as fixed effects. Owing to incomplete sediment data, 
+this analysis was based on a reduced dataset. In total, 
+52 samples (27.4%) from 17 stations (25.8%) were 
+excluded because grain-size measurements were 
+unavailable or were erroneous (Online Resource 7). 
+Acari were not analyzed due to insufficient data.
+Results
+Meiofaunal abundance and taxonomic composition
+The dataset comprised a total of 647,202 meiofaunal 
+individuals sampled at 66 stations in the KKT and 
+AT. Benthic densities varied substantially across the 
+investigated regions (Fig.  2, Online Resources 1&2). 
+The highest densities were recorded on the abyssal 
+plain of the KKT, ranging from 37 to 1,589 individu-
+als per 10 cm2 (492.9 ± 379.0, mean ± SD). In con-
+trast, the lowest densities occurred in the hadal zone 
+of the AT, with values between 45 and 315 individu-
+als per 10 cm2 (178.5 ± 108.8). Intermediate densities 
+were observed in the hadal KKT (82–1,115 ind./10 
+ cm2; 399.6 ± 281.3) and the abyssal AT (107–478 
+ind./10 cm2; 249.4 ± 203.9).
+The meiofaunal communities were dominated by 
+Nematoda (92.2%), followed by Copepoda (4.1%) and 
+nauplii (3.2%). These taxa were present in all sam-
+ples and reached their highest densities on the abys-
+sal KKT plain. Other taxa displayed more localized 
+peaks: Kinorhyncha were most abundant in the hadal 
+KKT, while Loricifera reached their maximum den-
+sities on the abyssal AT. Less abundant groups such 
+as Kinorhyncha, Loricifera, Ostracoda, Tantulocarida, 
+and Gastrotricha were detected at 8 (Tantulocarida) to 
+39 (Ostracoda) stations and consistently occurred at 
+densities below 5 individuals per 10 cm2. Neverthe-
+less, these taxa were retained for further analysis due 
+to their consistent presence across multiple stations. 
+In contrast, Acari were encountered only sporadically 
+and in extremely low numbers, and were therefore 
+excluded from subsequent analyses.
+Gradient Forest
+The weighted-R2 ranking (Fig. 3) shows that only few 
+predictors account for most of the variance in meio-
+faunal composition. Mean surface chlorophyll-a (Chl) 
+tops the list (wR2 ≈ 0.05), followed closely by mean 
+potential temperature at the seafloor (Temp), mean 
+monthly surface primary production (VGPM_mean), 
+the seasonal variability of that production (VGPM_
+svi), and mean salinity (SO). Together, these five 
+variables explain roughly one-third of the cumulative 
+importance, indicating that (i) pelagic productivity 
+proxies, i.e., chlorophyll and VGPM metrics, form a 
+strong trophic gradient, and (ii) hydrographic proper -
+ties, bottom-water temperature and salinity, form an 
+independent physical gradient that further structures 
+the assemblage.
+The next set of predictors comprises dissolved 
+nutrients (phosphate, nitrate, and silicate) and dis-
+solved oxygen as well as global sediment thickness, 
+all with intermediate wR2 values (0.02–0.03). Their 
+coherent positioning suggests a second environmen-
+tal axis linked to nutrient availability, but their lower 
+5774 Hydrobiologia (2026) 853:5767–5786
+Vol:. (1234567890)
+scores imply that this nutrient gradient is less influ-
+ential for the taxonomic patterns observed than the 
+primary productivity and water -mass characteristics. 
+Finally, gravity roughness, SCOC and Lutz-POC 
+rank lowest (wR2 < 0.02), confirming that large-scale 
+model parameters played a comparatively minor role 
+in shaping the broad-scale distribution of taxa in our 
+data set.
+Because wR2 represents the average variance in 
+species density that each predictor explains across all 
+taxa, the steep drop-off after the top five reinforces 
+the conclusion that meiofaunal communities in the 
+study area are primarily associated with two orthogo-
+nal drivers: a productivity gradient (food supply) and 
+a hydrographic gradient (temperature–salinity water 
+mass), while nutrient concentrations contribute sec-
+ondarily and sediment characteristics only marginally.
+The cumulative importance curves for the six top 
+ranking parameters (Fig.  4, see also Online Resource 
+2) confirm that productivity proxies (Chl, VGPM 
+metrics) and hydrographic parameters (Temp, SO) 
+define discrete ecological thresholds rather than broad 
+linear trends: most taxa respond strongly within lim-
+ited segments of each gradient, underscoring the 
+presence of two principal, nonlinear environmen-
+tal axes—food availability and characteristics—that 
+structure meiofaunal assemblages in the study area.
+Generalized linear mixed-effects models—GLMM
+Inclusive R2—Explanatory power of environmental 
+predictors
+Figure 5 displays the heat-map of IR2 values, quan-
+tifying the unique fraction of variance that each 
+Fig. 2 Bar plots of mean abundances (± standard error, SE) of meiofauna taxa collected in different areas during the KuramBio & 
+KuramBio II (SO223, SO250) and AleutBio (SO293) expeditions to the Kuril Kamchatka Trench, and Aleutian Trench
+5775Hydrobiologia (2026) 853:5767–5786 
+Vol.: (0123456789)
+predictor adds to the Poisson-GLMM for every 
+meiofaunal group. Across most taxa, two coherent 
+groups of predictor variables emerge as consistently 
+high contributors to explained variability, as indicated 
+by contiguous areas of elevated IR2 values in the vari-
+able heatmap. The first group comprises chemical 
+parameters, primarily nitrate, oxygen and phosphate, 
+with silicate contributing to a lesser extent. In Copep-
+oda and Nematoda nitrate alone accounts for 15–18% 
+of the total deviance, closely followed by oxygen 
+(14–17%) and phosphate (11–13%). These same 
+nutrients contribute modest yet detectable shares in 
+nauplii, Loricifera and Tantulocarida, whereas their 
+influence is negligible in Kinorhyncha, Gastrotricha, 
+and Acari.
+The second high-influence cluster comprises 
+hydrographic descriptors. Bottom-water temperature 
+and salinity each supply roughly 9–15% additional 
+ IR2 in Copepoda and Nematoda, and reach simi-
+lar levels in Loricifera and Tantulocarida. Seawater 
+current velocity (SWS) mirrors salinity for taxa that 
+inhabit coarser sediments, contributing a further 
+5–10% for Copepoda and Ostracoda. Together, chem-
+istry and hydrography account for more than half of 
+the cumulative IR2 in all widespread taxa and domi-
+nate the aggregated community response.
+Nutrient proxies have a narrower, taxon-specific 
+footprint. Kinorhyncha displays pronounced sensitivi-
+ties to surface chlorophyll-a (IR2 ≈ 0.11) and mean 
+primary production (0.10), with a smaller but con-
+sistent contribution from fresh-aggregate flux (0.05) 
+and benthic oxygen demand (0.05), indicating reli-
+ance on steady phytodetrital input. In contrast, Tardi-
+grada responds most strongly to production variabil-
+ity (VGPM_svi, 0.04) and POC-flux pulses (0.07), 
+and reduces markedly in highly rough sediments, 
+where grain micro-relief alone explains 13% of its 
+deviance—the highest single-predictor share for this 
+group. Ostracoda also tracks organic matter delivery, 
+with Lutz-POC reflecting 12% unique variance and 
+density adding another 5%; productivity variables are 
+otherwise minor for this taxon.
+Sediment characteristics emerge as secondary fac-
+tors. Aside from the roughness effect on Tardigrada 
+and a moderate SCOC contribution to Kinorhyncha 
+ (IR2 ≈ 0.05), habitat texture rarely exceeds three 
+per cent in any model. Acari are exceptional in that 
+no predictor explains more than two per cent of their 
+variation, suggesting either strong stochasticity or 
+dependence on unmeasured micro-scale cues.
+Taken together, the IR2 patterns show that dis-
+solved nutrients and redox state, coupled with prop-
+erties, provide the most consistent explanatory 
+power across the meiofaunal assemblage, whereas 
+productivity signals refine the response of specialist 
+deposit feeders and episodic organic influx shapes 
+only a handful of groups. Sediment structure exerts 
+taxon-limited but occasionally pronounced effects, 
+underscoring the hierarchical organization of driv -
+ers from basin-scale chemistry to patch-scale habitat 
+complexity.
+Beta‐weight (BW)
+The standardized slope analysis, evaluated with 95% 
+confidence intervals, singles out two environmen-
+tal axes that  represent the clearest, statistically sup-
+ported influence on the meiofaunal assemblage: a 
+nutrient oxygen gradient and a hydrographic gradient.
+Along the nutrient oxygen axis, four of the 
+dominant groups—Copepoda, nauplii, Nematoda, 
+Fig. 3 Gradient-Forest analysis of meiofaunal taxa. Weighted 
+ R2 values for each environmental variable taxon, representing 
+the proportion of variance in taxon abundance explained by 
+the model. Abbreviations: Chl–surface primary productivity; 
+GLOBSED–Total Sediment Thickness; GR–Seafloor rough-
+ness; NO3–Nitrate; O2–dissolved oxygen concentration; PO4–
+Phosphate; POC–Particulate organic carbon flux to the seafloor 
+based on Lutz et al. (2007); SCOC–Sediment-community oxy -
+gen consumption; Si–Silicate; SO–salinity; Temp–Bottom tem-
+perature; SWS–sea-water current velocity; VGPM–monthly 
+surface primary production; VGPM_svi–Seasonal index of 
+mean monthly surface primary production
+5776 Hydrobiologia (2026) 853:5767–5786
+Vol:. (1234567890)
+and Ostracoda—respond in the same direction. Their 
+densities fall as nitrate, phosphate and silicate rise 
+(βw = −0.15 to −0.48, CI < 0) and rise as dissolved 
+oxygen increases (βw = + 0.19 to + 0.72, CI > 0) 
+(Online Resource 5). Loricifera exhibits the reverse 
+pattern, with significant positive slopes for nitrate 
+(βw = + 0.89, CI > 0) and a marked negative slope for 
+oxygen (βw = −0.77, CI < 0), indicating a preference 
+for low-oxygen, nutrient-rich pockets. Tantulocarida 
+overlap partially with this niche, increasing with 
+both nitrate and phosphate (βw ≈ + 0.39 and + 0.42, 
+CI > 0). No other taxa show significant nutrient or 
+oxygen effects.
+The hydrographic gradient reinforces this divi-
+sion. Bottom-water temperature and salinity 
+increase Copepoda and Nematoda (salinity βw 
+≈ + 0.33, CI > 0; temperature βw ≈ −0.37, CI < 0 
+when expressed as deviation from the mean), yet 
+have the opposite effect on Loricifera (temperature 
+βw = + 0.99, CI > 0; salinity βw = −0.90, CI < 0). 
+Seawater density (σΘ) is a secondary but signifi-
+cant positive factor for Copepoda and Ostracoda (βw 
+≈ + 0.24 to + 0.25, CI > 0).
+Nutrient variables exert significant control on only 
+a few specialists. Kinorhyncha responded positively 
+to steady phytodetritus: both surface chlorophyll-a 
+and mean primary production show significant posi-
+tive slopes (βw ≈ + 0.40, CI > 0), and fresh-aggregate 
+flux is similarly favorable (βw ≈ + 0.41, CI > 0). Nau-
+plii also increased with aggregate flux (βw = + 0.24, 
+CI > 0). A single productivity metric, VGPM_svi, is 
+significant for Copepoda (βw = + 0.27, CI > 0), sug-
+gesting opportunistic exploitation of patchy food 
+inputs; it remains non-significant elsewhere.
+Sediment characteristics play only a minor role. 
+Seafloor roughness is the lone habitat feature with 
+a robust effect, strongly depressing Tardigrada 
+(βw = −0.82, CI < 0); all other sediment variables, 
+including sediment-community oxygen consumption 
+Fig. 4 Cumulative importance of the six most influential 
+environmental predictors (Chl, Temp, VGPM, VGPM_svi, 
+SO, PO4) across all taxa. Large steps in the curves indicate 
+strong changes in community composition along the respec-
+tive environmental gradient. Abbreviations: Chl–surface pri-
+mary productivity; PO4–Phosphate; SO: salinity; Temp–Bot-
+tom temperature; VGPM–monthly surface primary production; 
+VGPM_svi–Seasonal index of mean monthly surface primary 
+production
+5777Hydrobiologia (2026) 853:5767–5786 
+Vol.: (0123456789)
+and global lithologic class, have confidence intervals 
+that encompass zero across all taxa.
+Together, these results define two principal envi-
+ronmental niches within the study area: a cool, oxic, 
+nutrient-poor, higher-salinity water mass that favors 
+most meiofauna, and a warm, low-salinity, nutrient-
+rich, oxygen-depleted water mass exploited chiefly by 
+Loricifera and, to a lesser extent, Tantulocarida. Food 
+supply and micro-habitat heterogeneity refine these 
+broad patterns but do not overturn the dominance of 
+the chemical and hydrographic gradients.
+Effects of grain size on meiofauna abundance
+The compositional data analyses revealed no sig-
+nificant effect of the relative proportion of sand 
+and mud combined versus gravel (ILR1) on the 
+abundance of any taxon; consequently, ILR1 was 
+not considered further. In contrast, the balance 
+between sand and mud (ILR2) significantly affected 
+meiofaunal abundance (Table  2). Negative coef-
+ficients indicate higher abundances in mud-rich 
+sediments, and all estimated effects were consist-
+ently negative across taxa. Significant relationships 
+after Benjamini–Hochberg correction were detected 
+for the overall meiofaunal assemblage as well as 
+for Gastrotricha, Tantulocarida, Nematoda, and 
+Ostracoda, whereas the effect for Nauplii was only 
+nominally significant. The consistent direction of 
+the effects suggests a broadly shared preference for 
+fine-grained sediments within the meiofaunal com-
+munity, although not all taxon-specific responses 
+reached statistical significance.
+Fig. 5 Heatmap of the inclusive R2 (IR2) values per taxon-
+parameter derived from the GLMM. Higher values indicate 
+a stronger effect of the environmental parameter alone when 
+depth is kept at a mean value. Asterisks indicate significant 
+standardized slopes. Abbreviations: Chl–surface primary pro-
+ductivity; GLOBSED–Total Sediment Thickness; GR–Seafloor 
+roughness; NO3–Nitrate; O2–dissolved oxygen concentration; 
+ PO4–Phosphate; POC–Particulate organic carbon flux to the 
+seafloor based on Lutz et  al. (2007); SCOC–Sediment-com-
+munity oxygen consumption; Si–Silicate; SO: salinity; Temp–
+Bottom temperature; SWS–sea water current velocity; VGPM–
+monthly surface primary production; VGPM_svi–Seasonal 
+index of mean monthly surface primary production
+5778 Hydrobiologia (2026) 853:5767–5786
+Vol:. (1234567890)
+Discussion
+This study characterizes the environmental determi-
+nants of metazoan meiofaunal densities at abyssal 
+and hadal depths of the KKT and AT, applying dif-
+ferent statistical modeling techniques to identify the 
+main predictors and quantify taxon-specific effects. 
+Given the paucity of baseline data for the region, the 
+findings serve as a key reference for predicting ben-
+thic community responses to projected climate-driven 
+changes (e.g., shifts in temperature, dissolved oxygen, 
+and primary productivity; Sweetman et al., 2017).
+Several environmental predictors of meiofaunal 
+densities were identified (Figs.  3, 4, Table  2). The 
+GLMMs refine, and in part rearrange, the picture 
+that emerged from the Gradient-Forest analysis. The 
+Gradient-Forest analysis ranked surface productiv -
+ity proxies (i.e., mean chlorophyll-a and VGPM) 
+alongside bottom-water temperature and salinity 
+as the most important predictors when their vari-
+ance was summed across all taxa. In contrast, taxon-
+specific  GLMMs, when  accounting for random 
+effects,  identified  dissolved nutrients (nitrate, phos-
+phate, silicate) and oxygen as  consistently signifi-
+cant drivers, whereas the productivity metrics remain 
+significant only for a few taxa such as Kinorhyncha 
+and, to a lesser extent, Copepoda. In addition, grain 
+size seemed to be important, with a higher proportion 
+of mud associated with elevated meiofaunal densi-
+ties. The importance of hydrographic conditions is 
+supported by both approaches: Bottom-water tem-
+perature and salinity rank among the most influential 
+predictors in the Gradient-Forest analysis and emerge 
+with clear, opposing slopes in the GLMMs. Together, 
+these patterns indicate a differentiation of the deep-
+sea assemblage along a hydrographic gradient, with 
+taxa associated with cooler, more oxygenated condi-
+tions contrasting with those occurring preferentially 
+under warmer, less oxygenated bottom waters.
+These divergences highlight the complementary 
+nature of the two methods. Gradient Forest is a mul-
+tivariate machine-learning approach that integrates 
+responses across multiple taxa to identify environ-
+mental gradients associated with the strongest com-
+munity turnover and compositional change, while 
+accounting for complex, non-linear relationships 
+(Ellis et al., 2012). By optimizing split points to max-
+imize overall variance explained, it emphasizes gradi-
+ents that structure variation across the entire assem-
+blage, meaning that productivity-related variables 
+such as chlorophyll-a and VGPM can appear highly 
+important when they consistently influence many 
+taxa simultaneously, even if their effects are relatively 
+weak or inconsistent at the level of individual groups. 
+In contrast, the GLMMs evaluate each taxon sepa-
+rately and estimate the direction and strength of its 
+response, while accounting for variation among sta-
+tions and samples (Bolker et al., 2009), thereby focus-
+ing on relationships that are robust within taxa once 
+other sources of variability are taken into account. 
+By providing taxon-specific regression coefficients 
+and confidence intervals, GLMMs reveal, which of 
+the shared gradients actually alter local density, once 
+other factors are held constant. As a result, predictors 
+Table 2 Effects of sediment composition (ILR2: sand vs. silt/clay) on the abundance of meiofaunal taxa
+Negative coefficients indicate higher abundances in mud-rich sediments. Confidence intervals (CI), nominal p-values and Benja-
+mini–Hochberg (BH) adjusted p-values are shown. Significance: p < 0.05 = *; p < 0.01 = **; p < 0.001 = ***; n.s. = not significant
+Taxon β (ILR2) 95% CI p (nominal) p (BH-adj.)
+Total −0.173 [−0.286, −0.060] 0.0027 0.0107 **/*
+Copepoda −0.098 [−0.214, 0.018] 0.0982 0.1228 n.s./n.s
+Nauplii −0.094 [−0.184, −0.004] 0.0400 0.0666 */n.s
+Kinorhyncha −0.116 [−0.294, 0.062] 0.2001 0.2223 n.s./n.s
+Gastrotricha −0.211 [−0.358, −0.063] 0.0052 0.0130 **/*
+Tardigrada −0.118 [−0.548, 0.312] 0.5909 0.5909 n.s./n.s
+Loricifera −0.337 [−0.722, 0.048] 0.0860 0.1228 n.s./n.s
+Tantulocarida −0.243 [−0.440, −0.046] 0.0158 0.0316 */*
+Nematoda −0.180 [−0.297, −0.064] 0.0024 0.0107 **/*
+Ostracoda −0.228 [−0.379, −0.076] 0.0032 0.0107 **/*
+5779Hydrobiologia (2026) 853:5767–5786 
+Vol.: (0123456789)
+that consistently affect local abundances, such as 
+oxygen and dissolved nutrients, emerge more clearly 
+as significant in the taxon-specific models, whereas 
+broad-scale productivity proxies, despite their impor -
+tance for community-wide turnover, show weaker or 
+inconsistent effects on individual taxon abundances. 
+Thus, Gradient Forest captures the broad productiv -
+ity gradient structuring community-wide composi-
+tional turnover, whereas GLMMs identify the nutri-
+ent–redox axis as exerting the strongest and most 
+consistent control on taxon-specific abundances.
+Ecologically, this implies a two-tier control: sur -
+face-derived food availability (chlorophyll-a, VGPM, 
+phosphate) establishes the regional capacity to sup-
+port meiofaunal communities and influences broad-
+scale distributional patterns and community com-
+position (see also Rex et al., 2006; Wei et al., 2010; 
+Schmidt & Martínez Arbizu, 2015; Ostmann & Mar -
+tínez Arbizu, 2018), while bottom-water chemistry 
+(oxygen, dissolved nutrients), hydrography and grain 
+size exert stronger, more consistent controls on local 
+population densities and determine which taxa can 
+successfully exploit available resources at a given 
+location (see also Ostmann & Martínez Arbizu, 2018; 
+Wang et  al., 2019; Kamenev et  al., 2022). Interest-
+ingly, salinity and temperature also showed substan-
+tial influence, despite their relatively narrow spatial 
+gradients across the KKT and AT (Online Resource 
+3), suggesting that these variables primarily reflect 
+water-mass characteristics and broader hydrographic 
+regimes rather than acting as direct drivers of mei-
+ofaunal densities.
+In our study, meiofaunal densities differed mark -
+edly between the two trench systems, with the KKT 
+generally supporting higher densities than the AT, 
+although notable variability was observed within each 
+trench (Fig. 2, Online Resource 1). Elevated densities 
+at the trench axes were evident in the KKT, but not in 
+the AT, compared to surrounding abyssal sites. Com-
+parisons across trenches and depth zones (abyssal 
+vs. hadal) indicate that trench axes serve as localized 
+hotspots of meiofaunal abundance. Similar patterns 
+have been reported in the Atacama, Japan, and Tonga 
+trenches, where trench-axis sediments consistently 
+exhibit higher densities relative to adjacent abys-
+sal plains (Danovaro et  al., 2002; Itoh et  al., 2011; 
+Ichino et  al., 2015; Schmidt & Martínez Arbizu, 
+2015; Schmidt et  al., 2019; Shimabukuro et  al., 
+2022). These elevated densities are likely driven by 
+downslope focusing of organic material along steep 
+trench topography (Itoh et  al., 2011; Ichino et  al., 
+2015; Schmidt & Martínez Arbizu, 2015; Schmidt 
+et al., 2019; Shimabukuro et al., 2022).
+The lack of a clear trench-axis pattern in the AT 
+may be due to a mass-wasting event, with hadal sedi-
+ments overlain by a fluid mud layer (Sindlev et  al., 
+2026), resulting in locally depressed abundances 
+(see Preikschardt et al., 2025 for macrofauna). More 
+broadly, trenches are geologically unstable environ-
+ments subject to frequent seismic activity and subma-
+rine turbidites. Such disturbances—likewise inferred 
+for parts of the KKT—act as broad, non-selective 
+suppressors of meiofaunal abundance and likely 
+contribute to the high spatial variability observed in 
+both trench systems (Beliaev & Brueggeman, 1989; 
+Bigham et al., 2021; Kamenev et al., 2022).
+Shimabukuro et  al. (2022) further demonstrated 
+that, across three hadal trench systems underlying 
+regions of highly variable surface productivity, meio-
+faunal densities were more closely linked to microbial 
+benthic activity, such as oxygen consumption rates, 
+than to traditional proxies for food availability (e.g., 
+total organic carbon or phytopigments). Similarly, in 
+the KKT this microbial pathway is likely important: 
+the widespread occurrence of hadal cold-seep com-
+munities hosting endosymbiotic chemosynthetic bac-
+teria on trench slopes and the trench floor (Fukumori 
+et al., 2019; Peng et al., 2025) indicates that chemos-
+ynthetically produced organic carbon can supplement 
+surface-derived material. These findings suggest that 
+microbial biomass represents a critical food source 
+for hadal meiofauna and that variations in food deliv -
+ery and microbial activity largely drive the spatial 
+heterogeneity of meiofaunal abundance both within 
+and across trench systems.
+Several studies have shown that sediment grain 
+size is an important factor in determining the abun-
+dance and community structure of meiofauna (Gray, 
+1981; Carman et al., 1987; Wang et al., 2019; Zhao 
+et  al., 2020). Across the assemblage, abundances 
+were higher in mud-rich sediments, with signifi-
+cant responses detected for the total meiofauna as 
+well as several individual taxa, including Nema-
+toda, Gastrotricha, Tantulocarida, and Ostracoda. 
+This pattern is ecologically plausible, as fine-grained 
+sediments, associated with hydrodynamically quiet 
+environments, typically accumulate larger quanti-
+ties of organic matter and microbial biomass than 
+5780 Hydrobiologia (2026) 853:5767–5786
+Vol:. (1234567890)
+coarser sediments, thereby providing enhanced food 
+resources for deposit-feeding meiofauna and their 
+associated microbial food webs (e.g., Diesing et  al., 
+2021). The observed preference for mud-rich habitats 
+therefore likely reflects more indirect effects of food 
+availability and sediment biogeochemistry rather than 
+a direct response to sediment texture itself (but see 
+Tong et al., 2021).
+Our analysis revealed distinct responses among 
+meiofaunal taxa to environmental predictors. Spe-
+cifically, changes in Nematoda and Tardigrada 
+abundances were more strongly linked to mean 
+chlorophyll-a concentrations, whereas Ostracoda den-
+sities showed a stronger association with VGPM_svi. 
+Copepoda exhibited significant correlations with 
+salinity (mean sea-surface salinity) and phosphate 
+concentrations. Nauplii partly differed from cope-
+podid and adult copepods in their responses to envi-
+ronmental predictors, particularly with respect to 
+VGPM_svi and grain size (Fig.  5, Table  2). Notably 
+the threshold for split changes in meiofaunal densi-
+ties in response to chlorophyll-a concentrations was 
+consistent with that reported by Ostmann & Martínez 
+Arbizu (2018), specifically within the 0.6–0.8 µg L⁻ 1 
+range.
+The separation of nauplii from adult and cope-
+podid Copepoda remains a subject of methodologi-
+cal debate, as nauplii do not constitute an independ-
+ent taxon. Nevertheless, their retention as a separate 
+ecological category in this study is predicated on the 
+assumption that they possess a distinct morphology, 
+developmental stage, and potentially diverging envi-
+ronmental requirements. The observed differences 
+in responses between nauplii and copepodids/adult 
+copepods in our study further support this view. Simi-
+lar stage-specific responses to environmental vari-
+ability have previously been documented in deep-sea 
+meiofaunal studies (e.g., Guidi-Guilvard et al., 2009; 
+Guidi-Guilvard & Dallot, 2014), suggesting that nau-
+plii can provide an ecologically informative opera-
+tional category in meiofaunal assessments.
+As elsewhere, Nematoda dominated the meiofau-
+nal communities in our study (Rosli et  al., 2018; 
+Zeppilli et al., 2018). However, some taxa exhibited 
+markedly low densities, which posed challenges for 
+statistical analyses and interpretation. Add to this, 
+the observed high variability in meiofaunal densi-
+ties at small spatial scales, even within single MUC 
+deployments poses significant challenges in modeling 
+meiofaunal abundances (see also Uhlenkott et  al., 
+2020). This variability reflects both the natural patch-
+iness of meiofaunal distributions—driven by aggre-
+gated reproductive strategies, limited dispersal, and 
+biotic interactions (Findlay, 1981)—and local envi-
+ronmental heterogeneity, including factors such as 
+food availability, disturbance history, sediment grain 
+size, porosity, and organic matter quality (Rosli et al., 
+2018; Shimabukuro et al., 2022; Kamenev et al., 2022 
+and citations therein). Small-scale habitat complex-
+ity, including microtopography and biogeochemi-
+cal microniches, can further amplify this patchi-
+ness, with meiofaunal densities varying by orders of 
+magnitude over centimeter to meter scales (Gallucci 
+et al., 2009; Leduc et al., 2012). Such fine-scale vari-
+ability generates overdispersion in predictive models, 
+where observed variance exceeds expectations based 
+on standard probability distributions (Guisan & Thu-
+iller, 2005; Ver Hoef & Boveng, 2007), and can mask 
+broader environmental signals if sampling intensity is 
+insufficient to capture the underlying spatial structure 
+(Warwick et al., 1990).
+To mitigate these effects, we applied two different 
+approaches, i.e., Gradient Forests and GLMM with 
+one fixed and a focal parameter. Nevertheless, many 
+taxa had too few observations or very low individual 
+counts (e.g., Acari), which limited model quality and 
+statistical power. The GLMM analyses were based on 
+single-predictor models to avoid overparameteriza-
+tion given the available sample size. Consequently, 
+potential interactions among environmental variables 
+could not be assessed. In addition, environmental 
+predictors were derived from Bio-ORACLE, which 
+provides broad-scale environmental conditions at a 
+coarser spatial resolution than the biologic sampling. 
+As a result, fine-scale environmental heterogeneity 
+may not be fully captured, and some temporal mis-
+match between environmental and biologic data can-
+not be excluded.
+Future studies based on larger datasets, finer-res-
+olution environmental information, and increased 
+replication across stations will help refine these rela-
+tionships and improve model robustness. A hierarchi-
+cal sampling design that explicitly targets the main 
+environmental gradients identified here—productiv -
+ity, bottom-water temperature, salinity, and oxygen—
+while ensuring sufficient spatial spacing to capture 
+regional-scale variation (e.g., > 10  km; Levin et  al., 
+2001) would be especially valuable. At the same time, 
+5781Hydrobiologia (2026) 853:5767–5786 
+Vol.: (0123456789)
+substantially increasing within-station replication is 
+essential; specifically, increasing the number of cores 
+per station from three to at least five, and ideally ten 
+or more, would allow robust estimation of local vari-
+ance and better separate true environmental effects 
+from stochastic patchiness (Rose et  al., 2005; Gal-
+lucci et  al., 2009; Uhlenkott et  al., 2020). Addition-
+ally, modeling taxon presence–absence using bino-
+mial GLMMs would complement abundance models 
+and provide insights into environmental controls on 
+occurrence probabilities, which are often more tracta-
+ble and ecologically interpretable when densities are 
+low or highly variable (Warton et al., 2015; Hui et al., 
+2013).
+Conclusion
+By combining Gradient  Forest and GLMM, we dis-
+entangled broad-scale vs. taxon-specific drivers of 
+metazoan meiofauna density across the abyssal and 
+hadal zones of the KKT and AT. Both approaches 
+revealed consistent hydrographic influences but dif-
+fered in the relative weight assigned to surface pro-
+ductivity versus bottom-water chemistry, highlighting 
+the value of complementary statistical frameworks. 
+Overall, the results suggest that surface-derived food 
+availability establishes the regional backdrop for 
+meiofaunal density, while local factors, such as oxy -
+gen levels, hydrographic conditions, and disturbance 
+events, modulate community composition at finer 
+scales. In the KKT, chemosynthetically-derived car -
+bon associated with cold-seep communities may sup-
+plement surface-derived organic matter, suggesting 
+that hadal food webs are supported by multiple car -
+bon sources and underscoring the complex interplay 
+between regional productivity gradients and local 
+environmental conditions.
+Importantly, this study provides critical baseline 
+data for these understudied regions, serving as a refer-
+ence for assessing benthic responses to projected cli-
+mate-driven changes, including shifts in temperature, 
+oxygen, and primary productivity (Sweetman et  al., 
+2017). At the same time, the observed high variabil-
+ity in meiofaunal densities at fine spatial scales, even 
+within single MUC deployments, emphasizes the 
+need for comprehensive sampling strategies that cap-
+ture natural patchiness and environmental heterogene-
+ity. Such variability presents challenges for predictive 
+modeling by inflating prediction uncertainty and 
+masking broader environmental signals in statistical 
+models, thus highlighting the importance of refining 
+methodologies and expanding spatial coverage. Fur -
+ther, methodological constraints should be acknowl-
+edged: GLMMs were restricted to single-predictor 
+structures due to sample size limitations, preventing 
+the evaluation of interactions among environmental 
+drivers, and environmental data from Bio-ORACLE 
+may not fully capture fine-scale variability at the scale 
+of biological sampling. Future studies incorporating 
+larger datasets, higher-resolution environmental data, 
+and improved replication will be essential to resolve 
+these processes and strengthen predictive frameworks 
+for deep-sea ecosystems.
+Given their sensitivity to environmental change, 
+meiofauna are valuable indicators of ecological 
+responses to climate-driven and other anthropogenic 
+impacts in deep-sea environments, and integrat-
+ing such baseline data into predictive frameworks is 
+essential for anticipating cascading effects on biodi-
+versity and ecosystem function (Zeppilli et al., 2015).
+Acknowledgements We thank the masters, crew, and par -
+ticipants of the RV Sonne expeditions KuramBio (SO 223), 
+KuramBio II (SO 250), and AleutBio (SO 293) for their invalu-
+able support in collecting the samples. Special thanks to Ann-
+Kathrin Wessels and Franziska Iwan (DZMB, Wilhelmshaven) 
+for their assistance on board with the MUC handling and for 
+their contributions to sample processing. Finally, we are grate-
+ful to the three anonymous reviewers for their constructive 
+comments, which helped to improve the manuscript. AleutBio 
+is endorsed by UNESCO (No. 59.2) as part of the UN Dec-
+ade of Ocean Science for Sustainable Development 2021-2030, 
+and it contributes to the UN Project Challenger 150. This is 
+AleutBio publication no. # 46.
+Author contributions Conceptualization: Stefanie Kaiser 
+and Jens Oldeland; writing—original draft: Stefanie Kaiser, 
+Jens Oldeland; writing—review and edition: all; formal analy -
+sis: Jens Oldeland; visualization: Jens Oldeland; data collec-
+tion and quality control: Frederic Bonk; Chih-Lin Wei; project 
+administration: Angelika Brandt, Pedro Martínez Arbizu; pro-
+ject funding acquisition: Angelika Brandt and Pedro Martínez 
+Arbizu; expedition lead: Angelika Brandt.  All authors have 
+read and agreed to the published version of the manuscript.
+Funding The material was collected in the framework 
+of the KuramBio (BMBF grant 03G0223A), KuramBio II 
+(BMBF grant 03G0250A), as well as AleutBio (BMBF grant 
+03G0293A) projects to Prof. Dr. Angelika Brandt, University 
+of Hamburg, now Senckenberg Research Institute and Natural 
+History Museum Frankfurt, Germany. Senckenberg supported 
+the publication regarding statistics/modeling. SK acknowledges 
+a grant by the National Science Center—NCN grant under 
+5782 Hydrobiologia (2026) 853:5767–5786
+Vol:. (1234567890)
+project number 2023/49/B/NZ8/03547 (to Prof. Dr. Magdalena 
+Błażewicz).
+ Data availability All faunal data analyzed in this study are 
+openly accessible via PANGAEA (Felden et al., 2023) through 
+Bonk et al. (2026) or were obtained from published sources as 
+cited in the manuscript. Environmental layers were obtained 
+from Bio-ORACLE (http:// www. bio- oracle. org/), as well as 
+from Snelgrove et al. (2018), Straume et al. (2019), and Whit-
+taker et al. (2008).
+Declarations 
+Conflict of interest The authors declare that they have no 
+conflict of interest.
+Ethical approval No approval of research ethics commit-
+tees was required to accomplish the goals of this study because 
+experimental work was conducted with unregulated invertebrate 
+species.
+Open Access This article is licensed under a Creative Com-
+mons Attribution-NonCommercial-NoDerivatives 4.0 Interna-
+tional License, which permits any non-commercial use, shar -
+ing, distribution and reproduction in any medium or format, as 
+long as you give appropriate credit to the original author(s) and 
+the source, provide a link to the Creative Commons licence, 
+and indicate if you modified the licensed material. You do 
+not have permission under this licence to share adapted mate-
+rial derived from this article or parts of it. The images or other 
+third party material in this article are included in the article’s 
+Creative Commons licence, unless indicated otherwise in a 
+credit line to the material. If material is not included in the arti-
+cle’s Creative Commons licence and your intended use is not 
+permitted by statutory regulation or exceeds the permitted use, 
+you will need to obtain permission directly from the copyright 
+holder. To view a copy of this licence, visit http://creativecom-
+mons.org/licenses/by-nc-nd/4.0/.
+References
+Aitchison, J., 1986. The Statistical Analysis of Compositional 
+Data Monographs on Statistics and Applied Probability, 
+Chapman & Hall Ltd., London (UK):, 416.
+Assis, J., S. J. Fernández Bejarano, V. W. Salazar, L. Schep-
+ers, L. Gouvêa, E. Fragkopoulou, F. Leclercq, B. Van-
+hoorne, L. Tyberghein, E. Serrão, H. Verbruggen & O. 
+De Clerck, 2024. Bio-ORACLE v3. 0, pushing marine 
+data layers to the CMIP6 earth system models of cli-
+mate change research. Global Ecology and Biogeography 
+33(4): e13813.
+Ayón Dejo, P., E. L. Pinedo Arteaga, A. Schukat, J. Taucher, 
+R. Kiko, H. Hauss, S. Dorschner, W. Hagen, M. Segura-
+Noguera & S. Lischka, 2023. Zooplankton community 
+succession and trophic links during a mesocosm experi-
+ment in the coastal upwelling off Callao Bay (Peru). 
+Biogeosciences 20: 945–969. https:// doi. org/ 10. 5194/ 
+bg- 20- 945- 2023.
+Bates, D., M. Maechler, B. Bolker & S. Walker, 2015. Fitting 
+linear mixed-effects models using lme4. Journal of Sta-
+tistical Software 67(1): 1–48. https:// doi. org/ 10. 18637/ 
+jss. v067. i01.
+Beliaev, G. M. & P. L Brueggeman, 1989. Deep sea ocean 
+trenches and their fauna // Glubokovodnye okeaničeskie 
+želoba i ich fauna. Moskva: “Nauka”. Available online at 
+https:// escho larsh ip. org/ uc/ item/ 46n61 48x
+Berkenbusch, K., P. K. Probert & S. D. Nodder, 2011. Compar-
+ative biomass of sediment benthos across a depth tran-
+sect, Chatham Rise, Southwest Pacific Ocean. Marine 
+Ecology Progress Series 425: 79–90.
+Bigham, K. T., A. A. Rowden, D. Leduc & D. A. Bowden, 
+2021. Review and syntheses: impacts of turbidity flows 
+on deep-sea benthic communities. Biogeosciences 18(5): 
+1893–1908. https:// doi. org/ 10. 5194/ bg- 18- 1893- 2021.
+Bolker, B. M., 2009. Generalized linear mixed models: a prac-
+tical guide for ecology and evolution. Trends in Ecology 
+and Evolution 24: 127–135. https:// doi. org/ 10. 1016/j. 
+tree. 2008. 10. 008.
+Bonaglia, S. & F. J. Nascimento, 2023. Meiofauna shaping bio-
+geochemical processes, New horizons in meiobenthos 
+research: profiles, patterns and potentials Springer Inter -
+national Publishing, Cham: 33–54.
+Bonk, F., F. Iwan, A. Brandt & P. Martínez Arbizu, 2025. Mei-
+ofauna assemblages in and around the Aleutian Trench, 
+with focus on Harpacticoida (Copepoda). Progress in 
+Oceanography 236: 103510. https:// doi. org/ 10. 1016/j. 
+pocean. 2025. 103510.
+Bonk, F., S. Kaiser, J. Oldeland & P. Martínez Arbizu, 2026. 
+Metazoan meiofauna densities from abyssal and hadal 
+depths of the North Pacific trenches, 2012–2022. PAN-
+GAEA. https:// doi. org/ 10. 1594/ PANGA EA. 993630.
+Boogaart K.G., R. Tolosana-Delgado & M. Bren, 2025. com-
+positions: Compositional Data Analysis. R package ver -
+sion 2.0-9. http:// www. stat. booga art. de/ compo sitio ns
+Brandt, A., 2022. SO293 AleutBio (Aleutian Trench Biodi-
+versity Studies) Cruise Report/ Fahrtbericht, Cruise No. 
+SO293, 24.07.2022 - 06.09.2022, Dutch Harbor (USA) 
+- Vancouver (Canada). In SONNE-Berichte (SO293, pp. 
+1–209). Begutachtungspanel Forschungsschiffe. https:// 
+doi. org/ 10. 48433/ CR_ SO293.
+Brown, Z. W., G. L. Van Dijken & K. R. Arrigo, 2011. A 
+reassessment of primary production and environmen-
+tal change in the Bering Sea. Journal of Geophysical 
+Research: Oceans. https:// doi. org/ 10. 1029/ 2010J C0067 
+66.
+Burnham, K. P. & D. R. Anderson, 2002. Model selection and 
+multimodel inference: A practical information-theoretic 
+approach (2nd ed). Springer.
+Carman, K. R., K. M. Sherman & D. Thistle, 1987. Evidence 
+that sediment type influences the horizontal and vertical 
+distribution of nematodes at a deep-sea site. Deep Sea 
+Research Part A. Oceanographic Research Papers 34(1): 
+45–53. https:// doi. org/ 10. 1016/ 0198- 0149(87) 90120-8.
+Coull, B. C. & G. T. Chandler, 1992. Pollution and meiofauna: 
+field, laboratory, and mesocosm studies.  In Barnes, M. 
+et  al. Oceanography and Marine Biology: An Annual 
+Review, 30: pp. 191–271
+5783Hydrobiologia (2026) 853:5767–5786 
+Vol.: (0123456789)
+Coyle, K. O., B. Konar, A. Blanchard, R. C. Highsmith, J. Car-
+roll, M. Carroll, S. G. Denisenko & B. I. Sirenko, 2007. 
+Potential effects of temperature on the benthic infaunal 
+community on the southeastern Bering Sea shelf: possi-
+ble impacts of climate change. Deep Sea Research Part 
+II: Topical Studies in Oceanography 54(23–26): 2885–
+2905. https:// doi. org/ 10. 1016/j. dsr2. 2007. 08. 025.
+Danovaro, R., C. Gambi & N. Della Croce, 2002. Meiofauna 
+hotspot in the Atacama Trench, eastern south Pacific 
+Ocean. Deep Sea Research Part I: Oceanographic 
+Research Papers 49(5): 843–857. https:// doi. org/ 10. 1016/ 
+S0967- 0637(01) 00084-X.
+DeMets, C., R. G. Gordon, D. F. Argus & S. Stein, 1994. 
+Effect of recent revisions to the geomagnetic reversal 
+time scale on estimates of current plate motions. Geo-
+physical Research Letters 21(20): 2191–2194. https:// 
+doi. org/ 10. 1029/ 94GL0 2118.
+Diesing, M., T. Thorsnes & L. R. Bjarnadóttir, 2021. Organic 
+carbon densities and accumulation rates in surface 
+sediments of the North Sea and Skagerrak. Biogeo-
+sciences 18(6): 2139–2160. https:// doi. org/ 10. 5194/ 
+bg- 18- 2139- 2021.
+Egozcue, J. J., V. Pawlowsky-Glahn, G. Mateu-Figueras & 
+C. Barceló-Vidal, 2003. Isometric log-ratio transfor -
+mations for compositional data analysis. Mathematical 
+Geology 35: 279–300. https:// doi. org/ 10. 1023/A: 10238 
+18214 614.
+Ellis, N., S. J. Smith & C. R. Pitcher, 2012. Gradient For -
+ests: calculating importance gradients on physical pre-
+dictors. Ecology 93: 156–168. https:// doi. org/ 10. 1890/ 
+11- 0252.1.
+Felden, J., L. Möller, U. Schindler, R. Huber, S. Schumacher, 
+R. Koppe, M. Diepenbroek & F. O. Glöckner, 2023. 
+PANGAEA - data publisher for earth & environmental 
+science. Scientific Data 10(1): 347. https:// doi. org/ 10. 
+1038/ s41597- 023- 02269-x.
+Findlay, S. E., 1981. Small-scale spatial distribution of mei-
+ofauna on a mud-and sandflat. Estuarine, Coastal and 
+Shelf Science 12(4): 471–484. https:// doi. org/ 10. 1016/ 
+S0302- 3524(81) 80006-0.
+Findlay, S. & K. R. Tenore, 1982. Effect of a free-living marine 
+nematode (Diplolaimella chitwoodi) on detrital carbon 
+mineralization. Marine Ecology Progress Series 8(2): 
+161–166.
+Fukumori, H., T. Takano, K. Hasegawa & Y. Kano, 2019. 
+Deepest known gastropod fauna: species composition 
+and distribution in the Kuril-Kamchatka Trench. Pro-
+gress in Oceanography 178: 102176. https:// doi. org/ 10. 
+1016/j. pocean. 2019. 102176.
+Gallucci, F., T. Moens & G. Fonseca, 2009. Small-scale spa-
+tial patterns of meiobenthos in the Arctic deep sea. 
+Marine Biodiversity 39(1): 9–25. https:// doi. org/ 10. 1007/ 
+s12526- 009- 0003-x.
+Gray, J. S., 1981. The Ecology of Marine Sediments, Cam-
+bridge University Press, New York, NY:
+Green, A. S. & G. T. Chandler, 1994. Meiofaunal bioturba-
+tion effects on the partitioning of sediment-associated 
+cadmium. Journal of Experimental Marine Biology and 
+Ecology 180(1): 59–70. https:// doi. org/ 10. 1016/ 0022- 
+0981(94) 90079-5.
+Guidi-Guilvard, L. D. & S. Dallot, 2014. Metazoan Meioben-
+thos temporal fluctuations in the deep NW Mediterra-
+nean Sea (DYFAMED-BENTHOS 1993–1995). Contri-
+bution of spatial variability and disturbance. Deep Sea 
+Research Part I: Oceanographic Research Papers 92: 
+127–140. https:// doi. org/ 10. 1016/j. dsr. 2014. 07. 003.
+Guidi-Guilvard, L. D., D. Thistle, A. Khripounoff & S. Gas-
+parini, 2009. Dynamics of benthic copepods and other 
+meiofauna in the benthic boundary layer of the deep NW 
+Mediterranean Sea. Marine Ecology Progress Series 396: 
+181–195. https:// doi. org/ 10. 3354/ meps.
+Guisan, A. & W. Thuiller, 2005. Predicting species distribu-
+tion: offering more than simple habitat models. Ecology 
+Letters 8(9): 993–1009. https:// doi. org/ 10. 1111/j. 1461- 
+0248. 2005. 00792.x.
+Harris, P. T., M. Macmillan-Lawler, J. Rupp & E. K. Baker, 
+2014. Geomorphology of the oceans. Marine Geology 
+352: 4–24. https:// doi. org/ 10. 1016/j. margeo. 2014. 01. 011.
+Harrison, P. J., F. A. Whitney, A. Tsuda, H. Saito & K. 
+Tadokoro, 2004. Nutrient and plankton dynamics in the 
+NE and NW gyres of the subarctic Pacific Ocean. Journal 
+of Oceanography 60: 93–117. https:// doi. org/ 10. 1023/B: 
+JOCE. 00000 38321. 57391. 2a.
+Higgins, R. P. & H. Thiel, 1988. Introduction to the Study of 
+Meiofauna, Smithsonian Institution Press, Washington, 
+D.C.:
+Hoste, E., S. Vanhove, I. Schewe, T. Soltwedel & A. Vanreu-
+sel, 2007. Spatial and temporal variations in deep-sea 
+meiofauna assemblages in the Marginal Ice Zone of the 
+Arctic Ocean. Deep Sea Research Part I: Oceanographic 
+Research Papers 54(1): 109–129. https:// doi. org/ 10. 
+1016/j. dsr. 2006. 09. 007.
+Hui, F. K., D. I. Warton, S. D. Foster & P. K. Dunstan, 2013. 
+To mix or not to mix: comparing the predictive perfor -
+mance of mixture models vs. separate species distribu-
+tion models. Ecology 94(9): 1913–1919. https:// doi. org/ 
+10. 1890/ 12- 1322.1.
+Hunt, G. L., Jr., E. M. Yasumiishi, L. B. Eisner, P. J. Stabeno & 
+M. B. Decker, 2022. Climate warming and the loss of sea 
+ice: the impact of sea-ice variability on the southeastern 
+Bering Sea pelagic ecosystem. ICES Journal of Marine 
+Science 79(3): 937–953. https:// doi. org/ 10. 1093/ icesj ms/ 
+fsaa2 06.
+Ichino, M. C., M. R. Clark, J. C. Drazen, A. Jamieson, D. O. 
+B. Jones, A. P. Martin, A. A. Rowden, T. M. Shank, P. 
+H. Yancey & H. A. Ruhl, 2015. The distribution of ben-
+thic biomass in hadal trenches: a modelling approach to 
+investigate the effect of vertical and lateral organic mat-
+ter transport to the seafloor. Deep Sea Research Part I: 
+Oceanographic Research Papers 100: 21–33. https:// doi. 
+org/ 10. 1016/j. dsr. 2015. 01. 010.
+Ingels, J., D. Leduc, D. Zeppilli & A. Vanreusel, 2023. Deep-
+sea meiofauna—A world on its own or deeply con-
+nected?, New horizons in meiobenthos research: Profiles, 
+patterns and potentials Springer International Publishing, 
+Cham: 257–283.
+Itoh, M., K. Kawamura, T. Kitahashi, S. Kojima, H. Katagiri & 
+M. Shimanaga, 2011. Bathymetric patterns of meiofau-
+nal abundance and biomass associated with the Kuril and 
+Ryukyu trenches, western North Pacific Ocean. Deep Sea 
+5784 Hydrobiologia (2026) 853:5767–5786
+Vol:. (1234567890)
+Research Part I: Oceanographic Research Papers 58(1): 
+86–97. https:// doi. org/ 10. 1016/j. dsr. 2010. 12. 004.
+Johnson, G. C., 1998. Deep water properties, velocities, 
+and dynamics over ocean trenches. Journal of Marine 
+Research 56: 329.
+Kamenev, G. M., V. V. Mordukhovich, I. L. Alalykina, A. V. 
+Chernyshev & A. S. Maiorova, 2022. Macrofauna and 
+nematode abundance in the abyssal and hadal zones of 
+interconnected deep-sea ecosystems in the Kuril Basin 
+(Sea of Okhotsk) and the Kuril-Kamchatka Trench 
+(Pacific Ocean). Frontiers in Marine Science 9: 812464. 
+https:// doi. org/ 10. 3389/ fmars. 2022. 812464.
+Kawabe, M. & S. Fujio, 2010. Pacific Ocean circulation based 
+on observation. Journal of Oceanography 66(3): 389–
+403. https:// doi. org/ 10. 1007/ s10872- 010- 0034-8.
+Khen, G. V., E. O. Basyuk, N. S. Vanin & V. I. Matveev, 2013. 
+Hydrography and biological resources in the western 
+Bering Sea. Deep Sea Research Part II: Topical Studies 
+in Oceanography 94: 106–120. https:// doi. org/ 10. 1016/j. 
+dsr2. 2013. 03. 034.
+Leduc, D., A. A. Rowden, P. K. Probert, C. A. Pilditch, S. D. 
+Nodder, A. Vanreusel, G. C. A. Duineveld & R. Wit-
+baard, 2012. Further evidence for the effect of particle-
+size diversity on deep-sea benthic biodiversity. Deep 
+Sea Research Part I: Oceanographic Research Papers 63: 
+164–169. https:// doi. org/ 10. 1016/j. dsr. 2011. 10. 009.
+Lee, O., J. L. Fuglestad & L. Thorsteinson, 2020. Ecosystems 
+of the Bering Strait Region. Governing Arctic Seas: 
+Regional Lessons from the Bering Strait and Barents 
+Sea: 1: 25–46.
+Lemenkova, P., 2021. Topography of the Aleutian Trench 
+south-east off Bowers Ridge, Bering Sea, in the context 
+of the geological development of North Pacific Ocean. 
+Baltica 34(1): 27–46.
+Levin, L. A., R. J. Etter, M. A. Rex, A. J. Gooday, C. R. Smith, 
+J. Pineda, C. T. Stuart, R. R. Hessler & D. Pawson, 2001. 
+Environmental influences on regional deep-sea species 
+diversity. Annual Review of Ecology and Systematics 
+32(1): 51–93. https:// doi. org/ 10. 1146/ annur ev. ecols ys. 32. 
+081501. 114002.
+Lüdecke, D., M. S. Ben-Shachar, I. Patil, P. Waggoner & D. 
+Makowski, 2021. Performance: an R package for assess-
+ment, comparison and testing of statistical models. Jour -
+nal of Open Source Software 6(60): 3139. https:// doi. org/ 
+10. 21105/ joss. 03139.
+Lutz, M., R. Dunbar & K. Caldeira, 2002. Regional variability 
+in the vertical flux of particulate organic carbon in the 
+ocean interior. Global Biogeochemical Cycles 16(3): 
+11-1–11-18. https:// doi. org/ 10. 1029/ 2000G B0013 83.
+Lutz, M. J., K. Caldeira, R. B. Dunbar & M. J. Behrenfeld, 
+2007. Seasonal rhythms of net primary production and 
+particulate organic carbon flux to depth describe the effi-
+ciency of biological pump in the global ocean. Journal 
+of Geophysical Research 112: 1–26. https:// doi. org/ 10. 
+1029/ 2006J C0037 06.
+Mare, M. F., 1942. A study of a marine benthic community 
+with special reference to the micro-organisms. Journal of 
+the Marine Biological Association of the United King-
+dom 25(3): 517–554.
+Martínez, A., S. Bonaglia, M. Di Domenico, G. Fonseca, J. 
+Ingels, K. M. Jörger, C. Laumer, F. Leasi, D. Zeppilli, E. 
+Baldrighi, H. Bik, D. Cepeda, M. Curini-Galletti, A. D. 
+Cutter, G. Dos Santos, S. Fattorini, D. Frisch, S. Gollner, 
+U. Jondelius, A. Kerbl, K. M. Kocot, N. Majdi, S. Mam-
+mola, J. M. Martín-Durán, A. Menegotto, P. A. Mon-
+tagna, F. J. A. Nascimento, N. Puillandre, A. Rognant, N. 
+Sánchez, I. R. Santos, A. Schmidt-Rhaesa, M. Schratz-
+berger, F. Semprucci, M. Shimabukuro, P. J. Sommer -
+field, T. H. Struck, M. V. Sørensen, A. Wallberg, K. Wor-
+saae, H. Yamasaki & D. Fontaneto, 2025. Fundamental 
+questions in meiofauna research highlight how small but 
+ubiquitous animals can improve our understanding of 
+Nature. Communications Biology 8(1): 449. https:// doi. 
+org/ 10. 1038/ s42003- 025- 07888-1.
+Meadows, A. & P. S. Meadows, 1994. Bioturbation in deep 
+sea Pacific sediments. Journal of the Geological Society 
+151(2): 361–375. https:// doi. org/ 10. 1144/ gsjgs. 151.2. 
+0361.
+Moens, T., S. Vanhove, I. De Mesel, B. Kelemen, T. Janssens, 
+A. Dewicke & A. Vanreusel, 2007. Carbon sources of 
+Antarctic nematodes as revealed by natural carbon iso-
+tope ratios and a pulse-chase experiment. Polar Biology 
+31: 1–13. https:// doi. org/ 10. 1007/ s00300- 007- 0323-x.
+Moens, T., K. Sroczynska & H. Adao, 2022. Meiofauna in a 
+changing world. Ecological Indicators 138: 108769. 
+https:// doi. org/ 10. 1016/j. ecoli nd. 2022. 108769.
+Ostmann, A. & P. Martínez Arbizu, 2018. Predictive models 
+using randomForest regression for distribution patterns of 
+meiofauna in Icelandic waters. Marine Biodiversity 48: 
+719–735. https:// doi. org/ 10. 1007/ s12526- 018- 0882-9.
+Overland, J. E., E. Siddon, G. Sheffield, T. J. Ballinger & C. 
+Szuwalski, 2024. Transformative ecological and human 
+impacts from diminished sea ice in the northern Ber -
+ing Sea. Weather, Climate, and Society 16(2): 303–313. 
+https:// doi. org/ 10. 1175/ WCAS-D- 23- 0029.1.
+Peng, X., M. Du, A. Gebruk, S. Liu, Z. Gao, R. N. Glud, P. 
+Zhou, R. Wang, A. A. Rowden, G. M. Kamenev, A. S. 
+Maiorova, D. Papineau, S. Chen, J. Gao, H. Liu, Y. He, 
+I. L. Alalykina, I. Y. Dolmatov, H. Zhang, X. Li, M. V. 
+Malyutina, S. Dasgupta, A. A. Saulenko, V. A. Shilov, S. 
+Liu, T. Xie, Y. Qu, X. Song, H. Zhang, H. Liu, W. Zhang, 
+X. Huang, H. Xu, W. Xu, V. V. Mordukhovich & A. V. 
+Adrianov, 2025. Flourishing chemosynthetic life at the 
+greatest depths of hadal trenches. Nature 645: 679–685. 
+https:// doi. org/ 10. 1038/ s41586- 025- 09317-z.
+Pfannkuche, O., 1985. The deep-sea meiofauna of the porcu-
+pine seabight and abyssal-plain (NE Atlantic)-popula-
+tion-structure, distribution, standing stocks. Oceanolog-
+ica Acta 8(3): 343–353.
+Pfannkuche, O. & H. Thiel, 1987. Meiobenthic stocks and ben-
+thic activity on the NE-Svalbard Shelf and in the Nansen 
+Basin. Polar Biology 7: 253–266. https:// doi. org/ 10. 
+1007/ BF004 43943.
+Preikschardt, M., D. Di Franco, A. Kelch, K. Meißner, A. 
+Brandt & S. Kaiser, 2025. Abyssal and hadal macroin-
+benthic assemblages in the eastern Aleutian Trench (NE 
+Pacific). Progress in Oceanography 237: 103508. https:// 
+doi. org/ 10. 1016/j. pocean. 2025. 103508.
+Pusceddu, A., S. Bianchelli, J. Martin, P. Puig, A. Palanques, 
+P. Masque & R. Danovaro, 2014. Chronic and inten-
+sive bottom trawling impairs deep-sea biodiversity and 
+ecosystem functioning. Proceedings of the National 
+5785Hydrobiologia (2026) 853:5767–5786 
+Vol.: (0123456789)
+Academy of Sciences of the United States of America 
+111: 8861–8866. https:// doi. org/ 10. 1073/ pnas. 14054 
+54111.
+Ramirez-Llodra, E., A. Brandt, R. Danovaro, B. De Mol, E. 
+Escobar, C. R. German, L. A. Levin, P. Martínez Arbizu, 
+L. Menot, P. Buhl-Mortensen, B. E. Narayanaswamy, C. 
+R. Smith, D. P. Tittensor, P. A. Tyler, A. Vanreusel & M. 
+Vecchione, 2010. Deep, diverse and definitely different: 
+unique attributes of the world’s largest ecosystem. Bio-
+geosciences 7(9): 2851–2899. https:// doi. org/ 10. 5194/ 
+bg-7- 2851- 2010.
+Rex, M. A., R. J. Etter, J. S. Morris, J. Crouse, C. R. McClain, 
+N. A. Johnson, C. T. Stuart, J. W. Deming, R. Thies & 
+R. Avery, 2006. Global bathymetric patterns of stand-
+ing stock and body size in the deep-sea benthos. Marine 
+Ecology Progress Series 317: 1–8. https:// doi. org/ 10. 
+3354/ meps.
+Rose, A., S. Seifried, E. Willen, K. H. George, G. Veit-Köhler, 
+K. Bröhldick, G. Moura, P. Martínez Arbizu & H. K. 
+Schminke, 2005. A method for comparing within-core 
+alpha diversity values from repeated multicorer sam-
+plings, shown for abyssal Harpacticoida (Crustacea: 
+Copepoda) from the Angola Basin. Organisms Diversity 
+& Evolution 5: 3–17. https:// doi. org/ 10. 1016/j. ode. 2004. 
+10. 001.
+Rosli, N., D. Leduc, A. A. Rowden & P. K. Probert, 2018. 
+Review of recent trends in ecological studies of deep-sea 
+meiofauna, with focus on patterns and processes at small 
+to regional spatial scales. Marine Biodiversity 48: 13–34. 
+https:// doi. org/ 10. 1007/ s12526- 017- 0801-5.
+Rowe, G., M. Sibuet, J. Deming, A. Khripounoff, J. Tietjen, S. 
+Macko & R. Theroux, 1991. Total sediment biomass and 
+preliminary estimates of organic carbon residence time 
+in deep-sea benthos. Marine Ecology Progress Series 79: 
+99–114.
+Schmidt, C. & P. Martínez Arbizu, 2015. Unexpectedly higher 
+metazoan meiofauna abundances in the Kuril-Kamchatka 
+Trench compared to the adjacent abyssal plains. Deep 
+Sea Research Part II: Topical Studies in Oceanography 
+111: 60–75. https:// doi. org/ 10. 1016/j. dsr2. 2014. 08. 019.
+Schmidt, C., V. V. Sattarova, L. Katrynski & P. Martínez 
+Arbizu, 2019. New insights from the deep: Meiofauna in 
+the Kuril-Kamchatka Trench and adjacent abyssal plain. 
+Progress in Oceanography 173: 192–207. https:// doi. org/ 
+10. 1016/j. pocean. 2019. 02. 010.
+Schmidt-Rhaesa, A. (ed), 2020. Guide to the identification of 
+marine meiofauna (p608). Verlag Dr. Friedrich Pfeil, 
+München.
+Schratzberger, M. & J. Ingels, 2018. Meiofauna matters: the 
+roles of meiofauna in benthic ecosystems. Journal of 
+Experimental Marine Biology and Ecology 502: 12–25. 
+https:// doi. org/ 10. 1016/j. jembe. 2017. 01. 007.
+Schratzberger, M., R. Danovaro, J. Ingels, P. A. Montagna, M. 
+Rohal Lupher, F. Semprucci & P. J. Somerfield, 2023. 
+Hidden players—Meiofauna mediate Ecosystem effects 
+of Anthropogenic disturbances in the ocean, New hori-
+zons in meiobenthos research: profiles, patterns and 
+potentials Springer International Publishing, Cham: 
+175–255.
+Shimabukuro, M., D. Zeppilli, D. Leduc, F. Wenzhöfer, P. 
+Berg, A. A. Rowden & R. N. Glud, 2022. Intra-and 
+inter-spatial variability of meiofauna in hadal trenches 
+is linked to microbial activity and food availability. Sci-
+entific Reports 12(1): 4338. https:// doi. org/ 10. 1038/ 
+s41598- 022- 08088-1.
+Sindlev, M. B., J. P. Balmonte, F. Wenzhöfer, W. Xiao, P. Stief, 
+K. Oguri, M. Tsuchiya, Y. Yokoyama, A. Rudra, D. E. 
+Canfield, H. Sanei, A. Brandt & R. N. Glud, 2025. Sedi-
+mentological, mineralogical, and biogeochemical char -
+acteristics in the Aleutian Trench and adjacent abyssal 
+plains. PANGAEA. https:// doi. org/ 10. 1594/ PANGA EA. 
+984610.
+Sindlev, M. B., J. P. Balmonte, F. Wenzhöfer, W. Xiao, P. Stief, 
+K. Oguri, M. Tsuchiya, Y. Yokoyama, D. E. Canfield, H. 
+Sanei, A. Brandt & R. N. Glud, 2026. The benthic envi-
+ronment of the Aleutian Trench region: Sediment prov -
+enance, organic carbon sources and deposition dynamics. 
+Progress in Oceanography 241: 103627. https:// doi. org/ 
+10. 1016/j. pocean. 2025. 103627.
+Smith, K. L., Jr., H. A. Ruhl, M. Kahru, C. L. Huffard & A. 
+D. Sherman, 2013. Deep ocean communities impacted 
+by changing climate over 24 y in the abyssal northeast 
+Pacific Ocean. Proceedings of the National Academy of 
+Sciences 110(49): 19838–19841. https:// doi. org/ 10. 1073/ 
+pnas. 13154 47110.
+Snelgrove, P. V. R., K. Soetaert, M. Solan, S. Thrush, C.-L. 
+Wei, R. Danovaro, R. W. Fulweiler, H. Kitazato, B. 
+Ingole, A. Norkko, R. J. Parkes & N. Volkenborn, 2018. 
+Global carbon cycling on a heterogeneous seafloor. 
+Trends in Ecology & Evolution 33: 96–105. https:// doi. 
+org/ 10. 1016/j. tree. 2017. 11. 004.
+Stabeno, P. J., J. D. Schumacher & K. Ohtani, 1999. The physi-
+cal oceanography of the Bering Sea. Dynamics of the 
+Bering Sea. https:// doi. org/ 10. 4027/ dbs. 1999.
+Stoffel, M. A., S. Nakagawa & H. Schielzeth, 2021. partR2: 
+partitioning R2 in generalized linear mixed models. PeerJ 
+9: e11414. https:// doi. org/ 10. 7717/ peerj. 11414.
+Stratmann, T., K. Soetaert & C.-L. Wei, 2019. The SCOC data-
+base, a large, open, and global database with sediment 
+community oxygen consumption rates. Scientific Data 6: 
+1–6. https:// doi. org/ 10. 1038/ s41597- 019- 0259-3.
+Straume, E. O., C. Gaina, S. Medvedev, K. Hochmuth, K. 
+Gohl, J. M. Whittaker, R. A. Fattah, J. C. Doornenbal 
+& J. R. Hopper, 2019. GlobSed: updated total sediment 
+thickness in the world’s oceans. Geochemistry, Geophys-
+ics, Geosystems. https:// doi. org/ 10. 1029/ 2018G C0081 
+15.
+Strobl, C., A.-L. Boulesteix, T. Kneib, T. Augustin & A. 
+Zeileis, 2008. Conditional variable importance for ran-
+dom forests. BMC Bioinformatics 9(1): 307. https:// doi. 
+org/ 10. 1186/ 1471- 2105-9- 307.
+Sweetman, A. K., A. R. Thurber, C. R. Smith, L. A. Levin, 
+C. Mora, C. L. Wei, A. J. Gooday, D. O. B. Jones, M. 
+Rex, M. Yasuhara, J. Ingels, H. A. Ruhl, C. A. Frieder, 
+R. Danovaro, L. Würzberg, A. Baco, B. M. Grupe, A. 
+Pasulka, K. S. Meyer, K. M. Dunlop, L.-A. Henry & J. 
+M. Roberts, 2017. Major impacts of climate change on 
+deep-sea benthic ecosystems. Elementa: Science of the 
+Anthropocene. https:// doi. org/ 10. 1525/ eleme nta. 203.
+Thiel, H., 1975. The size structure of the deep sea benthos. 
+Internationale Revue der Gesamten Hydrobiologie 60: 
+575–606.
+5786 Hydrobiologia (2026) 853:5767–5786
+Vol:. (1234567890)
+Thiel, H., 1979. Structural aspects of the deep-sea benthos. 
+Ambio Special Report:25–31.
+Tong, S. J. W., N. Fitriya, B. Q. Gan & Y. K. Tan, 2021. First 
+insights into the community structure of the deep-sea 
+benthic metazoan meiofauna off southwest Java (eastern 
+Indian Ocean). Raffles Bulletin of Zoology: pp. 469–485.
+Tyler, P. A., M. Baker & E. Ramirez-Llodra, 2016. Deep-sea 
+benthic habitats. In Biological Sampling in the Deep Sea, 
+eds A. A. R. Malcolm, R. Clark, and M. Consalvey (West 
+Sussex: John Wiley and Sons. Ltd), pp. 1–15. https:// doi. 
+org/ 10. 1002/ 97811 18332 535. ch1
+Uhlenkott, K., A. Vink, T. Kuhn & P. Martínez Arbizu, 2020. 
+Predicting meiofauna abundance to define preservation 
+and impact zones in a deep-sea mining context using ran-
+dom forest modelling. Journal of Applied Ecology 57(7): 
+1210–1221. https:// doi. org/ 10. 1111/ 1365- 2664. 13621.
+Vanreusel, A., M. Vincx, D. Schram & D. Van Gansbeke, 
+1995. On the vertical distribution of the metazoan mei-
+ofauna in shelf break and upper slope habitats of the NE 
+Atlantic. Internationale Revue der Gesamten Hydrobiol-
+ogie und Hydrographie 80(2): 313–326. https:// doi. org/ 
+10. 1002/ iroh. 19950 800218.
+Ver Hoef, J. M. & P. L. Boveng, 2007. Quasi-Poisson vs. nega-
+tive binomial regression: how should we model overdis-
+persed count data? Ecology 88(11): 2766–2772. https:// 
+doi. org/ 10. 1890/ 07- 0043.1.
+Wang, X., X. Liu & J. Xu, 2019. Distribution patterns of mei-
+ofauna assemblages and their relationship with environ-
+mental factors of deep sea adjacent to the Yap Trench, 
+Western Pacific Ocean. Frontiers in Marine Science 6: 
+735. https:// doi. org/ 10. 3389/ fmars. 2019. 00735.
+Warren, B. A. & W. B. Owens, 1988. Deep currents in the cen-
+tral subarctic Pacific Ocean. Journal of Physical Ocean-
+ography 18(4): 529–551. https:// doi. org/ 10. 1175/ 1520- 
+0485(1988) 018% 3c0529: DCITCS% 3e2.0. CO;2.
+Warton, D. I., S. D. Foster, G. De’ath, J. Stoklosa & P. K. Dun-
+stan, 2015. Model-based thinking for community ecol-
+ogy. Plant Ecology 216(5): 669–682. https:// doi. org/ 10. 
+1007/ s11258- 014- 0366-3.
+Warwick, R. M., H. M. Platt, K. R. Clarke, J. Agard & J. 
+Gobin, 1990. Analysis of macrobenthic and meiobenthic 
+community structure in relation to pollution and distur -
+bance in Hamilton Harbour, Bermuda. Journal of Experi-
+mental Marine Biology and Ecology 138(1–2): 119–142. 
+https:// doi. org/ 10. 1016/ 0022- 0981(90) 90180-K.
+Wei, C.-L., G. T. Rowe, E. Escobar-Briones, A. Boetius, T. 
+Soltwedel, M. J. Caley, Y. Soliman, F. Huettmann, F. Qu, 
+Z. Yu, C. R. Pitcher, R. L. Haedrich, M. K. Wicksten, 
+M. A. Rex, J. G. Baguley, J. Sharma, R. Danovaro, I. R. 
+MacDonald, C. C. Nunnally, J. W. Deming, P. Montagna, 
+M. Lévesque, J. M. Weslawski, M. Wlodarska-Kowalc-
+zuk, B. S. Ingole, B. J. Bett, D. S. M. Billett, A. Yool, 
+B. A. Bluhm, K. Iken & B. E. Narayanaswamy, 2010. 
+Global patterns and predictions of seafloor biomass using 
+random forests. PloS One 5(12): e15323. https:// doi. org/ 
+10. 1371/ journ al. pone. 00153 23.
+Whittaker, J. M., R. D. Müller, W. R. Roest, P. Wessel & W. 
+H. F. Smith, 2008. How supercontinents and superoceans 
+affect seafloor roughness. Nature 456: 938–942. https:// 
+doi. org/ 10. 1038/ natur e07573.
+Woodward, G., 2010. Integrative ecology, volume 43: from 
+molecules to ecosystems. Advances in ecological 
+research. Academic Press, London.
+Zeppilli, D., J. Sarrazin, D. Leduc, P. M. Arbizu, D. Fonta-
+neto, C. Fontanier, A. J. Gooday, R. M. Kristensen, V. 
+N. Ivanenko, M. V. Sørensen & A. Vanreusel, 2015. Is 
+the meiofauna a good indicator for climate change and 
+anthropogenic impacts? Marine Biodiversity 45: 505–
+535. https:// doi. org/ 10. 1007/ s12526- 015- 0359-z.
+Zeppilli, D., D. Leduc, C. Fontanier, D. Fontaneto, S. Fuchs, 
+A. J. Gooday, A. Goineau, J. Ingels, V. N. Ivanenko, R. 
+Møbjerg Kristensen, R. Cardoso Neves, N. Sanchez, 
+R. Sandulli, J. Sarrazin, M. V. Sørensen, A. Tasiemski, 
+A. Vanreusel, M. Autret, L. Bourdonnay, M. Claireaux, 
+V. Coquillé, L. De Wever, D. Rachel, J. Marchant, 
+L. Toomey & D. Fernandes, 2018. Characteristics of 
+meiofauna in extreme marine ecosystems: a review. 
+Marine Biodiversity 48: 35–71. https:// doi. org/ 10. 1007/ 
+s12526- 017- 0815-z.
+Zhao, M., Q. Liu, D. Zhang, Z. Liu, C. Wang, & X. Liu, 2020. 
+Deep-sea meiofauna assemblages with special reference 
+to marine nematodes in the Caiwei Guyot and a Polym-
+etallic Nodule Field in the Pacific Ocean. Marine Pollu-
+tion Bulletin 160: 111564
+Zimmermann, M. & M. M. Prescott, 2021. Passes of the Aleu-
+tian Islands: first detailed description. Fisheries Ocean-
+ography 30(3): 280–299. https:// doi. org/ 10. 1111/ fog. 
+12519.
+Zuur, A., E. N. Ieno, N. Walker, A. A. Saveliev & G. M. Smith, 
+2009. Mixed Effects Models and Extensions in Ecology 
+with R, Springer, New York.
+Publisher’s Note Springer Nature remains neutral with regard 
+to jurisdictional claims in published maps and institutional 
+affiliations.

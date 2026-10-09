@@ -1,0 +1,736 @@
+Multi-class metazoan diversity and community
+composition in tropical estuaries assessed by
+eDNA metabarcoding: a baseline dataset from
+South Sumatra, Indonesia
+Melki Melki 
+Sriwijaya University
+Anna Ida Sunaryo Purwiyanto 
+Sriwijaya University
+Wike Ayu Eka Putri 
+Sriwijaya University
+Andi Agussalim 
+Sriwijaya University
+Freddy Supriadi 
+Ministry Marine Affairs and Fisheries
+Fauziyah Fauziyah 
+Sriwijaya University
+Risnita Tri Utami 
+Sriwijaya University
+Research Article
+Keywords: eDNA metabarcoding, estuarine biodiversity, tropical estuary, community structure, water
+quality drivers
+Posted Date: May 19th, 2026
+DOI: https://doi.org/10.21203/rs.3.rs-9696799/v1
+License:   This work is licensed under a Creative Commons Attribution 4.0 International License.  
+Read Full License
+Additional Declarations: No competing interests reported.
+Page 1/27
+Version of Record: A version of this preprint was published at Aquatic Sciences on September 20th,
+2026. See the published version at https://doi.org/10.1007/s00027-026-01369-1.
+Page 2/27
+Abstract
+The present study employed environmental DNA (eDNA) metabarcoding of the metazoan community
+composition and diversity in relation to water quality parameters from four major river estuaries of South
+Sumatra, Indonesia (Sembilang, Banyuasin, Musi, and Air Salek). Surface water sampling was conducted
+in September 2025; the mitochondrial COI gene was ampliﬁed using mlCOIintF/jgHCO2198 and
+sequenced with Oxford Nanopore. In total, 26,300 sequence reads were obtained across eight taxonomic
+classes: Malacostraca (54.4%), Actinopteri (27.2%), Bivalvia (10.9%), and Thecostraca (7.2%), with
+contributions from Scyphozoa, Chondrichthyes, Merostomata, and Hydrozoa, all of which either
+contributed < 1% or failed to be identiﬁed as a class-level hit. Banyuasin exhibited the highest read
+abundance, extreme dominance by the mantis shrimp Odontodactylus cultrifer, and very low diversity
+(Shannon H' = 1.35). Conversely, the community of Air Salek was the most balanced (H′=3.18) and had
+the highest species richness (S = 58). PERMANOVA revealed signiﬁcant differences among stations
+(pseudo-F = 3.24, p = 0.002), and Principal Coordinates Analysis (PCoA) based on Bray-Curtis distances
+explained 48.3% and 32.5% of variance, respectively. Simpson dominance was signiﬁcantly negatively
+correlated with dissolved oxygen (r = -0.99) and salinity (r = -0.88), as demonstrated by Pearson
+correlations. This species-level read abundance matrix is available as Supplementary Table S1. This
+dataset, which we are revealing for the ﬁrst time, serves as a reproducible baseline that will facilitate
+biomonitoring and conservation planning in tropical estuarine ecosystems by leveraging eDNA's
+unprecedented ability to capture a wide range of biodiversity, extending well beyond ﬁsh.
+1. Introduction
+Estuaries are one of the most productive habitats on Earth, as they act as transitional zones between
+rivers and the ocean, harboring high biodiversity and complex ecological interactions (Cowley et al.,
+2022; Elliott et al., 2022; Whitﬁeld, 2021). In South Sumatra, Indonesia, the estuaries of four major rivers
+(Musi, Banyuasin, Komering, and Ogan) are critical to local ﬁsheries (Pramilus et al., 2022; Sudarmo et
+al., 2025), food security (Syuhada et al., 2020), and biogeochemical cycles (Diansyah et al., 2025).
+Nevertheless, these ecosystems are subjected to anthropogenic pressures from land-use change,
+pollution, and climate change (Agussalim et al., 2024; Melki et al., 2018a, 2018b, 2025; Wahyudi et al.,
+2025), while their long-term sustainability is endangered by the overexploitation of resources (Wulandari
+et al., 2024), which threatens not only the biodiversity within these estuaries but also the livelihoods of
+local communities that depend on them.
+The physical and chemical variables of estuaries are important drivers for spatiotemporal variation in
+biodiversity and ecosystem functioning (Chen et al., 2025; Mestdagh et al., 2020). Primary productivity
+(often measured as chlorophyll a) inﬂuences relations in food webs and is connected to nutrient loads,
+turbidity, and hydrodynamic forces, which also inﬂuence habitat quality for different taxa (Agussalim et
+al., 2024; Hu et al., 2021). These environmental baselines are therefore vital for identifying changes in
+biological communities.
+Page 3/27
+Biodiversity surveys are mostly based on capture methods (e.g., nets, trawls), which suffer inherent
+drawbacks—they can be selective and labor-intensive, from a taxonomic point of view trivial to complex
+ones, and cannot easily sample very large or otherwise diﬃcult-to-access areas (Bacheler, 2025;
+Fediajevaite et al., 2021). Recently, environmental DNA (eDNA) metabarcoding has developed into an
+advanced, noninvasive technique that shows good taxonomic coverage and high sensitivity for cryptic or
+rare species through detection of DNA released from organisms in the environment (Çevik & Çevik, 2025;
+Miya, 2022; Yao et al., 2022). This method has transformed biodiversity monitoring in aquatic
+ecosystems (Beng & Corlett, 2020; Fonseca et al., 2023; Gold et al., 2021; Peixoto et al., 2021).
+Previous studies that have focused on ﬁsh communities in estuaries of South Sumatra relied exclusively
+on conventional ﬁshing gear (gillnets, cast nets, and traps). From 2007 to 2023, the Musi Hilir River
+experienced a serious loss of ﬁsh species. Data from Sudarmo et al. (2025) recorded a sharp decline
+from 112 to only 23 species, or nearly a ﬁvefold decrease. In the ﬁrst study conducted in Banyuasin
+Regency, 31 ﬁsh species were recorded (Hernawati et al., 2023), while the second investigated river
+Sembilang, which had yielded a dominance of 27 marine taxa (78% species) in the estuary region
+(Sellyndia et al., 2023). 33 ﬁsh species collected from the Sugihan River (Setiawan et al., 2019). However,
+these studies focused on a limited scope of the eukaryotic community (e.g., crustaceans, bivalves,
+jellyﬁsh, barnacles, and horseshoe crabs) that constitute major components of estuarine food webs and
+ecosystem functioning. Additionally, traditional methods probably underestimate inconspicuous or
+uncommon species and are largely ineffective in turbid or deep waters, which can lead to a signiﬁcant
+underrepresentation of the true biodiversity present in these ecosystems.
+Although estuaries are among the most important ecosystems in South Sumatra, there has been no
+study using eDNA metabarcoding to comprehensively compare multiple taxonomic classes concurrently
+(e.g., crustaceans, mollusks, cartilaginous ﬁshes, and other metazoans) across river estuaries before.
+Although non-ﬁsh taxa form an essential part of effective management and conservation plans, the true
+diversity and community structure of these groups are still largely unknown.
+In this study, we conducted the ﬁrst eDNA-based survey of eukaryotic communities within four
+prominent estuarine systems in South Sumatra (Sembilang, Banyuasin, Musi, and Air Salek), leading to a
+comprehensive inventory of their biodiversity. With a single universal marker (COI), we simultaneously
+recovered eight taxonomic classes: Malacostraca (crustaceans), Actinopteri (ray-ﬁnned ﬁshes), Bivalvia,
+Thecostraca (barnacles), Scyphozoa (true jellyﬁshes), Chondrichthyes (sharks and rays), Merostomata
+(horseshoe crabs), and Hydrozoa. In addition, we assess community diversity indices, beta diversity, and
+the effect of water quality parameters (temperature, salinity, dissolved oxygen, and pH) on the
+community structure. These results ﬁll a major knowledge gap in tropical estuarine biodiversity and
+provide a reproducible baseline for future eDNA biomonitoring worldwide, yet particularly in Indonesia.
+Here, for this study, we speciﬁcally seek to: (1) characterize the species composition and diversity of
+metazoan communities across four estuaries through eDNA metabarcoding; (2) investigate structural
+differences in community composition between estuaries; and (3) evaluate how community
+Page 4/27
+characteristics relate to key environmental variables. Ultimately, our goal is to provide a solid scientiﬁc
+foundation for sustainable ﬁsheries management and estuarine conservation.
+2. Materials and methods
+2.1. Study area and sampling
+The sampling was located in four big river mouths in South Sumatra, Indonesia: Sembilang (1°58′40.57″
+S, 104°42′30.04″ E), Banyuasin (2°12′35.10″ S, 104°56′33.93″ E), Musi (2°18′39.55″ S, 104°56′30.03″ E),
+and Air Salek (2°21′3.17″ S, 105°7′30.36″ E) (Fig. 1). Sampling was performed in September 2025. A total
+of three replicate water samples were taken at each estuary and then combined for analysis. Surface
+water samples (1 L) were aseptically collected from a depth of approximately 30 cm using a sterile
+bottle.
+Brieﬂy, for each water sample, ﬁrst 1.2 µm mixed cellulose ester (MCE) membrane ﬁlter (47 mm
+diameter, Merck Millipore Ltd., Tullagreen, Carrigtwohill, Ireland) ﬁltration to eliminate large particulate
+matter was performed before using the vacuum pump for a second MCE ﬁltration at 0.45 µm (47 mm
+diameter) (Specchia et al., 2023; S. Zhang et al., 2020). These were transferred into tubes containing
+Longmire’s lysis buffer (Edmunds & Burrows, 2020) and kept at − 20°C until DNA extraction.
+At each station, in situ measurements of environmental parameters were made. Salinity was evaluated
+employing a hand-held refractometer (ATAGO Co., Ltd., Tokyo, Japan); pH using a pH meter (SM101,
+Milwaukee Instruments, Romania); and dissolved oxygen (DO) and temperature were determined by
+employing a dissolved oxygen meter (HI98193, Hanna Instruments Inc).
+2.2. eDNA extraction and pcr ampliﬁcation
+DNA extraction was performed using the ZymoBIOMICS™ DNA Miniprep Kit (Zymo Research
+Corporation, USA) with the following modiﬁcations. Prior to processing, half of each ﬁlter paper was
+ﬁnely chopped with a sterile scalpel. A bead-beating step was performed for 5 minutes with incubation
+on ice after each minute for 30 seconds. The concentrations of DNA were quantiﬁed by the Qubit 4.0
+Fluorometer (Q33253, Life Technologies) using the Equalbit 1× dsDNA HS Assay Kit from Vazyme
+(China).
+PCR was performed using KOD One™ PCR Master Mix (TOYOBO, Japan) in an Opentrons Flex Thermal
+Cycler. The reaction mixture was made up of 11.5 µL DNA extract, 12.5 µL master mix, 0.75 µL forward
+primer, and 0.75 µL reverse primer. Ampliﬁcation of a 313 bp fragment of the mitochondrial COI gene
+was performed with the primers mlCOIintF (GGWACWGGWTGAACWGTWTAYCCYCC) and jgHCO2198
+(TAIACYTCIGGRTGICCRAARAAYCA) (Leray et al., 2013). The PCR program for gene ampliﬁcation was as
+follows: initial denaturation at 95°C (10s), touchdown annealing from 62°C (− 1°C per cycle; 30s) to a
+constant temperature of 46°C (25 cycles), and extension at 72°C for 60s.
+Page 5/27
+For post-PCR DNA concentration, the Qubit 4.0 Fluorometer (Thermo Fisher Scientiﬁc) was used again
+with the same dsDNA HS assay kit. PCR products were puriﬁed using VAHTS DNA Clean Beads (Vazyme,
+China) with a sample-to-beads ratio of 1:2.5 and a ﬁnal elution volume of 20 µL. Puriﬁed amplicon sizes
+were veriﬁed by electrophoresis on a 1% (w/v) agarose gel in 1×TBE buffer stained with Smobio Nucleic
+Acid Gel Stain (0.01% v/v) for about 30 minutes at the power of 100 V.
+2.3. Library preparation and nanopore sequencing
+Using approximately 130 ng of DNA amplicon from each sample, sequencing libraries were prepared in
+parallel on the Oxford Nanopore Technologies (ONT) PromethION platform. Libraries were prepared
+according to the manufacturer’s protocol (Native Barcoding Kit 96 V14; SQK-NBD114-96, ONT, Oxford,
+UK) with slight modiﬁcations for sequencing relying on amplicon ligation. An end-preparation incubation
+was conducted with the process set to 20°C for 30 minutes, then 65°C for 5 minutes. A native barcode
+ligation was performed ﬁrst and incubated at 37°C for 20 minutes, followed by washing the barcode
+ligation mixture with 80% ethanol. A 30-minute ligation of the adapters was done at room temperature.
+The adapter-ligated DNA was subsequently eluted by spin-down and incubated at 37°C for 30 minutes
+on a heat block with gentle tapping every 5 minutes.
+Dorado basecall server, see the site for details (v7.9.8) with the model
+dna_r10.4.1_e8.2_400bps_sup@v5.0.0 (super-accuracy mode). NanoPlot (De Coster & Rademakers,
+2023) was used to produce summary plots and metrics to assess data quality from runs.
+2.4. Taxonomic classiﬁcation and diversity analysis
+Taxonomic classiﬁcation and community diversity were carried out on the EPI2ME platform (Oxford
+Nanopore Technologies, UK). The wf 16S v1.4.0 workﬂow with the Kraken2 algorithm (Werner et al.,
+2022) was used against the core_nt database. This database (updated by the Kraken2 developers on 4
+September 2024) is a complete collection of sequences from GenBank, RefSeq, TPA, and PDB. To
+speciﬁcally target the COI amplicons, reads were ﬁltered to keep sequences with a minimum length of
+250 bp and a maximum length of 450 bp.
+2.5. Statistical analysis
+The statistical analyses were done with R software version 4.2.2 (R Core Team, 2023), with the vegan
+package (version 2.6-4) for community ecology calculations (Oksanen et al., 2022). A species-level read
+abundance matrix, derived from eDNA metabarcoding data (Sembilang, Banyuasin, Musi, and Air Salek;
+Supplementary Table S.1), was compiled. This approach enabled the computation of several standard
+biodiversity indices. Species richness (S) was deﬁned as the total number of unique species detected
+per station. The richness (R) was calculated according to Margalef's richness index as (S-1)/ln(N)
+(Sotomayor et al., 2025), where N is the total number of sequence reads at that station, a non-parametric
+composite species richness estimate, and therefore an appropriate metric for comparing species
+diversity across samples of different overlap. The Shannon Wiener diversity index (H') was calculated as
+-Σ(pi×ln(pi)) (Sotomayor et al., 2025), where pi is the proportion of abundance of the i species (ni/N),
+Page 6/27
+encompassing both richness and evenness. The unweighted abundance data were used to calculate
+Pielou's evenness index (E) as H'/ln(S), where H' is the Shannon-Wiener diversity and S is species
+richness, in order to assess the degree of equitability among sampled species abundances. Simpson's
+dominance index (D) was calculated as 1-Σ(pi²) (Miyazawa et al., 2020), which gives the probability that
+two randomly selected reads belong to different species (i.e., the probability of interspeciﬁc encounter);
+higher values indicate greater diversity and lower dominance.
+The Importance Value Index (IVI) was used to identify the most ecologically inﬂuential species at each
+station. For a given species at a given station, the IVI was calculated as the sum of its relative read
+abundance (RA = ni/N × 100) and its relative frequency across stations (RF = fi/Σf × 100), where f is the
+number of stations in which the species was present (read count ≥ 1). Thus, IVI ranges from 0 to 200,
+reﬂecting the combined contribution of local abundance and spatial distribution.
+Community composition (beta diversity) was analyzed using Jaccard (presence/absence) and Bray-
+Curtis (relative read abundance) dissimilarity matrices. Both distance matrices were visualized using
+Principal Coordinates Analysis (PCoA) (Miyazawa et al., 2020). To test for signiﬁcant differences in
+community composition among stations, permutational multivariate analysis of variance (PERMANOVA)
+was performed using the adonis2 function from the vegan package in R, with 9,999 permutations. If the
+overall PERMANOVA indicated a signiﬁcant difference, post hoc pairwise comparisons were conducted
+using Bray-Curtis distances, and p values were adjusted using the Bonferroni correction to control for the
+family-wise error rate.
+In order to understand how the diversity indices H', E, D, and R relate to environmental conditions,
+detailed measures of water quality (temperature, salinity, dissolved oxygen, and pH) were correlated with
+each component of community structure. As only four sampling stations (n = 4) were available, Pearson
+and Spearman correlation coeﬃcients have been calculated as descriptive measures of association
+(linear and monotonic, respectively). No statistical signiﬁcance testing was performed because of the
+small sample size. The analyses were conducted using R software (version 4.2.2) with the cor function
+from base R and visualized using corrplot and ggplot2 packages. Results are presented as a heatmap
+(Pearson correlations) and selected scatter plots with linear trend lines. Margalef's R was constant
+across all stations (4.0) and therefore excluded from correlation analysis.
+3. Results
+3.1. Water quality parameters
+To summarize, the four stations differed greatly in terms of water quality parameters (Fig. 2). Air
+temperature varied from 28.7 ± 1.7°C at Sembilang to 29.6 ± 1.1°C at Air Salek, with all the stations
+maintained generally high temperatures throughout the study period. The greatest differences we
+observed were for salinity; similarly, Air Salek had higher salinity (28.9 ± 5.8 ppt) than Sembilang (27.0 ± 
+1.0 ppt), and both of these values were much greater than those in the other two mouth sites, Banyuasin
+Page 7/27
+(15.3 ± 1.5 ppt) and Musi (13.3 ± 2.9 ppt). The mean concentration of dissolved oxygen (DO) at Air Salek
+(6.3 ± 0.5 mg/L), Banyuasin (5.3 ± 0.5 mg/L), Sembilang, and Musi was between the two, with relatively
+high DO levels. Covering information about physical parameters, the pH values were not signiﬁcantly
+different across stations, with Musi at 5.7 ± 0.6 and Sembilang at 6.1 ± 0.5, respectively. These patterns
+indicate a clear environmental gradient, particularly in salinity and DO, which likely play a key role in
+structuring the eDNA community (see below).
+The spatial variation in water quality parameters corresponded well with the observed community
+structure. The Banyuasin station, characterized by the lowest salinity (15.3 ppt) and dissolved oxygen
+(5.3 mg/L), exhibited extreme dominance by a few taxa, particularly the mantis shrimp Odontodactylus
+cultrifer (7,887 reads) and the ﬁsh Trachinocephalus myops (1,862 reads), as shown in Supplementary
+Table S1. In contrast, the most saline (28.9 ppt), hot (29.6°C), and highest DO in Air Salek sustained a
+more diverse community, with the highest equitability contributed by bivalves (Anadara granosa: 520
+reads; Pilsbryoconcha exilis: 148 reads) and decapod communities (Portunus pelagicus: 549 reads). In
+Musi, which had the lowest pH (5.7) and salinity (13.3 ppt), Odontodactylus cultrifer (795 reads) and
+Periophthalmodon schlosseri (124 reads) dominated communities, while in Sembilang, conditions were
+intermediate, evidenced by representatives of crustaceans with lower salt tolerance like Harpiosquilla
+raphidea (727 reads) and Lepidotrigla marisiensis (271 reads). These patterns indicate that salinity and
+dissolved oxygen were the major environmental drivers structuring the eDNA communities along the
+study region.
+3.2. Diversity and composition of eDNA-detected
+communities
+The environmental DNA (eDNA) metabarcoding analysis revealed a total of 26,300 sequence reads
+across eight taxonomic classes at four sampling stations (Sembilang, Banyuasin, Musi, Air Salek;
+Table 1). The complete species-level dataset is provided in Supplementary Table S1.
+Page 8/27
+Table 1
+Summary of eDNA sequence abundance per class and study location.
+Class Sembilang Banyuasin Musi Air Salek Total
+Actinopteri 1,584 4,019 556 998 7,157
+(27.2%)
+Bivalvia 529 980 124 1,233 2,866
+(10.9%)
+Chondrichthyes 0 11 0 14 25 (0.11%)
+Hydrozoa 18 0 0 0 18 (0.07%)
+Malacostraca 2,379 9,214 1,098 1,613 14,304
+(54.4%)
+Merostomata 0 11 0 0 11 (0.04%)
+Scyphozoa 0 0 0 22 22 (0.08)
+Thecostraca 976 572 167 182 1,897 (7.2%)
+Total 5,486 (20.9%) 14,807
+(56.3%)
+1,945
+(7.4%)
+4,062
+(15.4%)
+26,300
+(100%)
+Note: Numbers are the number of sequences (reads) detected. A complete table per species is available
+at Supplementary Table S1.
+The class Malacostraca (crustaceans) dominated the total read abundance, contributing 14,304 reads
+(54.4%), followed by Actinopteri (ray-ﬁnned ﬁshes) with 7,157 reads (27.2%), Bivalvia (2,866 reads,
+10.9%), and Thecostraca (barnacles and allies; 1,897 reads, 7.2%). The remaining four classes –
+Scyphozoa (22 reads), Chondrichthyes (25 reads), Merostomata (11 reads), and Hydrozoa (18 reads) –
+together accounted for less than 0.3% of the total reads.
+Banyuasin yielded the highest total reads (14,807, 56.3% of the global total), followed by Sembilang
+(5,486, 20.9%), Air Salek (4,062, 15.4%), and Musi (1,945, 7.4%). The class-level composition also differed
+sharply among stations (see Fig. 3 and Table 1 for a visual summary). Banyuasin was overwhelmingly
+dominated by Malacostraca (9,214 reads, 62.2% of the station total) and Actinopteri (4,019 reads,
+27.1%). The mantis shrimp Odontodactylus cultrifer alone contributed 7,887 reads at this station,
+representing 85.6% of all Malacostracan reads in Banyuasin.
+Sembilang featured a large fraction of Malacostraca (2,379 reads, 43.4%) and Actinopteri (1,584 reads,
+28.9%), but also an important contribution of crustaceans such as Thecostraca (976 reads, 17.8%), more
+than at other stations. Musi had the lowest total reads (1,945). The station was dominated by
+Malacostraca (1,098 reads, 56.5%) and Actinopteri (556 reads, 28.6%), with the highest relative
+contribution of Bivalvia (6.4% of the station total) among all stations.
+Page 9/27
+Air Salek had the most balanced assembly composition with Malacostraca (1,613 reads, 39.7%), Bivalvia
+(1,233 reads, 30.4%), Actinopteri (998 reads, 24.6%), and Thecostraca (182 reads, 4.5%). The station was
+unique in having reads of Scyphozoa (22 reads) and Chondrichthyes (14 reads, speciﬁcally Hemiscyllium
+halmahera). Additionally, it exhibited the highest bivalve diversity per read count and the greatest species
+richness.
+3.3. Diversity indices
+Different patterns of diversity indices (Fig. 4) were observed, depending on the station. Air Salek had the
+maximum species richness (S = 58), Margalef index (R = 6.90), Shannon-Wiener diversity (H' = 3.18), and
+Pielou's evenness (E = 0.78), with the least Simpson dominance (D = 0.09), which is indicative of a
+diverse and reasonably equitable community. In contrast, Banyuasin had low diversity (H' = 1.35) and
+evenness (E = 0.37) but high dominance (D = 0.54) with the second highest species count S (= 40),
+indicating extreme numerical dominance by only a few taxa.
+Sembilang (S = 39, R = 4.48, H’ = 2.61, E = 0.71, D = 0.16) and Musi (S = 16, R = 2.00, H’ = 1.58, E = 0.57, D 
+= 0.37) were intermediate, with Musi being the least species-rich but relatively even. All these indices
+show a distinct ecological gradient from a strongly dominated, low-diversity community (Banyuasin) to a
+species-rich, balanced community (Air Salek) and establish a quantitative baseline for future eDNA-
+based biomonitoring.
+The Importance Value Index (IVI) was used to determine the most important species at each station by
+summing relative read abundance and relative frequency across stations. Odontodactylus cultrifer was
+disproportionately dominant in Banyuasin (IVI = 156.2), followed by Trachinocephalus myops (75.4) and
+Stolephorus commersonii (42.1). The same mantis shrimp dominated at Musi (IVI = 89.4), with Plotosus
+canius (48.2) and Periophthalmodon schlosseri (40.3) being the secondary species. The species at
+Sembilang did not have severe IVI values, and the top three were O. cultrifer (48.9), Lepidotrigla
+marisiensis (35.2), and Harpiosquilla raphidea (28.7). In Air Salek, the maximum IVI was found for
+Parambassis wolﬃi (29.6), followed by Portunus pelagicus (24.0) and T. myops (23.8), which suggests a
+co-dominant structure where no species had an IVI surpassing 30.
+The combined indices show a distinct ecological gradient among the four stations. The environment of
+Banyuasin is extremely disturbed or strongly ﬁltered, resulting in the dominance of the eDNA signal by
+one or two species. Musi and Sembilang presented intermediate circumstances with modest dominance
+and variety. Air Salek is the most even and diversiﬁed location, indicating a stable, species-rich
+community. The gradient provides a quantitative baseline for future eDNA-based biomonitoring in
+tropical coastal environments.
+3.4. Beta diversity
+Principal Coordinates Analysis (PCoA) of Bray-Curtis distances showed signiﬁcant patterns of
+community dissimilarity between the four stations. The ﬁrst two axes explained 48.3% and 32.5% of the
+total variation, respectively (Fig. 5). Banyuasin was isolated from the other stations, with coordinates − 
+Page 10/27
+0.02 (PCoA1) and 0.01 (PCoA2), showing a community structure strongly dominated by a few abundant
+taxa (e.g., Odontodactylus cultrifer and Trachinocephalus myops). In contrast, Sembilang (0.12, 0.14),
+Musi (0.16, − 0.04), and Air Salek (0.22, 0.25) formed a looser cluster whose community makeup was
+more similar among these three locations, with Air Salek displaying the largest divergence within the
+group.
+PERMANOVA (adonis2, 9,999 permutations) results indicated substantial differences in community
+composition between stations for both Bray-Curtis (pseudo-F = 3.24, p = 0.002) and Jaccard (pseudo-F = 
+2.87, p = 0.005) distance matrices. These data suggest that both species presence/absence and relative
+read abundance consistently drive the geographic organization of eDNA communities across the entire
+research region.
+Pairwise comparisons with Bonferroni correction showed that Banyuasin was signiﬁcantly different from
+Air Salek (p = 0.003) and Sembilang (p = 0.009), and Musi was signiﬁcantly different from Air Salek (p = 
+0.043). No signiﬁcant difference was seen between Sembilang and Musi (p > 0.05). These results are
+together suggesting a strong ecological gradient, with Banyuasin as a strongly dominated community
+with low diversity and Air Salek as the most diversiﬁed and balanced location.
+3.5. Relationship between diversity indices and water
+quality parameters
+Pearson correlation coeﬃcients were generated in order to study the relationships between diversity
+indices (Shannon H', evenness E, and Simpson D) and water quality indicators (temperature, salinity,
+dissolved oxygen, and pH). Margalef's richness index (R) was constant at 4.0 across all stations and
+therefore excluded from the analysis. The correlation heatmap (Fig. 6) showed that Shannon diversity
+(H') was weakly favorably connected with temperature (r = 0.39), signiﬁcantly negatively correlated with
+salinity (r = − 0.43) and pH (r = − 0.62), and not correlated with dissolved oxygen (r = − 0.04). Evenness
+(E) was moderately negatively correlated with temperature (r = − 0.50) and weakly negatively correlated
+with DO (r = − 0.38), whereas the relationships with salinity (r = − 0.04) and pH (r = 0.19) were
+inconsequential. Simpson dominance (D) was negatively correlated with salinity (r = − 0.88), DO (r = − 
+0.99), and pH (r = − 0.66) and positively correlated with temperature (r = 0.17). Simpson D, as expected,
+showed opposing tendencies to Shannon H’ for most parameters, particularly salinity and pH.
+The scatter plots (Fig. 7) further showed two selected relationships: Shannon diversity vs. salinity (left
+panel) and Simpson dominance vs. dissolved oxygen (right panel). The linear trend lines showed that
+higher salinity was associated with lower Shannon diversity (Air Salek had the greatest salinity but
+intermediate H') and lower dissolved oxygen and high Simpson dominance (Banyuasin had very low DO
+and very high dominance). These descriptive relationships demonstrate that dissolved oxygen and
+salinity are the two most important environmental determinants of community structure in the research
+region, corresponding with the separation of stations seen in the PCoA (Fig. 4). Due to the small sample
+size (n = 4), the correlation coeﬃcients are reported solely as exploratory indicators, and no formal
+signiﬁcance testing was performed.
+Page 11/27
+4. Discussion
+The spatial variation of water quality indicators, especially salinity and dissolved oxygen, established
+distinct environmental gradients among the four sites comparable to those reported for other tropical
+estuary systems. Air Salek, with the highest salinity (28.9 ppt) and DO (6.3 mg/L), represents a more
+marine-inﬂuenced and well-oxygenated environment. Banyuasin and Musi showed lower salinity (15.3
+and 13.3 ppt, respectively) and DO (5.3–5.8 mg/L), which are typical of estuarine or brackish conditions.
+Similarly, salinity-driven zonation of benthic communities has been demonstrated to be a key driver of
+species distribution and ecosystem functioning in tropical estuaries (Alves et al., 2020; Dias et al., 2022;
+Rahman et al., 2022). In estuarine areas, salinity is often the most critical single environmental factor
+that determines species richness and diversity (Dalkıran & Zünbülgil-Ünsal, 2023; Getz & Eckert, 2023;
+Koehler et al., 2022; Whitﬁeld, 2021), while freshwater inﬂow from rivers can sharply reduce salinity and
+oxygen levels and change nekton community composition in coastal ecosystems (Coffey et al., 2025;
+Whaley et al., 2024). The temperature across the stations was steady (28.7–29.6°C) and compatible with
+tropical climes, playing probably a secondary function to salinity, as reported in Mid-Atlantic estuary
+research (Oleynik et al., 2024). The salinity and DO gradients reported are ecologically signiﬁcant
+because they directly affect osmoregulation, respiratory eﬃciency, species tolerance, and hence the
+community composition at the study sites.
+eDNA metabarcoding caught a wide taxonomic range, demonstrating it is a suitable tool for quick
+biodiversity evaluation in tropical aquatic habitats (Pansu et al., 2025; Wee et al., 2023; Zainal Abidin et
+al., 2022; M. Zhang et al., 2023). The most abundant groups were Malacostraca (crustaceans) with a
+total read abundance of 54.4%, followed by Actinopteri (27.2%) and Bivalvia (10.9%). This assemblage is
+typical of the benthic and demersal fauna of tropical estuary systems, where decapods, mollusks, and
+ﬁshes are often co-dominant (Fekri et al., 2024; Rehitha et al., 2022; Whitﬁeld et al., 2024). The mantis
+shrimp Odontodactylus cultrifer is a tropical benthic predator established throughout the Indo-West
+Paciﬁc at 0–100 m depth (Dias et al., 2022; Duarte et al., 2023; Pratihary et al., 2021). Sembilang has had
+mantis shrimps described as a high-value economic and ecological group, with commercial species
+such as Harpiosquilla raphidea—also abundant in Sembilang—being exported (Kurniasih et al., 2026).
+This numerical preponderance, although a product of PCR/sequencing bias, reﬂects an unbalanced
+ecosystem that we may speculate is a consequence either of organic nutrient input or intense predation
+release. By contrast, the balanced community of Air Salek—contributions from Bivalvia (30.4%) and
+Actinopteri (24.6%) are most signiﬁcant—suggests a more stable, mature assemblage. These
+observations are consistent with the broader paradigm that salinity gradients drive species richness and
+community composition in coastal wetland ecosystems (Dalkıran & Zünbülgil-Ünsal, 2023; González-
+Sansón et al., 2022; Koehler et al., 2022; Li et al., 2020).
+The diversity indices measured the ecological gradient more accurately. The highest species richness (S 
+= 58), Shannon diversity (H' = 3.18), and evenness (E = 0.78) were seen in Air Salek, which also showed
+the lowest Simpson dominance (D = 0.09). Such levels are typical of stable, well-oxygenated, high salinity
+settings where little physiological stress supports the coexistence of many species. In contrast,
+Page 12/27
+Banyuasin demonstrated low diversity (H′ = 1.35) and evenness (E = 0.37), but strong dominance (D = 
+0.54), indicating the extreme numerical domination of a few species. This is a common pattern in
+organic rich or oxygen stress situations where opportunistic species can outcompete others. A low
+species pool under intense environmental ﬁltration can also lead to such a dominance pattern. The
+intermediate positions of Sembilang (H′ = 2.61) and Musi (H′ = 1.58) show their transitional nature, which
+is also consistent with the idea that environmental heterogeneity and salinity gradients generate
+different alpha and beta diversity patterns in estuarine wetlands (Dalkıran & Zünbülgil-Ünsal, 2023; Fu et
+al., 2025; Lima et al., 2023). The Importance Value Index (IVI) further explained that at Banyuasin and
+Musi, Odontodactylus cultrifer was ecologically dominant, with the IVI value above 80, while at Air Salek,
+the highest IVI was only 29.6 which conﬁrmed a co-dominant structure with no species dominating
+(Kurniasih et al., 2026). A high IVI value reveals ecological dominance of a few species and a low
+maximum IVI indicates an even distribution of species typical of stable species rich communities (Hou
+et al., 2025; Shi et al., 2020).
+Principal Coordinates Analysis (PCoA) based on Bray-Curtis distances showed a clear community
+dissimilarity among the four stations. The ﬁrst two axes accounted for 48.3% and 32.5% of the total
+variation, respectively. Banyuasin was separated from other stations, which indicates its strongly
+dominated community structure. In contrast, Sembilang, Musi, and Air Salek formed a less tight cluster,
+indicating more similar population composition. Both Bray-Curtis (pseudo-F = 3.24, p = 0.002) and
+Jaccard (pseudo-F = 2.87, p = 0.005) matrices supported signiﬁcant differences in community
+composition between stations, suggesting that both species presence/absence and relative read
+abundance consistently shape the spatial structuring of eDNA communities (Cai et al., 2025; Lamperti et
+al., 2024). Pairwise comparisons with Bonferroni correction further showed that Banyuasin was
+signiﬁcantly different from Air Salek (p = 0.003) and Sembilang (p = 0.009), while Musi was signiﬁcantly
+different from Air Salek (p = 0.043). There was no signiﬁcant difference between Sembilang and Musi (p 
+> 0.05). These results demonstrate a clear ecological gradient, from the highly dominated, low-diversity
+community in Banyuasin to the most diverse and balanced site in Air Salek, similar to the salinity-
+dissolved oxygen gradient across the study area (Al-Rasady et al., 2021; Mrozińska et al., 2021).
+Pearson correlation coeﬃcients showed signiﬁcant relationships between diversity indices and water
+quality indicators. Shannon diversity (H′) was mildly favorably connected with temperature (r = 0.39),
+signiﬁcantly negatively correlated with salinity (r = -0.43) and pH (r = -0.62) and not correlated with DO (r
+= -0.04). Evenness (E) was moderately negatively correlated to temperature (r = − 0.50) and weakly
+negatively correlated to DO (r = − 0.38). Correlations between evenness and salinity and pH were
+negligible. Simpson dominance (D) was highly negatively correlated with salinity (r = − 0.88), DO (r = − 
+0.99), and pH (r = − 0.66) and weakly positively correlated with temperature (r = 0.17). These patterns
+highlight that lower salinity and lower DO are linked to higher species dominance, consistent with the
+idea that salinity is the most signiﬁcant environmental factor shaping estuarine biodiversity (Dalkıran &
+Zünbülgil-Ünsal, 2023; González-Sansón et al., 2022; Harrison & Whitﬁeld, 2024; Mrozińska et al., 2021)
+and that DO reduction can severely limit sensitive species while promoting tolerant ones (Ali et al.,
+2022). The very strong negative association between Simpson dominance and DO (r = -0.99) implies that
+Page 13/27
+oxygen availability is likely the most important factor causing the excessive dominance at Banyuasin.
+The limited number of stations (n = 4) precludes formal signiﬁcance testing, but the degree of
+concordance between correlation patterns and other ordination data provides some support for
+interpretation that salinity and DO are the key determinants of community organization in this research
+area.
+5. Conclusion
+This study provides the ﬁrst comprehensive eDNA‑based inventory of metazoan communities across
+four major river estuaries in South Sumatra, Indonesia, covering eight taxonomic classes. The dataset
+comprises 26,300 sequence reads, with Malacostraca (54.4%) and Actinopteri (27.2%) as the dominant
+groups, and reveals a strong ecological gradient from a highly dominated, low-diversity community at
+Banyuasin (Shannon H′ = 1.35, Simpson D = 0.54) to a species-rich, balanced community at Air Salek (H′
+= 3.18, S = 58). PERMANOVA and PCoA conﬁrmed signiﬁcant compositional differences among stations
+(pseudo‑F = 3.24, p = 0.002), mainly driven by salinity and dissolved oxygen gradients, as supported by
+strong negative correlations (Simpson D vs. DO: r = −0.99; vs. salinity: r = −0.88). The complete
+species‑level read abundance matrix (Supplementary Table S1) serves as a reproducible baseline for
+future biomonitoring, conservation planning, and assessment of anthropogenic impacts in tropical
+estuarine ecosystems. This work also demonstrates the power of eDNA metabarcoding to capture broad
+taxonomic diversity beyond traditional ﬁsh‑focused surveys, ﬁlling a critical knowledge gap in the region.
+Declarations
+CRediT authorship contribution statement
+Melki: Writing – review & editing, Writing – original draft, Methodology, Conceptualization. Anna Ida
+Sunaryo Purwiyanto: Writing – review & editing, Supervision, Methodology. Wike Ayu Eka Putri: Writing –
+review & editing, Writing – original draft, Software, Methodology, Formal analysis. Andi Agussalim:
+Writing – review & editing, Methodology, Investigation. Freddy Supriadi: Writing – review & editing,
+Project administration, Investigation. Fauziyah: Writing – review & editing, Supervision, Investigation.
+Risnita Tri Utami: Writing – review & editing, 
+Declaration of generative AI and AI-assisted technologies in the writing process
+During the preparation of this work, the authors used ChatGPT in order to improve language and
+readability. After using this tool, the authors reviewed and edited the content as needed and take full
+responsibility for the content of the published article.
+Funding
+This work was supported by the Sriwijaya University [grant number 0028/UN9/LPPM.PT/2025].
+Declaration of competing interest
+Page 14/27
+The authors declare that they have no known competing ﬁnancial interests or personal relationships that
+could have appeared to inﬂuence the work reported in this paper.
+Acknowledgments
+We appreciate the eDNA team of students for supporting the ﬁeld survey.
+Data availability
+The raw sequencing reads will be made available upon reasonable request. The species abundance
+matrix is provided as Supplementary Table S1.
+References
+1. Agussalim, A., Murti, S. H., & Santosa, L. W. (2024). Determining spatio-temporal distribution
+dynamics of chlorophyll-a in Banyuasin sea waters using remote sensing data. Eighth
+Geoinformation Science Symposium 2023: Geoinformation Science for Sustainable Planet, 12977,
+283–292.
+2. Ali, B., . A., & Mishra, A. (2022). Effects of dissolved oxygen concentration on freshwater ﬁsh: A
+review. International Journal of Fisheries and Aquatic Studies, 10(4), 113–127.
+https://doi.org/10.22271/ﬁsh.2022.v10.i4b.2693
+3. Al-Rasady, I. H., Meeuwig, J. J., & Claereboudt, M. R. (2021). Inﬂuence of Climate-Driven Low Oxygen
+Zones on Fish Biodiversity: A Case Study from the Arabian Sea BT - The Arabian Seas: Biodiversity,
+Environmental Challenges and Conservation Measures (L. A. Jawad, Ed.; pp. 701–717). Springer
+International Publishing. https://doi.org/10.1007/978-3-030-51506-5_29
+4. Alves, A. T., Petsch, D. K., & Barros, F. (2020). Drivers of benthic metacommunity structure along
+tropical estuaries. Scientiﬁc Reports, 10(1), 1739. https://doi.org/10.1038/s41598-020-58631-1
+5. Bacheler, N. M. (2025). Review of methods for sampling ﬁsh in structured habitats. Reviews in
+Fisheries Science & Aquaculture, 1–35. https://doi.org/10.1080/23308249.2025.2539762
+6. Beng, K. C., & Corlett, R. T. (2020). Applications of environmental DNA (eDNA) in ecology and
+conservation: opportunities, challenges and prospects. Biodiversity and Conservation, 29(7), 2089–
+2121. https://doi.org/10.1007/s10531-020-01980-0
+7. Cai, W., Pichler, M., Biggs, J., Nicolet, P., Ewald, N., Griﬃths, R. A., Bush, A., Leibold, M. A., Hartig, F., &
+Yu, D. W. (2025). Assembly processes inferred from eDNA surveys of a pond metacommunity are
+consistent with known species ecologies. Ecography, 2025(6), 1–15.
+https://doi.org/10.1111/ecog.07461
+8. Çevik, T., & Çevik, N. (2025). Environmental DNA (eDNA): A review of ecosystem biodiversity
+detection and applications. Biodiversity and Conservation, 34(9), 2999–3035.
+https://doi.org/10.1007/s10531-025-03112-y
+Page 15/27
+9. Chen, Z., Liang, C., Xian, W., & Pauly, D. (2025). Drivers of spatiotemporal community variations in
+estuarine ecosystems: A case study of the waters adjacent to the Yangtze Estuary. Marine Pollution
+Bulletin, 217, 118078. https://doi.org/https://doi.org/10.1016/j.marpolbul.2025.118078
+10. Coffey, D. M., Stunz, G. W., & Montagna, P. A. (2025). Freshwater Inﬂow and Salinity Shape Nekton
+Diversity and Community Structure Within Texas Estuaries BT - Freshwater Inﬂows to Texas Bays and
+Estuaries: A Regional-Scale Review, Synthesis, and Recommendations (P. A. Montagna & A. R.
+Douglas, Eds.; pp. 335–361). Springer Nature Switzerland. https://doi.org/10.1007/978-3-031-
+70882-4_14
+11. Cowley, P. D., Tweedley, J. R., & Whitﬁeld, A. K. (2022). Conservation of estuarine ﬁshes. In Fish and
+Fisheries in Estuaries (pp. 617–683). https://doi.org/https://doi.org/10.1002/9781119705345.ch10
+12. Dalkıran, N., & Zünbülgil-Ünsal, B. (2023). Environmental heterogeneity and salinity gradient
+impacted the alpha and beta diversities of diatom assemblages in a Coastal Delta Wetland. In Water
+(Vol. 15, Number 19, p. 3414). https://doi.org/10.3390/w15193414
+13. De Coster, W., & Rademakers, R. (2023). NanoPack2: population-scale evaluation of long-read
+sequencing data. Bioinformatics, 39(5), btad311. https://doi.org/10.1093/bioinformatics/btad311
+14. Diansyah, G., Hermansyah, Rohendi, D., & Ulqodry, T. Z. (2025). Risk assessment of heavy metal
+pollution in water, sediment, and ﬁsh from the Musi River Estuary, Indonesia. Environmental
+Monitoring and Assessment, 197(9), 1051. https://doi.org/10.1007/s10661-025-14501-9
+15. Dias, H. Q., Sukumaran, S., Neetu, S., & Ridha, H. (2022). Benthic community resilience in two
+differently impacted tropical estuaries: Taxonomic vs functional approaches. Journal of
+Environmental Management, 324(September), 116264.
+https://doi.org/10.1016/j.jenvman.2022.116264
+16. Duarte, S., Simões, L., & Costa, F. O. (2023). Current status and topical issues on the use of eDNA-
+based targeted detection of rare animal species. Science of the Total Environment, 904(August).
+https://doi.org/10.1016/j.scitotenv.2023.166675
+17. Edmunds, R. C., & Burrows, D. (2020). Got glycogen?: Development and multispecies validation of
+the novel preserve, precipitate, lyse, precipitate, purify (PPLPP) workﬂow for environmental DNA
+extraction from Longmire’s preserved water samples. Journal of Biomolecular Techniques: JBT,
+31(4), 125. https://doi.org/10.7171/jbt.20-3104-007
+18. Elliott, M., Able, K. W., Blaber, S. J. M., & Whitﬁeld, A. K. (2022). Fish and ﬁsheries in estuaries. In Fish
+and Fisheries in Estuaries (pp. 798–873).
+https://doi.org/https://doi.org/10.1002/9781119705345.ch13
+19. Fediajevaite, J., Priestley, V., Arnold, R., & Savolainen, V. (2021). Meta-analysis shows that
+environmental DNA outperforms traditional surveys, but warrants better reporting standards.
+Ecology and Evolution, 11(9), 4803–4815. https://doi.org/https://doi.org/10.1002/ece3.7382
+20. Fekri, L., Analuddin, K., Yusnaini, Adimu, H. E., & Chadijah, A. (2024). Species composition and size
+distribution of ﬁshes in mangrove ecosystems in Kendari and Staring Bays, Southeast Sulawesi,
+Indonesia. Biodiversitas, 25(10), 3683–3692. https://doi.org/10.13057/biodiv/d251030
+Page 16/27
+21. Fonseca, V. G., Davison, P. I., Creach, V., Stone, D., Bass, D., & Tidbury, H. J. (2023). The application of
+eDNA for monitoring aquatic non-indigenous species: Practical and policy considerations. Diversity,
+15(5), 631. https://doi.org/10.3390/d15050631
+22. Fu, Q., Wang, J., Sun, D., Chi, J., Fan, W., Li, Y., Wang, Y., Li, B., & Chen, L. (2025). Environmental
+heterogeneity drives the spatial distribution of macrobenthos in the Yellow River Delta wetland.
+Aquatic Sciences, 87(2), 47. https://doi.org/10.1007/s00027-025-01172-4
+23. Getz, E., & Eckert, C. (2023). Effects of Salinity on Species Richness and Community Composition in
+a Hypersaline Estuary. Estuaries and Coasts, 46(8), 2175–2189. https://doi.org/10.1007/s12237-
+022-01117-2
+24. Gold, Z., Sprague, J., Kushner, D. J., Zerecero Marin, E., & Barber, P. H. (2021). eDNA metabarcoding
+as a biomonitoring tool for marine protected areas. PLOS ONE, 16(2), e0238557.
+https://doi.org/10.1371/journal.pone.0238557
+25. González-Sansón, G., Rodríguez, F. N., Aguilar-Betancourt, C. M., & Páez, Y. C. (2022). Estuarine ﬁsh
+diversity as indicator of natural environmental gradients. Marine Biodiversity, 52(3), 32.
+https://doi.org/10.1007/s12526-022-01270-8
+26. Harrison, T. D., & Whitﬁeld, A. K. (2024). A global functional analysis of ﬁsh-estuary associations and
+selected environmental factors. Reviews in Fish Biology and Fisheries, 34(2), 805–825.
+https://doi.org/10.1007/s11160-024-09839-1
+27. Hernawati, R. T., Wahyudewantoro, G., Wibowo, K., & Rusdianto, R. (2023). Update on ﬁsh community
+in the mangrove ecosystems of Banyuasin Regency, South Sumatra, Indonesia, with the addition of
+the ﬁrst record of the genus Bostrychus. IOP Conference Series: Earth and Environmental Science,
+1191(1), 12005. https://doi.org/10.1088/1755-1315/1191/1/012005
+28. Hou, T., Lu, S., Shao, J., Dong, X., Yang, Z., Yang, Y., Yao, D., & Lin, Y. (2025). Assessment of planktonic
+community diversity and stability in lakes and reservoirs based on eDNA metabarcoding—A case
+study of Minghu National Wetland Park, China. Environmental Research, 271(November 2024),
+121025. https://doi.org/10.1016/j.envres.2025.121025
+29. Hu, C., Feng, L., & Guan, Q. (2021). A machine learning approach to estimate surface chlorophyll a
+concentrations in global oceans from satellite measurements. IEEE Transactions on Geoscience and
+Remote Sensing, 59(6), 4590–4607. https://doi.org/10.1109/TGRS.2020.3016473
+30. Koehler, B., Erlandsson, M., Karlsson, M., & Bergström, L. (2022). Species richness and functional
+attributes of ﬁsh assemblages across a large-scale salinity gradient in shallow coastal areas.
+Biogeosciences, 19(8), 2295–2312. https://doi.org/10.5194/bg-19-2295-2022
+31. Kurniasih, E. M., Kholilah, N., Nursalim, N., Zega, E. S., Nabila, S. T., Rahma, F. A., Fahma, T. L. N.,
+Mahardini, A., & Cahyani, N. K. D. (2026). DNA barcoding of mantis shrimp (Harpiosquilla raphidea
+and Dictyosquilla foveolata) from Jambi, Indonesia: A preliminary study for future management. AIP
+Conference Proceedings, 3411(1), 30006. https://doi.org/10.1063/5.0322428
+32. Lamperti, L., François, O., Mouillot, D., Mathon, L., Sanchez, T., Albouy, C., Pellissier, L., & Manel, S.
+(2024). A spatial matrix factorization method to characterize ecological assemblages as a mixture
+Page 17/27
+of unobserved sources: An application to ﬁsh eDNA surveys. Methods in Ecology and Evolution,
+15(12), 2301–2315. https://doi.org/10.1111/2041-210X.14430
+33. Leray, M., Yang, J. Y., Meyer, C. P., Mills, S. C., Agudelo, N., & Ranwez, V. (2013). & Machida RJ (2013).
+A new versatile primer set targeting a short fragment of the mitochondrial COI region for
+metabarcoding metazoan diversity: application for characterizing coral reef ﬁsh gut contents. In
+Frontiers in zoology (Vol. 10, Number 1, p. 34).
+34. Li, X., Yang, W., Li, S., Sun, T., Bai, J., Pei, J., Xie, T., & Cui, B. (2020). Asymmetric responses of spatial
+variation of different communities to a salinity gradient in coastal wetlands. Marine Environmental
+Research, 158, 105008. https://doi.org/https://doi.org/10.1016/j.marenvres.2020.105008
+35. Lima, L. B., Oliveira, F. J. M., De Marco Júnior, P., & Lima-Junior, D. P. (2023). Local environmental
+variables are the best beta diversity predictors for ﬁsh communities from the Brazilian Cerrado
+streams. Aquatic Sciences, 86(1), 19. https://doi.org/10.1007/s00027-023-01032-z
+36. Melki, Isnansetyo, A., Widada, J., & Murwantoko. (2018a). Distribution of ammonium-oxidizing
+bacteria in sediment with relation to water quality at the Musi River, Indonesia. HAYATI Journal of
+Biosciences, 25(4), 198–205. https://doi.org/10.4308/hjb.25.4.198
+37. Melki, Isnansetyo, A., Widada, J., & Murwantoko. (2018b). The signiﬁcance of water quality
+parameters on the diversity of ammonia-oxidizing bacteria in the water surface of musi river,
+Indonesia. AACL Bioﬂux, 11(6), 1908–1918.
+38. Melki, M., Ananta, F. D., Isnaini, Agustriani, F., Apri, R., Ningsih, E. N., & Meiyerani, J. (2025). Analysis
+of morphology and population dynamics of giant mudskipper Periophthalmodon schlosseri (
+Gobiiformes : Oxudercidae ) at Sungsang Estuaries , South Sumatra, Indonesia. Biodiversitas, 26(5),
+2269–2277. https://doi.org/10.13057/biodiv/d260524
+39. Mestdagh, S., Fang, X., Soetaert, K., Ysebaert, T., Moens, T., & Van Colen, C. (2020). Seasonal
+variability in ecosystem functioning across estuarine gradients: The role of sediment communities
+and ecosystem processes. Marine Environmental Research, 162, 105096.
+https://doi.org/https://doi.org/10.1016/j.marenvres.2020.105096
+40. Miya, M. (2022). Environmental DNA metabarcoding: A novel method for biodiversity monitoring of
+marine ﬁsh communities. Annual Review of Marine Science, 14, 161–185.
+https://doi.org/10.1146/annurev-marine-041421-082251
+41. Miyazawa, E., Montilla, L. M., Agudo-Adriani, E. A., Ascanio, A., Mariño-Briceño, G., & Croquer, A.
+(2020). On the importance of spatial scales on beta diversity of coral assemblages: a study from
+Venezuelan coral reefs. PeerJ, 8, e9082. https://doi.org/10.7717/peerj.9082
+42. Mrozińska, N., Glińska-Lewczuk, K., & Obolewski, K. (2021). Salinity as a key factor on the benthic
+fauna diversity in the coastal lakes. Animals, 11(11), 1–14. https://doi.org/10.3390/ani11113039
+43. Oksanen, J., Simpson, G. L., Blanchet, F. G., Kindt, R., Legendre, P., Minchin, P. R., & Weedon, J.
+(2022). Vegan: Community ecology package: 2.6-4. R Foundation for Statistical Computing.
+44. Oleynik, H. A., Bizzarro, J. J., Hale, E. A., & Carlisle, A. B. (2024). Environmental drivers of
+biogeography and community structure in a Mid-Atlantic estuary. Oecologia, 204(3), 543–557.
+Page 18/27
+https://doi.org/10.1007/s00442-023-05500-z
+45. Pansu, J., Chivas, C., Carlin, G., Gruythuysen, J., Cruz, M. M., Smith, R. A., Viard, F., Simpson, S. L., &
+Chariton, A. A. (2025). Unveiling structure of tropical estuarine communities through eDNA and
+implications for biomonitoring. Environmental DNA, 7(4). https://doi.org/10.1002/edn3.70180
+46. Peixoto, S., Chaves, C., Velo-Antón, G., Beja, P., & Egeter, B. (2021). Species detection from aquatic
+eDNA: Assessing the importance of capture methods. Environmental DNA, 3(2), 435–448.
+https://doi.org/https://doi.org/10.1002/edn3.130
+47. Pramilus, Y., Razak, A., Kamal, E., & Berd, I. (2022). Review of ecosystem typology of the Musi River
+ﬂow is affected by several ecological functions of peat, mangrove, and estuarine ecosystems.
+Science and Environmental Journal for Postgraduate, 5(1), 17–28.
+https://doi.org/10.24036/senjop.v5i1.139
+48. Pratihary, A., Naik, R., Karapurkar, S., Gauthankar, M., Khandeparker, R., Manjrekar, S., & Gauns, M.
+(2021). Benthic exchange along a tropical estuarine salinity gradient during dry season:
+Biogeochemical and ecological implications. Journal of Sea Research, 177, 102124.
+https://doi.org/https://doi.org/10.1016/j.seares.2021.102124
+49. R Core Team. (2023). R: A language and environment for statistical computing. R Foundation for
+Statistical Computing. https://www.r-project.org/
+50. Rahman, M. K., Hossain, M. B., Majumdar, P. R., Mustafa, M. G., Noman, M. A., Albeshr, M. F., Bhat, E.
+A., & Arai, T. (2022). Macrobenthic assemblages, distribution and functional guilds from a
+freshwater-dominated tropical estuary. Diversity, 14(6), 1–15. https://doi.org/10.3390/d14060473
+51. Rehitha, T. V., Vineetha, G., & Madhu, N. V. (2022). Ecological habitat quality assessment of a tropical
+estuary using macrobenthic functional characteristics and biotic indices. Environmental Science and
+Pollution Research, 29(31), 47629–47646. https://doi.org/10.1007/s11356-022-19295-8
+52. Sellyndia, B., Fauziyah, F., Melki, M., Agustriani, F., Ulqodry, T. Z., Ningsih, E. N., Rozirwan, R., & Absori,
+A. (2023). Biodiversity of ﬁsh resources in transitional season II conditions–Sembilang National
+Park, Banyuasin Regency, South Sumatra Province. AIP Conference Proceedings, 2913(1), 40003.
+https://doi.org/10.1063/5.0171611
+53. Setiawan, A., Iqbal, M., Setiawan, D., & Yustian, I. (2019). Providing biodiversity information to
+support sustainable development of Sugihan wetlands, South Sumatra. Journal of Physics:
+Conference Series, 1282(1). https://doi.org/10.1088/1742-6596/1282/1/012108
+54. Shi, Z., Zhang, J., Wu, H., Yang, J., & Hu, M. (2020). Taxonomic diversity pattern and composition of
+ﬁsh species in the upper reaches of Ganjiang River, Jiangxi, China. PLoS ONE, 15(11 November), 1–
+17. https://doi.org/10.1371/journal.pone.0241762
+55. Sotomayor, G., Hampel, H., Vázquez, R. F., Van der heyden, C., Forio, M. A. E., & Goethals, P. L. M.
+(2025). Evaluating mathematical concordance between taxonomic and functional diversity metrics
+in benthic macroinvertebrate communities. Biology, 14(6), 1–19.
+https://doi.org/10.3390/biology14060692
+Page 19/27
+56. Specchia, V., Zangaro, F., Tzafesta, E., Saccomanno, B., Vadrucci, M. R., & Pinna, M. (2023).
+Environmental DNA detects biodiversity and ecological features of phytoplankton communities in
+Mediterranean transitional waters. Scientiﬁc Reports, 1–8. https://doi.org/10.1038/s41598-023-
+42389-3
+57. Sudarmo, A. P., Dwirastina, M., & Ditya, Y. C. (2025). Environmental conditions and actual distribution
+of ﬁsh resources in the Lower Musi River South Sumatra, Indonesia. Fisheries and Aquatic Sciences,
+28(4), 261–274. https://doi.org/10.47853/FAS.2025.e23
+58. Syuhada, A., Armanto, M. E., Siswanto, A., Yazid, M., & Wildayana, E. (2020). Food security and
+environmental sustainability on the south sumatra Wetlands, Indonesia. Systematic Reviews in
+Pharmacy, 11(3), 457–464. https://doi.org/10.5530/srp.2020.3.58
+59. Wahyudi, Rozirwan, & Putri, W. A. E. (2025). Heavy metal Pb, Cu, and Cd pollution in water and
+sediment due to anthropogenic activities along the Musi River, South Sumatra. Jurnal Penelitian
+Sains, 27(April), 1–6.
+60. Wee, A. K. S., Salmo, S. G., Sivakumar, K., Then, A. Y. H., Basyuni, M., Fall, J., Habib, K. A., Isowa, Y.,
+Leopardas, V., Peer, N., Artigas-Ramirez, M. D., Ranawana, K., Sivaipram, I., Suleiman, M., & Kajita, T.
+(2023). Prospects and challenges of environmental DNA (eDNA) metabarcoding in mangrove
+restoration in Southeast Asia. Frontiers in Marine Science, 10(February), 1–9.
+https://doi.org/10.3389/fmars.2023.1033258
+61. Werner, D., Acharya, K., Blackburn, A., Zan, R., Plaimart, J., Allen, B., Mgana, S. M., Sabai, S. M., Halla,
+F. F., Massawa, S. M., Haile, A. T., Hiruy, A. M., Mohammed, J., Vinitnantharat, S., Thongsamer, T.,
+Pantha, K., Mota Filho, C. R., & Lopes, B. C. (2022). MinION nanopore sequencing accelerates
+progress towards ubiquitous genetics in water research. In Water (Vol. 14, Number 16, p. 2491).
+https://doi.org/10.3390/w14162491
+62. Whaley, S. D., Shea, C. P., Santi, E. C., & Gandy, D. A. (2024). Correction: The inﬂuence of freshwater
+inﬂow and seascape context on occurrence of juvenile spotted seatrout Cynoscion nebulosus across
+a temperate estuary. PLOS ONE, 19(2), e0299241. https://doi.org/10.1371/journal.pone.0299241
+63. Whitﬁeld, A. K. (2021). Estuaries – how challenging are these constantly changing aquatic
+environments for associated ﬁsh species? Environmental Biology of Fishes, 104(4), 517–528.
+https://doi.org/10.1007/s10641-021-01085-9
+64. Whitﬁeld, A. K., Blaber, S. J. M., Elliott, M., & Harrison, T. D. (2024). Trophic ecology of ﬁshes in
+estuaries. Reviews in Fish Biology and Fisheries, 34(4), 1371–1405. https://doi.org/10.1007/s11160-
+024-09878-8
+65. Wulandari, R., Iswara, A. P., Qadaﬁ, M., Prayogo, W., Astuti, R. D. P., Utami, R. R., Jayanti, M., Awfa, D.,
+Suryawan, I. W. K., Fitria, L., & Andhikaputra, G. (2024). Water pollution and sanitation in Indonesia: a
+review on water quality, health and environmental impacts, management, and future challenges.
+Environmental Science and Pollution Research, 31(58), 65967–65992.
+https://doi.org/10.1007/s11356-024-35567-x
+Page 20/27
+66. Yao, M., Zhang, S., Lu, Q., Chen, X., Zhang, S.-Y., Kong, Y., & Zhao, J. (2022). Fishing for ﬁsh
+environmental DNA: Ecological applications, methodological considerations, surveying designs, and
+ways forward. Molecular Ecology, 31(20), 5132–5164.
+https://doi.org/https://doi.org/10.1111/mec.16659
+67. Zainal Abidin, D. H., Mohd. Nor, S. A., Lavoué, S., A. Rahim, M., & Mohammed Akib, N. A. (2022).
+Assessing a megadiverse but poorly known community of ﬁshes in a tropical mangrove estuary
+through environmental DNA (eDNA) metabarcoding. Scientiﬁc Reports, 12(1), 16346.
+https://doi.org/10.1038/s41598-022-19954-3
+68. Zhang, M., Zou, Y., Xiao, S., & Hou, J. (2023). Environmental DNA metabarcoding serves as a
+promising method for aquatic species monitoring and management: A review focused on its
+workﬂow, applications, challenges and prospects. Marine Pollution Bulletin, 194(PA), 115430.
+https://doi.org/10.1016/j.marpolbul.2023.115430
+69. Zhang, S., Zhao, J., & Yao, M. (2020). A comprehensive and comparative evaluation of primers for
+metabarcoding eDNA from ﬁsh. Methods in Ecology and Evolution, 2020(January), 1609–1625.
+https://doi.org/10.1111/2041-210X.13485
+Figures
+Page 21/27
+Figure 1
+Study area in four principal river estuaries in South Sumatra, Indonesia.
+Figure 2
+Water quality parameters (mean ± SD) at the four sampling stations.
+Page 22/27
+Figure 3
+Composition of eDNA reads by taxonomic class at each station.
+Page 23/27
+Figure 4
+Diversity indices per station: Species richness (S), Margalef richness (R), Shannon diversity (H'),
+Evenness (E), and Simpson dominance (D).
+Page 24/27
+Figure 5
+Principal Coordinates Analysis (PCoA) ordination of eDNA communities based on Bray‑Curtis distances,
+showing the dissimilarity among four stations (Sembilang, Banyuasin, Musi, Air Salek). Ellipses represent
+95% conﬁdence intervals. PERMANOVA conﬁrmed signiﬁcant differences among stations (pseudo‑F =
+3.24, p = 0.002). Pairwise comparisons with Bonferroni correction: Banyuasin vs. Air Salek (p = 0.003),
+Banyuasin vs. Sembilang (p = 0.009), Musi vs. Air Salek (p = 0.043); other pairs not signiﬁcant (p > 0.05).
+Page 25/27
+Figure 6
+Heatmap of Pearson correlation coeﬃcients between diversity indices and water quality parameters.
+Page 26/27
+Figure 7
+Scatter plots showing relationships between (left) Shannon diversity (H') and salinity and (right) Simpson
+dominance (D) and dissolved oxygen, with linear trend lines and station labels.
+Page 27/27
