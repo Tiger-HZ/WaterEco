@@ -1,0 +1,740 @@
+327
+INTRODUCTION
+Indoor environmental quality is a major de-
+terminant of comfort, health, and well-being in 
+residential buildings, and ventilation is one of 
+its most influential physical components because 
+it governs the dilution, removal, and directional 
+movement of indoor pollutants, moisture, odors, 
+and airborne particles (Al Horr et al., 2016; Man-
+nan and Al-Ghamdi, 2021). Inadequate residen-
+tial ventilation can increase the accumulation of 
+indoor contaminants and reduce perceived air 
+freshness, particularly in enclosed or semi-en-
+closed spaces where pollutant generation is fre-
+quent and exhaust pathways are weak or unstable 
+(Mannan and Al-Ghamdi, 2021; Guyot et al., 
+2018). Residential ventilation also has direct im-
+plications for health-related indoor air quality and 
+energy demand because ventilation systems must 
+balance pollutant removal with low-energy op-
+eration (Belias and Licina, 2024). These concerns 
+are especially relevant in multi-story residential 
+buildings, where airflow is influenced by wind 
+pressure, buoyancy forces, envelope leakage, 
+internal openings, vertical shafts, and pressure 
+differences between connected spaces (Lai et al., 
+2020; Hajdukiewicz et al., 2024).
+Bathrooms are critical spaces in residential 
+ventilation design because they generate mois -
+ture, odors, and short-term airborne contaminants 
+Computational fluid dynamics based assessment of passive 
+vertical ventilation shaft configurations for improving indoor 
+air quality in multi-story residential buildings
+Luna Kamal Hamad1, Bushra Obeidat1*
+1 Department of Architecture, Jordan University of Science and Technology, Irbid, Jordan
+* Corr esponding author’s e-mail: bushraobeidat@yahoo.com
+ABSTRACT
+Shared vertical ventilation shafts are commonly used to ventilate bathrooms in multi-story residential buildings, 
+yet weak pressure gradients and unseparated airflow paths can reduce exhaust effectiveness and allow air exchange 
+between connected bathrooms. This study used computational fluid dynamics to evaluate passive bathroom ven-
+tilation shaft configurations in a multi-story residential building in Irbid, Jordan. A conventional shared-shaft 
+baseline was compared with alternative duct configurations, including a bottom opening, an increased duct size, 
+roof extensions combined with bottom openings, a roof extension with dual bathroom windows, and a proposed 
+ventilation pathway incorporating a basement extension. The simulations were performed using a building model 
+developed in Autodesk Revit and analyzed in Autodesk CFD under a 3 m/s wind inlet condition and a zero pres-
+sure outlet. The baseline shared shaft produced weak airflow, with a readable velocity magnitude of 0.076127 m/s 
+over a measured region of 53,718.3 cm². The proposed three-channel configuration increased velocity magnitude 
+to 0.147702 m/s over a comparable region of 52,890.2 cm², representing an approximately 94.0% improvement. 
+Vector-field interpretation showed that the proposed configuration produced a clearer directional pathway from 
+lower fresh-air entry through side supply channels and bathroom openings toward the central exhaust shaft and 
+outdoor discharge. The findings indicate that separating supply and exhaust paths is more effective than relying 
+only on shaft enlargement or roof extension. The proposed configuration can support low-energy ventilation design 
+by reducing stagnation and lowering the likelihood of inter-bathroom air exchange in dense residential buildings.
+Keywords: computational fluid dynamics, passive ventilation, indoor air quality, vertical ventilation shaft, resi-
+dential buildings, airflow direction, Irbid.
+Received: 2026.06.08
+Accepted: 2026.08.14
+Published: 2026.09.01
+Journal of Ecological Engineering, 2026, 27(10), 327–337
+https://doi.org/10.12911/22998993/225440
+ISSN 2299–8993, License CC-BY 4.0
+Journal of Ecological Engineering
+328
+Journal of Ecological Engineering 2026, 27(10), 327–337
+that require effective exhaust pathways (Mannan 
+and Al-Ghamdi, 2021; Kumar et al., 2022). In 
+many multi-story apartment buildings, bathroom 
+ventilation depends on vertical shafts that con -
+nect several bathrooms through windows or wall 
+openings. When pressure differentials are weak or 
+poorly controlled, these shared air pathways can 
+create unintended airflow interactions between 
+connected spaces (Lai et al., 2020; Miller et al., 
+2026). Under low-velocity or unstable pressure 
+conditions, shared vertical ducts may experience 
+stagnant airflow, recirculation, or reverse-flow 
+behavior, reducing passive exhaust effectiveness 
+and increasing the possibility of odor and pollut -
+ant transfer between bathrooms (Hajdukiewicz 
+et al., 2024; Miller et al., 2026). Evidence from 
+a residential outbreak investigation also showed 
+that bathroom vertical ventilation ducts can act 
+as plausible pathways for aerosol movement be -
+tween vertically connected apartments when air -
+flow direction and pressure balance are unfavor -
+able (Miller et al., 2026). Although the present 
+study does not measure infection transmission 
+or pathogen survival, this evidence supports the 
+need to evaluate airflow direction, pressure be -
+havior, and inter-bathroom air exchange in shared 
+residential ventilation shafts (Miller et al., 2026; 
+Hajdukiewicz et al., 2024).
+Passive ventilation is an important environ -
+mental engineering strategy because it can im -
+prove indoor air quality while reducing depen -
+dence on energy-intensive mechanical ventila -
+tion systems (Belias & Licina, 2024; Plazas & 
+de Tejada, 2024). Natural ventilation is driven 
+mainly by wind pressure and buoyancy forces, 
+but its performance depends strongly on open -
+ing position, shaft geometry, wind direction, sur -
+rounding obstruction, and the pressure relation -
+ship between inlet and outlet zones (Jiang et al., 
+2023; Hajdukiewicz et al., 2024). In residential 
+buildings, natural ventilation can support pol -
+lutant dilution and thermal regulation, but its ef -
+fectiveness is highly context-dependent because 
+local weather, building geometry, and occupant-
+controlled openings influence airflow rates and 
+direction (Lai et al., 2020; Plazas & de Tejada, 
+2024). Therefore, passive bathroom ventilation 
+shafts should be evaluated as airflow systems 
+in which duct dimensions, inlet and outlet loca -
+tions, roof extension, basement connection, and 
+pressure differentials jointly determine ventila -
+tion performance (Hajdukiewicz et al., 2024; 
+Zhang et al., 2020).
+Computational fluid dynamics is widely used 
+to analyze natural ventilation and indoor airflow 
+because it can visualize velocity fields, pressure 
+distribution, recirculation zones, and flow paths 
+within complex building geometries (Hajdukie -
+wicz et al., 2024; Zhang et al., 2020). CFD is 
+particularly useful for comparing ventilation de -
+sign alternatives before physical implementation, 
+especially when the research question involves 
+three-dimensional flow behavior, wind-driven 
+pressure effects, and local recirculation patterns 
+that are difficult to capture using simplified air -
+flow models (Hajdukiewicz et al., 2024). How -
+ever, credible CFD-based ventilation research 
+requires transparent reporting of model geometry, 
+computational domain, mesh settings, turbulence 
+model, boundary conditions, convergence cri -
+teria, and sensitivity or verification procedures 
+(Hajdukiewicz et al., 2024; Zhang et al., 2020).
+The case of Irbid, Jordan, provides a rel -
+evant context for examining passive ventilation 
+in residential buildings because Greater Irbid 
+Municipality has experienced substantial ur -
+ban expansion and increasing built-up develop -
+ment in recent decades (Awawdeh et al., 2024). 
+Urban expansion in Greater Irbid Municipality 
+increased approximately ninefold between 1967 
+and 2020, indicating major transformation in the 
+spatial structure of the city and its residential en -
+vironment (Awawdeh et al., 2024). Irbid has also 
+been studied as a hot-summer Mediterranean ur -
+ban context in which building form, urban block 
+configuration, and environmental performance 
+are important design concerns (Khraiwesh and 
+Genovese, 2023). These conditions make Irbid 
+a suitable setting for investigating passive, low-
+energy ventilation strategies in multi-story resi -
+dential buildings.
+Despite the growing use of simulation to 
+evaluate building environmental performance, 
+limited research has specifically examined shared 
+bathroom ventilation shafts in multi-story resi -
+dential buildings in Irbid. The present study ad -
+dresses this gap by evaluating airflow behavior in 
+a typical multi-story residential building where 
+bathrooms are connected to a shared vertical ven-
+tilation duct. The study compares a conventional 
+baseline shaft with a sequence of alternative con-
+figurations and a proposed separated three-chan -
+nel duct system. The aim is to identify a passive 
+ventilation configuration that improves airflow 
+direction, reduces stagnation, and lowers the like-
+lihood of inter-bathroom air exchange.
+329
+Journal of Ecological Engineering 2026, 27(10), 327–337
+Figure 1 presents the conceptual framework 
+of the study. The framework links the residential 
+context of multi-story buildings in Irbid with the 
+baseline problem of shared bathroom ventilation 
+ducts, the pressure-driven airflow mechanisms 
+investigated through CFD, and the expected in -
+door environmental risk of stagnation and inter-
+bathroom transfer. It then organizes the tested 
+design scenarios and the proposed three-channel 
+configuration, which separates side fresh-air sup-
+ply channels from a central exhaust channel. The 
+framework also identifies the CFD performance 
+indicators used in the comparative assessment, 
+including velocity, pressure, reverse flow, recir -
+culation, and stagnant zones, and connects these 
+indicators to the study’s expected contribution: 
+passive, low-energy ventilation recommenda -
+tions for improving bathroom air exchange and 
+indoor air quality in Irbid residential buildings.
+MATERIALS AND METHODOLOGY
+Study design
+This study adopted a simulation-based envi -
+ronmental engineering approach to evaluate the 
+airflow performance of passive vertical bathroom 
+ventilation shafts in multi-story residential build-
+ings in Irbid, Jordan. The methodological frame -
+work is shown in Figure 2. The workflow began 
+with defining the residential shaft problem, mod -
+eling the building and duct geometry, exporting 
+the model to Autodesk CFD, defining the com -
+putational air domain and boundary conditions, 
+running comparative simulation cases, and inter -
+preting velocity fields and flow direction.
+The study was structured around three stages. 
+First, a baseline residential ventilation shaft was 
+modeled to represent a common arrangement in 
+which four bathrooms are connected to a shared 
+vertical duct through window openings. Second, 
+alternative shaft configurations were simulated 
+to examine the effect of duct size, roof exten -
+sion, bottom opening, and basement extension 
+on airflow behavior. Third, a proposed separated 
+duct system was assessed. This system divided 
+the shaft into three vertical channels, with two 
+side channels functioning as fresh-air supply 
+paths and one central channel functioning as the 
+exhaust path.
+Study context and model configuration
+The study was conducted in the context of 
+multi-story residential buildings in Irbid, Jordan. 
+The selected configuration represents a residen -
+tial condition in which bathrooms are positioned 
+around a shared vertical service duct. Figure 3 
+presents the field and geometric references used 
+to frame the model, including existing shaft condi-
+tions, the vertical section, and the plan relationship 
+between the four bathrooms and the central duct.
+The baseline condition was defined as a 
+shared vertical bathroom shaft serving four bath -
+rooms. Each bathroom was connected to the duct 
+through a window opening, and the bathroom 
+doors were assumed closed to isolate the perfor -
+mance of the shaft and bathroom openings. Un -
+der this conservative condition, airflow depends 
+Figure 1. Conceptual framework linking residential shaft configuration, pressure-driven airflow,
+CFD assessment, and indoor air-quality improvement
+330
+Journal of Ecological Engineering 2026, 27(10), 327–337
+mainly on pressure-driven movement through 
+the shaft rather than additional exchange through 
+doors or internal leakage paths.
+Simulation cases
+The CFD study compared five main duct-
+configuration scenarios and a proposed separat -
+ed-channel solution. The cases were developed to 
+isolate the influence of shaft opening condition, 
+duct size, roof extension, bottom connection, 
+basement extension, and channel separation on 
+ventilation performance. Figure 4 presents the 
+CFD scenario images extracted from the simula -
+tion file, while Table 1 summarizes the purpose 
+of each case.
+Model development and boundary 
+conditions
+The residential building and vertical venti -
+lation-shaft configurations were first modeled in 
+Figure 2. Simulation and CFD analysis framework for the passive bathroom ventilation-shaft study
+Figure 3. Field and geometric references for the studied ventilation shaft: (a) existing duct opening,
+(b) shaft view, (c) building section with vertical duct, and (d) plan of four bathrooms connected to a shared duct
+331
+Journal of Ecological Engineering 2026, 27(10), 327–337
+Autodesk Revit and then exported to Autodesk 
+CFD for airflow simulation. The model includ -
+ed the main building geometry, four residential 
+floors above a basement level, bathroom spaces, 
+duct walls, roof extensions, basement connection 
+where applicable, and the proposed separated-
+channel ventilation pathway. A computational 
+air domain was generated around the building to 
+represent the external airflow field and to mini -
+mize boundary interference with the simulated 
+ventilation behavior. As shown in Figure 5, the 
+domain was defined with an upstream distance 
+of 5w from the wind-facing side of the building 
+and a top clearance of 3h above the roof level, 
+where w and h represent the building width and 
+height, respectively.
+Table 1. Simulated ventilation-shaft configurations
+Case Configuration Design purpose
+a Baseline shared duct Reference condition with four bathrooms connected to one shared shaft volume opened from above
+b Base duct opened from the bottom Tests whether the bottom opening improves discharge from the shaft
+c Increased duct size in x and y directions Tests whether enlarging the duct cross-section improves airflow capacity
+d
+Duct extended above roof level, H = 3.00 m, 
+opened from the bottom and configured with 
+dual bathroom windows
+Tests whether increasing roof-level extension with lower air entry and 
+dual bathroom inlet–outlet windows strengthens exhaust potential
+e Duct extended above roof level, H = 1.75 m, and opened from the bottom Tests the combined effect of upper extension and lower air entry
+f Proposed three-channel system Separates fresh-air supply through side channels from exhaust through the central shaft
+Figure 4. CFD scenario for the tested duct configurations: (a) baseline shared duct,
+(b) base duct with bottom opening, (c) increased duct size, (d) roof extension H = 3.00 m with bottom opening 
+and dual bathroom windows, (e) roof extension H = 1.75 m with bottom opening,
+and (f) basement extension/proposed ventilation pathway
+332
+Journal of Ecological Engineering 2026, 27(10), 327–337
+Air was assigned as the fluid material within 
+the computational domain, while the building 
+envelope and duct components, including walls, 
+floors, roof, shaft partitions, and basement-related 
+duct elements, were assigned as solid materials. 
+The wind-facing surface of the computational do-
+main was specified as a velocity inlet with a wind 
+speed of 3 m/s, representing a moderate wind 
+condition for Irbid. The opposite downstream 
+surface was defined as a pressure outlet with a 
+zero static gauge pressure. The building and duct 
+surfaces were treated as solid wall boundaries, 
+while the top and lateral surfaces of the compu -
+tational domain were assigned slip or symmetry 
+boundary conditions to reduce artificial boundary 
+effects. These boundary conditions and domain 
+settings were applied consistently to all simulated 
+cases so that the observed differences in airflow 
+behavior could be attributed to changes in duct 
+configuration rather than to variations in external 
+wind input or computational-domain setup.
+Performance indicators
+The airflow performance of each configura -
+tion was evaluated using quantitative and visual 
+CFD outputs. The main indicators were velocity 
+magnitude, measured region area, airflow direc -
+tion, local recirculation, and the visual conti -
+nuity of flow paths from inlet toward exhaust. 
+Exact readable numerical outputs were available 
+for the baseline and final proposed configura -
+tions, while the intermediate cases were inter -
+preted qualitatively from the visible vector and 
+contour fields.
+The baseline and proposed cases were com -
+pared quantitatively using the velocity magnitude 
+and measured rectangular region reported in the 
+CFD output images. The percentage increase in 
+velocity magnitude was calculated by subtract -
+ing the baseline velocity from the proposed ve -
+locity, dividing the difference by the baseline ve-
+locity, and multiplying by 100. This comparison 
+provided a direct indicator of airflow-strength 
+improvement between the conventional and pro -
+posed systems (Table 2).
+RESULTS
+Overview of airflow behavior 
+across configurations
+The CFD simulations showed that shaft per -
+formance depended on the organization of air -
+flow paths rather than on duct presence alone. 
+The baseline shared duct produced weak and ir -
+regular airflow. The intermediate cases demon -
+strated that the bottom opening,, duct enlarge -
+ment, roof extension, and lower/basement air 
+Figure 5. Computational air domain and CFD boundary conditions used for the ventilation-shaft simulations
+333
+Journal of Ecological Engineering 2026, 27(10), 327–337
+entry improved certain aspects of airflow behav -
+ior but did not fully remove the limitation of a 
+shared air volume. The proposed three-channel 
+system produced the clearest directional pattern 
+because it separated fresh-air supply from con -
+taminated-air exhaust.
+Figure 6 shows the six scenario images ex -
+tracted from the simulation file. The vector fields 
+indicate that configurations with lower or base -
+ment air entry supported more coherent upward 
+movement than the baseline condition. How -
+ever, the most organized pattern appeared in the 
+proposed system, where fresh air was supplied 
+through side channels and exhausted through the 
+central shaft.
+Baseline shared-shaft condition
+The baseline case represented the convention-
+al condition in which four bathrooms were con -
+nected to a single shared vertical duct. The CFD 
+image showed weak and poorly organized airflow 
+inside the duct and around the bathroom-duct in -
+terfaces. The measured velocity magnitude in the 
+baseline case was 0.076127 m/s over a measured 
+region area of 53,718.3 cm². This low value con -
+firms that the baseline shaft provided weak air 
+movement under the simulated condition.
+The vector pattern suggested that the base -
+line design is vulnerable to local recirculation 
+and air mixing because there is no physical 
+separation between incoming air, exhausted 
+air, and the air volumes connected to different 
+bathrooms. Therefore, the baseline configura -
+tion has a higher potential for odor and pollutant 
+transfer between bathrooms than the proposed 
+separated system.
+Performance of the proposed 
+three-channel system
+The final proposed configuration divided the 
+vertical shaft into three separate channels. The 
+two side channels functioned as fresh-air supply 
+paths, while the central channel functioned as the 
+exhaust path. Each bathroom was connected to 
+both a supply opening and an exhaust opening. 
+This arrangement changed the ventilation behav -
+ior from a shared, uncontrolled shaft into a direc-
+tional airflow system.
+The measured velocity magnitude in the pro -
+posed system was 0.147702 m/s over a measured 
+region area of 52,890.2 cm². Compared with the 
+baseline velocity magnitude of 0.076127 m/s, the 
+proposed configuration increased velocity magni-
+tude by approximately 94.0% (Table 3 and Figure 
+7). This means that the proposed system gener -
+ated almost 1.94 times the airflow velocity of the 
+conventional shared duct. The measured region 
+area changed only slightly, indicating that the im-
+provement is mainly associated with the reorga -
+nization of airflow paths rather than with a larger 
+measurement area.
+Airflow direction and effectiveness
+The airflow direction in the baseline case 
+was weak and poorly controlled. Because all 
+bathrooms connect to the same duct volume, the 
+baseline configuration does not provide a dedi -
+cated pathway that forces air to move from each 
+bathroom directly to the outside. This makes the 
+system susceptible to stagnant zones, local re -
+circulation, and possible air exchange between 
+bathrooms, particularly under low-pressure-dif -
+ference conditions.
+In contrast, the proposed three-channel 
+system showed a more effective airflow direc -
+tion. The visible vector pattern indicated that 
+air was supplied through the side channels and 
+exhausted through the central channel. This 
+separation reduces the likelihood that air from 
+one bathroom will enter another bathroom be -
+cause the air no longer relies on one shared 
+shaft volume. Instead, the proposed system 
+creates controlled movement from supply inlet 
+Table 2. Performance indicators used in the CFD interpretation
+Indicator Unit Interpretation
+Velocity magnitude m/s Strength of air movement within the measured region
+Measured region area cm² Area over which the velocity output was calculated
+Vector direction Qualitative Direction of airflow relative to bathroom openings and exhaust path
+Recirculation/stagnation Qualitative Presence of low-velocity or locally circulating air patterns
+Flow-path continuity Qualitative Whether air follows a continuous path from supply to exhaust
+334
+Journal of Ecological Engineering 2026, 27(10), 327–337
+to bathroom space, then from bathroom outlet 
+to central exhaust shaft, and finally toward the 
+outside of the building.
+The results therefore indicate that the pro -
+posed system is more effective than the baseline 
+in three ways. First, it increases air velocity in -
+side the duct system. Second, it creates a clearer 
+airflow direction from inlet to exhaust. Third, it 
+reduces the potential for uncontrolled air mixing 
+between bathrooms by separating fresh-air sup -
+ply from contaminated-air exhaust. However, 
+the results should be interpreted as evidence of 
+reduced likelihood of inter-bathroom air trans -
+fer rather than complete prevention, because no 
+tracer-gas or pollutant-concentration simulation 
+was conducted.
+Figure 6. Progression of plan-view and section-view CFD results for the tested ventilation-shaft configurations: 
+(a) baseline shared duct, (b) base duct with bottom opening, (c) increased duct size in the x and y directions,
+(d) roof extension H = 3.00 m with bottom opening and dual bathroom windows, (e) roof extension H = 1.75 m 
+with bottom opening, and (f) proposed three-channel ventilation system 
+335
+Journal of Ecological Engineering 2026, 27(10), 327–337
+DISCUSSION
+Interpretation of airflow performance
+The baseline result is important because resi-
+dential ventilation systems are expected to dilute 
+and remove indoor pollutants while maintaining 
+acceptable indoor air quality and limiting unnec -
+essary energy use (Guyot et al., 2018; Mannan 
+and Al-Ghamdi, 2021). Bathrooms are moisture- 
+and odor-generating spaces, and ineffective air 
+removal can increase the persistence of humid -
+ity, odors, and other indoor contaminants in resi -
+dential buildings (Mannan and Al-Ghamdi, 2021; 
+Kumar et al., 2022). In the baseline configura -
+tion, the four bathrooms were connected to one 
+common vertical duct volume, which means that 
+the system did not separate fresh-air supply from 
+contaminated-air exhaust.
+The baseline result supports the argument 
+that the presence of a vertical shaft alone does not 
+guarantee effective passive ventilation. Natural 
+ventilation depends on the pressure relationship 
+between inlet and outlet openings, the geometry of 
+the flow path, and the interaction between wind-
+driven and buoyancy-driven forces (Jiang et al., 
+2023; Hajdukiewicz et al., 2024). When a shaft 
+lacks a clear inlet-outlet sequence, air may circu-
+late locally instead of moving continuously toward 
+the outdoor discharge point (Zhang et al., 2020; 
+Hajdukiewicz et al., 2024). Similar concerns have 
+been reported in multi-family residential build -
+ings, where bathroom ventilation ducts can act as 
+inter-unit air-transfer pathways under unfavorable 
+pressure conditions (Miller et al., 2026).
+Effectiveness of partial and integrated duct 
+modifications
+The intermediate duct modifications provide 
+useful evidence that partial changes to the shaft 
+can improve some aspects of airflow behavior 
+but cannot fully resolve the problem of shared air 
+mixing. Opening the duct from above increases 
+the possibility of discharge to the exterior, but it 
+does not necessarily create a controlled ventila -
+tion path between each bathroom and the exhaust 
+outlet. Natural ventilation studies show that the 
+effectiveness of an opening depends not only on 
+its presence but also on its position, pressure co -
+efficient, wind direction, and relationship to oth -
+er openings in the airflow network (Jiang et al., 
+2023; Zhang et al., 2020).
+Increasing the duct size in the x and y direc -
+tions also has limited value as an isolated inter -
+vention. A larger duct cross-section can reduce 
+local resistance and increase the available volume 
+for airflow, but ventilation effectiveness still de -
+pends on the pressure-driven organization of the 
+flow path (Jiang et al., 2023; Hajdukiewicz et al., 
+2024). If pressure differences remain weak or if 
+air is not guided from a defined inlet toward a de-
+fined outlet, a larger shaft may still contain low-
+velocity zones (Zhang et al., 2020).
+The proposed three-channel system produced 
+the strongest airflow performance because it 
+changed the shaft from a common air void into 
+a separated supply-and-exhaust system. Separa -
+tion between air-supply and air-exhaust pathways 
+is important because ventilation effectiveness de-
+pends on moving air from clean or less contami-
+nated zones toward contaminated zones and then 
+toward exhaust, rather than allowing uncontrolled 
+Table 3. Quantitative comparison between the baseline and proposed ventilation-shaft configurations
+Configuration Measured region area (cm²) Velocity magnitude (m/s) Change compared with baseline Interpretation
+Baseline shared 
+duct 53,718.3 0.076127 Reference Weak airflow; higher potential for stagnation and air mixing
+Proposed three-
+channel system 52,890.2 0.147702 +94.0% Stronger directional airflow; reduced likelihood of inter-bathroom transfer
+Figure 7. Comparison of velocity magnitude
+between the baseline shared duct and the proposed 
+three-channel ventilation system
+336
+Journal of Ecological Engineering 2026, 27(10), 327–337
+mixing (Guyot et al., 2018; Mannan and Al-
+Ghamdi, 2021). The increase in velocity magni -
+tude from 0.076127 m/s to 0.147702 m/s supports 
+the interpretation that the proposed system sub -
+stantially strengthened the ventilation pathway.
+Design implications
+The results suggest that passive bathroom 
+ventilation shafts should be designed as direc -
+tional airflow systems rather than as unparti -
+tioned service voids. Natural ventilation perfor -
+mance depends on the relationship between inlet 
+and outlet openings, pressure differences, and the 
+continuity of airflow pathways (Jiang et al., 2023; 
+Hajdukiewicz et al., 2024). The proposed con -
+figuration shows that separating fresh-air supply 
+from contaminated-air exhaust can strengthen ve-
+locity magnitude and improve airflow direction.
+The findings also suggest that minimum duct 
+area alone is not sufficient as a design criterion for 
+passive bathroom ventilation. Performance-based 
+ventilation approaches emphasize that ventilation 
+systems should be evaluated according to indoor 
+air-quality and energy outcomes rather than only 
+prescriptive dimensional requirements (Guyot et 
+al., 2019). In multi-story residential bathrooms, 
+performance criteria should include airflow direc-
+tion, velocity magnitude, reverse-flow risk, sepa-
+ration between supply and exhaust, and evidence 
+that air is discharged outdoors rather than redis -
+tributed to adjacent spaces.
+Limitations
+The study provides comparative evidence 
+that the proposed three-channel system im -
+proves airflow behavior, but the interpretation 
+has limitations. The available readable numeri -
+cal outputs were limited to the baseline and 
+proposed configurations, while the intermediate 
+cases were interpreted qualitatively from vis -
+ible CFD vector and contour patterns. CFD re -
+sults are sensitive to model geometry, boundary 
+conditions, mesh resolution, turbulence-model 
+choice, and convergence criteria (Hajdukiewicz 
+et al., 2024; Zhang et al., 2020).
+The study assessed velocity magnitude and 
+airflow direction but did not simulate tracer-gas 
+concentration, odor decay, contaminant transport, 
+or humidity removal. Ventilation studies often 
+use tracer gas or scalar-transport methods when 
+the objective is to quantify contaminant removal 
+or inter-zone pollutant transfer (Lai et al., 2020; 
+Miller et al., 2026). Therefore, the present find -
+ings support the conclusion that the proposed sys-
+tem reduces the likelihood of inter-bathroom air 
+exchange, but they do not prove complete preven-
+tion of pollutant transfer. Future work should test 
+multiple wind directions and validate the CFD 
+results using field measurements, pressure mea -
+surements, or tracer-gas testing.
+CONCLUSIONS
+This study evaluated passive vertical bath -
+room ventilation shaft configurations in a multi-
+story residential building in Irbid using computa-
+tional fluid dynamics. The results show that the 
+conventional shared-shaft arrangement produced 
+weak and poorly organized airflow, with a mea -
+sured velocity magnitude of 0.076127 m/s. This 
+finding indicates that a common unpartitioned 
+shaft can function as a low-velocity shared air 
+volume rather than a controlled exhaust pathway.
+The intermediate design modifications 
+showed that opening the duct from above, in -
+creasing duct size, extending the duct above roof 
+level, and introducing lower or basement air entry 
+can improve aspects of airflow behavior. How -
+ever, these strategies do not fully solve the main 
+limitation of the baseline configuration because 
+the bathrooms remain connected to one common 
+air volume.
+The proposed three-channel ventilation shaft 
+achieved the strongest airflow performance. It 
+increased the measured velocity magnitude to 
+0.147702 m/s, representing an approximately 
+94.0% improvement compared with the baseline 
+case. The proposed configuration also produced a 
+clearer airflow direction by introducing fresh air 
+through side channels and exhausting bathroom 
+air through a central shaft. This separation re -
+duced the likelihood of uncontrolled air transfer 
+between bathrooms under the simulated bound -
+ary conditions.
+The study concludes that separating fresh-air 
+supply from contaminated-air exhaust is a more 
+effective passive ventilation strategy than rely -
+ing solely on a larger or taller shared duct. The 
+proposed three-channel shaft system provides a 
+low-energy design approach for improving bath -
+room ventilation, reducing stagnant airflow, and 
+supporting healthier indoor environmental qual -
+ity in multi-story residential buildings.
+337
+Journal of Ecological Engineering 2026, 27(10), 327–337
+REFERENCES
+1. Al-Zuriqat, M. H., & Obeidat, B. (2025). Computa-
+tional fluid dynamics-based assessment of thermal 
+comfort parameters in residential buildings in Am-
+man: Implications for indoor environmental quality. 
+Journal of Ecological Engineering, 26(5), 383–400. 
+https://doi.org/10.12911/22998993/201997 
+2. Al Horr, Y ., Arif, M., Katafygiotou, M., Mazroei, A., 
+Kaushik, A., & Elsarrag, E. (2016). Impact of indoor 
+environmental quality on occupant well-being and 
+comfort: A review of the literature. International 
+Journal of Sustainable Built Environment , 5 (1), 
+1–11. https://doi.org/10.1016/j.ijsbe.2016.03.006 
+3. Awawdeh, M. M., Abuhadba, R. R., Jamhawi, M. 
+M., Rawashdeh, A. I., Jawarneh, R. N., & Awaw -
+deh, M. M. (2024). Urban expansion in Greater Ir-
+bid Municipality, Jordan: The spatial patterns and 
+the driving factors. GeoJournal, 89, 43. https://doi.
+org/10.1007/s10708-024-11036-3 
+4. Belias, E., & Licina, D. (2024). European residential 
+ventilation: Investigating the impact on health and 
+energy demand. Energy and Buildings, 304, 113839. 
+https://doi.org/10.1016/j.enbuild.2023.113839 
+5. Guyot, G., Sherman, M. H., & Walker, I. S. (2018). 
+Smart ventilation energy and indoor air quality 
+performance in residential buildings: A review. 
+Energy and Buildings , 165, 416–430. https://doi.
+org/10.1016/j.enbuild.2017.12.051 
+6. Guyot, G., Walker, I. S., & Sherman, M. H. (2019). 
+Performance based approaches in standards and 
+regulations for smart ventilation in residential build-
+ings: A summary review. International Journal of 
+Ventilation, 18(2), 96–112. https://doi.org/10.1080
+/14733315.2018.1435025 
+7. Hajdukiewicz, M., González Gallero, F. J., Man -
+nion, P., Loomans, M. G. L. C., & Keane, M. M. 
+(2024). A narrative review to credible computational 
+fluid dynamics models of naturally ventilated built 
+environments. Renewable and Sustainable Energy 
+Reviews, 198 , 114404. https://doi.org/10.1016/j.
+rser.2024.114404 
+8. Jiang, Z., Kobayashi, T., Yamanaka, T., & Sandberg, 
+M. (2023). A literature review of cross ventilation 
+in buildings. Energy and Buildings , 291, 113143. 
+https://doi.org/10.1016/j.enbuild.2023.113143 
+9. Khraiwesh, M. M., & Genovese, P. V . (2023). 
+Outdoor thermal comfort integrated with energy 
+consumption for urban block design optimization: 
+A study of the hot-summer Mediterranean city of 
+Irbid, Jordan. Sustainability, 15(10), 8412. https://
+doi.org/10.3390/su15108412 
+10. Kumar, A., Moreno-Rangel, A., Khan, M. A. I., 
+& Piasecki, M. (2022). Ventilation and indoor air 
+quality. Atmosphere, 13 (10), 1730. https://doi.
+org/10.3390/atmos13101730 
+11. Lai, Y ., Ridley, I. A., & Brimblecombe, P. (2020). 
+Air change in low- and high-rise apartments. Ur-
+ban Science , 4 (2), 25. https://doi.org/10.3390/
+urbansci4020025 
+12. Plazas, F.L., & de Tejada, C.S. (2024). Natural 
+ventilation to improve indoor air quality (IAQ) in 
+existing homes: The development of health-based 
+and context-specific user guidelines. Energy and 
+Buildings, 314, 114248. https://doi.org/10.1016/j.
+enbuild.2024.114248 
+13. Mannan, M., & Al-Ghamdi, S. G. (2021). Indoor 
+air quality in buildings: A comprehensive review 
+on the factors influencing air pollution in residential 
+and commercial structure. International Journal of 
+Environmental Research and Public Health, 18(6), 
+3276. https://doi.org/10.3390/ijerph18063276 
+14. Miller, S. L., Yan, S., García, A., Wang, L. L., Zhai, 
+Z., Aranda, J. R., González-Candelas, F., Lombillo, 
+I., Balbás, J., Cabrillo, E., Silió, D., & Higuera, L. D. 
+(2026). Potential airborne transmission of SARS-
+CoV-2 through bathroom ventilation ducts associ -
+ated with an outbreak in a residential building in 
+Santander, Spain, 2020. Plos ONE, 21(5), e0345041. 
+https://doi.org/10.1371/journal.pone.0345041 
+15. Tominaga, Y ., Mochida, A., Yoshie, R., Kataoka, 
+H., Nozu, T., Yoshikawa, M., & Shirasawa, T. 
+(2008). AIJ guidelines for practical applications of 
+CFD to pedestrian wind environment around build-
+ings. Journal of Wind Engineering and Industrial 
+Aerodynamics, 96(10-11), 1749–1761. https://doi.
+org/10.1016/j.jweia.2008.02.058 
+16. Zhang, X., Weerasuriya, A. U., & Tse, K. T. (2020). 
+CFD simulation of natural ventilation of a gener -
+ic building in various incident wind directions: 
+Comparison of turbulence modelling, evaluation 
+methods, and ventilation mechanisms. Energy and 
+Buildings, 229, 110516. https://doi.org/10.1016/j.
+enbuild.2020.110516
