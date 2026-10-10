@@ -1,0 +1,1552 @@
+1 
+CRISPR-Cas phage defense systems and prophages in Candidatus 1 
+Accumulibacter 2 
+Xuhan Deng1, Jing Y uan1, Liping Chen1, Hang Chen1, Chaohai Wei1, Per H. Nielsen2,4, 3 
+Stefan Wuertz2,3,*, Guanglei Qiu1,2,* 4 
+1School of Environment and Energy, South China University of T echnology, 5 
+Guangzhou 510006, China. 6 
+2Singapore Centre for Environmental Life Sciences Engineering, Nanyang 7 
+Technological University, Singapore 637551, Singapore. 8 
+3School of Civil and Environmental Engineering, Nanyang Technological University, 9 
+Singapore 639798, Singapore 10 
+4Centre for Microbial Communities, Department of Chemistry and Bioscience, 11 
+Aalborg University, DK-9220, Aalborg, Denmark. 12 
+ 13 
+Corresponding Author: qiugl@scut.edu.cn (G.Q.); swuertz@ntu.edu.sg (S.W.) 14 
+ 15 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+2 
+Abstract: Candidatus Accumulibacter is a key genus of polyphosphate-accumulating 16 
+organisms (PAOs) found in laboratory- and full-scale wastewater treatment systems, 17 
+mediating enhanced biological phosphorus removal (EBPR). However, little is known 18 
+about their ability to resist phage infection. We conducted a systematic analysis of the 19 
+occurrence and characteristics of clustered regularly interspaced short palindromic 20 
+repeats and associated proteins (CRISPR-Cas) systems and prophages in diverse Ca. 21 
+Accumulibacter taxa (43 in total, including 10 newly recovered genomes). Fourty 22 
+complete CRISPR loci were identified in 28 genomes, falling into 6 subtypes. The 23 
+occurrence and distribution of CRISPR-Cas systems did not follow a vertical 24 
+evolutionary relationship. Phylogenetic analyses of the cas genes and direct repeats 25 
+(DRs) suggested that the CRISPR-Cas systems were likely acquired via horizontal 26 
+gene transfer, with acquisition rates higher than those of speciation, rendering 27 
+different Ca. Accumulibacter distinct adaptivity to phage predations. 2448 spacers 28 
+were identified, 67 of them matched to known phages. Major differences were 29 
+observed among the numbers of spacers for different Ca. Accumulibacter, showing 30 
+unique phages that could be resisted by different members. A comparison of the 31 
+spacers in genomes having the same cas gene but from distinct geographical locations 32 
+indicated that habitat isolation may have resulted in the acquisition of different 33 
+spacers by different Ca. Accumulibacter. Metagenomic analysis allowed the 34 
+identification of 26 viral contigs (18 are Caudovirales members) in 6 metagenomic 35 
+datasets from three lab-scale enrichment reactors, matching to 73 spacers in 10 Ca. 36 
+Accumulibacter genomes in these reactors, showing the specific immunity of these Ca. 37 
+Accumulibacter. Metatranscriptomic analyses showed the activity of the CRISPR-Cas 38 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+3 
+system under both anaerobic and aerobic conditions. Extra efforts were made to 39 
+identify prophages in Ca. Accumulibacter genomes. In total, 133 prophage regions 40 
+were identified. Twenty-seven of them were classified as potentially active prophages. 41 
+Three prophages (all are Caudovirales members, in DS2011, SCELSE-7IIH and 42 
+SCELSE-5IIH, respectively) are readily activable. Differences in the occurrence of 43 
+CRISPR-Cas systems and prophages in Ca. Accumulibacter will lead to their distinct 44 
+responses under phage predation. This study represents the first systematic analysis of 45 
+CRISPR-Cas systems and prophages with combined experimental and bioinformatic 46 
+methods in the Ca. Accumulibacter lineage, providing new perspectives on the 47 
+potential impacts of phages on Ca. Accumulibacter and EBPR systems. 48 
+Keywords: Candidatus Accumulibacter, EBPR system, CRISPR-Cas systems, 49 
+prophages, Caudovirales 50 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+4 
+1. Introduction 51 
+Phosphorus (P) is a pollutant in surface waters and also a non-renewable resource 52 
+(Oehmen et al., 2007). Enhanced biological phosphorous removal (EBPR) is a widely 53 
+applied process in municipal wastewater treatment plants (WWTPs) (Chen et al., 2022; 54 
+Mino et al., 1998); it requires polyphosphate accumulating organisms (PAOs) capable 55 
+of releasing P under anaerobic, and taking up more P than normally required for 56 
+metabolism and growth, under aerobic conditions (He and McMahon, 2011; Lu et al., 57 
+2021; Zhang et al., 2022). Candidatus Accumulibacter represents a key group of 58 
+PAOs in lab- and full-scale EBPR systems (Martín et al., 2006; Petriglieri et al., 2022; 59 
+Qiu et al., 2020; Singleton et al., 2022; Srinivasan et al., 2021; Tomás-Martínez et al., 60 
+2021). Ensuring the viability of Ca. Accumulibacter is crucial for reliable P removal 61 
+in WWTPs. However, even in well-controlled operating conditions, EBPR systems 62 
+frequently experience deterioration or failure (Ong et al., 2014; Thomas et al., 2003). 63 
+The overgrowth of glycogen accumulating organisms (GAOs) was commonly 64 
+considered as a key cause, which competing with PAOs for carbon sources (such as 65 
+volatile fatty acids, VFAs) without contributing to P removal (Kolakovic et al., 2021; 66 
+McIlroy et al., 2014; Wang et al., 2021). However, GAOs might not well-explain 67 
+EBPR deterioration in a variety of systems(Gu et al., 2008; Law et al., 2016; Nielsen 68 
+et al., 2019). Even in lab-scale systems, non-GAO induced EBPR failure was 69 
+commonly observed. In a lab-scale EBPR system operated at elevated temperate, a 70 
+sudden drop in the EBPR activity (P release and uptake decreased from 40 to 0 mg/L 71 
+within a day) was observed. The relative abundances of both PAOs and GAOs 72 
+decreased significantly, suggesting that the affected EBPR activity was not a result of 73 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+5 
+GAO competition (Qiu et al., 2022). 74 
+Phages are viruses specialized in infecting bacteria, which play a major role in 75 
+shaping the microbial communities in natural and engineered systems (Fernández et 76 
+al., 2018). In WWTPs, phages affect functional microbial communities by infection, 77 
+gene transfer, and lysogenic conversion (Tamaki et al., 2012; Wu and Liu, 2009). A 78 
+previous study suggested that phages in activated sludge number on the order of 10 8-79 
+109 ml -1 (Chen et al., 2021; Li et al., 2021), that is, their density is 10-1000 times 80 
+higher than in natural aquatic environments (10 4-108 ml-1) (Wommack and Colwell, 81 
+2000). Such high occurrences of phages imply intensive interactions with activated 82 
+sludge bacteria. Like other bacteria, Ca. Accumulibacter are susceptible to phage 83 
+predation. In a study on a deteriorated laboratory-scale EBPR system, large quantities 84 
+of lysed Ca. Accumulibacter cells were observed, and phages isolated from the 85 
+supernatant were used to inoculate other sequencing batch reactors (SBRs), resulting 86 
+in Ca. Accumulibacter cell lysis and a significant decline in P removal (Barr et al., 87 
+2010). 88 
+A key mechanism for bacteria to resist phage predation is the clustered regularly 89 
+interspaced short palindromic repeats and their associated protein (CRISPR-Cas) 90 
+system, consisting of a CRISPR array and a few cas genes (Barrangou et al., 2007). 91 
+The immune process of the CRISPR-Cas system works in three stages: adaption, 92 
+CRISPR RNA (crRNA) biogenesis, and interference (Fig. S1). At the adaption stage, 93 
+the CRISPR-Cas system captures foreign nucleic acid (such as phage genetic material 94 
+and plasmids) and integrates a fragment (about 30 base pairs) into the CRISPR array 95 
+as spacers to provide infection memory. At the crRNA biogenesis stage, CRISPR 96 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+6 
+repeat-spacer arrays are transcribed and processed into crRNAs. Each crRNA contains 97 
+a conserved direct repeat (DR) and a variable spacer. In the infection stage, the 98 
+interference machinery is guided by crRNA to identify and cleave foreign nucleic 99 
+acids (Hille et al., 2018). This immunity mechanism is widely preserved in the 100 
+bacterial and archaeal kingdoms (Barrangou et al., 2007). Phage predation is a threat 101 
+to Ca. Accumulibacter and EBPR, and CRISPR-Cas systems are essential for Ca. 102 
+Accumulibacter to resist phages (Flowers et al., 2013). However, little is known about 103 
+this defense system in different lineage members of Ca. Accumulibacter. 104 
+Apart from lysing the host cells immediately, phages have another infection mode, 105 
+namely lysogeny. Under such circumstance, temperate phages integrate their genomes 106 
+into the host bacteria chromosome and become prophages (Feiner et al., 2015), which 107 
+replicate with their host and stay at an inactive state. They may be activated with or 108 
+without external stimulations (such as UV light, chemicals, or temperature) (Barnhart 109 
+et al., 1976; Shan et al., 2014) to enter the lytic cycle and kill their host. Prophages in 110 
+Ca. Accumulibacter genomes are timebombs which might be triggered at times, 111 
+threatening the reliability of EBPR. Limited information is available on prophages in 112 
+existing Ca. Accumulibacter genomes. 113 
+In this study, CRISPR-Cas systems and prophages in different Ca. Accumulibacter 114 
+lineage members were systematically investigated to understand their capability in 115 
+resisting phage predations. The objectives were to (i) understand the adaptivity of 116 
+different lineage members of Ca. Accumulibacter to phage predictions; (ii) analyze 117 
+the temporal and spatial variation of their ability in resisting phages; (iii) identify and 118 
+characterize phages and prophages which are highly threatening to different Ca. 119 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+7 
+Accumulibacter; and (iv) characterize the activity of CRISPR-Cas systems Ca. 120 
+Accumulibacter in EBPR cycles. This work represents the first detailed study of the 121 
+CRISPR-Cas systems and prophages in different Ca. Accumulibacter lineage 122 
+members. The results are expected to lay a fundamental base for the study of 123 
+interactions between Ca. Accumulibacter and their targeting phages, benefiting in 124 
+understanding phage-mediated inter-species interactions among different Ca. 125 
+Accumulibacter lineage members, and the potential threats of phages to Ca. 126 
+Accumulibacter and their mediated EBPR for the development of countermeasures. 127 
+2. Material and Methods 128 
+2.1. SBR reactor setup and operation 129 
+Two SBRs (effective volume of 1.59 L) were operated in parallel for the enrichment 130 
+of Ca. Accumulibacter at 30 oC (named NTU30) and 35 oC (named NTU35), 131 
+respectively (Qiu et al., 2022). These two reactors were inoculated with activated 132 
+sludge from a WWTP in Singapore (details on operational conditions are available in 133 
+the Supplementary Materials). Activated sludge samples (12 in total) were collected 134 
+from two SBRs on Days 14, 56, 91, 201, 280, and 301 for metagenomic analysis. 135 
+Another 4.5-L SBR (named SCUT) was used for the enrichment of Ca. 136 
+Accumulibacter at 25 oC and inoculated with activated sludge from a WWTP in 137 
+Guangzhou, China. An activated sludge sample was collected on Day783 for 138 
+metagenomic analysis. An anaerobic-aerobic full cycle study was performed to 139 
+investigate the gene transcription activity of CRISPR-Cas systems in the SCUT 140 
+reactor. Six activated sludge samples were collected during this full cycle study for 141 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+8 
+metatranscriptomic analysis (more details on reactor operation, sample collection, and 142 
+metatranscriptomic sequencing are found in the Supplementary Materials). 143 
+2.2. Metagenomic and metatranscriptomic analysis 144 
+After DNA and RNA extraction, metagenomic and metatranscriptomic sequencing 145 
+were performed (detailed in the Supplementary Materials). For metagenomic analysis, 146 
+low-quality reads and adapter sequences were removed using fastp (0.20.1) (Chen et 147 
+al., 2018). High-quality reads were assembled to contigs using metaSPAdes (v.3.13.0) 148 
+(Nurk et al., 2017). The contigs were binned into metagenome-assembled genomes 149 
+(MAGs) using MetaBAT2(v1.7) and CONCOCT (v1.1) (Alneberg et al., 2014; Kang 150 
+et al., 2019). Completeness and contamination of MAGs were evaluated by checkM 151 
+(v1.0.18) (Parks et al., 2015). The taxonomic classifications of obtained MAGs were 152 
+performed using the Genome Taxonomy Database Toolkit (GTDB-Tk v. 1.1.0) 153 
+(Chaumeil et al., 2019). MAGs with completeness below 95% and contamination over 154 
+6% were discarded. The relative abundance of each Ca. Accumulibacter were 155 
+calculated using BBMap (v38.96) (Bushnell et al., 2017). All draft genomes were 156 
+annotated using RAST (V2.0) (Brettin et al., 2015). Except for quality control by fastp, 157 
+annotation by RAST and relative abundance calculation by BBMap, all analyses were 158 
+processed on the KBase platform (Arkin et al., 2018). 159 
+For metatranscriptomics analysis, fastp and SortMeRNA were employed to remove 160 
+adapter sequences and rRNA (Chen et al., 2018; Kopylova et al., 2012). Reads that 161 
+passed filtering were mapped to the respective Ca. Accumulibacter draft genome 162 
+(retrieved via metagenomic sequencing) using BBMap (v38.96) (Bushnell et al., 163 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+9 
+2017). The gene transcriptions were then calculated using HTseq (v2.0.1) and 164 
+normalized to read per kilo base per million (RPKM) (Mortazavi et al., 2008). 165 
+Raw reads and draft genomes obtained for the NTU30 and NTU35 bioreactors were 166 
+submitted to NCBI under the BioProject No. PRJNA807832. Those obtained for the 167 
+SCUT bioreactor were submitted under the BioProject No. PRJNA771771. 168 
+2.3. GenBank Data acquisition and evaluation 169 
+Seventy-one Ca. Accumulibacter genomes (representing all available Ca . 170 
+Accumulibacter genomes in the GenBank database) were retrieved from the NCBI 171 
+database. The completeness and contamination of the genomes were evaluated using 172 
+CheckM (Parks et al., 2015). Genomes with completeness of less than 95% and 173 
+contamination exceeding 6% were discarded. The remaining Ca. Accumulibacter 174 
+genomes were then used for subsequent analysis. 175 
+2.4. CRISPR-Cas system identification in Ca. Accumulibacter 176 
+For each selected genome (43 in total, including 33 genomes retrieved from GenBank 177 
+database, 10 newly recovered from our lab-scale reactor), CRISPRCasFinder was 178 
+used to identify the CRISPR locus (Couvin et al., 2018). Only those with evidence 179 
+levels of four and above were considered in this study (Jiang et al., 2020). Orphan 180 
+CRISPR arrays (without cas genes) were ignored due to their inability to silence 181 
+foreign genetic materials (Jiang et al., 2020). To ensure the accuracy of cas gene 182 
+identification, RAST was employed for genome annotation (Brettin et al., 2015). The 183 
+identified CRISPR loci were further checked and confirmed manually. The types of 184 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+10 
+CRISPR system were determined based on the features of cas genes (Makarova et al., 185 
+2020). Spacers and DRs in each CRISPR array were extracted using CRISPRDetect 186 
+for comparative analysis (Biswas et al., 2016). 187 
+2.5. Comparative genomics analysis of the CRISRPR-Cas system 188 
+The species-level phylogenetic tree was built using SpeciesTreeBuilder (v.0.1.3). The 189 
+tree was visualized and annotated using iTOL V6 (Letunic and Bork, 2021). Average 190 
+nucleotide identity (ANI) was calculated using pyani with the ANIb model (Pritchard 191 
+et al., 2016). 192 
+Phylogenetic analysis of marker genes was employed to study the evolution of the 193 
+CRISPR-Cas system in Ca. Accumulibacter by MEGA X (Stecher et al., 2020). For 194 
+type I CRISPR-Cas systems, the cas1 gene is highly conserved, making it a good 195 
+marker (Makarova et al., 2015). Thus, cas1 genes were used to establish the gene tree 196 
+to analyze the phylogenetic relationships of different type I CRISPR-Cas systems. For 197 
+type III CRISPR-Cas systems, the cas1 gene is dispensable. cas10 genes were used as 198 
+a marker gene to establish the gene tree to understand the phylogenetic relationships 199 
+among different type III systems. 200 
+DRs are conserved sequences occurring repeatedly in the CRISPR locus between 201 
+adjacent spacers. They were used as markers to further understand the origination of 202 
+the CRISPR-Cas systems in Ca. Accumulibacter. DR in each CRISPR locus were 203 
+compared to the CRISPRCasdb database (a recently established database for the 204 
+CRISPR-Cas system) (Couvin et al., 2018; Pourcel et al., 2019). Multiple sequence 205 
+alignment and visualization of DRs in each cas gene clade were done using WebLogo 206 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+11 
+(Crooks et al., 2004). 207 
+2.6. Spacer analysis in Ca. Accumulibacter 208 
+Spacers record the history of phage infections and show the identity of phages unable 209 
+to infect the host bacteria. Spacer comparison and visualization were done using 210 
+CRISPRStudio (Dion et al., 2018). They were compared to the IMG/VR database 211 
+using the online comparison function provided by the database for the identification 212 
+of their corresponding phages. IMG/VR database provided the largest collection of 213 
+viral sequences covering both cultivated viruses and uncultured ones identified from 214 
+metagenomes (Roux et al., 2020). 215 
+To analyze the relationships between Ca. Accumulibacter and phages in our SBR 216 
+reactors, VirSorter (v2.2.3) (Guo et al., 2021) was used to identify viral contigs from 217 
+the assembled metagenomic data which contained Ca. Accumulibacter. These viral 218 
+contigs were used to build a phage genome dataset. The spacers in Ca. 219 
+Accumulibacter genomes (retrieved from our SBRs) were compared to the phage 220 
+genome dataset by BLASTn using the short-BLAST parameter (Altschul et al., 1997). 221 
+The phage contigs which completely matched the spacers were compared to the 222 
+IMG/VR database for taxonomic identification (Roux et al., 2020). 223 
+2.7. Prophage identification and analysis 224 
+PHASTER was used to identify the prophage-like elements in Ca. Accumulibacter 225 
+genomes (Arndt et al., 2016). They were classified into intact (score>90), 226 
+questionable (score 70-90) and incomplete prophages (the evaluation standards are 227 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+12 
+detailed at https://phaster.ca/). Incomplete prophages typically lack essential 228 
+functional genes, such as those related to entering the lytic cycle (e.g., holins and 229 
+lysins). To further analyze the complete (including intact and questionable) prophages, 230 
+all genes in the prophage elements were compared to the NR databases using NCBI 231 
+BLASTn (Altschul et al., 1997). The PHASTER results and NR database annotation 232 
+results were combined to tentatively subdivide prophage genes into functional 233 
+modules (i.e., lysogeny, DNA replication, DNA packaging, tail module and lysis 234 
+module) (Botstein, 1980) to understand their potential threats to the host Ca. 235 
+Accumulibacter. To determine the identity of these prophages in Ca. Accumulibacter 236 
+genomes, BLAST was employed to compare the prophage sequences with the 237 
+IMG/VR database (Roux et al., 2020). The similarity between two prophages was 238 
+analyzed using pyani to calculate the average nucleotide identity (ANI) (Pritchard et 239 
+al., 2016). 240 
+3. Results and Discussion 241 
+3.1. Metagenome assembly 242 
+Fourty-four Ca. Accumulibacter genomes were recovered from three lab-scale SBRs 243 
+(NTU35 and NTU30 (Qiu et al., 2022), and SCUT (Tian et al., 2022)). Ten high-244 
+quality (completeness >95%, contamination <6%) Ca. Accumulibacter genomes 245 
+(Table S1) were selected for further analysis. All 10 genomes belong to clade II (3 246 
+clade IIC members, 5 clade IIF members, and 2 clade IIH members). This is the first 247 
+study to report successful recovery of clade IIH member genomes. 248 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+13 
+3.2. GenBank genomes evaluation 249 
+Seventy-one Ca. Accumulibacter genomes were retrieved from the GenBank database 250 
+and their qualities evaluated using checkM. Thirty-three had a completeness > 95% 251 
+and contamination < 6% (Table S2), and they were selected for subsequent analysis. 252 
+These genomes are distributed in 8 different clades (6 clade IA members, 3 clade IC 253 
+members, 4 clade IIA members, 2 clade IIB members, 6 clade IIC members, 2 clade 254 
+IID members, 5 clade IIF members, and 5 genomes with unknown clade identity). 255 
+In total, 43 Ca. Accumulibacter genomes were used for CRISPR-Cas system and 256 
+prophage identification and analysis (i.e., 10 were retrieved from our SBR reactors 257 
+and 33 from the GenBank database). ANI results for pairs of Ca. Accumulibacter 258 
+genomes are presented in Fig. 1A. 259 
+3.3. High Occurrence of CRISPR-Cas system in Ca. Accumulibacter 260 
+Fourty CRISPR-Cas loci were found in 28 Ca. Accumulibacter genomes (Fig. 1B and 261 
+Table S3). Fifteen genomes were not found to have a complete CRISPR-Cas system. 262 
+These genomes are distributed in different clades (e.g., IA member UW8, IIC 263 
+members SK-02 and SCUT-1, IIF members UBA6585 and SCELSE-1 (Qiu et al., 264 
+2020), and IIH member SCELSE-7). The overall occurrence of CRISPR-Cas systems 265 
+in these Ca. Accumulibacter genomes was 65.1%, which is similar to the discovery 266 
+rate in our newly recovered genomes (70%, 7 out of 10 had CRISPR-Cas systems). 267 
+The rate is higher than the estimated average occurrence of CRISPR-Cas systems in 268 
+bacteria (42.3%) (Makarova et al., 2020). There is consensus that CRISPR-Cas 269 
+systems provide vital immunity to prokaryotes (Hille and Charpentier, 2016). The 270 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+14 
+prevalence of CRISPR-Cas in Ca. Accumulibacter may indicate an overall higher 271 
+capability to resist phage infections compared to other bacteria. Under pressure of 272 
+phage-mediated natural selection, Ca. Accumulibacter taxa harboring CRISPR-Cas 273 
+systems tend to have a higher chance to survive if most other Ca. Accumulibacter 274 
+cells are killed. A few of the survivors obtain new spacers matching the genome of the 275 
+invader. Should the same phage type return, these Ca. Accumulibacter could 276 
+effectively resist. On the contrary, Ca. Accumulibacter without CRISPR-Cas systems 277 
+may be more susceptible to phage invasion, affecting the reliability of the EBPR 278 
+system. 279 
+Known CRISPR-Cas systems to date are classified into 2 classes, 6 types and 33 280 
+subtypes (Makarova et al., 2020). All CRISPR-Cas systems in Ca. Accumulibacter 281 
+fall into Class 1, including 2 types (type I and type III) and 6 subtypes (3 type I-A, 6 282 
+type I-C, 9 type I-E, 2 type I-F, 11 type III-A and 9 type III-B, Fig. 1B). Type I system 283 
+primarily targets double-stranded DNA (Lin et al., 2020). Type III system has both 284 
+RNA and single-stranded DNA cleavage activities, which works against both the 285 
+transcripts and genomes of invaders (Jiang et al., 2016). Previous studies 286 
+hypothesized that type III systems could effectively counteract propagation of single-287 
+stranded RNA phage in E. coli (Tamulaitis et al., 2014). Overall, RNA phages are rare 288 
+in the prokaryotic world (<10%) and spacers in type III system that match RNA 289 
+viruses are yet to be identified (Koonin et al., 2015; Krupovic et al., 2011). 290 
+Additionally, the mutation rates of RNA viruses are higher than those of DNA viruses 291 
+(by three orders of magnitude), and maintaining long-term immunity against RNA 292 
+viruses would require extremely rapid spacer renewal (Duffy, 2018). Of 28 Ca. 293 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+15 
+Accumulibacter genomes with CRISPR-Cas systems, 12 harbored two CRISPR-Cas 294 
+loci (e.g., clade IIA members UW1 and AALB, and clade IIF member SCELSE-6), 295 
+and 16 had only one CRISPR-Cas locus (e.g., IIC members SCELSE-8, SCUT-2 and 296 
+SSA1, IIF member SSB1, and IA member BA-93) (Fig.1B). In principle, Ca. 297 
+Accumulibacter genomes with multiple CRISPR-Cas systems (i.e., UW1, AALB, 298 
+SCELSE-6IIF) would have a higher capability of handling threats from different kinds 299 
+of phages. However, the maintenance of multiple CRISPR-Cas systems may also 300 
+exert extra energy and resource investment (Westra et al., 2015), which would only be 301 
+advantageous in a highly stressed and dynamic environment. 302 
+Of the 10 newly recovered genomes, three do not harbor any CRISPR-Cas systems 303 
+(Fig. 2A). The dynamics in their relative abundance in the lab-scale reactors was 304 
+analyzed, showing that Ca . Accumulibacter with CRISPR-Cas systems typically 305 
+exhibited high relative abundances (e.g., 37.1% for SCUT-2). Ca. Accumulibacter 306 
+without CRISPR-Cas system are more likely to be washed out during long-term 307 
+operation owing to their lower ability to resist phage predation. Inoculating an EBPR 308 
+system with Ca. Accumulibacter strains harboring CRISPR-Cas systems could 309 
+potentially enhance the system’s ability to resist phages and benefit stable EBPR. 310 
+3.4. Activity of CRISPR-Cas systems 311 
+To investigate the activity of CRISPR-Cas systems in Ca. Accumulibacter, 312 
+metatranscriptomic analyses were employed to analyze the transcription of CRISPR-313 
+Cas system in an anaerobic-aerobic full cycle (in the SCUT SBR, from which the 314 
+draft genome of Ca. Accumulibacter SCUT-2 with a Type I-F CRISPR locus was 315 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+16 
+recovered). 316 
+Results show that before the SBR cycle starts (0 min, Fig. 2B), the transcription of all 317 
+cas genes except the csy3 gene were low, suggesting that after going through 318 
+sedimentation, discharge, and idle stages, the CRISPR-Cas system was largely not 319 
+activity. The silence of cas genes saved energy. The high transcription of csy3 (275.1 320 
+RPKM, Fig. 2B) may be a result of the need to form backbones for CRISPR-Cas 321 
+effector complexes, which contain six Csy3 proteins in each complex (Majumdar et 322 
+al., 2015; Xue and Sashital, 2019). 323 
+After the addition of the carbon source, all cas genes started transcription (5 min, Fig. 324 
+2B). Cas1 and Cas3-Cas2 proteins form an adaption complex, which capture and trim 325 
+foreign DNA sequence and integrate a piece of them into the CRISPR array as an 326 
+immune memory. The transcription of the cas1 gene remained relatively consistent 327 
+(32.2-44.3 RPKM) during the cycle, while the transcription of cas3-cas2 increased 6.1 328 
+times after 30 min. Cas3-Cas2 serves as a structural scaffold for the adaption complex 329 
+and a nuclease/helicase for the degradation of target dsDNA (Xue and Sashital, 2019). 330 
+Unchanged transcription of the cas1 gene suggested that Cas3-Cas2 proteins likely 331 
+acted as a nuclease/helicase. 332 
+Cas6 is necessary in the generation of a mature crRNA (Makarova et al., 2020). Csy1, 333 
+Csy2, Csy3, Cas3-Cas2 and Cas6 proteins form an effector complex, which guides 334 
+crRNA for invader nucleic acid recognition and destruction in the interference stage 335 
+(Barrangou et al., 2007; Plagens et al., 2014; Xue and Sashital, 2019). The 336 
+transcription of these genes suggested the interference activities of the CRISPR-Cas 337 
+system. 338 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+17 
+Overall, all necessary genes in the CRISPR-Cas systems were transcribed in both the 339 
+aerobic and anaerobic stages, suggesting an active CRISPR-Cas system in Ca. 340 
+Accumulibacter SCUT2 in the EBPR cycle (Fig. 2B). 341 
+3.5. Phylogenetic analysis of the CRISPR-Cas system 342 
+Phylogenetic analysis was performed based on the species tree of Ca. Accumulibacter 343 
+(Fig. 1B). The distribution of CRISPR-Cas systems was not in line with the vertical 344 
+evolutionary relationships among different Ca. Accumulibacter members. CRISPR 345 
+loci from different subtypes scattered across the species tree (Fig. 1B). Even for 346 
+closely related species, for instance, Clade IIC members SSA1 (obtained from an 347 
+EBPR reactor in Singapore, Arumugam et al., 2019), SK-02 (obtained in an SBR in 348 
+Queensland (Skennerton et al., 2015)) and UW6 (from an EBPR reactor in the 349 
+University of Wisconsin, McDaniel et al., 2021) are closely related (ANI>99.1%) 350 
+(Fig.1A). However, the occurrence and identity of the CRISPR-Cas systems in these 351 
+strains showed significant differences. SSA1 harbors a type I-C CRISPR-Cas locus, 352 
+and UW6 contains type I-A and type I-E CRISPR-Cas loci. No CRISPR-Cas system 353 
+was found for SK-02. Similar cases were found for Clade IIF members SSB1 and 354 
+SCELSE-1, clade IIA members UW1 and AALB, and Clade IA members BA93, 355 
+UBA6658 and UW8. Overall, different members of the same clades were shown to 356 
+possess different type CRISPR-Cas systems (Fig. 1B). 357 
+To further understand the origin and distribution of CRISPR-Cas systems in Ca. 358 
+Accumulibacter, phylogenetic analysis of the marker genes (cas1 gene for the type I 359 
+CRISPR-Cas system and cas10 gene for the type III system) was performed. cas1 and 360 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+18 
+cas10 genes in Ca. Accumulibacter genomes were classified into 5 and 6 clusters, 361 
+respectively (Fig. 3A and 3B). Even for the same CRISPR-Cas subtype, the 362 
+phylogenetic relationship of the cas genes was distant. For example, cas1 genes in 363 
+type I-E systems were classified into two clusters (Fig. 3A), suggesting that the type I-364 
+E CRISPR-Cas system in Ca. Accumulibacter came from different sources (e.g., those 365 
+in UW1 and UW6 are non-homologous, although both were recovered in UW). 366 
+Similar results were found for subtype I-C (in AALB and SSA1), III-A (in SCELSE-367 
+10IIF, AALB and UW7) and III-B (in UW1 and UW7) systems. Overall, the 368 
+distribution of CRISPR-Cas systems in the Ca. Accumulibacter lineage and the cas 369 
+gene phylogenetic analyses strongly suggests that CRISPR-Cas systems in Ca. 370 
+Accumulibacter genomes were not inherited from a common ancestor but obtained via 371 
+horizontal gene transfer (HGT) from multiple sources. However, cas1 genes in 372 
+subtype I-A (e.g., in IIC members UW6, Bin19 and SCELSE-2) and in subtype I-F are 373 
+highly conserved (e.g., in IIC members SCUT-2 and SCELSE-8). Ca. Accumulibacter 374 
+genomes harboring the same subtype CRISPR-Cas systems (subtype I-A or I-F) are 375 
+also closely related (Fig.1A and 1B), implying that type I-A and type I-F CRISPR-Cas 376 
+systems were probably obtained before speciation of these clade members. 377 
+Apart from cas genes, DRs serve as intervals between adjacent spacers, were also 378 
+gene markers for the CRISPR-Cas system (Chakraborty et al., 2010). Multiple 379 
+sequence alignment of DRs in each cas gene cluster were performed by using 380 
+WebLogo (Fig. 3C) (Crooks et al., 2004). Results showed that in each cas gene cluster, 381 
+DRs are relatively conservative (e.g., in cas1-cluster IV , the sequence identity 382 
+between each two DRs was > 90%) (Fig. 3B and Fig. S2). DRs from different cas 383 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+19 
+gene clusters are largely different (e.g., the sequence identity between DRs in cas1-384 
+cluster IV and those in cas1-cluster V < 75%) (Fig. 3B and Fig. S2). These results 385 
+indicate a strong relationship between cas genes (cas1 and cas10) and DRs. Previous 386 
+research suggested that cas genes and DRs usually move together between different 387 
+bacteria via HGT (Delaney et al., 2012; Makarova et al., 2015). This seems to be true 388 
+for the different types of CRISPR-Cas systems in Ca. Accumulibacter as showed in 389 
+this study. 390 
+Bringing together the species phylogenetic tree, cas gene tree and DRs analysis, all 391 
+results indicated that CRISPR-Cas systems in different Ca. Accumulibacter members 392 
+was not inherited from their last common ancestors, but were probably obtained at 393 
+different nodes by different lineage members via HGT, suggesting that phage 394 
+predation was a very strong selection pressure in the evolution of the Ca. 395 
+Accumulibacter lineage members. The distribution of the CRISPR-Cas systems 396 
+among different Ca. Accumulibacter showed that they were independently acquired 397 
+for at least 11 times. The major differences in their CRISPR-Cas systems gave rise to 398 
+distinct abilities of different Ca. Accumulibacter to resist predations from different 399 
+phages. Previous study suggested high frequency of HGT in Ca. Accumulibacter by 400 
+analyzing the genes in 10 Ca. Accumulibacter genomes via a pan-genome analysis 401 
+(Oyserman et al., 2016). HGT of CRISPR-Cas loci was also found to be common in 402 
+the kingdom of bacteria (Chakraborty et al., 2010; Godde and Bickerton, 2006; 403 
+Horvath et al., 2009; Westra et al., 2012). Wastewater treatment system is a highly 404 
+dynamic environment with high occurrence of phages (10 8-109 ml-1) in the activated 405 
+sludge (Chen et al., 2021). Arm races between phages and their host Ca. 406 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+20 
+Accumulibacter are inevitable. CRISPR-Cas systems may have rendered Ca. 407 
+Accumulibacter increased abilities to cope with diverse phage invasions, conferring 408 
+their broader ecological niche and high occurrence in EBPR systems. The occurrence 409 
+and distribution of CRISPR-Cas systems is not closely related to the clade 410 
+classification of Ca. Accumulibacter, suggesting that the rate of dynamics of the 411 
+CRISPR-Cas system in the Ca. Accumulibacter lineage was higher than those of 412 
+speciation. 413 
+DRs were compared to the CRISPRCasdb database to tentatively explore the source 414 
+of CRISPR-Cas systems via HGT. 6 out of 40 DRs matched completely to the 415 
+CRISPRCasdb database (Table S4). A high number of non-matches may be explained 416 
+by the fact that a majority of prokaryotes remain un-sequenced (98.9% globally, 417 
+(Zhang et al., 2020)). All matched DRs had multiple hits. For example, The DRs in 418 
+Type I-F CRISPR-Cas system of the clade IIC member SCELSE-8, are identical to 419 
+these in Desulfurivibrio alkaliphilus AHT 2(GCA_000092205.1), Halomonas sp. 420 
+Y2R2 (GCA_008329985.2), Pseudoalteromonas tunicata D2 (GCA_002310815.1) 421 
+and Shewanella inventionis D1489 (GCA_019931735.1), indicating the possible 422 
+origination of each CRISPR-Cas system in representative Ca. Accumulibacter 423 
+genomes. 424 
+3.6. cas gene characteristics in Ca. Accumulibacter 425 
+Through CRISPRCasFinder identify and annotation via RAST, cas gene 426 
+arrangements were analyzed (Brettin et al., 2015). Similar cas gene arrangements, 427 
+sizes, and directions was observed in the same CRISPR-Cas subtypes showed in the 428 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+21 
+different Ca. Accumulibacter genomes (Fig. 4). 429 
+cas gene arrangements of type I-C, I-E and I-F CRISPR-Cas systems are identical to 430 
+these in Makarova's latest classification (Makarova et al., 2020), preserving all 431 
+necessary immune-related components. cas gene arrangements of type I-A, III-A and 432 
+III-B systems are not consistent with the above-mentioned classification (Fig. 4). For 433 
+subtype I-A systems, all CRISPR loci (i.e., in clade IIC members SCELSE-2, UW6, 434 
+and Bin19) lack cas4 and cas11 , cas4 gene encode an endonuclease, which is 435 
+necessary for efficient pre-spacer processing by forming a Cas4-Cas1-Cas2 complex 436 
+(Lee et al., 2019). The lack of cas4 gene may affect an effective acquisition of 437 
+functional spacers by these clade IIC members. The protein encoded by cas11 does 438 
+not directly interact with crRNA, but it is considered as a bridge to connect the head 439 
+and tail of the CRISPR-Cas effector complexes, which can increase the stability of 440 
+combination between crRNA and target phage DNA (Xue and Sashital, 2019; Zheng 441 
+et al., 2020). The lack of cas11 may affect the interference stage of immunity. 442 
+For subtype III-A, all CRISPR-Cas loci lack csm6 genes. A previous study showed 443 
+that Csm6 is related to degradation of phage transcripts (Jiang et al., 2016). For 444 
+subtype III-B, 4 CRISPR-Cas loci (in clade IIF members SCELSE-3, SCELSE-4, 445 
+SCELSE-6 and UW7) lack cas6 genes. Cas6 is not an effector complex, but an 446 
+enzyme responsible for pre-CRISPRRNA (pre-crRNA) processing into mature 447 
+crRNAs in the interference stage (Makarova et al., 2020). The lack of cas6 gene may 448 
+lead to increased inability of CRISPR-Cas systems in these Clade IIF Ca. 449 
+Accumulibacter members to generate crRNAs for invader phage sequences 450 
+identification. 451 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+22 
+An interesting observation was that in some type III-A CRISPR loci (in clade IIF 452 
+members SCELSE-3, SCELSE-4, and SCELSE-6), the transposases genes were found 453 
+at the downstream of the spacers (Fig. 4) and the cas genes located at the downstream 454 
+of the transposase genes. Transposase are proteins mediating the transposition process 455 
+(Vigil-Stenman et al., 2017). For prokaryotes, transposons can jump between 456 
+chromosomal DNA and plasmid, increasing the rate of HGT (Hidalgo-Cantabrana et 457 
+al., 2017). The presence of transposase in type III-A CRISPR-Cas system suggested 458 
+that the cas genes at the downstream was probably obtained via HGT. The acquisition 459 
+of these genetic architectures is an evolutionary advantage in a complex environment 460 
+like in the activated sludge. 461 
+3.7. Spacers in different Ca. Accumulibacter 462 
+Spacers record the history of phage infections and show the kind of phages which 463 
+could be resisted by the host bacteria. Upon phage invasion, spacers are responsible 464 
+for invader recognition and Cas protein guidance to cleave phage genetic materials. A 465 
+detailed intercomparison of spacers in different CRISPR-Cas loci was performed (Fig. 466 
+5). Major differences were observed in the number of spacers for different CRISPR-467 
+Cas systems in different Ca. Accumulibacter members (Fig. 5A). Subtype I-C systems 468 
+were found to contain the lowest number of spacers, ranging from 7 to 32. Subtype I-469 
+E systems had the greatest number of spacers, ranging from 43 to 180. The lowest 470 
+number (6) of spacers was found in Ca. Accumulibacter SCELSE-10IIF (Subtype III-471 
+A) (recovered from NTU35), suggesting small numbers of phages to which this Ca. 472 
+Accumulibacter is immune. Ca. Accumulibacter BA-93 (Subtype I-E) encoded the 473 
+largest number (180) of spacers (recovered from an SBR with the seed sludge from 474 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+23 
+Thorneside WWTP, Australia, (Skennerton et al., 2015)), implying its potential in 475 
+readily resisting diverse phages. Although maintaining high numbers of spacers may 476 
+also be costly, a previous study suggested that the optimal number of spacers is 10 to 477 
+100 (Bradde et al., 2020). Most CRISPR-Cas systems in Ca. Accumulibacter fall 478 
+within this range. 479 
+Intercomparison of spacers among CRISPR-Cas systems in Ca. Accumulibacter was 480 
+done using CRISPRStudio (Fig. 5C) (Dion et al., 2018). Within each CRISPR-Cas 481 
+cluster, for genomes having the same cas gene (sequence identity=100%), the 482 
+numbers and composition of the spacers in these CRISPR-Cas loci were analyzed (i.e., 483 
+Type III-A and Type III-B, respectively, in SCELSE-4IIF, SCELSE-3IIF and 484 
+SCELSE-6IIF; Type I-E in UW1, UW5 and UW9; Type I-F in SCUT-2 and SCELSE-485 
+8IIC; Type I-E in ACC005 and BA-93; and Type I-A in UW6, Bin19 and SCELSE-486 
+2IIC). The same cas genes indicated the homology of respective CRISPR-Cas 487 
+systems (obtained from the same ancestor or horizontal transferred from homologic 488 
+sources). Analysis of spacers in the CRISPR-Cas systems with the same cas gene 489 
+allowed the elucidation of spacer acquisition and deletion in different Ca. 490 
+Accumulibacter. 491 
+For Type III-A and Type III-B systems in SCELSE-3IIF, SCELSE-4IIF and SCELSE-492 
+6IIF (ANI between each two genomes >99.5%, Fig.1A) no difference was observed in 493 
+the kind and number of spacers (Fig. 5C), suggesting that no spacer acquisition or 494 
+deletion occurred during the relatively short period of reactor operation (79 and 21 495 
+days apart). 496 
+For Ca. Accumulibacter members having the same marker cas genes, and whose 497 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+24 
+genomes were obtained from the same geographic location, i.e., UW1, UW5 and 498 
+UW9 (all of them have a Type I-E CRISPR locus), 118 spacers are shared among 499 
+three genomes. UW1 and UW9 share an additional 24 spacers, and UW5 and UW9 500 
+share two more spacers. UW1 and UW5 have 13 and one specific spacers, 501 
+respectively (Fig. 5C and Fig. 5D). These three Ca. Accumulibacter were obtained 502 
+from enrichment cultures inoculated with seed sludge from the same WWTP (Nine 503 
+Springs, Madison, USA), but were recovered approximately 11 and 12 /i1 years apart 504 
+(McDaniel et al., 2021). ANI analysis showed that UW1, UW5 and UW9 were closely 505 
+related (>99.5%, Fig. 1A). The differences in their spacers may be a result of spacer 506 
+acquisition and deletion over this time period. When comparing the CRISPR loci in 507 
+UW1 and UW5, three spacers were newly acquired, and 37 spacers were lost. 508 
+Previous research also observed spacer acquisition and deletion in Streptococcus in 509 
+laboratory experiments and natural conditions (Deveau et al., 2008; Lopez-Sanchez et 510 
+al., 2012). This phenomenon may be explained by the fact that bacteria tend to acquire 511 
+new spacers and delete less valuable spacers (since phages tend to escape immunity 512 
+through point mutations) to adapt to changing environments (Horvath et al., 2008). A 513 
+decrease in the number of spacers is not necessarily unfavorable. As suggested by 514 
+Martynov et al. (Martynov et al., 2017), the acquisition and loss rate of spacers 515 
+determines the steady state number of spacers, which changes along with the 516 
+environment. The changes in the number of spacers in closely related species in the 517 
+same geographic location suggested that the CRISPR-Cas systems in these Ca. 518 
+Accumulibacter members are active and evolving. 519 
+For genomes with the same cas gene but obtained from different geographic locations, 520 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+25 
+for instance, both clade IIC members SCUT-2 (retrieved from our lab-scale reactor in 521 
+the South China University of Technology, China) and SCELSE-8 (retrieved from our 522 
+lab-scale reactor in the Nanyang Technological University, Singapore) have a Type I-523 
+F CRISPR-Cas locus. SCUT-2 and SCELSE-8IIC harbor 85 and 94 spacers in their 524 
+CRISPR-Cas loci, respectively (Fig. 5C and Fig. 5D). Only six spacers were shared 525 
+between these two genomes. Similarly, both clade IA members ACC005 and BA-93 526 
+have a Type I-E CRISPR-Cas locus. ACC005 was retrieved from a SBR with seed 527 
+sludge from the ARA Thunersee WWTP, Switzerland (Adler and Holliger, 2020). BA-528 
+93 was retrieved from a SBR with the seed sludge from Thorneside WWTP, Australia, 529 
+(Skennerton et al., 2015). Fifty-eight spacers are shared between these two genomes, 530 
+and 122 and 65 spacers are specific for BA-93 and ACC005, respectively (Fig. 5C and 531 
+Fig. 5D). Once again, clade IIC members UW6 (retrieved from an enrichment culture 532 
+inoculated with seed sludge from the Nine Springs WWTP, Madison, WI, USA 533 
+(McDaniel et al., 2021), Bin19 (assembled from a SBR in the Russian Academy of 534 
+Sciences (Kotlyarov et al., 2019) and SCELSE-2IIC (obtained in this study from 535 
+NTU30), all have a Type I-A CRISPR-Cas system. Twenty-four identical spacers were 536 
+shared among three genomes. UW6 and SCELSE-2IIC shared additional 20 identical 537 
+spacers. UW6, SCELSE-2IIC and Bin19 had 5, 3 and 30 specific spacers, respectively 538 
+(Fig. 5C and 5D). For genomes having the same cas marker gene but from different 539 
+regions, their CRISPR-Cas systems may have been obtained before they were 540 
+dispersed to different geographic locations. The shared spacers reflected the history of 541 
+phage infections before these Ca. Accumulibacter were geographically separated. The 542 
+specific spacers indicated that they had experienced distinct phage predation events 543 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+26 
+after having been exposed to different locations and environment. 544 
+Spacers record the infection history of different Ca. Accumulibacter members by 545 
+different phages. By using spacers as a marker, the identity of phages which infected 546 
+different Ca. Accumulibacter members may be revealed (Díez-Villaseñor and 547 
+Rodriguez-Valera, 2019). The CRISPR-Cas system can only provide resistance if a 548 
+specific spacer identically matches the genomic sequence of a phage (Deveau et al., 549 
+2008). Thus, only spacers completely mapped to phage sequences were considered in 550 
+this study. In total, 2448 spacers were identified in all CRISPR-Cas systems, 67 of 551 
+them completely matched to the IMG/VR database, of which 52 are classified as 552 
+Caudovirales, 3 as Tubulavirales, and 12 as unclassified phages. Among these phages, 553 
+63 were discovered from lab-scale EBPR bioreactors or full-scale WWTPs, and four 554 
+were obtained from natural water bodies (Table S3). For example, a spacer 555 
+(GCTGGCGTAACCGGCCTTGCGCCTGGAAAGGA) in clade IIA members UW1, 556 
+UW5 and UW9 completely matched a phage affiliated to a Siphoviridae family 557 
+member under the order of Caudovirales, which occurred in an EBPR reactor in the 558 
+University of Queensland, Australia. Further, a spacer 559 
+(GCAGGGCAGCAGCGGGCCGGGCGACTTGAACT) in UW7 completely 560 
+matched a Rauchvirus genus phage member (also belonging to the order 561 
+Caudovirales), which occurred in the same EBPR reactor. Collectively, these results 562 
+suggested that Caudovirales are a key group of known phages that infect Ca. 563 
+Accumulibacter. 564 
+To further analyze the relationship between phages and spacers in Ca. Accumulibacter, 565 
+viral data mining was performed in the metagenomic data obtained from our lab-scale 566 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+27 
+SBRs. In total, 24193 (out of 618997) contigs were identified as viral contigs by 567 
+VirSorter (Guo et al., 2021), accounting for 3.59- 4.34% of total contigs in 6 568 
+metagenomic datasets (Fig. S4). A viral contig dataset was constructed, and the 569 
+spacers in Ca. Accumulibacter genomes (retrieved from these lab-scale reactor) were 570 
+compared to the viral genome dataset. Within 10 CRISPR-Cas loci in 7 Ca. 571 
+Accumulibacter genomes retrieved from our lab-scale SBR, 41 (out of 589) spacers 572 
+matched to 26 viral contigs (including three identical viral contigs retrieved from 573 
+three different metagenomic datasets) (Fig. 5B). For instance, 14 spacers in SCUT-2 574 
+match 10 viral contigs in the viral datasets. The matches between the spacers in the 575 
+CRISPR-Cas loci and the occurring phages in the SBR suggest that the CRISPR-Cas 576 
+loci were likely active in resisting these phages in the reactors. We also found that 577 
+multiple spacers can match to viral contigs in different regions (Fig. 5B and Table S5). 578 
+For example, in SCUT-2, four spacers matched to the same viral contig (Caudovirales 579 
+IMGVR_UVIG3300013800_000258), and two spacers matched to another viral 580 
+contig (Caudovirales IMGVR_UVIG3300028804_000035). This phenomenon 581 
+suggests that these phages are under extremely stringent selection pressure and are 582 
+unlike to evade the Ca. Accumulibacter SCUT-2’s CRISPR immune system via 583 
+single-nucleotide point mutations (Nasko et al., 2019). The results also suggest that 584 
+Ca. Accumulibacter SCUT-2 and these two phages may have experienced long-term 585 
+co-evolution. 586 
+Furthermore, the viral contigs which matched to spacers were compared to the 587 
+IMG/VR database. 18 of them were identified as Caudovirales order members 588 
+(including 1 Podoviridae family members, 2 Siphoviridae family members, Table S6). 589 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+28 
+These results again suggested that Caudovirales is a key group of phages targeting Ca. 590 
+Accumulibacter. 591 
+3.8. Prophages in Ca. Accumulibacter genomes 592 
+Prophages in the Ca. Accumulibacter genome represent a threat to the cell and may be 593 
+activated with or without external stimuli (Cu 2+, KCN or ciprofloxacin) (Motlagh et 594 
+al., 2015). All 43 Ca. Accumulibacter genomes were found to contain prophages; a 595 
+total of 133 prophage-like regions were identified (Fig. 6A and Table S7). Each Ca. 596 
+Accumulibacter genome contained at least one prophage-like region, for example, Ca. 597 
+Accumulibacter SCELSE-8IIC (retrieved from our lab-scale reactor NTU30) harbors 598 
+5 prophages, and Ca. Accumulibacter clade IIA members AALB (obtained from a 599 
+enrichment reactor in Aalborg, Denmark (Albertsen et al., 2016) and UW1 (obtained 600 
+from a enrichment reactor in UW) both harbor two prophage regions. Clade IIC 601 
+member SSA1 and clade IIF member SSB1 both have 5 prophages. The size of 602 
+prophage-like regions accounted for 0.15% (MAG-196) to 2.97% (ACC005, Table S7) 603 
+of Ca. Accumulibacter genomes, at an average of 1.06%. 6.77% (9) and 13.53% (18) 604 
+of the prophage-like regions were classified as potentially inducible (intact and 605 
+questionable) prophages, respectively, ranging from 6.8kb to 49.2kb (26.3kb in 606 
+average). The rest are incomplete prophages, ranging from 4.8kb to 35.3kb (13.04kb 607 
+in average). 19 genomes were found to have intact or questionable prophages (e.g., 608 
+including UW13, SSA1, SK-02 and SCELSE-5IIH, Fig. 6A and Table S7). No 609 
+correlation was observed between the size of the Ca. Accumulibacter genome and the 610 
+accumulative size of prophage-like regions (R2=0.2, Figure S5). In bacterial genomes, 611 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+29 
+the frequent occurrence of incomplete prophages has been reported, owing to 612 
+pervasive domestication of defective prophages (Bobay et al., 2014). According to 613 
+genomic streamlining theory (Lawrence et al., 2001), incomplete prophages typically 614 
+occur with neutral or beneficial genes being retained and the genes which are essential 615 
+for prophage activation being removed. The high numbers of putatively defective 616 
+prophage sequences observed in these Ca. Accumulibacter genomes indicate rapid 617 
+inactivation of prophages by Ca. Accumulibacter together with a slow decay of 618 
+prophage genes (Brüssow et al., 2004). Incomplete prophages typically lack the 619 
+ability to entry the lytic cycle and kill the host. Prophages in Ca. Accumulibacter 620 
+genomes may also benefit cells, e.g., via the superinfection exclusion mechanism, 621 
+where prophages tend to prevent subsequent phage infections of their host (Bondy-622 
+Denomy and Davidson, 2014), like those in Escherichia coli and Salmonella spp. 623 
+(Labrie et al., 2010). The capability of Ca. Accumulibacter to resist lytic phages may 624 
+also be enhanced due to the expression of genes that increase fitness of the host cell 625 
+by a process known as lysogenic conversion. However, since previous research 626 
+showed that prophages in Ca. Accumulibacter could be induced with external stimuli 627 
+(Motlagh et al., 2015), the presence of intact and questionable prophages in Ca. 628 
+Accumulibacter represents a threat to them and hence EBPR stability. 629 
+ANI analysis showed that prophages in Ca. Accumulibacter are highly diverse 630 
+(ANI<70%, Fig. 6B). There are also closely related prophages (e.g., BA-93_ppg2, 631 
+UBA6658_ppg1 and ACC005_ppg1, ANI=100%) whose host Ca. Accumulibacter 632 
+genomes also shared close phylogenetic relationships (ANI > 98.9%, Fig. 6B), 633 
+implying that these prophages might have been inherited from their latest ancestor. 634 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+30 
+3.9. Prophage gene integrity 635 
+For intact and questionable prophages, their genes were classified into five modules as 636 
+lysogeny, DNA replication, DNA packaging, tail morphogenesis, and host lysis (Fig. 637 
+6B). The tail morphogenesis module was well-preserved in intact and questionable 638 
+prophages (26 out of 27 intact and questionable prophages have the tail gene module). 639 
+On the contrary, the genes classified into the lysis module showed the lowest 640 
+occurrence. It was identified only in 15 prophages, three of which harbored both the 641 
+lysin and holin genes. Holins and lysins are viral enzymes that lead to host cell 642 
+destruction for phage lease (Wang et al., 2000). The presence of these genes confers 643 
+higher lysogeny (Feiner et al., 2015). Three of these prophages (i.e., SCELSE-644 
+5IIH_ppg1, SCELSE-7IIH_ppg1, and DS2011_ppg1, encoding both holin and lysin 645 
+genes) are readily inducible. The induction of prophages may lead to the extinction of 646 
+host Ca. Accumulibacter cells and adversely affect the EBPR performance. Prophages 647 
+which lack of holin and/or lysin genes are not necessarily harmless. For example, the 648 
+Dickeya spp. specific phage vB_DsoM_LIMEstone1 and the Pectobacterium 649 
+carotovorum specific phage PP1 lack the genes encoding holin and lysin, respectively, 650 
+but both were shown to be highly infectious (Adriaenssens et al., 2012; Lee et al., 651 
+2012). It is possible that some hypothetic protein genes may have encoded the holin 652 
+and lysin. 653 
+All intact and questionable prophages were compared against the IMG/VR database. 654 
+Except for 8 prophages, which were unclassified, all prophages were identified as 655 
+Caudovirales order members, (including 6 Siphoviridae family members, Table S8). 656 
+These results are consistent with the previous finding that the induced prophages in 657 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+31 
+Ca. Accumulibacter in a full-scale WWTP were classified as Caudovirales members 658 
+(Motlagh et al., 2015), and confirms that Caudovirales is a major group of phages 659 
+interacting with Ca. Accumulibacter. 660 
+Among all genomes, three (MAXAC027, BATAC285, and BAT3C415) were 661 
+retrieved from full-scale WWTPs in Danmark (Singleton et al., 2021). Two of them 662 
+had CRISPR-Cas systems. MAXAC027 harbored Type I-E (108 spacers) and III-A 663 
+(63 spacers) CRISPR-Cas systems together with 10 prophages in its genome (1 intact 664 
+and 9 questionable). BATAC285 encoded a Type III-A (39 spacers) CRISPR-Cas 665 
+system and 2 incomplete prophages. The overall occurrence of the CRISPR-Cas 666 
+system in these genomes (2/3) was similar to that in all analyzed genomes (65.1%). 667 
+Comparing to other Ca. Accumulibacter, numbers of spacers and prophages in 668 
+MAXAC027 were in a high rang (87.4 spacers and 3.16 prophage in average), 669 
+suggesting that MAXAC027 had experienced extensive phage selection, which may 670 
+endorse it an elevated level of robustness upon phage predation. 671 
+4. CONCLUSIONS 672 
+• Highly diverse CRISPR-Cas systems present in different Ca. Accumulibacter, 673 
+classifying into 6 subtypes, including a subtype I-F CRISPR-Cas system, which 674 
+was only found in the newly recovered Ca. Accumulibacter genomes (two clade 675 
+IIC members SCELSE-8 and SCUT-2). 676 
+• Polygenetic analysis of Ca. Accumulibacter species tree and the cas gene, and 677 
+multiple sequence alignments of DRs, suggest that the CRISPR-Cas systems in Ca. 678 
+Accumulibacter are not commonly inherited from their ancestors but obtained at 679 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+32 
+different nodes by different lineage members via HGT, implying high phage 680 
+selection pressure during the evolution and speciation of the Ca. Accumulibacter 681 
+lineage members. 682 
+• The diverse and distinct CRISPR-Cas systems impart specific immunity to phage 683 
+predation to different Ca. Accumulibacter. 684 
+• In long-term bioreactor operation, Ca. Accumulibacter taxa with CRISPR-Cas 685 
+systems exhibited high relative abundance, indicating that Ca. Accumulibacter 686 
+with a CRISPR-Cas system are more likely to survive and prosper under phage-687 
+mediated selection. Metatranscriptomic analysis showed transcription of CRISPR-688 
+associated genes in both aerobic and anaerobic stages, demonstrating active 689 
+CRISPR-Cas systems in Ca. Accumulibacter throughout the SBR cycle. 690 
+• Different Ca. Accumulibacter species have distinct phage predation histories, 691 
+showing great spatial heterogeneity in closely related Ca. Accumulibacter species 692 
+from different geographic locations and long- term temporal dynamics in those 693 
+from the same geographic location. Caudovirales is a key group of phages 694 
+threatening Ca. Accumulibacter. 695 
+• 133 prophage-like regions were identified. All Ca. Accumulibacter harbored 696 
+prophages. 15 prophages were highly threatening to their host Ca. Accumulibacter 697 
+strains. Three of them (in SCELSE-5IIH, SCELSE-7IIH and DS2011) are readily 698 
+inducible. 699 
+Declaration of Competing Interest 700 
+The authors declare that they have no known competing financial interests or personal 701 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+33 
+relationships that could have appeared to influence the work reported in this paper. 702 
+Acknowledgements 703 
+This research was partially supported by the National Natural Science Foundation of 704 
+China (51808297), the Natural Science Foundation of Guangdong Province 705 
+(2021A1515010494), the Guangzhou Science and Technology Planning Program 706 
+(202002030340), the Pearl River Talent Recruitment Program (2019QN01L125), and 707 
+the Program for Science and Technology of Guangdong Province, China (No. 708 
+2018A050506009). Additional support came from the Singapore National Research 709 
+Foundation and the Ministry of Education under the Research Centre of Excellence 710 
+Programme, and through a research grant from the National Research Foundation 711 
+under its Environment and Water Industry Programme (project number 1102–IRIS–712 
+10–02), administered by PUB- Singapore’s national water agency. 713 
+Data available 714 
+All data generated or analyzed during this study are included in this published article. 715 
+(Metagenomic raw reads and draft genomes were submitted to NCBI under the 716 
+BioProject No. PRJNA807832 and No. PRJNA771771. Metatranscriptomic data were 717 
+submitted to NCBI under the submitted No. PRJNA807832. Other data were showed 718 
+in the Supplementary Materials.) 719 
+CRediT authorship contribution statement 720 
+Xuhan Deng: Conceptualization, Methodology, Software, Formal analysis, 721 
+Investigation, Data Curation, Writing – Original Draft, Visualization. 722 
+Jing Yuan: Data Curation, Resources, Visualization. 723 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+34 
+Hang Chen: Investigation, Resources, Data Curation. 724 
+Liping Chen: Investigation, Resources, Data Curation. 725 
+Chaohai Wei: Writing – review & editing, Supervision. 726 
+Per H. Nielsen: Writing – review & editing, Supervision. 727 
+Stefan Wuertz: Conceptualization, Supervision, Writing – review & editing, Project 728 
+administration, Funding acquisition. 729 
+Guanglei Qiu: Conceptualization, Methodology, Investigation, Supervision, Writing 730 
+– review & editing, Validation, Project administration, Funding acquisition. 731 
+Reference 732 
+Adler, A., Holliger, C., 2020. Multistability and reversibility of aerobic granular 733 
+sludge microbial communities upon changes from simple to complex synthetic 734 
+wastewater and back. Front. Microbiol. 11, 57436. 735 
+Adriaenssens, E.M., Van V aerenbergh, J., Vandenheuvel, D., Dunon, V ., Ceyssens, P .-736 
+J., De Proft, M., Kropinski, A.M., Noben, J.-P., Maes, M., Lavigne, R., 2012. 737 
+T4-related bacteriophage LIMEstone isolates for the control of soft rot on 738 
+potato caused by ‘Dickeya solani’. PLoS One 7 (3), e33227. 739 
+Albertsen, M., McIlroy, S.J., Stokholm-Bjerregaard, M., Karst, S.M., Nielsen, P.H., 740 
+2016. “ Candidatus Propionivibrio aalborgensis”: a novel glycogen 741 
+accumulating organism abundant in full-scale enhanced biological phosphorus 742 
+removal plants. Front. Microbiol. 7, 1033. 743 
+https://doi.org/10.3389/fmicb.2016.01033. 744 
+Alneberg, J., Bjarnason, B.S., de Bruijn, I., Schirmer, M., Quick, J., Ijaz, U.Z., Lahti, 745 
+L., Loman, N.J., Andersson, A.F., Quince, C., 2014. Binning metagenomic 746 
+contigs by coverage and composition. Nat. Methods 11 (11), 1144-1146. 747 
+Altschul, S.F., Madden, T.L., Schäffer, A.A., Zhang, J., Zhang, Z., Miller, W., Lipman, 748 
+D.J., 1997. Gapped BLAST and PSI-BLAST: a new generation of protein 749 
+database search programs. Nucleic Acids Res. 25 (17), 3389-3402. 750 
+Arkin, A.P., Cottingham, R.W., Henry, C.S., Harris, N.L., Stevens, R.L., Maslov, S., 751 
+Dehal, P., Ware, D., Perez, F., Canon, S., Sneddon, M.W., Henderson, M.L., 752 
+Riehl, W.J., Murphy-Olson, D., Chan , S.Y ., Kamimura, R.T., Kumari, S., 753 
+Drake, M.M., Brettin, T.S., Glass, E.M., Chivian, D., Gunter, D., Weston, D.J., 754 
+Allen, B.H., Baumohl, J., Best, A.A., Bowen, B., Brenner, S.E., Bun, C.C., 755 
+Chandonia, J.-M., Chia, J.-M., Colasanti, R., Conrad, N., Davis, J.J., Davison, 756 
+B.H., DeJongh, M., Devoid, S., Dietrich, E., Dubchak, I., Edirisinghe, J.N., 757 
+Fang, G., Faria, J.P., Frybarger, P.M., Gerlach, W., Gerstein, M., Greiner, A., 758 
+Gurtowski, J., Haun, H.L., He, F., Jain, R., Joachimiak, M.P., Keegan, K.P., 759 
+Kondo, S., Kumar, V ., Land, M.L., Meyer, F., Mills, M., Novichkov, P.S., Oh, 760 
+T., Olsen, G.J., Olson, R., Parrello, B., Pasternak, S., Pearson, E., Poon, S.S., 761 
+Price, G.A., Ramakrishnan, S., Ranjan, P ., Ronald, P.C., Schatz, M.C., Seaver, 762 
+S.M.D., Shukla, M., Sutormin, R.A., Syed, M.H., Thomason, J., Tintle, N.L., 763 
+Wang, D., Xia, F., Y oo, H., Y oo, S., Yu, D., 2018. KBase: The United States 764 
+department of energy systems biology knowledgebase. Nat. Biotechnol. 36 (7), 765 
+566-569. 766 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+35 
+Arndt, D., Grant, J.R., Marcu, A., Sajed, T., Pon, A., Liang, Y ., Wishart, D.S., 2016. 767 
+PHASTER: a better, faster version of the PHAST phage search tool. Nucleic 768 
+Acids Res. 44 (W1), W16-W21. 769 
+Barnhart, B.J., Cox, S.H., Jett, J.H., 1976. Prophage induction and inactivation by UV 770 
+light. Virol. J. 18 (3), 950-955. 771 
+Barr, J.J., Slater, F.R., Fukushima, T., Bond, P .L., 2010. Evidence for bacteriophage 772 
+activity causing community and performance changes in a phosphorus-773 
+removal activated sludge. FEMS Microbiol. Ecol. 74 (3), 631-642. 774 
+Barrangou, R., Fremaux, C., Deveau, H., Richards, M., Boyaval, P., Moineau, S., 775 
+Romero, D.A., Horvath, P ., 2007. CRISPR provides acquired resistance 776 
+against viruses in prokaryotes. Sci. Rep. 315 (5819), 1709-1712. 777 
+Biswas, A., Staals, R.H.J., Morales, S.E., Fineran, P .C., Brown, C.M., 2016. 778 
+CRISPRDetect: a flexible algorithm to define CRISPR arrays. BMC 779 
+Genomics 17 (1), 356. 780 
+Bobay, L.-M., Touchon, M., Rocha, E.P.C., 2014. Pervasive domestication of 781 
+defective prophages by bacteria. PNAS 111 (33), 12127-12132. 782 
+Bondy-Denomy, J., Davidson, A.R., 2014. When a virus is not a parasite: the 783 
+beneficial effects of prophages on bacterial fitness. J. Microbiol. 52 (3), 235-784 
+242. 785 
+Botstein, D., 1980. A theory of modular evolution for bacteriophages. Ann. N. Y . Acad. 786 
+Sci. 354 (1), 484-491. 787 
+Bradde, S., Nourmohammad, A., Goyal, S., Balasubramanian, V ., 2020. The size of 788 
+the immune repertoire of bacteria. PNAS 117 (10), 5144-5151. 789 
+Brettin, T., Davis, J.J., Disz, T., Edwards, R.A., Gerdes, S., Olsen, G.J., Olson, R., 790 
+Overbeek, R., Parrello, B., Pusch, G.D., Shukla, M., Thomason, J.A., Stevens, 791 
+R., V onstein, V ., Wattam, A.R., Xia, F., 2015. RASTtk: a modular and 792 
+extensible implementation of the RAST algorithm for building custom 793 
+annotation pipelines and annotating batches of genomes. Sci. Rep. 5 (1), 8365. 794 
+Brüssow, H., Canchaya, C., Hardt, W.-D., 2004. Phages and the evolution of bacterial 795 
+pathogens: from genomic rearrangements to lysogenic conversion. Microbiol. 796 
+Mol. Biol. Rev. 68 (3), 560-602. 797 
+Bushnell, B., Rood, J., Singer, E., 2017. BBMerge – Accurate paired shotgun read 798 
+merging via overlap. PLoS One 12 (10), e0185056. 799 
+https://doi.org/10.1371/journal.pone.0185056. 800 
+Chakraborty, S., Snijders, A.P., Chakravorty, R., Ahmed, M., Tarek, A.M., Hossain, 801 
+M.A., 2010. Comparative network clustering of direct repeats (DRs) and cas 802 
+genes confirms the possibility of the horizontal transfer of CRISPR locus 803 
+among bacteria. Mol. Phylogenet. Evol. 56 (3), 878-887. 804 
+Chaumeil, P.-A., Mussig, A.J., Hugenholtz, P., Parks, D.H., 2019. GTDB-Tk: a toolkit 805 
+to classify genomes with the genome taxonomy database. Bioinformatics 36 806 
+(6), 1925-1927. 807 
+Chen, L., Chen, H., Hu, Z., Tian, Y ., Wang, C., Xie, P ., Deng, X., Zhang, Y ., Tang, X., 808 
+Lin, X., Li, B., Wei, C., Qiu, G., 2022. Carbon uptake bioenergetics of PAOs 809 
+and GAOs in full-scale enhanced biological phosphorus removal systems. 810 
+Water Res. 216, 118258. 811 
+Chen, S., Zhou, Y ., Chen, Y ., Gu, J., 2018. fastp: an ultra-fast all-in-one FASTQ 812 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+36 
+preprocessor. Bioinformatics 34 (17), i884-i890. 813 
+Chen, Y ., Wang, Y ., Paez-Espino, D., Polz, M.F., Zhang, T., 2021. Prokaryotic viruses 814 
+impact functional microorganisms in nutrient removal and carbon cycle in 815 
+wastewater treatment plants. Nat. Commun. 12 (1), 5398. 816 
+Couvin, D., Bernheim, A., Toffano-Nioche, C., Touchon, M., Michalik, J., Néron, B., 817 
+Rocha, E.P.C., Vergnaud, G., Gautheret, D., Pourcel, C., 2018. 818 
+CRISPRCasFinder, an update of CRISRFinder, includes a portable version, 819 
+enhanced performance and integrates search for Cas proteins. Nucleic Acids 820 
+Res. 46 (W1), W246-W251. 821 
+Crooks, G.E., Hon, G., Chandonia, J.-M., Brenner, S.E., 2004. WebLogo: a sequence 822 
+logo generator. Genome Res. 14 (6), 1188-1190. 823 
+Delaney, N.F., Balenger, S., Bonneaud, C., Marx, C.J., Hill, G.E., Ferguson-Noel, N., 824 
+Tsai, P., Rodrigo, A., Edwards, S.V ., 2012. Ultrafast evolution and loss of 825 
+CRISPRs following a host shift in a novel wildlife pathogen, Mycoplasma 826 
+gallisepticum. PLoS Genet. 8 (2), e1002511. 827 
+Deveau, H., Barrangou, R., Garneau, J.E., Labonté, J., Fremaux, C., Boyaval, P., 828 
+Romero, D.A., Horvath, P., Moineau, S., 2008. Phage response to CRISPR-829 
+encoded resistance in Streptococcus thermophilus. J. Bacteriol. 190 (4), 1390-830 
+1400. 831 
+Díez-Villaseñor, C., Rodriguez-Valera, F., 2019. CRISPR analysis suggests that small 832 
+circular single-stranded DNA smacoviruses infect Archaea instead of humans. 833 
+Nat. Commun. 10 (1), 294. 834 
+Dion, M.B., Labrie, S.J., Shah, S.A., Moineau, S., 2018. CRISPRStudio: a user-835 
+friendly software for rapid CRISPR array visualization. Viruses 10 (11), 602. 836 
+Duffy, S., 2018. Why are RNA virus mutation rates so damn high? PLoS Biol. 16 (8), 837 
+e3000003. 838 
+Feiner, R., Argov, T., Rabinovich, L., Sigal, N., Borovok, I., Herskovits, A.A., 2015. A 839 
+new perspective on lysogeny: prophages as active regulatory switches of 840 
+bacteria. Nat. Rev. Microbiol. 13 (10), 641-650. 841 
+Fernández, L., Rodríguez, A., García, P., 2018. Phage or foe: an insight into the 842 
+impact of viral predation on microbial communities. ISME J. 12 (5), 1171-843 
+1179. 844 
+Flowers, J.J., He, S., Malfatti, S., del Rio, T.G., Tringe, S.G., Hugenholtz, P., 845 
+McMahon, K.D., 2013. Comparative genomics of two ‘ Candidatus 846 
+Accumulibacter’ clades performing biological phosphorus removal. ISME J. 7 847 
+(12), 2301-2314. 848 
+Godde, J.S., Bickerton, A., 2006. The repetitive DNA elements called CRISPRs and 849 
+their associated genes: evidence of horizontal transfer among prokaryotes. J. 850 
+Mol. Evol. 62 (6), 718-729. 851 
+Gu, A.Z., Saunders, A., Neethling, J.B., Stensel, H.D., Blackall, L.L., 2008. 852 
+Functionally relevant microorganisms to enhanced biological phosphorus 853 
+removal performance at full-scale wastewater treatment plants in the United 854 
+States. Water Environ. Res. 80 (8), 688-698. 855 
+Guo, J., Bolduc, B., Zayed, A.A., V arsani, A., Dominguez-Huerta, G., Delmont, T.O., 856 
+Pratama, A.A., Gazitúa, M.C., Vik, D., Sullivan, M.B., Roux, S., 2021. 857 
+VirSorter2: a multi-classifier, expert-guided approach to detect diverse DNA 858 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+37 
+and RNA viruses. Microbiome 9 (1), 37. 859 
+He, S., McMahon, K.D., 2011. Microbiology of ‘ Candidatus Accumulibacter’ in 860 
+activated sludge. Microb. Biotechnol. 4 (5), 603-619. 861 
+Hidalgo-Cantabrana, C., Crawley, A.B., Sanchez, B., Barrangou, R., 2017. 862 
+Characterization and exploitation of CRISPR loci in Bifidobacterium longum. 863 
+Front. Microbiol. 8, 1851. 864 
+Hille, F., Charpentier, E., 2016. CRISPR-Cas: biology, mechanisms and relevance. 865 
+Philos. Trans. R. Soc. B: Biol. Sci. 371 (1707), 20150496. 866 
+https://doi.org/10.1098/rstb.2015.0496. 867 
+Hille, F., Richter, H., Wong, S.P., Bratovič , M., Ressel, S., Charpentier, E., 2018. The 868 
+biology of CRISPR-Cas: backward and forward. Cell 172 (6), 1239-1259. 869 
+Horvath, P., Coûté-Monvoisin, A.-C., Romero, D.A., Boyaval, P., Fremaux, C., 870 
+Barrangou, R., 2009. Comparative analysis of CRISPR loci in lactic acid 871 
+bacteria genomes. Int. J. Food Microbiol. 131 (1), 62-70. 872 
+Horvath, P ., Romero, D.A., Coûté-Monvoisin, A.-C., Richards, M., Deveau, H., 873 
+Moineau, S., Boyaval, P., Fremaux, C., Barrangou, R., 2008. Diversity, activity, 874 
+and evolution of CRISPR loci in Streptococcus thermophilus. J. Bacteriol. 190 875 
+(4), 1401-1412. 876 
+Jiang, J., Yang, B., Ross, R.P., Stanton, C., Zhao, J., Zhang, H., Chen, W., 2020. 877 
+Comparative genomics of pediococcus pentosaceus isolated from different 878 
+niches reveals genetic diversity in carbohydrate metabolism and immune 879 
+system. Front. Microbiol. 11, 253. 880 
+Jiang, W., Samai, P., Marraffini, L.A., 2016. Degradation of phage transcripts by 881 
+CRISPR-associated RNases enables type III CRISPR-Cas immunity. Cell 164 882 
+(4), 710-721. 883 
+Kang, D.D., Li, F., Kirton, E., Thomas, A., Egan, R., An, H., Wang, Z., 2019. 884 
+MetaBAT 2: an adaptive binning algorithm for robust and efficient genome 885 
+reconstruction from metagenome assemblies. PeerJ 7, e7359. 886 
+Kolakovic, S., Freitas, E.B., Reis, M.A.M., Carvalho, G., Oehmen, A., 2021. 887 
+Accumulibacter diversity at the sub-clade level impacts enhanced biological 888 
+phosphorus removal performance. Water Res. 199, 117210. 889 
+Koonin, E.V ., Krupovic, M., Yutin, N., 2015. Evolution of double-stranded DNA 890 
+viruses of eukaryotes: from bacteriophages to transposons to giant viruses. 891 
+Ann. N. Y . Acad. Sci. 1341 (1), 10-24. 892 
+Kopylova, E., Noé, L., Touzet, H., 2012. SortMeRNA: fast and accurate filtering of 893 
+ribosomal RNAs in metatranscriptomic data. Bioinformatics 28 (24), 3211-894 
+3217. 895 
+Kotlyarov, R.Y ., Beletsky, A.V ., Kallistova, A.Y ., Dorofeev, A.G., Nikolaev, Y .A., 896 
+Pimenov, N.V ., Ravin, N.V ., Mardanov, A.V ., 2019. A novel phosphate-897 
+accumulating bacterium identified in a bioreactor for phosphate removal from 898 
+wastewater. Microbiology 88 (6), 751-755. 899 
+Krupovic, M., Prangishvili, D., Hendrix, R.W., Bamford, D.H., 2011. Genomics of 900 
+bacterial and archaeal viruses: dynamics within the prokaryotic virosphere. 901 
+Microbiol. Mol. Biol. Rev. 75 (4), 610-635. 902 
+Labrie, S.J., Samson, J.E., Moineau, S., 2010. Bacteriophage resistance mechanisms. 903 
+Nat. Rev. Microbiol. 8 (5), 317-327. 904 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+38 
+Law, Y ., Kirkegaard, R.H., Cokro, A.A., Liu, X., Arumugam, K., Xie, C., Stokholm-905 
+Bjerregaard, M., Drautz-Moses, D.I., Nielsen, P.H., Wuertz, S., Williams, 906 
+R.B.H., 2016. Integrative microbial community analysis reveals full-scale 907 
+enhanced biological phosphorus removal under tropical conditions. Sci. Rep. 6 908 
+(1), 25719. 909 
+Lawrence, J.G., Hendrix, R.W., Casjens, S., 2001. Where are the pseudogenes in 910 
+bacterial genomes? Trends Microbiol. 9 (11), 535-540. 911 
+Lee, H., Dhingra, Y ., Sashital, D.G., 2019. The Cas4-Cas1-Cas2 complex mediates 912 
+precise prespacer processing during CRISPR adaptation. eLife 8, e44248. 913 
+Lee, J.-H., Shin, H., Ji, S., Malhotra, S., Kumar, M., Ryu, S., Heu, S., 2012. Complete 914 
+genome sequence of phytopathogenic Pectobacterium carotovorum subsp. 915 
+carotovorum bacteriophage PP1. Virol. J. 86 (16), 8899-8900. 916 
+Letunic, I., Bork, P., 2021. Interactive Tree Of Life (iTOL) v5: an online tool for 917 
+phylogenetic tree display and annotation. Nucleic Acids Res. 49 (W1), W293-918 
+W296. 919 
+Li, X., Cheng, Z., Dang, C., Zhang, M., Zheng, Y ., Yu, X., 2021. Metagenomic and 920 
+viromic data mining reveals viral threats in biologically treated domestic 921 
+wastewater. Environ. Sci. Ecotechnology 7, 100105. 922 
+Lin, J., Fuglsang, A., Kjeldsen, A.L., Sun, K., Bhoobalan-Chitty, Y ., Peng, X., 2020. 923 
+DNA targeting by subtype I-D CRISPR–Cas shows type I and type III features. 924 
+Nucleic Acids Res. 48 (18), 10470-10478. 925 
+Lopez-Sanchez, M.-J., Sauvage, E., Da Cunha, V ., Clermont, D., Ratsima Hariniaina, 926 
+E., Gonzalez-Zorn, B., Poyart, C., Rosinski-Chupin, I., Glaser, P., 2012. The 927 
+highly dynamic CRISPR1 system of Streptococcus agalactiae controls the 928 
+diversity of its mobilome. Mol. Microbiol. 85 (6), 1057-1071. 929 
+Lu, X., Duan, H., Oehmen, A., Carvalho, G., Yuan, Z., Y e, L., 2021. Achieving 930 
+combined biological short-cut nitrogen and phosphorus removal in a one 931 
+sludge system with side-stream sludge treatment. Water Res. 203, 117563. 932 
+Majumdar, S., Zhao, P., Pfister, N.T., Compton, M., Olson, S., Glover, C.V .C., Wells, 933 
+L., Graveley, B.R., Terns, R.M., Terns, M.P., 2015. Three CRISPR-Cas 934 
+immune effector complexes coexist in Pyrococcus furiosus. RNA 21 (6), 1147-935 
+1158. 936 
+Makarova, K.S., Wolf, Y .I., Alkhnbashi, O.S., Costa, F., Shah, S.A., Saunders, S.J., 937 
+Barrangou, R., Brouns, S.J.J., Charpentier, E., Haft, D.H., Horvath, P., 938 
+Moineau, S., Mojica, F.J.M., Terns, R.M., Terns, M.P., White, M.F., Y akunin, 939 
+A.F., Garrett, R.A., van der Oost, J., Backofen, R., Koonin, E.V ., 2015. An 940 
+updated evolutionary classification of CRISPR–Cas systems. Nat. Rev. 941 
+Microbiol. 13 (11), 722-736. 942 
+Makarova, K.S., Wolf, Y .I., Iranzo, J., Shmakov, S.A., Alkhnbashi, O.S., Brouns, 943 
+S.J.J., Charpentier, E., Cheng, D., Haft, D.H., Horvath, P., Moineau, S., Mojica, 944 
+F.J.M., Scott, D., Shah, S.A., Siksnys, V ., Terns, M.P., Venclovas, Č ., White, 945 
+M.F., Yakunin, A.F., Yan, W., Zhang, F., Garrett, R.A., Backofen, R., van der 946 
+Oost, J., Barrangou, R., Koonin, E.V ., 2020. Evolutionary classification of 947 
+CRISPR–Cas systems: a burst of class 2 and derived variants. Nat. Rev. 948 
+Microbiol. 18 (2), 67-83. 949 
+Martín, H.G., Ivanova, N., Kunin, V ., Warnecke, F., Barry, K.W., McHardy, A.C., 950 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+39 
+Yeates, C., He, S., Salamov, A.A., Szeto, E., Dalin, E., Putnam, N.H., Shapiro, 951 
+H.J., Pangilinan, J.L., Rigoutsos, I., Kyrpides, N.C., Blackall, L.L., McMahon, 952 
+K.D., Hugenholtz, P., 2006. Metagenomic analysis of two enhanced biological 953 
+phosphorus removal (EBPR) sludge communities. Nat. Biotechnol. 24 (10), 954 
+1263-1269. 955 
+Martynov, A., Severinov, K., Ispolatov, I., 2017. Optimal number of spacers in 956 
+CRISPR arrays. PLoS Comput. Biol. 13 (12), e1005891. 957 
+McDaniel, E.A., Moya-Flores, F., Beach, N.K., Camejo, P.Y ., Oyserman, B.O., 958 
+Kizaric, M., Khor, E.H., Noguera, D.R., McMahon, K.D., 2021. Metabolic 959 
+differentiation of co-occurring Accumulibacter clades revealed through 960 
+genome-resolved metatranscriptomics. mSystems 6 (4), e00474-00421. 961 
+McIlroy, S.J., Albertsen, M., Andresen, E.K., Saunders, A.M., Kristiansen, R., 962 
+Stokholm-Bjerregaard, M., Nielsen, K.L., Nielsen, P .H., 2014. ‘ Candidatus 963 
+Competibacter’-lineage genomes retrieved from metagenomes reveal 964 
+functional metabolic diversity. ISME J. 8 (3), 613-624. 965 
+Mino, T., van Loosdrecht, M.C.M., Heijnen, J.J., 1998. Microbiology and 966 
+biochemistry of the enhanced biological phosphate removal process. Water 967 
+Res. 32 (11), 3193-3207. 968 
+Mortazavi, A., Williams, B.A., McCue, K., Schaeffer, L., Wold, B., 2008. Mapping 969 
+and quantifying mammalian transcriptomes by RNA-Seq. Nat. Methods 5 (7), 970 
+621-628. 971 
+Motlagh, A.M., Bhattacharjee, A.S., Goel, R., 2015. Microbiological study of 972 
+bacteriophage induction in the presence of chemical stress factors in enhanced 973 
+biological phosphorus removal (EBPR). Water Res. 81, 1-14. 974 
+Nasko, D.J., Ferrell, B.D., Moore, R.M., Bhavsar, J.D., Polson, S.W., Wommack, K.E., 975 
+2019. CRISPR spacers indicate preferential matching of specific virioplankton 976 
+genes. mBio 10 (2), e02651-02618. 977 
+Nielsen, P .H., McIlroy, S.J., Albertsen, M., Nierychlo, M., 2019. Re-evaluating the 978 
+microbiology of the enhanced biological phosphorus removal process. Curr. 979 
+Opin. Biotechnol. 57, 111-118. 980 
+Nurk, S., Meleshko, D., Korobeynikov, A., Pevzner, P.A., 2017. metaSPAdes: a new 981 
+versatile metagenomic assembler. Genome Res. 27 (5), 824-834. 982 
+Oehmen, A., Lemos, P.C., Carvalho, G., Y uan, Z., Keller, J., Blackall, L.L., Reis, 983 
+M.A.M., 2007. Advances in enhanced biological phosphorus removal: From 984 
+micro to macro scale. Water Res. 41 (11), 2271-2300. 985 
+Ong, Y .H., Chua, A.S.M., Fukushima, T., Ngoh, G.C., Shoji, T., Michinaka, A., 2014. 986 
+High-temperature EBPR process: The performance, analysis of PAOs and 987 
+GAOs and the fine-scale population study of Candidatus “Accumulibacter 988 
+phosphatis”. Water Res. 64, 102-112. 989 
+Oyserman, B.O., Moya, F., Lawson, C.E., Garcia, A.L., V ogt, M., Heffernen, M., 990 
+Noguera, D.R., McMahon, K.D., 2016. Ancestral genome reconstruction 991 
+identifies the evolutionary basis for trait acquisition in polyphosphate 992 
+accumulating bacteria. ISME J. 10 (12), 2931-2945. 993 
+Parks, D.H., Imelfort, M., Skennerton, C.T., Hugenholtz, P., Tyson, G.W., 2015. 994 
+CheckM: assessing the quality of microbial genomes recovered from isolates, 995 
+single cells, and metagenomes. Genome Res. 25 (7), 1043-1055. 996 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+40 
+Petriglieri, F., Singleton, C.M., Kondrotaite, Z., Dueholm, M.K.D., McDaniel, E.A., 997 
+McMahon, K.D., Nielsen, P.H., 2022. Reevaluation of the phylogenetic 998 
+diversity and global distribution of the genus “ Candidatus Accumulibacter”. 999 
+mSystems 7 (3), e00016-00022. 1000 
+Plagens, A., Tripp, V ., Daume, M., Sharma, K., Klingl, A., Hrle, A., Conti, E., Urlaub, 1001 
+H., Randau, L., 2014. In vitro assembly and activity of an archaeal CRISPR-1002 
+Cas type I-A Cascade interference complex. Nucleic Acids Res. 42 (8), 5125-1003 
+5138. 1004 
+Pourcel, C., Touchon, M., Villeriot, N., V ernadet, J.-P., Couvin, D., Toffano-Nioche, 1005 
+C., Vergnaud, G., 2019. CRISPRCasdb a successor of CRISPRdb containing 1006 
+CRISPR arrays and cas genes from complete genome sequences, and tools to 1007 
+download and query lists of repeats and spacers. Nucleic Acids Res. 48 (D1), 1008 
+D535-D544. 1009 
+Pritchard, L., Glover, R.H., Humphris, S., Elphinstone, J.G., Toth, I.K., 2016. 1010 
+Genomics and taxonomy in diagnostics for food security: soft-rotting 1011 
+enterobacterial plant pathogens. Anal. Methods 8 (1), 12-24. 1012 
+Qiu, G., Law, Y ., Zuniga-Montanez, R., Deng, X., Lu, Y ., Roy, S., Thi, S.S., Hoon, 1013 
+H.Y ., Nguyen, T.Q.N., Eganathan, K., Liu, X., Nielsen, P.H., Williams, R.B.H., 1014 
+Wuertz, S., 2022. Global warming readiness: Feasibility of enhanced 1015 
+biological phosphorus removal at 35 °C. Water Res. 216, 118301. 1016 
+Qiu, G., Liu, X., Saw, N.M.M.T., Law, Y ., Zuniga-Montanez, R., Thi, S.S., Ngoc 1017 
+Nguyen, T.Q., Nielsen, P.H., Williams, R.B.H., Wuertz, S., 2020. Metabolic 1018 
+traits of Candidatus Accumulibacter clade IIF Strain SCELSE-1 using amino 1019 
+acids as carbon sources for enhanced biological phosphorus removal. Environ. 1020 
+Sci. Technol. 54 (4), 2448-2458. 1021 
+Roux, S., Páez-Espino, D., Chen, I.-M.A., Palaniappan, K., Ratner, A., Chu, K., 1022 
+Reddy, T.B.K., Nayfach, S., Schulz, F., Call, L., Neches, R.Y ., Woyke, T., 1023 
+Ivanova, N.N., Eloe-Fadrosh, E.A., Kyrpides, N.C., 2020. IMG/VR v3: an 1024 
+integrated ecological and evolutionary framework for interrogating genomes 1025 
+of uncultivated viruses. Nucleic Acids Res. 49 (D1), D764-D775. 1026 
+Shan, J., Korbsrisate, S., Withatanung, P., Adler, N.L., Clokie, M.R.J., Galyov, E.E., 1027 
+2014. Temperature dependent bacteriophages of a tropical bacterial pathogen. 1028 
+Front. Microbiol. 5, 599. 1029 
+Singleton, C.M., Petriglieri, F., Kristensen, J.M., Kirkegaard, R.H., Michaelsen, T.Y ., 1030 
+Andersen, M.H., Kondrotaite, Z., Karst, S.M., Dueholm, M.S., Nielsen, P .H., 1031 
+Albertsen, M., 2021. Connecting structure to function with the recovery of 1032 
+over 1000 high-quality metagenome-assembled genomes from activated 1033 
+sludge using long-read sequencing. Nat. Commun. 12 (1), 2009. 1034 
+https://doi.org/10.1038/s41467-021-22203-2. 1035 
+Singleton, C.M., Petriglieri, F., Wasmund, K., Nierychlo, M., Kondrotaite, Z., 1036 
+Petersen, J.F., Peces, M., Dueholm, M.S., Wagner, M., Nielsen, P.H., 2022. 1037 
+The novel genus, ‘ Candidatus Phosphoribacter’, previously identified as 1038 
+Tetrasphaera, is the dominant polyphosphate accumulating lineage in EBPR 1039 
+wastewater treatment plants worldwide. ISME J. 16 (6), 1605-1616. 1040 
+Skennerton, C.T., Barr, J.J., Slater, F.R., Bond, P.L., Tyson, G.W., 2015. Expanding 1041 
+our view of genomic diversity in Candidatus Accumulibacter clades. Environ. 1042 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+41 
+Microbiol. 17 (5), 1574-1585. 1043 
+Srinivasan, V .N., Li, G., Wang, D., Tooker, N.B., Dai, Z., Onnis-Hayden, A., Bott, C., 1044 
+Dombrowski, P., Schauer, P., Pinto, A., Gu, A.Z., 2021. Oligotyping and 1045 
+metagenomics reveal distinct Candidatus Accumulibacter communities in 1046 
+side-stream versus conventional full-scale enhanced biological phosphorus 1047 
+removal (EBPR) systems. Water Res. 206, 117725. 1048 
+Stecher, G., Tamura, K., Kumar, S., 2020. Molecular Evolutionary Genetics Analysis 1049 
+(MEGA) for macOS. Mol. Biol. Evol. 37 (4), 1237-1239. 1050 
+Tamaki, H., Zhang, R., Angly, F.E., Nakamura, S., Hong, P.-Y ., Yasunaga, T., 1051 
+Kamagata, Y ., Liu, W.-T., 2012. Metagenomic analysis of DNA viruses in a 1052 
+wastewater treatment plant in tropical climate. Environ. Microbiol. 14 (2), 1053 
+441-452. 1054 
+Tamulaitis, G., Kazlauskiene, M., Manakova, E., Venclovas, Č ., Nwokeoji, A.O., 1055 
+Dickman, M.J., Horvath, P., Siksnys, V ., 2014. Programmable RNA shredding 1056 
+by the type III-A CRISPR-Cas system of Streptococcus thermophilus . Mol. 1057 
+Cell 56 (4), 506-517. 1058 
+Thomas, M., Wright, P., Blackall, L., Urbain, V ., Keller, J., 2003. Optimisation of 1059 
+Noosa BNR plant to improve performance and reduce operating costs. Water 1060 
+Sci. Technol. 47 (12), 141-148. 1061 
+Tian, Y ., Chen, H., Chen, L., Deng, X., Hu, Z., Wang, C., Wei, C., Qiu, G., Wuertz, S., 1062 
+2022. Glycine adversely affects enhanced biological phosphorus removal. 1063 
+Water Res. 209, 117894. 1064 
+Tomás-Martínez, S., Kleikamp, H.B.C., Neu, T.R., Pabst, M., Weissbrodt, D.G., van 1065 
+Loosdrecht, M.C.M., Lin, Y ., 2021. Production of nonulosonic acids in the 1066 
+extracellular polymeric substances of “ Candidatus Accumulibacter 1067 
+phosphatis”. Appl. Microbiol. Biotechnol. 105 (8), 3327-3338. 1068 
+Vigil-Stenman, T., Ininbergs, K., Bergman, B., Ekman, M., 2017. High abundance and 1069 
+expression of transposases in bacteria from the Baltic Sea. ISME J. 11 (11), 1070 
+2611-2623. 1071 
+Wang, I.-N., Smith, D.L., Young, R., 2000. Holins: the protein clocks of 1072 
+bacteriophage infections. Annu. Rev. Microbiol. 54 (1), 799-825. 1073 
+Wang, L., Liu, J., Oehmen, A., Le, C., Geng, Y ., Zhou, Y ., 2021. Butyrate can support 1074 
+PAOs but not GAOs in tropical climates. Water Res. 193, 116884. 1075 
+Westra, E.R., Swarts, D.C., Staals, R.H.J., Jore, M.M., Brouns, S.J.J., Oost, J.v.d., 1076 
+2012. The CRISPRs, they are a-changin': how prokaryotes generate adaptive 1077 
+immunity. Annu. Rev. Genet. 46 (1), 311-339. 1078 
+Westra, E.R., van Houte, S., Oyesiku-Blakemore, S., Makin, B., Broniewski, J.M., 1079 
+Best, A., Bondy-Denomy, J., Davidson, A., Boots, M., Buckling, A., 2015. 1080 
+Parasite exposure drives selective evolution of constitutive versus inducible 1081 
+defense. Curr. Biol. 25 (8), 1043-1049. 1082 
+Wommack, K.E., Colwell, R.R., 2000. Virioplankton: viruses in aquatic ecosystems. 1083 
+Microbiol. Mol. Biol. Rev. 64 (1), 69-114. 1084 
+Wu, Q., Liu, W.-T., 2009. Determination of virus abundance, diversity and 1085 
+distribution in a municipal wastewater treatment plant. Water Res. 43 (4), 1086 
+1101-1109. 1087 
+Xue, C., Sashital, D.G., 2019. Mechanisms of Type I-E and I-F CRISPR-Cas systems 1088 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+42 
+in enterobacteriaceae. EcoSal Plus 8 (2). 1089 
+Zhang, C., Guisasola, A., Baeza, J.A., 2022. A review on the integration of 1090 
+mainstream P-recovery strategies with enhanced biological phosphorus 1091 
+removal. Water Res. 212, 118102. 1092 
+Zhang, Z., Wang, J., Wang, J., Wang, J., Li, Y ., 2020. Estimate of the sequenced 1093 
+proportion of the global prokaryotic genome. Microbiome 8 (1), 134. 1094 
+Zheng, Y ., Li, J., Wang, B., Han, J., Hao, Y ., Wang, S., Ma, X., Y ang, S., Ma, L., Yi, L., 1095 
+Peng, W., 2020. Endogenous type I CRISPR-Cas: from foreign DNA defense 1096 
+to prokaryotic engineering. Front. Bioeng. Biotechnol. 8, 62. 1097 
+ 1098 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+A
+ 
+B 
+SBRL
+UW6
+SSA1
+SCELSE.2IIC
+SCUT.1
+SCUT.2
+Bin19
+SK.02
+SCELSE.8IIC
+ACC007
+UBA6658
+BA.93
+UW8
+ACC005
+MAG.203
+UWLDOIC
+SBRS
+ACC012
+UBA6585
+SCELSE.6IIF
+SCELSE.3IIF
+SCELSE.4IIF
+SSB1
+SCELSE.1
+UW13
+UW7
+UW5
+UW9
+UW1
+DS2011
+SCN18
+X66.26
+SCELSE.7IIH
+SCELSE.5IIH
+ACC003
+AALB
+MAXAC027
+BAT3C415
+UW12
+BATAC285
+MAG.196
+SCELSE.10IIF
+SCELSE.9IIF
+SBRL
+UW6
+SCELSE−8IIC
+SSA1
+SCUT−2
+Bin19
+SK−02
+SCELSE−2IIC
+SCUT−1
+ACC007
+UW8
+UBA6658
+BA−93
+ACC005
+MAG−203
+UWLDOIC
+SBRS
+ACC012
+UBA6585
+SCELSE−6IIF
+SCELSE−3IIF
+SCELSE−4IIF
+SSB1
+SCELSE−1
+UW13
+UW7
+UW5
+UW9
+UW1
+DS2011
+SCN18
+66−26
+SCELSE−7IIH
+SCELSE−5IIH
+ACC003
+AALB
+MAXAC027
+BAT3C415
+UW12
+BATAC285
+MAG−196
+SCELSE−10IIF
+SCELSE−9IIF
+0.75
+0.8
+0.85
+0.9
+0.95
+1
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+ 
+Fig. 1. (A) Average nucleotide identity (ANI) analysis of Ca. Accumulibacter genomes. 
+(B) Species tree of Ca. Accumulibacter and the occurrence and distribution CRISPR -
+Cas systems. Dechloromonas agitate is5 is employed as an outgroup. The squares on 
+the right of the tree represent different type s of CRISPR-Cas systems. Solid squares 
+indicate presence. The genomes with star marks were retrieved in this study. 
+ 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+A 
+ 
+B 
+Fig. 2. (A) The relative abundance of different Ca. Accumulibacter members retrieved 
+from the lab-scale reactor s. Bars with yellow dots indicate Ca. Accumulibacter 
+genomes with CRISPR -Cas system s. The y -axis indicates the metagenomic dataset 
+where the Ca. Accumulibacter genomes were recovered. (B) Transcription of CRISPR-
+associate genes in Ca. Accumulibacter SCUT-2, which harbors a type I-F CRISPR-Cas 
+system. Gene transcription were normalized to read per kilo base per million (RPKM). 
+ 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+A 
+B 
+C 
+Fig. 3. (A) A gene tree of type I CRISPR-Cas systems in different Ca. Accumulibacter 
+genomes. cas1 gene were employed as a marker gene. The tree was grouped into five 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+clusters denoted as I to V . (B) A gene tree of type III CRISPR-Cas systems in different 
+Ca. Accumulibacter genomes. cas10 gene were employed as a marker gene. The tree 
+was grouped into six clusters denoted as I to VI. (C) Multiple sequence alignment and 
+visualization of DRs in Ca. Accumulibacter by Weblogo (Crooks et al., 2004). The 
+size of the base letter indicates the frequency of occurrence of the base at a given 
+position. 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+ 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+Fig. 4. Schematics of CRISPR-Cas systems in Ca. Accumulibacter genomes. Arrows in the same color represent homologous cas genes. The length of the 
+cas gene is indicated by the length of the arrow. Gray cylinders represent the CRISPR array . The numbers below gray cylinders represent the number s of 
+spacers. Dark green arrows in CRISPR loci SCELSE-6IIF Type III-A, SCELSE-3IIF Type III-A, and SCELSE-4IIF Type III-A indicate the transposase. 
+ 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+A B 
+C 
+D 
+Fig. 5. Comparisons of spacers in different CRISPR loci. (A) A boxplot of the number 
+SCELSE.3IIF.Type.III.A
+SCELSE.3IIF.Type.III.B
+SCELSE.10IIF.Type.III.A
+SCELSE.4IIF.Type.III.A
+SCELSE.4IIF.Type.III.B
+SCELSE.8IIC.Type.I.F
+SCELSE.6IIF.Type.III.A
+SCELSE.6IIF.Type.III.B
+SCELSE.2IIC.Type.I.A
+SCUT.2.Type.I.F
+phage1_SCUT−2
+phage2_SCUT−2
+phage3_SCUT−2
+phage4_SCUT−2
+phage5_SCUT−2
+phage6_SCUT−2
+phage7_NTU30−0125
+phage8_NTU30−0125
+phage9_NTU30−0125
+phage10_NTU30−0125
+phage11_NTU30−0125
+phage12_NTU30−0125
+phage13_NTU30−0125
+phage14_NTU30−0125
+phage15_NTU30−0515
+phage16_NTU30−0515
+phage17_NTU30−0515
+phage18_NTU30−0515
+phage19_NTU30−0802
+phage15_NTU30−0802
+phage20_NTU30−0802
+phage21_NTU30−0802
+phage22_NTU30−0823
+phage15_NTU30−0823
+phage23_NTU30−0823
+phage24_NTU35−0823
+0
+1
+2
+3
+4
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+of spacers in different types of CRISPR -Cas systems. (B) Heatmap of spacers in 
+CRISPR loci and phage s identified by VirSorter (Guo et al., 2021) . The color scale 
+indicates the number of spacers in a CRISPR locus which matched to a specific phage 
+genome. (Phage15_NTU30-0515, phage15_NTU30-0802 and phage15_NTU30 -0823 
+are identical phage contigs retrieved from different metagenomic data). (C) A schematic 
+representation of the CRISPR spacer array in different Ca. Accumulibacter. Each square 
+represents a spacer, common spacers are in the same color. (D) Venn diagrams of 
+spacers in different CRISPR loci. The numbers represent the number s of spacers. The 
+overlapping parts represent the shared numbers of spacers. 
+ 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+A
+ 
+B
+ 
+C
+UBA6658_ppg1
+BA.93_ppg2
+ACC005_ppg1
+SBRS_ppg2
+ACC007_ppg7
+SBRL_ppg1
+SK.02_ppg2
+SSA1_ppg1
+ACC005_ppg4
+ACC007_ppg5
+ACC003_ppg1
+SCELSE.7IIH_ppg1
+SCELSE.5IIH_ppg1
+SCELSE.9IIF_ppg1
+SCELSE.10IIF_ppg1
+SSB1_ppg1
+SSB1_ppg2
+SCELSE.2IIC_ppg3
+MAXAC027_ppg7
+UW13_ppg1
+DS2011_ppg1
+SSA1_ppg2
+ACC005_ppg2
+ACC012_ppg7
+ACC003_ppg2
+ACC007_ppg2
+ACC007_ppg4
+UBA6658_ppg1
+BA−93_ppg2
+ACC005_ppg1
+SBRS_ppg2
+ACC007_ppg7
+SBRL_ppg1
+SK−02_ppg2
+SSA1_ppg1
+ACC005_ppg4
+ACC007_ppg5
+ACC003_ppg1
+SCELSE−7IIH_ppg1
+SCELSE−5IIH_ppg1
+SCELSE−9IIF_ppg1
+SCELSE−10IIF_ppg1
+SSB1_ppg1
+SSB1_ppg2
+SCELSE−2IIC_ppg3
+MAXAC027_ppg7
+UW13_ppg1
+DS2011_ppg1
+SSA1_ppg2
+ACC005_ppg2
+ACC012_ppg7
+ACC003_ppg2
+ACC007_ppg2
+ACC007_ppg4
+0.7
+0.85
+1
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint 
+ 
+Fig. 6. (A) Occurrence and distribution of prophage -like elements in 43 Ca. 
+Accumulibacter genomes. (B) Average nucleotide identity (ANI) analysis of different 
+prophages in Ca. Accumulibacter genomes. (C) Prophage gene identification based on 
+prophage gene modules. The prophage genes were divided into five functional modules. 
+The name of each functional module was given on the top of the heatmap. Yellow 
+square represents the occurrence of a respective gene. 
+ 
+.CC-BY-NC-ND 4.0 International licenseavailable under a 
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprintthis version posted October 13, 2022. ; https://doi.org/10.1101/2022.10.12.504627doi: bioRxiv preprint

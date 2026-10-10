@@ -1,0 +1,806 @@
+Selective interaction of microsystin congeners with zebrafish (Danio rerio) Oatp1d1 1 
+transporter 2 
+ 3 
+Petra Marić1,4, Marijan Ahel2, Nikola Maraković3, Jovica Lončar1, Ivan Mihaljević1, Tvrtko 4 
+Smital1* 5 
+ 6 
+ 7 
+1Laboratory for Molecular Ecotoxicology, 2Laboratory for Analytical Chemistry and 8 
+Biogeochemistry of Organic Compounds, Division for Marine and Environmental Research, Ruđer 9 
+Bošković Institute, Bijenička 54, 10000 Zagreb, Croatia 10 
+3Institute for Medical Research and Occupational Health, Ksaverska cesta 2, 10000 Zagreb, 11 
+Croatia 12 
+4André Gergs - Research Institute for Ecosystem Analysis and Assessment (gaiac), Kackertstrasse 13 
+10, 52072 Aachen, Germany; Present Address: Bayer AG, Alfred-Nobel-Straße 50, 40789 14 
+Monheim am Rhein, Germany 15 
+ 16 
+*correspondning author 17 
+Tvrtko Smital, PhD 18 
+Laboratory for Molecular Ecotoxicology 19 
+Division for Marine and Environmental Research 20 
+Ruđer Bošković Institute 21 
+Bijenicka 54 22 
+10 000 Zagreb, CROATIA 23 
+Tel.: **385 1 45 61 039 24 
+E-mail: smital@irb.hr 25 
+ 26 
+ 27 
+Abstract 28 
+Microcystins (MCs) are the most studied cyanotoxins. The uptake of MCs in cells and tissues of 29 
+mammals and fish species is mostly mediated by organic anion-transporting polypeptides (OATPs in 30 
+humans and rodents; Oatps in other species), and the Oatp1d1 appears to be a major tran sporter for 31 
+MCs in fish. In this study, six MC congeners of varying physicochemical properties (MC-LR, -RR, -32 
+YR, -LW, -LF, -LA) were tested by measuring their effect on the uptake of model Oatp1d1 33 
+fluorescent substrate Lucifer yellow (LY) in HEK293T cells transiently or stably overexpressing 34 
+zebrafish Oatp1d1. MC-LW and -LF showed the strongest interaction resulting in an almost complete 35 
+inhibition of LY transport with IC50 values of 0.21 and 0.26 µM, while congeners -LR, -YR and -LA 36 
+showed lower inhibitory effects. To discern between Oatp1d1 substrates and inhibitors, results were 37 
+complemented by Michaelis–Menten kinetics and chemical analytical determinations of MCs uptake, 38 
+along with molecular docking studies performed using the developed zebrafish Oatp1d 1 homology 39 
+model. Therefore, our study showed that Oatp1d1-mediated transport of MCs could be largely 40 
+dependent on their basic physicochemical properties, with log P OW being the most obvious 41 
+determinant. Finally, apart from determination of the chemical composition of cynobacterial blooms, 42 
+a reliable risk assessment should take into account the interaction of identified MC congeners with 43 
+Oatp1d1 as their primary transporter, and herewith we demonstrated that such a comprehensive 44 
+approach could be based on t he use of highly specific in vitro models, accompanied by chemical 45 
+assessment and in silico molecular docking studies. 46 
+ 47 
+Kewwords: microcystins; zebrafish Oatp1d1; kinetics determinations; substrates vs. inhibitors; 48 
+chemicaly analytical determinations; molecular docking 49 
+ 50 
+1. Introduction 51 
+Cyanobacteria are marine, freshwater or terrestrial photosynthetic bacteria that possess the ability to 52 
+produce a wide variety of secondary metabolites which enable them to modify their habitats and 53 
+thrive under diverse environmental stress conditions (Sivonen and Jones, 1999; Dittmann et al., 54 
+2013). Cyanobacterial secondary metabolites are in most cases highly bioactive substances, and some 55 
+of them, called cyanotoxins, have been shown to present a significant risk to livestock, fish, other 56 
+aquatic organisms and human health upon their release in to aquatic environments during so -called 57 
+harmful algal blooms (HABs). HABs are a phenomenon that typically occurs in aquatic ecosystems 58 
+in conditions of high nutrient input, eutrophication and increased temperature. They can be formed 59 
+by various genera of cyanot oxin-producing cyanobacteria (toxic strains) and non -cyanotoxin-60 
+producing cyanobacteria (non-toxic strains) (D’Anglada at al., 2016; Zohdi and Abbaspour, 2019). 61 
+Considering the increased occurrence of cyanobacterial blooms, as well as human and animal 62 
+poisonings (Wang et al., 2021), much effort has been put into revealing the toxic effects and molecular 63 
+mechanisms of cyanobacterial toxicity (reviewed e.g., in Ferrão-Filho and Kozlowsky-Suzuki, 2011; 64 
+Buratti et al., 2017 ). Among the many types of cyanotoxins, m icrocystins (MCs) are the most 65 
+dominant in cyanobacterial blooms . They have been shown to be highly toxic and they are often 66 
+associated with hepatotoxicity, nephropathy, neurotoxicity and other severe toxic effects, particularly 67 
+upon harmful algal blooms (Chen et al., 2009). MCs are highly diverse in terms of molecular size, 68 
+structure and physicochemical properties, with almost 280 congeners identified so far ( Bouaïcha et 69 
+al., 2019 ). A typical MC structure consists of seven amino acids in a ring formation (cyclic 70 
+heptapeptides) with an obligatory presence of a β-amino acid side chain (ADDA group) , and t heir 71 
+nomenclature is primarily based on two variable amino acids that are always occupied by L -amino 72 
+acids (Fig. S1 in Supplementary Material). 73 
+The mechanisms of toxicity related to MCs are diverse, and the most studied one includes interactions 74 
+with protein phosphatases PP1 and PP2A which in turn lead to the hyperphosphorylation of cellular 75 
+proteins, DNA destruction, inflammation, apoptosis, hepatic hemorrhage and necrosis (MacKintosh 76 
+et al., 1990). Induction of oxidative stress and interaction with cellular uptake mechanisms is also 77 
+associated with exposure to MCs, causing cytoskeletal disruption, cancer cell invasio n and DNA 78 
+damage (reviewed e.g., in McLellan and Manderville, 2017; Bouaïcha et al., 2019). As shown in 79 
+several studies, the toxic potential of MCs depends on their toxicodynamics and toxicokinetics 80 
+properties, and along with their inhibitory potency towards serine/threonine protein phosphatases 81 
+(PPs), their uptake kinetics is probably a key determin ative of the organ and/or spe cies-specific 82 
+toxicity of individual congeners. Interaction of MCs with serine/threonine PPs has been extensively 83 
+addressed in numerous studies and data show that most toxic congeners frequently found in HABs 84 
+have similar potency in the inhibition of PP1, PP2, and PP4-6, typically showing IC50 values in the 85 
+range of 0.1–1 nM (Bouaïcha et al., 2019). The inhibition of the PPs activity by MCs results primarily 86 
+from non -covalent interactions, although covalent interaction does occur between MCs and the 87 
+catalytic sub-units of PPs. However, formation of the covalent bond occurs slowly, and is not essential 88 
+for the inactivation of the PPs by MCs (Craig et al., 1996; Hastie et al., 2005; Perreira et al., 2011). 89 
+Considering the uptake of MCs in various cells and tissues of mammals and fish species, it is mostly 90 
+mediated by organic anion-transporting polypeptides (OATPs in humans and rodents; Oatps in fish 91 
+and other species) (Fischer et al., 2010; Niedermeyer et al., 2014, Steiner et al., 2015). OATPs/Oatps 92 
+are transmembrane proteins that typically consist of 12 transmembrane domains, and their primary 93 
+physiological role appears to be the hepatic transport of steroid and thyroid hormones, bile salts, 94 
+prostaglandins and oligopeptides. However, they have been shown to be involved in the transport of 95 
+endo- and xenobiotics. They are typically polyspecific and expressed in most tissues, with specific 96 
+members dominantly expressed in toxicologically important organs as the liver or kidney (Hagenbuch 97 
+and Meier, 2003; Popović et al., 2010). Transport of MCs has been demonstrated for human 98 
+OATP1B1 and OATP1B3, and rat and mice OATP1B2 (Fischer et al., 2005; Komatsu et al., 2007) . 99 
+Members of the Oatp1 family were shown to interact with MCs in fish species such as the little skate, 100 
+rainbow trout and zebrafish . Considering tissue distribution of Oatp1 transcripts , the level of their 101 
+expression, and specificity towards MC congeners , the Oatp1d1 appears to be dominant transporter 102 
+of MCs (Meier-Abt et al., 2007; Bury et al., 1998; Bieczynski et al., 2014; Steiner et al., 2015; 103 
+Faltermann et al., 2016). 104 
+From the ecotoxicological perspective, it is important to emphasize that the studies done so far 105 
+indicate that the rate of MCs uptake, determined e.g., in zebrafish as a cyprinid fish model, varies for 106 
+different congeners which may partially explain the observed differences in their toxic potential. 107 
+Furthermore, as Oatp1d1 transporter appears to be highly relevant for uptake of MCs in zebrafish, it 108 
+is important to better understand the potency and type of interaction of structurally and chemically 109 
+different MC congeners with fish Oapt1d1 . If the interaction of various MCs with Oatp1d1 is 110 
+significantly different, both in terms of their potency and type of interaction, the presence of highly 111 
+toxic congeners in HABs might not represent high ecological risk if their Oatp1d1 transport is low . 112 
+On the contrary, the presence of less toxic congeners with high rate of Oatp1d1 mediated transport 113 
+could be highly deleterious. Therefore, in this study we addressed this topic using a zebrafish model: 114 
+six MC congeners of varying physicochemical properties (MC -LR, -RR, -YR, -LW, -LF, -LA) that 115 
+are frequently found in HABs were tested for their interaction with a target transporter using HEK 116 
+293T cells transiently or stably expressing zebrafish Oatp1d1 cloned from zebrafish liver. Results of 117 
+interaction studies were further verified by chemical analytical determinations of MC upt ake in 118 
+transfected cells, and by molecular docking studies performed for specific congeners. 119 
+ 120 
+ 121 
+2. Materials and methods 122 
+2.1. Chemicals 123 
+Model fluorescent substrate Lucifer yellow (LY), Trypsin-EDTA solution and Hepes were purchased 124 
+from Sigma-Aldrich, St. Louis, MO, USA. Dulbecco's Modified Eagle's Medium (DMEM) (Powder, 125 
+High Glucose, Pyruvate), Fetal Bovine Serum (FBS) and Phosphate Buffer Saline (PBS) were 126 
+purchased from Gibco Invitrogen, Life technologies, CA, USA. The other solvents and salts used 127 
+were of the highest analytical grade and purchased from Kemika, Zagreb, Croatia. 128 
+2.2. Microcystins standards 129 
+Six microcystin (MC) congeners were purchased from Enzo Life Sciences: MC-LR, -RR, -YR, -LW, 130 
+-LF, and -LA. Stock standard solutions were prepared in methanol and stored at -80 °C. 131 
+Concentrations of stock standard solutions made for analytical LC-MS analyses were 1 µg/µL, while 132 
+the stock concentrations used for bioassays were 10 mM (-LR) and 1 mM (-RR, -YR, -LW, -LF, and 133 
+-LA). For LC-MS analyses, stock standards were diluted 1/100 in methanol (final concentrations 10 134 
+ng/µL). An o verview of the structure and basic chemical and physical properties of microcystin 135 
+congeners tested in this study has been provided in the Supplementary Material (Table S1, Fig. S1). 136 
+ 137 
+2.3. Oatp1d1 transport activity measurements 138 
+Interaction of selected MCs with zebrafish Oatp1d1 transporter was determined by using the uptake 139 
+transport assay with transiently transfected human embryonic kidney HEK239T cells overexpressing 140 
+the Oatp1d1 uptake transporter cloned from zebrafish liver , as described previously (Popovic et al., 141 
+2013; Maric et al ., 2017 ). Briefly, HEK293T cells overexpressing zebrafish Oatp1d1 were co-142 
+exposed for 5 min to serial dilutions of MCs and LY as a model substrate , and the rate of Oatp1d1 143 
+LY transport was determined. MCs were tested in the concentration range from 0.02 to 100 µM, the 144 
+final concentration of Oatp1d1-specific substrate LY used in the assays was 10 µM, and the maximal 145 
+amount of solvents (MeOH for MCs, dimethyl sulfoxide (DMSO) for LY) never exceeded 0.1%. 146 
+After incubation, the cells were washed twice with an ice-cold incubation medium (250 µL/well) and 147 
+incubated with 250 µL/well of 0.1% sodium dodecyl sulfate (SDS) for 30 min at 37 °C for cell lysis. 148 
+Fluorescence of transport specific substrates was measured in 9 6-well black microplates using a 149 
+microplate reader (Infinite M200, Tecan, Salzburg, Austria) at specif ic wavelengths of 425/540 nm. 150 
+The eukaryotic vector pcDNA3.1(+) /His without cloned genes (mock -transfected cells) was also 151 
+transfected into the HEK293T cells in order to determine non -transporter specific uptake. Oatp1d1-152 
+transfected cells exposed only to incubation medium were used as an additional negative control. 153 
+ 154 
+2.4. Type of interaction of MCs with Oatp1d1 transporter 155 
+2.4.1. Michaelis-Menten transport kinetics 156 
+Stable expression of zebrafish Oatp1d1 in genetically engineered HEK293 Flp -In cells (Thermo 157 
+Fisher Scientific, Waltham, USA) was achieved using a non-clonal selection, by targeted integration 158 
+of the oatp1d1 sequence subcloned into integration vector pcDNA5/FRT (Thermo Fisher Scientific, 159 
+Waltham, USA) with combination of restriction enzymes HindIII/XhoI. pcDNA5/FRT/Oatp1d1 160 
+constructs were specifically targeted into the genome of the Flp -InTM-293 cells following the 161 
+manufacturer’s instructions, using basical ly the same protocol as described in Lončar and Smital 162 
+(2018). Zebrafish Oatp1d1 stable transfectants were functionally verified by determination of the 163 
+uptake rate of model fluorescent substrate LY in comparison to mock-transfected cells, and the stable 164 
+cell line was further maintained in the same conditions as regular HEK293T cells. 165 
+For the type of interaction experiments, HEK293T Flip-In/Oatp1d1 cells were seeded in 96-well 166 
+plates at a density of 5 or 8 x 10 5 cells/mL in a final volume of 125 µL/well. Forty-eight hours after 167 
+seeding, the growth medium was ex tracted from the cells and 100 µ L/well of incubation medium 168 
+(145 mM NaCl, 3 mM KCl, 1 mM CaCl2, 0.5 mM MgCl2, 5 mM D-glucose, and 5 mM HEPES) was 169 
+added. Preincubation lasted for 10 min after which 25 µL/well of medium was removed. The activity 170 
+of the Oatp1d1 transporter was mea sured by exposing the cells to six concentrations of model 171 
+substrate LY (5-300 µM) and two to three concentrations of MCs ranging from 0.05 – 100 µM. The 172 
+exposure volume of LY and MCs added to the cells was 25 µL/well. The maximal amount of DMSO 173 
+and MeOH used as solvents in all of the tested samples never exceeded 0.1%. A shift in the Km and 174 
+Vmax values of Oatp1d1 transport was determined after 15 min incubation of LY with MCs , as the 175 
+uptake of LY is linear during the first 15 min of incubation (Popovic et al., 2013) . After incubation, 176 
+the cells were washed twice with 125 µL/well of cold incubation medium and subsequently incubated 177 
+with 125 µL/well of 0.1% SDS for 30 min at 37 °C for cell lysis. As a control, the activity of the 178 
+Oatp1d1 transporter in HEK293T Flip -In/Oatp1d1 cells was measured in the presence of model 179 
+substrate LY only (six concentrations). The uptake into HEK293T Flip-In/mock cells was subtracted 180 
+to obtain transporter -specific uptake. The Km increase and no changes in Vmax indicated MCs as 181 
+substrates (competitive inhibition); no significant changes in Km and reduced Vmax pointed to non-182 
+competitive inhibition; and reduced Km and Vmax indicated un -competitive inhibition. The 183 
+measurements were done in duplicates and conducted in two to three independent experiments, and 184 
+results of representative experiments are shown in the Results section. To obtain a linear calibration 185 
+curve, the fluorescent dye LY was dissolved in 0.1% SDS, in the cell matrix dissolved in 0.1% SDS 186 
+and in the incubation medium to obtain the linear calibration curves. Bradford assay was used to 187 
+measure total protein concentration (Bradford, 1976). Based on total protein measurements and the 188 
+obtained linear calibration curves, the uptake rate of LY was calculated and expressed as nmol of 189 
+substrate per µg of protein per minute. 190 
+ 191 
+ 192 
+2.4.2. Chemical analytical verification of the type of interaction 193 
+The MCs that showed significant interaction with zebrafish Oatp1d1 were preliminarily classified as 194 
+substrates (competitive inhibitors) or non/un -competitive inhibitors based on results of Michaelis -195 
+Menten kinetics experiments and were then further verified on the type of interaction by exposure of 196 
+HEK293T Flip-In/Oatp1d1 stable transfectants and mock -transfected cells to MCs followed by a 197 
+chemical analytical determination of the intracellular accumulation of the tested MCs by LC-MS 198 
+analyses. Cells were seeded in 24-well plates at 8 x 10 5 cells/mL density in a final volume of 500 199 
+µL/well and 48 h after seeding were exposed to different concentrations of MCs. After removing the 200 
+growth medium above the cells, preincubati on was initiated by adding 400 µ L/well of incubation 201 
+medium. Ten minutes later, HEK293T Flip -In/Oatp1d1 cells were exposed to three MC 202 
+concentrations selected based on the initial transport activity determinations: 0.1, 0.5 and 1 µM for 203 
+MC-LW and -LF; 0.5, 1 and 5 µM for MC-LA and -YR; 5, 20 and 50 µM for MC-LR. The maximal 204 
+amount of MeOH used as solvent in all of the tested samples never exceeded 0.5%. Incubation with 205 
+MCs lasted for 30 min after which cells were washed two times with 500 µL/well of incubation 206 
+medium. The cells were then incubated in 500 µL/well of MeOH for 30 min at 37 °C in order to 207 
+permeabilize the cells and extract the accumulated MCs. HEK293T Flip -In/mock cells were also 208 
+exposed to the same concentrations of MCs in order to discern between t ransporter-specific and 209 
+passive uptake of the tested MCs. After the final incubation in MeOH, cells were manually scraped 210 
+from the bottom of the wells and technical duplicates from each concentration were merged into a 211 
+single tube. Samples were the n centrifuged for 5 min at 1000 x g to remove cellular debris and 212 
+proteins. Supernatant was transferred to a conical tube and 10 mL of MeOH was added. Samples 213 
+were centrifuged for 5 min at 1000 x g, transferred to glass tubes and MeOH was evaporated under a 214 
+nitrogen stream using a TurboVap system (Caliper Life Sciences, Hopkinton, MS, USA) at 40 °C 215 
+until dryness. Residual dry matter was dissolved in 250 µL of MeOH. 216 
+The prepared final solutions from the assays were analyzed by liquid chromatography -mass 217 
+spectrometry (LC/MS). All analyses were performed using a Waters Acquity ultra -performance 218 
+liquid chromatography (UPLC, Waters Corp., Milford, Massachusetts, USA) coupled to a Q -TOF 219 
+Premier quadrupole -time-of-flight mass spectrometer (QTOF -MS; Waters Corp., Milford, 220 
+Massachusetts, USA) equipped with an electrospray ionization source. The UPLC s ystem was 221 
+equipped with a 1.7 µ BEH C18 column (100 x 4 mm) for chromatographic separation of MCs. The 222 
+eluents A and B were acetonitrile with 0.1 % formic acid (v/v) and water with 0.1 % formic acid 223 
+(v/v), respectively, and the flow rate was 0.4 ml/min. Th e sample acquisition was performed in 224 
+positive ionization mode in the m/z range from 50 to 1100 Da. The details of the mass spectrometric 225 
+settings were described elsewhere (Terzic and Ahel, 2011). For the quantitative assessment of 226 
+individual MCs, the acquired full scan chromatograms were reconstructed using accurate masses of 227 
+the corresponding [M+H]+ ions of MCs as follows: MC-LR (m/e 995.557), MC-YR (m/e 1045.536), 228 
+MC-LW (m/e 1025.535), MC -LF (m/e 986.524) and MC -LA (m/e 910.493). The representative 229 
+chromatograms are given in the Supplementary Material (Fig. S1) . The confirmation of peak 230 
+identities as well as the quantitative assessment was performed using authentic standards as described 231 
+above. 232 
+ 233 
+2.5. Homology modelling and molecular docking studies 234 
+Biovia Discovery Studio Client v18.1. (Dassault Systèmes, Vélizy -Villacoublay, France) 235 
+implemented Build Homology Models protocol was used to construct Oatp1d1 homology model 236 
+based on alignment of the model sequence and the template structure - crystal str ucture of the 237 
+glycerol-3-phosphate transporter from Escherichia coli (PDB ID: 1pw4) (Meier -Abt et al., 2006, 238 
+Huang et al., 2003). Build Homology Models protocol uses the MODELER (Sali and Blundell, 1993) 239 
+automodel to build homology models. To build an Oatp1d1 homology model, the input sequence 240 
+alignment between the model sequence of Oatp1d1 and the sequence of glycerol -3-phosphate 241 
+transporter was obtained using the Align Sequences protocol (Sequence Identity: 11.6 %, Sequence 242 
+Similarity: 34,3 %). The alignm ent was analyzed and long insertions that could not b e modeled 243 
+correctly were excised from the alignment in order to obtain a reliable model. The N-terminal variable 244 
+region and the large extracellular and intracellular loops/regions that were judged to be unreliable and 245 
+not important for ligand binding were excised. 246 
+The remaining parameters in the Parameters Explorer of the Build Homology Models protocol were 247 
+set as follows: Cut Overhangs was set to True to cut the terminal residues of the input model sequence 248 
+that were not aligned with the templates ; Number of Models was set to 10 to specify the number of 249 
+models to create from an initial structure with Optimization Level set to High to define the proportion 250 
+of molecular dynamics with simulated annealing to perform. As to building refinement models on 251 
+detected loop regions, i.e., the model sequence regions of at least 5 residues length which are not 252 
+aligned with the template, Refine Loops was set to True. Build Homology Models protocol uses the 253 
+DOPE (Discrete Optimized Protein Energy) (Shen and Sali, 2006) method to refine loops. Refine 254 
+Loops Number of Models was set to 5 to define the number of models to be created by loop 255 
+optimization, and Refine Loops Optimization Level was set to Low to define the number of models 256 
+to be created by loop optimization. Refine Loops with Use Discrete Optimized Protein Energy 257 
+(DOPE) Method was set to High Resolution. After running Build Homology Models protocol, the 258 
+Best Model Structure Superimposed to Templates was selected from the generated output models for 259 
+the final three -dimensional model structure of Oatp1d1. Finally, the selected model was manually 260 
+adjusted and minimized using the Smart Mi nimizer algorithm. The dielectric constant used to 261 
+minimize the Oatp1d1 model was set to 2 corresponding to the dielectric properties of saturated 262 
+hydrocarbons as instructed when modelling a membrane system. 263 
+Microcystin congeners to be docked in the homolo gy model of Oatp1d1 were created with 264 
+ChemBio3D Ultra 13.0 (PerkinElmer, Inc., Waltham, MA, USA) and minimized using the Minimize 265 
+Ligands protocol implemented in Biovia Discovery Studio Client v18.1. Flexible Docking protocol 266 
+(Koska et al., 2008) was used for the molecular docking study with flexible amino acid side -chains 267 
+which comprises the following steps: ChiFlex receptor conformations calculation, ligand 268 
+conformations creation, LibDock docking of the ligand into active protein conformation sites, poses 269 
+clustering to remove similar ligand poses, ChiRotor protein conformations rebuilding by refining 270 
+selected protein side -chains in the presence of the rigid ligand, and a final CDOCKER ligand 271 
+refinement. The selected homology model of Oatp1d1 was used as th e rigid receptor, while the 272 
+binding site within the homology models was defined by a sphere (r=25 Å) surrounding the central 273 
+pore. The rest of the parameters included in the FlexibleDocking protocol were set as follows. 274 
+Maximum number of processed protein conformations was set to 100; Minimum angel, i.e. torsion 275 
+angle cutoff (degrees) to determine whether the two side-chain chi1 angles are the same or not, was 276 
+set to 30; Maximum number of residues for generating side chain conformations was set to 16 and 277 
+these were the following: Met37, Lys38, Glu63, Ile70, Arg172, Glu176, Tyr199, Ile203 , Val206, 278 
+Val347, Phe350, Ile351 , Ile354, Leu575, and A rg578; Conformation Method, i.e. algorithm for 279 
+generating ligand conformations, was set to BEST; Maximum number of conformations to be created 280 
+was set to 255; Energy Threshold, i.e. conformations of separate isomers are created inside this 281 
+relative energy threshold (kcal/mol), was set to 20. LibDock ligand docking parameters inside 282 
+FlexibleDocking protocol were set as foll ows: Number of Hotspots, i.e. number of polar or apolar 283 
+receptor hotspots for conformer matching and Max Number to Save were set to 100 and 20, 284 
+respectively with Tolerance for a hotspots matching algorithm for docking ligands set to 0.25; 285 
+Maximum Number of Hits which defines the maximum number of hits saved for each ligand during 286 
+hotspots matching prior to final pose minimization was set to 100 with Final Score Cutoff, i.e. 287 
+fragment of the reported top scoring poses set to 0.5; Maximum number of poses to be kept per 288 
+conformation was set to 30 with Maximum number of conformations for each ligand set to 1000; 289 
+Steric Fraction specifying the number of clashes before the pose -hotspot alignment is discontinued 290 
+was set to 0.10 inside the 0.5 Å Final Cluster Radius; maximum values for the Apolar SASA Cutoff 291 
+and Polar SASA Cutoff were set to 15.0 Å and 5.0 Å, respectively. Lastly, a simulated annealing 292 
+refinement was performed. 293 
+ 294 
+ 295 
+ 296 
+2.6. Statistical analysis 297 
+All studies were performed in two to three independent experiments. Data from all experiments were 298 
+analyzed and related calculations done using Microsoft Office Excel 2007 and GraphPad Prism 5 for 299 
+Windows for statistical analysis, respectively. Data from Oatp1d1 transport activity measurements 300 
+are expressed in percentages of LY uptake. Concentration -dependent LY uptake was calculated by 301 
+using the equation (1): 302 
+ 303 
+(1) Ii = ((Fi – Fm) / (Fc – Fm)) x 100 304 
+ 305 
+where Ii is the percentage of inhibition for the test concentration i, Fi is the mean fluorescent value 306 
+for test concentration i, Fm is the mean fluorescent value for mock and Fc is the mean fluorescent 307 
+value for control. Serial dilutions of the test compounds were log transformed and results were 308 
+analyzed by non -linear regress ion method used for obtaining dose -response curves, with 95% 309 
+confidence intervals (CI). When possible and justified with respect to the intensity of the response, 310 
+IC50 values that designate the concentrations that cause 50% of maximal observed inhibition were 311 
+calculated from sigmoidal dose-response curves using the equation (2): 312 
+ 313 
+ (2) y = b + (a – b) / (1 +10((LogIC50 – x) * h)) 314 
+ 315 
+where y is the response, b is the minimum (bottom) of response, a represents the maximum (top) 316 
+response, hillslope (h) is the slope of the curve, LogIC50 is the halfway response from bottom to top 317 
+and x is the logarithm of inhibitor concentration. 318 
+For Michaelis-Menten experiments , the obtained kinetic parameters, Km and Vmax values were 319 
+calculated using the Michaelis–Menten equation (3), 320 
+ 321 
+(3) V = (Vmax x S) / (S + Km) 322 
+ 323 
+where V is the velocity (nanomoles of substrate per microgram of proteins per minute), Vmax is the 324 
+maximal velocity, [ S] is the substrate concentration (micromoles) and Km is the Michaelis-Menten 325 
+constant. Data obtained were fitted using nonlinear regression analysis with GraphPad Prism. 326 
+For construction of Lineweaver-Burk plots (or double reciprocal), equation (4) was used: 327 
+ 328 
+(4) 1/V = Km / Vmax (1 / [S]) + 1 / Vmax 329 
+ 330 
+The plots are graphical representation of the of Oatp1d1 -mediated transport kinetics, with y -axis 331 
+intercept as 1/Vmax and x -axis intercept as -1/Km. The type of inhibition was determined with 332 
+analysis of lines convergence. Intersecting lines that converge at the y -axis indicate the competitive 333 
+inhibition modality, whereas intersecting lines that converge to the left of the y-axis and on the x-axis 334 
+indicate noncompetitive inhibition modality (Copeland, 2005). 335 
+ 336 
+3. Results 337 
+3.1. Strength of interaction of tested MCs with zebrafish Oatp1d1 uptake transporter 338 
+In the first step of our study we tested the strength of interaction of six selected MC congeners towards 339 
+the zebrafish Oatp1d1 transporter, as determined by the inhibition of uptake of model Oatp1d1 340 
+substrate Lucifer yellow (LY) in transiently transfected HEK293 FlpIn/Oatp1d1 cells. As can be seen 341 
+on Fig. 1, the tested MC congeners markedly differed in their potency to inhibit LY transport. Apart 342 
+from MC-RR, all other congeners significantly inhibited LY uptake in transiently tra nsfected cells 343 
+upon a short, 5 min co-exposure with LY. The most potent interactors were MC -LW and -LF that 344 
+resulted in an almost complete inhibition of LY uptake in transfected cells (95 and 82 %, respectively) 345 
+with IC 50 values of 0.21 and 0.26 µM, respec tively. Significant inhibitory potency was also 346 
+determined for MC congeners -LA, -LR and -YR, resulting in 38%, 20% and 16% inhibition of LY 347 
+transport, respectively (Fig. 1). 348 
+ 349 
+3.2. Determining the type of interaction of tested MCs with zebrafish Oatp1d1 uptake transporter 350 
+Michaelis-Menten transport kinetics. 351 
+All five MCs initially shown to interact with zebrafish Oatp1d1 with varying potency were further 352 
+tested for their type of interaction. Our primary goal was to discern between substrates and inhibitors 353 
+of zebrafish Oatp1d1, and in order to obtain more robust data and decrease variability among 354 
+experiments that is often present when using transient expression protocols, related experiments were 355 
+performed using HEK293 Flp -In cells stably overexpressing zebrafish Oatp1d1 (HEK293 Flip -356 
+In/Oatp1d1) instead of the transient transfection protocol used for the initial determination of the 357 
+interaction strength. 358 
+Determinations of the type of interaction with zebrafish Oatp1d1 performed indirectly, using 359 
+Michaelis-Menten transport kinetics experiments. Our data showed a clear pattern of Km increase and 360 
+no significant changes in V max for MC congeners -LW and -LF, revealing that they are competitive 361 
+inhibitors of LY transport mediated by zebrafish Oatp1d1. D ata were less conclusive for congener -362 
+LA. Although the same pattern of the Km increase was nominally obtained, suggesting a competitive 363 
+inhibition, both Michaelis -Menten kinetics (Fig. 2) and Lineweaver -Burk plots (Fig. S4) suggest 364 
+rather a mixed type of inhibition. On the contrary, MC -LR and -YR appeared not to be zabrafish 365 
+Oatp1d1 substrates as they rather acted as un-competitive inhibitors, showing a decrease in both K m 366 
+and Vmax values (Table 1, Fig. 2). Yet, we have to note that in terms of statistical robustness, data for 367 
+MC-LR were relatively weak, as a nominal decrease in K m was not statistically significant with 368 
+respect to data obtained for MC -LR at a 10 µm concentration. This indicates that non -competitive 369 
+inhibition (characterized by no changes in Km and decrease in V max) could also have been a likely 370 
+explanation. 371 
+ 372 
+ 373 
+Fig. 1. Concentration-dependent inhibition of zebrafish Oatp 1d1 transport activity by MC congeners 374 
+-RR, -LR, - YR, -LW, -LF and -LA. Results from a typical experiment are shown as percentages of 375 
+LY uptake in HEK 293 FlpIn/Oatp1d1 cells. Each data point represents the mean ± SD from a typical 376 
+experiment out of three independent determinations. Dotted lines represent 95 % confidence intervals. 377 
+ 378 
+ 
+ 
+ 
+MC-RR
+10-5 10-4 10-3 10-2 10-1
+0
+20
+40
+60
+80
+100
+120
+log concentration (mM)
+LY uptake (%)
+LY uptake (%)
+ 
+IC50 = 0.21 µM 
+ IC50 = 0.26 µM 
+ 379 
+ 380 
+Fig. 2 . Michaelis -Menten kinetics of zebrafish Oatp 1d1 mediated uptake of model fluorescent 381 
+substrate LY in the presence of MC congeners -LR, -YR, LA, -LW and -LF as determined in HEK 382 
+293 Flp In/Oatp1d1 overexpressing cells. Dose response curves show concentration dependence of 383 
+Oatp1d1 media ted LY uptake expressed as transport rate (nmol/µg protein/min) over LY 384 
+concentration after 15 min incubation at 37 °C in the presence of increasing concentrations of tested 385 
+congeners, as explained in Materials and Methods section. The concentration range of LY was from 386 
+5-300 µM. The uptake into vector transfected HEK 293 cells (mock-transfected cells) was subtracted 387 
+to obtain a transporter specific uptake. Each data point represents the mean ± SD from a typical 388 
+experiment out of three independent determinations. 389 
+ 390 
+ 
+ 
+Transport rate
+(nmol/
+ g protein/min)
+Transport rate
+(nmol/
+ g protein/min)
+Table 1. Determination of the type of interaction of the tested MC congeners with zebrafish Oatp1d1 391 
+using Michaelis-Menten transport kinetics experiments. Kinetic analysis of LY transport by HEK 293 392 
+Flp In/Oatp1d1 over expressing cells was determined in the absen ce (control) or the presence of 393 
+various concentrations MC congeners, as indicated. The LY uptake followed Michaelis-Menten type 394 
+kinetics, and based on the data obtained MCs were classified as substrates (competitive inhibitors) or 395 
+inhibitors (non- or un-competitive) according to criteria described in Materials and Methods section. 396 
+Uptake was measured after 15 min incubation at 37 ºC and the results represent means ± SEs from 397 
+two (LW and LF) and three (LR, YR, LA) independent experiments pe rformed in technic al 398 
+duplicates, respectively 399 
+ 400 
+ 401 
+ 402 
+ 403 
+Chemical analytical verification. The type of interaction of the tested MC congeners with zebrafish 404 
+Oatp1d1 was further verified by chemical analytical determinations of the rate of accumulation of 405 
+congeners upon exposure of mock -transfected and Oatp1d1 transfected cells to increasing 406 
+concentrations of the tested congeners. The result of the LC/MS analyses for the highest concentration 407 
+of MCs are shown in Fig. 3, while the detailed documentation of the experiments, includin g all 408 
+concentration levels of MCs tested, can be found in Supplementary M aterial (Fig. S2 ). The results 409 
+showed significant, multi-fold increases in accumulation of MC-LA, -LF, and -LW in transfected in 410 
+comparison to mock -transfected cells, confirming them as substances transported by zebra fish 411 
+Oatp1d1 (Figs. 3 and 4). On the contrary, no significant Oatp1d1 mediated uptake of MC -YR was 412 
+observed, confirming results of Michaelis-Menten kinetics experiments and showing that MC-YR is 413 
+MC congener Conc. ( µM) or ICX K m ± SE V max ± SE Type of interaction
+ctrl 73.97 ± 5.38 4.06 ± 0.12
+10 63.77 ± 14.63 3.25 ± 0.09
+100 47.07 ± 12.63 1.69 ± 0.34
+ctrl 73.97 ± 5.38 4.06 ± 0.12
+1 68.47 ± 5.7 3.95 ± 0.13
+10 47.20 ± 4.25 2.95 ± 0.09
+ctrl 73.97 ± 5.38 4.06 ± 0.12
+1 69.47 ± 6.24 3.92 ± 0.14
+10 85.24 ± 13.86 3.95 ± 0.20
+ctrl 60.88 ± 3.93 7.27 ± 0.45
+IC30 105.70 ± 10.64 7.41 ± 0.28
+IC50 111.68 ± 5.94 7.12 ± 0.19
+IC70 140.52 ± 17.78 6.75 ± 0.41
+ctrl 60.88 ± 3.93 7.27 ± 0.45
+IC30 157.8 ± 12.84 8.09 ± 0.32
+IC50 172.8 ± 16.32 8.04 ± 0.38
+IC70 135.4 ± 13.57 7.55 ± 0.31
+LF competitive inhibition
+competitive/mixed 
+inhibition
+LR un-competitive inhibition
+YR un-competitive inhibition
+LA
+LW competitive inhibition
+not a zebrafish Oatp1d1 sub strate. However, in contrast to data obtained by Michaelis -Menten 414 
+determinations, our accumulation experiments and subsequent LC -MS analysis of MC -LR showed 415 
+that this congener is actually transported by Oatp1d1, although at a comparatively low rate (Figs. 3 416 
+and 4 ). This suggests that MC -LR might be an Oatp1d1 substrate as well, but its transport is 417 
+comparatively slow. 418 
+ 419 
+ 420 
+Fig. 3. Overlayed LC/MS chromatograms of Oatp1d1 uptake determinations with four selected 421 
+microcystins. The traces of individual MC conge ners are given in different colors as follows: MC-422 
+LR – brown, retention time (RT) 4.18 min; -LA – red, RT 4.8 min; -LW – green, RT 5.24 min; -LF 423 
+– blue, RT 5.33 min; *unknown impurity (RT 4.26 min) . The upper and lower traces represent 424 
+responses obtained in Oatp1 transfected and mock-transfected cells, respectively. 425 
+ 426 
+3.4. Homology modelling and molecular docking studies 427 
+A structure -based sequence alignment of Oatp1d1 and glycerol -3-phosphate transporter template 428 
+from E. coli illustrating the unmodeled extracellular and intracellular portions (underlined) is shown 429 
+in the Supplementary Material (Fig. S3 ). Good quality alignment of the model sequence and the 430 
+template structure of the glycerol -3-phosphate transporter in the transmembrane regions suggested 431 
+that the constructed Oatp1d1 homology model should be of reasonable quality for these regions and 432 
+central pore description. The resulting homology model of Oatp1d1 is shown in Fig. 5. Model 433 
+complexes of structural model of Oatp1d1 and MC s of interest were generated using flexible 434 
+molecular docking where selected residues were allowed to rotate during procedure and the binding 435 
+sphere (r=25 Å) was defined large enough to encompass the majority of the central pore. 436 
+ 437 
+ 438 
+Fig. 4. Comparison of the uptake of the tested MC congeners in Oatp1d1 transfected over mock -439 
+transfected HEK293T cells. The cells were exposed to three increasing concentrations of MC 440 
+congeners (0.1, 0.5 and 1 µM for MC-LW and -LF; 0.5, 1 and 5 µM for MC-LA and -YR; 5, 20 and 441 
+50 µM for MC -LR) for 30 min and the amount of accumulated MCs determined using LC -MS 442 
+analysis, as described in the Materials and Methods section. Data from a typical experiment are shown 443 
+as means ± SDs from triplicate determinations and represent a fold increase in the accumulation of 444 
+MC congeners over the accumulation determined in mock-transfected cells for each of the three tested 445 
+concentrations. One-way ANOVA and Tukey’s multiple comparison test were used for determination 446 
+of stat istically significant differences between the uptake of corresponding MC congeners in 447 
+transfected over mock-transfected cells, as well as among the uptake determined in the cells exposed 448 
+to different concentrations of the same MC congener: a – significantly different (p<0.05) from 449 
+accumulation in mock-transfected cells; b – significantly different (p<0.05) from concentration 1 of 450 
+the same MC congener; c – significantly different (p<0.05) from concentration 2. 451 
+ 452 
+However, prior to the docking study of MCs, to validate the receptor molecule, i.e. Oatp1d1 453 
+homology model, a docking of the known model substrate LY was attempted. The successful docking 454 
+predicted that LY is buried deep in the central pore approximately at its center ( Fig. 6AB). The five 455 
+MCs that sho wed significant interaction with zebrafish Oatp1d1, MC -LF and MC -LW were 456 
+successfully docked without any translation of the binding site. The resulting model complexes are 457 
+shown in Fig. 6 C-F together with the non-bonding interactions of docked MCs with nei ghboring 458 
+amino acid residues. MC-LF was predicted to be placed above the center of the pore interacting non-459 
+covalently with neighboring residues identified as Ser567, Val179, Met180, Arg192, Asn195, Leu324 460 
+and Ser567. On the other hand, MC-LW was placed on the outer part of the sphere/central pore and 461 
+exposed to the surrounding fluid. In doing so, MC-LW was engaged in non-bonding interactions with 462 
+the following residues: Ile70, Ile203, Lys319, Lys321, and Leu575. However, the other congeners 463 
+failed to fully accommodate inside the defined binding sphere without significant translation of the 464 
+binding site sphere’s center closer to the opening of the central pore. After the refinement of the 465 
+model, the initially failed MC congeners -LA and -LR were successfully docked. The model complex 466 
+between Oatp1d1 structural model and MC-LR depicts the blocking of the central pore unit by MC-467 
+LR (Fig. 6GH). The binding position of MC-LR was secured through non-bonding interactions with 468 
+residues Met180, Leu184, and Ile55. 469 
+ 470 
+ 471 
+Fig. 5. Solid ribbon and rainbow-colored representation of the homology model of Oatp1d1 as viewed 472 
+from the lateral side (A), the extracellular side (C) and the intracellular side (E) with electrosta tic 473 
+potential mapped onto its molecular surface, respectively (B, D, F). Regions of negative, positive and 474 
+neutral potential are shown in red, blue and white/gray, respectively . The model is deposited and 475 
+available at ModelArchive base (https://www.modelarchive.org/doi/10.5452/ma-4kkal). 476 
+ 477 
+4. Discussion 478 
+Based on the studies published so far, the uptake kinetics of various MC congeners is a factor that 479 
+largely determines their bioavailability and toxic potential in exposed aquatic organisms, and Oatp 480 
+transporters appeared to be major contributors relevant for the uptake of MCs in fish species (Meier-481 
+Abt et al., 2007; Bury et al., 1998; Bieczynski et al., 2014; Faltermann et al., 2016; Steiner et al ., 482 
+2016). Yet, more detailed studies performed recently utilizing zebrafish as a cyprinid fish model 483 
+showed that the rate of MC uptake significantly varie s for different congeners. Furthermore, it has 484 
+been shown that zebrafish Oatp1d1 acts as a ubiquitously expressed, multi -specific transporters of 485 
+various MC congeners, while other MC transporting Oatps , like members of the Oatp1f subfamily , 486 
+are expressed e xclusively in the kidney and transport only specific MC congeners (Steiner et al., 487 
+2015). As the primary cause for this variability could be related to the strength and type of interaction 488 
+(substrates versus inhibitors) of MC congeners with fish Oatp1d1 tr ansporter, it is logical to assume 489 
+that these features may contribute to differences in the toxic potential of individual congeners towards 490 
+fish species as one of the primary targets of cyanotoxins and subsequent toxic effects related to HABs. 491 
+Therefore, it is highly relevant to better characterize the MC congeners frequently found in HABs 492 
+with respect to their interaction with Oatp1d1. To do so, we selected six MC congeners that differ in 493 
+terms of various structural properties and their log POW values (Table S1) and utilized HEK293T cells 494 
+transiently or stably expressing zebrafish Oatp1d1 as a specific and sensitive assay system for testing 495 
+their interaction with this transporter. 496 
+In the first part of our study, we determined the strength of interaction of the tested MCs and found 497 
+that most of them do interact with zebrafish Oatp1d1, inhibiting the uptake of model Oatp1d1 498 
+substrate LY in transfected cells with varying potency. What was immediately obvious was that the 499 
+strongest interactors were also the most li pophilic congeners -LW and -LF (Fig. 1 ), followed by 500 
+congeners -LA, -LR and -YR, again in apparent correlation with their log P OW. Furthermore, as the 501 
+only truly hydrophilic congener , with log P OW value of -0.2, MC-RR did not significantly interfere 502 
+with LY transport by Oatp1d1. These results were similar to data reported earlier by Steiner et al. 503 
+(2015), with the exception of MC-RR that was shown to be transported by zebrafish Oatp1d1, albeit 504 
+at a slow rate and as the result of a prolonged 24 h exposure. 505 
+However, our initial data on the interaction strength , although specific enough due to the use of 506 
+Oatp1d1 overexpressing cells, could not reveal if the tested MC congeners are substances transported 507 
+by the zebrafish Oatp1d1 transporter, or they inhibit LY transport due to an un- or non-competitive 508 
+mode of inhibition. To get a better insight into the type of interaction, i n the next step of our study 509 
+we performed Michaelis -Menten kinetics determinations of the type of interaction for five MC 510 
+congeners shown to be Oatp1d1 interactors. Although Michaelis-Menten kinetics measurements are 511 
+not a direct determination of substrate transport, we utilized it as an established experimental protocol 512 
+to discern b etween substrates and inhibitors and showed that MC-LW and -LF clearly behaved as 513 
+substrates (i.e. competitive inhibitors), while congeners -LR and -YR appeared not to be transported 514 
+by Oatp1d1 . (Table 1, Fig s. 2 and S4). Considering the robustness of the data in respect to the 515 
+calculated K m and V max values for LY transport , and their shifts in comparison to control values 516 
+determined without addition of the tested MC congeners, the data obtained using this method 517 
+appeared to be a good indication of congeners that are substrates versus those that act as Oatp1d1 518 
+inhibitors. The exception s were MC-LA that were less conclusive and showed a mixed inhibiton 519 
+pattern, and MC -LR where in term s of statistical robustness the data were relatively weak, as a 520 
+nominal decrease in K m was not statistically significant with respect to data obtained for MC -LR at 521 
+10 µm concentration (Table 1 , Figs. 2 and S4 ). This indicates that non -competitive inhibitio n 522 
+(characterized by no changes in K m and a decrease in Vmax) could also have been a likely 523 
+explanation. 524 
+In addition to Michaelis-Menten kinetics data, the transport of selected MCs by zebrafish was further 525 
+studied by direct chemical analytical determination of their accumulation rate in transfected and 526 
+mock-transfected cells by LC -MS analysis. The obtained r esults were rather consistent with the 527 
+results of kinetics determinations: significant increases in accumulati on of MC -LF, -LW, and -LA 528 
+were determined in transfected over mock-transfected cells at all of the three concentrations of MCs, 529 
+confirming them as substrates for zebrafish Oatp1d1 (Figs. 3, 4 and S2). Likewise, exposure to MC-530 
+YR did not result in a significant fold-increase in accumulation over mock-transfected cells, showing 531 
+that MC-YR was not transported by Oatp1d1. Yet, two irregularities were shown. The first is related 532 
+to the lack of consistent dose re sponse for MC -LA, where the exposure of the cells t o the highest 533 
+concentration actually resulted in lower accumulation of MC -LA in comparison to the two lower 534 
+concentrations (Fig. 4). A likely explanation for this discrepancy might be related to suboptimal range 535 
+of the concentrations used. For example, although MCs interact with cellular PPs primarily by non -536 
+covalent, two -step mechanism involving rapid binding and inactivation of PPs, the process is 537 
+followed by a slower (within hours) covalent interaction (Craig et al., 1996; Hastie et al. , 2005; 538 
+Perreira et al., 2011). However, although a shorter, 30 min methanol extraction protocol was used in 539 
+our study, it is possible that a more significant covalent interaction happened at the highest MC -LA 540 
+concentration used, partly preventing extraction of accumulated MC-LA by methanol. Nevertheless, 541 
+even at that concentration the accumulation of MC-LA was clearly much higher in transfected over 542 
+mock-transfected cells showing basically that -LA congener is also a substrate transported by 543 
+zebrafish Oatp1d1. 544 
+Second inconsistency was related to MC -LR data. I n contrast to partially inconclusive Michaelis -545 
+Menten analysis of MC -LR kinetics, chemical analytical determinations showed that MC -LR was 546 
+transported into Oatp1d1 overexpressing cells, although at a lower rate (Figs. 3, 4, S2 and S4). These 547 
+data are actually in agreement with previous reports that showed that MC-LR is an Oatp1d1 substrate 548 
+in zebrafish (Steiner et al., 2015; Faltermann et al ., 2016). In terms of LC -LR toxicokinetics, the 549 
+detailed study by Steiner and colleagues (2015) is particularly relevant, as it showed that intracellular 550 
+transport of MC -LR by Oatp1d1 is much less favorable when compared to transport of more 551 
+hydrophobic congeners like -LW or -LF, which are transported much faster. Consequently, although 552 
+the authors correctly pointed out that kinetic values obtained in various studies using different 553 
+exposure regimes, model substrates and/or detection methods should not be d irectly compared, we 554 
+believe the overall pattern determined in our study is quite consistent with previous reports , which 555 
+indicates that MC-LR is a slow, low affinity substrate for Oatp1d1 transporter. 556 
+Finally, to confirm experimentally observed different modes of action among the tested compounds, 557 
+a structural study was undertaken utilizing molecular modelling. Since a crystal structure of zebrafish 558 
+Oatp1d1 is not available, a homology model was constructed based on a chosen template crystal 559 
+structure of the glycerol -3-phosphate transporter from E. coli solved in a conformation with the 560 
+central pore opening toward the intracellular side (F. Meier -Abt et al., 2006, Huang et al., 2003). 561 
+Although the used template structure was not ideal in terms of the sequence similarity (Fig. S3), and 562 
+long insertions that could not be modelled correctly were excised from the alignment in order to 563 
+obtain a reliable model, all of the excised insertions were either from the N -terminal region or large 564 
+extracellular/intracellular loops/regions not important for ligand binding. As a result, the final 565 
+alignment of the model sequence and the template structure was of substantial quality, implying that 566 
+the Oatp1d1 homology model constructed (Fig. 5) could be used for reliable molecul ar docking 567 
+studies. It was further confirmed by successful docking of LY as a verified substrate for zebrafish 568 
+Oatp1d1, which was docked deep in the central pore of zebrafish Oatp1d1 (Fig. 6AB). Moreover, LY 569 
+was predicted to interact with Met37 via a hydro phobic π-alkyl non-covalent bond, and this residue 570 
+corresponds to the position of Arg45 in the model glycerol-3-phosphate transporter described as one 571 
+of the key residues for substrate binding, located at the closed end of the substrate -translocation 572 
+pathway in the middle of the membrane (Huang et al., 2003). 573 
+As to the docking studies of MC congeners, although all five MCs were studied and the most potent 574 
+interactors MC -LF and MC -LW were successfully docked, others initially failed to fully 575 
+accommodate inside the defined binding sphere. Such an outcome could have been expected for MC-576 
+YR, which was shown both indirectly (Michaelis -Menten knetics) and directly (chemical analytical 577 
+determinations) not to be transported by zebrafish Oatp1d1, but the docking of MC-LA and -LR 578 
+inside the Oatp1d1 central pore, however, was expected. Nevertheless, after the refinement of the 579 
+model by translation of the binding site sphere’s center closer to the opening of the central pore, MC-580 
+LA and -LR were successfully docked. Inte restingly, it can be seen that MC -LR is placed higher 581 
+above the central pore when compared with the predicted binding pose of MC -LF, and bulky MC -582 
+LR is clearly prevented from easily entering the central pore. 583 
+ 584 
+ 585 
+Fig. 6. Electrostatic potential mapped on the molecular surface of model complexes between 586 
+structural model of Oatp1d1 and LY (A), MC -LF (C), MC -LW (E), or MC -LR (G). Regions of 587 
+negative, positive and neutral potential are shown in red, blue and white/gray, respectively. The 588 
+molecular surface of ligands is shown in yellow. The close-up of LY (B), MC-LF (D), MC-LW (F), 589 
+or MC-LR (H) docked into the central pore of the structural model of zebrafish Oatp1d1. The ligands 590 
+are shown in yellow sticks and amino acid residues engaged in non-bonding interactions (dotted lines) 591 
+are shown in magenta sticks. 592 
+ 593 
+Furthermore, although no crystal structures of the OATPs/Oatps are available and the transport 594 
+mechanism of OATPs/Oatps has not been fully elucidated, the available in silico models imply that 595 
+transport of their substrates most probably occur through a central, positively charged pore (Meier -596 
+Abt et al., 2005). Consequently, as Oatps are primarily anion transporters, the presence of positively 597 
+charged arginine residues in MC-LR, -YR, and -RR probably contribut ed to its lower affinities 598 
+towards zebrafish Oatp1d1. Considering the strength and type of interaction of tested MCs versus 599 
+their physicochemical descriptors, our data support earlier observations (Karlgren et al., 2012 ; 600 
+Wolman et al., 2013) which indicated that apart from lipophilicity, properties like topological polar 601 
+surface area and hydrogen bond features correlate with the potency of various substances, including 602 
+MCs (Table S1), for interaction with OATPs/Oatps, including zebrafish Oatp1d1. 603 
+ 604 
+5. Conclusion 605 
+Taken together, the data obtained in this study support results by similar studies implying that the 606 
+zebrafish Oatp1d1 is a membrane transporter that could be a rate limiting step for the uptake of 607 
+microcystins in cyprininds, and possibly other teleosts. However, although a wide substrate 608 
+preference and a rather large binding region of zebrafish Oatp1d1 do enable the transport of 609 
+structurally and chemically different MC congeners, it seems to be highly plausible that the transport 610 
+of MCs could be largely dependent on their basic physicochemical properties, with log POW being the 611 
+most obvious determinant. 612 
+Secondly, as previously suggested by Stainer et al. (2015), the presence of nominally highly toxic 613 
+MC congeners (e.g., MC -LR) in cyanobacterial blooms does not necessarily translate to high 614 
+ecological risk if their capacity for Oatp1d1 transport is low. And vice versa, the presence of 615 
+nominally less toxic MCs (e.g., MC-LF or -LA) that are in contrast readily taken up by Oatp1d1 can 616 
+result in highly relevant deleterious effects in exposed fish, especially neurotoxicity and renal toxicity 617 
+in organs and tissues characterized by significant expression of Oatp1d1 or related transporters with 618 
+overlapping substrate specificities. 619 
+Consequently, apart from the determination of chemical composition of HABs in relation to MCs, a 620 
+reliable risk assessment should take into account the interaction of identified MC congeners with 621 
+Oatp1d1 as their primary transporter in fish species. As demonstrated, the use of highly specific in 622 
+vitro models in combination with uptake and kinetics determinations, chemical analytical verification 623 
+and in silico molecular docking studies could be used as a reliable experimental setup for this goal. 624 
+Acknowledgements 625 
+This research was financed by the Croatian Science Foundation (Project No. IP-2019-04-1147) and 626 
+partially supported under the STIM -REI project, Contract Number: KK.01.1.1.01.0003, a project 627 
+funded by the European Union through the European Regional Development Fund – the Operational 628 
+Programme Competitiveness and Cohesion 2014–2020 (KK.01.1.1.01). The computational resources 629 
+and Biovia Discovery Studio Client v18.1 software (Dassault Systèmes, Vélizy -Villacoublay, 630 
+France), used for homology modeling and molecular docking studies, were provided through Croatian 631 
+Science Foundation projects (grant numbers HrZZ-IP-2013-11-4307 and HrZZ-IP-2018-01-7683). 632 
+Author contributions : PM – designed and performed majority of interaction and exposure 633 
+experiments related to chemical analytical determinations, and wrote the manuscript ; MA – LC-MS 634 
+determinations; NM – homology modelling and molecular docking studies; JL and IM – performed 635 
+part of Michaelis -Menten kinetics studies; TS – supervision of the project , study conception and 636 
+design, writing of the paper with input from all authors. All of the authors reviewed the results and 637 
+approved the final version of the manuscript. 638 
+ 639 
+Abbreviations: MC – microcystin; OATP/Oatp – organic anion-transporting polypeptide; H AB – 640 
+harmful algal bloom; LY – Lucifer yellow; HEK293T - human embryonic kidney cells; LC -MS – 641 
+liquid chromatography -mass spectrometry; QTOF -MS – quadrupole-time-of-flight/mass 642 
+spectrometry; TIC – total ion current; UPLC – ultra-performance liquid chromatography. 643 
+ 644 
+References 645 
+1) Sivonen, K., Jones, G. Cyanobacterial toxins. In: Chorus I, Bartram J, editors. Toxic 646 
+Cyanobacteria in Water: A Guide to Public Health Significance, Monitoring and Management. 647 
+London: E&FN Spon; 1999. pp. 41–111. 648 
+2) Dittmann, E., Fewer, D.P., Neilan, B.A., 2013. Cyanobacterial toxins: biosynthetic routes and 649 
+evolutionary roots. FEMS Microb. Rev. 37, 23-43. 650 
+3) D’Anglada, L.V., Hilborn, E.D., Backer, L.C. (Eds.). Harmful Algal Blooms (HABs) and Public 651 
+Health: Progress and Current Challenges. Toxins special edition, 2016 MDPI Books. 652 
+4) Wang, H., Xu, C., Liu Y., Jeppesen, E., Svenning, J.C., Wu, J., Zhang, W., Zhou, T., Wang, P., 653 
+Nangombe, S., Ma, J., Duan , H., Fang, J., Xie, P. 2021. From unusual suspect to serial killer: 654 
+Cyanotoxins boosted by cli mate change may jeopardize megafauna. The Innovation 2(2), 655 
+100092. 656 
+5) Zohdi, E., Abbaspour, M., 2019. Harmful algal blooms (red tide): a review of causes, impacts 657 
+and approaches to monitoring and prediction. Int. J. Environ. Sci. Technol. 16, 1789-1806. 658 
+6) Ferrão-Filho Ada, S., Kozlowsky -Suzuki, B., 2011. Cyanotoxins: bioaccumulation and effects 659 
+on aquatic animals. Mar Drugs. 9, 2729-2772. 660 
+7) Buratti, F.M., Manganelli, M., Vichi, S., Stefanelli, M., Scardala, S., Testai, E., Funari, E., 2017. 661 
+Cyanotoxins: producing organisms, occurrence, toxicity, mechanism of action and human health 662 
+toxicological risk evaluation. Arch. Toxicol. 1, 1049-1130. 663 
+8) Chen, J., Xie, P., Li, L., Xu, J. 2009. First identification of the hepatotoxic microcystins in the 664 
+serum of a chronically exp osed human population together with indication of hepatocellular 665 
+damage. Toxicol. Sci. 108, 81-89. 666 
+9) Bouaïcha, N., Miles CO, Beach DG, et al. Structural Diversity, Characterization and Toxicology 667 
+of Microcystins. Toxins 2019, 11, 714. 668 
+10) Craig, M., Luu, H.A., M cCready, T.L., Holmes, C.F.B., Williams, D., Andersen, R.J. 1996. 669 
+Molecular mechanisms underlying the interaction of motuporin and microcystins with type-1 and 670 
+type-2A protein phosphatases. Biochem. Cell Biol. 1996, 74, 569–578. 671 
+11) Hastie, C., Borthwick, E., Morrison, L., Codd, G., Cohen, P. 2005. Inhibition of several protein 672 
+phosphatases by a non -covalently interacting microcystin and a novel cyanobacterial peptide, 673 
+nostocyclin. BBA Gen. 1726, 187–193. 674 
+12) Pereira, S.R., Vasconcelos, V.M., Antunes, A. 2011. The phosphoprotein phosphatase family of 675 
+Ser/Thr phosphatases as principal targets of naturally occurring toxins. Crit. Rev. Toxicol. 41, 676 
+83–110. 677 
+13) MacKintosh C, Beattie, K.A., Klumpp, S, Cohen, P., Codd, G.A., 1990. Cyanobacterial 678 
+microcystin-LR is a potent an d specific inhibitor of protein phosphatases 1 and 2A from both 679 
+mammals and higher plants. FEBS Lett. 264, 187-192. 680 
+14) McLellan, N.L., Manderville, R.A., 2017. Toxic mechanisms of microcystins in mammals. 681 
+Toxicol. Res. (Camb).6, 391-405. 682 
+15) Fischer, A., Hoeger, S.J., Stemmer, K., Feurstein, D.J., Knobeloch, D., Nussler, A., Dietrich, 683 
+D.R., 2010. The role of organic anion transporting polypeptides (OATPs/SLCOs) in the toxicity 684 
+of different microcystin congeners in vitro: A comparison of primar y human hepatocytes and 685 
+OATP-transfected HEK293 cells. Toxicol. Appl. Pharmacol. 245, 9-20. 686 
+16) Niedermeyer, T.H.J., Daily, A., Swiatecka-Hagenbruch, M., Moscow, J.A., 2014. Selectivity and 687 
+potency of microcystin congeners against OATP1B1 and OATP1B3 expressing cancer cells. Plos 688 
+ONE, 9, e91476. 689 
+17) Steiner, K., Zimmermann, L., Hagenbuch, B., Dietrich, D., 2015. Zebrafish Oatp -mediated 690 
+transport of microcystin congeners. Arch. Toxicol. 90, 1129-1139. 691 
+18) Hagenbuch, B., Meier, P.J., 2003. The superfamily of organic anio n transporting polypeptides. 692 
+Biochim. Biophys. Acta – Biomem. 1609, 1-18. 693 
+19) Popovic, M., Zaja, R., Smital, T., 2010. Organic anion transporting polypeptides (OATP) in 694 
+zebrafish (Danio rerio): Phylogenetic analysis and tissue distribution. Comp. Biochem. Physiol. 695 
+A Mol. Integr. Physiol. 155, 327-335. 696 
+20) Fischer, W.J., Altheimer, S., Cattori, V., Meier, P.J., Dietrich, D.R., Hagenbuch, B., 2005. 697 
+Organic anion transporting polypeptides expressed in liver and brain mediate uptake of 698 
+microcystin. Toxicol. Appl. Pharmacol. 203, 257-263. 699 
+21) Komatsu, M., Furukawa, T., Ikeda, R., Takumi, S., Nong, Q., Aoyama, K., Akiyama, S., Keppler, 700 
+D., Takeuchi, T., 2007. Involvement of mitogen -activated protein kinase signaling pathways in 701 
+microcystin-LR-induced apoptosis after its selec tive uptake mediated by OATP1B1 and 702 
+OATP1B3. Toxicol. Sci. 97, 407-416. 703 
+22) Meier-Abt, F., Hammann -Hänni, A., Stieger, B., Ballatori, N., Boyer, J.L., 2007. The organic 704 
+anion transport polypeptide 1d1 (Oatp1d1) mediates hepatocellular uptake of phalloidin and 705 
+microcystin into skate liver. Toxicol. Appl. Pharmacol. 218, 274-279. 706 
+23) Bury, N.R., Newlands, A.D., Eddy, F.B., Codd, G.A., 1998. In vivo and in vitro intestinal 707 
+transport of 3H-microcystin-LR, a cyanobacterial toxin, in rainbow trout (Oncorhynchus mykiss). 708 
+Aquat. Toxicol. 42, 139-148. 709 
+24) Bieczynski, F., De Anna, J.S., Pirez, M., Brena, B.M., Villanueva, S.S.M., Luquet, C.M., 2014. 710 
+Cellular transport of microcystin -LR in rainbow trout ( Oncorhynchus mykiss ) across the 711 
+intestinal wall: Possible involvement of multidrug resistance-associated proteins. Aquat. Toxicol. 712 
+154, 97-106. 713 
+25) Faltermann, S., Prétôt, R., Pernthaler, J., Fent, K., 2016. Comparative effects of nodularin and 714 
+microcystin-LR in zebrafish: 1. Uptake by organic anion transporting polypeptide Oatp1d1 715 
+(Slco1d1). Aquat. Toxicol. 171, 69-76. 716 
+26) Popovic, M., Zaja, R., Fent, K., Smital, T., 2013. Molecular characterization of zebrafish 717 
+Oatp1d1 (Slco1d1), a novel Organic anion transporting polypeptide. J. Biol. Chem. 288, 33894–718 
+33911. 719 
+27) Marić, P., Ahel, M., Senta, I., Terzić, S., Mikac, I, Žuljević, A., Smital, T., 2017. Effect-directed 720 
+analysis reveals inhibition of zebrafish uptake transporter Oatp1d1 by caulerpenyne, a major 721 
+secondary metabolite from the invasive marine alga Caulerpa taxifolia. Chemosphere 174, 643-722 
+654. 723 
+28) Lončar, J., Smital, T., 2018. Interaction of environmental contaminants with zebrafish ( Danio 724 
+rerio) multidrug and toxin extrusion protein 7 (Mate7/Slc47a7). Aquat. Toxicol. 205, 193-203. 725 
+29) Bradford, M., 1976. A rapid and sensitive sethod for the quan tification of microgram quantities 726 
+of protein utilizing the principle of protein-dye binding. Anal. Biochem. 72, 248-254. 727 
+30) Terzic, S. and Ahel, M., 2011. Nontarget analysis of polar contaminants in freshwater sediments 728 
+influenced by pharmaceutical industry using ultra -high-pressure liquid chromatography -729 
+quadrupole time-of-flight mass spectrometry. Environ. Pollut. 159, 555-566. 730 
+31) Meier-Abt, F., Mokrab, Y., Mizuguchi, K., 2005. Organic anion transporting polypeptides of the 731 
+OATP/SLCO superfamily: identification of new members in nonmammalian species, 732 
+comparative modeling and a potential transport mode. J. Memb. Biol. 208, 213–227. 733 
+32) Yafei Huang, M. Lemieux, J., Song, J., Auer, M., Da-Neng, W., 2003. Structure and mechanism 734 
+of the glycerol-3-phosphate transporter from Escherichia coli. Science 301, 616-620. 735 
+33) Sali, A., Blundell, T.L., 1993. Comparative protein modelling by satisfaction of spatial restraints. 736 
+J. Mol. Biol. 234, 779-815. 737 
+34) Shen, M.Y., Sali, A., 2006. Statistical potential for assessment and prediction of protein 738 
+structures. Protein Sci. 15, 2507-2524. 739 
+35) Koska, J., Spassov, V.Z., Maynard, A.J., Yan, L., Austin, N., Flook, P.K., Venkatachalam, C.M., 740 
+2008. Fully automated molecular mechanics based induced fit protein-ligand docking method. J. 741 
+Chem. Inf. Model. 48, 1965-1973. 742 
+36) Copeland, R.A., 2005. Evaluation of Enzyme Inhibitors in Drug Discovery, Journal of Chemical 743 
+Information and Modeling. A John Wiley & Sons, Inc., Hoboken, New Jersey. 744 
+https://doi.org/10.1017/CBO9781107415324.004. 745 
+37) Meier-Abt, F., Mokrab, Y., Mizuguchi, K., 2005. Organic anion transporting polypeptides of the 746 
+OATP/SLCO superfamily: identification of new members in nonmammalian species, 747 
+comparative modeling and a potential transport mode. J. Membr. Biol. 208, 213–227. 748 
+38) Karlgren, M., Vildhede, A., Norinder, U., Wisniewski, J.R., Kimoto, E., Lai, Y., Haglund, U., 749 
+Artursson, P., 2012. Classification of inhibitors of hepatic organic anion transporting 750 
+polypeptides (OATPs): influence of protein expression on drug–drug interactions. J. Med. 751 
+Chem. 55, 4740–4763. 752 
+39) Wolman, A.T, Gionfriddo, M.R., Heindel, G.A., Mukhija, P., Witkowski, S., Bommareddy, A., 753 
+VanWert, A.L., 2013. Organic anion transporter 3 interacts eelectively with lipophilic β-lactam 754 
+antibiotics. Drg. Metabol. Disp. 41, 791-800. 755

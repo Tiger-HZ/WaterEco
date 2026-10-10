@@ -1,0 +1,1269 @@
+Vol:.(1234567890)
+Environmental Science and Pollution Research (2023) 30:65848–65864
+https://doi.org/10.1007/s11356-023-26878-6
+1 3
+RESEARCH ARTICLE
+Assessing lake water quality during COVID‑19 era using geospatial 
+techniques and artificial neural network model
+Sk Mohinuddin1  · Soumita Sengupta2  · Biplab Sarkar1 · Ujwal Deep Saha3 · Aznarul Islam1  · 
+Abu Reza Md Towfiqul Islam4,7 · Zakir Md Hossain5 · Sadik Mahammad1 · Taushik Ahamed5 · Raju Mondal1 · 
+Wanchang Zhang6 · Aimun Basra5
+Received: 14 October 2022 / Accepted: 4 April 2023 / Published online: 24 April 2023 
+© The Author(s), under exclusive licence to Springer-Verlag GmbH Germany, part of Springer Nature 2023
+Abstract
+The present study evaluates the impact of the COVID-19 lockdown on the water quality of a tropical lake (East Kolkata 
+Wetland or EKW, India) along with seasonal change using Landsat 8 and 9 images of the Google Earth Engine (GEE) cloud 
+computing platform. The research focuses on detecting, monitoring, and predicting water quality in the EKW region using 
+eight parameters—normalized suspended material index (NSMI), suspended particular matter (SPM), total phosphorus 
+(TP), electrical conductivity (EC), chlorophyll-α, floating algae index (FAI), turbidity, Secchi disk depth (SDD), and two 
+water quality indices such as Carlson tropic state index (CTSI) and entropy -weighted water quality index (EWQI). The 
+results demonstrate that SPM, turbidity, EC, TP, and SDD improved while the FAI and chlorophyll-α increased during the 
+lockdown period due to the stagnation of water as well as a reduction in industrial and anthropogenic pollution. Moreover, 
+the prediction of EWQI using an artificial neural network indicates that the overall water quality will improve more if the 
+lockdown period is sustained for another 3 years. The outcomes of the study will help the stakeholders develop effective 
+regulations and strategies for the timely restoration of lake water quality.
+Keywords COVID-19 lockdown · Google Earth Engine · Suspended particulate matter · Chlorophyll-α · Water quality · 
+East Kolkata Wetlands
+Introduction
+A new strain of coronavirus emerged from Wuhan, China, 
+in December 2019. The World Health Organization (WHO) 
+named it coronavirus disease 2019 (COVID-19) which rap-
+idly spread to the whole world within a few months, caus-
+ing devastating effects on both human life and the economy 
+(Wang et al. 2020). As a result, WHO declared it a pandemic, 
+and with no medications available, many countries started 
+restricting the movement of people, transport, and social inter-
+actions in the form of lockdowns to avert the spread of the 
+infection (Figueiredo et al. 2020). The worldwide COVID-19 
+lockdown characterized by the closure of production sectors, 
+and minimal anthropogenic activity, caused a great impact 
+on environmental quality especially the air (Liu et al. 2021; 
+Filonchyk et al. 2021; Mor et al. 2021; Jion et al. 2023) and 
+surface water (Kour et al. 2021; Liu et al. 2021; Qiao et al. 
+2021; Jawad-Ul-Haque et al. 2023). For example, Tokatli and 
+Varol (2021) observed that the water quality of the Ergene 
+River (Turkey) was significantly improved in terms of the 
+concentration of Ni, Zn, Cu, As, Pb, and Cd. Moreover, they 
+observed that the values of carcinogenic risk of As and Cr 
+had been reduced by 60% and 94%, respectively, as an effect 
+of the lockdown. Braga et al. (2020) identified the improve-
+ment in water transparency of Venice Lagoon in Italy. Chen 
+et al. (2021) observed the positive impact of the COVID-19 
+lockdown on the ecological environment of the Haihe River. 
+They estimated a decrease in turbidity of 219.06% during the 
+lockdown. As the lockdown was imposed, normal life comes 
+to pause resulting in logistic and legal problems in collecting 
+data to know about the quality lockdown.
+Therefore, water quality monitoring, mapping, and 
+predicting depend greatly on the geospatial data sources. 
+The majority of the works produced on water quality are 
+Responsible Editor: Xianliang Yi
+ * Aznarul Islam 
+ aznarulislam@gmail.com
+Extended author information available on the last page of the article
+65849Environmental Science and Pollution Research (2023) 30:65848–65864 
+1 3
+thus satellite data-driven and simulated using geospatial 
+modeling (Said and Khan 2021; Dandge and Patil 2022). 
+Improved water quality as an effect of the COVID-19 lock-
+down has been observed for many inland waterbodies in 
+India. For example, the improved water quality in terms of 
+BOD, COD, and DO concentration was identified for the 
+Ganga (Dutta et al. 2020) and Yamuna River (Arif et al.  
+2020). Besides, Aman et al. (2020) illustrated a 36% reduc-
+tion in suspended particulate matter (SPM) in the Sabarmati 
+River in response to reduced anthropogenic activities during 
+the lockdown. A similar finding that there is a 15% reduction 
+in SMP in the Vembanad Lake was identified by Yunus et al. 
+(2020). Chakraborty et al. (2021) observed improved water 
+quality in the Damodar River in terms of the modified water 
+quality index and improved nutrient status in terms of the 
+trophic state index. Moreover, they observed that potential 
+ecological risk declined by 63% in the Damodar River dur -
+ing the lockdown.
+The Ramsar Convention recognizes the East Kolkata 
+Wetlands (EKW) as a wetland of international importance 
+in 2003. EKW receives a huge amount of untreated, munici-
+pal, and industrial wastewater. Therefore, many researchers 
+have investigated wetlands from the perspective of ecosys-
+tem vulnerability due to fragmentation, pollution (Roy-Basu 
+et al. 2020), and conversion (Ghosh and Das 2020). In India, 
+to prevent the outbreak of COVID-19, a nationwide lock -
+down was announced first 24th March 2020 and imposed 
+till 31st May 2020. Afterward, the nation witnessed a series 
+of complete lockdowns. During this situation, many inland 
+waterbodies have received a significantly lower amount of 
+waste which has a corresponding effect on water quality. 
+The water quality and ecosystem health of EKW are also 
+supposed to be changed in response to a series of complete 
+lockdowns. EKW is a highly significant wetland that sustains 
+society as well as extensive economic activity and biological 
+variety within its catchment region. However, there has been 
+no previous systematic assessment of COVID-19 lockdown 
+effects on EKW lake water quality, nutrient status, and future 
+scenarios of water quality impact on the aquatic environment 
+of EKW.
+Furthermore, the present study employed a cloud-based 
+platform, such as Google Earth Engine (GEE), because of 
+its multi-petabyte data catalog that is ready for assessment, 
+and high-performance computing capabilities that may be 
+used for a wide range of rising social challenges includ-
+ing environmental preservation. Therefore, this cloud-
+based platform is gaining much popularity among scientific 
+researchers. Kwong et al. (2022) and Zlinszky et al. (2017) 
+studied the water quality parameters on the GEE platform 
+for extensive geospatial assessment and easy accessibility 
+to freely available data and robust computing capabilities. 
+Again, to analyze the surface water quality, Khan et al. 2021 
+have adopted this cloud-computing technique for its several 
+benefits and especially for the easy access to atmospherically 
+corrected satellite imagery. Most of the researchers have 
+investigated various water quality parameters in their study 
+mostly because the platform does not necessitate download-
+ing large satellite images while reducing the downloading 
+time and storage capacity (Kislik et al. 2022; Bioresita et al. 
+2021; Amani et al. 2020). Despite performing several types 
+of research on water quality metrics, there has been no previ-
+ous systematic assessment of COVID-19 lockdown effects 
+on EKW lake water quality, and nutrient status. In addition, 
+to the best of our knowledge, this is the first research to 
+simulate the entropy-weighted water quality index (EWQI) 
+to better understand the water quality if the lockdown is 
+continued for the next 3 years. Hence, this study focuses to 
+attribute this research gap by investigating the water quality 
+metrics and associated simulation by implementing labora-
+tory-based analysis coupled with geospatial and cloud-com-
+puting techniques. Therefore, this research aims to ascertain 
+the water quality, nutrient content, and ecological risk of the 
+EKW regions using several parameters and indices in the 
+pre-lockdown (2019), lockdown period (2020), and post-
+lockdown (2021) periods for the pre-monsoon, monsoon, 
+and post-monsoon seasons. Additionally, this study will 
+simulate the entropy-weighted water quality index (EWQI) 
+to monitor the conditional short-term changes.
+Materials and methods
+Study area
+East Kolkata Wetlands (EKW) is an important peri-urban 
+ecosystem situated on the eastern fringe of Kolkata meg-
+acity, having an area of ~ 125 km2 and extending from 
+22°25′ 00″N to 22°35′ 00″N latitude and 88°20′ 00″E to 
+88°35′00″E longitude (Sahu and Sikdar 2008). Administra-
+tively the wetland covers 37 mouzas (smallest administrative 
+units for revenue collection in India) of two districts (North 
+and South Twenty-Four Parganas) and the Kolkata munici-
+pal corporation (KMC). Out of the entire wetland area, 58.52 
+ km2 consists of waterbodies followed by agricultural land 
+(47.18 km2), productive farming area (6.02 km2), and urban 
+area (13.26 km2). The wetland ecosystem of EKW is very 
+complex from the perspectives of geomorphic evolution, 
+diversity in living species, dynamics in ecosystem func-
+tions, etc. EKW is also known as a sewage-fed wetland that 
+receives ~ 600 million liters of sewage per day from KMC 
+(Roy-Basu et al. 2020). Besides, the wetland having 364 
+sewage-fed ponds is also used for pisciculture, producing 
+10,500 MT of fish every year (Vicziany et al. 2017). How -
+ever, the ecosystem of EKW has become highly vulnerable 
+to fragmentation, loss of wetland area, and water pollution 
+due to its proximate location to KMC (Ghosh and Das 2020). 
+65850 Environmental Science and Pollution Research (2023) 30:65848–65864
+1 3
+Therefore, the ecosystem services, i.e., gas regulation, land 
+surface temperature control, nutrients and sediment reten -
+tion, flood control, habitats for diversified living species, 
+primary production, recreation, and ecotourism, provided 
+by EKW are degrading significantly.
+Data sources
+Geospatial data
+The geospatial data used for the current study are Landsat 8 
+OLI and Landsat 9 for the years 2019, 2020, and 2021, with 
+the three seasons, i.e., pre-monsoon, monsoon, and post-
+monsoon, taken into account for each year. All the Landsat 
+data are available on the GEE web platform as surface reflec-
+tance and top-of-atmosphere (TOA) corrected reflectance. 
+Therefore, the present study considers the “Landsat 8 sur -
+face reflectance tier 1,” which provides the atmospherically 
+corrected surface reflectance from the Landsat 8 OLI/TIRS 
+and Landsat 9 sensors. The Landsat image, which covers 
+the entire East Kolkata Wetland area, is referenced as 138 
+path and 44-row number as per the world reference system 
+(WRS) which is used for Landsat products. The details of 
+the Landsat 8–9 and acquisition date have been presented 
+in Table 1.
+Water quality data
+For the present investigations, water quality data have 
+been collected/extracted from two major sources—(1) 
+geospatial data (secondary data) and (2) field data (pri-
+mary data). Eight water quality parameters derived from 
+the satellite images are (1) chlorophyll-α (Chl-α), (2) tur -
+bidity, (3) SPM, (4) EC, (5) TP, (6) NSMI, (7) FAI, and (8) 
+SDD. Moreover, a total of 60 water samples (2018–2019) 
+have been collected from 5 monitoring stations of EKW 
+(Fig.  1). Among the total water quality samples (n = 60), 
+each of the 20 samples was collected for pre-monsoon, 
+monsoon, and post-monsoon seasons. Field data from 
+2018 to 2019 was acquired and suitable tests as per the 
+guidelines of the American Public Health Association 
+(APHA) Standard as mentioned in Table  2.
+Methods
+Geospatial data processing and water quality indices
+Based on NDWI and mNDWI techniques, the waterbody 
+area of EKW was derived from the Landsat 8 images. 
+Additionally, the individual parameter and indices related 
+to water quality have been derived and assessed for EKW. 
+TSS was measured following normalized suspended mate-
+rial index (NSMI) as used by Hossain et al. (2010). The 
+techniques of Wang et al. (2021) and Lin et al. (2004) were 
+used to measure the water’s turbidity, while the algorithm 
+of Mushtaq and Nee Lala (2017) was used to measure the 
+EC. The estimation of Chl-α, TP, and SDD was done fol-
+lowing the techniques of Diédhiou et al. (2019), Su and 
+Lo (2021), and Bonansea et al. (2019) respectively for 
+developing the CTSI, an important indicator of ecosystem 
+health. Besides, FAI for detecting algal blooms in lake 
+water and SMI for measuring suspended sediment amounts 
+in water were derived following Hu ( 2009) and Nechad 
+et al. (2010), respectively. Finally, entropy -weighted water 
+quality index (EWQI) was computed for assessing the 
+overall water quality of the EKW. The specification of how 
+each individual parameter and water quality indices were 
+derived has been mentioned in a separate supplemental 
+material (SS1).
+Table 1 Landsat 8 OLI and Landsat 9 images (path 138–row 44) of the EKW used in this study
+Bands 1 and 7 were not used to derive the parameters and indices. The details of the equations to derive the parameters and indices have been 
+mentioned in the supplementary materials (SS1)
+Description of bands used Wavelength (μm) Bands used to derive param-
+eters/indices
+Phases of lockdown Seasons Date of acquisition
+Band 2—(blue) surface reflec-
+tance
+0.452–0.512 NSMI = bands 2, 3, 4
+Chl(α) = bands 2, 3, 4, 5
+Turbidity = bands 2, 3, 4
+SDD = bands 2, 3, 5
+NDWI = band 3
+mNDWI = bands 3, 6
+SPM = band 4
+EC = band 4
+FAI = bands 4, 6
+TP = band 4
+Pre-lockdown Pre-monsoon 15 Feb 2019
+Monsoon 26 Aug 2019
+Post-monsoon 30 Nov 2019Band 3—(green) surface reflec-
+tance
+0.533–0.590
+Lockdown Pre-monsoon 02 Feb 2020
+Band 4—(red) surface reflec-
+tance
+0.636–0.673 Monsoon 27 Jul 2020
+Post-monsoon 16 Nov 2020
+Post-lockdown Pre-monsoon 04 Feb 2021
+Band 5—(near infrared) surface 
+reflectance
+0.851–0.879 Monsoon 31 Aug 2021
+Post-monsoon 02 Nov 2021
+Band 6—(shortwave infrared 1) 
+surface reflectance
+1.566–1.651
+65851Environmental Science and Pollution Research (2023) 30:65848–65864 
+1 3
+Artificial neural networks
+In this research, we have employed before-lockdown, lock-
+down, and post-lockdown data as input in the ANN model 
+to predict the water quality for the next 3 years (Fig.  2). 
+An artificial neural network (ANN) is a computational 
+learning system that is made up of single-neuron struc-
+tures and linked in a certain way (ASCE 2000) that is 
+specified by their architecture, just like their biological 
+model. NARX is a time-series analysis tool that combines 
+a neural network and a linear ARX model (autoregressive 
+model with exogenous input) (Beale et al.  2017). In this 
+scenario, the neural network is employed to enable the 
+ARX structure to capture nonlinearities (Di Nunno and 
+Granata 2020). NARX is superior to conventional recur -
+rent networks regarding generalization ability (Desouky 
+and Abdelkhalik 2019), which is because NARX can store 
+information two to three times longer than ordinary RNN 
+(Guzman et al. 2017).
+Moreover, when compared to other ANN models such 
+as the forward neural network model, the NARX model is 
+a time series model that is used to predict stationary time 
+series (Fig.  3). Since the EWQI parameters look like time 
+series, the NARX model is a good choice for predicting the 
+EWQI. In the NARX model, Levenberg–Marquardt (LM) 
+has been used as training algorithm which follows a Hessian 
+matrix approximation (Bishop 1995), which is expressed 
+using Eq. 1.
+Fig. 1 Location of the study area
+Table 2 Water testing methods 
+after APHA
+Source: Annual report 2019–2020, East Kolkata Wetlands Management Authority
+Parameters Method
+Electrical conductivity (µS/cm) APHA Standard Methods 2510B (2012), 22th edition
+Turbidity (NTU) APHA Standard Methods 2130B (2012), 22th edition
+Total suspended solid (mg/l) APHA Standard Methods 2540D (2012)
+Total phosphorus (mg/l) APHA Standard Methods 4500- P B, 3030 K (diges-
+tion), and 4500- P D (determination) (2012)
+65852 Environmental Science and Pollution Research (2023) 30:65848–65864
+1 3
+ω denotes the weights, J represents the Jacobian matrix, JT 
+indicates the transpose matrix of J , and JT J is the Hessian 
+matrix. “I ” stands for the learning matrix, and λ and e are 
+the learning coefficient and vector of network errors, respec-
+tively. The parameter λ is automatically updated based on the 
+error at each iteration to secure the convergence. Following 
+the principle of weight optimization of ANN (e.g., Aliza-
+deh et al. 2017), we used a random value of λ to initiate the 
+iteration process for optimizing weights with the LM algo-
+rithm. Moreover, the performance of the model prediction 
+is assessed using two well-known statistical methods—the 
+coefficient of determination (R 2) and mean squared errors 
+(MSE) (Chicco et al. 2021; Khan et al. 2021). R2 is a linear 
+regression method for determining the best fit between meas-
+ured and model-predicted values, as mentioned in Eq.  2.
+y and /uni0302.s1y denote the measured and predicted values, respectively, 
+y stands for the average of measured values, and n equals the 
+number of values. The MSE determines the mean squared dif-
+ference between measured and predicted values (Eq. 3).
+Results
+Water quality assessment
+A total of 8 parameters and 2 indices have been studied 
+for three different seasons—pre-monsoon, monsoon, and 
+(1)Δ/u1D714 = /bracketleft.s1JT (/u1D714)J(/u1D714) + /u1D706I/bracketright.s1−1JT (/u1D714)e(/u1D714)
+(2)R2 =
+∑n
+i=1(yi − /uni0302.s1yi)2
+∑n
+i=1(yi − yi)2
+(3)MSE = 1n /uni2211.s1ni=1(yi − /uni0302.s1yi)2
+Fig. 2 A systematic framework to estimate the impact of the COVID-
+19 lockdown on the water quality of East Kolkata Wetland
+Fig. 3 The architecture of the 
+NARX neural network
+65853Environmental Science and Pollution Research (2023) 30:65848–65864 
+1 3
+post-monsoon of 2019, 2020, and 2021 in this study. The 
+derived results related to the spatio-temporal distribution 
+of these indices in the EKW region are quite significant in 
+terms of judging the status of water quality and its changes 
+that corresponds to the impact of the COVID-19 lockdown 
+in the wetland’s catchment area.
+Water quality parameters
+Regarding NSMI a significant change has been observed 
+between the pre-COVID period (2019) and the COVID-19 
+lockdown period (2020). In 2019 and 2021, the cleanliness 
+of the lake water was found to decrease in the monsoon 
+period compared to the respective pre-monsoon periods. 
+Contrarily, in 2020, the cleanliness of lake water had 
+increased significantly in the monsoon period compared 
+to its pre-monsoonal magnitude. From late March 2020 
+to late June 2020, a complete lockdown was preceded by 
+partial lockdowns and containment areas roughly till the 
+end of the year. It possibly had a significant impact on 
+reducing the infusion of suspended materials in the lake 
+water. NSMI values greater than 0.6 experienced a relative 
+increase in its concentrated area being 69.77% in 2020, 
+compared to 77.81% and more than 2000% in 2019 and 
+2021 of the total wetland area, respectively, between the 
+pre-monsoon and monsoon periods. The areal occupancy 
+of the higher classes of NSMI in the monsoon period of 
+2020 was also lower compared to 2019 and 2021. NSMI 
+range of 0.51 to 0.6 was observed occupying 7.737 km2 in 
+2020 compared to 20.727 km2 in 2019 and 25.346 km2 in 
+2021 while NSMI > 0.6 was found occupying 2.168 km2 
+in the monsoon period of 2020 compared to 0.010 km2 
+and 5.566 km2 in the very same period of 2019 and 2021 
+(Table S2). Moreover, the mean NSMI got reduced from 
+0.494 in the monsoon period of 2019 to 0.437 in the mon-
+soon period of 2020 and during the monsoon period of 
+2021, it was 0.45 which is lower in comparison to 2019. 
+Significantly, water bodies in the northern and north-west-
+ern parts of the study area, around the boundary shared 
+with Rajarhat and Salt Lake townships, respectively, have 
+registered a decreasing level of NSMI (Fig.  4).
+Considering chlorophyll-α, a significant change was 
+observed in the concentration of chlorophyll-α in 2020 
+compared to 2019 and 2021. The areal concentration of 
+chlorophyll-α under the range of 1.6 to 2.0 was 5.044 km2 
+in 2020 compared to 1.158 km2 during the monsoon period 
+of 2019. The areal concentration under chlorophyll-α’s 
+range of 2.6 to 3 during the monsoon period has decreased 
+in 2020 and 2021 to 5.27 and 5.41 km2, respectively, from 
+their respective pre-monsoon periods. The mean concen-
+tration of Chl-α in the monsoon periods of 2019, 2020, 
+and 2021 were 2.164, 2.012, and 2.043, respectively. A 
+significant intra-year change was also observed in 2020 
+between monsoon and post-monsoon duration, where 
+a gradual removal of COVID-19 lockdown restrictions 
+might have helped in surging a greater algae concentration 
+compared to the same duration in 2019 and 2021. Areal 
+concentration under the range of 2.1 to 2.5 had decreased 
+by 17% between the monsoon and post-monsoon period in 
+2020 compared to 36.23% in 2019. While for the range of 
+2.6 to 3.0 between the monsoon and post-monsoon duration 
+in 2020, it experienced an areal gain of 103.58% compared 
+to a loss of 86.20% in the same duration of 2019. The mean 
+concentration of Chl-α in the post-monsoon period of 2019 
+and 2020 was 2.086 and 2.129, respectively. Moreover, 
+after the onset of the COVID-19 lockdown in early 2020, 
+the overall algae density was found getting reduced in the 
+study area except in the post-monsoon period of 2020 and 
+pre-monsoon period of 2021 (Fig.  4).
+In respect of turbidity, a steady and gradual decrease in 
+the level of turbidity has been observed in 2020 compared to 
+2019. A turbidity level of less than 1 has portrayed an areal 
+coverage of 4.549 km2 in the monsoon period of 2020 com-
+pared to a clear absence of the same in the monsoon period 
+of 2019 and 2021. Turbidity level ranging from 1.1 to 2.0 has 
+experienced a decrease of 5.88% of the area in the monsoon 
+period of 2020 compared to an increase of 94.62% in 2019 
+and a decrease of 16.24% in 2021, respectively. While in the 
+case of turbidity range of 2.1 to 3.0, a decrease of 17.79% of 
+the area was observed between the pre-monsoon and mon-
+soon periods of 2020, compared to a decrease of 28.49% of 
+the area in 2019 and an increase of 147.11% in 2021. In the 
+case of a turbidity range from 3.1 to 4 and > 4 between pre-
+monsoon and monsoon periods of 2020, an increase of 0.855 
+ km2 (17.05%) and 0.643 km2 (84.82%) respectively were 
+observed in comparison to 1.758 km2 (27.89%) and − 0.723 
+ km2 (− 67.31%) in 2019, respectively. The changes in the very 
+same ranges were found at − 6.295 km2 (43.37%) and + 1.08 
+ km2 (56.66%) respectively in 2021 between the pre-monsoon 
+and monsoon periods (Table S2). The mean turbidity level of 
+the lake water during the monsoon periods has varied from 
+2.237 in 2019 to 1.881 in 2020 and to 2.14 in 2021. Within 
+certain pockets in the northern corner of the study area, the 
+maximum concentration of lowest turbidity was observed, 
+while during the post-monsoon period of 2020, maximum 
+degradation in terms of higher turbidity was evident mostly 
+in the south-eastern pockets of wetlands (Fig. 4).
+Regarding SPM, a significant change in the areal con-
+centration under different categories was observed between 
+the pre-monsoon and monsoon periods of 2020 and 2021 
+compared to 2019. After the COVID-19 lockdown was 
+imposed in the early half of 2020, the levels of SPM in lake 
+water were found to decrease. In the case of SPM ranging 
+from 4.1 to 6, an increase of 2.895 km2 (32.90%) compared 
+to a decrease of 99.19% in 2019 and a nearly unchanged 
+65854 Environmental Science and Pollution Research (2023) 30:65848–65864
+1 3
+Fig. 4 Improvement of lake water quality a NSMI, b chlorophyll-α, c turbidity, d SPM
+65855Environmental Science and Pollution Research (2023) 30:65848–65864 
+1 3
+scenario in 2021. On the contrary to that, the SPM range of 
+6.1–8 has registered a decrease of 2.862 km2 (15.60%) in 
+comparison to a decrease of 14.199 km2 (70.59%) in 2019 
+and an increase of 9.196 km2 (122.23%) in 2021. In the case 
+of classes bearing comparatively larger ranges of SPM were 
+also seen depicting signals that the lake water SPM level 
+had overall decreased. In the case of SPM ranges of 8.1–10 
+and > 10, a decrease of 0.748 km2 (5.96%) and an increase 
+of 0.717 km2 (11.02%) respectively were found between the 
+pre-monsoon and monsoon periods of 2020, while for the 
+same duration in 2019, those concerned ranges of SPM had 
+experienced an increase of 23.557 km2 (282.42%) and 5.553 
+ km2 (198.96%), respectively. The concentration of SPM was 
+found to have mostly decreased along the transport arter -
+ies, mainly in the monsoon period of 2020 due to a lack of 
+vehicle mobility amid the COVID-19 lockdown and partial 
+containment period in 2020 (Fig.  4).
+Regarding the total phosphate, a significant inter-season 
+change has been observed in 2020, between pre-monsoon 
+and monsoon seasons compared to the same in 2019. Classes 
+bearing comparatively lower values of total phosphate con-
+centration (≤ 0.5 and 0.6–1.0) have changed their areal occu-
+pancy by + 1.179 km2 (6.04%) and − 0.259 km2 (12.60%) 
+respectively between the pre-monsoon and monsoon period 
+in 2020, while the same class ranges have registered a 
+change of − 0.847 km2 (3.56%) and − 12.582 km2 (63.21%) 
+respectively between the pre-monsoon and monsoon peri-
+ods in 2019. The mean concentration of total phosphates in 
+the monsoon period of 2020 was measured lower compared 
+to that in 2019 (0.602 and 0.678, respectively). Interest-
+ingly, the highest measured range of TP (> 2) was seen to 
+increase between the pre-monsoon and monsoon period of 
+2020 by 146% (0.11 km2) compared to a decrease of 62.60% 
+(0.072 km2) between pre-monsoon and monsoon period of 
+2019. It was possibly due to certain source point effects as 
+found in Fig.  5 where the emergence of certain waterbod-
+ies in the central-northern part of the EKW region during 
+the monsoon period of 2020 had registered a spike in TP 
+value compared to that of 2019. An almost similar pattern 
+of lake water improvement was observed in 2021 between 
+pre-monsoon and monsoon seasons where the classes bear-
+ing lower ranges of TP have increased their areal occupancy 
+and the classes bearing higher ranges of TP have decreased.
+Regarding electrical conductivity, it is observed 
+that amid the COVID-19 lockdown in 2020, interest-
+ingly, an improvement in the EC of EKW water bodies 
+was observed compared to 2019 and 2021. For the EC 
+of ≤ 300 and 301–600, between the pre-monsoon and mon-
+soon 2020, a change of − 15.411 km2 (74.25%) and 9.773 
+ km2 (56.81%) was measured respectively with a mean 
+of 360.667 and a maximum concentration of 1322.898. 
+While the same duration in 2019 has recorded a change 
+of − 11.611 km2 (− 60.14%) and 32.78 km2 (581%) 
+respectively with a mean of 275.89 and a maximum con-
+centration was 827.967. On the other hand, for the same 
+duration in 2021, it was − 6.822 km2 (26.65%) and 2.416 
+ km2 (13.50%) respectively with a mean of 440.27 and 
+a maximum concentration was 1098.15. Classes with 
+greater ranges of EC (601–900, 901–1200, and > 1200) 
+were found to register a negative change in terms of their 
+corresponding areal occupancy between pre-monsoon and 
+monsoon in 2019 and 2021, while the same classes regis-
+tered positive growth in areal occupancy during the same 
+time interval in 2020.
+In respect of the Secchi disk depth, Table S2 elaborates 
+on the multi-temporal nature of the areal occupancy of dif-
+ferent classes of SDD. It clearly indicates a scenario with a 
+lower degree of changes in the lake water visibility amid the 
+COVID-19 lockdown in 2020. Classes with comparatively 
+lower ranges of SDD (3.6–4.5 and 4.6–5.5) were found to 
+register a relatively lower degree of changes between the pre-
+monsoon and monsoon seasons compared to observations 
+found during the very same period in 2019. The changes 
+were 0.105 km2 (81.39%) and 2.207 km2 (39.48%) respec-
+tively in 2020, while in 2019, the changes were − 0.019 
+(61.29%) and − 23.68 km2 (59.79%), respectively. Similarly, 
+in the case of a higher range of SDD (5.6–6.5), the change in 
+areal occupancy was drastic in 2019 between pre-monsoon 
+and monsoon. It was nearly 362% compared to − 5.73% in 
+2020 which indicates decreasing the visibility of lake water 
+possibly due to greater algae growth during a less dynamic 
+period of land use practices.
+Moreover, a clearly distinct and almost opposite trend in 
+SDD was found in 2021 between the pre-monsoon and mon-
+soon periods as compared to 2020. Here, a relative decrease 
+in areal occupancy under comparatively lower ranges of 
+SDD was found to be accompanied by a positive change in 
+the higher SDD range (5.6–6.5), which was mammoth, 645% 
+between the pre-monsoon and monsoon periods. The mean 
+concentration of SDD was measured at 5.35, 5.45, and 5.56 
+in the monsoon period of 2019, 2020, and 2021 respectively 
+whereas the maximum SDD during the monsoon period was 
+found at 6.051, 6.52, and 6.30 in the respective years. Thus, 
+certain source point influences have controlled the SDD at 
+certain locations amid the lockdown period but the overall 
+changes point towards decreasing the visibility of lake water 
+in the monsoon period of 2020 compared to the same dura-
+tion in 2019 and 2021 (Fig. 5).
+Furthermore, a significant improvement of the FAI in 
+the monsoon period of 2020 compared to that of 2019 
+has been observed in this study. Since the higher ranges 
+of the FAI denote a greater concentration of algae, larger 
+areal occupancy under lower ranges implies a significant 
+improvement in algae concentration in the lake water. In 
+2019, between the pre-monsoon and monsoon periods, 
+the change in areal occupancy under FAI ≤ 0.05 was 
+65856 Environmental Science and Pollution Research (2023) 30:65848–65864
+1 3
+Fig. 5 Improvement of lake water quality a total phosphorous, b EC, c SSD, d FAI
+65857Environmental Science and Pollution Research (2023) 30:65848–65864 
+1 3
+323.15% of the area compared to a change of 359.30% 
+in the same duration of 2020. As for other parameters 
+measured between the monsoon and post-monsoon peri-
+ods, waiving lockdown restrictions in 2020 has played a 
+significant role in the sudden bulging of floating algae in 
+the lake water as the areal occupancy under FAI ≤ 0.05 was 
+found to decrease by 73.3% in comparison to a positive 
+increase in 2019 of 42.25%. The maximum value of FAI 
+measured in 2020 was 0.82 with a mean of 0.0575, 0.894 
+with a mean of 0.095, and 0.626 with a mean of 0.043 in 
+the pre-monsoon, monsoon, and post-monsoon periods, 
+respectively. It certainly guides towards any potential point 
+sources of an anomaly in the algae concentration due to 
+certain local factors (Fig.  5).
+Water quality indices
+Lake eutrophication, which results in algae blooms and poor 
+water quality, can be triggered by an excess of nutrients. The 
+TSI represents in situ biological functions in addition to the 
+amount of lake water nutrients. In this study, there was a sig-
+nificant rise in the mean CTSI of the lake water between the 
+pre-monsoon and monsoon periods, from 25.03 to 26.87 in 
+2019 indicating oligotrophic condition as well as good water 
+quality (Fig. 6). Interestingly, the mean CTSI decreased from 
+25.38 to 25.31 in 2020 but the highest CTSI score increased 
+from 33.35 to 34.63 between the pre-monsoon and monsoon 
+seasons of 2020 and also indicated oligotrophic condition. 
+Among all the triggering factors (SDD, TP, and Chl-α), a 
+high correlation with TSI was observed for TP indicating 
+that the increased productivity and higher trophic state index 
+of the lake are anticipated to be significantly influenced by 
+TP. The difference between pre-monsoon and monsoon in 
+2020 for the class range of 0–20 was 206.88%; however, in 
+the monsoon season of 2019 and 2021, no pixel was discov-
+ered within this range. Also, from the pre-monsoon to the 
+monsoon period in 2021, the mean CTSI was seen to decline 
+from 26.85 to 26.08, while the rise in areal occupancy by the 
+CTSI range of 31–40 was 81.50% as opposed to a decline of 
+26.38% between the same periods in 2020.
+Finally, the entropy-weighted water quality index inte-
+grates the lake water quality parameters: NSMI, Chl-α, Tur-
+bidity, SPM, TP, and EC providing a compound status of 
+lake water quality in the EKW region. The maximum com-
+pound value of water quality was measured as 92, 82, and 
+24 in the pre-monsoon, monsoon, and post-monsoon peri-
+ods of 2019, respectively. Similarly, the maximum EWQI in 
+the pre-monsoon, monsoon, and post-monsoon periods of 
+Fig. 6 Improvement of lake water quality a CTSI, b EWQI
+65858 Environmental Science and Pollution Research (2023) 30:65848–65864
+1 3
+2020 was measured as 83, 69, and 65, respectively. In 2021, 
+these figures were 80, 82, and 87 during the pre-monsoon, 
+monsoon, and post-monsoon periods, respectively. During 
+the monsoon period of 2019 and 2020, the maximum con-
+centration of the lake water was found within the EWQI 
+range of 50–100. Here, the lowest EWQI was measured as 
+69, 55, and 10 during the pre-monsoon, monsoon, and post-
+monsoon periods of 2019, respectively. While in 2020, the 
+lowest EWQI was 52, 51, and 57 during the pre-monsoon, 
+monsoon, and post-monsoon periods, respectively. The low-
+est value of EWQI suggests the improvement of lake water 
+quality status (Mahammad et al. 2022). Although the water 
+bodies were all found concentrating in the range of 50–100 
+during all the concerned periods of all the years except in the 
+post-monsoon period of 2019, the lowest measured EWQI 
+suggests a relative improvement of lake water quality due to 
+the COVID-19 lockdown condition in 2020 (Fig. 6).
+Simulation of EQWI
+The prediction of the lake water quality has been done 
+based on a temporal change observed in the target year, 
+the EQWI of the monsoon period of 2020. The simula-
+tion was performed considering if the lockdown of the 
+same nature as that administrated in 2020 continued for 
+another 3 years, this prediction of EWQI would be relevant 
+in understanding the water quality status in the monsoon 
+period of 2023. A considerable degree of improvement in 
+the lake’s water quality has been predicted in the monsoon 
+period of 2023. The mean EWQI gets reduced from 41.55 
+to 36.75 and the maximum concentration of the value gets 
+reduced from 89.98 to 47.74 in 2023. Even the minimum 
+value also gets reduced to 25.74 in the predicted raster 
+from 32.10 in the target raster. The gradual betterment 
+has also been seen through the relative areal occupancy 
+under different ranges of EWQI (Table S4 & Table S5). 
+In the case of the target raster (monsoon period of 2020), 
+88% of the lake surface area is found to be concentrated 
+under the EWQI range of 51–100 and the rest is found 
+lying within the range of 101–150. While in the predicted 
+raster, 84.04% of the total lake surface area is observed to 
+lie within the EWQI range of 26–50 and the rest comes 
+within the range of 51–100 (Fig.  7). The LM algorithm 
+tries to minimize the deviation within the predicted space 
+and helps in getting a minimum spatial error on a non-
+linear data space.
+Validation of the ANN model
+The efficiency of the ANN model has been validated using 
+the correlation between the output of the network and cor -
+responding targets. The statistical results demonstrate the 
+effectiveness of ANN and the high (95%) correlations of 
+all relationships (Fig.  8). Higher values of R 2 demonstrate 
+a strong fit between the ANN projected values and the 
+actual measured data. Image-derived water quality met-
+rics were employed in this study to develop EWQI for 
+different phases of lockdown in different seasons and to 
+anticipate the future trend, while field data was used to 
+validate the findings based on the image-based findings. 
+Fig. 7 a Prediction of the EWQI 
+using ANN, b the prediction is 
+done for 2023 (3-year progres-
+sion from the lockdown year 
+2020)
+65859Environmental Science and Pollution Research (2023) 30:65848–65864 
+1 3
+Figure 9 exhibits the relationship between geospatial data 
+and on-site field measurements. The results showed that 
+all the values of correlation coefficient ( R) are statistically 
+significant at 0.005 level except for TP (post-monsoon) 
+which is significant at 0.05 level.
+Relative association between parameters 
+and indices
+The relative association of the parameters among each 
+other along with the concerned indices during the consid-
+ered periods of 2019, 2020, and 2021 has been analyzed 
+(Fig S1 a-i). The correlation between EC and SDD is 1 
+throughout all other seasons, except for the post-monsoon 
+period of 2019. A significant positive connection between 
+SPM and turbidity was seen across all periods while the 
+relationship between turbidity and TP was also found to be 
+strongly positive, suggesting that turbid water had greater 
+levels of phosphate and SPM concentrations. Contrast-
+ingly, turbidity was found negatively correlated with SDD 
+because increasing turbidity reduces the cleanliness of lake 
+water. NSMI was positively correlated with green pigment 
+concentration and turbidity of the lake water. Apart from 
+the association among the different parameters, the asso-
+ciation between parameters and indices was also found to 
+be highly significant. All instances showed a close to + 1 
+correlation between FAI and SPM. Besides, FAI was found 
+to be negatively correlated with SDD (Fig. S1 a-i). It sug-
+gests that more than any suspended solids the contribution 
+of algae growth in the lake water was the largest in reducing 
+the lake water’s cleanliness and quality. Since algae growth 
+decreases the visibility of lake water, SDD also decreases. 
+Thus, in each of the instances, the FAI was negatively cor -
+related with SDD. Because higher turbidity and suspended 
+particle concentrations reduce lake visibility, these param-
+eters were observed positively correlated with CTSI.
+Fig. 8 Performance evaluation 
+of the ANN model
+65860 Environmental Science and Pollution Research (2023) 30:65848–65864
+1 3
+R = 0.825
+0
+0.2
+0.4
+0.6
+00 .2 0.40 .6
+Geospatial observation (mg/l)
+Field observation (mg/l)
+R = 0.591
+0
+500
+1000
+1500
+2000
+2500
+3000
+05 00 1000 1500 2000
+Geospatial observation (µS/cm)
+Field observation (µS/cm)
+R = 0.851
+0
+30
+60
+90
+120
+01 00 2003 00
+Geospatial observation (mg/l) 
+Field observation (mg/l) 
+R = 0.831
+0
+0.2
+0.4
+00 .1 0.20 .3
+)l/gm(noitavresbolaitapsoeG
+Field observation (mg/l)
+R = 0.833
+0
+500
+1000
+1500
+2000
+2500
+3000
+3500
+01 0002 0003 0004 000
+(noitavresbolaitapsoeGµ S/cm)
+Field observation(µS/cm)
+R = 0.617
+0
+30
+60
+05 01 00 150
+)l/gm(noitavresbolaitapsoeG
+Field observation (mg/l) 
+R = 0.729
+0
+2
+4
+6
+01 00 2003 00
+noitavresbolaitapsoeG
+Field observation (mg/l) 
+R = 0.911
+0
+2
+4
+6
+8
+02 00 400
+Geospatial observation 
+Field observation (mg/l) 
+R = 0.490
+0
+0.1
+0.2
+0.3
+00 .050 .1 0.15
+Geospatial observation (mg/l)
+Field observation (mg/l)
+R = 0.806
+0
+500
+1000
+1500
+2000
+2500
+3000
+3500
+4000
+01 0002 0003 0004 000
+Geospatial observation (µS/cm)
+Field observation (µS/cm)
+R = 0.768
+0
+30
+60
+90
+120
+01 00 2003 00
+Geospatial observation (mg/l) 
+Field observation (mg/l) 
+R = 0.706
+0
+2
+4
+6
+8
+10
+02 00 4006 00
+Geospatial observation 
+Field observation (mg/l) 
+Pre Monsoon MonsoonP ost Monsoon
+TSS TPECytidibruT
+Fig. 9 Relationship between geospatial data and on-site field measurements
+65861Environmental Science and Pollution Research (2023) 30:65848–65864 
+1 3
+Discussion
+The nationwide lockdown implemented in India to combat 
+the spread of COVID-19 may have improved the water 
+quality of the EKW region but might not be possible to 
+improve all quality parameters due to having effects on 
+domestic as well as agricultural waste and increased use 
+of medical alcohol and disinfection drugs. The present 
+investigation on EKW confirms that all major parameters 
+of water quality were improved during lockdown periods 
+except for chlorophyll-α and NSMI. Results also indicate 
+that the highest concentration of SPM was recorded dur -
+ing the monsoon of 2019 and the pre-monsoon period of 
+2021. However, the lake area impacted by high SPM was 
+greater in 2019 than in 2021. In addition, the area under 
+the influence of turbidity was found to be higher in 2019, 
+indicating a higher turbid value. This study also observes 
+that the turbidity index for water followed a definite range 
+for the entire year 2020. Our findings are in line with the 
+study of Yunus et al. (2020). Even though pollution from 
+sources other than industries (like sewage from homes, 
+medicals drugs, and alcohol) continued during the lock -
+down, our results showed that pollution from industries 
+and medical sectors had a big effect on the quality of the 
+water in the EKW. The maximum EC was found in the 
+2019 post-monsoon, while the lowest EC was found in the 
+2020 pre-monsoon. During the lockdown seasons of 2020 
+and 2021, the conductivity of the lakes was lower than in 
+2019. Previous studies (Hermans et al. 2014; Sudarshan 
+et al. 2019; Zhu et al. 2016) revealed that temperature 
+and rainfall both have a significant effect on EC. These 
+studies claim that while a rise in rainfall decreases the 
+value of EC, a rise in temperature increases the conduc-
+tivity of electrolytic conductors, which results in higher 
+levels of EC. Again, from the findings of Sengupta et al. 
+(2021), a drop in temperature and a rise in rainfall of the 
+local climate were seen in many parts of the study zones. 
+Therefore, it is likely that these two meteorological fac-
+tors had a substantial impact on EC over time, especially 
+during the lockdown. The range of SDD was seen to be 
+the minimum prior to the lockdown period. The monsoons 
+were seen to have the same SDD throughout the entire 
+study period, with the areal extent maximum in 2021 and 
+then in 2020. The SDD value is largely affected by turbid-
+ity and SPM, according to earlier studies (Bai et al. 2020; 
+Zeng et al. 2020). Therefore, it can be said that the exemp-
+tion of various industries and commercial establishments 
+might be the reason why the EKW water quality was seen 
+to be improved. The NSMI results revealed that the high -
+est concentration of suspended material was observed 
+in the post-monsoon period of 2020, whereas the lowest 
+concentration was found in the pre-monsoon 2020. The 
+concentration was increased during the lockdown period 
+than in the pre- and post-lockdown period. The studies 
+of Tokatlı and Varol (2021) found that due to the lock -
+down, the domestic wastewater or gray water pressure 
+increased and the suspended materials rose throughout 
+the lockdown time. Similarly, due to the presence of a 
+nearby huge urban population and agricultural operations 
+(Fig.  1), our study observed no substantial improvement 
+in suspended material in the EKW region throughout the 
+lockdown period. Phosphorus is widely regarded as the 
+primary limiting factor for lake phytoplankton growth, 
+chlorophyll concentration, and FAI (Jin et al. 2020). Their 
+inter-relationship in this study is utilized to determine the 
+lake trophic state. From the results, a direct relationship 
+between TP and FAI was observed. However, there was 
+an exception in the case of chlorophyll-α concentration 
+measurement in the study region. The elevated concentra-
+tion of chlorophyll-α during the lockdown phase indicates 
+that the flushing of nutrients from the surrounding agri-
+cultural fields and built-up areas to the EKW area which 
+is a pool of stagnant water greatly increased because, dur -
+ing the lockdown period (2020), there was a higher rain-
+fall which accelerated the run-off containing the nutrients 
+(Sengupta et al. 2021).
+In terms of overall water quality, we computed two 
+water quality indices, i.e., EWQI and CTSI. The EWQI 
+shows the water quality based on combined essential 
+parameters, while CTSI is computed based on biologi-
+cal and physical parameters. The seasonal EWQI demon-
+strated that except for the post-monsoon season of 2019, 
+approximately 80% of the wetland was diagnosed as hav -
+ing medium water quality (Kumar and Augustine 2021) in 
+2020, 2021, and 2019. The post-monsoon season of 2019 
+was found to have excellent water quality, which accounted 
+for nearly 85% of the wetlands. On the contrary, Carlson’s 
+trophic state index (CTSI) is a well-tested, robust statis-
+tical technique that incorporates biological and physical 
+elements into consideration. The CTSI result of this study 
+manifests a significant change in water quality, especially 
+in the lockdown period of 2020. A spatial occupancy of 
+CTSI within the range of 0–20 was observed in the pre-
+lockdown period which increased by 13% in the lockdown 
+period. In this regard, studies by El-Serehy et al. (2018) 
+state that a CTSI value less than 40 suggests that the water 
+body is oligotrophic (low productivity), whereas a value 
+between 40 and 50 denotes mesotrophic (moderate pro-
+ductivity); values greater than 50 signify eutrophic (high 
+productivity) (high productivity). On the contrary, stag-
+nant water and high productivity are anticipated over the 
+lockdown duration. Therefore, with a minimum possibil-
+ity of anthropogenic factors, climatic variables can be the 
+only plausible cause of this issue.
+65862 Environmental Science and Pollution Research (2023) 30:65848–65864
+1 3
+Conclusions
+The lake water quality of the EKW region was examined in 
+this study to understand the anthropogenic and industrial influ-
+ence during the COVID-19 lockdown (2020) in comparison to 
+2019 and 2021. According to a metadata study of lake water 
+quality parameters and various indexing methods, most of the 
+parameters decreased throughout the lockdown period as com-
+pared to 2019 and 2021. The entire cessation of industrial and 
+anthropogenic activities greatly aided in improving water qual-
+ity by preventing the mixing of waste effluents immediately 
+dumped into the lake water. Thus, the major findings of the 
+present investigations are mentioned below.
+• The COVID-19 lockdown period had a substantial influ-
+ence on the EKW surface water quality, with considerable 
+reductions in SPM, TP, EC, and turbidity concentrations.
+• In terms of overall quality, CTSI and EWQI demon-
+strated a considerable improvement in water quality at 
+all sites over the lockdown period.
+• The short-term simulations using the ANN model also 
+suggest that a significant improvement is anticipated with 
+higher accuracy (~ 95%) if COVID-19 prevails for the next 
+3 years. Moreover, the prediction of water quality indi-
+cated a great chance to analyze the influence of industrial 
+effluents on surface water quality, and our findings may be 
+utilized to develop water management policies.
+• Landsat 8 and 9 data proved effective in measuring differ-
+ent water quality parameters like chlorophyll-α (Chl-α), 
+suspended particulate matter (TSS), and turbidity. High-
+resolution satellite technologies can play an essential role 
+in the monitoring of the physicochemical qualities of the 
+water of different water bodies.
+• It also showed that we can keep natural water resources 
+safe and use them for a long time and that if we manage 
+pollution sources well, we can stop surface water from 
+getting contaminated quickly. In this case, a proper man-
+agement framework and scientific remediation should be 
+highly useful in restoring lake water quality while allow-
+ing human growth to continue in this new normal era. 
+Regular lake health monitoring will significantly mini-
+mize anthropogenic stress while also restoring lake resil-
+ience, water quality, structure, and biological functions.
+Supplementary Information The online version contains supplemen-
+tary material available at https:// doi. org/ 10. 1007/ s11356- 023- 26878-6.
+Acknowledgements The study did not receive any funds to acknowl-
+edge. However, we would acknowledge the data support provided by 
+the West Bengal Pollution Control Board, Kolkata, India. Moreover, 
+we are thankful to Google Earth Engine for hosting their data on the 
+open-access platform.
+Author contribution Sk Mohinuddin: data curation, formal analysis, 
+investigation, methodology, software, writing—original draft; Soumita 
+Sengupta, Biplab Sarkar, and Ujwal Deep Saha: methodology, writ-
+ing—original draft; Aznarul Islam: conceptualization, formal analysis, 
+investigation, methodology, writing—original draft, supervision; Abu 
+Reza Md Towfiqul Islam, Wanchang Zhang, and Zakir Md Hossain: 
+original draft preparation, reviewing and editing; Sadik Mahammad, 
+Taushik Ahamed, Raju Mondal, Aimun Basra: data curation, methodol-
+ogy, software, writing—original draft.
+Data availability The datasets used and/or analyzed during the current 
+study are available from the corresponding author on reasonable request.
+Declarations 
+Ethics approval and consent to participate Not applicable.
+Consent for publication Not applicable.
+Competing interests The authors declare no competing interests.
+References
+Alizadeh MJ, Shabani A, Kavianpour MR (2017) Predicting longitudi-
+nal dispersion coefficient using ANN with metaheuristic training 
+algorithms. Int J Environ Sci Technol 14(11):2399–2410
+Amani, M., Ghorbanian, A., Ahmadi, S. A., Kakooei, M., Moghimi, A., 
+Mirmazloumi, S. M., ... & Brisco, B. (2020). Google Earth Engine 
+cloud computing platform for remote sensing big data applica-
+tions: a comprehensive review. IEEE Journal of Selected Topics in 
+Applied Earth Observations and Remote Sensing, 13, 5326–5350.
+Arif M, Kumar R, Parveen shagufta (2020) Reduction in water pol -
+lution in Yamuna River due to lockdown under COVID-19 pan-
+demic. ChemRxiv. Cambridge Open Engage, Cambridge. https:// 
+doi. org/ 10. 26434/ chemr xiv. 12440 525. v1
+ASCE (2000) Artificial neural networks in hydrology I Preliminary 
+concepts. J Hydrol Eng 5(2):115–123
+Bai Y, Gao J, Zhang Y (2020) Research on wind-induced nutrient 
+release in Yangshapao Reservoir, China. Water Supply 20(2):469–
+477. https:// doi. org/ 10. 2166/ ws. 2019. 180
+Beale M, Hagan M, Demuth H (2017) Neural network toolbox user’s 
+guide. Matlab. The MathWorks Inc. 3 Apple Hill Drive Natick, 
+MA 01760-2098; https:// www. acade mia. edu/ 34938 587/ Neural_ 
+Netwo rk_ Toolb ox_ Users_ Guide. Accessed 15 Dec 2022
+Bioresita F, Ummah MH, Wulansari M, Putri NA (2021) Monitoring 
+seawater quality in the Kali Porong Estuary as an area for Lapindo 
+mud disposal leveraging Google Earth Engine. IOP Conf Ser: 
+Earth Environ Sci 936(1):012011. https:// iopsc ience. iop. org/ artic 
+le/ 10. 1088/ 1755- 1315/ 936/1/ 012011
+Bishop CM (1995) Neural networks for pattern recognition. Oxford 
+University Press
+Bonansea M, Ledesma M, Rodriguez C, Pinotti L (2019) Using new 
+remote sensing satellites for assessing water quality in a reser -
+voir. Hydrol Sci J 64(1):34–44. https:// doi. org/ 10. 1080/ 02626 667. 
+2018. 15520 01
+Braga F, Scarpa GM, Brando VE, Manfè G, Zaggia L (2020) COVID-19 
+lockdown measures reveal human impact on water transparency in 
+the Venice Lagoon. Sci Total Environ 736:139612. https:// doi. org/ 10. 
+1016/j. scito tenv. 2020. 139612
+Chakraborty B, Bera B, Adhikary PP, Bhattacharjee S, Roy S, Saha 
+S, ..., Shit PK (2021) Positive effects of COVID-19 lockdown on 
+river water quality: evidence from River Damodar, India. Sci Pep 
+11(1):1–16
+65863Environmental Science and Pollution Research (2023) 30:65848–65864 
+1 3
+Chen X, Chen W, Bai Y, Wen X (2021) Changes in turbidity and human 
+activities along Haihe River Basin during lockdown of COVID-19 
+using satellite data. Environ Sci Pollut Res 29:3702–3717. https:// 
+link. sprin ger. com/ artic le/ 10. 1007/ s11356- 021- 15928-6
+Chicco D, Warrens MJ, Jurman G (2021) The coefficient of determina-
+tion R-squared is more informative than SMAPE, MAE, MAPE, 
+MSE and RMSE in regression analysis evaluation. PeerJ Comput 
+Sci 7:e623. https:// doi. org/ 10. 7717/ peerj- cs. 623
+Dandge KP, Patil SS (2022) Spatial distribution of ground water quality 
+index using remote sensing and GIS techniques. Appl Water Sci 
+12(1):1–18. https:// doi. org/ 10. 1007/ s13201- 021- 01546-7
+Desouky MAA, Abdelkhalik O (2019) Wave prediction using wave 
+rider position measurements and NARX network in wave energy 
+conversion. Appl Ocean Res 82:10–21. https:// doi. org/ 10. 1016/j. 
+apor. 2018. 10. 016
+Di Nunno F, Granata F (2020) Groundwater level prediction in Apulia 
+region (Southern Italy) using NARX neural network. Environ Res 
+190:110062. https:// doi. org/ 10. 1016/j. envres. 2020. 110062
+Diédhiou C, Diop S, Faye G, Moshod T, Wade S (2019) Study on 
+the applicability of Landsat-8 images as a tool for monitoring 
+the trophic state of Lake Guiers (Senegal). J Water Resour Prot 
+11:434–447. https:// doi. org/ 10. 4236/ jwarp. 2019. 114026
+Dutta V, Dubey D, Kumar S (2020) Cleaning the River Ganga: impact 
+of lockdown on water quality and future implications on river 
+rejuvenation strategies. Sci Total Environ 743:140756. https:// doi. 
+org/ 10. 1016/j. scito tenv. 2020. 140756
+El-Serehy HA, Abdallah HS, Al-Misned FA, Al-Farraj SA, Al-Rasheid 
+KA (2018) Assessing water quality and classifying trophic status 
+for scientifically based managing the water resources of the Lake 
+Timsah, the lake with salinity stratification along the Suez Canal. 
+Saudi J Biol Sci 25(7):1247–1256. https:// doi. org/ 10. 1016/j. sjbs. 
+2018. 05. 022
+Figueiredo AM, Codina AD, Figueiredo DCMM, Saez M, León AC 
+(2020) Impact of lockdown on COVID-19 incidence and mortal-
+ity in China: an interrupted time series study. Bull World Health 
+Organ 6. https:// doi. org/ 10. 2471/ BLT. 20. 251561
+Filonchyk M, Hurynovich V, Yan H (2021) Impact of COVID-19 lock-
+down on air quality in the Poland, Eastern Europe. Environ Res 
+198:110454. https:// doi. org/ 10. 1016/j. envres. 2020. 110454
+Ghosh S, Das A (2020) Wetland conversion risk assessment of East 
+Kolkata Wetland: a Ramsar site using random forest and support 
+vector machine model. J Clean Prod 275:123475. https:// doi. org/ 
+10. 1016/j. jclep ro. 2020. 123475
+Guzman SM, Paz JO, Tagert MLM (2017) The use of NARX neu-
+ral networks to forecast daily groundwater levels. Water 
+Resour Manage 31(5):1591–1603. https:// doi. org/ 10. 1007/ 
+s11269- 017- 1598-5
+Hermans T, Nguyen F, Robert T, Revil A (2014) Geophysical meth-
+ods for monitoring temperature changes in shallow low enthalpy 
+geothermal systems. Energies 7(8):5083–5118. https:// doi. org/ 10. 
+3390/ en708 5083
+Hossain AKMA, Jia Y, Chao X (2010) Development of remote sens-
+ing based index for estimating/mapping suspended sediment 
+concentration in river and lake environments. In Proceedings of 
+8th international symposium on ECOHYDRAULICS (ISE 2010) 
+(Vol. 435, pp. 578–585)
+Hu C (2009) A novel ocean color index to detect floating algae in the 
+global oceans. Remote Sens Environ 113(10):2118–2129. https:// 
+doi. org/ 10. 1016/j. rse. 2009. 05. 012
+Jawad-Ul-Haque, Siddique MAB, Islam MS, Ali MM, Tokatli C, Islam 
+A, Pal SC, Idris AM, Malafaia G, Islam ARMT (2023) Effects of 
+COVID-19 era on a subtropical river basin in Bangladesh: Heavy 
+metal (loid)s distribution, sources and probable human health 
+risks. Sci Total Environ 857:159383. https:// doi. org/ 10. 1016/j. 
+scito tenv. 2022. 159383
+Jin J, Jiang P, Li L, Xu H, Lin G (2020) Water quality monitoring 
+at a virtual watershed monitoring station using a modified deep 
+extreme learning machine. Hydrol Sci J 65(3):415–426. https:// 
+doi. org/ 10. 1080/ 02626 667. 2019. 16992 45
+Jion MMMF, Jannat JN, Mia MY, Ali MA, Islam MS, Ibrahim 
+SM, Pal SC, Islam A, Sarker A, Malafaia G, Bilal M, Islam 
+ARMT (2023) A critical review and prospect of NO2 and SO2 
+pollution over Asia: Hotspots, trends, and sources. Sci Total Envi-
+ron 876:162851. https:// doi. org/ 10. 1016/j. scito tenv. 2023. 162851
+Khan R, Saxena A, Shukla S, Sekar S, Goel P (2021) Effect of 
+COVID-19 lockdown on the water quality index of River 
+Gomti, India, with potential hazard of faecal-oral transmis-
+sion. Environ Sci Pollut Res 28(25):33021–33029. https:// doi. 
+org/ 10. 1007/ s11356- 021- 13096-1
+Kislik C, Dronova I, Grantham TE, Kelly M (2022) Mapping algal 
+bloom dynamics in small reservoirs using Sentinel-2 imagery in 
+Google Earth Engine. Ecol Ind 140:109041
+Kour G, Kothari R, Dhar S, Pathania D, Tyagi VV (2021) Impact 
+assessment on water quality in the polluted stretch using a clus-
+ter analysis during pre-and COVID-19 lockdown of Tawi river 
+basin, Jammu, North India: an environment resiliency. Energy 
+Ecol Environ 1–12. https:// doi. org/ 10. 1007/ s40974- 021- 00215-4
+Kumar PJ, Augustine CM (2021) Entropy-weighted water quality index 
+(EWQI) modeling of groundwater quality and spatial mapping in 
+Uppar Odai Sub-Basin, South India. Model Earth Syst Environ 
+8(1):911–924. https:// doi. org/ 10. 1007/ s40808- 021- 01132-5
+Kwong IH, Wong FK, Fung T (2022) Automatic mapping and moni-
+toring of marine water quality parameters in Hong Kong using 
+Sentinel-2 image time-series and Google Earth Engine cloud 
+computing. Front Mar Sci 609. https:// doi. org/ 10. 3389/ fmars. 
+2022. 871470
+Lin G, Fang J, Chen F (2004) Remote sensing analysis on the evolution 
+trend of beach and trough in Tongan Bay, Xiamen. Remote Sens 
+Land Resour 4:63–67
+Liu F, Wang M, Zheng M (2021) Effects of COVID-19 lockdown 
+on global air quality and health. Sci Total Environ 755:142533. 
+https:// doi. org/ 10. 1016/j. scito tenv. 2020. 142533
+Mahammad S, Islam A, Shit PK (2022) Geospatial assessment of 
+groundwater quality using entropy-based irrigation water qual-
+ity index and heavy metal pollution indices. Environ Sci Pollut 
+Res:1–24. https:// doi. org/ 10. 1007/ s11356- 022- 20665-5
+Mor S, Kumar S, Singh T, Dogra S, Pandey V, Ravindra K (2021) 
+Impact of COVID-19 lockdown on air quality in Chandigarh, 
+India: understanding the emission sources during controlled 
+anthropogenic activities. Chemosphere 263:127978. https:// doi. 
+org/ 10. 1016/j. chemo sphere. 2020. 127978
+Mushtaq F, Nee Lala MG (2017) Remote estimation of water quality 
+parameters of Himalayan lake (Kashmir) using Landsat 8 OLI 
+imagery. Geocarto Int 32(3):274–285. https:// doi. org/ 10. 1080/ 
+10106 049. 2016. 11408 18
+Nechad B, Ruddick KG, Park Y (2010) Calibration and valida-
+tion of a generic multisensor algorithm for mapping of total 
+suspended matter in turbid waters. Remote Sens Environ 
+114(4):854–866. https:// doi. org/ 10. 1016/j. rse. 2009. 11. 022
+Qiao X, Schmidt AH, Xu Y, Zhang H, Chen X, Xiang R, ..., Wang 
+W (2021) Surface water quality in the upstream-most megacity 
+of the Yangtze River Basin (Chengdu): 2000–2019 trends, the 
+COVID-19 lockdown effects, and water governance implications. 
+Environ Sustain Indic 10:100118. https:// doi. org/ 10. 1016/j. indic. 
+2021. 100118
+Roy-Basu A, Bharat GK, Chakraborty P, Sarkar SK (2020) Adaptive 
+co-management model for the East Kolkata wetlands: a sustain-
+able solution to manage the rapid ecological transformation of a 
+peri-urban landscape. Sci Total Environ 698:134203. https:// doi. 
+org/ 10. 1016/j. scito tenv. 2019. 134203
+65864 Environmental Science and Pollution Research (2023) 30:65848–65864
+1 3
+Sahu P, Sikdar PK (2008) Hydrochemical framework of the aquifer in 
+and around East Kolkata Wetlands, West Bengal, India. Environ 
+Geol 55(4):823–835. https:// doi. org/ 10. 1007/ s00254- 007- 1034-x
+Said S, Khan SA (2021) Remote sensing-based water qual-
+ity index estimation using data-driven approaches: a case 
+study of the Kali River in Uttar Pradesh, India. Environ 
+Dev Sustain 23(12):18252–18277. https:// doi. org/ 10. 1007/ 
+s10668- 021- 01437-6
+Sengupta S, Mohinuddin S, Arif M (2021) Spatiotemporal dynam-
+ics of temperature and precipitation with reference to COVID-
+19 pandemic lockdown: perspective from Indian subcontinent. 
+Environ Dev Sustain 23(9):13778–13818. https:// doi. org/ 10. 1007/ 
+s10668- 021- 01238-x
+Su PW, Lo SL (2021) Using Landsat 8 imagery for remote monitor -
+ing of total phosphorus as a water quality parameter of irrigation 
+ponds in Taiwan. Environ Sci Pollut Res 28(47):66687–66694. 
+https:// doi. org/ 10. 1007/ s11356- 021- 15159-9
+Sudarshan P, Mahesh MK, Ramachandra TV (2019) Assessment of 
+seasonal variation in water quality and water quality index (WQI) 
+of Hebbal Lake, Bangalore, India. Environ Ecol 37(1B):309–317
+Tokatlı C, Varol M (2021) Impact of the COVID-19 lockdown period 
+on surface water quality in the Meriç-Ergene River Basin, North-
+west Turkey. Environ Res 197:111051. https:// doi. org/ 10. 1016/j. 
+envres. 2021. 111051
+Wang M, Yao Y, Shen Q, Gao H, Li J, Zhang F, Wu Q (2021) Time-
+series analysis of surface-water quality in Xiong’an new area, 
+2016–2019. J Indian Soc Remote Sens 49(4):857–872. https:// 
+doi. org/ 10. 1007/ s12524- 020- 01264-8
+Wang Y, Wang Y, Chen Y, Qin Q (2020) Unique epidemiological 
+and clinical features of the emerging 2019 novel coronavirus 
+pneumonia (COVID-19) implicate special control measures. J 
+Med Virol 92(6):568–576. https:// doi. org/ 10. 1002/ jmv. 25748
+Yunus AP, Masago Y, Hijioka Y (2020) COVID-19 and surface water 
+quality: improved lake water quality during the lockdown. Sci 
+Total Environ 731:139012. https:// doi. org/ 10. 1016/j. scito tenv. 
+2020. 139012
+Zeng S, Li Y, Lyu H, Xu J, Dong X, Wang R, ..., Li J (2020) Map-
+ping spatio-temporal dynamics of main water parameters and 
+understanding their relationships with driving factors using GF-1 
+images in a clear reservoir. Environ Sci Pollut Res 27(27):33929–
+33950. https:// doi. org/ 10. 1007/ s11356- 020- 09687-z
+Zhu G, Guo Q, Chen T, Lang Y, Peters M, Tian L, ..., Wang C (2016) 
+Chemical and sulfur isotopic composition of precipitation in Bei-
+jing, China. Environ Sci Pollut Res 23(6):5507–5515. https:// doi. 
+org/ 10. 1007/ s11356- 015- 5746-2
+Zlinszky A, Supan P, Koma Z (2017) Near real-time qualitative moni-
+toring of lake water chlorophyll globally using GoogleEarth 
+Engine. In: EGU general assembly conference abstracts, p 18950. 
+https:// ui. adsabs. harva rd. edu/ abs/ 2017E GUGA.. 19189 50Z/ abstr 
+act. Accessed 15 Aug 2022
+Publisher's note Springer Nature remains neutral with regard to 
+jurisdictional claims in published maps and institutional affiliations.
+Springer Nature or its licensor (e.g. a society or other partner) holds 
+exclusive rights to this article under a publishing agreement with the 
+author(s) or other rightsholder(s); author self-archiving of the accepted 
+manuscript version of this article is solely governed by the terms of 
+such publishing agreement and applicable law.
+Authors and Affiliations
+Sk Mohinuddin1  · Soumita Sengupta2  · Biplab Sarkar1 · Ujwal Deep Saha3 · Aznarul Islam1  · 
+Abu Reza Md Towfiqul Islam4,7 · Zakir Md Hossain5 · Sadik Mahammad1 · Taushik Ahamed5 · Raju Mondal1 · 
+Wanchang Zhang6 · Aimun Basra5
+ Sk Mohinuddin 
+ mohinuddintom@gmail.com
+ Soumita Sengupta 
+ soumitasengupta@gmail.com
+ Biplab Sarkar 
+ biplab25sarkar@gmail.com
+ Ujwal Deep Saha 
+ sahaujwal.geo@gmail.com
+ Abu Reza Md Towfiqul Islam 
+ towfiq_dm@brur.ac.bd
+ Zakir Md Hossain 
+ zakircdri@gmail.com
+ Sadik Mahammad 
+ sadikgeo15@gmail.com
+ Taushik Ahamed 
+ taushikahamed786@gmail.com
+ Raju Mondal 
+ rajugeo125034@gmail.com
+ Wanchang Zhang 
+ zhangwc@radi.ac.cn
+ Aimun Basra 
+ basraaimun@gmail.com
+1 Department of Geography, Aliah University, 17 Gorachand 
+Road, Kolkata 700014, West Bengal, India
+2 Department of Geomatics, National Cheng Kung University, 
+Tainan, Taiwan
+3 Department of Geography, Vidyasagar College, 39 Sankar 
+Ghose Lane, Kolkata 700006, India
+4 Disaster Management, Faculty of Life and Earth Science, 
+Begum Rokeya University, Rangpur, Bangladesh
+5 Department of Biological Sciences, Aliah University, 
+Kolkata 700160, West Bengal, India
+6 Key Laboratory of Digital Earth Science, Aerospace 
+Information Research Institute, Chinese Academy 
+of Sciences, Beijing 100094, China
+7 Department of Development Studies, Daffodil International 
+University, Dhaka 1216, Bangladesh
