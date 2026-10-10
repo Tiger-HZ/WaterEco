@@ -1,0 +1,2127 @@
+Vol.:(0123456789)1 3
+https://doi.org/10.1007/s11356-023-27236-2
+RESEARCH ARTICLE
+Assessment of  NO2 concentrations over industrial state Jharkhand, 
+at the time frame of pre, concurrent, and post‑COVID‑19 lockdown 
+along with the meteorological behaviour: an overview from satellite 
+and ground approaches
+Shalini Priya1  · Jawed Iqbal1 
+Received: 11 January 2023 / Accepted: 22 April 2023 
+© The Author(s), under exclusive licence to Springer-Verlag GmbH Germany, part of Springer Nature 2023
+Abstract
+Burning of fossil fuels in the form of coal or gasoline in thermal power plants, industries, and automobiles is a prime source 
+of nitrogen dioxide (NO2), a major air pollutant causing health problems. In this paper, spatio-temporal unevenness of NO2 
+concentrations via both spaceborne Sentinel-5P and ground-based in situ data have been studied for the period of 2017–2021. 
+Annual and seasonal distribution of TROPOMI-NO2 depict consistency over the Jharkhand region, highlighting six hotspot 
+regions. As compared to 2019, a notable dip of 11% in the spatial annual average TROPOMI-NO 2 was achieved in 2020, 
+which were elevated again by 22% in 2021 as the lockdown gradually goes out of the picture. Among eight ground-monitoring 
+stations, Tata and Golmuri stations always displayed a higher level of TROPOMI-NO 2 ranges up to 15.2 ×10 15molecules.
+cm−2 and 16.9 ×1015molecules.cm−2 respectively, as being located in the highly industrialised district of Jamshedpur. A big 
+percentage reduction of up to 30% in TROPOMI-NO2 has been reported in Jharia and Bastacola stations in Dhanbad in the 
+lockdown phase of 2020 compared to 2019. Good agreement between TROPOMI-NO2 and surface-NO2 has been achieved 
+with R = 0.8 and R = 0.71 during winter and post-monsoon respectively. Among four meteorological parameters, TROPOMI-
+NO2 was majorly found to be influenced by precipitation, having R = 0.6–0.8 for almost all stations. More advanced satellite 
+algorithms and ground-based data may be used to estimate NO2 in places where monitoring facilities are limited and thus 
+can help in air pollution control policy.
+Keywords Jharkhand · Surface-NO2 · TROPOMI-NO2 · Relative difference · GIS techniques · COVID-19-induced lockdown
+Introduction
+Pollution is a big threat to human existence, air pollution 
+in particular claims around seven million human lives and 
+poses a potential threat in long-term irreversible health risks 
+(WHO, 2020). The South Asian countries such as China 
+and India account for 36.5% of the world’s total population, 
+which is at risk (UN, 2015). Ever increasing population cou-
+pled with the fast-growing economy, rapid and unplanned 
+steps towards urbanisation, socioeconomic development, and 
+transportation has resulted in a remarkable rise in air pollu-
+tion, especially in Northern India that are highly industrial -
+ised and populated area.
+Industrialisation, vehicular movement, and thermal power 
+plants are identified as the significant anthropogenic con -
+tributor to NOx emissions by numerous studies such as V. 
+Singh et al. (2020) and Hilboll et al. (2017). Other sources of 
+Highlights 
+• The annual TROPOMI-NO2 mapping for three consecutive 
+years (2019–2021) was carried out for Jharkhand, India, an 
+industrial and thermal power hub.
+• TROPOMI NO2 hotspots (high concentration) appeared over 
+Dhanbad, Jamshedpur, Koderma, and the periphery of Godda, 
+Sahibganj, and Pakur.
+• Compared to the pre-COVID period (2019), the COVID period 
+(2020) shows a reduction of 11% in the spatial annual average 
+TROPOMI-NO2 level with a contrast of 22% increment in the 
+post-covid period (2021).
+• Precipitation is the most significant meteorological parameter 
+in deciding the TROPOMI-NO2 level at eight ground-monitoring 
+stations.
+• Good seasonal consistency between TROPOMI-NO2 and 
+ground-NO2 has been achieved with R= 0.8 and R= 0.71 (p<0.01) 
+during winter and post-monsoon respectively.
+Responsible Editor: Gerhard Lammel
+Extended author information available on the last page of the article
+/ Published online: 1 May 2023
+Environmental Science and Pollution Research (2023) 30:68591–68608
+1 3
+ NOx emission studied by various authors are forest fires (Hil-
+boll et al., 2017), lightning (IPCC, 2007), soil (Ghude et al., 
+2010), solid biomass burning for heating and cooking, and 
+stubble burning by farmers, to name a few. Nowadays, the 
+study of oxides of nitrogen NOx (=NO+NO2) has fascinated 
+the researchers owing to its role as a precursor in the genesis 
+of tropospheric ozone (Monks et al., 2015). The presence 
+of NOx in the troposphere has resulted in adverse health 
+effects (World Health Organization, 2003; Schraufnagel 
+et al., 2019) due to climate change (Lin et al., 2015), acid 
+rain formation, and secondary aerosol formation as well. The 
+variation in tropospheric NOx concentration is dependent 
+upon the variation in seasons, climatic conditions, social 
+status, and energy consumption (Zhou et al., 2012). In the 
+Indian context, transportation is the major source of NOx 
+emission followed by thermal power plants, industries, and 
+biomass burning (Garg et al., 2001).
+In December 2019, COVID-19 was declared as a highly 
+contagious disease (Chen et al., 2020) and later declared as 
+a pandemic in year 2020 by WHO (Zhu et al., 2020; WHO 
+2020). The Government of India announced the COVID-
+19-induced lockdown at the midnight on 24th March for 21 
+days (25th March–14th April 2020) as phase 1, but as the 
+situation was still not under control, extending it to May 
+31, 2020, continued in four different phases. Owing to the 
+COVID-19 lockdown, various restricted anthropogenic 
+activities such as vehicular, industrial, and other commercial 
+energy-consuming activities (Jain & Sharma, 2020) nega-
+tively affected the country’s social and economic growth, 
+on the contrary, on pollution front, it positively affected 
+the country, by lifting-up the air and water quality, reduc-
+ing noise level and land surface temperature too (Mandal 
+& Pal, 2020). Some recent studies adopting satellite and 
+in situ–based observations have disclosed that a significant 
+drop in NO2 concentrations happened during the lockdown 
+phase across the globe.
+Ground observation data in Bangalore showed a 87% 
+drop in the NO2 level (Navinya et al., 2020) and 52.68% in 
+New Delhi (Mahato et al., 2020). An identical finding was 
+observed by Xu et al. (2020) for three major cities of China 
+for NO2 concentrations with a decrease of 35.6% in Febru-
+ary and March 2020 analysed against the same period during 
+2017–2019, whereas an 18% decline in NO2 concentration 
+was all over India (S. Sharma et al., 2020b). The decrease in 
+ NO2 concentration during this time was also observed in the 
+USA (Berman & Ebisu, 2020) and two major cities of Spain 
+(Madrid and Barcelona) (Baldasano, 2020). According to a 
+study by Nguyen et al. (2022), a reduction of 75.8, 55.9, 21.4, 
+and 60.7% for NO2, PM2.5, O3, and SO2 concentrations respec-
+tively was found in Hanoi, Vietnam. Filonchyk and Peterson 
+(2020) also identified a drop of 9%, 77%, 31.3%, 60.4%, and 
+3% for PM2.5, PM10, SO2, NO2, and CO respectively through 
+the lockdown period analysed against the same period in 2019.
+Satellite observation has also played a crucial role in 
+assessing tropospheric NO2 concentration as tropospheric 
+vertical column density (TVCD). Cao and Han (2022), 
+using OMI-NO2 data, observed that owing to the COVID-
+19 epidemic, a momentary disruption in socio-economic 
+affairs is observed in China. While comparing the findings 
+for the whole of India (S. Sharma et al., 2020b) deploying 
+OMI tropospheric-NO2 (Biswal et al., 2020), the results are 
+comparative. The decreasing trend in NO2 concentration 
+was observed along with SO2, PM2.5, and PM10 in seven 
+cities of Rajasthan because of the lockdown (Sharma et al., 
+2020a, b). Biswal et al. (2021) observed a NO2 reduc-
+tion of approx. 20–40% in urban and approx. 15–25% in 
+rural regions of India using satellite data for the period 25 
+March–3 May 2020.
+Filonchyk et al. (2021) also identified a stark change in 
+Poland’s air quality during lockdown as analysed against the 
+same period in 2018 and 2019. Whereas, Hoang et al. (2021) 
+came up with a detailed analysis of NO2 concentrations cov-
+ering most part of the world and the impact of behavioural 
+change among people owing through the lockdown. On the 
+other hand, Kumar et al. (2022) applied interpolation tech-
+niques of ArcGIS for air quality mapping in Mumbai, India. 
+In contrast to the decreasing trend in NO2 concentration 
+worldwide, the continued trend in NO2 level in the plain of 
+China was reported by Wang et al. (2020) and three cities 
+(Johannesburg, Durban, and Cape Town) of South Africa 
+(Matandirotya & Burger, 2022) which deny a linear correla-
+tion between emission and pollution level.
+Most of the recent studies have either been investigated 
+for a few weeks or considered the few months of lockdown, 
+pre-lockdown phases of the years 2019 and 2020. Authors 
+have not come across any literature on understanding the 
+ NO2 variability and its behaviour in post COVID-19 lock -
+down year (2021) and their comparison with the COVID-
+19-induced lockdown year (2020) and pre-COVID-19 lock-
+down year (2019).
+Considering its sources and deadly consequences on 
+health and the environment as mentioned above, an attempt 
+has been made to carry out exploratory, descriptive, and 
+explanatory analysis towards our interested domain in a 
+better way which is yet less explored, despite it being the 
+3rd largest industrialised state of India. In this research, 
+Jharkhand is explored in detail and is reported as it is and 
+tried to explain further why things happened or why the situ-
+ation exists with the support of studies that have been done.
+Staying focussed on our target, research has been 
+designed to analyse and interpret to present a clear picture 
+of the spatial distribution of NO2 and to identify exact infor-
+mation for its temporal variability in concentration, in the 
+light of before pandemic–induced lockdown, during the 
+lockdown, and after lockdown scenarios based on satellite 
+observations and ground-based measurements as well. A key 
+68592 Environmental Science and Pollution Research (2023) 30:68591–68608
+1 3
+asset of this discussion would be to determine the role of 
+meteorological behaviour on the TROPOMI-NO 2 level at 
+eight JSPCB monitoring stations and the analyses of per -
+centage change in TROPOMI-NO2 in all the 24 different dis-
+tricts and the above-mentioned stations too of Mega-mining 
+state, Jharkhand falling under the same time zone. Present 
+research thus aimed to provide a complete understanding in 
+identifying the pollution level existing in Jharkhand, which 
+will facilitate future studies to acknowledge the right places 
+for improvements and to assess potential health hazard.
+Materials and methods
+Study area
+Jharkhand state (Fig.  1) was notified 28th state of India on 
+15 November 2000, after being split from Bihar. It is the 
+hub of industrial and mining activities, stretching vast from 
+21°59′N to 25°18′N latitude and 82°52 ′E to 87°54′E longi-
+tude in the Northern part of India. The state is spread in a 
+total area of 79,714 km2. Being the resort of many miner -
+als and the powerhouse for mining activities, Jharkhand is 
+positioned as the 3rd largest industrialised state of India. 
+It is landlocked by the other Indian states of West Bengal 
+(east), Uttar Pradesh (north-west), Chhattisgarh (west), 
+Bihar (north), and Odisha (south) (source: https:// www. 
+jhark hand. gov. in/).
+Data used
+Three types of data from different agencies have been taken 
+into account for this research to be carried out viz., 3 years 
+(2019–2021) Sentinel-5p TROPOMI-NO2 data, surface-NO2 
+data (2017–2021) and meteorological data (2019–2021). 
+Explanations supporting the selection of the mentioned 
+variables for our present discussion are the following. NO2 
+is defined as a criteria pollutant and Jharkhand is loaded 
+with all the active major sources that emit NO2, so, being 
+an aware and responsible citizen, it is required to track its 
+presence regularly for the betterment of our environment. 
+Still, Jharkhand is lacking an adequate number of monitoring 
+stations, so to compensate for that, the application of satel -
+lite observation as TROPOMI-NO2 is carried out to monitor 
+its concentration.
+As the prevailing meteorological environment put its 
+remarkable influence on the excellence of ambient air, which 
+decides its lifetime in the atmosphere, it is regarded as one 
+of the supreme drivers for deciding the goodness of air 
+quality. As such, high winds dilute the pollutant towards the 
+downwind direction whereas calm winds can stagnate pol -
+lutants in a smaller area. Temperature and relative humidity 
+are favourable meteorological parameters in the formation 
+of secondary pollutants such as ozone and nitrate aerosols 
+along with solar radiation and other chemicals present in the 
+atmosphere. The longer lifetime of NO2 in the atmosphere is 
+determined by lower temperatures which restrict the produc-
+tion of OH and RO radicals whereas precipitation helps in 
+lowering the pollution level through scavenging. Much more 
+details of the data and its sources have been discussed below.
+Satellite data
+As of having advanced algorithms and improved sensitivity 
+of Sentinel-5p regarding NO2 detection at the lower atmos-
+phere, its NO2-tropospheric vertical column density data 
+(TVCD) have been utilised for analysing and monitoring. On 
+October 13, 2017, European Space Agency (ESA) launched 
+Sentinel-5 Precursor, a satellite to track worldwide air pol -
+lution using its onboard sensor named TROPOMI (tropo -
+spheric monitoring instrument) (Potts et al., 2021). TRO-
+POMI, a hyperspectral spectrometer, has the capabilities to 
+sense ranging from ultraviolet to shortwave infrared por -
+tions of electromagnetic spectrum (Veefkind et al., 2012). It 
+measures the column concentrations of various atmospheric 
+gaseous and particulate pollutants, e.g. CO, and NO2 (Zheng 
+et al., 2019; Omrani et al., 2020) that encompass the full 
+depth of the atmosphere.
+The total columnar NO2 is retrieved using the TROPO -
+MI’s spectrometer backscattered solar radiation which is the 
+ratio of slant column density of NO2 and total air mass. The 
+retrieval of the total NO2 column density was done using 
+Level-1b radiance and irradiance spectra, measured by TRO-
+POMI using the differential optical absorption spectroscopy 
+(DOAS) approach (Platt & Stutz, 2008). Stratospheric and 
+tropospheric NO2 column density is separated using data 
+assimilation system information based on the TM5-MP 
+chemical transport model.
+It is followed by the conversion of the tropospheric and 
+stratospheric slant column densities into vertical column 
+densities. The conversion is carried out by multiplying it by 
+an appropriate air mass factor which depends on altitude and 
+data on the vertical distribution of NO2 from the TM5-MP 
+chemical transport model. Owing to global coverage with 
+temporal resolution for 1 day, and spatial resolution of 0.01° 
+(Cooper et al., 2022), Prakash et al., 2021, this data helped in 
+interpreting major pollutants over large Indian cities through 
+the COVID-19 lockdown and found a decrease in concentra-
+tions specifically for NO2 and SO2. For a better performance 
+and bigger span of study than the near real-time (NRTI) 
+assets, offline (OFFL) Sentinel-5P TROPOMI-NO 2 prod-
+ucts have been retrieved for the present analysis (Soleimany 
+et al., 2021). Subsequently, to identify its variation on three 
+different time scales, annual, seasonal and monthly TRO -
+POMI-NO2 products were extracted and downloaded using 
+an open-source cloud-based platform Google Earth Engine 
+68593Environmental Science and Pollution Research (2023) 30:68591–68608
+1 3
+68594 Environmental Science and Pollution Research (2023) 30:68591–68608
+1 3
+(GEE) (Source: https:// code. earth engine. google. com/), by 
+computing mean values of each day for the three consecutive 
+years 2019, 2020, and 2021.
+In situ NO2 data
+Assessment and analysis of NO2 variation were carried out 
+with the aid of Surface-NO 2 data for 8 ground-monitoring 
+stations (Table S1) has been accessed from the Jharkhand 
+State Pollution Control Board (JSPCB) office for the period 
+of 2017 to 2021. Of these eight selected ground-monitoring 
+stations, 5 are in Dhanbad, 2 in Jamshedpur, and 1 in Ranchi, 
+which are highly urbanised and industrialised districts and 
+are represented separately in their respective shapefiles in 
+(Fig. 1) for a visual depiction of this distribution. Ground-
+based data was collected from Jharkhand State Pollution 
+Control Board (JSPCB); a total of 104 samples were col -
+lected in a year by the agency, on a 24-h basis, twice a week. 
+Among eight monitoring stations (of JSPCB), Golmuri [J], 
+Kusunda [D], Bastacola [D], Jharia [D], and Sindri [D] 
+belong to the industrial area whereas Albert Ekka [R] repre-
+sents a blend of commercial and residential locales, Tata [J] 
+again is a combination of commercial and residential areas 
+whereas City Plaza [D] is a residential area only.
+Meteorological data
+Temperature(°C), wind speed (m/s), relative humidity (%), 
+and precipitation (mm/day) were considered meteorological 
+parameters for the period of 2019–2021 on a mean monthly 
+basis from the open-source NASA website (source: https:// 
+power. larc. nasa. gov/ data- access- viewer/), to perform an 
+interpretation regarding its effect on TROPOMI-NO2 behav-
+iour for eight NO2 ground-monitoring stations during the 
+study period.
+Data‑pre‑processing method
+The steps involved in data acquiring and processing are sum-
+marised in a simple flow diagram (Fig.  2). Starting with 
+annual, seasonal, and monthly mean TROPOMI-NO 2 data, 
+they were downloaded and processed for the period of 2019 
+to 2021 using GEE (Gorelick et al., 2017). The researchers 
+find the mean value of the desired parameter for the required 
+time zone and region of study, process data using the code 
+editor tab on the GEE website, and finally export and display 
+them in that order. For this purpose, we used the GEE web-
+site, where code has been written in the code editor tab by 
+the researchers for data processing, which sets out finding 
+the mean value of the desired parameter for the required 
+time zone and region studied, and finally for displaying and 
+exporting them accordingly.
+For the post GEE processing of downloaded images 
+such as reprojection into WGS 1984, unit conversion and 
+clipping, ArcGIS software (ver. 10.4) was used and finally 
+mapped into the presentable mode for further analysis. 
+Thereafter, the collected mean surface-NO2 and mean mete-
+orological data for their respective stations were processed 
+and arranged accordingly to get it into the desired form for 
+spatial and temporal collocation with mean TROPOMI-NO2 
+data. At the end, GPS locations of all 8 monitoring stations 
+were used to extract the TROPOMI-NO 2 value for those 
+stations out of processed and finalised maps for carrying out 
+further analysis and interpretation using a statistical tool for 
+a graphical representation.
+Analysis methodology
+By using the following equation (Biswal et al., 2021), the 
+relative difference (%) in TROPOMI-NO 2 levels were cal -
+culated and analysed for each of the desired domain and 
+time period:
+Results and discussion
+The assessment of spatiotemporal analysis of NO2 concen-
+tration will help identify the sources of NO2 emissions and 
+in constructing a strong strategy to minimise its concen -
+tration in ambient air. Hence, in the upcoming sections, a 
+detailed analysis of NO2 variability has been done for dif -
+ferent time zones.
+Year‑wise spatial distribution of TROPOMI‑NO2 
+over Jharkhand
+This section has employed annual mean satellite observa -
+tions, to present and discuss the spatial and temporal view of 
+TROPOMI-NO2 for the three consecutive years 2019, 2020, 
+and 2021 as pre-COVID, COVID, and post-COVID-led 
+lockdown periods respectively. The annual TROPOMI-NO2 
+distribution over the three consecutive years (2019–2021) 
+was found to be consistent over the Jharkhand state, i.e. ele-
+vated TROPOMI-NO2 value has been observed consistently 
+for Dhanbad, Jamshedpur, Kodarma, and the periphery of 
+Godda, Sahibganj, and Pakur. The aforementioned regions 
+Relative Diﬀerence (%) =
+/parenleft.s1Present NO2 value − Previous NO2 value/parenright.s1
+Previous NO2 value X 100
+Fig. 1 Study area map of Jharkhand State along with 24 administrative 
+districts and geographic locations of eight JSPCB NO2-ground-monitoring 
+stations. These eight NO2-ground-monitoring stations are picturized sepa-
+rately in their respective district boundary for their clear visibility. This map 
+was generated using the Arc-map tool (ver. 10.4)
+◂
+68595Environmental Science and Pollution Research (2023) 30:68591–68608
+1 3
+exhibiting a high TROPOMI-NO 2 value are identified and 
+termed as the TROPOMI-NO2 hotspot (high concentration) 
+regions, dominated by many large-scale industries, namely 
+petroleum refineries and thermal power stations.
+Also, Jharkhand is surrounded by other industries and 
+thermal- power plants(TPPs) of their nearby states Bihar, 
+Uttar Pradesh, and West Bengal (Bandyopadhyay et al., 
+2021), which are ultimately subsidising hotspots for boost-
+ing TROPOMI-NO2 levels. Ghude et al. (2008) found TRO-
+POMI-NO2 hotspots majorly to be allocated over industrial 
+zones and thermal power plant centres. In the central Indian 
+state of Jharkhand, the dominant sources of tropospheric 
+ NO2 are thermal power plant emissions and the captive 
+power plants of industries (Prasad et al., 2006). However, 
+most of the other parts of Jharkhand (including western and 
+the southwestern regions of Jharkhand) consistently showed 
+lower TROPOMI-NO2 during 2019–2021.
+The sequence of the spatial distribution of annual mean 
+columnar TROPOMI-NO 2 for the whole of Jharkhand 
+considering before (2019), during (2020), and after 
+(2021) COVID-19 pandemic–led lockdown year is rep-
+resented in Fig.  3. Spatial annual average TROPOMI-NO 2 
+over Jharkhand was found to be 2.34 ± 0.82 ×10 15mol-
+ecules.cm −2, 2.08 ± 0.73 ×10 15molecules.cm −2, and 2.53 
+± 0.95 ×10 15molecules.cm −2 for the years 2019, 2020, 
+and 2021 respectively. The difference in spatial annual 
+average TROPOMI-NO 2 between 2019 and 2020 is 0.26 
+×1015molecules.cm −2, whereas between 2020 and 2021, 
+it is 0.45 ×10 15molecules.cm −2. Accordingly, the stand-
+ard deviation between 2019 and 2020 was found to be 
+Fig. 2 Flowchart of step-by-step 
+r
+epresentation of adopted work-
+ing methodology
+Source of Data
+GEE
+Sen/g415nel-5p TROPOMI-NO2
+downloaded
+Monthly 
+Basis
+Re-projec/g415on
+Unit Conversion
+Clipping to shape ﬁle
+Annual Basis 
+TROPOMI-NO2 map 
+prepared 
+&
+Analyzed
+Seasonal Basis 
+TROPOMI-NO2 map 
+prepared 
+&
+Analyzed
+Annual Basis Seasonal Basis Three days mean Basis
+JSPCB
+Collected Data of 
+NO2
+Spa/g415al & Temporal Colloca/g415on
+Extrac/g415on of Surface-NO2 & TROPOMI-
+NO2 value for the selected points
+Correla/g415on
+Graphical 
+Representa/g415on 
+& Analysis
+NASA
+Downloaded 
+Meteorological Data
+Correla/g415on
+Graphical 
+Representa/g415on 
+& 
+Analysis 
+Fig. 3 Spatio-tempor al distribution of annual mean TROPOMI-NO 2 for Jharkhand state during study period: a 2019 (pre-COVID-induced lock -
+down), b 2020 (COVID-induced lockdown), and c 2021 (post-COVID-induced lockdown)
+68596 Environmental Science and Pollution Research (2023) 30:68591–68608
+1 3
+0.09 ×10 15molecules.cm −2, and between 2020 and 2021, 
+it is 0.22 ×10 15molecules.cm −2. The maximum and mini -
+mum measurements of average annual TROPOMI-NO 2 
+for each of the three considered years were also reported 
+in Table S2.
+Among the three scenarios, the COVID-induced 
+lockdown period (2020) exhibited the minimum con -
+centration of spatial annual average TROPOMI-NO 2 
+level, whereas the pre-COVID-induced lockdown period 
+(2019) achieved moderate and post-COVID-induced 
+lockdown period (2021) got the maximum spatial annual 
+average TROPOMI-NO 2 level. A reduction of 11% in the 
+spatial annual average TROPOMI-NO 2 level has been 
+observed during the COVID period while comparing 
+it with the pre-COVID period (2019) with a contrast 
+of 22% increase in spatial annual average TROPOMI-
+NO2 level in the year 2021 against the year 2020 level 
+(Table S2). Soni et al. ( 2021) research is in concurrence 
+with the findings of this research where the mean tropo -
+spheric NO2 column is noticed to have 2.32 ± 0.15 × 
+ 1015molecules.cm –2 during 2009–2019 and 1.95 ± 0.30 
+× 1015molecules.cm −2 in the year 2020. A 16% decline 
+in tropospheric columnar load of NO2 in 2020 was 
+observed as compared to 2009–2019 over India.
+For better visualisation and understanding, the 
+observed difference and relative difference obtained with 
+respect to their previous years are shown in Fig. S1 a 
+and b, which highlights a clear change in TROPOMI-
+NO2 level for the region studied. Yellow, in the colour 
+palette which was utilised in Fig. S1 a and b, indicates 
+no changes occurred. The reduction in atmospheric NO2 
+level due to the lockdown was attributed to lowered 
+momentum in major anthropogenic functions, namely 
+transportation and function of industrial and commercial 
+enterprises. It is reflected that overall reductions are not 
+so stunning, as they are spatial averaged for the whole 
+of Jharkhand and might be the aggregate effect of power 
+generation, biomass burning, and fossil fuels burning, 
+and the activities vital to people’s basic needs remained 
+uninterrupted. Also, the major operations of the city that 
+were still functioning continued to add to the atmospheric 
+ NO2 emissions.
+Hence, in the later part of the following section, a 
+discussion on district-specific and monitoring station’s 
+surrounding environment-specific reductions could find 
+more significance. The increase in the NO2 level in the 
+post-COVID regime reflects the normalcy attended by 
+the region which restored the NO2 concentration to pre-
+COVID time due to extensive emissions as a result of the 
+restoration of all activities to normal levels.
+Month‑wise spatial distribution of TROPOMI‑NO2 
+over Jharkhand
+To assess the monthly pattern in TROPOMI-NO 2 level, 
+monthly mean satellite data were taken into consideration for 
+the year 2019 to 2021. The COVID-induced lockdown period 
+(2020) exhibited lower spatial monthly mean TROPOMI-NO2 
+throughout 12 months as compared with the same period 
+for the other two preceding and successive years (2019 and 
+2021). As discussed earlier, this decline in TROPOMI-NO2 
+during the COVID-induced lockdown period (2020) is mainly 
+contributed by social and travel constraints which catalysed 
+the closing down of all the businesses that take in industries, 
+mining, restaurants, transport, markets, tourism, construction, 
+etc., which effectively contributed to reduced NO2 emission, 
+predefined essential services being exempted.
+The monthly variation of spatial mean TROPOMI-NO 2 
+for the whole Jharkhand is represented in Fig. S2, which pro-
+nounced the presence of two peaks during the study period: 
+one in June (2019) and the other in March (2021) having 2.88 
+×1015molecules.cm−2 and 3.56 ×1015molecules.cm−2 TRO-
+POMI-NO2 levels respectively. Whereas no such peak has 
+been captured during the COVID-19 year. These two peaks 
+contribute 11.09% and 12.60% of the total in the correspond-
+ing years 2019 and 2020 as represented in Fig. S3. It could be 
+assigned to the cumulative effect of the meteorological con-
+dition and an increased traffic movement post summer vaca-
+tion. Variation in columnar NO2 level due to meteorology is 
+reported by Goldberg et al. ( 2020) which has been studied 
+in the spring of 2019 and 2020 for the USA. The reasons for 
+the existence of the peak in March 2020 was the holiday for 
+the festival Holi and after the gradual end of a long period of 
+COVID-19-induced lockdown, the over-excited public started 
+their movement to their workplace and other locations.
+Monthly NO2 changes (Fig. S2) highlight that spatial aver-
+age TROPOMI-NO2 are always found to be high all through 
+the months of the post-COVID-induced lockdown year (2021) 
+except June as compared to the same months of the other two 
+considered years 2019 and 2020. It could be one of the reasons 
+that the public was busy coping with COVID-19, as the situa-
+tion was alarming, and hence, they got off the track to reduce 
+air pollution. The heat map of monthly averaged spatial mean 
+TROPOMI-NO2 for the whole of Jharkhand during 2019–2021 
+is represented in Fig. S4, which is compared and examined 
+using three colour scales. The red-coloured cells show high 
+TROPOMI-NO2, which are most of the months of winter, pre-
+monsoon, and post-monsoon, white-coloured cells represent 
+moderate value whereas green-coloured cells depict low TRO-
+POMI-NO2 which mainly captures the monsoon months of all 
+the considered years.
+68597Environmental Science and Pollution Research (2023) 30:68591–68608
+1 3
+Owing to the positive impact of the COVID-19 lockdown, 
+the spatial monthly average TROPOMI-NO 2 of Jharkhand 
+state witnessed a drop of up to 1.90 ×10 15molecules.cm−2 
+during March (2020) and resulting in a shift to the green-
+coloured cell. Overall, the highest spatial monthly aver -
+age TROPOMI-NO2 is found in March (2021) having 3.56 
+×1015molecules.cm −2, and the minimum is observed in 
+August (2020) measuring 1.36 ×10 15molecules.cm−2. In a 
+quick glance, this technique will help us swiftly interpret the 
+available data is all about.
+Season‑wise spatial distribution of TROPOMI‑NO2 
+over Jharkhand
+Winter (Jan–Feb), pre-monsoon (Mar–May), monsoon 
+(Jun–Sep), and post-monsoon (Oct–Dec) are the four sea-
+sons classified by the Indian meteorological department 
+(IMD) (source: https:// mausam. imd. go
+v. in/
+). TROPOMI-
+NO2 maps averaged over the period 2019–2021 figure out 
+the considerable seasonal characteristics of its spatio-tem -
+poral spread, which are presented in Fig. S5a–d. Almost 
+similar spatial patterns were observed in all the three seasons 
+whereas a little lower TROPOMI-NO 2 was observed dur -
+ing monsoon. Nowadays, air pollution is not only a winter 
+event in the country. The monitored seasonality of TRO-
+POMI-NO2 is found to be affiliated with the meteorological 
+changes and seasonal cycles of anthropogenic emissions 
+(Ghude et al., 2008). Among the four seasons, winter expe-
+riences the highest spatial mean TROPOMI-NO 2 2.57 ± 
+1.14 × 1015molecules.cm−2, followed by the pre-monsoon 
+2.48 ± 0.81 × 1015 molecules.cm–2, post-monsoon 2.21 ± 
+0.99 × 1015molecules.cm −2, and monsoon 1.83 ± 0.47 × 
+ 1015molecules. cm−2 shown in (Fig. S6).
+Meteorological states in winter are additionally unfavour-
+able for pollutant dispersion and dilution as compared to 
+the other three seasons (Yang et al., 2019). An increase in 
+adverse meteorology such as having a shallower planetary 
+boundary layer (PBL), less UV radiations, and stable wind 
+contribute towards a surge in the pollution level during win-
+ter. Besides that, during winter, NO2 enhancement is also 
+enriched by high biomass fuel consumption for heating 
+homes (Ul-Haq et al., 2015), where OMI-tropospheric NO2 
+over the South Asia regions were analysed during the past 
+decade 2004–2015.
+As per the Census of India 2011, 33 million is the popu-
+lation of Jharkhand, out of which 76% of the people are 
+living in rural areas and the remaining 24% in urban areas, 
+whereas the literacy rate in Jharkhand state is stated around 
+56–67.63% (Census, 2011). Hence, it helps to clarify that not 
+many more people were aware of the harmful effects of bio-
+mass burning for domestic heating. Relatively high values in 
+TROPOMI-NO2 during pre-monsoon and post-monsoon are 
+mainly accompanied by the release of NO2 from significant 
+biomass and large-scale open-field burning of crop residue 
+through the wheat-rice rotation period (Ul-Haq et al., 2015).
+Agriculture is the foremost economic activity in 
+Jharkhand by which about 63% of the rural population of 
+the state is employed (International Institute For Population 
+Sciences, 2016). During pre-monsoon, elevated TROPOMI-
+NO2 are also partially added by intensified soil emissions 
+owing to fertilisers being used in rice fields (Ul-Haq et al., 
+2015)(Ghude et al., 2008). Low TROPOMI-NO2 during 
+monsoon season is predominantly associated with excessive 
+rainfall, strong winds, and elevated humidity. Prior studies 
+have examined and found a remarkable negative correlation 
+between NO2 and rainfall (Martin, 1984). A 3% decrease is 
+noted during pre-monsoon in TROPOMI-NO2 as compared 
+to their last winter season (Table S3). Similarly, a reduc-
+tion of 26% and an increment of 21% have been observed 
+during monsoon and post-monsoon respectively against 
+their preceding seasons. The seasonal minimum and maxi-
+mum spatial average TROPOMI-NO 2 level over the whole 
+of Jharkhand averaged from 2019–2021 is summarised in 
+Fig. S7. It has been observed that the winter exhibits the 
+highest level of seasonal maximum TROPOMI-NO 2 (17.2 
+×1015molecules.cm −2), and pre-monsoon shows the high -
+est level of seasonal minimum TROPOMI-NO2 value (1.64 
+×1015molecules.cm−2), whereas monsoon exhibits the low-
+est level of both seasonal minimum and maximum TRO-
+POMI-NO2 values having 1.05 ×10 15molecules.cm −2 and 
+7.28 ×1015molecules.cm−2 respectively.
+In India, the maximum and minimum NO2 level is 
+reported during winter to pre-monsoon and monsoon 
+respectively (Biswal et al., 2021). For the four seasons, 
+a range of TROPOMI-NO 2 follows the order winter 
+(15.8 × 1015molecules.cm −2)> post-monsoon (15.4 × 
+ 1015molecules.cm−2) > pre-monsoon (10.6 × 1015molecules.
+cm−2) > monsoon (6.23 ×1015molecules.cm−2) (Table S3). 
+The frequency distribution of pixels that are loaded with 
+seasonal mean TROPOMI-NO2 for the four seasons winter, 
+pre-monsoon, monsoon, and post-monsoon averaged from 
+2019 to 2021 in Jharkhand is depicted in Fig. S8 as the histo-
+gram plot. For all the four seasons, TROPOMI-NO2 appears 
+to be well-distributed and unimodal and is also found to 
+be positively skewed. The overall count of pixels having 
+low TROPOMI-NO 2 value is always observed to be large 
+in number as compared to the count of pixels having high 
+TROPOMI-NO2 value, which clearly suggests that the whole 
+of Jharkhand is mainly covered with the low TROPOMI-
+NO2 pixels, and the burden of high TROPOMI-NO 2 is in 
+some specific regions, which are captured and surrounded by 
+the major industrialised and TPP locations such as Dhanbad 
+and Jamshedpur (Bandyopadhyay et al., 2021). NO2 is acidic 
+and a highly reactive gas, so its lifetime is perceived to be 
+short. That is why TROPOMI-NO2 maps tell us only where 
+does the NO2 emission occur and not much about where 
+68598 Environmental Science and Pollution Research (2023) 30:68591–68608
+1 3
+does the NO2 blow, because at the end, it reacts out (Beirle 
+et al., 2003; Beirle et al., 2011).
+Evaluation of Relative difference in TROPOMI‑NO2 
+at the district level
+The study is further extended by adding analysis and obser-
+vation of annual mean spatial average TROPOMI-NO2 vari-
+ability at the district level of Jharkhand state represented in 
+Fig. S9. As compared to 2019, in the year 2020, all the 24 
+districts experienced a decline in TROPOMI-NO 2, which 
+ranges from 4 to 16%; hence, none of these suffered from 
+the elevated NO2 level in 2020. Therefore, it is concluded 
+that the COVID-19-induced lockdown not only contributed 
+positively to reducing the TROPOMI-NO 2 level in major 
+urban or industrial districts but also blessed other rural set -
+tlements too. It is attributed to the strict enforcement of con-
+trol measures in Jharkhand in 2020 following the COVID-19 
+pandemic, resulting in a complete lockdown to prevent the 
+spreading of the COVID-19 virus.
+A drop of 20–40% in NO2 level was observed in all major 
+Indian cities with the exception of comparing it with the 
+preceding year (Sur et al., 2021). The revival of normalcy 
+increased the NO2 level ranges from 10 to 34% in the post-
+COVID-induced lockdown year (2021) as compared to the 
+COVID-induced lockdown year (2020), whereas an incre -
+ment ranges from 1 to 23% and decrement by 3% and 2% in 
+Garhwa and Simdega respectively while comparing with the 
+pre-COVID-induced lockdown year (2019). Hence, it is obvi-
+ous that the positive outcome of COVID-19-induced restric-
+tions on TROPOMI-NO2 level was not only temporary but 
+also directly related to the emission of NO2. The interpreta-
+tion clearly indicates that the major and most active industrial 
+districts such as Dhanbad, Bokaro, and Purbi- Singhbhum 
+regions are always found to have a high TROPOMI-NO2 level 
+during our study period (Bandyopadhyay et al., 2021).
+Analysis of Spatiotemporal variation of  NO2 
+concentration at eight ground‑monitoring stations 
+over Jharkhand
+Monthly averaged ground-based NO2 and monthly averaged 
+TROPOMI-NO2 values were gathered for the selected moni-
+toring stations for the periods 2017–2020 and 2019–2021 to 
+investigate how concentration evolved over a period of time.
+Analysis of  NO2 concentrations at point stations 
+with the aid of a satellite approach
+Month-on-month differences in TROPOMI-NO2 level at all 
+eight ground-monitoring stations in Jharkhand are illustrated 
+in Fig. S10. In order to achieve this target, to start with, 
+the GPS location of all eight considered JSPCB monitoring 
+stations was identified and located on the working raster 
+dataset. Thereafter, with the aid of identify tool in ArcGIS 
+software (ver. 10.4), the TROPOMI-NO 2 value is gathered 
+for that particular GPS location which lies on their respec -
+tive pixel of the TROPOMI-NO 2 raster dataset. However, 
+the magnitude of temporal variation in NO2 concentration 
+is found to be different at all eight monitoring stations. The 
+station-wise temporal variation of TROPOMI-NO2 suggests 
+that two monitoring stations Golmuri and Tata situated in 
+the Jamshedpur district always exhibit a higher TROPOMI-
+NO2 level as compared to the other six stations in Jharkhand. 
+Both the stations follow almost the same pattern of varia -
+tion, even though having a difference in the environment of 
+adjoining areas. In the same way, the rest of the five stations 
+Kusunda, Bastacola, Jharia, City Plaza, and Sindri located 
+in Dhanbad display a nearly identical pattern of variation, 
+despite having dissimilar territorial compositions.
+These two districts are packed with all major industries, 
+thermal power plants, and mining activities (Bandyopad -
+hyay et al., 2021), which emit NO2 into the atmosphere on 
+a larger scale. Among all stations, Albert Ekka always dis -
+played lower TROPOMI-NO2 throughout the study period. 
+This station-wise variation in NO2 level may also be influ -
+enced by the level of effectiveness of pollution control 
+measures enforced across local stations in Jharkhand. On 
+one hand, during the concurrent COVID-19 year (2020), 
+the TROPOMI-NO2 levels observed were 4.94, 5.06, 5.20, 
+4.52, 4.62, 6.35, 9.14, and 1.84 (×1015molecules.cm−2) dur-
+ing March month and 3.91, 4.07, 4.09, 3.55, 4.30, 4.17, 5.86, 
+and 1.86 (×1015molecules.cm−2) during April month at City 
+Plaza, Bastacola, Kusunda, Jharia, Sindri, Tata, Golmuri, 
+and Albert Ekka respectively. On the other hand, in the pre-
+COVID year (2019), the TROPOMI-NO2 level was found to 
+be 6.02, 6.17, 5.77, 5.33, 6.29, 8.03, 10.8, 2.43 (×10 15mol-
+ecules.cm−2) during March month and 5.42, 5.50, 5.54, 4.96, 
+5.27, 5.27, 6.92, and 2.51 (×10 15molecules.cm −2) during 
+April month at the above-mentioned stations respectively. 
+Whereas, in the post-COVID year (2021), the TROPOMI-
+NO2 levels were seen elevated up to 8.81, 9.54, 9.09, 7.77, 
+7.77, 10.1, 12.2, and 3.08 (×10 15molecules.cm −2) during 
+March month and 5.73, 5.82, 5.42, 4.87, 5.74, 8.93, 11.0, 
+and 2.37 (×1015molecules.cm−2) during April month at the 
+above-mentioned stations respectively.
+Analyses of 3-year data show that the level of TRO -
+POMI-NO2 during the lockdown scenario (2020) decreased 
+substantially as compared to the preceding (2019) and suc -
+cessive (2021) years during the same time period at all the 
+considered stations in Jharkhand, which indicate a positive 
+impact of COVID-19-induced measures leading to an ambi-
+ent air. The Box-Whisker plot of TROPOMI-NO 2 at eight 
+monitoring stations is plotted in Fig. S11, which excludes 
+outliers at each of the monitoring sites. Box plot distribution 
+also highlights that TROPOMI-NO2 variability is highest at 
+68599Environmental Science and Pollution Research (2023) 30:68591–68608
+1 3
+Tata and Golmuri sites, and these two stations always face 
+the burden of TROPOMI-NO2, whereas Albert Ekka repre-
+senting the lowest variability.
+Analysis of  NO2 concentrations at point stations via in situ 
+measurement
+For the confirmation of these satellite observations as 
+described in the earlier section (Analysis of NO2 concen -
+trations at point stations with the aid of satellite approach), 
+to quantify the observation near the surface as well, ground-
+based measurements of trace gas NO2 are also tracked. 
+Based on data availability, month-wise variability of ground-
+NO2 profiles at three different monitoring stations Tata, 
+Golmurim and Albert Ekka are shown in Fig. S12 for con-
+sidered years 2017–2020. The monthly mean surface-NO 2 
+data have been generated by averaging the available daily 
+mean surface-NO2 data for their respective monitoring sta-
+tion. Ground observation also highlighted the same scenario 
+of variation for stations Golmuri and Tata that are located 
+in heavily industrialised district of Jamshedpur, despite the 
+dissimilar surrounding environment.
+Ground-NO 2 concentrations are observed to be in the 
+range of 45–53 μg/m3 during most of the time at these two 
+stations, whereas the occurrence of the higher value of 
+ground-NO2 in Albert Ekka is very rare, and it reaches up to 
+46.7 μg/m3 only once in the month of October 2019, during 
+the study period 2017–2020. At this station (Albert Ekka), 
+most of the time ground-NO2 concentrations are noted to be 
+in the range of 35–38 μg/m 3. As highlighted in Figs.  3 and 
+S5, two stations Golmuri and Tata are always found to be in 
+the hotspot (higher concentration) region represented as red 
+colour in the southern region of Jharkhand, whereas Albert 
+Ekka station does not lie in the hotspot area. One major find-
+ing is noticed here that a sharp decline of ground-NO2 at two 
+monitoring stations based out of Jamshedpur occurred soon 
+after the implementation of total lockdown as we compare it 
+with the same time period of the preceding (2019) year. As 
+viewed from the graphical representation, the reduction is 
+seen from 48.18 to 22.41 μg/m3 and from 47.34 to 22.03 μg/
+m3 for Tata and Golmuri respectively from March to April 
+of the COVID-induced lockdown year (2020). A reduction 
+of such magnitude happens to be lower than the NO2 level in 
+the rainy seasons of all three studied years. It shows that Tata 
+and Golmuri stations witnessed a drastic decline in surface-
+NO2, which may be called a historic event, not seen in the 
+last two–three decades.
+It may give us a sense that the COVID period acted as a 
+short-term blessing for all from an air pollution perspective. 
+As the COVID-19-induced lockdown had to come to an end, 
+so does the improvement in air quality had to disappear. 
+This huge difference in satellite- and ground-based meas -
+urement of NO2 can be attributed to the fact that elevated 
+ NO2 concentration were found to be present in and around 
+the sources of emissions such as thermal regions and urban 
+and industrial centres, whereas less NO2 is seen near the 
+surface in a rural region and more in the upward atmosphere 
+because of the gradual dilution and transportation due to 
+meteorological factors. The observation made using both the 
+approaches, i.e. ground-based monitoring and satellite-based 
+interpretation, justifies the reduction in NO2 concentration 
+during lockdown and thus strengthens the findings of this 
+study.
+Meteorological variation along with their 
+relationship with TROPOMI‑NO2 and detection 
+of relative difference
+The analyses of the pollution level of ambient air are found to 
+be complicated due to meteorological influences. It plays an 
+important part in air pollution formation, as well as its trans-
+portation, accumulation, and transformation too. An unfavour-
+able meteorological situation could accentuate extreme pollu-
+tion events despite a drop in total emission (Wang et al., 2019). 
+Hence, its role is significant while determining air pollution 
+levels. This section examines dependencies and the relation of 
+monthly average TROPOMI-NO2 with the four monthly aver-
+age meteorological parameters, precipitation, temperature, rela-
+tive humidity, and wind speed, which were carried out for all 
+eight monitoring stations for the studied period 2019–2021. The 
+captured correlation was found to be remarkable having moder-
+ate to strong relation in multiple cases (Table 1). Among all the 
+four parameters, precipitation was found to be influenced more 
+by having a strong negative correlation with TROPOMI-NO2 
+(R= 0.6–0.8), which depicts that as the precipitation decreases, 
+TROPOMI-NO2 level increases, and vice-versa.
+Along with the considered meteorological parameters, 
+the time series analysis of TROPOMI-NO2 at eight stations 
+is graphically depicted in Fig.  4a–h. In the time series plot, 
+when the observed meteorological parameters and TRO -
+POMI-NO2 level during the COVID-19-induced lockdown 
+period were analysed against the pre- and post-COVID-
+19-induced lockdown period, it would be observed that 
+both kept on changing and fluctuating according to their 
+relationship seen in Table  1. As such, at Golmuri station, 
+among all the four considered meteorological factors, pre-
+cipitation appeared to be strongly negatively correlated with 
+TROPOMI-NO 2 having R = 0.8. The time series analysis 
+at Golmuri station clearly showed that in March month of 
+2020, precipitation was in the range of 2.22 mm/day, which 
+is the less optimal condition for the dispersion of air pol-
+lutants, and also, TROPOMI-NO 2 was elevated (Fig.  4b). 
+However, soon after the lockdown (24th March 2020), in 
+April month, precipitation was in the range of 3.49 mm/day, 
+which are a comparatively more favourable environment for 
+a much better dispersion of air pollutants in the atmosphere.
+68600 Environmental Science and Pollution Research (2023) 30:68591–68608
+1 3
+Considering the same time zone at Golmuri station, pre -
+cipitation was in the range of 1.21 mm/day and 2.34 mm/
+day in March and April months respectively in 2019, whereas 
+in 2021, precipitation was in the range of 0.51 mm/day and 
+1.58 mm/day in March and April months respectively. Hence, 
+TROPOMI-NO2 was also found to be lifted up in the pre-
+COVID-induced lockdown period (2019) with 10.8 and 6.92 
+(×1015molecules.cm−2) in March and April months respec -
+tively and in post-COVID-induced lockdown period (2021) 
+with 12.2 and 11 (×1015molecules.cm−2) as compared to the 
+concurrent COVID-induced lockdown period (2020) with 
+9.14 and 5.86 (×10 15molecules.cm−2) in the stated months 
+respectively. Decrement and increment in TROPOMI-NO 2 
+and precipitation level respectively during the COVID period 
+(2020) clearly highlights that in 2020, high precipitation leads 
+to the rain washout which ultimately contributed to lowering 
+TROPOMI-NO2 level to some extent. Therefore, it is obvious 
+that along with the influence of pandemic lockdown–induced 
+restricted activities, meteorological factors also contributed 
+and participated to some extent in the decline of TROPOMI-
+NO2 levels in eight ground-monitoring stations, which agreed 
+well with Jain and Sharma (2020), where they have analysed 
+only three meteorological parameters, temperature, wind 
+speed, and relative humidity for the megacities.
+Nevertheless, these comparisons and observations over 
+eight available stations appeared useful to see fluctuations 
+Table 1 Representing correlation analysis for monthly mean TRO -
+POMI-NO2 (molecules.cm −2); scale 1× 1015 along with the four 
+Monthly mean meteorological parameters: (a) temperature (°C), (b) 
+relative humidity (%), (c) wind speed (m/s), and (d) precipitation 
+(mm/day) for the eight ground-monitoring stations during 2019–
+2021, (a) City Plaza [D], (b) Tata [J], (c) Kusunda [D], (d) Jharia [D], 
+(e) Sindri [D], (f) Bastacola [D], (g) Golmuri [J], (h) Albert Ekka [R], 
+at 95% confidence level (CL)
+Ground-monitoring stations Pollutant Meteorological parameters Correlation ( R) P-value at 95% 
+confidence level
+Remarks
+(a) City Plaza [D] TROPOMI-NO2 Temperature R= −0.5 0.004943 Statistically significant
+Relative humidity R= −0.6 0.000283 Statistically significant
+Wind speed R= −0.3 0.066305 Statistically not significant
+Precipitation R= −0.6 2.24E-05 Statistically significant
+(b) Tata [J] TROPOMI-NO2 Temperature R= −0.7 2.02E-07 Statistically significant
+Relative humidity R= −0.4 0.038089 Statistically significant
+Wind speed R= −0.7 6.27E-06 Statistically significant
+Precipitation R= −0.8 2.69E-08 Statistically significant
+(c) Kusunda [D] TROPOMI-NO2 Temperature R= −0.5 0.001672 Statistically significant
+Relative humidity R= −0.6 0.000569 Statistically significant
+Wind speed R= −0.3 0.0494914 Statistically significant
+Precipitation R= −0.7 5.58E-06 Statistically significant
+(d) Jharia [D] TROPOMI-NO2 Temperature R= −0.4 0.022086 Statistically significant
+Relative humidity R= −0.7 2.13E-05 Statistically significant
+Wind speed R= −0.2 0.18989129 Statistically not significant
+Precipitation R= −0.7 1.76E-05 Statistically significant
+(e) Sindri [D] TROPOMI-NO2 Temperature R= −0.6 0.000187 Statistically significant
+Relative humidity R= −0.5 0.001363 Statistically significant
+Wind speed R= −0.5 0.000644 Statistically significant
+Precipitation R= −0.7 1.8E-06 Statistically significant
+(f) Bastacola [D] TROPOMI-NO2 Temperature R= −0.5 0.003356 Statistically significant
+Relative humidity R= −0.6 0.000213 Statistically significant
+Wind speed R= −0.3 0.074692 Statistically not significant
+Precipitation R= −0.7 1.07E-05 Statistically significant
+(g) Golmuri [J] TROPOMI-NO2 Temperature R= −0.7 7.22E-07 Statistically significant
+Relative humidity R= −0.5 0.004036 Statistically significant
+Wind speed R= −0.7 7.148E-06 Statistically significant
+Precipitation R= −0.8 1.415E-09 Statistically significant
+(h) Albert Ekka [R] TROPOMI-NO 2 Temperature R= −0.5 0.005181 Statistically significant
+Relative humidity R= −0.4 0.00698 Statistically significant
+Wind speed R= −0.5 0.005757 Statistically significant
+Precipitation R= −0.7 9.2E-07 Statistically significant
+68601Environmental Science and Pollution Research (2023) 30:68591–68608
+1 3
+and effects of meteorology locally. The present outcomes 
+illustrate that as compared to 2019 and 2021, meteorological 
+parameters were slightly more favourable in 2020 for decid-
+ing the TROPOMI-NO 2 level which is adroitly recorded 
+by Goldberg et  al. (2020), where they have observed 
+meteorological patterns to be especially optimal for having 
+low NO2 in most part of the USA during spring 2020, exam-
+ined against spring 2019. It has explained well the effect of 
+meteorology while deciding the level of TROPOMI-NO 2 
+is vital.
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+0
+2
+4
+6
+8
+10
+12
+14
+16
+January (2019)
+February
+March
+April
+May
+June
+July
+August
+September
+October
+November
+December
+January (2020)
+February
+March
+April
+May
+June
+July
+August
+September
+October
+November
+December
+January (2021)
+February
+March
+April
+May
+June
+July
+August
+September
+October
+November
+December
+Temperature (oC) / Relative.Humidity (%)
+TROPOMI - NO2 (molecules.cm-2)
+Scale 1X 10 15
+) s / m ( d e e p S d n i W / ) y a d / m m ( n o i t a t i p i c e r P /
+Study Period (2019-2021)
+ Tropomi- NO2 W.Speed Precipitation Temperature R.Humidity
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+January (2019)
+February
+March
+April
+May
+June
+July
+August
+September
+October
+November
+December
+January (2020)
+February
+March
+April
+May
+June
+July
+August
+September
+October
+November
+December
+January (2021)
+February
+March
+April
+May
+June
+July
+August
+September
+October
+November
+December
+Temperature (oC) / Relative.Humidity (%)
+TROPOMI -N O2 (molecules.cm-2)
+Scale 1X 10 15
+) s / m ( d e e p S d n i W / ) y a d / m m ( n o i t a t i p i c e r P /
+Study Period (2019-2021)
+Tropomi- NO2 W.Speed Precipitation
+Temperature R.Humidity
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+January (2019)
+February
+March
+April
+May
+June
+July
+August
+September
+October
+November
+December
+January (2020)
+February
+March
+April
+May
+June
+July
+August
+September
+October
+November
+December
+January (2021)
+February
+March
+April
+May
+June
+July
+August
+September
+October
+November
+December
+Temperature (oC) / Relative.Humidity (%)
+TROPOMI -N O2 (molecules.cm-2)
+Scale 1X 10 15
+) s / m ( d e e p S d n i W / ) y a d / m m ( n o i t a t i p i c e r P /
+Study Period (2019-2021)
+Tropomi- NO2 W.Speed Precipitation Temperature R.Humidity
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+0
+2
+4
+6
+8
+10
+12
+14
+January(2019)
+February
+March
+April
+May
+June
+July
+August
+September
+October
+November
+December
+January(2020)
+February
+March
+April
+May
+June
+July
+August
+September
+October
+November
+December
+January(2021)
+February
+March
+April
+May
+June
+July
+August
+September
+October
+November
+December
+Temperature (oC) / Relative.Humidity (%)
+TROPOMI -N O2 (molecules.cm-2)
+Scale 1X 10 15
+) s / m ( d e e p S d n i W / ) y a d / m m ( n o i t a t i p i c e r P /
+Study Period (2019-2021)
+Tropomi- NO2 W.Speed Precipitation Temperature R.Humidity
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+0
+2
+4
+6
+8
+10
+12
+14
+January(2019)
+February
+March
+April
+May
+June
+July
+August
+September
+October
+November
+December
+January(2020)
+February
+March
+April
+May
+June
+July
+August
+September
+October
+November
+December
+January(2021)
+February
+March
+April
+May
+June
+July
+August
+September
+October
+November
+December
+Temperature (oC) / Relative.Humidity (%)
+TROPOMI -N O2 (molecules.cm-2)
+Scale 1X 10 15
+) y a d / m m ( n o i t a t i p i c e r P /
+Study Period (2019-2021)
+Tropomi- NO2 Precipitation Temperature R.Humidity
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+0
+2
+4
+6
+8
+10
+12
+14
+January(2019)
+February
+March
+April
+May
+June
+July
+August
+September
+October
+November
+December
+January(2020)
+February
+March
+April
+May
+June
+July
+August
+September
+October
+November
+December
+January(2021)
+February
+March
+April
+May
+June
+July
+August
+September
+October
+November
+December
+Temperature (oC) / Relative.Humidity (%)
+TROPOMI -N O2 (molecules.cm-2)
+Scale 1X 10 15
+) y a d / m m ( n o i t a t i p i c e r P /
+Study Period (2019-2021)
+Tropomi- NO2 Precipitation Temperature R.Humidity
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+0
+2
+4
+6
+8
+10
+12
+14
+January(2019)
+February
+March
+April
+May
+June
+July
+August
+September
+October
+November
+December
+January(2020)
+February
+March
+April
+May
+June
+July
+August
+September
+October
+November
+December
+January(2021)
+February
+March
+April
+May
+June
+July
+August
+September
+October
+November
+December
+Temperature (oC) / Relative.Humidity (%)
+TROPOMI -N O2 (molecules.cm-2)
+Scale 1X 10 15
+) y a d / m m ( n o i t a t i p i c e r P /
+Study Period (2019-2021)
+Tropomi-NO2 Precipitation Temperature R.Humidity
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+0
+2
+4
+6
+8
+10
+12
+14
+16
+January(2019)
+February
+March
+April
+May
+June
+July
+August
+September
+October
+November
+December
+January(2020)
+February
+March
+April
+May
+June
+July
+August
+September
+October
+November
+December
+January(2021)
+February
+March
+April
+May
+June
+July
+August
+September
+October
+November
+December
+Temperature (oC) / Relative.Humidity (%)
+TROPOMI -N O2 (molecules.cm-2)
+Scale 1X 10 15
+) s / m ( d e e p S d n i W / ) y a d / m m ( n o i t a t i p i c e r P /
+Study Period (2019-2021)
+Tropomi- NO2 W.Speed Precipitation Temperature R.Humidity
+(b)
+(a)
+(c)
+(d)
+(e)
+(f)
+(g)
+(h)
+Fig. 4 Combo gr aph showing monthly average temperature (°C), 
+relative humidity (%), precipitation (mm/day), wind speed (m/s), and 
+TROPOMI-NO2 (molecules.cm −2); scale 1× 1015 for eight ground-
+monitoring stations during 2019–2021, a Albert Ekka [R], b Golmuri 
+[J], c Tata [J], d Kusunda [D], e City Plaza [D], f Bastacola [D], g 
+Jharia [D], h Sindri [D]. The R.H.S vertical line corresponds to the 
+secondary vertical axis
+68602 Environmental Science and Pollution Research (2023) 30:68591–68608
+1 3
+As we all know, 7 months in 2020 have gone through 
+the pre-lockdown (1st January 2020–23rd March 2020), 
+lockdown (24th March 2020–31st May), and unlock 
+phases (1st June–31st July), which have been considered 
+here for performing relative difference analysis by consid -
+ering the same period in 2019. A clear view of TROPOMI-
+NO2 levels during all the considered time frames for 2019 
+and 2020 and the existing relative difference over eight 
+monitoring stations are summarised in Fig. S13a–h. The 
+interpretation demonstrated that there exists a massive 
+percentage drop in TROPOMI-NO 2 at all eight consid -
+ered stations in 2020 compared to 2019. These percentage 
+declines are different and varying for all stations, but the 
+maximum decline seen is up to 28–30% and 26–30% found 
+in the Jharia and Bastacola stations of Dhanbad respec -
+tively, which is a heavily mined and industrialised city. 
+During the unlock period in 2020 as weighed against the 
+same period of 2019, a drop in TROPOMI-NO 2 was also 
+found to be in the higher range of up to 45% and 46% in 
+Jharia and Bastacola respectively.
+These huge percentage declines during the unlock 
+period are mainly attributed to the dominant influence of 
+the rain washout as having a strong negative correlation up 
+to 0.7–0.8 between TROPOMI-NO 2 and two meteorologi -
+cal factor precipitation and R.H. These relations reveal that 
+these two meteorological parameters have influenced sig -
+nificantly in deciding the level of TROPOMI-NO 2 during 
+unlock period in 2020.
+The time series analysis presented in Fig. 4g clearly high-
+lights that precipitation was in the range of 3.29 mm/day and 
+7.91 mm/day whereas R.H was in the range of 54.88% and 
+75.88% during the June month of 2019 and 2020 respec -
+tively in Jharia. On the contrary, for April, precipitation was 
+in the range of 1.55 mm/day and 2.26 mm/day whereas R.H 
+was in the range of 39.62% and 48.62% in 2019 and 2020 
+respectively at Jharia. In a similar way, for the May month, 
+precipitation was in the range of 2.68 mm/day and 3.98 mm/
+day whereas R.H was in the range of 37.75% and 54.5% in 
+2019 and 2020 respectively in Jharia. It clearly indicates 
+that not much differences exist in meteorological parameters 
+during the lockdown period. But there are vast differences in 
+meteorological parameters while having unlock period. With 
+that note, it is inferred that during the assessment period 
+of complete lockdown, the observed percentage decline 
+in TROPOMI-NO 2 is found to be directly related to and 
+affected by the reduced human activities and industrial pro-
+duction. The present outcome is found to be consistent with 
+the changes highlighted by Biswal et al. (2020), where they 
+noticed a decrease of 20.9% in Jharkhand and in the range of 
+up to 6.9 to 65.9% in other 27 states while also observed an 
+increment of up to 3.7 to 39.1% in the remaining seven states 
+of India, as compared with TROPOMI-NO 2 concentration 
+during 2020 and pre-lockdown period (2019).
+Assessment of TROPOMI‑NO2
+TROPOMI-NO 2 is the columnar data that represents the 
+density of NO2 from the surface of the earth to the top of 
+the troposphere or to the tropopause. To find out the consist-
+ency between satellite observations and surface observation 
+of NO2, research was carried out through the assessment and 
+evaluation of Sentinel-5p. Further process was conducted by 
+sorting the monthly mean surface-NO2 data and then deriv-
+ing seasonal data for the considered monitoring stations. 
+The pronounced relationship between surface-NO 2 and 
+TROPOMI-NO2 is depicted graphically in Fig. 5a–d, which 
+revealed that the model performance was found to be better 
+during winter and post-monsoon compared to pre-monsoon 
+and monsoon. In winter and post-monsoon seasons, good 
+agreement is obtained between them with an R= 0.8, R2 = 
+0.71 ( p<0.01), and R= 0.71, R2 = 0.50 ( p<0.01) respec -
+tively, but huge discrepancies are seen between them dur -
+ing the pre-monsoon and monsoon, with the assessment of 
+correlation R= 0.45, R2 = 0.20 (p<0.01), and R= 0.16, R2 = 
+0.03 (p>0.05) respectively. This is done to appraise whether 
+the seasonal variability in the column emulates variability 
+in the surface concentrations. The reason for not having an 
+appreciable correlation during monsoon and pre-monsoon 
+could be because of a reduction in the signal-to-noise ratio, 
+possibly found to be associated with the drop in NO2 con-
+centration due to scavenging in monsoon (Pawar et al., 2017) 
+and due to formation of secondary pollutants during pre-
+monsoon season (ul-Haq et al., 2018; Pawar et al., 2017).
+Present outcomes are in tandem with similar work using 
+the Sentinel-5p columnar tropospheric NO2 and surface-NO2 
+with the good and strong correlation (R = 0.7) between them 
+(Bassani et al., 2021; Biswal et al., 2021) where they con -
+sidered the lockdown phase for both years 2019 and 2020 
+for analysis in Rome and India respectively. Line plot and 
+comparison highlight that surface-NO2 shows trends identi-
+cal to TROPOMI-NO 2 collected from the same location, 
+during the winter season, and average for before and after 
+the monsoon, whereas poor in monsoon Fig. S14a–d. Thus, 
+it gives much confidence that TROPOMI-NO2 can be a use-
+ful tool for monitoring surface-NO2 in these two seasons.
+Time series
+Later on, a detailed analysis of NO2 concentration dur -
+ing the complete lockdown phase (26th March–30th May) 
+was executed by plotting the temporal variations of spatial 
+3-day average TROPOMI-NO2 over the whole of Jharkhand 
+state for 2019 and 2020 represented in Fig.  6. It was noted 
+that both the years have decreasing trend which was also 
+observed in Fig. S2 where the spatial monthly mean TRO -
+POMI-NO 2 also drops as we move from March to May 
+month. It has been clearly shown that immediately after 
+68603Environmental Science and Pollution Research (2023) 30:68591–68608
+1 3
+the total lockdown was imposed on 24th March, a sharp 
+decline in TROPOMI-NO 2 appeared, which is represented 
+by a negative slope (red colour line) in 2020, while in 2019, 
+high values were observed throughout the study duration 
+compared to 2020. In this graph, some peaks of TROPOMI-
+NO2 release have also been captured for Jharkhand in 2019 
+whereas during the lockdown phase in 2020, it stabilised. 
+Hence, a huge contrast was found through the lockdown 
+periods in 2020 weighed against the same periods in 2019. 
+Our result showed that Jharkhand experienced a positive out-
+come of lockdown in improving the TROPOMI-NO 2 level 
+verified in Fig. 6. The result is consistent with other Indian 
+y = 0.4944x -1 2.473
+R² = 0.71
+R = 0.8
+P-value = 2.81E-07
+( at 95% C.Level)
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+02 04 06 0
+TROPOMI -N O2
+(molecules.cm-2)
+Scale 1X 10 15
+Surface NO2
+(µg/m3)(a)
+y = 0.1089x + 1.1592
+R² = 0.20
+R = 0.45
+P-value = 0.009
+( at 95% C.Level)
+0.00
+2.00
+4.00
+6.00
+8.00
+10.00
+12.00
+0.00 20.004 0.00 60.00
+TROPOMI - NO2
+(molecules.cm-2)
+Scale 1X 10 15
+Surface NO2
+(µg/m3)(b)
+y = 0.041x + 1.588
+R² = 0.03
+R = 0.16
+P-value = 0.307
+( at 95% C.Level)
+0.00
+1.00
+2.00
+3.00
+4.00
+5.00
+6.00
+7.00
+8.00
+0.00 20.004 0.00 60.00
+TROPOMI -N O2
+(molecules.cm-2)
+Scale 1X 10 15
+Surface NO2
+(µg/m3)(c)
+y = 0.3407x -7 .4801
+R² = 0.50
+R = 0.71
+P-value = 5.68E-05
+( at 95% C.Level)
+0.00
+2.00
+4.00
+6.00
+8.00
+10.00
+12.00
+14.00
+0.00 20.00 40.00 60.00
+TROPOMI -N O2
+(molecules.cm-2)
+Scale 1X 10 15
+Surface NO2
+(µg/m3)(d)
+Fig. 5 a–d Scatter plo ts of monthly mean surface-NO 2 (μg/m3) versus monthly mean TROPOMI-NO2 (molecules.cm−2); scale 1× 1015 are rep-
+resented for four seasons during 2019–2021: a winter, b pre-monsoon, c monsoon, and d post-monsoon
+Fig. 6 
+ Tem
+poral variation in 
+3 days mean spatial averaged 
+TROPOMI-NO2 (molecules.
+cm−2) over Jharkhand state dur-
+ing 26th March to 30th April for 
+both the years 2019 and 2020. 
+The blue and red lines show a 
+linear trend in the average con-
+centration of spatial averaged 
+TROPOMI-NO2 during 2019 
+and 2020
+0
+0.5
+1
+1.5
+2
+2.5
+3
+3.5
+4
+TROPOMI -N O2 (molec.cm-2)
+Scale 1X 10 15
+Study Period ( 26th March-30th May)
+2019 2020
+Linear (2019) Linear (2020)
+68604 Environmental Science and Pollution Research (2023) 30:68591–68608
+1 3
+cities that are Kolkata and Mumbai studied by R. P. Singh 
+and Chauhan (2020) for the month of March to the first week 
+of April for 2019 and 2020, where they have not considered 
+the May month, which formed part of the lockdown phase.
+Conclusions
+One of the consequences of air pollution happened to be 
+a global health crisis, which needs to be resolved at the 
+earliest. The present research aimed at studying the impact 
+of COVID-19-induced lockdown in terms of spatial and 
+temporal variation of TROPOMI-NO2 and ground NO2 con-
+centration in Jharkhand. It is concluded that a pronounced 
+decline of 11% in TROPOMI-NO 2 has been identified 
+in Jharkhand during the lockdown period. Among eight 
+ground-monitoring stations, Jharia and Bastacola in Dhan -
+bad experienced an enormous drop of up to 30% in TRO -
+POMI-NO2 during lockdown phase 2020 compared to 2019. 
+This study demonstrated very well the role of understanding 
+the contribution of meteorological conditions when design-
+ing emission control strategies. As in this case, it is found 
+to be inversely proportional throughout the considered sta -
+tions having R= 0.4–0.7, 0.4–0.7, 0.2–0.7, and 0.6–0.8 for 
+temperature, relative humidity, wind speed, and precipita -
+tion respectively.
+Assessment of satellite observations against ground-based 
+appraisal is noted to be in harmony with R = 0.8 and R = 
+0.71 during winter and post-monsoon respectively. Analyses 
+found a tremendous fall in surface-NO2 at Tata and Golmuri 
+stations from 48.18 to 22.41 μg/m3 and from 47.34 to 22.03 
+μg/m3 respectively from March to April month of lockdown 
+year (2020), which is always abundant with highly polluted 
+air. At the district level, reduction ranges from 4 to 16% in 
+2020 compared to 2019 and staging a revert, ranging from 
+10 to 34% in 2021 as compared to 2020. Overall examina -
+tion conducted via both satellite and ground observations 
+highlighted that Jharkhand definitely has gone through the 
+experience of remarkable improvement in NO2 level during 
+the COVID-19-led lockdown period.
+The improved algorithm and more precise study with 
+more ground-monitoring points will help in establishing 
+a strong relationship between satellite data and ground-
+level NO2 which will help in estimating NO2 concentration 
+in remote locations more precisely. The present outcomes 
+could also aid in planning and implementing better air 
+pollutant reduction strategies and upgrading all required 
+air quality measurement and prediction modelling for the 
+betterment of the whole universe. The use of advanced 
+technologies in industries especially thermal power plants 
+and vehicles will reduce the NO2 emissions. The change 
+in domestic fuels from biomass to cleaner fuel will further 
+improve the overall air quality.
+As we have gone through many more analysis and discus-
+sions, owing to limitations, we could not broaden our span of 
+study, parameters, and tools. Meteorological behaviour and 
+its role on the level of TROPOMI-NO2 fluctuation have been 
+analysed on sites located in the Central and North-eastern 
+plateau and South-eastern plateau whereas similar analyses 
+have not been done for the Western plateau. In upcoming 
+research, interpretation and analysis may include a few more 
+parameters such as boundary layer height or may apply some 
+other approaches such as machine learning in order to extract 
+profound insights about the studied domain. All the high -
+lights may be targeted for future research to deal with the 
+current situation of Jharkhand which is burdened with many 
+industries and TPPs and a lot more in the pipeline.
+Supplementary Information The online version contains supplemen-
+tary material available at https:// doi. org/ 10. 1007/ s11356- 023- 27236-2.
+Acknowledgements The authors are grateful to Jharkhand State Pol -
+lution Control Board, Ranchi, for providing surface-NO2 data for eight 
+ground-monitoring stations, in Jharkhand, for the years 2017 to 2021. 
+The authors would also like to thank NASA for making meteorological 
+data available for the concerned period of study of this research. The 
+authors sincerely express their gratitude and acknowledge the Google 
+Earth Group for Google Earth Engine (GEE) cloud platform for making 
+Sentinel 5P (TROPOMI-NO2) product available for free.
+Authors’ contribution All authors contr ibuted to the study’s concep -
+tion and design. Material preparation, data collection, and analysis 
+were performed by Shalini Priya and Jawed Iqbal. The first draft of 
+the manuscript was written by Shalini Priya, and reviewing and edit -
+ing was completed by Jawed Iqbal. All authors read and approved the 
+final manuscript.
+Data availability The secondary data obtained from JSPCB, Jharkhand, 
+is available with the corresponding author and can be available on 
+request. There is no other associated data.
+Declarations 
+Ethics approval and consent to participate Not applicable.
+Consent for publication Not applicable.
+Competing interests The authors declare no competing interests.
+References
+Baldasano JM (2020) COVID-19 lockdown effects on air quality by NO2 
+in the cities of Barcelona and Madrid (Spain). Sci Total Environ 
+741:140353. https:// doi. org/ 10. 1016/j. scito tenv. 2020. 140353
+Bandyopadhyay J, Mohammad L, Mondal I, Maiti KK, Al-Ansari N, 
+Pham QB, Khedher KM, Anh DT (2021) Identification and char-
+acterization the sources of aerosols over Jharkhand state and sur-
+rounding areas, India using AHP model. Geomat Nat Haz Risk 
+12(1):2194–2224. https:// doi. org/ 10. 1080/ 19475 705. 2021. 19493 95
+Bassani C, V ichi F, Esposito G, Montagnoli M, Giusto M, Ianniello 
+A (2021) Nitrogen dioxide reductions from satellite and surface 
+68605Environmental Science and Pollution Research (2023) 30:68591–68608
+1 3
+observations during COVID-19 mitigation in Rome (Italy). Envi-
+ron Sci Pollut Res 28(18):22981–23004. https:// doi. or
+g/ 10. 1007/ 
+s11356- 020- 12141-9
+Beir
+le S, Platt U, Wenig M, Wagner T (2003) Weekly cycle of NO2 
+by GOME measurements: a signature of anthropogenic sources. 
+Atmos Chem Phys 3(6):2225–2232. https:// doi. or
+g/ 10. 5194/ 
+acp-3- 2225- 2003
+Beir
+le S, Boersma KF, Platt U, Lawrence MG, Wagner T (2011) 
+Megacity emissions and lifetimes of nitrogen oxides probed 
+from space. Sci (New York, N.Y.) 333(6050):1737–1739. 
+https:// doi. or
+g/ 10. 1126/ scien ce. 12078 24
+Ber
+man JD, Ebisu K (2020) Changes in U.S. air pollution during the 
+COVID-19 pandemic. Sci Total Environ 739:139864. https:// 
+doi. or
+g/ 10. 1016/j. scit
+o tenv
+. 2020. 139864
+Bisw
+al A, Singh T, Singh V, Ravindra K, Mor S (2020) COVID-19 
+lockdown and its impact on tropospheric NO2 concentrations 
+over India using satellite-based data. Heliyon 6(9):e04764. 
+https:// doi. or
+g/ 10. 1016/j. heliy on. 2020. e04764
+Bisw
+al A, Singh V, Singh S, Kesarkar AP, Ravindra K, Sokhi RS, 
+Chipperfield MP, Dhomse SS, Pope RJ, Singh T, Mor S (2021) 
+COVID-19 lockdown-induced changes in NO2 levels across 
+India observed by multi-satellite and surface observations. 
+Atmos Chem Phys 21(6):5235–5251. https:// do
+i. or
+g/ 10
+. 51
+94/ 
+acp- 21- 5235- 2021
+Cao 
+H, Han L (2022) The short-term impact of the COVID-19 epi-
+demic on socioeconomic activities in China based on the OMI-
+NO2 data. Environ Sci Pollut Res 29(15):21682–21691. https:// 
+doi. or
+g/ 10. 1007/ s11356- 021- 17415-4
+C
+ensus (2011) Population census of Jharkhand in Census 2011. https:// 
+www. censu s2011. co. in/ census/ s
+tate/ jhar
+k hand. html
+Chen N
+, Zhou M, Dong X, Qu J, Gong F, Han Y, Qiu Y, Wang J, Liu Y, 
+Wei Y, Xia J, Yu T, Zhang X, Zhang L (2020) Epidemiological and 
+clinical characteristics of 99 cases of 2019 novel coronavirus pneu-
+monia in Wuhan, China: a descriptive study. Lancet 395(10223):507–
+513. https:// doi. or
+g/ 10. 1016/ S0140- 6736(20) 30211-7
+Cooper MJ, Mar
+tin RV, Hammer MS, Levelt PF, Veefkind P, Lam-
+sal LN, Krotkov NA, Brook JR, McLinden CA (2022) Global 
+fine-scale changes in ambient NO2 during COVID-19 lock -
+downs. Nature 601(7893):380–387. https:// doi. or
+g/ 10. 1038/ 
+s41586- 021- 04229-0
+F
+ilonchyk M, Hurynovich V, Yan H (2021) Impact of Covid-19 lock-
+down on air quality in the Poland, Eastern Europe. Environ Res 
+198(November 2020):110454. https:// doi. or
+g/ 10. 1016/j. en
+vres. 
+2020. 110454
+F
+ilonchyk M, Peterson M (2020) Air quality changes in Shanghai, 
+China, and the surrounding urban agglomeration during the 
+COVID-19 lockdown. J Geovisualization Spatial Anal 4(2):1–7. 
+https:// doi. or
+g/ 10. 1007/ s41651- 020- 00064-5
+Gar
+g A, Shukla PR, Bhattacharya S, Dadhwal VK (2001) Sub-region 
+(district) and sector level SO2 and NOx emissions for India: assess-
+ment of inventories and mitigation flexibility. Atmos Environ 
+35(4):703–713. https:// doi. or
+g/ 10. 1016/ S1352- 2310(00) 00316-2
+Ghude SD, F
+adnavis S, Beig G, Polade SD, van der A, R. J. (2008) 
+Detection of surface emission hot spots, trends, and seasonal cycle 
+from satellite-retrieved NO2 over India. J Geophys Res Atmos 
+113(20):1–13. https:// doi. or
+g/ 10. 1029/ 2007J D0096 15
+Ghude SD, Lal DM, Beig G, V
+an Der A, R., & Sable, D. (2010) Rain-
+induced soil NOx emission from India during the onset of the 
+summer monsoon: a satellite perspective. J Geophys Res Atmos 
+115(16):1–9. https:// doi. or
+g/ 10. 1029/ 2009J D0133 67
+Goldber
+g DL, Anenberg SC, Griffin D, McLinden CA, Lu Z, Streets 
+DG (2020) Disentangling the impact of the COVID-19 lockdowns 
+on urban NO2 from natural variability. Geophys Res Lett 47(17). 
+https:// doi. or
+g/ 10. 1029/ 2020G L0892 69
+Gor
+elick N, Hancher M, Dixon M, Ilyushchenko S, Thau D, Moore R 
+(2017) Google Earth engine: planetary-scale geospatial analysis 
+for everyone. Remote Sens Environ 202:18–27. https:// doi. or
+g/ 10. 
+1016/j. rse. 2017. 06. 031
+Hilboll A
+, Richter A, Burrows J (2017) NO2 pollution over India 
+observed from space — the impact of rapid economic growth, 
+and a recent decline. Atmos Chem Phys Disc 20(2):1–18. https:// 
+doi. or
+g/ 10. 5194/ acp- 2017- 101
+Hoang A
+T, Huynh TT, Nguyen XP, Nguyen TKT, Le TH (2021) An 
+analysis and review on the global NO2 emission during lock -
+downs in COVID-19 period. https:// doi
+. o
+rg/ 1
+0. 108
+0/ 155
+67 0
+36. 
+2021. 19024 31
+Inter
+national Institute For Population Sciences. (2016). Detailed report: 
+Jharkhand 184. http:// rc
+hii ps
+. or
+g/ NF
+HS/ NF
+HS- 4R
+epo rt
+s/ Jh
+ark 
+hand. pdf
+IPCC IPOCC (2007) Climate c
+hange 2007 - the physical science basis: 
+working group i contribution to the fourth assessment report of 
+the IPCC. Science 2009:1009
+Jain S, Sharma T (2020) Social and travel lockdown impact considering 
+coronavirus disease (COVID-19) on air quality in megacities of 
+India: present benefits, future challenges and way forward. Aero-
+sol Air Qual Res 20(6):1222–1236. https:// doi. or
+g/ 10. 4209/ aaqr
+. 
+2020. 04. 0171
+K
+umar A, Dhakhwa S, Dikshit AK (2022) Comparative evaluation of 
+fitness of interpolation techniques of ArcGIS using leave-one-
+out scheme for air quality mapping. J Geovisualization Spatial 
+Anal 6(1):1–11. https:// doi. or
+g/ 10. 1007/ S41651- 022- 00102-4/ 
+METRI CS
+Lin JT
+, Liu MY, Xin JY, Boersma KF, Spurr R, Martin R, Zhang Q 
+(2015) Influence of aerosols and surface reflectance on satellite NO2 
+retrieval: seasonal and spatial characteristics and implications for 
+NOx emission constraints. Atmos Chem Phys 15(19):11217–11241. 
+https:// doi. or
+g/ 10. 5194/ acp- 15- 11217- 2015
+Mahat
+o S, Pal S, Ghosh KG (2020) Effect of lockdown amid COVID-
+19 pandemic on air quality of the megacity Delhi. India Sci The 
+Total Environ 730:139086. https:// doi. or
+g/ 10. 1016/j. scit
+o ten
+v. 
+2020. 139086
+Mandal I, P
+al S (2020) COVID-19 pandemic persuaded lockdown 
+effects on environment over stone quarrying and crushing areas. 
+Sci Total Environ 732:139281. https:// doi. or
+g/ 10. 1016/j. scit
+o ten
+v. 
+2020. 139281
+Mar
+tin A (1984) Estimated washout coefficients for sulphur dioxide, 
+nitric oxide, nitrogen dioxide and ozone. Atmos Environ (1967) 
+18(9):1955–1961. https:// doi. or
+g/ 10. 1016/ 0004- 6981(84) 90373-1
+Mat
+andirotya NR, Burger R (2022) An assessment of NO2 atmos-
+pheric air pollution over three cities in South Africa during 2020 
+COVID-19 pandemic. Air Qual Atmos Health 2. https:// doi. or
+g/ 
+10. 1007/ s11869- 022- 01271-3
+Monk
+s PS, Archibald AT, Colette A, Cooper O, Coyle M, Derwent R, 
+Fowler D, Granier C, Law KS, Mills GE, Stevenson DS, Tarasova 
+O, Thouret V, Von Schneidemesser E, Sommariva R, Wild O, 
+Williams ML (2015) Tropospheric ozone and its precursors from 
+the urban to the global scale from air quality to short-lived climate 
+forcer. Atmos Chem Phys 15(15):8889–8973. https:// doi. or
+g/ 10. 
+5194/ acp- 15- 8889- 2015
+N
+avinya C, Patidar G, Phuleria HC (2020) Examining effects of the 
+COVID-19 national lockdown on ambient air quality across urban 
+India. Aerosol Air Qual Res 20(8):1759–1771. https:// doi. or
+g/ 10. 
+4209/ aaqr
+. 2020. 05. 0256
+Nguy
+en TPM, Bui TH, Nguyen MK, Nguyen TH, Vu VT, Pham HL 
+(2022) Impact of COVID-19 partial lockdown on PM2.5, SO2, 
+NO2, O3, and trace elements in PM2.5 in Hanoi. Vietnam Envi-
+ron Sci Pollut Res 29(28):41875–41885. https:// doi. or
+g/ 10. 1007/ 
+s11356- 021- 13792-y
+Omr
+ani H, Omrani B, Parmentier B, Helbich M (2020) Spatio-temporal 
+data on the air pollutant nitrogen dioxide derived from Sentinel 
+satellite for France. Data Brief 28:105089. https:// doi. or
+g/ 10. 
+1016/j. dib. 2019. 105089
+68606 Environmental Science and Pollution Research (2023) 30:68591–68608
+1 3
+Pawar VS, Domkawale MA, Pawar SD, Salvekar PS, Pradeep Kumar P 
+(2017) Inter annual variability of tropospheric NO2 and tropospheric 
+ozone over Maharashtra (India): the role of lightning. Remote Sens-
+ing Letters 8(11):1015–1024. https:// doi. org/ 10. 1080/ 21507 04X. 
+2017. 13463 98
+Platt U, Stutz J (2008) Differential optical absorption spectroscopy: 
+principles and applications. physics of earth and space environ -
+ments. Springer Berlin Heidelberg. https:// doi. org/ 10. 1007/ 
+978-3- 540- 75776-4
+Potts DA, Marais EA, Boesch H, Pope RJ, Lee J, Drysdale W, Chip -
+perfield MP, Kerridge B, Siddans R, Moore DP, Remedios J (2021) 
+Diagnosing air quality changes in the UK during the COVID-19 
+lockdown using TROPOMI and GEOS-Chem. Environ Res Lett 
+16(5):054031. https:// doi. org/ 10. 1088/ 1748- 9326/ abde5d
+Prakash S, Goswami M, Khan YDI, Nautiyal S (2021) Environmental 
+impact of COVID-19 led lockdown: a satellite data-based assess-
+ment of air quality in Indian megacities. Urban Clim 38(September 
+2020). https:// doi. org/ 10. 1016/j. uclim. 2021. 100900
+Prasad AK, Singh RP, Kafatos M (2006) Influence of coal based thermal 
+power plants on aerosol optical properties in the Indo-Gangetic basin. 
+Geophys Res Lett 33(5):3–6. https:// doi. org/ 10. 1029/ 2005G L0238 01
+Schraufnagel DE, Balmes JR, Cowl CT, De Matteis S, Jung S-H, Mor-
+timer K, Perez-Padilla R, Rice MB, Riojas-Rodriguez H, Sood A, 
+Thurston GD, To T, Vanker A, Wuebbles DJ (2019) Air pollution 
+and noncommunicable diseases. Chest 155(2):409–416. https:// doi. 
+org/ 10. 1016/j. chest. 2018. 10. 042
+Sharma M, Jain S, Lamba BY (2020a) Epigrammatic study on the 
+effect of lockdown amid COVID-19 pandemic on air quality of 
+most polluted cities of Rajasthan (India). Air Qual Atmos Health 
+13(10):1157–1165. https:// doi. org/ 10. 1007/ s11869- 020- 00879-7
+Sharma S, Zhang M, Anshika G, J., Zhang, H., & Kota, S. H. (2020b) 
+Effect of restricted emissions during COVID-19 on air quality in 
+India. Sci Total Environ 728:138878. https:// doi. org/ 10. 1016/j. scito 
+tenv. 2020. 138878
+Singh RP, Chauhan A (2020) Impact of lockdown on air quality in India 
+during COVID-19 pandemic. Air Qual Atmos Health 13(8):921–
+928. https:// doi. org/ 10. 1007/ s11869- 020- 00863-1
+Singh V, Singh S, Biswal A, Kesarkar AP, Mor S, Ravindra K (2020) 
+Diurnal and temporal changes in air pollution during COVID-19 
+strict lockdown over different regions of India. Environ Pollut 
+266:115368. https:// doi. org/ 10. 1016/j. envpol. 2020. 115368
+Soleimany A, Grubliauskas R, Šerevičienė V (2021) Application of satel-
+lite data and GIS services for studying air pollutants in Lithuania 
+(case study: Kaunas city). Air Qual Atmos Health 14(3):411–429. 
+https:// doi. org/ 10. 1007/ s11869- 020- 00946-z
+Soni M, Verma S, Jethava H, Payra S, Lamsal L, Gupta P, Singh J (2021) 
+Impact of COVID-19 on the air quality over china and india using 
+long-term (2009-2020) multi-satellite data. Aerosol Air Qual Res 
+21(3):1–23. https:// doi. org/ 10. 4209/ aaqr. 2020. 06. 0295
+Sur K, Verma VK, Pateriya B (2021) Variation of tropospheric NO2 over 
+Indo-Gangetic plain during COVID-19 outbreak in India. Spat Inf 
+Res 29(6):841–855. https:// doi. org/ 10. 1007/ s41324- 021- 00399-1
+ul-Haq Z, Rana AD, Tariq S, Mahmood K, Ali M, Bashir I (2018) Mod-
+eling of tropospheric NO2 column over different climatic zones and 
+land use/land cover types in South Asia. J Atmos Sol Terr Phys 
+168:80–99. https:// doi. org/ 10. 1016/J. JASTP. 2018. 01. 022
+Ul-Haq Z, Tariq S, Ali M (2015) Tropospheric NO2 trends over south 
+Asia during the last decade (2004-2014) using OMI Data. Adv 
+Meteorol 2015(2). https:// doi. org/ 10. 1155/ 2015/ 959284
+UN: Department of Economic and Social Affairs – Population Division, 
+2015, New York, World population Prospects: the 2015 revision, 
+available at: https:// popul ation. un. org/ wpp/ publi catio ns/ files/ key 
+finding wpp 2015.pdf (Accessed October, 2022)
+Veefkind JP, Aben I, McMullan K, Förster H, de Vries J, Otter G, Claas J, 
+Eskes HJ, de Haan JF, Kleipool Q, van Weele M, Hasekamp O, Hoo-
+geveen R, Landgraf J, Snel R, Tol P, Ingmann P, Voors R, Kruizinga 
+B et al (2012) TROPOMI on the ESA Sentinel-5 precursor: a GMES 
+mission for global observations of the atmospheric composition for 
+climate, air quality and ozone layer applications. Remote Sens Envi-
+ron 120:70–83. https:// doi. org/ 10. 1016/j. rse. 2011. 09. 027
+Wang P, Chen K, Zhu S, Wang P, Zhang H (2020) Severe air pollu -
+tion events not avoided by reduced anthropogenic activities during 
+COVID-19 outbreak. Resour Conserv Recycl 158:104814. https:// 
+doi. org/ 10. 1016/j. resco nrec. 2020. 104814
+Wang P, Guo H, Hu J, Kota SH, Ying Q, Zhang H (2019) Responses of 
+PM2.5 and O3 concentrations to changes of meteorology and emis-
+sions in China. Sci Total Environ 662:297–306. https:// doi. org/ 10. 
+1016/J. SCITO TENV. 2019. 01. 227
+WHO-World Health Organization (2020) Air pollution. WHO https:// 
+www. who. int/ health- topics/ air- pollu tion. (Accessed October, 2022)
+WHO (2020). Coronavirus disease (COVID-19) pandemic. https:// www. 
+who. int/ emerg encies/ disea ses/ novel- coron avirus- 2019. (Accessed 
+October, 2022).
+World Health Organization (2003) Health aspects of air pollution with 
+particulate matter, ozone and nitrogen dioxide: report on a WHO 
+working group. WHO, Bonn, Germany, pp 13–15 January 2003. 
+(Accessed October, 2022)
+Xu K, Cui K, Young L-H, Hsieh Y-K, Wang Y-F, Zhang J, Wan S (2020) 
+Impact of the COVID-19 event on air quality in central China. Aero-
+sol Air Qual Res 20(5):915–929. https:// doi. org/ 10. 4209/ aaqr. 2020. 
+04. 0150
+Yang J, Ji Z, Kang S, Zhang Q, Chen X, Lee SY (2019) Spatiotemporal 
+variations of air pollutants in western China and their relationship 
+to meteorological factors and emission sources. Environ Pollut 
+254:112952. https:// doi. org/ 10. 1016/J. ENVPOL. 2019. 07. 120
+Zheng Y, Wu, & Marinello. (2019) Spatial variation of NO2 and its 
+impact factors in China: an application of Sentinel-5P products. 
+Remote Sens 11(16):1939. https:// doi. org/ 10. 3390/ rs111 61939
+Zhou Y, Brunner D, Hueglin C, Henne S, Staehelin J (2012) Changes in 
+OMI tropospheric NO2 columns over Europe from 2004 to 2009 
+and the influence of meteorological variability. Atmos Environ 
+46:482–495. https:// doi. org/ 10. 1016/j. atmos env. 2011. 09. 024
+Zhu Y, Xie J, Huang F, Cao L (2020) Association between short-term 
+exposure to air pollution and COVID-19 infection: evidence from 
+China. Sci Total Environ 727:138704. https:// doi. org/ 10. 1016/j. scito 
+tenv. 2020. 138704
+Publisher’s note Springer Nature remains neutral with regard to 
+jurisdictional claims in published maps and institutional affiliations.
+Springer Nature or its licensor (e.g. a society or other partner) holds 
+exclusive rights to this article under a publishing agreement with the 
+author(s) or other rightsholder(s); author self-archiving of the accepted 
+manuscript version of this article is solely governed by the terms of 
+such publishing agreement and applicable law.
+68607Environmental Science and Pollution Research (2023) 30:68591–68608
+1 3
+Authors and Affiliations
+Shalini Priya1  · Jawed Iqbal1 
+ * Jawed Iqbal 
+ ja
+wed@bitmesra.ac.in
+ Shalini Priy
+a 
+ phdcee10052.19@bitmesr
+a.ac.in
+1 Department of Civil and Environmental Engineering, Birla 
+Ins
+titute of Technology Mesra, Ranchi, Jharkhand 835215, 
+India
+68608 Environmental Science and Pollution Research (2023) 30:68591–68608

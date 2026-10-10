@@ -1,0 +1,567 @@
+Analysis of the space-time trends in open
+defecation in Nigeria
+Ezra Gayawan  (  egayawan@futa.edu.ng )
+Federal University of Technology Akure
+Omodolapo Somo-Aina 
+University of North Carolina at Greensboro
+Oluwatosin Kuti 
+The University of Sheeld
+Research Article
+Keywords: Open defecation, Space-time variations, Nigeria, Environmental pollution
+Posted Date: May 26th, 2022
+DOI: https://doi.org/10.21203/rs.3.rs-1570689/v1
+License:   This work is licensed under a Creative Commons Attribution 4.0 International License.  
+Read Full License
+Analysis of the space-time trends in open defecation in Nigeria1
+Ezra Gayawan ∗1, Omodolapo Somo-Aina 2,a n dO l u w a t o s i nK u t i32
+1Department of Statistics, Federal University of Technology, Ak ure, Nigeria3
+2Department of Educational Research Methodology, University of N orth Carolina Greensboro, Greensboro, USA4
+3School of Health and Related Research, University of She ﬃeld, United Kingdom5
+April 21, 20226
+Abstract7
+The practice of open defecation has persistently remained high i n Nigeria despite the grave danger it8
+poses to public and environmental health, and the several inte rvention programs put in place over the years9
+to curtail the ugly practice. This study quantiﬁes the space an d time trends in open defecation practice in10
+Nigeria with the aim of highlighting the changes that have tak en place at various locations in Nigeria over a11
+ﬁfteen-year period. A Bayesian spatio-temporal model was appl ied to cross-section data obtained from the12
+Nigeria Demographic and Health Survey conducted in 2003, 2008, 201 3, and 2018, and inference was based13
+on integrated nested Laplace approximation technique. The ﬁn dings indicate a north-south spatio-temporal14
+patterns that are similar among the rural and urban dwellers. State s such as Kwara, Kogi, Oyo, Ondo,15
+Osun, Ekiti, Enugu, and Ebonyi all of which are neighbors to eac h other are among those with persistent16
+high prevalence of open defecation in the country. Given the div ersity of the Nigerian population groups17
+within the states, a more understanding of the socio-cultural s tandard of the di ﬀerent communities would18
+be required to implement policies that recognize opportunities to explore, while being culturally responsive19
+to community needs in ending open defecation in Nigeria.20
+Keywords: Open defecation; Space-time variations; Nigeria; En vironmental pollution21
+1 Introduction22
+The human practice of defecating outside in bushes, forests, ﬁelds , waterways, culverts, or any other open23
+areas or green spaces, instead of using toilet facilities that are designe d to improve sanitation or handle human24
+waste, referred to as open defecation (OD) can be harmful to human healt h and survival chances ( UN, 2019;25
+∗Corresponding Author: egayawan@futa.edu.ng
+1
+0DQXVFULSW 
+ 
+Kashiwase, 2019). In OD, untreated human wastes are exposed or disposed in ways that pe ople can easily come26
+into contact with the pathogens inherent in the faecal matter. The prop ortion of the world population practicing27
+OD is deﬁned as the percentage of the population who do not use any form of toi let for defecation, since those28
+who defecate in unimproved toilet facilities, like open pits or sl ab-less pit latrines are not regarded as people29
+practicing OD ( WHO, 2021). Besides the substantial threat OD poses on human well-being and en vironmental30
+health, it is an a ﬀront to human privacy, dignity and safety, especially for children, gi rls, and women ( UN,31
+2019). The practice of OD negatively impacts social and economic growth, as pe ople involved may likely be32
+exposed to sexual assault, loose their sources of income, become less p roductive, and miss school attendance,33
+or other educational opportunities. OD is one of the clear-cut indicator of extreme poverty, because nations of34
+the world where it is commonly practiced, experience the highest i ncidence of under-ﬁve child mortality, severe35
+malnutrition, as well as extreme poverty ( Njuguna, 2019). According to WHO (2019), the improper disposal36
+of human waste, has exposed not less than 10% of the world populace to feeding on food crops irrigated by37
+contaminated water supply, thereby exposing people to higher occur rence and transmission of human-faecal38
+related diseases like diarrhoea, cholera, typhoid, dysentery, hep atitis A, severe child stunting, and eventual39
+higher death incidence.40
+Permanently eradicating OD is recognized as a top priority for lowerin g global inequalities related to water,41
+sanitation and hygiene (W ASH) services ( UNICEF/WHO, 2019). The W ASH initiative of the United Nation’s42
+partner sanitation body, Water Supply and Sanitation Collaborative Counci l (WSSCC), and the United Nations43
+Children’s Fund (UNICEF), jointly align with the Sustainable Development Goal (SDG) 6, about drinking water,44
+sanitation and hygiene, as they work progressively towards achieving hu man right to water and sanitation, with45
+focus on prioritizing interventions for children, highly vulner able people, and marginalized population ( UN, 2019;46
+UNICEF, 2018). Universal accessibility to clean drinking water, with sanitation and hygiene, is a fundamental47
+2
+human right integrated in the Sustainable Development Goal (SDG) target 6.2, as it explicitly mentioned that48
+by year 2030, the entire world should have access to su ﬃcient and fair sanitation and hygiene, and completely49
+end OD, with special attention paid to the needs of girls, women and thos e in vulnerable conditions. While50
+considerable progress has been achieved in reducing OD rates, and in i ncreasing access to safe drinking water51
+and sanitation across the globe, substantially high proportion of the populati on, especially in rural areas still52
+lack basic sanitation service ( UNICEF/WHO, 2019). Between 2000-2017, the global rate of OD decreased from53
+21% (1.3 billion) to 9% (673 million), with an average decrease of approximate ly 0.7% per year. Out of the54
+673 million people practising OD in 2017, about 91% live in the rural areas. At th e same time, 367 million55
+children enrolled in schools without sanitation facilities, and more than half of the population of the world56
+used sanitation facilities that exposed untreated human waste, in way s that threatened human health. While57
+countries in Central and Southern Asia contributed about three quarte rs of the total of 696 million reduction58
+in OD between 2000 and 2017, some other countries of the world, mostly in Sub-S aharan Africa, where there is59
+high population growth, recorded an increase of about 49 million people pract icing OD ( WHO/UNICEF joint60
+monitoring programme for water supply, sanitation and hygiene , 2021; UNICEF/WHO, 2019; UN, 2019).61
+In 2012, a world bank coordinated desk study examined the impact of poor sani tation on the economy62
+of Nigeria and revealed that approximately US $3 billion or 1.3% of the nation’s GDP is lost annually to poor63
+sanitation. Diarrhea disease kill about 121,800 Nigerians, together with 87,000 un der-5 children annually. About64
+90% of those deaths are ascribed to poor sanitation or poor human excreta managem ent. Ultimately, poor65
+sanitation contributes to stunting and other forms of malnutrition, wh ich exacerbate the impact of infectious66
+diseases such as malaria, measles and acute lower respiratory infecti ons particularly among young children67
+(FMWR, 2016; WSP World Bank , 2012). Individuals practicing OD in Nigeria spend about 2.5 days each year,68
+trying to locate a private place to defecate. Ultimately, this leads to a large economic loss of about US $24369
+3
+million worth of access time spent on ﬁnding a suitable place to defec ate. The cost of OD is unequally shared70
+among the population, as women who often act the role of caregivers tend to sp end more time accompanying71
+younger children, sick or aged relatives. Women and girls’ dignity is als o compromised due to lack of toilet72
+facilities at home, since they have to travel far or wait till late at ni ght or early in the morning to avoid been73
+sighted by others while defecating ( WSP World Bank , 2012).74
+Over the years, governments in Nigeria have shown commitment towar ds improving drinking water, sani-75
+tation and hygiene, by formulating various policies and strategies. Spec iﬁcally in 2004, the Federal Ministry76
+of Water Resources (FMWR) drafted a national policy on water sanitation wit h speciﬁc focus on sanitation77
+and hygiene, coupled with liquid and solid waste disposal. The policy s peciﬁed the milestones to eradicate78
+OD in Nigeria by 2025, as it proposed to: investigate and promote sanitation cover age to 60% of the total79
+population by 2007; advance sanitation coverage to 90% of the population by 2020, and even tually attain and80
+sustain a 100% sanitation coverage by the 2025 and beyond ( FMWR, 2016; CLTS, 2015). Subsequently in 2002,81
+the Nigerian government established a National Task Group on Sanitation (NTGS ), an inter-ministerial group82
+charged with the responsibility of developing water sanitation policy and providing support to development83
+around sanitation. Meanwhile, some states government began to establish comprehensive agency for Rural84
+Water Supply and Sanitation (RUW ASSA), and W ASH department at the local gove rnment authority level85
+(LGA), to decentralize sanitation program for e ﬀective planning and implementation purposes. Again, from86
+2005 to 2006, the government persisted in its e ﬀort to promote sanitation, by employing a Community-Led87
+Total Sanitation (CLTS) technique. With the CLTS approach, there was m ore focus on changing sanitation88
+behavior, as opposed to building toilet facilities. The CLTS empow ered people at the community level through89
+triggering exercises that stimulate awareness about the harmful cons equences of OD and necessary actions to90
+collectively address the problem, for the healthy living of the ent ire community. Before the end of 2014, the91
+4
+CLTS approach was adopted in all the states in Nigeria. From the total of 19 , 467 communities that were92
+triggered by the CLTS approach, 9 , 728 (about 50%) were marked OD free, out of which 3 , 276 (about 35%)93
+have been approved ( FMWR, 2016; CLTS, 2015).94
+Although, numerous attempts has been made to end OD in Nigeria in past year s, sanitation coverage is still95
+behind the expected targets. A report by FMWR, NBS and UNICEF (2020) showed that more than a quarter96
+(23%) of Nigeria’s population, which is equivalent to 46 million people, st ill practice OD in 2019. Except in97
+2013, when Nigeria recorded 29% of its total population practicing OD, the propor tion of people practicing98
+OD has remained at 23% since 2012 ( FMWR, 2016). In 2018, people in rural areas were about two times99
+(30% of rural dwellers) more likely to engage in OD than people in the urban centers (14% of urban dwellers).100
+Whereas, in 2013 and 2019, people in rural areas were about three times (38% and 29% of r ural dwellers) more101
+likely to engage in OD than people in the urban centers (15% and 10% of urban dw ellers). Similarly, there102
+are discrepancies in the proportion of population practicing OD in the d iﬀerent geo-political regions in Nigeria.103
+As the North Central region consistently recorded the highest proportion of people doing OD at 51% in 2018104
+and 2019. The Northwest region recorded the lowest proportion of open defecator s at 9% within the same time105
+frame ( FMWR, NBS and UNICEF , 2020; NPC and ICF , 2019; ?). Ultimately, Nigeria is faced with enormous106
+challenge with ending open defecation as envisaged, considering the p opulation still practicing OD in recent107
+statistics, and the disparities in the distribution of people pract icing over time, across di ﬀerent geographical108
+areas.109
+There has been some e ﬀorts albeit scanty, to understand variations in OD practice based on soc io-demographic110
+and economic characteristics of di ﬀerent populations across developing countries. Desai et al. (2015) examined111
+the emergence of OD in Mumbai’s informal settlements through everyd ay embodied experiences, practices, and112
+perceptions in relation to available infrastructure. Using data from Demographic and Health Survey, Malik113
+5
+et al. (2021) analyzed the potential predictors of OD practice in Pakistan and report ed that the location where114
+an individual resides, social norms, educational level, and poverty status are linked to the unwholesome practice115
+among the populace. Rahman et al. (2020)’s study rea ﬃrmed the direct link between OD and various forms of116
+malnutrition among young children using data from India. In Kenya, Busienei et al. (2019) interviewed some117
+residents of Lodwar settlements, Turkawa County and reported that c ulture was the main factor that explained118
+why the people practiced OD. The study also found that latrines in som e residential areas are constructed with119
+poor quality timber which could collapse on the users and thus, people tend to avoid it for suitable open place120
+to defecate. Crocker et al. (2017) analyzed data from Ethiopia and Ghana and found that in both countries,121
+households in villages with history of high prevalence of latrine use are likely sustain the practice, while in122
+Ethiopia, households in SNNP region of the country were less likely to su stain latrine use than those living in123
+Oromia region. Intensive behavioral change through health promotion campai gns played some important roles124
+in reducing OD practice in Mali and Tanzania ( Gertler et al. , 2015). In Nigeria, Abubakar (2018) used data125
+from the 2013 Nigeria Demographic and Health Survey to analyze the determinan ts of OD practice and reported126
+signiﬁcant di ﬀerences across the six geo-political zones that makes up the country. How ever, an analysis at the127
+geo-political level would conceal local variations at state levels, which could be useful to governments at state128
+and local levels in designing and implementing state-speciﬁc e ﬀective intervention strategies. It is against this129
+background that this study was designed to explore and analyze the spatio- temporal dynamics in OD practice130
+at state level in Nigeria. The aim is to determine the possible changes t hat have occurred over space and time131
+across the Nigerian states, as this could provide evidence for a cultur al sensitive sanitation policy implemen-132
+tation to alleviate the sanitation issue that has plagued the Nigerian syste m for long. Consequently, we used133
+data from four waves of the Nigeria Demographic and Health Survey and relied on a Bayesian hierarchical134
+spatio-temporal model ( Blangiardo and Cameletti , 2015) where statistical inference was based on integrated135
+6
+nested Laplace approximation, a probabilistic deterministic approach for Bayesian inference ( Rue et al. , 2009).136
+The ﬁndings are expected to shed light into the progress that have be en made in reducing the ugly practice by137
+the various states of Nigeria over the period under study.138
+2 Methodology139
+2.1 Data Description140
+This study relies on data from four waves of Demographic and Health Survey s conducted in Nigeria in 2003, 2008,141
+2013, and 2018. The survey, carried out by The DHS Program was implemented by the National Population142
+Commission of Nigeria. The primary purpose was to make available real time d ata on household characteristics143
+and information regarding demographic and health issues particularly as th ey a ﬀect women of reproductive age144
+(15-49 years) and their children younger than ﬁve years of age. The survey u sually follow a two-stage sampling145
+technique with enumeration areas (clusters) selected from the cou ntry’s census frame at the ﬁrst stage and146
+households to be surveyed are selected at the second stage. The data anal ysed in this study came from the147
+Household data set that consist of information about the household characteri stics. The response variable of148
+interest was a binary variable created from the responses give to the q uestion on type of toilet facility available in149
+the household. The variable takes a value of 1 if the household had no suc h facility or uses bush or open ﬁeld for150
+defecation and zero if it has a toilet facility irrespective of the ty pe. We included variables such as type of place151
+of residence, household water source (whether protected or not), whe ther or not the household has electricity,152
+number of rooms used for sleeping, sex of household head, household type of cooking fuel, educational level of153
+head of household, and household wealth index. The state of residence w here the household was located was154
+geo-referenced and used as the unit of the spatial analysis. Nigeria comp rises of thirty six states and a Federal155
+Capital Territory, Abuja (Figure).156
+7
+2.2 Statistical Model157
+We adopted a Bayesian spatio-temporal modeling technique based on a hi erarchical binomial model that at-158
+tempts to simultaneously estimate spatial and temporal structured p attern and allowing for interaction between159
+time and space, which would explain di ﬀerences in time trend of the practice of OD for the di ﬀerent geographical160
+areas of Nigeria. Let Yij be the number of households that practiced OD in the ith state during survey period j161
+and nij is the total number of households sampled in a given area during a surve y period. Then Yij is assumed162
+to follow a binomial distribution, that is, Yij ∼ binomial(nij, ωij) for i =1 , ··· , 37, j =1 , 2, 3, 4 and ωij is the163
+risk (prevalence) of practicing OD in state i during survey period j. We considered the logit of the prevalence164
+for the OD outcome as follows:165
+logit(ωij)= ηij = b0 + x0β + νi + γj + φj + δij (1)
+where b0 is the model intercept that quantiﬁes the overall baseline risk, x0 is a vector of categorical variables166
+considered as linear e ﬀects with β as the vector of linear parameters; νi is the area-speciﬁc random e ﬀect167
+assumed to be independent and identically distributed, γj, another area-speciﬁc e ﬀect considered to be spatially168
+structured. We considered and modeled this assuming Gaussian int rinsic conditional autoregressive (iCAR),169
+where the spatially correlated random e ﬀect of the ith state is based on the sum of its weighted neighborhood170
+values deﬁned through an adjacency matrix of common boundaries of a given regi on. The term φj is a structured171
+temporal e ﬀect assumed to follow a second order random walk, δij is a space-time interaction e ﬀect such that172
+the parameter vector δ follows a Gaussian distribution with a precision matrix given by τδRδ where τδ is an173
+unknown scalar, while Rδ is a structured matrix that speciﬁes the type of temporal and spatial d ependence174
+between the elements of δ (Blangiardo and Cameletti , 2015). For parameter estimation, we relied on integrated175
+nested Laplace approximation technique ( Rue et al. , 2009), which is a deterministic algorithm for Bayesian176
+8
+inference and implemented in the R-INLA package.177
+3 Results of Analysis178
+Figures 1-3 presents the spatio-temporal trends for the estimated prevalence of OD across the states of Nigeria,179
+showing the estimates for the whole country, urban dwellers and rur al dwellers respectively. The ﬁndings indicate180
+and estimated prevalence of as high as 92% in some part of the country whereas t here are locations with 0.1%181
+prevalence (Figure 1). For the whole country, there appears to be a north-south divide in t he prevalence, which182
+also hold true when segregated into urban and rural residences (Figure s 2 and 3). The results also demonstrate183
+only a few changes occur in the spatial pattern over time. During the period 2003, states with the highest184
+prevalence of OD include Jigawa, Oyo, Ondo, Ekiti, Enugu, Ebonyi, and B ayelsa states but lowest in places185
+like Kano, Yobe, Borno, Katsina, Kaduna, Akwa Ibom, Imo Edo and the FCT. Onl y slight changes occurred186
+in 2008, showing that the states where the prevalence was highest are nei ghbouring Kwara, Oyo, Osun, Kogi,187
+Benue and Enugu, followed closely by Plateau, Ogin, Ondo, Delta, Bayel sa, Cross River, Yobe and the FCT.188
+The ﬁndings further reveal that in 2013, neighbouring Kwara, Oyo, Osun, Ek iti, Kogi, Benue and Enugu have189
+the highest rates of OD in the country. Moving to 2018, the highest preval ence was recorded in Kwara, Oyo,190
+Kogi, Ondo, Bayelsa and Ebonyi states but lowest in many norther states particularly Kano, Katsina, Kaduna,191
+Zamfara, Bauchi, Gombe, and Borno, and also in Cross River, Akwa Ibom and Abia s tates in the southern192
+fringe. The spatio-temporal patterns for the urban and rural segregation are similar to those of the country,193
+revealing some clusters or high prevalence of OD among individuals liv ing in many states in the north-central194
+and southern regions of the country. For some of these states, the pattern of high prevalence are similar for195
+both urban and rural areas while for some few others particularly Plateau, Z amfara, Niger, Ogun, Benue and196
+the FCT, the high prevalence are driven by what is obtainable in the ru ral areas.197
+9
+Figure 4 shows the trends in the prevalence of OD practice based on the estim ated prevalence across the198
+states represented through boxplots, for the whole country (A segmen t), urban areas (B), and rural areas (C).199
+The ﬁndings show that generally, there is a downward trend particul arly between 2008 and 2018. For the whole200
+country, the average prevalence was 25% in 2003, but increased slightly in 2008 and ﬁnally declined to about201
+20% in 2018. A comparison of the urban and rural plots shows that on the average, the decline in OD was202
+accounted for by a sharp reduction in the urban areas, where the average p revalence was about 6% in 2018203
+compared with about 32% for the rural areas in the same period.204
+The estimates for the linear e ﬀects presented in Table 1 show that, compared with year 2003, the odds205
+for practicing OD were higher in 2008, 2013, and 2018 and the estimates are signiﬁc ant. However, the odds206
+are signiﬁcantly lower when the urban areas are considered but higher f or rural areas. As expected, the odds207
+that individuals living in urban areas would practice OD is about 55% lowe r [OR: 0.447; 95% CI: 0.427, 0.469]208
+compared with those who live in rural areas. Individual who sourced th eir water from protected sources and those209
+who had electricity in their households were less likely to pract ice OD irrespective of their place of residence.210
+Furthermore, compared with households having one room for sleeping, t hose who had two rooms were less likely211
+to practice OD those the estimate is not signiﬁcant in the case of urban d wellers. For those with three or more212
+rooms, the ﬁndings show lower odds for OD irrespective of the place of residence. Individuals from male-headed213
+households Have higher odds of practicing OD irrespective of their p lace of residence, when compared with214
+households headed by female. Households who used kerosene, electric ity/gas or wood as cooking fuel were less215
+likely to practice OD when compared with those who used other means of cooking. For the educational level of216
+the household head, the ﬁndings show that individuals from households in which the heads attained secondary217
+education were more likely to practice OD when compared with those fr om households where the head had no218
+education. However, those who attained higher level of education were l ess likely irrespective of their place of219
+10
+Table 1: Parameter estimates for the linear e ﬀects. Presented are the odds ratio (OR) and 95% credible intervals
+Country Urban Rural
+OR LCI UCI OR LCI UCI OR LCI UCI
+Intercept 3.452 3.016 3.943 1.485 0.155 5.898 4.115 3.499 4.829
+2003 1 1 1
+2008 1.391 1.251 1.551 0.558 0.135 1.41 1.329 1.171 1.514
+2013 1.737 1.562 1.943 0.147 0.01 0.798 1.838 1.592 2.129
+2018 1.141 1.024 1.276 0.014 0.001 0.172 1.09 0.957 1.246
+Place of residence
+Rural (ref) 1
+Urban 0.447 0.427 0.469
+Water source
+Unprotected 1 1 1
+Protected 0.766 0.737 0.795 0.766 0.703 0.836 0.759 0.727 0.792
+Electricity
+No 1 1
+Yes 0.579 0.553 0.607 0.683 0.623 0.748 0.555 0.525 0.586
+Number of rooms for sleeping
+11 1 1
+2 0.875 0.84 0.912 0.954 0.88 1.033 0.853 0.814 0.895
+3 or more 0.804 0.77 0.839 0.853 0.779 0.933 0.788 0.75 0.828
+Sex of household head
+Female 1 1 1
+Male 1.168 1.116 1.221 1.277 1.183 1.379 1.092 1.033 1.155
+Cooking fuel
+Others 1 1 1
+Kerosene 0.761 0.702 0.824 0.755 0.667 0.855 0.788 0.703 0.883
+Electricity/gas 0.499 0.428 0.579 0.489 0.397 0.599 0.563 0.438 0.72
+Wood 0.926 0.866 0.99 1.085 0.96 1.226 0.815 0.749 0.887
+Education of household head
+No education 1 1 1
+Primary 1.001 0.956 1.048 1.017 0.926 1.116 0.996 0.944 1.05
+Secondary 1.156 1.102 1.213 1.135 1.031 1.25 1.17 1.106 1.239
+Higher 0.889 0.829 0.953 0.814 0.717 0.924 0.913 0.837 0.996
+Wealth index
+Poorest 1 1 1
+Poorer 0.331 0.313 0.349 0.357 0.293 0.435 0.341 0.322 0.361
+Middle 0.146 0.136 0.156 0.151 0.124 0.184 0.155 0.144 0.167
+Richer 0.056 0.052 0.061 0.056 0.045 0.069 0.06 0.054 0.066
+Richest 0.009 0.008 0.01 0.009 0.007 0.012 0.009 0.008 0.011
+residence. Estimates for primary education are not signiﬁcant across th e place of residence. Regarding wealth220
+index, the results, as expected, show that individuals from at leas t poorer households were less likely to practice221
+OD when compared with those from the poorest households.222
+11
+3.1 Spatial E ﬀects223
+Figure 1: Maps of Nigeria showing the spatial e ﬀects for the years of survey. Plotted are estimates for the whole
+country
+224
+12
+Figure 2: Maps of Nigeria showing the spatial e ﬀects for the years of survey. Plotted are estimates for the urban
+areas
+225
+13
+Figure 3: Maps of Nigeria showing the spatial e ﬀects for the years of survey. Plotted are estimates for the rural
+areas
+226
+14
+Figure 4: Box plots showing trends based on the estimated prevalence for the states (A) the whole country, (B)
+urban areas, and (C) rural areas
+227
+4 Discussion228
+The practice of OD is the worst form of sanitation crisis that pollutes th e environment and endangers public229
+health. Its continuous practice in any population and in particular, in a rapidly growing population with high230
+population density like Nigeria poses a grave environmental and health c hallenges to millions of people including231
+young children who have tender immunity and are closer to the ground . Human feces in any open environment232
+contaminants public spaces, roadsides, surface water, and pollutes th e air with unpleasant odor. Aside the233
+public health challenges as a consequence, the environment where i t is practice will continue to loose economic234
+value because local and international tourists and investors would avoid unpleasant places that endanger their235
+health, as found in the case of some beaches in Lagos and other Nigerian coaster ci ties ( Abubakar and Dano ,236
+2018). A number of factors at individual and community levels have been id entiﬁed to inﬂuence the practice of237
+15
+OD in Nigeria and other developing countries where it is practice. How ever, identifying the variability across238
+geographical settings could contribute to address the challenge faced wi th understanding community/inter-state239
+based characteristics that encourage OD or cause variability in the impac t of sanitation hygiene programme240
+implemented over time in various geographical location, and allow for targe ted interventions at various locations241
+in Nigeria. In this study, we used a Bayesian spatio-temporal model to explore the pattern across space and242
+over time in Nigeria while controlling for other possible determinan ts.243
+The ﬁndings from the spatio-temporal maps have revealed similar patter n of occurrence among the rural and244
+urban dwellers from most of the states with many states in the North Cent ral and southern regions of the country245
+having the highest rates over time. Historically, Nigeria often formu late the right policies including those to end246
+OD particularly in places where the burden is high, but these usual ly fail during the process of implementation247
+(UNICEF, 2021). In fact, Nigeria was probably among the few nations of the world that formul ated a road-248
+map to ﬁx sanitation and hygiene issues within a reasonable time-frame as far back as 2004, much longer249
+before the United Nations modiﬁed the target of global sanitation coverage. Bu t, despite the ambitious and250
+painstaking policies developed around sanitation and hygiene issues in Nigeria, not many signiﬁcant outcomes251
+have been achieved over a ﬁfteen-year period as evident from our ﬁn dings. Without giving consideration to the252
+diversity of the Nigeria population, the CLTS program, which was one of the leading innovative methodology253
+used to mobilize di ﬀerent communities to stop OD and attain total sanitation coverage primaril y featured a254
+rural strategy that assumes homogeneity of the population in every communi ty. The program failed to properly255
+recognise and cater for the heterogeneity in population groups within the states, sub-urban and urban areas256
+in the country. Hence, there was a limitation from inception on how far t he CLTS strategy would be applied257
+eﬀectively in diﬀerent settings within the country ( FMWR, 2016; Abramovsky et al., 2016; Eﬃong, 2013). Given258
+the diversity in the Nigerian population, research ﬁndings from publi c health and environmental studies have259
+16
+found that it is crucial to examine and adapt models that consider the pe culiarity of each community, in order to260
+develop evidence-based approaches that could lead to notable improvem ent in e ﬀorts to improve the well-being261
+of the populace at their di ﬀerent geographical settings ( Gayawan et al., 2019a,b; Egbon et al. , 2021). The same262
+approach would be crucial in ending the practice of OD in Nigeria.263
+As reported elsewhere ( Busienei et al. , 2019), cultural background, beliefs, norms, leadership structure,264
+and other community change agents could contribute to the huge variations i n OD practice across Nigerian265
+communities because, these community characteristics di ﬀer in no small measure across the various ethno-266
+geographical environments that make up Nigeria. A clear understanding of th e socio-cultural standard of the267
+diﬀerent communities, will enhance implementing policies that rec ognize opportunities to explore, while being268
+culturally responsive to the community needs. Consequently, th e societal norms and barriers that encourage269
+OD can be successfully managed, leading to a transformed society whe re the problem of OD is completely270
+eradicated ( Oluwatuyi et al. , 2020; Abramovsky et al. , 2016).271
+The statistics reported on the linear e ﬀects of the determinants of OD in this study, highlighted that the272
+prevalence or trend of OD continued to increase in Nigeria, especially in 2013, which was about 10 years that273
+the CLTS policy was developed and implemented in all the states in th e country. One would think that OD274
+practices would have reduced in Nigeria, considering how long the CL TS policy was implemented, but the275
+reverse was observed, as this study and other studies like, Gbadegesin and Akintola (2020), Abubakar (2017),276
+and Galan et al. (2013) detected either minimal or no association between reduction in OD prevalence and the277
+implementation of relevant national policy.278
+Overall, the proportion of people practicing OD in sub-Saharan Africa de creased by 13% from 2000 to 2018,279
+however, the proportion of people involved in OD practices in Nigeria o ver the same time period only dropped280
+by 7%. Amidst the rapid population growth rate of about 2.00% to 3.00% per year, whi ch indicated at least a281
+17
+doubling or tripling of the population size for every two decades, the sanitation coverage that should serve the282
+growing population had remained either stagnant, unapproved, or inadequ ate ( Ezeh et al. , 2020; Somo-Aina283
+and Gayawan, 2019; Okpala, 1990). For instance, the odds for practicing OD were consistently incr easing from284
+2003 through to 2018, however, toilet coverage in Nigerian schools between 2003 and 2013 remained at the same285
+level of 32% coverage. More than 50% of Nigeria population were within the ages of 0 and 24, and about a286
+third of the schools they attended were either without sanitation fac ilities or with sanitation facilities that were287
+unisex. ( Sengupta et al. , 2018; United Nations , 2017). According to FMWR (2016) increasing OD intertwined288
+with high population density is a major challenge in Nigeria, especially in the overcrowded southern urban289
+centers such as Lagos. As expected, the odds of practising OD among people that have at least two rooms290
+available for sleeping were lower when compared with people that hav e only one sleeping room. Due to the lack291
+of spaces to build conducive toilet facilities, oftentimes, people living in such condition, especially young women292
+and adolescent were forced to defecate in open spaces that exposed them to fear, violence, and other dangerous293
+situation. Pregnant mothers living in the area also had higher likelih ood of contracting iron deﬁciency anaemia294
+(IDA) caused by hookworms infestation prevalent in OD areas, which lead to high-risk pregnancy and low birth295
+weight. Children exposed to such living condition can also be prone t o stunted growth as they can be liable to296
+frequent illness.297
+For more than thirty years, there has been disparities in OD practice s in Nigeria between people living298
+in the urban and rural areas without substantial improved sanitation in b oth places ( WHO/UNICEF Joint299
+Monitoring Program for Water Supply and Sanitation , 2011). This practice cuts across rural and urban areas,300
+and it has even become a very popular experience in some of the major cit ies, where it is branded as ”doing301
+shotput”. In agreement with other research works ( WHO/UNICEF joint monitoring programme for water302
+supply, sanitation and hygiene , 2021; Abubakar, 2018), our study also conﬁrms that OD is commonly practiced303
+18
+all over the country, only that it is more practiced in the rural areas th an the urban centers. Speciﬁcally, we304
+established that the odds of OD were signiﬁcantly lower for the urban areas. This imply the ine ﬀectiveness of305
+the CLTS approach because of its global fame as a rural-focused sanitation pr omotion. Ultimately, the CLTS306
+and other sanitation interventions adopted in Nigeria over the years had f ocused on eradicating communal OD307
+by providing fund, applicable information, coordination e ﬀort, and other relevant resources to increase improved308
+toilet facilities ownership and persistent utilization in the ru ral areas. However, the evidence of the impact of309
+these interventions could not match-up with the increasing level of OD problem in Nigeria. The majority of310
+people living in the rural communities were poor people, who could n ot a ﬀord the installation of toilets in their311
+homes. Hence, eradicating OD in the rural communities had proved more diﬃcult because toilet ownership can312
+be considered expensive for the majority to acquire and maintain ( Abramovsky et al. , 2019). Essentially, the313
+evidence of strong association between ﬁnancial constraint and OD pract ices calls for implementing policies that314
+will execute interventions that help mitigate against this ﬁnancial c onstraints, either by providing subsidies,315
+which may be attached to building toilets, or providing subsidis ed loan, in order to increase the level of toilet316
+ownership and eradicate OD in rural communities.317
+As expected, the study found lower odds of practicing OD with incr easing household wealth and also with318
+higher level of education though our ﬁndings indicated higher odds among h ouseholds whose heads have sec-319
+ondary education irrespective of place of residence. According to Ngwu (2017) the reasons why OD has continued320
+to increase could be deliberate or unintentional, but in most cases it is due to the lack of resources to gain access321
+to conducive toilets facilities that were clean and safe at the exact ti me of need. Similarly, this study highlighted322
+the lower odds of OD for households having access to electricity wh ich conforms with those reported by Ngwu323
+(2017). It can be deduced that some people with the capacity to build toilet facilities in their households but324
+who lack electricity supply can be discouraged from doing so because u sing the facilities at night could be chal-325
+19
+lenging to the users who would ﬁnd the toilet environment too dark or unsafe, and cleaning up after use may326
+not be feasible as well, hence, leaving the place in total mess.Hence , addressing the regular electricity outage327
+and connecting households without any electricity supply could imp act on eradicating OD practice across the328
+country.329
+Consistent occurrence of internal conﬂicts in some places in Nigeria over the years also had detrimental e ﬀects330
+on the development and implementation of sanitation interventions ( Galan et al. , 2013). According to World331
+Bank (2011), Nigeria was among the six sub-Saharan African countries that were charact erized with violence332
+and witnessed increased OD prevalence. The insurgency or radicalis m in northeastern part of country and other333
+forms of civil unrest in some parts of the country, which involves the destructive activities of the Islamist militant334
+gang, Boko Haram and other terrorist groups had led to water scarcity induced O D in many communities in335
+the a ﬀected areas. In places where these internal conﬂicts occurred, wat er sources were sometimes cut-o ﬀ and336
+properties were destroyed, resulting in refugee ﬂows, displac ed populations that had been deprived of their337
+homes and stripped of access to toilet facilities. Even in areas where water sources were not cut-o ﬀ, study has338
+shown that prolonged conﬂict was a threat to water supply. A typical exam ple is the Lake Chad basin that has339
+continued to su ﬀer water stress for many decades ( Food and Agriculture Organization of the United Nations ,340
+2017). The greatest percentage of the population living close to the Lake Chad d epend on it for sanitation and341
+agriculture purposes. But as the lake continued to shrink over the y ears, these people are left with minimal342
+water for sanitation purposes, and they look into other alternative for fo od and income ( CNA, 2017; World343
+Bank, 2011). Studies have shown that access to protected water and sanitation are strongly related ( Abubakar,344
+2018; FMWR, 2016). This ﬁnding was also established in this study, as there were lo wer odds of practicing345
+OD among people with access to protected water. Ultimately, people nee d water to ﬂush or clean toilets, do346
+anal hygiene, wash their hands, and do more about their hygiene. Hence, a c omprehensive knowledge on how347
+20
+internal conﬂict causes water stress with respect to sanitation can b e helpful in equipping decision makers with348
+the necessary skills that could enhance accurate allocation of resource s to stop conﬂict in volatile areas and349
+protect the people living in those areas from engaging in OD practices and other harmful practices that may350
+not have been their choices under normal circumstances.351
+5 Conclusion352
+In Nigeria, there are disparities in OD practices over time with res pect to various determinants and across the353
+36 states and the federal capital territory. Hence, we considered state levels and time components in modelling354
+OD, as opposed to geo-political level analysis that had been done in past stu dies. Speciﬁcally, we adopted the355
+Bayesian spatio-temporal modeling technique based on a hierarchical binomial model that attempts to simulta-356
+neously estimate spatial and temporal structured pattern and allowing for interaction between time and space,357
+which would explain di ﬀerences in time trend of the practice of OD for the di ﬀerent states in Nigeria, while358
+controlling for other possible determinants. Findings from the stud y suggest the need for culturally responsive359
+approaches that identify the variability across time and geographical sett ings in addressing the challenge faced360
+with understanding community/inter-state based characteristics that encourage OD or caused variability in the361
+impact of sanitation hygiene programme implemented over time in various geographical location. Governments362
+at state and local levels would then be more informed in designing and im plementing feasible, culturally re-363
+sponsive, time sensitive, and state-speciﬁc e ﬀective intervention strategies that can completely eradicate OD364
+in Nigeria. E ﬀorts directed towards addressing the problem of OD in Nigeria can be be tter guided with full365
+understanding of how to ensure balance among population growth, populati on density, sanitation policies, and366
+the implementation of interventions that promote access to sanitation f acilities such as water and toilets.367
+21
+Statements & Declarations368
+Funding369
+The authors declare that no funds, grants, or other support were receiv ed during the preparation of this370
+manuscript.371
+Competing Interests372
+The authors have no relevant ﬁnancial or non-ﬁnancial interests to dis close.373
+Author Contributions374
+Author contributions Conceptualization: Ezra Gayawan and Oluwatosin Ku ti; Methodology: Ezra Gayawan;375
+Formal analysis and investigation: Ezra Gayawan; Writing - original draft preparation: Ezra Gayawan and376
+omodolapo Somo-Aina.377
+Code availability378
+The codes used for the analysis can be made available at a reasonable reque st sent to the corresponding author.379
+Ethical Approval380
+The study uses a secondary data that is freely available upon request from The DHS Program and so, no ethical381
+approval was required.382
+Consent to Participate383
+Not applicable.384
+Consent to Published385
+Not applicable.386
+22
+References387
+Abramovsky, A., Augsburg, B., Oteiza, F., and Flynn, E. (2016). Improving CLTS targeting: Evidence from388
+Nigeria. Economic and Social Research Council (ESRC), Institute for Fiscal S tudies and WaterAid.389
+Abramovsky, L., Augsburg, B., and Oteiza, F. (2019). Sustainable Total Sanitati on - Nigeria: Final Research390
+Report.391
+Abubakar, I. (2017). Access to Sanitation Facilities among Nigerian Households: D eterminants and Sustain-392
+ability Implications. Sustainability, 9:1–17.393
+Abubakar, I. R. (2018). Exploring the determinants of open defecation in Nige ria using demographic and health394
+survey data. Science of the Total Environment , 637-638:1455–1465.395
+Abubakar, I. R. and Dano, U. L. (2018). Socioeconomic challenges and opportunities of urbanization in Ni geria,396
+pages 219–240.397
+Blangiardo, M. and Cameletti, M. (2015). Spatial and Spatio-temporal Bayesian Models with R-INLA , volume 1.398
+John Wiley and Sons, Ltd.399
+Busienei, P. J., Ogendi, G. M., and Mokua, M. A. (2019). Open defecation pr actices in Lodwar Kenya: A400
+mixed-methods research. Environmental Health Insight .401
+CLTS (2015). Community-Led Total Sanitation: Nigeria. CLTS Knowledge Hub .402
+CNA (2017). The Role of Water Stress in Instability and Conﬂict.403
+Crocker, J., Saywell, D., and Bartram, J. (2017). Sustainability of comm unity-led total sanitation outcomes:404
+Evidence from Ethiopia and Ghana. International Journal of Hygiene and Environmental Health , 220:551–405
+557.406
+23
+Desai, R., McFarlane, C., and Graham, S. (2015). The politics of open defecat ion: informality, body, and407
+infrastructure in mumbai. Antipode, 47:98–120.408
+Eﬃong, A. N. (2013). Policy Implementation and its Challenges in Nigeria. International Journal of Advanced409
+Legal Studies and Governance , 4:26–31.410
+Egbon, O. A., Somo-Aina, O., and Gayawan, E. (2021). Spatial weighted analysis of m alnutrition among411
+children in nigeria: A bayesian approach. Statistics in Biosciences , 13(3):495–523.412
+Ezeh, A., Kissling, F., and Singer, P. (2020). Why sub-Saharan Africa might exceed its projected population413
+size by 2100. The Lancet, 396:1131–1133.414
+FMWR (2016). Making Nigeria Open-Defecation-Free by 2025: A National Road Map . Federal Ministry of415
+Water Resources (FMWR), Abuja, Nigeria.416
+FMWR, NBS and UNICEF (2020). Water, Sanitation and Hygiene: National Outcome Routine Mappin g417
+(WASH NORM) 2019: A Report of Findings . Federal Ministry of Water Resources (FMWR), Government418
+of Nigeria, National Bureau of Statistics (NBS) and UNICEF, FCT Abuja, Nigeria.419
+Food and Agriculture Organization of the United Nations (2017). Lake Chad Basin: a c risis rooted in hunger,420
+poverty and lack of rural development.421
+Galan, D., Kim, S., and Graham, J. (2013). Exploring changes in open defecati on prevalence in sub-Saharan422
+Africa based on national level indices. BMC Public Health , 13:1–12.423
+Gayawan, E., Adebayo, S. B., Komolafe, A. A., and Akomolafe, A. A. (2019a). Spatial dis tribution of malnutri-424
+tion among children under ﬁve in nigeria: A bayesian quantile regress ion approach. Applied Spatial Analysis425
+and Policy , 12(2):229–254.426
+24
+Gayawan, E., Adebayo, S. B., and Waldmann, E. (2019b). Modeling the spat ial variability in the spread and427
+correlation of childhood malnutrition in nigeria. Statistics in medicine , 38(10):1869–1890.428
+Gbadegesin, O. A. and Akintola, S. O. (2020). A Legal Approach to Winning the ’Wash ’ War in Nigeria.429
+European Journal of Environment and Public Health , 4:1–9.430
+Gertler, P., Shah, M., Alzua, M. L., Cameron, L., Martinez, S., and Patil , S. (2015). How does health promotion431
+work? evidence from the dirty business of eliminating open defecat ion.432
+Kashiwase, H. (2019). Open defecation nearly halved since 2000 but is still p racticed by 670 million. World433
+Bank Blogs .434
+Malik, M. I., Nawaz, S. M. N., and Nadeem, M. (2021). Overcoming open defecati on for healtheir environment435
+in the case of Pakistan. Environmental Science and Pollution Research .436
+Ngwu, U. (2017). The practice of open defecation in rural communities in Nigeri a: a call for social and behaviour437
+change communication intervention. International Journal of Communication Research , 7:201–206.438
+Njuguna, J. (2019). Progress in sanitation among poor households in kenya: evide nce from demographic and439
+health surveys. BMC Public Health , 19.440
+NPC and ICF (2019). Nigeria Demographic and Health Survey 2018 . pulation Commission, Federal Republic441
+of Nigeria, Abuja, and ICF International, Rockville, Maryland USA.442
+Okpala, A. (1990). Nigerian population growth and its implications for economic de velopment. Scand J Dev443
+Altern, 9:63–77.444
+Oluwatuyi, S., Ogunyemi, K., Sam-Ijadele, O., Dada, O., Bello, M., Agb ele, A., and Olusuyi, A. (2020). A Dive445
+25
+into the Challenges of Community-Led Total Sanitation [CLTS] in Nigeria. International Journal of Research446
+and Scientiﬁc Innovation (IJRSI) , 7:33–37.447
+Rahman, M. H. U., Malik, M. A., Chauhan, S., Patel, R., Singh, A., and Mittal, A. (2020). Examining448
+the linkage between open defecation and child malnutrition in india. Children and Youth Services Review ,449
+117:105345.450
+Rue, H., Martino, S., and Chopin, N. (2009). Approximate Bayesian inferenc e for latent gaussian model by451
+using integrated nested laplace approximation (with discussion). Journal of Royal Statistical Society, Series452
+B, 71:319–392.453
+Sengupta, S., Verma, R., and Kazmi, S. (2018). Bottom to the Fore: Rural sanit ation in Sub-Saharan Africa.454
+Somo-Aina, O. and Gayawan, E. (2019). Structured additive distributional hurdle Poisson modelling of indi-455
+vidual fertility levels in Nigeria. Genus, 75:1–16.456
+UN (2019). Transformational beneﬁts of ending outdoor defecation: Why toilet s matter. UN News: Global457
+perspective human stories .458
+UNICEF (2018). UNICEF’s game plan to end open defecation The state of the world’s sanitation. New York:459
+United Nations Children ’s Fund (UNICEF). Programme Division/W ASH.460
+UNICEF (2021). World toilet day sees limited progress in nigerians’ access to sanitation services.461
+UNICEF/WHO (2019). Progress on household drinking water, sanitation and hygiene 2000-2017: Special focus462
+on inequalities.463
+United Nations (2017). World Population Prospects: The 2017 Revision, Key Find ings and Advance. Depart-464
+ment of Economic and Social A ﬀairs, Population Division .465
+26
+WHO (2019). Sanitation. World Health Organization .466
+WHO (2021). Population practising open defecation (%). The Global Health Observatory .467
+WHO/UNICEF Joint Monitoring Program for Water Supply and Sanitation (2011). A Snaps hot of Sanitation468
+and Open Defecation in Africa - 2010 Update.469
+WHO/UNICEF joint monitoring programme for water supply, sanitation and hygien e (2021). Progress on470
+household drinking water, sanitation, and hygiene: 2000-2020 ﬁve years into t he sdgs.471
+World Bank (2011). World Bank Development Report 2011: Conﬂict, Security, and Development.472
+WSP World Bank (2012). Economic Impacts of Poor Sanitation in Africa: Nigeria. Water and Sanitation473
+Program (WSP).474
+27

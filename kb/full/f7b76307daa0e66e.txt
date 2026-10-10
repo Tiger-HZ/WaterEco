@@ -1,0 +1,1608 @@
+Vol.:(0123456789)1 3
+https://doi.org/10.1007/s11356-023-27069-z
+RESEARCH ARTICLE
+An application of Bayesian vector heterogeneous autoregressions 
+to study network interlinkages of the crude oil and gold, stock, 
+and cryptocurrency markets during the COVID‑19 outbreak
+Le Thanh Ha1 
+Received: 23 October 2022 / Accepted: 12 April 2023 
+© The Author(s), under exclusive licence to Springer-Verlag GmbH Germany, part of Springer Nature 2023
+Abstract
+We investigate fat tails and network interconnections of crude oil, gold, stock, and cryptocurrency using seven Bayesian 
+vector heterogeneous autoregression fashions. In this paper, we incorporate parameter uncertainty by using Bayesian VAR 
+models for estimation. To make rational investment decisions, we decompose a network of financial assets and commodity 
+prices into various time horizons to obtain essential insight and knowledge. During the short, medium, and long run, this 
+paper differentiates dynamically between network interlinkages between these markets. We found some noteworthy results in 
+our study. In the first place, network interlinkages exhibit remarkable differences over time. Interlinkages between networks 
+are increased in the short term, medium term, and long term due to transient events occurring in markets during the study 
+period. As a result of the ongoing COVID-19 epidemic, the long-term ties within the system are significantly impacted. 
+Additionally, based on net directional linkages, each market’s role shifts (from sending to receiving shock and vice versa) 
+before the pre-COVID-19 pandemic course, whereas they remain persistent during COVID-19. Observations of short- and 
+medium-term trends reveal that three markets, namely, crude oil, gold, and stock, receive shocks, which are transmitted to 
+these markets by the cryptocurrency market. In terms of long-horizon measures, the results indicate that the gold and cryp -
+tocurrency markets persist as shock transmitters. Our findings are critical since policymakers can also design appropriate 
+policies to reduce the vulnerabilities of such markets and prevent risk spread and instability.
+Keywords Bayesian vector heterogeneous autoregressions · Network interlinkages · Crude oil, Gold, Stock and 
+cryptocurrency · COVID-19
+JEL Classification F3 · G12 · Q43
+Introduction
+During the first days of December 2019, Wuhan, China, 
+witnessed the discovery of a virus and disease called coro -
+navirus 19 (COVID-19). Nonetheless, the World Health 
+Organization officially confirmed it for the first time on 
+December 31, 2019. The COVID-19 crisis was declared a 
+global health emergency by the WHO only 1 month after 
+the Emergency Committee met for the second time. As of 
+11 March 2020, the World Health Organization labeled the 
+virus as a worldwide epidemic due to its spread throughout 
+the globe. Panic and fear gripped the global economy. A 40% 
+drop in the Dow Jones Industrial Average Index has occurred 
+since February 19, 2020, to March 23, 2020, from 29.348 to 
+18.591. In the same period, S&P 500 (which dropped from 
+3.386 to 2.237) and indices around the world displayed a 
+similar pattern. A 36% drop in Bitcoin’s price occurred in 
+March 2020, and crude oil prices dropped to a depressed 
+price shortly afterward. Financial catastrophes have not been 
+this bad since the 2008 global financial meltdown, according 
+to many academics.
+Energy efficiency and pollution emission reduction are 
+considered integral components of sustainable growth in 
+modern economies (Arslan et al. 2022; Azam et al. 2023; 
+Jackman and Moore 2021; Khan et al. 2022). Based on a 
+Responsible Editor: Roula Inglesi-Lotz
+ * Le Thanh Ha 
+ halethanh.kt@gmail.com
+1 National Economics University, Hanoi, Vietnam
+/ Published online: 1 May 2023
+Environmental Science and Pollution Research (2023) 30:68609–68624
+1 3
+database of thirty International Energy Agency (IEA) mem-
+bers, Khan and Hou (2021a, b) demonstrate the critical role 
+that environmental sustainability plays in pollution reduc-
+tion. Furthermore, environmental sustainability is one of the 
+most important factors in the pursuit of sustainable develop-
+ment goals (Hassan et al. 2022; Khan et al. 2022). Energy 
+security and environmental sustainability play a critical role 
+in alleviating poverty (Taghizadeh-Hesary et al. 2022) and 
+sustainable economic growth (Arslan et al. 2022). In the lit-
+erature, there is a vast number of empirical studies on deter-
+minants of environmental sustainability, such as the role of 
+green innovation (Zakari et al. 2022a); abundant energy 
+resources (Zakari et al. 2022c) and alternative and nuclear 
+energy (Khan et al. 2022); economic growth, international 
+trade, and clean energy investment (Lyu et al. 2021); indus-
+trial value-added, capital formation, urbanization, popula-
+tion growth, and biocapacity (Yang and Khan 2021); the 
+energy consumption and tourism growth (Khan and Hou 
+2021a); or the partnership between countries (Tawiah et al. 
+2021). A recent study has highlighted the importance of sus-
+tainable consumption and production of oil in promoting 
+environmental performance (Hassan and Rousselière 2022; 
+Zakari et al. 2022b). While both determinants and influences 
+of environmental sustainability have attracted much atten -
+tion from scholars, many aspects of environmental sustain-
+ability still require further investigation.
+It is extremely vital to comprehend how the value of an 
+underlying asset may fluctuate during an uncertain situa -
+tion. Behavior of investors, speculative trading decisions, 
+and hedging decisions can be influenced by these predic-
+tions about future financial conditions and asset market 
+movements. Uncertain and unpredictable events such as 
+COVID-19 are believed to affect the crude oil, stock, digi-
+tal currency, and gold market significantly, elevating their 
+volatility. Furthermore, the interlinkages of different mar -
+kets across time horizons can also be useful for forecasting 
+and portfolio management as agents make decisions based 
+on various time horizons (Barunik et al. 2016). Speculation 
+or hedging purposes might require information pertaining 
+to daily or weekly time frames, for example. In contrast, 
+a risk-averse investor seeking a long-term investment goal 
+will seek information over several months or years in order 
+to guide their investment decisions.
+In the literature, metric measures of the relationship, 
+for example, correlation and copulas, as well as Gauss -
+ian approximation approach are used to model relation-
+ships; nonetheless, neither of these models can adequately 
+represent financial or asset price data, which frequently 
+exhibit scattering and extreme values (Creal et al. 2011). 
+Metrics based on correlation, such as those proposed by 
+Engle and Kelly (2012), follow a pairwise linear model, 
+whereas Acharya et al. (2017) argue that the latter models 
+are Gaussian and linear. As an anomaly, Calabrese and 
+Osmetti (2019) developed a model of copulas that quanti -
+fies non-linear tail dependency and accounts for systemic 
+risk. The study as a whole, however, only examines rela-
+tionships between variables across horizons, as Ellington 
+(2021) pointed out. To fill the gaps, this study applies 
+Bayesian vector heterogeneous autoregressive (BVHAR) 
+methods that are responsible for heteroskedasticity, 
+sequential correlation, and fat tails. The interrelationships 
+among volatility in multiple markets, including crude oil, 
+stock, gold, and cryptocurrency, are what concerns us. 
+The ultimate objective of this study is to determine what 
+effect alternative error covariance patterns have on the 
+markets’ returns relationships. The alternative purpose 
+of the study is to examine how such network interlink -
+ages can be applied by decision-makers. As in Ellington 
+(2021), we employ approaches that are suitable for sto-
+chastic volatility, serial dependence, and non-Gaussian 
+errors to derive network interconnections from gradient 
+decompositions in order to obtain only forward-looking 
+networks. By interpreting the variance decomposition 
+matrix of forecast error as an adjacency matrix, Baruník 
+and Křehlík (2018) propose a new paradigm for analyzing 
+financial relationships derived from vector autoregressions 
+(VARs). As in Chan (2020), Corsi’s (2009) heterogeneous 
+autoregression (HAR) is extended to embedded Bayesian 
+multivariate situations using adjustable error covariance 
+structures. As a result of our empirical approach, network 
+interlinkages derived from VAR models are altered, allow -
+ing us to correct the persistence inherent in financial and 
+asset price time series.
+Four different strands of literature are cited in our paper. 
+In the first place, our work relates to those that utilize diverse 
+approaches to measure network interlinkages. Accordingly, 
+some researchers, including Baruník et al. (2020), rely upon 
+VAR models. On the other hand, others such as Diebold 
+and Yilmaz (2009) and Engle et al. (2012) refer to volatility 
+spillovers as network interactions. Specifically, Barbaglia 
+et al. (2020) utilize VARs with Gaussian error distributions. 
+By using elastic, non-Gaussian error distributions in solely 
+prospective networks, the study contributes to understanding 
+persistence in financial time series.
+It is also related to empirical investigations on links 
+between networks and spillovers of volatility (Diebold and 
+Yilmaz 2014; Engle et al. 2012). Alternatively, most studies 
+analyze ex-post volatility, which measures network interlink-
+ages using historical data. As stated by Baruník et al. (2020), 
+focusing on forward-looking volatility metrics provides 
+more insight. The reason for this is that they provide a more 
+accurate forecast of future price movements for the underly-
+ing asset. In previous studies, Gaussian error distributions 
+have been abstracted within Diebold and Yilmaz (2014). The 
+only exception is the study of Barbaglia et al. (2020), which 
+employs ex-post volatility. Comparatively to the basic model 
+68610 Environmental Science and Pollution Research (2023) 30:68609–68624
+1 3
+in the literature, the model with an error covariance structure 
+that incorporates the concept of serial dependence, fat tails, 
+and stochastic variability is examined in this paper.
+The last strand involves the quantification of systemic 
+risk and the contagions of financial asset and commodity 
+price volatility, such as Barigozzi et al. (2021) and Yang 
+and Zhou (2017). As a rule, this research estimates volatility 
+spillover or systemic risk across time, which leads to a cou-
+ple of problems. Firstly, non-parametric estimates impede 
+analysis and complicate calculations since random sampling 
+must be used. Secondly, because these time-domain met-
+rics are averaged over multiple frequencies, they may fail 
+to reveal any frequency-specific relationships. The paper 
+is aimed at expanding the literature in the following ways: 
+(i) we incorporate parameter uncertainty by using Bayesian 
+VAR models for estimation; and (ii) to make rational invest-
+ment decisions, we decompose a network of financial assets 
+and commodity prices into various time horizons to obtain 
+essential insight and knowledge.
+To the best of our knowledge, we are the first to examine 
+the impact of the global uncertainty on the short-run and 
+long-run interconnectedness of volatility of crude oil (WTI), 
+gold, and the stock market. The effects the global uncertainty 
+on the financial market have recently captured academics’ 
+attention in published works. In this article, we are con-
+cerned about the impact of the global uncertainty on the 
+volatility of the oil, gold, and cryptocurrency market. Early 
+in March 2020, geopolitical tensions between Saudi Arabia 
+and Russia contributed to price shocks (Corbet Larkin et al. 
+2020), which might be reflected by the risk component of 
+oil price shocks (Akramc 2020 ). Our research focuses on 
+the effect of the Ukraine-Russia conflict shocks on the oil 
+industry in the context of the interrelated oil, commodities, 
+and financial markets.
+Second, we adopt BVAR to distinguish dynamically 
+between network interlinkages between these markets in the 
+short, medium, and long run. We use this empirical method 
+owing to its many benefits. In particular, this pragmatic 
+approach does not diminish our observation. In addition, 
+the existence of an outlier does not significantly alter our 
+findings; however, our method gives a superior response to 
+parameter changes. The most crucial aspect of our technique 
+is calculating the net pairwise connectivity, which identi-
+fies transmission pathways between these commodities and 
+financial markets.
+The remaining sections of the study will be shown as the 
+following structure. The Literature review section provides 
+further information about the interlinkages among these 
+markets. Summary statistics and data will be the focus of 
+the Data and methodology section, which presents the meth-
+odology. In the Results section, we analyze the research find-
+ings, while the Conclusion and policy implications section 
+summarizes the findings.
+Literature review
+Khan and Hou (2021a) assert that economic growth is 
+often exchanged for environmental sustainability. The 
+quality of the environment is adversely affected by eco-
+nomic development (Khan, Hou, Le, et al. 2021). Khan, 
+Hou, Irfan, Zakari, and Le et al. (2021) demonstrate that 
+there is a strong positive correlation between energy con-
+sumption and economic growth, both in the short run 
+and the long run. An analysis of the impacts of natural 
+resources, energy consumption, and certain economic and 
+social factors on environmental quality is presented by 
+Khan, Hou, and Le (2021). New evidence on the asso-
+ciation between energy intensity, financial development, 
+and ecological sustainability has been found recently in 
+Asia–Pacific Economic Cooperation countries by Khan 
+et al. (2022) and in OECD countries by Khan, Zakari, 
+Ahmad, et al. (2022). Despite the fact that previous stud-
+ies have examined both causes and influences of envi-
+ronmental sustainability, they have not fully accounted 
+for the attendants of ecological sustainability. Likewise, 
+there are channels through which the effects of environ-
+mental sustainability or other factors on the environment 
+can be expressed or mitigated. The most recent studies 
+have focused more on the interconnection between differ -
+ent markets to explain the source of volatility in a typical 
+market (Adekoya et al. 2022; Antonakakis et al. 2022; Asai 
+et al. 2020; Chatziantoniou et al. 2022; Ha et al., 2022; 
+Le 2022).
+Research on linkages among markets, financial assets, 
+and goods on the same market is growing increasingly 
+popular, as indicated in the literature. As a result, based 
+on previous research, Corbet et al. (2019) concluded that 
+cryptocurrencies are valued as tangible financial assets, 
+regardless of the likelihood of illegal usage and the pres-
+ence of poor or unskilled trading platforms. Also, Kyriazis 
+(2019) examined previous research results on cryptocur -
+rency market fluctuations and spillover effects. Intercon-
+nections between the top five digital currencies were 
+analyzed using directional copula dependence by Hyun 
+et al. (2019). Models of GARCH and Bayesian stochastic 
+volatility were utilized by Kim et al. (2021) to examine the 
+connections between different cryptocurrencies as well as 
+to provide evidence of those.
+Several previous studies have explored the relationships 
+among various markets as well. Klein et al. (2018) inves-
+tigated the temporal correlation of gold and Bitcoin based 
+on BEKK-GARCH. The relationship cryptocurrency has 
+with financial assets such as Gold Bullion LBM, S&P US 
+Treasury bond, and the Standard & Poor 500 Composite 
+Index is also examined by Aslanidis et al. (2019). Based 
+on the VARMA-DCC-GJR-GARCH methodology, Guesmi 
+68611Environmental Science and Pollution Research (2023) 30:68609–68624
+1 3
+et al. (2019) show that investing in cryptocurrencies can 
+provide investors with additional diversification and hedg-
+ing opportunities. Cryptocurrencies were also examined as 
+hedges or diversifiers in other empirical studies. Different 
+times and assets are associated with the cryptocurrency 
+market, which determines the function of cryptocurren-
+cies in hedge and diversification strategies. In light of this, 
+Selmi et al. (2018) assessed the effectiveness of gold and 
+BTC in specific market scenarios as hedges or diversifiers. 
+Thus, Bitcoin has become a protection net for downturns in 
+economics and politics. Bitcoin is considered the new gold 
+by Klein et al. (2018). Accordingly, Guesmi et al. (2019) 
+suggest that Bitcoin may lower risks if it is introduced 
+only to three investment types: stocks, gold, and oil. For 
+the purpose of differentiating between gold price shocks 
+and crude oil price shocks, Canh et al. (2019) examined 
+whether cryptocurrencies would dominate the market with 
+the largest capitalization. Their findings revealed little cor -
+relation to economic variables, limiting financial investors' 
+diversification. As Bouri et al. (2017) argue, Bitcoin is an 
+effective way to protect against uncertainty, even though 
+unpredictability may harm Bitcoin’s profitability. In an 
+economic downturn, Bouri et al. (2018) considered Bit-
+coin as a viable tool for diversification. Besides precious 
+metals, Kurka (2019) identified no evidence that digital 
+currency is linked to other traditional assets. A subsequent 
+claim by Smales ( 2019) is that Bitcoin returns are irrel -
+evant to those of commodities and financial assets. He also 
+stated that Bitcoin’s market stability is crucial to consider -
+ing cryptocurrencies a safe haven. In regards to hedging 
+oil-related risks, Das et al. (2020) found that Bitcoin does 
+not offer any advantages over gold, commodities, or the 
+U.S. dollar. Fundamentals and core risks of oil risks as 
+well as market conditions strongly determine this type of 
+hedging capability. In bullish and bearish market condi-
+tions, Symitsi and Chalvatzis (2019) demonstrate how Bit-
+coin positively influences the diversification of portfolios.
+A key aspect of financial and economic disruptions is the 
+interaction and response between cryptocurrencies and vari-
+ous assets (such as crude oil) (Charfeddine and Kahia 2019). 
+Investments in cryptocurrencies can be managed more effec-
+tively with cryptocurrency assets. Even though the use of 
+cryptocurrencies as hedging tools may not be successful, the 
+potential for them to serve as diversifiers is worth consider-
+ing, according to the study. According to Jareno et al. (2020), 
+Bitcoin appears to be valuable in uncertain economic times 
+because of the gold-Bitcoin connection. It was investigated 
+in Hussain and Dogan’s (2021) study how cryptocurrency 
+might be implemented as a hedge and a shelter in the event 
+of adverse market events. Although gold has a more stable 
+diversity than Bitcoin, both Bitcoin and gold’s performance 
+swings when it comes to hedging or safe haven (Sharif et al. 
+2020). Lastly, Rehman and Vo (2020) show that precious 
+metals may be a more significant long-term diversification 
+option than copper in the short run.
+There has been an increase in recognition of crypto -
+currency as a form of asset that can be employed for both 
+defensive and diversifying purposes. Consequently, extreme 
+conditions, for example, those caused by medical emergen-
+cies, are more sought after. An analysis of portfolio perfor -
+mance containing financial instruments (like equities and 
+bonds), a digital asset, and precious metals is undertaken 
+by González et al. (2021). Because of this, while cryptocur-
+rencies are capable of managing the risk and uncertainty 
+associated with diversifying portfolios, few of them have 
+proved to be effective in more extreme scenarios. Although 
+gold remained stable, it was ineffective at limiting risk dur-
+ing the COVID-19 economic recession. As a final point, 
+investors can diversify their portfolios by investing in cryp-
+tocurrencies despite the lower returns they offer. According 
+to Shahzad et al. (2021), there were significant crypto-spill-
+overs caused by the COVID-19 epidemic, under moderate or 
+high volatility assumptions. Due to the lack of volatility in 
+cryptocurrencies or experiencing significant volatility in the 
+prior period of COVID-19, Yousaf and Ali (2020) suggest 
+that investors can make the most of their time by analyzing 
+three primary cryptocurrencies simultaneously. In contrast 
+to the time of COVID-19, the pairings between cryptocur -
+rencies now have more robust connections. Thus, hedging 
+efficacy increased during COVID-19, demonstrating cryp-
+tocurrency’s usefulness as a hedging tool, diversifier, and 
+risk reducer. COVID-19’s influence on cryptocurrencies’ 
+risk and uncertainty is also explored in Iqbal et al. (2021). 
+Researchers discovered that COVID-19 and digital currency 
+returns show an asymmetric relationship. Furthermore, they 
+found that cryptocurrencies such as Bitcoin can be utilized 
+as a hedging mechanism during periods of economic uncer-
+tainty as a way to mitigate COVID-19's negative impacts. As 
+Yarovaya et al. (2021) point out, it is determined by either 
+bearish or bullish capacity on the day of the market. Despite 
+this, COVID-19 did not improve the phenomenon of herd-
+ing in Bitcoin markets. In addition, Yarovaya et al. (2021) 
+found that the comparison of some features of COVID-19 
+with those of previous crises led to recommendations for 
+study topics in the future. In 2020, Corbet, Hou, and col-
+leagues demonstrated how cryptocurrency could be used to 
+diversify while serving as a powerful investment shelter in 
+the case of a pandemic. The researchers concluded that these 
+assets are perceived to be amplification devices as opposed 
+to safeguards or refuges against financial and economic vola-
+tility. In Conlon and McGee’s (2020) view, the S&P 500 and 
+Bitcoin have both declined, making Bitcoin an unattractive 
+and doubtful investment during market downturns.
+Interlinkages between networks have also been studied 
+during uncertain times such as COVID-19. In the COVID-
+19 epidemic, Umar and Gubareva (2021) investigated the 
+68612 Environmental Science and Pollution Research (2023) 30:68609–68624
+1 3
+relationship between returns and fluctuations of three lead-
+ing monetary units: the pound, the euro, and the yuan. The 
+pattern was more obvious during early waves, but minor 
+variations were seen in the subsequent waves (Umar et al., 
+2021). As a result of wavelet coherence analysis, Karamti 
+and Belhassine (2021) examined and incorporated financial 
+contagion into pandemic fear regarding U.S. stock markets 
+and global markets during pandemics. There was a positive 
+correlation among Bitcoin prices and the US COVID-19 fear 
+index in the cryptocurrency market. The following wave, 
+however, saw the fear index influence the Bitcoin market, 
+as stated by Karamti and Belhassine (2021).
+Cryptocurrencies and other asset types were evaluated 
+using a variety of approaches in a previous study. VAR 
+methods were applied by Conlon and McGee (2020), while 
+VAR-GARCH methods were used by Symitsi and Chalvatzis 
+(2019). Also selected are a number of BEKK models. Klein 
+et al. (2018) and Tu and Xue (2019) used BEKK-GARCH 
+models, while Katsiampa (2019) used bivariate diagonal 
+BEKK models. GARCH-MIDAS had been considered by 
+many academics (Walther et al. 2019 ). Even with a large 
+amount of study data, wavelet-based models have gained 
+popularity (Sharif et al., 2020). There are also several quan-
+tile approaches that are considered, including the cross-
+spectral quantile approach (Rehman and Vo, 2020) and 
+the regression-based quantile model (Jareño et al. 2020). 
+The use of ARDL (Ciaian et al. 2018) and NARDL (Bouri 
+et al. 2018; Demir et al. 2021) models in conjunction with 
+GARCH by Corbet et al. (2019) and stochastic models with 
+multiple factors (Shi et al., 2020) has recently been reported. 
+DCC models have been used by different scholars in this 
+study, including Kumarasinghe and Athambawa (2020) 
+and Charfeddine et al. (2020), as well as DCC-MGARCH 
+simulations, such as Canh et al. (2019), and VARMA-DCC-
+GARCH methods, such as Guesmi et al. (2019), whereas 
+Koutmos (2018) adapted Diebold and Yilmaz’s (2012) 
+method and followed it. As a result of the combination of a 
+parameter-variable vector autoregression (TVP-VAR) con-
+nectivity method with joint spillover analysis proposed by 
+Balcilar et al. a key objective of the research is to determine 
+how volatility shocks produced on one market are transferred 
+to others (2021). Net pairwise connectivity, which identi-
+fies transmission channels between commodity markets 
+and financial markets, is the most significant benefit of our 
+approach.
+Data and methodology
+Sample data
+Throughout the paper, we rely on a set of regularly updated 
+datasets containing prices for gold, crude oil prices, the 
+corresponding index, and the price of the most popular 
+virtual currency (in our analysis, Bitcoin (BTC) is selected 
+based on its crypto-market capitalization), S&P 500 index 
+that is mainly designed to give an indication of equity mar -
+kets in the USA. The data is collected from January 1, 2018, 
+to August 1, 2021. Our attention is mostly paid to the period 
+marked by the event that COVID-19 pandemic crisis spread 
+quickly in the globe. The statistical description of and con-
+temporaneous correlations for these four prices are displayed 
+in panels A and B of Table 1, correspondingly. As reported 
+in panel A, means and medians of these four prices range 
+from nearly 4.0 to 9.0. Their standard deviations range from 
+0.3 to 0.7, in which the old and stock markets exhibit the 
+lowest values, and the cryptocurrency is the most volatile 
+market. Different from other markets, the oil price has the 
+negative and greatest skewness. Its kurtosis is significantly 
+larger than that of different markets. By contrast, the gold 
+price has the lowest skewness and kurtosis values. As stated 
+in panel B, the relationship between petroleum and gold is 
+considerable as well as negative. In contrast, correlations 
+between other markets are positive, with SP500 and BTC 
+demonstrating the most considerable correlation.
+Ellington (2021) suggested that it is necessary to con-
+sider serial dependence and/or heavy tails when we model 
+linkages among prices of commodity and financial goods. 
+Table 1 provides the first insights on correlations of four 
+commodity and financial goods prices. Moreover, these 
+prices display a high level of persistency kurtosis values.
+Estimations from Bayesian vector heterogeneous 
+autoregressions
+In this paper, we follow Ellington (2021) to employ a mixed 
+fashion of the heterogeneous autoregressive (HAR) approach 
+initially developed by Corsi (2009) coupled with Bayesian 
+estimation developed by Chan (2020). This approach is best 
+Table 1 Descrip tive statistics and correlations of four markets
+Panel A: statistical description
+Oil Gold SP500 BTC
+Mean 3.980 6.261 8.038 9.251
+Median 4.054 6.247 7.986 9.119
+Standard deviation 0.309 0.161 0.147 0.711
+Skewness − 3.761 0.171
+0.821 0.964
+Kurtosis 35.544 1.547 2.714 3.308
+Panel B: correlations
+Oil Gold SP500 BTC
+Oil 1 − 0.415 0.105
+0.124
+Gold − 0.415 1
+0.771 0.684
+SP500 0.105 0.771 1 0.877
+BTC 0.124 0.684 0.877 1
+68613Environmental Science and Pollution Research (2023) 30:68609–68624
+1 3
+suited to our needs due to the following reasons. First, while 
+this method significantly reduces computation time, the per-
+sistence inherent in price levels is captured appropriately. 
+Second, by using the proposed method, the Kronecker struc-
+tures can be imposed to model serially dependent error terms 
+and non-Gaussian, heteroskedastic, which better consider 
+parameter and uncertainty based on the empirical database. 
+Specifically, let Xs be an n × 1 vect or of variables that is 
+monitored over s = 1, 
+…, S time scales. The HAR (VHAR) 
+description can be expressed as follows:
+where a0 is a vector of constants, and A ’s are n × n coeffi -
+cient matrices, which respectively illustrate autocorrelated 
+relationships each day, every week, and every month. The 
+lagged vectors of Xs are X(s−1�t−k) = 1k ∑ki=1 Xs−j that consists of three price components in the short, medium, and long 
+runs.
+For simplicity, the VHAR model can be written as a 
+VAR(22) with no constraints imposed on any autoregres-
+sive matrix. Hence, the VAR(3) structure can be presented 
+as follows:
+where c0 is a vector including constants terms, and /u1D402i , i = {1, 
+5, 22}, are n × n
+ coefficient matrices, which this paper refers 
+to as the first, fifth, and twenty-second lags of Xs , corre-
+spon
+dingly. Now let Z
+�
+s =( 1, X
+�
+s−1, X
+�
+s−5, X
+�
+s−22) be a k × 1 
+v
+ector of a constant and lags with k = 1 + np
+. The reduced 
+form is given as
+where C (C0, /u1D4021, /u1D4025, /u1D40222)
+�
+ is of dimension k × n and t he 
+dimensions of matrices X, Z, and V are respectively T × n, 
+T × k, a
+nd T × n. T
+he n × n co
+variance matrix of the VAR 
+model is /u1D6BA . More specifically, /u1D415 is vec(/u1D415 ) ∼ N(0, /u1D6BA ⊗ /u1D408/u1D413 ) 
+where 
+vec(/u1D415 ) includes the columns of /u1D415 and /u1D408/u1D413 that repre-
+sents T-dimensional identity matrix; the Kronecker product 
+is captured by ⊗.
+It is worth noting that we can obtain the covariance 
+structures at cross-sections and serials of X individually by 
+replacing /u1D408/u1D413 with a T × T co variance matrix Φ . To be spe-
+cific, /u1D6BA captures the cross-sectional analysis of covariance 
+and Φ reflects the sequential variance structure. Therefore, 
+we write
+We can select distinct covariance structures for Φ in 
+models (1) and (2). In this regard, seven fashions with 
+various covariance structures are employed in our paper, 
+Xs = a0 + /u1D4001Xs−1 + /u1D4005X(s−1/uni007C.vart−5) + /u1D40022X(s−1/uni007C.vart−22) + vs
+Xt = c0 +
+3/uni2211.s1
+t=1
+/u1D402iXs−i + vs
+(1)X=z c+ V
+(2)vec(/u1D415) ∼ N(0, /u1D6BA ⊗ Φ)
+comprising (i) a Bayesian VHAR with innovations follow -
+ing a t -distribution (BVHAR-t ) as in Chiu et al. (2017); 
+(ii) a Bayesian VAR with a common stochastic volatility 
+component (BVHAR-CSV) as in Mumtaz and Theodor -
+idis (2018); (iii) a Bayesian VHAR with MA(1) errors 
+(BVHAR-MA(1)) as in Dimitrakopoulos and Kolossiatis 
+(2020); (iv) a Bayesian VHAR with t -errors and a com-
+mon stochastic volatility component (BVHAR-t-CSV) as 
+in Ellington (2021); (v) a Bayesian VHAR with MA(1) 
+errors following a t -distribution (BVHAR-t -MA(1)) as 
+in Ellington (2021); (vi) a Bayesian VHAR with MA(1) 
+errors and a common stochastic volatility component 
+(BVHAR-CSV-MA(1)) as in Ellington (2021); and (vii) 
+a Bayesian VHAR with MA(1) errors following a t-dis-
+tribution and a common stochastic volatility component 
+(BVHAR-t-CSV-MA(1)) as in Ellington (2021). We follow 
+Chan (2020) and Ellington (2021) to employ model priors 
+for all parameters. We utilize a 252-day rolling window to 
+estimate these seven model fashions.
+Tracking network interlinkages in VHARs
+By determining the variance of forecast error variance 
+decomposition matrix, Baruník and Krehlík (2018) devised 
+network measures from VAR models. Then, Pesaran and 
+Shin (1998) developed these measures by using general-
+ized forecast error variance decompositions (GFEVDs). 
+Time series are assumed to be uncorrelated, meaning that 
+Φ = IT . Rather than that, these measures are modified for 
+a mor
+e general structure on Φ in this paper. For a matrix 
+A,(A)j,k , presents the j t h row and kth column. (B)j presents 
+the full j th row of B , and ΣB presents all elements added 
+together in A , since we can write Xs as C (L)Xs = vs with 
+C(L)=[ /u1D408n − /u1D4021L1 − ⋯ − /u1D402pLp] being an n × n matrix lag-
+polynomial. We also assume that the base of the VAR 
+polynomial do not lie inside the unit circle to achieve the 
+MA(∞) representation,Xs = Θ(L)v s , where C(L) = [Θ(L)]−1.
+In some exercises, we assume that the errors have an 
+MA(1) representation, with vs = /u1D716t +ψ /u1D716t−1, /u1D716t ∼ N(0, /u1D6BA) . 
+Th
+erefore, we can indicate that var/parenleft.s1vs/parenright.s1 =( 1 +Θ 2)/u1D6BA , where 
+we define /uni0303.s1/u1D6BA = c Σ, with c = (1 +Θ 2). With our setup, the 
+covariance matrix of the forecast error conditional on 
+information at time s − 1 can be presented as follows:
+Forecast error covariance matrix based on shocks 
+occurring now and in the future to the j th equations can 
+be defined by using the conditional forecast error, which 
+can be written as follows:
+ΓH =
+Q/uni2211.s1
+q=0
+Θh /uni0303.s1/u1D6BAΘ
+�
+h.
+68614 Environmental Science and Pollution Research (2023) 30:68609–68624
+1 3
+And if we assume a normal distribution, we have
+The covariance matrix is written as
+The unscaled Q -step ahead prediction error variance of 
+the jth variable in relation to the change in the kth variable is
+We can obtain a way of expressing the GFEVD as in 
+Pesaran and Shin (1998):
+where /uni0303.s1/u1D70Ekk =( /uni0303.s1/u1D6BA)k,k, /u1D6AFq denotes the n × n matr ix of MA coef-
+ficients at lag q. (/u1D6BFQ)j,k represents the contribution of vari-
+able k to the forecast error variance of variable j at horizon 
+Q.1 The power spectrum, /u1D412y(/u1D714) , is incorporated to investi -
+g
+ate systems that diverse horizons form. We denote ω as the 
+frequency component and i =
+√
+−1 ; then, the spectral den-
+sity cap
+tures the Fourier transform of the infinite MA 
+specification:
+We can define the generalized causation spectrum over 
+frequency components using the above representation 
+ω ∈ [− π, 
+π] and function of weighting to have a spectral 
+specification of variance decompositions from variable j to 
+k in Xs . We can prove the presence of measures specific to 
+hor
+izons. We then present the generalized causation spec-
+trum and weighting function as follows:
+ςkv(Q) =
+Q/uni2211.s1
+q=0
+Θh
+/bracketleft.s1vs+Q−q − /u1D53C(vs+Q−q/uni007C.varvk,s+Q−q/bracketright.s1.
+ςkv(Q) =
+Q/uni2211.s1
+q=0
+Θh
+/bracketleft.s2
+vs+Q−q − /uni0303.s1/u1D70E−1kk
+/parenleft.s2
+/uni0303.s1/u1D6BA
+/parenright.s2
+k
+vk,s+Q−q
+/bracketright.s2
+.
+ΓQ =
+Q/uni2211.s1
+q=0
+Θq /uni0303.s1/u1D6BAΘ
+�
+q − /uni0303.s1/u1D70E−1kk
+Q/uni2211.s1
+q=0
+Θq
+/parenleft.s2
+/uni0303.s1/u1D6BA
+/parenright.s2
+k
+/parenleft.s2
+/uni0303.s1/u1D6BA
+/parenright.s2�
+k
+Θ
+�
+q.
+Δ(j)kQ =
+/parenleft.s2
+ΓQ −Γ kQ
+/parenright.s2
+= /uni0303.s1/u1D70E−1kk
+Q/uni2211.s1
+q=0
+((Θq /uni0303.s1/u1D6BA)j,k)2.
+�/u1D6BFQ�j,k = /uni0303.s1/u1D70E−1kk ∑Qq=0
+��
+Θq /uni0303.s1/u1D6BA
+�
+j,k
+�2
+∑Q
+q=0
+�
+Θq /uni0303.s1/u1D6BAΘ�q
+�
+j,j
+Sx(/u1D714) =
+/uni2211.s1∞
+q=−∞/u1D53C/bracketleft.s1XsXs−q/bracketright.s1e−i/u1D714q = /u1D6AF/parenleft.s1e−i/u1D714/parenright.s1/uni0303.s1/u1D6BA/u1D6AF� /parenleft.s1e+i/u1D714/parenright.s1
+(f (/u1D714))j,k =
+/uni0303.s1/u1D70E−1kk /uni007C.var/parenleft.s1/u1D6AF/parenleft.s1e−i/u1D714/parenright.s1/parenright.s1j,k/uni007C.var2
+/parenleft.s2
+/u1D6AF/parenleft.s1e−i/u1D714/parenright.s1/uni0303.s1/u1D6BA/u1D6AF� /parenleft.s1e−i/u1D714/parenright.s1/parenright.s2
+j,j
+and we define the variance decomposition matrix in terms 
+of its spectral representation given as
+If we sum all horizons, we can obtain 
+/parenleft.s1/u1D6BFQ/parenright.s1j,k.
+Afterwards, scaling /u1D6BFd such that 
+( /uni0303.s1/u1D6BFd)j,k =( /u1D6BFd)j,k∕ ∑k (/u1D6BFH )j,k delivers the adjacency matrix, /uni0303.s1/u1D6BFd over horizon band d . We define connectiveness at hori-
+zon d as
+Equation (3) allows us to capture the forecast error vari-
+ance’s contribution stemming from all shocks within the 
+designed structure, but excluding our own shocks. It implies 
+a horizon of interest that considers system-wide connectivity.
+/uni0303.s1/u1D6BFd also helps us to derive the direction of interconnec-
+tions across horizons. Typically, to and from interlinkages 
+are presented as follows:
+Equation (4 ) captures the contribution of asset j to the 
+variance of other variables at horizon d, while Eq. (5) means 
+out-degrees. It is clear that asset j ’s variance results from 
+shocks arising in other variables at horizon d . We take the 
+differentiation between (4) and (5) to calculate the net direc-
+tional linkages at horizon d as follows:
+Hence, the positive values mean that variables exchange 
+shocks, while negative values, if they have sufficient shock 
+transmission capacity, indicate the variable is the shock 
+receiver.2
+Γj(/u1D714) =
+/parenleft.s2
+/u1D6AF/parenleft.s1e−i/u1D714/parenright.s1/uni0303.s1/u1D6BA/u1D6AF� /parenleft.s1e−i/u1D714/parenright.s1/parenright.s2
+j,j
+1
+2/u1D70B ∫ /u1D70B−/u1D70B /parenleft.s2/u1D6AF/parenleft.s1e−i/u1D706/parenright.s1/uni0303.s1/u1D6BA/u1D6AF� /parenleft.s1e−i/u1D706/parenright.s1/parenright.s2j,jd/u1D706
+/parenleft.s1/u1D6BFd/parenright.s1j,k = 12/u1D70B /uni222B.dsp dΓj(/u1D714)(f (/u1D714))j,kd/u1D714
+(3)Dd = 100 ×
+� ∑ /uni0303.s1/u1D6BFd
+∑ /uni0303.s1/u1D6BFQ − Tr{ /uni0303.s1/u1D6BFd}∑ /uni0303.s1/u1D6BFQ
+�
+(4)Dd,j→∙ = 100 ×
+∑n
+k=1,k≠j
+�
+/uni0303.s1/u1D6BFd
+�
+k,j
+∑n
+k=1,k=j
+�
+/uni0303.s1/u1D6BFH
+�
+k,j
+(5)Dd,j←∙ = 100 ×
+∑n
+k=1,k≠j
+�
+/uni0303.s1/u1D6BFd
+�
+k,j
+∑n
+k=1,k=j
+�
+/uni0303.s1/u1D6BFH
+�
+k,j
+(6)DNETd,j = Dd,j→∙ − Dd,j←∙
+1 Note that we the lag number used in MA representation to Q = 100 
+hor
+izons. Other values of Q are also considered, such as Q = {150, 
+200, 250} f
+or the robustness checks.
+2 We can control $${\widetilde{\Theta }}_{d}$$ further to define 
+pair
+wise interlinkage in Eqs. (4) to (6).
+68615Environmental Science and Pollution Research (2023) 30:68609–68624
+1 3
+Results
+Model selection
+As a start, we will compare six models by averaging and 
+medianing their log marginal likelihoods as in Chan (2020). 
+Table 2 presents these statistics. According to Ellington’s 
+(2021) study, as these statistics increase, the model’s fit is 
+better. It is important to take into account serial correlation, 
+stochastic volatility, and heavy tails. According to our find-
+ings, network measures derived from BHVAR-t-CSV-MA(1) 
+or BHVAR-t-CSV have the most significant values of log 
+marginal likelihoods. Additionally, it is important to make 
+comparisons between networks formed from BHVAR-CSV 
+and BHVAR-CSV-MA(1).3
+Network linkages
+Time‑horizon linkages
+In the following analysis, the particular network interlinkages 
+were obtained from in Eq. (3), in which d refers to short-run 
+(from 1 day to 1 week), medium run (1 week to 1 month), 
+and long-term (larger than 1 month) horizons. The one stand-
+ard deviation and the posterior median percentile in terms 
+of specific network interlinkage metrics are shown in Fig. 1. 
+Network’s short-, medium-, and long-term interlinkages are 
+displayed in the top, middle, and bottom panels. Three key find-
+ings have been identified. In the first place, the long-run inter-
+linkages show the most strength, and they gradually increase 
+from 2020 to 2021 before gradually declining towards the end 
+of the sample. As a second point, based on error bands, we 
+report significant differences between interlinkages that occur 
+over the short run and those that occur over the long run. This 
+significant difference emerges during the COVID-19 pandemic 
+(prior to January 1, 2020). I n the third place, January 2019 
+is the month when there is a peak in short- and medium-run 
+interlinkages. The trend also declined at the end of 2021, after 
+experiencing considerable surges within 2021. COVID-19 pan-
+demic strains spread through the global economy again at the 
+start of 2021, with severe consequences for a number of econo-
+mies. Consequently, the world economy becomes extremely 
+volatile during that time. Under uncertain conditions, short- and 
+medium-term interconnections between markets will probably 
+become stronger. As a temporary pandemic subsides in 2021, 
+these interlinkages become weakened slightly.
+Specifically, network interconnections exhibit consider -
+able differences at different time horizons. Over the short, 
+medium, and long term, transient market events increase 
+network interlinkages. Due to a persistent COVID-19 health 
+crisis, Baumeister et al. (2020) pointed out that long-term 
+network interlinkages are more prominent.
+Net‑directional linkages
+In the following step, we will study the net-directional connec-
+tions between commodity prices and financial goods prices 
+at different time horizons. Initially, we focus on the short run 
+and the medium run. Short-run net-directional interlinkages, as 
+shown in Figs. 2 and 3, are posterior medians and one standard 
+deviation percentiles. It is noteworthy that the positive (nega-
+tive) values of series j indicate its role as a shock transmitter 
+(receiver). It is important to emphasize a few points here. Since 
+the start of 2019, crude oil and stocks have acted as shock 
+receivers from other markets, while gold and cryptocurrencies 
+act as shock transmitters. Nonetheless, between January 2019 
+and January 2020, gold and cryptocurrency markets played 
+a smaller role. As a contrast, crude oil and stock played sig-
+nificant roles at the time, but in opposing ways. Specifically 
+looking at the times when COVID-19 struck the globe, we 
+find that the oil market, gold market, and equity markets are 
+shock receivers. These markets are being affected by shocks 
+transmitted by the cryptocurrency market.
+Afterwards, we examine the long-horizon net-directional 
+linkages shown in Fig. 4. Throughout the study period, both 
+the stock and cryptocurrency markets demonstrate relatively 
+similar time dynamics. Pre-COVID-19, their roles changed. 
+As the year 2020 begins, the stock and cryptocurrency markets 
+appear continuously as shock receivers and transmitters, corre-
+spondingly. It is more probable that petroleum was acting as a 
+means of transmitting shocks before the COVID-19 pandemic 
+began in 2020. It has become a shock receiver since that date, 
+however. In the midst of the illness crisis of COVID-19, gold 
+Table 2 Average and median log marginal likelihoods of seven 
+B
+VHAR models
+Notes: BVHAR denotes the Bayesian Heterogeneous Autoregressive 
+model. We also denote t as errors resulting from a t-distribution, CSV 
+as an informal term for common volatility, and MA(1) as the remain-
+ing value resulting from an MA(1) process. We employ a rolling win-
+dow of 252 days in our database from January 1, 2018, to December 
+31, 2021
+Average log mar-
+ginal likelihoods
+Median log mar-
+ginal likelihoods
+BHVAR-t 802.883 816.235
+BHVAR-CSV 1811.079 1880.297
+BHVAR-MA(1) 1102.183 1216.235
+BHVAR-t-CSV 1946.983 1935.779
+BHVAR-t-MA(1) 1254.490 1286.274
+BHVAR-CSV-MA(1) 1764.482 1807.727
+BHVAR-t-CSV-MA(1) 1929.812 1943.471
+3 The results from these models can be provided by authors upon the 
+r
+equest.
+68616 Environmental Science and Pollution Research (2023) 30:68609–68624
+1 3
+served as a vital shock transmitter. These results support those 
+of Ren and Lucey (2022), who found a tenuous link between 
+clean energy and cryptocurrencies, indicating that clean energy 
+may someday be employed as a hedging and diversification 
+strategy for cryptocurrencies. The growth of some commod-
+ity markets has been noted before in conjunction with various 
+financial crises (2007–2009), as indicated by Balcilar et al. 
+(2021) and Zhang and Broadstock (2020).
+Robustness check
+In order to verify our findings, we take logs of all series and 
+analyze them as described in the Net-directional linkages 
+section. Additionally, for some markets, we try to add more 
+assets (e.g., adding more cryptocurrencies, using other stock 
+indexes). A few of our results are reported in the Appendix, 
+and the others can be provided upon request in order to save 
+space. Generally, we find the same conclusions as we did pre-
+viously, indicating the conclusions regarding dynamic network 
+interlinkages are valid and robust.
+Conclusion and policy implications
+This paper is aimed at exploring fat tails and connections 
+between four different markets, which include gold, stocks, 
+crude oil, and digital currency, in a sevenfold Bayesian 
+vector heterogeneous autoregression model. It differenti-
+ates between short-run, medium-run, and longer-run net-
+work interlinkages among these markets. In the period from 
+January 1, 2018, to December 31, 2021, data are collected 
+daily on petroleum benchmark (WTI) prices, prices of gold, 
+Fig. 1 Diverse time-horizon 
+specific ne
+twork interlinkage 
+measures. Notes: we plot the 
+one standard deviation and the 
+median quartiles of the distribu-
+tion after posterior estimation of 
+interlinkage statistics specifying 
+for horizons. System interlink-
+ages at short horizons (from 
+1 day to 1 week), at mid-hori-
+zons (from 1 week to 1 month), 
+and at long horizons (larger 
+than 1 month) are respectively 
+displayed at the top, middle, and 
+bottom panels
+68617Environmental Science and Pollution Research (2023) 30:68609–68624
+1 3
+S&P500 indexes, and BTC values. The following two points 
+deserve special attention. As a first step, it is crucial that the 
+four markets are interconnected in the long run. Addition-
+ally, the pattern of long-run network interlinkages differs 
+from the pattern of short-run and medium-run interlinkages. 
+As the COVID-19 pandemic spreads across the globe, these 
+distinctions become more evident. During uncertain times, 
+network interlinkages among various types of markets are 
+also likely to increase in size. Second, market directional 
+links indicate a shift in roles (from shock transmitter to 
+shock receiver) before the COVID-19 pandemic, whereas 
+these roles persist during the COVID-19 pandemic. The 
+short- and medium-horizon measures indicate that precious 
+metals, crude oil, and equity markets are shock receivers, 
+while the cryptocurrency market transmits shock influences. 
+Cryptocurrency and gold markets are persistently shock 
+transmitters, according to long-horizon measures.
+Theoretical improvements
+In our research, we are the first to offer a unique deep expla-
+nation of the interconnectedness between these commodities 
+Fig. 2 Short-horizon (1 day to 
+1 w
+eek) net-directional link-
+ages. Notes: positive (negative) 
+values mean that the considered 
+market plays a role of a trans-
+mitter (receiver) of shock
+Fig. 3 Medium-horizon (1 w eek 
+to 1 month) net-directional link-
+ages. Notes: positive (negative) 
+values mean that the considered 
+market plays a role of a trans-
+mitter (receiver) of shock
+68618 Environmental Science and Pollution Research (2023) 30:68609–68624
+1 3
+and financial and energy markets, specifically in chaotic 
+events like the COVID-19 epidemic in the short-, medium-, 
+and long-run. Using the special method, the short-, medium-, 
+and long-run pairwise connectedness estimate spread chan-
+nels between various markets. We contribute crucial infor -
+mation and warnings about the spread of uncertain occur -
+rences and policies for regulators and investors.
+Practical applications
+Findings from our study have important consequences for 
+financial institutions and government agencies, as well as 
+practices from the contagions in different markets, as well 
+as their interconnectedness on the policy front. Policymakers 
+can also design appropriate policies to reduce the vulnerabil-
+ities of such markets and prevent risk spread and instability 
+if they know the crucial antecedents of contagions among 
+them, including oil, gold, commodities, and cryptocurren-
+cies. Based on our findings, there are strong links between 
+the four market segments, which emphasizes investor risks 
+associated with low and high diversification. As a result of 
+our results, it is becoming increasingly clear that unpre-
+dictable events, such as the current COVID-19 outbreak, 
+are interconnected. It is evident that a sudden change in a 
+traditional market impacts a network as a whole, suggest-
+ing that investors and managers should be more cautious 
+in managing the investment portfolio, which includes gold, 
+oil in future contracts, stocks, and cryptocurrency. An early 
+warning signal would be the contagions of uncertainty and 
+risk that should be considered when making an investment 
+decision. In addition, this paper’s findings can also be use-
+ful in enhancing public welfare, which is a direct result of 
+financialization, oil, cryptocurrency, and gold. The crucial 
+insights that there are ambiguities and risks in the energy 
+sector must be applied to finance markets, reversely. Con-
+sequently, designing policies to enhance the welfare of a 
+vulnerable group must take these factors into account.
+Limitations and directions for future research
+The outcomes of the research still have three limitations. Prior 
+to all else, it is important to highlight that we cannot find any 
+general principle or pattern that applies to all cases on how 
+risk occurrences impact total, net, or pairwise spillovers in the 
+short, medium, and long run. Second, the extent of the spread 
+is significant from the standpoint of indicator association. If the 
+spread is large, changes and shocks brought on by other indi-
+cators will majorly influence a particular market system. The 
+government must take a variety of steps to lessen the negative 
+consequences of outside shocks. Authorities should concen-
+trate on frequency-specific danger sources. In the integration 
+of global regulatory guidelines for different metrics, more 
+focus should be made on reducing the negative consequences 
+of long-term fluctuation spread and short-term return spread. 
+Last but not least, considering that many researchers consider 
+the spillover influence across several metrics, evaluating the 
+portfolio advantages of diversity is a substantial extension. In 
+the meanwhile, we placed it on the back burner.
+Fig. 4 Long-horizon (g reater 
+than 1 month) net-directional 
+linkages. Notes: positive (nega-
+tive) values mean that the con-
+sidered market plays a role of a 
+transmitter (receiver) of shock
+68619Environmental Science and Pollution Research (2023) 30:68609–68624
+1 3
+Appendix
+Please see Figs. 5, 6, 7 and 8.
+Fig. 5 Horizon specific network 
+inter
+linkage measures. Notes: 
+we plot the posterior median 
+and one standard deviation 
+percentiles of the posterior 
+distribution of horizon specific 
+network interlinkage measures, 
+Dd . Network interlinkage at 
+shor
+t horizons (from 1 day to 
+1 week), at medium horizons 
+(from 1 week to 1 month), 
+and at long horizons (larger 
+than 1 month) are respectively 
+displayed at the top, middle, and 
+bottom panel
+68620 Environmental Science and Pollution Research (2023) 30:68609–68624
+1 3
+Fig. 6 Short-horizon (1 day to 
+1 w
+eek) net-directional link-
+ages. Notes: positive (negative) 
+values mean that the considered 
+market plays a role of a trans-
+mitter (receiver) of shock
+Fig. 7 Medium-horizon (1 w eek 
+to 1 month) net-directional link-
+ages. Notes: positive (negative) 
+values mean that the considered 
+market plays a role of a trans-
+mitter (receiver) of shock
+68621Environmental Science and Pollution Research (2023) 30:68609–68624
+1 3
+Author contribution Le Th anh Ha contributed to all stages of pre -
+paring, drafting, writing, and revising this review article. The author 
+listed has made a substantial, direct, and intellectual contribution to the 
+work during different preparation stages. The author read, revised and 
+approved the final version of this manuscript.
+Funding Th
+is paper was supported by National Economics University.
+Data availability Data a
+vailable on request due to privacy/ethical 
+restrictions.
+Declarations 
+Ethics approval and consent to participate No t applicable.
+Consent for publication No
+t applicable.
+Conflict of interest The author declar
+es no competing interests.
+References
+Acharya VV, Pedersen LH, Philippon T, Richardson M (2017) Meas-
+uring systemic risk. Rev Financ Stud 30(1):2–47. https:// doi. or
+g/ 
+10. 1093/ r
+fs/ hhw088
+A
+dekoya OB, Oliyide JA, Yaya OS, Al-Faryan MAS (2022) Does oil 
+connect differently with prominent assets during war? Analysis 
+of intra-day data during the Russia-Ukraine saga. Resour Policy 
+77:102728. https:// doi. or
+g/ 10. 1016/j. r
+esou r
+pol. 2022. 102728
+A
+kram QF (2020) Oil price drivers, geopolitical uncertainty and oil 
+exporters’ currencies. Energy Econ 89:104801. https:// doi. or
+g/ 
+10. 1016/j. eneco. 2020. 104801
+Ant
+onakakis N, Cunado J, Filis G, Gabauer D, de Gracia FP (2022) 
+Dynamic connectedness among the implied volatilities of oil 
+prices and financial assets: new evidence of the COVID-19 
+pandemic. Int Rev Econ Finance. https:// doi. or
+g/ 10
+. 10
+16/j. ir
+ef. 
+2022. 08. 009
+Arslan HM, Khan I, Latif MI, K
+omal B, Chen S (2022) Understand-
+ing the dynamics of natural resources rents, environmental sus-
+tainability, and sustainable economic growth: new insights from 
+China. Environ Sci Pollut Res 29(39):58746–58761. https:// do
+i. 
+org/ 10. 1007/ s11356- 022- 19952-y
+Asai M, Gup
+ta R, McAleer M (2020) Forecasting volatility and co-
+volatility of crude oil and gold futures:effects of leverage, jumps, 
+spillovers, and geopolitical risks. Int J Forecast 36(3):933–948. 
+https:// doi. or
+g/ 10. 1016/j. i
+jfor ecast. 2019. 10. 003
+Aslanidis N
+, Bariviera AF, Martínez-Ibañez O (2019) An analysis of 
+cryptocurrencies conditional cross correlations. Financ Res Lett 
+31:130–137. https:// doi. or
+g/ 10. 1016/j. fr
+l. 2019. 04. 019
+Azam W
+, Khan I, Ali SA (2023) Alternative energy and natural 
+resources in determining environmental sustainability: a look at 
+the role of government final consumption expenditures in France. 
+Environ Sci Pollut Res Int 30(1):1949–1965. https:// doi. or
+g/ 10. 
+1007/ s11356- 022- 22334-z
+Balcilar M, Gabauer D, U
+mar Z (2021) Crude oil futures contracts and 
+commodity markets: new evidence from a TVP-VAR extended 
+joint connectedness approach. Resour Policy 73:102219. https:// 
+doi. or
+g/ 10. 1016/j. r
+esou r
+pol. 2021. 102219
+Barbag
+lia L, Croux C, Wilms I (2020) Volatility spillovers in com-
+modity markets: a large t-vector autoregressive approach. 
+Energy Econ 85:104555. https:// doi. or
+g/ 10. 1016
+/j. ene
+co. 2019
+. 
+104555
+Barigozzi M, Hallin M, Soccorsi S, v
+on Sachs R (2021) Time-varying 
+general dynamic factor models and the measurement of financial 
+connectedness. J Econ 222(1, Part B):324–343. https:// doi
+. or
+g/ 10. 
+1016/j. jecon om. 2020. 07. 004
+Bar
+uník J, Křehlík T (2018) Measuring the frequency dynamics of 
+financial connectedness and systemic risk*. J Financial Econ 
+16(2):271–296. https:// doi. or
+g/ 10. 1093/ jjfin ec/ nb
+y001
+Barunik J, Krehlik T, Vacha L (2016) Modeling and forecasting 
+exchange rate volatility in time-frequency domain. Eur J Oper 
+Res 251(1):329–340. https:// doi. or
+g/ 10. 1016/j. ejor
+. 2015. 12. 010
+F
+ig. 8 
+ Long-horizon (g
+reater 
+than 1 month) net-directional 
+linkages. Notes: positive (nega-
+tive) values mean that the con-
+sidered market plays a role of a 
+transmitter (receiver) of shock
+68622 Environmental Science and Pollution Research (2023) 30:68609–68624
+1 3
+Baruník J, Bevilacqua M, Tunaru R (2020) Asymmetric network con-
+nectedness of fears. Rev Econ Stat 1–41. https:// doi. or
+g/ 10. 1162/ 
+res
+t_a_ 01003
+Bour
+i E, Gupta R, Tiwari AK, Roubaud D (2017) Does bitcoin hedge 
+global uncertainty? Evidence from wavelet-based quantile-in-
+quantile regressions. Financ Res Lett 23:87–95. https:// doi. or
+g/ 
+10. 1016/j. fr
+l. 2017. 02. 009
+Bour
+i E, Gupta R, Lau CKM, Roubaud D, Wang S (2018) Bitcoin 
+and global financial stress: a copulabased approach to dependence 
+and causality in the quantiles. Q Rev Econ Finance 69:297–307. 
+https:// doi. or
+g/ 10. 1016/j. qr
+ef. 2018. 04. 003
+Calabr
+ese R, Osmetti SA (2019) A new approach to measure systemic 
+risk: a bivariate copula model for dependent censored data. Eur J 
+Oper Res 279(3):1053–1064. https:// doi. or
+g/ 10. 1016/j. ejor
+. 2019. 
+06. 027
+Canh NP
+, Binh NQ, Thanh SD (2019) Cryptocurrencies and investment 
+diversification: empirical evidence from seven largest cryptocur -
+rencies. Theoretical. Econ Lett 9(3):Article 3. https:// doi. or
+g/ 10. 
+4236/ tel. 2019. 93031
+Ch
+an JCC (2020) Large Bayesian VARs: a flexible Kronecker error 
+covariance structure. J Bus Econ Stat 38(1):68–79. https:// do
+i. 
+org/ 10. 1080/ 07350 015. 2018. 14513 36
+Char
+feddine L, Kahia M (2019) Impact of renewable energy con-
+sumption and financial development on CO2 emissions and eco-
+nomic growth in the MENA region: a panel vector autoregressive 
+(PVAR) analysis. Renew Energ 139:198–213. https:// doi. or
+g/ 10. 
+1016/j. r
+enene. 2019. 01. 010
+Char
+feddine L, Benlagha N, Maouchi Y (2020) Investigating the 
+dynamic relationship between cryptocurrencies and conventional 
+assets: implications for financial investors. Econ Model 85:198–
+217. https:// doi. or
+g/ 10. 1016/j. econm od. 2019. 05. 016
+Chatziant
+oniou I, Abakah EJA, Gabauer D, Tiwari AK (2022) Quantile 
+time–frequency price connectedness between green bond, green 
+equity, sustainable investments and clean energy markets. J Clean 
+Prod 361:132088. https:// doi. or
+g/ 10. 1016/j. jclep r
+o. 2022. 132088
+Chiu 
+C-W (Jeremy), Mumtaz H, Pintér G (2017) Forecasting with 
+VAR models: fat tails and stochastic volatility. Int J Forecast 
+33(4):1124–1143. https:// doi. or
+g/ 10. 1016/j. i
+jfor ecas
+t. 2017. 03. 001
+Ciaian P
+, Rajcaniova M, Kancs d’ A (2018) Virtual relationships: short- 
+and long-run evidence from BitCoin and altcoin markets. J Int 
+Financ Mark Inst Money 52:173–195. https:// doi. or
+g/ 10. 1016/j. 
+intfin. 2017. 11. 001
+Corbe
+t S, Lucey B, Urquhart A, Yarovaya L (2019) Cryptocurrencies 
+as a financial asset: a systematic analysis. Int Rev Financ Anal 
+62:182–199. https:// doi. or
+g/ 10. 1016/j. ir
+fa. 2018. 09. 003
+Corbe
+t S, Larkin C, Lucey B (2020) The contagion effects of the COVID-
+19 pandemic: evidence from gold and cryptocurrencies. Financ Res 
+Lett 35:101554. https:// doi. or
+g/ 10. 1016/j. fr
+l. 2020. 101554
+Corsi F (2009) A sim
+ple approximate long-memory model of realized 
+volatility. J Financial Econ 7(2):174–196. https:// doi. or
+g/ 10. 1093/ 
+jjfin ec/ nbp001
+Cr
+eal D, Koopman SJ, Lucas A (2011) A dynamic multivariate heavy-
+tailed model for time-varying volatilities and correlations. J Bus 
+Econ Stat 29(4):552–563. https:// doi. or
+g/ 10. 1198/ jbes. 2011. 10070
+Demir E, Simon
+yan S, García-Gómez C-D, Keung LC, M. (2021) The 
+asymmetric effect of bitcoin on altcoins: evidence from the non-
+linear autoregressive distributed lag (NARDL) model. Financ Res 
+Lett 40(101754). https:// doi. or
+g/ 10. 1016/j. fr
+l. 2020. 101754
+Dimitr
+akopoulos S, Kolossiatis M (2020) Bayesian analysis of moving 
+average stochastic volatility models: modeling in-mean effects and 
+leverage for financial time series. Economet Rev 39(4):319–343. 
+https:// doi. or
+g/ 10. 1080/ 07474 938. 2019. 16300 75
+Diebold 
+FX, Yilmaz K (2009) Measuring financial asset return and 
+volatility spillovers, with application to global equity markets*. 
+Econ J 119(534):158–171. https:// doi. or
+g/ 10. 1111/j. 1468- 0297. 
+2008. 02208.x
+Diebold FX, Y ilmaz K (2012) Better to give than to receive: predictive 
+directional measurement of volatility spillovers. Int J Forecast 
+28(1):57–66. https:// doi. or
+g/ 10. 1016/j. i
+jfor ecast. 2011. 02. 006
+Diebold FX, Yılmaz K (2014) On t
+he network topology of variance 
+decompositions: measuring the connectedness of financial firms. 
+J Econ 182(1):119–134. https:// doi. or
+g/ 10. 1016/j. jecon om. 2014. 
+04. 012
+Eng
+le R, Kelly B (2012) Dynamic Equicorrelation. J Bus Econ Stat 
+30(2):212–228. https:// doi. or
+g/ 10. 1080/ 07350 015. 2011. 652048
+Eng
+le RF, Gallo GM, Velucchi M (2012) Volatility spillovers in east 
+Asian financial markets: a mem-based approach. Rev Econ Stat 
+94(1):222–223. https:// doi. or
+g/ 10. 1162/ RES
+T_a_ 00167
+Ellingt
+on M (2021) Fat tails, serial dependence, and implied volatility 
+index connections. Eur J Oper Res. https:// doi. or
+g/ 10. 1016/j. ejor
+. 
+2021. 09. 038
+González M, de la O, Jar
+eño F, Skinner FS (2021) Asymmetric inter -
+dependencies between large capital cryptocurrency and gold 
+returns during the COVID-19 pandemic crisis. Int Rev Financ 
+Anal. https:// doi. or
+g/ 10. 1016/j. ir
+fa. 2021. 101773
+Guesmi K, Saadi S, A
+bid I, Ftiti Z (2019) Portfolio diversification 
+with virtual currency: evidence from bitcoin. Int Rev Financ Anal 
+63:431–437. https:// doi. or
+g/ 10. 1016/j. ir
+fa. 2018. 03. 004
+Hassan M, R
+ousselière D (2022) Does increasing environmental pol-
+icy stringency lead to accelerated environmental innovation? A 
+Research Note. Appl Econ 54(17):1989–1998
+Ha LT (2022) Are digital business and digital public services a 
+driver for better energy security? Evidence from a Euro-
+pean sample. Environ Sci Pollut Res. https:// doi. or
+g/ 10. 1007/ 
+s11356- 021- 17843-2
+H
+ussain M, Dogan E (2021) The role of institutional quality and envi-
+ronment-related technologies in environmental degradation for 
+BRICS. J Clean Prod 304:127059. https:// doi. or
+g/ 10. 1016/j. jclep 
+ro. 2021. 127059
+Hyun S, Lee J, Kim J-M, Jun C (2019) What coins Lead in t
+he cryp-
+tocurrency market: using copula and neural networks models. J 
+Risk Financ Manag 12(3):Article 3. https:// doi. or
+g/ 10. 3390/ jr
+fm1 
+20301 32
+Iqbal 
+N, Fareed Z, Wan G, Shahzad F (2021) Asymmetric nexus 
+between COVID-19 outbreak in the world and cryptocurrency 
+market. Int Rev Financ Anal 73:101613. https:// doi. or
+g/ 10. 1016/j. 
+irf
+a. 2020. 101613
+J
+ackman M, Moore W (2021) Does it pay to be green? An explora -
+tory analysis of wage differentials between green and non-green 
+industries. J Econ Dev 23(3):284–298. https:// doi. or
+g/ 10. 1108/ 
+JED- 08- 2020- 0099
+Jar
+eño F, González M de la O, Tolentino M, Sierra K (2020) Bitcoin 
+and gold price returns: a quantile regression and NARDL analy -
+sis. Resour Policy 67:101666. https:// doi. or
+g/ 10. 1016/j. r
+esou r
+pol. 
+2020. 101666
+K
+aramti C, Belhassine O (2021) COVID-19 pandemic waves and 
+global financial markets: evidence from wavelet coherence analy-
+sis. Financ Res Lett 102136. https:// doi. or
+g/ 10. 1016/j. fr
+l. 2021. 
+102136
+Kh
+an I, Hou F (2021a) The dynamic links among energy consumption, 
+tourism growth, and the ecological footprint: the role of envi-
+ronmental quality in 38 IEA countries. Environ Sci Pollut Res 
+28(5):5049–5062. https:// doi. or
+g/ 10. 1007/ s11356- 020- 10861-6
+Khan I, Hou F (2021b) The im
+pact of socio-economic and environmen-
+tal sustainability on CO2 emissions: a novel framework for thirty 
+IEA countries. Soc Indic Res 155(3):1045–1076. https:// doi. or
+g/ 
+10. 1007/ s11205- 021- 02629-3
+Khan I, Hou F
+, Irfan M, Zakari A, Le HP (2021a) Does energy tri-
+lemma a driver of economic growth? The roles of energy use, 
+population growth, and financial development. Renew Sust Energ 
+Rev 146:111157. https:// doi. or
+g/ 10. 1016/j. rser
+. 2021. 111157
+68623Environmental Science and Pollution Research (2023) 30:68609–68624
+1 3
+Khan I, Hou F, Zakari A, Tawiah VK (2021b) The dynamic links 
+among energy transitions, energy consumption, and sustainable 
+economic growth: a novel framework for IEA countries. Energy 
+222:119935. https:// doi. or
+g/ 10. 1016/j. ener
+gy. 2021. 119935
+Kh
+an I, Tan D, Hassan ST, Bilal (2022) Role of alternative and nuclear 
+energy in stimulating environmental sustainability: impact of 
+government expenditures. Environ Sci Pollut Res 29(25):37894–
+37905. https:// doi. or
+g/ 10. 1007/ s11356- 021- 18306-4
+Khan I, Hou F
+, Zakari A, Irfan M, Ahmad M (2022) Links among 
+energy intensity, non-linear financial development, and environ-
+mental sustainability: new evidence from Asia Pacific economic 
+cooperation countries. J Clean Prod 330:129747. https:// doi. or
+g/ 
+10. 1016/j. jclep r
+o. 2021. 129747
+Kim J-M, Jun C, Lee J (2021) F
+orecasting the volatility of the crypto-
+currency market by GARCH and stochastic volatility. Mathemat-
+ics 9(14):Article 14. https:// doi. or
+g/ 10. 3390/ mat
+h9 141614
+Klein T
+, Pham Thu H, Walther T (2018) Bitcoin is not the new 
+gold – a comparison of volatility, correlation, and portfolio per -
+formance. Int Rev Financ Anal 59:105–116. https:// doi. or
+g/ 10. 
+1016/j. ir
+fa. 2018. 07. 010
+K
+umarasinghe W, Athambawa H (2020) The impact of digitalization on 
+business models with special reference to management accounting 
+in small and medium enterprises in Colombo District. Int J Sci 
+Technol Res 9:6654–6665
+Kurka J (2019) Do cryptocurrencies and traditional asset classes influ-
+ence each other? Financ Res Lett 31:38–46. https:// doi. or
+g/ 10. 
+1016/j. fr
+l. 2019. 04. 018
+K
+yriazis NA (2019) A survey on empirical findings about spillovers in 
+cryptocurrency markets. J Risk Financ Manag 12(4):170
+Le TH (2022) Connectedness between nonrenewable and renewable 
+energy consumption, economic growth and CO2 emission in 
+Vietnam: new evidence from a wavelet analysis. Renew Energy 
+195:442–454. https:// doi. or
+g/ 10. 1016/j. r
+enene. 2022. 05. 083
+Le 
+HT, Hoang DP, Doan TN, Pham CH, To TT (2021) Global eco-
+nomic sanctions, global value chains and institutional quality: 
+Empirical evidence from cross-country data. J Int Trade Econ 
+Dev 0(0):1–23. https:// doi. or
+g/ 10. 1080/ 09638 199. 2021. 19836 34
+L
+yu L, Khan I, ZakariBilal A (2021) A study of energy investment and 
+environmental sustainability nexus in China: a bootstrap replica-
+tions analysis. Environ Sci Pollut Res. https:// doi. or
+g/ 10. 1007/ 
+s11356- 021- 16254-7
+Mumt
+az H, Theodoridis K (2018) The changing transmission of uncertainty 
+shocks in the U.S. J Bus Econ Stat 36(2):239–252. https:// doi. or
+g/ 10. 
+1080/ 07350 015. 2016. 11473 57
+P
+esaran HH, Shin Y (1998) Generalized impulse response analysis in 
+linear multivariate models. Econ Lett 58(1):17–29. https:// doi. or
+g/ 
+10. 1016/ S0165- 1765(97) 00214-0
+R
+ehman MU, Vinh Vo X (2020) Cryptocurrencies and precious met-
+als: a closer look from diversification perspective. Resour Policy 
+66:101652. https:// doi. or
+g/ 10. 1016/j. r
+esou r
+pol. 2020. 101652
+Selmi R, Mensi W
+, Hammoudeh S, Bouoiyour J (2018) Is bitcoin a 
+hedge, a safe haven or a diversifier for oil price movements? A 
+comparison with gold. Energy Econ 74:787–801. https:// doi. or
+g/ 
+10. 1016/j. eneco. 2018. 07. 007
+Shahzad SJH, Bour
+i E, Kang SH, Saeed T (2021) Regime specific 
+spillover across cryptocurrencies and the role of COVID-19. 
+Financ Innov 7(1):5. https:// d
+oi. o
+rg/ 1
+0. 1186/ s
+40854- 0
+20- 0
+0210-4
+Sharif A, Aloui C, Yarovaya L (2020) COVID-19 pandemic, oil prices, 
+stock market, geopolitical risk and policy uncertainty nexus in the 
+US economy: fresh evidence from the wavelet-based approach. Int 
+Rev Financ Anal 70:101496. https:// doi. or
+g/ 10. 1016/j. ir
+fa. 2020. 
+101496
+Smales LA (2019) Bitcoin as a saf
+e haven: is it even worth consider -
+ing? Financ Res Lett 30:385–393. https:// doi. or
+g/ 10. 1016/j. fr
+l. 
+2018. 11. 002
+Symitsi E, Chal vatzis KJ (2019) The economic value of bitcoin: a port-
+folio analysis of currencies, gold, oil and stocks. Res Int Bus Financ 
+48:97–110. https:// doi. or
+g/ 10. 1016/j. r
+ibaf. 2018. 12. 001
+T
+awiah VK, Zakari A, Khan I (2021) The environmental footprint 
+of China-Africa engagement: an analysis of the effect of China 
+– Africa partnership on carbon emissions. Sci Total Environ 
+756:143603. https:// doi. or
+g/ 10. 1016/j. scit
+o tenv
+. 2020. 143603
+T
+aghizadeh-Hesary F, Zakari A, Yoshino N, Khan I (2022) Leverag-
+ing on energy security to alleviate poverty in Asian economies. 
+Singapore Econ Rev:1–28. https:// do
+i. o
+rg/ 1
+0. 11
+42/ S
+0217 59
+082 
+24400 15
+T
+u Z, Xue C (2019) Effect of bifurcation on the interaction between 
+bitcoin and Litecoin. Financ Res Lett 31. https:// doi. or
+g/ 10. 1016/j. 
+frl. 2018. 12. 010
+U
+mar Z, Gubareva M (2021) The relationship between the Covid-19 
+media coverage and the environmental, social and governance lead-
+ers equity volatility: a time-frequency wavelet analysis. Appl Econ 
+53(27):3193–3206. https:// doi. or
+g/ 10. 1080/ 00036 846. 2021. 18772 52
+U
+mar Z, Jareño F, González M de la O (2021) The impact of COVID-
+19-related media coverage on the return and volatility connect-
+edness of cryptocurrencies and fiat currencies. Technol Forecast 
+Soc Chang 172:121025. https:// doi. or
+g/ 10. 1016/j. tec
+hf or
+e. 2021. 
+121025
+Walt
+her T, Klein T, Bouri E (2019) Exogenous drivers of bitcoin and 
+cryptocurrency volatility – a mixed data sampling approach to 
+forecasting. J Int Financ Mark Inst Money 63:101133. https:// doi. 
+org/ 10. 1016/j. intfin. 2019. 101133
+Y
+ang Z, Zhou Y (2017) Quantitative easing and volatility spillovers 
+across countries and asset classes. Manag Sci 63(2):333–354. 
+https:// doi. or
+g/ 10. 1287/ mnsc. 2015. 2305
+Y
+ang X, Khan I (2021) Dynamics among economic growth, urbaniza-
+tion, and environmental sustainability in IEA countries: the role 
+of industry value-added. Environ Sci Pollut Res. https:// doi. or
+g/ 
+10. 1007/ s11356- 021- 16000-z
+Y
+arovaya L, Matkovskyy R, Jalan A (2021) The effects of a “black 
+swan” event (COVID-19) on herding behavior in cryptocurrency 
+markets. J Int Financ Mark Inst Money 75:101321. https:// doi. or
+g/ 
+10. 1016/j. intfin. 2021. 101321
+Y
+ousaf I, Ali S (2020) The COVID-19 outbreak and high frequency 
+information transmission between major cryptocurrencies: evi-
+dence from the VAR-DCC-GARCH approach. Borsa Istanbul Rev 
+20:S1–S10. https:// doi. or
+g/ 10. 1016/j. bir
+. 2020. 10. 003
+Zhang 
+D, Broadstock DC (2020) Global financial crisis and rising 
+connectedness in the international commodity markets. Int Rev 
+Financ Anal 68:101239. https:// doi. or
+g/ 10. 1016/j. ir
+fa. 2018. 08. 003
+Zak
+ari A, Khan I, Tan D, Alvarado R, Dagar V (2022a) Energy effi-
+ciency and sustainable development goals (SDGs). Energy 
+239:122365. https:// doi. or
+g/ 10. 1016/j. ener
+gy. 2021. 122365
+Z
+akari A, Khan I, Tawiah V, Alvarado R, Li G (2022b) The produc-
+tion and consumption of oil in Africa: the environmental implica-
+tions. Resour Policy 78:102795. https:// doi. or
+g/ 10. 1016/j. r
+esou 
+rpol. 2022. 102795
+Zak
+ari A, Li G, Khan I, Jindal A, Tawiah V, Alvarado R (2022c) Are 
+abundant energy resources and Chinese business a solution to 
+environmental prosperity in Africa? Energy Policy 163:112829. 
+https:// doi. or
+g/ 10. 1016/j. en
+pol. 2022. 112829
+P
+ublisher's note Spring
+er Nature remains neutral with regard to 
+jurisdictional claims in published maps and institutional affiliations.
+Springer Nature or its licensor (e.g. a society or other partner) holds 
+exclusive rights to this article under a publishing agreement with the 
+author(s) or other rightsholder(s); author self-archiving of the accepted 
+manuscript version of this article is solely governed by the terms of 
+such publishing agreement and applicable law.
+68624 Environmental Science and Pollution Research (2023) 30:68609–68624

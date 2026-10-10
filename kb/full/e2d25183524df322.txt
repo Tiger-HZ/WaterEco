@@ -1,0 +1,672 @@
+Page 1/25
+Satellite assessment of eutrophication hot spots and algal
+blooms in small and medium-sized productive reservoirs in
+Uruguay's main drinking water basin
+Bernardo Vicente Zabaleta  (  bzabaleta@fcien.edu.uy )
+Universidad de la Republica Uruguay Facultad de Ciencias https://orcid.org/0000-0001-6561-3113
+Luis Aubriot 
+Universidad de la Republica Uruguay Facultad de Ciencias
+Hernán Olano 
+Universidad de la República Facultad de Ciencias: Universidad de la Republica Uruguay Facultad de Ciencias
+Marcel Achkar 
+Universidad de la República Facultad de Ciencias: Universidad de la Republica Uruguay Facultad de Ciencias
+Research Article
+Keywords: Drinking water, remote sensing, phytoplankton bloom, hotspot, cyanobacteria, space pattern, Sentinel-2
+Posted Date: August 19th, 2022
+DOI: https://doi.org/10.21203/rs.3.rs-1886972/v1
+License:   This work is licensed under a Creative Commons Attribution 4.0 International License.   Read Full License
+Version of Record: A version of this preprint was published at Environmental Science and Pollution Research on January
+20th, 2023. See the published version at https://doi.org/10.1007/s11356-023-25334-9.
+Page 2/25
+Abstract
+Intensive agricultural activities favor eutrophication and harmful phytoplankton blooms due to the high export of nutrients
+and damming of rivers. Productive watersheds used for water purication can have multiple reservoirs with phytoplankton
+blooms, which constitutes a high health risk. In general, water quality monitoring does not cover small and medium-sized
+reservoirs (0.25–100 ha) of productive use due to their large number and location in private properties. In this work, the in-
+situ trophic state of fourteen reservoirs was simultaneously assessed using Sentinel-2 images in the Santa Lucía River
+Basin, the main drinking water basin in Uruguay. These reservoirs are hypereutrophic (0.18–5.22 mg total P L-1) with high
+phytoplankton biomasses (2.8–4439 µg chlorophyll-a L-1), mainly cyanobacteria. Based on data generated in-situ and
+Sentinel-2 imagery, models were tted to estimate satellite Chl-a and transparency in all the basin reservoirs (n = 486). The
+best ts were obtained with the green-to-red band ratio (560 and 665 nm, R2 = 0.84) to estimate chlorophyll-a and reectance
+at 833 nm (R2 = 0.73) to determine transparency. The spatial distribution of the trophic state was explored by spatial
+autocorrelation and hotspot analysis, and the variation in spatial patterns could be determined prior and subsequent to a
+maximum cyanobacteria value in water treatment plant intakes. Therefore reservoirs with greater potential for
+phytoplankton biomass export were identied. This work provides the rst tted tool for satellite monitoring of numerous
+reservoirs, and strengthens the country's ability to respond to harmful phytoplankton blooms in its main drinking water
+basin.
+Introduction
+Eutrophication is one of the most widespread environmental problems affecting surface waters worldwide (Michalak et al.,
+2013; Burford et al., 2020), since it affects the trophic web, biodiversity, and water quality (Carpenter et al., 1998; Chapin et
+al., 2011). This excessive nutrient enrichment process has a detrimental effect not only on ecosystem conservation and
+recreation but also on water supply for animal and human drinking, to name a few. Indeed this gives rise to particular
+concern in terms of human health and economic costs (Conley et al., 2009; Dodds et al., 2009).
+Increased nutrient concentration, high water residence time, increased temperature, and low turbidity create suitable
+conditions for phytoplankton growth (Reynolds, 2006). In lentic aquatic systems, excessive growth of phytoplankton
+biomass is often dominated by cyanobacteria (Burford and O'Donohue, 2006). These can produce toxins detrimental to
+aquatic and terrestrial biota, among which the most common is microcystin (Chorus and Welker, 2021), represented by
+several genera, most notably Microcystis (Carmichael, 2001; Leaive and Ten-Hage, 2007; Pearson et al., 2016). In recent
+decades, the occurrence of cyanobacterial blooms has been exacerbated on a global scale in terms of frequency, magnitude,
+and duration (Huisman et al., 2018; Burford et al., 2020).
+Traditional monitoring methods require obtaining samples from numerous water bodies and subsequent laboratory
+analysis, thus entailing high economic, time, and skilled efforts (Navalgund et al., 2007; Lins et al., 2017). As an alternative,
+numerous indicators have been developed to quantify phytoplankton pigments and water transparency based on remote
+sensing reectance (Rrs) and information collected in-situ (Ha et al., 2017; Watanabe et al., 2018; Giardino et al., 2019).
+Regarding inland waters, there is no consensus on the use of specic indicators for estimating chlorophyll-a (Chl-a)
+concentrations (Nechad et al., 2015). In general terms, approaches to successfully estimate Chl-a use reectance near the
+red edge (~ 700 nm), where Chl-a exhibits its lowest absorption coecient (maximum Rrs), and in the red (~ 665 nm) edge
+where it exhibits the highest absorption coecient (minimum Rrs) (Gitelson et al., 1992). The Normalized Difference
+Chlorophyll Index (NDCI), which is based on the difference between Rrs ~ 700 nm and Rrs ~ 665 nm (Mishra and Mishra,
+2012), is worth noticing. Also, some research studies have shown high accuracy for estimating Chl-a based on the red (~ 
+665 nm) to green (~ 560 nm) reectance ratio (Ioannou et al., 2014), both in environments with low (4.6 µg L-1) (Ha et al.,
+2017) and high (65.1 µg L-1) Chl-a concentrations (Oliveira et al., 2016). It should be underlined that these indicators should
+be adjusted with in-situ information gathered from the environments to be monitored (Yang et al., 2017).
+Page 3/25
+The concentration of suspended solids, Chl-a, and dissolved organic carbon determine the transparency of inland waters,
+which has historically been measured in-situ with the Secchi disk. Likewise, several research studies have estimated
+transparency from surface reectance in the visible region (Zhang et al., 2021), near-infrared region, and by band
+combination (Ouma et al., 2020). This diversity of approaches is based on the fact that suspended solids and Chl-a increase
+water brightness, and, therefore, reectance throughout the visible/NIR spectrum (Topp et al., 2020).
+Uruguay has been facing issues related to eutrophication and phytoplankton blooms in several ecosystems for decades
+(Bonilla et al., 2015). They are mainly associated with excess nutrient inputs from agribusiness expansion, urban, and
+agroindustrial initiatives, as well as reservoir construction (Conde et al., 2002; Bonilla et al., 2006; Chalar et al., 2011; Ernst
+and Siri-Prieto, 2011; Aubriot et al., 2017). Even though great efforts have been undertaken to assess eutrophication in
+various water bodies distributed throughout the national territory (Bonilla et al., 2015; Haakonsson et al., 2017), the lack of
+information on the trophic state of small and medium-sized reservoirs for productive purposes (irrigation, agro-industrial,
+animal consumption) raises our concern.
+In general, agricultural reservoirs receive signicant nutrient inputs for being located in watersheds where intensive
+agriculture is practiced. This, along with the high residence time of water, creates favorable conditions for the development
+of cyanobacterial blooms (Bowling et al., 2013; Beaver et al., 2014). These environments frequently suffer overtopping due
+to excess rainfall, ushing the bloom downstream and leading to their potential transport to the water treatment plant
+intakes. This scenario was evaluated in the Santa Lucia River Basin (CRSL), where high ows (and rainfall) were associated
+with the presence of harmful phytoplankton in the river, typically found in lentic and eutrophic environments, with the
+potential to affect water purication in the main treatment plant in the country (Aguas Corrientes) (Somma et al., 2022).
+A large number of reservoirs have been registered in Uruguay as of 2015 (1,363 reservoirs that supply domestic, commercial,
+industrial, irrigation, and other agricultural uses; MVOTMA 2017). The number of reservoirs amounts to approximately 7,800
+if small- and medium- (0.25- 10 ha) sized unregistered reservoirs are included (Achkar et al., 2016). Reservoirs are expected
+to increase in number in this country due to the enforcement of policies that promote their construction (Act 16.858). Given
+their large number and the fact that they are located in private properties in most cases, conducting an in-situ evaluation of
+water quality is not always feasible.
+CRSL is the main source of drinking water in Uruguay, accounting for 60% of the national supply. Considering that harmful
+phytoplankton blooms restrict water treatment, tools are required to enhance monitoring practices at a temporal and spatial
+level in order to improve the current management interventions and strengthen the country's response capacity (Aubriot et
+al., 2020). In this context, the present work aims at tting optical indicators for satellite estimation of Chl-a concentration
+and transparency in order to monitor all the agricultural reservoirs in CRSL before and after high cyanobacterial
+concentrations in the Planta Potabilizadora de Aguas Corrientes (PPAC) (National Administration of State Sanitary Works,
+OSE). This work seeks to develop continuous monitoring tools for reservoirs and generate a rapid water quality diagnosis to
+improve the identication of eutrophication hot spots, as well as to strengthen the country's ability to respond to harmful
+phytoplankton blooms in its main drinking water basin.
+Methodology
+The methodological strategy is divided into four sections. The rst one deals with the survey of all the reservoirs (0.25–100
+ha) in the CRSL upstream PPAC, reservoir selection, and obtaining the authorizations needed to carry out in-situ sampling.
+The second delves into the acquisition of in-situ information, for which three sampling campaigns were carried out in
+fourteen agricultural reservoirs. Physicochemical parameters, total nitrogen and phosphorus (TN and TP, respectively),
+phytoplankton pigments, transparency, and suspended solids were measured. Surface level Rrs was also calculated using
+Sentinel-2 images obtained +/- 4 hours apart from in-situ sampling. In the third stage, spectral signatures were analyzed and
+linear models were developed to monitor satellite Chl-a concentration and transparency on two specic dates. Finally, the
+spatial distribution patterns of these variables were explored (Fig. 1).
+Page 4/25
+Study area
+The study area includes the basin that drains to the water treatment plant intakes in the PPAC, as well as the basins of the
+Santa Lucía and Santa Lucía Chico rivers and La Virgen and Canelón Grande streams (Fig. 2), covering a total area of 9131
+km2. Various productive activities are carried out in this area. In the southern region, horticulture, fruit growing, wine
+production, pig and poultry farming prevail, while in the central region, dairy farming stands out. In the east, livestock,
+forestry crops, and mining dominate (Achkar et al., 2012) (Fig. 2). Increasing trends in land-use intensity have been identied
+in the basin from 2000–2017, mainly linked to the cultivation of cereals in monoculture, mostly soybean, but also corn, and
+sorghum (Gazzano et al., 2019).
+Sampling
+To select the reservoirs to be sampled in-situ, in the rst place, potential reservoirs were chosen using surrounding land use
+as a criterion, according to the aerial imagery provided by the Spatial Data Infrastructure Agency of Uruguay (IDEUY). The
+rst eld trip was carried out in July 2019 in order to obtain access permits to establishments under different land-use types,
+such as pastures, planted grasslands, fruit trees, dairy farms, and dryland farming. Fourteen reservoirs were nally chosen
+according to accessibility (Wang et al., 2022) (Fig. 2).
+Three in-situ samplings were performed in fourteen reservoirs on 07/11/2019, 02/12/2019, and 16/11/2020), and a total n
+of 42 samplings were obtained, made up of three replicates per reservoir (126 samples). In each reservoir, physicochemical
+parameters (temperature, pH, conductivity, dissolved oxygen, turbidity) were measured using Horiba U-52G probe, and
+transparency with Secchi disk. Three replicates of 1 L were taken for the analysis of phosphorus and nitrogen (total),
+chlorophyll-a, total solids, organic and inorganic suspended solids. Cyanobacterial Chl-a was determined in each replicate by
+in-vivo uorometry (Aquauor Turner Designs) according to Cremella et al., (2018).
+Laboratory analysis
+Each water replicate was ltered with two lters (MGF, Munktell): one previously burned at 450ºC and weighed for
+suspended solids analysis, and the other for Chl-a extraction. Total phosphorus (TP) and total nitrogen (TN) were measured
+in the unltered sample volume (Valderrama, 1981; APHA, 1985). In parallel, the concentration of suspended solids and
+suspended organic matter was determined by the gravimetric/calcination method (APHA, 1985). The Chl-a concentration
+was carried out using the hot ethanol extraction method (Nusch, 1980).
+Satellite imagery processing
+The images captured with the MSI on-board Sentinel-2 were downloaded from https://scihub.copernicus.eu/dhus/, which
+provides free and open access to MSI/S-2 L1C imagery. Level-1C processing includes radiometric and geometric corrections
+including ortho-rectication of reectance at the top-of-the atmosphere and spatial registration on a global reference system
+(Fletcher et al., 2012). Prior to the acquisition of spectral information, L1C images were converted to surface reectance
+estimates using ACOLITE software (v20181210.0), which performs Rayleigh scattering and aerosol correction (Ansper,
+2018).
+Reectance values coincident with in-situ sampling were obtained from grids of 3 x 3 pixels (90 m2) with a minimum
+distance to shore of 10 m. This procedure was performed since data may not be accurate for a single pixel (Clark et al.,
+2017). The average surface reectance of each grid was extracted for all bands from the MSI/S-2 images. Image processing
+and extraction of spectral information were carried out in the Sentinel Application Platform (SNAP) of the European Space
+Agency.
+Data analysis
+Basic exploratory data analyses were conducted. Linear regression (log-log) analyses with total Chl-a and cyanobacterial
+were used as the response variable. Differences between reservoirs were evaluated for physicochemical and pigment
+Page 5/25
+variables using Kruskal-Wallis.
+In order to estimate satellite Chl-a and transparency, band indicators and band ratios were tted using Linear Models (LM).
+First, the spectral signatures of the reservoirs sampled in-situ were obtained and the surface reectance of each Sentinel-2
+band was correlated with the variables in-situ. From this analysis, the most appropriate band for estimating transparency
+was chosen. Chl-a estimation models used the reectance ratio red (665 nm) to red edge (705 nm) bands and green (560
+nm) to red (665 nm) edge bands as predictor variables. Chl-a concentration and transparency logarithms were considered
+(Kayastha et al., 2022) as response variables.
+Satellite monitoring
+To monitor the study basin, in the rst place, all the reservoirs with a surface area > 0.25 ha were identied, using the
+information on cutwaters and water bodies provided by the Spatial Data Infrastructure Agency of Uruguay. Since this
+coverage includes the entire oodable area as reservoir surface and vectorization was used to extract spectral information
+from the water bodies, the polygons were manually adjusted to cover only the surface area corresponding to water.
+In order to diagnose the trophic state of the reservoirs at two contrasting times according to precipitation metrics and
+evaluate biomass transport downstream to PPAC water intakes, Sentinel-2 MSI images were analyzed on a date before and
+after a high precipitation event (> 20 mm daily). Once the dates were identied and the images downloaded, the
+accumulated precipitation for the thirty days prior to each image was calculated using data from Las Brujas weather station,
+National Institute of Agricultural Research, located 17 km south of Aguas Corrientes (Fig. 2). The records of cyanobacterial
+concentration in the Santa Lucía River taken at PPAC were also assessed (Fig. S1).
+The images were acquired at L1C level, and the surface Rrs was calculated using ACOLITE software. The reservoir vectors
+previously elaborated were then used to calculate the median Rrs values for each band. Based on said information, the
+equation resulting from the Chl-a and transparency estimation models was applied. Once Chl-a was estimated, the reservoirs
+were classied according to their trophic state in line with Cunha et al., (2013).
+In order to assess Chl-a spatial distribution and transparency in all the reservoirs under study, Spatial Auto-correlation (SA)
+was used. This tool refers to the degree to which one object is similar to other nearby objects. Moran's I, a measure of spatial
+autocorrelation, was applied. It is a Pearson's correlation coecient with a spatial location weighting matrix (Moran, 1948).
+To detect patterns of Chl-a distribution and transparency among reservoirs, hot spot analyses were performed with
+information from satellite monitoring (Torbick et al., 2013; Coffer et al., 2021). Said analyses identify statistically signicant
+clusters called hot or cold spots. In this study, the Getis-Ord Gi* (Getis and Ord, 2010) statistic was used to determine hot
+spot incidence. For a feature to be recognized as a statistically signicant hot spot, it must have a high value and must also
+be surrounded by other high-value features. The opposite applies to cold spots. For statistically signicant positive scores,
+the larger the score is, the more intense the clustering of high values (hot spot). In this case, there would be a hot spot. For
+statistically signicant negative scores, the smaller the score is, the more intense the clustering of low values (cold spot). In
+this case, there would also be cold spots. The clustering for features whose score is 0 is not statistically signicant.
+SNAP software was used to extract Rrs information, and ArcMap software version 10.4.1 for the spatial autocorrelation and
+hot spot analyses.
+Results
+All the reservoirs in the basin with a surface area of 0.25–100 ha were identied and vectorized to select the reservoirs
+where in-situ sampling was carried out. A total of 486 reservoirs were recorded, ranging in size from 0.25 to 60 ha (median
+0.93 ha), with the rst to third quartiles located at 0.6, 0.9, and 1.8 ha. In order to simplify the subsequent analyses, the size
+was categorized in increasing order between 1 and 4 according to the aforementioned quartiles. Fourteen reservoirs were
+Page 6/25
+then selected according to land-use type and the corresponding access permits were obtained (Fig. 2). The reservoirs
+sampled in-situ presented sizes ranging from 0.4–54 ha (Table 1).
+Table 1
+Characteristics of the sampled reservoirs: size, surrounding productive activity, and water use
+Reservoir Coordinates Size (ha) Activity Usage
+A 34°37'15"S 56°11'25"W 3.2 Forage Irrigation
+B 34°37'17"S 56°11'18"W 1.6 Forage Irrigation
+C 34°37'54"S 56°12'18"W 4.0 Forage Irrigation
+D 34°36'30"S 56°12'59"W 3.6 Pig farming Animal consumption
+E 34°36'48"S 56°13'17"W 12.9 Forage Irrigation
+F 34°36'28"S 56°14'06"W 4.2 Fruit growing Irrigation
+G 34°06'17"S 56°06'27"W 2.2 Cattle breeding Animal consumption
+H 34°03'58"S 56°04'34"W 1.6 Milk production Agribusiness and irrigation
+I 34°03'49"S 56°04'30"W 0.5 Milk production Agribusiness and irrigation
+J 34°06'20"S 55°55'30"W 0.4 Crop Animal consumption
+K 34°06'26"S 55°55'50"W 3.2 Crop Animal consumption
+L 34°06'36"S 55°55'02"W 1.0 Crop Animal consumption
+M 34°06'36"S 55°54'21"W 2.0 Crop Animal consumption
+N 34°02'55"S 55°50'20"W 53.9 Milk production Agribusiness and irrigation
+In the three samplings, rainfall varied substantially depending on the accumulated precipitation in the previous thirty days,
+02/12/19 was the driest day with 25 mm, followed by 16/11/20 when 81 mm were computed, and 07/11/19 with 204 mm
+of accumulated precipitation.
+Physicochemical analysis and trophic state of reservoirs
+Except for temperature (range: 21.1–28.1°C), dissolved oxygen (4.7–19.5 mg L-1), turbidity (11.8- >1000 NTU), pH (6.0-10.7),
+conductivity (0.06–1.203 mS cm-1), total suspended solids (8.9-691.8 mg L-1), and suspended organic matter (16–92%)
+showed wide value ranges (Fig. 3). The K-W analysis indicated that reservoirs H to N (northern portion of the basin) differed
+mainly in elevated pH, conductivity, suspended solids, and suspended organic matter.
+Total phosphorus (TP) was in all cases within the category range of hypereutrophic reservoirs ( ≥  0.078 mg TP L-1, Cunha et
+al., 2013) (range: 0.18–5.22 mg TP L-1, reservoir G and I, respectively), with extremely high cases such as reservoirs I and J
+(Fig. 3). These two reservoirs also accounted for high total nitrogen (TN) values. TN ranged from 0.70 to 23.56 mg TN L- 1
+(Reservoir F and I, respectively). Reservoirs Chl-a also presented a wide range of concentrations (2.8–4439 µg L-1, B and I,
+respectively) (Fig. 3). The trophic state index of Cunha et al., (2013) for chlorophyll-a exhibited a gradient from mesotrophic
+(4 cases) to hypereutrophic (8 cases). The percentage of Chl-a corresponding to cyanobacteria yielded high values in
+reservoirs categorized as mesotrophic (B, C, E, and G), eutrophic (A), and hypereutrophic (D, F, H, I, J, K, M, and N).
+Signicant correlations were obtained between most of the variables evaluated in-situ (Table 2). Those with the highest
+magnitude were identied between turbidity and total suspended solids (TSS), transparency and suspended organic matter
+(SOM) (Rs = 0.93, -0.87, and 0.81, respectively). SOM was positively associated with Chl-a, TSS, and TN (Rs = 0.89, 0.84, and
+Page 7/25
+0.81, respectively). Likewise, Cyanobacterial Chl-a (Chl-a Cy) was strongly correlated with total Chl-a and SOM (Rs = 0.91,
+0.84, respectively). On the other hand, size was associated with all evaluated variables. The highest magnitude of
+correlation was detected in SOM followed by transparency (Rs=-0.60, 0.59, respectively) (Table 2). Even though Chl-a was
+signicantly associated with TP, the correlation showed a high dispersion mainly in the reservoirs with higher turbidity (A, B,
+C, and G).
+Table 2
+Spearman correlation coecients between physicochemical and pigment variables, signicance level (p-value < 0.05) in
+bold, correlations of higher magnitude (Rs > 0.7) are highlighted (*). T: temperature (°C), K: conductivity (mS L− 1), Turb:
+turbidity (NTU), DO: dissolved oxygen (mg L− 1), Secchi: transparency (cm), ISS: inorganic suspended solids (mg L− 1), SOM:
+suspended organic matter (mg L− 1), TSS: total suspended solids (mg L− 1), Chl-a: chlorophyll-a (µg L− 1), Chl-a Cy:
+cyanobacterial Chl-a, TP: total phosphorus (mg P L− 1), Size (ha), TN: total nitrogen (mg N L− 1)
+  T pH K Turb. OD Secchi ISS SOM TSS Chl-a Chl-aCy TP Size
+pH *0.72                        
+K 0.16 0.31                      
+Turb. 0.29 0.31 0.46                    
+OD -0.07 0.09 0.48 0.47                  
+Secchi -0.26 -0.18 -0.39 *-0.87 -0.35                
+ISS 0.11 -0.22 0.24 0.53 0.08 -0.65              
+SOM 0.42 0.53 0.46 *0.81 0.57 -0.64 0.19            
+TSS 0.32 0.28 0.44 *0.93 0.44 *-0.84 0.63 *0.84          
+Chl-a 0.44 0.66 0.45 0.60 0.50 -0.42 -0.01 *0.89 0.64        
+Chl-a
+Cy
+0.40 0.64 0.41 0.59 0.51 -0.42 -0.05 *0.84 0.60 0.91      
+TP 0.03 0.17 0.49 0.56 0.58 -0.48 0.30 0.55 0.57 0.53 0.51    
+Size -0.44 -0.40 -0.30 -0.62 -0.50 0.59 -0.34 -0.60 -0.56 -0.50 -0.47 -0.53  
+TN 0.24 0.44 0.42 0.74 0.60 -0.61 0.22 *0.81 0.75 *0.75 *0.73 *0.74 -0.61
+Spectral signatures
+In the signatures with concentrations above 20 µg Chl-a L-1, a valley in the blue region (492 nm), a peak in the green one
+(560 nm), followed by a valley in the red region (665 nm) can be observed, with its lowest Rrs values in the cases with the
+highest Chl-a concentration. After this valley, a sharp increase can be noticed (Fig. 4). In general terms, the spectral
+signatures with higher magnitude in the near-infrared region (704 nm) were those with higher Chl-a concentrations.
+Conversely, spectral signatures corresponding to reservoirs with concentrations below 20 µg Chl-a L-1 presented a
+progressive increase from 443 nm to 665 nm (Fig. 4).
+At wavelengths 740 nm, Rrs was associated with all trophic state variables determined in-situ, among which, the 833 nm
+band displayed the highest correlation intensity with transparency (Rs=-0.88), TSS (Rs = 0.76), and ISS (Rs = 0.60) which
+were also positively related to all bands. It should be noted that all the associations detected for transparency were negative.
+On the other hand, SOM was positively correlated with Rs in the 704–2202 nm range, while in the 443–665 nm range it was
+only associated with the 492 nm and 665 nm bands, and negatively. TSS was related to Rrs at all wavelengths 740 nm,
+while between 443–665 nm it was only related to the 560 nm band. In the 492–665 nm range the higher the Chl-a
+concentration the lower the Rrs. The correlations obtained in the 665 nm band stand out, where the correlation magnitude
+Page 8/25
+was the highest with Rs=-0.69. Also in the 492 nm band, where the other maximum was identied with a magnitude of
+Rs=-0.53 (Table 3).
+Table 3
+Spearman correlation magnitude between reectance (Rrs) of Sentinel-2 bands and trophic
+state variables determined in-situ. ISS: inorganic suspended solids (mg L− 1), SOM:
+suspended organic matter (mg L− 1), TSS: total suspended solids (mg L− 1), Chl-a: chlorophyll-
+a (µg L− 1), in bold: cases where a signicant correlation was identied according to the p-
+value0.05
+Rrs (nm) ISS (mg L-1) SOM (mg L-1) TSS (mg L-1) Chl-a (µg L-1) Secchi (cm)
+443 0.41 -0.21 0.06 -0.32 -0.17
+492 0.36 -0.38 -0.05 -0.53 -0.09
+560 0.36 0.08 0.33 -0.09 -0.39
+665 0.41 -0.51 -0.12 -0.69 -0.07
+704 0.44 0.36 0.59 0.18 -0.61
+740 0.57 0.54 0.73 0.32 -0.82
+783 0.55 0.55 0.73 0.33 -0.81
+833 0.60 0.57 0.76 0.36 -0.88
+865 0.53 0.59 0.73 0.36 -0.79
+1614 0.45 0.54 0.61 0.38 -0.59
+2202 0.39 0.46 0.53 0.31 -0.52
+Linear models
+Two linear models were developed for satellite estimation of Chl-a concentration based on the Chl-a logarithm observed in-
+situ as the response variable. The normalized differences of the red edge-red Rrs (NDCI) and the green-red Rrs (VR) were
+used as explanatory variables. For model tting, the maximum value of Chl-a in-situ (4500 µg L-1) was excluded as an
+outlier. Therefore, a total of n = 41 cases were used.
+The linear model based on the NDCI indicator (adjusted R2 = 0.81) showed no evidence of lack of normality in the
+distribution of the Shapiro-Wilk test results of the residuals (p = 0.44), nor was there evidence of non-homocedasticity
+according to the Breusch-Pagan test (p = 0.22). Therefore, it is an acceptable model for Chl-a estimation (Fig. 5).
+The linear model based on the VR indicator (adjusted R2 = 0.84; Shapiro-Wilk p = 0.25; Breusch-Pagan p = 0.59) is also an
+acceptable model for estimating Chl-a (Fig. 6). VR indicator was more tted than NDCI, therefore, the equation resulting from
+the former was used to monitor total reservoirs: Chl-a (µg L-1) = 10  (1.6218 + 6.0575 * VR).
+To estimate reservoir transparency, a linear model was tted based on the transparency logarithm observed in-situ and the
+surface reectance at 833 nm (Table 3). This particular band was chosen as it presented the highest correlation intensity
+with transparency (adjusted R2 = 0.73; Shapiro-Wilk p = 0.16; Breusch-Pagan p = 0.77) (Fig. 7). Therefore, the model was
+accepted for transparency estimation. The resulting model equation is: Transparency (cm) = 10  (1.68706–6.03732 * Rrs
+(833 nm)).
+Satellite monitoring
+Page 9/25
+Two Sentinel-2 MSI images were obtained with contrasting precipitation values. The rst one corresponds to 12/12/16 with
+50 mm of accumulated precipitation on the previous thirty days, while the second was captured on 11/01/17 with 264 mm
+of accumulated precipitation on the previous thirty days. Among the dates with images available, a maximum value of
+cyanobacterial abundance (3581 cells. ml-1) was detected on 01/01/17 in PPAC (Fig. S1).
+Monitoring using the VR indicator tted model revealed that most of the reservoirs are hypereutrophic. On 12/12/16, 225
+reservoirs were classied as hypereutrophic, 86 as eutrophic and 133 as mesotrophic. In addition, the area with Chl-a > 20 µg
+L-1 according to each reservoir median values reached 861 ha. On 11/01/17, a larger number of hypereutrophic
+environments (335) and a decrease in eutrophic and mesotrophic ones were detected, 64 and 65, respectively, (Fig. 8). Also,
+the area covered by Chl-a concentrations > 20 µg L-1 was 1044 ha.
+On 12/12/16, the median Chl-a value for all reservoir sizes categorized them as super-eutrophic, with the exception of those
+of 0.6–0.9 ha (quartile 2), which yielded the highest Chl-a concentrations and were categorized as hypereutrophic. It is worth
+mentioning that the smallest reservoirs (quartile 1) presented the lowest Chl-a concentrations. On the other hand, on
+11/01/17, the median Chl-a value for all reservoir sizes categorized them as hypereutrophic regardless of their size, the
+smallest reservoirs also presented the lowest median values while those from quartile 2 accounted for the highest (Fig. 9).
+On the two dates evaluated, the standard deviation of Chl-a was higher in the smallest reservoirs, followed by the reservoirs
+from quartile 2 on 12/12/16 and the largest ones on 11/01/17.
+On the two dates monitored, transparency was similar and tended to increase with size (Rs = 0.38 and Rs = 0.40, 12/12/16
+and 11/01/17, respectively). The minimum values were recorded in the smallest size reservoirs (quartile 1), while the largest
+sized (quartile 4) accounted for the maximum values according to the median (Fig. 9). Chl-a was not signicantly
+associated with size (Spearman test), although it was positively associated with transparency both in December (p < 0.05;
+Rs = 0.28) and January (p < 0.05; Rs = 0.25).
+Hotspot analysis
+Spatial clustering patterns were identied in the distribution of Chl-a and transparency of the monitored reservoirs.
+According to Moran's I test, the highest autocorrelation intensity (Z) was detected for transparency with values of Z = 5.83 in
+December and Z = 4.88 in January. Likewise, Chl-a was distributed in clusters with higher intensity in December (Z = 2.06)
+than in January (Z = 1.86).
+On 12/12/16, Chl-a formed clusters of high values. The highest intensity clustering occurred in the southern region, followed
+by the clusters in the eastern, northern, and western areas. The central area was characterized by a large cluster of reservoirs
+with low concentrations. In contrast, on 01/11/17, Chl-a was distributed forming a cluster of reservoirs with low
+concentrations in the southern area, while the central and western areas did not present a specic clustering pattern. On the
+other hand, the high-value cluster in the northern area was maintained with respect to the previous date as was the low-value
+cluster in the center of the basin (Fig. 10).
+In December, transparency was distributed forming a cluster with the clearest reservoirs in the southern area and another in
+the central-eastern area. On the other hand, the most turbid reservoirs close to each other were found mainly in the central,
+northern, and western areas. In contrast, in January, the southern area presented the largest cluster of turbid reservoirs, while
+clusters of clear reservoirs were detected in the rest of the basin (Fig. 10).
+Discussion
+Linear models for satellite estimation of Chl-a and transparency based on in-situ information allowed to monitor all the
+reservoirs in the Santa Lucía River Basin for the rst time in Uruguay. These results represent the rst approximation to the
+trophic state of 486 small- and medium-sized (0.25–100 ha) agricultural reservoirs located in the basin that supplies
+drinking water to 60% of the population of this country. Despite the fact that large basin databases on water quality
+Page 10/25
+monitoring systems have been developed in Uruguay, they only cover the main river courses and the two largest reservoirs
+(Aubriot et al., 2017; Somma et al., 2022). Therefore, prior to this work, little was known about the trophic state of more than
+a hundred productive reservoirs in the basin. This study allowed us to determine that most of these water bodies are in a
+hypereutrophic state, and present high levels of phytoplankton biomass, mostly composed of cyanobacteria, and with a
+high potential for downstream transport of this biomass. Therefore, either due to their overtopping and release resulting
+from high rainfall or the possible articial opening of dams during low-water ow, this large number of reservoirs with a
+detected high biomass of potentially toxic phytoplankton undoubtedly represents a health threat.
+The great impact of agricultural activities on the export of nutrients and organic matter in CRSL is manifested in the high
+degree of eutrophication of productive reservoirs. The percentage of the area covered by crops in the drainage basin has a
+direct impact on the eutrophication of reservoirs, particularly when they are shallow and have a larger basin size relative to
+the surface area of their water body (Knoll et al., 2015). In our study, the smallest-sized reservoirs presented the highest
+concentrations of Chl-a, TP and TN in the three in-situ sampling sites. These results are in agreement with Brainwood et al.,
+(2004) who suggested that smaller agricultural reservoirs have higher nutrient and Chl-a concentrations than larger ones.
+The reservoirs with the highest TP and Chl-a concentrations in our study were located in dairy farms, crop farms, and pig
+farms. Likewise, the maximum TN values were obtained from sites located on livestock farms (Fig. 3 and Table 1). These
+results are in line with Chalar et al., (2011), who postulated that dairy and pig farms are one of the main sources of nutrient
+pollutants in the Santa Lucía River Basin. Modeling of nitrogen and phosphorus in CRSL watercourses, with projections of
+productive intensication, predicts a scenario of increased eutrophication under current agricultural practices (Díaz et al.,
+2021). In this sense, the satellite indices applied in this work are an input for the diagnosis of eutrophication evolution in
+CRSL.
+In the sites sampled in-situ, phytoplankton development was found to t better to TN concentration variability, while a lower
+TP correlation was observed (Table 2). This behavior could be explained by the excess availability of P in the basin. High TP
+concentrations in CRSL are generally ascribed to high concentrations of soluble reactive phosphorus (> 88%), mainly
+associated with surface runoff and soil phosphorus saturation in the basin (Goyenola et al., 2015; Aubriot et al., 2017;
+Barreto et al., 2017).
+Most suspended solids corresponded to suspended organic matter, which is strongly associated with phytoplankton
+biomass (Table 2). Nonetheless, some reservoirs, despite being hypereutrophic according to TP and TN levels, and having
+suspended solids mainly made up of inorganic origin, did not show high phytoplankton development. This is consistent with
+some postulations that suggest that inorganic solids limit phytoplankton growth due to the decrease in radiation penetrating
+the water column (Reynolds, 2006; Dzialowski et al., 2011). It is worth noting that most sites with this behavior are located in
+the southern portion of the basin (Fig. 2), where clay soils predominate (MGAP, 1976) which could increase inorganic
+suspended solids.
+The results obtained in-situ show a close proportionality of total Chl-a to cyanobacterial Chl-a (Fig. 3; Table 2). This nding
+raises the level of health risk in the watershed due to cyanobacterial blooms toxicity (Chorus and Welker, 2021). Moreover,
+they support the statement by Somma et al., (2022) who inferred that the small and medium-sized reservoirs in CRSL are
+environments conducive to the development of cyanobacterial blooms, and that they can be transported downstream as
+evidenced by the increased cyanobacterial biomass recorded during high ow periods in the main channel. The evaluation
+of hot spots of high phytoplankton biomasses in the basin, and their spatial and temporal evolution contributes to
+eutrophication management and to anticipate high-risk scenarios of biomass transport to the water treatment plant.
+Satellite estimation models
+In this study, two indicators for satellite estimation of Chl-a were compared. The best results were obtained from the VR
+indicator that measures the surface reectance ratio between the green (560 nm) and red (665 nm) bands with an R2 = 0.85
+in the range 3-2992 µg L-1 (Fig. 6). This result is in line with Ha et al., (2017) who used the green-to-red ratio to monitor Chl-a
+Page 11/25
+from Sentinel-2 images, and obtained successful results even at minimum concentrations < 6 µg Chl-a L-1, as did Avdan et
+al., (2019). Likewise, Oliveira et al., (2016) tested said ratio to monitor coastal waters and obtained ts up to R2 = 0.71 over a
+wide range from 1 to 974 µg Chl-a L-1. According to the information obtained in situ in this study, the only case with > 20 µg
+Chl-a L-1 and no green reectance peak was the K reservoir in the rst sampling. As a consequence, this is an exceptional
+case worthy of further validation of the tted model.
+The spectral signatures of the reservoirs sampled in-situ presented characteristics of turbid inland waters as reported by
+Spyrakos et al., (2017), and were differentiated into two major groups according to Chl-a concentration. Those reservoirs in
+which concentrations > 20 µg L-1 were recorded, presented a green reectance peak between the minimum values recorded in
+the blue ( 492 nm) and red ( 665 nm) bands (Fig. 4). This behavior is expected since, according to Gitelson et al., (1992),
+the energy absorption maxima of Chl-a is close to the blue and red bands, while the minimum is close to the green ( 560
+nm) band.
+The NDCI indicator yielded good results as expected according to Neil et al., (2019) who achieved high NDCI ts in several
+turbid water bodies. Likewise, Uudeberg et al., (2020) reported ts for NDCI of up to R2 = 0.89 specically using Sentinel-2
+MSI imagery in very turbid waters. However, in some of the in-situ sampling sites with concentrations < 20 µg Chl-a L-1,
+positive slopes between the red and red-edge bands (705 nm) were detected that could lead to Chl-a overestimation. In these
+cases, reectance increases progressively from the blue ( 490 nm) to the infrared (> 705 nm) bands. According to the review
+by Giardino et al., (2019), such behavior could be explained by the high content of suspended solids as they are
+characterized by maximum absorption in the blue and exponential decrease towards the infrared. Therefore, it could be
+armed that in the sampling sites reectance in the blue and red-edge bands was inuenced by the optical behavior of both
+Chl-a and suspended solids, while the reectance in the red band was mainly dominated by Chl-a.
+Satellite monitoring
+In this study, all the reservoirs in CRSL were monitored by tting the linear models with in-situ information. Even though this
+is the rst experience in the country, monitoring plans for agricultural reservoirs integrating satellite estimation tools in a
+complementary manner have already been developed worldwide. In this sense, Papenfus et al., (2020) and McCullough et
+al., (2012) found advantages in their application such as the increase in spatial and temporal scales and the savings in
+monitoring costs.
+In spite of the fact that less hypereutrophic environments, less surface area covered by high concentrations of Chl-a, and
+less transparency were detected prior to rainfall (12/12/16) than after rainfall (11/01/17; austral summer), PPAC displayed
+a post-rainfall maximum of cyanobacteria, which is consistent with the results reported by Somma et al., (2022) who
+associated cyanobacterial abundance in the PPAC with high rainfall. Several investigations suggest that the effect of
+precipitation can act both as an exacerbating factor of cyanobacterial blooms, through the transport of nutrients from the
+watershed, and as a temporal disrupting factor through the effect of biomass ushing in extreme precipitation events
+(Reichwaldt and Ghadouani, 2012; Haakonsson et al., 2017; Sinha et al., 2017). The overall increase in biomass recorded in
+most reservoirs would indicate a growth-stimulating effect due to rainfalls and the early summer effect. However, the
+maximum bloom of cyanobacteria observed in the river channel (PPAC) post-rainfall would not be linked to an effect of the
+overall biomass ushing, but to possible specic contributions from certain groups of reservoirs. Further research should be
+conducted to elucidate which reservoirs release signicant toxic cyanobacterial biomass to PPAC.
+As in the study by Coffer et al., (2021), we identied sets of elevated Chl-a values that transcended watershed and eco-region
+boundaries, representing essential information for targeting management efforts and risk forecasting. In particular, the
+changes detected in Chl-a distribution patterns before and after heavy rainfall reveal contrasting situations that could be
+linked to cyanobacteria transport to PPAC. Prior to rainfall, the main sets of high Chl-a values are reported in the southern
+and eastern areas of the basin. After rainfall, the distribution is reversed and these reservoirs become low-concentration
+Page 12/25
+clusters (Fig. 10). Therefore, the reservoirs located in the southern and eastern areas of the basin could be the main
+contributors to the cyanobacterial maximum recorded in PPAC.
+Conclusions
+All the reservoirs in the CRSL were remotely monitored for the rst time in Uruguay. Most of these water bodies were
+classied in a hypereutrophic state, with high levels of phytoplankton biomass, mostly composed of cyanobacteria. The
+linear models tted for satellite estimation of Chl-a and transparency achieved high ts compared to those reported in the
+literature for turbid and small environments. This is the rst experience at a national level in which chlorophyll-a
+concentration and transparency were monitored in all the reservoirs of CRSL, after tting a linear model with information
+obtained in-situ. The relevance of advancing the research agenda on the validation of the tted models based on new
+information should be emphasized.
+The results obtained in-situ allowed us to identify two sets of environments. On the one hand, one with high concentrations
+of Chl-a, phosphorus, and total nitrogen, and on the other, one that, despite having high concentrations of nutrients, does not
+develop phytoplankton biomass, and turbid conditions caused mainly by inorganic solids in suspension prevail.
+The reservoir cluster located in the southern and eastern areas of CRSL presented the highest risk of high cyanobacterial
+biomass contribution according to Chl-a distribution before and after rainfall, which would have led to biomass transport to
+the water treatment plant intakes. The geo-statistical analyses allowed to evaluate all the reservoirs on a synoptic basis, and
+thus identify behaviors and differentiate areas at risk of phytoplankton biomass export. An in-depth study of biomass
+transport to the drinking water treatment plant should be conducted, based on the analysis of the Sentinel-2 series (2016-
+present) available for CRSL and the joint analysis of the water quality dataset recorded in PPAC.
+Declarations
+Acknowledgements This work is part of Bernardo Zabaleta´s Doctoral´s thesis (postgraduate program Environmental
+Science, Universidad de la República). We especially thank María de la Paz Oteiza for valuable linguistic corrections.
+Author contribution BZ participated in the eld work and in the laboratory analyses, processed the satellite images and data
+analysis, and contributed to the interpretation and discussion of the results obtained. LA directed the study and participated
+from the in-situ data acquisition to the discussion of the results. HO participated in eld work and laboratory analyses,
+performed chemical analyses, and contributed to data interpretation and discussion. MA guided the construction of satellite
+estimation models and geostatistical analyses, contributed to the interpretation and discussion of data. All authors actively
+participated in the writing of the manuscript and gave nal approval for publication.
+Funding The research was funded by the National Agency for Research and Innovation under the code
+POS_NAC_D_2020_1_163887 and the Sectoral Commission for Scientic Research of the University of the Republic through
+the project I+D (2018) N° 354.
+Data availability The datasets used during the current study are available from the authors on reasonable request
+Ethics approval and consent to participate: Not applicable
+Consent for publication: Not applicable
+Competing interests: The authors declare no competing interests
+References
+Page 13/25
+1. Achkar M, Domínguez A, Pesce F (2012) Cuenca del Río Santa Lucía-Uruguay. Aportes para la discusión ciudadana.
+Facultad de Ciencias-UdelaR, REDES-AT, Programa Uruguay Sustentable
+2. Achkar M, Díaz I, Sosa B, Da Costa E, Chiale C (2016) Producto 3 Inventario para la Cuenca del río Santa Lucía.
+Proyecto. Inventario Nacional de Humedales. Acuerdo DINAMA-LDSGA Instituto de Ecología y Ciencias Ambientales
+Facultad de Ciencias UdelaR
+3. Ansper A (2018) Sentinel-2/MSI applications for European Union Water Framework Directive reporting purposes
+(Doctoral dissertation, Tartu Ülikool)
+4. APHA (2005) Standard methods for the examination of wáter and wastewater. APHA/AWWA/WPCF, Washington,
+American Public Health Association
+5. Aubriot L, Delbene L, Haakonsson S, Somma A, Hirsch F, Bonilla S (2017) Evolución de la eutrozación en el Río Santa
+Lucía: inuencia de la intensicación productiva y perspectivas. Innotec, (14)
+. Aubriot L, Zabaleta B, Bordet F, Sienra D, Risso J, Achkar M, Somma A (2020) Assessing the origin of a massive
+cyanobacterial bloom in the Río de la Plata (2019): Towards an early warning system.Water Research,115944
+7. Avdan Z, Kaplan G, Goncu S, Avdan U (2019) Monitoring the water quality of small water bodies using high-resolution
+remote sensing data. ISPRS Int J Geo-Information 8(12):553
+. Barreto P, Dogliotti S, Perdomo C (2017) Surface water quality of intensive farming areas within the Santa Lucia River
+basin of Uruguay. Air Soil and Water Research 10:1178622117715446
+9. Beaver J, Manis E, Loftin K, Graham J, Pollard A, Mitchell M (2014) Land use patterns, ecoregion, and microcystin
+relationships in US lakes and reservoirs: a preliminary evaluation. Harmful Algae 36:57–62
+10. Bonilla S, Conde D, Aubriot L, Rodríguez-Gallego L, Piccini C, Meerhoff E, Britos A (2006) Procesos estructuradores de
+las comunidades biológicas en lagunas costeras de Uruguay. Bases para la conservación y el manejo de la costa
+uruguaya, pp 611–630
+11. Bonilla S, Haakonsson S, Somma A, Gravier A, Britos A, Vidal L, de la Escalera GM (2015) Cianobacterias y cianotoxinas
+en ecosistemas límnicos de Uruguay. Innotec, (10 ene-dic), 9–22
+12. Bowling L, Merrick C, Swann J, Green D, Smith G, Neilan B (2013) Effects of hydrology and river management on the
+distribution, abundance and persistence of cyanobacterial blooms in the Murray River, Australia. Harmful algae 30:27–
+36
+13. Brainwood MA, Burgin S, Maheshwari B (2004) Temporal variations in water quality of farm dams: impacts of land use
+and water sources. Agric Water Manage 70(2):151–175
+14. Burford M, O'Donohue M (2006) A comparison of phytoplankton community assemblages in articially and naturally
+mixed subtropical water reservoirs. Freshw Biol 51(5):973–982
+15. Burford M, Carey C, Hamilton D, Huisman J, Paerl H, Wood S, Wulff A (2020) Perspective: Advancing the research
+agenda for improving understanding of cyanobacteria in a future of global change. Harmful Algae 91:101601
+1. Carmichael W (2001) Health effects of toxin-producing cyanobacteria:“The CyanoHABs”. Hum Ecol risk assessment: Int
+J 7(5):1393–1407
+17. Carpenter S, Caraco N, Correll D, Howarth R, Sharpley A, Smith V (1998) Nonpoint pollution of surface waters with
+phosphorus and nitrogen. Ecol Appl 8(3):559–568
+1. Chalar G, Arocena R, Pacheco J, Fabián D (2011) Trophic assessment of streams in Uruguay: a trophic State Index for
+Benthic Invertebrates (TSI-BI). Ecol Ind 11(2):362–369
+19. Chapin III, Matson F, Vitousek P (2011) Principles of terrestrial ecosystem ecology. Springer Science & Business Media
+20. Chorus I, Welker M (2021) Toxic cyanobacteria in water: a guide to their public health consequences, monitoring and
+management. Taylor & Francis, p 858
+21. Clark J, Schaeffer B, Darling J, Urquhart E, Johnston J, Ignatius A, Stumpf R (2017) Satellite monitoring of
+cyanobacterial harmful algal Bloom frequency in recreational waters and drinking water sources. Ecol Ind 80:84–95
+Page 14/25
+22. Coffer M, Schaeffer B, Salls W, Urquhart E, Loftin K, Stumpf R, Darling JA (2021) Satellite remote sensing to assess
+cyanobacterial bloom frequency across the United States at multiple spatial scales. Ecol Ind 128:107822
+23. Conde D, Arocena R, Rodríguez-Gallego L (2002) Recursos acuáticos superciales de Uruguay: ambientes algunas
+problemáticas y desafíos para la gestión (I y II). Ambios 3(10):5–9
+24. Conley D, Paerl H, Howarth R, Boesch D, Seitzinger S, Havens K, Likens G (2009) Controlling eutrophication: nitrogen and
+phosphorus. Science 323(5917):1014–1015
+25. Cremella B, Huot Y, Bonilla S (2018) Interpretation of total phytoplankton and cyanobacteria uorescence from cross-
+calibrated uorometers, including sensitivity to turbidity and colored dissolved organic matter. Limnol Oceanography:
+Methods 16(12):881–894
+2. Cunha D, Carmo Calijuri M, Lamparelli M (2013) A trophic state index for tropical/subtropical reservoirs (TSItsr).
+Ecological Engineering, 60, 126–134
+27. Díaz I, Levrini P, Achkar M, Crisci C, Fernández Nion C, Goyenola G, Mazzeo N (2021) Empirical modeling of stream
+nutrients for countries without robust water quality monitoring systems. Environments 8(11):129
+2. Dodds W, Bouska W, Eitzmann J, Pilger T, Pitts K, Riley A, Thornbrugh D (2009) Eutrophication of US freshwaters:
+analysis of potential economic damages
+29. Dzialowski AR, Smith VH, Wang S-H, Martin MC (2011) Effects of non-algal turbidity on cyanobacterial biomass in
+seven turbid Kansas reservoirs. Lake Reserv Manag 27(1):6–14. 10.1080/07438141.2011.551027. Jr
+30. Ernst O, Siri-Prieto G (2011) La agricultura en Uruguay: Su trayectoria y consecuencias. In Proceedings of the II
+Simposio Nacional de Agricultura, Paysandú, Uruguay (pp. 29–30)
+31. Fletcher K (2012) Sentinel-2: ESA’s optical high-resolution misión for GMES Operational Services (European Spatial
+Agency SP-1322/2) ISBN 978-92-9221-419-7
+32. Gazzano I, Achkar M, Díaz I (2019) Agricultural Transformations in the Southern Cone of Latin America: Agricultural
+Intensication and Decrease of the Aboveground Net Primary Production, Uruguay’s Case. Sustainability 11(24):7011
+33. Getis A, Ord J (2010) The analysis of spatial association by use of distance statistics. Perspectives on spatial data
+analysis. Springer, Berlin, Heidelberg, pp 127–145
+34. Giardino C, Brando VE, Gege P, Pinnel N, Hochberg E, Knaeps E, Dekker A (2019) Imaging spectrometry of inland and
+coastal waters: state of the art, achievements and perspectives. Surv Geophys 40(3):401–429
+35. Gitelson A (1992) The peak near 700 nm on radiance spectra of algae and water: relationships of its magnitude and
+position with chlorophyll concentration. Int J Remote Sens 13(17):3367–3373
+3. Goyenola G, Meerhoff M, Teixeira-de Mello F, González-Bergonzoni I, Graeber D, Fosalba C et al (2015) Monitoring
+strategies of stream phosphorus under contrasting climate-driven ow regimes. Hydrol Earth Syst Sci 19(10):4099–
+4111. doi:10.5194/hess-19-4099-2015
+37. Ha N, Thao N, Koike K, Nhuan M (2017) Selecting the best band ratio to estimate chlorophyll-a concentration in a
+tropical freshwater lake using sentinel 2A images from a case study of Lake Ba Be (Northern Vietnam). ISPRS Int J Geo-
+Information 6(9):290
+3. Haakonsson S, Rodríguez-Gallego L, Somma A, Bonilla S (2017) Temperature and precipitation shape the distribution of
+harmful cyanobacteria in subtropical lotic and lentic ecosystems. Sci Total Environ 609:1132–1139
+39. Huisman J, Codd G, Paerl H, Ibelings B, Verspagen J, Visser P (2018) Cyanobacterial blooms. Nat Rev Microbiol
+16(8):471–483
+40. Ioannou I, Gilerson A, Ondrusek M, Foster R, El-Habashi A, Bastani K, Ahmed S (2014) Algorithms for the remote
+estimation of chlorophyll-a in the Chesapeake Bay. Ocean Sensing and Monitoring VI, vol 9111. International Society for
+Optics and Photonics, p 911118
+41. Kayastha P, Dzialowski AR, Stoodley SH, Wagner KL, Mansaray AS (2022) Effect of Time Window on Satellite and
+Ground-Based Data for Estimating Chlorophyll-a in Reservoirs. Remote Sens 14(4):846
+Page 15/25
+42. Knoll LB, Hagenbuch EJ, Stevens MH, Vanni MJ, Renwick WH, Denlinger JC, Hale RS, González MJ (2015) Predicting
+eutrophication status in reservoirs at large spatial scales using landscape and morphometric variables. Inland Waters
+5(3):203–214. 10.5268/iw-5.3.812
+43. Leaive J, Ten-Hage L (2007) Algal and cyanobacterial secondary metabolites in freshwaters: a comparison of
+allelopathic compounds and toxins. Freshwater Biology, 52 (2):199–214
+44. Lins R, Martinez J, Motta Marques D, Cirilo J, Fragoso C (2017) Assessment of chlorophyll-a remote sensing algorithms
+in a productive tropical estuarine-lagoon system. Remote Sens 9(6):516
+45. McCullough IM, Loftin CS, Sader SA (2012) Combining lake and watershed characteristics with Landsat TM data for
+remote estimation of regional lake clarity. Remote Sens Environ 123:109–115
+4. MGAP (Ministerio de Ganadería, Agricultura y Pesca) (1976) Unidades de suelos CONEAT. MGAP-DGRNAR-
+CONEAT.Montevideo
+47. Michalak A, Anderson E, Beletsky D, Boland S, Bosch N, Bridgeman T, DePinto J (2013) Record-setting algal bloom in
+Lake Erie caused by agricultural and meteorological trends consistent with expected future conditions. Proceedings of
+the National Academy of Sciences, 110(16), 6448–6452
+4. Mishra S, Mishra D (2012) Normalized difference chlorophyll index: a novel model for remote estimation of chlorophylla
+concentration in turbid productive waters. Remote Sens Environ 117:394–406
+49. Moran PA (1948) The interpretation of statistical maps. J Royal Stat Soc Ser B (Methodological) 10(2):243–251
+50. MVOTMA (2017) Plan Nacional de Aguas. Ministerio de Vivienda, Ordenamiento Territorial y Medio Ambiente
+51. Navalgund R, Jayaraman V, Roy P (2007) Remote sensing applications: An overview. Curr Sci 00113891(12):93
+52. Nechad B, Ruddick K, Schroeder T, Oubelkheir K, Blondeau-Patissier D, Cherukuru N, Brockmann C (2015) CoastColour
+Round Robin data sets: a database to evaluate the performance of algorithms for the retrieval of water quality
+parameters in coastal waters. Earth Syst Sci data 7(2):319–348
+53. Neil C, Spyrakos E, Hunter PD, Tyler AN (2019) A global approach for chlorophyll-a retrieval across optically complex
+inland waters based on optical water types. Remote Sens Environ 229:159–178
+54. Nusch EA (1980) Comparison of different methods for chlorophyll and phaeopigment determination. Arch Hydrobiol
+Beih Ergebn Limnol 14:14–36
+55. Oliveira E, Fernandes A, Kampel M, Cordeiro R, Brandini N, Vinzon S, Paranhos R (2016) Assessment of remotely sensed
+chlorophyll-a concentration in Guanabara Bay, Brazil. J Appl Remote Sens 10(2):026003
+5. Ouma YO, Noor K, Herbert K (2020) Modelling reservoir chlorophyll-a, TSS, and turbidity using Sentinel-2A MSI and
+Landsat-8 OLI satellite sensors with empirical multivariate regression. Journal of Sensors, 2020
+57. Papenfus M, Schaeffer B, Pollard AI, Loftin K (2020) Exploring the potential value of satellite remote sensing to monitor
+chlorophyll-a for US lakes and reservoirs. Environ Monit Assess 192(12):1–22
+5. Pearson L, Dittmann E, Mazmouz R, Ongley S, D’Agostino P, Neilan B (2016) The genetics, biosynthesis and regulation
+of toxic specialized metabolites of cyanobacteria. Harmful Algae 54:98–111
+59. Reichwaldt ES, Ghadouani A (2012) Effects of rainfall patterns on toxic cyanobacterial blooms in a changing climate:
+Between simplistic scenarios and complex dynamics. Water Res 46(5):1372–1393.
+doi:https://doi.org/10.1016/j.watres.2011.11.052
+0. Reynolds CS (2006) The ecology of phytoplankton. Cambridge University Press, Cambridge.
+https://doi.org/10.1017/CBO9780511542145
+1. Sinha E, Michalak AM, Balaji V (2017) Eutrophication will increase during the 21st century as a result of precipitation
+changes. Science 357(6349):405–408. doi:https://doi.org/10.1126/science.aan2409
+2. Somma A, Bonilla S, Aubriot L (2022) Nuisance phytoplankton transport is enhanced by high ow in the main river for
+drinking water in Uruguay. Environ Sci Pollut Res 29(4):5634–5647
+Page 16/25
+3. Spyrakos E, O'donnell R, Hunter PD, Miller C, Scott M, Simis SG, Tyler AN (2018) Optical types of inland and coastal
+waters. Limnol Oceanogr 63(2):846–870
+4. Topp SN, Pavelsky TM, Jensen D, Simard M, Ross MR (2020) Research trends in the use of remote sensing for inland
+water quality science: Moving towards multidisciplinary applications. Water 12(1):169
+5. Torbick N, Hession S, Hagen S, Wiangwang N, Becker B, Qi J (2013) Mapping inland lake water quality across the Lower
+Peninsula of Michigan using Landsat TM imagery. Int J Remote Sens 34(21):7607–7624
+. Uudeberg K, Aavaste A, Kõks K, Ansper A, Uusõue M, Kangro K, Reinart A (2020) Optical Water Type Guided Approach to
+Estimate Optical Water Quality Parameters. Remote Sens 12(6):931
+7. Valderrama J (1981) The simultaneous analysis of total nitrogen and total phosphorus in natural waters. Mar Chem
+10:109–122
+. Wang L, Bie W, Li H, Liao T, Ding X, Wu G, Fei T (2022) Small Water Body Detection and Water Quality Variations with
+Changing Human Activity Intensity in Wuhan. Remote Sens 14(1):200
+9. Watanabe F, Alcântara E, y Stech J (2018) High performance of chlorophyll-a prediction algorithms based on simulated
+OLCI Sentinel-3A bands in cyanobacteria-dominated inland waters. Adv Space Res 62(2):265–273
+70. Yang Z, Reiter M, Munyei N (2017) Estimation of chlorophyll-a concentrations in diverse water bodies using ratio-based
+NIR/Red indices. Remote Sens Applications: Soc Environ 6:52–58
+71. Zhang Y, Zhang Y, Shi K, Zhou Y, Li N (2021) Remote sensing estimation of water clarity for various lakes in China.
+Water Res 192:116844
+Figures
+Page 17/25
+Figure 1
+Methodological strategy. The study stages are differentiated in colors and numbers. The outline corresponds to the study
+area in the Santa Lucía river basin
+Figure 2
+Study area, location of the fourteen reservoirs sampled in-situ and land use as of 2015 according to information provided by
+the Environmental Protection Ministry
+Page 18/25
+Figure 3
+Concentration of total suspended solids (TSS), percentage of suspended organic matter (SOM), total phosphorus (TP), total
+nitrogen (TN), total chlorophyll-a and cyanobacterial chlorophyll-a (Cy) (log scale) measured in situ for the fourteen
+reservoirs (A-N). Bars represent the mean of each sampling (3 replicates) and standard deviation for each sampling
+campaign (November and December 2019, December 2020). The colors on the x-axis of the chlorophyll-a plot indicate the
+trophic state for each reservoir according to Cunha et al., (2013). The trophic state according to TP was hypereutrophic in all
+cases
+Page 19/25
+Figure 4
+Spectral signatures of reservoirs sampled in-situ. In orange: reservoirs with chlorophyll-a values below 20 µg L-1, in green:
+reservoirs with chlorophyll-a values above 20 µg L-1
+Page 20/25
+Figure 5
+Dispersion of the chlorophyll-a (Chl-a) estimation model in µg L-1 tted based on NDCI indicator: (Rrs 705 nm - Rrs 665 nm) /
+(Rrs 705 nm + Rrs 665 nm), where Rrs: surface reectance
+Page 21/25
+Figure 6
+Dispersion of the chlorophyll-a (Chl-a) estimation model in µg L-1 tted based on VR indicator: (Rrs 560 nm - Rrs 665 nm) /
+(Rrs 560 nm + Rrs 665 nm), where Rrs: surface reectance
+Page 22/25
+Figure 7
+Dispersion of the transparency estimation model tted based on the surface reectance of the band centered at 833 nm
+Page 23/25
+Figure 8
+Trophic state of monitored reservoirs according to the trophic state index of Cunha et al. (2013) estimated from chlorophyll-
+a concentration
+Page 24/25
+Figure 9
+Satellite-estimated chlorophyll-a concentration and transparency for 12/12/16 and 11/01/17 clustered by reservoir size
+quartile
+Page 25/25
+Figure 10
+Estimated chlorophyll-a and transparency hotspots in the 486 satellite-monitored medium- and small-sized reservoirs
+according to the Getis-Ord hotspot analysis
+Supplementary Files
+This is a list of supplementary les associated with this preprint. Click to download.
+Fig.Supplementary1.jpg

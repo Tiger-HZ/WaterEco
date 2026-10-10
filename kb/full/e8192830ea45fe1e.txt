@@ -1,0 +1,708 @@
+Tracking the spatio-temporal distribution and
+regional differences of carbon footprint in grid scale
+of China's construction industry
+Xiaomin Guo  (  guoxm.20b@igsnrr.ac.cn )
+Institute of Geographic Sciences and Natural Resources Research CAS: Institute of Geographic Sciences
+and Natural Resources Research Chinese Academy of Sciences
+Xiaowei Chuai 
+Nanjing University
+Research Article
+Keywords: carbon emission, construction industry, spatial-temporal distribution, heterogeneity
+characteristic, grid scale
+Posted Date: September 13th, 2022
+DOI: https://doi.org/10.21203/rs.3.rs-1869201/v1
+License:   This work is licensed under a Creative Commons Attribution 4.0 International License.  
+Read Full License
+1 
+ 
+Tracking the spatio-temporal distribution and regional differences of 
+carbon footprint in grid scale of China's construction industry 
+Xiaomin Guo 1, Xiaowei Chuai 23* 
+1. Institute of Geographic Sciences and Natural Resources Research, CAS, China 
+2. School of Geography and Ocean Science, Nanjing University, Nanjing 210023, Jiangsu Province, 
+China. 
+3. Frontiers Science Center for Critical Earth Material Cycling, Nanjing University, Nanjing 210046, 
+Jiangsu Province, China. 
+Corresponding author: chuaixiaowei@163.com 
+Abstract: China is undergoing rapidly urbanization process, enlarging the continuous optimization of 
+infrastructure and increasing relevant construction activities sharply, releasing abundant carbon 
+emissions (CEs) subsequently. Understanding the spatial-temporal patterns and changing characteristics 
+is thus a fundamental prerequisite to assess and sustain energy saving and CEs reduction of construction 
+industry (CI) level. Previous studies on carbon emission (CE) of CI however, are often limited to the 
+quantitative level, provincial or local administrative unit scales, lacking relevant st udies at the spatial 
+raster resolution scale, due to data gaps. Here, using the energy consumption , social economic data and 
+a series of remote sensing data from EU EDGAR, this study explored the spatial-temporal distribution 
+and changing characteristics of CEs from CI in typical years of 2007, 2010, and 2012. This study found, 
+from 2007 to 2010, then 2012, in addition to subtle differences, the direct, indirect, and total CEs of CI 
+all showed an increasing trend overall. All provincial units except Tianjin and Guangdong, indirect CEs 
+took up more than 50% of the total CEs, which can clearly indicate the “dominant low carbon, recessive 
+high carbon” characteristics of CI. The direct, indirect, and total CEs of the CI in 2007, 2010, and 2012, 
+all showed a positive spatial clustering. Specifically, hot spots were mainly distributed in Beijing-Tianjin-
+Hebei, Yangtze River Delta, and cold spots were mainly focused in the west and northeast of China, 
+presenting a similar distribution pattern with population-economy characteristics. 
+Key words: carbon emission; construction industry; spatial-temporal dis tribution; heterogeneity 
+characteristic; grid scale 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+2 
+ 
+Tracking the spatio-temporal distribution and regional differences of 1 
+carbon footprint in grid scale of China's construction industry 2 
+Abstract: China is undergoing rapidly urbanization process, enlarging the continuous optimization of infrastructure 3 
+and increasing relevant construction activities sharply, releasing abundan t carbon emissions (CEs) subsequently. 4 
+Understanding the spatial-temporal patterns and changing characteristics is thus a fundamental prerequisite to assess 5 
+and sustain energy saving and CEs reduction of construction industry (CI) level. Previous studies on carbon emission 6 
+(CE) of CI however, are often limited to the quantitative level, provincial or local administrative unit scales, lacking 7 
+relevant studies at the spatial raster resolution scale, due to data gaps . Here, using the energy consumption, social 8 
+economic data and a series of remote sensing data from EU EDGAR, this study ex plored the spatial-temporal 9 
+distribution and changing characteristics of CEs from CI in typical years of 2007, 2010, and 2012. This study found, 10 
+from 2007 to 2010, then 2012, in addition to subtle differe nces, the direct, indirect, and total CEs of CI all showed 11 
+an increasing trend overall. All provincial units except Tianjin and Guangdong, indirect CEs took up more than 50% 12 
+of the total CEs, which can clearly indicate the “dominant low carbon, recessive high carbon” characteristics of CI. 13 
+The direct, indirect, and total CEs of the CI in 2007, 2010, and 2012, all showed a positive spatial clustering. 14 
+Specifically, hot spots were mainly distributed in Beijing-Tianjin-Hebei, Yangtze River Delta, and cold spots were 15 
+mainly focused in the west and northeast of China, presenting a similar distribution pattern with population-economy 16 
+characteristics. 17 
+Key words: carbon emission; construction industry; spatial-temporal distribution; heterogeneity characteristic; grid 18 
+scale 19 
+1. Introduction 20 
+Concerns about climate change are increasing worldwide. Carbon emissions (CEs) have exacerbated 21 
+the global warming process and serious environmental problem. Therefore, how to formulate carbon 22 
+reduction strategies effectively is urgent. ( Pandey et al., 2011; Wang et al., 2020). As the biggest 23 
+carbon emitters, China’s total carbon emissions (CEs) account for over 25% the total in the w orld 24 
+(Zabalza et al., 2009; Cui et al., 2019). In 2020, China has stated that China will strive to reach the 25 
+goal of carbon peak in 2030, carbon neutrality by 2060 with more effective measures (Mi et al., 26 
+2017; Li et al., 2020). Among them, CEs from construction industry ( CI) contribute significantly, 27 
+for it can also drive considerable amount of CEs from associated industries. It is reported that more 28 
+3 
+ 
+than 90% of the CEs from CI are generated indirectly, mainly from upstream industry in the 29 
+production stage of building materials (Huang et al., 2018; Wang et al., 2017). Statistically, the CI 30 
+consumes approximately 30% of global raw material usage, 25% of solid waste, and 25% of water 31 
+resource (Zhang et al., 2013), and it also consumes a lot of sand, wood, gravel ( Kokoni and Skea, 32 
+2014). Moreover, steel, cement, plastics and other materials are all needed for the CI production 33 
+(Wang and Zhang, 2008). These materials will produce a large amount of energy consumption 34 
+(Chang et al., 2010; Huang and Bohne, 2012; Khamraev et al., 2021). Therefore, by considering the 35 
+direct and indirect CEs from CI comprehensively, it seems much critical to carbon reduction. 36 
+Scholars abroad started studying the CI early (Nassen et al., 2007; Marzia et al., 2010). During their 37 
+earlier studies, the relationship among associated industries were analyzed, which both calculated 38 
+the direct CEs from CI but also the associated CEs from associated industry sectors. And, with the 39 
+deepening of research gradually, the concept of CEs from CI domestic is constantly being developed 40 
+and improved. It has been extended to the indirect CEs caused by the building materials, as well as 41 
+other industries. Indirect CEs accounted for total from CI highly (Hendrickson and Horvath, 2000). 42 
+For example, Acquaye and Duffy (2010) found that the indirect CEs of CI in Irish took a proportion 43 
+of 91%. It is noteworthy that most of existing studies focus on the CEs from CI in a country or 44 
+region; And scholars generally believe that the CEs from CI mainly come from two parts: direct and 45 
+indirect CEs. Various studies have been carried to analyze the characteristics of direct and indirect 46 
+CEs from time series, which play fundamental effects in the in-depth understanding of CEs from CI, 47 
+but this is not enough, carbon reduction also should be clear from the spatial grid scale, which can 48 
+provide value references for the implementation of emission reduction policies. 49 
+A variety of methods have been applied in the existing studies involving CE from CI. 50 
+Specifically, the emission coefficient method is the common method for direct CE (Chuai et al., 51 
+2015). The application of life cycle method and IOA is primarily in indirect CE investigation (Zhang 52 
+and Wang, 2016). IOA can calculate indirect CE through different connections between various 53 
+departments and industries (Meng et al., 2018; Zhang et al., 2018). While, life cycle method exists 54 
+the error during the boundary truncation, which cannot fully quantify the indirect CE (Nassasset et 55 
+al., 2007; Liu et al., 2019). Therefore, the IOA method has a great advantage in measuring the 56 
+indirect CE of a certain industry, and, it has been widely employed (Chuai et al., 2015; Guo et al ., 57 
+2018; Huang and Bohne, 2012; Zhang and Liu, 2013; Chuai et al., 2015; Zhang et al., 2017; Li et 58 
+4 
+ 
+al., 2017; Wang et al., 2019 ). However, most studies were conducted on the characteristics of the 59 
+total, or direct, indirect CEs, lacking the contribution characteristics exploration from other 60 
+industries to indirect CEs from CI. Exploring the contribution of other industries to indirect CEs 61 
+from CI is beneficial for the policy maker of carbon reduction. 62 
+CI is a pillar industry in China, which occupies an important function in the national economic 63 
+system, it accounted for 7.20% of China’s GDP in 2020. In recent years, with the development of 64 
+China's infrastructure, CI has developed rapidly, generating considerable energy-related CEs (Wu 65 
+et al., 2019). The energy consumed by the CI accounts for about 30% (Wang et al., 2019; Hong et 66 
+al., 2016). In 2010, CEs related to energy consumption reached 79.72Mt (Lin and Liu, 2015). 67 
+Existing studies have conducted the CEs from CI in whole China (Shi et al., 2017) or certain region 68 
+or city (Li et al., 2020). However, these studies mainly show the total amount of China or a certain 69 
+region under the premise that the emission intensity of the entire study area is uniform without 70 
+considering the spatial heterogeneity of CEs. We must be aware that because of the vast territory, 71 
+geographical conditions and large differences in resource endowments between areas, there are huge 72 
+gaps in economic development and industrial structure among areas (Wang et al., 2020). Recently, 73 
+some studies have analyzed the spatial heterogeneity of CEs from CI. However, most of them are 74 
+based on administrative units (Li et al., 2017; Du et al., 2017), showing differences through 75 
+statistical data. They cannot accurately describe the emission distribution, and freely find the exact 76 
+emission-intensive areas and consistent hot spots in the physical space. All in all, they are powerless 77 
+to reveal the spatial differences in CE from CI. In summary, they cannot help to reveal the spatial 78 
+differences in CEs from CI, and there is an urgent need for more detailed spatial CE simulations on 79 
+the grid scale. 80 
+Overall, there are still many questions that are still unclear. How to help shape CEs from CI in 81 
+different areas? What are the similarities and differences in the spatial distributi on of direct, and 82 
+indirect CEs from CI? Where are the hotspots for CEs from CI? What is the spatial distribution and 83 
+change in grid scale? All these issues are still uncertain, but they are very important for the 84 
+government to take targeted mitigation measures to carbon reduction. Accordingly, this study 85 
+calculated the direct, indirect, and total CEs of CI in 2007, 2010, and 2012, conducted the analysis 86 
+of industry pulls, and explored the innovative integrated simulation based on the spatial distribution 87 
+data of the EDGAR database. Compared with previous studies, the spatial distribution of CEs of CI 88 
+5 
+ 
+is simulated at the grid level, and long-series hot spot analysis is beneficial to track the consistency 89 
+of emission intensive points change. Finally, the responsibility mechanism for carbon reduction 90 
+considering local conditions can be proposed innovatively. 91 
+2 Data sources & methods 92 
+2.1 Data sources 93 
+All data employed in this study includes remote sensing data, statistics, energy consumption and 94 
+socio-economic data. Specifically, energy consumption is mainly acquired from the energy balance 95 
+sheets of 31 provincial units in 2007, 2010, and 2012. The total output value and the complete 96 
+consumption coefficient are mainly based on Chinese multi-regional input-output table of 31 97 
+provincial units in 2007, 2010, and 2012. Socio-economic data mainly derives from the "China 98 
+Statistical Yearbook" and the "China Energy Statistical Yearbook" in 2008, 2011, and 2013. In order 99 
+to ensure the consistency of the industry sectors division, this study classifies the ind ustry system 100 
+into five industries: agriculture, industry, CI, transportation, storage and postal industry, and, others. 101 
+The spatial CI data comes from the Global Atmospheric Research Emissions Database (EDGAR) 102 
+dataset (https://edgar.jrc.ec.com) (Crippa et al., 2018), it not only includes emissions intensity value 103 
+(which refers to the CEs per grid cell), but also the spatial distribution data with a resolution of 104 
+0.1°×0.1°. After data pre-processing in this study, the spatial simulation of CEs of the CI has been 105 
+transformed into spatial raster data with a resolution of 10km×10km. The grid cell in t his study 106 
+refers to the grid of 10km×10km. 107 
+2.2 Methods 108 
+2.2.1 Calculation of CE 109 
+2.2.1.1 Direct CE 110 
+In this study, the emission coefficient method was applied to obtain the direct CEs from CI. The 111 
+main idea of this method is to multiply the energy consumption in construction activities with its 112 
+emissions and methane coefficients, the corresponding formula is as follows: 113 
+24
+()     d i i i CO i CH iC Q K V V (1) 114 
+Where, diC refers to the direct CEs of energy i from CI, iQ is the consumption of the 115 
+6 
+ 
+energy i, iK is the calorific value per unit of energy emitted by energy i， 2CO iV  and 4CH iV  are 116 
+the coefficients of CO2 and CH4 produced by energy i, respectively. 117 
+2.2.1.2 Indirect CE 118 
+IOA method is usually used to measure the economic links between all industrial sectors. Therefore, 119 
+the publicly published input-output table can directly characterize the degree of relevance between 120 
+the CI and other industries. The formula is as follows: 121 
+
+   
+dj
+ind j con j
+j
+CC P B P (2) 122 
+Where, ind jC represents the CEs of the industry j caused by the CI, djC represents 123 
+direct CEs related to energy consumption in the industry j . jP and conP are the total output 124 
+values of the industry j and CI, respectively. jB represents the total input coefficient of the 125 
+industry j caused by the CI in the input-output table. 126 
+1()B A I A  (3 ) 127 
+Where, B is the total input coefficient matrix. I represents the identity matrix, its 128 
+diagonals are all "1", other positions are "0". A is the direct input coefficient matrix, composed of 129 
+elements ij . . 130 
+/ij ij j XX  (4 ) 131 
+Where, ijX is the input from industry i to industry j , jX is the output of the industry 132 
+j . 133 
+Then, the total CEs of the CI can be calculated. The total CEs are the sum of direct and indirect 134 
+CEs, the formula is as below. 135 
+T D INDC C C (5) 136 
+2.2.2 Spatial simulation of the CEs from CI 137 
+Although the emission coefficient method and IOA method can be used to calculate the CEs of CI, 138 
+the spatial distribution of the emission sources cannot be clearly depicted. The EU EDGAR database 139 
+provides global grid carbon emission maps of different industries, and the spatial consumption data 140 
+of the CI can be used to simulate. The feasibility of this application on the spatial simulation of CEs 141 
+7 
+ 
+has been proven in the existing literature (Moran and Kanemoto, 2016; Yuan et al., 2019). Therefore, 142 
+on the basis of the spatial simulation data in the EU EDGAR database, after data processing and 143 
+comparison with statistical data, the spatial distribution of CEs from CI can be fitted, and then the 144 
+spatial visualization of CEs from CI can be realized. 145 
+2.2.3 Hotspot analysis 146 
+Spatial autocorrelation is a key feature of geographic phenomena (or events) and an important 147 
+manifestation of the interdependence of spatial units. According to different spatial range, spatial 148 
+autocorrelation can be divided into the Local Spatial Autocorrelation (SPA) and the Global Spatial 149 
+Autocorrelation, which can be measured through the Local Moran's I index and the Global Moran's 150 
+I index, respectively. 151 
+In this study, the global spatial autocorrelation is mainly applied to measure the overall 152 
+changing trend of the CEs through the Global Moran's I statistics. The formula is as follows: 153 
+ 
+1
+2
+11
+( )( )
+nn
+ij i j
+i j i
+n n n
+ij i
+i j i i
+n w x x x x
+I
+w x x
+
+  
+
+  
+
+
+ 
+ (6) 154 
+Where, ix and jx are observed values in the spatial unit i and j , x is the mean value 155 
+of x , ix and jx both range between [ 1,1] , 1 is adjacent, 0 is non-adjacent, value less than 0 156 
+represents negative correlation, 0 represents irrelevance, and value more than 0 represents positive 157 
+correlation. n is the number of spatial units, and ijw is the spatial weight matrix. 158 
+For the Moran’s I, it can introduce the standardized statistics Z to test whether a certain variable 159 
+in n regions exists spatial autocorrelation. The calculation formula is as follows: 160 
+()
+()
+I E IZ
+VAR I
+ (7) 161 
+Where, ()EI i s the Moran’s. I is the mean value. ()VAR I is the standard deviation of 162 
+the Moran’s I. 163 
+If Z is greater than 0 and statistically significant, which indicat es that the observed values in 164 
+adjacent areas are close in space, that is, there is a positive spatial autocorrelation; If less than 0 and 165 
+statistically significant, it represents that the observed values of adjacent areas in space are more 166 
+8 
+ 
+different and the distribution is scattered. That is, there is a negative spatial autocorrelation. If Z is 167 
+equal to 0, indicates that the observations are scattered distributed independently and randomly in 168 
+space. 169 
+The global spatial autocorrelation is usually used to describe the overall trend of the 170 
+dependence degree of all spatial units, but it cannot fully reflect the spatial correlation mode between 171 
+units in the study area. Especially when the spatial process presents non-stationary characteri stics, 172 
+the local spatial autocorrelation analysis should be adopted. Therefore, this study applied the hot 173 
+spot analysis to measure the spatial correlation of each unit attribute at the local level. The formula 174 
+is as follows: 175 
+()
+*( )
+ij jj
+i
+jj
+w d x
+Gd x (8) 176 
+Where, ijw is the spatial weight matrix, indicating the neighboring relationship. jx is the 177 
+attribute value of the basic unit j . 178 
+The test of *iG (d) is similar to the global Moran index, and its formula is as follows: 179 
+**
+*
+*
+()()
+()
+ii
+i
+i
+G E GZG
+VAR G
+ (9) 180 
+If *iG is positive and statistically significantly, it represents there is a spatially clustered state 181 
+of the high observation values; If *iG is a negative value and statistically significant, it means there 182 
+is a spatially clustered state of the low observed values. 183 
+3. Results 184 
+3.1 Changes of CEs from the CI 185 
+In order to better investigate the changing trends of CEs from CI, this study produced the line chart 186 
+of CEs. As Fig. 1 shows, direct, indirect, and total CEs all present an overall increasing trend in the 187 
+period of 2007-2012 (Fig. 1). The direct CEs showed obvious regional differences, areas with high 188 
+direct CEs are generally those with larger economies and better development of the CI, except Inner 189 
+Mongolia. Areas with the smallest direct CEs are Hainan and Guangxi, respectively. Areas with 190 
+relatively low direct CEs are concentrated in Qinghai, Heilongjiang, Ningxia, Guizhou, Jiangxi, 191 
+9 
+ 
+Xinjiang, Gansu, Jilin. Among them, Qinghai, Ningxia, and Gansu have small economic aggregates, 192 
+small scale of construction, and low degree of industrialization; while, Hainan have smaller CI and 193 
+less energy consumption. The indirect and total carbon emission have a similar trend. Areas w ith 194 
+high indirect CEs mainly concludes Yunnan, Sichuan, Shandong and Liaoning. And, the total CEs 195 
+in these areas were also higher. Overall, the CI has relatively low direct CEs and high indirect CEs 196 
+due to the closely connections between CI and other industries, it is a typical “demand” industry. 197 
+ 198 
+Fig. 1. The direct, indirect, and total CEs from the CI in 2007, 2010, and 2012 199 
+3.2 Changes of indirect CEs among sectors 200 
+To clarify the contribution of indirect CE from other industries, this study calculated the contribution 201 
+value and proportion of the other four industries in the indirect CEs from CI in 2007, 2010, and 202 
+2012 (Fig. 2). F rom the industry contribution value, the average value of the four industries all 203 
+presented an increasing trend, but there were significant differences. Specifically, the transportation, 204 
+10 
+ 
+storage and post al industry contributed the most to the indirect CE, followed by the industry. In 205 
+2007, the average annual contribution value of the agriculture, industry, transportation, storage and 206 
+postal industry, and others were 10.08 × 104 t, 67.92 × 104 t, 94.85 × 104 t, and 22.30 × 104 t , 207 
+respectively, the transportation, storage and postal industry was the largest contributor. Regionally, 208 
+Yunnan and Tianjin were the largest and the smallest contributors, with 355.06 × 104 t and 209 
+129.20 × 104 t, respectively. In 2010, the average contribution value of agriculture, industry, 210 
+transportation, storage and postal industry, and others were 16.50×104 t, 96.71×104 t, 18.01×104 t, 211 
+and 31.15×104 t, respectively. In 2012, the average annual contribution value of agriculture, industry, 212 
+transportation, storage and postal industry, and other industries were 21.54 ×104 t, 140.49 ×104 t, 213 
+214.02× 104 t and 42.13 × 104 t, respectively. In the periods of 2007-2010 and 2010-2012, the 214 
+transportation, storage and postal industry has always been the industry with the highest contribution 215 
+value of indirect CEs; among them, Yunnan has the highest contribution value of 355.06 ×104 t, 216 
+900.16×104 t and 859.23×104 t, respectively; Tianjin has the lowest contribution value of 12.92×104 217 
+t, 32.46×104 t and 25.08×104 t. 218 
+11 
+ 
+ 219 
+Fig. 2. Contributions of indirect CEs from various industries in 2007, 2010, and 2012 220 
+3.3 Spatial distribution of CEs from CI 221 
+3.3.1 Direct carbon emission intensity from CI 222 
+On the basis of the direct CEs, the spatial distribution of the carbon emission intensity of the CI in 223 
+2007, 2010, and 2012 were obtained by fitting with the EU EDGAR spatial distribution stati stics. 224 
+Using the natural breakpoint method in ArcGIS 10.3, the CEs from CI was classified and spatially 225 
+displayed, which is conducive to visually comparing the differences in space. 226 
+Fig. 3 shows, the spatial distribution of the direct CEs in 2007, 2010, and 2012 have prominent 227 
+similarities and differences. Overall, the direct CE intensity presented an increasing trend in quantity. 228 
+Spatially, the distribution of high direct CE intensity was similar but gradually expanding. T he 229 
+intensity of direct CE in 2007 varied between 0.00-20.79×104t/yr/grid cell. In spatial, the direct CE 230 
+intensity of 0.00×104t/yr/grid cell were distributed in most areas in China. Areas ranging between 231 
+0.08-0.48×104t/yr/grid cell were concentrated in Beijing, Tianjin, Jiangsu, Zhejiang, Guangdong, 232 
+12 
+ 
+etc. with large patches. While, some are scattered distributed in Hubei, Sichuan, etc. in form of small 233 
+patches. Areas with 0.48-20.79×104t/yr/grid cell accounted a relatively small proportion, mainly in 234 
+form of very small patches in space, scattered distributed in eastern coastal areas, such as Shandong, 235 
+Jiangsu and Shanghai. In 2010, the direct CE intensity ranged between 0.00-24.92×104t/yr/grid cell. 236 
+Compared with 2007, the CE intensity in 2010 was significantly enhanced, and the spatial 237 
+distribution of high-intensity emission areas was more extensive. In 2012, the direct CE intensity 238 
+was slightly weaker than that in 2007 and 2010, and the spatial distribution of high-int ensity CE 239 
+areas was more extensive and concentrated. In summary, the direct CE showed an increasing trend 240 
+in quantity, a widening trend in spatial distribution overall, and local concentration of high-intensity 241 
+emission in the Beijing-Tianjin-Hebei and eastern coastal areas gradually. 242 
+ 243 
+Fig. 3. The spatial distribution of direct CEs from CI in 2007, 2010, and 2012（104 t/yr/grid cell） 244 
+3.3.2 Indirect CE intensity of CI 245 
+Compared with direct CE, the distribution of indirect CE intensity has a relatively strong 246 
+broadness and geographic concentration (Fig. 4), Significant similarities and differences exist in the 247 
+spatial distribution of indirect CE intensity in 2007, 2010, and 2012. 248 
+13 
+ 
+In 2007, the indirect CE intensity ranged between 0.00-14.47 × 104t/yr/grid cell. 0 values 249 
+accounted a big proportion in China, distributed in most areas. Areas ranged between 0. 11-250 
+0.51×104t/yr/grid cell were mainly concentrated in eastern coastal areas such as Beijing, Tianj in, 251 
+Hebei, Shandong, Jiangsu, Shanghai, Zhejiang, Fujian and Guangdong in the form of large patches, 252 
+and some are scattered in the form of larger patches in Shanxi, Henan, Sichuan, Chongqing , Hubei, 253 
+Hunan, Jiangxi, Guangxi, etc. Areas within the range of 0.51-1.42×10 4t/yr/grid cell were mainly 254 
+scattered in the eastern coastal areas, such as Shandong, Jiangsu, and Shanghai, and Liaoning, 255 
+Shaanxi, Shanxi, north-central areas, such as Beijing and Tianjin; areas with 1.42-14.47×104t/yr/grid 256 
+cell were mainly distributed in eastern coastal area, such as Shanghai, Zhejiang, Guangdong, etc., 257 
+and parts of Liaoning, Beijing, Tianjin, Shaanxi, Shanxi, Sichuan, Chongqing and Y unnan in the 258 
+form of very small patches. In 2010, the indirect CE intensity ranged between 0.00-259 
+26.29×104t/yr/grid cell. Compared with 2007, the indirect CE intensity in 2010 has been 260 
+significantly enhanced and the high-intensity emission areas are distributed widely. Areas with high 261 
+CE intensity were mainly distributed in Liaoning, Guizhou, Jiangxi, Beijing, Tianjin, Shanghai, 262 
+Zhejiang, Guangdong, Hainan in the form of very small patches, of which Hainan was more 263 
+concentrated densely. In 2012, the indirect CE intensity ranged between 0.00-23.96×10 4t/yr/grid 264 
+cell. Compared with 2007 and 2010, the CE intensity in 2012 has been slightly weakened, but the 265 
+geographical distribution of high-intensity emissions is more imploded. Areas with less than 1.42-266 
+23.96×104t/yr/grid cell were mainly distributed in some coastal areas in the form of ti ny patches, 267 
+such as Beijing, Tianjin, Jiangsu, Shanghai, Zhejiang, Fujian and Shanxi, Chongqing, Sichuan, 268 
+Shaanxi. On the whole, the indirect CE intensity show ed a quantitative increase. The spatial 269 
+distribution of high value is similar, but the distribution show ed a gradual expansion and 270 
+concentration trend. In general, the distribution of indirect CE intensity was characterized by weak 271 
+emission intensity in the northwest and high emission intensity in the southeast, indicating obvious 272 
+correlation with the economic situation. 273 
+14 
+ 
+ 274 
+Fig. 4. The spatial distribution of indirect CEs from CI in 2007, 2010, and 2012（104 t/yr/grid cell） 275 
+In summary, in 2007, 2010, and 2012, the CEs from CI all showed a trend of gradual increasing 276 
+in time and gradual geographical concentration in space. The spatial distribution of direct CEs and 277 
+indirect CEs from the CI presented a trend of low in the northwest and high in the southeast. This 278 
+shows that the carbon emission intensity of the CI has a strong correlation with the population 279 
+economy. 280 
+3.4 Spatial patterns of CEs hot spots in the CI 281 
+Based on ArcGIS 10.3 platform, the analysis of the spatial autocorrelation of CEs was con ducted, 282 
+showing that all Moran's I indexes passed the significance test (P<0.01) (Table 1). 283 
+Table 1 shows, the Moran's I indexes of direct and indirect CEs from CI in 2007, 2010, and 284 
+2012 were all positive and significant, indicating both direct and indirect CEs presented positive 285 
+aggregate spatial clustering. 286 
+Table 1 Spatial autocorrelation analysis results of CEs from CI 287 
+Year Type Moran’s P value Z score 
+Direct CEs 0.22 ＜0.01 280.02 
+15 
+ 
+2007 Indirect CEs 0.21 ＜0.01 346.48 
+2010 Direct CEs 0.19 ＜0.01 298.48 
+Indirect CEs 0.36 ＜0.01 323.73 
+2012 Direct CEs 0.30 ＜0.01 245.39 
+Indirect CEs 0.24 ＜0.01 433.89 
+Hot spot analysis was applied to identify the local spatial agglomerations and changing patterns 288 
+of CEs from CI, there were obvious spatial agglomeration and inter-regional differences (Fig. 5, 6). 289 
+Fig. 5 shows that the hot spots of direct carbon emission in 2007 were mainly concentrated in eastern 290 
+areas, such as Beijing, Tianjin, Hebei, Jiangsu, Shanghai, Zhejiang. The cold spots areas were 291 
+mainly concentrated in the southeast of Gansu, northern Ningxia, southeastern Sichuan, northern 292 
+Yunnan, southeastern Guangxi, northwest Guizhou, and Henan. Compared with 2007, the 293 
+distribution ofhot spots in 2010 is more concentrated, and the number is increasing, including central 294 
+Hubei, southeastern Guangdong, Y unnan, Guizhou, Anhui, Henan. Compared with 2007 and 2010, 295 
+the distribution of hot spots in 2012 was less obvious, and areas with insignificant distribution of 296 
+cold and hot spots increased significantly. There was no obvious change in hot spots, while the 297 
+number of cold spots decreased, mainly distributed in Guizhou, Jiangxi, and northern Shaanxi. 298 
+In general, the hot spots in 2007, 2010, and 2012 all showed a relatively distinct distributi on. 299 
+The hot spots were mainly concentrated in the Beijing-Tianjin-Hebei, eastern coastal areas and 300 
+Sichuan, Chongqing, Liaoning, indicating that the areas with higher direct CE intensity from CI are 301 
+concentrated in space. The cold spots were primarily distributed in the northeastern, central and 302 
+southern and western areas, indicating that areas with lower direct emission intensity from CI are 303 
+densely concentrated in space. 304 
+16 
+ 
+305 
+Fig. 5. The hot spots distribution of direct CEs from CI in 2007, 2010 and 2012 306 
+Fig. 6 shows that the hot spots of the indirect CE intensity. In 2007, hot spots were mainly 307 
+distributed in the northeast and eastern coastal areas, such as Liaoning, Beijing, Jiangsu, Shanghai, 308 
+etc.; cold spots were mainly concentrated in eastern Qinghai, Ningxia, Guizhou, Anhui, Northern 309 
+Guangxi, Fujian, eastern Inner Mongolia, Heilongjiang, Jilin; areas with insignificant cold and hot 310 
+spots were relatively small, mainly located at the borders of areas. In general, the distribution pattern 311 
+of the cold and hot spots of indirect CE intensity in 2010 is not obvious. Compared with 2007, the 312 
+cold and hot spots distribution in 2010 has certain differences. In 2010, the distribution of hot spots 313 
+was relatively scattered, and the number was decreasing. For example, Shandong was changed from 314 
+a hot spot to an insignificant area, Ningxia was changed from a cold spot to a hot spot agglomeration 315 
+area, and the junction of Heilongjiang and Jilin was transferred from a significant cold spot area to 316 
+an insignificant area. Compared with 2007 and 2010, the distribution of cold and hot spots in 2012 317 
+was more closely concentrated, and the number of cold and hot spots was increasing. 318 
+17 
+ 
+319 
+Fig. 6. The hot spots distribution of indirect CE from CI in 2007, 2010 and 2012 320 
+In summary, the distribution patterns of cold and hot spots of the direct and indirect CE intensity, 321 
+except for some small differences, have obvious spatial pattern distribution consistency. Both 322 
+showed a gradually significant and tightly concentrated pattern. Specifically, cold spots were mainly 323 
+concentrated in Beijing-Tianjin-Hebei, Bohai Rim, Yangtze River Delta; hotspots were distributed 324 
+in the west and northeast, presenting a clear pattern for the demarcation. This shows that t he CE 325 
+intensity is significantly related to economic development and population density. In addition, the 326 
+distribution of indirect CE intensity is more significant and clearer than the direct CE intensity. 327 
+4. Discussion 328 
+Under the successive releases of new infrastructure policies, the CI is facing a new wave of rapid 329 
+development. This study calculates the direct and indirect CEs from CI in typical years, and 330 
+innovatively simulates the spatial variation in characteristics of CEs from CI. It is helpful to 331 
+determine emission reduction targets according to the local development of the CI (Wen and Wang, 332 
+2020). 333 
+In China, the CI has been developed boomingly with the rapid urbanization. The production 334 
+18 
+ 
+process of CI drives a large amount of resource consumption all over the world, and generates a lot 335 
+of CEs and other air pollutants (Chuai et al., 2020). In this study, direct CEs are those caused by on-336 
+site activities in CI (Onat et al., 2014). Indirect CEs refer to emissions caused by products related to 337 
+the CI in the upstream activities, such as bricks and cements (Kokoni and Skea, 2014). It has been 338 
+demonstrated that CI is typical “dominant low carbon, recessive high carbon” (Qi and Zhang, 2013). 339 
+According to our research, on average, indirect carbon emission accounted for more than 77% of 340 
+the total in all provincial units. Heilongjiang, Hainan and Guangxi accounted for the highest 341 
+proportion in 2007, 2010 and 2012, which were 97%, 98% and 97%, respectively. This is because 342 
+the CI is a typical demand-oriented industry. And existing relevant study demonstrated the 343 
+production phase of building materials was the period with the largest energy (Bin and Park, 2012), 344 
+then followed by building operation phase (Cui et al., 2019). The CEs of materials and energy 345 
+consumption during the production, manufacturing and transportation of construction materials, as 346 
+well as the CEs generated by maintaining the energy consumption (electricity, water, heating, etc.) 347 
+during the construction process, so the indirect CEs were so high. Here, the calculation in this study 348 
+does not consider emissions produced during the operation phase, such as building use and 349 
+demolition. According to You et al. (2011), in 50 years of building use, the CEs of the operation 350 
+stage are 6-8 times of the production phase of building materials. Therefore, strengthening th e 351 
+selection of green building materials should be paid more attention. 352 
+As the results show, in the period of 2007-2012, CEs from CI presented an increasing trend 353 
+overall. The indirect CEs were mainly gathered in transportation, storage and postal industry, which 354 
+is consistent with the research of others (Yan et al., 2010 ). According to the study of Chuai et al. 355 
+(2015), the industry was the sector with the highest indirect CEs, indicating there is no substantially 356 
+change in traditional construction pattern of China, energy structure mainly relies on fossi l fuels, 357 
+especially coal. Specifically, the sectors with significant changes in indirect CEs caused by the CI 358 
+are mainly concentrated in the production and supply of electric power, heat power, and water, the 359 
+manufacturing and processing metals and metal products, the coking, gas, and processing of 360 
+petroleum, the manufacturing of nonmetallic goods, the mining, the transport, storage, postal, and 361 
+information industry, and the chemical industry. These sectors accounted for 94.92%, 96.2%, 96.59 % 362 
+and 96.43% of total indirect CEs in 1995, 2000, 2005 and 2010. , and their contribution to indirect 363 
+CEs remained unchanged between 1995 and 2010. Thus, the development of new clean energy 364 
+19 
+ 
+should be paid more attention. And, for the transport, storage, and postal industry, short-distance 365 
+transport should be promoted and recycle intermediate production products during the production 366 
+phase of products (Huang, 2012). In the future, carbon reduction in CI can be implemented through 367 
+strengthening the selection of green building materials, reducing high-carbon building materials use 368 
+(Li et al., 2021). 369 
+High resolution map and long-term sequence hotspot analysis revealed the temporal-spatial 370 
+variation characteristics of CEs from CI in China, which is helpful for us to track carbon emission 371 
+concentration points and take targeted mitigation measures, which has been not studied in similar 372 
+literature. The spatial distribution of direct and indirect CEs from CI in China was similar: low in 373 
+the northwest and high in the southeast, which means that CEs from CI have a strong correlation 374 
+with population density and economic level (Huang et al., 2019). In addition, CEs from CI also 375 
+showed a trend of agglomeration in the same direction. Liang et al. (2019) found that socio-376 
+economic and geographical conditions can significantly affect air pollution emissions. According to 377 
+the study of Zhang et al. (2018), most of China 's heavy industries were located in the North China 378 
+Plain, with construction CEs accounting for a large proportion. For coastal areas, long coastline, 379 
+large estuaries, ports, these convenient traffic conditions also promote the development of foreign 380 
+trade. Therefore, it is not surprising that the Yangtze River Delta, and Pearl River Delta become high 381 
+emission areas. In addition, there has been polarization in these areas and in many other provincial 382 
+capital cities. These regions are usually relatively developed, so they can attract more enterprises, 383 
+labor and capital. All these reasons have promoted their new infrastructure construction 384 
+development, resulting in more intensive CEs. 385 
+There is still some uncertainties in this study. First, the research period of this study i s only 386 
+updated to 2012. Due to the long compilation cycle of the input-output table, it does not keep up 387 
+with the latest time limit. In the future, it should be updated according to the latest input-output table 388 
+to further study the latest conditions in CI. Second, this study applies the EU EDGAR database to 389 
+simulate the spatial distribution of CEs from CI. The resolution of this raster data is 0.1°  0.1°, 390 
+with a low resolution and certain errors. More refined spatial data should be explored for further 391 
+study. Third, the direct CEs was obtained using the coefficient method, which has certain errors, but 392 
+the existing related research of our research group can prove the effectiveness and scientifici ty of 393 
+this method (Yuan et al., 2019). On the basis of data availability, it is hoped that from the aspect of 394 
+20 
+ 
+the industrial chain, we will study the inter-industry spatial transfer characteristics of the CI in the 395 
+latest years. 396 
+5. Conclusions & policy implication 397 
+5.1 Conclusions 398 
+The exploration and simulation of CEs in CI at the provincial level play fundamental effects in 399 
+improving the emission reduction responsibility mechanism and promoting green development. 400 
+This study found that, from 2007-2010-2012, in addition to subtle differences, the direct, indirect, 401 
+and total CEs all showed an increasing trend overall. By calculating the contribution ratio of indirect 402 
+CEs in 2007, 2010, and 2012, we found indirect CE in China averagely accounted for more than 403 
+77% of total, which can clearly indicate the “dominant low carbon, recessive high carbon” 404 
+characteristics of CI. The direct and indirect CEs from CI in 2007, 2010, and 2012, all showed a 405 
+positive spatial clustering. All show ed a gradually significant and tightly concentrated pattern 406 
+changes, that is, hot spots were mainly distributed in Beijing-Tianjin-Hebei, Yangtze R iver Delta, 407 
+and cold spots were mainly distributed in the west and northeast, showing that the CE intensity of 408 
+the CI has a significant correlation with economic development and population density. Hence, 409 
+policy maker should formulate corresponding carbon reduction target adapt to local conditions. 410 
+5.2 Policy implication 411 
+Based on the research results, the following policy recommendations can be put forward. Firstly, it 412 
+is necessary to strengthen the recycling intensity and effective use of intermediate product s in 413 
+relevant industries. Specifically, construction units should be actively guided to obtain raw materials 414 
+by the principle of proximity to reduce emissions during transportation. Secondly, in order to ensure 415 
+the carbon reduction efforts n, the government should also allocate emission reduction tasks 416 
+differentially based on local conditions. Thirdly, for carbon reduction effectively, there should adopt 417 
+different carbon reduction measures, for the developed area, they should develop advanced 418 
+technology to reduce intermediate CEs. For western areas, there is better vigorously develop clean 419 
+energy such as wind energy and solar energy. 420 
+ 421 
+21 
+ 
+Acknowledgement: The authors would like to express sincere gratitude to anonymous reviewers for their valuable 422 
+comments to improve the quality of the manuscript. 423 
+Author Contribution: Project administration and funding acquisition, X.C. review and editin g, X.C. writing—424 
+original draft and methodology, X.G. All authors have read and agreed to the published version of the manuscript. 425 
+Funding: This research has been supported by the Ministry of Education, Huma nities, and Social Science Fund of 426 
+China (19YJAZH008), and the Frontiers Science Center for Critical Earth Material Cyc ling Fund, China 427 
+(DLTDPY2101). 428 
+Data Availability Statement: Not applicable. 429 
+Declarations 430 
+Conflicts of Interest: The authors declare no conflict of interest. 431 
+Ethics approval and consent to participate Not applicable 432 
+Consent for publication Not applicable. 433 
+ 434 
+ 435 
+ 436 
+References: 437 
+Acquaye A. A., Duffy A. P., 2010. Input-output analysis of Irish construction sector greenhouse gas emissions. 438 
+Building and Environment, 45(3), 784-791. 439 
+Bin, G.S., Parker, P., 2012. Measuring buildings for sustainability: Comparing the initial and retrofit ecological 440 
+footprint of a century home-The REEP House. Applied Energy, 93, 24-32 441 
+Chang, Y ., Ries, R.J., Wang, Y ., 2010. The embodied energy and environmental emissions of construction 442 
+projects in China: An economic input-output LCA model. Energy Policy, 38(11), 6597-6603. 443 
+Chen, G.Q., Chen, Z.M., 2010. CEs and resources use by Chinese e conomy 2007: A 135-sector inventory and 444 
+input−output embodiment. Communications in Nonlinear Science and Numerical Simulation, 15(11), 3647-3732. 445 
+Chen, G.Q., Zhang, B., 2010. Greenhouse gas emissions in China 2007: inventory and input-output analysis. 446 
+Energy Policy, 38(10), 6180−6193. 447 
+Chen, J.D., Shen, L.Y ., Song, X.N., Shi, Q., Li, S.P., 2017. An empirical study on the CO 2 emissions in the 448 
+22 
+ 
+Chinese CI. Journal of Cleaner Production, 168, 645-654. 449 
+Chuai, X. W., Huang, X.J., Lu, Q.L., Zhang, M., Zhao, R. Q., Lu, J. Y ., 2015. Spatiotemporal changes of built-450 
+up land expansion and CEs caused by the Chinese CI. Environmental Science & Technology, 49(21), 13021-13030. 451 
+Chuai, X.W, Lu, Q.L., Huang, X. J, Gao, R.Y ., Zhao, R.Q., 2020. China's CI-linked economy-resources-452 
+environment flow in international trade. Journal of Cleaner Production, 123990. 453 
+Crippa, M., Guizzardi, D., Muntean, M., Schaaf, E., Dentener, F., van Aardenne, J.A., Monni, S., Doering, U., 454 
+Olivier, J.G.J., Pagliari, V ., Janssens-Maenhout, G., 2018. Gridded emissions of air pollutants for the period 1970-455 
+2012 within EDGAR v4.3.2. Earth System Science Data, 10(4), 1987-2013. 456 
+Cui, C., Wang, Z., Bin, G.S., 2019. Life-cycle co2 CO2 emissions and their driving factors in construction sector 457 
+in China. Chinese Geographical Science, 29(2), 293-305. 458 
+Du, Q., Wu, M., Wang, N., Bai, L.B., 2017. Spatiotemporal charac teristics and influencing factors of China’ s 459 
+CI carbon intensity. Polish Journal of Environmental Studies, 26(6), 2507-2521. 460 
+Guo, J., Zhang, Y .J., Zhang, K.B., 2018. The key sectors for energy conservation and CEs reduction in China: 461 
+Evidence from the input-output method. Journal of Cleaner Production, 179, 180-190. 462 
+Hendrickson, C., Horvath, A., 2000. Resource use and environmental emissions of U.S. construction sectors. 463 
+Journal of Construction Engineering and Management, 126(1), 38-44. 464 
+Hong, J., Shen, G.Q., Guo, S., Xue, F., Zheng, W., 2016. Energy use embodied in China ׳s CI: A multi-regional 465 
+input–output analysis. Renewable and Sustainable Energy Reviews, 53, 1303-1312. 466 
+Hu, X.C., Liu, C.L., 2016. Carbon productivity: A case study in the Australian CI. Journal of Cleaner Production, 467 
+112, 2354-2362. 468 
+Huang, L.Z., Bohne, R.A. 2012. Embodied air emissions in Norway's construction sector: input-output analysis. 469 
+Building Research & Information, 40(5), 581-591. 470 
+Huang, L.Z., Krigsvoll, G., Johansen, F., Liu, Y .P., Zhang, X.L., 2018. Carbon emission of global construction 471 
+sector. Renewable & Sustainable Energy Reviews, 81, 1906-1916. 472 
+Huang, X. Research on design and evaluation and simulation optimiza tion method of energy-saving building 473 
+modular system. Ph.D Dissertation, Wuhan University of Technology, 2012; pp 12-13. 474 
+Huang, Y ., Duan, H., Dong, D., Song, Q., Zuo, J., Jiang, W., 2019. How to evaluate 598 the efforts on reducing 475 
+CO2 emissions for megacities? Public building practices 599 in Shenz hen city. Resources, Conservation and 476 
+Recycling, 149, 427-434. 477 
+Hung, C.C.W., Hsu, S.C., Cheng, K.L., 2019. Quantifying city-sc ale CEs of the construction sector based on 478 
+23 
+ 
+multi-regional input-output analysis. Resources, Conservation and Recycling, 149, 75-85. 479 
+Khamraev, K., Cheriyan, D., Choi, J.H., 2021. A review on health risk assessment of PM in the CI Current 480 
+situation and future directions. Science of The Total Environment. 758. 481 
+Kokoni, S., Skea, J. 2014. Input- output and life cycle emissions accounting: Applications in the real world. 482 
+Climate Policy, 14 (3), 372-396. 483 
+Li, B., Han, SW., Wang, Y.F., Li, J.Y ., Wang, Y ., 2020. Feasibility assessment of the CEs peak in China's CI: 484 
+Factor decomposition and peak forecast. Science of the Total Environment, 706. 485 
+Li, D.Z., Huang, G.Y ., Zhang, G.M., Wang, J.B., 2020. Driving f actors of total CEs from the CI in Jiangsu 486 
+Province, China. Journal of Cleaner Production. 276, 123179. 487 
+Li, Q.P., Wu, S.M., Lei, Y .L., Li, S.T., Li, L., 2021. Ev olutionary path and driving forces of inter-industry 488 
+transfer of CO2 emissions in China: Evidence from structural path and decomposition analysis. Science of the Total 489 
+Environment, 765. 490 
+Li, W., Sun, W., Li, G.M., Cui, P.F., Wu, W., Jin, B.H., 2017. Temporal and spatial heterogeneity of carbon 491 
+intensity in China's CI. Resources, Conservation & Recycling, 126, 162-173. 492 
+Liang, D., Wang, Y .Q., Wang, Y .J., Ma, C., 2019. National air poll ution distribution in China and related 493 
+geographic, gaseous pollutant, and socio-economic factors. Environmental Pollution, 250, 998-1009. 494 
+Liang, Y ., Niu, D.X., Zhou, W.W., Fan, Y .Y ., 2018. Decomposition analysis of CEs from energy consumption 495 
+in Beijing-Tianjin-Hebei, China: a weighted combination model base d on Logarithmic Mean Divisia Index and 496 
+Shapley Value. Sustainability, 10(7), 2535. 497 
+Lin, B.Q., Liu, H.X., 2015. CO 2 mitigation potential in China's building CI: A comparison of energy 498 
+performance. Building and Environment, 94, 239-251. 499 
+Liu, W., Sang, J., Chen, L., Tian, J.P., Zhang, H.T., Palma, G.O., 2015. Life cycle assessment of lead-acid 500 
+batteries used in electric bicycles in China. Journal of Cleaner Production, 108, 1149-1156. 501 
+Liu, Y .Y ., Wang, Y .Q., Li, D., Feng, F., Y u, Q., Xue, S.Q., 2019. Identification of the potential for carbon dioxide 502 
+emissions reduction from highway maintenance projects using life cycle a ssessment: a case in China. Journal of 503 
+Cleaner Production, 219, 743-752. 504 
+Marzia, T., Gianfranco, R., Matthias, F., 2010. Environmental perfo rmance of building materials: life cycle 505 
+assessment of a typical Sicilian marble. LCA of Buildings and Building Materials, 15, 104-114. 506 
+Meng, J., Mi, Z.F.,Guan, D.B., Li, J.S., Tao, S., Li, Y ., Feng, K.S., Liu, J.F., Liu, Z., Wang, X.J., Zhang, Q., 507 
+Davis, S.J., 2018. The rise of South-South trade and its effect on global CO2 emissions. Nature Communications, 9, 508 
+24 
+ 
+1-7. 509 
+Mi, Z.F, Wei, Y .M., Wang, B., Meng, J., Liu, Z., Shan, Y ., Liu, J., Guan, D.B, 2017. Socioeconomic impact 510 
+assessment of China's CO2 emissions peak prior to 2030. Journal of Cleaner Production, 142, 2227-2236. 511 
+Moran, D., Kanemoto, K., 2016. Tracing global supply chains to air pollution hotspots. Environmental Research 512 
+Letters, 11(9), 094017. 513 
+Nassen, J., Holmberg, J., Wadeskog, A., Nyman, M., 2007. Direct and indirect energy use and CEs in the 514 
+production phase of building: An input–output analysis. Energy, 32(9),1593-1602. 515 
+Onat, N.C., Kucukvar, M., Tatari, O., 2014. Scope-based carbon f ootprint analysis of U.S. residential and 516 
+commercial buildings: an input-output hybrid life cycle approach. Building and Environment, 72, 53-62. 517 
+Pandey, D., Agrawal, M., Pandey, J.S., 2011. Carbon footprint: current methods of estimation. Environmental 518 
+Monitoring and Assessment, 178(1-4), 135-160. 519 
+Qi, S.J., Zhang, Y .B., 2013. Research on carbon footprint flow track and low-carbon development strategy in 520 
+Chinese CI. Building Simulation, 6, 10-16. 521 
+Shi, Q., Chen, G.D., Shen, L.Y ., 2017. Driving factors of the changes in the CEs in the Chinese CI. Journal of 522 
+Cleaner Production, 166, 615-627. 523 
+Wang, H., Zhang, X., 2008. An analysis on the resource consumpti on in the Chinese CI. Construction 524 
+Management and Economics, S1, 7-11. 525 
+Wang, J., Wang, Z., Peng, S, Li., C, Wei, L.Y , 2020. Tracing CO2 emissions of China’s Construction sector, 526 
+Journal of Cleaner Production, 275,124165. 527 
+Wang, J.X., Zhong, H.Y , Yang, Z.F., Wang, M., M. Kammenet, D., Liu, Z., Ma, Z.M., Xia, Q., Kang, C.Q., 528 
+2020. Exploring the trade-offs between electric heating policy a nd carbon mitigation in China. Nature 529 
+Communications, 11, 6054 530 
+Wang, Z., Cui, C., Peng, S., 2019. How do urbanization and consumption patterns affect CEs in China? A 531 
+decomposition analysis. Journal of Cleaner Production, 211, 1201-1208. 532 
+Wang, Z., Wei, L.Y ., Niu, B.B., Liu, Y ., Bin, G.S., 2017. Controlling embedded carbon emissions of sectors 533 
+along the supply chains: A perspective of the power-of-pull approach. Applied Energy, 206, 1544-1551. 534 
+Wen, W., Wang, Q., 2020. Re-examining the realization of prov incial carbon dioxide emission intensity 535 
+reduction targets in China from a consumption-based accounting. Journal of Cleaner Production, 244, 118488. 536 
+Wu, P., Song, Y .Z., Zhu, J.B., Chang, R.D., 2019. Analyzing the influence factors of the CEs from China’ s 537 
+building and CI from 2000 to 2015. Journal of Cleaner Production, 221, 552-566. 538 
+25 
+ 
+Yan H., Shen, Q.P., Fan, L.C.H., Wang, Y .W., Zhang, L., 20 10. Greenhouse gas emissions in building 539 
+construction: A case study of One Peking in Hong Kong. Building and Environment, 45(4), 949-955. 540 
+Zabalza Bribi_an, I., Aranda Us on, A., Scarpellini, S., 2009. L ife cycle assessment in buildings: state- of-the-541 
+art and simplified LCA methodology as a complement for building certification. Build. Environ. 44 (12), 2510-2520. 542 
+Zhang, W., Liu, Y ., Feng, K.S., Hubacek, K., Wang, J.N., Liu, M.M., Jiang, L., Jiang, H.Q., Liu, N.L., Zhang, 543 
+P.Y ., Zhou, Y ., Bi, J., 2018. Revealing environmental inequality h idden in China’s inter-regional trade. 544 
+Environmental Science & Technology, 52(13), 7171-7181. 545 
+Zhang, X.L., Shen, L.Y ., Zhang, L., 2013. Life cycle assessment of the air emissions during building 546 
+construction process: A case study in Hong Kong. Renewable and Sustainable Energy Reviews, 17, 160-169. 547 
+Zhang, Y .J., Bian, X.J., Tan, W., Song, J., 2017. The indirect energy consumption and CO2 emission caused by 548 
+household consumption in China: an analysis based on the input–output method. Journal of Cleaner Production, 163, 549 
+69-83. 550 
+Zhang, Z.H., Liu, R.J., 2013. CEs in the construction sector based on input-output analyses. Journal of Tsinghua 551 
+University. Science and Technology, 53(1), 53-57. 552 
+Zhang, Z.Y ., Wang, B., 2016. Research on the life-cycle CO2 emission of China's construction sector. Energy 553 
+Building, 112, 244-255. 554 
+ 555
