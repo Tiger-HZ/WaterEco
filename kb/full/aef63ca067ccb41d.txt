@@ -1,0 +1,1147 @@
+Contents lists available at ScienceDirect
+Journal of Environmental Management
+journal homepage: www.elsevier.com/locate/jenvman
+Research article
+Eﬀects of water re-allocation in the Ebro river basin: A multiregional input-
+output and geographical analysis
+Miguel A. Almazán-Gómez a,c,∗, Rosa Duarte a,c, Raquel Langarita b,c, Julio Sánchez-Chóliz a,c
+a Department of Economic Analysis - University of Zaragoza, Zaragoza, Spain
+b Department of Economics and Business Studies - University of La Rioja, Logroño, Spain
+c IA2- AgriFood Institute of Aragon, Calle Miguel Servet, 177, 50013, Zaragoza, Spain
+ARTICLE INFO
+Keywords:
+Multiregional input-output
+Water re-allocation
+Ebro river basin
+Water footprint
+Socioeconomic impacts
+ABSTRACT
+The quality and availability of water are a ﬀected by numerous variables, through which the evaluation of water
+uses from di ﬀerent perspectives, and policy proposals to save water have now become essential. This paper aims
+to study water use and the water footprint from a river basin perspective, taking into account regions, sectors,
+and municipalities, while considering the physical frontier along with the administrative sectors. To this end, we
+have constructed a multi-regional input-output table for the Ebro river basin, disaggregating the primary sector
+into 18 di ﬀerent crops and 6 livestock groups. We pay special attention to crop production because it is the most
+water-consuming industry. The construction of the multi-regional input-output model represents an important
+contribution to the literature, in itself, since, to the best of our knowledge, it is the ﬁrst to be built for this large
+basin. We extend this multi-regional input-output model to assess the water footprint by sectors and regions
+within the basin. We use these data to propose two scenarios: reallocating ﬁnal demand to reduce the blue water
+footprint (scenario 1), and increasing value added (scenario 2). These scenarios outline the opportunity costs of
+saving water in socioeconomic terms in the basin. In another application, we downscale the multi-regional input-
+output model results at the municipal level and depict them using a geographical information system, identifying
+the hotspots and the areas that would pay for the socioeconomic opportunity costs of saving water. Our results
+suggest that saving 1 hm 3 of blue water could cost around €41,500 of value added if we consider the entire basin.
+However, this water re-allocation implies losses and gains at the municipal level: some municipalities would
+reduce value added by more than €30,000, while others would gain more than €85,000 of value added. These
+tools and results can be useful for policy makers when considering re-allocating water. The contribution and the
+novelty of this paper is the construction of the multiregional input-output model for the Ebro river basin, and its
+link with geographical systems analysis at the municipal level.
+1. Introduction
+Water is indispensable for life, for the environment, for human
+beings, and for industry ( Sepehri and Sarrafzadeh, 2018 ). Freshwater
+quality and availability are a ﬀected by several variables, such as in-
+creases in upstream use ( Alcamo et al., 2007 ), or global warming and
+revegetation (Bielsa and Cazcarro, 2014 ). These factors are leading to a
+global decrease in freshwater availability ( Gerten et al., 2008). Climate
+change and food safety are important challenges for human and eco-
+nomic development. Thus, the mitigation of the impact of climate
+change, and the design of patterns for sustainable consumption and
+production are among the primary societal challenges ( United Nations,
+2015).
+Fresh water is a natural resource whose value depends on place and
+time ( Hanemann, 2006), since water transport or intra-basin water
+transfers are expensive. So, given the importance of water and the costs
+of its transportation, this paper aims to study water use and the water
+footprint (WF) from a river basin perspective, considering both the
+physical and administrative contexts.
+Speciﬁcally, we study the water ﬂows in the Ebro river basin (ERB),
+which is the largest in Spain (85,500 Km 2), representing 15% of the
+Spanish extension, and whose basin hosts 7.3% of the Spanish popu-
+lation and 8.53% of Spanish GDP. The Ebro River runs for 910 km in a
+south-easterly direction across northeast Spain, to its delta on the
+Mediterranean coast midway between Barcelona and Valencia. It has
+the largest discharge of any Spanish river (average 9281 hm 3/year),
+and its drainage basin, at 85,500 square km, is also Spain's largest. The
+ERB provides water to more than 3 million people, living in over 1700
+https://doi.org/10.1016/j.jenvman.2019.03.042
+Received 22 November 2018; Received in revised form 6 March 2019; Accepted 9 March 2019
+∗ Corresponding author. Department of Economic Analysis - University of Zaragoza, Zaragoza, Spain.
+E-mail address: malmazan@unizar.es (M.A. Almazán-Gómez).
+Journal of Environmental Management xxx (xxxx) xxx–xxx
+0301-4797/ © 2019 Elsevier Ltd. All rights reserved.
+Please cite this article as: Miguel A. Almazán-Gómez, et al., Journal of Environmental Management, 
+https://doi.org/10.1016/j.jenvman.2019.03.042
+towns and villages, and is one of the most representative semi-arid river
+basins of the Mediterranean ( Milano et al., 2013a ). Moreover, ac-
+cording to Valencia et al. (2015) , a downward trend in water avail-
+ability is observable in the ERB, as in other Mediterranean basins
+(Milano et al., 2013b ) and other basins around the world ( Gerten et al.,
+2008).
+Regarding the agriculture sector, the ERB represents a very im-
+portant area. In the ERB, most crop areas, 17,690 km 2, are rainfed,
+while 5744 km 2 are irrigated land ( INE, 2011 ). The primary sector is
+the most water-demanding sector, with more than 4500 hm 3/year of a
+total of 5000 hm 3/year used ( CHE, 2014 ). The ERB water is regulated
+via an extensive network of dams ( Tena et al., 2017 ) and canals. They
+allow for the allocation of the water where orography and weather
+promote the better development of agrarian activities. Another main
+feature of this basin is that it contains, in part or in whole, nine au-
+tonomous communities of Spain (see Table 1 and Fig. 1).
+In order to propose measures to reduce the WF in the basin and to
+estimate the socioeconomic e ﬀects at the municipal level, we combine
+the input-output framework with Geographical Information Systems
+(GIS). The use of the input-output methodology is justi ﬁed by the sig-
+niﬁcant literature in this ﬁeld. The input-output framework has been
+largely used to assess environmental impacts: Leontief (1970) added a
+row and a column to obtain an environmental model. Lenzen (1998)
+used the IO framework to study the greenhouse gases embodied in
+goods and services.
+Emissions of CO 2 have been analysed using this methodology in
+several works. Munksgaard et al. (2008) used the input-output frame-
+work to measure emissions of CO 2 at national, city, and household
+level. Roibás et al. (2018) used the input-output framework to de-
+termine the carbon footprint from a consumer-responsibility perspec-
+tive, in Galicia, a Spanish region. Long et al. (2018) used the world
+input-output database (WIOD) to compare levels of embodied CO 2 in
+the international trade of China and Japan. Acquaye et al. (2017) used
+the WIOD database to develop a global multiregional input-output
+model to analyse certain supply chains and their e ﬀects on CO2, water
+consumption, and pollution, among other environmental variables.
+This framework is also used to analyse the inter-agents water re-
+lationship. Duarte et al. (2002) employed the hypothetical extraction
+method to analyse the behaviour of the productive sectors as direct and
+indirect water-consumers in the Spanish economy. There are other
+papers focused on water pollution or the WF. Lenzen (2009) demon-
+strated that input-output analysis can be useful in analysing virtual
+water ﬂows, applying the analysis to a case study of the Australian state
+of Victoria. Wang et al. (2013) evaluated the WF and the virtual water
+trade for the case of Beijing, China. Cazcarro et al. (2016) used the
+input-output framework to analyse the foreign tourism WF. White et al.
+(2015) also studied the Haihe River Basin's WF and water stress, using a
+hydro-economic multisectorial model.
+There are other papers focused on analysing embodied water trade-
+ﬂows. Antonelli et al. (2012) analysed green and blue virtual water
+‘ﬂows’ for the Mediterranean Region using the input-output framework.
+Chen et al. (2012) simulated the global network of embodied water
+ﬂow, using a top-down approach of input-output simulation for the
+globalized economy in 2004. Cai et al. (2017) developed a multi-
+regional model for China to analyse the grey water virtual ﬂows among
+30 Chinese regions.
+In this paper, we construct a multi-regional input-output (MRIO)
+table for the ERB for 2010 to assess the WF. Since the primary sector,
+and more speci ﬁcally crop production, is the largest water consumer in
+the ERB, we disaggregate it into 36 crops (18 irrigated and 18 rainfed),
+6 livestock groups, and the rest of the primary sector (forestry, ﬁshing,
+and auxiliary activities).
+MRIO models usually cover direct and indirect impacts at the
+country or regional level. However, socioeconomic and environmental
+impacts take place in much more speci ﬁc areas. For this reason, we
+develop a strategy to downscale the MRIO model results at the muni-
+cipal level, using GIS software. We construct a downscaling matrix
+using data at the municipal level, such as land use, yields, livestock and
+other industry outputs, water requirements by production, etc.
+The novelty of this paper is the construction of the MRIO model for
+the Ebro river basin and its link with information at the municipal level
+and GIS. This MRIO model, to the best of our knowledge, is the ﬁrst
+developed for this important area in terms of agriculture, which can be
+identiﬁed as NUT-1. 1. The analysis in this paper shows the utility of
+these tools for policymakers in determining the e ﬀects of policies on
+certain socioeconomic variables, and the areas where the e ﬀects will be
+most evident. In this sense, apart from the novelty of constructing an
+MRIO model for the Ebro river basin, this work goes further in the
+research, linking it with local information. Moreover, its link with GIS
+allows the display of the a ﬀected areas in a map, which opens a way for
+the interpretation of results and the identi ﬁcation of the a ﬀected areas.
+This becomes especially interesting when designing possible policies at
+the district level or for collaboration between municipalities.
+The rest of the paper is structured as follows: in Section 2 we explain
+the methodology and we show the data used for the analysis. Section 3
+presents the main results, and particularly the results at the municipal
+level, for two scenarios, which include changes in water withdrawals
+and value added. Sections 4 and 5 contain the discussion and conclu-
+sions.
+2. Materials and methods
+2.1. MRIO model for the Ebro river basin
+MRIO tables usually describe the sale and purchase relationships
+between regions, producers, and consumers within an economy. They
+show the interdependencies among industries, agents, and regions
+(sellers by rows, buyers by columns), as we will see later. The con-
+struction of the MRIO table for the Ebro river basin consists of several
+steps, which are explained below.
+First, from the world input-output database (WIOD) ( Timmer et al.,
+2015) we obtain the global MRIO table for 2010 and we aggregate it to
+obtain an MRIO table with three regions: Spain, rest of EU, and rest of
+World. As noted earlier, one feature of the Ebro basin is that it contains,
+in whole or in part, nine autonomous communities of Spain, which are,
+by alphabetical order, Aragon, Basque-Country, Cantabria, Castile-La
+Mancha, Castile-Leon, Catalonia, La Rioja, Navarre, and Valencian
+Community. This leads us to develop a multiregional analysis, and we
+approach the ERB as the part within the basin of the ﬁve most re-
+presentative regions. Attending to the smaller sizes of the area inside
+the basin, we discard Castile-la Mancha, Valencian Community, and
+Table 1
+Autonomous communities in the Ebro river basin.
+Source: Ebro River Basin Authority ( CHE, 2014 )
+Autonomous
+Community
+Total
+area
+(km2)
+Area within
+the basin
+(km2)
+Basin within the
+autonomous.
+Comm.
+Part in the
+basin
+Aragon 47,720 42,111 88.25% 49.21%
+Catalonia 32,091 15,635 48.72% 18.27%
+Navarre 10,390 9229 88.83% 10.79%
+Castile-Leon 94,227 8148 8.65% 9.52%
+Rioja 5045 5023 99.56% 5.87%
+Basque country 7230 2678 37.04% 3.13%
+Castile-la Mancha 79,462 1119 1.41% 1.31%
+Valencian
+Community
+23,254 851 3.66% 0.99%
+Cantabria 5327 775 14.55% 0.91%
+1 The Ebro river basin has more than 3 Million inhabitants and is part of two
+Spanish NUT-1: ES2 (Northeast) and ES5 (East).
+M.A. Almazán-Gómez, et al. Journal of Environmental Management xxx (xxxx) xxx–xxx
+2
+Cantabria regions. We also discard Castile-Leon, since we consider that
+the socioeconomic data of that whole autonomous community do not
+accurately describe the part of the region within the basin (this part of
+the autonomous community represents less than 7% of the value added
+of Castile-Leon and its population). So, for the multiregional analysis,
+we approach the Ebro river basin as those parts of Aragon, Catalonia,
+Navarre, La Rioja, and Basque Country that fall inside the basin.
+Second, we divide the Spanish table into six smaller tables, ac-
+cording to the regions conforming to the Ebro basin: Aragon, Basque
+Country, Catalonia, Navarre, La Rioja and rest of Spain. To divide the
+national table into these six regions, we use the Regional IOTs, the table
+of Aragon has been obtained from Pérez and Parra (2009) , the Basque
+country table from Eustat (2015) , the Catalonia table from IdesCat
+(2012), the table of Navarre from IEN (2011) , and La Rioja table from
+IELR (2011). We also used data from the Spanish Statistical O ﬃce (INE,
+2015), the c-intereg database ( Llano et al., 2010 ) to see interregional
+imports and exports, data from the Spanish Institute for Foreign Trade
+(ICEX, 2016) to identify international trade at regional level, and data
+from a previous multiregional model developed for Spain ( Cazcarro
+et al., 2013 ). In order to facilitate the following disaggregation, ex-
+plained below, we also disaggregate the primary sector of all Spanish
+regions (ERB regions and rest of Spain) into 3: agriculture, livestock,
+and the rest of the primary sector.
+Third, to harmonize the table, we apply the improved version of the
+GRAS algorithm of Lenzen et al. (2007) . The GRAS algorithm is an
+updating method developed by Junius and Oosterhaven (2003) , com-
+monly used in the literature to balance tables, which consists of a
+Generalization of the updating/regionalization RAS method ( Stone and
+Brown, 1962). GRAS is an improvement with respect to the RAS, since
+it allows the updating of non-squared tables and, in addition, accounts
+for the existence of negative elements, both in the original table and in
+the data to be adjusted. 2
+Fourth, since the ﬁve regions considered are not completely within
+the basin, we divide the regional IO tables into two sub-tables, the intra-
+basin and the trans-basin. To this end, we use the Analysis System of
+Iberian Balances database ( Bureau Van Dijk, 2017). From this database,
+we obtain, at municipal level, ﬁrms-data, such as gross output (ap-
+proached by operating income), value added, labor force, zip code, etc.
+Then, we use proportions to estimate the gross output that corresponds
+to the intra-basin regional IO tables.
+To balance these last estimations, we use the GRAS algorithm again.
+Once we have determined the data that compose the regional IO tables
+of the ERB, we calculate the rest of Spain IO table by subtraction. Then,
+to harmonize the MRIO table, we apply the GRAS algorithm once more.
+Finally, due to our interest in water, for the ERB regions we have
+disaggregated the primary sector into 43 activities: 36 di ﬀerent crop
+productions (18 irrigated and 18 rainfed), 6 livestock groups, and the
+rest of the primary sector, which covers forestry, ﬁshing, and auxiliary
+activities. To disaggregate, we take into account land-use data from the
+Fig. 1. The Ebro River Basin. Northeast of Spain. Source: Own work. data obtained from MAPAMA (2016) .
+2 The maximization problem of Junius and Oosterhaven (2003) is:
+∑∑Max x ln:| | ji ij
+xij
+aij ; and we use the improved version of Lenzen et al. (2007) ,
+whose optimization problem is: ⎜⎟∑∑ ⎛
+⎝
+⎞
+⎠
+Max a ln: ji ij
+xij
+aij
+xij aij
+e ; both subject
+to. ∑ = ∑ = ∑ = ∑ ∀xu xv u v i j;; ; ,i ij i j ij j i i j j where xij is the new component
+of the table placed in row i and column j and aij is the old component, also
+known as “prior”, vj is the new sum by rows of column j and ui is the new sum
+by columns of row i.
+M.A. Almazán-Gómez, et al. Journal of Environmental Management xxx (xxxx) xxx–xxx
+3
+last agrarian census ( INE, 2011 ), yield-data from MAGRAMA (2011) ,
+crop-prices obtained from the “price received by farmers and ranchers ”
+survey (IAEST, 2013) and “Technical and economic data of agricultural
+holdings in Aragon ” (MAGRAMA, 2013 ). Then, we use the GRAS al-
+gorithm to balance the table and to obtain the ﬁnal estimation. As a
+result, the MRIO table of the ERB takes into account 428 productive
+sectors, as can be seen in Table SI1 of the Supplementary Information:
+69 (36 crops + 6 livestock + 1 rest of primary sector + 26 non-pri-
+mary sectors) sectors by 5 regions; 29 sectors (1 crop production + 1
+livestock + 1 rest of primary sector + 26 non-primary sectors) from
+rest of Spain; and 27 sectors (primary sector is not disaggregated) by 2
+regions (rest of EU and rest of World), and 32 components of ﬁnal
+demand: 4 (Households, Government, Gross capital formation, and
+Changes in inventories and valuables) by 8 regions. Then, the ﬁnal
+structure of the MRIO table of the Ebro basin is the following ( Fig. 2 ),
+with the 6 Spanish regions plus rest of EU, plus rest of World:
+Reading the table by columns, we can observe the productive
+structure of each sector of each region, and the dependencies of other
+sectors of other regions. Meanwhile, reading it by rows, we can observe
+the destination of the production. Since the table represents a closed
+economy (the whole world), sums by columns coincide with sums by
+rows (see equation (1)).
+∑∑ ∑∑ ∑∑+= + = ∀xv x yx i j r s d u z ;, , , , , ,
+ri
+ij
+rs
+j
+s
+zu
+ju
+sz
+zd
+jd
+sz
+j
+s
+,
+,
+,
+,
+,
+,
+(1)
+where xjs represents the total output of sector j from region s. From the
+MRIO table of the ERB ( Fig. 2) we obtain the matrix of technical
+coeﬃcients, A, which represents direct needs from sector j per Euro
+produced by sector i, and whose components are the arsij,, calculated
+following equation (2). we can describe the multiregional links in a
+matrix form (equation (3)).
+=a
+X
+xij
+rs ij
+rs
+j
+s,
+, ,
+,
+(2)
+=+↔ = − = −xA xY e x IA Y eL y () 1 (3)
+where I is the identity matrix (428 × 428), Y is the ﬁnal demand ma-
+trix, e is a (32 × 1) column vector of ones, =− −LI A() 1 is the Leontief
+inverse, which indicates the inputs generated by sector i incorporated
+directly or indirectly to sector j per euro of ﬁnal demand of sector j, x is
+the (428 × 1) Gross Output vector, =yY e is the ﬁnal demand ag-
+gregated vector = ∑∑yY()ir sd idrs,, , which includes di ﬀerent kinds of
+ﬁnal demand: households, investment, government expenditures, and
+exports.
+2.2. Environmental extension: blue and green water footprint
+The deﬁnition of WF is close to the concepts of embodied water and
+virtual water ( Hoekstra and Chapagain, 2008 ). Embodied water is the
+water necessary to produce a good or service (direct) and the water
+needed to produce the goods and services involved in its productive
+process (indirect) (see Chapagain and Orr, 2009 ). The term “virtual
+water” is synonymous with “embodied water” , but generally refers to
+embodied water traded as virtual water ﬂows. This indicator takes into
+account both direct and indirect water use ( Hoekstra et al., 2009 ).
+In these terms, there are three kinds of WF: blue, green, and grey
+(see Hoekstra et al., 2009 ; Mekonnen and Hoekstra, 2010 ). The blue WF
+refers to the volume of freshwater consumed and/or evaporated in the
+production process (supply chain) of a good or service, when water
+comes from a freshwater body (surface or groundwater). The green WF
+refers to the rainwater stored in the soil as soil moisture evapo-
+transpirated (consumed) by plants when they are part of a productive
+process. The grey WF refers to pollution (not to consumption), and is
+deﬁned as the amount of freshwater required to assimilate the load of
+pollutants. Blue and green water are directly associated with water
+consumption and water availability ( Veettil and Mishra, 2018), so, we
+will focus on these two.
+The direct water used by a sector refers to the direct water con-
+sumption of the sector and it is only a part of the WF, or the embodied
+water. However, knowing the water needed by sector per euro of total
+production, we can obtain the virtual water ﬂow matrix using the input-
+output framework ( Roibás et al., 2017 ). The virtual water ﬂow matrix
+shows by rows the origins of embodied water, and by columns the
+destination of the water embodied (see Table 3 ). Thus, totals by rows
+(usually last column) identify the water used from the region and sector
+identiﬁed by each row; and totals per column (usually the last row)
+identify the WF.
+The data for direct water used have been obtained from the world
+input output database (see Genty et al., 2012). This dataset is provided
+for 40 regions and 35 industries, for the period 1995– 2009. We estimate
+the 2010 data, following equation (4):
+⎜ ⎟−=− = ⎛
+⎝
+− ⎞
+⎠
+d
+x
+d
+x
+d
+x
+d
+x dx dx dx;2jsjs jsjs jsjs jsjs js js ssjs ssjs,2010,2010 ,2009,2009 ,2009,2009 ,2008,2008 ,2010 ,2010 ,2009,2009 ,2008,2008
+(4)
+where dj ts, represents the direct water used by sector j in region s and
+year t, and xjts, represents the gross output of sector j in region s and year
+t. To estimate the direct water used by the ERB regions and the rest of
+Spain, for non-primary sectors, we assume the same direct water used
+over output ratio dx( / )js js,2010 ,2010 for Spain. For primary sectors, we use
+land use data ( INE, 2011), proportions and coe ﬃcients from Cazcarro
+et al. (2014) and Chapagain and Hoekstra (2004) , and water-needs data
+at the county level from Martínez-Cob (2004) ; thus, we are also able to
+estimate the water used in each municipality for feeding each crop.
+Then, for further actions, we calculate both vectors, direct blue water
+per euro and direct green water per euro, following equation (5). These
+vectors are called unit requirements.
+=w
+d
+xj
+s j,2010
+s
+j,2010
+s
+(5)
+Thus, we are able to extend environmentally the model using these
+vectors to obtain the virtual water matrix ( V) of the ERB (see equation
+(6)). To this end, we use wˆ and yˆ which are the vector of unit re-
+quirements of water (blue or green), and the vector of ﬁnal demand
+Fig. 2. Structure of the MRIO table of the Ebro river basin - xijrs,, are the com-
+ponents of the intermediate inputs matrix X (denoting the intersectoral trade),
+composed of submatrices X rs, . Each xijrs,, represents the sales from sector i of
+region r to sector j of region s. r and s indices, from 1 to 8, indicate Aragon,
+Catalonia, Navarre, Basque country, La Rioja, rest of Spain, rest of European
+Union, and rest of World respectively. Indices i and j represent sectors (see
+Table SI1 in the Supplementary Information). yidrs,, represents the components of
+the ﬁnal demand matrix Y, also composed of submatrices Y r s, . Each yidrs,, re-
+presents the sales from sector i of region r to component d of the ﬁnal demand
+of region s. Index d, from 1 to 4, are Households, Government, Gross capital
+formation, and Changes in inventories and values respectively. vsj represents the
+value added of sector j in region s.
+M.A. Almazán-Gómez, et al. Journal of Environmental Management xxx (xxxx) xxx–xxx
+4
+( = Yey ) diagonalized respectively. V (428 × 428) is the virtual water
+matrix which shows the embodied water traded between sectors and
+regions.
+=V wLyˆˆ (6)
+2.3. Downscaling: from regions to municipalities
+As the e ﬀects on water resources are usually located in small and
+speciﬁc areas, and MRIO models usually show environmental impacts
+at a country or regional level only, we propose to extend the MRIO
+analysis with GIS layers and municipal information. In this way, we will
+be able to estimate the water used in speci ﬁc hotspots, to understand
+those hotspots and their locations, to propose policies at the municipal
+level, and so on.
+We make use of the Bureau Van Dijk (2017) database, since it
+contains information at the municipal level, sector by sector, about
+output and other relevant variables, for all sectors except the primary,
+to discern the proportion that the output of each sector in each muni-
+cipality represents over the output of each region and sector. To esti-
+mate the percentages of the primary sector, we use own-elaboration
+data that distinguish between irrigated and rainfed crops, and take into
+account the area dedicated to each crop at the municipal level, as well
+as di ﬀerent yields by region. Data on crop production and livestock
+have been calculated using the 2009 census ( INE, 2011 ), with yields
+from MAGRAMA (2011) , and prices from IAEST (2013) .
+We have used these proportions to estimate the parts of the regional
+IO tables that are included in the basin (mentioned in section 2.1) and
+to develop the matrix M. Matrix M (1448 × 428) contains, by columns,
+the percentage that the output of each of the 1448 municipalities re-
+presents over the gross output of each sector in its region. Once we have
+matrix M, following equation (7), we can determine, by sector, the
+gross output at the municipal level, Xm (1448 × 428) using the output
+vector of the MRIO model, diagonalized. Moreover, substituting xˆ by
+wxˆˆ in equation (7), we can allocate blue or green water used at the
+municipal level. Also, we develop unit requirements vector of value
+added, to estimate the municipality distribution of this macro-magni-
+tude. We use this vector in the same way that we use the water-related
+ones.
+== = =
+ˆˆ
+X Mx M Ly W Mwx Mw Lyˆ ; ˆˆ ˆmm (7)
+3. Results
+3.1. MRIO table for the ERB and virtual water ﬂows
+As introduced in the Methodology section, input-output tables re-
+present the economic ﬂows among sectors and regions. They show by
+rows the origin of the products or services, and by column the sectors or
+the ﬁnal demand agents that purchase them. As noted earlier, the in-
+tersectoral trade shows the structural links and dependencies among
+sectors and regions. Commonly, the last rows depict taxes, value added
+(VA), and output (as the sum of the intermediate inputs and value
+added), by sector or region represented in each column. Table 2 depicts
+the aggregated MRIO table that shows the economic ﬂows in the re-
+gions of the Ebro Valley and the trade among the regions: Aragon
+(ARA), Catalonia (CAT), Navarre (NAV), Basque country (B_C), La Rioja
+(RIO), and including for each region the trade ﬂows with rest of Spain
+(R_SP), rest of European Union (R_EU), and rest of world (R_W).
+The output of the ERB in 2010 was €179,337 million, which re-
+presents 8.8% of Spanish gross output, while the VA of the ERB,
+€77,711 million, represents 8.0% of Spanish VA. The ERB output can be
+divided into intermediate inputs ( €69,736 million), 38.9%, ﬁnal de-
+mand ( €68,151 million), 38%, and exports ( €41,450 million), 9.6% to
+rest of Spain, 10.2% to rest of European Union, and 3.4% to rest of
+Table 2
+MRIO Table of the Ebro River Basin Aggregated by regions (Million €).
+Intermediate inputs Final demand
+Ebro River Basin R_SP R_EU R_W Ebro River Basin R_SP R_EU R_W
+ARA CAT NAV B_C RIO ARA CAT NAV B_C RIO
+Ebro River Basin ARA 23,039 381 691 277 294 5705 4005 1237 27,100 85 173 44 92 1768 4011 918
+CAT 2590 11,963 676 417 126 1371 599 333 1041 12,517 269 84 30 530 892 394
+NAV 961 56 12,314 432 271 2412 2694 917 327 16 12,252 105 119 860 2920 817
+B_C 656 93 1019 7137 254 1755 963 567 175 23 272 7190 70 797 1046 570
+RIO 337 16 392 129 5216 1269 485 109 221 6 116 93 5730 676 628 201
+R_SP 4952 1773 2361 2567 1165 749,522 70,826 52,200 4369 734 2444 877 600 867,677 60,568 36,343
+R_EU 4161 2581 3002 1515 521 83,497 9,617,703 1,083,494 1142 1611 754 222 47 54,090 10,034,073 839,005
+R_W 1038 2025 539 729 264 72,633 1,101,714 37,428,689 527 1236 223 186 38 31,126 500,772 35,346,951
+TAX 716 159 337 174 176 29,748 474,182 556,354
+VA 31,371 14,784 16,144 9210 7339 911,066 10,454,248 35,364,788
+OUTPUT 69,820 33,830 37,474 22,587 15,626 1,858,978 21,727,419 74,488,687
+M.A. Almazán-Gómez, et al. Journal of Environmental Management xxx (xxxx) xxx–xxx
+5
+World. The ERB imports goods and services amounting to €44,201
+million: 49.4% from rest of Spain, 35.2% from rest of European Union,
+and 15.4% from rest of World. So, The ERB is a net importer region. The
+largest producer in the ERB is Aragon ( €69,820 million), followed by
+Navarre and Catalonia. Aragon imports from the rest of ERB €4544
+million, and its main commercial partner is Catalonia. Navarre and
+Catalonia have an output of €37,474 million and €33,830 million re-
+spectively, and their main trading partner is Aragon.
+Following equation (6), we obtain the virtual water ﬂows. Table 3
+shows the virtual ﬂows of blue plus green water by regions. The virtual
+water ﬂow matrices show the embodied resource, that is to say, the
+water in the di ﬀerent regions and sectors, directly and indirectly in-
+corporated in the various steps of the production supply chain. Simi-
+larly that input-output tables, the virtual ﬂow matrices show the origin
+of the resource by rows, and the destination by column. Then, the
+column sums over the rows show the total water used in production by
+the corresponding sector or region (the water footprint). Meanwhile,
+the row sums over the columns can be interpreted as the total water
+requirements (virtual water) for each sector and region according the
+ﬁnal demand.
+As can be seen, the table of blue plus green virtual water ﬂow shows
+that the ERB is a net importer of embodied water. The ERB uses
+14,437 hm3 from its water, while the ERB embodies 15,908 hm 3 of
+virtual water in its production. Thus, the ERB is a net importer of virtual
+water, which is common in Mediterranean countries due to the usual
+consumption patterns ( Steen-Olsen et al., 2012 ). Aragon, which uses
+48% of the total ERB water used by production activities, produces
+goods and services that amount only to 39% of ERB output. Similarly,
+Catalonia (part of which is within the ERB) uses 30% of the ERB water,
+while the region produces 19% of the ERB goods & services (see
+Table 3
+Blue plus green virtual water ﬂows by regions (hm 3).
+ARA CAT NAV B_C RIO TOTAL ERB R_SP R_EU R_W TOTAL EXPORTED TOTAL = Direct water used
+ARA 4594 316 413 66 33 5422 1253 209 116 1578 6999
+CAT 632 2535 69 32 7 3276 707 165 168 1040 4316
+NAV 99 7 1085 33 13 1237 194 53 31 278 1515
+B_C 17 2 23 311 11 364 54 15 7 75 440
+RIO 50 5 58 39 744 896 212 37 22 270 1167
+TOTAL ERB 5393 2865 1648 481 808 11,195 2419 478 344 3242 14,437
+R_SP 935 295 459 296 136 2122 67,155 3105 1917 74,299
+R_EU 285 215 129 95 79 803 4273 489,733 38,260 533,069
+R_W 496 579 277 275 161 1789 15,273 177,454 9,592,907 9,787,423
+TOTAL IMPORTED 1716 1090 865 666 376 4713
+TOTAL = WF 7109 3955 2513 1148 1184 15,908 89,120 670,770 9,633,429
+Table 4
+Socioeconomic and environmental variables in the ERB regions (million €, jobs and hm 3).
+Source: Own Work
+Region Sector Output VA Direct blue water used Direct green water used Apparent blue water productivity
+Aragon Irrigated crops 830 633 1887 2208 0.34
+Rainfed crops 615 469 0 2494 –
+Livestock 1719 388 131 0 2.96
+Rest of primary sect. 115 58 23 74 2.52
+Industry 27,729 6997 13 0 538.23
+Construction 7171 2920 170 0 17.18
+Services 31,641 19,473 0 0 –
+Catalonia Irrigated crops 839 605 1513 1860 0.40
+Rainfed crops 233 168 0 651 –
+Livestock 1559 332 119 0 2.79
+Rest of primary sect. 74 35 15 48 2.33
+Industry 11,642 2753 8 0 344.13
+Construction 4359 1619 103 0 15.72
+Services 15,125 9087 0 0 –
+Navarre Irrigated crops 354 255 359 493 0.71
+Rainfed crops 279 201 0 538 –
+Livestock 363 65 28 0 2.32
+Rest of primary sect. 26 14 5 17 2.80
+Industry 18,221 4643 10 0 464.30
+Construction 2772 1350 66 0 20.45
+Services 15,460 9344 0 0 –
+Basque Country Irrigated crops 41 28 67 79 0.42
+Rainfed crops 99 68 0 188 –
+Livestock 190 57 14 0 4.07
+Rest of primary sect. 5 3 1 3 3.00
+Industry 11,258 3055 8 0 381.88
+Construction 3278 962 78 0 12.33
+Services 7715 4872 0 0 –
+La Rioja Irrigated crops 339 211 374 502 0.56
+Rainfed crops 188 117 0 201 –
+Livestock 84 54 6 0 9.00
+Rest of primary sect. 33 16 7 21 2.29
+Industry 6167 1997 7 0 285.29
+Construction 2071 692 49 0 14.12
+Services 6745 4172 0 0 –
+M.A. Almazán-Gómez, et al. Journal of Environmental Management xxx (xxxx) xxx–xxx
+6
+Table 4 ). In fact, both regions produce “water-intensive” products,
+mainly crops and livestock, in a higher proportion than the others. On
+the other hand, Navarre and Basque Country use 10% and 3%, re-
+spectively, of the ERB water used and they generate 20.9% and 12.6%
+of the ERB gross output, respectively.
+Some socioeconomic and water-related variables, separated by
+sector and region, can be seen in Table 4. In general, the highest output
+by region are services and industry. The service sector is the largest in
+Aragon, Catalonia, and La Rioja, where the output of the service sector
+represents between 43% and 45%. In Navarre and Basque Country, the
+sector with the largest output is industry, at close to 50% in both re-
+gions. In these two regions (Navarre and Basque Country), the weight of
+the primary sector is much lower than in the other three regions, not
+only in terms of production, but also in value added, which is mostly
+concentrated in the service sector, which represents more than half of
+the value added in every single region. The region whose service sector
+weight is lowest is Basque Country, 54% of value added; in contrast, the
+Aragonese service sector represents 63%. The distribution of the main
+socioeconomic variables di ﬀers among regions and sectors. We can
+identify Basque Country and Navarre as industrial regions, where the
+primary sector has a signi ﬁcantly lower weight than the other three
+regions. Within the primary sector, livestock is an activity that distin-
+guishes among regions; it represents 2.5% and 4.6% of the output of
+Aragon and Catalonia, respectively, while in the other regions it re-
+presents less than 1%.
+Of the water used in production, 4589 hm 3 of a total 5059 hm 3 of
+blue water are consumed by the primary sector, 464 hm 3 is used by
+construction sector, and the rest, 46 hm 3, by industry. Apart from that,
+Table 5
+Embodiments per euro of ﬁnal demand in irrigated crop production.
+Source: Own Work
+crop Blue WF (m 3/€) Green WF (m 3/€) Value Added ( €/€)
+In ERB Abroad In ERB Abroad In ERB Abroad
+Aragon Wheat 1.9557 0.0036 3.2038 0.0184 0.9860 0.0359
+Corn 2.0764 0.0034 2.2841 0.0174 0.9881 0.0343
+Barley 2.0108 0.0032 3.5168 0.0162 0.9877 0.0345
+Alfalfa 1.8899 0.0070 2.1157 0.0360 0.9471 0.0678
+Other fodder 1.4444 0.0052 3.2109 0.0268 0.9613 0.0558
+Pome fruits 2.0107 0.0096 2.2058 0.0494 0.9221 0.0884
+Stone fruits 3.7135 0.0086 4.2648 0.0438 0.9327 0.0796
+Horticulture 1.2208 0.0053 1.7080 0.0271 0.9681 0.0507
+Rice 2.3562 0.0053 2.1028 0.0270 0.9684 0.0505
+Catalonia Wheat 1.5125 0.0042 2.5569 0.0257 0.9461 0.0556
+Corn 2.7667 0.0026 3.2343 0.0155 0.9565 0.0450
+Barley 1.3153 0.0041 2.4365 0.0247 0.9409 0.0600
+Other fodder 0.4969 0.0095 1.2183 0.0582 0.9024 0.0983
+Citrus frits 1.5693 0.0075 2.4461 0.0456 0.8975 0.1007
+Pome fruits 1.7059 0.0107 1.9603 0.0655 0.8899 0.1102
+Stone fruits 3.1482 0.0083 3.6395 0.0506 0.8997 0.0996
+Horticulture 2.1577 0.0070 2.9720 0.0429 0.9179 0.0827
+Olive 1.5726 0.0104 2.7501 0.0634 0.8867 0.1131
+Grapevine 0.5584 0.0107 0.7402 0.0652 0.8920 0.1082
+Rice 1.6216 0.0070 1.3651 0.0428 0.9179 0.0827
+Navarre Wheat 0.9676 0.0016 2.4972 0.0078 0.9610 0.0373
+Corn 1.4639 0.0013 1.5306 0.0063 0.9674 0.0320
+Barley 0.7437 0.0017 2.7647 0.0083 0.9568 0.0408
+Other fodder 0.2658 0.0048 0.6091 0.0232 0.9198 0.0727
+Pome fruits 1.4602 0.0039 1.7321 0.0186 0.9161 0.0755
+Stone fruits 1.7466 0.0043 2.1309 0.0209 0.9187 0.0735
+Horticulture 1.3993 0.0029 1.8264 0.0139 0.9474 0.0491
+Grapevine 0.5749 0.0046 0.8816 0.0220 0.9152 0.0763
+Rice 1.5755 0.0029 1.3872 0.0138 0.9481 0.0485
+Basque Country Industrials 0.1627 0.0217 0.2452 0.1006 0.8512 0.1379
+Pome fruits 1.0271 0.0232 1.2393 0.1070 0.8430 0.1458
+Stone fruits 3.7018 0.0125 4.4697 0.0576 0.8519 0.1355
+Rice 2.2691 0.0133 2.0028 0.0616 0.8815 0.1088
+La Rioja Wheat 0.9435 0.0058 1.7624 0.0294 0.8801 0.1015
+Barley 1.1066 0.0081 1.9108 0.0414 0.8642 0.1167
+Industrials 0.2045 0.0174 0.2615 0.0872 0.8422 0.1393
+Pome fruits 1.0176 0.0186 1.1750 0.0938 0.8017 0.1769
+Stone fruits 1.8355 0.0170 2.2843 0.0857 0.8111 0.1678
+Horticulture 1.4359 0.0159 1.9403 0.0800 0.8302 0.1499
+Olive 0.7262 0.0172 1.4836 0.0870 0.8111 0.1678
+Grapevine 0.3286 0.0168 0.5732 0.0845 0.8166 0.1624
+Table 6
+Irrigated crops ﬁnal demand reallocation results.
+Source: Own Work
+Scenario Blue WF (m3) Green WF (m3) Value Added ( €)
+In ERB Abroad In ERB Abroad In ERB Abroad
+Scenario 1 −1,057,266 2297 −1,323,459 8249 −43,724 26,364
+Scenario 2 596,768 −6129 852,749 −31,245 96,990 −67,740
+M.A. Almazán-Gómez, et al. Journal of Environmental Management xxx (xxxx) xxx–xxx
+7
+the primary sector also uses 9378 hm 3 of green water. Irrigated crops
+use 83% of the blue water used in the ERB, distributed irregularly
+among regions; Aragon and Catalonia irrigators together use 67%
+(3400 hm3) of the blue water used in the ERB. Irrigators from La Rioja
+and Navarre use a similar amount of blue water, which, in sum, re-
+presents 14.5% of the total. Basque Country irrigators use only 67 hm 3
+blue water, which is only 1.3% of the total. The construction sector uses
+9.24% of the blue water, with no di ﬀerences among regions in relative
+terms. Livestock activities consume 2.6% of blue water in Aragon, and
+2.3% in Catalonia, while the other three regions consume 1% in total.
+We divide value added by direct blue water to obtain the apparent
+blue water productivity. In the whole ERB, the apparent blue water
+productivity in irrigated crop production is 0.41 €/m3, in livestock, it is
+3 €/m3, in construction, it is 16 €/m3, and in industry 422 €/m3.
+Considering these values of apparent blue water productivity, and
+taking into account the proportions of blue water used, we focus on
+crop production to propose alternatives to save water and deal with
+possible reductions in water availability. The apparent blue water
+productivity in the ERB for irrigated crops is not the same in the ﬁve
+regions. In Aragon it is 0.33 €/m3, in Catalonia 0.40 €/m3, in Navarre
+0.71 €/m3, in Basque Country it is 0.42 €/m3, and in La Rioja 0.56
+€/m3. These di ﬀerences could be caused by the intensity of use, the
+crop mix (land use) and the productivity of the combination of factors
+(land, water, capital, and labour) of each crop in each region. The in-
+tensity of use can be obtained from Table 4, while the crop mix can be
+seen in table SI2 of the Supplementary Information. Production in euros
+(tons multiplied by price) for each crop and each region can be seen in
+Table SI3 in the Supplementary Information.
+We can satisfy the same ﬁnal demand and reduce the blue WF,
+substituting the ﬁnal demand of sectors and regions that provoke a
+higher WF in the ERB, by demand of the same sectors in the regions that
+provoke the lowest WF. Table 5 summarizes the data for irrigated crop
+production embodiments in ﬁnal demand. The third column identi ﬁes
+the embodied blue water (the blue WF) in one euro of ﬁnal demand, by
+sector and region, from the Ebro river basin, and the fourth column
+identiﬁes the blue WF caused outside the ERB (rest of Spain, rest of
+European Union, and rest of the World) per euro of ﬁnal demand. The
+ﬁfth and sixth columns identify the green WF. Columns 7 and 8 show
+the embodiments of value added per euro of ﬁnal demand and where
+that value added is generated.
+As can be seen, the coe ﬃcients of the same crop di ﬀer by region.
+These coeﬃcients capture the total e ﬀect, that is to say, the direct e ﬀect
+plus the indirect e ﬀect. While the direct e ﬀect captures the direct use of
+the resource (blue or green water) or the value added generated, the
+indirect eﬀect captures the resource embodied in the di ﬀerent stages of
+the production process; that is, it depends on the productive structure of
+the region itself and of the regions providing the inputs.
+Given the primary character of agricultural goods, the direct e ﬀect
+represents the larger part of the total e ﬀect, with the di ﬀerences in the
+coeﬃcients depicted in Table 5 being, in great part, associated with the
+direct e ﬀect. The di ﬀerences in the requirements of water per Euro are
+mainly motivated by the factors a ﬀecting direct water productivities,
+that is by the climate, by the di ﬀerences in the productivity of the land,
+and by the di ﬀerence in prices.
+Using the data in Table 5, we propose two scenarios, in which we re-
+allocate the ﬁnal demand of crop production, looking to reduce the blue
+WF,
+and maximizing the value added. In these scenarios, we use the
+same strategy: for example, in scenario 1, we identify for each crop, the
+Fig. 3. Changes in blue water used. Total impact on blue water (direct plus indirect) of scenario 1 at the municipal level. Green depicts water-saving areas. Source:
+own work. Data in cubic meters. (For interpretation of the references to colour in this ﬁgure legend, the reader is referred to the Web version of this article.)
+M.A. Almazán-Gómez, et al. Journal of Environmental Management xxx (xxxx) xxx–xxx
+8
+region that, per euro of ﬁnal demand, provokes the lowest blue WF in
+the ERB and the region that provokes the highest blue WF in the ERB.
+Then, we move €100,000 from the ﬁnal demand of this crop of the
+region with the highest WF to this crop in the region that has the lowest
+WF.3. In scenario 2, we are looking to maximize value added, so we
+move €100,000 of ﬁnal demand from the regions with the lowest value
+added per unit to the regions with the highest. Results can be seen in
+Table 6.
+As can be seen in Table 6, we can satisfy the same ﬁnal demand of
+each crop, saving water ( ﬁrst scenario) or having a higher value added
+(second scenario). The ﬁrst scenario shows that we could save 1.06 hm 3
+of blue water and 1.32 hm 3 of green water; however, value added
+would decrease by around €44,000 in the basin. This means that saving
+a cubic hectometre of blue water would cost around €41,500 in terms of
+value added in the whole of the ERB. The second scenario looks to
+increase the VA by €97,000, while the blue water and green water also
+increase, by 0.6 hm 3 and 0.85 hm 3 respectively. These scenarios show
+the opportunity cost, in the cases where we prioritize one objective.
+Choosing other crops to reallocate their ﬁnal demand, other trade-o ﬀs
+appear and, since the model we use is linear, other combinations are
+possible. We use these two scenarios as examples, to show the
+capabilities of combining the MRIO table with data at the municipal
+level and GIS software, and their utility for policymakers. Knowing the
+trade-oﬀs between environmental and socio-economic variables at
+global and local level is indispensable for policy makers. Policy makers
+should also know where and how their decisions will have an e ﬀect. For
+this reason, we develop in 3.2 a strategy to locate the impacts.
+3.2. Downscaling the MRIO results; locating the impacts
+In the previous section, we have seen the trade-o ﬀ between water
+and value added in the whole basin. This trade-o ﬀ exists because of the
+diﬀerences between regions. However, the socio-economic gains or
+losses occur in more speci ﬁc areas. Moreover, the ERB has depopulation
+problems: the ERB represents 15% of the Spanish surface area, but only
+has 7.3% of the Spanish population. Moreover, 400 of the 1400 mu-
+nicipalities considered contain 90% of the ERB population. For this
+reason, it is even more important to know the socio-economically af-
+fected areas by measures on a more local scale.
+MRIO tables usually tell us about environmental impacts at the
+country or regional level. Thus, to identify the hotspots and quantify the
+socio-economic impacts and environmental damage in speci ﬁc areas,
+we develop a methodology to allocate the standard MRIO model results
+among municipalities (section 2.3). Since we are considering more than
+1400 municipalities, we analyse the results through GIS software (dis-
+aggregating results by municipality and also by sector are available on
+request).
+Using equation (7), we have determined the blue and green water
+used at the municipal level, as well as the value added and its variations
+through the two scenarios previously depicted. Fig. 3 shows the changes
+Fig. 4. Changes in value added. Total impact on value added of scenario 1. Green depicts the areas in which the value added would increase. Source: own work. Data
+in thousand euros. (For interpretation of the references to colour in this ﬁgure legend, the reader is referred to the Web version of this article.)
+3 In scenario 1, we subtract €100,000 from the ﬁnal demand of Aragon's
+wheat (because it has the largest wheat blue WF coe ﬃcient) and we add
+€100,000 to the ﬁnal demand of La Rioja's wheat (because it has the largest
+wheat Blue WF coe ﬃcient); we subtract €100,000 from the ﬁnal demand of
+Catalonia's corn and add €100,000 to the ﬁnal demand of Navarre's corn; we
+subtract €100,000 from the ﬁnal demand of Aragon's barley and we add
+€100,000 to the ﬁnal demand of Navarre's barley; and so on.
+M.A. Almazán-Gómez, et al. Journal of Environmental Management xxx (xxxx) xxx–xxx
+9
+in blue water used when we reallocate the ﬁnal demand of crops among
+regions to reduce blue water ( ﬁrst scenario). Fig. 4 is related to the ﬁrst
+scenario and shows the changes in value added at the municipal level.
+As can be seen in Fig. 3, the reallocation of ﬁnal demand of crops in
+the ﬁrst scenario provides a solution that mainly water would be saved
+in the middle-east and middle-west of Aragon, the west of Catalonia,
+and in the Ebro Delta. The areas that would increase water withdrawals
+are, mainly, the south of Navarre and the east of La Rioja. Changes in
+VA associated with scenario 1 can be seen in Fig. 4 , which shows that
+the areas where the VA would decrease (in red) are mostly the same
+areas where blue water is being saved. Reductions in water consump-
+tion entail reductions in output and in VA, although each municipality
+is aﬀected in a di ﬀerent way, due to their crop mix and also their water
+requirements per euro of production.
+Figs. 5 and 6 depict the changes in blue water used and in VA at the
+municipal level, respectively, when we re-allocate ﬁnal demand of
+crops among regions to increase the VA in the whole basin (second
+scenario). As can be seen in Fig. 5 , in this scenario, the saving-water
+areas are mostly in La Rioja, and the intensi ﬁcation of water extractions
+would be primarily in mid-Aragon. Fig. 6 shows the municipalities
+where VA increases (green zones) and where it decreases (red zones).
+As noted earlier, the areas where water use decreases are the areas
+where VA decreases, and vice-versa. In relative terms, the water with-
+drawal variations at the municipal level entailed in these scenarios are
+small. They can be seen in ﬁgures SI1 and SI2 in the Supplementary
+Information. So, these scenarios do not signi ﬁcantly increase the water
+stress.
+4. Discussion and conclusions
+In the Ebro river basin, water use is already bumping up against its
+limits. Moreover, di ﬀerent stakeholders are clamouring for greater en-
+vironmental ﬂows that would imply una ﬀordable blue water use re-
+ductions, see Almazán-Gómez et al. (2018) and Crespo et al. (2018) . So,
+looking for more sustainable patterns, policy makers should propose
+measures to save water, and local gains and losses should be considered
+when a policy is being considered.
+In this work, we develop a multiregional analysis using the input-
+output framework in the Ebro river basin (ERB). We build a multi-
+regional input-output table, with the primary sector disaggregated. This
+integrated table and the associated model represent an important result
+in themselves, since, to the best of our knowledge, they are a ﬁrst for
+this large basin. The MRIO table of the ERB considers 8 regions, the 5
+regions that make up the basin and 3 regions that represent the rest of
+the world. The table shows the interdependencies among the di ﬀerent
+sectors of di ﬀerent regions, and knowledge of these relationships could
+help to anticipate the impacts of certain policies.
+The environmental extension of the model, with water satellite ac-
+counts, allows us to depict the virtual water matrices. These matrices
+tell us about the embodied water ﬂows, which we consider a very useful
+tool for environmental management. According to our data, the ERB
+uses 5059 hm 3 of blue water and 9378 hm 3 of green water for pro-
+duction. However, the ﬁnal demand of the ERB products leads to a blue
+WF of 4700 hm 3 and a green WF of 11,208 hm 3. These data show that,
+in water-embodied terms, the ERB is exporting blue water and im-
+porting green water. Tables 2 and 3 show the input-output table for the
+ERB, and the blue-plus-green virtual water matrix of the ERB,
+Fig. 5. Changes in blue water used. Total impact on blue water (direct plus indirect) of scenario 2 at the municipal level. Green depicts water-saving areas. Source:
+own work. Data in cubic meters. (For interpretation of the references to colour in this ﬁgure legend, the reader is referred to the Web version of this article.)
+M.A. Almazán-Gómez, et al. Journal of Environmental Management xxx (xxxx) xxx–xxx
+10
+respectively, aggregated by regions. Table 4 shows some socio-eco-
+nomic and water-related data at the sectoral level.
+The ﬁve ERB regions that we take into account di ﬀer - not only by
+size, but also by their productive structures. Table 4 is useful to char-
+acterize the region, and also notes the di ﬀerences between regions in
+the ERB. From this table, we can also conclude that crop production is
+the most water-dependent sector. In addition, Tables SI2 and SI3 in the
+Supplementary Information show the number of hectares dedicated to
+each irrigated crop and its production, respectively. The ERB uses
+around 4200 hm3 of blue water in crop production, representing 83% of
+the total water withdrawals.
+For irrigated crops, we calculate the embodiments per euro of ﬁnal
+demand of blue water, green water, and value added, as can be seen in
+Table 5. From our point of view, these coe ﬃcients are signi ﬁcant be-
+cause they include direct plus indirect e ﬀects. We focus only on irri-
+gated crop production, because they have the highest coe ﬃcients of
+blue water, so they have a greater capacity to reduce or to increase the
+blue WF in the ERB, per euro of ﬁnal demand. These capacities di ﬀer
+among the regions, so when we consider crops as homogeneous goods,
+and move ﬁnal demand of crops with a high blue water coe ﬃcient to
+the same crop of another region that has a lower blue WF per euro of
+ﬁnal demand, we satisfy the same ﬁnal demand, but with a lower WF.
+As can be seen in Table 5 , we have calculated the coe ﬃcients of blue
+water, green water, and value added.
+Taking into account the coe ﬃcients in Table 5, we propose two
+scenarios that reallocate ﬁnal demand of crops among regions. The ﬁrst
+scenario aims to save blue water in the ERB, moving €100,000 of ﬁnal
+demand of the crop and region that show the highest blue water coef-
+ﬁcient to the ﬁnal demand of the crop with the lowest blue water
+coeﬃcient. According to our data, the ERB could save around 1 hm 3 of
+blue water and satisfy the same ﬁnal demand. However, as can be seen
+in Table 6, this 1 hm 3 has an opportunity cost in value added terms,
+suggesting that we should apply other (compensatory) policies to focus
+on increasing value added when implementing water-saving policies.
+Note that we focus on the trade-o ﬀs between water savings and value
+added in the Ebro river basin and the spatial distribution of the impacts.
+For the sake of simplicity and to cover cases with reduced water-uses, in
+our simulations we chose a small amount of water, 1 hm 3, since it is
+enough to appreciate the trade-o ﬀs. In the case of a real policy, the
+quantities would be higher, such as 100 hm 3, 200 hm3, and even more.
+Knowledge of the trade-o ﬀ between socio-economic and environ-
+mental variables is indispensable for policy makers; moreover, we
+consider that knowing the speci ﬁc location of the impacts is also useful;
+more information leads to better decisions and proposals for compen-
+satory measures. Therefore, we have developed a strategy to downscale
+the results at the municipal level. The downscaling process uses a ma-
+trix of percentages to estimate the allocation of the regional output.
+When we can allocate the output at the municipal level, we can also
+allocate other variables using “unit requirement vectors ”. In section 3.2
+we show the estimations of the impacts of the scenarios proposed.
+Following the ﬁrst scenario, saving 1 hm 3 of blue water could cost
+around €41,500 of value added if we look at the whole basin. However,
+there are municipalities that would reduce their value added by more
+than €30,000 (e.g., Ejea de los Caballeros, in Aragon, in scenario 1 loses
+€34,900 of VA) and others that would gain value added (e.g., Tudela, in
+Navarre, in scenario 1 gains €87,000 of VA). As expected, due to direct
+eﬀects, municipalities that gain the most VA are those that grow the
+crops with increased ﬁnal demand. The municipalities that lose the
+Fig. 6. Changes in value added. Total impact on value added of scenario 2. Green depicts the areas in which the value added would increase. Source: own work. Data
+in thousand euros. (For interpretation of the references to colour in this ﬁgure legend, the reader is referred to the Web version of this article.)
+M.A. Almazán-Gómez, et al. Journal of Environmental Management xxx (xxxx) xxx–xxx
+11
+most VA are those growing the crops with decreased ﬁnal demand.
+However, there are some municipalities that have gains, or su ﬀer losses,
+that do not grow certain crops because of the indirect e ﬀects. We also
+show the spatial distribution of the environmental and socio-economic
+eﬀects of the scenarios proposed at the municipal level, using GIS
+software.
+These tools and results can be useful for policy makers when con-
+sidering re-allocating water. The tools provided represent a contribu-
+tion in themselves, since they are useful in policy analysis, and the
+analysis of the scenarios illustrates the utility of the tools provided in
+this paper, for policymakers to analyse speci ﬁc areas where the e ﬀects
+will be felt.
+We are aware of the limitations of the study, but we trust the use-
+fulness of multiregional and multisectoral models to analyse the socio-
+economic and environmental e ﬀects of any policy. Moreover, the link
+with GIS layers allows us to study local e ﬀects. One future line of re-
+search is the proposal of more realistic scenarios and their analysis
+using the tools provided in this paper, evaluating not only the e ﬀects on
+socio-economic variables but also the speci ﬁc places where the e ﬀects
+will be felt.
+This work is extensible to other basins and provides a tool for pol-
+icymakers to estimate not only socio-economic and environmental total
+impacts, but also where the impacts will be felt. In another future line of
+research, this MRIO table can be used to calibrate a computable general
+equilibrium (CGE) model, with which it would be possible to analyse
+more speci ﬁc policies of change, as well as local e ﬀects. The ﬂexibility
+of this kind of model also allows us to create links with a hydro-eco-
+nomic model, which is another future line of research.
+Acknowledgements
+We would like to express our gratitude for the partial funding re-
+ceived from the Spanish Government under project ECO 2016-74940-P,
+from the Aragonese Regional Government and FEDER Funds via the
+S40_17R reference group of the Aragon Government, and grant FPU14/
+01694.
+Appendix A. Supplementary data
+Supplementary data to this article can be found online at https://
+doi.org/10.1016/j.jenvman.2019.03.042.
+References
+Acquaye, A., Feng, K., Oppon, E., Salhi, S., Ibn-Mohammed, T., Genovese, A., Hubacek,
+K., 2017. Measuring the environmental sustainability performance of global supply
+chains: a multi-regional input-output analysis for carbon, sulphur oxide and water
+footprints. J. Environ. Manag. 187, 571 –585. https://doi.org/10.1016/j.jenvman.
+2016.10.059.
+Alcamo, J., Flörke, M., Märker, M., 2007. Future long-term changes in global water re-
+sources driven by socio-economic and climatic changes. Hydrol. Sci. J. 52, 247 –275.
+https://doi.org/10.1623/hysj.52.2.247.
+Almazán-Gómez, M.Á., Sánchez-Chóliz, J., Sarasa, C., 2018. Environmental ﬂow man-
+agement: an analysis applied to the Ebro River Basin. J. Clean. Prod. 182, 838 –851.
+https://doi.org/10.1016/j.jclepro.2018.01.207.
+Antonelli, M., Roson, R., Sartori, M., 2012. Systemic input-output computation of green
+and blue virtual water ‘ﬂows’ with an illustration for the mediterranean region. Water
+Resour. Manag. 26, 4133 –4146. https://doi.org/10.1007/s11269-012-0135-9.
+Bielsa, J., Cazcarro, I., 2014. Implementing integrated water resources management in
+the Ebro river basin: from theory to facts. Sustainability 7, 441 –464. https://doi.org/
+10.3390/su7010441.
+Bureau Van Dijk, 2017. Iberian Balances Analysis System - Sistema de Análisis de
+Balances Ibericos (SABI). Online Database [WWW Document]. URL. (Available
+under license) (accessed 6.1.17). https://sabi.bvdinfo.com/.
+Cai, B., Wang, C., Zhang, B., 2017. Worse than imagined: unidenti ﬁed virtual water ﬂows
+in China. J. Environ. Manag. 196, 681 –691. https://doi.org/10.1016/j.jenvman.
+2017.03.062.
+Cazcarro, I., Duarte, R., Sánchez-Chóliz, J., 2016. Tracking water footprints at the micro
+and meso scale: an application to Spanish tourism by regions and municipalities. J.
+Ind. Ecol. 20, 446 –461. https://doi.org/10.1111/jiec.12414.
+Cazcarro, I., Duarte, R., Sánchez-Chóliz, J., 2013. Multiregional input –output model for
+the evaluation of Spanish water ﬂows. Environ. Sci. Technol. 47, 12275 –12283.
+https://doi.org/10.1021/es4019964.
+Cazcarro, I., Hoekstra, A.Y., Sánchez-Chóliz, J., 2014. The water footprint of tourism in
+Spain. Tourism Manag. 40, 90 –101. https://doi.org/10.1016/j.tourman.2013.05.
+010.
+Chapagain, A.K., Hoekstra, A.Y., 2004. Water Footprints of Nations. The Value of Water
+Research Report Series BT - Water Footprints of Nations .
+Chapagain, A.K., Orr, S., 2009. An improved water footprint methodology linking global
+consumption to local water resources: a case of Spanish tomatoes. J. Environ. Manag.
+90, 1219 –1228. https://doi.org/10.1016/j.jenvman.2008.06.006.
+CHE (Confederación Hidrográ ﬁca del Ebro - Ebro River Basin Authority), 2014.
+Hydrological management plan. Extracts from the study about environmental ﬂows
+in the Ebro Delta - Plan Hidrológico de la Cuenca del Ebro. Extracto del estudio sobre
+el régimen de caudales ecológicos en la Desembocadura del río Ebro (In Spanish)
+[WWW Document]. URL. 6.28.17. http://www.chebro.es:81/Plan Hidrologico Ebro
+2010-2015/.
+Chen, Z.,
+Chen, G., Xia, X., Xu, S., 2012. Global network of embodied water ﬂow by
+systems input-output simulation. Front. Earth Sci. 6, 331 –344. https://doi.org/10.
+1007/s11707-012-0305-3.
+Crespo, D., José, A., Kahil, M.T., Esteban, E., 2018. Analysis of sectoral and spatial water
+allocation in the Ebro River Basin: impacts of shortages and droughts - análisis de la
+asignación sectorial y espacial del agua en la Cuenca del Ebro : impactos de la escasez
+y las sequías (In Spanish). Rev. Espanola Estud. Agrosociales Pesq. 250, 127 –159.
+Duarte, R., Sánchez-Chóliz, J., Bielsa, J., 2002. Water use in the Spanish economy: an
+input-output approach. Ecol. Econ. 43, 71 –85. https://doi.org/10.1016/S0921-
+8009(02)00183-0.
+Eustat (Instituto Vasco de Estadística - Statistical O ﬃce of Basque Country), 2015. Input-
+Output Framework of Basque Country (In Spanish) [WWW Document]. URL. 6.1.17.
+http://www.eustat.eus/estadisticas.
+Genty, A., Arto, I., Neuwahl, F., 2012. Final Database of Environmental Satellite
+Accounts. Technical Report on Their Compilation. WIOD Deliverable .
+Gerten, D., Rost, S., von Bloh, W., Lucht, W., 2008. Causes of change in 20th century
+global river discharge. Geophys. Res. Lett. 35, 1 –5. https://doi.org/10.1029/
+2008GL035258.
+Hanemann, W.M., 2006. The Economic Conception of Water. Water Cris. Myth or Real.
+pp. 61 –91.
+Hoekstra, A.Y., Chapagain, A.K., 2008. How much water is used for producing our goods
+and services? In: Globalization of Water. Blackwell Publishing Ltd, Oxford, UK, pp.
+7–17. https://doi.org/10.1002/9780470696224.ch2.
+Hoekstra, A.Y., Chapagain, A.K., Aldaya, M.M., Mekonnen, M.M., 2009. Water Footprint
+Manual State of the Art 2009. Water Footprint Network .
+IAEST (Instituto Aragonés de Estadística - Statistical O ﬃce of Aragon), 2013. Prices
+Received by Farmers (In Spanish) [WWW Document]. URL. 1.1.16. http://www.
+aragon.es/iaest.
+ICEX (Instituto Español de Comercio Exterior - Spanish Institute for Foreign Trade), 2016.
+Spanish Foreign Trade Statistics (In Spanish) [WWW Document]. URL. https://
+www.icex.es/.
+IdesCat (Instituto de Estadistica de Catalunya - Statistical O ﬃce of Catalonia), 2012.
+Input-output Framework of Catalonia 2011 (In Catalonian) [WWW Document].
+Marco Input-Output Framew. Catalonia 2011. URL. 6.1.17. http://www.idescat.cat/
+dades/mioc/2011/.
+IELR (Instituto de Estadística de La Rioja - Statistical O ﬃce of La Rioja), 2011. Input
+Output Table of la Rioja 2008 (In Spanish) [WWW Document]. URL. 6.1.17. http://
+www.larioja.org/estadistica/es/publicaciones-informes/catalogo-publicaciones/
+marco-input-output-rioja-2008.
+IEN (Instituto de Estadística de Navarra - Statistical O ﬃce of Navarre), 2011. Input-
+output Framework of Navarre 2010 (In Spanish) [WWW Document]. URL. 6.1.17.
+https://administracionelectronica.navarra.es/.
+INE (Instituto Nacional de Estadística - Spanish National Statistics Institute), 2015. Input-
+Output framework of Spain - Marco Input-Output de España. [WWW Document].
+URL. 6.1.17. www.ine.es.
+INE (Instituto Nacional de Estadística - Spanish National Statistics Institute), 2011.
+Agrarian Census 2009 (In Spanish) [WWW Document]. URL. http://www.ine.es/
+CA/Inicio.do.
+Junius, T., Oosterhaven, J., 2003. The solution of updating or regionalizing a matrix with
+both positive and negative entries. Econ. Syst. Res. 15, 87 –96. https://doi.org/10.
+1080/0953531032000056954.
+Lenzen, M.,
+2009. Understanding virtual water ﬂows: a multiregion input-output case
+study of Victoria. Water Resour. Res. 45, 1 –11. https://doi.org/10.1029/
+2008WR007649.
+Lenzen, M., 1998. Primary energy and greenhouse gases embodied in Australian ﬁnal
+consumption: an input-output analysis. Energy Policy 26, 495 –506. https://doi.org/
+10.1016/S0301-4215(98)00012-3.
+Lenzen, M., Wood, R., Gallego, B., 2007. Some comments on the GRAS method. Econ.
+Syst. Res. 19, 461 –465. https://doi.org/10.1080/09535310701698613.
+Leontief, W., 1970. Environmental Repercussions and the Economic Structure : an Input-
+Output Approach, vol. 52. pp. 262 –271.
+Llano, C., Esteban, A., Pérez, J., Pulido, A., 2010. Opening the interregional trade ‘“Black
+box”’: the C-intereg database for the Spanish economy (1995 —2005). Int. Reg. Sci.
+Rev. 33, 302 –337. https://doi.org/10.1177/0160017610370701.
+Long, R., Li, J., Chen, H., Zhang, L., Li, Q., 2018. Embodied carbon dioxide ﬂow in in-
+ternational trade: a comparative analysis based on China and Japan. J. Environ.
+Manag. 209, 371 –381. https://doi.org/10.1016/j.jenvman.2017.12.067.
+MAGRAMA (Ministerio de agricultura alimentación y medioambiente - Ministry of
+Agriculture Food and Environment), 2013. Technical-economic results of agricultural
+holdings in Aragón in 2012 - Resultados técnico-económicos de explotaciones
+agrícolas de Aragón en 2012. (In Spanish) .
+M.A. Almazán-Gómez, et al. Journal of Environmental Management xxx (xxxx) xxx–xxx
+12
+MAGRAMA (Ministerio de agricultura alimentación y medioambiente - Ministry of
+Agriculture Food and Environment), 2011. Statistics Yearbook - Anuario de
+Estadística. (In Spanish) .
+MAPAMA, 2016. (Ministerio de Agricultura y Pesca Alimentación Y Medio Ambiente -
+Ministry of Agriculture Fishing Food and Environment). National Spatial Data
+Infraestructure (In Spanish) [WWW Document]. URL. https://www.miteco.gob.es/
+en/cartograﬁa-y-sig/ide/descargas/default.aspx.
+Martínez-Cob, A., 2004. Review of the net water needs of the Ebro River Basin crops -
+Revisión de las Necesidades Hídricas Netas de los Cultivos de la Cuenca del Ebro. (In
+Spanish).
+Mekonnen, M.M., Hoekstra, A.Y., 2010. A global and high-resolution assessment of the
+green, blue and grey water footprint of wheat. Hydrol. Earth Syst. Sci. 14,
+1259–1276. https://doi.org/10.5194/hess-14-1259-2010.
+Milano, M., Ruelland, D., Dezetter, A., Fabre, J., Ardoin-Bardin, S., Servat, E., 2013a.
+Modeling the current and future capacity of water resources to meet water demands
+in the Ebro basin. J. Hydrol. 500, 114 –126. https://doi.org/10.1016/j.jhydrol.2013.
+07.010.
+Milano, M., Ruelland, D., Fernandez, S., Dezetter, A., Fabre, J., Servat, E., Fritsch, J.-M.,
+Ardoin-Bardin, S., Thivet, G., 2013b. Current state of Mediterranean water resources
+and future trends under climatic and anthropogenic changes. Hydrol. Sci. J. 58,
+498–518. https://doi.org/10.1080/02626667.2013.774458.
+Munksgaard, J., Wier, M., Lenzen, M., Dey, C.J., 2008. Using input-output analysis to
+measure the environmental pressure of consumption at di ﬀerent spatial levels. J. Ind.
+Ecol. 9, 169 –185. https://doi.org/10.1162/1088198054084699.
+Pérez, L., Parra, F.J., 2009. Productivity structure and updating the input-output frame-
+work of Aragon 2005 - Estructura productiva y actualización del Marco Input-Output
+de Aragón 2005 (In Spanish). Colección premios de investigación. Zaragoza.
+Roibás, L., Loiseau, E., Hospido, A., 2018. A simpli ﬁed approach to determine the carbon
+footprint of a region: key learning points from a Galician study. J. Environ. Manag.
+217, 832 –844. https://doi.org/10.1016/j.jenvman.2018.04.039.
+Roibás, L., Loiseau, E., Hospido, A., 2017. Determination of the carbon footprint of all
+Galician production and consumption activities: lessons learnt and guidelines for
+policymakers. J. Environ. Manag. 198, 289 –299. https://doi.org/10.1016/j.jenvman.
+2017.04.071.
+Sepehri, A., Sarrafzadeh, M., 2018. E ﬀect of nitri ﬁers community on fouling mitigation
+and nitri ﬁcation e ﬃciency in a membrane bioreactor. Chem. Eng. Process. - Process
+Intensif. 128, 10 –18. https://doi.org/10.1016/j.cep.2018.04.006.
+Steen-Olsen, K., Weinzettel, J., Cranston, G., Ercin, A.E., Hertwich, E.G., 2012. Carbon,
+land, and water footprint accounts for the European Union: consumption, production,
+and displacements through international trade. Environ. Sci. Technol. 46,
+10883–10891. https://doi.org/10.1021/es301949t.
+Stone, R., Brown, A., 1962. A computable model of economic growth. In: A Programme
+for Growth. Chapman and Hall, London .
+Tena, A., Vericat, D., Gonzalo, L.E., Batalla, R.J., 2017. Spatial and temporal dynamics of
+macrophyte cover in a large regulated river. J. Environ. Manag. 202, 379 –391.
+https://doi.org/10.1016/j.jenvman.2016.11.034.
+Timmer, M.P., Dietzenbacher, E., Los, B., Stehrer, R., de Vries, G.J., 2015. An illustrated
+user guide to the world input-output database: the case of global automotive pro-
+duction. Rev. Int. Econ. 23, 575 –605. https://doi.org/10.1111/roie.12178.
+United Nations,
+2015. The Millennium Development Goals Report. United Nations 72.
+978-92-1-101320-7.
+Valencia, J., Tarquis, A., Saa, A., Villeta, M., Gascó, J., 2015. Spatial modeling of rainfall
+patterns over the Ebro river basin using multifractality and non-parametric statistical
+techniques. Water 7, 6204 –6227. https://doi.org/10.3390/w7116204.
+Veettil, A.V., Mishra, A.K., 2018. Potential in ﬂuence of climate and anthropogenic vari-
+ables on water security using blue and green water scarcity, Falkenmark index, and
+freshwater provision indicator. J. Environ. Manag. 228, 346 –362. https://doi.org/10.
+1016/j.jenvman.2018.09.012.
+Wang, Z., Huang, K., Yang, S., Yu, Y., 2013. An input –output approach to evaluate the
+water footprint and virtual water trade of Beijing, China. J. Clean. Prod. 42, 172 –179.
+https://doi.org/10.1016/j.jclepro.2012.11.007.
+White, D.J., Feng, K., Sun, L., Hubacek, K., 2015. A hydro-economic MRIO analysis of the
+Haihe River Basin's water footprint and water stress. Ecol. Model. 318, 157 –167.
+https://doi.org/10.1016/j.ecolmodel.2015.01.017.
+M.A. Almazán-Gómez, et al. Journal of Environmental Management xxx (xxxx) xxx–xxx
+13

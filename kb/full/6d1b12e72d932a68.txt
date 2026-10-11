@@ -1,0 +1,999 @@
+Analyzing the social impacts of 
+scooters with geo-spatial methods 
+Alexey Voinov1,2, Javier Morales1, Hanneke Hogenkamp1 
+1 University of Twente, Enschede, The Netherlands 
+2 PERSWADE Center, University of Technology Sydney, Australia 
+Abstract 
+Scooters, or gasoline powered two-wheelers, are becoming increasingly popular in the 
+Netherlands. They provide fast, independent and affordable transportation, especially in 
+urban congested areas. Unfortunately, they also have considerable adverse impacts on the 
+environment and human health. The three most prominent impacts are associated with air 
+pollution, noise pollution and traffic accidents. While the total contribution of emissions by 
+scooters is relatively small compared to total traffic related emissions, they have a 
+disproportionally large impact on their direct environment, especially when sharing roads with 
+bicycles as in the Netherlands, where they are characterized as super-polluters. A scoping 
+GIS based assessment, using theoretical and available secondary data, could identify routes 
+with highest likelihood of scooter presence to estimate exhaust and noise impacts and related 
+traffic accidents. Estimated are provided for the total population, and the number of childcare 
+facilities within the impact areas. For future projections four different scenarios are analyzed. 
+For the case study of the town of Enschede in the Netherlands the present noise/exhaust 
+environmental impact of scooters is affecting at least 30% of the population and in the future 
+this number can increase to 38%-53%. 
+Keywords 
+GIS, air pollution, traffic accidents, noise, buffer analyses 
+Highlights 
+Gasoline powered two wheelers aka mopeds or scooters are gaining popularity 
+Scooters are super polluters creating air and noise pollution and causing accidents 
+Management and regulation are needed to encourage use of electric scooters 
+Introduction 
+In the last 10 years the number of scooters in the Netherlands has been steadily increasing. 
+Within Europe, the Netherlands is the country with the highest use of scooters: almost 60 
+scooters per 1000 inhabitants (Ewalds, Mortiz, & Sijstermans, 2013). This is remarkable since 
+one would expect scooters to be more popular in Southern Europe where weather conditions 
+are more favorable for their use (Dall'Osto & Querol, 2013). 
+There may be several reasons for this. First, they offer a fast solution in urban congested 
+areas with easy parking options. They also take advantage of existing traffic regulations, 
+which allow scooters on bike lanes. Second, they are more affordable than cars both to 
+purchase and maintain. Thirdly, independent mobility is becoming an increasingly important 
+part of quality of life (Dall'Osto & Querol, 2013). Often scooter riders are described as 'risk 
+takers', 'sensation-seekers' and 'speed-rebels' (Njå & Nesvåg, 2007), which also attracts 
+some users, especially among youngsters. 
+There are two types of scooters in the Netherlands, distinguished in terms of their legal 
+maximum speed: 25 km/h for the so-called light-mopeds and 45 km/h for the regular mopeds. 
+Wearing a helmet is mandatory for moped riders but not on light-mopeds (Methorst, 
+Schepers, & Vermeulen, 2011). Also, their position within the road network is different: light-
+mopeds are restricted to designated bike and moped/bike lanes while mopeds are allowed on 
+ 
+ 
+bike paths only in special cases (Rijksoverheid, 2013). In many cases the same type or brand 
+of vehicles can be used for both types of scooters, only for light-mopeds a speed limiter is 
+added. These speed limiters make scooters more energy-inefficient and more polluting 
+(Hensema et al., 2013). As Figure 1 shows since 2013 there are more light-mopeds in the 
+streets than regular mopeds. Light-mopeds are preferred by older people, while mopeds are 
+more popular among youngsters (CBS, 2013). 
+According to Dall’Osto & Querol (2013) “there is an extraordinary contrast between the lack of 
+knowledge on powered two wheelers (PTW) in the literature and their rising trends in many 
+urban areas”. The three most prominent impacts of scooters are air pollution, noise pollution 
+and traffic accidents. 
+Next to traffic 
+participants, scooters 
+also impact people 
+living along roads. 
+When the proportion 
+of PTWs in the 
+circulating fleet is 
+high enough, urban 
+air pollution can be 
+strongly influenced 
+by their emissions, 
+and it is no longer 
+negligible in 
+comparison to what 
+modern passenger 
+cars contribute (Prati 
+& Costagliola, 2009). Boogaard et al. (2009) investigated the exposure to ultra-fine and fine 
+particles during cycling and observed that when mopeds were passing by, the number of 
+particles increased by 58.4% while for cars - only by 3.7%. Many of the PTWs are powered 
+by two-stroke engines, which have hydrocarbon (HC) emission rate approximately six times 
+that of the typical four-stroke engine (EPA, 1991). In another study, benzene and other HC 
+exposure levels with two-stroke engines were vastly exceeding those from four-stroke and 
+diesel engines: 58.4, 38.9 and 15.7 µg/m3, respectively (Kirrane et al., 2007). According to 
+BOVAG (a trade association of some 9,500 entrepreneurs engaged in mobility) approximately 
+25%-33% of the scooter fleet in 2014 in the Netherlands were two-stroke (Weijer van de, 
+2014). 
+Hensema et al. (2013) compared the emissions of different Euro-2 scooters (2-stroke versus 
+4-stroke, light-moped versus moped) and also compared them to passenger car emissions. 
+Both the Euro-5 diesel and petrol car performed orders of magnitude better on HC and 
+carbon monoxide (CO) emissions than the Euro-2 scooters. In terms of particulate matter 
+(PM) and nitrogen oxides (NOx), a 2-stroke scooter emits significantly more than a 4-stroke 
+scooter and petrol cars, while diesel cars have much higher NOx emissions than all other 
+vehicles. 
+In addition to benzene moped exhaust contains 1,3-butadiene; both are confirmed human 
+carcinogens. CO interferes with oxygen transport to the cells of the body. Formaldehyde, 
+acrolein and NOx in exhaust are all irritants and may exert other systemic effects (Heil and 
+Pargal, 1998; Dost, 2010). What makes it even worse in the Netherlands is that scooters 
+share the lanes with bikes, so that the exhaust gasses are more or less directly spewed into 
+the lungs of cyclists, who have no way to avoid them, and due to their physical activity have a 
+higher respiration rate than at rest. 
+When the exposure of residents to air pollutants is long and intense, the impact on their 
+health becomes greater. The long-term effects range from minor eye irritations and 
+respiratory symptoms to decreased lung/heart functions and even premature death (Biju & 
+Vijayan, 2014). On the other hand, short-term increase in fine PM pollution concentration 
+already leads to increased blood pressure within a period of a few days, while long-term 
+exposure also causes chronic hypertension (Brook & Rajagopalan, 2009). Next to elderly 
+people, children are also more sensitive to traffic pollution health impacts compared to adults. 
+Figure 1. Numbers of scooters in the Netherlands, 2007-2013. Source: 
+CBS (2013) 
+ 
+ 
+ 
+A number of studies found a correlation between the incidence of asthma in children and 
+long-term exposure to nitrogen dioxide (Favarato et al., 2014). 
+The noise produced by scooters is seen as the most annoying traffic noise source. Especially 
+cyclists and pedestrians are affected (Vos, 2006). Since scooters are mostly used in urban 
+areas, the physical characteristics of urban terrain, like the location and shapes of buildings, 
+also have a significant influence on noise propagation and the acoustic environment (Paviotti 
+& Vogiatzis, 2012). Also, the tendency to tamper with moped’s components is often a cause 
+for additional noise pollution (VROM, 2010). According to a study by den Boer and Schroten 
+(2007) the problem is that owners modify their mopeds by, for example, replacing the original 
+exhaust silencers by less efficient and noisier ones. Overall, this has been registered in 65% 
+of all mopeds in Europe. 
+For road traffic, people experience nuisance from noise over 38 dB. Long-lasting exposure to 
+80 dB and higher can cause deafness (Rijkswaterstaat, 2010). The reported levels of decibels 
+for a scooter varies from 73 dB (Mohapatra, 2004) to 80 dB (Rana, 2008), and to 81 dB 
+(Paviotti & Vogiatzis, 2012). In all research, the mean level of noise produced by scooters lies 
+4-5 decibel above the noise produced by cars. As with the emissions data, there is more data 
+for car noise levels, but limited data for scooters (Paviotti & Vogiatzis, 2012). No data was 
+found about the distinction of noise emissions between light-mopeds and mopeds, 2-stroke 
+and 4-stroke models, etc. 
+In literature the noise impact of traffic is also related to various diseases. Research by 
+Passchier-Vermeer & Passchier (2000) indicates that traffic noise disturbance can lead to 
+health impacts such as hearing impairment, hypertension, heart diseases and sleep 
+disturbances. As with exhaust pollution, also here the children are regarded as a risk group 
+that is more sensitive to traffic noise. Besides decreased school performance, also higher 
+blood pressure is observed among children in noisy environments compared to those in 
+quieter places. 
+The safety aspect is also important to keep in mind. PTW riders have a relatively high risk of 
+being involved in accidents. This has mainly to do with the riding speed in combination with 
+the rider’s vulnerability. Also, the largest portion of the scooter riders are young people (16-18 
+years, mainly moped riders) and elderly people (60 and older, mainly light-moped riders), 
+both of which are seen as risk groups (SWOV, 2009). Research has shown that the fatality 
+rates for PTW riders are 20-40 times higher per distance travelled than for car drivers 
+(Blackman & Haworth, 2013). Despite the fact that PTWs have legal maximum speeds, 
+research in the Netherlands shows that the mean speed of light-mopeds is 34 km/h and for 
+mopeds 54 km/h, which is already over the speed limit and means that there are numerous 
+violations of the regulation here. Since scooters often have to share the road with cyclists, 
+with the big difference in their speed, the threat is not only for scooter riders but even more to 
+the cyclists (Methorst et al., 2011). Still, according to Steg & Brussel (2009), there is little 
+research conducted on the factors influencing scooter related accidents, and on ways to 
+reduce the high risks. 
+It can be concluded that although the global impact of scooters may not be significant, their 
+local impact can be very high. If not controlled, the use of PTWs is likely to continue to 
+increase for at least the next decade. The challenge is to adopt suitable strategies to mitigate 
+the safety and health issues associated with this (Haworth, 2012) or develop regulations that 
+would restrict the expansion of the scooter fleet and/or control their impact. Neglecting the 
+role of scooters can result in health and life hazards. Regulating PTWs is certainly one of 
+those wicked problems so prevalent in environmental management. On the one hand the 
+hazardous impacts of PTWs are profound and known, on the other hand there is a growing 
+number of people who find themselves attached and dependent on this mode of 
+transportation. Despite the externalities they create they prefer to continue to use their PTW 
+and are likely to oppose any restrictions that may be legislated. 
+The goal of this research is to assess the current and future spatial environmental and social 
+impacts of scooters. The expectation is that by providing improved visualizations and 
+quantification of the PTW impacts on humans, we can assist urban managers and decision 
+makers to improve existing regulations while making these changes more likely to be 
+accepted by the general public. The municipality of Enschede is chosen as the study area. 
+The choice was largely driven by the availability of data. On the other hand, Enschede is a 
+ 
+ 
+typical average sized municipality in the Netherlands, so the results of the analysis can be 
+easily extrapolated to other such places in the country and beyond. 
+ 
+ 
+Methodology and data used 
+The effect of traffic on health and safety is disproportionately distributed over space. Living 
+near busy roads is associated with health hazards. Biking or walking along roads with high 
+scooter traffic exposes residents to higher noise and toxic pollution, as well as increases the 
+risks of being involved in scooter related traffic accidents. To assess the health and 
+environmental impact of scooters we need to identify the intensity of scooter traffic along the 
+road network and then compare that with the distribution of residential population, especially 
+those elements of it that are most vulnerable. 
+ 
+Methodology 
+Jerrett et al. (2005) categorize air dispersion modeling methods into six classes. 
+• Proximity based methods measure the proximity of a subject to a pollution source. 
+• Geostatistical methods that measure pollutants at a set of monitoring stations distributed 
+over the study area. 
+• Land use regression models predict pollution concentrations at a given site based on 
+surrounding land use and traffic characteristics. 
+• Dispersion models generally use Gaussian plume equations. Meteorological conditions and 
+topography are used in estimating the spatial extent of air pollutants. 
+• Integrated meteorological-emission models that combine meteorological and chemical 
+modules to get more insight in the pollutants dynamics. 
+• Hybrid models, combining personal/regional monitoring with air pollution dispersion 
+methods. 
+The data requirements for each of the six methods are increasing with the complexity of 
+models assumed. 
+Probably because of its low cost and availability of updated data, an increasing number of 
+studies rely on the proximity-based method using data on the road network and vehicle traffic 
+as an indirect measure of atmospheric pollution in urban areas. In our case, when developing 
+a scoping tool that could be used in a variety of locations, with no specific monitoring data 
+available, this was the obvious choice. Studies have shown that the concentration of 
+pollutants close to roads are well correlated to traffic counts, so that the latter can be used as 
+an indicator of exposure of urban residents to atmospheric pollutants (Habermann, Medeiros, 
+& Gouveia, 2011). When exposure to traffic exhaust shows different magnitudes within small 
+differences in proximity, buffers can be mapped along the roads distinguishing the areas and 
+population with elevated exposure to traffic exhaust (Albert, Gesler, & Levergood, 2000). In 
+the majority of research, the residential mobility is not considered. People do often move or 
+spend most of their day at other places than their homes; so, ignoring this can certainly cause 
+errors (Habermann et al., 2011). 
+Density of traffic on road segments can be used to discover ‘hot routes’ (Li, Han, Lee, & 
+Gonzalez, 2007). In San Francisco the traffic intensity on each road segment was used to 
+calculate an estimated kernel density, which is a land use modeling method that produces a 
+smooth surface over the city area (SCI, 2014). Traditionally, a kernel density estimation 
+(KDE) function has been widely used to analyze point patterns like traffic accidents, but with 
+new upgrades in, for example, ArcGIS, KDE now also can be used to study characteristics of 
+networks (Cai, Wu, & Cheng, 2013). In our study we have chosen to rely mostly on 
+Geographic Information System (GIS) techniques and some of the standard data sets 
+ 
+ 
+available for most of the Netherlands. This makes it more likely that the approach can be 
+used for other locations beyond the case study we chose. 
+To streamline our analyses, a script was developed to run all the procedures iteratively and 
+repeatedly (Fig.2). The script was divided into six subroutines: 
+• Phase A: selection of scooter owners for work, shopping or education purposes 
+• Phase B: division of destinations among city parts for work and shopping purposes 
+• Phase C: route analysis for work 
+• Phase D: route analysis for shopping 
+• Phase E: route analysis for education 
+• Phase F: merging all routes. 
+In phase A, the number of scooter owners is distributed over the neighborhoods in proportion 
+to residential buildings there. Statistical analysis results in proportions of scooter owners for 
+commuter traveling, shopping and education. These three proportions are used to randomly 
+select owners. 
+In phase B, the proportion of population within each city part is calculated and then used to 
+divide the population over the five work and education city destinations. 
+Phases C, D and E focus on the calculation of the routes for each of the three trip motives. In 
+phase F, the routes produced by the three different trip motives are merged together to obtain 
+combined route information (green result in Fig.2). Since there is some stochasticity involved 
+in this analysis, the script is run several times and the average of the results is taken. 
+The following approach has been used to analyze scooter traffic and their impact on the 
+urban environment. 
+Scooter flows are calculated on a daily basis to determine the number of scooter trips per 
+road segment. Then a kernel density analysis method is used with a search distance of 30 
+meters to calculate the density of features (e.g., houses, businesses) in the various 
+neighborhoods of the city. The population of each neighborhood is defined by the number of 
+scooter owners living in each neighborhood. 
+Figure 2. The script used for analyses. 
+ 
+ 
+The kernel density analysis output is a floating-point raster with high values for areas where 
+high scooter counts are present. The values are then classified into five different categories, 
+which describe the chance to encounter a scooter: very low, low, moderate, high and very 
+high. Since concentrations of pollutants are closely correlated with traffic counts, a 
+combination of the kernel density analysis and buffer analysis (proximity modeling) is used to 
+analyze the exhaust impact. Once the impact areas are identified within the municipality, 
+buffer analysis is used to calculate the impact on the population and childcare facilities, in 
+particular. 
+For the exhaust impact, the timing of scooter travel also matters. Ten scooters passing one 
+after another will certainly create a much higher impact than the same number of scooters 
+traveling once an hour. For this reason, only the work and education travel motives were 
+considered as they happen in very narrow and well-defined time windows. These two 
+motives, produce activity concentrated over the so-called rush-hour periods in the morning 
+and in the evening. For shopping purposes scooter riders are more likely to be evenly spaced 
+over the whole day, making their impact relatively less pronounced. 
+The buffer sizes representing the exhaust impact zones for each pollutant are determined 
+using distance decay parameters taken from literature. 
+The noise impact is calculated in the same way. Here again only the routes with work or 
+education purposes are used. An additional factor is considered when creating the buffers for 
+noise assessment, that is, the number of buildings within the first 100 meters from roads. 
+When there are buildings on road segments they will dampen the noise propagation and 
+decrease the noise disturbance caused by scooters. For example, if 10% of the 100 m zone 
+on one side of the road has buildings, the buffer size on that side is reduced to 0.9*240 = 216 
+m. 
+Scooter related accidents are analyzed using three different methods. First, the exact 
+locations of accidents (distance from junctions) within the network are identified. Second, 
+statistics about the number of scooters on the road segments where scooter accidents have 
+occurred in the past are obtained. Third, again kernel density analysis is used to determine 
+whether there is a spatial relationship between accidents and scooter routes. 
+Data used 
+The complete list of data sources is given in the Appendix. We have chosen to rely entirely on 
+open data that is available on the Internet or could be accessed through inquiries with the 
+Enschede municipality. 
+From the OViN 2012 records (CBS, 2014b) it was clear that scooter owners use their 
+scooters mainly for commuter traveling, daily shopping and education. Other motives like 
+visits and recreation are hard to associate with particular destinations (e.g. no information 
+from individuals about family members or friends and their locations). These motives are also 
+more sporadic. Commuter traffic, shopping and education activities are performed (almost) 
+every day, definitely on a weekday. 
+The database on research mobility flows for Twente was used to further explore the actual 
+flows of people, especially for shopping and commuter traveling purposes. Education 
+locations are secondary schools, intermediate vocational education (MBO) facilities, higher 
+vocational (HBO) schools and the University of Twente. 
+To identify the work locations, a fairly course resolution (large polygons) business area 
+dataset was combined with BAG data for buildings with work occupancy in those polygons. 
+For the shop locations, the Retail Business Structure Vision 2011 document (Gemeente 
+Enschede, 2011) was used. Daily shopping includes visits to the supermarket, special retailer 
+(tobacco, liquor store etc.) and personal care shops (Gemeente Enschede, 2011). 
+The locations of scooter owners where approximated using the information about postal 
+codes and the BAG data about neighborhoods. The neighborhood data is more detailed (70 
+neighborhoods vs. 23 postal codes). However, the CBS information on light-moped and 
+moped owners is postal code based. To approximate the postal code data to the actual 
+neighborhoods and addresses we have used the BAG data on particular buildings and their 
+occupancy and have distributed the moped owners in postal codes in proportion to the total 
+number of address locations in these postal code areas. 
+ 
+ 
+The Open Street Map (OSM) vector data were used to create two road networks: one for 
+light-mopeds, which can use bike paths, and one for mopeds. The A35 highway was 
+excluded from the network since it is not accessible to all scooters. Additionally, unpaved 
+roads, often located in the rural areas of the municipality, were removed. Map images from 
+the Dutch Cyclist’ Union were used to identify the bike paths, which are also accessible for 
+light mopeds. 
+For each moped type two speed attributes were assigned to roads to distinguish between the 
+movement within the built-up areas and beyond (Table 1). We assumed that in rural areas, 
+with no traffic lights and speed bumps, the average 
+speed will be higher than in built-up areas. We 
+also distinguished between ‘primary’ and 
+‘secondary’, connecting, roads as identified by 
+OSM. The average speed on primary roads is 
+higher than on secondary roads in neighborhood 
+areas where we find playing children, speed 
+bumps, parked cars etc. Although small shortcuts 
+through neighborhoods can save time, in reality 
+people usually stay on the main roads because 
+they are faster. 
+The BAG data (Kadaster, 2014) were also used to identify the locations of primary schools 
+and childcare facilities. Information on scooter accidents from 2009-2012 has been obtained 
+from the department of National Public Works and Water. The accidents of 2013 were 
+obtained via the website http://ongelukken.staanhier.nl/. 
+ 
+Results 
+For both the present day and future scenarios we have analyzed four factors: major scooter 
+routes, exhaust impact, noise impact and scooter related accidents. 
+ 
+Present 
+To analyze the current situation, 2014 was picked as the base year, when 10,811 scooter 
+owners were living in the municipality of Enschede. Approximately 65% of scooter trips were 
+used for work purposes, 20% to go 
+shopping and 15% to go to school. 
+Figure 3 presents the kernel density 
+analysis for the daily number of 
+scooters in the municipality of 
+Enschede. In a cold spot the chance 
+to encounter a scooter is low, while 
+in a hot spot the chance is high. As 
+one would expect the highest 
+scooter traffic is in the center. The 
+relatively high traffic density in the 
+West can be explained by 
+numerous employment 
+opportunities in that part of the city, 
+including the University of Twente 
+campus in the North-West. 
+Based on this traffic map the 
+exhaust pollution can be analyzed 
+by also applying the kernel density 
+analysis method while focusing only 
+on the routes to work and 
+educational destinations. For each 
+Figure 3. “Cold/hot spots” for scooter encounters on a 
+daily basis in Enschede 
+Table 1. Maximum allowed speed in km/h 
+for light-mopeds and mopeds within and 
+outside of residential areas 
+Location Light-moped Moped 
+Within 20 30 
+Outside 30 45 
+ 
+ 
+ 
+road segment, the maximum values of the morning and afternoon pollution levels are 
+calculated. Next buffer analysis is performed for CO, NOx and HC using buffer sizes of 170, 
+115 and 180 m, respectively, which are the decay parameters for these gases. 
+The resulting buffer zones are intersected with the population dataset, which gives the 
+average number of residents per building. Table 2 shows the proportion of population per 
+impact area for the three types of exhaust gases. The HC has the largest distance decay 
+range, and reaches the largest proportion of population: 36% in the “high – very high” impact 
+classes. Correspondingly, 27% of population are exposed to “high – very high” impact from 
+NOx, and 34% suffer from “high – very high” concentrations of CO. 
+Figure 4 presents a map fragment demonstrating how a part of the inner city of Enschede 
+was subdivided into 
+various impact classes. 
+The population allocated to 
+the highest impact classes 
+are basically all those living 
+in the central part of the 
+city, while the two lowest 
+impact classes are mainly 
+in the outskirts. In the 
+central part of the 
+municipality most of the 
+buildings are large 
+apartment houses, with 
+high concentration of 
+population, putting many 
+residents into the very high 
+impact zones, though most 
+likely people living on 
+higher levels would be 
+exposed to lower concentrations of exhaust gases than what is shown here. 
+Separately the exhaust impact on children was assessed by intersecting the exhaust buffers 
+with childcare facilities. From the 99 facilities, 38% (for CO), 23% (for NOx) and 40% (for HC) 
+are located in areas where the impact of scooters is “high – very high” (Table 2). Facilities 
+with the “very high” class of exposure are mostly located in the city center, while the “high” 
+impact class facilities are located in the eastern part of the municipality. 
+Table 2. Proportion of population and childcare facilities per impact area for CO, NOx and HC 
+Impact class CO NOx HC 
+ % population % childcare % population % childcare % population % childcare 
+Very low 11 6 15 10 11 6 
+Low 32 35 35 37 31 34 
+Moderate 23 21 22 30 22 20 
+High 23 23 20 16 25 23 
+Very high 11 15 8 7 11 17 
+ 
+The noise pollution is also analyzed for five impact classes. The distance parameter in this 
+case is 240 m, with proportional reductions when there are buildings along the roads. 
+Following the same conservative reasoning as with the exhaust pollution analysis, only the 
+routes used for work or education purposes are included. Table 3 shows how the population 
+will be impacted by noise. 36% of the population lives in areas with a “high – very high” 
+probability of noise disturbance from scooters. 
+Figure 4. Example of HC impact classes on the population in the 
+inner-city of Enschede 
+ 
+ 
+The noise impact distance decay parameter is 
+the highest among the four parameters used in 
+this analysis. However, accounting for noise 
+reduction by buildings, results in more or less the 
+same number of affected people per class, as 
+with CO and HC. Here the same conclusion 
+could be made as with the exhaust pollution: the 
+population with a high chance to suffer from 
+noise disturbance is mostly located in the center 
+of the municipality. The impact of PTW noise 
+also affects children development by causing 
+learning difficulties. Around 41% of the childcare 
+facilities are located in areas where the scooter 
+noise disturbance impact is “high – very high” 
+(Table 3). 
+When analyzing accidents involving scoters, a 
+distinction between light-moped and moped scooters is made. As seen in Table 4, about half 
+of accidents involving both light-mopeds and mopeds, occur within 10 meters from junctions. 
+When this distance increases, the number of accidents gradually decreases. Interestingly 
+≈88% of the accidents occur within 50 meters from an intersection. 
+The mean number of scooters traversing a 
+road segment on a daily basis is 21. The 
+mean number of scooters involved in 
+accidents on a daily basis is: 61 for light-
+mopeds, and 56 for mopeds. This indicates 
+that scooter accidents in general occur at 
+places where more scooters are passing by 
+than on average. Table 5 shows the 
+numbers for OSM links, light-moped and 
+moped accidents, per cold/hot spot class (as 
+in Figure 3). In comparison to the relative 
+proportion of OSM links within every class, 
+the scooter accidents are underrepresented 
+in the “very low - low” classes. In the other 
+three classes, the scooter accidents are 
+overrepresented in comparison to the 
+proportion of OSM links within those classes. 
+They are especially high in the “high - very high” classes. 
+Table 5. Number of OSM links, light-moped accidents and moped accidents per scooter number 
+class, both absolute and relative 
+ OSM links Light-mopeds Mopeds 
+ Abs % Abs % Abs % Very low 2904 22 3 4 17 8 
+Low 5332 41 24 27 73 37 
+Moderate 2194 17 22 25 43 21 
+High 1832 14 30 34 44 22 
+Very high 754 6 9 10 23 12 
+ 
+Impact class Noise 
+ % population % childcare 
+Very low 10 6 
+Low 31 35 
+Moderate 23 18 
+High 25 26 
+Very high 11 15 
+Table 3. Proportion of population and 
+childcare facilities for the noise impact 
+area 
+Table 4. Number of light-moped and moped 
+accidents per distance class from junctions 
+Distance (m) Light-moped Moped 
+ Abs % Abs % < 10 47 53 113 57 
+10 < 20 10 12 20 10 
+20 < 30 9 10 18 9 
+30 < 40 8 9 12 6 
+40 < 50 3 3 11 5 
+50 > 11 13 26 13 
+ 
+ 
+ 
+The number of scooter accidents within the identified cold/hot spot areas on major route 
+sections was used to estimate the number of accidents per area classification. In Figure 5, a 
+clear pattern emerges showing more accidents in the “high–very high” impact areas. 
+Analyses of future scenarios 
+Four different scenarios were considered, using two extrapolation techniques (linear and 
+logarithmic regression) to estimate the future “number of owners” and “proportion of scooter 
+use for work, shopping and education purposes”. All other parameters remained the same as 
+in the present situation. 
+v Scenario A: linear regression for scooter owners. 
+v Scenario B: logarithmic regression for scooter owners. 
+v Scenario C: linear regression for scooter owners and increase of work, education and 
+shopping purposes proportion by 30%. 
+v Scenario D: logarithmic regression for scooter owners and increase of work, 
+education and shopping purposes proportion by 30%. 
+The resulting numbers of scooter riders in the municipality in the different scenarios are 
+shown in Table 6. 
+We present the results for all the four scenarios simultaneously, which will also serve as a 
+kind of sensitivity analysis. 
+Table 6. Scenarios overview; number of (light-moped) owners for work, shopping and education 
+purposes 
+Scenario Work Education Shopping Total 
+ Light-moped Moped Light-moped Moped Light-moped Moped 
+Scenario A 1,248 434 336 117 296 103 2.534 
+Scenario B 936 470 252 127 222 112 2,119 
+Scenario C 1,623 563 437 152 385 134 3,294 
+Scenario D 1,217 611 328 164 289 145 2,754 
+ 
+This is also reflected in the patterns of cold-hot spots corresponding to these scenarios 
+(Figure 6). In general, the pattern does not change significantly, but in scenario C, which has 
+Figure 5. Location of scooter accidents within the cold – hot spot areas based on daily scooter counts 
+ 
+ 
+the highest increase of scooter riders in comparison to the present situation, several 
+additional routes are identified as hotspots. The areas classified as “very high” in scenario B, 
+which has the lowest increase in scooter riders in comparison to the present situation, 
+gradually increase in size in the other three scenarios. 
+The proportional distribution of the population over the five impact classes for CO, NOx and 
+HC is different in each scenario (Table 7). Scenarios B and D have the largest growth in the 
+number of scooter riders, and correspondingly, in those scenarios 30% – 47% of the 
+population will experience “high – very high” disturbance from exhaust gases from scooters. 
+The number of affected childcare facilities per impact class varies between the four scenarios. 
+Table 8 shows the ranges, with most of variability in the “very high” impact class. 
+This can be explained by Figure 7, which zooms into one area in the city. The highest CO 
+impact buffer of scenario B is considerably smaller than the impact buffer of scenario C. 17 
+childcare locations are ‘spared’ by the scenario B buffer but fall within the buffer in scenario 
+C. These childcare locations are mostly located in the south-eastern part of the city around 
+the city beltway. It appears that in the future many childcare facilities located in the inner city 
+will fall within the “very high” impact class. This should be considered when deciding on future 
+childcare locations. 
+ 
+ 
+Figure 6. Cold/hot spots based on scooter day counts for each scenario 
+ 
+ 
+Table 7. Proportion of population within each impact class for CO, NOx and HC for all four future 
+scenarios. 
+Impact class CO NOx HC Impact class CO NOx HC 
+ % % % % % % 
+Scenario A Scenario C 
+Very low 9 12 9 Very low 7 9 6 
+Low 29 32 28 Low 23 27 23 
+Moderate 19 20 19 Moderate 20 21 19 
+High 23 21 24 High 19 18 20 
+Very high 20 15 20 Very high 31 25 32 
+Scenario B Scenario D 
+Very low 11 14 10 Very low 9 11 8 
+Low 30 34 29 Low 27 31 27 
+Moderate 21 22 21 Moderate 18 19 18 
+High 24 20 25 High 22 21 23 
+Very high 14 10 15 Very high 24 18 24 
+ 
+Table 8. Range of the absolute number of childcare facilities per impact area for CO, NOx and HC 
+in the four future scenarios 
+Impact class CO NOx HC 
+ Lowest-highest Range Lowest-highest Range Lowest-highest Range 
+Very low 0-5 5 1-8 7 0-5 5 
+Low 23-33 10 33-40 7 22-31 9 
+Moderate 15-26 11 13-20 7 16-26 10 
+High 14-24 10 23-27 4 13-23 10 
+Very high 19-36 17 11-20 9 20-38 18 
+ 
+The results for noise impacts are presented in Table 9. Again, the largest differences are in 
+the highest impact class. The scenarios A, B and D resemble each other the most, while 
+scenario C can be seen more as an outlier. According to scenario C, 51% of Enschede 
+residents will experience a “high – very high” noise disturbance from scooters. 
+At least 19% of the childcare locations will experience a very high disturbance from scooters 
+noise exhaust. This percentage can increase to 38% in the scenario with the highest increase 
+in scooter numbers. 
+The “high – very high” impact areas for scooter accidents in all four scenarios were merged. 
+Intersections in those merged areas within 50 meters from past scooter accidents were 
+selected and presented in Figure 8. 
+ 
+ 
+In Table 10 the proportion of population within the two highest impact classes for both present 
+and future situations are 
+presented. In the worst-case 
+scenario, C, the increase in 
+affected residents in the 
+municipality will be approximately 
+around 26,000. 
+Also, in this table we see that in 
+scenario B the number of 
+affected childcare locations 
+remains the same as at present. 
+The places where the noise 
+buffer from scenario B is 
+extended in comparison to the 
+present situation, no childcare 
+facilities are currently located. 
+Also note the steep increase in 
+the number of childcare locations 
+affected by NOx. 
+To conclude, we can expect that 
+the adverse impacts from 
+scooters will increase in the 
+future. The exact degree of this 
+expansion is not certain, but the 
+four future scenarios show that at 
+least 6,000 additional residents 
+can be impacted by the 
+exhaust/noise pollution. With 
+regard to childcare, 3 to 22 more 
+locations can be affected. 
+ 
+ 
+ 
+Figure 7. Differences between affected childcare locations (red) in the CO highest impact buffers 
+in scenario B (light blue) and in scenario C (dark blue) 
+Table 9. Proportion of population within noise impact 
+classes in all four scenarios 
+Impact class Noise % Impact class Noise % 
+Scenario A Scenario C 
+Very low 9 Very low 6 
+Low 28 Low 22 
+Moderate 19 Moderate 21 
+High 24 High 19 
+Very high 20 Very high 32 
+Scenario B Scenario D 
+Very low 10 Very low 8 
+Low 29 Low 27 
+Moderate 21 Moderate 18 
+High 26 High 23 
+Very high 14 Very high 24 
+ 
+ 
+ 
+Discussion 
+ Our analysis shows that 
+the proportion of the 
+population that is impacted 
+is quite high - up to 36%. 
+This is quite close to the 
+results of a survey, when in 
+2010 a group of residents 
+from the municipality of 
+Enschede was asked about 
+sources of noise they 
+experienced daily in the 
+last twelve months. 33% of 
+respondents from the 
+Panel indicated that noise 
+disturbance caused by 
+scooters and motorcycles 
+was their highest concern 
+(I&O research, 2010). 
+This is probably the only 
+clear evidence that we 
+have for verification of our 
+results. Actual data on 
+exhaust gases 
+concentrations are not available. Still we believe that the analyses performed raises enough 
+concerns for environmental managers and policy makers to consider some changes in 
+existing PTW regulations. 
+The buffers used in our analysis were homogeneous, which means that the diffusion of 
+exhaust gases is high along the roads and gradually decreases with distance. Residents 
+living directly along the roads are of course most impacted by scooter exhaust/noise. The 
+impact on the population falling within the “moderate” impact class, but living directly along 
+the roads, is probably underestimated. According to literature, especially the NOx and HC 
+result in adverse health effects. This means that within the areas where a “high – very high” 
+impact of NOx is expected, also the impact of HC is “high – very high”. NOx has the lowest 
+distance decay parameter of 115m. At present the proportion of population living in those 
+areas is 27%. This proportion increases in the future to 30.5% – 43%. The number of 
+childcare facilities affected by noise/exhaust emission is quite alarming, especially keeping in 
+mind that children are more sensitive to both noise and exhaust emissions. With regard to the 
+Table 10. Proportion of population (%%) and childcare facilities affected by exhaust and noise 
+within the two highest impact classes. 
+ Population Number of childcare facilities 
+Factors Present Future Number of 
+additional people 
+affected 
+Present Future Number of locations 
+added 
+CO 34 38 – 50 6,905 – 27,324 38 42 – 50 4 – 12 
+NOx 27 30 – 43 5,678 – 25,840 23 34 – 45 11 – 22 
+HC 36 40 – 52 7,020 – 26,316 40 43 – 51 3 – 11 
+Noise 36 40 – 51 7,436 – 25,817 41 41 – 51 0 – 10 
+Figure 8. Impact areas (light blue) with a higher than average risk 
+of becoming involved in scooter related accidents and the 
+identification of possible “risk junctions” (red). 
+ 
+ 
+noise emissions, at present already 41% of the childcare facilities are located in “high – very 
+high” impact areas. In the future this proportion can rise to 51%. 
+Yet another group of the population, which we have not considered separately are the bicycle 
+riders, who probably suffer the most from light mopeds, with which they have to share the 
+road. Bearing in mind the close proximity of bike riders to the sources of exhaust and the 
+elevated respiration levels due to their own pedaling, the health implications for them are 
+probably most severe. Pedestrians will be most affected as well. 
+There was a number of assumptions that were made to conduct this analysis (a full list is 
+given in Table 1A in the Appendix). The results are certainly sensitive to the assumptions 
+made. The literature on the impact of different scooter types (two-stroke/four-stroke, euro-
+classes and (light-) mopeds) with regard to the exhaust and noise pollution is also quite 
+limited. As more data is acquired some of these assumptions can be replaced with data. Still, 
+the developed assessment script can be used to refine the routes taken by scooter riders to 
+their work, education or shop location. In future studies it would be good to distinguish 
+between the light-moped and moped networks, since their impact on health can be 
+substantially different, bearing in mind that it is more likely for light-mopeds to have a cheaper 
+2-stroke engine. Using better diffusion models would result in more heterogeneous buffers 
+around the roads, and consequently in more accurate estimates of the impacted population. 
+ 
+Conclusions 
+A scoping analysis of scooter impacts on the population in a typical Dutch municipality has 
+been conducted, using open data and GIS tools. As can be expected, the major scooter 
+routes are found in the city center. The highest concentrations of scooters are around the 
+railway station and at junctions on major exit roads. The side of the inner city that had more 
+employment opportunities (West), also has more scooter traffic. It was also not far from the 
+next big city in this area, Hengelo, which is close enough to be reached by scooter. According 
+to future scenarios, traffic counts in the inner city and on western exit roads will increase. 
+We have focused on the impact of four exhaust gases: CO, NOx and HC, which are already 
+regulated by law for cars, but not for scooters. Distance decay parameters for these 
+compounds were taken from literature. CO, which can cause reduced blood oxygen, has a 
+“high/very high” impact on 34% of the present population. In the future scenarios, this 
+proportion can increase to 38% – 51%. 
+NOx, which is associated with respiratory illness, asthma, or eye irritation, and which is most 
+harmful for children, has a “high/very high” impact on 27% of the present population. In the 
+future the percentage also increases, but not as much (to 30% – 43%). At present 23 out of 
+99 childcare facilities are located within the impacted areas. This is alarming, bearing in mind 
+the sensitivity of children to NOx. Even more alarming is that in the future this number may 
+increase to 45. 
+HC has the same health impacts as NOx, and is also bad for kids. The “high/very high” impact 
+is currently seen by 36% of the population. This proportion increases to 40% – 52% in the 
+future. At present 40 childcare facilities are located within the high impact areas. In the future 
+this can increase to 43 – 51. 
+Although the distance decay parameter for noise is 240 meters and is larger than that for HC 
+(180 meters), noise is well absorbed by buildings. We have decreased the distance decay 
+parameter by the proportion of buildings within the first 100 meters from the road. The spatial 
+impact of scooter noise was more or less the same with 36% of the population impacted at 
+present, and rising to 40–53% in the future. The impacted number of childcare facilities 
+currently is 41, which can grow in the future by 11. 
+Approximately 88% of scooter related accidents occur within 50 meters from intersections, 
+with the largest numbers within the first 10 meters. The maps of scooter activity that were 
+generated are well correlated with the data on accidents. The areas classified as “high/very 
+high chance of encountering a scooter”, were also responsible for most of the accidents 
+(37%). The areas were the chance of scooter accidents is higher than moderate include the 
+inner-city roads, the city beltway, the western exits roads and the two exit roads. 
+ 
+ 
+In terms of methodology this research demonstrates that using GIS methods we can produce 
+quite extensive spatial analyses of traffic routing and estimate the associated environmental 
+impacts. Only publicly available data were used, which bears promise that similar 
+environmental impact assessment can be conducted in other areas in the Netherlands and, 
+perhaps, elsewhere where scooters are becoming a problem. 
+Our overall conclusion is that scooter related air pollution, noise pollution and elevated 
+probability of accidents are affecting about 30% of the local population, and that this number 
+is likely to increase to 38%-53% in the future. This certainly should be a major concern for the 
+policy makers and begs for some mitigation actions. These could range from regulations, 
+such as restricting scooters from city center and bike lanes, to market mechanisms, such as 
+subsidies that could help convert the scooter fleet to electric power. Perhaps some lessons 
+could be learned from scooter control in China, where only electric scooters (e-scooters) are 
+allowed in major cities. Electric scooters are certainly to prevail in the future and the recent 
+news about the electric option offered by Vespa, the iconic Italian scooter manufacturer, gives 
+more hope for a fast transition1. 
+With regard to the exhaust impact and noise, the e-scooters can completely solve this 
+problem. They produce approximately 20 decibels lower noise levels (Fiebig, 2012). In fact 
+this is sometimes even seen as a problem: cyclists and pedestrians can be unaware of 
+approaching scooters because they are so quiet - an issue that is also raised for electric cars 
+(SWOV, 2011). Since the speed difference between light-mopeds and cyclists on the cycling 
+paths is large, a solution could be to put the light-mopeds also on the car lanes, as it is the 
+case with mopeds. 
+Aiming at the reduction of scooter accidents, several improvements can be enforced by law. 
+Light-mopeds could also be removed from the cycling paths. Research in Amsterdam predicts 
+that putting light-mopeds on car lanes instead of cycling paths can reduce the number of 
+scooter related accidents by 250. The safety can be further improved by making helmets 
+mandatory for light-mopeds as already required for mopeds (SWOV, 2014). This is a solution, 
+which would at least diminish the severity of scooter accidents, however it will not help 
+cyclists and pedestrians if involved. It may also decrease the 'excitement' and ' sensation-
+seeking' factors that tend to make scooters especially popular among youngsters. Removal of 
+scooters from bike lanes would be certainly much appreciated by the cyclists, whose 
+exposure to poisonous emissions and noise is disproportionally high. The city Center, which 
+has the highest concentration of pedestrians, will certainly also benefit the most from 
+restrictions on scooter traffic. 
+ 
+References 
+Albert, D. P., Gesler, W. M., & Levergood, B. (2000). Spatial analysis, GIS, and remote 
+sensing applications in the health sciences. Chelsea, Mich.: Ann Arbor Press. 
+Antunes, P., Santos, R., & Jordão, L. (2001). The application of Geographical Information 
+Systems to determine environmental impact significance. Environmental Impact Assessment 
+Review, 21(6), 511-535. 
+ArcGIS. (2014). How kernel density works Retrieved 23 September 2014, from 
+http://help.arcgis.com/en/arcgisdesktop/10.0/help/index.html#/How_Kernel_Density_works/00
+9z00000011000000/ 
+Biju, B., & Vijayan, N. (2014). Estimation of health impact due to air pollution in 
+Thiruvananthapuram City. International Journal of Innovative Research in Science, 
+Engineering and Technology, 3(7), 8. 
+ 
+1 https://reneweconomy.com.au/vespa-says-its-electric-scooters-are-finally-going-into-
+production-16126/ 
+ 
+ 
+Blackman, R. A., & Haworth, N. L. (2013). Comparison of moped, scooter and motorcycle 
+crash risk and crash severity. [Article]. Accident Analysis and Prevention, 57, 1-9. doi: 
+10.1016/j.aap.2013.03.026 
+Brook, R. D., & Rajagopalan, S. (2009). Particulate matter, air pollution, and blood pressure. 
+Journal of the American Society of Hypertension, 3(5), 332-350. doi: 
+http://dx.doi.org/10.1016/j.jash.2009.08.005 
+Boogaard, Hanna & Borgman, Frank & Kamminga, Jaap & Hoek, Gerard. (2009). Exposure 
+to ultrafine and fine particles and noise during cycling and driving in 11 Dutch cities. 
+Atmospheric Environment. 43. 4234-4242. 10.1016/j.atmosenv.2009.05.035. 
+Cai, X. J., Wu, Z. F., & Cheng, J. (2013). Using kernel density estimation to assess the spatial 
+pattern of road density and its impact on landscape fragmentation. [Article]. International 
+Journal of Geographical Information Science, 27(2), 222-230. doi: 
+10.1080/13658816.2012.663918 
+CBS. (2013). Bromfietsen; aantal per 1000 inwoners, soort voertuig en regio op 1 januari 
+[online] Retrieved 27 October 2013, from 
+http://statline.cbs.nl/StatWeb/publication/?DM=SLNL&PA=81568NED&D1=0&D2=1-
+2&D3=0&D4=a&HDR=T,G1&STB=G2,G3&VW=T 
+CBS. (2014a). Bromfietsen; aantal (per 1000 inwoners), soort voertuig, regio's, 1 januari 
+Retrieved 14 September 2014, from 
+http://statline.cbs.nl/Statweb/publication/?DM=SLNL&PA=81568NED&D1=0&D2=1-
+2&D3=131&D4=a&VW=T 
+CBS. (2014b). Onderzoek Verplaatsingen in Nederland (OViN) Retrieved 15 February 2014, 
+from http://www.cbs.nl/nl-NL/menu/informatie/deelnemers-enquetes/personen-
+huishoudens/ovin/doel/default.htm 
+Cohen, L. (2012). Berlage of Barlaeus? Het schoolkeuzeproces door de ogen van 
+Amsterdamse ouders [online] Retrieved 14 April 2014, from 
+http://www.amsterdam.nl/publish/pages/468529/rapport_schoolkeuze_def.pdf 
+Dall'Osto, M., & Querol, X. (2013). New Directions: Four to two – Powered two wheelers 
+changing the European urban motor vehicle census. Atmospheric Environment, 77(0), 1083-
+1084. doi: http://dx.doi.org/10.1016/j.atmosenv.2013.05.061 
+Dienst Uitvoering Onderwijs. (2014). Deelnemers per instelling, plaats, type mbo, 
+woongemeente, provincie, deelnemer, leeftijd [online]. Retrieved from 
+http://www.duo.nl/organisatie/open_onderwijsdata/databestanden/mbo_/Onderwijsdeelnemer
+s/Onderwijsdeelnemers/mbo_deelname11.asp [cited 24 April 2014] 
+Dijkers, J., & Visser, G. J. (2012). Mobiliteitsstromenonderzoek Twente [online] Retrieved 23 
+February 2014, from 
+http://www.regiotwente.nl/images/website/voor_de_burger/wegen/Mobiliteitsstromen/Mobiliteit
+sstromenonderzoek_Twente.pdf 
+Dijkgraaf, E., Gradus, R. H. J. M., & de Jong, J. M. (2013). Competition and educational 
+quality: Evidence from the Netherlands. Empirica, 40(4), 607-634. 
+Dröge, R., Hensema, A., ten Broeke, H., & Hulskotte, J. (2011). Emissions of two-wheeled 
+vehicles. Utrecht: TNO. 
+Ewalds, D., Mortiz, G., & Sijstermans, M. (2013). Bromfietsen in Nederland 2013. Den 
+Haag/Heerlen: Centraal Bureau voor de Statistiek. 
+Favarato, G., Anderson, H. R., Atkinson, R., Fuller, G., Mills, I., & Walton, H. (2014). Traffic-
+related pollution and asthma prevalence in children. Quantification of associations with 
+nitrogen dioxide. Air Quality, Atmosphere & Health. 
+Fiebig, A. (2012). Reducing noise levels and annoyance of powered-two wheelers in cities. 
+Paper presented at the CityHush workshop - Acoustically green cities, Perugia. 
+Gemeente Enschede. (2011). Detailhandelstructuurvisie Enschede 2011 [online] Retrieved 
+19 February 2014, from http://ris.enschede.nl/stukken/08996/download.html 
+ 
+ 
+Gemeente Enschede. (2014). Statistisch jaarboek 2014 [online] Retrieved 13 September 
+2014, from 
+http://kennispunttwente.nl/images/cijfers/Enschede/Statistisch_jaarboek_2014/Seic2014-
+02.pdf 
+Genuit, K. (2013). What will be the influence of e-mobility on soundscape? Proceedings of 
+Meetings on Acoustics, 19(1), -. doi: doi:http://dx.doi.org/10.1121/1.4800426 
+Habermann, M., Medeiros, A. P. P., & Gouveia, N. (2011). Vehicular traffic as a method to 
+evaluate air pollution in large cities. Revista Brasileira de Epidemiologia, 14, 120-130. 
+Haworth, N. (2012). Powered two wheelers in a changing world - Challenges and 
+opportunities. Accident Analysis and Prevention, 44(1), 12-18. doi: 10.1016/j.aap.2010.10.031 
+Heil, M., & Pargal, S. (1998). Reducing air pollution from urban passenger transport : a 
+framework for policy analysis / by Mark Heil and Sheoli Pargal. Washington, DC: World Bank, 
+Development Research Group, Infrastructure and Environment. 
+Hensema, A., & Roeterdink, W. (2009). De effecten van brommers op de luchtkwaliteit in de 
+gemeente Amsterdam. Delft: TNO. 
+Hensema, A., van Mensch, P., & Vermeulen, R. (2013). Tail-pipe emissions and fuel 
+consumption of standard and tampere mopeds. Delft: TNO. 
+I&O research. (2010). Het Enschedepanel over bedrijvigheid, bodemverontreiniging en 
+geluidsoverlast [online] Retrieved 3 October 2014, from http://portal.gmi-
+mr.com/207685/9/EnschedePortal/resultaten/aep10benm_rapportage.pdf 
+Jerrett, M., Arain, A., Kanaroglou, P., Beckerman, B., Potoglou, D., Sahsuvaroglu, T., . . . 
+Giovis, C. (2005). A review and evaluation of intraurban air pollution exposure models. 
+Journal of Exposure Analysis and Environmental Epidemiology, 15(2), 185-204. 
+Kalshetty, B., & Karalatti, B. (2013). Study on noise pollution of industrialized and urbanized 
+towns like Rabakavi and Banahatti of Bagalkot district, Karnataka state, India. International 
+Journal of Science & Nature, 4(4), 5. 
+Karner, A. A., Eisinger, D. S., & Niemeier, D. A. (2010). Near-Roadway Air Quality: 
+Synthesizing the Findings from Real-World Data. Environmental Science & Technology, 
+44(14), 5334-5344. doi: 10.1021/es100008x 
+Kences. (2013). Landelijke monitor studenthuisvesting. Enschede 2013 [online] Retrieved 24 
+April 2014, from 
+http://www.wonenalsstudent.nl/assets/files/Lokale%20rapportages%202013/Apollo2013_bep
+erkt_Enschede.pdf 
+Kirrane, E., Loomis, D., Egeghy, P., Nylander-French (2007). Personal exposure to benzene 
+from fuel emissions among commercial fishers: Comparison of two-stroke, four-stroke and 
+diesel engines. Journal of exposure science & environmental epidemiology. 17. 151-8. 
+10.1038/sj.jes.7500487. 
+Li, X. L., Han, J. W., Lee, J. G., & Gonzalez, H. (2007). Traffic density-based discovery of hot 
+routes in road networks. In D. Papadias, D. Zhang & G. Kollios (Eds.), Advances in Spatial 
+and Temporal Databases, Proceedings (Vol. 4605, pp. 441-459). Berlin: Springer-Verlag 
+Berlin. 
+Methorst, R., Schepers, J., & Vermeulen, W. (2011). Snorfiets op het fietspad. Delft: 
+Rijkswaterstaat. 
+Mohapatra, K. M. (2004). Technology, environment and human values : a metaphysical 
+approach to sustainable development. New Delhi: Concept Pub. 
+Njå, O., & Nesvåg, S. M. (2007). Traffic behaviour among adolescents using mopeds and 
+light motorcycles. Journal of Safety Research, 38(4), 481-492. 
+Ntziachristos, L., Mamakos, A., Samaras, Z., Xanthopoulos, A., & Iakovou, E. (2006). 
+Emission control options for power two wheelers in Europe. Atmospheric Environment, 
+40(24), 4547-4561. doi: 10.1016/j.atmosenv.2006.04.003 
+ 
+ 
+Passchier-Vermeer, Willy & Passchier, Wim. (2000). Noise Exposure and Public Health. 
+Environmental health perspectives. 108 Suppl 1. 123-31. 10.2307/3454637. 
+Paviotti, M., & Vogiatzis, K. (2012). On the outdoor annoyance from scooter and motorbike 
+noise in the urban environment. Science of the Total Environment, 430, 223-230. doi: 
+10.1016/j.scitotenv.2012.05.010 
+Prati, M. V., & Costagliola, M. A. (2009). Emissions of fine particles and organic compounds 
+from mopeds. Environmental Engineering Science, 26(1), 111-121. doi: 
+10.1089/ees.2007.0206 
+Rana, S. V. S. (2008). Energy, ecology and environment. New Delhi: I.K. International 
+Publishing House. 
+Rijksdienst voor Ondernemend Nederland. (2014). Transformatie en geluid van het 
+expertteam (kantoor) transformatie Retrieved 12 September 2014, from 
+http://www.rvo.nl/sites/default/files/2014/04/Transformatie%20en%20geluid.pdf 
+Rijksoverheid. (2013). Mag ik met mijn brommer of snorfiets op het fietspad rijden? [online]. 
+Retrieved from http://www.rijksoverheid.nl/onderwerpen/bromfiets/vraag-en-antwoord/mag-ik-
+met-mijn-bromfiets-brommer-scooter-of-snorfiets-op-het-fietspad-rijden.html [cited 23-10-
+2013] 
+Rijkswaterstaat. (2010). Geluid luistert nauw. Informatie over bestrijding van 
+wegverkeerslawaai [online] Retrieved 18 May 2014, from 
+http://www.rijkswaterstaat.nl/images/Brochure%20Geluid%20Luistert%20Nauw_tcm174-
+310219.pdf 
+Rijkswaterstaat. (2011). Hoe wordt de luchtkwaliteit langs autosnelwegen bepaald? [online] 
+Retrieved 13 May 2014, from 
+http://www.rijkswaterstaat.nl/images/Brochure%20luchtkwaliteit%20december%202011_tcm1
+74-318172.pdf 
+Santamouris, M. (2006). Environmental design of urban buildings an integrated approach, 
+from http://public.eblib.com/choice/publicfullrecord.aspx?p=430172 
+SCI. (2014). Indicator TR.3.b Traffic density [online] Retrieved 28 August 2014, from 
+http://www.sustainablecommunitiesindex.org/indicators/view/46 
+Severijn, J., & Esselink, R. (2012). Monitor Economische Ontwikkeling Enschede Retrieved 
+12 February 2014, from http://ondernemen.enschede.nl/bestanden/Monitor-
+Economische_Ontwikkeling_Enschede_2012_rapport_juni_2013.pdf/ 
+Steg, L., & Brussel, A. v. (2009). Accidents, aberrant behaviours, and speeding of young 
+moped riders. Transportation Research Part F: Traffic Psychology and Behaviour, 12(6), 503-
+511. doi: http://dx.doi.org/10.1016/j.trf.2009.09.001 
+SWOV. (2009). SWOV-Factsheet. Brom- en snorfiets. Leidschendam: SWOV. 
+SWOV. (2011). Dutch national bicycle safety research agenda: the way to safer cycling 
+[online] Retrieved 24 September 2014, from http://www.swov.nl/rapport/Ss_RA/RA47.pdf 
+SWOV. (2014). SWOV factsheet. Brom- en snorfietsers Retrieved 24 September 2014, from 
+http://www.swov.nl/rapport/Factsheets/NL/Factsheet_Bromsnorfietsers.pdf 
+Valero, X., & Alias, F. (2013). Hierarchical Classification of Environmental Noise Sources 
+Considering the Acoustic Signature of Vehicle Pass-Bys (Vol. 37). 
+Vos, J. (2006). Noise annoyance caused by mopeds and other traffic sources. Proceedings 
+Internoise 2006, Honolulu, Hawaï. 
+VROM. (2010). Beperking geluidsoverlast uitlaatsystemen brommers en motoren. Een 
+onderzoek naar interventiemogelijkheden. Retrieved 14 December 2013, from 
+http://www.ilent.nl/Images/0180%20Beperking%20geluidoverlast%20uitlaatsystemen%20bro
+mmers%20en%20motoren_tcm334-320301.pdf 
+Weijer van de, B. (2014). Tweetaktscooter nog grotere vervuiler dan gedacht [online]. 
+Volkskrant Retrieved 16 May 2014, from 
+ 
+ 
+http://www.volkskrant.nl/wetenschap/tweetaktscooter-nog-grotere-vervuiler-dan-
+gedacht~a3654566/ 
+ 
+ 
+ 
+ 
+Please replace (Kadaster, 2014) with https://business.gov.nl/regulation/addresses-and-
+buildings-key-geo-register/ 
+ 
+Kirrane, E., Loomis, D., Egeghy, P., Nylander-French (2007). Personal exposure to benzene 
+from fuel emissions among commercial fishers: Comparison of two-stroke, four-stroke and 
+diesel engines. Journal of exposure science & environmental epidemiology. 17. 151-8. 
+10.1038/sj.jes.7500487. 
+ 
+Boogaard, Hanna & Borgman, Frank & Kamminga, Jaap & Hoek, Gerard. (2009). Exposure 
+to ultrafine and fine particles and noise during cycling and driving in 11 Dutch cities. 
+Atmospheric Environment. 43. 4234-4242. 10.1016/j.atmosenv.2009.05.035. 
+ 
+Passchier-Vermeer, Willy & Passchier, Wim. (2000). Noise Exposure and Public Health. 
+Environmental health perspectives. 108 Suppl 1. 123-31. 10.2307/3454637. 
+ 
+den Boer, L.C., Schroten, A., 2007. Traffic noise reduction in Europe. 4.451.1/CE Delft, March 
+2007 
+ 
+Please replace EPA, 1991 with: Gabele, P.A., 2000. Characterization of Emissions from 
+Hand-held Two-stroke Engines. EPA/600/A-
+00/012. https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=P100GDP7.TXT 
+ 
+Please replace Dost 2010 with: Dost, F.N., 2003. Toxicology and potential health risk of 
+chemicals that may be encountered by workers using forest vegetation management options. 
+Part I, Risk to workers associated with exposure to emissions from power saws. 24 p. 
+https://www.for.gov.bc.ca/hfp/publications/00012/3-dost-powersawemissions.pdf 
+ 
+ 
+Uncited references 
+Antunes et al., 2001; ArcGIS, 2014; Cohen, 2012; Dienst Uitvoering Onderwijs, 
+2014; Dijkers and Visser, 2012; Dijkgraaf et al., 2013; Dröge et al., 2011; Enschede, 2014; Genuit, 
+2013; Hensema and Roeterdink, 2009; Kalshetty and Karalatti, 2013; Karner et al., 2010; Kences, 
+2013; Ntziachristos et al., 2006; Rijksdienst voor Ondernemend Nederland, 2014; Rijkswaterstaat, 
+2011; Santamouris, 2006; Severijn and Esselink, 2012; Valero and Alias, 2013.

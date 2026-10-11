@@ -1,0 +1,878 @@
+BIBLIOTECA 
+ 
+ 
+This work is licensed under a 
+Creative Commons Attribution-NonCommercial-NoDerivatives 
+4.0 International License. 
+ 
+ 
+ 
+Document downloaded from the institutional repository of the University of 
+Alcala: http://dspace.uah.es/dspace/ 
+ 
+This is a postprint version of the following published document: 
+ 
+Altamirano et al., 2019. Spatial congruence among indicators of recovery 
+completeness in a Mediterranean forest landscape: Implications for 
+planning large-scale restoration. Ecological Indicators, 102, pp.752–759. 
+ 
+Available at http://dx.doi.org/10.1016/j.ecolind.2019.03.046 
+ 
+© 2019 Elsevier 
+ 
+ 
+ 
+ 
+(Article begins on next page) 
+ 
+ 
+ 
+ 
+ 
+ 
+1 
+Spatial congruence among indicators of recovery completeness in a Mediterranean 1 
+forest landscape: Implications for planning large-scale restoration 2 
+ 3 
+Adison Altamirano1,2,*, Alejandro Miranda1,3, Paula Meli4, Joris Dehennin5, Bart Muys5, 4 
+Marco Prado1, Germán Catalán1, Cecilia Smith-Ramírez6,7,8, Marcela Bustamante-5 
+Sánchez7,9, Fulgencio Lisón1, José María Rey-Benayas10. 6 
+1 Landscape Ecology and Conservation Laboratory , Departamento de Ciencias 7 
+Forestales, Universidad de La Frontera, Temuco, Chile. 8 
+* Corresponding author: adison.altamirano@ufrontera.cl, Tel: +56 45 2325658 9 
+2 Butamallin Research Center for Global Change, Facultad de Ciencias Agropecuarias y 10 
+Forestales, Universidad de La Frontera, Temuco, Chile. 11 
+3 Center for Climate and Resilience Research (CR2), Universidad de Chile, Santiago, 12 
+Chile. 13 
+4 Department of Forest Sciences, “Luiz de Queiroz” College of Agriculture, University of 14 
+São Paulo, Piracicaba, Brazil. 15 
+5 Division Forest, Nature & Landscape KU Leuven, Leuven, Belgium. 16 
+6 Departamento de Ciencias Biológicas y Biodiversidad, Universidad de Los Lagos, 17 
+Osorno, Chile. 18 
+7 Instituto de Ecología y Biodiversidad (IEB), Santiago, Chile. 19 
+8 Instituto de Conservación, Biodiversidad y Territorio, Universidad Austral de Chile, 20 
+Valdivia, Chile. 21 
+9 Facultad de Ciencias Forestales, Universidad de Concepción, Concepción, Chile. 22 
+10 Forest Ecology and Conservation Group, Life Sciences Department, Univ ersidad de 23 
+Alcalá, Alcalá de Henares, Spain. 24 
+ 25 
+ABSTRACT 26 
+Natural regeneration has been proposed as a cost -effective forest restoration 27 
+approach for both small and large -scale initiatives. However, a ttributes for assessing 28 
+the success of forest restoration th rough natural regeneration may var y among them 29 
+in spatial patterns depending on the scale of analysis and on environmental gradients. 30 
+Here w e analy sed the spatial patterns of recovery completeness (i.e. how similar 31 
+attributes in restored forests are to the same attributes in reference forests) in 32 
+ 
+2 
+response to environmental factors in a Mediterranean forest landscape of Central 33 
+Chile. We evaluated (1) forest recovery completeness using basal area (BA), quadratic 34 
+mean diameter (QMD), adult species de nsity (ASD), adult species richness (ASR), and 35 
+seedling species richness (SSR); (2) the spatial congruence of recovery completeness 36 
+estimated by each of these indicators; and (3) the environmental factors potentially 37 
+shaping these spatial patterns. We used field measurements and geospatial 38 
+information sources to quantify and predict indicator responses by fitting boosted 39 
+regression tree models. To assess the spatial congruence of predictions we overlaid 40 
+high-level recovery completeness values for all indica tors. Overall recovery 41 
+completeness in the study area was 72.7%, suggesting positive prospect s for attaining 42 
+fully restored forests. Recovery completeness had a resulted higher for diversity 43 
+(92.3% - 99.6%) than structural forest attributes ( 33.5% - 76.9%); h owever, spatial 44 
+congruence among recovery indicators was low due to the uneven spatial responses of 45 
+each indicator. The maximum potential spatial congruence was <10%, and was 46 
+predicted only by two environmental variables (soil bulk density and slope). Our results 47 
+suggest that low spatial congruence among forest recovery indicators may hinder the 48 
+monitoring of restoration at large scales. The implications of such divergence in 49 
+defining restoration success can be enormous given the current global challenge of 50 
+forest restoration. Although our research was tested in a threatened region of global 51 
+importance, our results may have wider significance for restoration planning providing 52 
+cautionary notes and recommendations for the appropriate use of forest recovery 53 
+indicators when monitoring large-scale restoration projects. 54 
+ 55 
+Key words: boosted regression tree, landscape forest restoration, vegetation recovery, 56 
+natural regeneration, restoration indicator. 57 
+ 58 
+1. Introduction 59 
+Forest l oss continues to be a major global environmental problem, even in high -60 
+conservation-value areas (Allan et al., 2017; Potapov et al., 2017). Even minimal forest 61 
+loss may have severe consequences for biodiversity (Betts et al., 2017) , and 62 
+compromise carbon s torage and other ecosystem services (Millennium Ecosystem 63 
+Assessment, 2005; Rappaport et al., 2018). Forest loss due to advance s of the 64 
+ 
+3 
+agricultural frontier and fires greatly increase s the human footprint in areas not 65 
+subject to outright deforestation (Venter et al., 2016), and this can be exacerbated by 66 
+climate change (e.g. by more frequent droughts and longer dry seasons; Seidl et al., 67 
+2017). Ecological restoration has emerged to counteract these transform ative 68 
+processes by promoting a progressive increa se in the extent and functionality of 69 
+imperilled ecosystems (McDonald et al., 2016). Some global and regional commitments 70 
+have been made to deal with these issues; most notably, the Bonn Challenge (IUCN, 71 
+2011) and the New York Declaration on Forests (Summi t, 2014) aim to restore 150 72 
+million hectares of forest worldwide by 2020 and 350 million hectares by 2030 73 
+respectively. 74 
+Achieving these ambitious goals requires a combination of different approaches 75 
+that need to be implemented on a large scale and provide cost-efficient solutions. 76 
+Natural regeneration has been proposed as a cost -effective approach to forest 77 
+restoration, as it is a nature -based tool that enhances resilience, supports local 78 
+biodiversity, and supplies multiple ecosystem goods and servi ces (Chazdon, 2017). 79 
+Natural regeneration can play a beneficial economic and ecological role in large -scale 80 
+forest and landscape restoration (Chazdon and Guariguata, 2016). However, it may be 81 
+challenging in some forest types , such as the Mediterranean fore sts in southeast 82 
+Australia, California, southwest South Africa, the Mediterranean Basin, and Central 83 
+Chile (Acácio et al., 2007; Rey Benayas et al., 2007; Mucina et al., 2017). 84 
+Restoring Mediterranean forests through natural regeneration may be a hard 85 
+task (Vallejo et al., 2012), but it can offer an alternative or complementary approach to 86 
+restoration under certain circumstances (Mucina et al., 2017). For instance, 87 
+spontaneous increase of forest cover in degraded areas in Central Chile has mostly 88 
+been restricted to the proximity of remnant forests and the presence of nurse plants 89 
+(Schulz et al., 2010, 2017; Fuentes -Castillo et al., 2012). These regenerating forests 90 
+occur in areas with high levels of environmental heterogeneity and inter -annual 91 
+climatic variation (Doblas-Miranda et al., 2015; Venegas -González et al. 2018). Current 92 
+predictions of land cover changes, increasing temperature and precipitation reduction 93 
+(Sillmann et al., 2013) , which may lead to desertification (Kefi et al., 2007), are not 94 
+favourable for the natural regeneration of Mediterranean forests (Garreaud et al., 95 
+2017). Restoring this forest type is crucial, considering that it is present only in regions 96 
+ 
+4 
+with a Mediterranean climate, and even covering less than 5% of the Earth’s surface it 97 
+contains a relatively high proportion of human population . This ecosystem type is one 98 
+of the least protected in the world (Millennium Ecosystem Assessment, 2005), and is 99 
+highly sensitive to global change (Sala et al., 2000). Moreover, ecosystems in these 100 
+regions have usually suffer ed long-standing anthropogenic pressure ; they are among 101 
+the most seriously threatened in the world due to s ignificant current human activity 102 
+(Gauquelin et al., 2018). 103 
+Under restoration scenarios, including either natural regener ation or tree-104 
+planting, the attributes used to monitor forest recovery are important not only for 105 
+understanding regeneration success, but also for defining realistic goals (McDonald et 106 
+al., 2016). Several attributes have been proposed for monitoring and quantifying the 107 
+recovery of forest structure and functions. Criteria such as easy and cost -effective 108 
+measurement and easy interpretation have most often been preferred; for instance, 109 
+species diversity (e.g. tree richness and diversity), community structure (e.g. tree 110 
+diameter and height), abiotic conditions (both microclimatic an d edaphic), and some 111 
+ecological processes (e.g. litterfall production, nutrient cycling, pollination, erosion 112 
+control) are widely used to assess outcomes of forest restoration (Ruiz -Jaén and Aide, 113 
+2005; Wortley et al., 2013; Gatica -Saavedra et al., 2017). In general, studies consider a 114 
+forest as successfully restored when the values of the attributes measured are 115 
+indistinguishable from, or at least similar to , the values in reference forest (McDonald 116 
+et al., 2016; Suganuma et al., 2018). In this context, the attributes of recovery 117 
+completeness (i.e. how similar attributes in restored forests are to the same attributes 118 
+in reference forests) may be strongly spatially correlated (Kacholi et al., 2015), but may 119 
+also show large -scale variation and a low degree of spatial congruence depending on 120 
+environmental gradients. Therefore evaluating the spatial patterns of forest attributes 121 
+is an important task for quantifying forest recovery and moni toring forest restoration 122 
+at large scales. 123 
+The main question of this study was what degree of spatial congruence exists 124 
+among the typical attributes used to assess the success of forest restoration? To 125 
+address this question we quantitatively evaluated spatial patterns of recovery 126 
+completeness and their responses to environmental factors in a Mediterranean forest 127 
+landscape in Central Chile using five common indicators of forest restoration success. 128 
+ 
+5 
+We evaluate : (1) forest recovery completeness of basal area, quadratic mean 129 
+diameter, adult species density and richness, and seedling species richness; (2) the 130 
+spatial congruence of these five indicators; and (3) the importance of climatic, 131 
+topographical and edaphic environmental factors in predicting the spatial distribution 132 
+(and thus the spatial congruence) of the responses of these indicators. We discuss how 133 
+the insights from this research may be used to inform future actions and to facilitate 134 
+the implementation of more cost -effective forest restoration program mes in this 135 
+global biodiversity hotspot (Myers et al., 2000), and also in large -scale restoration 136 
+initiatives. We expect that our results will help others to define realistic restoration 137 
+goals and actions in a context of global change. 138 
+ 139 
+2. Methods 140 
+2.1. Study site 141 
+Our study was conducted in the Mediterranean region of Chile (Fig. 1). It includes the 142 
+Valparaíso and Metropolitan administrative regions located between 33° and 34° 143 
+South and covers 31,640 km 2, with elevations ranging between the sea level and 1,835 144 
+m.a.s.l. Mean annual precipitation is 500 mm, and is concentrated in winter (June – 145 
+August). Mean annual temperature is 14.5°C (Leubert and Pliscoff, 2006), ranging from 146 
+21°C in summer (January) to 7°C in w inter (July). Summer temperatures often reach 147 
+above 30°C. Local microclimatic conditions can differ widely between coastal and 148 
+inland areas; the Coastal range has milder conditions in terms of temperature and 149 
+drought stress and is therefore more favourable for seedling establishment (Holmgren 150 
+et al., 2000). Plant species composition differs according to these microclimatic 151 
+variations but also to topographical and latitudinal differences (Villagrán, 1995; 152 
+Luebert and Pliscoff, 2006). Sclerophyllous Mediterranean forest is the domina nt 153 
+ecosystem, composed mainly of woody species such as Cryptocarya alba and Peumus 154 
+boldus in the Coastal range, and Lithraea caustica and Quillaja saponaria inland and in 155 
+the pre -Andean range (Leubert and P liscoff, 2006). The region has historically been 156 
+subjected to landscape fragmentation and degradation, with profound transformation 157 
+of the original vegetation due to intense urbanization and agricultural activities (Schulz 158 
+et al., 2010; Vergara et al., 201 3). It presents the highest historical relative habitat loss 159 
+ 
+6 
+in South America, with just 20% remaining of the original vegetation cover (Salazar et 160 
+al., 2015). 161 
+ 162 
+2.2. Quantification of recovery completeness 163 
+We used panchromatic aerial photographs dating fr om the 1970s and 80s, acquired 164 
+from the Aerophotogrammetric Service ( www.saf.cl) and recent Google Earth satellite 165 
+imagery from 2013. By visual analysis we identified all patches where forest cover was 166 
+absent in the aerial photographs (1970-80s) but fully recovered in the Google Earth 167 
+images (2013). This implies that we identified fo rest patches under regeneration 168 
+ranging from 25 to 35 years old, which we will call "regeneration sites". We identified 169 
+200 regeneration sites, but due to accessibility constraints we visited only 85 (47%) of 170 
+them between December 2014 and October 2015. Fo r each regeneration site visited, 171 
+we selected a "reference site" which was: (i) the nearest remnant forest existing from 172 
+the 1970s according to the aerial images; and (ii) located with the same topographical 173 
+aspect as the regeneration site. Reference sites were chosen to enable us to compare 174 
+their forest attributes with those in the regeneration sites. 175 
+In each regeneration and reference site we established a plot of 20x20 m (400 176 
+m²) in which we estimated five forest attributes (Appendix 1) : (1) basal area (BA); (2) 177 
+quadratic mean diameter (QMD); (3) adult species density (ASD); (4) adult species 178 
+richness (ASR); and (5) seedling species richness (SSR). We used these attributes 179 
+because they are those most frequently used to assess restoration success ( Wortley, 180 
+2013). For the first four indicators we only considered tree and shrub species with 181 
+DBH >5 cm. For seedling species richness, we counted all seedlings with DBH <5cm and 182 
+height <2 m along two cross-sectional transects up to 1 m wide on the main axes of the 183 
+plot oriented North -South and East-West. We only considered seedlings developed 184 
+from seeds because they represent new individuals. 185 
+For each indicator and plot we estimated recovery completeness as RC = ln[(Xreg 186 
++0.01)/(Xref+0.01)], where X reg represents the attribute value in the regeneration plot 187 
+while Xref represents the value of the same attribute in the reference plot. This formula 188 
+is an adapted version of the response ratio proposed by Hedges et al. (1999) to 189 
+compare relative changes among indicato rs using different unit measure ments. The 190 
+formula linearizes the metric, such that deviations in the numerator are treated in the 191 
+ 
+7 
+same way as deviations in the denominator, and the variable typically shows a normal 192 
+distribution. The formula includes a corr ection (+0.01) in both the numerator and 193 
+denominator to account for zero-percentages in both regeneration and reference sites 194 
+(De Frenne et al., 2011). RC tends toward zero as the Xreg value approaches the Xref 195 
+value. To facilitate interpretation , RC values were back -transformed and converted to 196 
+percentages. Thus RC may vary between 0 % (no recovery) and 100% (full recovery). 197 
+We established a minimum value of 70% for RC to be considered as a ‘high level’. 198 
+ 199 
+2.3. Spatial congruence of recovery completeness 200 
+We evaluated the spatial distribution of only high -level RC for all indicators on the 201 
+landscape scale, and finally examined the ir spatial congruence by overla ying the 202 
+individual maps. RC p redictions were calculated for the landscape dominated by 203 
+natural forest and shrubland land cover types (1,291,656 ha or 41% of the whole study 204 
+area). We considered shrublands for these estimations because this land cover type 205 
+represents the successional stage previous to forests. 206 
+ 207 
+2.4. Modelling recovery completeness using environmental predictors 208 
+We constructed a set of environmental variable maps from spatially explicit data on 209 
+climate, topography, and soil characteristics (Appendix 1). We used the following 210 
+climatic variables: maximum temperature of warmest month (Tma x), mean 211 
+temperature of warmest quarter (Tmea), mean temperature of coldest quarter (Tmin), 212 
+precipitation seasonality (Psea), precipitation of driest quarter (Pmin), heat load 213 
+(Hload), and aridity index (Aind). For topography, we used elevation (Elev), slo pe 214 
+(Slop), and distance to coast (Dcoas). Finally, for soil variables, we used bulk density 215 
+(Bden), cation exchange capacity (Cec), soil pH measured in H 2O (SpH), and soil organic 216 
+carbon (SoC) (Appendix 1 and 2). We examined the correlation matrix of all t hese 217 
+explanatory variables and excluded those that were highly correlated (|r| > 0.6) to 218 
+avoid multicollinearity for model-building purposes. 219 
+For statistical modelling, we used boosted regression trees (BRT). Decision trees 220 
+are generated linking the expla natory variables to the dependent variables. This 221 
+technique generates many regression trees that are combined into one ultimate 222 
+regression tree model, boosting the ultimate model’s accuracy and predictive 223 
+ 
+8 
+performance drastically (Elith et al. , 2008). We generated regression trees using the 224 
+gbm package in R (Ridgeway, 2007). This procedure uses thr ee variables: learning rate 225 
+(lr), bag fraction ( bf), and tree complexity ( tc). To obtain the optimal combination of 226 
+these variables, a series of models was generated using different values of lr and tc 227 
+based on previous studies (Elith et al., 2008). Then w e calculated measure ments of 228 
+model performance for each fitted model (i.e. percentage explained deviance; D²) 229 
+(Littke et al., 2014) , the relative root mean square error (RMSE) (Aertsen et al., 2010) , 230 
+and the correlation between observed and predicted values. For each model, we chose 231 
+those p redictor variables which presented a strong relationship with the response 232 
+variable (i.e. >10% of influence in BTR models). The model estimates the relative 233 
+influence of predictor variables (influence). The influence is based on the number of 234 
+times a variable is selected for splitting, weighted by the squared improvement to the 235 
+model as a result of each split, and averaged over all trees ( Elith et al., 2008 ). The 236 
+relative influence of each variable was scaled so that the sum totalled 100, with higher 237 
+numbers indicating stronger influence. 238 
+ 239 
+3. Results 240 
+3.1. Recovery completeness by indicators 241 
+Reference plots mostly showed higher values than regeneration plots for all recovery 242 
+indicators except seedling species richness (Appendix 2). The highest values were 243 
+found for maximum basal area and quadratic mean diameter in reference plots, which 244 
+were 42.4 m² ha-1 and 36.3 cm respectively. 245 
+ Overall RC was 72.7% and ranged between 99.6% and 33.5% (CV = 36.3%), 246 
+showing a high variation among indicators (Fig. 2). Species richness, both for seedlings 247 
+(99.6%) and adults (92.3%) showed almost full RC and intermediate spatial variation 248 
+(coefficient of variation 54% and 42% respectively). Structural attributes showed 249 
+intermediate to low RC values: 76.9% (CV = 48%) for adult s pecies density, 61.4% (CV = 250 
+34%) for quadratic mean diameter, and only 33.5%, with the highest spatial variation 251 
+(CV = 67%), for basal area. 252 
+ 253 
+3.2. Spatial patterns and congruence of recovery completeness 254 
+ 
+9 
+Landscape predictions of recovery completeness sho wed marked ly different spatial 255 
+patterns (Fig. 3a -e). Basal area presented predominantly low levels of RC; the highest 256 
+values corresponded to small patches mainly restricted to the pre -Andean range (Fig. 257 
+3a). Recovery completeness of quadratic mean diameter showed a heterogeneous 258 
+distribution with the highest values concentrated in the centr e of the Coastal range 259 
+(Fig. 3b). Higher recovery completeness for adult species density was mainly confined 260 
+to patches located in the Coastal and pre -Andean range s in the study area (Fig 3c). 261 
+Adult species richness showed a clear pattern of low levels of recovery completeness 262 
+distributed throughout the whole study area (Fig. 3d), while seedlings species richness 263 
+mostly exhibited intermediate levels of recovery completenes s, with the few high 264 
+levels concentrated in the southern and northern parts of the study area (Fig. 3e). 265 
+ The area of high -level RC varied among indicators, being higher for adult 266 
+species density and quadratic mean diameter and lower for adult species rich ness and 267 
+basal area (Table 1). Predictions at landscape scale estimated a potential area of 268 
+maximum spatial congruence for high -level RC (i.e. ≥70%) at 94,576 ha (7% of the 269 
+landscape area) (Fig. 3f). However, when the minimum of two indicators was used , 270 
+spatial congruence of high -level RC represented 424,697 ha (33% of the landscape 271 
+area). 272 
+ 273 
+3.3. Environmental predictors of recovery completeness 274 
+All models showed good performance in terms of explained deviance (D 2) and errors 275 
+(rRMSE <20%), and all relied on few explanatory variables, reducing the likelihood of 276 
+statistical artefact (Table 2). BA, QMD and ASR models provided the best goodness of 277 
+fit (i.e. highest explained deviance and highest correlation between the observed and 278 
+fitted values). Two e nvironmental variables predicting RC showed the highest spatial 279 
+congruence (i.e. in more than two models): bulk density (for models BA, QMD, ASR and 280 
+SSR), and slope (for models QMD, ASD, and ASR). The most important predictor 281 
+variables were bulk density, mean temperature of warmest quarter and distance to 282 
+coast, which had ≥40% influence on RC indicator responses (Fig. 4). 283 
+ 284 
+4. Discussion 285 
+ 
+10 
+This study provide s an example of monitoring natural forest recovery in a globally 286 
+important biodiversity region (Mittermeier et al., 2004). We visually selected forest 287 
+patches under regeneration ranging from 25 to 35 years old. Recovery completeness 288 
+was high for almost all the five indicators used; the spatial patterns of their responses 289 
+were uneven and spati al congruence among indicators was low. These results have 290 
+implications for the efficient provision of guidance for large-scale restoration efforts, 291 
+as we discuss below. 292 
+ 293 
+4.1 Recovery completeness levels and spatial patterns 294 
+RC gave a higher result for spe cies diversity indicators – namely species richness of 295 
+seedlings and of adult individuals, which attained nearly full recovery – than for the 296 
+vegetation structure indicator. Diversity indicators tend to rise faster in the first years 297 
+of plant colonization and later may stabilize or even decrease (Rosenzweig, 1995) ; 298 
+however, long life-span pioneer species can persist until later successional stages in 299 
+some forests (Gutiérrez et al., 2008) , maintaining species diversity. Moreover, high 300 
+seedling diversity can be associated with pioneer species after disturbance (e.g. forest 301 
+fire, harvesting) (Castoldi et al., 2015; Duah -Gyamfi et al., 2015). Diversity indicators , 302 
+in particular species richness, are common ly used to assess natural forest recovery 303 
+(e.g. Orsi et al., 2011; Karsten et al., 2014; Gatica -Saavedra et al., 2017), but they 304 
+should be used with caution as high levels of diversity outcomes do not necessarily 305 
+imply successful forest recovery (Meli et al., 2017). Restoring plant species diversity of 306 
+a target community might be unrealistic , given that recovery could take several 307 
+decades or even more. In any case, species diversity cannot be taken as the sole 308 
+criterion for evaluating restoration success (Engest et al., 2016) ; therefore other 309 
+metrics must be considered, such as species composition or functionality diversity that 310 
+may potentially show slower recovery (Petchey and Gaston, 2006; Meli et al., 2017). 311 
+The highest and lowest spatial variations of RC were found for basal area and 312 
+quadratic mean diameter respectively. Quadratic mean diameter would present low 313 
+variability since it represents the average diameter of all the trees of each site, 314 
+whereas basal area is rather used as an indicator of forest successional stage (e.g. 315 
+canopy closure) (Gutiérrez and Huth, 2012) . Additionally, basal area is strongly 316 
+influenced by the time elapsed since regeneration started , land use history and site 317 
+ 
+11 
+quality (i.e. climate, soil), and is therefore a good indicator of forest recovery (Toledo 318 
+et al., 2011). 319 
+ 320 
+4.2. Spatial congruence of recovery completeness 321 
+The low spatial congruence in the RC of the individual indicators used in this work 322 
+highlights the importance of indicator selection for monitoring restoration (Gatica-323 
+Saavedra et al., 2017) . Given the high variation of RC and their spatial distribution 324 
+throughout the study area, our results suggest that targeting appropriate indicators is 325 
+critical for assessing the success of natural forest recovery. We observed low spatial 326 
+congruence of high-level values of all indicators, and s patial congruence levels 327 
+increased as fewer indicators were used. Furthermore, in the early stages of the 328 
+successional process ‒ when the tree canopy still appear s highly dynamic – forest 329 
+recovery is strongly influenced by environmental gr adients, landscape structure and 330 
+land use history, restoration effort, and elapsed time since the project took place 331 
+(Crouzeilles et al., 2016; Meli et al., 2017). 332 
+Our most remarkable finding is probably the low spatial congruence of RC 333 
+indicators. The ma ximum spatial congruence of all recovery indicators is lower than 334 
+10%. Congruence increases as our restriction s are softened, for instance when using 335 
+only two indicators ; however, this higher congruence was found in basal area and 336 
+quadratic mean diameter, which are high ly correlated. Low spatial congruence of 337 
+indicators was also consistent with the congruence of environmental predictors. In 338 
+fact, only two environmental variables (bulk density and slope) predicting responses of 339 
+RC indicators presented higher spatial congruence. This implies that if we use these 340 
+indicators separately to plan large -scale forest restoration , the resulting location area 341 
+would differ considerably. Then, one of the main advantages of natural regeneration 342 
+(i.e. cost-efficiency; Birch et al., 2010) as a strategy for large-scale restoration planning 343 
+may be compromised if we fail to choose suitable indicators. As a result of this 344 
+mismatch, the potential of natural regeneration to restore the multiple social and 345 
+ecological benefits of landscapes could be reduced (Chadzon and Uriarte, 2016). 346 
+ 347 
+4.3. Implications for planning and monitoring large-scale restoration 348 
+ 
+12 
+The high variation among the selected RC indicators stimulates reflection about 349 
+indicators selection. The goals of a restoration project are decisive for how the 350 
+project’s recovery success is measured, and also for defining restoration priorities (Orsi 351 
+and Geneletti, 2010). Holl and Aide (2011) highlighted the importance of clearly 352 
+identifying goals at the onset of a restoration project, ideally in consultation with all 353 
+stakeholders, and using cost -effective methods (Almeida et al. 2019) . For example, if 354 
+the goal of a restoration project is to maximize carbon sequestration t hrough natural 355 
+forest recovery , then an indicator of crown cover may be advisable (e.g. basal area, 356 
+tree density), whereas if the goal is to increase biodiversity, a measure of plant 357 
+diversity could be a suitable indicator (e.g. species diversity, number o f target species) 358 
+(e.g. Feest , 2013 ). In summary, we must ask: what attributes of forests should 359 
+characterize the success of ecosystem service s supply? The answer will guide the 360 
+development and assessment of the restoration project , but in turn we must consider 361 
+that on a large-scale these questions are influenced by environmental gradients. 362 
+When focus ed at large-scale, the restoration agenda should be embedded in 363 
+the methodological approach of ‘Forest Landscape Restoration’, the aim of which is 364 
+the recovery of multifunctional landscapes beyond the restoration of natural 365 
+ecosystems (Schulz and Schröder, 2017). This approach broadens the restoration 366 
+targets toward the recognition that ecosystems and landscapes need to be recovered 367 
+to provide goods and services to human society (Stanturf et al., 2014; Wang et al., 368 
+2014). Therefore, restoration projects addressing multifunctional landscapes must 369 
+explicitly consider different indicators of RC linked to ecosystem functions. Some 370 
+studies have assessed resto ration success by applying a functional perspective (e.g. 371 
+Engs et al., 2016; Hedberg et al., 2014; Laughlin, 2014), sometimes directly measuring 372 
+function indicators such as nutrient and water supply (Little et al., 2009; Van Bodegom 373 
+et al., 2006). However, recovery of ecosystem functions can be slower than other 374 
+attributes and therefore its application in early stages of restoration projects may be 375 
+limited (Meli et al., 2017; Moreno -Mateos et al. 2018). Likewise, the outcomes of 376 
+ecosystem function s are observed on other spatial and temporal scales (Greene and 377 
+Millward, 2017). 378 
+A salient characteristic of natural regeneration as an approach for forest 379 
+restoration is that it is highly cost-effective (Birch et al., 2010), since it does not involve 380 
+ 
+13 
+direct financial costs, including seedlings, planting, fences , and maintenance 381 
+(Schiappacasse et al., 2012). Therefore, it is highly desirable to decide on suitable RC 382 
+indicators, which will help to ensure that the indicators that we use to monit or our 383 
+restoration goals are consistent with those goals . Regardless of the restoration 384 
+strategy used, the global challenge of forest restoration implies rethink ing the stages 385 
+of defining the large-scale, long-term aims of projects. As part of this challen ge, large-386 
+scale, long-term forest restoration projects must include the ecological, economic, and 387 
+social dimension in order to regain ecological integrity and enhance human well -being 388 
+in deforested or degraded forest landscapes (Chazdon and Uriarte, 2016). 389 
+Given the current global challenge of ecological restoration , the implications of 390 
+low spatial congruence of RC for the definition of restoration success can be 391 
+enormous. The CBD and several countries have established goals on this issue. Target 392 
+15 of the Aichi Targets for 2020 sets a numerical goal of restoration of 15% of 393 
+degraded ecosystems, achieving which will require billions of d ollars per year (CBD, 394 
+2010). Chile is no exception , and the Government is com mitted to achieving the same 395 
+goal by 2020 (Smith -Ramírez et al., 2015). However, forest restoration needs to 396 
+become successful at landscape scale in order to achieve its goals (Ba nnister et al., 397 
+2018). Thus, how the restoration success of these degraded ecosystems is measured is 398 
+an important task anywhere. 399 
+Our results have wider significance for restoration planning around the world, 400 
+providing cautionary notes and recommendations for appropriate use of forest 401 
+recovery indicators to monitor large-scale restoration projects. 402 
+ 403 
+Acknowledgements 404 
+This research was supported by funding from Fondecyt grant 1171445, FONDEF grant 405 
+CA13I10276, CONICYT grant PAI80160058, and Dirección de Invest igación of 406 
+Universidad de La Frontera. PM thanks the São Paulo Research Foundation for a 407 
+postdoctoral grant (FAPESP 2016/00052 -9). A.M. thank s to 408 
+CONICYT/FONDAP/15110009 grant. 409 
+ 410 
+Supplementary Information 411 
+ 
+14 
+Appendix 1 Description of forest attributes and environmental variables from 412 
+geodatabases on climate, topography, and soil characteristics. 413 
+ 414 
+Appendix 2 Descriptive statistics of natural forest recovery completeness indicators 415 
+and environmental variables used to fit BTR models. 416 
+ 417 
+References 418 
+Acácio, V., Ho lmgren, M., Jansen, P.A., Schrotter, O., 2007. Multiple Recruitment 419 
+Limitation Causes Arrested Succession in Mediterranean Cork Oak Systems. 420 
+Ecosystems 10, 1220–1230. 421 
+Aertsen, W., Kint, V., Van Orshoven, J., Özkan, K., Muys, B., 2010. Comparison and 422 
+ranking of different modelling techniques for prediction of site index in 423 
+Mediterranean mountain forests. Ecol. Model. 221, 1119–1130. 424 
+Allan, J.R., Venter, O., Maxwell, S., Bertzky, B., Jones, K., Shi, Y., Watson, J.E.M., 2017. 425 
+Recent increases in human pressure and forest loss threaten many Natural World 426 
+Heritage Sites. Biol. Conserv. 206, 47-55. 427 
+Almeida, D.R.A., Stark, S.C., Chazdon, R., Nelson, B.W., Cesar, R.C., Meli, P., Gorgens, 428 
+P.B., Duarte, M.M. , Valbuena , R., Moreno, V.S., Mendes, A.F., Amazonas, N., 429 
+Gonçalves, N.B., Silva, C.S., Schietti, J., Brancalion, P.H.S. 2019. The effectiveness of 430 
+lidar remote sensing for monitoring forest cover attributes and landscape 431 
+restoration. Forest Ecol. Manag., https://doi.org/10.1016/j.foreco.2019.02.002 432 
+Bannister, J. R., Vargas -Gaete, R., Ovalle, J.F., Acevedo, M., Fuentes -Ramirez, A., 433 
+Donoso, P.J., Promis, A., Smith -Ramírez, C., 2018. Major bottlenecks for the 434 
+restoration of natural forests in Chile. Restor. Ecol., https://doi.org/ 435 
+10.1111/rec.12880. 436 
+Betts, M.G., Wolf , Ch., Ripple, W.J., Phalan, B., Millers, K.A., Duarte, A., Butchart, 437 
+S.H.M., Levi, T., 2017. Global forest loss disproportionately erodes biodiversity in 438 
+intact landscapes. Nature 547, 441-444. 439 
+Birch, J., Newton, A.C., Alvarez, C., Cantarello, E., Echever ría, C., Kitzberger, T., 440 
+Schiappacasse, I., Tejedor -Garavito, N., 2011. Cost -effectiveness of dryland forest 441 
+restoration evaluated by spatial analysis of ecosystem services. P. Natl. Acad. Sci. 442 
+107, 21925–21930. 443 
+ 
+15 
+Castoldi, E., Quintana, J.R., Mata, R.G., Mo lina, J.A., 2013. Early post -fire plant 444 
+succession in slash -pile prescribed burns of a sub -Mediterranean managed forest. 445 
+Plant. Ecol. Evol. 146, 272-278. 446 
+CBD., 2010. Decision X/2, the strategic plan for biodiversity 2011 –2020 and the Aichi 447 
+biodiversity targets, Nagoya, Japan, 18–29 Oct 2010. 448 
+Chazdon, R.L., 2017. Landscape restoration, natural regeneration, and the forests of 449 
+the future. Ann. Mo. Bot. Gard. 102, 251-257. 450 
+Chazdon, R.L., Guariguata, M.R., 2016. Natural regeneration as a tool for large -scale 451 
+forest restoration in the tropics: prospects and challenges. Biotropica 48, 716–730. 452 
+Chazdon, R.L., Uriarte, M., 2016. Natural regeneration in the context of lar ge-scale 453 
+forest and landscape restoration in the tropics. Biotropica 48, 709–715. 454 
+Crouzeilles, R., Curran, M., Ferreira, M.S., Lindenmayer, D.B., Grelle, C.E.V., Rey 455 
+Benayas, J.M., 2016. A global meta -analysis on the ecological drivers of forest 456 
+restoration success. Nat. Commun. 7, 11666. 457 
+De Frenne, P., Baeten L, Graae, B.J., Brunet, J., Wulf, M., Orczewska, A., Kolb, A., 458 
+Jansen, I., Jamoneau, A., Jacquemyn, H., Hermy, M., Diekmann, M., Schrijver, A., De 459 
+Sanctis, M., Decocq, G., Cousins, S., Verheyen , K., 2011. Interregional variation in 460 
+the floristic recovery of post-agricultural forests. J. Ecol. 99, 600–609. 461 
+Doblas-Miranda, E., Martinez -Vilalta, J., Lloret, F., Alvarez, A., Avila, A., Bonet, F.J., 462 
+Brotons, L., Castro, J., Curiel Yuste, J., Diaz, M. , Ferrandis, P., Garcia -Hurtado, E., 463 
+Iriondo, J. M., Keenan, T. F., Latron, J., Llusia, J., Loepfe, L., Mayol, M., More, G., 464 
+Moya, D., Penuelas, J., Pons, X., Poyatos, R., Sardans, J., Sus, O., Vallejo, V. R., 465 
+Vayreda, J., Retana, J., 2015. Reassessing glo bal change research priorities in 466 
+Mediterranean terrestrial ecosystems: how far have we come and where do we go 467 
+from here? Global Ecol. Biogeogr. 24, 25-43. 468 
+Duah-Gyamfi, A., Swaine, E.K., Adam, K.A., Pinard, M.A., Swaine, M.D., 2015. Can 469 
+harvesting for tim ber in tropical forest enhance timber tree regeneration? Forest 470 
+Ecol. Manag. 314, 26-37. 471 
+Elith, J., Leathwick, J.R., Hastie, T., 2008. A working guide to boosted regression trees. 472 
+J. Anim. Ecol. 77, 802–813. 473 
+Engst, K., Baasch, A., Erfmeier, A., Jandt, U., May, K., Schmiede, R., Bruelheide, H., 474 
+2016. Functional community ecology meets restoration ecology: Assessing the 475 
+ 
+16 
+restoration success of alluvial floodplain meadows with functional traits. J appl ecol 476 
+53, 751–764. 477 
+Feest, A. 2013. The utility of the Stream lining European Biodiversity Indicators 2010 478 
+(SEBI 2010). Ecol. Indic. 28: 16-21. 479 
+Fuentes-Castillo, T., Miranda, A., Rivera -Hutinel, A., Smith -Ramírez, C., Holmgren, M., 480 
+2012. Nucleated regeneration of semiarid sclerophyllous forests close to remnant 481 
+vegetation. Forest Ecol. Manag. 274, 38–47. 482 
+Garreaud, R., Alvarez-Garreton, C., Barichivich, J., Boisier, J.P., Christie, D., Galleguillos, 483 
+M., Le Quesne, C., McPhee, J., Zambrano, M., 2017. The 2010-2015 mega drought in 484 
+Central Chile: Impacts on regional hydro climate and vegetation. Hydrol. Earth Syst. 485 
+Sc. 21, 6307-6327. 486 
+Gatica-Saavedra, P., Echeverría, C., Nelson, C.R., 2017. Ecological indicators for 487 
+assessing ecological success of forest restoration: a world review. Restor. Ecol. 25, 488 
+850-857. 489 
+Gauquelin, T., Michon, G., Joffre, R., Duponnois, R., Genin, D., Fady, B., Dagher-Kharrat, 490 
+M., Derridj, A., Slimani, S., Badri, W., Alifriqui, M., Auclair, L., Simenel, R., Aderghal, 491 
+M., Baudoin, E., Galiana, A., Prin, Y., Sanguin, H., Fernandez, C., Baldy, V., 2018. 492 
+Mediterranean forests, land use and climate change: a social-ecological perspective. 493 
+Reg. Environ. Change 18, 623-636. 494 
+Greene, C.S., Millward, A.A., 2017. Getting closure: The role of urban forest canopy 495 
+density in moderating summer surface temperatures in a large city. Urban Ecosyst. 496 
+20, 141-156. 497 
+Gutierrez, A., Huth, A., 2012. Successional stages of primary temperate rainforests of 498 
+Chiloe Island, Chile. Perspect. Plant Ecol. 14, 243-256. 499 
+Gutiérrez, A.G., Aravena, J.C., Carrasco -Farias, N.V., Christie, D.A., Fuentes, M., 500 
+Armesto, J.J., 2008. Gap-phase dynamics and coexistence of a long -lived pioneer 501 
+and shade-tolerant tree species in the canopy of an old -growth coastal temperate 502 
+rain forest of Chiloe Island, Chile. J. Biogeogr. 35, 1674–1687. 503 
+Hedberg, P., Kozub, L., Kotowski, W., 2014. Functional diversity analysis helps to 504 
+identify filters affecting community assembly after fen restoration by top -soil 505 
+removal and hay transfer. J. Nat. Conserv. 22, 50-58. 506 
+ 
+17 
+Hedges, L.V., Gurevitch, J., Cur tis, P.D., 1999. The meta -analysis of response ratios in 507 
+experimental ecology. Ecology 80, 1150–1156. 508 
+Hijmans, R.J., Cameron, S.E., Parra, J.L., Jones, P.G., Jarvis, A., 2005. Very high 509 
+resolution interpolated climate surfaces for global land areas. Int. J . Climatol. 25, 510 
+1965–1978. 511 
+Hengl, T., de Jesus, J.M., MacMillan, R.A., Batjes, N.H., Heuvelink, G.B.M., Ribeiro, E., 512 
+Samuel-Rosa, A., Kempen, B., Leenaars, J.G.B., Walsh, M.G., Gonzalez, M.R., 2014. 513 
+SoilGrids1km — Global Soil Information Based on Automated Mapping. PLoS ONE 9, 514 
+e105992. 515 
+Holl, K.D., Aide, T.M., 2011. When and where to actively restore ecosystems. Forest 516 
+Ecol. Manag. 261, 1590-1597. 517 
+Holmgren, M., Segura, A.M., Fuentes, E.R., 2000. Limiting mechanisms in the 518 
+regeneration of the Chilean matorral – Experiments on seedling establishment in 519 
+burned and cleared mesic sites. Plant Ecol. 147, 49–57. 520 
+IUCN., 2011. The Bonn challenge: a world of opportunity [brochure]. The global 521 
+partnership on Forest landscape restoration. Bonn, Germany. 522 
+Kacholi, D.S., Whitbread, A.M., Worbes, M., 2015. Diversity, abundance, and structure 523 
+of tree communities in the Uluguru forests in the Morogoro region, Tanzania. J. 524 
+Forestry Res. 26, 557-569. 525 
+Karsten, R.J., Meilby, H., Larsen, J.B., 2014. Regeneration and management of lesser 526 
+known timber species in the Peruvian Amazon following disturbance by logging. 527 
+Forest Ecol. Manag. 327, 76-85. 528 
+Kéfi, S., Rietkerk, M., Alados, C.L., Pueyo, Y., Papanastasis, V.P., ElAich, A., de Ruiter, 529 
+P.C., 2007. Spatial vegetation patterns and imm inent desertification in 530 
+Mediterranean arid ecosystems. Nature 449, 213–217. 531 
+Laughlin, D.C., 2014. Applying trait -based models to achieve functional targets for 532 
+theory-driven ecological restoration. Ecol. Lett. 17, 771-784. 533 
+Littke, K. M., Harrison, R.B., Z abowski, D., Ciol, M.A., Briggs, D.G., 2014. Prediction of 534 
+Douglas-fir fertilizer response using biogeoclimatic properties in the coastal Pacific 535 
+Northwest. Can. J. Forest Res. 44:1253–1264. 536 
+ 
+18 
+Little, C., Lara, A., McPhee, J., Urrutia, R., 2009. Revealing th e impact of forest exotic 537 
+plantations on water yield in large scale watersheds in South -Central Chile. J. 538 
+Hydrol. 374, 162-170. 539 
+Luebert, F., Pliscoff, P., 2006. Sinopsis bioclimática y vegetacional de Chile. Editorial 540 
+Universitaria. 541 
+McCune, B., Keon, D., 2 002. Equations for Potential Annual Direct Incident Radiation 542 
+and Heat Load. J. Veg. Sci. 13, 603–606. 543 
+McDonald, T., Gann, G.D., Jonson, J., Dixon, K.W., 2016. International standards for the 544 
+practice of ecological restoration – including principles and key concepts. Society for 545 
+Ecological Restoration, Washington, D.C. 546 
+Meli, P., Holl, K.D., Rey Benayas, J.M., Jones, H.P., Jones, P.C., Montoya, D., Mateos, 547 
+D.M., 2017. A global review of past land use, climate, and active vs. passive 548 
+restoration effects on forest recovery. Plos One 12, e0171368. 549 
+Millennium Ecosystem Assessment., 2005. Ecosystems and human well -being: 550 
+biodiversity synthesis. Island Press, Washington DC, USA. 551 
+Mittermeier, R.A., Gil, P., Hoffmann, M., Pilgrim, J., Brooks, T., Mittermeier, C.G., 552 
+Lamoreux, J., da Fonseca, G.A.B., 2004. Hotspots revisited: earth’s biologically 553 
+wealthiest and most threatened ecosystems. CEMEX, Mexico. 554 
+Mucina, L., Bustamante -Sánchez, M.A., Duguy, B., Holmes, P., Keeler -Wolf, T., 555 
+Armesto, J.J., Dobrowolski, M., Gaertner , M., Smith-Ramírez, C., Vilagrosa, A., 2017. 556 
+Ecological restoration in mediterranean-type shrublands and woodlands. In: Allison, 557 
+S., Murphy, S., (eds.), Routledge Handbook of Ecological and Environmental 558 
+Restoration. Taylor & Francis, Abingdon, UK, pp. 173–196. 559 
+Myers, N., Mittermeler, R. A., Mittermeler, C. G., Da Fonseca, G. A., & Kent, J., 2000. 560 
+Biodiversity hotspots for conservation priorities. Nature 403, 853-858. 561 
+Orsi, F., Geneletti, D., 2010. Identifying priority areas for Forest Landscape Restoratio n 562 
+in Chiapas (Mexico): an operational approach combining ecological and 563 
+socioeconomic criteria. Landscape Urban Plan. 94, 20-30. 564 
+Orsi, F., Geneletti, D., Newton, A., 2011. Towards a common set of criteria and 565 
+indicators to identify forest restoration prior ities: An expert panel -based approach. 566 
+Ecol. Indic. 11, 337-347. 567 
+ 
+19 
+Petchey, O.L., Gaston, K.J., 2006. Functional diversity: back to basics a nd looking 568 
+forward. Ecol Lett. 9, 741-758. 569 
+Potapov, P., Hansen, M.C., Laestadius, L., Turubanova, S., Yaroshenko, A., Thies, C., 570 
+Smith, W., Zhuravleva, I., Komarova, A., Minnemeyer, S., Esipova, E., 2017. The last 571 
+frontiers of wilderness: Tracking loss of intact forest landscapes from 2000 to 2013. 572 
+Sci. Adv. 3, e1600821. 573 
+Rappaport, D.I., D.C. Morton, M. Longo, M. Keller, R. Dubayah, M.N. dos-Santos. 2018. 574 
+Quantifying long-term changes in carbon stocks and forest structure from Amazon 575 
+forest degradation. Environ. Res. Lett. 13, 065013. 576 
+Rey Benayas, J.M., Martins, A., Nicolau, J.M., Schulz, J., 2007. Abandonment of 577 
+agricultural land: an overview of drivers and consequences. Perspectives in 578 
+Agriculture, Veterinary Science, Nutrition and Natural Resources 2, doi: 579 
+10.1079/PAVSNNR20072057. 580 
+Ridgeway, G., 2007. Generalized Boosted Models: A guide to the gbm package. Update 581 
+1:2007. 582 
+Rosenzweig, M.L., 1995. Species Diversity in Space and Time. Cambridge University 583 
+Press, New York. 436 pp. 584 
+Ruiz-Jaén, M.C., Aide, T.M., 2005. Restoration success: How is it being measured? 585 
+Restor. Ecol. 13, 569-577. 586 
+Sala, O.E., Chapin, F.S., Armesto, J.J., Berlow, E., Bloomfield, J., Dirzo, R., Huber -587 
+Sanwald, E., Huenneke, L.F., Jackson, R.B., Kinzig, A., Leemans, R., Lodge, D.M., 588 
+Mooney, H.A., Oesterheld, M., Poff, N.L., Sykes, M.T., Walker, B.H., Walker, M., 589 
+Wall, D.H., 2000. Global biodiversity scenarios for the year 2100. Science 287, 1770–590 
+1774. 591 
+Salazar, A., Baldi, G., Marina, H., Syktus, J., McAlpine, C., 2015. Land use and land cover 592 
+change impacts on the regional climate of non-Amazonian South America: A review. 593 
+Global Planet. Change 128, 103-119. 594 
+Schiappaccasse, I., Nahuelhual, L., Vasquez, F., Echeverria, C., 2012. Assessing the 595 
+benefits and costs of dryland forest restoration in central Chile. J. Environ. Manage. 596 
+97: 38-45. 597 
+ 
+20 
+Schulz, J. J., Cayuela, L., Echeverria, C., Salas, J., Rey Benayas, J.M., 20 10. Monitoring 598 
+land cover change of the dryland forest landscape of Central Chile (1975 –2008). 599 
+Appl. Geogr. 30, 436–447. 600 
+Schulz, J., Schröder, B., 2017. Identifying suitable multifunctional restoration areas for 601 
+Forest Landscape Restoration in Central Chile . Ecosphere 8, e01644. 602 
+Seidl, R., Thom, D., Kautz, M., Martin-Benito, D., Peltoniemi, M., Vacchiano, G., Wild, J., 603 
+Ascoli, D., Petr, M., Honkaniemi, J., Lexer, M.J., Trotsiuk, V., Mairota, P., Svoboda, 604 
+M., Fabrika, M., Nagel, T.A., Reyer, C.P.O., 201 7. Forest disturbances under climate 605 
+change. Nat. Clim. Change 7, 395–402. 606 
+Sillmann, J., Kharin, V., Zwiers, F.W., Zhang, X., Bronaugh, D., 2013. Climate extremes 607 
+indices in the CMIP5 multimodel ensemble: Part 2. Future climate projections. J. 608 
+Geophys. Res-Atmos. 118, 2473-2493. 609 
+Smith-Ramírez, C., González, M.E., Echeverría, C., Lara, A., 2015. Current state of 610 
+ecological Restoration in Chile: perspectives and challenges. Anales Instituto 611 
+Patagonia 43, 11-21. 612 
+Stanturf, J. A., Palik, B.J., Williams, M.I., Dumroese, R.K., Madsen, P., 2014. Forest 613 
+restoration paradigms. J. Sustain. Forest 33,161–194. 614 
+Suganuma, M.S., Torezan, J.M., Durigan, G., 2018. Environment and landscape rather 615 
+than planting design are the drivers of success in long -term restoration of r iparian 616 
+Atlantic forest. Appl. Veg. Sci. 21, 76-84. 617 
+Summit, U.C., 2014. New York declaration on forests. United Nations, New York. 618 
+Toledo, M., Poorter, L., Pena-Claros, M., Alarcon, A., Balcazar, J., Leano, C., Licona, J.C., 619 
+Bongers, F., 2011. Climate and soil drive forest structure in Bolivian lowland forests . 620 
+J. Trop. Ecol. 27, 333-345. 621 
+Vallejo, V.R., Smanis, A., Chirino, E., Fuentes, D., Valdecantos, A., Vilagrosa, A., 2012. 622 
+Perspectives in dryland restoration: approaches for climate change adaptation. New 623 
+Forests 43, 561-579. 624 
+Van Bodegom, P.M., Oosthoek, A., Broekman, R., Bakker, C., Aerts, R., 2006. Raising 625 
+groundwater differentially affects mineralization and plant species abundance in 626 
+dune slacks. Ecol. Appl. 16, 1785-1795. 627 
+ 
+21 
+Venegas-González, A., Roig, F., Gutiérrez, A.G., Peña -Rojas, K., Tomazello, M., 2018. 628 
+Effects of climate variability on growth and establishment patterns of Nothofagus 629 
+macrocarpa in central Chile. Bosque 39, 81-93. 630 
+Venter, O., Sanderson, E.W., McGrach, A., Possingham, H., Wood, P., Fekete, B., 631 
+Laurance, W.F., Levy, M., Watson, J.E.M., 2016. Sixteen years of change in the global 632 
+terrestrial Human footprint and implications for biodiversity conservation. Nat. 633 
+Commun. 7, 12558. 634 
+Vergara, P., Perez-Hernandez, C., Hahn, I., Soto, G., 2013. Deforestation in central Chile 635 
+causes a rapid decline in landscape connectivity for a forest specialist bird species. 636 
+Ecol. Res. 28, 481–492. 637 
+Villagrán, C.M., 1995. Quaternary History of the Medit erranean Vegetation of Chile. In 638 
+Arroyo, M.T.K., Zedler, P.H., Fox, M.D., (eds). Ecology and Biogeography of 639 
+Mediterranean Ecosystems in Chile, California, and Australia. Springer New York. Pp 640 
+3-20. 641 
+Wang, J., Lü, Y., Zeng, Y., Zhao, Z., Zhang, L., Fu, B., 2014. Spatial heterogeneous 642 
+response of land use and landscape functions to ecological restoration: The case of 643 
+the Chinese loess hilly region. Environ. Earth Sci. 72, 2683-2696. 644 
+Wortley, L., Hero, J., Howes, M., 2013. Evaluating Ecological Restoration Suc cess: A 645 
+Review of the Literature. Restor. Ecol. 21, 537-543. 646 
+Zomer, R.J., 2007. Trees and water: smallholder agroforestry on irrigated lands in 647 
+Northern India. International Water Management Institute, Colombo, Sri Lanka. 648 
+Zomer, R.J., Trabucco, A., Bossio , D.A., Verchot, L.V., 2008. Climate change mitigation: 649 
+A spatial analysis of global land suitability for clean development mechanism 650 
+afforestation and reforestation. Agr. Ecosyst. Environ. 126, 67–80. 651 
+ 652 
+ 
+22 
+ 653 
+ 654 
+Figure 1. Study area and location of reference and regeneration plots. 655 
+ 656 
+ 657 
+ 658 
+Figure 2. Amoeba diagram showing recovery completeness (%) based on five indicators 659 
+of forest recovery. 100 means full recovery. 660 
+ 661 
+ 
+23 
+ 662 
+ 663 
+ 664 
+Figure 3. Boosted regression tree model predictions of natural forest recovery 665 
+completeness for: a) basal area, b) quadratic mean diameter , c) a dult species density, 666 
+d) a dult species richness, e) s eedling species richness , and f) spatial congruence of 667 
+forest recovery indicators. No colour means no -prediction because the pixel was not 668 
+currently classified as any of the land cover types considered in our analys is. Grey 669 
+means no congruence of any indicator. Maximum spatial congruence means there is 670 
+coincidence of high -level recovery completeness for all five indicators, whereas 671 
+minimum spatial congru ence means there is coincidence of high -level recovery 672 
+completeness of two indicators. 673 
+ 674 
+ 675 
+ 676 
+ 
+24 
+ 677 
+ 678 
+Figure 4 . Influence of environmental variables in boosted tree -regression models of 679 
+recovery completeness indicators: a) basal area, b) quadratic mean diameter, c) adult 680 
+species density, d) adult species richness, and e) seedling species richness. Maximum 681 
+temperature of warmest month (Tmax), mean temperature of warmest quarter 682 
+(Tmea), mean temperature of coldest quarter (Tmin), precipitatio n seasonality (Psea), 683 
+precipitation of driest quarter (Pmin), slope (Slop ), and distance to coast (Dcoas). 684 
+Finally, we used edaphic variables such as dry bulk density (Bden) and cation exchange 685 
+capacity (Cec) (see Appendix 1 and 2 for details of these environmental predictors). 686 
+ 687 
+ 688 
+ 
+25 
+ 689 
+Table 1. Model performance statist ics for boosted regression tree models of recovery 690 
+completeness using five different forest recovery indicators. Explained Deviance (D²) of 691 
+the fitted model, explained deviance after cross valida tion (D2 CV), P earson’s 692 
+correlation coefficient (Corr) and relative root mean square error (rRMSE) are 693 
+reported. BA: Basal area, QMD: Quadratic mean diameter, ASD: Adult species density, 694 
+ASR: Adult species richness, SSR: Seedling species richness. 695 
+ 696 
+Indicator / Model D2 D2 CV* Corr* rRMSE* 
+Basal area 0.59 0.10 0.48 21.49 
+Quadratic mean diameter 0.47 0.19 0.48 17.91 
+Adult species density 0.41 0.15 0.35 16.21 
+Adult species richness 0.43 0.14 0.38 16.93 
+Seedling species richness 0.59 0.17 0.44 8.05 
+* Values for cross validation. 697 
+ 698 
+Table 2. Predicted area of high level of recovery completeness according to recovery 699 
+indicator modelled. See indicator names in Table 1. Percentage values are estimated to 700 
+cover the whole predicted area. 701 
+ 702 
+Recovery completeness indicator Area (ha) % 
+Basal area 411,883 32 
+Quadratic mean diameter 950,460 74 
+Adult species density 1,070,756 83 
+Adult species richness 502,429 39 
+Seedling species richness 624,999 48 
+ 703 
+ 704 
+ 
+26 
+Appendix 1. Description of forest attributes and environmental variables from 705 
+geodatabases on climate, topography, and soil characteristics. 706 
+Forest attributes: 707 
+Basal area (BA): the cross-sectional area of all trees in the sampling plot. To estimate 708 
+BA the tree diameter is measured at breast height (1.3m ) above the ground. BA is 709 
+expressed in m2 ha-1. 710 
+Quadratic mean diameter (QMD): diameter of a tree possessing the average basal area 711 
+per tree in the sampling plot. QMD is expressed in cm. 712 
+Adult species density (ASD): total number of adult individuals of different species. 713 
+Adult species richness (ASR): total number of different adult species. 714 
+Seedling species richness (SSR): total number of different seedling species. 715 
+ 716 
+Climatic variables: we initially obtained 19 climatic variables from the WorldClim 717 
+database ( www.worldclim.org). WorldClim is a set of global climate layers (climate 718 
+grids) with a spatial resolution of 1 x 1 km (Hijmans et al., 2005). This set includes 719 
+temperature, rainfall and bioclima tic variables. We carefully examined the correlation 720 
+matrix to determine the degree of collinearity and redundancy between these climatic 721 
+variables (and the other explanatory variables), as well as their correlations with 722 
+indicators of forest recovery. As a result we selected the following climatic variables 723 
+for our analyses: Maximum temperature of warmest month (Tmax), Mean 724 
+temperature of warmest quarter (Tmea), Mean temperature of coldest quarter (Tmin), 725 
+Precipitation seasonality (Psea), Precipitation of driest quarter (Pmin). We also 726 
+estimated the heat load (Hload) and the aridity index (Aind). To estimate heat load we 727 
+used aspect, which was transformed into a relative heat -load measurement (McCune 728 
+and Keon, 2002). The a ridity index was extracted from the ‘Global Aridity and PET 729 
+Database’ developed by Zomer (2007) and Zomer et al. (2008). The complete dataset is 730 
+available at http://www.cgiar-csi.org. The aridity dataset was modelled using the 731 
+WorldClim database with a spatial resolution of 1 km. 732 
+ 733 
+Topographical variables: we used a digital elevation model of 90 m spatial resolution 734 
+derived from the Shuttle Radar Topography Mission (SRTM), from which we calculated 735 
+the variables of elevation, slope, and aspect for inclu sion in the model as predictor 736 
+ 
+27 
+variables. The SRTM data were obtained from the Global Land Cover Facility (GLCF) 737 
+website (http://www.landcover.org). 738 
+ 739 
+Soil characteristics: these variables were extracted from the Soilgrids database, 740 
+developed by the ‘International Soil Reference and Information Centre’ (ISRIC) (Hengl 741 
+et al., 2014). Soilgrids is a collection of international soil classes and characteristics of 742 
+the world, based on modern statistical modelling techniq ues. Data ha ve a spatia l 743 
+resolution of 1 km, and are freely available at www.soilgrids.org. Relevant variables 744 
+that were downloaded and extracted for the sample points were the following: dry 745 
+bulk density (B den), ca tion exchange capacity (Cec ), soil pH measured in H 2O (SpH), 746 
+and soil organic carbon (S oC). These data are available for six depth classes and 747 
+variables are highly correlated between different depth classes; we used the variables 748 
+at a depth of 22.5 cm. 749 
+ 750 
+ 751 
+ 
+28 
+Appendix 2. Descriptive statistics of natural forest recovery completeness indicators (values for reference plots in brackets) and environmental 752 
+variables used to fit BTR models (see main text and figure 4). 753 
+Variables Code Mean SD Min Max 
+Response variables 
+Basal area (m2/ha) BA 5.4 (15.3) 4.0 (9.8) 0.7 (1.9) 24.3 (42.4) 
+Quadratic mean diameter (cm) QMD 10.9 (16.3) 4.2 (5.2) 6.7 (7.2) 20.5 (36.3) 
+Adult species density (number of individuals/ha) ASD 584.7 (693.5) 339.9 (276.2) 50 (250) 1,600 (1,600) 
+Adult species richness (number of species) ASR 4.8 (5.2) 2.2 (2.1) 1.0 (2.0) 13.0 (11.0) 
+Seedling species richness (number of species) SSR 4.9 (4.9) 2.1 (2.0) 0 (0) 9.0 (11.0) 
+Explanatory variables 
+Climatic 
+Maximum temperature of warmest month (degrees Celsius) Tmax 26.6 1.9 2.3 30.1 
+Mean temperature of warmest quarter (degrees Celsius) Tmea 18.9 14.9 16.4 22.4 
+Mean temperature of coldest quarter (degrees Celsius) Tmin 10.4 1.3 7.6 12.5 
+Precipitation seasonality (%) Psea 108.0 4.6 95.0 114.0 
+Precipitation of driest quarter (mm) Pmin 6.4 4.0 0 15 
+Heat load Hload 0.4 0.3 0.0 1.0 
+Aridity index Aind 0.4 0.1 0.2 0.5 
+Topographic 
+Elevation (m) Elev 327.1 230.4 14.0 920.0 
+Slope (degrees) Slop 7.8 12.7 0.3 25.1 
+Distance to coast (m) Dcoas 28.5 27.4 2.3 103.3 
+Soil characteristics 
+Bulk density (kg/m³) Bden 1,179.2 64.9 1,002.0 1,033.0 
+Cation exchange capacity Cec 17.5 4.5 7.0 30.0 
+Soil pH SpH 69.0 4.0 62.0 81.0 
+Soil organic Carbon (g per kg) SoC 12.9 2.9 8.0 21.0 
+ 754
