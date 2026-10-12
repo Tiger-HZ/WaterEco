@@ -1,0 +1,616 @@
+Water-induced supramolecular self-assembly of
+porphyrin integrated with multivalent metal–
+organic framework for enhanced
+electrochemiluminescence and ultrasensitive
+aptasensing of 4-ﬂuoromethamphetamine
+Bingxue Fan 
+Changzhou University
+Ding Jiang 
+Changzhou University
+Yuan Ni 
+Changzhou University
+Tengfei Meng 
+Changzhou University
+Zheng Sun 
+Changzhou Municipal Security Bureau
+Haibo Li 
+Changzhou Municipal Security Bureau
+Wenchang Wang 
+Changzhou University
+Zhidong Chen 
+Changzhou University
+Research Article
+Keywords: Electrochemiluminescence, Porphyrin, Metal–organic frameworks, 4-
+Fluoromethamphetamine, Supramolecular self-assembly, Cyanine dye
+Posted Date: July 27th, 2026
+DOI: https://doi.org/10.21203/rs.3.rs-10226952/v1
+Page 1/22
+License:   This work is licensed under a Creative Commons Attribution 4.0 International License.  
+Read Full License
+Additional Declarations: No competing interests reported.
+Page 2/22
+Abstract
+Aggregation-caused quenching (ACQ) and poor aqueous solubility severely restrict
+electrochemiluminescence (ECL) applications of polycyclic aromatic hydrocarbons (PAHs). Herein, a
+water-induced supramolecular self-assembly strategy is proposed to address these drawbacks. Via a
+simple reprecipitation route, representative PAH meso-tetrakis(4-carboxyphenyl)porphyrin (TCPP) forms
+ordered supramolecular aggregates driven by noncovalent interactions, which suppress π–π stacking
+and ACQ and achieve a low triggering potential of − 1.0 V. Iron-based MOF supported molybdenum
+disulﬁde (MIL-101@MoS2) is adopted as a multifunctional ampliﬁer: reversible valence interconversion
+of Fe2+/Fe3+ and Mo4+/Mo6+ sustains continuous redox cycling to improve redox activity, while abundant
+oxygen vacancies accelerate electron transfer and coreactant activation for further ECL enhancement.
+After preparing MIL-101(Fe)@MoS2@TCPP nanoparticles (MMST), an ECL aptasensor is fabricated for
+4-ﬂuoromethamphetamine (4-FMA) determination relying on target-triggered cyanine dye displacement.
+This sensor exhibits an ultralow limit of detection of (1.87 × 10− 15 g/L) (S/N = 3) and a broad linear range
+from (1.0 × 10− 14 – 1.0 × 10− 6 g/L) g/L. It also shows favorable analytical results for real e-cigarette
+samples, with recoveries of 95.0–104.0% and relative standard deviations (RSD) less than 5.0%. This
+work offers a green route for high-performance PAH-based ECL luminophores and a reliable tool for
+rapid ﬁeld screening of emerging psychoactive contaminants in complicated food-related matrices.
+INTRODUCTION
+New psychoactive substances (NPS) are synthetic drug analogs artiﬁcially fabricated by modifying the
+chemical structures of controlled substances to evade legal supervision, and they can induce equivalent
+or even stronger stimulant, hallucinogenic, and anesthetic effects than traditional illicit drugs.[1, 2] As the
+third-generation emerging drugs following traditional and synthetic drugs, NPS have posed severe
+challenges to global public security governance and forensic toxicology detection systems. 4-
+Fluoromethamphetamine (4-FMA) is a typical amphetamine-type NPS, which exhibits stronger
+neurostimulatory and hallucinogenic activities and higher abuse risks compared with amphetamine and
+methamphetamine.[3, 4] Nevertheless, the toxicological characteristics and supporting precise detection
+systems of 4-FMA remain poorly established due to its late emergence and regulatory implementation.
+Currently, high-performance liquid chromatography coupled with tandem mass spectrometry (HPLC-
+MS/MS) serves as the mainstream detection method for 4-FMA.[5] Despite its high sensitivity and
+accuracy, HPLC-MS/MS suffers from cumbersome sample pretreatment procedures, high detection
+costs, and heavy reliance on large-scale precision instruments, which severely restricts its scalable
+applications in grassroots drug control monitoring and on-site law enforcement, and fails to meet the
+core demand for rapid on-site screening. Therefore, the development of eﬃcient, rapid, facile, and ﬁeld-
+deployable detection technologies for 4-FMA is urgently required in forensic toxicology and public
+security research.
+Page 3/22
+Electrochemiluminescence (ECL) integrates the dual advantages of electrochemistry and
+photochemistry and has emerged as a high-speciﬁcity and ultra-sensitive analytical technique.[6–8]
+Featuring low background signal, excellent sensitivity, and tunable reaction controllability,[9, 10] ECL has
+become a promising alternative technique for rapid 4-FMA detection and has been widely applied in
+biomarker analysis, food safety assessment, immunoassay, and water quality monitoring.[11–13] In
+recent years, the concept of aggregation-induced electrochemiluminescence (AIECL) has attracted
+extensive research attention and promoted the innovation of ECL sensing technology.[14, 15] AIECL
+provides a feasible strategy to address the inherent aggregation-caused quenching (ACQ) effect and
+poor water solubility of conventional organic luminophores, which have long been the core bottlenecks
+limiting the practical applications of high-performance ECL sensors.[16, 17] Polycyclic aromatic
+hydrocarbons (PAHs) are a class of high-performance ECL luminophores, and mitigating their ACQ effect
+is critical for the construction of advanced ECL sensing platforms. Our previous work successfully
+inhibited the ACQ effect and improved the luminescence stability of PAHs by immobilizing PAH
+molecules within metal–organic framework (MOF) matrices via coordination anchoring.[18] However,
+conventional MOF-based composite luminophores are predominantly fabricated via solvothermal
+methods, which involve long reaction durations, complicated synthetic procedures, expensive organic
+solvents, and harsh high-temperature and high-pressure conditions. These limitations hinder the low-
+cost and large-scale preparation of MOF composites and severely restrict their practical deployment in
+on-site detection.
+A reprecipitation strategy addresses the intrinsic drawbacks of poor water solubility and severe
+aggregation-caused quenching of PAHs, [19, 20] and proposes a facile, green, and eﬃcient route to
+alleviate the ACQ effect of meso-tetrakis(4-carboxyphenyl)porphyrin (TCPP), a representative PAH
+luminophore. Driven by noncovalent intermolecular interactions, TCPP molecules spontaneously self-
+assemble into highly ordered and structurally stable supramolecular architectures in aqueous media.[21,
+22] Such well-deﬁned supramolecular structures effectively optimize interfacial electron transfer and
+energy migration, fundamentally mitigating the ACQ behavior and substantially boosting ECL
+performance. However, the stability and signal ampliﬁcation capability of these self-assembled nano-
+architectures alone still face challenges in meeting the demands of ultra-trace detection. In order to
+solve this problem, it is imperative to introduce strategies that can further stabilize the luminophore and
+amplify the ECL response.
+Recent studies have demonstrated that various strategies—including antenna effect-coupled Schottky
+heterojunctions,[23] co-reactant enrichment,[24] core–shell structures,[25] and band gap modulation[26]
+—can effectively stabilize luminophores and amplify ECL responses. In contrast to these approaches,
+MOF materials exhibit unique carrier advantages by virtue of their three-dimensional porous structures
+and the synergistic effect of multivalent metal centers.[27, 28] They can effectively disperse luminescent
+molecules, inhibit aggregation-induced deactivation, and remarkably improve the intensity and stability
+of ECL signals.[29, 30] More importantly, MOFs containing multivalent metal elements can continuously
+drive the redox cycling reactions in ECL systems through reversible valence-state conversion of metal
+nodes and ligands.[31–34] This multivalent cycling can signiﬁcantly accelerate coreactant activation
+Page 4/22
+while also lowering the ECL trigger voltage to − 1.0 V by facilitating electron transfer and reducing kinetic
+barriers. Such valence-variable behaviors not only enhance the redox activity of luminophores but also
+precisely regulate the ECL reaction kinetics, thereby achieving further ampliﬁcation and stabilization of
+sensing signals.[35, 36]
+In this work, iron-based MOF supported molybdenum disulﬁde (MIL-101@MoS₂) was adopted as a
+multifunctional signal ampliﬁcation carrier. Combined with the water-induced supramolecular self-
+assembly of TCPP, a novel ECL sensing platform with low trigger voltage, high stability and excellent
+sensitivity was successfully constructed. To achieve the ultra-sensitive and speciﬁc detection of 4-
+ﬂuoromethamphetamine (4-FMA) in complex matrices, a label-free DNA-cyanine dye (DNA-Cy7) ECL
+aptasensor was further fabricated based on the speciﬁc recognition capability of nucleic acid aptamers.
+[37–39] In this sensing system, the target 4-FMA competitively displaces Cy7 dye molecules from the
+aptamer strand, thereby generating a speciﬁc ECL response. This detection procedure eliminates
+complicated separation and labeling operations, which greatly simpliﬁes the analytical process. This
+ﬁnding ﬁlls the technical gap in the low-voltage and low-energy-consumption detection of 4-FMA and
+provides a desirable luminescent medium for the development of portable ECL detection devices. The
+constructed anti-interference and label-free sensing system enables reliable detection of 4-FMA in e-
+liquid samples and can be further extended to the rapid screening of adulterants in complex food
+matrices, including functional beverages, condiments and dietary supplements. The green and facile
+porphyrin supramolecular assembly strategy proposed in this study effectively addresses the inherent
+ACQ defect of conventional porphyrin luminophores, realizing the ultra-sensitive and convenient
+detection of 4-FMA in complex real samples. Compared with traditional large-scale mass spectrometry,
+this method exhibits prominent advantages of high eﬃciency, portability and low cost, holding great
+application potential in drug control, public security monitoring, forensic toxicology analysis and food
+safety detection. This work establishes a green and facile porphyrin supramolecular assembly strategy
+for high-performance ECL emitters and provides a universal analytical methodology for rapid screening
+of emerging contaminants in complex matrices.
+EXPERIMENTAL SECTION
+Reagents and materials, as well as the apparatus and characterization. The reagents and materials, as
+well as the apparatus and characterization, were described in the Supporting Information.
+Preparation of TCPP NPs. TCPP NPs were prepared through a simple precipitation method using
+tetrahydrofuran (THF) and water as good and poor solvents. First, 0.001 g of TCPP was dispersed in 10
+mL THF and dissolved under vigorous stirring; then, the mixture was poured into 20 mL of water rapidly
+under high-power sonication. Subsequently, continuous ultrasound experiment was carried out on the
+mixture until the solution became homogeneous. Finally, the mixture was transferred into a vacuum
+freeze dryer for 48 h and TCPP NPs were collected.
+Page 5/22
+Preparation of MIL-101(Fe)@MoS 2 @TCPP NPs (MMST). The detailed preparation of MIL-
+101(Fe)@MoS2 was provided in the Supplement Information. Different from the preparation of
+nanoparticles above, the MMST was prepared by changing the water into MMS aqueous solution with
+different concentrations. In short, a certain amount of MMS was added into 20 mL of ultrapure water and
+sonicated for 30 min. Subsequently, 1 mg/mL of TCPP solution was quickly poured into 20 mL of MMS
+aqueous solution. Finally, the MMST was collected by vacuum freeze-drying.
+ECL Measurement. Scheme 1 illustrates the preparation process for ECL sensors. After careful polishing
+with 0.3 and 0.05 µm of alumina powder on ﬁne grinding paper, the glassy carbon electrode (GCE, φ = 3
+mm) undergoes ultrasonic cleaning with water and ethanol prior to use. Then, MMST (4 µL, 0.5 mg/mL)
+were dripped onto the electrode surface and dried naturally in turn. Then, Cy7-aptamer (4 µL, 3 µM) was
+dripped on the electrode surface and incubated overnight at 4°C. The constructed biosensor was tested
+in 50 mM K2S2O8/phosphate buffered saline (PBS) (pH = 7.4) through ECL with − 1.0 to 0 V and the
+scanning rate of 100 mV/s. The photomultiplier tube (PMT) was 800 V.
+Scheme 1. Schematic illustration of the ECL aptasensor construction for 4-FMA detection.
+RESULTS AND DISCUSSION
+Characterisation of materials. The morphologies of the as-prepared materials were characterized using
+scanning electron microscopy (SEM) and ﬁeld-emission scanning electron microscopy (FE-SEM). Self-
+assembled TCPP nanoparticles ( TCPP NPs ) were prepared via a straightforward rapid solution
+dispersion method as reported in a previous study.[20] To investigate the structural properties of water-
+induced porphyrin nanoparticles, a series of characterizations were conducted. The morphology of TCPP
+NPs was obtained by SEM, as shown in Fig. 1B. The water-induced effect transformed the originally
+irregular bulk structure (Figure S1) of porphyrin into a nanosheet-like morphology with lengths ranging
+from approximately 1 µm to 50 µm. As illustrated in Fig. 1A, MMS was synthesized using a facile
+hydrothermal method. The FE-SEM image of MMS (Fig. 1C) reveals a ﬂower-like structure composed of
+an array of rough nanosheets. This unique ﬂower-like ring structure consists of MIL-101(Fe) and MoS₂
+arrays. Furthermore, the morphology of the MMST composite is displayed in Fig. 1D, where MMS and
+TCPP supramolecules are closely interconnected. The small-sized MMS particles are uniformly
+anchored onto the sheet-like structure of the TCPP supramolecules, accompanied by an increase in the
+diameter of TCPP NPs, which is attributed to the high dispersibility of MMS.
+To identify the functional groups and chemical bonds of the as-prepared samples, Fourier transform
+infrared (FT-IR) spectroscopy was conducted. The water-induced porphyrin supramolecules generally
+exhibit an FT-IR spectrum consistent with that of TCPP, as shown in Fig. 2A. FT-IR analysis of TCPP NPs,
+MMS, and MMST (Figure S2) revealed distinct structural changes: the appearance of Mo-O and C-O-C
+stretching vibrations in MMST, accompanied by a reduction in surface hydroxyl (-OH) groups, veriﬁed the
+successful chemical coupling between MMS and TCPP NPs. The UV-Vis absorption spectra show
+(Figure S3) that MMST retains both the characteristic absorption of MMS in the UV region and the typical
+Page 6/22
+Soret band of TCPP NPs at ~ 420 nm, conﬁrming the successful integration of TCPP into the composite.
+Furthermore, to explore the crystal structure of the obtained materials, X-ray diffraction (XRD) analysis
+was performed. XRD analysis of TCPP and TCPP NPs (Figure S4) revealed that pure TCPP has well-
+deﬁned crystalline peaks, whereas TCPP NPs exhibit broad and weak diffraction signals, conﬁrming that
+the self-assembly process leads to the destruction of long-range order and the formation of low-
+crystallinity nanoparticles.As illustrated in Fig. 2B, the XRD intensity of TCPP NPs is signiﬁcantly lower
+than that of porphyrin, which is likely attributable to the nanosizing process. In the case of MMST, the
+characteristic peaks include both the typical diffraction peaks of MoS2 and those of MIL-101(Fe).
+Speciﬁcally, four weak diffraction peaks at 2θ = 14.4°, 32.7°, 39.5°, and 58.3° correspond to the (002),
+(100), (103), and (110) crystal planes of MoS₂ (PDF#37-1492), respectively. Additionally, the diffraction
+peaks of MIL-101(Fe) (CCDC No. 605510) are also present.
+Finally, the chemical composition and elemental valence states of MMST were analyzed using X-ray
+photoelectron spectroscopy (XPS) and energy-dispersive X-ray spectroscopy (EDS). Figure 2C reveals
+the presence of ﬁve elements—C, O, S, Mo, and Fe—in MMST. EDS analysis (Figure S5) further
+demonstrates the uniform presence and favorable distribution of these elements, consistent with the
+XPS results shown in Fig. 2C, thereby conﬁrming the successful fabrication of the MMST composite. To
+further investigate the chemical states of the catalyst, the Fe 2p, S 2p, and Mo 3d spectra were
+examined. Figure 2D displays the high-resolution Fe 2p spectrum, where peaks at 710.57 and 724.17 eV
+correspond to Fe²⁺ in the 2p3/2 and 2p1/2 orbitals, respectively, while peaks at 712.96 and 726.85 eV are
+attributed to Fe³⁺ in the 2p3/2 and 2p1/2 orbitals, indicating the coexistence of Fe²⁺/Fe³⁺ in MMST.[40]
+Additionally, satellite peaks are located at 720.05 and 733.01 eV. In the S 2p spectrum (Fig. 2E), the
+binding energies of S 2p3/2 (161.59 eV) and S 2p1/2 (162.70 eV) are assigned to the S²⁻ orbital,[41]
+suggesting the presence of sulfur species and Fe–S bonds on the MMST surface. The peaks at 168.83
+and 163.36 eV correspond to sulfate species (–SO⁻) and unsaturated edge S, respectively.[42] The high-
+resolution Mo 3d spectrum of MMST is deconvoluted into four peaks at 226.06, 229.00, 232.47, and
+236.00 eV. The predominant peaks at 229.00 and 232.47 eV are assigned to Mo 3d5/2 and Mo 3d3/2,
+respectively, indicating the presence of Mo4⁺ (Fig. 2F). The small peak at 225.71 eV, arising from Mo–S
+bonding, is attributed to S 2s. Another peak at 336 eV is ascribed to Mo6⁺ oxide species formed during
+the in situ synthesis of MMST.[43] The high-resolution XPS spectra of O 1s and C 1s are shown in Figure
+S6 and Figure S7. Based on the above results, multiple active sites, including Fe3⁺/Fe2⁺, Mo6⁺/Mo4⁺, and
+various sulfur species, coexist in MMST.
+The ECL enhancement mechanism of MMST. To investigate the origin of the enhanced ECL
+performance of TCPP NPs, Raman spectroscopy was ﬁrst employed. By focusing on the characteristic
+peaks at 1366 cm⁻¹ (designated as peak I) and 1560 cm⁻¹ (designated as peak II), which are sensitive to
+structural changes in the porphyrin ring, the ratio of the relative intensities of these two vibrational peaks
+was calculated to evaluate the degree of π–π stacking.[7] The results show that TCPP NPs exhibit a
+relative peak intensity ratio of 0.59, which is approximately 0.09 lower than that of TCPP (0.67),
+indicating a relatively weaker π–π stacking in TCPP NPs. This ﬁnding reasonably explains that although
+Page 7/22
+porphyrin, as a planar polycyclic aromatic hydrocarbon, tends to form aggregated states via
+intermolecular π–π stacking, the reduced π–π stacking in TCPP NPs may attenuate the ACQ effect,
+thereby enhancing the luminescence eﬃciency of the luminophores.[44]
+To further explore the inﬂuence of π–π stacking on the optical properties, ultraviolet-visible (UV-Vis)
+absorption spectroscopy was conducted. Compared with the corresponding spectrum of the porphyrin
+solution, the UV-Vis spectrum of the porphyrin nanoparticles exhibits pronounced differences. The
+absorption spectrum of TCPP displays a classical Soret band and four Q bands, which are characteristic
+features of porphyrin. In comparison with TCPP, TCPP NPs show a blue shift of these bands and a
+decrease in absorbance, which are hallmark signatures of J-type (edge-to-edge) aggregation of TCPP
+molecules, likely induced by supramolecular interactions. This effectively restricts the aggregation of
+porphyrin molecules. Furthermore, the band gaps of TCPP and TCPP NPs were derived from Tauc plots.
+TCPP NPs exhibit a narrower band gap than TCPP, which is favorable for ECL emission. Collectively,
+these analyses clearly demonstrate that the optical properties of porphyrin can be effectively modulated
+by tuning its molecular structure. The water-induced effect not only alters the morphological structure of
+porphyrin but also inﬂuences its π–π stacking degree and optical characteristics, thereby opening new
+possibilities for the application of porphyrin in ﬁelds such as ECL.
+Moreover, the high-resolution O 1s XPS spectrum shows a dominant peak at 531.57 eV assigned to
+defective Mo–O species, implying the formation of oxygen vacancies in the MMST composite.
+Combined with the EPR signal at g ≈ 2.000 originating from unpaired electrons trapped in oxygen
+vacancies, XPS and EPR (Figure S8) mutually conﬁrm the rich oxygen vacancy defects of MMST. These
+oxygen vacancies serve as active centers to accelerate charge transfer and promote the activation of
+S2O82− coreactant, thereby greatly improving the ECL emission eﬃciency.
+To further verify the suppression of the ACQ effect in TCPP NPs, time-resolved ﬂuorescence decay
+measurements were carried out. As depicted in Fig. 3D and 3E, TCPP NPs exhibit a distinctly prolonged
+ﬂuorescence lifetime (τ = 11.60 ns) in comparison with monomeric TCPP (τ = 10.60 ns). Typically, the
+severe π–π stacking formed in aggregated polycyclic aromatic hydrocarbon (PAH) aggregates
+dominates the ACQ effect, which accelerates non-radiative decay and thus shortens the excited-state
+lifetime of luminophores. The obvious extension in the ﬂuorescence lifetime of self-assembled TCPP
+NPs demonstrates that water-induced supramolecular assembly effectively restricts the unfavorable
+intermolecular π–π stacking and inhibits non-radiative energy dissipation. Beneﬁting from the prolonged
+excited-state lifetime, a higher population of excited-state TCPP luminophores can be well maintained,
+which is favorable for eﬃcient luminescence and ECL emission.
+To verify that the cyanine dye can be displaced from the DNA-cyanine dye aptamer in the presence of 4-
+FMA, UV-Vis absorption spectroscopy was performed on APT/Cy7 and 4-FMA/APT/Cy7 solutions, with
+particular attention to the absorption peaks at 670 nm and 780 nm. As shown in Fig. 3F, the absorption
+spectra of the two solutions nearly completely overlap around 550 nm and 880 nm, indicating that the
+total dye concentration and optical path conditions are consistent between samples, thereby ruling out
+Page 8/22
+dilution or injection errors. In contrast, within the range of 660–780 nm, the absorbance of APT/Cy7 is
+markedly higher than that of 4-FMA/APT/Cy7. This selective decrease in absorbance upon addition of 4-
+FMA suggests a reduced contribution of the cyanine dye in the characteristic absorption region of the
+bound state, consistent with the spectral signature of dye displacement from the aptamer by 4-FMA.
+Therefore, this method enables label-free detection by directly monitoring the 4-FMA-induced
+displacement reaction via UV-Vis spectroscopy, without the need for laborious separation steps.
+In this work, K2S2O8 was employed as the coreactant, TCPP NPs served as the luminophore, and the
+MOF-based material MMS acted as the luminophore carrier, which effectively enhanced the ECL
+performance of the luminophore. The as-prepared composite MMST was subsequently utilized as the
+ﬁnal cathodic ECL emitter in the sensing system. The proposed ECL mechanism of the MMST/K2S2O8
+system can be expressed as follows: In route 1, a small number of S2O82⁻ gained electrons to produce
+SO4•⁻ (Eq. (1)), which reacted with MMST to produce a moderate ECL signal. In route 2, Fe3⁺ and Mo6⁺
+captured electrons for conversion to lower valence states (Fe2⁺ and Mo4⁺) (Eq. (2)), which accelerated
+the catalytic decomposition of S2O82⁻ and consistently produced a large amount of SO4•⁻ (Eq. (3)),
+enhancing the ECL signals and realizing a reversible transition of the valence state of the metal ions. In
+route 3, the rich oxygen vacancies in the composite could adsorb and activate dissolved O2, which was
+reduced to H2O2 (Eq. (4)), and OH• was formed by reacting variable valence metal ions with H2O2
+(Eq. (5)), which further reacted with S2O82⁻ to generate more SO4•⁻ (Eq. (6)), achieving superimposed
+ampliﬁcation of ECL signals. In the ECL emission route, the ground state MMST ﬁrst gained electrons to
+become MMST•⁻ (Eq. (7)), which subsequently reacted with SO4•⁻ to produce the excited state (MMST*)
+(Eq. (8)). Finally, MMST* produced ECL emission and returned to MMST (Eq. (9)), and the corresponding
+mechanism equations were as follows:
+Route 1:
+S2O82− + e− → SO42− + SO4•− (1)
+Route 2:
+Fe3+/Mo6+ + 3e− → Fe2+/Mo4+ (2)
+Fe2+/Mo4+ + S2O82− → Fe3+/Mo6+ + SO42− + SO4•− (3)
+Route 3:
+O2 + 2H2O + 2e− → H2O2 + 2OH− (4)
+Fe2+/Mo4+ + H2O2 → Fe3+/Mo6+ + OH− + OH• (5)
+OH + SO → O + HSO + SO (6)
+Page 9/22
+ECL emission:
+MMST + e− → MMST •− (7)
+MMST + SO → SO + MMST (8)
+MMST* + e− → MMST + hν (9)
+Electrochemical Characterization of the Modiﬁed Electrode. The stepwise construction of the sensor
+was characterized by electrochemical impedance spectroscopy (EIS). As shown in Fig. 4A, the bare
+glassy carbon electrode (GCE) exhibits the smallest impedance (curve a). After modiﬁcation with MMST,
+a signiﬁcant increase in impedance is observed (curve b), which is attributed to the poor conductivity of
+MMS, thereby hindering electron transfer at the electrode surface. Upon further modiﬁcation of the
+MMST/GCE with the aptamer, the impedance increases further (curve c) due to steric hindrance effects.
+Subsequently, after incubating the resulting DNA-Cy7/MMST/GCE with a solution containing the target
+analyte 4-FMA, the speciﬁc binding between DNA-Cy7 and the analyte occurs, leading to the
+displacement of Cy7. Consequently, no substantial change in impedance is observed (curve d). These
+results collectively conﬁrm the successful fabrication of the ECL aptasensor.
+In parallel, cyclic voltammetry (CV) was employed to monitor the interfacial current variations during
+each modiﬁcation step of the sensor fabrication process. As depicted in Fig. 4B, upon modiﬁcation of
+GCE with MMST, the redox current of the composite decreases markedly (curve b), which is consistent
+with the diminished electron transport capability of MMST. Following the immobilization of the aptamer
+DNA-Cy7 onto the electrode surface, the increased surface resistance leads to a reduced electron
+transfer rate, thereby further decreasing the current signal (curve c). Subsequently, after incubation with
+the target analyte 4-FMA, the peak current remains almost unchanged (curve d), which is attributable to
+the dye displacement effect. The EIS and CV results exhibit consistent trends in electron transfer
+behavior, collectively validating the successful assembly of the sensor.
+To evaluate the feasibility of the proposed sensor, the electrochemiluminescence (ECL) behaviors of
+different modiﬁed electrodes were examined. As shown in Fig. 4C, with K₂S₂O₈ serving as the coreactant
+in the ECL reaction system, a weak ECL signal is observed at the bare GCE (curve a). Upon modiﬁcation
+with the luminophore TCPP, the ECL signal increases slightly to approximately 1200 a.u. (curve b). In
+contrast, when TCPP NPs are modiﬁed onto the GCE, the ECL signal of the sensor exhibits an
+approximately six-fold enhancement compared to that of monomeric TCPP (curve c). This signal
+ampliﬁcation is attributed to the water-induced porphyrin supramolecules effectively alleviating the
+aggregation-caused quenching (ACQ) effect, thereby generating stronger ECL emission. Furthermore, the
+ECL intensity of MMS alone is approximately 3000 a.u. (curve d), whereas the MMST composite
+achieves an ECL intensity close to 18000 a.u. (curve e). This enhancement arises from the presence of
+multivalent Fe and Mo ions in the MOF-based carrier MMS, whose valence state changes can actively
+participate in the ECL redox process, thereby boosting the ECL performance. Subsequently, upon further
+incubation of the aptamer DNA-Cy7 on the electrode, the ECL signal decreases (curve f) due to the steric
+Page 10/22
+hindrance effect of the biomacromolecules, which impedes electron transfer. Finally, when the fabricated
+aptasensor is used for detection, the speciﬁc recognition and immobilization of the target analyte on the
+electrode surface lead to a further reduction in the ECL signal (curve g). These results collectively
+conﬁrm the successful construction of the aptasensor.
+Sensing Performance. To evaluate the sensitivity of the proposed ECL aptasensor, the ECL intensities in
+response to varying concentrations of 4-FMA were measured under optimal experimental conditions
+(Figure S9). As shown in Fig. 5A, the ECL intensity gradually increases with the concentration of 4-FMA
+ranging from 1.0 × 10⁻14 g/L to 1.0 × 10⁻6 g/L. A good linear relationship is observed between the
+enhanced ECL intensity (ΔIECL) and the logarithm of the 4-FMA concentration. The corresponding
+calibration curve is presented in Fig. 5B, yielding a linear regression equation of ΔIECL = 15433.83 + 
+856.41 lg C₄‑FMA, with a correlation coeﬃcient (R²) of 0.985. The detection limit is determined to be 1.87
+× 10⁻15 g/L (S/N = 3). These results demonstrate that the constructed aptasensing platform exhibits
+satisfactory sensitivity. Moreover, in comparison with many previously reported detection methods, the
+proposed ECL biosensor offers a lower detection limit and a wider linear range (Table S1).
+The speciﬁcity, ECL signal stability, and reproducibility of the sensor are also of critical importance.
+Speciﬁcity serves as a key parameter for evaluating the detection capability of the designed sensor. The
+selectivity of the aptasensor was assessed using furanyl fentanyl, ﬂu alprazolam, AB-PINACA, MDPV,
+RCS-4, and 4-CEC as interfering substances (chemical structures are shown in Figure S10). Brieﬂy, the
+experimental procedure was identical to that used for 4-FMA detection, with the concentration of these
+interfering substances (1.0 × 10⁻4 g/L) being 10,000-fold higher than that of 4-FMA. As shown in Fig. 6A,
+the enhancement of the ECL signal induced by 4-FMA is markedly higher than that of the other NPS,
+indicating the favorable selectivity of the proposed sensor toward 4-FMA.
+As illustrated in Fig. 6B, ten consecutive cyclic voltammetry scans were performed on different modiﬁed
+electrodes in the detection solution. The results demonstrate that each modiﬁed electrode exhibits
+excellent ECL signal stability, with relative standard deviation (RSD) values all below 5.0%. This ﬁnding
+strongly conﬁrms the superior stability of the constructed sensor in terms of ECL signal output, thereby
+providing a reliable foundation for its practical application. Storage stability testing was conducted by
+placing the ECL aptasensor-modiﬁed glassy carbon electrode in a 4°C refrigerated environment. The
+experimental data (Fig. 6C) reveal that the ECL signal intensity of the sensor exhibits only a slight
+decreasing trend over storage durations of 0, 3, 9, 12, and 15 days. This result indicates the excellent
+storage stability of the constructed sensing platform, further validating the reliable stability of the ECL
+aptasensor system.
+Under identical experimental conditions, ﬁve batches of independently prepared aptasensors were used
+to detect the same concentration of 4-FMA. The corresponding ECL response values were measured and
+recorded. The experimental data show that the RSD of the ECL intensities across the ﬁve sensor batches
+is below 5.0% (Fig. 6D), fully demonstrating the excellent detection reproducibility of the developed
+aptasensor system.
+Page 11/22
+Detection of 4-FMA in real samples. To validate the feasibility of the proposed ECL method, a standard
+addition method was employed in this study. The speciﬁc procedure was as follows: known
+concentrations of 4-FMA standard solutions were added in a gradient manner to diluted e-cigarette
+samples, followed by quantitative analysis using the as-prepared ECL aptasensor. The spike recovery
+and relative standard deviation (RSD) were calculated based on the ratio of the measured concentration
+to the spiked concentration. As shown in the Table 1, the recoveries of the sensor range from 95.0% to
+104.0%, with RSD values below 5%. These results strongly demonstrate that the proposed ECL
+aptasensor exhibits high applicability and favorable sensitivity for the detection of 4-FMA in e-cigarette
+samples.
+Table 1
+Analytical data of 4-FMA in the e-cigarettes samples with the as-
+developed approach (n = 3).
+e-cigarettes 1 0 ND - -
+Samples Added
+(×10− 8 g/L)
+The ECL sensor
+Found (×10− 8 g/L) Recovery(%) RSD(%)
+1 0.95 95.0 3.3
+10 10.2 102 2.8
+100 97.2 97.2 2.9
+e-cigarettes 2 0 ND - -
+1 0.98 98 2.7
+10 10.4 104 3.9
+100 103.1 103.1 3.8
+e-cigarettes 3 0 ND - -
+1 0.98 98 2.2
+10 10.4 104 3.9
+100 99.2 99.2 2.1
+CONCLUSION
+In this study, a simple reprecipitation method was employed to alleviate the ACQ effect of porphyrin
+molecules, yielding water-induced supramolecular assemblies with prolonged excited-state lifetimes and
+enhanced luminescence eﬃciency. Meanwhile, a multivalent metal–organic framework was utilized as
+the luminophore carrier, which not only effectively immobilized the luminophore but also actively
+participated in the ECL redox reactions through reversible valence state transitions of the multivalent
+ions. Speciﬁcally, the rapid cyclic interconversion of the Fe²⁺/Fe³⁺ and Mo⁴⁺/Mo⁶⁺ redox pairs
+Page 12/22
+substantially enhanced the ECL response and lowered the trigger voltage to − 1.0 V. The resulting MMST
+composite was successfully integrated into an ECL sensing platform for the ultrasensitive detection of 4-
+FMA in complex e-liquid matrices, achieving an exceptionally low detection limit of 1.87 × 10⁻15 g/L and
+a wide linear range spanning ten orders of magnitude (1.0 × 10⁻14 – 1.0× 10⁻6 g/L). Upon introduction of
+the target analyte, it speciﬁcally bound to the DNA-Cy7 aptamer, leading to the displacement of the
+cyanine dye Cy7 and signiﬁcantly improving the speciﬁcity of the sensor. The satisfactory recoveries
+(95.0–104.0%) and low relative standard deviations (< 5%) obtained in viscous, multi-component e-liquid
+samples containing propylene glycol, glycerol, nicotine, and ﬂavoring agents demonstrated the robust
+matrix tolerance and operational reliability of the proposed platform. These analytical attributes
+establish a versatile analytical strategy for the detection of emerging contaminants in complex matrices,
+providing a methodological foundation for rapid on-site screening applications.
+Declarations
+ASSOCIATED CONTENT
+Supporting Information for this article is available online at * * *. 
+Other experimental details, materials, methods, instruments, other characterizations, and supplementary
+ﬁgures S1-S10 and Table S1.
+AUTHOR INFORMATION
+Corresponding Author
+Zhidong Chen − Jiangsu Key Laboratory of Advanced Catalytic Materials and Technology, School of
+Petrochemical Engineering, Changzhou University, Changzhou, Jiangsu, 213164, P. R. China ;orcid.org/0000-
+0002-9383-9563; E-mail address: zdchen@cczu.edu.cn 
+Authors
+Bingxue Fan − Jiangsu Key Laboratory of Advanced Catalytic Materials and Technology, School of
+Petrochemical Engineering, Changzhou University, Changzhou, Jiangsu, 213164, P. R. China 
+Ding Jiang − Jiangsu Key Laboratory of Advanced Catalytic Materials and Technology, School of
+Petrochemical Engineering, Changzhou University, Changzhou, Jiangsu, 213164, P. R. China; orcid.org/0000-
+0001-6600-4459
+Yuan Ni − Jiangsu Key Laboratory of Advanced Catalytic Materials and Technology, School of
+Petrochemical Engineering, Changzhou University, Changzhou, Jiangsu, 213164, P. R. China 
+Tengfei Meng− Jiangsu Key Laboratory of Advanced Catalytic Materials and Technology, School of
+Petrochemical Engineering, Changzhou University, Changzhou, Jiangsu, 213164, P. R. China
+Page 13/22
+Zheng Sun − Institute of Forensic Science, Changzhou Municipal Security Bureau, Changzhou 213164,
+China
+Haibo Li − Institute of Forensic Science, Changzhou Municipal Security Bureau, Changzhou 213164, China
+Wenchang Wang − Jiangsu Key Laboratory of Advanced Catalytic Materials and Technology, School of
+Petrochemical Engineering, Changzhou University, Changzhou, Jiangsu, 213164, P. R. China 
+Author Contributions
+The manuscript was written through the contributions of all the authors. All the authors have given
+approval to the ﬁnal version of the manuscript.
+Conﬂict of interest
+The authors conﬁrm no declarations of interest.
+ACKNOWLEDGMENTS
+This work was ﬁnancially supported by the National Natural Science Foundation of China (No.
+22378029), and the Electrolytic Copper Foil Engineering Technology Center of Changzhou University. The
+authors thank Analysis and Testing Center, NERC Biomass of Changzhou University.
+References
+1. Schmid CL, Kennedy NM, Ross NC et al (2017) Bias factor and therapeutic window correlate to
+predict safer opioid analgesics. Cell 171:1165–1175e13. https://doi.org/10.1016/j.cell.2017.10.035
+2. Tang Y, Xu L, Guo Z et al (2025) Metabolism study of two phenethylamine – derived new
+psychoactive substances using in silico, in vivo, and in vitro approaches. Arch Toxicol 99:2367–
+2378. https://doi.org/10.1007/s00204-025-04010-6
+3. Zhang Y-Q, Min HK, Hong E et al (2023) Abused drug-induced intracranial self-stimulation is
+correlated with the alteration of dopamine transporter availability in the medial prefrontal cortex and
+nucleus accumbens of mice. Biomed Pharmacother 169:115860.
+https://doi.org/10.1016/j.biopha.2023.115860
+4. Alfred S, Stockham P, Partridge E et al (2023) The south australian emergency department
+admission blood psychoactive testing (EDABPT) program: First results. Med J Aust 218:376–377.
+https://doi.org/10.5694/mja2.51907
+5. Zheng Q, Wen M, Jia J, Wang T (2019) Determination of the Content of 4-FMA in Rat Plasma
+Samples by HPLC-MS/MS Method. Fa yi xue za zhi 35:419. https://doi.org/10.12116/j.issn.1004-
+5619.2019.04.007
+6. Chen X, Sun B-X, Xu W et al (2025) Electrochemiluminescence discloses active intermediates in
+oxygen evolution reactions of metal–organic framework. Adv Sci 12:e06309.
+Page 14/22
+https://doi.org/10.1002/advs.202506309
+7. Hu Z, Wang Q, Yang Z et al (2025) Switch-type electrochemiluminescence aptasensor for AFB1
+detection based on CoS quantum dots encapsulated in co-LDH and a ferrocene quencher. Anal
+Chem 97:1366–1373. https://doi.org/10.1021/acs.analchem.4c05821
+8. Zhang H, Xu R, Wei X et al (2026) Hydroxyethyl cellulose-boosted electrochemiluminescence sensor
+based on velvet-like g-C3N4 for ultrasensitive detection of 3-nitro-l-tyrosine. Talanta 308:129877.
+https://doi.org/10.1016/j.talanta.2026.129877
+9. Zhang J-L, Yang Y, Liang W-B et al (2021) Highly stable covalent organic framework nanosheets as a
+new generation of electrochemiluminescence emitters for ultrasensitive MicroRNA detection. Anal
+Chem 93:3258–3265. https://doi.org/10.1021/acs.analchem.0c04931
+10. Huang W, Hu G-B, Yao L-Y et al (2020) Matrix coordination-induced electrochemiluminescence
+enhancement of tetraphenylethylene-based hafnium metal–organic framework: An
+electrochemiluminescence chromophore for ultrasensitive electrochemiluminescence sensor
+construction. Anal Chem 92:3380–3387. https://doi.org/10.1021/acs.analchem.9b05444
+11. Hu Z, Zheng Y, Zhang Q et al (2026) High-sensitivity electrochemiluminescent aptasensor combined
+dual-function NiFe-PBA nanozyme and multipedal DNA walker for E. coli O157:H7. Sens Actuators B
+462:140028. https://doi.org/10.1016/j.snb.2026.140028
+12. Wang T, Zhou Y, Wang B et al (2026) Label-free electrochemiluminescence detection of urinary
+AD7c-NTP using structurally optimized iridium(III) complexes on boron-doped diamond electrodes.
+Anal Chem 98:14991–15001. https://doi.org/10.1021/acs.analchem.6c00503
+13. Sun W, Wei Y, Liu X et al (2026) Cathodic electrochemiluminescence biosensing based on
+In2Se3/Ag3PO4 composite for sensitive detection of p-Tau181 protein. Talanta 305:129550.
+https://doi.org/10.1016/j.talanta.2026.129550
+14. Jiang H, Qin Z, Zheng Y et al (2019) Aggregation-induced electrochemiluminescence by metal-
+binding protein responsive hydrogel scaffolds. Small 15:1901170.
+https://doi.org/10.1002/smll.201901170
+15. Chen X, Zhao J, Wang Y et al (2024) Dual emitting aggregation-induced electrochemiluminescence
+from tetrastyrene derivative for chloramphenicol detection. Food Chem 457:140100.
+https://doi.org/10.1016/j.foodchem.2024.140100
+16. Hu C, Cao L, Wu X et al (2024) Coreactant-free aggregation-induced electrochemiluminescence
+system based on the novel zinc-luminol metal-organic gel for ultrasensitive detection of PiRNA-823.
+Biosens Bioelectron 255:116263. https://doi.org/10.1016/j.bios.2024.116263
+17. He L, Wang Y, Zhang C et al (2024) Self-assembled tetraphenylethene-based nanoaggregates with
+tunable electrochemiluminescence for the ultrasensitive detection of E. coli. Anal Chem 96:4809–
+4816. https://doi.org/10.1021/acs.analchem.3c04820
+18. Ni Y, Jiang D, An X et al (2024) Low-triggering-potential electrochemiluminescence based on mental-
+organic frameworks encapsulation of ruthenium for synthetic cathinone detection by coupling
+Page 15/22
+photonic crystal light-scattering signal ampliﬁcation of covalent-organic frameworks. Anal Chim
+Acta 1312:342763. https://doi.org/10.1016/j.aca.2024.342763
+19. Wu Y, Mu Z, Gong F et al (2023) Overcoming aggregation-caused quenching by an improved
+porphyrin hybrid and its application in enhanced electrochemiluminescence biosensing. ACS
+Sustainable Chem Eng 11:14124–14132. https://doi.org/10.1021/acssuschemeng.3c03608
+20. Wen Y, Yang J, Yang G et al (2024) Porous complex-mediated dual emission of porphyrins for the
+electrochemiluminescence bioassay. Anal Chem 96:1427–1435.
+https://doi.org/10.1021/acs.analchem.3c03406
+21. Liu D, Wang J, Bai X et al (2016) Self-assembled PDINH supramolecular system for photocatalysis
+under visible light. Adv Mater 28:7284–7290. https://doi.org/10.1002/adma.201601168
+22. Balakrishnan K, Datar A, Oitker R et al (2005) Nanobelt self-assembly from an organic n-type
+semiconductor: Propoxyethyl-PTCDI. J Am Chem Soc 127:10496–10497.
+https://doi.org/10.1021/ja052940v
+23. Fan B, Jiang D, Ni Y et al (2025) Synergistic coupling of antenna effect and schottky junction in tb-
+doped covalent organic framework for enhanced electrochemiluminescence sening of isobutyryl
+fentanyl. Anal Chem 97:19695–19704. https://doi.org/10.1021/acs.analchem.5c03193
+24. Chen Y, He Y, Zhao J et al (2022) Hydrophobic Localized Enrichment of Co-reactants to Enhance
+Electrochemiluminescence of Conjugated Polymers for Detecting SARS-CoV-2 Nucleocapsid
+Proteins. Anal Chem 94:4446–4454. https://doi.org/10.1021/acs.analchem.1c05407
+25. Zhang S, Jiang M, Li H et al (2025) Modulation of electron transfer in electrochemiluminescence:
+Synergistic utilization of doping effects in the material and composite effects of au in the core–shell
+structure. J Mater Chem A 13:7249–7262. https://doi.org/10.1039/D4TA07433E
+26. Wang Y, Jiang X, Cao W et al (2024) N vacancy and self-enhancement induced high anodic
+electrochemiluminescence of 3D g-C3N4 for sensitive staphylococcus aureus analysis. Talanta
+275:126144. https://doi.org/10.1016/j.talanta.2024.126144
+27. Wang W, Chen D, Li F et al (2024) Metal-organic-framework-based materials as platforms for energy
+applications. Chem 10:86–133. https://doi.org/10.1016/j.chempr.2023.09.009
+28. Zhang P, Zhang Y, Wu F et al (2025) Photoisomerization-mediated tunable pore size in metal organic
+frameworks for U(VI)/V(V) selective separation. Nat Commun 16:2361.
+https://doi.org/10.1038/s41467-025-57638-4
+29. Wang X, Jiang D, Zhang W et al (2025) Signal-inversion strategy-mediated dual-wavelength
+ratiometric ECL sensing for sensitive detection of 5F-ADB. Anal Chem 97:24576–24585.
+https://doi.org/10.1021/acs.analchem.5c04591
+30. Liu D, Dong D, Liu T et al (2025) Pressure-induced luminescence enhancement of aggregation-
+induced emission molecules conﬁned in two-dimensional MOF layers. ACS Mater Lett 7:1746–1753.
+https://doi.org/10.1021/acsmaterialslett.5c00092
+31. Xia X, Dong X, Du Y et al (2025) Multivalent redox reversible conversion-enhanced
+electrochemiluminescence strategy for progesterone detection. Anal Chem 97:3720–3728.
+Page 16/22
+https://doi.org/10.1021/acs.analchem.4c06615
+32. Wu Z, Zhang Y, Zhang L et al (2023) Coupling fe(II)/fe(III) redox mediated SO2 conversion with
+hydrogen production. Adv Funct Mater 33:2212479. https://doi.org/10.1002/adfm.202212479
+33. Noguchi Y, Taniguchi Y, Inoue R, Miyayama M (2020) Successive redox-mediated visible-light
+ferrophotovoltaics. Nat Commun 11:966. https://doi.org/10.1038/s41467-020-14763-6
+34. Liu T, Lan C, Tang M et al (2024) Redox-mediated decoupled seawater direct splitting for H2
+production. Nat Commun 15:8874. https://doi.org/10.1038/s41467-024-53335-w
+35. Li W, Liu W, Yang X et al (2024) Universal signal switch based on a mesostructured silica xerogel-
+conﬁned ECL polymer for epigenetic quantiﬁcation. Anal Chem 96:1651–1658.
+https://doi.org/10.1021/acs.analchem.3c04564
+36. Zong L-P, Li X-J, Zhu D et al (2025) Metal – π interaction-enhanced electrochemiluminescence via U-
+shaped schiff base luminophores for ultrasensitive clindamycin detection. ACS Sens 10:7134–7143.
+https://doi.org/10.1021/acssensors.5c02452
+37. Liu Y, Raymond O, Hodgkiss JM (2025) Exploring Fluorescence Spectral Shifts in Aptamer-
+Intercalating Cyanine Dye Complexes upon Binding to Speciﬁc Small Molecules. ACS Sens
+10:2266–2275. https://doi.org/10.1021/acssensors.4c03579
+38. Jin X, Liu Y, Alkhamis O et al (2022) Near-infrared dye-aptamer assay for small molecule detection in
+complex specimens. Anal Chem 94:10082–10090. https://doi.org/10.1021/acs.analchem.2c01095
+39. Alkhamis O, Canoura J, Bukhryakov KV et al (2022) DNA aptamer–cyanine complexes as generic
+colorimetric small-molecule sensors. Angew Chem Int Ed 61:e202112305.
+https://doi.org/10.1002/anie.202112305
+40. Wang F, Liu S-S, Feng Z et al (2022) High-eﬃcient peroxymonosulfate activation for rapid atrazine
+degradation by FeSx@MoS2 derived from MIL-88A(fe). J Hazard Mater 440:129723.
+https://doi.org/10.1016/j.jhazmat.2022.129723
+41. Li X, Wang L, Guo Y et al (2022) Goethite-MoS2 hybrid with dual active sites boosted
+peroxymonosulfate activation for removal of tetracycline: The vital roles of hydroxyl radicals and
+singlet oxygen. Chem Eng J 450:138104. https://doi.org/10.1016/j.cej.2022.138104
+42. Lu J, Zhou Y, Zhou Y (2021) Eﬃciently activate peroxymonosulfate by Fe3O4@MoS2 for rapid
+degradation of sulfonamides. Chem Eng J 422:130126. https://doi.org/10.1016/j.cej.2021.130126
+43. Zhou J, Guo X, Zhou X et al (2022) Boosting the eﬃciency of fe-MoS2/peroxymonosulfate catalytic
+systems for organic powllutants remediation: Insights into edge-site atomic coordination. Chem Eng
+J 433:134511. https://doi.org/10.1016/j.cej.2022.134511
+44. Lai W, Yan S, Jiang M et al (2024) Dual-mode immunoassay constructed by water-induced perylene
+diimide supramolecular self-assembly and enzymatic biocatalytic precipitation strategy. Anal Chem
+96:14074–14084. https://doi.org/10.1021/acs.analchem.4c03563
+Scheme 1
+Page 17/22
+Scheme 1 is available in the Supplementary Files section.
+Figures
+Figure 1
+(A) Synthesis of MMS; (B) SEM image of TCPP NPs; (C) FE-SEM image of MMS; and (D) SEM image of
+MMST
+Page 18/22
+Figure 2
+(A) FT-IR spectra of TCPP and TCPP NPs; (B) XRD patterns of different substances; (C) XPS spectrum of
+MMST; (D) high-resolution spectra of Fe 2p; (E) S 2p; (F) Mo 3d
+Page 19/22
+Figure 3
+(A) Raman spectra (TCPP, red curve; TCPP NPs, blue curve), (B) UV–Vis absorption spectra, and (C) Tauc
+plots of TCPP and TCPP NPs; time-resolved ﬂuorescence decay curves of (D) monomeric TCPP and (E)
+TCPP NPs (λex = 420 nm); and (F) UV–Vis absorption spectra of APT/Cy7 and 4-FMA/APT/Cy7.
+Figure 4
+EIS (A) and CV curves (B) of different modiﬁed electrodes in 0.1 mol/L KCl and 10 mmol/L
+K3Fe(CN)6/K4Fe(CN)6 solution: GCE (a), MMST/GCE (b), DNA-Cy7/MMST/GCE(c) and 4-FMA/DNA-
+Cy7/MMST/GCE(d); the ECL-potential curves (C) of GCE (a), TCPP/GCE (b), TCPP NPs (c), MMS (d),
+Page 20/22
+MMST/GCE (e), DNA-Cy7/MMST/GCE (f) and 4-FMA/DNA-Cy7/MMST/GCE (g) in 0.1 mol/L PBS (pH 7.4
+) containing 0.05 mol/L K2S2O8 were obtained
+Figure 5
+(A) The response range of ECL to different concentrations of 4-FMA is a–i: 1.0 × 10−6 g/L to 1.0 × 10−14
+g/L; (B) Linear ﬁt curve showing the relationship between 4-FMA concentration (1.0 × 10−6 g/L to 1.0 ×
+10−14 g/L) and ΔECL
+Page 21/22
+Figure 6
+(A) Speciﬁcity of the aptasensor toward various interfering NPS; (B) ECL stability curves of MMST/GCE
+(a), DNA-Cy7/MMST/GCE (b), and 4-FMA/DNA-Cy7/MMST/GCE (c) over 10 consecutive scanning cycles
+in a buffer containing 0.05 mol/L K₂S₂O₈; (C) Long-term storage stability of the aptasensor; (D)
+Reproducibility of the aptasensor obtained from ﬁve parallel experiments.
+Supplementary Files
+This is a list of supplementary ﬁles associated with this preprint. Click to download.
+SupportingInformation.docx
+graphicalsummary.tif
+Scheme1.tif
+Page 22/22
