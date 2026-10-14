@@ -1,0 +1,860 @@
+This is the accepted version of the journal article:
+Pujol, Ll.; Sanchez-Cabeza, Joan-Albert. «Use of tritium to predict soluble
+pollutants transport in Ebro River waters (Spain)». Environmental pollution,
+Vol. 108, Num. 2 (May 2000), p. 257-269 DOI 10.1016/S0269-7491(99)00185-2
+This version is available at https://ddd.uab.cat/record/327587
+under the terms of the 
+ license.
+ 1
+Use of tritium to predict soluble pollutants transport in Ebro river waters (Spain) 
+Ll. Pujol* and J.A. Sanchez-Cabeza 
+Departament de Física, Univers itat Autònoma de Barcelona, ES-08 193 Bellaterra, 
+Barcelona, Spain 
+* Corresponding author, tel: +3491-335.72.28, fax: +3491-335.72.67, e-mail: Luis.Pujol@cedex.es 
+Abstract 
+The Ebro river, in Northeast Spain, discharges into the Medite rranean Sea after 
+flowing through several large cities and agricultural, mining a nd industrial areas. The 
+Ascó nuclear power plant (NPP) is located in its lower section and comprises two 
+pressurised-water reactor (PWR) units, from which low-level liq uid radioactive waste is 
+released to river waters under authority control. Tritium routi nely released by the NPP 
+was used as a radiotracer to dete rmine the longitudinal dispers ion coefficient and 
+velocity of the river waters. Se veral field experiments, in co- ordination with the NPP, 
+were carried out during 1991 and 1992. During each field experi ments, the flow rate 
+was kept constant by dams located upstream NPP. After each trit ium release, water was 
+sampled downstream at periodic i ntervals over several hours and tritium was measured 
+with a low-background liquid scin tillation counter. Velocity an d dispersion coefficient 
+were determined in river waters for several river discharges us ing an analytical, a 
+box-type and a numerical approach to solve the one-dimensional advection-diffusion 
+equation. The set of calibrated parameters was used to predict the displacement and the 
+dispersion of soluble pollutants in river waters. Velocity was determined as a function 
+of river discharge and river sl ope, and dispersion coefficient was determined as a 
+function of distance. Finally, se nsitivity of the model predict i o n s w a s s t u d i e d a n d 
+uncertainties of the fitted parameters were estimated. 
+Keywords: River; water polluti on; numerical methods; longitudin al dispersion 
+coefficient; advection-diffusion equation. 
+ 2
+INTRODUCTION 
+The hydrosphere represents an im portant pathway through which p ollutants can be 
+dispersed into the environment, become incorporated into the fo od chain, and hence to 
+man (Eisenbud and Gesell, 1997). Regarding water quality contr ol in rivers, both 
+continuous pollution and accidental spills are the greatest eco logical and economic 
+potential dangers for rivers. In both cases, it is convenient t o develop simple transport 
+models in order to predict, with reasonable precision, concent ration distributions and 
+travel times of pollutants in rivers. The basic equation that d escribes the dispersion of 
+pollutants in rivers is the one -dimensional advection-diffusion equation, which 
+describes the dispersion as a f unction of mean stream velocity and a longitudinal 
+dispersion coeffic ient (Leibundgut et al ., 1992). The one-dimensional 
+advection-diffusion equation can be expressed as (Rutherford, 1994): 
+x
+txcv
+x
+txcDt txc  ),(),(),( 22  ( 1 ) 
+where c(x,t) is the concentration of the substance or the solute, D is the dispersion 
+coefficient, if assumed to be independent from x, and v is the mean velocity. 
+ The mixing process of continuous release can be divided into three zones 
+(Yotsukura and Sayre, 1976): 
+1. Initial mixing zone: the tracer is discharged into the river wi th an initial momentum 
+and is not fully mixed. This zone extends from the source to a section where the 
+distribution of the tracer concen tration becomes uniform over d epth, but not 
+horizontally, and may cover a distance up to about one hundred times the river 
+channel depth. In this first st age, three-dimensional equations are needed to study 
+the dispersion. 
+2. Full mixing zone: the tracer has lost its initial momentum. Thi s stage extends from 
+the end of the initial mixing zone to a section where the trace r is mixed over the full 
+ 3
+cross-section of the water body, that is vertically and horizon tally, and may cover 
+from 3 to 10 km in large rivers. The distance from the source t o the point in which 
+mixing is homogeneous and complete is known as the mixing lengt h. To model this 
+stage two-dimensional equations may suffice. 
+3. Far field dispersion zone: this stage extends from the end of t he full mixing zone to 
+a long distance, where the tracer concentration may become unde tectable. 
+One-dimensional equations are use d to model this zone. Apart fr om convective 
+transport, the predominant effect in this stage is longitudinal dispersion, that is, 
+tracer cloud stretching in the v elocity direction. This is pred ominant for 
+instantaneous releases, but may also be observed in non-continu ous releases such as 
+those described in this work. 
+One of the important assumptions of the tracer dilution princip le in the third zone is 
+full mixing. In this case, and al so for a continuous release un der stationary hydraulic 
+conditions, if q << Q, the tracer activity in the river (Co) can be calculated as 
+qQCC to  ( 2 ) 
+where Ct is the mean concentration of tracer release, q i s t h e f l o w r a t e o f t h e t r a c e r 
+discharge and Q is the river discharge. This is valid for sampling points loca ted at a 
+distance from the source greater t han the mixing length. A numb er of empirical 
+formulae have been proposed to estimate the mixing length (Day, 1977; Guizerix and 
+Florkowski, 1983; Rutherford, 1994). Nevertheless, the expressions should be used with 
+caution as they have been empirically established for specific rivers in specific 
+hydraulic conditions. In the case of the Ebro river, Asociación Nuclear Ascó observed 
+that full heat mixing was alwa ys at 6.5 km from the release poi n t f o r a r a n g e o f 
+hydraulic conditions (personal communication). 
+ 
+ 4
+ In this study, tritium routinely released as low-activity liqu id radioactive waste by the 
+Ascó nuclear power plant (Tarragona, Spain), was used to predic t the displacement and 
+the dispersion of soluble pollutants in the Ebro river in its l ower course. We studied 
+far-field tracer dispersion using the one-dimensional advection -diffusion equation with 
+constant v and D. Predictive codes used the observed functional dependence of these 
+two parameters with distance. 
+ 
+EXPERIMENTAL 
+Study area 
+The Ebro river is located in the Northeast of Spain and dischar ges into the 
+Mediterranean sea after flowing for more than 900 km. The Ascó nuclear power plant is 
+located in the final section of the river and comprises two pre ssurized-water reactor 
+(PWR) units: Ascó I and Ascó II (Fig. 1). During their normal operation, these two units 
+generate low-activity radioactive liquid waste, including triti um, which is released into 
+the river in a controlled way: most activity is released from s torage tanks, although a 
+continuous release also exists. This routine operation can be u sed to trace river waters 
+downstream. 
+A number of small streams discharg e very small water quantities to the Ebro river. 
+The largest tributary in this zone, river Ciurana (Fig. 1), con tributes with less than 1 
+Hm3 p e r y e a r , w h i c h i s m u c h l e s s t h a n 1 % o f t h e E b r o r i v e r f l o w . Therefore, the 
+presence of this tributary does not modify water flux of the ma in course of the Ebro 
+river. On the other hand, water flow in the lower course of the Ebro river is highly 
+regulated by dams. In particular, Ribaroja and Flix dams (Fig. 1) are located upstream 
+from Ascó nuclear power plant. 
+ 
+ 5
+Sampling 
+In order to study the hydrological dispersion of conservative p ollutants in the lower 
+course of Ebro river waters, sev eral non-instantaneous tritium tank releases from Ascó 
+nuclear power plant (Tarragona, Spain) were followed at different locations during 1991 
+and 1992, in coordination with the Ascó NPP (Pujol and Sanchez- Cabeza, 1999; 
+Sanchez-Cabeza and Pujol, 1999). In 1991, seven different tank releases were followed 
+at one location each time. In 1992, one tank release was follow ed at nine different 
+locations during 19-20 May. During the field experiments, Ribar oja and Flix dams, 
+upstream from Ascó kept the flow rate constant. The characteris tics of each release are 
+shown in Table 1. 
+Water was sampled from the river every 15 minutes during a tota l sampling period 
+which ranged from 4 to 15 hours, d epending on the distance from the nuclear power 
+plant and the river flow. Special attention was given to the co llection and preservation 
+of samples (APHA-AWWA-WEF, 1992). Samples were collected in 125 m l 
+polyethylene bottles, which had been carefully washed in the la boratory. Water was 
+collected above the riverbed, sufficiently far from the river b anks, natural or artificial 
+obstacles, and avoiding stagnant or turbid water zones. Before the sample was 
+collected, containers were rinsed three times with flowing rive r water. Simultaneous 
+sampling from different points in the same cross-section at eac h sampling site was not 
+carried out because it was assumed that the tracer was fully mi xed in the river 
+cross-section after the mixing length. Finally, samples were ta ken to the laboratory for 
+analysis. 
+Analysis 
+As tritium is a soft beta emitter (5.72 keV mean energy), liqui d scintillation is the most 
+appropriate technique for its meas urement. In this work, the lo w-background liquid 
+ 6
+scintillation spectrometer Quan tulus 1220 was used to determine tritium in river water 
+samples (Pujol, 1996). 
+The analytical method used to de termine tritium in river water samples was, briefly, 
+the following: ( i) samples were filtered through slow depth filters (such as Wha tman 
+542), (ii) 8 ml of the filtrate was mixed and vigorously shaken during o ne minute with 
+12 ml of the scintillation cocktail OptiPhase Hisafe 3 (Wallac) in polyethylene vials 
+(Wallac), ( iii) three background samples and th ree tritium standards were 
+simultaneously prepared, (iv) samples, backgrounds and tritium standards were stored in 
+the liquid scintillation spectro meter during at least one day s o that the 
+chemiluminescence spectrum, which interferes with tritium measu rements, had 
+sufficiently decreased, and (v) samples, backgrounds and tritium standards were counted 
+using Quantulus 1220 (Wallac). For a counting time of only 360 min, the detection limit 
+(Currie, 1968) was 2.6 Bq litre-1 and the analytical uncertainties ranged from 5% to 30% 
+(Pujol, 1996). 
+ALGORITHMS 
+Soluble pollutant dispersion in surface waters was modelled usi ng analytical, box-type 
+and numerical schemes (IAEA, 1985). In this work, eqn. 1 was so lved for each type of 
+approach. 
+The three approaches were based on the one-dimensional advectio n-diffusion equation 
+with constant coefficients (both v and D do not depend on x). T his initial assumption 
+was made because water flux was kept constant during field expe riments and the 
+contribution to the water flux fr om tributaries was negligible. This first approximation 
+provided a set of calibrated parameters needed to develop a simple predictive model. 
+ 
+ 
+ 7
+Analytical approach 
+In our case, the boundary conditions required to solve the one- dimensional 
+advection-diffusion equation were the following: 
+ The tritium pulsed release was described as a step function: 
+ c x Ci(,) 0  ( 3 ) 
+ ct
+Ct t
+tt o
+(,)0
+0
+0
+00  (4) 
+ To avoid any effect of the downstream boundary on results, a se mi-infinite flow line 
+was assumed (Kopman and Voss, 1987): 
+ 
+
+
+ 
+ 
+c
+x t(, ) 0 (5) 
+Then, the analytical solution to the one-dimensional advection-diffusion equation was 
+the following (Van Genuchten and Alves, 1982): 
+ cxt
+CC C A x t t t
+C C C Axt C Axt t t t
+ii
+ii
+(,)
+() ( , )
+() ( , ) ( , )
+  
+   
+
+
+
+00
+00 0 0
+0 
+ (6) 
+where 
+ Axt xv t
+Dt
+xv t
+Dt
+vx
+D(, )
+() ()
+ 
+
+
+  12 2 12 212 12erfc e erfc (7) 
+and where erfc (x) is the complementary error function, and v and D are constant. 
+Box-type approach 
+The time evolution of the number of atoms of a given radionuclide in a compartment i is 
+given by (Abril and García León, 1992): 
+d
+dt Ni = – ki,1 Ni + ki+1¸2 Ni+1 + ki-1,1 Ni-1 – ki,2 Ni + Qi(t) – Ni (8) 
+where Qi(t) includes all the radionuclide sources in the system and  is the tritium 
+radioactive decay constant. In our case, the radioactive decay term,  Ni, is negligible 
+due to the rapidity of the phenomenon compared to the tritium h alf-life ( T1/2 = 12.43 
+ 8
+years). The transfer coefficients between two adjacent compartm ents are given by the 
+expressions: 
+ii
+ib
+i
+ii
+i,1
+Vx
+Sk
+V
+Svk  ( 9 ) 
+ii
+ib
+i,2
+Vx
+Skk  (10) 
+where ki,1 is the transfer coefficient from compartment i to compartment i+1, ki,2 is the 
+transfer coefficient from compartment i to compartment i-1, kb is a dispersion 
+coefficient, Vi is the volume, Si is the cross section and xi is the length, all of them 
+referred to compartment i. The first term on the right hand of expression 9 refers to 
+convection and the second to dis persion. In expression 10 only dispersion is considered 
+since there is no flow upstream (Abril and García León, 1992). 
+The water volume exchanged by a compartment i during t must be smaller than the 
+volume Vi of the compartment. Mathematically, this can be expressed as t << 1/ kmax, 
+where kmax is the maximum coefficient in the whole system. On the other h and, the 
+hypothesis of instantaneous and ho mogeneous mixing of a radionu clide input in a 
+compartment produces numerical dispersion during calculation. This effect is equivalent 
+to adding kb’ to the dispersion coefficient kb according to the expression (Prandle, 1984) 
+kb’ = 12 (vx–v2t) (11) 
+Then, the longitudinal dispersion coefficient of eqn 1 can be expressed as 
+D = kb + kb’ (12) 
+It can be shown that numerical dispersion presents a minimal va lue given by the 
+following relationship (Pujol, 1996): 
+1
+'
+min 
+1
+ 
+1 21
+
+  bb kxvk (13) 
+ 9
+There are two conditions for which the determination of the dispersion coefficient (D) 
+is not possible: i) if kb’ < kb ’min, the solution is unstable, or ii) if kb’ > D, the value of kb 
+is indefinite. 
+The optimization of the spatial and temporal resolution led us to choose x = 100 m 
+and t = 15 s, or x = 250 m and t = 60 s, depending on the d istance (Table 3). For 
+these steps, the solution of eqn 1 was stable. 
+In principle, the analytical and the box-type approaches were n ot equivalent from a 
+mathematical point of view because the last was based on a set of equations that 
+described the diffusion and the tr ansport by using values of D and v that were functions 
+of the position. Nevertheless, to solve eqn 1, constant volume, cross section and length 
+were assumed for all the boxes, and then transfer coefficients were also kept constant. 
+Numerical approach 
+The solution of the one-dimensional advection-diffusion equatio n using an explicit 
+finite differences method can be obtained from the following expression: 
+ 
+  
+txxtxtxxttx cxtvx tDcxtvx tDcx tDc ,2,2,2, 21     (14) 
+where cx,t+t is the mean cross-sectional concentration as a function of tim e for a 
+distance x from the emission point , and v and D are constant. T he eqn 14 is stable if 
+(Noye, 1987): 
+ 2
+1
+2
+
+
+
+
+
+
+
+ x
+tv
+x
+tD (15) 
+The optimization of the spatial and temporal resolution led us to choose x = 100 m 
+and t = 15 s, respectively, for which the solution was stable. 
+ 
+ 10
+Longitudinal dispersion coefficient and mean velocity 
+Several computer codes were written to generate solutions of th e advection-diffusion 
+equation for each approach and for the two parameter values (lo ngitudinal dispersion 
+coefficient and mean velocity) at all the considered locations. For each solution and 
+measured tritium concentration time-distribution, chi-square ( 2 ) was computed using 
+the following expression: 
+ 2 1 2 i k ii iF() (16) 
+where Fi are the experimental data and i a r e t h e t h e o r e t i c a l values generated from 
+each approach. The fitted solution was obtained by minimisation of 2 by varying both 
+D and v (Fig. 2), and was considered statistically acceptable if 2  2 , where 2 i s 
+the decision limit with an  significance level, usually chosen as  = 0 . 0 5 . D a n d v 
+values for which 2 was minimum were called optimized longitudinal dispersion 
+coefficient ( Do) and optimized velocity ( vo). As an example, the observed and fitted 
+(box-type approach) tritium con centration distribution in Mora de Ebro town is 
+represented (Fig. 3). 
+Fitted parameter uncertainties 
+The method used to estimate parameter uncertainties is briefly explained below (Myers, 
+1986; Rawlings, 1988). Let us consider a set of experimental da ta: xi (independent 
+variable), yi (dependent variable) and i = 1, 2,..., n (experimental observations). These 
+data were fitted to a function such that yi = f(xi, , ), where  a n d  were two 
+parameters estimated through the chi-square test. Then, the unc ertainties associated to 
+each parameter (  a n d ) were determined by computing the square root of the 
+diagonal elements of the matrix s2(W’W)-1, where: 
+ 11
+
+2
+ˆ
+2
+2
+
+  n yys ii (17) 
+s is the standard deviation and iyˆ the dependent variable estimator. The matrix ( W’W)-1 
+is the covariance matrix, and W’ is the transposed matrix of W, which elements are 
+ j jiji xfw   ),( (18) 
+where j are the parameter estimate (1 = , 2 = ). The derivatives were evaluated for 
+the fitted parameters. 
+Discussion 
+The optimized longitudinal disper sion coefficient and mean velo city for each field 
+experiment and solution approach are shown in Table 2. The opti mized longitudinal 
+dispersion coefficient showed great variability, as it ranged from 41 ± 30 m2 s-1 to 392 ± 
+45 m 2 s -1. Although the fitted parameters were similar for all approache s, values 
+obtained with the numerical appro ach were, in general, lower th an those obtained with 
+the analytical and box-type approaches. This phenomenon has als o been observed by 
+other authors and is due to numerical dispersion (Noye, 1987). Although other methods, 
+such as the Lax-Wendroff method, would avoid this problem, this was not considered 
+essential for the purpose of this work. 
+The optimized mean water velocity showed limited variation, as it ranged from 0.558 
+± 0.011 m s -1 to 1.278 ± 0.019 m s -1 and the values obtained from the three approaches 
+at each location were statistically indistinguishable. 
+In most cases, model fittings were satisfactory as all showed 2 < 20.05. In some 
+locations, the larger 2 values observed were due, mainly, to the long tails of the tri tium 
+pulses (Fig. 3). Several authors have successfully proposed a d ead zone model in which 
+a term is added to the one-dimensional diffusion equation to al low for temporary 
+ 12
+entrapment of portions of the tracer in the dead zones (Nordin and Troutman, 1980; Yu 
+and Wenzhi, 1989), although this was not the objective of the present work. 
+ 
+PREDICTIVE CODES 
+Predictive computer codes, written in FORTRAN 77, were calibrat ed by optimising 
+velocity and longitudinal dispersion coefficient. The three app roaches were used to 
+predict the dispersion of tritium in the Ebro river waters down stream from the Ascó 
+nuclear power plant using diverse algorithms. 
+ The dependence of optimized v and D on the distance was studie d (Table 2). Through 
+these results, a relationship between velocity and distance (se e Velocity calibration), 
+and between longitudinal dispersi on coefficient and distance (s ee Longitudinal 
+dispersion calibration) was dete rmined. Therefore, predictive c omputer codes 
+considered the dependence both v and D on x. The computer codes of the analytical, 
+box-type and numerical approach were named PREANA, PREBOX and P RENUM, 
+respectively. Initial river condi tions (river discharge, durati on of the release, total 
+tritium activity released and distance between Ascó nuclear power plant and the location 
+where prediction was done) were needed to run the codes. Result s were presented as a 
+file with tritium concentration in function of time for the selected distance. 
+ A summary of the parameters used in the predictive computer pr o g ra ms fo r a l l t h e 
+approaches are shown in Table 3. For each approach, both the un certainty of the 
+v e l o c i t y a n d t h e m a x i m u m t r a v e l time pulse prediction were dete r m i n e d u s i n g t h e 
+covariance matrix. The uncertainty ( ) of a prediction was determined through 
+(Myers, 1986; Rawlings, 1988) 
+ 
+ i'i xx 1'1  WWs (19) 
+ 13
+where s a n d W were defined in eqn 17 and 18, respectively, xi is the row vector 
+corresponding to the i row from the W matrix, xi’ is the transpose of xi. Notice that xi is 
+evaluated at the point of interest. 
+ 
+Velocity calibration 
+Velocity can be determined in rivers through the Manning equati on (Chow et al., 1988; 
+Gordon et al., 1992): 
+
+2/13/2
+ SRv (20) 
+where R is the hydraulic radius (defined as R = A/P, where A is the cross-sectional area 
+of the flow and P is the wetted perimeter), S is the slope of the river and  is the 
+Manning roughness coefficient. The application of this relation ship in the Ebro river 
+was not possible because of the scarce knowledge of the river g eometry. In these cases, 
+river discharge (Q) can be related to velocity (or other dependent variable such as width, 
+mean depth, slope and so on) thr ough a power relationship (Knighton, 1984; Morisawa, 
+1985): 
+v = r Qm (21) 
+where r and m are coefficients to be determine d. However, we proposed the fo llowing 
+relationship for the predictive approaches because it provided a better fitting (Fig. 4) 
+(Pujol, 1996): 
+   c bQeav )(1 (22) 
+where a, b and c are coefficients to be determined. 
+ On the other hand, it was observed that velocity depended on r iver slope and this was 
+different for each sampling location. Then, the slope at each l ocation was estimated 
+using the following relationship (Knighton, 1984): 
+ 14
+S = w Lz (23) 
+where L is the distance from the release point, and w a n d z a r e c o e f f i c i e n t s t o b e 
+determined. Therefore, eqn 20 and 23 led us to expression: 
+v = w’ Lz’ (24) 
+where w’ and z’ are coefficients to be determined. Then, a relationship between velocity 
+and distance was estimated thr ough experimental data (May 19-20 th, 1992) in which 
+river discharge was constant for all the sampling locations. Th is relationship led us to a 
+function named velocity decrease factor (Fd): 
+Fw Ld z   (25) 
+where w’’ and z’’ are coefficients to be determi ned. Then, velocity was comput ed in 
+each location using the resulting relationship: 
+   c bQz eaLwv )(1 (26) 
+Longitudinal dispersion calibration 
+The longitudinal dispersion coef ficient in rivers depends on se veral factors, such as 
+river discharge, mean depth, shear velocity, channel width and dead zones. In 
+consequence, the most accurate method to determine the longitud inal dispersion 
+coefficient in rivers is experimentally using a tracer. In eqn 1 , D i s a s s u m e d t o b e 
+constant, which reduces complexity of the solutions and, in thi s study, permitted the 
+comparison of the various approa ches to solve the proposed prob lem. However, this 
+was not the case, as the coefficient is largely dependent on ri ver flow and morphology. 
+A more complete study on the hydrodynamics of the river should consider its variability 
+with these, although this was not the objective of the present work. 
+The variation of the longitudinal dispersion coefficient with distance from the release 
+point showed three distinct zones (Sanchez-Cabeza and Pujol, 1999): 
+ 15
+1. From Ascó to García (0-11.0 km from the release point): the longitudinal dispersion 
+coefficient at Pas de l'Ase and García (from 5 ± 31 m2 s-1 to 106 ± 17 m2 s-1) was 
+relatively low. As a consequence, the tritium peak concentrations were relatively 
+sharp and maximum concentration decreased moderately between the two locations. 
+2. From García to Miravet (11.0-28.0 km): larger longitudinal disp ersion coefficients 
+(from 171 ± 34 m 2 s-1 to 392 ± 45 m 2 s-1) caused important diffu sion in this section. 
+As a consequence, the tritium concentration peak flattened and broadened 
+considerably at Mora de Ebro in relation to García, in the prev ious zone. 
+Furthermore, both peaks at Mora de Ebro and Miravet showed long t a i l s w h i c h 
+indicated the presence of dead z ones in this section. This is d ue to the increase of 
+width channel and the decrease of river depth, including island deposition. 
+3. From Miravet to Tortosa (28.0-63 . 5 k m ) : i n t h i s z o n e t h e m a x i m um tritium 
+concentration decreased only slightly and the peak shape was more symmetrical and 
+almost unchanged from Benifallet. This was in agreement with lo wer longitudinal 
+dispersion coefficients (from 149 ± 18 m 2 s-1 to 52 ± 2 m 2 s-1) which caused little 
+effect on the tracer distribution shape. Downstream Xerta, trac er transport became 
+more complex because a channel diverts some water at this locat ion and 
+downstream Tortosa estuarine effects start to become apparent. 
+For the elaboration of predic tive computer codes, longitudinal dispersion coefficient 
+was assumed to be constant from Ascó to García (zone 1) and fro m Mora de Ebro to 
+Miravet (zone 2). On the other hand, a power dependence with di stance was considered 
+from Benifallet to Tortosa (zone 3 ). In the sections between zo ne 1 and 2, and zone 2 
+and 3, a linear relationship was assumed. 
+SENSITIVITY ANALYSIS 
+The sensitivity of model predictions to changes in the paramete r values is known as 
+ 16
+sensitivity analysis of the mode l. This analysis reveals not on ly the robustness of the 
+model but also provides an insight into the importance of the v arious mechanisms 
+involved. Often, parameters incl uded in models are not known pr ecisely. In this case, 
+results produced by the model will be acceptable if predictions a r e n o t a l t e r e d 
+significantly when parameters are varied within their respectiv e uncertainty margins 
+(Prandle, 1984; IAEA, 1986). 
+ In this work, sensitivity analysis was carried out varying the predicted dispersion 
+coefficient (Dp) and the predicted velocity ( vp) within their uncertainty margins for two 
+locations: one next to the release point (Pas de l'Ase, May 6th , 1991) and the other far 
+from the release point (Tortosa, May 20th, 1992). Both localiti es were also used to 
+determine the effect of the distance on the analyzed parameters. 
+Dispersion coefficient variation 
+In Pas de l'Ase, it was observed that the variation of the disp ersion coefficient within its 
+respective uncertainty margins did not significantly modify mod el predictions (Fig. 5a). 
+For long distances, that is, in Tortosa (Fig 5b), the three app roaches did not show 
+significant differences. 
+Velocity variation 
+In Pas de l'Ase, it was observed that the variation of the velo city within its respective 
+uncertainty margins did not si gnificantly modify model predicti ons (Fig. 5c). In 
+Tortosa, it was observed that model predictions were systematic a l ly s h ift e d (F ig . 5 d ). 
+This was because the uncertainty was greater far away from the release point (Table 
+4). 
+MODEL VALIDATION 
+Model validation was carried out using sampling data. Computer programs were used to 
+determine tritium concentration in Pas de l'Ase on May 6th 1991 (Fig. 6a), in Miravet 
+ 17
+on December 16th 1991 (Fig. 6b), and in Tortosa on May 20th 199 2 (Fig 6c). These 
+locations were selected because they presented a different beha viour in dispersion 
+coefficient. Table 4 shows that velocity, maximum travel time, maximum tritium 
+concentration and dispersion coe fficient predictions were simil ar using numerical, 
+box-type and analytical approaches for the selected locations. 
+ Predictions using the analytical approach were rapid. On the o ther hand, for long 
+distances, the box-type and numer ical approaches were slow beca use of the numerous 
+operations needed to solve the computer algorithm. For instance , in Tortosa, the 
+box-type approach needed about two minutes and the numerical ap proach needed 
+around half an hour using a DX2/486 (66 MHz) personal computer. This difference was 
+because, for long distances, the spatial and temporal grids wer e greater in the box-type 
+than in the numerical approach. Box-type and numerical approach es were more 
+expensive in computing time than the analytical approach. 
+ The analytical approach was useful because predictions were go o d w i t h a s m a l l 
+computing time. However, the addition of more terms to the one- dimensional 
+advection-diffusion equation in order to consider other physica l phenomena or 
+boundary conditions requires box-type or numerical approaches i n order to solve the 
+resulting differential equation. 
+CONCLUSIONS 
+The one-dimensional advection-di ffusion equation was solved for t h e c a s e o f 
+non-instantaneous tracer release. Longitudinal dispersion coeff icient and velocity were 
+determined using three different approaches: analytical, box-ty pe and numerical. 
+Approaches showed similar results , with greater similarity betw een box-type and 
+analytical approaches. Box-type and numerical approaches were m ore expensive in 
+terms of computing time. 
+ 18
+ For the river discharge studied, ranging from 178 to 915 m 3 s-1, longitudinal 
+dispersion coefficient ranged from 5 ± 31 to 392 ± 45 m 2 s-1 and mean velocities ranged 
+from 0.558 ± 0.011 to 1.278 ± 0.019 m s-1. 
+ The calibration of velocity and dispersion coefficient were ne cessary to elaborate 
+computer codes to predict the dispersion. Velocity was determined as a function of river 
+discharge and river slope, and di spersion coefficient was deter mined as a function of 
+distance. The uncertainty of velocity, maximum travel time and dispersion coefficient 
+prediction was determined for every approach using the covarian ce matrix. Sensitivity 
+analysis in velocity and dispersion coefficient showed the robustness of the predictions. 
+The results of this work can be used to predict the movement an d dispersion of a 
+soluble pollutant in the Ebro river downstream the nuclear powe r plant and assist in the 
+design of adequate surveillance programmes and emergency action s in the case of the 
+accidental release of any soluble pollutant. 
+ 
+LIST OF SYMBOLS 
+Symbol Unit Definition 
+A(x,t) M a t h e m a t i c a l f u n c t i o n . 
+A m2 Cross-sectional area. 
+c(x,t) Bq litre -1 Mean cross-sectional concentra tion of the substance or tracer. 
+cx,t+t Bq litre-1 Mean cross-sectional concentration, as a function of time, 
+for a distance x from the emi ssion point (explicit numerical 
+approach). 
+ciexp Bq litre -1 Experimental tritium concentration. 
+cithe Bq litre -1 Theoretical tritium conce ntration for one approach. 
+Ci Bq litre -1 Background concentration of the tracer. 
+ 19
+C0 Bq litre -1 Initial mean cross-sectional concentration after total mixing . 
+Ct Bq litre -1 Mean concentration of tracer release. 
+D m 2 s-1 L ongitudinal dispersion coefficient. 
+Do m2 s-1 Optimized longitudinal di spersion coefficient. 
+Dp m 2 s-1 Predicted longitudinal dispersion coefficient. 
+D+ m 2 s-1 Predicted longitudinal disper sion coefficient plus uncertainty. 
+D- m 2 s-1 Predicted longitudinal disper sion coefficient minus uncertainty. 
+erfc(x) C o m p l e m e n t a r y e r r o r f u n c t i o n . 
+Fi E x p e r i m e n t a l d a t a f o r c h i – s q u a r e f i t t i n g . 
+Fd D e c r e a s e f a c t o r o f t h e v e l o c i t y . 
+L m Distance from the release point. 
+kb m 2 s-1 Dispersion coefficient in the box–type approach. 
+kb’ m 2 s-1 Numerical dispersion coe fficient in the box–type approach. 
+ki,1 s-1 Transfer coefficient from compartment i to compartment i+1. 
+ki,2 s -1 T r a n s f e r c o e f f i c i e n t f r o m c o m p a r t m e n t i t o c o m p a r t m e n t i-1. 
+kmax s-1 Maximum transfer coefficient in the whole system. 
+n N u m b e r o f e x p e r i m e n t a l o b s e r v a t i o n s . 
+Ni T r acer particles in box i. 
+P m W e t t e d p e r i m e t e r . 
+q m 3 s-1 Flow rate of the tracer discharge. 
+Q m 3 s-1 River discharge. 
+Qi(t) p a r t . s-1 Tracer sources. 
+R m H y d r a u l i c r a d i u s . 
+s2 V a r i a n c e . 
+S Slope of the river. 
+ 20
+Si m 2 Cross section of compartment i. 
+t s T i m e . 
+t0 s Duration of the release. 
+t s Temporal resolution of the box–type and numerical approaches. 
+v m s -1 Mean flow velocity. 
+vc m s -1 Calibrated velocity. 
+vo m s -1 Optimized velocity. 
+vp m s -1 Predicted velocity. 
+v+ m s -1 Predicted velocity plus uncertainty. 
+v- m s -1 Predicted velocity minus uncertainty. 
+Vi m 3 Volume of compartment i. 
+W Derivative of a function in respect of the parameters estimate 
+(matrix). 
+W’ T r a n s p o s e o f t h e m a t r i x W . 
+(W’W)-1 C o v a r i a n c e m a t r i x . 
+x m Cartesian coordinate in the flow direction. 
+xi I n d e p e n d e n t v a r i a b l e . 
+x m Spatial resolution of the box–type and numerical approaches. 
+xi m L e n g t h o f the compartment i. 
+yi D e p e n d e n t v a r i a b l e . 
+iyˆ E s t i m a t e v a l u e o f t h e d e p e n d e n t v a r i a b l e . 
+ P a r a m e t e r e s t i m a t e d i n a n a p p r o a c h . 
+ P a r a m e t e r e s t i m a t e d i n a n a p p r o a c h . 
+ S t a t i s t i c a l s i g n i f i c a n c e r i s k l e v e l . 
+ M a n n i n g r o ughness coefficient. 
+ 21
+2 C h i - s q u a r e . 
+2 S t a t i s t i c a l l y s i g n i f i c a n t 2 with a risk level . 
+ D ecay constant. 
+i T h e o r e t i c a l d a t a f o r c h i – s q u a r e f i t t i n g . 
+j G e n e r a l p a r a m e t e r e s t i m a t e d i n a n a p p r o a c h . 
+ U n c e r t a i n t y i n t h e  parameter. 
+ U n c e r t a i n t y i n t h e  parameter. 
+ 
+ACKNOWLEDGEMENTS 
+Financial support received from Junta de Sanejament de la Generalitat de Catalunya is 
+gratefully acknowledged. Also, we wish to express our gratitude to Asociación Nuclear 
+Ascó for its collaboration in t his study and for supplying impo rtant information for its 
+scientific development, and to C onfederación Hidrográfica del E bro, Embalse de 
+Ribaroja and Embalse de Flix for their collaboration in maintai ning constant flow rate 
+during the sampling campaigns. Th anks are due to our colleagues in the Physics 
+Department for their collaboration in sampling campaigns. 
+ 
+REFERENCES 
+Abril, J.M. and García León, M. (1992) A marine dispersion mode l for radionuclides 
+and its calibration from non-ra diological information. Journal of Environmental 
+Radioactivity 16, 127-146. 
+APHA-AWWA-WEF (1992 ) Standard Methods for the Examination of Water and 
+Wastewater. American Public Health Association, Washington. 
+Chow, V.T., Maidment, D.R. and Mays, L.W. (1988) Applied Hydrology. McGraw-Hill 
+Book Company, New York, 572 pp. 
+ 22
+Currie, L.A. (1968) Limits for qualitative detection and quanti tative determination. 
+Analytical Chemistry 40, 586-592. 
+Day, T.J. (1977) Observed mixing lengths in mountain streams, Journal of Hydrology 
+35, 125-136. 
+Eisenbud, M. and Gesell, T. (1997) Environmental Radioactivity. Academic Press, San 
+Diego, 656 pp. 
+Gordon, N.D., McMahon, T.A. and Finlayson, B.L. (1992) Stream Hydrology . John 
+Wiley & Sons, Chichester, 526 pp. 
+Guizerix J. and Florkowski, T. (1983) Streamflow measurements. In Guidebook on 
+Nuclear Techniques in Hydrology, pp. 65-79. IAEA, Vienna. 
+IAEA (1985) Hydrological dispersi on of radioactive material in relation to nuclear 
+power plant siting. Safety Seri es nº 50-SG-S6, International At omic Energy 
+Agency, Vienna, 116 pp. 
+IAEA (1986) An oceanographic model for the dispersion of wastes disposed of in the 
+deep sea. Technical Reports Serie s nº 263, International Atomic Energy Agency, 
+Vienna, 166 pp. 
+Knighton, D. (1984) Fluvial Forms and Processes. Edward Arnold, London, 218 pp. 
+Kopman, D.B. and Voss, C.I. (1987) Behaviour of sensitivities i n the one-dimensional 
+advection-dispersion equation: implications for parameter estim ation and sampling 
+design. Water Resources Research 23, 253-272. 
+Leibundgut, Ch., Speidel, U., Wiesner, H. and van Mazijk, A. (1 992) Investigation of 
+flow and transport parameters in rivers. In Tracer Hydrology , ed. H. Hötzl & A. 
+Werner, pp. 379-385. A.A. Balkema, Rotterdam. 
+Morisawa, M. (1985) Rivers. Longman Group Limited, New York, 222 pp. 
+Myers, R.H. (1986) Classical and Modern Regr ession with Applications . PWS 
+ 23
+Publishers, Boston, Massachusetts, 359 pp. 
+Nordin, C.F. and Troutman, B.M. (1980) Longitudinal dispersion in rivers: the 
+persistence of skewness in observed data. Water Resources Research 16, 123-128. 
+Noye, J. (1987) Finite difference methods for solving one-dimen sional transport 
+equation. In Numerical modelling: Applications to marine systems, ed. J. Noye, pp. 
+231-256. Elsevier Science Publishers B.V., North-Holland. 
+Prandle, D. (1984) A modelling study of the mixing of 137Cs in the seas of the european 
+continental shelf. Phil. Trans. Royal Society London, A310, 407-436 . 
+Pujol, Ll. (1996) Radiactividad del Agua Superficial y los Sedi mentos en la Cuenca del 
+Ebro. Utilización del Tritio como Radiotrazador en el Tramo Cat alán, Ph.D. thesis, 
+Universitat Autònoma de Barcelona, Spain (in Spanish). 
+Pujol, Ll. and Sanchez-Cabeza, J.A. (1999) Determination of lon gitudinal dispersion 
+coefficient and velocity of the Ebro river waters (Northeast Sp ain) using tritium as 
+a radiotracer. Journal of Environmental Radioactivity 45, 39-57. 
+Rawlings, J.O. (1988) Applied Regression Analysis. A Research Tool. Wadsworth, Inc., 
+California, 553 pp. 
+Rutherford, J.C. (1994) River Mixing. John Willey and Sons, New York, 347 pp. 
+Sanchez-Cabeza, J.A. and Pujol, Ll. (1999) Study on the hydrody namics of the Ebro 
+river lower course using tritium as a radiotracer. Water Research (in press). 
+Van Genuchten, M.T. and Alves, W.J. (1982) Analytical Solutions of the 
+One-Dimensional Convective-Dispersive Solute transport Equation . United States 
+Department of Agriculture, Washington, 149 pp. 
+Yotsukura, N. and Sayre, W.W. (1976) Transverse mixing in natu ral channels. Water 
+Resources Research 12, 695-704. 
+Yu, Y.S. and Wenzhi, L. (1989) Longitudinal dispersion in river s: a dead-zone model 
+ 24
+solution. Water Resources Bulletin 25, 319-325. 
+ 
+Table 1. Characteristics of the tritium releases monitored in Ebro river waters 
+downstream Ascó Nuclear Power Plant during 1991 and 1992 
+ 
+Date Sampling 
+location 
+Distance
+(km) 
+Release 
+duration†
+(min) 
+Tritium 
+activity†
+(GBq) 
+River 
+discharge¶ 
+(m3 s-1) 
+Mixing 
+activity 
+(Bq litre-1)
+May 6, 1991 Pas de l’Ase 6.5 110 136.2 915 2 2 . 6
+July 1 5 , 1 9 9 1 G a r c í a 1 1 . 0 1 2 6 1 9 . 2178 1 4 . 3
+Aug. 5, 1991 Mora de Ebro 16.0 67 4 7 . 4 211 5 6 . 0
+Dec. 5, 1991 Mora de Ebro 16.0 60 279.8 626 124 
+Dec. 9, 1991 Ascó 0.5 42 222.1 390 226 
+Dec. 13, 1991 Garcí a 1 1 . 0 4 9 1 0 . 3 359 9 . 7
+Dec. 16, 1991 Miravet 28.0 72 329.2 348 219 
+May 19, 1992 (‡) (‡) 1 0 5 7 6 . 5 220 5 5 . 2
+†Ascó Nuclear Power Plant, personal communication. 
+ 
+¶ Flix dam, personal communication. 
+ 
+(‡) Locations: Ascó (0.5 km), Pas de l’Ase (6.5 km), García (11.0 km), Mora de Ebro 
+(16.0 km), Miravet (28.0 km), Benifallet (39.0 km), Xerta (47.5 km), Tortosa (63.5 km) 
+and Amposta (78.0 km). 
+ 
+Table 2. Summary of the optimise d parameters determined with the different 
+approaches 
+ 
+ 
+Location Distance (km) Approach v (m s -1) D (m 2 s-1) 2 20.05
+Pas de l’Ase 6.5 Analytical 1.247 ± 0.017 101 ± 26 0.8 14.1
+(May 6, 1991) Box-type 1.278 ± 0.019 104 ± 27 0.9 14.1
+ Numerical 1.247 ± 0.017 50 ± 27 0.9 14.1
+ 
+García 11.0 Analytical 0.563 ± 0.011 48 ± 18 9.8 21.0
+(July 15, 1991) Box-type 0.567 ± 0.011 48 ± 18 9.7 21.0
+ Numerical 0.558 ± 0.011 22 ± 18 9.7 21.0
+ 
+Mora de Ebro 16.0 Analytical 1.119 ± 0.015 218 ± 34 35.2 21.0
+(Dec. 5, 1991) Box-type 1.146 ± 0.015 222 ± 36 36.3 21.0
+ Numerical 1.119 ± 0.015 171 ± 34 35.3 21.0
+ 
+García 11.0 Analytical 0.847 ± 0.027 41 ± 30 5.0 7.8
+(Dec. 13, 1991) Box-type 0.852 ± 0.028 42 ± 31 4.9 7.8
+ Numerical 0.844 ± 0.028 5 ± 31 4.9 7.8
+ 
+Miravet 28.0 Analytical 0.858 ± 0.011 379 ± 45 88.6 38.9
+(Dec. 16, 1991) Box-type 0.884 ± 0.011 392 ± 45 87.6 38.9
+ Numerical 0.855 ± 0.010 290 ± 41 78.1 38.9
+ 
+Pas de l’Ase 6.5 Analytical 0.689 ± 0.013 67 ± 20 12.3 18.3
+(May 19, 1992) Box-type 0.710 ± 0.014 70 ± 21 12.2 18.3
+ Numerical 0.689 ± 0.013 36 ± 20 12.2 18.3
+ 
+García 11.0 Analytical 0.645 ± 0.009 104 ± 17 15.0 23.7
+(May 19, 1992) Box-type 0.663 ± 0.009 106 ± 17 15.2 23.7
+ Numerical 0.645 ± 0.009 75 ± 17 14.8 23.7
+ 
+Mora de Ebro 16.0 Analytical 0.580 ± 0.011 256 ± 35 21.0 30.1
+(May 19, 1992) Box-type 0.611 ± 0.011 264 ± 35 20.5 30.1
+ Numerical 0.579 ± 0.011 230 ± 35 20.7 30.1
+ 
+Miravet 28.0 Analytical 0.664 ± 0.009 257 ± 37 32.9 38.9
+(May 19-20, 1992) Box-type 0.682 ± 0.009 261 ± 36 31.9 38.9
+ Numerical 0.664 ± 0.009 228 ± 37 32.4 38.9
+ 
+Benifallet 39.0 Analytical 0.652 ± 0.005 147 ± 18 25.4 38.9
+(May 19-20, 1992) Box-type 0.656 ± 0.005 149 ± 18 23.7 38.9
+ Numerical 0.648 ± 0.005 118 ± 18 24.9 38.9
+ 
+Xerta 47.5 Analytical 0.577 ± 0.002 90 ± 6 6.9 33.9
+(May 19-20, 1992) Box-type 0.579 ± 0.002 90 ± 6 6.1 33.9
+ Numerical 0.575 ± 0.002 64 ± 6 6.7 33.9
+ 
+Tortosa 63.5 Analytical 0.585 ± 0.001 79 ± 2 0.6 23.7
+(May 20, 1992) Box-type 0.587 ± 0.001 79 ± 2 0.6 23.7
+ Numerical 0.584 ± 0.001 52 ± 2 0.6 23.7
+Uncertainties correspond to ± 1. 
+ 
+ 
+Table 3. Summary of the paramet ers in the predictive computer codes 
+Code computer PREANA PREBOX PRENUM
+Approach Analytical Box-t ype Numerical
+Spatial and temporal 
+resolution 
+ 100 m, 15 s (Pas de l’Ase and García) 
+250 m, 60 s. (from Mora de Ebro)
+100 m 
+15 s
+Fd 1.129 L-0.0649 1.148 L-0.07388 1.116 L-0.0588 
+ 
+Velocity    65284 )3513(1 )067.0314.1( Qd eF    65275 )3616(1 )069.0343.1( Qd eF    65289 )3412(1 )067.0321.1( Qd eF 
+Dispersion coefficient D = kb + kb’
+ 6.5 km  L  11.0 
+km 
+ 72 ± 31 74 ± 31 46 ± 22 
+11.0 km < L < 16.0 
+km 
+ -306 + 34.4 L -390 + 42.2 L -359 + 36.8 L 
+16.0 km  L  28.0 km 244 ± 30 285 ± 76 230 ± 52
+28.0 km < L < 39.0 
+km 
+ 531 - 10.3 L 662 - 13.5 L 553 - 11.5 L 
+39.0 km  L  63.5 km (72 ± 35) 102 L-(1.09 ± 0.14) (151 ± 65) 102 L-(1.28 ± 0.13) (18 ± 10) 103 L-(1.41 ± 0.17) 
+Uncertainties correspond to ± 1. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Table 4. Experimental and predic tive data for some parameters (v: velocity; Tmax: 
+maximum travel time; Co: maximum tritium concentration; D: dispersion 
+coefficient;CT: computing time) 
+ 
+ 
+ v 
+(m s-1) 
+Tmax 
+(min) 
+Co 
+(Bq litre-1)
+D 
+(m2 s-1) 
+2 
+ 
+20.05 
+ 
+CT 
+(s)† 
+Pas de l’Ase 
+(May 6, 1991) 
+ 
+Experimental 1.247 ± 0.017 142 ± 1 22.6 101 ± 26 0.8 14.1 
+PRENUM 1.26 ± 0.05 141 ± 4 22.6 46 ± 22 1.0 12.6 18
+PREBOX 1.29 ± 0.06 139 ± 4 22.5 74 ± 31 2.1 14.1 18
+PREANA 1.26 ± 0.05 141 ± 4 22.5 72 ± 31 1.4 14.1 1
+Miravet 
+(Dec. 16, 1991) 
+ 
+Experimental 0.858 ± 0.011 579 ± 7 63.9 379 ± 45 88.5 38.9 
+PRENUM 0.83 ± 0.04 597 ± 28 74.0 230 ± 52 123.0 37.7 221
+PREBOX 0.84 ± 0.05 589 ± 30 72.2 285 ± 76 139.7 35.2 24
+PREANA 0.83 ± 0.04 599 ± 29 76.1 244 ± 30 156.1 35.2 1
+Tortosa 
+(May 20, 1992) 
+ 
+Experimental 0.585 ± 0.001 1862 ± 3 18.9 79 ± 2 0.6 23.7 
+PRENUM 0.59 ± 0.04 (184 ± 11)ꞏ10 1 19.4 52 ± 17 5.0 23.7 1567
+PREBOX 0.60 ± 0.04 (184 ± 12)ꞏ10 1 20.2 73 ± 19 4.3 23.7 166
+PREANA 0.60 ± 0.04 (185 ± 11)ꞏ10 1 19.3 77 ± 16 1.0 23.7 
+1 
+Uncertainties correspond to ± 1. 
+† For a DX2/486 (66 MHz) personal computer. 
+ 
+Fig. 1. Map of the studied Ebro river section showing sampling locations.
+Fig. 2. Determination of the optimum velocity and dispersion coefficient parameters
+using the numerical approach for Pas de l’Ase on May 6, 1991.
+Fig. 3. Tritium concentration during the field experiment carried out at Mora de Ebro on
+December 5, 1991. The solid line shows the optimum box-type approach fit.
+Fig. 4. Velocity as a function of river discharge for two different relationships using the
+analytical approach.
+Fig. 5. Sensitivity analysis for the numerical approach. (a) Pas de l’Ase 6 May, 1991,
+Dp = 46 m2 s-1, D+ = 68 m2 s-1, D- = 24 m2 s-1, (b) Tortosa 20 May, 1992, Dp = 52 m2 s-1,
+D+ = 69 m2 s-1, D- = 35 m2 s-1, (c) Pas de l’Ase 6 May, 1991, vp = 1.26 m s-1, v+ = 1.31 m
+s-1, v- = 1.21 m s-1, (d) Tortosa 20 May, 1992, vp = 0.59 m s-1, v+ = 0.63 m s-1, v- = 0.55
+m s-1.
+Fig. 6. Experimental data ( ) and prediction ( ) for the studied approaches. (a)
+numerical approach at 6.5 km from the release point in Pas de l’Ase on 6 May, 1991;
+(b) box-type approach at 28 km in Miravet on 16 December, 1991, (c) analytical
+approach at 63.5 km in Tortosa on 20 May, 1992.
