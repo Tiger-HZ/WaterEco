@@ -4,7 +4,7 @@
    "id": "facility_0f56c4f56d",
    "name": "污水处理厂",
    "type": "facility",
-   "cnt": 82
+   "cnt": 83
   },
   {
    "id": "pollutant_2a0d8fe88b",
@@ -34,7 +34,13 @@
    "id": "waterbody_820ca5250d",
    "name": "太湖",
    "type": "waterbody",
-   "cnt": 68
+   "cnt": 69
+  },
+  {
+   "id": "waterbody_650d27ae83",
+   "name": "太湖流域",
+   "type": "waterbody",
+   "cnt": 56
   },
   {
    "id": "pollutant_cb091bacf7",
@@ -45,12 +51,6 @@
   {
    "id": "waterbody_61a0394236",
    "name": "长江流域",
-   "type": "waterbody",
-   "cnt": 55
-  },
-  {
-   "id": "waterbody_650d27ae83",
-   "name": "太湖流域",
    "type": "waterbody",
    "cnt": 55
   },
@@ -220,25 +220,25 @@
    "id": "regulation_f4772d8871",
    "name": "全国地表水水质月报（2026年7月）",
    "type": "regulation",
-   "cnt": 14
+   "cnt": 15
   },
   {
    "id": "regulation_b5747a609f",
    "name": "全国地表水水质月报（2026年6月）",
    "type": "regulation",
-   "cnt": 14
+   "cnt": 15
   },
   {
    "id": "regulation_6c35d50661",
    "name": "全国地表水水质月报（2026年5月）",
    "type": "regulation",
-   "cnt": 14
+   "cnt": 15
   },
   {
    "id": "regulation_f48b637f09",
    "name": "全国地表水水质月报（2026年8月）",
    "type": "regulation",
-   "cnt": 14
+   "cnt": 15
   },
   {
    "id": "issue_215a4a107d",
@@ -307,6 +307,12 @@
    "cnt": 10
   },
   {
+   "id": "tech_9a88efcf6a",
+   "name": "数字孪生",
+   "type": "tech",
+   "cnt": 10
+  },
+  {
    "id": "waterbody_b12dec9cee",
    "name": "杭州湾",
    "type": "waterbody",
@@ -334,12 +340,6 @@
    "id": "action_e15b6ba3d1",
    "name": "长江保护修复攻坚战",
    "type": "action",
-   "cnt": 9
-  },
-  {
-   "id": "tech_9a88efcf6a",
-   "name": "数字孪生",
-   "type": "tech",
    "cnt": 9
   },
   {
@@ -600,7 +600,7 @@
    "s": "waterbody_650d27ae83",
    "t": "waterbody_820ca5250d",
    "rel": "co_occurs",
-   "w": 55
+   "w": 56
   },
   {
    "s": "facility_0f56c4f56d",
@@ -4347,6 +4347,12 @@
    "w": 2
   },
   {
+   "s": "facility_0f56c4f56d",
+   "t": "tech_9a88efcf6a",
+   "rel": "co_occurs",
+   "w": 2
+  },
+  {
    "s": "facility_20ca55fec0",
    "t": "tech_9a88efcf6a",
    "rel": "co_occurs",
@@ -5411,7 +5417,7 @@
  ],
  "stats": {
   "nodes": 98,
-  "edges": 803,
+  "edges": 804,
   "by_type": {
    "waterbody": 14,
    "facility": 10,
@@ -5424,9 +5430,9 @@
    "regulation": 4
   },
   "by_rel": {
-   "co_occurs": 803
+   "co_occurs": 804
   },
-  "regulation_total": 738,
+  "regulation_total": 740,
   "note": "v2 专业化：法规不再作为节点，改为同文件内专业实体共现网络；旗舰法规保留为骨架锚点"
  },
  "schema_version": "2026.10"
