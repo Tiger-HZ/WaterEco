@@ -1,0 +1,2329 @@
+The Boundary Time Crystal as a light source for collectively enhanced sensing
+Malik Jirasek,1 Igor Lesanovsky,1, 2 and Albert Cabot1, 3
+1Institut f¨ur Theoretische Physik, Universit¨at T¨ubingen,
+Auf der Morgenstelle 14, 72076 T¨ubingen, Germany
+2School of Physics and Astronomy and Centre for the Mathematics
+and Theoretical Physics of Quantum Non-Equilibrium Systems,
+The University of Nottingham, Nottingham, NG7 2RD, United Kingdom
+3Institute for Cross-Disciplinary Physics and Complex Systems (IFISC) UIB-CSIC,
+Campus Universitat Illes Balears, 07122, Palma de Mallorca, Spain.
+Modern precision measurements, such as interferometry for detecting gravitational waves, rely on
+the estimation of optical phases encoded in light fields. Here, we propose to exploit the collectively
+enhanced output field of a driven-dissipative many-body quantum system as a light source in order to
+improve the precision of estimating optical phases. Pronounced temporal correlations of such output
+fields benefit the sensitivity of measurement protocols, which we show theoretically by employing a
+boundary time crystal as a light source. The fundamental bound on the precision of such estimation
+shows scaling with the number of constituents N of the many-body system as N 4 while scaling
+linearly with the measurement time T . We discuss this scaling both from a perspective of the
+resources employed to build the light source and of the resources produced by the light source. We
+show that a measurement scheme, in which the phase shifted light field is guided into an auxiliary
+replica system, which serves as a detector that is sensitive to non-trivial temporal correlations of
+light, can saturate the fundamental bound on precision at an optimal operating point.
+I. INTRODUCTION
+Quantum technologies promise sensors that surpass
+the precision of their traditional counterparts, for ex-
+ample in magnetometry [1] or interferometry for the de-
+tection of gravitational waves [2]. Sensing applications
+might also benefit from novel light sources that rely
+on the exploitation of collective phenomena in driven-
+dissipative quantum systems [3–6]. These may feature
+steady state superradiance [3, 4], synchronization [7–9],
+or time crystal phases [10–12], that influence the prop-
+erties of their light emission. In the case of time crystal
+phases, their characteristic asymptotic oscillatory behav-
+ior [13–15] leads to persistent temporal correlations in
+their emitted light [11, 16]. These oscillations occur ei-
+ther with a period that is a discrete multiple of that of
+an external driving [12, 17–30], or with a period varying
+continuously with system parameters, in the case of time-
+independent driving [10, 31–43]. An example of the lat-
+ter case is the boundary time crystal (BTC), emerging in
+driven-dissipative collective spin systems [10, 11, 31]. In
+its stationary regime, the light output displays the same
+statistics as the laser driving it, while in its time crys-
+tal regime, it exhibits intricate time-correlations which
+become more pronounced with system size [11, 16, 44].
+In this paper we demonstrate how driven-dissipative
+many-body quantum systems can be exploited as a source
+of light that enables collectively enhanced parameter es-
+timation. We showcase the advantage of this method by
+investigating the setting depicted in Fig. 1(a), in which
+the output light of a BTC is used to measure an external
+phase shift φ imprinted by a sample. Our results reveal
+that time crystal phases can be exploited more efficiently
+by using their emitted light for measuring external pa-
+rameters, e.g. phase shifts, compared to recent studies on
+FIG. 1. The boundary time crystal as a light source.
+(a) Light emitted by a boundary time crystal (BTC) com-
+posed of N two-level systems driven with Rabi frequency ω
+is guided through a sample. A phase shift φ is encoded in
+the light, described by the unitary e−i ˆΛφ. ˆΛ is the photon
+count operator. (b) Phase shifted source light is cascaded
+into a decoder BTC with additional tunable phase shift φ′.
+(c) Time-averaged intensity output by the source-decoder sys-
+tem IT as a function of ∆φ = φ − φ′ for N = 6 and ω/ωc = 4.
+(d) Phase shifted source light is superposed with the field of
+a strong local oscillator in a homodyne detection scheme us-
+ing a low reflectivity beam splitter (LRBS) with homodyne
+phase β. (e) Time-averaged homodyne current measured at
+the indicated output port as a function of φ − β for N = 6
+and ω/ωc = 0.5.
+the sensing of internal parameters of time crystals [45–
+53]. This advantage is quantified by the quantum Fisher
+information (QFI) of the source system and its output
+field, which defines the fundamental precision with which
+the emitted light permits determination of the phase shift
+[54, 55]. We analyze the resources governing the sensitiv-
+ity bounds for the estimation of φ from the light emitted
+by a BTC, focusing on the scaling of the QFI with the
+number of emitters N and measurement time T . We find
+that the time crystal phase provides the most advanta-
+geous scaling, with the QFI growing as N 4T , while in the
+arXiv:2511.23416v3 [quant-ph] 13 Aug 2026
+2
+stationary regime it grows as N 2T .
+In order to tap the enhancement anticipated by the
+QFI, we propose two different measurement protocols to
+estimate φ from the BTC output light, and analyze their
+corresponding Fisher information (FI). The first proto-
+col is akin to homodyne detection [8, 49, 56–69] [see
+Fig. 1(d)-(e)], while in the second protocol, the emitted
+light of a BTC is guided into an auxiliary replica sys-
+tem acting as a perfect absorber for the phase shifted
+light [70, 71] [see Fig. 1(b)-(c)]. We show that the FI of
+both protocols saturate the QFI in the stationary regime,
+while this is only achieved by the second measurement
+protocol in the time crystal regime.
+II. FUNDAMENTAL BOUNDS ON PRECISION
+To set the stage, we briefly introduce the fundamental
+bound on precision with which an external phase shift can
+be measured, using a dissipative many-body quantum
+system as a light source. The dynamics shall be described
+by a Lindblad master equation (ℏ = 1)
+∂tρ = −i[ ˆH, ρ] + κD[ ˆL]ρ =: L[ρ], (1)
+with the dissipator D[O]ρ = OρO† − {O†O, ρ}/2 and the
+reduced system state ρ. The Hamiltonian ˆH describes
+coherent processes, e.g., coherent driving of the source
+system by the light inside a cavity [cf. Fig. 1(a)]. The
+jump operator ˆL describes photon emission by the source
+system at rate κ, e.g., out of the cavity into a waveguide.
+In the input-output formalism [72], the global state of
+system and environment is a matrix product state (MPS)
+|ψφ⟩ [54, 55, 70]. When guided through an unknown
+sample, the light emitted by the source system acquires
+a phase shift φ [see Fig. 1(a)], which is described by the
+unitary transformation |ψφ⟩ = e−i ˆΛφ |ψ0⟩ [55]. Here the
+state |ψ0⟩ is the global state in absence of a phase shift,
+and ˆΛ is the photon count operator (see Appendix A for
+details). Effectively, the unitary transformation of the
+global state can be expressed as a transformation of the
+system jump operator corresponding to the emission of a
+photon ˆL → e−iφ ˆL [55].
+As a figure of merit for the performance of a measure-
+ment of the parameter φ, we consider the estimation error
+δφ. This is formally given by the standard deviation of an
+unbiased estimator specific for a given measurement pro-
+tocol [46, 73–75]. Optimizing over all possible measure-
+ments yields the quantum Cram´er-Rao bound (QCRB)
+for the estimation error [74, 75]
+δφ ≥ 1p
+Fφ(φ0, T )
+, (2)
+where Fφ(φ0, T ) is the global QFI of the system and en-
+vironment state for estimating φ, evaluated at the ac-
+tual parameter value φ0 and for a total measurement
+time T [54, 55]. Although this differs in principle from
+the QFI of the environment alone, for long measure-
+ment times the contribution by the environment scales
+linearly with T while the system contribution does not
+[70]. Thus, in this limit the relative difference between
+the global and the environment QFI vanishes. Below,
+we also consider the FI of the homodyne or photo-
+counting records, I (u) φ (φ0, T ) with u = h, c, respectively,
+which bound estimation protocols based solely on these
+monitoring records [59, 62, 76]. These FI are gener-
+ally smaller than Fφ(φ0, T ) [54, 62, 68, 76], though
+continuous-monitoring protocols can be optimal and sat-
+urate the QFI [49].
+For long measurement times, one finds linear growth
+of the QFI with T , such that the QFI rate fφ :=
+limT →∞ Fφ(φ0, T )/T only depends on the system param-
+eters and the estimated phase shift φ. This linear scaling
+arises from the finite coherence time of the system at fi-
+nite system sizes N , see also [55]. By employing the MPS
+description of the global system and environment state
+we further find the long-time QFI rate (see Appendix A)
+fφ
+4κ = 2κ T Z T 0 dt Z T −t 0 dτ C(τ ) + ⟨ ˆL† ˆL⟩ss − κT ⟨ ˆL† ˆL⟩2 ss, (3)
+where C(τ ) := Tr
+h
+ˆL† ˆLeLτ ( ˆLρss ˆL†) i and ⟨O⟩ss =
+Tr[Oρss] with the stationary state ρss. This shows that
+the QFI rate is given by the time integrated two-time
+intensity correlation of the system output [55, 75] and
+independent of the actual parameter value φ0.
+III. THE BOUNDARY TIME CRYSTAL AS A
+LIGHT SOURCE
+In the following, we consider the BTC as the light
+source. The BTC is composed of N two-level emit-
+ters with resonant driving with Rabi frequency ω and
+collective dissipation with rate κ, as described by the
+Hamiltonian ˆH = ω ˆSx and the jump operator ˆL = ˆS−,
+respectively. The operators ˆSα = PN i=1 ˆσi α/2, with
+α ∈ {x, y, z}, are collective total angular momentum op-
+erators, where the Pauli matrices ˆσi α correspond to emit-
+ter i, and the ladder operators are ˆS± = ˆSx ± i ˆSy. The
+BTC features a phase transition in the thermodynamic
+limit (N → ∞) from a stationary regime to a time crys-
+tal regime. The transition occurs at the critical Rabi fre-
+quency ωc = N κ/2 [16], which implies that Rabi frequen-
+cies have to be adjusted with system size when consider-
+ing fixed values of ω/ωc. For ω < ωc, the system displays
+a stationary regime and rapidly approaches a stationary
+state via overdamped relaxation [11, 16]. For ω > ωc, the
+system is in a time crystal regime, characterized by oscil-
+lating system observables [11, 16]. Beyond time crystals,
+this and related models have also been explored in the
+context of cooperative fluorescence and driven superra-
+diance [5, 16, 44, 77–80].
+We determine the bound on the phase estimation error
+δφ with a BTC as light source by computing the QFI
+3
+rate Eq. (3) in both regimes. In the stationary regime,
+a Holstein-Primakoff (HP) approach yields fφ ≈ 4ω2/κ
+(see Appendix D), which for constant ω/ωc yields a N 2
+scaling of the QFI rate. Deep in the time crystal regime
+(ω/ωc ≫ 1), we obtain C(τ ) analytically by using the
+superspin method [50, 81], resulting in the long-time QFI
+rate (see Appendix B)
+fφ ≈ κN (N + 2)
+ (N − 1)(N + 3)
+135 + 2 3  =: fφ,∞, (4)
+where the approximation becomes exact when ω/ωc →
+∞. This shows that the sensitivity of the BTC light
+for measuring optical phases is enhanced by pronounced
+temporal intensity correlations of the output field in the
+time crystal regime. These correlations grow with the
+number of emitters in the BTC [16], leading to a scaling
+of fφ,∞ ∝ N 4 for large, but finite system sizes. See
+B and Appendix D for a numerical benchmark of these
+analytical expressions.
+It is insightful to examine the output state of light of
+the BTC in both of its regimes and its influence on the
+QFI. In the stationary regime, the output field is in a
+coherent state [44, 46], and therefore offers no metrolog-
+ical advantage over the input driving field. This reflects
+the absence of photon correlations in the output, which
+causes the first and last terms in Eq. (3) to cancel. The in-
+crease of the QFI with system size N stems from the fact
+that the driving strength ω (set by the input-light power)
+must scale with N to maintain the same operating point
+in the phase diagram. Thus in the stationary regime, the
+improvement in precision arises solely from using more
+light for larger N . In the time crystal regime, however,
+the emitted light exhibits correlations, reflected in oscil-
+lating two-time intensity correlations whose strength and
+quality factor increases with system size (see Appendix
+B). These increasingly strong temporal correlations pro-
+vide an additional metrological resource, leading to the
+extra N 2 scaling of the QFI in this phase. This resource
+is distinct from pure increase of driving intensity with
+larger systems and provides a collective enhancement in
+sensing optical phases.
+IV. HOMODYNE CURRENT PROTOCOLS
+Whether the minimum estimation error given by
+Eq. (2) can be practically achieved depends on the ac-
+tual measurement performed on the BTC light and the
+processing of measurement outputs. In homodyne pro-
+tocols, the source output light first probes the unknown
+sample acquiring the phase shift φ and it is then super-
+posed with the emission field of a strong local oscillator
+[see Fig. 1(d)]. This setup allows for the measurement of
+the homodyne current extracted at the indicated output
+port [11, 75]
+Jβ (t) = √κ⟨ ˆSβ (t)⟩H + dW dt , (5)
+0.5 1 1.5 2 2.5
+ω/ωc
+0.01
+0.1
+1
+δϕ
+(a)
+×κ−1/2
+ϕ □ β = 0
+ϕ □ β = π/4
+ϕ □ β = 3π/8
+0.5 1 1.5 2 2.5
+ω/ωc
+0
+40
+|∂ϕJT |
+(b)
+×κ1/2
+0
+2000σJT 2
+FIG. 2. Results for the average homodyne current pro-
+tocol. (a) Time rescaled long-time estimation error δφ for the
+homodyne protocol versus Rabi frequency ω, for N = 40 and
+various φ − β. Dashed lines: corresponding HP approximated
+curves. Black crosses: bound given by the FI [I (h) φ ]−1/2 av-
+eraged over 1000 trajectories (see Appendix G for details).
+Gray line: bound given by the QFI f −1/2 φ . (b) Derivative and
+variance of the long-time averaged homodyne current versus
+Rabi frequency for N = 40 and φ − β = 0.
+where ˆSβ = ˆS−ei(β−φ) + ˆS+e−i(β−φ) is a general quadra-
+ture, with the homodyne phase β and dW/dt the deriva-
+tive of a Wiener process. The subscript H indicates ex-
+pectation values with respect to the homodyne condi-
+tional state [11, 75].
+We assume ideal monitoring of the homodyne current
+over a long measurement time T , and neglect any ad-
+ditional loss channels. We first consider the protocol
+where φ is estimated from the time average of the ho-
+modyne current, JT = (1/T )
+R T
+0 Jβ (t)dt, and analyze its asymptotic estimation error for long measurement
+times. Afterwards, we also study the FI of the full
+homodyne record, I (h) φ (φ0, T ), to determine how much
+of the QFI can be in principle extracted by this kind
+of continuous measurement. The average current reads
+E[JT ] = (√κ/T ) R T 0 ⟨ ˆSβ (t)⟩dt with E[•] the average over trajectories and ⟨O(t)⟩ = Tr[Oρ(t)] the unconditional ex-
+pectation value. For the estimation error, the error prop-
+agation formula holds [46]
+δφ =
+q
+E[J 2 T ] − E[JT ]2
+ ∂E[JT ] ∂φ  −1 , (6)
+which is lower bounded by the QCRB Eq. (2). For
+long measurement times, the time averaged current ap-
+proaches its ensemble mean limT →∞ JT = √κ⟨ ˆSβ ⟩ss
+[75]. Far away from critical points, large deviations
+theory yields a behavior of the standard deviation asp
+E[J 2 T ] − E[JT ]2 ∼ σJT / √ T [82], with the time inde-
+pendent rescaled standard deviation σJT . This implies a
+behavior of the estimation error as δφ ∼ δφ/
+√
+T , with
+the long-time rescaled estimation error δφ. The HP ap-
+proach in the stationary regime yields (see Appendix C
+and D)
+δφ ≈
+√κ
+2ω| cos(φ − β)| . (7)
+This agrees with the numerical results presented in
+Fig. 2(a) deep in the stationary regime, and saturates the
+4
+0 1 2 3 4
+ω/ωc
+0
+π
+2π∆ϕ
+(a)
+I II III
+Stationary intensity
+ωc,casc
+ωc
+0
+5
+10
+15
+×κ
+0 1 2 3 4
+ω/ωc
+(b)
+I II III
+Stationary purity
+0.1
+0.5
+1.0
+FIG. 3. Stationary properties of the cascaded system.
+N = 6 for all panels. (a) Emitted intensity and (b) purity of
+the stationary state varying Rabi frequency ω and phase dif-
+ference ∆φ. Red-solid lines: mean-field transition line ωc,casc
+from the stationary regime (I) to the intermediate regime,
+where only the decoder is in a time crystal regime (II). Red-
+dashed lines: transition line ωc where both source and decoder
+display time crystal behavior (III).
+QCRB for φ − β = 0. For φ − β = 0, the average ho-
+modyne current vanishes, which can be interpreted as a
+signature in the measurement data when tuning through
+the parameter β [see Fig. 1(e)]. In the vicinity of the
+critical Rabi frequency, the long-measurement-time esti-
+mation error increases to a higher level in the time crys-
+tal regime than the minimum observed in the stationary
+regime, due to a larger variance and smaller susceptibility
+of the homodyne current [see Fig. 2(b)].
+In Fig. 2(a), we also show the error bound (rate)
+for estimation protocols based on the homodyne cur-
+rent, given by [I (h) φ ]−1/2 (crosses), with I (h) φ :=
+limT →∞ I (h) φ (φ0, T )/T . The minimum achievable error
+is near the transition, while for the time crystal phase
+the error bound displays similar values as the largest
+ones observed in the stationary phase. Protocols that
+exploit temporal correlations in the homodyne current
+[5, 76] may outperform the average-current method in
+this regime. However, for the system sizes and parame-
+ter regimes studied (see Appendix G), the N 4 scaling of
+the QFI does not emerge in I (h) φ . The reason is that the
+light emitted by the local oscillator is in a coherent state
+and its superposition with the BTC light is therefore not
+sufficient to decode the intricate correlations leading to
+the enhancement of the QFI.
+V. PERFECT ABSORBER PROTOCOL
+We now consider the measurement protocol developed
+in Refs. [70, 71], which requires constructing a perfect
+absorber for the BTC light [83]. In fact, this absorber is
+a replica BTC acting as a ’decoder’ for the information
+inscribed on the phase shifted light [see Fig. 1(b)].
+The light emitted by the source BTC acquires a phase
+φ and is then unidirectionally guided into the decoder
+system. By applying an auxiliary tunable phase shift
+φ′ to the decoder output, the phase φ can be esti-
+mated by means of an intensity measurement of the
+decoder output [see Fig. 1(c)]. The evolution of the
+emerging cascaded system shown in Fig. 1(b) is described
+by the master equation Eq. (1) with Hamiltonian ˆH =
+ω( ˆSS x + ˆSD x ) − (iκ/2)(e−i∆φ ˆSD + ˆSS − − ei∆φ ˆSS + ˆSD − ), jump op-
+erator ˆL = ˆLcasc = e−i∆φ ˆSS − + ˆSD − , the phase difference
+∆φ = φ − φ′, and the superscript S (D) labels the collec-
+tive operators of the source (decoder) [46, 70, 83]. The
+cascaded system features a pure dark state at ∆φ = 0
+[46], which renders the decoder system a perfect absorber
+for this choice of parameters [83]. The occurrence of the
+dark state is independent of ω, as indicated in Fig. 3(a).
+For general values of ∆φ, the behavior with respect to
+the Rabi frequency displays three different regimes. For
+ω < ωc,casc =
+p
+5 − 4 cos(∆φ), both source and decoder
+are in the single system stationary regime (regime I in
+Fig. 3). For ωc,casc ≤ ω < ωc, the decoder first transi-
+tions to a time crystal regime, with its observables show-
+ing persistent oscillations in the thermodynamic limit
+(II) (see Appendix F). For ω ≥ ωc, both source and de-
+coder are in a time crystal regime (III). These regimes are
+also characterized by their subsystem entropies, which we
+show in Appendix F.
+In order to assess the potential for measuring the
+phase shift φ using the perfect absorber protocol, we
+first study the FI rate of the full record of emissions
+I (c) φ := limT →∞ I (c) φ (φ0, T )/T [see Fig. 4(a),(b)]. We per-
+form our analysis focusing on a small system size N = 6,
+finding that for long measurement times, the FI rate ap-
+proaches the long-time QFI rate in both regimes. Notice
+that, due to the low emission intensity near the dark state
+condition, reaching the stationary FI rate takes a longer
+time compared to the previous protocols. In the station-
+ary regime, the sensitivity shows little dependence on
+∆φ as long as it is small. In contrast, in the time crystal
+regime, there is a stronger dependence on ∆φ and satu-
+ration of the QFI occurs when tuning ∆φ to an optimal
+point (see Appendix G).
+We further illustrate the performance of this proto-
+col by considering a specific estimation strategy based
+on the time averaged intensity IT = (1/T )
+R T
+0 dN (t) of the cascaded system. dN (t) is a random variable tak-
+ing the values 1 if a photon is detected at time t and
+0 otherwise, with average value given by E[dN (t)] =
+κdt⟨ ˆL† casc ˆLcasc(t)⟩ [75]. As in the homodyne case we focus
+on characterizing the estimation error in the asymptotic
+limit of long measurement times, in which limT →∞ IT =
+κ⟨ ˆL† casc ˆLcasc⟩ss, and the estimation error scales as δφ ∼
+δφ/
+√
+T , with δφ = σIT /|∂φIT |. Using an HP approach
+we determine the estimation error in the cascaded sta-
+tionary regime (see Appendix F)
+δφ ≈
+s
+κ(1 − cos(∆φ))
+2ω2 sin2(∆φ) . (8)
+This saturates the QCRB for ∆φ → 0 and is numeri-
+cally verified in Fig. 4(c). At ∆φ = 0 the emitted in-
+tensity vanishes, which leaves a clear signature in the
+data when tuning through the parameter φ′ [see Fig. 1(c)]
+5
+0 15000 30000
+κt
+0
+4I(c) ϕ /t
+fϕ
+(a) ω/ωc = 0.25
+∆ϕ = 0.1
+×κ
+I(c) ϕ /t std
+0 15000 30000
+κt
+0
+20
+40
+60
+80
+fϕ
+(b) ω/ωc = 4
+∆ϕ = 0.0027
+×κ
+0.005 0.05 0.5
+∆ϕ
+0.0
+1.5
+δϕ
+(c)
+×κ−1/2
+ω/ωc = 4
+ω/ωc = 0.25
+6 10 20
+N
+0.30
+0.15
+0.08
+0.03
+1/f 1/2ϕ,∞ ∝N −1.222
+∝N −1.04 (d)
+×κ−1/2
+∆ϕ = 0.005
+∆ϕ = 0.01
+0.001 0.01 0.1
+∆ϕ
+0
+360
+|∂ϕIT |
+(e)
+×κ
+0
+3000
+σIT 2
+×κ
+N = 6
+N = 11
+N = 16
+FIG. 4. Results for the perfect absorber protocol. (a–b) Fisher information (FI) rate for photocounting in the perfect
+absorber protocol with N = 6: (a) stationary regime (ω/ωc = 0.25, ∆φ = 0.1); (b) time crystal regime (ω/ωc = 4, ∆φ = 0.0027).
+Purple solid line: FI averaged over 1000 trajectories, with the shaded region indicating the Monte-Carlo standard deviation.
+Red-dashed line: corresponding long-time QFI rate. (c) Time-rescaled long-time estimation error versus ∆φ for N = 11,
+comparing the cascaded time crystal regime (ω/ωc = 4, III) and the cascaded stationary regime (ω/ωc = 0.25, I). Black
+dash-dotted line: HP approximation of the error for ω/ωc = 0.25. (d) Estimation error versus system size for different ∆φ at
+ω/ωc = 4. Green-dotted line: QFI rate in the limit ω/ωc → ∞ [cf. Eq. (4)]. Dashed lines: power-law fit δφ = bN −α on the
+data. (e) Derivative and variance of the time-averaged intensity versus ∆φ for various system sizes with ω/ωc = 4.
+and leads to a particularly high sensitivity in the sta-
+tionary regime. For small but nonzero ∆φ, the emitted
+intensity remains finite and the protocol functions re-
+liably with sensitivity close to its maximum value [see
+Fig. 4(a),(c)]. In Appendix E we additionally show ex-
+plicitly how the perfect absorber protocol emerges from
+the construction in [70] in the stationary regime. In the
+time crystal regime and nearby the perfect absorber con-
+dition ∆φ = 0, we observe lower values of the estimation
+error than in the stationary regime, due to a decrease in
+the variance σIT 2 and a maximum in the susceptibility
+|∂φIT | of the long-measurement-time average intensity.
+This maximum moves closer to ∆φ = 0 with increasing
+system size. Note, however, that the optimal operat-
+ing point in the time crystal regime is not directly at
+the dark state condition, but at values of ∆φ slightly
+above this condition [70, 71, 84]. As a function of sys-
+tem size, we find scaling proportional to δφ ∝ N −α with
+α = 1.222 ± 0.018 for ∆φ = 0.005, and α = 1.04 ± 0.04
+for ∆φ = 0.01, both for a Rabi frequency of ω/ωc = 4
+[see Fig. 4(d)]. This analysis shows that while being ideal
+in the stationary regime, in the time crystal regime esti-
+mators based on the long-measurement-time-averaged in-
+tensity are not optimal and therefore future work should
+investigate whether strategies such as maximum likeli-
+hood estimation (MLE) [70, 71] or pattern counting [84]
+can saturate the FI rate.
+VI. CONCLUSIONS AND OUTLOOK
+We showed that a BTC can be used as a light source
+for collectively enhanced sensing of an optical phase shift
+encoded by an unknown sample. We analyzed funda-
+mental sensitivity bounds through a study of the QFI
+and evaluated the classical FI of specific measurement
+strategies based on continuous monitoring. In the time
+crystal regime, we found that the QFI for sensing optical
+phases scales as N 4 in the size N of the BTC, surpassing
+the scaling with N 2 in the stationary regime. This col-
+lective enhancement in sensitivity arises from the corre-
+lations imprinted on the emitted light. We have designed
+a detector based on implementing a perfect absorber and
+measuring its output via photon counting, showing that
+the FI of this specific measurement can saturate the QFI
+of the BTC light for phase estimation.
+The largely analytically tractable BTC serves as a
+convenient theoretical platform for demonstrating the
+concept behind collectively enhanced parameter estima-
+tion using quantum many-body systems as light sources.
+Bridging the gap between this model and practical ex-
+perimental implementations necessitates the assessment
+of the effects of finite detection efficiencies, and local noise
+and decay channels [48, 50]. While the former have shown
+to reduce the achievable precision by a factor of N 2 in
+the case of sensing the Rabi frequency of the BTC [50], it
+would be an interesting avenue to determine the impact
+on the sensing scheme presented in our work. Beyond
+the analysis of sensitivity bounds and specific measure-
+ment strategies, identifying suitable data processing pro-
+cedures capable of achieving the reported sensitivities re-
+mains an important open question. A natural next step
+is to explore estimation strategies such as MLE [70, 71]
+or pattern-counting estimators [84], which have proven
+effective in other settings implementing the perfect ab-
+sorber protocol.Another intriguing direction will be to ex-
+plore whether the observed collective enhancements per-
+sist in light emitted from other types of time crystals, par-
+ticularly in systems involving particles with finite-range
+interactions and non-collective dissipation [85, 86].
+ACKNOWLEDGMENTS
+Acknowledgements.— We acknowledge the use of the
+QuTiP library [87–89]. We acknowledge support from
+the Deutsche Forschungsgemeinschaft (DFG, German
+Research Foundation) through the Walter Benjamin pro-
+gramme, Grant No. 519847240 and the Research Unit
+FOR 5413/1. AC acknowledges support from both the
+Spanish Ministerio de Ciencia, Innovaci´on y Universi-
+dades and Universitat de les Illes Balears through the
+6
+Beatriz Galindo programme (BG24/00134). This work
+was supported by the QuantERA II programme (project
+CoQuaDis, DFG Grant No. 532763411) that has re-
+ceived funding from the EU H2020 research and inno-
+vation programme under GA No. 101017733. This work
+is also supported by the ERC grant OPEN-2QS (Grant
+No. 101164443, https://doi.org/10.3030/101164443).
+DATA AVAILABILITY AND TOOLS
+Code and data in support of the findings of this paper
+are available on GitHub [90]. Claude Opus v4.7 (An-
+thropic) was used to assist with editing and refactoring
+code used in calculations (formatting, variable renaming,
+suggested algorithmic changes); all suggestions were
+reviewed, tested, and finalized by the authors.
+Appendix A: QFI with MPS description
+We consider the estimation of an optical phase shift φ
+imprinted on the photons emitted by a quantum system
+as described by Eq. (1). This phase shift is described by
+the transformation of the jump operator ˆL → ˆLe−iφ [55].
+The estimation error of any measurement of a classical
+parameter imprinted on the state of a quantum system
+is lower bounded by the QCRB [73, 75]
+Var[ ˆφ]φ0 ≥ 1/Fφ(φ0, T ), (A1)
+where Var[ ˆφ]φ0 is the variance of the estimator ˆφ for
+the physical parameter φ evaluated at a realization φ0.
+Fφ(φ0, T ) is the QFI associated to the parameter φ at
+measurement time T evaluated at φ0. In the following,
+we will consider δφ =
+p
+Var[ ˆφ]φ0 as a measure for the es-
+timation error for the parameter φ. The QFI can be com-
+puted, using the symmetric logarithmic derivative (SLD)
+D with [55]
+∂φρ = 1 2 (Dρ + ρD) , (A2)
+where ρ is the global density matrix. The QFI is given
+in terms of the SLD as [55]
+Fφ(φ, T ) = Var[D]φ, (A3)
+meaning that it only depends on the global quantum
+state ρφ and the form of the SLD. Since the QFI is opti-
+mized over all possible measurements, it does not depend
+on or specifies measurements [75]. For a pure quantum
+state ρφ = |ψφ⟩⟨ψφ|, the QFI takes the more simple form
+[54, 55]
+Fφ(φ, T ) = 4
+ 
+ψ′ φ ψ′ φ  − | 
+ψ′ φ ψφ  |2
+= 4∂φ1 ∂φ2 ln ⟨ψφ1 |ψφ2 ⟩ ,
+(A4)
+where
+ψ′ φ  = ∂φ |ψφ⟩ is the derivative of the state. In
+the case of a quantum system described by Eq. (1), the
+global system and environment state at time T can be
+approximated by the matrix product state [48, 54]
+|ψφ⟩ =
+1X
+i1 ,...,in =0
+Kin · · · Ki1 |χS⟩ ⊗ |i1, . . . , in⟩ , (A5)
+where we have discretized time into n steps of size δt,
+and introduced the Kraus operators K0 = 1 − iδt ˆH −
+κδt ˆL† ˆL/2 and K1 = √ κδt ˆLe−iφ. The choice of the Kraus
+operators given here assumes an ideal photoncounting
+picture of the emission statistics. A similar description
+can be found, assuming ideal homodyne detection [49].
+In the limit of infinitesimal time steps, the MPS Eq. (A5)
+becomes a continuous matrix product state (cMPS) and
+one recovers the dynamics of Eq. (A9) [55, 91, 92]. |χS⟩ is
+the inital system state and |i1, . . . , in⟩ captures the time
+record of detected emissions into a bosonic environment.
+Using the MPS description and the second equation of
+Eq. (A4), the QFI rate in the long-time limit reads
+fφ := lim T →∞
+Fφ(φ, T )
+T = 4∂φ1 ∂φ2 λ0(∆φ)
+
+∆φ=0, (A6)
+where λ0(∆φ) is the eigenvalue with largest real part of
+the deformed master equation
+∂tρ = L [ρ] + κ
+ 
+e−i∆φ − 1  ˆLρ ˆL†, (A7)
+with L the Lindbladian describing evolution according to
+Eq. (1).
+Alternatively, we determine the QFI by computing the
+inner products in the first line of Eq. (A4) [54]. This
+yields
+ψφ
+ψ′ φ  = nX
+j=1
+Tr
+h
+ρ(tj−1)(−iκδt) ˆL† ˆL i
+δt→0
+−→ −iκ
+Z T
+0
+dt Tr
+h
+ρ(t) ˆL† ˆL i
+ψ′ φ ψ′ φ  = nX
+j=1
+Tr
+h
+ρ(tj−1)κδt ˆL† ˆL i
++ 2
+nX
+j>k=1
+Tr
+h
+κ2δt2 ˆL† ˆL( ˆLρ(tk−1) ˆL†)(τ ) i
+δt→0
+−→
+Z T
+0
+dt Tr
+h
+ρ(t) ˆL† ˆL i +
+2κ2
+Z T
+0
+dt
+Z T −t
+0
+dτ Tr
+h
+ˆL† ˆLeLτ ( ˆLρ(t) ˆL†) i
+| {z }
+=:C(τ )
+,
+(A8)
+with tk = kδt, and we defined τ := tj−1 − tk+1. We
+further adopt the convention for the time evolution of
+an operator ˆO(t) = eLt ˆO(0). In the long-time limit, we
+assume the replacement ρ(t)
+t→∞
+−→ ρss, which yields the
+7
+expression Eq. (3) for the QFI rate and shows that the
+QFI is related to the first and second intensity correlation
+functions [75] and independent of the true value of the
+parameter φ0. Results for the BTC are then obtained by
+using ˆH = ω ˆSx and ˆL = ˆS−. In the following, we will
+assume this choice of the Hamiltonian and jump opera-
+tor if not stated otherwise, yielding the Lindblad master
+equation
+∂tρ = −iω[ ˆSx, ρ] + κD[ ˆS−]ρ. (A9)
+Appendix B: Time-correlations in the single system
+and the superspin method
+In this section, we compute an approximation to the
+correlation function C(τ ) in the extreme time crystal
+limit ω/ωc → ∞ of a BTC, using the superspin method
+developed in [81]. This method uses the vectorized form
+of the Lindbladian superoperator and the density ma-
+trix. This approach assumes the transformation of op-
+erators to vectors according to O = |m⟩⟨n| → |O⟩⟩ =
+|m⟩ ⊗ |n⟩∗. Applying this transformation to the Lindblad
+Master Equation Eq. (A9) leads to the matrix equation
+∂t|ρ⟩⟩ = ˜L|ρ⟩⟩, with the vectorized Lindblad superoper-
+ator [81]
+˜L = ˜L0 + ˜LD = iω ˆJx| {z }
+˜L0
+− κ 4  ˆJ 2 x + ˆ⃗J 2  | {z }
+˜LD
+, (B1)
+where we have defined the superspin components ˆJα = ˆSα ⊗ 1 − 1 ⊗ ˆSα. Since the vectorized Lindblad su-
+peroperator only depends on the total superspin and its
+x−projection, it is customary to use the x−superspin ba-
+sis of the respective Liouville space, where the common
+0 1 2 3 4
+ω/ωc
+0
+2
+4
+6
+8f 1/2 ϕ /N
+(a)
+stationary
+regime
+time crystal
+regime
+×κ1/2
+N = 20
+N = 40
+N = 80
+10 20 50 100
+N
+0.5
+1
+2
+4
+8
+16 (b)
+f
+1/2
+ϕ,∞/N
+I
+II
+×κ1/2
+ω/ωc = 4
+ω/ωc = 1
+ω/ωc = 0.5
+FIG. 5. Scaling of the QFI rate with N. (a) Square
+root of the system size rescaled long-time limit QFI rate as
+a function of the Rabi frequency ω and for varying system
+sizes N . The dashed lines indicate the saturating value fφ,∞.
+(b) Square root of the system size rescaled QFI rate as a
+function of the system size N for selected constant values of
+ω/ωc. For I and II, the asymptotic behavior is determined
+by a power law fit yielding scaling behaviors of fφ ∝ N αi
+with αI = 3.923 ± 0.004 and αII = 2.8417 ± 0.0018. The
+red dashed line indicates the saturating value fφ,∞. For both
+panels, numerical values are obtained, using diagonalization
+of Eq. (A7) and fφ,∞ corresponds to Eq. (4).
+eigensuperkets can be labeled as |j, jx⟩⟩ [81]. We restrict
+the calculations to the maximally polarized sector with
+a BTC composed of N emitters. This implies values of
+j = 0, . . . , N and jx = −j, . . . , j [81].
+In the strong driving or extreme time crystal limit
+(ω/ωc → ∞) and for fixed system size, the term ˜LD can
+be considered a small perturbartion of the unperturbed
+contribution ˜L0. Using a first order perturbation calcu-
+lation, we compute an approximation to the Lindbladian
+eigenvalues as [81]
+λj,jx = iωjx − κ 4 (j2 x + j(j + 1)), (B2)
+where the labels j, jx correspond to the x−basis superspin
+states. We are interested in computing the correlation
+function C(τ ). In the extreme time crystal limit, the
+stationary state approaches the maximally mixed state,
+i.e. ρss ≈ 1/(N + 1) [77, 93]. Thus, to first order the
+correlation function reads [50]
+C(τ ) ≈
+X
+j,jx
+eλj,jx τ ⟨⟨ ˆS+ ˆS−|j, jx⟩⟩⟨⟨j, jx| ˆS− ˆS+⟩⟩/(N + 1),
+(B3)
+where we used the decomposition eLτ ≈P
+j,jx eλj,jx τ |j, jx⟩⟩⟨⟨j, jx|. We further simplify this expression by determining the x−basis superspin states,
+using the rule ˆJα| ˆO⟩⟩ = |[ ˆSα, ˆO]⟩⟩ [50, 81]. For example
+the state corresponding to j = 1, jx = 0 reads up to a
+normalization and phase
+ˆJx| ˆSx⟩⟩ = |[ ˆSx, ˆSx]⟩⟩ = 0 (B4)
+ˆJ 2| ˆSx⟩⟩ = |[ ˆSy, [ ˆSy, ˆSx]]⟩⟩ + |[ ˆSz, [ ˆSz, ˆSx]]⟩⟩ = 2| ˆSx⟩⟩.
+(B5)
+We thus conclude |1, 0⟩⟩ = N1,0| ˆSx⟩⟩ and determine the
+normalization up to a phase
+|N1,0|2 = 1 Tr[ ˆS2x ] = 12 N (N + 1)(N + 2) . (B6)
+Next, we decompose the superstates | ˆS± ˆS∓⟩⟩ in the
+|j, jx⟩⟩ basis by using the ladder operators in the x−basis
+ˆS(x) ± = ˆSy ± i ˆSz and applying the identity for ladder op-
+erators in the z-basis ˆS± ˆS∓ = ˆ⃗S2 − ˆS2 z ± ˆSz, yielding
+8
+□3 □2 □1 0
+Re(λ)/κ
+□2
+0
+2Im(λ)/ω
+(a) ω/ωc = 5
+exact
+superspin
+□3 □2 □1 0
+Re(λ)/κ
+□2
+0
+2
+(b) ω/ωc = 10
+□3 □2 □1 0
+Re(λ)/κ
+□2
+0
+2
+(c) ω/ωc = 50
+FIG. 6. Benchmark of the superspin eigenvalue spectrum. Comparison of the Lindbladian eigenvalues for the BTC
+obtained by exact diagonalization (blue crosses) and by the superspin method (red circles), for different values of the Rabi
+frequency ω and system size N = 10. With increasing Rabi frequency the agreement between the approximation and the exact
+eigenvalues increases.
+0.0 0.5 1.0
+κτ
+350
+490
+C
+(a)
+ω/ωc = 5
+exact
+superspin
+0.0 0.2 0.4 0.6
+κτ
+350
+490 (b)
+ω/ωc = 10
+0.00 0.05 0.10
+κτ
+350
+490 (c)
+ω/ωc = 50
+FIG. 7. Benchmark of the superspin correlation function. Correlation function C(τ ) as a function of time, for different
+Rabi frequencies ω. In all panels, the system size is N = 10. The exact results (blue solid line) are obtained, using numerical
+integration of the Lindblad master equation and the superspin results (red dashed line) represent the evaluation of Eq. (B11).
+With increasing Rabi frequency the agreement between the superspin method and exact evolution increases.
+| ˆS± ˆS∓⟩⟩ = 2 3 | ˆ⃗S2⟩⟩| {z }
+∝|0,0⟩⟩
+∓ i 2  | ˆS(x) + ⟩⟩ − | ˆS(x) − ⟩⟩  | {z }
+∝(|1,1⟩⟩−|1,−1⟩⟩)
++ 1 2  | ˆS2 x ⟩⟩ − 1 3 | ˆ⃗S2⟩⟩  | {z }
+∝|2,0⟩⟩
++ 1 4  |( ˆS(x) + )2⟩⟩ + |( ˆS(x) − )2⟩⟩  | {z }
+∝(|2,2⟩⟩+|2,−2⟩⟩)
+, (B7)
+|0, 0⟩⟩ = 4√ N + 1N (N + 2) | ˆ⃗S2⟩⟩, |1, ±1⟩⟩ =
+s
+6
+N (N + 1)(N + 2) | ˆS(x) ± ⟩⟩, (B8)
+|2, 0⟩⟩ =
+s
+180
+(N − 1)N (N + 1)(N + 2)(N + 3)
+
+| ˆS2 x ⟩⟩ − 1 3 | ˆS2⟩⟩  , (B9)
+|2, ±2⟩⟩ =
+s
+30
+(N − 1)N (N + 1)(N + 2)(N + 3) |( ˆS(x) ± )2⟩⟩. (B10)
+where the basis states underset in Eq. (B7) are given by
+Eqs. Eq. (B8) - Eq. (B10). We chose the normalization
+constants to be real. With this decomposition and the
+respective eigenvalues λj,jx , we compute the correlation
+function as
+C(τ ) ≈ N (N + 2)
+"
+N (N + 2)
+36 − e−3κτ /4 cos(ωτ ) 12
++ N 2 + 2N − 3 240  e−5κτ /2 cos(2ωτ ) + e−3κτ /2 3 # .
+(B11)
+With this expression, we compute the QFI, which yields
+the result in Eq. (4) in the extreme time crystal limit
+ω/ωc → ∞. We numerically benchmark the expressions
+for the first order approximated eigenvalues in Fig. 6 and
+the correlation function in Fig. 7.
+Appendix C: Large deviations approach and
+estimation error
+1. Photoncounting
+In the main text, we consider estimation of the pa-
+rameter φ via continuous monitoring of the decoder out-
+9
+put intensity IT = (1/T )
+R T
+0 dN (t). The statistics of the
+number of photon emissions until time T , M =
+R T
+0 dN (t), are described by a Laplace transform of the probability
+distribution, yielding the generating function [94]
+Zc(s, ∆φ) :=
+∞X
+M =0
+pM (T, ∆φ)e−sM , (C1)
+with the probability pM (T, ∆φ) of observing M emis-
+sions until time T . The moments of the photon count at
+time T are then given by derivatives of Zc. In the long-
+time limit, the generating function has the large deviation
+form Zc(s) ∼ eT θc (s,∆φ) with the large deviation function
+θc(s, ∆φ) [94]. Zc, pM and θc inherit a ∆φ-dependence
+from the cascaded Master equation, since the operators
+ˆLcasc and the stationary state ρss depend on ∆φ in the
+cascaded system. θc(s, ∆φ) is computed as the dominant
+eigenvalue of the tilted master equation [46, 94–96]
+∂tρ = Lcasc[ρ] + (e−s − 1) ˆLcascρ ˆL† casc, (C2)
+with the physical Lindbladian Lcasc of the cascaded sys-
+tem and a bias described by s. For s = 0, Eq. (C2) gen-
+erates the physical dynamics and for s ̸= 0 it generates
+an ensemble of trajecotries with the bias e−sM [94, 95].
+The estimation error thus is approximated in terms of
+the large deviations function θc(s, ∆φ) as
+δφ ∼ δφ√
+T
+, with δφ :=
+p
+∂2s θc(s, ∆φ)
+|∂φ∂sθc(s, ∆φ)|
+
+s=0
+= σIT
+|∂φIT | ,
+(C3)
+with the time rescaled standard deviation σIT =p
+∂2s θc(s, ∆φ)|s=0, and the derivative of the long-time av-
+eraged intensity −∂φ∂sθc(s, ∆φ)|s=0 = ∂φIT . It follows
+immediately that the estimation error decreases with
+measurement time as δφ ∼ 1/
+√
+T , obeying the standard
+quantum limit for long measurement times.
+2. Homodyne detection
+In the main text, we consider the time averaged homo-
+dyne current JT = (1/T )
+R T
+0 Jβ (t)dt = KT /T , with the time integrated homodyne current KT . Its moments are
+determined by the generating function
+Zh(s, φ − β) =
+Z
+dKe−sK pK (T, φ − β), (C4)
+where pK (T, φ − β) = P (KT = K) is the probability
+density of observing KT = K. For long times T , Zh
+acquires the large deviation form Zh(s) ∼ eT θh(s,φ−β)
+[11], with the large deviation function θh(s, φ − β). Zh,
+pK and θh inherit a φ − β dependence from Jβ . θh is
+computed as the eigenvalue with largest real part of the
+deformed master equation [11]
+∂tρ = L[ρ] − s√κ  ˆS−ei(β−φ)ρ + ρ ˆS+e−i(β−φ)  + s2 2 ρ,
+(C5)
+with the physical Lindbladian of a single BTC L. For
+s → 0, the physical evolution is recovered. JT ap-
+proaches its ensemble average in the long-time limit,
+as in a law of large numbers, yielding limT →∞ JT =
+limT →∞ E[JT ] = limT →∞ E[KT ]/T = −∂sθh(s, φ − β)
+[75], and its variance behaves as limT →∞ E[J 2 T ]−E[JT ]2 =
+limT →∞ ∂2 s θh(s, φ − β)/T . The estimation error for mea-
+suring φ via monitoring of the long-time averaged homo-
+dyne current thus is approximated by
+δφ ∼ δφ√
+T
+, with δφ :=
+p
+∂2s θh(s, φ − β)
+|∂φ∂sθh(s, φ − β)|
+
+s=0
+= σJT
+|∂φJT | ,
+(C6)
+with the time rescaled standard deviation σJT :=p
+∂2s θh(s, φ − β)|s=0, the time rescaled estimation error
+δφ and the derivative of the homodyne current in the
+long-time limit ∂φJT := −∂φ∂sθh(s, φ − β)|s=0. Similar
+to the estimation error in the cascaded measurement pro-
+tocol, the estimation error decreases with measurement
+time as δφ ∼ 1/
+√
+T , obeying the standard quantum limit
+for long measurement times.
+Appendix D: Holstein Primakoff approach to the
+single system
+In the stationary regime, we approximate the behav-
+ior of the BTC by applying the Holstein-Primakoff (HP)
+transformation to its spin operators. Here we follow the
+prescription given in [46] and express the spin operators
+in terms of bosonic ladder operators
+ˆS+ = ˆb†
+q
+2S − ˆb†ˆb, ˆS− =
+q
+2S − ˆb†ˆbˆb, (D1)
+with S = N/2 as in the main text. The bosonic mode
+described by the operators ˆb(†) is assumed to be in a
+large displaced state, such that only quantum fluctua-
+tions around this large displaced state are studied
+ˆb → ˆb + √ Sβ, (D2)
+where β is a complex field, which is determined below. If
+S describes a large displacement, the spin operators can
+be expanded in the small parameter ϵ = 1/
+√
+S
+ˆmα =
+ˆSα
+S =
+∞X
+l=0
+ϵl ˆmα,l. (D3)
+Explicit expressions up to order O(ϵ) are given by
+m+,0 =
+√
+kβ∗ and ˆm+,1 = 1 2 √ k [(4 − 3|β|2)ˆb† − β∗2ˆb],
+(D4)
+where k = 2 − |β|2. The field β is then determined by
+inserting the expanded operators in the Lindblad master
+equation. However, it is helpful to account for the physi-
+cal behaviour of the system before. The critical frequency
+10
+scales with the system size as ωc = N κ/2 = Sκ. This
+extensive character of the Rabi frequency is accounted
+for by rescaling according to
+ω = ˜ωS, τ = St, (D5)
+where also the time scale of the dynamics is rescaled.
+With the rescaled operators and parameters, the Lind-
+blad master equation is obtained
+∂τ ρ = −i˜ωS[ ˆmx, ρ] + κS
+
+ˆm−ρ ˆm+ − 1 2 { ˆm+ ˆm−, ρ}  .
+(D6)
+By expanding the density matrix ρ = P∞ l=0 ϵlρl and set-
+ting the right-hand side of Eq. (D6) equal to zero, we
+obtain the field β in the stationary state. Up to O(ϵ),
+this yields
+0 = −i˜ω ± κm±,0 ⇒ β
+p
+2 − |β|2 = −i ˜ω κ , (D7)
+from which β is determined to β =
+−i
+q
+1 −
+p
+1 − (˜ω/κ)2. This is only valid in the
+regime where ˜ω ≤ κ, i.e. the stationary regime. For
+the dominant order of the rescaled ladder operators, we
+obtain
+m±,0 = ± i˜ω κ . (D8)
+The term of O(1) of the rescaled Lindblad master equa-
+tion yields
+∂τ ρ0 = κ
+
+ˆm−,1ρ0 ˆm+,1 − 1 2 { ˆm+,1 ˆm−,1, ρ0}  , (D9)
+which we solve for the stationary state by the ansatz
+ρ0,ss = |E0⟩⟨E0|, where the state |E0⟩ is annihilated by
+the fluctuation of the lowering operator ˆm−,1. By ex-
+panding ˆm−,1 = Aˆb + Bˆb† with the coefficients
+A = 1 + 3
+p
+1 − (˜ω/κ)2
+2
+q
+1 +
+p
+1 − (˜ω/κ)2
+, B = 1 −
+p
+1 − (˜ω/κ)2
+2
+q
+1 +
+p
+1 − (˜ω/κ)2
+,
+(D10)
+we arrive at the stationary state
+|E0⟩ = 1√ N |0⟩ + 1√ N
+∞X
+n=1
+(−1)n
+ B
+A
+n r (2n − 1)!!
+2n!! |2n⟩ .
+(D11)
+N is a normalization constant and |n⟩ is a Fock state in
+the bosonic mode. Note that this is only well defined for
+|B/A| ≤ 1 and in the stationary regime ˜ω < κ, meaning
+that the given HP approach is only valid in the stationary
+regime.
+1. Calculation of the QFI
+In order to determine an expression for the QFI, we an-
+alyze the deformed master equation Eq. (A7). Inserting
+the rescaled operators and parameters yields the rescaled
+deformed master equation
+∂τ ρ = L[ρ] +
+ 
+e−i∆φ − 1  κS ˆm−ρ ˆm+. (D12)
+We make an ansatz for the dominant eigenstate similar
+to the undeformed master equation as
+ρ0 = |Eφ1 0 ⟩⟨Eφ2 0 | . (D13)
+|Eφ 0 ⟩ denotes the stationary state of the fluctuations ˆm−,1
+as in Eq. (D11), evaluated at the point φ. As this state is
+independent of φ, one could neglect the superscript, but
+it is carried here in order to keep the notation consistent
+with situations, where the stationary state depends on
+the estimated parameter [46]. We expand the action of
+ˆm− as
+ˆm− |Eφ1 0 ⟩ =
+
+mφ1 −,0 + 1√ S ˆmφ1 −,1 + ...  |Eφ1 0 ⟩ , (D14)
+⟨Eφ2 0 | ˆm− = ⟨Eφ2 0 |
+
+mφ2 −,0 + 1√ S ˆmφ2 −,1 + ...  . (D15)
+With this ansatz, the deformed master equation yields
+∂τ ρ0 = L[ρ0] +
+ 
+e−i∆φ − 1  κS  mφ1 −,0 + 1√ S ˆmφ1 −,1 + ...  |Eφ1 0 ⟩⟨Eφ2 0 |  mφ2 −,0 + 1√ S ˆmφ2 −,1 + ...  , (D16)
+with ∆φ := φ1 − φ2 and mφ ±,0 = m±,0 = ±i˜ω/κ as
+before. Of interest are the derivatives of the dominant
+eigenvalue of this tilted master equation, λ0(∆φ). The
+contribution L[ρ0] vanishes due to ˆmφ −,1 |Eφ 0 ⟩ = 0. The
+leading contribution to λ0 reads
+ 
+e−i∆φ − 1  κSmφ1 −,0mφ2 +,0 |Eφ1 0 ⟩⟨Eφ2 0 |
+=
+ 
+e−i∆φ − 1  κS ˜ω2
+κ2 ρ0
+=
+ 
+e−i∆φ − 1  S ˜ω2
+κ| {z }
+=:˜λ0 (φ1 ,φ2 )
+ρ0.
+(D17)
+11
+□1 0 1
+∆ϕ
+□20
+□10
+0
+λ0(∆ϕ)
+×κ
+exact
+HP approx.
+FIG. 8. Benchmark of the HP approximation for the
+QFI. Dominant eigenvalue of Eq. (A7) as a function of the
+phase difference ∆φ = φ1 − φ2. Comparison of the dominant
+eigenvalue λ0 computed via exact diagonalization Eq. (A7)
+(blue dots) and the HP approximation Eq. (D18) (red dashed
+line), for N = 30, and in the stationary regime ω/ωc = 0.5.
+The next-to-dominant term vanishes, because
+ˆmφ −,1 |Eφ 0 ⟩ = 0. Thus, one finds for the dominant
+eigenvalue of the deformed master equation in leading
+order, λ0(∆φ) = S ˜λ0(∆φ), where the factor of S comes
+from the previous rescalings Eq. (D5). This expression
+is benchmarked with results from diagonalization of
+Eq. (A7) in Fig. 8. In the stationary regime, the QFI
+rate in the long-time limit thus has the compact form
+fφ = lim T →∞
+Fφ(φ, T )
+T = 4∂φ1 ∂φ2 λ0
+
+φ1 =φ2
+= 4∂φ1 ∂φ2
+
+e−i(φ1 −φ2 ) − 1  S2 ˜ω2
+κ
+
+φ1 =φ2
+= 4 ω2
+κ .
+(D18)
+2. Estimation error for the homodyne protocol
+Here, we compute an approximation to the estimation
+error of the parameter φ via homodyne detection, using
+the HP approach. With the rescaled parameters Eq. (D5)
+and the expanded operators Eq. (D3), the deformed mas-
+ter equation for the homodyne current Eq. (C5) reads
+∂τ ρ = L[ρ] + s√κ  ˆm−ei(β−φ)ρ + ρ ˆm+e−i(β−φ)  + s2 2 ρ S .
+(D19)
+As an ansatz for the dominant eigensatate we choose the
+vacuum of the fluctuations ρ0 = |E0⟩⟨E0|. Inserting on
+the right hand side and using the relations Eq. (D8) yields
+to leading order
+s√κ n ei(β−φ)(m−,0 + ˆm−,1 + . . . )ρ0 + ρ0(m+,0 + ˆm+,1 + . . . )e−i(φ−β) o + s2 2 ρ0 S
+≈ s√κ i˜ω κ  e−i(β−φ) − ei(β−φ)  ρ0 + s2 2 ρ0 S , (D20)
+where we included the term s2/(2S), since it defines the
+variance of the homodyne current, but neglected terms
+with ˆm±,2, which are also of O(ϵ2), but only contribute to
+the −∂s∂φθh term in the estimation error, where they are
+subdominant to O(1) terms. Thus, the dominant eigen-
+value of the rescaled deformed master equation reads
+˜θh(s, φ − β) = 2s ω S√κ sin(β − φ) + s2 2S , (D21)
+where, due to the rescaling of Eq. (C5), θh(s, φ − β) =
+S ˜θh(s, φ − β). For the estimation error, this means
+δφ =
+s
+∂s2 θh(s, φ − β)
+(∂φ∂˜sθh(˜s, φ − β))2
+
+˜s=0
+=
+√κ
+2ω| cos(β − φ)| .
+(D22)
+This result is numerically benchmarked with results from
+diagonalization of Eq. (C5) as shown in Fig. 9.
+Appendix E: Construction of the optimal decoder in
+the stationary regime
+This section follows the construction of an optimal de-
+coder presented in [70]. We show how the perfect ab-
+sorber protocol emerges from this construction as the
+optimal measurement protocol in the stationary regime.
+We assume here a matrix product (MP) description of the
+cascaded source-decoder system, where we access the tra-
+jectory of emissions {i1, . . . , in} in small but finite time
+bins of size δt over a measurement time T = nδt by
+continuously monitoring the decoder output. This is for-
+mally implemented by the measurement
+ΠDE {ij } = U † DE(T )Π{ij }UDE(T ), (E1)
+acting on the decoder and emission field state ρD(0) ⊗
+ρE(T ) before their interaction. ρD(0) = |χD(0)⟩⟨χD(0)|
+12
+□1 0 1
+s
+□1
+0
+1
+2
+θh
+(a)
+×κ1/2
+exact
+HP approx.
+0.0 0.5 1.0
+ω/ωc
+10−14
+10−7
+100
+|∆θh|/θh
+(b) N = 30
+N = 40
+N = 50
+FIG. 9. Benchmark of the HP approximation for the
+homodyne protocol. (a) Dominant eigenvalue of Eq. (C5)
+as a function of the bias parameter s for φ − β = 0.1, fixed
+system size N = 30, and in the stationary regime ω/ωc = 0.5.
+Comparison of values obtained by exact diagonalization of
+Eq. (C5) (blue dots) and evaluation of Eq. (D21) (red dashed
+line). (b) Relative error of the dominant eigenvalue θh as a
+function of the Rabi frequency ω, for different system sizes,
+and fixed values φ − β = 0.1 and s = −0.05. The error is
+defined as the absolute difference of the HP approximated
+value and the exact diagonalized value, divided by the ex-
+act value. One observes that the error increases towards the
+critical Rabi frequency, but is small in a large portion of the
+stationary regime.
+is the decoder initial state and ρE(T ) describes the emis-
+sion field at time T , after the interaction with the source.
+Π{ij } = Nn j=1 |ij ⟩ ⟨ij | is the projector on the observed
+trajectory in the basis of the source and decoder emis-
+sion field time bin modes, interacting sequentially with
+the source and decoder [97]. UDE is a unitary, describ-
+ing the joint evolution of the decoder and emission field.
+In the MP description of the decoder and emission field
+state, this unitary is a MP Operator (MPO). The result-
+ing measurement ΠDE {ij } thus inherits a MP structure.
+The global system and emission field state is a pure
+MPS, |ψφ⟩, with the true value φ inscribed. Any projec-
+tive measurement {ΠSE k } of the state |ψφ⟩ containing the
+projector ΠSE 0 = |ψφ′ ⟩⟨ψφ′ | is optimal [74, 98–100] in the
+vicinity of φ′, in the sense that it saturates the QCRB
+evaluated at φ′. By tuning φ′ to φ′ = φ, the projec-
+tive measurement {ΠSE k } becomes optimal for the true
+realization of φ. For ΠDE {ij } to be optimal, it has to obey
+the same emission field structure as ΠSE 0 for at least one
+specific trajectory {mj }, yielding the condition
+UDE(φ′, T )  ΠSE 0 ⊗ ρD (0)  U † DE(φ′, T )
+= Π{mj } ⊗ ρSD(φ′, T ). (E2)
+Physically, the unitary UDE(φ′, T ) transforms the source
+and emission field state ΠSE 0 into the specific trajectory
+{mj } of the emission field as described by the projector
+Π{mj }, for φ = φ′. In this transformation the source
+and decoder evolve into a general state ρSD(φ′, T ), which
+is discarded. UDE and ρSD inherit a dependence on φ′
+from ΠSE 0 . A convenient choice for the target trajectory
+is the vacuum {mj } = {0, 0, . . . , 0}, which describes a
+dark decoder output and renders the decoder a perfect
+absorber.
+A general construction of a decoder satisfying Eq. (E2)
+can be challenging. However, in the long-time limit,
+a convenient construction can be found, if the source
+evolves according to a time-homogeneous master equa-
+tion with support for a stationary state ρS,ss =Pd
+k=1 pk,ss(φ′) |kss(φ′)⟩S S⟨kss(φ′)| at a parameter value
+φ′. In the stationary regime (ω < ωc), the source sta-
+tionary state is well approximated by the pure station-
+ary state ρS,ss = |E0⟩S S⟨E0| [see Eq. (D11)]. In such
+a situation, the prescription for the decoder operators
+given in [70] simplifies to ˆHD = −W0 ˆHS(φ′)W † 0 and
+ˆLD = −W0 ˆLS(φ′)W † 0 , in the sense that their matrix el-
+ements with respect to the source stationary state |E0⟩S
+and decoder stationary state |E0⟩D = W0 |E0⟩S are equal.
+The decoder is assumed to have the same Hilbert space
+dimension as the source, and W0 is an arbitrary unitary.
+The stationary state of the source-decoder system then
+reads |ψ⟩ = |E0⟩S ⊗ |E0⟩D. At φ = φ′, this state is a pure
+dark state, as is shown in [46]. With the choice
+W0 = exp
+h
+iπ ˆSS z
+i
+, (E3)
+the decoder operators are ˆHD = ω ˆSD x and ˆLD =
+κe−iφ′ ˆSD − , with ˆSD α acting on the decoder Hilbert space
+and ˆSS α on the source Hilbert space. This means that the
+optimal decoder is an identical copy of the source with a
+phase shift φ′ imprinted on emitted photons.
+Appendix F: Holstein Primakoff approach to the
+source-decoder system
+In this section, the HP approach is taken to the cas-
+caded source-decoder system, to obtain an analytical ex-
+pression for the estimation error δφ in the cascaded sta-
+tionary regime (ω < ωc,casc) similar to [46]. We start as
+before with the HP transformation
+ˆSi + = ˆb† i
+q
+2S − ˆb† i ˆbi, ˆSi − =
+q
+2S − ˆb† i ˆbiˆbi, (F1)
+where the index i indicates the operators of the source
+(i = S) and of the decoder (i = D). Assuming a large
+displaced state for both subsystems, we shift the bosonic
+modes as ˆbi → ˆbi + √ Sβi, where the βi are complex fields
+yet to be determined. As S is a large displacement, we
+expand all operators in the small parameter ϵ = 1/
+√
+S
+ˆmi α = ˆSi α S = ∞X l=0 ϵl ˆmi α,l. (F2)
+Similar to the case of a single system, the first order
+expansion reads
+ˆmi + ≈ mi +,0 + ϵ 1 2√ki [(4 − 3|βi|2) − |βi|2)ˆb† i − β∗2 i ˆbi] | {z }
+ˆmi +,1
+,
+(F3)
+13
+where ki = 2 − |βi|2 and mi +,0 = β∗ i √ki. Inserting the
+rescaled operators and rescaled parameters Eq. (D5) in
+the Lindblad master equation for the cascaded system
+yields
+∂τ ρss = −iS ˜ω[ ˆmS x + ˆmD x , ρss]
+− κ 2 S[e−i∆φ ˆmD + ˆmS − − ei∆φ ˆmS + ˆmD −, ρss]
++ κSD[e−iφ ˆmS − + e−iφ′ ˆmD −]ρss
+!
+= 0,
+(F4)
+which we want to solve for the stationary state ρss. By
+expanding the density matrix ρ = P∞ l=0 ϵlρl, we find up
+to order O(ϵ) self-consistency relations
+mS ±,0 = ± i˜ω κ , mD ±,0 = ± i˜ω κ (1 − 2e±i∆φ). (F5)
+With the solution for the zero order moments of the lad-
+der operators, we determine the fields βi as
+βS = −i
+q
+1 −
+p
+1 − (˜ω/κ)2,
+βD = − i˜ω κ 1 − 2e−i∆φ q 1 + p 1 − (˜ω2/κ2)(5 − 4 cos(∆φ)) . (F6)
+This solution is only valid in the regime ˜ω2 ≤ κ2/(5 −
+4 cos(∆φ)) or in other terms, we obtain an additional
+transition line for the cascaded system along ωc,casc =
+ωc/
+p
+5 − 4 cos(∆φ), with the single system critical fre-
+quency ωc. The next to leading order term yields
+∂τ ρ0 = − κ 2 [e−i∆φ ˆmD +,1 ˆmS −,1 − ei∆φ ˆmS +,1 ˆmD −,1, ρ0]
++ κD[e−iφ ˆmS −,1 + e−iφ′ ˆmD −,1]ρ0 ! = 0. (F7)
+We solve this by the ansatz
+ρ0,ss = (
+ES 0  ⊗ ED 0  )( 
+ES 0  ⊗ 
+ED 0 ), (F8)
+with the vacuum of the fluctuations ˆmi −,1 Ei 0  = 0. By
+writing out the fluctuations as ˆmi −,1 = Aiˆbi + Biˆb† i with
+BS = − 1 −
+p
+1 − ˜ω2/κ2
+2√kS , (F9)
+AS = 1 + 3
+p
+1 − ˜ω2/κ2
+2√kS , (F10)
+BD = (−i˜ω/κ)1 − 2ei∆φ q
+1 +
+p
+1 − (˜ω2/κ2)(5 − 4 cos(∆φ))√2kD ,
+(F11)
+AD = 1 + 3
+p
+1 − (˜ω2/κ2)(5 − 4 cos(∆φ))
+2√kD , (F12)
+the explicit form of the stationary state is determined.
+Notice that |Bi/Ai| ≤ 1 and thus we find the vacuum
+0 1 2 3 4
+ω/ωc
+0
+π
+2π∆ϕ
+(a)
+I III
+Source entropy
+0.0
+0.6
+1.2
+1.8
+0 1 2 3 4
+ω/ωc
+(b)
+I II III
+Decoder entropy
+0.0
+0.6
+1.2
+1.8
+FIG. 10. Stationary von-Neumann entropy of the cas-
+caded system. N = 6 for all panels. Von-Neumann en-
+tropy of the stationary state reduced to (a) the source and
+(b) the decoder system varying Rabi frequency ω and phase
+difference ∆φ. Red-solid lines: transition line ωc where both
+source and decoder display time crystal behavior (III). Red-
+dashed line in (b): mean-field transition line ωc,casc from the
+stationary regime (I) to the intermediate regime, where only
+the decoder is in a time crystal regime (II).
+□1.0 □0.5 0.0 0.5
+s
+□0.005
+0.005
+0.015
+θc
+×κ
+(a) exact
+HP approx.
+0.1 0.2 0.3 0.4 0.5
+ω/ωc
+10−9
+10−6
+10−3
+100
+|∆θc|/θc
+(b)
+N = 5
+N = 6
+N = 7
+FIG. 11. Benchmark of the HP approximation for
+the perfect absorber protocol. (a) Dominant eigen-
+value of Eq. (C2) as a function of the bias parameter s, for
+∆φ = 0.1, fixed system size N = 5 and in the stationary
+regime ω/ωc = 0.35. Comparison of results obtained with the
+HP approximation (red dashed line) and numerical diagonal-
+ization of Eq. (C2) (blue solid line). (b) Relative error of the
+dominant eigenvalue θc as a function of the Rabi frequency
+ω, for different system sizes, and fixed values ∆φ = 0.1 and
+s = −0.05. The error is defined as the absolute difference of
+the HP approximated value and the exact diagonalized value
+and both divided by the exact value. The error increases to-
+wards the critical Rabi frequency, but is small in a large por-
+tion of the stationary regime. The approximation improves
+with increasing system size.
+states of the respective fluctuations
+Ei 0  = 1√ N
+ 
+|0⟩i +
+∞X
+n=1
+ −Bi
+Ai
+n r (2n − 1)!!
+2n!! |2n⟩i
+!
+.
+(F13)
+The additional transition line at ω = ωc,casc is strongly
+visible in the von Neuman entropy SVN = − Tr
+
+ρi ss ln ρi ss 
+of the stationary state in the perfect absorber protocol re-
+duced to the source (i = S) and the decoder (i = D). For
+the source, a transition from a pure to a mixed station-
+ary state occurs at ω = ωc, whereas for the decoder this
+transition is at ω = ωc,casc [see Fig. 10]. This shows that
+the transition at a driving strength ω = ωc,casc observed
+in the stationary purity and intensity with respect to the
+14
+0 5 10
+ωct
+□1.0
+□0.5
+0.0
+0.5
+1.0
+(a) ω/ωc = 0.1
+mS z
+mD z
+0 5 10
+ωct
+(b) ω/ωc = 0.5
+0 5 10
+ωct
+(c) ω/ωc = 4
+FIG. 12. Cascaded system mean field quantities. Mean field expectation value of the z−magnetization
+limN →∞(2/N )⟨ ˆSi z⟩ = mi z, with i = S for the source (blue solid line) and i = D the decoder (red dashed line), for differ-
+ent positions in the phase diagram. ωc = N κ/2 is the critical frequency and both ω and t are measured in units of ωc to obtain
+a well-defined limit. For all panels, ∆φ = π. (a) ω/ωc = 0.1, with source and decoder in the stationary regime. (b) ω/ωc = 0.5,
+with the source in the stationary regime and the decoder displaying time crystal behavior. (c) ω/ωc = 4, with both source and
+decoder in the time crystal regime.
+global state of the cascaded system in Fig. 3 of the main
+text are due to a transition of the decoder system. For
+driving strengths below ωc, the source system remains
+in a pure stationary state, which underlines the causal
+structure of the cascaded system: photons, once emitted
+by the source are not fed back to the source and therefore
+only affect the decoder and its output. Therefore, the
+stationary state of the source is oblivious of any changes
+in the dynamics of the decoder. The decoder, however,
+receives the source output as an additional input, lead-
+ing to a change in its stationary state and transitioning
+to a time crystal regime for lower values of ω. In the
+strong-driving limit ω → ∞, we observe that the entropy
+of both subsystems approaches its maximum value, indi-
+cating that source and decoder are in a highly entangled
+state.
+1. Estimation error for the perfect absorber
+protocol in the stationary regime
+Inserting the rescaled parameters Eq. (D5) and opera-
+tors Eq. (F2) in the tilted master equation Eq. (C2) yields
+∂τ ρ = L[ρ] + κS(e−s − 1)(e−iφ ˆmS − + e−iφ′ ˆmD −)ρ(eiφ ˆmS + + eiφ′ ˆmD +). (F14)
+For the dominant eigenstate we choose the ansatz as in
+Eq. (F8), ρ0,ss = (
+ES 0  ⊗ ED 0  )( 
+ES 0  ⊗ 
+ED 0 ). Inserting this ansatz on the right hand side and only considering the leading terms in the expansion of the operators yields
+the dominant eigenvalue
+θc(s, ∆φ) ≈ κS2(e−s − 1)(mS −,0mS +,0 + mD −,0mD +,0 + e−i∆φmS −,0mD +,0 + ei∆φmD −,0mS +,0
+= S2(e−s − 1) ˜ω2
+κ 2(1 − cos(∆φ)) = 2(e−s − 1) ω2 κ (1 − cos(∆φ)), (F15)
+which is benchmarked with data obtained by diagonal-
+ization of Eq. (C2) in Fig. 11. From this, the estimation
+error is computed as
+δφ =
+p
+∂2s θc(s, ∆φ)
+|∂φ∂sθc(s, ∆φ)|
+
+s=0 =
+p
+κ(1 − cos(∆φ))√
+2ω| sin(∆φ)| , (F16)
+which is minimal and saturates the QCRB for ∆φ = 0.
+Note that this approximation only holds in the cascaded
+stationary regime for ω < ωc,casc.
+2. Mean-field operators for the source-decoder
+system
+We define the rescaled operators as ˆmi,N α = 2 ˆSi α/N ,
+with α ∈ {x, y, z} and (i = S) for the source and (i = D)
+for the decoder. In the limit N → ∞, these operators
+converge to multiples of the identity, i.e. limN →∞ ˆmi,N α =
+limN →∞⟨ ˆmi,N α ⟩ =: mi α [31, 101, 102]. As in the main text
+we consider the maximally polarized sector with total
+angular momentum of the subsystems S = N/2. While
+15
+the time evolution of the density matrix is given by a Lindblad master equation, the evolution of expectation
+values is given by an adjoint Lindblad master equation
+∂t⟨ ˆmN α ⟩ = − iω
+ h
+ˆmN α , ˆSS x + ˆSD x
+i
+− κ 2  h ˆmN α , e−i∆φ ˆSD + ˆSS − − ei∆φ ˆSS + ˆSD − i
++ κ
+ 
+eiφ ˆSS + + eiφ′ ˆSD +  ˆmN α  e−iφ ˆSS − + e−iφ′ ˆSD − 
+− κ 2  n eiφ ˆSS + + eiφ′ ˆSD +   e−iφ ˆSS − + e−iφ′ ˆSD −  , ˆmN α o .
+(F17)
+In a first step, this yields the equations of motion for the
+expectation values ⟨ ˆmi,N α ⟩. We then continue by defining
+ωc = N κ/2, and rescaling time and the Rabi frequency
+as τ = St, ω = S ˜ω. With this rescaling, we then take the
+thermodynamic limit, assuming that expectation values
+factor as ⟨ ˆmi,N α ˆmj,N β ⟩ N →∞ −→ ⟨ ˆmi,N α ⟩⟨ ˆmj,N β ⟩. With this we
+find the equations of motion
+∂τ mS x = κmS x mS z (F18)
+∂τ mS y = −˜ωmS z + κmS y mS z (F19)
+∂τ mS z = ˜ωmS y − κ  (mS x )2 + (mS y )2 (F20)
+∂τ mD x = κ  mD x mD z + 2mS x mD z cos(∆φ) − 2mS y mD z sin(∆φ)  (F21)
+∂τ mD y = −˜ωmD z + κ  mD z mD y + 2mS x mD z sin(∆φ) + 2mS y mD z cos(∆φ)  (F22)
+∂τ mD z = ˜ωmD y − 2κ   mS x mD x + mS y mD y  cos(∆φ) +   mS x mD y − mS y mD x  sin(∆φ))  − κ  (mD x )2 + (mD y )2 . (F23)
+The operators ( ˆmi)2 commute with all components of
+the angular momentum, meaning that the expectation
+values ⟨( ˆmi)2⟩ are conserved, and due to the maximum
+polarization condition ( ˆSi)2 = N/2, we find (mi)2 = 1.
+Using this boundary condition, we numerically compute
+the dynamics generated by Eqs. (F18 - F23) for three
+different ratios ˜ω/κ and display the results for the mi z
+components in Fig. 12. We further determine the values
+of mi ± in the thermodynamic limit and in the stationary
+state. By setting Eqs. (F18 - F23) to zero, we determine
+the stationary solutions for the mean field observables as
+mS ± = ±i ˜ω κ , (F24)
+mD ± = ±i ˜ω κ − 2mS ±e±i∆φ = ±i ˜ω κ (1 − 2e±i∆φ), (F25)
+which agrees with the results obtained with the HP ap-
+proach for mi ±,0 in Eq. (F5).
+Appendix G: Fisher Information of the homodyne
+monitoring record and the perfect absorber protocol
+In this work, we also analyze the Fisher information
+associated with the homodyne measurement record and
+with the photocounting record [49, 59, 62, 76]. These
+quantities are introduced in detail in Refs. [59, 62], where
+various algorithms for their computation are presented.
+Here, we adopt the method of Ref. [62], which provides
+an efficient algorithm based on the Kraus-operator de-
+scription of ideal homodyne detection and ideal photo-
+counting. Below we present a brief introduction to the
+main ingredients required to compute and interpret this
+quantity. For a more detailed treatment, we refer the
+reader to the aforementioned references.
+1. Method of computation for ideal homodyne
+monitoring
+For our system, assuming unit detection efficiency and
+discretizing time into small steps δt, homodyne trajecto-
+ries can be generated using the following Kraus opera-
+tors. At time t, the Kraus operator conditioned on the
+16
+0.2 0.6 1.0 1.4 1.8 2.2 2.6
+ω/ωc
+100
+101
+102
+103
+I (h) ϕ /(κt)
+(a)
+0.2 0.6 1.0 1.4 1.8 2.2 2.6
+ω/ωc
+0.0
+0.6
+1.2
+1.8I (h) ϕ /(κtN 2)
+(b) N=10
+N=20
+N=30
+N=40
+0.2 0.6 1.0 1.4 1.8 2.2 2.6
+ω/ωc
+100
+101
+102
+103
+I (h) ϕ /(κt)
+(c)
+0.2 0.6 1.0 1.4 1.8 2.2 2.6
+ω/ωc
+0.0
+0.2
+0.4
+0.6
+0.8I (h) ϕ /(κtN 2)
+(d)
+FIG. 13. Long-time FI rate of the homodyne current. Parameter values: (a), (b) φ − β = 0; (c), (d) φ − β = π/4. The
+FI rates have been obtained by sampling 1000 trajectories. Error bars represent the Monte-Carlo errors multiplied by a factor
+of 3. The results have been also averaged over a time window in which the FI rate had already reached its stationary value,
+specifically from from κt = 15 to κt = 40.
+homodyne current Jt is
+KJt = 1 − iδtΩ ˆSx − κδt 2 ˆS+ ˆS− + √κei(β−φ) ˆS−Jt. (G1)
+The homodyne current is sampled according to:
+Jt = ⟨ψt−δt|(S−ei(β−φ) + S+e−i(β−φ))|ψt−δt⟩δt + δWt
+(G2)
+where δWt is a Wiener increment at time t and |ψt−δt⟩ is
+the conditional state for the given homodyne trajectory
+at the previous time step [49, 62, 75]. The angle β denotes
+the chosen homodyne phase.
+Assuming a pure initial state, the unnormalized con-
+ditional state for a given homodyne trajectory at time t
+is given by:
+| ˜ψt⟩ = KJt KJt−δt . . . KJδt |ψ0⟩. (G3)
+The full homodyne measurement record is the set:
+Jt = {Jδt, . . . , Jt−δt, Jt}, (G4)
+which uniquely specifies the quantum trajectory. Each
+record occurs with a probability P (Jt|φ), that depends
+on the parameter of interest φ. This probability can be
+computed from the unnormalized conditional state [49,
+62, 75].
+The Fisher information associated with the homodyne
+monitoring record up to time t for estimating φ around
+φ0 is defined as I (h) φ (φ0, t) = E   ∂φ log P (Jt|φ0) 2 .
+The ensemble average E can be evaluated using the
+Monte-Carlo method of Ref. [62]: one generates many
+homodyne trajectories, computes the Fisher information
+contribution for each trajectory, and finally averages over
+the ensemble. Following the method of Ref. [62], the
+Fisher information can be expressed as:
+I (h) φ (φ0, t) = E   ⟨ϕt|ψt⟩ + ⟨ψt|ϕt⟩ 2 , (G5)
+where the auxiliary vector |ϕt⟩ is propagated alongside
+the conditional state |ψt⟩ for each homodyne realization.
+Its evolution is given by
+|ϕt⟩ = (∂φKJt )|ψt−δt⟩ + KJt |ϕt−δt⟩q
+⟨ψt−δt|K † Jt KJt |ψt−δt⟩ . (G6)
+2. Method of computation for ideal photocounting
+Similarly, assuming unit detection efficiency and dis-
+cretizing time as before, photocounting trajectories for
+the absorber protocol are generated using the Kraus op-
+erators
+K0 = 1 − iδt
+h
+ω
+
+ˆSS x + ˆSD x
+
++ ˆHcasc(∆φ)
+i
+(G7)
+− κδt 2 ˆL† casc(∆φ) ˆLcasc(∆φ), (G8)
+K1 =
+√
+κδt ˆLcasc(∆φ), (G9)
+with the cascaded Hamiltonian ˆHcasc(∆φ) =
+−(iκ/2)(e−i∆φ ˆSD + ˆSS − − ei∆φ ˆSS + ˆSD − ), and cascaded
+jump operator ˆLcasc(∆φ) = e−i∆φ ˆSS − + ˆSD − depending
+only on the phase difference ∆φ = φ − φ′. Assuming
+pure initial states, the state at time t reads
+| ˜ψt⟩ = Kit Kit−δt · · · Kiδt |ψ0⟩ , (G10)
+where the index it = 0, 1 indicates whether a photon is
+detected at time t. The full record of emissions is the set
+of indices
+It = {iδt, . . . , it−δt, it}, (G11)
+which occurs with probability P (It|φ), that is conditional
+on the parameter of interest φ. This probability is com-
+puted from the unnormalized conditional state. As in
+the case of homodyne detection, the Fisher information
+associated with the record of emissions up to time t
+for estimating φ around φ0 is defined as I (c) φ (φ0, t) =
+E[(∂φ log P (It|φ0))2], where E is the ensemble average
+over trajectories, which we evaluate using the method
+of Ref. [62]. Following the derivation of Ref. [62], the
+Fisher information simplifies to
+I (c) φ (φ0, t) = E[(⟨ϕt|ψt⟩ + ⟨ψt|ϕt⟩)2], (G12)
+where the auxiliary vector |ϕt⟩ is defined as before but
+replacing the Kraus operators KJt by the photocounting
+Kraus operators.
+17
+10−3 10−2 10−1
+∆ϕ
+0
+1
+2
+3
+4I(c) ϕ /t
+(a)
+×κ ω/ωc = 0.25
+fϕ
+I(c) ϕ /t
+10−3 10−2 10−1
+∆ϕ
+0
+10
+20
+(b)
+×κ ω/ωc = 0.75
+10−3 10−2 10−1
+∆ϕ
+0
+20
+40
+60
+(c)
+×κ ω/ωc = 4.0
+FIG. 14. FI rate of the photocounting signal in the perfect absorber protocol. Parameter values: All panels N = 6,
+(a) ω/ωc = 0.25, (b) ω/ωc = 0.75, and (c) ω/ωc = 4. The FI rates are obtained by sampling 103 trajectories up to a time of
+κt = 3 × 104 and averaging the FI rate over the time window κt ∈ [0.5 × 104, 3 × 104]. The error bars represent three times
+the standard deviation of the Monte-Carlo sampling. The green dotted line indicates the long-time QFI rate computed using
+exact diagonalization.
+0 10000 20000 30000
+κt
+0
+5
+10I(c) ϕ /t
+(a)
+×κ ω/ωc = 0.25
+I(c) ϕ /t
+std
+fϕ
+0 10000 20000 30000
+κt
+0
+10
+20
+30
+40 (b)
+×κ ω/ωc = 0.75
+0 10000 20000 30000
+κt
+0
+20
+40
+60
+80
+(c)
+×κ ω/ωc = 4.0
+∆ϕ = 0.0027
+FIG. 15. Time resolved FI rate of the photocounting signal in the perfect absorber protocol at ∆φ = 0.0027.
+Parameter values: All panels N = 6 and ∆φ = 0.0027. (a) ω/ωc = 0.25, (b) ω/ωc = 0.25, and (c) ω/ωc = 4. The FI rates
+(orange solid line) are obtained by sampling 103 trajectories up to a time of κt = 3 × 104. The orange shaded area represents
+the standard deviation of the Monte-Carlo sampling over trajectories. The green dashed line indicates the long-time QFI rate
+obtained using exact diagonalization.
+0 10000 20000 30000
+κt
+0
+1
+2
+3I(c) ϕ /t
+(a)
+×κ ω/ωc = 0.25
+I(c) ϕ /t
+std
+fϕ
+0 10000 20000 30000
+κt
+0
+5
+10
+15
+20 (b)
+×κ ω/ωc = 0.75
+0 10000 20000 30000
+κt
+0
+20
+40
+(c)
+×κ ω/ωc = 4.0
+∆ϕ = 0.1
+FIG. 16. Time resolved FI rate of the photocounting signal in the perfect absorber protocol at ∆φ = 0.1.
+Parameter values: All panels N = 6 and ∆φ = 0.1. (a) ω/ωc = 0.25, (b) ω/ωc = 0.25, and (c) ω/ωc = 4. The FI rates
+(orange solid line) are obtained by sampling 103 trajectories up to a time of κt = 3 × 104. The orange shaded area represents
+the standard deviation of the Monte-Carlo sampling over trajectories. The green dashed line indicates the long-time QFI rate
+obtained using exact diagonalization.
+18
+3. Results for homodyne detection
+As explained in the main text, the FI eventually
+reaches a long-time regime in which it becomes propor-
+tional to t, i.e. I (h) φ (φ0, t) ∝ t [49, 59, 62, 76]. The time
+required to enter this regime shows some dependence on
+ω/ωc, but only a weak dependence on N . In practice,
+for times of order κT ∼ 10, the FI has already converged
+to this stationary behavior. We therefore focus on this
+long-time regime and examine whether the rate I (h) φ dis-
+plays the same scaling as the QFI.
+In Figure 13 we show the results for β − φ = 0 [panels
+(a),(b)] and β −φ = π/4 [panels (c),(d)]. We also checked
+β−φ = π/3, obtaining qualitatively similar behavior. We
+consider system sizes from N = 10 to N = 40. In general,
+larger N and larger ω/ωc require smaller δt to ensure
+convergence. Each data point corresponds to an average
+over 1000 trajectories of total duration κt = 40. For
+each trajectory, the FI rate is obtained by time-averaging
+between κt = 15 and κt = 40. Error bars represent three
+times the Monte-Carlo error.
+Panels (a) and (c) display the bare FI rate, while pan-
+els (b) and (d) show the same data rescaled by N 2. In
+the stationary regime, the homodyne FI rate saturates
+the QFI rate for the corresponding parameter values.
+This is more clearly visible in Fig. 2 of the main text
+(for β − φ = 0), where we plot the inverse square root
+of the FI rate together with the estimation error of the
+average-current protocol, which also saturates the QFI
+in this regime. The FI reaches its maximum at the phase
+transition and then decreases to values comparable to
+those in the stationary phase. As with the QFI rate, for
+sufficiently large ω/ωc, the FI rate shows little depen-
+dence on this parameter.
+The most important observation appears in panels (b)
+and (d): in the time crystal regime, the FI rates for dif-
+ferent system sizes collapse when rescaled by N 2. This
+indicates that the FI grows as N 2 in this regime, in con-
+trast with the N 4 scaling of the QFI. Although the acces-
+sible system sizes are modest and we have not explored
+the full range of β − φ, the result is significant: for the
+QFI, the N 4 scaling is already clearly visible within this
+same size range.
+4. Results for perfect absorber protocol
+As for the homodyne FI, the FI for photocounting in
+the perfect absorber protocol eventually reaches a long-
+time regime in which it becomes proportional to t, i.e.
+I (c) φ ∝ t [49, 59, 62, 76]. In other words, the long-time
+FI rate becomes constant, which we show in Figures 15
+and 16 both in the stationary regime for ω/ωc = 0.25 in
+panel (a) and ω/ωc = 0.75 in panel (b), and in the time
+crystal regime for ω/ωc = 4 in panel (c) for a system size
+of N = 6.
+In Figure 14, we show the results for the FI rate for
+a range of phase differences ∆φ = 0.001, . . . , 0.1 both
+in the stationary regime [panels (a) and (b)] and in the
+time crystal regime [panel (c)]. Note, that these results
+are averaged over a time window of κt ∈ [0.5 × 104, 3 ×
+104], in which the cascaded system is fully relaxed to its
+stationary state after an initial relaxation phase. The
+error bars in this plot represent three times the Monte-
+Carlo error with respect to the sampled trajectories.
+In the time crystal regime [panel (c) of Figure 14], the
+study of the long-time FI rate reveals that photocount-
+ing in the perfect absorber protocol allows for an optimal
+measurement of the phase shift φ, as at its maximum
+with respect to the phase difference ∆φ, the FI rate sat-
+urates the QFI. However, this is only the case at an op-
+timal value of ∆φ, and for values of the phase difference
+away from this optimal point of operation the FI rate
+rapidly decreases. Note in particular that this optimal
+point is close to, but not precisely at the dark state con-
+dition. In addition, the FI rate decreases for larger values
+of ∆φ where the emitted intensity increases rapidly. In
+Figures 15 and 16, we show the time resolved FI rate for
+two points in the phase diagram with ∆φ = 0.0027 in
+Fig. 15 and ∆φ = 0.1 in Fig. 16. These plots highlight,
+that in the stationary regime the perfect absorber proto-
+col efficiently exploits the QFI for a broad range of values
+∆φ. In the time crystal regime, the FI for photocount-
+ing in the perfect absorber protocol also approaches the
+long-time QFI rate for long measurement times, when
+operated close to the optimal point and drops drastically
+when operated away from the optimal point.
+Importantly, this shows that photocounting within the
+perfect absorber protocol enables optimal estimation,
+provided that one also chooses an appropriate estima-
+tor capable of extracting the full information contained
+in the photocounting record. In the main text we study
+the example of estimators based on the time averaged
+intensity. We find there that these are not optimal for
+the time crystal phase, in the sense that they do not
+saturate the QFI rate. However, our results demonstrate
+that, with suitable estimators (e.g., the pattern-count es-
+timator or maximum-likelihood estimation [70, 71, 84]),
+the perfect absorber protocol achieves optimality, as the
+FI rate associated with photocounting saturates the QFI
+rate. Exploring these more complex estimation strategies
+constitutes an interesting direction for future work.
+[1] D. Budker and M. Romalis, Optical magnetometry, Na-
+ture Phys. 3, 227 (2007).
+[2] A. J, J. Abadie, B. P. Abbott, R. Abbott, T. D. Abbott,
+M. R. Abernathy, C. Adams, T. Adams, P. Addesso,
+R. X. Adhikari, et al., Enhanced sensitivity of the ligo
+gravitational wave detector by using squeezed states of
+19
+light, Nature Photon. 7, 613 (2013).
+[3] D. Meiser, J. Ye, D. R. Carlson, and M. J. Holland,
+Prospects for a millihertz-linewidth laser, Phys. Rev.
+Lett. 102, 163601 (2009).
+[4] D. Meiser and M. J. Holland, Intensity fluctuations in
+steady-state superradiance, Phys. Rev. A 81, 063827
+(2010).
+[5] M. J. Martin, D. Meiser, J. W. Thomsen, J. Ye, and
+M. J. Holland, Extreme nonlinear response of ultranar-
+row optical transitions in cavity qed for laser stabiliza-
+tion, Phys. Rev. A 84, 063813 (2011).
+[6] P. G. Westergaard, B. T. R. Christensen, D. Tieri,
+R. Matin, J. Cooper, M. Holland, J. Ye, and J. W.
+Thomsen, Observation of motion-dependent nonlinear
+dispersion with narrow-linewidth atoms in an optical
+cavity, Phys. Rev. Lett. 114, 093002 (2015).
+[7] M. Xu, D. A. Tieri, E. C. Fine, J. K. Thompson, and
+M. J. Holland, Synchronization of two ensembles of
+atoms, Phys. Rev. Lett. 113, 154101 (2014).
+[8] M. Xu and M. J. Holland, Conditional ramsey spec-
+troscopy with synchronized atoms, Phys. Rev. Lett.
+114, 103601 (2015).
+[9] A. Cabot, G. Luca Giorgi, and R. Zambrini, Synchro-
+nization and coalescence in a dissipative two-qubit sys-
+tem, Proceedings of the Royal Society A: Mathemati-
+cal, Physical and Engineering Sciences 477, 20200850
+(2021).
+[10] F. Iemini, A. Russomanno, J. Keeling, M. Schir`o,
+M. Dalmonte, and R. Fazio, Boundary time crystals,
+Phys. Rev. Lett. 121, 035301 (2018).
+[11] A. Cabot, L. S. Muhle, F. Carollo, and I. Lesanovsky,
+Quantum trajectories of dissipative time crystals, Phys.
+Rev. A 108, L041303 (2023).
+[12] H. Keßler, P. Kongkhambut, C. Georges, L. Mathey,
+J. G. Cosme, and A. Hemmerich, Observation of a
+dissipative time crystal, Phys. Rev. Lett. 127, 043602
+(2021).
+[13] K. Sacha and J. Zakrzewski, Time crystals: a review,
+Rep. Prog. Phys. 81, 016401 (2017).
+[14] D. V. Else, C. Monroe, C. Nayak, and N. Y. Yao, Dis-
+crete time crystals, Annu. Rev. Condens. Matter Phys.
+11, 467 (2020).
+[15] M. P. Zaletel, M. Lukin, C. Monroe, C. Nayak,
+F. Wilczek, and N. Y. Yao, Colloquium: Quantum and
+classical discrete time crystals, Rev. Mod. Phys. 95,
+031001 (2023).
+[16] H. J. Carmichael, Analytical and numerical results for
+the steady state in cooperative resonance fluorescence,
+J. Phys. B: Atom. Mol. Phys. 13, 3551 (1980).
+[17] D. V. Else, B. Bauer, and C. Nayak, Floquet time crys-
+tals, Phys. Rev. Lett. 117, 090402 (2016).
+[18] V. Khemani, A. Lazarides, R. Moessner, and S. L.
+Sondhi, Phase structure of driven quantum systems,
+Phys. Rev. Lett. 116, 250401 (2016).
+[19] Z. Gong, R. Hamazaki, and M. Ueda, Discrete time-
+crystalline order in cavity and circuit qed systems, Phys.
+Rev. Lett. 120, 040404 (2018).
+[20] N. Y. Yao, A. C. Potter, I.-D. Potirniche, and A. Vish-
+wanath, Discrete time crystals: Rigidity, criticality, and
+realizations, Phys. Rev. Lett. 118, 030401 (2017).
+[21] R. R. W. Wang, B. Xing, G. G. Carlo, and D. Poletti,
+Period doubling in period-one steady states, Phys. Rev.
+E 97, 020202 (2018).
+[22] F. M. Gambetta, F. Carollo, M. Marcuzzi, J. P. Garra-
+han, and I. Lesanovsky, Discrete time crystals in the ab-
+sence of manifest symmetries or disorder in open quan-
+tum systems, Phys. Rev. Lett. 122, 015701 (2019).
+[23] A. Lazarides, S. Roy, F. Piazza, and R. Moessner, Time
+crystallinity in dissipative floquet systems, Phys. Rev.
+Res. 2, 022002 (2020).
+[24] A. Riera-Campeny, M. Moreno-Cardoner, and A. San-
+pera, Time crystallinity in open quantum systems,
+Quantum 4, 270 (2020).
+[25] B. Zhu, J. Marino, N. Y. Yao, M. D. Lukin, and E. A.
+Demler, Dicke time crystals in driven-dissipative quan-
+tum many-body systems, New J. Phys. 21, 073028
+(2019).
+[26] K. Chinzei and T. N. Ikeda, Time crystals protected by
+floquet dynamical symmetry in hubbard models, Phys.
+Rev. Lett. 125, 060601 (2020).
+[27] R. J. L. Tuquero, J. Skulte, L. Mathey, and J. G. Cosme,
+Dissipative time crystal in an atom-cavity system: In-
+fluence of trap and competing interactions, Phys. Rev.
+A 105, 043311 (2022).
+[28] S. Sarkar and Y. Dubi, Signatures of discrete time-
+crystallinity in transport through an open fermionic
+chain, Commun. Phys. 5, 155 (2022).
+[29] A. Cabot, F. Carollo, and I. Lesanovsky, Metastable
+discrete time-crystal resonances in a dissipative central
+spin system, Phys. Rev. B 106, 134311 (2022).
+[30] R. Yousefjani, A. Carollo, K. Sacha, S. Al-Kuwari, and
+A. Bayat, Non-hermitian discrete time crystals, Phys.
+Rev. B 111, 165117 (2025).
+[31] F. Carollo and I. Lesanovsky, Exact solution of a bound-
+ary time-crystal phase transition: Time-translation
+symmetry breaking and non-markovian dynamics of cor-
+relations, Phys. Rev. A 105, L040202 (2022).
+[32] K. Tucker, B. Zhu, R. J. Lewis-Swan, J. Marino,
+F. Jimenez, J. G. Restrepo, and A. M. Rey, Shattered
+time: can a dissipative time crystal survive many-body
+correlations?, New J. Phys. 20, 123003 (2018).
+[33] C. Lled´o and M. H. Szyma´nska, A dissipative time crys-
+tal with or without z2 symmetry breaking, New J. Phys.
+22, 075002 (2020).
+[34] B. Buˇca and D. Jaksch, Dissipation induced nonstation-
+arity in a quantum gas, Phys. Rev. Lett. 123, 260401
+(2019).
+[35] B. Buˇca, J. Tindall, and D. Jaksch, Non-stationary co-
+herent quantum many-body dynamics through dissipa-
+tion, Nat. Commun. 10, 1730 (2019).
+[36] C. Booker, B. Buˇca, and D. Jaksch, Non-stationarity
+and dissipative time crystals: spectral properties and
+finite-size effects, New J. Phys. 22, 085007 (2020).
+[37] G. Buonaiuto, F. Carollo, B. Olmos, and I. Lesanovsky,
+Dynamical phases and quantum correlations in an
+emitter-waveguide system with feedback, Phys. Rev.
+Lett. 127, 133601 (2021).
+[38] L. F. d. Prazeres, L. d. S. Souza, and F. Iemini, Bound-
+ary time crystals in collective d-level systems, Phys.
+Rev. B 103, 184308 (2021).
+[39] G. Piccitto, M. Wauters, F. Nori, and N. Shammah,
+Symmetries and conserved quantities of boundary time
+crystals in generalized spin models, Phys. Rev. B 104,
+014307 (2021).
+[40] A. C. Louren¸co, L. F. d. Prazeres, T. O. Maciel, F. Iem-
+ini, and E. I. Duzzioni, Genuine multipartite correla-
+tions in a boundary time crystal, Phys. Rev. B 105,
+134422 (2022).
+20
+[41] M. Hajduˇsek, P. Solanki, R. Fazio, and S. Vinjanam-
+pathy, Seeding crystallization in time, Phys. Rev. Lett.
+128, 080603 (2022).
+[42] M. Krishna, P. Solanki, M. Hajduˇsek, and S. Vinjanam-
+pathy, Measurement-induced continuous time crystals,
+Phys. Rev. Lett. 130, 150401 (2023).
+[43] R. Mattes, I. Lesanovsky, and F. Carollo, Entangled
+time-crystal phase in an open quantum light-matter sys-
+tem, Phys. Rev. A 108, 062216 (2023).
+[44] O. Somech and E. Shahmoon, Quantum entangled
+states of a classically radiating macroscopic spin, PRX
+Quantum 5, 010349 (2024).
+[45] V. Montenegro, M. G. Genoni, A. Bayat, and M. G-A-
+Paris, Quantum metrology with boundary time crystals,
+Commun. Phys. 6, 304 (2023).
+[46] A. Cabot, F. Carollo, and I. Lesanovsky, Continuous
+sensing and parameter estimation with the boundary
+time crystal, Phys. Rev. Lett. 132, 050801 (2024).
+[47] F. Iemini, R. Fazio, and A. Sanpera, Floquet time crys-
+tals as quantum sensors of ac fields, Phys. Rev. A 109,
+L050203 (2024).
+[48] A. Cabot, F. Carollo, and I. Lesanovsky, Parameter
+estimation with one- and two-time measurements on
+the emission field of the boundary time crystal (2025),
+arXiv:2503.21753v2 [quant-ph].
+[49] R. Mattes, A. Cabot, F. Carollo, and I. Lesanovsky,
+Designing open spin-boson models for enabling quan-
+tum enhanced sensing through classical measurements
+(2025), arXiv:2505.08756 [quant-ph].
+[50] E. O’Connor, V. Montenegro, F. Albarelli, M. G. A.
+Paris, A. Bayat, and M. G. Genoni, Quantum-enhanced
+parameter estimation in continuously monitored bound-
+ary time crystals (2025), arXiv:2508.15448 [quant-ph].
+[51] D. Gribben, A. Sanpera, R. Fazio, J. Marino, and
+F. Iemini, Boundary time crystals as ac sensors: En-
+hancements and constraints, SciPost Phys. 18, 100
+(2025).
+[52] R. Yousefjani, K. Sacha, and A. Bayat, Discrete time
+crystal phase as a resource for quantum-enhanced sens-
+ing, Phys. Rev. B 111, 125159 (2025).
+[53] R. Yousefjani, S. Al-Kuwari, and A. Bayat, Discrete
+time crystal for periodic-field sensing with quantum-
+enhanced precision, Phys. Rev. Appl. 24, 054047 (2025).
+[54] S. Gammelmark and K. Mølmer, Fisher information and
+the quantum cram´er-rao sensitivity limit of continuous
+measurements, Phys. Rev. Lett. 112, 170401 (2014).
+[55] K. Macieszczak, M. Gut¸˘a, I. Lesanovsky, and J. P. Gar-
+rahan, Dynamical phase transitions as a resource for
+quantum enhanced metrology, Phys. Rev. A 93, 022103
+(2016).
+[56] T. Ilias, D. Yang, S. F. Huelga, and M. B. Plenio,
+Criticality-enhanced quantum sensing via continuous
+measurement, PRX Quantum 3, 010354 (2022).
+[57] J. Gambetta and H. M. Wiseman, State and dynamical
+parameter estimation for open quantum systems, Phys.
+Rev. A 64, 042105 (2001).
+[58] C. Catana, M. van Horssen, and M. Guta, Asymptotic
+inference in system identification for the atom maser,
+Phil. Trans. R. Soc. A (2012).
+[59] S. Gammelmark and K. Mølmer, Bayesian parameter in-
+ference from continuously monitored quantum systems,
+Phys. Rev. A 87, 032115 (2013).
+[60] A. H. Kiilerich and K. Mølmer, Estimation of atomic
+interaction parameters by photon counting, Phys. Rev.
+A 89, 052110 (2014).
+[61] F. Albarelli, M. A. C. Rossi, M. G. A. Paris, and
+M. G. Genoni, Ultimate limits for quantum magnetom-
+etry via time-continuous measurements, New J. Phys.
+19, 123011 (2017).
+[62] F. Albarelli, M. A. C. Rossi, D. Tamascelli, and M. G.
+Genoni, Restoring Heisenberg scaling in noisy quantum
+metrology by monitoring the environment, Quantum 2,
+110 (2018).
+[63] A. Shankar, G. P. Greve, B. Wu, J. K. Thompson, and
+M. Holland, Continuous real-time tracking of a quantum
+phase below the standard quantum limit, Phys. Rev.
+Lett. 122, 233602 (2019).
+[64] F. Albarelli, M. A. C. Rossi, and M. G. Genoni, Quan-
+tum frequency estimation with conditional states of con-
+tinuously monitored independent dephasing channels,
+Int. J. Quantum. Inform. 18, 1941013 (2020).
+[65] M. A. C. Rossi, F. Albarelli, D. Tamascelli, and M. G.
+Genoni, Noisy quantum metrology enhanced by continu-
+ous nondemolition measurement, Phys. Rev. Lett. 125,
+200505 (2020).
+[66] J. Amor´os-Binefa and J. Ko lody´nski, Noisy atomic mag-
+netometry in real time, New J. Phys. 23, 123030 (2021).
+[67] H. I. Nurdin and M. Gut¸ˇa, Parameter estimation and
+system identification for continuously-observed quan-
+tum systems, Annu. Rev. Control 54, 295 (2022).
+[68] M. Radaelli, J. A. Smiga, G. T. Landi, and F. C.
+Binder, Parameter estimation for quantum jump unrav-
+eling (2024), arXiv:2402.06556 [quant-ph].
+[69] J. Amor´os-Binefa and J. Ko lody´nski, Noisy atomic
+magnetometry with kalman filtering and measurement-
+based feedback, PRX Quantum 6, 030331 (2025).
+[70] D. Yang, S. F. Huelga, and M. B. Plenio, Efficient in-
+formation retrieval for sensing via continuous measure-
+ment, Phys. Rev. X 13, 031012 (2023).
+[71] A. Godley and M. Gut¸˘a, Adaptive measurement fil-
+ter: efficient strategy for optimal estimation of quantum
+Markov chains, Quantum 7, 973 (2023).
+[72] C. W. Gardiner and P. Zoller, Quantum Noise
+(Springer-Verlag, Berlin, 2004).
+[73] H. Cram´er, Mathematical Methods of Statistics (Prince-
+ton University Press, Princeton, 1946).
+[74] S. L. Braunstein and C. M. Caves, Statistical distance
+and the geometry of quantum states, Phys. Rev. Lett.
+72, 3439 (1994).
+[75] H. M. Wiseman and G. J. Milburn, Quantum Measure-
+ment and Control (Cambridge University Press, Cam-
+bridge, 2009).
+[76] A. H. Kiilerich and K. Mølmer, Bayesian parameter es-
+timation by continuous homodyne detection, Phys. Rev.
+A 94, 032103 (2016).
+[77] J. Hannukainen and J. Larson, Dissipation-driven quan-
+tum phase transitions and symmetry breaking, Phys.
+Rev. A 98, 042113 (2018).
+[78] G. Ferioli, A. Glicenstein, I. Ferrier-Barbut, and
+A. Browaeys, A non-equilibrium superradiant phase
+transition in free space, Nat. Phys. 19, 1345 (2023).
+[79] S. Agarwal, E. Chaparro, D. Barberena, A. P. n. Orioli,
+G. Ferioli, S. Pancaldi, I. Ferrier-Barbut, A. Browaeys,
+and A. Rey, Directional superradiance in a driven ultra-
+cold atomic gas in free space, PRX Quantum 5, 040335
+(2024).
+[80] D. Goncalves, L. Bombieri, G. Ferioli, S. Pancaldi,
+I. Ferrier-Barbut, A. Browaeys, E. Shahmoon, and
+21
+D. Chang, Driven-dissipative phase separation in free-
+space atomic ensembles, PRX Quantum 6, 020303
+(2025).
+[81] D. Nemeth, A. Principi, and A. Nazir, Solving bound-
+ary time crystals via the superspin method (2025),
+arXiv:2507.06998 [quant-ph].
+[82] J. M. Hickey, S. Genway, I. Lesanovsky, and J. P. Gar-
+rahan, Thermodynamics of quadrature trajectories in
+open quantum systems, Phys. Rev. A 86, 063824 (2012).
+[83] K. Stannigel, P. Rabl, and P. Zoller, Driven-dissipative
+preparation of entangled states in cascaded quantum-
+optical networks, New J. Phys. 14, 063014 (2012).
+[84] F. Girotti, A. Godley, and M. Guta, Estimating quan-
+tum markov chains using coherent absorber post-
+processing and pattern counting estimator (2024),
+2408.00626.
+[85] F. Russo and T. Pohl, Quantum dissipative continuous
+time crystals, Phys. Rev. Lett. 135, 110404 (2025).
+[86] Z. Wang, R. Gao, X. Wu, B. Buˇca, K. Mølmer,
+L. You, and F. Yang, Boundary time crystals induced
+by local dissipation and long-range interactions (2025),
+2503.20761 [quant-ph].
+[87] J. Johansson, P. Nation, and F. Nori, Qutip: An open-
+source python framework for the dynamics of open
+quantum systems, Comput. Phys. Commun. 183, 1760
+(2012).
+[88] J. Johansson, P. Nation, and F. Nori, Qutip 2: A python
+framework for the dynamics of open quantum systems,
+Comput. Phys. Commun. 184, 1234 (2013).
+[89] N. Lambert, E. Gigu`ere, P. Menczel, B. Li, P. Hopf,
+G. Su´arez, M. Gali, J. Lishman, R. Gadhvi, R. Agar-
+wal, A. Galicia, N. Shammah, P. Nation, J. R. Johans-
+son, S. Ahmed, S. Cross, A. Pitchford, and F. Nori,
+Qutip 5: The quantum toolbox in python (2024),
+arXiv:2412.04705 [quant-ph].
+[90] M. Jirasek, I. Lesanovsky, and A. Cabot, Code
+and data of ”the boundary time crystal as
+a collectively enhanced light source” (2025),
+https://github.com/malikjirasek/optical-phase-
+estimation-with-the-boundary-time-crystal.
+[91] F. Verstraete and J. I. Cirac, Continuous matrix product
+states for quantum fields, Phys. Rev. Lett. 104, 190405
+(2010).
+[92] J. Haegeman, J. I. Cirac, T. J. Osborne, and F. Ver-
+straete, Calculus of continuous matrix product states,
+Phys. Rev. B 88, 085118 (2013).
+[93] R. Puri and S. Lawande, Exact steady-state density op-
+erator for a collective atomic system in an external field,
+Phys. Lett. A 72, 200 (1979).
+[94] J. P. Garrahan and I. Lesanovsky, Thermodynamics
+of quantum jump trajectories, Phys. Rev. Lett. 104,
+160601 (2010).
+[95] P. Zoller, M. Marte, and D. F. Walls, Quantum jumps
+in atomic systems, Phys. Rev. A 35, 198 (1987).
+[96] F. Carollo, J. P. Garrahan, I. Lesanovsky, and C. P´erez-
+Espigares, Making rare events typical in markovian open
+quantum systems, Phys. Rev. A 98, 010103 (2018).
+[97] F. Ciccarello, S. Lorenzo, V. Giovannetti, and G. M.
+Palma, Quantum collision models: Open system dy-
+namics from repeated interactions, Phys. Rep. 954, 1
+(2022).
+[98] L. Pezz`e, M. A. Ciampini, N. Spagnolo, P. C.
+Humphreys, A. Datta, I. A. Walmsley, M. Barbieri,
+F. Sciarrino, and A. Smerzi, Optimal measurements for
+simultaneous quantum estimation of multiple phases,
+Phys. Rev. Lett. 119, 130504 (2017).
+[99] J. Liu, H. Yuan, X.-M. Lu, and X. Wang, Quantum
+fisher information matrix and multiparameter estima-
+tion, J. Phys. A: Math. Theor. 53, 023001 (2019).
+[100] L. Pezz`e and A. Smerzi, Quantum Theory of Phase Es-
+timation, in Proceedings of the International School of
+Physics ”Enrico Fermi”, Vol. 188 (IOS Press, Amster-
+dam, 2014).
+[101] F. Benatti, F. Carollo, R. Floreanini, and H. Narnhofer,
+Quantum spin chain dissipative mean-field dynamics, J.
+Phys. A: Math. Theor. 51, 325001 (2018).
+[102] O. E. Lanford and D. Ruelle, Observables at infinity
+and states with short range correlations in statistical
+mechanics, Commun. Math. Phys. 13, 194 (1969).
