@@ -1,0 +1,1133 @@
+Machine Learning (2026) 115:222
+https://doi.org/10.1007/s10994-026-07163-2
+Stay Rational, Resist Illusions: De-biasing Source-Free 
+Domain Adaptation with CLIP-Verified Pseudo-Source 
+Domain
+Qing Tian1,2,3 · Yongjiang Liu1 · Keyang Cheng4 · Weihua Ou5 · Jianping Gou6
+Received: 21 January 2026 / Revised: 6 July 2026 / Accepted: 2 September 2026 / 
+Published online: 16 September 2026
+© The Author(s), under exclusive licence to Springer Science+Business Media LLC, part of Springer Nature 2026
+Abstract
+Source-free domain adaptation (SFDA) aims to adapt a source model pre-trained on a 
+labeled source domain to an unlabeled target domain, under the constraint that the original 
+source data is no longer accessible. While some existing approaches achieve promising 
+adaptation performance by approximating certain target samples as source-like samples 
+to construct a pseudo-source domain and reduce domain discrepancies, they typically 
+rely solely on the source model for this construction. This overlooks a critical issue: the 
+source model may suffer from illusions when identifying pseudo-source samples, due to 
+its inherited spurious correlations between domain-specific features (e.g., environment) 
+and domain-invariant features (e.g., class identity) learned from the source domain. As a 
+result, the reliability of the generated pseudo-source domain is compromised. In this work, 
+we propose a novel Staying Rational and Resisting Illusions (SRRI) method for SFDA to 
+resolve the two fundamental challenges: confirmation bias and domain shift. In particular, 
+we innovatively leverage the CLIP (Contrastive Language-Image Pre-training) model as a 
+source of external knowledge to mitigate feature confounding. SRRI employs knowledge 
+distillation to guide the source model in disentangling class-discriminative causal fea -
+tures from domain-specific spurious features, building upon this, we design a CLIP-guided 
+dual-model validation and class balancing strategy to ensure the reliability and richness 
+of the pseudo-source domain samples even when poor distillation occurs in some tasks. 
+Furthermore, we propose a dynamic pseudo-source domain optimization mechanism that 
+continuously fine-tunes the task-specific prompts of the CLIP during adaptation to further 
+correct the bias of the target model on hard samples, while periodically reconstructing and 
+refining the pseudo-source domain. Ultimately, we apply robust supervised learning and 
+distribution alignment to these respective domains. Extensive experiments show that SRRI 
+outperforms the state-of-the-art methods.
+Editor: Bo Han.
+Extended author information available on the last page of the article
+1 3
+222 Page 2 of 27
+Machine Learning (2026) 115:222
+Keywords Source-free domain adaptation · Pseudo-source domain · Knowledge 
+distillation · CLIP-guided
+1 Introduction
+As a subfield of transfer learning, Unsupervised Domain Adaptation (UDA) relies on access 
+to labeled source domain data and unlabeled target domain data (Pan & Yang, 2010). How-
+ever, in certain scenarios, accessing source data may be infeasible due to concerns such 
+as privacy and security (Lao et al., 2021; Liang et al., 2019). To address this limitation, 
+Source-Free Domain Adaptation (SFDA) (Kim et al., 2021; Liang et al., 2020) has emerged 
+as a widely studied alternative. Its objective is to enable knowledge transfer using only a 
+pre-trained source model and unlabeled target domain samples, without requiring access to 
+the original source data.
+Current SFDA approaches primarily focus on generating or extracting auxiliary informa-
+tion to facilitate unsupervised adaptation. These methods can be broadly categorized into 
+two types. The first seeks to uncover additional supervisory signals from the source model 
+(Huang et al., 2021; Lao et al., 2021; Wang et al., 2022) and target data (Tang et al., 2022; 
+Yang et al., 2021, 2022a), while the second aims to construct a pseudo-source domain (Cui 
+et al., 2023; Du et al., 2024) to simulate a conventional UDA setting. This work centers on 
+the latter approach, exploring how to effectively build a pseudo-source domain to enhance 
+adaptation performance.
+As previously mentioned, the source model in SFDA is trained on labeled data from 
+the source domain. However, in most cases, individual samples consist of both domain-
+invariant features (e.g., category identity) and domain-specific features (e.g., background or 
+environment). When spurious correlations (Li et al., 2025; Yue et al., 2023) exist between 
+these two types of features in the source domain, they can severely impair the generaliza-
+tion ability of the model. As illustrated in Fig. 1, the source model, inheriting knowledge 
+from the source domain, may form misleading associations, mistaking domain-specific fea-
+tures for indicators of certain categories. This illusion causes the model to associate target 
+domain samples with incorrect class identities, leading to the construction of a low-quality 
+pseudo-source domain. To address this issue, we propose a novel Staying Rational and 
+Source Model
+Illusions
+Class 1
+Class 2
+Class 3
+Class 4
+Pre-training ModelTarget Data Input Data Division Label Assignment
+Target Domain Data
+Class 2
+Source Domain Data
+Remaining Target Domain Data
+Pseudo-source Domain Data
+Class 1
+Class 3
+Class 4
+Class 1
+Class 2
+Class 3
+Class 4
+Class 2
+Class 1
+Class 3
+Class 4
+Class 1
+Class 2
+Fig. 1 The effect of source modeling illusions on the quality of pseudo-source domain. The different 
+colors of the cylinders represent distinct domain-specific features
+ 
+1 3
+Page 3 of 27 222
+Machine Learning (2026) 115:222
+Resisting Illusions (SRRI) method for the source model. Specifically, we leverage the pow-
+erful prior knowledge of the pre-trained vision-language model CLIP (Radford et al., 2021). 
+We first distill the rich semantic understanding of the CLIP into the source model to help 
+it overcome misleading correlations. Then, using the updated source model, we generate 
+a pseudo-source domain with the assistance of CLIP-based validation and class balancing 
+strategy. Finally, adaptation is performed using a UDA framework composed of three key 
+modules. Importantly, during adaptation, we keep the CLIP model used for validation fro-
+zen and instead fine-tune the task-specific prompts of a CLIP to provide guidance for the 
+target model. This decouples pseudo-source domain validation from knowledge guidance 
+and enables the periodic refinement of the pseudo-source domain. Our contributions can be 
+summarized as follows: 
+1. An innovative Staying Rational and Resisting Illusions (SRRI) approach is proposed that 
+distills the deconfounded knowledge of the CLIP model to mitigate spurious correlations 
+learned by the source model and effectively addresses the unreliability of pseudo-source 
+domains due to confirmation bias in Source-Free Domain Adaptation (SFDA).
+2. The CLIP-guided dual-model validation and class balancing strategy in our SRRI 
+approach ensures that high-quality pseudo-source domains can be obtained even in the 
+presence of poor distillation, thus providing absolutely excellent domain environments 
+for subsequent distribution alignment to cope with the challenge of domain bias.
+3. We propose a dynamic pseudo-source domain optimization mechanism that fine-tunes 
+the task-specific prompts of a CLIP to provide a more robust teacher signal, thereby 
+improving the model perception of hard samples and periodically refining the quality of 
+the pseudo-source domain.
+4. Extensive experiments conducted on standard SFDA benchmarks demonstrate that SRRI 
+substantially improves the quality of the pseudo-source domain and significantly outper-
+forms previous state-of-the-art methods.
+The rest of the paper is organized as follows: Sect. 2 briefly reviews related work. In Sect. 3, 
+we describe the proposed SRRI method in detail. Section 4 provides an experimental evalu-
+ation of the proposed method. Finally, in Sect. 5, we summarize the contents of this paper 
+and give future research directions.
+2 Related Work
+In this section, we review the recent source-free domain adaptation methods related to our 
+approach as well as methods for multimodal foundation models.
+2.1 Source-Free Domain Adaptation
+Existing Source-free Domain Adaptation (SFDA) approaches fall into two distinct cate-
+gories. The first category comprises pseudo-labeling based self-training methods. These 
+approaches generate pseudo-labels for target domain samples using the source model and 
+leverage them as supervisory signals to guide adaptation. SHOT (Liang et al., 2020) is a 
+pioneering work in this direction, optimizing the model through information maximization 
+1 3
+222 Page 4 of 27
+Machine Learning (2026) 115:222
+and feature clustering. Many subsequent studies have focused on improving pseudo-labels 
+quality by incorporating techniques such as nearest-neighbor clustering (Liang et al., 2022; 
+Yang et al., 2021), active learning strategies (Li et al., 2022b), or designing more robust 
+clustering objectives (Qu et al., 2022). In addition, to further enhance the robustness of 
+pseudo-labeling, some researchers (Tian et al., 2023; Xu et al., 2025) have begun to explore 
+the structured information between samples. The second category involves source informa-
+tion generation or reconstruction to facilitate adaptation. Some methods employ generative 
+adversarial networks (GANs) to synthesize “pseudo-source" data (Du et al., 2024; Kim 
+et al., 2021; Tian et al., 2022), while others transfer statistical information, such as batch 
+normalization parameters, encoded in the source model to align feature distributions across 
+domains (Ishii & Sugiyama, 2021; Yang et al., 2022b). However, a fundamental limitation 
+shared by these methods is their complete reliance on the biased source model for predic -
+tions. Specifically, when there exists a significant distribution shift or spurious correlation 
+between the source and target domains, the source model, distorted by these illusions, can 
+easily fall into a vicious cycle of confirmation bias, leading to cumulative prediction errors 
+(Arazo et al., 2020; Zhang et al., 2021a). This paper focuses on a detailed investigation of 
+the pseudo-source domain quality issue within the second category of approaches.
+2.2 Multimodal Foundation Model
+The core idea behind the multimodal foundation models is to align representations across dif-
+ferent modalities, enabling the model to capture deep semantic associations between vision 
+and language. For instance, text-to-image models such as DALL E (Ramesh et al., 2021) 
+and Stable Diffusion (Rombach et al., 2022) can generate highly realistic images based on 
+complex textual descriptions. Other works, like ALIGN (Jia et al., 2021) and FLAVA (Singh 
+et al., 2022), aim to learn a unified multimodal representation space that supports a wide 
+range of vision-language tasks. Among these foundational multimodal models, CLIP (Con-
+trastive Language-Image Pre-training) (Radford et al., 2021) has made a profound impact 
+on the field of computer vision, thanks to its remarkable zero-shot recognition capability 
+and strong domain robustness. A growing body of research has shown that the zero-shot 
+ability of the CLIP allows it to outperform supervised ImageNet-pretrained models when 
+handling out-of-distribution data, stylistic variations, and various types of data corruption 
+(Yuan et al., 2025; Zhang et al., 2021b). Motivated by these strengths, our proposed SRRI 
+leverages the out-of-domain knowledge of the CLIP to correct the in-domain illusions of the 
+source model. Compared to prior methods that rely solely on the source model to construct 
+pseudo-source domains, our approach effectively mitigates knowledge shift and spurious 
+correlations, thereby enabling the construction of a more reliable and higher-quality pseudo-
+source domain.
+3 The Proposed Method
+In this section, we first provide a formal description of the SFDA problem. Then, we outline 
+the proposed SRRI approach and present the details of the knowledge distillation, pseudo-
+source domain generation, and adaptation phases in turn.
+1 3
+Page 5 of 27 222
+Machine Learning (2026) 115:222
+3.1 Problem Statement
+In traditional Unsupervised Domain Adaptation (UDA) task, the goal is to learn a model 
+using labeled source domain samples and unlabeled target domain samples. The source 
+domain 𝐷𝐷𝑆𝑆 = {(𝑥𝑥𝑠𝑠 𝑖𝑖 ,𝑦𝑦𝑠𝑠 𝑖𝑖 )}𝑛𝑛𝑠𝑠 𝑖𝑖𝑖𝑖 and the target domain 𝐷𝐷𝑇𝑇 = {(𝑥𝑥𝑡𝑡 𝑖𝑖 )}𝑛𝑛𝑡𝑡 𝑖𝑖𝑖𝑖 share the same set of 
+classes 𝐶𝐶𝐶{𝑐𝑐𝑘𝑘 }𝐾𝐾 𝑘𝑘𝑘𝑘, but their feature distributions differ. In contrast, Source-Free Domain 
+Adaptation (SFDA) does not provide access to the labeled source domain 𝐷𝐷𝑆𝑆 , instead, it 
+offers a pre-trained source model 𝜃𝜃𝑠𝑠 obtained from source data and the unlabeled target 
+domain samples 𝐷𝐷𝑇𝑇 . Our objective is to learn a target model 𝜃𝜃𝑡𝑡 that can construct a higher-
+quality pseudo-source domain. This process involves the use of the pre-trained source model 
+𝜃𝜃𝑠𝑠, the unlabeled target domain data 𝐷𝐷𝑇𝑇 , and a CLIP model 𝜃𝜃𝑣𝑣.
+3.2 Overview
+As illustrated in Fig. 2, the proposed SRRI framework consists of three stages designed to 
+facilitate the distillation of the CLIP model, the construction of a pseudo-source domain, 
+and the final adaptation. Specifically, in the first stage, we perform knowledge distillation 
+by aligning the probability distributions of the CLIP model 𝜃𝜃𝑣𝑣 and the source model 𝜃𝜃𝑠𝑠 on 
+the target domain data, resulting in a target model 𝜃𝜃𝑡𝑡 . The probability distribution of the 
+CLIP model is computed using a predefined set of textual prompts. Unlike prior work (Li 
+et al., 2024) that relies on a single template (e.g., “a photo of a [CLS]"), our method intro-
+duces a diverse prompt library to better exploit knowledge of the CLIP model and enhance 
+transferability. We term this initial, pre-adaptation distillation from the generic frozen CLIP 
+cold-start knowledge distillation, since the target model starts identical to the biased source 
+NK a photo of a 
+a photo of a dog
+Stage 1: Cold-Start Knowledge Distillation
+Target Model
+a sketch of a cat
+a clipart of a cat
+a photo of a cat
+a clipart of a cat
+a clipart of a dog
+a clipart of a horse
+Maximum Similarity Aggregation
+Unlabeled Target Image
+Stage 2: Pseudo-source Domain Generation
+Target Domain
+Target Data
+Source-like Data
+CLIP Model
+Target ModelSpurious Correlation (SC) Data
+Source-like SC Data
+λSconsist
+PEA I 'PE PEA I
+01
+Construction of Pseudo-source Domain
+Class Balancing Strategy
+Parameter 
+Frozen
+Parameter 
+Learnable
+sm Softmax
+Decision Boundary
+...
+...
+Predefined Prompt Libray
+CLIP Model
+Text 
+Encoder
+Image 
+Encoder
+Target 
+Model
+CLIP 
+Model
+Target 
+Model
+Predictive 
+Alignment
+D
+G TF
+T
+CLIP 
+Model
+Initialization
+Prompt 
+Fine-Tuning
+Predictive 
+Alignment
+CLIP 
+Model
+CLS
+Stage 3: Model Adaptation
+CLS ℒ
+ℒ
+ℒ
+Step2:Optimization Step1:Adaptation
+sm
+sm
+Epoch-wise 
+Updating
+Parameter 
+Thawing
+Fig. 2 Overview of our SRRI. The process consists of three stages. Starting from a zero-adaptation and 
+zero target-knowledge setting, we first bootstrap the adaptation process with the general knowledge of the 
+CLIP. We then construct a pseudo-source domain using the proposed dual-model verification and class-
+balancing strategies. Subsequently, the model is adapted under the standard UDA setting, after which 
+the task-specific prompts of the CLIP are fine-tuned and the refined knowledge is distilled into the target 
+model. The pseudo-source domain is then reconstructed. Except for the initialization stage, these proce-
+dures are alternately performed in subsequent rounds
+ 
+1 3
+222 Page 6 of 27
+Machine Learning (2026) 115:222
+model with no target-specific signal. In the second stage, we adopt a more effective pseudo-
+source domain generation strategy. Pseudo-source samples are selected based on the con-
+sistency scores between the target model 𝜃𝜃𝑡𝑡 and the CLIP model 𝜃𝜃𝑣𝑣 . Compared to previous 
+approach (Du et al., 2024) that rely solely on entropy-based criteria, our method mitigates 
+the risk of the target model becoming overconfident in certain predictions. Additionally, we 
+incorporate a class balancing strategy to ensure the robustness of subsequent adaptation. 
+In the third stage, we first perform model adaptation under the standard UDA setting. We 
+then fine-tune the task-specific prompts of a frozen CLIP model and distill the refined CLIP 
+knowledge into the target model on hard samples. Subsequently, we return to Stage 2 to 
+reconstruct the pseudo-source domain. Stage 1 is executed only once, while Stages 2 and 3 
+are alternately carried out during the remaining adaptation process.
+3.3 Cold-Start Knowledge Distillation
+3.3.1 Predictive Distributions of Teacher and Student Models
+Since the 𝜃𝜃𝑡𝑡 is initially identical to the heavily biased 𝜃𝜃𝑠𝑠, certain forms of knowledge inter-
+action at this stage, such as transferring task-specific knowledge from the target model to 
+CLIP, would inevitably introduce biased supervision. Therefore, what is required during 
+this stage is an objective and unbiased teacher signal to perform cold-start knowledge dis-
+tillation on the target model, while simultaneously providing a reliable initialization for 
+pseudo-source domain construction. Accordingly, We treat the CLIP model as the teacher 
+and freezing its parameters. To enhance the effectiveness of the distillation process in this 
+stage, we define a prompt library that includes NK predefined templates, such as “a [S] of 
+a [CLS]”, where N represents the number of domain styles, K is the number of classes, S 
+denotes the style descriptor, and CLS is the category embedding. For each sample 𝑥𝑥𝑡𝑡 𝑖𝑖 ∈ 𝐷𝐷𝑇𝑇 , 
+we obtain the predicted distribution of the teacher model 𝑞𝑞𝑞𝑞𝑞 ∣ 𝑥𝑥𝑡𝑡 𝑖𝑖 ). For the final prediction 
+score of class 𝑐𝑐𝑘𝑘, we embed the class name into each prompt template associated with class 
+𝑐𝑐𝑘𝑘 , and compute their aggregated similarity score with the image as follows:
+ 
+𝑞𝑞𝑞𝑞𝑞 𝑞 𝑞𝑞𝑘𝑘 ∣ 𝑥𝑥𝑡𝑡 𝑖𝑖 ) 𝑞 𝑆𝑆𝑆𝑆𝑆𝑆𝑆𝑆𝑆𝑆𝑆𝑆𝑥𝑥 (𝜏𝜏𝜏 𝑁𝑁 max 𝑗𝑗𝑗𝑗 𝑆𝑆𝑞𝑆𝑆𝑞𝑥𝑥𝑡𝑡 𝑖𝑖 ), 𝑇𝑇𝑞𝑇𝑇𝑘𝑘 𝑗𝑗 ))) , (1)
+where 𝐼𝐼𝐼⋅) and 𝑇𝑇𝑇⋅) are the image and text encoders of the CLIP model, respectively, 𝑝𝑝𝑘𝑘 𝑗𝑗 
+denotes the j-th prompt for class k, 𝑆𝑆𝑆⋅, ⋅) is the cosine similarity function, and 𝜏𝜏 is a tempera-
+ture parameter. We use the max-pooling instead of average-pooling to aggregate the simi -
+larity scores, it focuses on the most relevant prompt in the library for each image, thereby 
+capturing stronger visual-textual alignment (see Theorem 1 with the proof). The pre-trained 
+source model serves as the student, its predictive distribution 𝑝𝑝𝑝𝑝𝑝 ∣ 𝑥𝑥𝑡𝑡 𝑖𝑖 ) is computed by 
+applying the Softmax function to the final logits of the model.
+Theorem 1 For any concave function 𝜙𝜙 (such as the logarithm) and a random variable X, 
+the following holds:
+ 𝔼𝔼𝔼𝜙𝜙(𝐗𝐗𝐗𝐗 ≤𝜙𝜙(𝔼𝔼𝔼𝐗𝐗𝐗𝐗𝔼 (2)
+where 𝔼𝔼𝔼⋅] represents the mean of the random variable.
+1 3
+Page 7 of 27 222
+Machine Learning (2026) 115:222
+For each image 𝑥𝑥𝑡𝑡 𝑖𝑖 and class 𝑐𝑐𝑘𝑘, we generate a set of N text prompts {𝑝𝑝𝑘𝑘 𝑗𝑗 }𝑁𝑁 𝑗𝑗𝑗𝑗. This set 
+of prompts can be viewed as a “bag" of evidence for class 𝑐𝑐𝑘𝑘. Each individual prompt 
+𝑝𝑝𝑘𝑘 𝑗𝑗 within the bag is an “instance". The similarity score 𝑠𝑠𝑘𝑘 𝑗𝑗 = 𝑆𝑆𝑆𝑆𝑆𝑆𝑆𝑆𝑡𝑡 𝑖𝑖 ), 𝑇𝑇𝑆𝑇𝑇𝑘𝑘 𝑗𝑗 )) represents the 
+alignment between the image and the j-th instance in the k-th bag. The goal is to aggregate 
+the instance-level scores {𝑠𝑠𝑘𝑘 𝑗𝑗 }𝑁𝑁 𝑗𝑗𝑗𝑗 into a single bag-level score 𝑆𝑆𝑘𝑘 for each class.
+We introduce a latent variable 𝑧𝑧 ∈{1,…,𝑁𝑁} representing the index of the “best" explan-
+atory text prompt. We are interested in the log marginal likelihood of the image belonging 
+to class 𝑐𝑐𝑘𝑘, after marginalizing out z:
+ 
+𝑆𝑆𝑘𝑘 = log 𝑝𝑝𝑝𝑝𝑝𝑡𝑡 𝑖𝑖 ∣ 𝑐𝑐𝑘𝑘 )=log
+𝑁𝑁
+∑
+𝑗𝑗𝑗𝑗
+𝑝𝑝𝑝𝑝𝑝 ∣ 𝑧𝑧 = 𝑧𝑧𝑧 𝑐𝑐𝑘𝑘 ) ⋅ 𝑝𝑝𝑝𝑧𝑧 = 𝑧𝑧)𝑝 (3)
+Assuming a uniform prior 𝑝𝑝𝑝𝑝𝑝 𝑝 𝑝𝑝𝑝 𝑝 𝑝𝑝𝑝𝑝 and a likelihood related to the similarity score 𝑠𝑠𝑘𝑘 𝑗𝑗
+, the objective becomes maximizing the Log-Sum-Exp (LSE) of similarity-related scores:
+ 
+𝑆𝑆𝑘𝑘 = log ∑
+𝑗𝑗
+exp(𝐿𝐿𝑘𝑘 𝑗𝑗 ), (4)
+where 𝐿𝐿𝑘𝑘 𝑗𝑗 ≈ 𝑠𝑠𝑘𝑘 𝑗𝑗 . Unfortunately, due to the stability and optimization efficiency issues associ-
+ated with numerical overflow and non-sparse gradients, directly optimizing the LSE func-
+tion is challenging. Instead, we can optimize a tractable lower bound, a core principle of 
+maximizing the Evidence Lower Bound (ELBO).
+Max-Pooling as a Tight Lower Bound. The LSE function is a smooth approximation of 
+the maximum function, conversely, the maximum function serves as a tight, concave lower 
+bound on the LSE objective:
+ 
+𝑆𝑆𝑚𝑚𝑚𝑚𝑚𝑚 𝑘𝑘 = max 𝑗𝑗 {𝐿𝐿𝑘𝑘 𝑗𝑗 }≤𝑆𝑆𝑘𝑘 = log ∑ 𝑗𝑗 exp(𝐿𝐿𝑘𝑘 𝑗𝑗 ). (5)
+Optimizing this tight lower bound is a valid and efficient strategy for optimizing the true 
+objective 𝑆𝑆𝑘𝑘 , especially when one prompt provides a significantly better explanation (i.e., 
+one 𝐿𝐿𝑘𝑘 𝑗𝑗 dominates).
+Average-Pooling as a Looser Lower Bound. To analyze the relationship between the 
+average score and the LSE objective, we utilize the Theorem 1 to establish a bound. Let the 
+random variable be 𝑒𝑒𝐿𝐿 with a uniform distribution over the set {𝑒𝑒𝐿𝐿𝑘𝑘 𝑗𝑗 }𝑁𝑁 𝑗𝑗𝑗𝑗. Then:
+ 
+1
+𝑁𝑁 ∑ 𝑗𝑗 𝐿𝐿𝑘𝑘 𝑗𝑗 = 𝔼𝔼𝔼log(𝑒𝑒𝐿𝐿)] ≤ log(𝔼𝔼𝔼𝑒𝑒𝐿𝐿]) = log ( 1 𝑁𝑁 ∑ 𝑗𝑗 𝑒𝑒𝐿𝐿𝑘𝑘 𝑗𝑗 ) , (6)
+rearranging this inequality yields:
+ 
+log ∑
+𝑗𝑗
+𝑒𝑒𝐿𝐿𝑘𝑘 𝑗𝑗 ≥ log(𝑁𝑁𝑁 𝑁 1 𝑁𝑁 ∑ 𝑗𝑗 𝐿𝐿𝑘𝑘 𝑗𝑗 . (7)
+1 3
+222 Page 8 of 27
+Machine Learning (2026) 115:222
+This shows that the average log-score 𝑆𝑆𝑎𝑎𝑎𝑎𝑎𝑎𝑎𝑎𝑎𝑎𝑎𝑎𝑎 𝑘𝑘 = 1 𝑁𝑁 ∑ 𝑗𝑗 𝐿𝐿𝑘𝑘 𝑗𝑗 is a significantly looser lower 
+bound on the true objective 𝑆𝑆𝑘𝑘 , with a gap of at least log(𝑁𝑁𝑁. Intuitively, averaging dilutes 
+the signal from the best-matching prompt with noise from irrelevant ones.
+3.3.2 Distillation Loss with Dynamic Weighting
+We use the Kullback–Leibler (KL) divergence to align the predictive distributions between 
+the teacher and student models. Importantly, not all predictions from the teacher model are 
+equally reliable. To address this, we introduce an entropy-aware dynamic weighting mecha-
+nism that assigns higher weights to more confident (i.e., lower-entropy) predictions from 
+CLIP. The dynamic weight 𝛼𝛼 for a sample 𝑥𝑥𝑡𝑡 𝑖𝑖 is computed as follows:
+ 
+𝛼𝛼(𝑥𝑥𝑡𝑡 𝑖𝑖 )=𝛼𝛼max −(𝛼𝛼max − 𝛼𝛼min) ⋅ 𝐻𝐻(𝐻𝐻(𝐻𝐻 ∣ 𝑥𝑥𝑡𝑡 𝑖𝑖 )) log(𝐾𝐾) , (8)
+where 𝐻𝐻𝐻⋅) indicates the entropy of the predicted distribution of the teacher, 𝛼𝛼min and 𝛼𝛼max 
+define the allowable range of the dynamic weight. To further encourage the student model 
+to produce confident predictions on the target domain, we augment the KL divergence-based 
+distillation loss with an entropy minimization term. The cold-start distillation loss is defined 
+as:
+ 
+ℒ𝑐𝑐-𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑 =𝔼𝔼𝑥𝑥𝑡𝑡 𝑖𝑖 ∼𝐷𝐷𝑇𝑇 [𝛼𝛼(𝑥𝑥𝑑𝑑 𝑑𝑑 ) ⋅ 𝐷𝐷𝐾𝐾𝐾𝐾(𝑞𝑞(𝑞𝑞 ∣ 𝑥𝑥𝑑𝑑 𝑑𝑑 )‖𝑝𝑝(𝑞𝑞 ∣ 𝑥𝑥𝑑𝑑 𝑑𝑑 ))]
++ 𝜆𝜆⋅𝔼𝔼𝑥𝑥𝑡𝑡 𝑖𝑖 ∼𝐷𝐷𝑇𝑇 [𝐻𝐻(𝑝𝑝(𝑞𝑞 ∣ 𝑥𝑥𝑑𝑑 𝑑𝑑 ))], (9)
+where 𝐷𝐷𝐾𝐾𝐾𝐾(𝑞𝑞𝑞𝑞𝑞𝑞 𝑞
+𝐾𝐾
+∑
+𝑘𝑘𝑘𝑘
+𝑞𝑞𝑘𝑘 log ( 𝑞𝑞𝑘𝑘 𝑞𝑞𝑘𝑘 ). It represents the relative entropy of the probability dis-
+tribution q with respect to the probability distribution p, measuring the difference in infor-
+mation between the two.
+3.4 Pseudo-Source Domain Generation
+3.4.1 Construction of the Pseudo-Source Domain Samples Index Set
+From the previous distillation step, we obtain a more “Rational" target model 𝜃𝜃𝑡𝑡. Accord-
+ing to previous studies (Gou et al., 2021; Xu et al., 2020), different samples have vary-
+ing instructional value, leading to different distillation outcomes. If we immediately assign 
+pseudo-source domain samples based on the predictions of the target model-without consid-
+ering the alignment or compatibility between the student and teacher models-this approach 
+severs the intrinsic link between the quality of pseudo-source samples and the effective-
+ness of knowledge distillation. So, we propose a dual-model verification strategy to further 
+enhance the quality of the pseudo-source samples. Specifically, we first compute the consis-
+tency score between the target model 𝜃𝜃𝑡𝑡 and the CLIP model 𝜃𝜃𝑣𝑣 , defined as the proportion of 
+samples for which the two models predict the same label:
+1 3
+Page 9 of 27 222
+Machine Learning (2026) 115:222
+ 
+𝑆𝑆𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐 = 1 𝑁𝑁𝑇𝑇
+𝑁𝑁𝑇𝑇
+∑
+𝑐𝑐𝑖𝑖
+𝕀𝕀𝕀 ̂𝑦𝑦𝑀𝑀 𝕀𝑥𝑥𝑐𝑐 𝑐𝑐 )= ̂𝑦𝑦𝐶𝐶𝐶𝐶𝐶𝐶𝐶𝐶 𝕀𝑥𝑥𝑐𝑐 𝑐𝑐 )), (10)
+where i denotes the sample index, 𝑁𝑁𝑇𝑇 is the total number of samples in the target domain, 
+̂𝑦𝑦𝑀𝑀 is the label predicted by the target model, ̂𝑦𝑦𝐶𝐶𝐶𝐶𝐶𝐶𝐶𝐶 is the label predicted by the CLIP 
+model, and 𝕀𝕀𝕀⋅) is the indicator function. We define a consistency threshold 𝛾𝛾, and two sets: 
+𝐴𝐴𝐴{𝑖𝑖 ∣ ̂𝑦𝑦𝑀𝑀 (𝐱𝐱𝑡𝑡 𝑖𝑖 )𝐴 ̂𝑦𝑦𝐶𝐶𝐶𝐶𝐶𝐶𝐶𝐶 (𝐱𝐱𝑡𝑡 𝑖𝑖 ), 𝐱𝐱𝑡𝑡 𝑖𝑖 ∈ 𝐷𝐷𝑇𝑇 } and 𝐸𝐸𝑝𝑝 = {𝑖𝑖 ∣ 𝐻𝐻𝑀𝑀 (𝐱𝐱𝑡𝑡 𝑖𝑖 )<𝜂𝜂𝑝𝑝 ,𝐱𝐱𝑡𝑡 𝑖𝑖 ∈ 𝐷𝐷𝑇𝑇 }, where 
+𝜂𝜂𝑝𝑝 = Percentile ({𝐻𝐻𝑀𝑀 (𝐱𝐱𝑡𝑡 𝑗𝑗 )}𝑁𝑁𝑇𝑇 𝑗𝑗𝑗𝑗, 100 − 𝑝𝑝), 𝐻𝐻𝑀𝑀 (⋅) represents the prediction entropy produced 
+by the target model 𝜃𝜃𝑡𝑡, when the consistency score is high, we validate the effectiveness of 
+the first stage of knowledge distillation and consider the entropy-based thresholding strat-
+egy to play a more auxiliary, safeguarding role. Accordingly, we relax the criteria for includ-
+ing samples in the set 𝐸𝐸𝑃𝑃 and heuristically set the value of p to 25. Conversely, when the 
+consistency score is low, we rely more heavily on the entropy-based strategy, and the new 
+set 𝐸𝐸𝑝𝑝′ is restricted to only the top five percent of samples with the lowest entropy. Our final 
+selection strategy for the pseudo-source domain samples index set 𝐼𝐼𝑃𝑃𝑃𝑃 is as follows:
+ 
+𝐼𝐼𝑃𝑃𝑃𝑃 = { 𝐴𝐴 ∩ 𝐸𝐸𝑝𝑝 , if 𝑆𝑆𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐 ≥𝛾𝛾 𝐸𝐸𝑝𝑝′ ∪ (𝐴𝐴 ∩ 𝐸𝐸𝑝𝑝 ), if 𝑆𝑆𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐 < 𝛾𝛾 (11)
+where 𝐸𝐸𝑝𝑝′ represents a low-entropy set with a stricter threshold (𝑝𝑝′ >𝑝𝑝). The value of 𝛾𝛾 will 
+be explored in the analytical experiments section.
+3.4.2 Class Balancing Strategy
+Through the above steps, we obtain an initial set of high-quality pseudo-source domain 
+samples. Prior research (Gulrajani & Lopez-Paz, 2020; Kumar et al., 2018) suggests that 
+larger source domains generally lead to better transfer performance. However, our obser-
+vations indicate that when the consistency score is low and the acceptance threshold for 
+pseudo-source samples is raised accordingly, it may lead to class imbalance-some classes 
+may contain very few or even no samples in the pseudo-source domain. This negatively 
+impacts performance and even reduces the overall number of pseudo-source samples. To 
+mitigate this issue, we first count the number of samples per class within the current pseudo-
+source index set 𝐼𝐼𝑃𝑃𝑃𝑃. We then identify the underrepresented classes and, while ensuring that 
+the total number of pseudo-source samples remains sufficiently large, we supplement these 
+classes by selecting additional samples from the candidate pool based on entropy ranking-
+specifically, we choose the lowest-entropy samples for each deficient class. This process 
+results in an updated pseudo-source index set 𝐼𝐼′ 𝑃𝑃𝑃𝑃. We define the final pseudo-source domain 
+and the remaining target domain as follows:
+ 
+̂𝐷𝐷𝑆𝑆 = {(𝑥𝑥𝑡𝑡 𝑖𝑖 , ̂𝑦𝑦𝑖𝑖 ) ∣ 𝑖𝑖 ∈ 𝐼𝐼′ 𝑃𝑃𝑆𝑆 },
+̂𝐷𝐷𝑇𝑇 = {(𝑥𝑥𝑡𝑡 𝑗𝑗 ) ∣ 𝑗𝑗 ∈ 𝑛𝑛𝑡𝑡 ∖ 𝐼𝐼′ 𝑃𝑃𝑆𝑆 }, (12)
+where ‖𝐼𝐼′ 𝑃𝑃𝑃𝑃 ‖ ≥ 0.25‖𝑛𝑛𝑡𝑡 ∖ 𝐼𝐼′ 𝑃𝑃𝑃𝑃 ‖. It means that the final pseudo-source domain must contain 
+no fewer than 20% of the total target domain samples. It is important to note that this thresh-
+old is not a finely tuned hyperparameter, but rather a conservative lower bound designed to 
+ensure algorithmic robustness. It guarantees that even in extreme cases, the pseudo-source 
+1 3
+222 Page 10 of 27
+Machine Learning (2026) 115:222
+domain retains a meaningful scale. In Stage 3, the aforementioned pseudo-source domain 
+construction process is periodically revisited.
+3.5 Model Adaptation
+After constructing a robust pseudo-source domain ̂𝐷𝐷𝑆𝑆 and retaining the remaining unlabeled 
+target domain ̂𝐷𝐷𝑇𝑇 , we reformulate the original SFDA task as a pseudo-UDA problem. To 
+address this challenge, in this section, we propose an adaptive training framework compris-
+ing three key components: robust pseudo-labels supervision, dual-policy domain alignment 
+and consistency regularization.
+3.5.1 Robust Pseudo-Labels Supervision
+To enable the model to accurately classify samples from both the pseudo-source domain and 
+the remaining target domain, we fine-tune the classifier using pseudo-labels. The classifica-
+tion loss is computed as follows:
+ ℒcls =𝔼𝔼(𝑥𝑥𝑡𝑡 𝑖𝑖 , ̂𝑦𝑦𝑖𝑖 )∼ ̂𝐷𝐷𝑆𝑆 [ℒ𝐶𝐶𝐶𝐶(𝑥𝑥𝑡𝑡 𝑖𝑖 , ̂𝑦𝑦𝑖𝑖 )+𝔼𝔼𝑥𝑥𝑡𝑡 𝑗𝑗 ∼ ̂𝐷𝐷𝑇𝑇 [ℒ𝐶𝐶𝐶𝐶(𝑥𝑥𝑡𝑡 𝑗𝑗 , ̂𝑦𝑦𝑗𝑗 )], (13)
+where ℒ𝐶𝐶𝐶𝐶 denotes the standard cross-entropy loss. As mentioned above, ̂𝑦𝑦𝑖𝑖 represents the 
+pseudo-label for a pseudo-source domain sample, predicted by the target model 𝜃𝜃𝑡𝑡 . Since 
+the remaining target domain samples are typically high-entropy for the target model, we 
+generate their pseudo-labels ̂𝑦𝑦𝑗𝑗 through a fusion of predictions from the target model and 
+the CLIP model. The fused pseudo-labels are computed as follows:
+ 
+̂𝑦𝑦𝑗𝑗 = arg max 𝑘𝑘 [𝜔𝜔𝜔𝑝𝑝𝑝𝑦𝑦 = 𝑝𝑝 ∣ 𝑥𝑥𝑡𝑡 𝑗𝑗 )+𝑝1−𝜔𝜔) 𝜔 𝑞𝑞𝑝𝑦𝑦 = 𝑝𝑝 ∣ 𝑥𝑥𝑡𝑡 𝑗𝑗 )], (14)
+where 𝜔𝜔 represents the confidence weight of the prediction from the target model. The value 
+of 𝜔𝜔 will be explored in the ablation experiment section.
+3.5.2 Dual-Policy Domain Alignment Module
+To reduce the distribution gap between the pseudo-source domain ̂𝐷𝐷𝑆𝑆 and the remaining 
+target domain ̂𝐷𝐷𝑇𝑇 , we introduce a complementary alignment strategy that combines implicit 
+and explicit mechanisms. Specifically, we first incorporate a domain discriminator D to dis-
+tinguish between features from the pseudo-source and target domains. Through adversarial 
+training, the feature extractor G is encouraged to generate domain-invariant representations 
+by making the features indistinguishable to the domain discriminator, thereby implicitly 
+aligning local non-linear features. We then further integrate MMD (Maximum Mean Dis -
+crepancy) to explicitly minimize the feature distribution discrepancy between ̂𝐷𝐷𝑆𝑆 and ̂𝐷𝐷𝑇𝑇 . 
+The loss of our dual-policy domain alignment module is formulated as follows:
+ 
+min
+𝜃𝜃𝐺𝐺
+max
+𝜃𝜃𝐷𝐷
+ℒadv =𝔼𝔼𝑥𝑥𝑡𝑡 𝑖𝑖 ∼ ̂𝐷𝐷𝑆𝑆 [log 𝐷𝐷𝐷𝐷𝐷𝐷𝐷𝐷𝑡𝑡 𝑖𝑖 ))]
++𝔼𝔼𝑥𝑥𝑡𝑡 𝑗𝑗 ∼ ̂𝐷𝐷𝑇𝑇 [log𝐷1 − 𝐷𝐷𝐷𝐷𝐷𝐷𝐷𝐷𝑡𝑡 𝑗𝑗 )))] + ℒMMD, (15)
+1 3
+Page 11 of 27 222
+Machine Learning (2026) 115:222
+where 𝜃𝜃𝐺𝐺 and 𝜃𝜃𝐷𝐷 are the parameters of the feature extractor and the domain discriminator. 
+ℒ𝑀𝑀𝑀𝑀𝑀𝑀 is MMD feature alignment loss of the following form:
+ 
+ℒMMD = ‖ ‖𝔼𝔼𝑥𝑥𝑡𝑡 𝑖𝑖 ∼ ̂𝐷𝐷𝑆𝑆 [𝜙𝜙(𝐺𝐺(𝐺𝐺𝑡𝑡 𝑖𝑖 ))] − 𝔼𝔼𝑥𝑥𝑡𝑡 𝑗𝑗 ∼ ̂𝐷𝐷𝑇𝑇 [𝜙𝜙(𝐺𝐺(𝐺𝐺𝑡𝑡 𝑗𝑗 ))]‖ ‖ 2 ℋ𝑘𝑘 , (16)
+where the function 𝜙𝜙 maps features into a reproducing kernel Hilbert space (RKHS), in 
+which a Gaussian kernel is employed to measure the distribution discrepancy.
+Algorithm 1 Training of SRRI
+1 3
+222 Page 12 of 27
+Machine Learning (2026) 115:222
+3.5.3 Consistency Regularization
+Directly updating the classifier 𝐹𝐹𝑇𝑇 of the target model would clearly disrupt its learned 
+knowledge structure, potentially degrading the quality of pseudo-labels and leading to insta-
+bility during training. To mitigate this, following prior work, we introduce a new classifier 
+𝐹𝐹′ 𝑇𝑇 , initialized from 𝐹𝐹𝑇𝑇 , while keeping 𝐹𝐹𝑇𝑇 frozen throughout training. We enforce consis-
+tency between the predictions of the current classifier 𝐹𝐹′ 𝑇𝑇 and the frozen historical classifier 
+𝐹𝐹𝑇𝑇 , promoting smoothness and stability in the training process:
+ ℒreg =𝔼𝔼𝑥𝑥𝑡𝑡 𝑖𝑖 ∼𝐷𝐷𝑇𝑇 [D𝐽𝐽𝐽𝐽(𝑝𝑝(𝑝𝑝 ∣ 𝑥𝑥𝑡𝑡 𝑖𝑖 )‖𝑝𝑝𝑜𝑜𝑜𝑜𝑜𝑜(𝑝𝑝 ∣ 𝑥𝑥𝑡𝑡 𝑖𝑖 ))], (17)
+where 𝐷𝐷𝐽𝐽𝐽𝐽 denotes the Jensen-Shannon divergence, and 𝑝𝑝𝑜𝑜𝑜𝑜𝑜𝑜 represents the predictions pro-
+duced by the historical classifier 𝐹𝐹𝑇𝑇 .
+3.5.4 Dynamic Pseudo-Source Domain Optimization
+The cold-start distillation in Stage 1 relies on a generic frozen CLIP whose textual prompts 
+are fixed. While this is sufficient to bootstrap the target model out of its biased starting point, 
+these generic prompts are not well suited to the specific target task and therefore provide 
+limited guidance on hard samples–i.e., the remaining target domain ̂𝐷𝐷𝑇𝑇 , which is precisely 
+the subset the target model is still uncertain about. Therefore, following prompt tuning 
+(Zhou et al., 2022), we replace the predefined templates of the teacher with a learnable con-
+text 𝐕𝐕 𝐕 𝐕𝐕𝐕1,…,𝐕𝐕𝑀𝑀 ] prepended to each class name. The prompt for class 𝑐𝑐𝑘𝑘 is 𝐭𝐭𝑘𝑘 = [𝐕𝐕𝐕 𝐕𝐕𝑘𝑘 ], 
+where 𝐞𝐞𝑘𝑘 is the token embedding of the k-th class name, and the CLIP distribution is:
+ 𝑞𝑞′(𝑦𝑦 𝑦 𝑦𝑦𝑘𝑘 ∣ 𝑥𝑥𝑡𝑡 𝑖𝑖 )𝑦Softmax(𝜏𝜏𝜏𝑆𝑆(𝐼𝐼(𝑥𝑥𝑡𝑡 𝑖𝑖 ), 𝑇𝑇(𝑇𝑇𝑘𝑘 ))), (18)
+in which, only 𝐕𝐕 is trainable. since the image features are produced by a frozen encoder, 
+they are computed once and cached, and each optimization step only re-encodes the K class 
+prompts, making fine-tune inexpensive.
+As the target labels are unavailable, we optimize 𝐕𝐕 on all target samples by maximizing 
+the mutual information between the target-model predictions 𝑝𝑝𝑝𝑝𝑝 ∣ 𝑥𝑥𝑡𝑡 𝑖𝑖 ) and the CLIP predic-
+tions 𝑞𝑞′(𝑦𝑦 ∣ 𝑥𝑥𝑡𝑡 𝑖𝑖 ), encouraging the two views to agree. Estimating the joint distribution over a 
+batch ℬ as 𝑃𝑃𝑃 1 |ℬ| ∑ 𝑖𝑖 𝑝𝑝𝑝𝑝𝑝 ∣ 𝑥𝑥𝑡𝑡 𝑖𝑖 ), 𝑞𝑞′𝑝𝑝𝑝 ∣ 𝑥𝑥𝑡𝑡 𝑖𝑖 )⊤ and symmetrizing it as ̃𝑃𝑃𝑃 1 2 (𝑃𝑃 𝑃 𝑃𝑃⊤), mean- while, to prevent prompt learning from collapsing to a few dominant classes, we constrain 
+the average predictions ̄𝑞𝑞 ′ to follow a uniform distribution 𝒰𝒰. The mutual-information loss 
+is:
+ 
+ℒ𝑚𝑚𝑚𝑚 =−
+𝐾𝐾
+∑
+𝑎𝑎𝑎𝑎
+𝐾𝐾
+∑
+𝑏𝑏𝑎𝑎
+̃𝑃𝑃𝑎𝑎𝑏𝑏 log ̃𝑃𝑃𝑎𝑎𝑏𝑏 ̃𝑃𝑃𝑎𝑎⋅ ̃𝑃𝑃⋅𝑏𝑏 + 𝛽𝛽𝐷𝐷𝐾𝐾𝐾𝐾 ( ̄𝑞𝑞 ′‖𝒰𝒰) , (19)
+where ̃𝑃𝑃𝑎𝑎⋅ and ̃𝑃𝑃⋅𝑏𝑏 are the marginals of ̃𝑃𝑃, 𝛽𝛽 serves as a trade-off parameter. Then, we distill 
+its knowledge into the target model on the hard samples ̂𝐷𝐷𝑇𝑇 . The hard sample distillation 
+loss is:
+1 3
+Page 13 of 27 222
+Machine Learning (2026) 115:222
+ ℒℎ-𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑 =𝔼𝔼𝑥𝑥𝑡𝑡 𝑗𝑗 ∼ ̂𝐷𝐷𝑇𝑇 [𝛼𝛼(𝑥𝑥𝑑𝑑 𝑗𝑗 ) ⋅ 𝐷𝐷𝐾𝐾𝐾𝐾(𝑞𝑞′(𝑦𝑦 ∣ 𝑥𝑥𝑑𝑑 𝑗𝑗 )‖𝑝𝑝(𝑦𝑦 ∣ 𝑥𝑥𝑑𝑑 𝑗𝑗 ))]. (20)
+As the target model improves over training, the relative value of the teacher diminishes, we 
+therefore anneal the weight of this term linearly, 𝜆𝜆ℎ𝑑𝑑(𝑡𝑡𝑡 𝑡 𝑡 𝑡 𝑡𝑡𝑡𝑡𝑡, where t and T denote the 
+current and total adaptation iterations. In summary, distillation loss is defined as follows:
+ 
+ℒ𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑 = { ℒ𝑐𝑐-𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑, Stage 1 (cold-start, executed once) 𝜆𝜆ℎ𝑑𝑑(𝑡𝑡𝑡ℒℎ-𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑. Stage 3 (adaptation, 𝑡𝑡 ≥ 1𝑡 (21)
+Combining the losses described above, the overall objective function for adapting the target 
+model is formulated as:
+ ℒtotal =ℒdistill +ℒcls +ℒreg + 𝜆𝜆𝑎𝑎 ℒadv, (22)
+where 𝜆𝜆𝑎𝑎 >0 is a trade-off parameter. In our training pipeline, ℒ𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐 is executed only 
+once. Subsequently, ℒℎ−𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑 is periodically re-executed on the updated ̂𝐷𝐷𝑇𝑇 at fixed epoch 
+interval R, after which the pseudo-source domain is reconstructed. We summarize the whole 
+training procedure of SRRI in Algorithm 1.
+4 Experiments
+In this section, we first introduce the datasets and experimental setup. Then, we take the 
+state-of-the-art methods that are currently available in the field of SFDA that can be used 
+as comparators to perform comparative experiments on 4 domain adaptation benchmark 
+datasets. And we purposely compare the current representative pseudo-source domain based 
+SFDA method to show the superiority of our SRRI method. In addition, ablation experi-
+ments, feature visualization, Grad-CAM (Selvaraju et al., 2017) visualization, parametric 
+analysis, and pseudo-source domain quality analysis are performed to further validate the 
+effectiveness of each element of the proposed methodology as well as the elimination of 
+spurious correlations.
+4.1 Experimental Setup
+4.1.1 Datasets
+We evaluate SRRI on four widely used domain adaptation benchmark datasets. (1) Office-31 
+(Saenko et al., 2010) is a small-scale dataset comprising three distinct domains and 31 cat -
+egories of office-related objects. (2) Office-Home (Venkateswara et al., 2017) is a widely 
+recognized medium-scale dataset that includes four diverse domains and 65 object catego-
+ries. (3) VisDA (Peng et al., 2017) is a challenging benchmark with 12 categories, where the 
+source domain consists of synthetic images and the target domain comprises real images. (4) 
+DomainNet-126 (Peng et al., 2019) is a large-scale dataset covering four visually diverse 
+domains and a total of 126 categories.
+1 3
+222 Page 14 of 27
+Machine Learning (2026) 115:222
+4.1.2 Competitor
+We compare SRRI with existing high-performing methods, categorized into four groups. 
+(1) The first group includes the predictions from the source model without any adaptation 
+and the CLIP Zero-shot (ViT-B/32) (Radford et al., 2021). (2) The second group consists 
+of six representative UDA methods: BNM (Cui et al., 2020), CDAN (Long et al., 2018), 
+SFAN (Xu et al., 2019), BCDM (Li et al., 2021), MCD (Saito et al., 2018), and DAPL (Ge 
+et al., 2023). (3) The third group comprises 18 state-of-the-art SFDA methods, including 
+SHOT (Liang et al., 2020), NRC (Yang et al., 2021), GKD (Tang et al., 2021), PS (Du et 
+al., 2024), U-SFAN+ (Roy et al., 2022), AdaCon (Chen et al., 2022), CoWA (Lee et al., 
+2022), SCLM (Tang et al., 2022), AAA (Li et al., 2022a), VDM (Tian et al., 2022), DIPE 
+(Wang et al., 2022), PLUE (Litrico et al., 2023), GAP (Chhabra et al., 2023), SFADA (He 
+et al., 2024), ASOGE (Cui et al., 2023), DPLS (Ma et al., 2024), CPD (Zhou et al., 2024), 
+and TPDS (Tang et al., 2024a). (4) The fourth group comprises 4 CLIP-based SFDA meth-
+ods, including DIFO (Tang et al., 2024b), ViLAaD++ (Tarashima et al., 2025), SHOT w/
+Co-learn++ (Zhang et al., 2025), and NRC w/Co-learn++ (Zhang et al., 2025). DIFO and 
+ViLAaD++ employ the ViT-B/32 variant of CLIP, whereas SHOT w/Co-learn++ and NRC 
+w/Co-learn++ adopt the ViT-L/14@336 variant. Notably, ViT-L/14@336 exhibits superior 
+baseline generalization performance compared with ViT-B/32. Among them, PS is the cur-
+rent representative SFDA method based on pseudo-source domain.
+4.1.3 Implementation Details
+For all experiments, we conduct in PyTorch using a single NVIDIA GeForce RTX 4090 
+GPU. We first pretrain the model on the labeled source domain to simulate the “source 
+model” provided by the user in a typical SFDA scenario. The model checkpoint that achieves 
+the best performance on the source-domain validation set is saved as the starting point 
+for subsequent adaptation. We adopt ResNet-50 or ResNet-101 as the backbone feature 
+extractor, followed by a bottleneck layer and a classifier. The bottleneck layer is set to have 
+a dimensionality of 256. For the teacher model in our approach, we utilize the ViT-B/32 
+variant of CLIP, with its parameters kept frozen throughout all stages. All experiments are 
+conducted using the PyTorch framework. Optimization is performed using stochastic gradi-
+ent descent (SGD) with Nesterov momentum. The momentum is set to 0.9, and the weight 
+decay is 5e-4. The learning rates for the domain discriminator and classifier are set to be 10 
+times that of the feature extractor. Specifically, the learning rate is 5e-4 for DomainNet-126 
+and 1e-3 for all other datasets. The number of training epochs is set to 200 for Office-31, 100 
+for Office-Home, 15 for VisDA, and 40 for DomainNet-126. For the cold-start distillation 
+stage, the number of epochs is set to 20 for Office-31 and Office-Home, 3 for VisDA, and 
+5 for DomainNet-126. For the fixed epoch interval, it is set to 20 for Office-31 and Office-
+Home, 3 for VisDA, and 8 for DomainNet-126. Regarding hyperparameters, the adversarial 
+loss weight 𝜆𝜆𝑎𝑎𝑎𝑎𝑎𝑎 is set to 0.1, and the batch size is fixed at 128 for all datasets.
+4.2 Experimental Results
+The comparison results across the four evaluation datasets are presented in Tables 1, 2, 
+3, 4. In terms of average accuracy, SRRI outperforms the previous best-performing meth-
+1 3
+Page 15 of 27 222
+Machine Learning (2026) 115:222
+Table 1 Classification accuracy (%) on Office-Home (ResNet-50)
+Method SF ViL A→C A→P A→R C→A C→P C→R P→A P→C P→R R→A R→C R→P Avg.
+Source - - 43.7 67.0 73.9 49.9 60.1 62.5 51.7 40.9 72.6 64.2 46.3 78.1 59.2
+CLIP Zero-shot (ICML’21) - ✓ 60.2 84.5 86.0 75.1 84.5 85.6 74.4 60.1 85.0 74.5 59.8 83.7 76.1
+CDAN (NIPS’18) ✗ ✗ 50.7 70.6 76.0 57.6 70.0 70.0 57.4 50.9 77.3 70.9 56.7 81.6 65.8
+SFAN (ICCV’19) ✗ ✗ 52.0 71.7 76.3 64.2 69.9 71.9 63.7 51.4 77.1 70.9 57.1 81.5 67.3
+BNM (CVPR’20) ✗ ✗ 52.3 73.9 80.0 63.3 72.9 74.9 61.7 49.5 79.7 70.5 53.6 82.2 67.9
+SHOT (ICML’20) ✓ ✗ 57.1 78.1 81.5 68.0 78.2 78.1 67.4 54.9 82.2 73.3 58.8 84.3 71.8
+NRC (NIPS’21) ✓ ✗ 57.7 80.3 82.0 68.1 79.8 78.6 65.3 56.4 83.0 71.0 58.6 85.6 72.2
+GKD (IROS’21) ✓ ✗ 56.5 78.2 81.8 68.7 78.9 79.1 67.6 54.8 82.6 74.4 58.5 84.8 72.2
+PS (ML’21) ✓ ✗ 57.8 77.3 81.2 68.4 76.9 78.1 67.8 57.3 82.1 75.2 59.1 83.4 72.1
+U-SFAN+ (CV’22) ✓ ✗ 57.8 77.8 81.6 67.9 77.3 79.2 67.2 54.7 81.2 73.3 60.3 83.9 71.9
+AdaCon (CVPR’22) ✓ ✗ 47.2 75.1 75.5 60.7 73.3 73.2 60.2 45.2 76.6 65.6 48.3 79.1 65.0
+AAA (TPAMI’22) ✓ ✗ 56.7 78.3 82.1 66.4 78.5 79.4 67.6 53.5 81.6 74.5 58.4 84.1 71.8
+VDM (TCSVT’22) ✓ ✗ 59.3 75.3 78.3 67.6 76.0 75.9 68.8 57.7 79.6 74.0 61.1 83.6 71.4
+DIPE (CVPR’22) ✓ ✗ 56.5 79.2 80.7 70.1 79.8 78.8 67.9 55.1 83.5 74.1 59.3 84.8 72.5
+PLUE (CVPR’23) ✓ ✗ 49.1 73.5 78.2 62.9 73.5 74.5 62.2 48.3 78.6 68.6 51.8 81.5 66.9
+GAP (WACV’23) ✓ ✗ 55.4 73.4 80.8 67.2 75.5 78.3 65.5 54.0 82.4 74.3 59.4 84.0 70.8
+SFADA (PR’24) ✓ ✗ 56.1 78.0 81.6 68.5 79.5 78.5 67.8 56.0 82.3 73.6 57.8 83.0 71.9
+ASOGE (TCSVT’24) ✓ ✗ 59.1 78.4 81.0 67.7 78.4 77.5 65.8 57.2 80.2 72.7 60.7 83.3 71.8
+DPLS (PR’24) ✓ ✗ 57.8 79.0 81.6 67.8 79.9 79.1 68.6 54.7 82.5 72.5 59.6 85.9 72.4
+DIFO (CVPR’24) ✓ ✓ 70.6 90.6 88.8 82.5 90.6 88.8 80.9 70.1 88.9 83.4 70.5 91.2 83.1
+ViLAaD++ (arXiv’25) ✓ ✓ 70.1 91.6 89.9 83.2 92.0 90.0 81.0 71.7 89.9 83.3 71.3 92.3 83.9
+SHOT w/Co-learn++ (IJCV’25) ✓ ✓ 62.2 83.1 84.9 71.5 81.7 81.7 70.9 61.9 84.1 75.9 65.5 86.6 75.8
+NRC w/Co-learn++ (IJCV’25) ✓ ✓ 76.4 88.8 88.6 82.4 89.1 88.2 81.0 75.2 89.7 82.4 76.3 91.9 84.2
+SRRI (ours) ✓ ✓ 72.9± 90.5± 𝟗𝟗𝟗𝟗𝟗𝟗𝟗𝟗 𝟖𝟖𝟖𝟖𝟖𝟖𝟖𝟖 91.1± 𝟗𝟗𝟗𝟗𝟗𝟗𝟗𝟗 𝟖𝟖𝟖𝟖𝟖𝟖𝟖𝟖 73.9± 𝟗𝟗𝟗𝟗𝟗𝟗𝟗𝟗 82.8± 73.7± 90.9± 𝟖𝟖𝟖𝟖𝟖𝟖𝟖𝟖
+0.2 0.1 𝟎𝟎𝟎𝟎𝟎 𝟎𝟎𝟎𝟎𝟎 0.1 𝟎𝟎𝟎𝟎𝟎 𝟎𝟎𝟎𝟎𝟎 0.2 𝟎𝟎𝟎𝟎𝟎 0.1 0.2 0.1 𝟎𝟎𝟎𝟎𝟎
+Bold text indicates the best results. SF means source-free, and ViL means whether using ViL model
+1 3
+222 Page 16 of 27
+Machine Learning (2026) 115:222Table 2 Classification accuracy (%) on VisDA (ResNet-101)
+Method SF ViL pla. bic. bus car hor. kni. mot. per. pla. ska. tra. tru. Avg.
+Source - - 60.7 21.7 50.8 68.5 71.8 5.4 86.4 20.2 67.1 43.3 83.3 10.6 49.2
+CLIP Zero-shot (ICML’21) - ✓ 93.2 87.1 82.6 69.0 90.4 88.2 87.7 76.1 75.4 89.3 87.5 69.9 83.0
+CDAN (NIPS’18) ✗ ✗ 85.2 66.9 83.0 50.8 84.2 74.9 88.1 74.5 83.4 76.0 81.9 38.0 73.9
+SFAN (ICCV’19) ✗ ✗ 93.6 61.3 84.1 70.6 94.1 79.0 91.8 79.6 89.9 55.6 89.0 24.4 76.1
+BCDM (AAAI’21) ✗ ✗ 95.1 87.6 81.2 73.2 92.7 95.4 86.9 82.5 95.1 84.8 88.1 39.5 83.4
+SHOT (ICML’20) ✓ ✗ 94.3 88.5 80.1 57.3 93.1 94.9 80.7 80.3 91.5 89.1 86.3 58.2 82.9
+NRC (NIPS’21) ✓ ✗ 96.8 91.3 82.4 62.4 96.2 95.9 86.1 80.6 94.8 94.1 90.4 68.2 85.9
+GKD (IROS’21) ✓ ✗ 95.3 87.6 81.7 58.1 93.9 94.0 80.0 80.0 91.2 91.0 86.9 56.1 83.0
+PS (ML’21) ✓ ✗ 95.2 86.2 82.1 61.5 93.2 95.6 86.7 80.4 91.5 90.8 85.8 59.3 84.0
+U-SFAN+ (CV’22) ✓ ✗ 94.9 87.4 78.0 56.4 93.8 95.1 80.5 79.9 90.1 90.1 85.3 60.4 82.7
+SCLM (NN’22) ✓ ✗ 97.1 90.7 85.6 62.0 97.3 94.6 81.8 84.3 93.6 92.8 88.0 55.9 85.3
+AAA (TPAMI’22) ✓ ✗ 94.4 85.9 74.9 60.2 96.0 93.5 87.8 80.8 90.2 92.0 86.6 68.3 84.2
+VDM (TCSVT’22) ✓ ✗ 96.9 90.0 80.0 64.4 96.8 96.4 86.7 83.3 96.2 87.9 89.8 54.7 85.3
+DIPE (CVPR’22) ✓ ✗ 95.2 87.6 78.8 55.9 93.9 95.0 84.1 81.7 92.1 88.9 85.4 58.0 83.1
+GAP (WACV’23) ✓ ✗ 94.2 84.8 82.5 57.2 93.8 95.1 86.5 78.2 83.1 87.8 86.3 53.5 81.9
+SFADA (PR’24) ✓ ✗ 94.2 79.6 79.8 65.7 92.6 94.1 87.3 80.8 88.1 91.4 83.3 55.0 82.7
+ASOGE (TCSVT’24) ✓ ✗ 94.9 84.3 76.8 54.3 94.9 93.4 86.0 85.0 87.2 90.0 86.7 62.7 83.2
+CPD (PR’24) ✓ ✗ 96.7 88.5 79.6 69.0 95.9 96.3 87.3 83.3 94.4 92.9 87.0 58.7 85.8
+DIFO (CVPR’24) ✓ ✓ 97.5 89.0 90.8 83.5 97.8 97.3 93.2 83.5 95.2 96.8 93.7 65.9 90.3
+ViLAaD++ (arXiv’25) ✓ ✓ 98.1 90.3 88.2 79.2 97.5 97.5 92.9 84.8 92.0 96.8 94.0 75.3 90.5
+SHOT w/Co-learn++ (IJCV’25) ✓ ✓ 97.2 91.3 83.8 69.1 97.1 98.0 88.9 83.0 91.5 94.6 89.3 57.6 86.8
+NRC w/Co-learn++ (IJCV’25) ✓ ✓ 98.0 90.8 83.9 69.0 97.4 97.6 91.7 81.6 92.8 96.2 92.8 59.9 87.6
+SRRI (ours) ✓ ✓ 𝟗𝟗𝟗𝟗𝟗𝟗𝟗𝟗 𝟗𝟗𝟗𝟗𝟗𝟗𝟗𝟗 90.6± 76.9± 𝟗𝟗𝟗𝟗𝟗𝟗𝟗𝟗 97.5± 𝟗𝟗𝟗𝟗𝟗𝟗𝟗𝟗 𝟖𝟖𝟖𝟖𝟖𝟖𝟖𝟖 91.9± 95.8± 𝟗𝟗𝟗𝟗𝟗𝟗𝟗𝟗 75.0± 𝟗𝟗𝟗𝟗𝟗𝟗𝟗𝟗
+𝟎𝟎𝟎𝟎𝟎 𝟎𝟎𝟎𝟎𝟎 0.3 0.3 𝟎𝟎𝟎𝟎𝟎 0.2 𝟎𝟎𝟎𝟎𝟎 𝟎𝟎𝟎𝟎𝟎 0.2 0.1 𝟎𝟎𝟎𝟎𝟎 0.3 𝟎𝟎𝟎𝟎𝟎
+Bold text indicates the best results. SF means source-free, and ViL means whether using ViL model
+1 3
+Page 17 of 27 222
+Machine Learning (2026) 115:222
+Table 3 Classification accuracy (%) on DomainNet-126 (ResNet-50)
+Method SF ViL C→P C→R C→S P→C P→R P→S R→C R→P R→S S→C S→P S→R Avg.
+Source - - 44.6 59.8 47.5 53.3 75.3 46.2 55.3 62.7 46.4 55.1 50.7 59.5 54.7
+CLIP Zero-shot (ICML’21) - ✓ 73.6 85.9 70.8 75.2 86.1 71.1 74.9 73.8 71.8 74.7 73.9 86.5 76.5
+MCD (CVPR’18) ✗ ✗ 56.6 79.7 53.6 58.3 83.3 60.9 61.9 69.3 56.2 56.2 66.7 81.7 65.4
+DAPL (TNNLS’23) ✗ ✗ 72.4 87.6 65.9 72.7 87.6 65.6 73.2 72.4 66.2 73.8 72.9 87.8 74.8
+SHOT (ICML’20) ✓ ✗ 63.5 78.2 59.5 67.9 81.3 61.7 67.7 67.6 57.8 70.2 64.0 78.0 68.1
+NRC (NIPS’21) ✓ ✗ 62.6 77.1 58.3 62.9 81.3 60.7 64.7 69.4 58.7 69.4 65.8 78.7 67.5
+GKD (IROS’21) ✓ ✗ 61.4 77.4 60.3 69.6 81.4 63.2 68.3 68.4 59.5 71.5 65.2 77.6 68.7
+AdaCon (CVPR’22) ✓ ✗ 60.8 74.8 55.9 62.2 78.3 58.2 63.1 68.1 55.6 67.1 66.0 75.4 65.4
+CoWA (ICML’22) ✓ ✗ 64.6 80.6 60.6 66.2 79.8 60.8 69.0 67.2 60.0 69.0 65.8 79.9 68.6
+PLUE (CVPR’23) ✓ ✗ 59.8 74.0 56.0 61.6 78.5 57.9 61.6 65.9 53.8 67.5 64.3 76.0 64.7
+TPDS (IJCV’24) ✓ ✗ 62.9 77.1 59.8 65.6 79.0 61.5 66.4 67.0 58.2 68.6 64.3 75.3 67.1
+DIFO (CVPR’24) ✓ ✓ 76.6 87.2 74.9 80.0 87.4 75.6 80.8 77.3 75.5 80.5 76.7 87.3 80.0
+ViLAaD++ (arXiv’25) ✓ ✓ 80.3 91.4 77.7 83.8 91.5 78.2 84.1 80.8 77.6 84.2 80.2 91.3 83.4
+SRRI (ours) ✓ ✓ 81.6 91.9 79.7 84.5 91.9 79.7 84.7 81.8 79.6 85.2 81.7 91.8 84.5
+Bold text indicates the best results. SF means source-free, and ViL means whether using ViL model
+1 3
+222 Page 18 of 27
+Machine Learning (2026) 115:222
+ods on each dataset, surpassing ViLAaD++ on Office-31 by 0.5%, NRC w/Co-learn++ on 
+Office-Home by 0.4%, ViLAaD++ on VisDA by 0.5%, and ViLAaD++ on DomainNet-126 
+by a significant margin of 1.1%. Specifically, SRRI achieves the best performance on the 
+W2D task in Office-31, ranks first in five out of twelve tasks in Office-Home, secures the 
+top results in six tasks on VisDA, and achieves the best performance in twelve tasks on 
+the more challenging DomainNet-126 benchmark. Notably, compared to the PS method, 
+SRRI achieves superior performance on both Office-Home and VisDA, indicating that SRRI 
+generates a higher-quality pseudo-source domain. Besides, we evaluate SRRI using three 
+different random seeds on Office31, OfficeHome and VisDA, and report the mean and stan-
+dard deviation across the three runs. As shown, SRRI exhibits consistently low standard 
+deviations on all three datasets, demonstrating its robustness to different random seed ini-
+tializations. Collectively, these results strongly demonstrate the effectiveness of SRRI in the 
+SFDA setting.
+4.3 Analytical Experiments
+4.3.1 Ablation Study
+We present the ablation study of SRRI on the Office-31, Office-Home, and VisDA datas-
+ets in Table 5. First, we analyze the main objectives. Without any adaptation, the source 
+model achieves only 62.3% average accuracy. Using ℒ𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑 alone significantly improves 
+Table 4 Classification accuracy (%) on Office-31 (ResNet-50)
+Method SF ViL A→D A→W D→A D→W W→A W→D Avg.
+Source - - 79.1 76.6 59.9 95.5 61.4 98.8 78.6
+CLIP-ZS - ✓ 82.5 80.3 76.0 80.7 76.5 83.6 79.9
+CDAN ✗ ✗ 92.9 94.1 71.0 98.6 69.3 100. 87.7
+SFAN ✗ ✗ 90.7 90.1 73.0 98.6 70.2 99.8 87.1
+BNM ✗ ✗ 90.3 91.5 98.5 100. 70.9 71.6 87.1
+BCDM ✗ ✗ 95.4 93.8 73.1 98.6 73.0 100. 89.0
+SHOT ✓ ✗ 93.7 91.1 74.2 98.2 74.6 100. 88.6
+NRC ✓ ✗ 96.0 90.8 75.3 99.0 75.0 100. 89.4
+GKD ✓ ✗ 94.6 91.6 75.1 98.7 75.1 100. 89.2
+U-SFAN+ ✓ ✗ 94.2 92.8 74.6 98.0 74.4 99.0 88.8
+AdaCon ✓ ✗ 87.7 83.1 73.7 91.3 77.6 72.8 81.0
+SCLM ✓ ✗ 95.8 90.0 75.5 98.9 75.5 99.8 89.4
+PLUE ✓ ✗ 89.2 88.4 72.8 97.1 69.6 97.9 85.8
+GAP ✓ ✗ 90.6 90.9 74.5 98.7 73.9 99.8 88.1
+SFADA ✓ ✗ 94.8 92.0 76.5 97.6 75.7 99.8 89.4
+ASOGE ✓ ✗ 95.6 94.1 74.3 98.1 74.2 99.7 89.3
+DIFO ✓ ✓ 97.2 95.5 83.0 97.2 83.2 98.8 92.5
+ViLAaD++ ✓ ✓ 96.6 95.1 85.1 96.0 83.7 99.0 92.6
+SHOT w/Co-learn++ ✓ ✓ 96.2 94.7 78.3 98.2 77.6 99.8 90.8
+NRC w/Co-learn++ ✓ ✓ 96.4 95.8 78.7 98.9 78.5 99.8 91.4
+SRRI (ours) ✓ ✓ 97.1± 94.9± 83.9± 99.1± 83.3± 100. ± 93.1 ±
+0.2 0.3 0.1 0.2 0.2 0.0 0.2
+Bold text indicates the best results. SF means source-free, and ViL means whether using ViL model
+1 3
+Page 19 of 27 222
+Machine Learning (2026) 115:222
+the average accuracy to 83.9%, showing that CLIP-based de-biasing provides an effective 
+independent adaptation signal. In contrast, the combination of ℒ𝑎𝑎𝑎𝑎𝑎𝑎, ℒ𝑐𝑐𝑐𝑐𝑐𝑐, and ℒ𝑟𝑟𝑟𝑟𝑟𝑟 with-
+out distillation obtains 79.9%, which is lower than ℒ𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑 alone. This indicates that the 
+improvement of SRRI does not merely come from stacking standard adaptation losses, but 
+relies strongly on the rational knowledge introduced by CLIP. When all objectives are com-
+bined, SRRI achieves the best average accuracy of 89.6%. Second, we further ablate key 
+designs in SRRI. Removing the entropy-aware weight 𝛼𝛼(⋅), dual-model validation, class 
+balancing, and ℒ𝑀𝑀𝑀𝑀𝑀𝑀 reduces the average accuracy to 88.8%, 87.4%, 88.0%, and 88.5%, 
+respectively, verifying the effectiveness of each component in pseudo-source construction 
+and domain alignment. Removing ℒ𝑐𝑐-𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑 and ℒℎ-𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑 decreases the average accuracy to 
+86.7% and 87.2%, respectively, indicating that cold-start CLIP distillation plays a more fun-
+damental role, while hard sample distillation further refines the target model during adap-
+tation. In addition, removing pseudo-source reconstruction or the whole DPDO module 
+reduces the performance to 88.3% and 86.6%, removing the prompt tuning component from 
+DPDO, thereby relying on a fully frozen CLIP to guide hard sample distillation, reduces the 
+performance to 87.6%. When both DPDO and ℒ𝑐𝑐-𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑 are removed, the accuracy drops 
+sharply to 81.8%, demonstrating that CLIP distillation, rather than CLIP verification alone, 
+is crucial for SRRI. Overall, these results confirm that the performance gain comes from 
+the cooperation between CLIP-guided de-biasing, reliable pseudo-source construction, and 
+dynamic pseudo-source optimization.
+Table 5 Classification accuracy (%) of ablation study on Office-31, Office-Home and VisDA
+ℒ𝑎𝑎𝑎𝑎𝑎𝑎 ℒ𝑐𝑐𝑐𝑐𝑐𝑐 ℒ𝑟𝑟𝑟𝑟𝑟𝑟 ℒ𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑 Office-31 Office-Home VisDA Avg.
+✗ ✗ ✗ ✗ 78.6 59.2 49.2 62.3
+✗ ✗ ✗ ✓ 85.7 79.2 86.9 83.9
+✓ ✗ ✗ ✗ 81.8 66.2 79.8 75.9
+✗ ✓ ✗ ✗ 82.4 68.5 80.1 77.0
+✗ ✓ ✓ ✗ 82.8 69.6 81.0 77.8
+✓ ✓ ✗ ✗ 83.0 70.8 82.7 78.8
+✓ ✗ ✓ ✗ 81.5 67.6 80.7 76.6
+✗ ✓ ✗ ✓ 89.1 80.5 87.5 85.7
+✓ ✓ ✓ ✗ 84.3 71.3 84.2 79.9
+✗ ✓ ✓ ✓ 91.2 82.8 88.5 87.5
+✓ ✓ ✓ ✓ 93.1 84.6 91.0 89.6
+SRRI w/o𝛼𝛼(⋅) 92.5 83.9 90.1 88.8
+SRRI w/o dual-model validation 91.6 82.3 88.2 87.4
+SRRI w/o class balancing 92.0 82.9 89.0 88.0
+ℒ𝑎𝑎𝑎𝑎𝑎𝑎w/oℒ𝑀𝑀𝑀𝑀𝑀𝑀 92.4 83.5 89.7 88.5
+SRRI w/oℒ𝑐𝑐-𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑 91.0 81.6 87.5 86.7
+SRRI w/oℒℎ-𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑 91.2 82.4 87.9 87.2
+SRRI w/o PS reconstruction 92.1 83.6 89.3 88.3
+SRRI w/o DPDO 90.6 82.4 86.7 86.6
+DPDO w/o prompt fine-tuning 91.5 83.0 88.2 87.6
+SRRI w/o DPDO &ℒ𝑐𝑐-𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑 87.5 72.0 85.8 81.8
+ℒ𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑 includes both ℒ𝑐𝑐-𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑 and ℒℎ-𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑. DPDO denotes the proposed Dynamic Pseudo-source 
+Domain Optimization
+1 3
+222 Page 20 of 27
+Machine Learning (2026) 115:222
+4.3.2 Grad-CAM Visualization
+We visualize the GradCAM of PS and SRRI trained on VisDA to show the ability of SRRI 
+to eliminate spurious correlations in Fig. 3. PS is currently a representative pseudo-source 
+domain based SFDA method. For PS, we utilize the pre-trained source model to obtain 
+GradCAM for source domain samples and pseudo-source domain samples, respectively. 
+For SRRI, we use the pretrained source model to obtain the Grad-CAM visualizations of 
+the source-domain samples. After cold-start knowledge distillation, we then use the target 
+model to generate the Grad-CAM visualizations of the pseudo-source domain samples from 
+the first construction. The results are shown in the first two rows of the figure. We note that, 
+on source domain samples, both are able to exploit their significant appearance differences 
+(overall fuselage of the plane versus long straight knife) to perfectly predict both categories. 
+However, PS seems to be influenced by this spurious correlation of the long and straight 
+appearance of knives in the source domain sample, causing it to focus excessively on cer -
+tain long and straight parts of the planes in the target domain sample instead of the overall 
+fuselage, and thus incorrectly predicting them as knives. SRRI corrects this error by focus-
+ing instead on the overall fuselage, resulting in correct predictions. Furthermore, the third 
+row of the figure demonstrates the effectiveness of the proposed dynamic pseudo-source 
+domain optimization module on the challenging car and truck categories. Specifically, we 
+treat the pseudo-source domain constructed immediately after cold-start distillation as the 
+initial pseudo-source domain, and the one obtained after the final reconstruction as the final 
+pseudo-source domain. Although spurious correlations lead to incorrect predictions on sev-
+eral hard samples in the initial pseudo-source domain, these errors are effectively corrected 
+in the final pseudo-source domain through task-specific prompt tuning and subsequent 
+knowledge distillation.
+4.3.3 Hyperparameter Analysis
+Figure 4 illustrates the accuracy under different values of the consistency threshold 𝛾𝛾 in Eq. 
+(11) and the confidence threshold 𝜔𝜔 of predictions from the target model in Eq. (14). The 
+results show that a low consistency threshold degrades performance, which can be attrib-
+PS
+SRRI
+DPDO
+plane
+plane
+Fine-tuning
+Distillation
+knife knife knife
+knifeplane knife
+train car person truck car truck
+S PS
+S PS
+Init PS Final PS
+Fig. 3 GradCAM on VisDA using PS and the proposed SRRI. The plane and knife in the real label are 
+represented by solid and dashed boxes, respectively. Predictions of the model are displayed at the top 
+of each row. Red color indicates incorrect predictions. Regarding the first two rows, light blue and light 
+red color indicate training samples and pseudo-source domain samples. Regarding the third row, DPDO 
+means Dynamic Pseudo-source Domain Optimization, light blue and light red represent the first and last 
+pseudo-source domain samples obtained, respectively
+ 
+1 3
+222 Page 22 of 27
+Machine Learning (2026) 115:222
+6, Full SRRI consistently achieves the highest pseudo-source pseudo-label accuracy on 
+Office-31, Office-Home, and VisDA. On Office-31, the pseudo-label accuracy of Full SRRI 
+increases from 92.4% to 96.2%, while the variant without ℒℎ-𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑 reaches only 94.6%. 
+Similar trends can be observed on Office-Home and VisDA. These results indicate that 
+the dynamic pseudo-source optimization process continuously improves the reliability of 
+pseudo-source samples. When all distillation terms are removed, the pseudo-label accuracy 
+remains much lower on all datasets, removing ℒ𝑐𝑐-𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑 also causes a clear degradation, espe-
+cially in the early stage. In contrast, removing ℒℎ-𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑 mainly weakens the later improve-
+ment. We also analyze the class-wise distribution of pseudo-source samples on VisDA to 
+evaluate the effect of the class balancing strategy. As shown in Fig. 7, without class bal-
+ancing, several hard classes such as bus, car, train, and truck contain much fewer pseudo-
+source samples. After applying class balancing, the number of samples in these classes is 
+substantially increased, e.g., truck increases from 980 to 1680, car from 1090 to 1650, train 
+from 1160 to 1730, and bus from 1230 to 1700. Quantitatively, the max/min class-count 
+ratio decreases from 1.99 to 1.25, and the standard deviation of class-wise sample counts 
+decreases from 326.0 to 126.4. These results show that the proposed class balancing strategy 
+effectively improves the coverage and balance of the pseudo-source domain.
+Fig. 7 Class distribution of the generated pseudo-source domain on VisDA. Red denotes hard class 
+samples
+ 
+Fig. 6 Pseudo-label accuracy of the pseudo-source (ps) domain during adaptation on Office-31, Office-
+Home and VisDA
+ 
+1 3
+Page 23 of 27 222
+Machine Learning (2026) 115:222
+5 Conclusion
+In this paper, we analyzed a critical issue in existing SFDA methods that constructed pseudo-
+source domains: the confirmation bias of the source model, induced by spurious inter-domain 
+correlations, which compromised the reliability of the generated pseudo-source domain. We 
+proposed a novel Staying Rational and Resisting Illusions (SRRI) method to rectify the 
+misclassification tendencies of the source model on pseudo-source samples by distilling 
+the powerful prior knowledge from the CLIP model. Next, we designed a pseudo-source 
+domain generation strategy that integrated CLIP-guided dual-model validation and class 
+balancing strategy. This ensured the creation of a superior pseudo-source domain even in 
+scenarios with sub-optimal distillation performance. Furthermore, we proposed a dynamic 
+pseudo-source domain optimization mechanism that continuously fine-tuned task-specific 
+prompts of the CLIP during adaptation to provide an updated teacher signal for guiding 
+the target model on hard samples, thereby periodically reconstructing the pseudo-source 
+domain. Extensive experiments on four datasets demonstrate that our method not only sig -
+nificantly outperforms existing state-of-the-art approaches but also generates pseudo-source 
+domains of substantially higher-quality. We believe our work offers an effective and promis-
+ing solution to the challenges posed by the unavailability of source data in SFDA. For future 
+work, we plan to extend this framework to multi-source free domain adaptation scenarios 
+and explore more lightweight distillation strategies to improve adaptation efficiency.
+Supplementary Information The online version contains supplementary material available at h t t p s : / / d o i . o r g 
+/ 1 0 . 1 0 0 7 / s 1 0 9 9 4 - 0 2 6 - 0 7 1 6 3 - 2 . 
+Author Contributions Qing Tian: Supervision; Writing - review & editing. Yongjiang Liu: Conceptualiza-
+tion; Methodology; Writing - original draft. Keyang Cheng, Weihua Ou, Jianping Gou: Writing - review & 
+editing.
+Data Availability All the datasets are publicly available.
+Declarations
+Conflict of interest The authors declare that they have no known competing financial interests or personal 
+relationships that could have appeared to influence the work reported in this paper. The authors declare the 
+following financial interests/personal relationships which may be considered as potential competing inter-
+ests: Tianqing reports financial support was provided by the National Natural Science Foundation of China 
+under Grant 62676199 and 62176128. Tianqing reports financial support was provided by the Basic Research 
+Program of Jiangsu under Grant BK20231143. Tianqing reports financial support was provided by the Open 
+Project of Key Laboratory of Tibetan Information Processing of the Ministry of Education under Grant 
+QHSF-CS-2609. Tianqing reports financial support was provided by the Fundamental Research Funds for the 
+Central Universities No. NJ2023032. Tianqing reports financial support was provided by the 333 High-Level 
+Talent Project of Jiangsu Province. If there are other authors, they declare that they have no known compet-
+ing financial interests or personal relationships that could have appeared to influence the work reported in 
+this paper.
+References
+Radford, A., Kim, J. W., Hallacy, C., Ramesh, A., Goh, G., Agarwal, S., & Sutskever, I. (2021). Learning 
+transferable visual models from natural language supervision. Proceedings of the 38th international 
+conference on machine learning (Vol. 139, pp. 8748–8763). PMLR.
+1 3
+222 Page 24 of 27
+Machine Learning (2026) 115:222
+Litrico, M., Del Bue, A., & Morerio, P. (2023). Guiding Pseudo-Labels with Uncertainty Estimation for 
+Source-Free Unsupervised Domain Adaptation. Proceedings of the ieee/cvf conference on computer 
+vision and pattern recognition (cvpr) (pp. 19904–19914).
+Venkateswara, H., Eusebio, J., Chakraborty, S., & Panchanathan, S. (2017). Deep hashing network for unsu-
+pervised domain adaptation. Proceedings of the IEEE conference on computer vision and pattern rec -
+ognition (CVPR) (pp. 5018–5027). IEEE.
+Cui, C., Meng, F., Zhang, C., Liu, Z., Zhu, L., Gong, S., & Lin, X. (2023). Adversarial source generation 
+for source-free domain adaptation. IEEE Transactions on Circuits and Systems for Video Technology, 
+34(6), 4887–4898.
+Chen, D., Wang, D., Darrell, T., & Ebrahimi, S. (2022). Contrastive Test-Time Adaptation. Proceedings of the 
+ieee/cvf conference on computer vision and pattern recognition (cvpr) (pp. 11110–11120).
+Du, Y., Yang, H., Chen, M., Luo, H., Jiang, J., Xin, Y., & Wang, C. (2024). Generation, augmentation, and 
+alignment: A pseudo-source domain based method for source-free domain adaptation. Machine Learn-
+ing, 113(6), 3611–3631. https://doi.org/10.1007/s10994-024-06540-3
+Rombach, R., Blattmann, A., Lorenz, D., Esser, P., & Ommer, B. (2022). High-resolution image synthesis 
+with latent diffusion models. Proceedings of the IEEE/CVF conference on computer vision and pattern 
+recognition (CVPR) (pg (pp. 10984–10995)
+Saenko, K., Kulis, B., Fritz, M., & Darrell, T. (2010). Adapting visual category models to new domains. Pro-
+ceedings of the 11th european conference on computer vision (ECCV) (pp. 213–226). Springer
+Ge, C., Huang, R., Xie, M., Lai, Z., Song, S., Li, S., & Huang, G. (2023). Domain Adaptation via Prompt 
+Learning. IEEE Transactions on Neural Networks and Learning Systems. h t t p s : / / d o i . o r g / 1 0 . 1 1 0 9 / T N N 
+L S . 2 0 2 3 . 3 3 2 3 8 1 2 
+Wang, F., Han, Z., Gong, Y., & Yin, Y. (2022). Exploring domain-invariant parameters for source free domain 
+adaptation. Proceedings of the IEEE/CVF conference on computer vision and pattern recognition 
+(CVPR) (pp. 16263–16272).
+Gou, J., Yu, B., Maybank, S. J., & Tao, D. (2021). Knowledge distillation: A survey. International Journal of 
+Computer Vision, 129(6), 1789–1819. https://doi.org/10.1007/s11263-021-01453-z
+Gulrajani, I., & Lopez-Paz, D. (2020). In search of lost domain generalization. arXiv.
+Qu, S., Chen, G., Zhang, J., Li, Z., He, W., & Tao, D. (2022). BMD: A general class-balanced multicentric 
+dynamic prototype strategy for source-free domain adaptation. arXiv.
+He, J., Wu, L., Tao, C., & Lv, F. (2024). Source-free domain adaptation with unrestricted source hypothesis. 
+Pattern Recognition. https://doi.org/10.1016/j.patcog.2024.110246
+Yang, S., Wang, Y., van de Weijer, J., Herranz, L., & Jui, S. (2021). Exploiting the intrinsic neighborhood 
+structure for source-free domain adaptation. Advances in neural information processing systems 34 
+(NeurIPS 2021) (pp. 14194–14206).
+Liang, J., Hu, D., & Feng, J. (2020). Do we really need to access the source data? source hypothesis transfer 
+for unsupervised domain adaptation. International conference on machine learning (pp. 6028–6039).
+Cui, S., Wang, S., Zhuo, J., Li, L., Huang, Q., & Tian, Q. (2020). Towards discriminability and diversity: 
+Batch nuclear-norm maximization under label insufficient situations. Proceedings of the ieee/cvf confer-
+ence on computer vision and pattern recognition (pp. 3941–3950).
+Ishii, M., & Sugiyama, M. (2021). Source-free domain adaptation via distributional alignment by matching 
+batch normalization statistics. arXiv.
+Lao, Q., Jiang, X., & Havaei, M. (2021). Hypothesis disparity regularized mutual information maximiza-
+tion. Proceedings of the thirty-fifth AAAI conference on artificial intelligence (Vol. 35, pp. 8433–8441). 
+AAAI Press.
+Yang, S., Wang, Y., Wang, K., Jui, S., & van de Weijer, J. (2022a). Attracting and dispersing: A simple 
+approach for source-free domain adaptation. Advances in neural information processing systems 35 
+(NeurIPS 2022) (pp. 28247–28259)
+Kim, Y., Cho, D., Han, K., Panda, P., & Hong, S. (2021). Domain adaptation without source data. IEEE 
+Transactions on Artificial Intelligence, 2(6), 508–518.
+Tang, S., Shi, Y., Ma, Z., Li, J., Lyu, J., Li, Q., & Zhang, J. (2021). Model adaptation through hypothesis 
+transfer with gradual knowledge distillation. Proceedings of the ieee/rsj international conference on 
+intelligent robots and systems (iros) (pp. 5679–5685).
+Li, J., Du, Z., Zhu, L., Ding, Z., Lu, K., & Shen, H. T. (2022a). Divergence-Agnostic Unsupervised Domain 
+Adaptation by Adversarial Attacks. IEEE Transactions on Pattern Analysis and Machine Intelligence, 
+44(11), 8196–8211. https://doi.org/10.1109/TPAMI.2021.3101569
+Li, R., Pu, Y., Li, Z., Wu, C., Xie, H., & Lian, D. (2025). Invariant representation learning via decoupling 
+style and spurious features. Machine Learning, 114(2), 37.
+Li, S., Lv, F., Xie, B., Liu, C. H., Liang, J., & Qin, C. (2021). Bi-classifier determinacy maximization for 
+unsupervised domain adaptation. Proceedings of the aaai conference on artificial intelligence (Vol. 35, 
+pp. 8455–8464).
+1 3
+Page 25 of 27 222
+Machine Learning (2026) 115:222
+Liang, J., Hu, D., Wang, Y., He, R., & Feng, J. (2022). Source data-absent unsupervised domain adaptation 
+through hypothesis transfer and labeling transfer. IEEE Transactions on Pattern Analysis and Machine 
+Intelligence, 44(11), 8602–8617. https://doi.org/10.1109/TPAMI.2021.3101834
+Yang, T., Zhou, S., Wang, Y., Lu, Y., & Zheng, N. (2022b). Test-time batch normalization. arXiv.
+Ma, Q., Zeng, J., Zhang, J., Zu, C., Wu, X., Zhou, J., & Wang, Y. (2024). Source-free domain adaptation via 
+dynamic pseudo labeling and self-supervision. Pattern Recognition. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . p a t c o g . 2 
+0 2 4 . 1 1 0 7 9 3 
+Arazo, E., Ortego, D., Albert, P., O’Connor, N. E., & McGuinness, K. (2020). Pseudo-labeling and confirma-
+tion bias in deep semi-supervised learning. International joint conference on neural networks (IJCNN) 
+(pp. 1–8). IEEE.
+Zhang, B., Wang, Y., Hou, W., Wu, H., Wang, J., Okumura, M., & Shinozaki, T. (2021a). Flexmatch: Boost-
+ing semi-supervised learning with curriculum pseudo labeling. Advances in neural information process-
+ing systems 34 (NeurIPS 2021) (Vol. 34, pp. 18408–18419).
+Pan, S. J., & Yang, Q. (2010). A survey on transfer learning. IEEE Transactions on Knowledge and Data 
+Engineering, 22(10), 1345–1359.
+Selvaraju, R. R., Cogswell, M., Das, A., Vedantam, R., Parikh, D., & Batra, D. (2017). Grad-CAM: Visual 
+explanations from deep networks via gradient-based localization. Proceedings of the ieee international 
+conference on computer vision (iccv) (pp. 618–626).
+Jia, C., Yang, Y., Xia, Y., Chen, Y.-T., Parekh, Z., Pham, H., & Duerig, T. (2021). Scaling up visual and vision-
+language representation learning with noisy text supervision. In M. Meila, & T. Zhang (Eds.), Proceed-
+ings of the 38th international conference on machine learning (Vol. 139, pp. 4904–4916). PMLR.
+Ramesh, A., Pavlov, M., Goh, G., Gray, S., Voss, C., Radford, A., & Sutskever, I. (2021). Zero-shot text-to-
+image generation. Proceedings of the 38th international conference on machine learning (Vol. 139, pp. 
+8821–8831). PMLR.
+Roy, S., Trapp, M., Pilzer, A., Kannala, J., Sebe, N., Ricci, E., & Solin, A. (2022). Uncertainty-Guided 
+Source-Free Domain Adaptation. Proceedings of the european conference on computer vision (eccv) 
+(pg (pp. 537–555). Springer.
+Singh, A., Hu, R., Goswami, V., Couairon, G., Galuba, W., Rohrbach, M., & Kiela, D. (2022). FLAVA: A 
+foundational language and vision alignment model. Proceedings of the IEEE/CVF conference on com-
+puter vision and pattern recognition (CVPR) (pp. 15638–15650).
+Peng, X., Bai, Q., Xia, X., Huang, Z., Saenko, K., & Wang, B. (2019). Moment matching for multi-source 
+domain adaptation. Proceedings of the IEEE/CVF international conference on computer vision (ICCV) 
+(pp. 1406–1415). IEEE.
+Tarashima, S., Shu, X., & Tagawa, N. (2025). Vilaad: Enhancing" attracting and dispersing” source-free 
+domain adaptation with vision-and-language model. arXiv preprint arXiv:2503.23529 
+Liang, J., He, R., Sun, Z., & Tan, T. (2019). Distant supervised centroid shift: A simple and efficient approach 
+to visual domain adaptation. Proceedings of the IEEE/CVF conference on computer vision and pattern 
+recognition (CVPR) (pp. 2988–2997).
+Yue, Z., Sun, Q., & Zhang, H. (2023). Make the U in UDA matter: Invariant consistency learning for unsu-
+pervised domain adaptation. Advances in neural information processing systems 36 (NeurIPS 2023) 
+(Vol. 36, pp. 69372–69389).
+Tang, S., Zou, Y., Song, Z., Lyu, J., Chen, L., Ye, M., & Zhang, J. (2022). Semantic consistency learning on 
+manifold for source data-free unsupervised domain adaptation. Neural Networks, 152, 114–126. h t t p s : / 
+/ d o i . o r g / 1 0 . 1 0 1 6 / j . n e u n e t . 2 0 2 2 . 0 4 . 0 2 0 
+Tang, S., Chang, A., Zhang, F., Zhu, X., Ye, M., & Zhang, C. (2024a). Source Free Domain Adaptation via 
+Target Prediction Distribution Searching. International Journal of Computer Vision . h t t p s : / / d o i . o r g / 1 0 
+. 1 0 0 7 / s 1 1 2 6 3 - 0 2 4 - 0 2 0 3 5 - 7 
+Tian, J., Zhang, J., Li, W., & Xu, D. (2022). VDM-DA: Virtual domain modeling for source data-free domain 
+adaptation. IEEE Transactions on Circuits and Systems for Video Technology, 32(6), 3749–3760. h t t p s : 
+/ / d o i . o r g / 1 0 . 1 1 0 9 / T C S V T . 2 0 2 1 . 3 1 3 8 8 6 5 
+Tian, Q., Sun, H., Peng, S., Zheng, Y., Wan, J., & Lei, Z. (2023). Dcl: Dipolar confidence learning for source-
+free unsupervised domain adaptation. IEEE Transactions on Circuits and Systems for Video Technology, 
+34(6), 4342–4353.
+Saito, K., Watanabe, K., Ushiku, Y., & Harada, T. (2018). Maximum Classifier Discrepancy for Unsupervised 
+Domain Adaptation. Proceedings of the ieee/cvf conference on computer vision and pattern recognition 
+(pp. 3723–3732).
+Chhabra, S., Venkateswara, H., & Li, B. (2023). Generative alignment of posterior probabilities for source-
+free domain adaptation. Proceedings of the ieee/cvf winter conference on applications of computer 
+vision (wacv) (pp. 4125–4134).
+1 3
+222 Page 26 of 27
+Machine Learning (2026) 115:222
+Kumar, A., Sattigeri, P., Wadhawan, K., Karlinsky, L., Feris, R., Freeman, W. T., & Wornell, G. W. (2018). 
+Co-regularized alignment for unsupervised domain adaptation. Advances in neural information pro -
+cessing systems 31 (NeurIPS 2018) (Vol. 31, pp. 7546–7556).
+Long, M., Cao, Z., Wang, J., & Jordan, M. I. (2018). Conditional adversarial domain adaptation. Advances in 
+neural information processing systems 31 (NeurIPS 2018) (Vol. 31, pp. 1640–1650).
+Peng, X., Usman, B., Kaushik, N., Hoffman, J., Wang, D., & Saenko, K. (2017). VisDA: The visual domain 
+adaptation challenge. arXiv.
+Li, Y., Cao, Y., Li, J., Wang, Q., & Wang, S. (2024). Data-efficient CLIP-powered dual-branch networks for 
+source-free unsupervised domain adaptation. arXiv.
+Huang, J., Guan, D., Xiao, A., & Lu, S. (2021). Model adaptation: Historical contrastive learning for unsu-
+pervised domain adaptation without source data. Advances in neural information processing systems 34 
+(NeurIPS 2021) (pp. 27693–27705).
+Xu, B., Zhang, L., Mao, Z., Wang, Q., Xie, H., & Zhang, Y. (2020). Curriculum learning for natural language 
+understanding. Proceedings of the 58th annual meeting of the association for computational linguistics 
+(pp. 6095–6104). Association for Computational Linguistics.
+Zhang, Y., Chen, H., Chen, X., Deng, Y., Xu, C., & Wang, Y. (2021b). Data-free knowledge distillation for 
+image super-resolution. Proceedings of the IEEE/CVF conference on computer vision and pattern rec -
+ognition (CVPR) (pp. 7852–7861).
+Xu, X., Qi, L., Zhou, J., & Geng, X. (2025). Batstyler: Advancing multi-category style generation for source-
+free domain generalization. IEEE Transactions on Circuits and Systems for Video Technology. h t t p s : / / d 
+o i . o r g / 1 0 . 1 1 0 9 / t c s v t . 2 0 2 5 . 3 5 2 5 7 1 5 
+Xu, R., Li, G., Yang, J., & Lin, L. (2019). Larger norm more transferable: An adaptive feature norm approach 
+for unsupervised domain adaptation. Proceedings of the IEEE/CVF international conference on com -
+puter vision (ICCV) (pp. 1426–1435). IEEE.
+Tang, S., Su, W., Ye, M., & Zhu, X. (2024b). Source-free domain adaptation with frozen multimodal foun-
+dation model. Proceedings of the ieee/cvf conference on computer vision and pattern recognition (pp. 
+23711–23720).
+Lee, J., Jung, D., Yim, J., & Yoon, S. (2022). Confidence Score for Source-Free Unsupervised Domain 
+Adaptation. Proceedings of the international conference on machine learning (icml) (Vol. 162, pp. 
+12140–12157). PMLR.
+Yuan, J., Zheng, H., Yu, H., & Luo, X. (2025). Entangle-then-disentangle: A novel approach for enhancing 
+large vision-language model. Machine Learning, 114(8), 171.
+Zhang, W., Shen, L., & Foo, C.-S. (2025). Source-free domain adaptation guided by vision and vision-
+language pre-training. International Journal of Computer Vision, 133(2), 844–866.
+Zhou, K., Yang, J., Loy, C. C., & Liu, Z. (2022). Learning to prompt for vision-language models. Interna-
+tional Journal of Computer Vision, 130(9), 2337–2348.
+Zhou, L., Li, N., Ye, M., Zhu, X., & Tang, S. (2024). Source-free domain adaptation with class prototype 
+discovery. Pattern Recognition. https://doi.org/10.1016/j.patcog.2023.109974
+Li, X., Du, Z., Li, J., Zhu, L., & Lu, K. (2022b). Source-free active domain adaptation via energy-based 
+locality preserving transfer. Proceedings of the 30th ACM international conference on multimedia (pp. 
+5802–5810). Association for Computing Machinery (ACM).
+Publisher's Note Springer Nature remains neutral with regard to jurisdictional claims in published maps and 
+institutional affiliations.
+Springer Nature or its licensor (e.g. a society or other partner) holds exclusive rights to this article under a 
+publishing agreement with the author(s) or other rightsholder(s); author self-archiving of the accepted manu-
+script version of this article is solely governed by the terms of such publishing agreement and applicable law.
+Authors and Affiliations
+Qing Tian1,2,3 · Yongjiang Liu1 · Keyang Cheng4 · Weihua Ou5 · Jianping Gou6
+ Qing Tian
+tianqing@nuist.edu.cn
+Yongjiang Liu
+liuyongjiang@nuist.edu.cn
+1 3
+Page 27 of 27 222
+Machine Learning (2026) 115:222
+Keyang Cheng
+kycheng@ujs.edu.cn
+Weihua Ou
+ouweihua@gznu.edu.cn
+Jianping Gou
+cherish.gjp@gmail.com
+1 School of Computer Science, Nanjing University of Information Science and Technology, 
+Nanjing 210044, China
+2 Wuxi Institute of Technology, Nanjing University of Information Science and Technology, 
+Wuxi 214000, China
+3 Key Laboratory of Tibetan Information Processing of the Ministry of Education, Qinghai 
+Normal University, 810008 Xining, China
+4 School of Computer Science and Communication Engineering, Jiangsu University, 
+Zhenjiang 212013, China
+5 School of Big Data and Computer Science, Guizhou Normal University, Guiyang 
+550025, China
+6 College of Computer and Information Science and the College of Software, Southwest 
+University, Chongqing 400715, China

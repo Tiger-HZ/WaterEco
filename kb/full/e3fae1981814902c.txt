@@ -1,0 +1,1056 @@
+RESEARCH ARTICLE
+Journal of the Indian Society of Remote Sensing (2026) 54:5211–5226
+https://doi.org/10.1007/s12524-026-02575-y
+ S. Zuvairiya
+zuvairiyageo@gmail.com
+ Gopal Veeramalai
+veegopaal@gmail.com
+S. R. Singarasubramanian
+singara67@gmail.com
+A. Bobby Jones
+bobby24kaba5@gmail.com
+1 Department of Earth Sciences, Faculty of Science, 
+Annamalai University, Annamalai Nagar, Chidambaram, 
+Cuddalore, Tamil Nadu 608002, India
+2 Centre for Earth and Atmospheric Sciences, Sathyabama 
+Institute of Science and Technology, Jeppiaar Nagar, Rajiv 
+Gandhi Salai, Chennai, Tamil Nadu 600 119, India
+Abstract
+Sustainable management of tropical soils is critical for maintaining ecosystem services, agricultural productivity, and 
+environmental sustainability. This study develops a Remote Sensing (RS) and Geographic Information System (GIS)-
+based Digital Soil Mapping (DSM) framework to quantitatively assess soil health and environmental vulnerability in the 
+Bhavani River Basin, South India. Multi-source geospatial datasets, including satellite-derived spectral indices, terrain 
+derivatives, land use/land cover (LULC) information, and SoilGrids environmental variables, were integrated to char -
+acterize key soil properties such as soil organic carbon (SOC), soil organic carbon density (OCD), soil organic carbon 
+stock (OCS), nitrogen, pH, soil texture, cation exchange capacity (CEC), electrical conductivity (EC), bulk density (BD), 
+and available water-holding capacity (AWHC). Advanced machine-learning algorithms and spatial analytical techniques 
+were employed to generate high-resolution digital soil maps and evaluate the spatial variability of soil properties across 
+the basin. The results reveal pronounced spatial heterogeneity in soil characteristics and environmental conditions. The 
+southwestern and western regions exhibited high SOC (451), OCD (180), OCS (93), and nitrogen (4197) values, indicating 
+strong carbon–nutrient coupling and enhanced soil fertility. These regions store approximately 2–4 times more carbon and 
+nitrogen than the eastern basin, highlighting their significance as major carbon sequestration and nutrient reservoirs. In 
+contrast, intensively cultivated and rapidly urbanizing lowland areas displayed lower carbon stocks, reduced soil quality, 
+and higher degradation risk. Elevated CEC values (up to 373 cmol( +)/kg) in parts of the eastern basin suggest substantial 
+nutrient-retention capacity despite relatively low organic carbon content. Environmental Vulnerability Index (EVI) and 
+hotspot analyses identified critical zones vulnerable to degradation and requiring immediate conservation measures. The 
+study provides a robust scientific framework for precision land management, watershed conservation, and climate-resilient 
+soil management strategies, supporting long-term ecosystem sustainability and resilience in tropical river basins.
+Keywords Soil classification · Digital soil mapping · Spatial modeling · Environmental vulnerability · Soil organic 
+carbon · Geospatial analytics
+Received: 21 November 2025 / Accepted: 11 August 2026 / Published online: 16 September 2026
+© Indian Society of Remote Sensing 2026
+Spatial Modeling of Soil Functions and Environmental Vulnerability 
+Using Multi-source Geospatial Data in the Bhavani River Basin, South 
+India
+S. Zuvairiya1 · S. R. Singarasubramanian1 · A. Bobby Jones1 · Gopal Veeramalai2
+1 3
+5212
+Journal of the Indian Society of Remote Sensing (2026) 54:5211–5226
+Introduction
+Terrestrial ecosystems depend on healthy soils for local to 
+global ecosystem functions (Ponyane et al., 2025; Wank -
+müller et al., 2024). To address global environmental issues 
+like erosion, land degradation, biodiversity loss, and climate 
+change, spatially variable soil characteristics and functional 
+processes are essential (Kaur et al., 2020; Wang et al., 2023; 
+Adeniyi et al., 2024; Li et al., 2026). Developing region-
+specific soil function plans requires high-resolution, harmo-
+nized soil data (Son et al., 2026). Remote sensing, Digital 
+Soil Mapping (DSM), and geospatial data integration have 
+improved agricultural planning, environmental monitoring, 
+conservation, and predictive modelling by producing spa -
+tially explicit soil information from global soil databases 
+and satellite observations (Stoorvogel et al., 2017; Han et 
+al., 2019; Shi et al., 2026).
+Protecting soil biodiversity, ensuring long-term food 
+security, and preventing soil erosion through land reha -
+bilitation and sustainable land-use planning are urgent 
+priorities (Soo et al., 2026). Since geologic time, soil has 
+supported terrestrial biodiversity and regulates biodiversity, 
+carbon storage, and water and nutrient cycles for food and 
+water security (Centeno et al., 2020). The need for spatially 
+detailed soil databases for sustainable land management is 
+growing (Arun et al., 2020).
+Soils produce biomass, recycle carbon, and store it, 
+affecting food security, climate regulation, and ecosystem 
+resilience (Poggio et al., 2021; Asongwe et al., 2025). Seven 
+SDGs are linked to soil resources in the UN 2030 Sustain -
+able Development Agenda. However, agricultural intensi -
+fication and fast land-use changes have upset carbon and 
+nutrient flows. Accelerated erosion and soil organic carbon 
+oxidation—the Earth's greatest near-surface carbon pool—
+have exacerbated greenhouse gas emissions and ecologi -
+cal deterioration. Human security is linked to soil security, 
+which supports food production, carbon sequestration, 
+water filtration, and nutrient cycling. Agriculture is crucial 
+to livelihoods in emerging nations like India (Das et al., 
+2022; Morton et al., 2023). Accelerated agricultural growth, 
+urbanization, and climate unpredictability have diminished 
+soil fertility and biodiversity in southern India's Bhavani 
+River Basin, threatening ecological productivity and social 
+stability.
+Several Tamil Nadu studies have addressed land-use 
+change, climate impacts, and soil erosion (Samuel et al., 
+2025; Vijayaraghavalu et al., 2025; Bharath et al., 2026; 
+Kaliraj et al., 2026), however soil biodiversity monitoring 
+and spatial soil security evaluations are lacking. Combin -
+ing biological indicators with geographic models enhances 
+degradation hotspot identification and conservation plan-
+ning (Perović et al., 2023). Recent study shows that remote 
+sensing, DSM, and molecular technologies can reveal soil 
+dynamics and ecosystem resilience. Biophysical, biological, 
+and spatial datasets can help understand soil dynamics and 
+human–environment risks, according to studies from China, 
+Ethiopia, Karnataka, and Rajasthan.
+Nutrient loss, erosion, and industrial pressures degrade 
+soil in the Bhavani River Basin, which grows sugarcane, 
+paddy, banana, and jasmine. Local food and livelihood 
+security depend on its dominant Fluvisols, Entisols, and 
+Alfisols. This study uses soil biodiversity indicators, soil 
+property databases, and DSM to create a geospatial soil 
+security framework for sustainable soil management. Global 
+datasets like SoilGrids250m (Hengl et al., 2017), region-
+specific environmental variables (Reuter & Hengl, 2016; 
+Nussbaum et al., 2018; Arrouays et al., 2020; Bao et al., 
+2024), and 250-m grid modelling are used to identify ero -
+sion and biodiversity loss hotspots using advanced machine 
+learning and geostatistical methods (Rossiter et al., 2022). 
+This study aims to develop an integrated Remote Sensing 
+and GIS-based Digital Soil Mapping (DSM) framework for 
+the quantitative assessment of soil health and environmen -
+tal vulnerability in the Bhavani River Basin, South India. 
+By utilizing multi-source geospatial datasets, advanced 
+machine learning algorithms, and spatial modeling tech -
+niques, the research seeks to characterize and predict the 
+spatial distribution of critical soil properties, including soil 
+organic carbon (SOC), pH, texture, cation exchange capac -
+ity (CEC), electrical conductivity (EC), bulk density (BD), 
+and available water-holding capacity (AWHC). The study 
+further aims to identify patterns of soil degradation, envi -
+ronmental vulnerability hotspots, and areas of ecological 
+resilience across the basin. Through the integration of soil 
+quality indicators and environmental variables, the research 
+intends to provide a robust scientific framework for soil 
+health assessment, environmental monitoring, sustainable 
+land management, and climate-resilient watershed conser -
+vation planning.
+Martials and Methodology
+Study Area
+A major hydrological sub-basin of the Cauvery River sys -
+tem is the Bhavani River Basin in Tamil Nadu and Kerala 
+(Fig. 1). The river travels southeast from the biodiverse Nil-
+giri Hills of the Western Ghats to join the Cauvery in Trichy, 
+supporting vital ecological and social services. The 7,500 
+km2 basin includes rugged hills, undulating pediments, lush 
+alluvial plains, and growing metropolitan areas. The earthen 
+dam Bhavani Sagar Reservoir manages irrigation, drinking 
+1 3
+5213
+Journal of the Indian Society of Remote Sensing (2026) 54:5211–5226
+water, and hydropower, while the Kundah, Moyar, and Palar 
+tributaries affect sediment and nutrient movement.
+Southwest Monsoons cause wet (June–September) and 
+dry (December–April) seasons, although recent droughts 
+and rainfall variability have increased water stress and soil 
+erosion. The basin has Alfisols, Inceptisols, Vertisols, and 
+lateritic and colluvial charnockite, gneiss, and granite soils. 
+Detail soil mapping is needed due to its texture, organic 
+matter, cation exchange capacity, and erosion susceptibil -
+ity. Rapid agricultural development, urbanization, fertilizer 
+overuse, and deforestation have caused erosion, nutrient 
+depletion, and biodiversity loss. The basin's biological sen -
+sitivity makes it excellent for geospatial, environmental, 
+and digital soil datasets to assess soil security and assist sus-
+tainable land management.
+Data Sources and Collection
+Remote sensing, socioeconomic variables, and global soil 
+property datasets were integrated to assess soil and human 
+security in the Bhavani River Basin. Key datasets and spa -
+tial resolutions are summarized in Table 1. The primary 
+soil information source was ISRIC’s World Soil Informa -
+tion Service (WoSIS), which provides harmonized, quality-
+controlled global soil profile data. ISRIC’s SoilGrids250m, 
+a machine-learning-based product, supplied predictions of 
+pH, organic carbon, bulk density, cation exchange capac -
+ity, texture fractions, and nutrients at six standard depths 
+(0–200 cm), using environmental covariates related to 
+climate, terrain, and vegetation (Hengl et al., 2017; Pog -
+gio et al., 2021). These 250-m maps improve regional soil 
+assessment in data-poor areas of South India. To verify local 
+accuracy, SoilGrids outputs were compared with national 
+datasets (e.g., NBSS&LUP) using predicted means and 
+median quantiles. SoilGrids 2.0 further enhances spatial soil 
+variability detection, supporting soil classification, ecosys-
+tem evaluation, and sustainable land-use planning (Rossiter 
+et al., 2022).
+Google Earth Engine Code of Spatial Variability of 
+Soil Basic Properties
+The Google Earth Engine (GEE), an environmentally 
+focused cloud computing system that combines massive 
+data of a specific environment with high-performance par-
+allel computing, to assess the spatial diversity of critical 
+soil physicochemical properties in the Bhavani River Basin. 
+Its multi-petabyte geospatial data includes remote sensing, 
+environmental indices, climate, land use/land cover, and 
+digital elevation models (Gorelick et al., 2017). These data 
+sets are processed for efficient, reproducible, and scalable 
+geospatial analytics.
+Fig. 1 Location map of the Bhavani River Basin within the major river basins of India
+ 
+1 3
+5214
+Journal of the Indian Society of Remote Sensing (2026) 54:5211–5226
+Data Integration and Processing
+Soil property datasets were extracted and analyzed from the 
+ISRIC SoilGrids database through the Google Earth Engine 
+(GEE) platform. The selected soil parameters included bulk 
+density (BD), cation exchange capacity (CEC), coarse frag-
+ments, clay, sand and silt fractions, total nitrogen (TN), 
+soil pH (H₂O), soil organic carbon (SOC), and soil organic 
+carbon stock. These datasets represent spatially modelled 
+soil characteristics at different standard depths (0–5 cm, 
+5–15 cm, 15–30 cm, and other depth intervals) with a spa -
+tial resolution of 250 m. The SoilGrids layers were used to 
+evaluate the spatial variability of soil properties and their 
+influence on soil health conditions across the Bhavani River 
+Basin. The Bhavani River Basin boundary was delineated 
+using hydrological analysis based on the Shuttle Radar 
+Topography Mission (SRTM) Digital Elevation Model 
+(DEM). The extracted basin boundary shapefile was used 
+as the Area of Interest (AOI) for clipping and processing all 
+soil datasets. Google Earth Engine (GEE) was employed for 
+cloud-based data acquisition, preprocessing, visualization, 
+and export of soil property layers. JavaScript-based GEE 
+scripts were developed to select the required soil bands, clip 
+the datasets according to the basin boundary, and gener -
+ate spatial distribution maps of individual soil properties. 
+The same processing workflow was applied to all selected 
+soil parameters to produce basin-scale soil property maps. 
+The processed raster datasets were exported and integrated 
+within a GIS environment for further analysis, including 
+Digital Soil Mapping (DSM), soil health assessment, spatial 
+modeling, and environmental vulnerability evaluation. This 
+approach enabled efficient handling of large-scale soil data-
+sets and provided a consistent framework for analyzing spa-
+tial patterns of soil characteristics across the Bhavani Basin.
+Geospatial Analysis and Validation
+After GEE extraction and visualization, the layers were 
+exported in GeoTIFF format and examined in ArcGIS Pro 
+10.8 for further spatial analysis. The methodology involved 
+spatially overlaying soil data with LULC and topography to 
+investigate variability patterns. Calculating administrative 
+and ecological zone statistics. Integrating biodiversity and 
+socioeconomic variables to assess soil quality and human 
+vulnerability.
+Innovation and Rationale
+ISRIC SoilGrids' integration with GEE cloud computing is a 
+soil security assessment breakthrough (Minasny & McBrat-
+ney, 2016). It reduces data handling errors, speeds up calcu-
+lations, and reproduces results. Additionally, this technology 
+allows fast scaling of analysis to regional or national size for 
+dynamic soil classification, digital soil mapping, and eco-
+system service evaluation. The study's geospatial method -
+ology identifies soil degradation and biodiversity hotspots, 
+Name/Soil 
+property
+Acronym/ Assets on 
+GEE
+Mapped units Conventional 
+units and 
+Conversion 
+factor
+Description
+Bulk density BDOD/ bdod_mean cg/cm3 kg/dm3; 100 Bulk density of the fine 
+earth fraction oven dry
+The cation 
+exchange 
+capacity of 
+soil
+CEC/ cec_mean mmol(c)/kg cmol(c)/kg; 
+10
+The capacity of the fine 
+earth fraction to hold 
+exchangeable cations
+Coarse 
+fragments
+CFVO/cfvo_mean cm3/dm3(vol‰) cm3/100 cm3 
+(vol‰); 10
+Volumetric fraction of 
+coarse fragments (> 2 mm)
+Nitrogen N/nitrogen_means cg/kg g/kg The sum of total nitrogen 
+(ammonia, organic and 
+reduced nitrogen) as mea-
+sured by Kjeldahl digestion 
+plus nitrate–nitrite
+Soil pH pH/ phh2o_mean pHx10 pH; 10 Negative common Aloga-
+rithm of the activity of 
+hydronium ions (H) in water
+Organic 
+Carbon 
+Concentration
+SOC dg/kg g/kg Gravimetric content of 
+organic carbon in the fine 
+earth fraction of the soil
+Table 1 Physical properties and 
+classification of soils in the Bha-
+vani River Basin
+ 
+1 3
+5215
+Journal of the Indian Society of Remote Sensing (2026) 54:5211–5226
+which aids sustainable land management and soil restora -
+tion in the Bhavani River Basin.
+Result and Discussion
+Soil Physical Characteristics
+Topographic, vegetation, and land-use gradients create 
+strong physical and functional soil variability across the 
+Bhavani River Basin. SoilGrids data and field observations 
+show that the forested upper basin contains Humic Cambi -
+sols and Ferralsols, while the cultivated lowlands are domi-
+nated by Arenosols and Fluvisols. This variability influences 
+carbon storage, nutrient retention, and water regulation.
+Forested Nilgiri uplands exhibit high organic carbon 
+(~ 3.0%), moderate bulk density, and stable aggregates, 
+reflecting minimal disturbance and continuous litter inputs. 
+These conditions enhance humification, microbial biomass, 
+and soil respiration, supported by near-neutral pH (6.0–
+7.5), which promotes nutrient availability and biodiversity 
+(Fig. 2).
+In contrast, intensive agriculture and excessive chemical 
+fertilizer use in the plains have reduced soil organic carbon 
+to ~1.5%, weakening infiltration, cation exchange capacity, 
+and structural stability. Poor drainage and prolonged irriga-
+tion have led to salinity stress, with EC values >4.0 dS/m, 
+exceeding crop tolerance limits (Fao, 2018) and contribut -
+ing to crusting, erosion, and yield loss. Forest and plantation 
+soils remain comparatively resilient, with low salinity (~ 1.0 
+dS/m) and neutral pH. However, long-term fertilizer use 
+and declining liming have acidified croplands (pH ~5.8), 
+disrupting microbial processes, nutrient cycling, and eco -
+system resilience.
+Chemical Properties and Carbon Storage of the 
+Bhavani Basin
+In the Bhavani River Basin, natural and human activities 
+interact to alter soil chemistry and carbon cycles. Defores -
+tation, intensive agriculture, pollution, and water shortages 
+have disrupted the basin's soil chemical equilibrium, jeopar-
+dizing productivity and ecology.
+Basin soil and ecosystems need carbon, the most basic ele-
+ment in biogeochemical cycles. Photosynthesis turns atmo-
+spheric carbon into biomass, litter, and soil organic matter in 
+vegetation, the main carbon sink. This mechanism accumu-
+lates organic carbon in soils for long-term storage, reduc -
+ing urban and industrial CO 2 emissions. Basin surface soil 
+chemical variability (05 cm) and distribution were assessed 
+using digital soil mapping and remote sensing. The maps 
+(Fig. 3) illustrate that land-use type affects soil carbon reten-
+tion and storage. Organic carbon concentrations in upstream 
+wooded regions (> 3.0%) and downstream agricultural areas 
+(< 1.5%) suggest high vegetation density and low anthro -
+pogenic disturbance. Mono cropping, excessive fertilizer 
+usage, and nutrient degradation in downstream agricultural 
+areas (3.0%), however, are unsustainable. Upper catchment 
+agricultural land-use and logging have fragmented habitat, 
+changed hydrological seasons, and increased soil erosion. 
+Silt deposition reduces downstream reservoir and floodplain 
+water storage and increases monsoon flood risk.
+Comparing land-use and land-cover (LULC) assess -
+ment (2018–2023), forest cover declined 12%, largely due 
+to agricultural land and urban expansion. Transitions have 
+sequestered soil and water carbon. Soil erosion and limited 
+aquifer recharge result from inadequate infiltration and sur-
+face runoff on deforested slopes. Additionally, urban soil 
+development and sealing in downstream areas has reduced 
+the basin's water- and carbon-storage capacity.
+Spatial modelling shows geographic differences in soil 
+carbon dynamics in the Bhavani Basin due to land-use inten-
+sity, plant cover, and urbanization gradients. The northwest 
+retains the most soil carbon due to high vegetation density, 
+little anthropogenic stress, and good soil texture. Industrial, 
+residential, and transit emissions create large urban and 
+peri-urban carbon fluxes.
+Static and dynamic soil chemistry variations affect basin 
+carbon balance, study finds. Organic matter buildup in ripar-
+ian environments with 420–565 dg/kg fixed carbon is opti-
+mized by sediment deposition. Digital soil mapping (DSM) 
+utilizing SoilGrids datasets has quantified and regionalized 
+basin soil carbon stores (Fig. 3).
+This spatially explicit atlas was created to examine soil 
+organic carbon (SOC) and total organic carbon (TOC) tem-
+poral and spatial variations for the global carbon budget. 
+Urban topsoil (0–5 cm) TOC contents vary greatly with 
+land-use intensity, from 1.3 to 21 mg/kg by location. Vege -
+tated and forested fields had greater TOCs than highly popu-
+lated areas, demonstrating the relevance of soil management 
+and vegetation cover in carbon stock maintenance.
+SOCS is 0–58 t/ha, SOC is 0–717 dg/kg, and OCD is 
+0–382 hg/dm3. Total nitrogen (TN) is 0–397 mg/kg and CEC 
+0-332 mmol ( +)/kg. Krishnakumar et al. ( 2016) revealed 
+that the Bhavani Basin has more nutrients and carbon than 
+other southern Indian urbanized environments. Soil texture, 
+organic inputs, and biological activity synergistically affect 
+SOCS, OCD, and CEC, according to correlation study. 
+1 3
+5216
+Journal of the Indian Society of Remote Sensing (2026) 54:5211–5226
+Fig. 2 Spatial distribution of sand–silt–clay ratio, bulk density, and soil pH in the Bhavani River Basin
+ 
+1 3
+5217
+Journal of the Indian Society of Remote Sensing (2026) 54:5211–5226
+Fig. 3 Spatial distribution of soil chemical properties, land dynamics, and carbon storage in the Bhavani River Basin
+ 
+1 3
+5218
+Journal of the Indian Society of Remote Sensing (2026) 54:5211–5226
+Anthropologic carbon sources account for 70% of urban-
+industrial SOC. This study indicated that basin carbon emis-
+sions had increased tenfold in recent decades due to rising 
+urbanization and land-use change.
+Biodiversity and Land Use
+The Western Ghats' Bhavani River Basin, one of the world's 
+most biodiverse, affects southern India's ecology and eco-
+nomics. Flora and wildlife cover 35% of the basin, including 
+endangered tigers, leopards, and Asian elephants. Wildlife 
+and soil biodiversity are protected by these woods. The high 
+organic carbon and microbiological content of forest soils 
+increase nutrient cycling, soil structure, and ecological sta -
+bility. Because of little human interference, these soils can 
+keep their fertility and ecological integrity. Instead, 45% of 
+the basin is intensively farmed with rice, sugarcane, and mil-
+lets. Monocropping and chemical fertilizers and pesticides 
+have deteriorated soils, increased salinity, and depleted 
+nutrients, hurting aquatic life. Overuse of agrochemicals 
+diminishes soil microbial populations, organic matter, fer -
+tility, and resilience. Due to population and development, 
+the remaining 20% of the Bhavani Basin is fast urbaniz -
+ing. Urban growth fragments ecosystems, seals soils, and 
+reduces pervious surfaces, reducing infiltration capacity and 
+hydrological imbalance. These changes stress the environ -
+ment, reduce ecosystem services, and endanger the soil-bio-
+diversity nexus for ecological and human health.
+Bhavani Basin's biological balance requires conservation 
+and development. Due to their high organic carbon content 
+and low human involvement, forest soils are natural soil 
+health reservoirs, while agricultural regions must utilize a 
+sustainable strategy to restore fertility and prevent further 
+deterioration. Integrated nutrition management, organic 
+inputs, minimal tillage, and biological pest control reduce 
+intensive production. Reforestation, anti-deforestation, and 
+ecosystem restoration increase soil biodiversity and basin 
+production.
+Climate Vulnerability and Socio-Ecological Implications
+Climate change poses a significant threat to the hydrologi-
+cal and ecological stability of the Bhavani Basin, which is 
+highly dependent on monsoon rainfall (Bheeman & Ranga-
+rajan, 2025; Rashiq et al., 2024). Variations in the timing, 
+intensity, and distribution of monsoon precipitation directly 
+influence agricultural productivity in the downstream 
+plains, where the Bhavani River and its tributaries provide 
+irrigation for major crops. Increasing climate variability has 
+led to more frequent droughts, flash floods, and unpredict-
+able rainfall patterns, adversely affecting soil quality, water 
+availability, and agricultural sustainability (Raheem et al., 
+2025; Rahmati et al., 2024).
+Agriculture remains the primary livelihood for most 
+inhabitants of the basin. However, land inequality and a 
+heavy reliance on rain-fed farming increase the vulnerabil -
+ity of rural communities to climatic and economic stresses. 
+Strengthening rainwater harvesting systems, constructing 
+check dams, and promoting micro-irrigation technologies 
+can reduce vulnerability and enhance resilience to climate-
+related risks (BenYishay et al., 2024; Mekuria et al., 2025; 
+Musa et al., 2026).
+Ensuring the long-term sustainability of soil and water 
+resources in the basin requires climate-adaptive management 
+Fig. 4 Soil Quality Index (SQI) of the Bhavani River Basin, South India
+ 
+1 3
+5219
+Journal of the Indian Society of Remote Sensing (2026) 54:5211–5226
+strategies (Eekhout et al., 2025; Nassary, 2025). Evidence 
+from global and regional studies supports this approach. For 
+instance, Chandra et al. (2020) reported that climate change 
+negatively affects ecosystems by reducing soil biodiver-
+sity. Similarly, geospatial analyses by Mekuria et al. (2025) 
+demonstrated that sustainable land management practices 
+can significantly reduce soil erosion and land degradation. 
+Bhattacharya et al. ( 2020) highlighted that rapid urbaniza -
+tion and industrial activities in semi-arid regions contribute 
+to soil insecurity, while Singh et al. found that urban expan-
+sion in India leads to a decline in soil microbial diversity. 
+These findings underscore the importance of integrated 
+watershed management, sustainable land-use planning, and 
+climate-resilient agricultural practices for maintaining the 
+ecological and productive functions of the Bhavani Basin. 
+Due to heavy land usage, soil erosion, and topsoil loss, 
+Bhavani Basin has less microbial diversity, lowering crop 
+production and land productivity. SoilGrids and other digi -
+tal soil mapping tools help identify erosion-prone areas and 
+design scientific soil conservation methods. Figure 4 shows 
+the location of the Bhavani River Basin within the Cauvery 
+Basin and the spatial distribution of the Soil Quality Index 
+(SQI). The SQI values range from 0 to 41, with red indi -
+cating low soil quality and green indicating high soil qual -
+ity. Most of the basin exhibits moderate to high SQI values, 
+particularly in the central and eastern regions, suggesting 
+favorable soil conditions for agriculture. In contrast, low 
+SQI values are concentrated in the western and southwest -
+ern parts of the basin, corresponding to the steep terrains of 
+the Western Ghats, where erosion and land degradation are 
+more prevalent. The spatial variation in soil quality high -
+lights the influence of topography, climate, and land-use 
+practices. The findings emphasize the need for sustainable 
+soil and water conservation measures, such as afforestation, 
+watershed management, rainwater harvesting, and micro-
+irrigation, to improve soil health and ensure long-term envi-
+ronmental sustainability in the Bhavani River Basin. The 
+link between land-use intensity, biodiversity loss, and soil 
+nutrient depletion requires spatially sensitive strategies to 
+improve sustainable land management and preserve biologi-
+cal capital (Fig. 4).
+Local Climate Zone (LCZ)
+Cities are becoming the epicentre of 21st-century environ -
+mental and health challenges due to growing urbanization. 
+Cities are especially vulnerable to climate change's heat 
+stress, air pollution, and heat waves, which impair health 
+(Founda & Santamouris, 2017). To research and manage 
+urban meteorological phenomena, Stewart and Oke ( 2012) 
+suggested the hierarchical Local Climate Zone (LCZ).
+The LCZ framework divides the urban environment into 
+17 zones: 10 constructed types (LCZ 117LCZ A10LCZ G) 
+and 7 land cover categories to standardize description and 
+comparability (Table 2). These classifications vary in sur-
+face, structure, materials, and human activity. Metropolitan 
+Heat Island (UHI) study increasingly uses the LCZ-system 
+to share data and compare metropolitan climates internation-
+ally. Recent geospatial analytic breakthroughs have enabled 
+Table 2 Local Climate Zone (LCZ) classifications and their descrip-
+tions
+LCZ Class Description
+Compact High-rise High urban heat island effect, little vegeta-
+tion, and dense, tall structures(LCZ 1)
+Compact Mid-rise Mid-rise, dense buildings with little open 
+space and a high heat retention rate(LCZ 2)
+CompactLow-rise 
+(LCZ 3)
+High surface covering, narrow streets, and 
+dense, low-rise structures
+Open High-rise (LCZ 
+4)
+Tall structures that are less packed than 
+LCZ 1 and have more open space
+Open Mid-rise(LCZ 
+5)
+Structures with moderate open area that are 
+mid-rise
+Open Low-rise(LCZ 
+6)
+Low-rise structures that have a lot of open 
+space are typical in suburbs
+Lightweight Low-rise 
+(LCZ 7)
+Informal communities frequently have low-
+rise structures constructed of lightweight 
+materials
+Large Low-rise(LCZ 
+8)
+Low-rise, large-footprint structures (big-
+box stores, warehouses) around by open 
+space
+Sparsely Built(LCZ 9) Dispersed structures with lots of open space 
+and a blend of rural and urban features
+Heavy Industry (LCZ 
+10)
+Factories, warehouses, and large industrial 
+structures with little greenery
+Dense Trees (LCZ A) Densely forested areas, which have a pow-
+erful cooling impact
+Scattered Trees (LCZ 
+B)
+Places with trees strewn around, usually in 
+parks or low-density neighbourhood’s
+Bush, Scrub (LCZ C) Low vegetation, usually seen in semi-arid 
+or underdeveloped environments, includes 
+little trees and shrubs
+Low Plants (LCZ D) A common feature of agricultural zones is 
+open grassland or cropland with few trees
+Bare Rock or Paved 
+(LCZ E)
+Bare rock, a desert, or large paved expanses 
+with little vegetation
+Bare Soil or Sand 
+(LCZ F)
+Areas with sandy or bare soil are typi-
+cal in dry or semi-arid climates
+Water (LCZ G) Water bodies, including rivers, lakes, and 
+reservoirs
+1 3
+5220
+Journal of the Indian Society of Remote Sensing (2026) 54:5211–5226
+remote sensing and cloud computing LCZ mapping. Google 
+Earth Engine (GEE) can analyse planetary-sized remote 
+sensing data (Gorelick et al., 2017). The system has a vast 
+Landsat, Sentinel, ASTER, and other satellite image collec-
+tion for high-resolution environmental investigations. The 
+selected research classifies the Bhavani River Basin LCZ 
+using GEE and public resources. Sentinel-2 MultiSpectral 
+Instrument (Level-1C) was chosen for its high spatial and 
+spectral resolutions, which distinguish land cover and urban 
+morphology. LCZ classification improves with several data-
+sets. Single-source and multi-source datasets depict urban 
+and peri-urban environments using various geographic 
+sources, such as Sentinel-1, Sentinel-2, ASTER, Landsat, 
+GUF, OSM, and NPP-VIIRS Nighttime Light data (Xu et 
+al., 2017). When optical, radar, and nighttime light data 
+provide separate spectral and spatial data, LCZ mapping is 
+more exact. Sentinel-2 MSI's synergy with other datasets 
+in LCZ categorization is understudied, permitting investiga-
+tion (Fig. 5).
+Figure 5 illustrates the spatial distribution of Local Cli -
+mate Zones (LCZs) in the Bhavani River Basin. Dense tree 
+cover dominates the western and northwestern regions, cor-
+responding to the forested Western Ghats, while the central 
+and eastern parts are mainly characterized by agricultural 
+lands and low vegetation. Urban and built-up areas are 
+concentrated around major settlements and are represented 
+by compact and open development classes. Water bodies, 
+including reservoirs and river networks, are also visible 
+across the basin (Amundson et al., 2015) The map high -
+lights the contrast between the forested uplands and the 
+agricultural-urban plains, reflecting the influence of land 
+use and topography on local climatic conditions within the 
+basin.
+In addition to LCZ mapping, evening illumination 
+statistics indicate anthropogenic activity, energy con -
+sumption, and urban expansion. This article uses GEE 
+to assess human-caused environmental changes in the 
+Bhavani Basin using Visible Infrared Imaging Radiom -
+eter Suite (VIIRS) nighttime light data (2018–2023) and 
+Landsat 8 OLI/TIRS images Nightlight intensity in space 
+and time was linked to land-cover, population density, 
+and infrastructure development (Fig. 6). The Nighttime 
+Light (NTL) analysis derived from Google Earth Engine 
+(GEE) highlights the spatial distribution of human activi -
+ties across the Bhavani River Basin. High light intensities 
+are concentrated around Coimbatore, Erode, Mettur, and 
+major transportation corridors, indicating dense popula -
+tion, urban expansion, industrial development, and eco -
+nomic activities. In contrast, the Nilgiri Hills, Mudumalai 
+Forest, and Talamalai forest regions exhibit very low light 
+Fig. 5 Local Climate Zones (LCZ) in the Bhavani Basin derived from Google Earth Engine (GEE)
+ 
+1 3
+5221
+Journal of the Indian Society of Remote Sensing (2026) 54:5211–5226
+ 
+1 3
+5222
+Journal of the Indian Society of Remote Sensing (2026) 54:5211–5226
+intensity, reflecting limited anthropogenic disturbance and 
+the dominance of natural ecosystems.
+The observed NTL pattern reveals a gradient of increas -
+ing human pressure from the forested western uplands 
+toward the more developed eastern and southern regions of 
+the basin. Areas with high NTL values are associated with 
+land-use change, agricultural intensification, infrastructure 
+growth, and potential environmental stress. Conversely, 
+low-light regions correspond to areas of higher vegeta -
+tion cover, ecological stability, and greater carbon storage 
+potential.
+The Fig. 7 indicate distinct spatial variations in soil qual-
+ity and drought susceptibility across the Bhavani River 
+Basin. The Soil Quality Index (SQI) map shows that mod -
+erate to high soil quality is predominantly concentrated 
+in the western and southwestern regions, where favorable 
+soil properties, higher organic carbon content, and better 
+nutrient availability contribute to improved soil health. In 
+contrast, relatively lower SQI values are observed in parts 
+of the central and eastern basin, reflecting soil degradation 
+and reduced fertility. The Soil Overlay Analysis further 
+highlights areas with varying levels of soil suitability, iden-
+tifying the western portion of the basin as a zone with com-
+paratively better soil conditions. These areas correspond to 
+regions exhibiting higher SOC, OCD, OCS, and nitrogen 
+concentrations.
+The Drought Index map reveals values ranging from 7 to 
+24, with the highest drought vulnerability occurring in the 
+southwestern sector of the basin. Moderate drought condi -
+tions are observed in the western and central regions, while 
+the eastern basin exhibits relatively lower drought suscepti-
+bility. The elevated drought index in the southwest may be 
+associated with topographic effects, rainfall variability, and 
+land-use practices despite the presence of nutrient-rich soils.
+PCA and Overlay Analysis and Drought Index of 
+Bhavani Basin
+Geospatial approaches are needed to investigate soil prop-
+erty, land degradation, and drought dynamics in the geo -
+morphologically and climatologically diverse Bhavani 
+River Basin. PCA and Overlay Analysis help identify 
+geographical trends and prioritize sustainable manage -
+ment. Geospatial and environmental research employ 
+PCA to reduce dimensionality and discover trends. Google 
+Earth Engine (GEE) and ArcGIS 10.8.2 were used to 
+identify Bhavani Basin soil fertility and quality indica -
+tors using PCA (Fig. 7). Remote sensing data and ground-
+based parameters such soil pH, organic carbon, nitrogen 
+(N), phosphorus (P), potassium (K), and soil texture were 
+examined to identify trends and reduce repetition. The 
+first few important factors (PC1 and PC2) explained most 
+of the variance, demonstrating how soil organic carbon, 
+moisture, and nutrient availability are connected. This ana-
+lytical technique showed soil fertility and degradation in 
+space. Using multispectral image processing (particularly 
+reflectance bands and vegetation indices NDVI, SAVI, 
+and NDWI), GEE-based PCA revealed basin-wide surface 
+moisture and soil organic content variability. To supple -
+ment PCA results, ArcGIS (version 10.8.2) thematic maps 
+of land use/land cover (LULC), slope, elevation, soil pH, 
+nutrient concentrations, and erosion risk were overlayed. 
+The weighted overlay model weighted parameters by soil 
+fertility and land productivity. The slope and texture were 
+modestly valued for run-off and erosion, whereas nitrogen, 
+phosphorus, and potassium affected agricultural produc-
+tion and were valued more.
+The Soil Suitability and Vulnerability Map, created using 
+this overlay technique, divided the Bhavani Basin into man-
+agement zones from very suitable agricultural land to highly 
+vulnerable to deterioration and pollution. PCA and overlay 
+mapping helped basin agricultural, land use, and soil man -
+agement decisions.
+Agriculture and water security in the Bhavani Basin are 
+threatened by drought. GEE based Drought Index Models 
+measure drought patterns using 2018–2023 remote sensing 
+data. The model assessed drought severity using the Nor -
+malized Difference Drought Index (NDDI), which energizes 
+NDVI and NDWI.
+This measure identifies vegetative stress and moisture 
+loss for time- and location-based drought monitoring. Using 
+MODIS, Sentinel-2, and Landsat 8 data, cloud-based GEE 
+computation created monthly Bhavani Basin drought maps. 
+Due to soil moisture, upstream forest-covered areas were 
+resilient, but downstream agricultural areas had mild to 
+severe droughts. Results match monsoon variability and 
+groundwater depletion.
+Fig. 6 Nighttime light intensity and evapotranspiration (ET) character-
+istics of the Bhavani River Basin derived using Google Earth Engine 
+(GEE): a VIIRS nighttime light distribution, b annual ET spatial pat -
+tern, and c mean ET time-series (2018–2022)
+1 3
+5223
+Journal of the Indian Society of Remote Sensing (2026) 54:5211–5226
+Fig. 7 Soil Principal Component Analysis (PCA), overlay analysis, and drought index of the Bhavani Basin
+ 
+1 3
+5224
+Journal of the Indian Society of Remote Sensing (2026) 54:5211–5226
+Conclusion
+This study developed a Remote Sensing (RS), Geographic 
+Information System (GIS), and Digital Soil Mapping 
+(DSM)-based framework to evaluate soil health, environ -
+mental vulnerability, and ecosystem sustainability in the 
+Bhavani River Basin, South India. By integrating SoilGrids 
+datasets, satellite-derived environmental variables, terrain 
+attributes, land-use/land-cover information, and geospatial 
+analytical techniques, the study generated high-resolution 
+maps of key soil properties, including soil organic carbon 
+(SOC), soil organic carbon density (OCD), soil organic car-
+bon stock (OCS), nitrogen, pH, soil texture, cation exchange 
+capacity (CEC), electrical conductivity (EC), bulk density 
+(BD), and available water-holding capacity (AWHC).
+The results revealed substantial spatial heterogeneity in 
+soil quality and environmental conditions across the basin. 
+The western and southwestern regions exhibited high SOC 
+(451), OCD (180), OCS (93), and nitrogen (4197) values, 
+indicating strong carbon sequestration potential, enhanced 
+nutrient availability, and improved soil fertility. These areas 
+function as major carbon and nutrient reservoirs and play a 
+crucial role in maintaining ecosystem stability. In contrast, 
+intensively cultivated agricultural lands and rapidly urban -
+izing lowland regions showed lower soil quality, reduced 
+organic matter content, and greater susceptibility to degra -
+dation. Although parts of the eastern basin displayed rela -
+tively high CEC values (up to 373 cmol( +)/kg), suggesting 
+favourable nutrient-retention capacity, the overall lower 
+carbon stocks indicate the need for improved soil manage -
+ment practices.
+The Soil Quality Index (SQI), Soil Overlay Analysis, 
+Environmental Vulnerability Index (EVI), and Drought 
+Index further highlighted critical spatial patterns of environ-
+mental stress. Areas characterized by vegetation loss, land-
+use change, and intensive anthropogenic activities exhibited 
+higher vulnerability and degradation risk, whereas the for -
+ested upper catchments of the Nilgiri Hills demonstrated 
+better ecological integrity and resilience. Hotspot analysis 
+identified priority zones requiring immediate conservation 
+interventions, particularly in regions vulnerable to drought, 
+soil degradation, and declining ecosystem services.
+Overall, the study determines the effectiveness of inte-
+grating DSM, machine learning, Remote Sensing, and 
+GIS techniques for comprehensive soil and environmen -
+tal assessment in tropical river basins. The findings pro-
+vide valuable scientific support for precision agriculture, 
+watershed management, soil restoration, biodiversity con -
+servation, and climate-resilient land-use planning. Future 
+research should focus on long-term monitoring of soil 
+health, climate change impacts, and socio-economic driv -
+ers of land-use transformation to strengthen sustainable 
+resource management and enhance ecosystem resilience in 
+the Bhavani River Basin.
+Acknowledgements The authors express gratitude to Aqua Forge 
+Robotics Pvt LTD, Chennai, and Anna University Incubation, Chen -
+nai, for their advice and technical support in this research endeavour. 
+The authors express gratitude to the Department of Earth Sciences 
+and the Department of Agricultural Sciences at Annamalai University, 
+Annamalai Nagar, Chidambaram, Tamil Nadu, India, for their techni -
+cal support in performing this study.
+Author Contributions Zuvairiya S (Z.S): Writing- review & editing, 
+Writing- original draft, Visualization, Software, Methodology, Inves -
+tigation, Formal analysis, Data curation, Conceptualization. Singara -
+subramanian S R (S.S.R): Writing- review & editing, Visualization, 
+Methodology, Investigation, Resources, Conceptualization, Supervi -
+sion. Bobby Jones A (B.J.A): Writing -original draft, Investigation, 
+Formal analysis, Data curation, Visualization. Gopal Veeramalai 
+(G.V): Writing-review & editing, Visualization, Resources, Methodol-
+ogy, Conceptualization. All authors have read and agreed to the final 
+version of the manuscript.
+Funding No funding was received for conducting this study.
+Data Availability Statement The satellite datasets and climate data 
+used in this study are publicly available. Landsat-8/9 and Sentinel-2 
+imagery were accessed from the Google Earth Engine ( h t t p s : / / e a r t h 
+e n g i n e . g o o g l e . c o m ) data catalog. Climate variables were obtained 
+from the ERA5 reanalysis dataset provided by the European Centre for 
+Medium-Range Weather Forecasts (ECMWF) ( h t t p s : / / c d s . c l i m a t e . c o 
+p e r n i c u s . e u ) . Processed geospatial layers, model outputs, and derived 
+land use/land cover maps can be made available from the correspond-
+ing author upon reasonable request.
+Declarations
+Conflict of interest The authors declared that they have no conflict of 
+interest.
+References
+Adeniyi, O. D., Bature, H., & Mearker, M. (2024). A systematic review 
+on digital soil mapping approaches in lowland areas. Land, 13(3), 
+379. https:/ /doi.or g/10.33 90/la nd13030379
+Amundson, R., Berhe, A. A., Hopmans, J. W., Olson, C., Sztein, A. 
+E., & Sparks, D. L. (2015). Soil and human security in the 21st 
+century. Science, 348(6235), Article 1261071. h t t p s : / / d o i . o r g / 1 0 . 
+1 1 2 6 / s c i e n c e . 1 2 6 1 0 7 1 
+Arrouays, D., McBratney, A. B., Bouma, J., Libohova, Z., Richer-de-
+Forges, A. C., Morgan, C. L., & Mulder, V. L. (2020). Impres-
+sions of digital soil maps: The good, the not so good, and making 
+them ever better. Geoderma Regional, 20, Article e00255. h t t p s : / 
+/ d o i . o r g / 1 0 . 1 0 1 6 / j . g e o d r s . 2 0 2 0 . e 0 0 2 5 5 
+Arun, S., Kumar, R. M., Ruppa, J., Mukhopadhyay, M., Ilango, K., & 
+Chakraborty, P. (2020). Occurrence, sources and risk assessment 
+of fluoroquinolones in dumpsite soil and sewage sludge from 
+Chennai, India. Environmental Toxicology and Pharmacology, 
+79, Article 103410. https:/ /doi.or g/10.10 16/j. etap.2020.103410
+Asongwe, G. A., Bame, I. B., Forbin, M. A., Tiku, D. T., Tening, A. 
+S., & Suinyuy, T. N. (2025). Performance of farm residues man-
+agement techniques on selected soil properties and maize (Zea 
+1 3
+5225
+Journal of the Indian Society of Remote Sensing (2026) 54:5211–5226
+mays) yield on the eastern flanks of Mount Cameroon. Journal of 
+Experimental Agriculture International. h t t p s : / / d o i . o r g / 1 0 . 9 7 3 4 / j 
+e a i / 2 0 2 4 / v 4 6 i 8 2 7 4 6 
+Bao, Y., Yao, F., Meng, X., Wang, J., Liu, H., Wang, Y., Liu, Q., Zhang, 
+J., & Mouazen, A. M. (2024). A fine digital soil mapping by inte-
+grating remote sensing-based process model and deep learning 
+method in Northeast China. Soil & Tillage Research, 238, Article 
+106010. https:/ /doi.or g/10.10 16/j. still.2024.106010
+BenYishay, A., Sayers, R., Singh, K., Goodman, S., Walker, M., 
+Traore, S., & Whalen, J. (2024). Irrigation strengthens climate 
+resilience: Long-term evidence from Mali using satellites and 
+surveys. PNAS Nexus, 3(2), Article pgae022. h t t p s : / / d o i . o r g / 1 0 . 
+1 0 9 3 / p n a s n e x u s / p g a e 0 2 2 
+Bharath, K. M., Neelavannan, K., Samson, J., Kanna, J., & Balakrish-
+nan, P. (2026). Geo-pedological controls on soil erosion vulner -
+ability: A multi-parameter spatial analysis in diverse landscapes 
+of Tamil Nadu. South India. Remote Sensing of Environment, 332, 
+Article 115098. https:/ /doi.or g/10.10 16/j. rse.2025.115098
+Bhattacharya, P., Maity, P. P., Mowrer, J., Maity, A., Ray, M., Das, S., 
+& Krishnan, P. (2020). Assessment of soil health parameters and 
+application of the sustainability index to fields under conservation 
+agriculture for 3, 6, and 9 years in India. Heliyon, 6(12). h t t p s : / / d 
+o i . o r g / 1 0 . 1 0 1 6 / j . h e l i y o n . 2 0 2 0 . e 0 5 6 4 0 
+Bheeman, P., & Rangarajan, S. (2025). Impact of climate change on 
+the upper Bhavani watershed using SWAT model. Results in 
+Engineering, 27, Article 105905. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . r i n e n 
+g . 2 0 2 5 . 1 0 5 9 0 5 
+Centeno, J. A., Kerm, J., Mitishita, E. A., & Palma, M. E. (2020). 
+PCA band selection method for a hyperspectral sensors onboard 
+an UAV. In 2020 IEEE Latin American GRSS & ISPRS Remote 
+Sensing Conference (LAGIRS) (pp. 328-332). IEEE.
+Chandra, P., Dhuli, P., Verma, P., Singh, A., Choudhary, M., Prajapat, 
+K., & Yadav, R. K. (2020). Culturable microbial diversity in the 
+rhizosphere of different biotypes under variable salinity. Tropical 
+Ecology, 61(3), 291–300. h t t p s : / / d o i . o r g / 1 0 . 1 0 0 7 / s 4 2 9 6 5 - 0 2 0 - 0 0 
+0 8 9 - 3 
+Das, B. S., Wani, S. P., Benbi, D. K., Muddu, S., Bhattacharyya, T., 
+Mandal, B., & Reddy, N. N. (2022). Soil health and its relation-
+ship with food security and human health to meet the sustain -
+able development goals in India. Soil Security, 8, Article 100071. 
+https:/ /doi.or g/10.10 16/j. soisec.2022.100071
+Eekhout, J. P. C., Nunes, J. P., Tramblay, Y., & De Vente, J. (2025). 
+Severe impacts on water resources projected for the Mediterra -
+nean Basin. Wiley Interdisciplinary Reviews: Water, 12(2), Article 
+e70012. https:/ /doi.or g/10.10 02/wa t2.70012
+Fao, F. A. O. S. T. A. T. (2018). Food and agriculture organization of 
+the United Nations. Rome. http://www.fao.org/faostat
+Founda, D., & Santamouris, M. (2017). Synergies between urban heat 
+island and heat waves in Athens (Greece) during an extremely hot 
+summer (2012). Scientific Reports, 7, Article 10973. h t t p s : / / d o i . o 
+r g / 1 0 . 1 0 3 8 / s 4 1 5 9 8 - 0 1 7 - 1 1 4 0 7 - 6 
+Gorelick, N., Hancher, M., Dixon, M., Ilyushchenko, S., Moore, R., et 
+al. (2017). Google Earth Engine: Planetary-scale geospatial anal-
+ysis for everyone. Remote Sensing of Environment, 202, 18–27. 
+https:/ /doi.or g/10.10 16/j. rse.2017.06.031
+Han,C., Zhang, B., Chen, H., Wei, Z., & Liu, Y. (2019). Spatially dis-
+tributed crop model based on remote sensing. Agricultural Water 
+Management, 218, 165–173. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . a g w a t . 2 0 1 
+9 . 0 3 . 0 3 5 
+Hengl, T., Mendes de Jesus, J., Heuvelink, G. B., Ruiperez Gonza -
+lez, M., Kilibarda, M., Blagotić, A., & Kempen, B. (2017). Soil-
+Grids250m: Global gridded soil information based on machine 
+learning. PLoS ONE, 12(2), Article e0169748. h t t p s : / / d o i . o r g / 1 0 . 
+1 3 7 1 / j o u r n a l . p o n e . 0 1 6 9 7 4 8 
+Kaliraj, S., Joe, R. J., Pitchaimani, V. S., Abishek, S. R., & Karup-
+pannan, S. (2026). GIS-based assessment of land degradation 
+vulnerability and environmental indices as ecological indicators 
+in Western Agro-climatic zone of Tamil Nadu. Scientific Reports. 
+https:/ /doi.or g/10.10 38/s4 1598-026-35211-3
+Kaur, H., Kaur, A., Singh, B., & Bhatt, R. (2020). Application of 
+geospatial technology in assessment of spatial variability in soil 
+properties: A review. Current Journal of Applied Science and 
+Technology, 39(39), 57–71. h t t p s : / / d o i . o r g / 1 0 . 9 7 3 4 / c j a s t / 2 0 2 0 / v 
+3 9 i 3 9 3 1 1 0 4 
+Krishnakumar, S., Chandrasekar, N., Peter, T. S., Gopal, V., & Magesh, 
+N. S. (2016). Appraisal of metal contamination in soil around 
+industrial areas of Chennai, Tamil Nadu, India. Frontiers of Cur-
+rent Trends in Engineering and Technology, 1, 42–51.
+Li, H., Sun, H., Sun, S., & Wang, S. (2026). Spatiotemporal non-sta-
+tionarity and driving mechanisms of ecological risk in the Three 
+Gorges Reservoir Area: Integrating land use patterns and terrain 
+positioning into multi-scale geospatial modeling. Land Degrada-
+tion & Development, 37(8), 3483–3500. h t t p s : / / d o i . o r g / 1 0 . 1 0 0 2 / 
+l d r . 7 0 3 2 4 
+Mekuria, W., Admasu, W., Abebe, S., Negash, D., Getachew, T., Hus -
+sein Seid, A., & Haileslassie, A. (2025). System understanding 
+and stakeholder analyses for the vulnerability of small‐scale agri-
+cultural producers in the Awash River basin, Ethiopia. People and 
+Nature, 7(5), 1240–1256. https:/ /doi.or g/10.10 02/pa n3.70029
+Minasny, B., & McBratney, A. B. (2016). Digital soil mapping: A brief 
+history and some lessons. Geoderma, 264, 301–311. h t t p s : / / d o i . o 
+r g / 1 0 . 1 0 1 6 / j . g e o d e r m a . 2 0 1 5 . 0 7 . 0 1 7 
+Morton, C. M., Pullabhotla, H., Bevis, L., & Lobell, D. B. (2023). 
+Soil micronutrients linked to human health in India. Scientific 
+Reports, 13(1), Article 13591. h t t p s : / / d o i . o r g / 1 0 . 1 0 3 8 / s 4 1 5 9 8 - 0 
+2 3 - 3 9 0 8 4 - 8 
+Musa, N., Mhereyenyoka, E., & Banda, K. E. (2026). Vulnerabilities 
+and adaptive capacities of rural communities to climate change 
+impacts on water supply in the Upper Zambezi River Basin. 
+Frontiers in Water, 8, Article 1797252. h t t p s : / / d o i . o r g / 1 0 . 3 3 8 9 / f 
+r w a . 2 0 2 6 . 1 7 9 7 2 5 2 
+Nassary, E. K. (2025). PRISMA-ScR: A scoping review of rooted 
+resilience in advancing climate-adaptive agriculture for soil 
+health and security. Soil Security. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . s o i s e 
+c . 2 0 2 5 . 1 0 0 2 0 1 
+Nussbaum, M., Spiess, K., Baltensweiler, A., Grob, U., Keller, A., 
+Greiner, L., Schaepman, M. E., & Papritz, A. (2018). Evalua-
+tion of digital soil mapping approaches with large sets of envi -
+ronmental covariates. Soil, 4(1), 1–22. https:/ /doi.or g/10.51 94/so 
+il-4-1-2018
+Perović, V., Čakmak, D., Srbinović, O. S., Mrvić, V., Simić, S. B., 
+Matić, M., & Pavlović, P. (2023). A conceptual modelling frame-
+work for assessment multiple soil degradation: A case study in 
+the region of Šumadija and Western Serbia. Ecological Indica-
+tors, 148, Article 110096. h t t p s : / / d o i . o r g / 1 0 . 1 0 1 6 / j . e c o l i n d . 2 0 2 3 
+. 1 1 0 0 9 6 
+Poggio, L., De Sousa, L. M., Batjes, N. H., Heuvelink, G. B., Kempen, 
+B., Ribeiro, E., & Rossiter, D. (2021). SoilGrids 2.0: Producing 
+soil information for the globe with quantified spatial uncertainty. 
+The Soil, 7(1), 217–240. https:/ /doi.or g/10.51 94/so il-7-217-2021
+Ponyane, P., Dina Ebouel, F. J., & Eze, P. N. (2025). Formation path-
+ways, ecosystem functions, and the impacts of land use and 
+environmental stressors on soil aggregates. Frontiers in Environ-
+mental Science, 13, Article 1628746. h t t p s : / / d o i . o r g / 1 0 . 3 3 8 9 / f e n 
+v s . 2 0 2 5 . 1 6 2 8 7 4 6 
+Raheem, A., Bankole, O. O., Danso, F., Musa, M. O., Adegbite, T. 
+A., & Simpson, V. B. (2025). Physical management strategies for 
+enhancing soil resilience to climate change: Insights from Africa. 
+European Journal of Soil Science, 76(1), Article e70030. h t t p s : / / 
+d o i . o r g / 1 0 . 1 1 1 1 / e j s s . 7 0 0 3 0 
+Rahmati, M., Amelung, W., Brogi, C., Dari, J., Flammini, A., 
+Bogena, H., & Vereecken, H. (2024). Soil moisture memory: 
+1 3
+5226
+Journal of the Indian Society of Remote Sensing (2026) 54:5211–5226
+State-of-the-art and the way forward. Reviews of Geophysics, 
+62(2), Article e2023RG000828. https:/ /doi.or g/10.10 29/20 
+23RG000828
+Rashiq, A., Kumar, V., & Prakash, O. (2024). A spatiotemporal assess-
+ment of the precipitation variability and pattern and an evaluation 
+of the predictive reliability of global climate models over Bihar. 
+Hydrology, 11(4), Article 50. h t t p s : / / d o i . o r g / 1 0 . 3 3 9 0 / h y d r o l o g y 1 
+1 0 4 0 0 5 0 
+Reuter, H. I., & Hengl, T. (2016). Worldgrids–a public repository of 
+global soil covariates. In Digital Soil Assessments and Beyond–
+Proceedings of the 5th Global Workshop on Digital Soil Mapping 
+(pp. 287-292).
+Rossiter, D. G., Poggio, L., Beaudette, D., & Libohova, Z. (2022). 
+How well does digital soil mapping represent soil geography? An 
+investigation from the USA. The Soil, 8, 559–586. h t t p s : / / d o i . o r g 
+/ 1 0 . 5 1 9 4 / s o i l - 8 - 5 5 9 - 2 0 2 2 
+Samuel, K. J., Durowoju, O. S., Ayeni, B., Adelabu, S. A., & Chig-
+bundu, O. S. (2025). Geospatial analysis of soil erosion and 
+implications for sustainable development goals in tropical eco -
+logical zones. Discover Environment, 3(1), 14. h t t p s : / / d o i . o r g / 1 0 . 
+1 0 0 7 / s 4 4 2 7 4 - 0 2 5 - 0 0 1 9 8 - 7 
+Shi, Y., Li, C., & Shi, Y. (2026). Revealing spatiotemporal dynamics 
+and driving mechanisms of ecological vulnerability under climate 
+and human pressures using multi-source remote sensing in the 
+dryland of China. Journal of Arid Environments, 232, Article 
+105526. https:/ /doi.or g/10.10 16/j. jaridenv.2025.105526
+Son, N. T., Syu, C. H., Chen, C. F., Chen, C. R., Lin, H. S., Zhang, Y. 
+T., & Yen, C. C. (2026). Multi-source remote sensing for spatial 
+mapping of salt-affected agricultural soils in Taiwan. Applied Geo-
+matics, 18(1), 55. https:/ /doi.or g/10.10 07/s1 2518-026-00689-z
+Soo, E. Z. X., Chin, R. J., Koo, C. H., Tan, O. K., Lew, Y. L., Sharir, K., 
+& Sulaiman, M. F. (2026). Spatial Modelling of Soil Erosion and 
+Sediment Vulnerability in a Tropical Basin: Integrating RUSLE 
+with GIS and Remote Sensing. Earth Systems and Environment, 
+1–15. https:/ /doi.or g/10.10 07/s4 1748-026-01191-7
+Stewart, I. D., & Oke, T. R. (2012). Local climate zones for urban 
+temperature studies. Bulletin of the American Meteorological 
+Society, 93(12), 1879–1900. h t t p s : / / d o i . o r g / 1 0 . 1 1 7 5 / B A M S - D - 1 
+1 - 0 0 0 1 9 . 1 
+Stoorvogel, J. J., Bakkenes, M., Temme, A. J., Batjes, N. H., & ten 
+Brink, B. J. (2017). S-world: A global soil map for environmen -
+tal modelling. Land Degradation & Development, 28(1), 22–33. 
+https:/ /doi.or g/10.10 02/ld r.2656
+Vijayaraghavalu, S. S., Arumugam, K., & Dange, S. (2025). Spatio-
+temporal dynamics of urbanization and environmental sustain -
+ability: A predictive modelling approach to forecasting land use 
+transitions in Vellore, India. Results in Engineering. h t t p s : / / d o i . o r 
+g / 1 0 . 1 0 1 6 / j . r i n e n g . 2 0 2 5 . 1 0 6 5 7 2 
+Wang, C., Zhang, G., Zhu, P., Chen, S., & Wan, Y. (2023). Spatial 
+variation of soil functions affected by land use type and slope 
+position in agricultural small watershed. CATENA, 225, Article 
+107029. https:/ /doi.or g/10.10 16/j. catena.2023.107029
+Wankmüller, F. J., Delval, L., Lehmann, P., Baur, M. J., Cecere, A., 
+Wolf, S., & Carminati, A. (2024). Global influence of soil tex-
+ture on ecosystem water limitation. Nature, 635(8039), 631–638. 
+https:/ /doi.or g/10.10 38/s4 1586-024-08089-2
+Xu, Y., Ren, C., Cai, M., Edward, N. Y. Y., & Wu, T. (2017). Classifi-
+cation of local climate zones using ASTER and Landsat data for 
+high-density cities. IEEE Journal of Selected Topics in Applied 
+Earth Observations and Remote Sensing, 10(7), 3397–3405. 
+https: //d oi. or g/10 .110 9/ JSTA RS.2017.2683484
+Publisher's Note Springer Nature remains neutral with regard to juris-
+dictional claims in published maps and institutional affiliations.
+Springer Nature or its licensor (e.g. a society or other partner) holds 
+exclusive rights to this article under a publishing agreement with the 
+author(s) or other rightsholder(s); author self-archiving of the accepted 
+manuscript version of this article is solely governed by the terms of 
+such publishing agreement and applicable law.
