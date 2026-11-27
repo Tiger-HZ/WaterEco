@@ -126,7 +126,7 @@ unbiased estimator specific for a given measurement pro-
 tocol [46, 73–75]. Optimizing over all possible measure-
 ments yields the quantum Cram´er-Rao bound (QCRB)
 for the estimation error [74, 75]
-δφ ≥ 1p
+δφ ≥ 1√
 Fφ(φ0, T )
 , (2)
 where Fφ(φ0, T ) is the global QFI of the system and en-
@@ -154,10 +154,10 @@ nite system sizes N , see also [55]. By employing the MPS
 description of the global system and environment state
 we further find the long-time QFI rate (see Appendix A)
 fφ
-4κ = 2κ T Z T 0 dt Z T −t 0 dτ C(τ ) + ⟨ ˆL† ˆL⟩ss − κT ⟨ ˆL† ˆL⟩2 ss, (3)
+4κ = 2κ T ∫ T 0 dt ∫ T −t 0 dτ C(τ ) + ⟨ ˆL† ˆL⟩ss − κT ⟨ ˆL† ˆL⟩2 ss, (3)
 where C(τ ) := Tr
-h
-ˆL† ˆLeLτ ( ˆLρss ˆL†) i and ⟨O⟩ss =
+[
+ˆL† ˆLeLτ ( ˆLρss ˆL†) ] and ⟨O⟩ss =
 Tr[Oρss] with the stationary state ρss. This shows that
 the QFI rate is given by the time integrated two-time
 intensity correlation of the system output [55, 75] and
@@ -169,7 +169,7 @@ source. The BTC is composed of N two-level emit-
 ters with resonant driving with Rabi frequency ω and
 collective dissipation with rate κ, as described by the
 Hamiltonian ˆH = ω ˆSx and the jump operator ˆL = ˆS−,
-respectively. The operators ˆSα = PN i=1 ˆσi α/2, with
+respectively. The operators ˆSα = ∑N i=1 ˆσi α/2, with
 α ∈ {x, y, z}, are collective total angular momentum op-
 erators, where the Pauli matrices ˆσi α correspond to emit-
 ter i, and the ladder operators are ˆS± = ˆSx ± i ˆSy. The
@@ -197,8 +197,8 @@ scaling of the QFI rate. Deep in the time crystal regime
 superspin method [50, 81], resulting in the long-time QFI
 rate (see Appendix B)
 fφ ≈ κN (N + 2)
- (N − 1)(N + 3)
-135 + 2 3  =: fφ,∞, (4)
+[ (N − 1)(N + 3)
+135 + 2 3 ] =: fφ,∞, (4)
 where the approximation becomes exact when ω/ωc →
 ∞. This shows that the sensitivity of the BTC light
 for measuring optical phases is enhanced by pronounced
@@ -250,9 +250,9 @@ Jβ (t) = √κ⟨ ˆSβ (t)⟩H + dW dt , (5)
 δϕ
 (a)
 ×κ−1/2
-ϕ □ β = 0
-ϕ □ β = π/4
-ϕ □ β = 3π/8
+ϕ − β = 0
+ϕ − β = π/4
+ϕ − β = 3π/8
 0.5 1 1.5 2 2.5
 ω/ωc
 0
@@ -281,24 +281,24 @@ over a long measurement time T , and neglect any ad-
 ditional loss channels. We first consider the protocol
 where φ is estimated from the time average of the ho-
 modyne current, JT = (1/T )
-R T
+∫ T
 0 Jβ (t)dt, and analyze its asymptotic estimation error for long measurement
 times. Afterwards, we also study the FI of the full
 homodyne record, I (h) φ (φ0, T ), to determine how much
 of the QFI can be in principle extracted by this kind
 of continuous measurement. The average current reads
-E[JT ] = (√κ/T ) R T 0 ⟨ ˆSβ (t)⟩dt with E[•] the average over trajectories and ⟨O(t)⟩ = Tr[Oρ(t)] the unconditional ex-
+E[JT ] = (√κ/T ) ∫ T 0 ⟨ ˆSβ (t)⟩dt with E[•] the average over trajectories and ⟨O(t)⟩ = Tr[Oρ(t)] the unconditional ex-
 pectation value. For the estimation error, the error prop-
 agation formula holds [46]
 δφ =
-q
+√
 E[J 2 T ] − E[JT ]2
- ∂E[JT ] ∂φ  −1 , (6)
+⏐⏐⏐⏐ ∂E[JT ] ∂φ ⏐⏐⏐⏐ −1 , (6)
 which is lower bounded by the QCRB Eq. (2). For
 long measurement times, the time averaged current ap-
 proaches its ensemble mean limT →∞ JT = √κ⟨ ˆSβ ⟩ss
 [75]. Far away from critical points, large deviations
-theory yields a behavior of the standard deviation asp
+theory yields a behavior of the standard deviation as√
 E[J 2 T ] − E[JT ]2 ∼ σJT / √ T [82], with the time inde-
 pendent rescaled standard deviation σJT . This implies a
 behavior of the estimation error as δφ ∼ δφ/
@@ -394,7 +394,7 @@ dark state is independent of ω, as indicated in Fig. 3(a).
 For general values of ∆φ, the behavior with respect to
 the Rabi frequency displays three different regimes. For
 ω < ωc,casc =
-p
+√
 5 − 4 cos(∆φ), both source and decoder
 are in the single system stationary regime (regime I in
 Fig. 3). For ωc,casc ≤ ω < ωc, the decoder first transi-
@@ -422,7 +422,7 @@ point (see Appendix G).
 We further illustrate the performance of this proto-
 col by considering a specific estimation strategy based
 on the time averaged intensity IT = (1/T )
-R T
+∫ T
 0 dN (t) of the cascaded system. dN (t) is a random variable tak-
 ing the values 1 if a photon is detected at time t and
 0 otherwise, with average value given by E[dN (t)] =
@@ -436,7 +436,7 @@ T , with δφ = σIT /|∂φIT |. Using an HP approach
 we determine the estimation error in the cascaded sta-
 tionary regime (see Appendix F)
 δφ ≈
-s
+√
 κ(1 − cos(∆φ))
 2ω2 sin2(∆φ) . (8)
 This saturates the QCRB for ∆φ → 0 and is numeri-
@@ -611,7 +611,7 @@ the physical parameter φ evaluated at a realization φ0.
 Fφ(φ0, T ) is the QFI associated to the parameter φ at
 measurement time T evaluated at φ0. In the following,
 we will consider δφ =
-p
+√
 Var[ ˆφ]φ0 as a measure for the es-
 timation error for the parameter φ. The QFI can be com-
 puted, using the symmetric logarithmic derivative (SLD)
@@ -627,18 +627,17 @@ on or specifies measurements [75]. For a pure quantum
 state ρφ = |ψφ⟩⟨ψφ|, the QFI takes the more simple form
 [54, 55]
 Fφ(φ, T ) = 4
- 
-ψ′ φ ψ′ φ  − | 
-ψ′ φ ψφ  |2
+(⟨
+ψ′ φ ⏐⏐ψ′ φ ⟩ − | ⟨ ψ′ φ ⏐⏐ψφ ⟩ |2)
 = 4∂φ1 ∂φ2 ln ⟨ψφ1 |ψφ2 ⟩ ,
 (A4)
 where
-ψ′ φ  = ∂φ |ψφ⟩ is the derivative of the state. In
+⏐⏐ψ′ φ ⟩ = ∂φ |ψφ⟩ is the derivative of the state. In
 the case of a quantum system described by Eq. (1), the
 global system and environment state at time T can be
 approximated by the matrix product state [48, 54]
 |ψφ⟩ =
-1X
+1∑
 i1 ,...,in =0
 Kin · · · Ki1 |χS⟩ ⊗ |i1, . . . , in⟩ , (A5)
 where we have discretized time into n steps of size δt,
@@ -657,58 +656,60 @@ Eq. (A4), the QFI rate in the long-time limit reads
 fφ := lim T →∞
 Fφ(φ, T )
 T = 4∂φ1 ∂φ2 λ0(∆φ)
-
+⏐⏐
 ∆φ=0, (A6)
 where λ0(∆φ) is the eigenvalue with largest real part of
 the deformed master equation
 ∂tρ = L [ρ] + κ
- 
-e−i∆φ − 1  ˆLρ ˆL†, (A7)
+(
+e−i∆φ − 1 ) ˆLρ ˆL†, (A7)
 with L the Lindbladian describing evolution according to
 Eq. (1).
 Alternatively, we determine the QFI by computing the
 inner products in the first line of Eq. (A4) [54]. This
 yields
+⟨
 ψφ
-ψ′ φ  = nX
+⏐⏐ψ′ φ ⟩ = n∑
 j=1
 Tr
-h
-ρ(tj−1)(−iκδt) ˆL† ˆL i
+[
+ρ(tj−1)(−iκδt) ˆL† ˆL ]
 δt→0
 −→ −iκ
-Z T
+∫ T
 0
 dt Tr
-h
-ρ(t) ˆL† ˆL i
-ψ′ φ ψ′ φ  = nX
+[
+ρ(t) ˆL† ˆL ]
+⟨
+ψ′ φ ⏐⏐ψ′ φ ⟩ = n∑
 j=1
 Tr
-h
-ρ(tj−1)κδt ˆL† ˆL i
+[
+ρ(tj−1)κδt ˆL† ˆL ]
 + 2
-nX
+n∑
 j>k=1
 Tr
-h
-κ2δt2 ˆL† ˆL( ˆLρ(tk−1) ˆL†)(τ ) i
+[
+κ2δt2 ˆL† ˆL( ˆLρ(tk−1) ˆL†)(τ ) ]
 δt→0
 −→
-Z T
+∫ T
 0
 dt Tr
-h
-ρ(t) ˆL† ˆL i +
+[
+ρ(t) ˆL† ˆL ] +
 2κ2
-Z T
+∫ T
 0
 dt
-Z T −t
+∫ T −t
 0
 dτ Tr
-h
-ˆL† ˆLeLτ ( ˆLρ(t) ˆL†) i
+[
+ˆL† ˆLeLτ ( ˆLρ(t) ˆL†) ]
 | {z }
 =:C(τ )
 ,
@@ -744,7 +745,7 @@ Master Equation Eq. (A9) leads to the matrix equation
 ator [81]
 ˜L = ˜L0 + ˜LD = iω ˆJx| {z }
 ˜L0
-− κ 4  ˆJ 2 x + ˆ⃗J 2  | {z }
+− κ 4 ( ˆJ 2 x + ˆ⃗J 2 ) | {z }
 ˜LD
 , (B1)
 where we have defined the superspin components ˆJα = ˆSα ⊗ 1 − 1 ⊗ ˆSα. Since the vectorized Lindblad su-
@@ -814,11 +815,11 @@ stationary state approaches the maximally mixed state,
 i.e. ρss ≈ 1/(N + 1) [77, 93]. Thus, to first order the
 correlation function reads [50]
 C(τ ) ≈
-X
+∑
 j,jx
 eλj,jx τ ⟨⟨ ˆS+ ˆS−|j, jx⟩⟩⟨⟨j, jx| ˆS− ˆS+⟩⟩/(N + 1),
 (B3)
-where we used the decomposition eLτ ≈P
+where we used the decomposition eLτ ≈∑
 j,jx eλj,jx τ |j, jx⟩⟩⟨⟨j, jx|. We further simplify this expression by determining the x−basis superspin states,
 using the rule ˆJα| ˆO⟩⟩ = |[ ˆSα, ˆO]⟩⟩ [50, 81]. For example
 the state corresponding to j = 1, jx = 0 reads up to a
@@ -834,23 +835,23 @@ Next, we decompose the superstates | ˆS± ˆS∓⟩⟩ in the
 ˆS(x) ± = ˆSy ± i ˆSz and applying the identity for ladder op-
 erators in the z-basis ˆS± ˆS∓ = ˆ⃗S2 − ˆS2 z ± ˆSz, yielding
 8
-□3 □2 □1 0
+−3 −2 −1 0
 Re(λ)/κ
-□2
+−2
 0
 2Im(λ)/ω
 (a) ω/ωc = 5
 exact
 superspin
-□3 □2 □1 0
+−3 −2 −1 0
 Re(λ)/κ
-□2
+−2
 0
 2
 (b) ω/ωc = 10
-□3 □2 □1 0
+−3 −2 −1 0
 Re(λ)/κ
-□2
+−2
 0
 2
 (c) ω/ωc = 50
@@ -883,25 +884,25 @@ integration of the Lindblad master equation and the superspin results (red dashe
 With increasing Rabi frequency the agreement between the superspin method and exact evolution increases.
 | ˆS± ˆS∓⟩⟩ = 2 3 | ˆ⃗S2⟩⟩| {z }
 ∝|0,0⟩⟩
-∓ i 2  | ˆS(x) + ⟩⟩ − | ˆS(x) − ⟩⟩  | {z }
+∓ i 2 ( | ˆS(x) + ⟩⟩ − | ˆS(x) − ⟩⟩ ) | {z }
 ∝(|1,1⟩⟩−|1,−1⟩⟩)
-+ 1 2  | ˆS2 x ⟩⟩ − 1 3 | ˆ⃗S2⟩⟩  | {z }
++ 1 2 ( | ˆS2 x ⟩⟩ − 1 3 | ˆ⃗S2⟩⟩ ) | {z }
 ∝|2,0⟩⟩
-+ 1 4  |( ˆS(x) + )2⟩⟩ + |( ˆS(x) − )2⟩⟩  | {z }
++ 1 4 ( |( ˆS(x) + )2⟩⟩ + |( ˆS(x) − )2⟩⟩ ) | {z }
 ∝(|2,2⟩⟩+|2,−2⟩⟩)
 , (B7)
 |0, 0⟩⟩ = 4√ N + 1N (N + 2) | ˆ⃗S2⟩⟩, |1, ±1⟩⟩ =
-s
+√
 6
 N (N + 1)(N + 2) | ˆS(x) ± ⟩⟩, (B8)
 |2, 0⟩⟩ =
-s
+√
 180
 (N − 1)N (N + 1)(N + 2)(N + 3)
-
-| ˆS2 x ⟩⟩ − 1 3 | ˆS2⟩⟩  , (B9)
+(
+| ˆS2 x ⟩⟩ − 1 3 | ˆS2⟩⟩ ) , (B9)
 |2, ±2⟩⟩ =
-s
+√
 30
 (N − 1)N (N + 1)(N + 2)(N + 3) |( ˆS(x) ± )2⟩⟩. (B10)
 where the basis states underset in Eq. (B7) are given by
@@ -910,10 +911,10 @@ constants to be real. With this decomposition and the
 respective eigenvalues λj,jx , we compute the correlation
 function as
 C(τ ) ≈ N (N + 2)
-"
+[
 N (N + 2)
 36 − e−3κτ /4 cos(ωτ ) 12
-+ N 2 + 2N − 3 240  e−5κτ /2 cos(2ωτ ) + e−3κτ /2 3 # .
++ N 2 + 2N − 3 240 ( e−5κτ /2 cos(2ωτ ) + e−3κτ /2 3 )] .
 (B11)
 With this expression, we compute the QFI, which yields
 the result in Eq. (4) in the extreme time crystal limit
@@ -927,14 +928,14 @@ In the main text, we consider estimation of the pa-
 rameter φ via continuous monitoring of the decoder out-
 9
 put intensity IT = (1/T )
-R T
+∫ T
 0 dN (t). The statistics of the
 number of photon emissions until time T , M =
-R T
+∫ T
 0 dN (t), are described by a Laplace transform of the probability
 distribution, yielding the generating function [94]
 Zc(s, ∆φ) :=
-∞X
+∞∑
 M =0
 pM (T, ∆φ)e−sM , (C1)
 with the probability pM (T, ∆φ) of observing M emis-
@@ -957,15 +958,15 @@ the large deviations function θc(s, ∆φ) as
 δφ ∼ δφ√
 T
 , with δφ :=
-p
+√
 ∂2s θc(s, ∆φ)
 |∂φ∂sθc(s, ∆φ)|
-
+⏐⏐⏐⏐
 s=0
 = σIT
 |∂φIT | ,
 (C3)
-with the time rescaled standard deviation σIT =p
+with the time rescaled standard deviation σIT =√
 ∂2s θc(s, ∆φ)|s=0, and the derivative of the long-time av-
 eraged intensity −∂φ∂sθc(s, ∆φ)|s=0 = ∂φIT . It follows
 immediately that the estimation error decreases with
@@ -976,11 +977,11 @@ quantum limit for long measurement times.
 2. Homodyne detection
 In the main text, we consider the time averaged homo-
 dyne current JT = (1/T )
-R T
+∫ T
 0 Jβ (t)dt = KT /T , with the time integrated homodyne current KT . Its moments are
 determined by the generating function
 Zh(s, φ − β) =
-Z
+∫
 dKe−sK pK (T, φ − β), (C4)
 where pK (T, φ − β) = P (KT = K) is the probability
 density of observing KT = K. For long times T , Zh
@@ -989,7 +990,7 @@ acquires the large deviation form Zh(s) ∼ eT θh(s,φ−β)
 pK and θh inherit a φ − β dependence from Jβ . θh is
 computed as the eigenvalue with largest real part of the
 deformed master equation [11]
-∂tρ = L[ρ] − s√κ  ˆS−ei(β−φ)ρ + ρ ˆS+e−i(β−φ)  + s2 2 ρ,
+∂tρ = L[ρ] − s√κ ( ˆS−ei(β−φ)ρ + ρ ˆS+e−i(β−φ) ) + s2 2 ρ,
 (C5)
 with the physical Lindbladian of a single BTC L. For
 s → 0, the physical evolution is recovered. JT ap-
@@ -1003,15 +1004,15 @@ dyne current thus is approximated by
 δφ ∼ δφ√
 T
 , with δφ :=
-p
+√
 ∂2s θh(s, φ − β)
 |∂φ∂sθh(s, φ − β)|
-
+⏐⏐⏐⏐
 s=0
 = σJT
 |∂φJT | ,
 (C6)
-with the time rescaled standard deviation σJT :=p
+with the time rescaled standard deviation σJT :=√
 ∂2s θh(s, φ − β)|s=0, the time rescaled estimation error
 δφ and the derivative of the homodyne current in the
 long-time limit ∂φJT := −∂φ∂sθh(s, φ − β)|s=0. Similar
@@ -1029,9 +1030,9 @@ transformation to its spin operators. Here we follow the
 prescription given in [46] and express the spin operators
 in terms of bosonic ladder operators
 ˆS+ = ˆb†
-q
+√
 2S − ˆb†ˆb, ˆS− =
-q
+√
 2S − ˆb†ˆbˆb, (D1)
 with S = N/2 as in the main text. The bosonic mode
 described by the operators ˆb(†) is assumed to be in a
@@ -1046,7 +1047,7 @@ S
 ˆmα =
 ˆSα
 S =
-∞X
+∞∑
 l=0
 ϵl ˆmα,l. (D3)
 Explicit expressions up to order O(ϵ) are given by
@@ -1067,21 +1068,21 @@ where also the time scale of the dynamics is rescaled.
 With the rescaled operators and parameters, the Lind-
 blad master equation is obtained
 ∂τ ρ = −i˜ωS[ ˆmx, ρ] + κS
-
-ˆm−ρ ˆm+ − 1 2 { ˆm+ ˆm−, ρ}  .
+(
+ˆm−ρ ˆm+ − 1 2 { ˆm+ ˆm−, ρ} ) .
 (D6)
-By expanding the density matrix ρ = P∞ l=0 ϵlρl and set-
+By expanding the density matrix ρ = ∑∞ l=0 ϵlρl and set-
 ting the right-hand side of Eq. (D6) equal to zero, we
 obtain the field β in the stationary state. Up to O(ϵ),
 this yields
 0 = −i˜ω ± κm±,0 ⇒ β
-p
+√
 2 − |β|2 = −i ˜ω κ , (D7)
 from which β is determined to β =
 −i
-q
+√
 1 −
-p
+√
 1 − (˜ω/κ)2. This is only valid in the
 regime where ˜ω ≤ κ, i.e. the stationary regime. For
 the dominant order of the rescaled ladder operators, we
@@ -1090,38 +1091,38 @@ m±,0 = ± i˜ω κ . (D8)
 The term of O(1) of the rescaled Lindblad master equa-
 tion yields
 ∂τ ρ0 = κ
-
-ˆm−,1ρ0 ˆm+,1 − 1 2 { ˆm+,1 ˆm−,1, ρ0}  , (D9)
+(
+ˆm−,1ρ0 ˆm+,1 − 1 2 { ˆm+,1 ˆm−,1, ρ0} ) , (D9)
 which we solve for the stationary state by the ansatz
 ρ0,ss = |E0⟩⟨E0|, where the state |E0⟩ is annihilated by
 the fluctuation of the lowering operator ˆm−,1. By ex-
 panding ˆm−,1 = Aˆb + Bˆb† with the coefficients
 A = 1 + 3
-p
+√
 1 − (˜ω/κ)2
 2
-q
+√
 1 +
-p
+√
 1 − (˜ω/κ)2
 , B = 1 −
-p
+√
 1 − (˜ω/κ)2
 2
-q
+√
 1 +
-p
+√
 1 − (˜ω/κ)2
 ,
 (D10)
 we arrive at the stationary state
 |E0⟩ = 1√ N |0⟩ + 1√ N
-∞X
+∞∑
 n=1
 (−1)n
- B
+( B
 A
-n r (2n − 1)!!
+)n √ (2n − 1)!!
 2n!! |2n⟩ .
 (D11)
 N is a normalization constant and |n⟩ is a Fock state in
@@ -1135,8 +1136,8 @@ alyze the deformed master equation Eq. (A7). Inserting
 the rescaled operators and parameters yields the rescaled
 deformed master equation
 ∂τ ρ = L[ρ] +
- 
-e−i∆φ − 1  κS ˆm−ρ ˆm+. (D12)
+(
+e−i∆φ − 1 ) κS ˆm−ρ ˆm+. (D12)
 We make an ansatz for the dominant eigenstate similar
 to the undeformed master equation as
 ρ0 = |Eφ1 0 ⟩⟨Eφ2 0 | . (D13)
@@ -1148,38 +1149,38 @@ with situations, where the stationary state depends on
 the estimated parameter [46]. We expand the action of
 ˆm− as
 ˆm− |Eφ1 0 ⟩ =
-
-mφ1 −,0 + 1√ S ˆmφ1 −,1 + ...  |Eφ1 0 ⟩ , (D14)
+(
+mφ1 −,0 + 1√ S ˆmφ1 −,1 + ... ) |Eφ1 0 ⟩ , (D14)
 ⟨Eφ2 0 | ˆm− = ⟨Eφ2 0 |
-
-mφ2 −,0 + 1√ S ˆmφ2 −,1 + ...  . (D15)
+(
+mφ2 −,0 + 1√ S ˆmφ2 −,1 + ... ) . (D15)
 With this ansatz, the deformed master equation yields
 ∂τ ρ0 = L[ρ0] +
- 
-e−i∆φ − 1  κS  mφ1 −,0 + 1√ S ˆmφ1 −,1 + ...  |Eφ1 0 ⟩⟨Eφ2 0 |  mφ2 −,0 + 1√ S ˆmφ2 −,1 + ...  , (D16)
+(
+e−i∆φ − 1 ) κS ( mφ1 −,0 + 1√ S ˆmφ1 −,1 + ... ) |Eφ1 0 ⟩⟨Eφ2 0 | ( mφ2 −,0 + 1√ S ˆmφ2 −,1 + ... ) , (D16)
 with ∆φ := φ1 − φ2 and mφ ±,0 = m±,0 = ±i˜ω/κ as
 before. Of interest are the derivatives of the dominant
 eigenvalue of this tilted master equation, λ0(∆φ). The
 contribution L[ρ0] vanishes due to ˆmφ −,1 |Eφ 0 ⟩ = 0. The
 leading contribution to λ0 reads
- 
-e−i∆φ − 1  κSmφ1 −,0mφ2 +,0 |Eφ1 0 ⟩⟨Eφ2 0 |
+(
+e−i∆φ − 1 ) κSmφ1 −,0mφ2 +,0 |Eφ1 0 ⟩⟨Eφ2 0 |
 =
- 
-e−i∆φ − 1  κS ˜ω2
+(
+e−i∆φ − 1 ) κS ˜ω2
 κ2 ρ0
 =
- 
-e−i∆φ − 1  S ˜ω2
+(
+e−i∆φ − 1 ) S ˜ω2
 κ| {z }
 =:˜λ0 (φ1 ,φ2 )
 ρ0.
 (D17)
 11
-□1 0 1
+−1 0 1
 ∆ϕ
-□20
-□10
+−20
+−10
 0
 λ0(∆ϕ)
 ×κ
@@ -1202,13 +1203,13 @@ rate in the long-time limit thus has the compact form
 fφ = lim T →∞
 Fφ(φ, T )
 T = 4∂φ1 ∂φ2 λ0
-
+⏐⏐
 φ1 =φ2
 = 4∂φ1 ∂φ2
-
-e−i(φ1 −φ2 ) − 1  S2 ˜ω2
+(
+e−i(φ1 −φ2 ) − 1 ) S2 ˜ω2
 κ
-
+⏐⏐
 φ1 =φ2
 = 4 ω2
 κ .
@@ -1219,14 +1220,14 @@ error of the parameter φ via homodyne detection, using
 the HP approach. With the rescaled parameters Eq. (D5)
 and the expanded operators Eq. (D3), the deformed mas-
 ter equation for the homodyne current Eq. (C5) reads
-∂τ ρ = L[ρ] + s√κ  ˆm−ei(β−φ)ρ + ρ ˆm+e−i(β−φ)  + s2 2 ρ S .
+∂τ ρ = L[ρ] + s√κ ( ˆm−ei(β−φ)ρ + ρ ˆm+e−i(β−φ) ) + s2 2 ρ S .
 (D19)
 As an ansatz for the dominant eigensatate we choose the
 vacuum of the fluctuations ρ0 = |E0⟩⟨E0|. Inserting on
 the right hand side and using the relations Eq. (D8) yields
 to leading order
-s√κ n ei(β−φ)(m−,0 + ˆm−,1 + . . . )ρ0 + ρ0(m+,0 + ˆm+,1 + . . . )e−i(φ−β) o + s2 2 ρ0 S
-≈ s√κ i˜ω κ  e−i(β−φ) − ei(β−φ)  ρ0 + s2 2 ρ0 S , (D20)
+s√κ { ei(β−φ)(m−,0 + ˆm−,1 + . . . )ρ0 + ρ0(m+,0 + ˆm+,1 + . . . )e−i(φ−β) } + s2 2 ρ0 S
+≈ s√κ i˜ω κ ( e−i(β−φ) − ei(β−φ) ) ρ0 + s2 2 ρ0 S , (D20)
 where we included the term s2/(2S), since it defines the
 variance of the homodyne current, but neglected terms
 with ˆm±,2, which are also of O(ϵ2), but only contribute to
@@ -1237,10 +1238,10 @@ value of the rescaled deformed master equation reads
 where, due to the rescaling of Eq. (C5), θh(s, φ − β) =
 S ˜θh(s, φ − β). For the estimation error, this means
 δφ =
-s
+√
 ∂s2 θh(s, φ − β)
 (∂φ∂˜sθh(˜s, φ − β))2
-
+⏐⏐⏐⏐
 ˜s=0
 =
 √κ
@@ -1264,9 +1265,9 @@ mally implemented by the measurement
 acting on the decoder and emission field state ρD(0) ⊗
 ρE(T ) before their interaction. ρD(0) = |χD(0)⟩⟨χD(0)|
 12
-□1 0 1
+−1 0 1
 s
-□1
+−1
 0
 1
 2
@@ -1300,7 +1301,7 @@ critical Rabi frequency, but is small in a large portion of the
 stationary regime.
 is the decoder initial state and ρE(T ) describes the emis-
 sion field at time T , after the interaction with the source.
-Π{ij } = Nn j=1 |ij ⟩ ⟨ij | is the projector on the observed
+Π{ij } = ⨂n j=1 |ij ⟩ ⟨ij | is the projector on the observed
 trajectory in the basis of the source and decoder emis-
 sion field time bin modes, interacting sequentially with
 the source and decoder [97]. UDE is a unitary, describ-
@@ -1318,7 +1319,7 @@ tive measurement {ΠSE k } becomes optimal for the true
 realization of φ. For ΠDE {ij } to be optimal, it has to obey
 the same emission field structure as ΠSE 0 for at least one
 specific trajectory {mj }, yielding the condition
-UDE(φ′, T )  ΠSE 0 ⊗ ρD (0)  U † DE(φ′, T )
+UDE(φ′, T ) [ ΠSE 0 ⊗ ρD (0) ] U † DE(φ′, T )
 = Π{mj } ⊗ ρSD(φ′, T ). (E2)
 Physically, the unitary UDE(φ′, T ) transforms the source
 and emission field state ΠSE 0 into the specific trajectory
@@ -1334,7 +1335,7 @@ A general construction of a decoder satisfying Eq. (E2)
 can be challenging. However, in the long-time limit,
 a convenient construction can be found, if the source
 evolves according to a time-homogeneous master equa-
-tion with support for a stationary state ρS,ss =Pd
+tion with support for a stationary state ρS,ss =∑d
 k=1 pk,ss(φ′) |kss(φ′)⟩S S⟨kss(φ′)| at a parameter value
 φ′. In the stationary regime (ω < ωc), the source sta-
 tionary state is well approximated by the pure station-
@@ -1350,9 +1351,9 @@ The stationary state of the source-decoder system then
 reads |ψ⟩ = |E0⟩S ⊗ |E0⟩D. At φ = φ′, this state is a pure
 dark state, as is shown in [46]. With the choice
 W0 = exp
-h
+[
 iπ ˆSS z
-i
+]
 , (E3)
 the decoder operators are ˆHD = ω ˆSD x and ˆLD =
 κe−iφ′ ˆSD − , with ˆSD α acting on the decoder Hilbert space
@@ -1367,9 +1368,9 @@ pression for the estimation error δφ in the cascaded sta-
 tionary regime (ω < ωc,casc) similar to [46]. We start as
 before with the HP transformation
 ˆSi + = ˆb† i
-q
+√
 2S − ˆb† i ˆbi, ˆSi − =
-q
+√
 2S − ˆb† i ˆbiˆbi, (F1)
 where the index i indicates the operators of the source
 (i = S) and of the decoder (i = D). Assuming a large
@@ -1379,7 +1380,7 @@ yet to be determined. As S is a large displacement, we
 expand all operators in the small parameter ϵ = 1/
 √
 S
-ˆmi α = ˆSi α S = ∞X l=0 ϵl ˆmi α,l. (F2)
+ˆmi α = ˆSi α S = ∞∑ l=0 ϵl ˆmi α,l. (F2)
 Similar to the case of a single system, the first order
 expansion reads
 ˆmi + ≈ mi +,0 + ϵ 1 2√ki [(4 − 3|βi|2) − |βi|2)ˆb† i − β∗2 i ˆbi] | {z }
@@ -1398,48 +1399,46 @@ yields
 = 0,
 (F4)
 which we want to solve for the stationary state ρss. By
-expanding the density matrix ρ = P∞ l=0 ϵlρl, we find up
+expanding the density matrix ρ = ∑∞ l=0 ϵlρl, we find up
 to order O(ϵ) self-consistency relations
 mS ±,0 = ± i˜ω κ , mD ±,0 = ± i˜ω κ (1 − 2e±i∆φ). (F5)
 With the solution for the zero order moments of the lad-
 der operators, we determine the fields βi as
 βS = −i
-q
+√
 1 −
-p
+√
 1 − (˜ω/κ)2,
-βD = − i˜ω κ 1 − 2e−i∆φ q 1 + p 1 − (˜ω2/κ2)(5 − 4 cos(∆φ)) . (F6)
+βD = − i˜ω κ 1 − 2e−i∆φ √ 1 + √ 1 − (˜ω2/κ2)(5 − 4 cos(∆φ)) . (F6)
 This solution is only valid in the regime ˜ω2 ≤ κ2/(5 −
 4 cos(∆φ)) or in other terms, we obtain an additional
 transition line for the cascaded system along ωc,casc =
 ωc/
-p
+√
 5 − 4 cos(∆φ), with the single system critical fre-
 quency ωc. The next to leading order term yields
 ∂τ ρ0 = − κ 2 [e−i∆φ ˆmD +,1 ˆmS −,1 − ei∆φ ˆmS +,1 ˆmD −,1, ρ0]
 + κD[e−iφ ˆmS −,1 + e−iφ′ ˆmD −,1]ρ0 ! = 0. (F7)
 We solve this by the ansatz
 ρ0,ss = (
-ES 0  ⊗ ED 0  )( 
-ES 0  ⊗ 
-ED 0 ), (F8)
-with the vacuum of the fluctuations ˆmi −,1 Ei 0  = 0. By
+⏐⏐ES 0 ⟩ ⊗ ⏐⏐ED 0 ⟩ )( ⟨ ES 0 ⏐⏐ ⊗ ⟨ ED 0 ⏐⏐), (F8)
+with the vacuum of the fluctuations ˆmi −,1 ⏐⏐Ei 0 ⟩ = 0. By
 writing out the fluctuations as ˆmi −,1 = Aiˆbi + Biˆb† i with
 BS = − 1 −
-p
+√
 1 − ˜ω2/κ2
 2√kS , (F9)
 AS = 1 + 3
-p
+√
 1 − ˜ω2/κ2
 2√kS , (F10)
-BD = (−i˜ω/κ)1 − 2ei∆φ q
+BD = (−i˜ω/κ)1 − 2ei∆φ √
 1 +
-p
+√
 1 − (˜ω2/κ2)(5 − 4 cos(∆φ))√2kD ,
 (F11)
 AD = 1 + 3
-p
+√
 1 − (˜ω2/κ2)(5 − 4 cos(∆φ))
 2√kD , (F12)
 the explicit form of the stationary state is determined.
@@ -1474,9 +1473,9 @@ source and decoder display time crystal behavior (III). Red-
 dashed line in (b): mean-field transition line ωc,casc from the
 stationary regime (I) to the intermediate regime, where only
 the decoder is in a time crystal regime (II).
-□1.0 □0.5 0.0 0.5
+−1.0 −0.5 0.0 0.5
 s
-□0.005
+−0.005
 0.005
 0.015
 θc
@@ -1510,22 +1509,22 @@ wards the critical Rabi frequency, but is small in a large por-
 tion of the stationary regime. The approximation improves
 with increasing system size.
 states of the respective fluctuations
-Ei 0  = 1√ N
- 
+⏐⏐Ei 0 ⟩ = 1√ N
+(
 |0⟩i +
-∞X
+∞∑
 n=1
- −Bi
+( −Bi
 Ai
-n r (2n − 1)!!
+)n √ (2n − 1)!!
 2n!! |2n⟩i
-!
+)
 .
 (F13)
 The additional transition line at ω = ωc,casc is strongly
 visible in the von Neuman entropy SVN = − Tr
-
-ρi ss ln ρi ss 
+[
+ρi ss ln ρi ss ]
 of the stationary state in the perfect absorber protocol re-
 duced to the source (i = S) and the decoder (i = D). For
 the source, a transition from a pure to a mixed station-
@@ -1536,8 +1535,8 @@ in the stationary purity and intensity with respect to the
 14
 0 5 10
 ωct
-□1.0
-□0.5
+−1.0
+−0.5
 0.0
 0.5
 1.0
@@ -1579,9 +1578,7 @@ tors Eq. (F2) in the tilted master equation Eq. (C2) yields
 ∂τ ρ = L[ρ] + κS(e−s − 1)(e−iφ ˆmS − + e−iφ′ ˆmD −)ρ(eiφ ˆmS + + eiφ′ ˆmD +). (F14)
 For the dominant eigenstate we choose the ansatz as in
 Eq. (F8), ρ0,ss = (
-ES 0  ⊗ ED 0  )( 
-ES 0  ⊗ 
-ED 0 ). Inserting this ansatz on the right hand side and only considering the leading terms in the expansion of the operators yields
+⏐⏐ES 0 ⟩ ⊗ ⏐⏐ED 0 ⟩ )( ⟨ ES 0 ⏐⏐ ⊗ ⟨ ED 0 ⏐⏐). Inserting this ansatz on the right hand side and only considering the leading terms in the expansion of the operators yields
 the dominant eigenvalue
 θc(s, ∆φ) ≈ κS2(e−s − 1)(mS −,0mS +,0 + mD −,0mD +,0 + e−i∆φmS −,0mD +,0 + ei∆φmD −,0mS +,0
 = S2(e−s − 1) ˜ω2
@@ -1590,12 +1587,12 @@ which is benchmarked with data obtained by diagonal-
 ization of Eq. (C2) in Fig. 11. From this, the estimation
 error is computed as
 δφ =
-p
+√
 ∂2s θc(s, ∆φ)
 |∂φ∂sθc(s, ∆φ)|
-
+⏐⏐
 s=0 =
-p
+√
 κ(1 − cos(∆φ))√
 2ω| sin(∆φ)| , (F16)
 which is minimal and saturates the QCRB for ∆φ = 0.
@@ -1614,14 +1611,14 @@ angular momentum of the subsystems S = N/2. While
 the time evolution of the density matrix is given by a Lindblad master equation, the evolution of expectation
 values is given by an adjoint Lindblad master equation
 ∂t⟨ ˆmN α ⟩ = − iω
- h
+⟨ [
 ˆmN α , ˆSS x + ˆSD x
-i
-− κ 2  h ˆmN α , e−i∆φ ˆSD + ˆSS − − ei∆φ ˆSS + ˆSD − i
+]⟩
+− κ 2 ⟨ [ ˆmN α , e−i∆φ ˆSD + ˆSS − − ei∆φ ˆSS + ˆSD − ]⟩
 + κ
- 
-eiφ ˆSS + + eiφ′ ˆSD +  ˆmN α  e−iφ ˆSS − + e−iφ′ ˆSD − 
-− κ 2  n eiφ ˆSS + + eiφ′ ˆSD +   e−iφ ˆSS − + e−iφ′ ˆSD −  , ˆmN α o .
+⟨ (
+eiφ ˆSS + + eiφ′ ˆSD + ) ˆmN α ( e−iφ ˆSS − + e−iφ′ ˆSD − )⟩
+− κ 2 ⟨ {( eiφ ˆSS + + eiφ′ ˆSD + ) ( e−iφ ˆSS − + e−iφ′ ˆSD − ) , ˆmN α }⟩ .
 (F17)
 In a first step, this yields the equations of motion for the
 expectation values ⟨ ˆmi,N α ⟩. We then continue by defining
@@ -1632,10 +1629,10 @@ factor as ⟨ ˆmi,N α ˆmj,N β ⟩ N →∞ −→ ⟨ ˆmi,N α ⟩⟨ ˆmj,
 find the equations of motion
 ∂τ mS x = κmS x mS z (F18)
 ∂τ mS y = −˜ωmS z + κmS y mS z (F19)
-∂τ mS z = ˜ωmS y − κ  (mS x )2 + (mS y )2 (F20)
-∂τ mD x = κ  mD x mD z + 2mS x mD z cos(∆φ) − 2mS y mD z sin(∆φ)  (F21)
-∂τ mD y = −˜ωmD z + κ  mD z mD y + 2mS x mD z sin(∆φ) + 2mS y mD z cos(∆φ)  (F22)
-∂τ mD z = ˜ωmD y − 2κ   mS x mD x + mS y mD y  cos(∆φ) +   mS x mD y − mS y mD x  sin(∆φ))  − κ  (mD x )2 + (mD y )2 . (F23)
+∂τ mS z = ˜ωmS y − κ [ (mS x )2 + (mS y )2] (F20)
+∂τ mD x = κ [ mD x mD z + 2mS x mD z cos(∆φ) − 2mS y mD z sin(∆φ) ] (F21)
+∂τ mD y = −˜ωmD z + κ [ mD z mD y + 2mS x mD z sin(∆φ) + 2mS y mD z cos(∆φ) ] (F22)
+∂τ mD z = ˜ωmD y − 2κ [( mS x mD x + mS y mD y ) cos(∆φ) + ( mS x mD y − mS y mD x ) sin(∆φ)) ] − κ [ (mD x )2 + (mD y )2] . (F23)
 The operators ( ˆmi)2 commute with all components of
 the angular momentum, meaning that the expectation
 values ⟨( ˆmi)2⟩ are conserved, and due to the maximum
@@ -1732,18 +1729,18 @@ computed from the unnormalized conditional state [49,
 62, 75].
 The Fisher information associated with the homodyne
 monitoring record up to time t for estimating φ around
-φ0 is defined as I (h) φ (φ0, t) = E   ∂φ log P (Jt|φ0) 2 .
+φ0 is defined as I (h) φ (φ0, t) = E [( ∂φ log P (Jt|φ0) )2] .
 The ensemble average E can be evaluated using the
 Monte-Carlo method of Ref. [62]: one generates many
 homodyne trajectories, computes the Fisher information
 contribution for each trajectory, and finally averages over
 the ensemble. Following the method of Ref. [62], the
 Fisher information can be expressed as:
-I (h) φ (φ0, t) = E   ⟨ϕt|ψt⟩ + ⟨ψt|ϕt⟩ 2 , (G5)
+I (h) φ (φ0, t) = E [( ⟨ϕt|ψt⟩ + ⟨ψt|ϕt⟩ )2] , (G5)
 where the auxiliary vector |ϕt⟩ is propagated alongside
 the conditional state |ψt⟩ for each homodyne realization.
 Its evolution is given by
-|ϕt⟩ = (∂φKJt )|ψt−δt⟩ + KJt |ϕt−δt⟩q
+|ϕt⟩ = (∂φKJt )|ψt−δt⟩ + KJt |ϕt−δt⟩√
 ⟨ψt−δt|K † Jt KJt |ψt−δt⟩ . (G6)
 2. Method of computation for ideal photocounting
 Similarly, assuming unit detection efficiency and dis-
@@ -1751,13 +1748,13 @@ cretizing time as before, photocounting trajectories for
 the absorber protocol are generated using the Kraus op-
 erators
 K0 = 1 − iδt
-h
+[
 ω
-
+(
 ˆSS x + ˆSD x
-
+)
 + ˆHcasc(∆φ)
-i
+]
 (G7)
 − κδt 2 ˆL† casc(∆φ) ˆLcasc(∆φ), (G8)
 K1 =
